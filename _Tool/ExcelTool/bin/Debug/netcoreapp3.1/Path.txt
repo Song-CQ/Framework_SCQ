@@ -1,0 +1,3 @@
+ReadExcelPath:E:\UnityPro\XFramework-master\_Tool\配置表
+OutClassPath:E:\UnityPro\XFramework-master\XFramework\Assets\_App\AutoCreator\Config
+OutDataPath:E:\UnityPro\XFramework-master\XFramework\Assets\_Res\Resources\Data\ExcelConfig

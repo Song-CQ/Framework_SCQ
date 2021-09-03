@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q1FcOeENajuuf+S1N8fsqPcCQ1RPmDK5CmeV7jy4r41AxwxhCcSBKYjR6CFUYk2vYoaL9h2/MHP728dR+pOhlQ==",
+  "success": true,
+  "projectFilePath": "E:\\UnityPro\\XFramework-master\\_Tool\\ExcelTool\\ExcelTool.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Song-\\.nuget\\packages\\exceldatareader\\3.7.0-develop00310\\exceldatareader.3.7.0-develop00310.nupkg.sha512",
+    "C:\\Users\\Song-\\.nuget\\packages\\exceldatareader.dataset\\3.7.0-develop00310\\exceldatareader.dataset.3.7.0-develop00310.nupkg.sha512",
+    "C:\\Users\\Song-\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Song-\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\Song-\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
