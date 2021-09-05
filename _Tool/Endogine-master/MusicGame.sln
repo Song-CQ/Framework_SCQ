@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicGameApp", "MusicGameApp\MusicGameApp.csproj", "{559A9651-63CE-4694-B779-D14363D78F46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicGame", "MusicGame\MusicGame.csproj", "{4C1AC362-1418-4C38-98D0-4CF74CD574EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{559A9651-63CE-4694-B779-D14363D78F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{559A9651-63CE-4694-B779-D14363D78F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{559A9651-63CE-4694-B779-D14363D78F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{559A9651-63CE-4694-B779-D14363D78F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C1AC362-1418-4C38-98D0-4CF74CD574EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C1AC362-1418-4C38-98D0-4CF74CD574EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C1AC362-1418-4C38-98D0-4CF74CD574EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C1AC362-1418-4C38-98D0-4CF74CD574EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {375D2E1F-F4C4-413E-8A2C-1336EBC42A9D}
+	EndGlobalSection
+EndGlobal

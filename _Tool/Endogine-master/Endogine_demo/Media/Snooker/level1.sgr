@@ -1,0 +1,67 @@
+<root>
+  <GNode Assembly="Tests" Type="Snooker.TopologyObject">
+    <MaxRange v="100" />
+    <MinRange v="20" />
+    <Depth v="-11" />
+    <Name v="" />
+    <SourceRect Assembly="Endogine" Type="Endogine.ERectangle">
+      <X v="0" />
+      <Y v="0" />
+      <Width v="200" />
+      <Height v="200" />
+    </SourceRect>
+    <Color v="Color [White]" />
+    <LocX v="0" />
+    <LocY v="0" />
+    <LocZ v="0" />
+    <RegPoint Assembly="Endogine" Type="Endogine.EPoint">
+      <X v="0" />
+      <Y v="0" />
+    </RegPoint>
+  </GNode>
+  <GNode Assembly="Tests" Type="Snooker.PlayerBall">
+    <Velocity Assembly="Endogine" Type="Endogine.EPointF">
+      <X v="0" />
+      <Y v="0" />
+    </Velocity>
+    <MouseActive v="True" />
+    <Name v="" />
+    <SourceRect Assembly="Endogine" Type="Endogine.ERectangle">
+      <X v="0" />
+      <Y v="0" />
+      <Width v="32" />
+      <Height v="32" />
+    </SourceRect>
+    <Color v="Color [White]" />
+    <MemberName v="BallWhite" />
+    <LocX v="148" />
+    <LocY v="230" />
+    <LocZ v="10" />
+    <RegPoint Assembly="Endogine" Type="Endogine.EPoint">
+      <X v="16" />
+      <Y v="16" />
+    </RegPoint>
+  </GNode>
+  <GNode Assembly="Tests" Type="Snooker.Ball">
+    <Velocity Assembly="Endogine" Type="Endogine.EPointF">
+      <X v="0" />
+      <Y v="0" />
+    </Velocity>
+    <Name v="" />
+    <SourceRect Assembly="Endogine" Type="Endogine.ERectangle">
+      <X v="0" />
+      <Y v="0" />
+      <Width v="32" />
+      <Height v="32" />
+    </SourceRect>
+    <Color v="Color [White]" />
+    <MemberName v="BallBlack" />
+    <LocX v="105" />
+    <LocY v="224" />
+    <LocZ v="10" />
+    <RegPoint Assembly="Endogine" Type="Endogine.EPoint">
+      <X v="16" />
+      <Y v="16" />
+    </RegPoint>
+  </GNode>
+</root>

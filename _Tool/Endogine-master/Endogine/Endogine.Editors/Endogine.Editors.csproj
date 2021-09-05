@@ -1,0 +1,417 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5D95EAA4-327D-469D-8D74-77E5E2538A49}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Endogine.Editors</RootNamespace>
+    <AssemblyName>Endogine.Editors</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BehaviorInspector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\BackgroundPattern.cs" />
+    <Compile Include="ColorEditors\ColorChip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\ColorChip.designer.cs">
+      <DependentUpon>ColorChip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\ColorGradient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\ColorGradient.designer.cs">
+      <DependentUpon>ColorGradient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\ColorGradientChip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\ColorGradientChip.designer.cs">
+      <DependentUpon>ColorGradientChip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\ColorGradientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\ColorGradientForm.Designer.cs">
+      <DependentUpon>ColorGradientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorNumeric.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorNumeric.designer.cs">
+      <DependentUpon>ColorNumeric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\ColorPickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\ColorPickerForm.designer.cs">
+      <DependentUpon>ColorPickerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\ColorPickerMulti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\ColorPickerMulti.designer.cs">
+      <DependentUpon>ColorPickerMulti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\ColorPickerMultiEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\ColorPickerMultiEx.designer.cs">
+      <DependentUpon>ColorPickerMultiEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\ColorPickerPainter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\ColorPickerPainter.designer.cs">
+      <DependentUpon>ColorPickerPainter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorSlider.designer.cs">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\Swatch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\Swatch.designer.cs">
+      <DependentUpon>Swatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\SwatchesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\SwatchesForm.designer.cs">
+      <DependentUpon>SwatchesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditors\SwatchesPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorEditors\SwatchesPanel.designer.cs">
+      <DependentUpon>SwatchesPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColumnHeadersX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomSplitter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileIconAccess.cs" />
+    <Compile Include="GridSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridSettings.Designer.cs">
+      <DependentUpon>GridSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JogShuttle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LocScaleRotEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiObjectPropertyGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumericGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumericGroup.designer.cs">
+      <DependentUpon>NumericGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumericSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumericSlider.designer.cs">
+      <DependentUpon>NumericSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PicRefTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PicRefTool.designer.cs">
+      <DependentUpon>PicRefTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyInspector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegExFileRetriever.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegExFileRetriever.designer.cs">
+      <DependentUpon>RegExFileRetriever.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegExFiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RegExFiles.designer.cs">
+      <DependentUpon>RegExFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SceneGraphViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SceneGraphViewer.designer.cs">
+      <DependentUpon>SceneGraphViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Slider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Slider.designer.cs">
+      <DependentUpon>Slider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SliderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SliderForm.designer.cs">
+      <DependentUpon>SliderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpritesUnderCursor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepXY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TileEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TileEditor.Designer.cs">
+      <DependentUpon>TileEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TreeViewHelper.cs" />
+    <Compile Include="TriStateTreeNode.cs" />
+    <Compile Include="TriStateTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TriStateTreeView.designer.cs">
+      <DependentUpon>TriStateTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValueEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VersatileDataGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XMLEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BehaviorInspector.resx">
+      <DependentUpon>BehaviorInspector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\ColorChip.resx">
+      <DependentUpon>ColorChip.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\ColorGradient.resx">
+      <DependentUpon>ColorGradient.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\ColorGradientChip.resx">
+      <DependentUpon>ColorGradientChip.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorNumeric.resx">
+      <DependentUpon>ColorNumeric.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\ColorPickerForm.resx">
+      <DependentUpon>ColorPickerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\ColorPickerMulti.resx">
+      <DependentUpon>ColorPickerMulti.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\ColorPickerMultiEx.resx">
+      <DependentUpon>ColorPickerMultiEx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\ColorPickerPainter.resx">
+      <DependentUpon>ColorPickerPainter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\Swatch.resx">
+      <DependentUpon>Swatch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\SwatchesForm.resx">
+      <DependentUpon>SwatchesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorEditors\SwatchesPanel.resx">
+      <DependentUpon>SwatchesPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColumnHeadersX.resx">
+      <DependentUpon>ColumnHeadersX.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomSplitter.resx">
+      <DependentUpon>CustomSplitter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JogShuttle.resx">
+      <DependentUpon>JogShuttle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocScaleRotEdit.resx">
+      <DependentUpon>LocScaleRotEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageWindow.resx">
+      <DependentUpon>MessageWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiObjectPropertyGrid.resx">
+      <DependentUpon>MultiObjectPropertyGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumericGroup.resx">
+      <DependentUpon>NumericGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumericSlider.resx">
+      <DependentUpon>NumericSlider.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PicRefTool.resx">
+      <DependentUpon>PicRefTool.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertyInspector.resx">
+      <DependentUpon>PropertyInspector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegExFileRetriever.resx">
+      <DependentUpon>RegExFileRetriever.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegExFiles.resx">
+      <DependentUpon>RegExFiles.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceBrowser.resx">
+      <DependentUpon>ResourceBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SceneGraphViewer.resx">
+      <DependentUpon>SceneGraphViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Slider.resx">
+      <DependentUpon>Slider.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SliderForm.resx">
+      <DependentUpon>SliderForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpritesUnderCursor.resx">
+      <DependentUpon>SpritesUnderCursor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepXY.resx">
+      <DependentUpon>StepXY.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeGrid.resx">
+      <DependentUpon>TreeGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriStateTreeView.resx">
+      <DependentUpon>TriStateTreeView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValueEdit.resx">
+      <DependentUpon>ValueEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VersatileDataGrid.resx">
+      <DependentUpon>VersatileDataGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLEditor.resx">
+      <DependentUpon>XMLEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Endogine\Endogine.csproj">
+      <Project>{D3002EFE-1491-4E42-86FA-3F2D50FB51A8}</Project>
+      <Name>Endogine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ColorEditors\ColorGradientForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ColorGradientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridSettings.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GridSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TileEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TileEditor.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorPickerBg.png.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

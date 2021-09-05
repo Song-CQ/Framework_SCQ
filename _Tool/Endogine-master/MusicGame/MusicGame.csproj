@@ -1,0 +1,100 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C1AC362-1418-4C38-98D0-4CF74CD574EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MusicGame</RootNamespace>
+    <AssemblyName>MusicGame</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Boo.Lang, Version=1.0.0.0, Culture=neutral, PublicKeyToken=32c39770e9a21a67">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Endogine\Endogine.Scripting\bin\Debug\Boo.Lang.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Compiler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=32c39770e9a21a67">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Endogine\Endogine.Scripting\bin\Debug\Boo.Lang.Compiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Interpreter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=32c39770e9a21a67">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Endogine\Endogine.Scripting\bin\Debug\Boo.Lang.Interpreter.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Parser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=32c39770e9a21a67">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Endogine\Endogine.Scripting\bin\Debug\Boo.Lang.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Endogine, Version=1.0.2205.40796, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Endogine\Endogine\bin\Debug\Endogine.dll</HintPath>
+    </Reference>
+    <Reference Include="Endogine.Midi, Version=1.0.2205.43150, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Endogine\Endogine.Midi\bin\Debug\Endogine.Midi.dll</HintPath>
+    </Reference>
+    <Reference Include="Endogine.Renderer.Direct3D, Version=1.0.2206.1028, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Endogine\Endogine.Renderer.Direct3D\bin\Debug\Endogine.Renderer.Direct3D.dll</HintPath>
+    </Reference>
+    <Reference Include="Endogine.Scripting, Version=1.0.2206.1061, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Endogine\Endogine.Scripting\bin\Debug\Endogine.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Midi\HitFeedback\Base.cs" />
+    <Compile Include="Midi\HitFeedback\Test.cs" />
+    <Compile Include="Midi\InteractorFactory.cs" />
+    <Compile Include="Midi\Interactor\Base.cs" />
+    <Compile Include="Midi\Interactor\Default.cs" />
+    <Compile Include="Midi\Interactor\Drag.cs" />
+    <Compile Include="Midi\Interactor\Shake.cs" />
+    <Compile Include="Midi\Interactor\X.cs" />
+    <Compile Include="Midi\Label\Default.cs" />
+    <Compile Include="Midi\LocSetter\Base.cs" />
+    <Compile Include="Midi\LocSetter\Default.cs" />
+    <Compile Include="Midi\LocSetter\Swirl.cs" />
+    <Compile Include="Midi\Main.cs" />
+    <Compile Include="Midi\Score.cs" />
+    <Compile Include="Midi\SpriteEffect\Jerk.cs" />
+    <Compile Include="Midi\SpriteEffect\Wiggle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

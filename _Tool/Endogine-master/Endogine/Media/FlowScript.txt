@@ -1,0 +1,41 @@
+defaultCall:
+o.Pan = param1
+waitframe
+
+main:
+o.Play("drumhhat_up.wav")
+interpolate(o.Pitch, rnd(0.5,2.0), 600)
+waitms rnd(1000,2000)
+//maybe easier for non-programmers: change o.Pitch to 2 in 600 ms
+//and "for x=1 to 10" instead of "for (int x = 1; x <=10; x++)
+//
+//new idea: embedded tables
+//table	frame	locX	locY	rotation
+//	25	60	80	0
+//	26	.	.
+//	29	80	x+10	locX*2
+//a line that starts with tab means "table" row
+//table columns are user-defined (row starting with "table")
+//a "." in a cell means interpolate to next value
+//empty cell means no change
+//any type of expression is allowed in a cell (even if() and for() should work)
+//a "¤" in first column means a default function is called after the properties are set
+//because usually we want to wait until next update or frame (or a number of milliseconds)
+//for each frame.
+//
+//
+//*rnd(0,5000)
+do pan?vol
+//o.Play("drumhhat_up.wav")
+//waitms rnd(500,1000)
+//Put(o.Pitch.ToString() + " Hi!")
+rwd
+
+pan:
+o.Pan = rnd(-5000,0)
+Put("Pan:"+o.Pan.ToString())
+
+vol:
+o.Volume = rnd(-100,0)
+Put("Vol:"+o.Volume.ToString())
+

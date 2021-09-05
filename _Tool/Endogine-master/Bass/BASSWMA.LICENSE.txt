@@ -1,0 +1,213 @@
+BASSWMA 2.2 - Copyright (c) 2002-2005 Ian Luck. All rights reserved.
+
+What's the point?
+=================
+BASSWMA is an extension to the BASS audio library, enabling the playback
+of WMA files and network streams. The audio tracks of WMV files can also
+be played. WMA file encoding and network broadcasting functions are also
+provided.
+
+
+Requirements
+============
+BASS 2.2 is required, the BASSWMA module will fail to load if it is not
+present. The Windows Media Format modules are also required to be installed
+on the user's system. They are installed with Windows Media player, so will
+already be on most users' systems, but they can also be installed separately
+(WMFDIST.EXE).
+
+
+Latest Version
+==============
+The latest versions of BASSWMA & BASS can be found at the BASS website:
+
+        http://www.un4seen.com/
+
+
+Copyright, Disclaimer, and all that other jazz
+==============================================
+The BASSWMA library is free to use with BASS, so if anyone tries
+to charge you for it, kick 'em where it hurts.
+
+This software is provided "as is", without warranty of ANY KIND,
+either expressed or implied, including but not limited to the
+implied warranties of merchantability and/or fitness for a
+particular purpose. The author shall NOT be held liable for
+ANY damage to you, your computer, or to anyone or anything else,
+that may result from its use, or misuse. Basically, you use it
+at YOUR OWN RISK.
+
+Usage of BASSWMA indicates that you agree to the above conditions.
+
+You may freely distribute the BASSWMA package as long as NO FEE is
+charged and all the files remain INTACT AND UNMODIFIED.
+
+All trademarks and other registered names contained in the BASSWMA
+package are the property of their respective owners.
+
+
+History
+=======
+These are the major (and not so major) changes at each version
+stage. There are ofcourse bug fixes and other little improvements
+made along the way too! To make upgrading simpler, all functions
+affected by a change to the BASSWMA interface are listed.
+
+2.2 - 2/10/2005
+---------------
+* Support for new plugin system (BASS_PluginLoad)
+* WMA tag type defined
+	BASS_TAG_WMA (BASS_StreamGetTags type)
+* File verification option
+	BASS_CONFIG_WMA_PRECHECK (BASS_SetConfig option)
+* Internet stream prebuffering delay option
+	BASS_CONFIG_WMA_PREBUF (BASS_SetConfig option)
+* Internet stream buffering retrieval
+	BASS_FILEPOS_WMA_BUFFER (BASS_StreamGetFilePosition mode)
+* Internet stream authentication
+	BASS_StreamCreateFileAuth
+* Unicode support in publishing encoder
+	BASS_UNICODE (BASS_WMA_EncodeOpenPublish flag)
+* Support for BASS_CONFIG_NET_TIMEOUT config option
+
+2.1 - 28/11/2004
+----------------
+* Multi-channel encoding
+	BASS_WMA_EncodeOpen/File/Network/Publish
+	BASS_WMA_EncodeGetRates
+* Tags are now in UTF-8 form
+	BASS_StreamGetTags
+	BASS_WMA_EncodeSetTags
+* User file stream support
+	BASS_WMA_StreamCreateFileUser
+* Support for server-side playlists
+	BASS_SYNC_WMA_CHANGE (BASS_ChannelSetSync type)
+* More efficient WMA file processing with WM9 (and above) modules installed
+* Support for the improved "mixtime" sync system (allows custom looping)
+* C/C++ examples reorganised, with makefiles & VC++ projects
+
+2.0 - 31/10/2003
+----------------
+* Support for multi-channel WMA
+	BASS_WMA_StreamCreateFile
+* Syncing integrated into BASS.DLL
+	BASS_WMA_ChannelSetSync *removed*
+* Encoding to a custom callback function
+	BASS_WMA_EncodeOpen
+	WMENCODEPROC
+* Encoding to a publishing point on a Windows Media server
+	BASS_WMA_EncodeOpenPublish
+* Synchronizer for completed download
+	BASS_SYNC_DOWNLOAD (BASS_ChannelSetSync type)
+* Force channels to use software mixing
+	BASS_SAMPLE_SOFTWARE (BASS_WMA_StreamCreateFile flag)
+* Support for Unicode filenames
+	BASS_UNICODE (BASS_WMA_StreamCreateFile/BASS_WMA_EncodeOpenFile flag)
+
+1.8 - 9/3/2003
+--------------
+* More integrated with BASS.DLL
+	BASS_WMA_ErrorGetCode *removed* (use BASS_ErrorGetCode)
+	BASS_WMA_StreamFree *removed* (use BASS_StreamFree)
+	BASS_WMA_StreamPlay *removed* (use BASS_StreamPlay)
+	BASS_WMA_StreamGetLength *removed* (use BASS_StreamGetLength)
+	BASS_WMA_StreamGetTags *removed* (use BASS_StreamGetTags)
+	BASS_WMA_ChannelGetPosition *removed* (use BASS_ChannelGetPosition)
+	BASS_WMA_ChannelSetPosition *removed* (use BASS_ChannelSetPosition)
+	BASS_WMA_ChannelRemoveSync *removed* (use BASS_ChannelRemoveSync)
+* 32-bit floating-point channels
+	BASS_SAMPLE_FLOAT (BASS_WMA_StreamCreateFile flag)
+	DSPTEST example updated
+* Speaker assignment
+	BASS_SPEAKER_FRONT (BASS_WMA_StreamCreateFile flag)
+	BASS_SPEAKER_REAR                 "
+	BASS_SPEAKER_CENLFE               "
+	BASS_SPEAKER_REAR2                "
+	BASS_SPEAKER_FRONTLEFT            "
+	BASS_SPEAKER_FRONTRIGHT           "
+	BASS_SPEAKER_REARLEFT             "
+	BASS_SPEAKER_REARRIGHT            "
+	BASS_SPEAKER_CENTER               "
+	BASS_SPEAKER_LFE                  "
+	BASS_SPEAKER_REAR2LEFT            "
+	BASS_SPEAKER_REAR2RIGHT           "
+* VBR and lossless encoding
+	BASS_WMA_ENCODE_RATES_VBR (BASS_WMA_EncodeGetRates flag)
+	BASS_WMA_EncodeOpenFile/Network
+* Script (mid-stream tags) encoding
+	BASS_WMA_ENCODE_SCRIPT (BASS_WMA_EncodeOpenNetwork flag)
+* File length and download progress retrieval support
+	BASS_StreamGetFilePosition
+* Support for normal stopping & resuming at same place
+	BASS_ChannelStop
+* Normal stalling (automatic stop/resume)
+	BASS_ACTIVE_STALLED (BASS_ChannelIsActive flag)
+* Support for Windows message sync callbacks
+	BASS_SYNC_MESSAGE (BASS_WMA_ChannelSetSync flag)
+* VB version of DSPTEST example added
+* Improved documentation - integrated with BASS, search option added
+
+1.7 - 27/10/2002
+----------------
+* Exact length available once whole file has been played
+	BASS_WMA_StreamGetLength
+* Client connection notification
+	BASS_WMA_EncodeSetNotify
+	CLIENTCONNECTPROC
+	WMALIVE example updated
+* Multi-instance support
+	MULTI example added
+
+1.6 - 13/6/2002
+---------------
+* Connected clients count retrieval
+	BASS_WMA_EncodeGetClients
+* 64-bit lengths and positions
+	BASS_WMA_StreamGetLength
+	BASS_WMA_ChannelGetPosition
+	BASS_WMA_ChannelSetPosition
+	BASS_WMA_ChannelSetSync
+* Streaming via IStream objects
+	BASS_WMA_StreamCreateFile
+* Auto-freeing WMA streams
+	BASS_STREAM_AUTOFREE (BASS_WMA_StreamCreateFile flag)
+* Normal playback resuming after seeking while paused
+	BASS_ChannelResume
+* WMA stream freeing integrated into BASS.DLL
+	BASS_StreamFree
+	BASS_Free
+
+1.5a - 8/5/2002
+---------------
+* Encoding
+	BASS_WMA_EncodeGetRates
+	BASS_WMA_EncodeOpenFile
+	BASS_WMA_EncodeOpenNetwork
+	BASS_WMA_EncodeGetPort
+	BASS_WMA_EncodeSetTag
+	BASS_WMA_EncodeWrite
+	BASS_WMA_EncodeClose
+	BASS_WMA_ENCODE_TAGS (BASS_WMA_EncodeOpenFile/Network flag)
+* Loading from a memory location
+	BASS_WMA_StreamCreateFile
+* Faster file verification
+	BASS_WMA_StreamCreateFile
+* Protected file error code
+	BASS_ERROR_WMA_LICENSE (BASS_WMA_StreamCreateFile error code)
+
+1.5 - 16/4/2002
+---------------
+* First release
+
+
+Credits - API/Sample Contributors
+=================================
+Visual Basic - Arthur Aminov
+Delphi - Jesse Naranjo
+
+
+Bug reports, Suggestions, Comments, Enquiries, etc...
+=====================================================
+If you have any of the aforementioned please visit the BASS forum (at
+the website).
+

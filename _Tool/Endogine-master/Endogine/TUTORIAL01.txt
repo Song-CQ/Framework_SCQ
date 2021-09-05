@@ -1,0 +1,143 @@
+** TUTORIAL01 - CREATING A SIMPLE APP  **
+
+This example describes one way to create a new project which uses Endogine.
+
+
+I don't like to put much code in the executables. I usually create a very small stub exe and put most of the code in a .dll, it makes the code easier to reuse. That's the setup I'll describe below.
+
+
+
+Create a new Console project:
+File | New -> Project...
+
+Choose Class Library and enter the name of the app you want to create, e.g. "MyGame".
+
+Right-click the Solution in the solution explorer and choose Add -> New project. Choose Console Application as the type, and name as the app but with "App" at the end e.g. "MyGameApp". The naming isn't important, it's just a suggestion.
+Since MyGameApp.exe is the project we want to run rather than the .dll, right-click it and select "Set as StartUp Project".
+
+
+
+The Startup Application
+-----------------------
+
+All the App does is start up Endogine, select rendering mode and then start the game. I'll probably write a generic startup application later so this step can be skipped.
+
+
+* References
+
+The App needs to know about Endogine and the rendering mode, so right-click the App's References folder and choose Add Reference... and select the Browse tab. Find Endogine.dll (probably in Projects\Endogine\Bin\Release or Debug) and the renderer you want to use (e.g. Endogine.Renderer.Direct3D.dll). Note that you can add several renderers and choose which one to use at startup.
+
+
+* Render target form
+
+In order to start up Endogine, it needs to define a window so the renderer has somewhere to direct its output. So, create a Windows Form by right-clicking the DriverApp project and Add->Windows Form. This form *must* be named Main.
+Once it's created, right-click Main.cs in the solution explorer and choose View code. This class must inherit from Endogine.MainBase, so edit the line
+public partial class Main : Form
+so it reads
+public partial class Main : Endogine.MainBase
+
+
+* Initializing Endogine
+
+And now the initialization of Endogine. Open Program.cs. First we'll make the application single-threaded, otherwise drag'n'drop doesn't work.
+Just above "static void Main [...]", add "[STAThread]".
+
+At the top of the file, add the following:
+using System.Windows.Forms;
+using Endogine;
+
+And the code inside the Main method:
+
+//create Endogine and set "home" directory:
+EndogineHub endogine = new EndogineHub(Application.ExecutablePath);
+
+//create the Main window and open it:
+Main main = new Main();
+main.Show();
+
+//Initialize Endogine and let it know where to render (the Main form):
+endogine.Init(main, null, null);
+//Tell the Main form that initialization is done:
+main.EndogineInitDone();
+
+//The program loop:
+while (endogine.MainLoop())
+    Application.DoEvents();
+
+
+* Workaround for .NET 2.0 / MDX 1.1 bug
+
+Now go to the Debug menu, Exceptions... and expand the Managed Debugging Assistants item. Scroll down to LoaderLock and uncheck the Thrown checkbox. (I'm sure I can find away around this later, but currently it's necessary).
+
+
+* First run
+
+Now you should be able to run the program. Nothing much will happen except some windows popping up, but it's a good checkpoint to verify that nothing has gone wrong.
+Note: The Main window might be hidden behind the console window, I'm not sure yet how to avoid that. For now, just minimize the console window whenever you run the program.
+
+
+The Actual Program
+------------------
+
+Now to the actual game code, which will reside in the Class library (MyGame).
+
+
+* References
+
+We need to make Endogine and other libraries known to this project as well, so right-click its References folder and browse/add Endogine.dll and Endogine.Renderer.Direct3D.dll.
+
+
+* Main class
+
+Now first delete Class1.cs, then create a class called, let's say "Game". This will be the "hub" of the game. In VS2005, classes are created as being private, so you'll have to make it public (-> "public class Game").
+Now add a constructor (don't know why it's not added automatically anymore):
+public Game()
+{
+}
+
+
+* Create graphics (run-time)
+
+I'll show how to use external graphics in a bit, but for now we'll create an image manually using GDI+. Choose Add Reference... again on the References folder, select the .NET tab and add the component System.Drawing. Also add "using System.Drawing" to the top of Game.cs.
+
+In the Game constructor, add the following:
+
+Bitmap bmp = new Bitmap(100, 100, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+Graphics gfx = Graphics.FromImage(bmp);
+gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+gfx.DrawEllipse(new Pen(Color.Red), new Rectangle(0, 0, 99, 99));
+gfx.Dispose();
+
+Now we've created a 32-bit bitmap with a red circle. How to display it on screen? Since Endogine is a sprite engine, we don't want to blit it directly to the screen, instead we'll create a sprite that uses the bitmap.
+
+
+* Putting Endogine to use
+
+Add "using Endogine" to the top of Game.cs. Now, below gfx.Dispose(), add
+MemberSpriteBitmap mb = new Endogine.MemberSpriteBitmap(bmp);
+This creates a "wrapper" around the bitmap and transforms it to a type that the selected rendering engine can use. In the case of Direct3D, it will be converted to a Texture. If GDI is selected, it will remain a Bitmap.
+
+Now for the sprite:
+Sprite sp = new Sprite();
+sp.Member = mb;
+
+We're done with Game.cs.
+
+
+* Connecting the App with the game code
+
+The main program still doesn't know about MyGame or Game.cs though. First, add MyGame to MyGameApp's References - but this time choose it from the Project tab. This facilitates debugging and other stuff.
+Open Program.cs again, and add, just above "while (endogine[...]":
+MyGame.Game game = new MyGame.Game();
+
+Except for the configuration file (see below), this should be the last thing you have to change within MyGameApp.
+
+Run the program and behold your creation. Well, after minimizing the console window.
+
+
+
+
+TODO:
+
+The configuration file.
+.NET has an XML-based app.config system for application settings. It seems to be better in .NET 2.0, but I wasn't comfortable with the one in .NET 1.1 so I created my own.

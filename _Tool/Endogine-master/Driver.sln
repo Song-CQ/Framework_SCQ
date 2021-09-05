@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver", "Driver\Driver.csproj", "{D9CE619F-8F0F-47FF-8357-8216729457CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriverApp", "DriverApp\DriverApp.csproj", "{B2502EAA-7845-4D89-A87B-6FC3059BFFA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9CE619F-8F0F-47FF-8357-8216729457CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9CE619F-8F0F-47FF-8357-8216729457CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9CE619F-8F0F-47FF-8357-8216729457CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9CE619F-8F0F-47FF-8357-8216729457CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2502EAA-7845-4D89-A87B-6FC3059BFFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2502EAA-7845-4D89-A87B-6FC3059BFFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2502EAA-7845-4D89-A87B-6FC3059BFFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2502EAA-7845-4D89-A87B-6FC3059BFFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

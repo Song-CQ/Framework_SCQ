@@ -10,6 +10,9 @@ namespace ExcelTool.Data
     {
         private DataSet mData;
 
+        public string Name { get;private set; }
+      
+
         // TODO: add Sheet Struct Define
 
         public ExcelData(string filePath) {
@@ -20,11 +23,15 @@ namespace ExcelTool.Data
                     // Auto-detect format, supports:
                     //  - Binary Excel files (2.0-2003 format; *.xls)
                     //  - OpenXml Excel files (2007 format; *.xlsx)
+                    
+                    string[] names = filePath.Split(@"\"[0]);
+                    Name = names[names.Length - 1];
                     using (var reader = ExcelReaderFactory.CreateReader(stream)) {
                         // Use the AsDataSet extension method
                         // The result of each spreadsheet is in result.Tables
                         var result = reader.AsDataSet();
                         this.mData = result;
+                      
                         Console.WriteLine("读取表"+filePath+"成功");
                     }
                 }

@@ -1,0 +1,483 @@
+----------------------------------------------------------------------
+                     (: -= BASS_FX v2.2 =- :)
+                         -==============-
+ Copyright (c) 2002, 2003, 2004, 2005 JOBnik! [Arthur Aminov, ISRAEL]
+                       All rights reserved!
+----------------------------------------------------------------------
+
+What's the point?
+=================
+BASS_FX is an extension to the BASS audio library, providing a complete
+set of DSP functions to start programming your own DJ software ;)
+Programmed to enable the simple and even the advanced programmers/users to 
+have in their programs some sound effects without knowing any DSP at all =)
+
+
+Requirements
+============
+BASS 2.2 is required, the BASS_FX module will fail to load if it is not
+present.
+
+
+Latest Version
+==============
+The latest versions of BASS_FX & BASS can be found at these websites:
+
+        http://www.un4seen.com          (the home of BASS)
+        http://www.jobnik.org
+
+
+Copyright, Disclaimer, and all that other jazz
+==============================================
+The BASS_FX library is free, so if anyone tries to charge you
+for it, kick 'em where it hurts.
+
+This software is provided "as is", without warranty of ANY KIND,
+either expressed or implied, including but not limited to the
+implied warranties of merchantability and/or fitness for a
+particular purpose. The author shall NOT be held liable for
+ANY damage to you, your computer, or to anyone or anything else,
+that may result from its use, or misuse. Basically, you use it
+at YOUR OWN RISK.
+
+Usage of BASS_FX indicates that you agree to the above conditions.
+
+You may freely distribute the BASS_FX package as long as NO FEE is
+charged and all the files remain INTACT AND UNMODIFIED.
+
+All trademarks and other registered names contained in the BASS_FX
+package are the property of their respective owners.
+
+
+History
+=======
+These are the major (and not so major) changes at each version
+stage. There are ofcourse bug fixes and other little improvements
+made along the way too! To make upgrading simpler, all functions
+affected by a change to the BASS_FX interface are listed.
+
+
+2.2.0.1 - 30/11/2005
+--------------------
+* New in BASS_FX:
+  * 8-bit support.
+  * Added more DSP effect information to BASS_FX.CHM
+
+* DSP:
+  * Automatically free DSP resources when freeing the channel.
+  * Multi-channel support started with:
+    * BASS_FX_DSPFX_ECHO2
+    * BASS_FX_DSPFX_ECHO3
+    + more effects will be updated soon! :)
+  * Some bugs fixed.
+
+* BPM:
+  * Fixed a bug that would return BPMs out of MIN/MAX range if
+    using BASS_FX_BPM_MULT2 flag.
+
+* MacOSX:
+  * Samples added.
+
+
+2.2 - 03/10/2005
+----------------
+* New in BASS_FX:
+  * Removed all DSP GPL code.
+  * BASS_FX is now fully useable in commercial software, as long as
+    credit is given.
+  * BASS_FX_GetVersion() *removed* (won't load if BASS 2.2 isn't present)
+  * BASS_FX_ERROR_MODLEN *removed* (replaced with BASS_ERROR_NOTAVAIL)
+  * BASS_FX_ERROR_16BIT *removed* (no 16-bit only effects are left)
+  * Multi_FX example *removed*
+  * MacOSX port introduced
+
+* DSP:
+  * Removed GPL FX:
+    * BASS_FX_DSPFX_FLANGER2 & BASS_FX_DSPFX_CUT
+      - because of that the DSP chain is changed!
+
+* Reverse:
+  * MOD playback is now supported if using BASS_MUSIC_PRESCAN flag.
+
+* MacOSX examples will follow this week.
+
+
+2.1.0.2 - 07/05/2005
+--------------------
+* DSP:
+  * Chorus: fixed a bug, that would convert stereo to mono.
+  * Low Pass Filter: fixed a bug, that would convert stereo to mono.
+  * DynamicAMP: another bug fix, that would sometimes cause a total silence.
+  + Added:
+    * A new effect: Distortion
+    * DSPFX.TXT - a values to use with some effects, to achieve different
+                  effect with the same one (not using other effect/s) :)
+
+
+2.1.0.1 - 22/02/2005
+--------------------
+* New in BASS_FX:
+  + Added:
+    * File version info.
+    * Documentation file BASS_FX.CHM.
+
+* DSP:
+  * Another DynamicAMP bug fix.
+  * Added a new effect: Compressor
+
+* BPM:
+  * Added: "User" param to Callback BPM functions.
+
+
+2.1 - 27/12/2004 - Happy New Year ;)
+------------------------------------
+* New in BASS_FX:
+  * No more "alpha/beta" releases! :)
+  * Updated to BASS 2.1 add-on APIs, coz of that BASS_FX is not compatible with any 
+    previous versions. You'll have to make some changes in your project.
+  * Full 32-bit floating-point support.
+  * Sync support, "Sync & Tempo" example *removed*
+  * A lot of functions/error codes removed and integrated with BASS functions/error codes.
+  * New flag: BASS_FX_FREESOURCE if you want BASS_FX to free the source handle as well.
+  * New error code: BASS_FX_ERROR_16BIT for Flanger 2.
+  * BASS_FX_ErrorGetCode *removed* (use BASS_ErrorGetCode)
+  * BASS_FX_Free *removed*
+
+* Tempo:
+  * BASS_FX_TempoGetResampledHandle *removed*
+  * BASS_FX_TempoStopAndFlush *removed*
+  * BASS_FX_TempoFree *removed* (use BASS_StreamFree for music as well)
+  * BASS_FX_TempoGetApproxSeconds *removed* (use BASS_FX_TempoGetRateRatio to calculate)
+  * BASS_FX_TempoGetApproxPercents *removed* (use BASS_FX_TempoGetRateRatio to calculate)
+  + New functions:
+     BASS_FX_TempoGetSource (get the source handle when needed)
+     BASS_FX_TempoGetRateRatio
+  + New in flags:
+     BASS_FX_TEMPO_QUICKSEEK *renamed* to BASS_FX_TEMPO_QUICKALGO
+     BASS_FX_TEMPO_NO_AAFILTER *added*
+  * 3DNow! & SSE support.
+
+* Reverse:
+  * BASS_FX_ReverseGetReversedHandle *removed*
+  * BASS_FX_ReverseSetPosition *removed* (use BASS_ChannelSetPosition)
+  * BASS_FX_ReverseFree *removed* (use BASS_StreamFree)
+  * BASS_FX_ReverseCreate: "decode" param *removed* (use BASS_STREAM_DECODE flag)
+  * New function: BASS_FX_ReverseGetSource (get the source handle when needed)
+
+* BPM:
+  + These functions are combined to one: BASS_FX_BPM_Translate
+     * BASS_FX_BPM_X2 *removed*
+     * BASS_FX_BPM_Frequency2BPM *removed*
+     * BASS_FX_BPM_2Frequency *removed*
+     * BASS_FX_BPM_Percents2BPM *removed*
+     * BASS_FX_BPM_2Percents *removed*
+
+    + Use these translation options with a function above:
+       BASS_FX_BPM_X2
+       BASS_FX_BPM_2FREQ
+       BASS_FX_BPM_FREQ2
+       BASS_FX_BPM_2PERCENT
+       BASS_FX_BPM_PERCENT2
+
+* DSP:
+  * Flanger 2 still only 16-bit, will return an error if applied to 32-bit.
+  * Some DSP effects bug fixed.
+  + Echo 2.1 renamed to Echo 3:
+    * BASS_FX_DSPFX_ECHO21 -> BASS_FX_DSPFX_ECHO3
+    * BASS_FX_DSPECHO21 -> BASS_FX_DSPECHO3
+  + New effects added (more will come soon!):
+    . Chorus
+    . All Pass Filter
+
+
+2.0 "beta 2" - 28/11/2004
+-------------------------
+* New in BASS_FX:
+  * Updated to BASS 2.1, just before releasing the official BASS_FX 2.1 :)
+  * Oops... again BASS_FX is a bit smaller ;)
+
+
+2.0 "beta 2" - 19/10/2004
+-------------------------
+* DSP:
+  + Updated with 32-bit floating-point support:
+    . Auto Wah
+    + Dynamic Amplification:
+      * Fixed bug that would cause a sound mute if there're ~20+ seconds of silence.
+        All parameters changed from "Integer/Long" to "Float/Single" and their names
+        now starts with "f: Float/Single".
+
+    + Not updated, yet [only 16-bit support]:
+      . Flanger 2.0!
+
+  + Fixed bugs of:
+    * "Echo" & "Reverb" effects that would cause a noise clicks and a sound mute.
+    * "Peaking EQ" that would cause a crash with Mono files.
+
+* Reverse:
+  * 32-bit floating-point support.
+
+* Tempo:
+  * Fixed bug that would cause a crash if BASS_FX_Free would be called twice.
+
+* WARN!NG NOTE:
+   Not updated effects (Flanger 2/Tempo) must not be used with 32-bit.
+   It will crash your program and could make a very annoying noise!!!
+   Sometimes could even crash your system until RESET!
+
+
+2.0 "beta 1" - 07/09/2004
+-------------------------
+* Really sorry for a long delay with updates!!!
+
+* New in BASS_FX:
+  * Now supports Windows 98/98SE without "msvcp60.dll" ~392KB
+  * Some DSP effects updated with 32-bit floating-point support.
+    The updated effects could be used with 16-bit & 32-bit.
+
+* DSP:
+  + Updated with 32-bit floating-point support:
+    . Swap Channels
+    . Rotate
+    . Echo
+    . Flanger
+    . Volume Amplifier
+    . Peaking EQ
+    . Reverb
+    . Low Pass Filter
+    . Volume Cutter
+    . Stereo 2 Mono
+    . Echo 2.0!
+    . Phaser
+    . Echo 2.1!
+
+    + Not updated, yet [only 16-bit support]:
+      . Flanger 2.0!
+      . Dynamic Amplification
+      . Auto Wah
+
+  * All parameters that began with "d: Double" changed to "f: Float/Single",
+    as it was forgotten with last update.
+
+* BPM:
+  * Updated with 32-bit floating-point support.
+
+* WARN!NG NOTE:
+   Not updated effects (DSP/Tempo/Reverse) must not be used with 32-bit.
+   It will crash your program and could make a very annoying noise!!!
+   Sometimes could even crash your system until RESET!
+
+* New in Examples:
+  * Added: "Sync & Tempo"
+
+* Removed:
+  * BASS_FX_ERROR_BASS20 error code, BASS_FX will show an error message
+    if BASS.DLL version is below 2.0 and won't load.
+
+
+2.0 "alpha" - 4/12/2003
+-----------------------
+* New in BASS_FX:
+  * Updated to BASS 2.0!
+  * Version jumpted from '1.2 "beta"' to '2.0 "alpha"',
+     means only BASS v2.x is supported!
+
+* DSP:
+  * Added *priority* param to BASS_FX_DSP_Set(..) func
+  * All *Double* types changed to *Float/Single*
+
+* New in Examples:
+  * Added "Multi_FX" C/C++ only.
+
+* VERSION 2.0 (not "alpha") will support:
+  * 32-bit floating-point including in: DSP, Tempo, BPM & Reverse.
+  * Multi Channel in some DSPs.
+  * Planning to release till the end of this month/year :)
+
+
+1.2 "beta" - 30/06/2003
+-----------------------
+* New in BASS_FX:
+  * Not compatible with any previous BASS_FX versions,
+     you'll have to make changes & recompile your
+     application to use with this version!
+
+  + Tempo, Pitch Scaling & Samplerate changers (3 at once ;))
+    + Functions:
+      * BASS_FX_TempoCreate
+      * BASS_FX_TempoSet
+      * BASS_FX_TempoGet
+      * BASS_FX_TempoGetApproxSeconds
+      * BASS_FX_TempoGetApproxPercents
+      * BASS_FX_TempoGetResampledHandle
+      * BASS_FX_TempoStopAndFlush
+      * BASS_FX_TempoFree
+
+  + Two BPM Detection options:
+    + Option 1 - Get BPM from a Decoding channel:
+      + Function
+        * BASS_FX_BPM_DecodeGet
+
+    + Option 2 - Get BPM by period of time of any handle - in Real-Time:
+      + Functions
+        * BASS_FX_BPM_CallbackSet
+        * BASS_FX_BPM_CallbackReset
+
+    + Functions to use with both options:
+        * BASS_FX_BPM_X2
+        * BASS_FX_BPM_Frequency2BPM
+        * BASS_FX_BPM_2Frequency
+        * BASS_FX_BPM_Percents2BPM
+        * BASS_FX_BPM_2Percents
+	* BASS_FX_BPM_Free
+
+* New in DSP:
+  * All DSP effects names has changed.
+  * The index of 1st DSP effect starts from 0 and
+    not from 1 as it was before.
+
+  + -= DSP FXs =- added:
+      * Dynamic Amplification
+      * Stereo 2 Mono
+      * Auto Wah
+      * Echo v2.0!
+      * Phaser
+      * Echo v2.1!
+
+  + Equalizer:
+    * Added *Q* parameter.
+    * Fixed some bugs :)
+  + Flanger v2.0!
+    * fixed bug (crashed with Mono files)
+
+* New in Functions:
+  + Added:
+    * BASS_FX_ErrorGetCode
+  * Always check for any Function changes.
+
+* Removed all PITCH functions:
+  * BASS_FX_PitchCreate
+  * BASS_FX_PitchSet
+  * BASS_FX_PitchGet
+  * BASS_FX_PitchGetResampledHandle
+  * BASS_FX_PitchStopAndFlush
+  * BASS_FX_PitchFree
+
+* New in Examples:
+  * Added: C/C++, Delphi & VB
+
+
+1.1 - 02/10/2002
+----------------
+* New in BASS_FX:
+  * Now supports - 16/8-Bit Stereo/Mono.
+  * Support for Multiple BASS instances.
+  * A lot of BUGs fixed =)
+
+* New in DSP:
+  + -= DSP FXs =- added:
+      * Low Pass Filter
+      * Cutter
+      * Flanger v2.0!
+
+  + Equalizer: 
+    * Algorithm optimized to BiQuad.
+    * Added a new parameter *eqBandwidth*
+
+* New in Reverse:
+  * Now you can add DX8 effects + change Pitch
+    with BASS_FX_Pitch... (check the *Reverse* example).
+
+* New in functions:
+  + Added:
+    * BASS_FX_DSP_Reset
+    * BASS_FX_Free
+  * Always check for any Function changes.
+
+* Added:
+  * Delphi APIs + Pitch Example.
+  * C/C++ Examples + corrected BASS_FX.LIB file ;)
+
+* Switched from MFC to Win32 DLL [MFC42.DLL ~1MB doesn't required]
+
+
+1.0 - 14/06/2002
+----------------
+* First release
+
+
+Credits
+=======
+* Thanks a lot to - Ian Luck @ www.un4seen.com - for: 
+   + BASS.DLL - The greatest audio library!
+   + DSP (Echo/Reverb/Flanger/Swap/Dynamic AMP) & Reverse source codes.
+   + Tempo & Reverse 32-bit support.
+   + Add-on support.
+   + MAC OSX support.
+   + Helping me so much with C/C++ and much more! :)
+* Ian, you're the best programmer in the whole world! ;D
+
+
+Credits - API/Sample Contributors
+=================================
+Delphi - Roger Johansson, Alex Graham (bigjim), DJ-Chris
+BASS_FX.CHM - Thijs van Vliet
+
+
+Bug reports, Suggestions, Comments, Enquiries, etc...
+=====================================================
+If you have any of the aforementioned please check the BASS forum (at
+the website)... If you can't find an answer there, you can email:
+
+        bass_fx@jobnik.org
+
+
+System
+======
+---------------------------------------------
+ BASS_FX.DLL was developed and tested using:
+---------------------------------------------
+System       : Intel Pentium 4 Prescott 3.0E GHz 1MB, 512MB DDR
+               Intel Celeron 1.7 GHz, 256MB DDR
+               Intel Celeron 600EB MHz, 96MB SDRAM
+
+OS           : Microsoft Windows XP PRO SP2/ME/98
+
+Sound Card   : RealTek 7.1 (onboard), Creative Audigy 5.1 & ViBRA 128
+
+Compiler     : Microsoft Visual C++ v6.0 SP5
+DirectX      : 9.0c & 6.1
+BASS.DLL     : 2.2.0.1
+Sound System : Speakers: JBL 2x380w & 4x120w
+               Receiver: JVC 5x100w
+               JVC Stereo 20w
+
+
+--------------------------------------------------
+ LIBBASS_FX.DYLIB was developed and tested using:
+--------------------------------------------------
+OS            : OSX 10.4 / 10.3.9
+Compiler      : XCode 2.1 / 1.5
+LIBBASS.DYLIB : 2.2.0.1
+
+
+More Credits ;)
+===============
+ *  BiQuad Peaking Equalizer Algorithm
+(c) Copyright (c) Tom St Denis
+    * The main source is based on - Manu Webber's - source code.
+
+ *  Tempo/Pitch/Rate/BPM [SoundTouch v1.3]
+(c) Copyright (c) 2002-2005 Olli Parviainen
+ @  http://www.iki.fi/oparviai/soundtouch
+ L  LGPL license
+
+ *  Auto Wah, Echo 2/3, Phaser, Chorus, All Pass Filter, Compressor & Distortion
+(c) Copyright (c) 2001 Aleksey Smoli
+ @  http://st.karelia.ru/~smlalx    (offline)
+
+ +  Commercial usage is allowed, while given proper credits and no fee is charged.
+
+-----------------------------------------------------------------------------------
+* BASS_FX.TXT & File_ID.Diz are better viewed in DOS mode OR with - Courier - font.
+-----------------------------------------------------------------------------------

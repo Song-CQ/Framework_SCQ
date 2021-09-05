@@ -1,0 +1,297 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0CAE60EE-640D-454C-A3F3-D83177A9AE86}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Tests</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Tests</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\Endogine.Audio.Bass\Endogine.Audio.Bass.csproj">
+      <Name>Endogine.Audio.Bass</Name>
+      <Project>{961B2649-D46D-4BE7-8041-57E317FF9A00}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Endogine.Midi\Endogine.Midi.csproj">
+      <Project>{2D814C99-1BEA-4CF9-9AC8-ABCC69FCE154}</Project>
+      <Name>Endogine.Midi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Endogine.Renderer.Direct3D\Endogine.Renderer.Direct3D.csproj">
+      <Name>Endogine.Renderer.Direct3D</Name>
+      <Project>{279CB4FA-8E9C-491C-85D2-37BEC212755C}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Endogine.Renderer.GDI\Endogine.Renderer.GDI.csproj">
+      <Name>Endogine.Renderer.GDI</Name>
+      <Project>{BE3185EE-8986-4F0E-B1A9-D8CC60BF44EC}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Endogine.Scripting\Endogine.Scripting.csproj">
+      <Project>{E0816DF8-0A6E-4477-AA07-7C107F8D930C}</Project>
+      <Name>Endogine.Scripting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Endogine\Endogine.csproj">
+      <Project>{D3002EFE-1491-4E42-86FA-3F2D50FB51A8}</Project>
+      <Name>Endogine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.cfg" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="App.ico" />
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CaveHunter\BhReportWhenOutside.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CaveHunter\CaveWalls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CaveHunter\GameMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CaveHunter\Obstacles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CaveHunter\Player.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivStuff\BhSwing.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivStuff\Bouncer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivStuff\DragSprite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivStuff\FunParticleSystem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivStuff\Meter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivStuff\ParticleControl.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivStuff\TestCircle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivStuff\TestLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DrumMachine\DrumForm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DrumMachine\PlayKeyboard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DrumMachine\Track.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Processing\Canvas.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processing\CellularAutomata3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processing\Hairy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processing\RandomEx.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processing\Smoke.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PuzzleBobble\Ball.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PuzzleBobble\Grid.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PuzzleBobble\Level.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PuzzleBobble\PathCalc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PuzzleBobble\PlayArea.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PuzzleBobble\Player.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PuzzleBobble\Score.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SideScroller\Asteroid.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SideScroller\GameMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SideScroller\Player.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SideScroller\Shot.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SideScroller\Star.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SideScroller\StarField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SideScroller\WrappingSprite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Snooker\Ball.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Snooker\GameMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Snooker\PlayerBall.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Snooker\Table.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Snooker\TopologyObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\Colorizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\Cover.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\GameMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\Invader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\InvadersGrid.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\InvaderShot.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\LivesLeft.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\Player.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\PlayerShot.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpaceInvaders\Score.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

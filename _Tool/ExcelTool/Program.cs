@@ -6,27 +6,31 @@ using ExcelTool.Tool;
 using System.Threading;
 using System.Threading.Tasks;
 using ExcelTool.Data;
+using System.Reflection;
+using Microsoft.CSharp;
+using System.CodeDom.Compiler;
+using System.Text;
+using System.Reflection.Emit;
 
 namespace ExcelTool
 {
     class Program
     {
 
-        private static string readExcelPath=String.Empty;
-        private static string outDataPath=String.Empty;
+        private static string readExcelPath = String.Empty;
+        private static string outDataPath = String.Empty;
         private static string outClassPath = String.Empty;
-        private static List<ExcelData> excelDataLst=new List<ExcelData>();
+        private static List<ExcelData> excelDataLst = new List<ExcelData>();
 
-       
-        
+
         static void Main(string[] args)
         {
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            Task task =new Task(Init);
+          
+            Task task = new Task(Init);
             task.Start();
             Task.WaitAll(task);
             Console.WriteLine("                                ");
-            StringColor.WriteLine("*****************************",ConsoleColor.Yellow);
+            StringColor.WriteLine("*****************************", ConsoleColor.Yellow);
             Console.WriteLine("按任意键关闭");
             Console.ReadKey();
         }
@@ -44,7 +48,7 @@ namespace ExcelTool
                 ExcelData item = new ExcelData(VARIABLE);
                 excelDataLst.Add(item);
             }
-            StringColor.WriteLine("读取表完成", ConsoleColor.Green);
+            StringColor.WriteLine("读取表完成,读取数量:"+excelDataLst.Count, ConsoleColor.Green);
             //检测输出目录
             CheckOut();
 
@@ -55,14 +59,14 @@ namespace ExcelTool
         {
             try
             {
-                DirectoryInfo theFolder = new DirectoryInfo(readExcelPath);
+                DirectoryInfo theFolder = new DirectoryInfo(outDataPath);
                 if (theFolder.Exists)
                 {
                     DelectDir(theFolder);
-                    CreateDirRood();
-                   
+                    CreateClass();
+
                 }
-                else 
+                else
                 {
                     StringColor.WriteLine("打表输出目录不存在");
                 }
@@ -74,11 +78,19 @@ namespace ExcelTool
 
         }
 
-        private static void CreateDirRood()
+        private static void CreateClass()
         {
-            Directory.CreateDirectory(readExcelPath+@"\Auto_Data");
-            Directory.CreateDirectory(readExcelPath + @"\Auto_Class");
+            foreach (var data in excelDataLst)
+            {
+                CreateClassHelp.ExcelDataToAssembly(data);
+            }
+           
+
+
         }
+
+
+
 
         public static void DelectDir(DirectoryInfo dir)
         {
@@ -111,7 +123,7 @@ namespace ExcelTool
             string _write_Class = "OutClassPath:";
             string _write_Data = "OutDataPath:";
             string path = System.IO.Directory.GetCurrentDirectory();
-            path+=@"\Path.txt";
+            path += @"\Path.txt";
             try
             {
                 // 创建一个 StreamReader 的实例来读取文件 
@@ -119,18 +131,18 @@ namespace ExcelTool
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string line;
-                   
+
                     // 从文件读取并显示行，直到文件的末尾 
                     while ((line = sr.ReadLine()) != null)
                     {
                         if (line.Contains(_read))
                         {
-                            readExcelPath = line.Replace(_read,String.Empty);
+                            readExcelPath = line.Replace(_read, String.Empty);
                             continue;
                         }
                         if (line.Contains(_write_Class))
                         {
-                            outDataPath = line.Replace(_write_Class,String.Empty);
+                            outDataPath = line.Replace(_write_Class, String.Empty);
                             continue;
                         }
                         if (line.Contains(_write_Data))
@@ -141,14 +153,14 @@ namespace ExcelTool
                     }
                 }
 
-                if (readExcelPath==String.Empty)
+                if (readExcelPath == String.Empty)
                 {
-                    StringColor.WriteLine("ReadExcelPath:"+"无路径");
+                    StringColor.WriteLine("ReadExcelPath:" + "无路径");
                     Console.ReadKey(true);
                 }
-                if (outDataPath==String.Empty)
+                if (outDataPath == String.Empty)
                 {
-                    StringColor.WriteLine("OutClassPath:"+"无路径");
+                    StringColor.WriteLine("OutClassPath:" + "无路径");
                     Console.ReadKey(true);
                 }
                 if (outDataPath == String.Empty)
@@ -175,11 +187,11 @@ namespace ExcelTool
                 DirectoryInfo theFolder = new DirectoryInfo(readExcelPath);
                 foreach (FileInfo nextFile in theFolder.GetFiles())
                 {
-                  
-                    if (nextFile.Extension==".xlsx")
+
+                    if (nextFile.Extension == ".xlsx"|| nextFile.Extension == ".xls")
                     {
                         pathStr.Add(nextFile.FullName);
-                        Console.WriteLine("获取文件路劲:"+nextFile.FullName);
+                        Console.WriteLine("获取文件路劲:" + nextFile.FullName);
                     }
                 }
             }
@@ -187,9 +199,9 @@ namespace ExcelTool
             {
                 Console.WriteLine("读取读取路劲下的配置表失败");
                 throw;
-              
+
             }
-           
+
             return pathStr;
         }
 
