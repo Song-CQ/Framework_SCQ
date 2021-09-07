@@ -1,3 +1,3 @@
-ReadExcelPath:E:\UnityProject\Framework_SCQ\_Tool\配置表
-OutClassPath:E:\UnityProject\Framework_SCQ\Framework_UClient\Assets\_App\AutoCreator\ExcelClass_AutoCreator
-OutDataPath:E:\UnityProject\Framework_SCQ\Framework_UClient\Assets\_Res\Resources\Data\ExcelConfig
+ReadExcelPath:E:\UnityPro\Framework_SCQ\_Tool\配置表
+OutClassPath:E:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_App\AutoCreator\ExcelClass_AutoCreator
+OutDataPath:E:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Res\Resources\Data\ExcelConfig

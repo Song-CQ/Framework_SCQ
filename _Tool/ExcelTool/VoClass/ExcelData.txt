@@ -8,10 +8,7 @@ namespace ProjectApp.Data
     /// </summary>
     public class #Class:BaseVO
     {
-        {0} 
+        #Val
     }
 }
-        /// <summary>
-        /// #FieldDescription
-        /// </summary>
-        public #FieldType #Field
+        

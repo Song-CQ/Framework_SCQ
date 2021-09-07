@@ -36,7 +36,7 @@ namespace ExcelTool.Data
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 StringColor.WriteLine("读取表"+filePath+"失败");
                 throw ;

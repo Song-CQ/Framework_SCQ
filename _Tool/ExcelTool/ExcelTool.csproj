@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainMgr.cs" />
     <Compile Include="VoClass\BaseVo.cs" />
     <Compile Include="CreateClassHelp.cs" />
     <Compile Include="CreateObjFunC2.cs" />

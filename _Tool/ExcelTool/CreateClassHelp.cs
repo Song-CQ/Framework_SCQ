@@ -4,20 +4,29 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
+using ExcelTool.Tool;
 
 namespace ExcelTool
 {
     static class CreateClassHelp
     {
-
+        public static bool IsDefDll = true;
+        
         private static StringBuilder svBuilder;
         
         private static CSharpCodeProvider provider;
 
         private static CompilerParameters cp;
+        
+        private static List<string> defFieldLst = new List<string>
+        {
+            "id","key"
+        };
         
         static CreateClassHelp()
         {
@@ -32,12 +41,9 @@ namespace ExcelTool
 
             cp = new CompilerParameters();
 
-
-
+            
             cp.GenerateExecutable = false;
-
-            cp.GenerateInMemory = true;
-
+            
             // Generate an executable instead of
 
             // a class library.
@@ -54,8 +60,10 @@ namespace ExcelTool
 
             // Save the assembly as a physical file.
 
-            cp.GenerateInMemory = false;
+            cp.GenerateInMemory = true;
 
+            cp.OutputAssembly = MainMgr.Instance.OutClassPath+@"\ExcelClass.dll";
+            
             // Set the level at which the compiler
 
             // should start displaying warnings.
@@ -84,45 +92,70 @@ namespace ExcelTool
             cp.ReferencedAssemblies.Add("System.Design.dll");
 
             cp.ReferencedAssemblies.Add("System.Drawing.dll");
-            
+
+            cp.ReferencedAssemblies.Add(Assembly.GetExecutingAssembly().Location);
         }
 
        
 
-        public static void ExcelDataToAssembly(ExcelData data)
+        public static void ExcelDataToAssembly(List<ExcelData> dataList)
         {
-            Console.WriteLine("解析ExcelData: " + data.Name);
-            foreach (DataTable item in data.Sheets)
+            List<string> allClassval = new List<string>();
+            List<string> allClassname = new List<string>();
+            
+            foreach (var data in dataList)
             {
-                if (item.Rows.Count<3)
+                Console.WriteLine("解析ExcelData: " + data.Name);
+                foreach (DataTable item in data.Sheets)
                 {
-                    return;
+                    if (item.Rows.Count<3)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine("解析表："+item.TableName);
+                    DataRow field_Names =item.Rows[0];
+                    DataRow field_description = item.Rows[1];
+                    DataRow field_Types = item.Rows[2];
+                    string classStr = ParsingHeaders(item,field_Names,field_description, field_Types);
+                    allClassval.Add(classStr);
+                    allClassname.Add(item.TableName);
+                    Console.WriteLine("解析"+item.TableName+"类文件成功");
                 }
-                Console.WriteLine("解析表："+item.TableName);
-                DataRow field_Names =item.Rows[0];
-                DataRow field_description = item.Rows[1];
-                DataRow field_Types = item.Rows[2];
-                ParsingHeaders(item.TableName,field_Names,field_description, field_Types);
-                
             }
+            //将所有类写入程序集
+            WriteInAssembly(allClassname,allClassval);
         }
 
-        private static void ParsingHeaders(string className, DataRow field_Names, DataRow field_description, DataRow field_Types)
+        private static string ParsingHeaders(DataTable item, DataRow field_Names, DataRow field_description, DataRow field_Types)
         {
             //获取模板
             string classVal = GetTemplateClass();
-            classVal = classVal.Replace("#Name",className);
-            classVal = classVal.Replace("#Class", className+"VO");
+            classVal = classVal.Replace("#Name",item.TableName);
+            classVal = classVal.Replace("#Class", item.TableName+"VO");
+            svBuilder.Clear();
+            foreach (DataColumn itemColumn in item.Columns)
+            {
+                string _fieldName = field_Names[itemColumn].ToString().Trim();
+                if (defFieldLst.Contains(_fieldName.ToLower()))
+                {
+                    //忽略默认字段
+                    continue;
+                }
+                string _fieldDescription = field_description[itemColumn].ToString().Trim();
+                string _fieldType = field_Types[itemColumn].ToString().Trim();
+                
+                svBuilder.Append(WrittenField(_fieldType,_fieldName,_fieldDescription));
+            }
 
-
+            classVal = classVal.Replace("#Val", svBuilder.ToString());
+            return classVal;
         }
 
-        private static void WrittenField(StringBuilder sb,string field_Type, string field_Name)
-        { 
-            
-
-
-        
+        private static string WrittenField(string field_Type, string field_Name,string _fieldDescription)
+        {
+            string val =  "\n        /// <summary>\n        /// {0} \n        /// </summary>\n        public {1} {2};\n";
+            val = String.Format(val,_fieldDescription,field_Type,field_Name);
+            return val;
         }
 
         private static string GetTemplateClass()
@@ -136,91 +169,73 @@ namespace ExcelTool
                 byte[] bs = new byte[ms.Length];
                 ms.Read(bs, 0, bs.Length);
                 string txt = Encoding.UTF8.GetString(bs);
-                Console.WriteLine("读取模板成功");
+                //Console.WriteLine("读取模板成功");
                 return txt;
             }
         }
 
 
-        public static Assembly NewAssembly()
+        public static void  WriteInAssembly (List<string> allClassName,List<string> allClassVal)
         {
+
+            if (!IsDefDll)
+            {
+                Console.WriteLine("生成Dll还是CS文件(空格 CS !空格 Dll)");
+                var v =Console.ReadKey();
+                Console.WriteLine(v.Key);
+                if (v.Key== ConsoleKey.Spacebar)
+                {
+                    cp.GenerateInMemory = false;
+                }
+            }
             
-            //创建动态代码。 
-
-            StringBuilder classSource = new StringBuilder();
-
-            classSource.Append("using System;\npublic  class  DynamicClass \n");
-
-            classSource.Append("{\n");
-
-            classSource.Append("public DynamicClass()\n{\nConsole.WriteLine(\"hello\");}\n");
-
-            //classSource.Append("private System.ComponentModel.IContainer components = null;\nprotected override void Dispose(bool disposing)\n{\n");
-
-            //classSource.Append("if (disposing && (components != null)){components.Dispose();}base.Dispose(disposing);\n}\n");
-
-            //classSource.Append("private void InitializeComponent(){\nthis.SuspendLayout();this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);");
-
-            //classSource.Append("this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;this.Name = \"DynamicClass\";this.Size = new System.Drawing.Size(112, 74);this.ResumeLayout(false);\n}");
-
-            //创建属性。 
-
-            /*************************在这里改成需要的属性******************************/
-
-            classSource.Append(propertyString("aaa"));
-
-            classSource.Append(propertyString("bbb"));
-
-            classSource.Append(propertyString("ccc"));
-
-            classSource.Append("}");
-
-            System.Diagnostics.Debug.WriteLine(classSource.ToString());
-
-            //编译代码。 
-            Console.WriteLine(classSource.ToString());
-          //  Console.ReadKey();
-            CompilerResults result = provider.CompileAssemblyFromSource(cp, classSource.ToString());
+            Console.WriteLine("开始编译程序集");
+            CompilerResults result = provider.CompileAssemblyFromSource(cp, allClassVal.ToArray());
 
             if (result.Errors.Count > 0)
-
             {
                 for (int i = 0; i < result.Errors.Count; i++)
-
-                    Console.WriteLine(result.Errors[i]);
-
-                Console.WriteLine("error");
-
-                return null;
-
+                {
+                    
+                    StringColor.WriteLine(result.Errors[i]);
+                }
+                StringColor.WriteLine("编译程序集失败");
+                for (int i = 0; i < allClassName.Count; i++)
+                {
+                    WriteIn2Cs(allClassName[i],allClassVal[i]);
+                }
             }
+            else
+            {
+                Assembly assembly = result.CompiledAssembly;
+                StringColor.WriteLine("编译程序集成功",ConsoleColor.Green);
+                if (cp.GenerateInMemory)
+                {
+                    StringColor.WriteLine("生成Dll成功",ConsoleColor.Green);
+                }
+                else
+                {
+                    for (int i = 0; i < allClassName.Count; i++)
+                    {
+                        WriteIn2Cs(allClassName[i],allClassVal[i]);
+                    }
+                }
 
-            //获取编译后的程序集。 
-
-            Assembly assembly = result.CompiledAssembly;
-
-            return assembly;
-
+                
+            }
         }
 
-        private static string propertyString(string propertyName)
+        private static void WriteIn2Cs(string name,string val)
         {
-            StringBuilder sbProperty = new StringBuilder();
+            DirectoryInfo infor  = Directory.CreateDirectory(MainMgr.Instance.OutClassPath+@"\"+name+"VO_AutoCreate");
+            using( System.IO.StreamWriter file = new System.IO.StreamWriter( infor.FullName+@"\"+name+"VO.cs"))
+            {
+                file.Write(val);
+                Console.WriteLine("生成类文件成功:"+name+"VO.cs");
+            }
+        }    
+        
 
-            sbProperty.Append(" private  int  _" + propertyName + "  =  0;\n");
 
-            sbProperty.Append(" public  int  " + "" + propertyName + "\n");
-
-            sbProperty.Append(" {\n");
-
-            sbProperty.Append(" get{  return  _" + propertyName + ";}  \n");
-
-            sbProperty.Append(" set{  _" + propertyName + "  =  value;  }\n");
-
-            sbProperty.Append(" }");
-
-            return sbProperty.ToString();
-
-        }
     }
 }
