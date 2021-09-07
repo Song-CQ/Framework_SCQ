@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Framework_UClient.-569466755.00" t="ExcludeRecursive" />
+    <e p="E:\UnityPro\Framework_SCQ\Framework_UClient" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="_App" t="Include">
+          <e p="AutoCreator" t="Include">
+            <e p="ExcelClass_AutoCreator" t="Include">
+              <e p="Sheet1VO_AutoCreate" t="Include">
+                <e p="Sheet1VO.cs" t="Include" />
+              </e>
+              <e p="Sheet_gVO_AutoCreate" t="Include">
+                <e p="Sheet_gVO.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="_AppBase" t="Include">
+          <e p="Data" t="Include">
+            <e p="BaseExcelClass" t="Include">
+              <e p="BaseVO.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Framework_XL" t="Include">
+          <e p="Common" t="Include">
+            <e p="ArrayHelper.cs" t="Include" />
+            <e p="MonoSingleton.cs" t="Include" />
+            <e p="TransformHelper.cs" t="Include" />
+          </e>
+          <e p="Editor" t="Include">
+            <e p="GenerateResConfig.cs" t="Include" />
+            <e p="GenerateUnityPackageName.cs" t="Include" />
+            <e p="ScriptsInfoRecoder.cs" t="Include" />
+          </e>
+          <e p="MouseTool" t="Include">
+            <e p="MouseCtrl.cs" t="Include" />
+            <e p="MouseLook.cs" t="Include" />
+            <e p="MouseRight.cs" t="Include" />
+          </e>
+          <e p="PESocket" t="Include">
+            <e p="obj" t="Include">
+              <e p="Debug" t="Include">
+                <e p="PESocket.csproj.FileListAbsolute.txt" t="Include" />
+              </e>
+            </e>
+            <e p="PEMsg.cs" t="Include" />
+            <e p="PEPkg.cs" t="Include" />
+            <e p="PESession.cs" t="Include" />
+            <e p="PESocket.cs" t="Include" />
+            <e p="PETool.cs" t="Include" />
+            <e p="Properties" t="Include">
+              <e p="AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+          <e p="TimeTool" t="Include">
+            <e p="PETimer.cs" t="Include" />
+          </e>
+          <e p="UIFramework" t="Include">
+            <e p="UIEventListener.cs" t="Include" />
+            <e p="UIManager.cs" t="Include" />
+            <e p="UIWindow.cs" t="Include" />
+          </e>
+        </e>
+        <e p="text.cs" t="Include" />
+      </e>
+      <e p="Framework_UClient.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
