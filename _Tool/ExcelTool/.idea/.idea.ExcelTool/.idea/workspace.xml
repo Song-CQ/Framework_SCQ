@@ -20,144 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bee02609-6f9d-4c06-a68e-6f112fd04f87" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/.idea.ExcelTool.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/contentModel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BaseVo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../excel2json-master/.idea/.idea.excel2json/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Framework_UClient/Assets/_App/AutoCreator/Config.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ExcelTool/DesignTimeBuild/.dtbcache.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.pdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/Sheet1_Data.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/Sheet_g_Data.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExcelTool/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ExcelTool/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ExcelTool/v16/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExcelTool.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ExcelTool.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExcelTool.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ExcelTool.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/ExcelDataReader.DataSet.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/ExcelDataReader.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/ExcelTool.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/ExcelTool.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/ExcelTool.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/ExcelTool.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/ExcelTool.runtimeconfig.dev.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/ExcelTool.runtimeconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Path.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/System.Text.Encoding.CodePages.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.csproj.CopyComplete" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.csprojAssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.genruntimeconfig.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/ExcelTool.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/apphost.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/ExcelTool.csproj.nuget.dgspec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/ExcelTool.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/ExcelTool.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../excel2json-master.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../配置表/静态表.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/.idea/.idea.XFramework/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/.idea/.idea.XFramework/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/.idea/.idea.XFramework/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/.idea/.idea.XFramework/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/.idea/.idea.XFramework/riderModule.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Common.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Common/ArrayHelper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Common/ArrayHelper.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Common/MonoSingleton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Common/MonoSingleton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Common/TransformHelper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Common/TransformHelper.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Editor/GenerateResConfig.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Editor/GenerateResConfig.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Editor/GenerateUnityPackageName.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Editor/GenerateUnityPackageName.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Editor/ScriptsInfoRecoder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/Editor/ScriptsInfoRecoder.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/MouseTool.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/MouseTool/MouseCtrl.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/MouseTool/MouseCtrl.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/MouseTool/MouseLook.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/MouseTool/MouseLook.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/MouseTool/MouseRight.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/MouseTool/MouseRight.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PEMsg.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PEMsg.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PEPkg.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PEPkg.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PESession.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PESession.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PESocket.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PESocket.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PESocket.csproj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PESocket.sln.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PETool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/PETool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/Properties.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/Properties/AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/Properties/AssemblyInfo.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/PESocket/obj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/TimeTool.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/TimeTool/PETimer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/TimeTool/PETimer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/UIFramework.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/UIFramework/UIEventListener.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/UIFramework/UIEventListener.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/UIFramework/UIManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/UIFramework/UIManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/UIFramework/UIWindow.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/Framework_XL/UIFramework/UIWindow.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/_App.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/_App/AutoCreator.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/_App/AutoCreator/Config.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/_App/Scene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/_App/Scene/MainScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/_App/Scene/MainScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/_AppBase.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Assets/_Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/DynamicAssembly" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Packages/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/Packages/packages-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/AudioManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/ClusterInputManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/DynamicsManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/EditorSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/GraphicsSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/InputManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/NavMeshAreas.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/NetworkManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/Physics2DSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/PresetManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/ProjectSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/ProjectVersion.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/QualitySettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/TagManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/TimeManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/VFXManager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/ProjectSettings/XRSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_UClient/XFramework.sln.DotSettings.user" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../excel2json-master/ExcelLoader.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../excel2json-master/excel2json.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../excel2json-master/excel2json.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/ExcelTool.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/ExcelTool.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/ExcelTool.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/ExcelTool.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/ExcelTool.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/ExcelTool.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/ExcelTool.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/ExcelTool.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/ExcelTool.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/ExcelTool.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/ExcelTool.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/ExcelTool.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,26 +46,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/80/82aee6e3/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/808A782E-B93A-4039-AD4E-344A67668503/91/44054a40/DataTableCollection.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/71/d0002c73/Array.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/ExcelData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B6A0E661-5EE0-4EA7-AD53-5B38F9316104/99/3e475638/Task.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ExcelToAssemblyDataHelp.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tool/StringColor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/d3/80faeee7/MethodBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/VoClass/BaseVO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/44/d5f2db5f/Activator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MainMgr.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9F1299BB-13BD-408F-8049-91B60B8074C7/bd/b37c204d/JsonConverter`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/App.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CreateAssemblyHelp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ExcelToAssemblyDataHelp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CreateObjFunC2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/ExcelData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tool/StringColor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/VoClass/ExcelData.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/b3/bc6f2f59/NotImplementedException.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CreateAssemblyHelp.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/App.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/11/5f31b50b/Int32.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/56/134f0e15/IList.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CreateObjFunC2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/VoClass/BaseVO.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -264,6 +132,7 @@
       <workItem from="1631008342803" duration="11835000" />
       <workItem from="1631074462758" duration="12960000" />
       <workItem from="1631092998864" duration="5543000" />
+      <workItem from="1631114902338" duration="59000" />
     </task>
     <servers />
   </component>

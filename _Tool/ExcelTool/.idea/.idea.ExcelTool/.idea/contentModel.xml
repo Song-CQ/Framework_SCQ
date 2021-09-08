@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_ExcelTool.1025726776.00" t="ExcludeRecursive" />
+    <e p="C:\Users\宋承清\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\宋承清\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_ExcelTool.1025726776.00" t="ExcludeRecursive" />
     <e p="E:\UnityPro\Framework_SCQ\_Tool\ExcelTool" t="IncludeRecursive">
       <e p="App.config" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
@@ -14,6 +14,7 @@
       <e p="ExcelToAssemblyDataHelp.cs" t="Include" />
       <e p="ExcelTool.csproj" t="IncludeRecursive" />
       <e p="ExcelTool.sln" t="IncludeFlat" />
+      <e p="favicon.ico" t="Include" />
       <e p="MainMgr.cs" t="Include" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
