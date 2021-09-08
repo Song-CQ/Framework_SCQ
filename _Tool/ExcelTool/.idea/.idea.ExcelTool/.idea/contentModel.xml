@@ -6,16 +6,18 @@
     <e p="E:\UnityPro\Framework_SCQ\_Tool\ExcelTool" t="IncludeRecursive">
       <e p="App.config" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
-      <e p="CreateClassHelp.cs" t="Include" />
+      <e p="CreateAssemblyHelp.cs" t="Include" />
       <e p="CreateObjFunC2.cs" t="Include" />
       <e p="Data" t="Include">
         <e p="ExcelData.cs" t="Include" />
       </e>
+      <e p="ExcelToAssemblyDataHelp.cs" t="Include" />
       <e p="ExcelTool.csproj" t="IncludeRecursive" />
       <e p="ExcelTool.sln" t="IncludeFlat" />
       <e p="MainMgr.cs" t="Include" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
+      <e p="packages.config" t="Include" />
       <e p="Program.cs" t="Include" />
       <e p="Properties" t="Include">
         <e p="AssemblyInfo.cs" t="Include" />
@@ -25,7 +27,7 @@
       </e>
       <e p="VoClass" t="Include">
         <e p="BaseVo.cs" t="Include" />
-        <e p="ExcelData.txt" t="Include" />
+        <e p="ExcelData.cs" t="Include" />
       </e>
     </e>
   </component>

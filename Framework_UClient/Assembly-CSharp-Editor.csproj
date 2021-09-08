@@ -317,6 +317,9 @@
  <Reference Include="PESocket">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Framework_XL/PESocket/obj/Debug/PESocket.dll</HintPath>
  </Reference>
+ <Reference Include="ExcelClass">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -331,9 +334,6 @@
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="ExcelClass">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>

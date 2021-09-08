@@ -56,8 +56,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\Sheet_gVO_AutoCreate\Sheet_gVO.cs" />
-     <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\Sheet1VO_AutoCreate\Sheet1VO.cs" />
      <Compile Include="Assets\_AppBase\Data\BaseExcelClass\BaseVO.cs" />
      <Compile Include="Assets\Framework_XL\Common\ArrayHelper.cs" />
      <Compile Include="Assets\Framework_XL\Common\MonoSingleton.cs" />
@@ -77,6 +75,8 @@
      <Compile Include="Assets\Framework_XL\UIFramework\UIWindow.cs" />
      <Compile Include="Assets\text.cs" />
      <None Include="Assets\Framework_XL\PESocket\obj\Debug\PESocket.csproj.FileListAbsolute.txt" />
+     <None Include="Assets\_Res\Resources\Data\ExcelConfig\Sheet1_Data.txt" />
+     <None Include="Assets\_Res\Resources\Data\ExcelConfig\Sheet_g_Data.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -308,6 +308,9 @@
  <Reference Include="PESocket">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Framework_XL/PESocket/obj/Debug/PESocket.dll</HintPath>
  </Reference>
+ <Reference Include="ExcelClass">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
@@ -316,9 +319,6 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
- </Reference>
- <Reference Include="ExcelClass">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelClass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.7f2/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

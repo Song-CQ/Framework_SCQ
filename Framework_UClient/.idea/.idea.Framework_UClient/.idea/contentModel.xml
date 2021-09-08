@@ -7,22 +7,20 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="_App" t="Include">
-          <e p="AutoCreator" t="Include">
-            <e p="ExcelClass_AutoCreator" t="Include">
-              <e p="Sheet1VO_AutoCreate" t="Include">
-                <e p="Sheet1VO.cs" t="Include" />
-              </e>
-              <e p="Sheet_gVO_AutoCreate" t="Include">
-                <e p="Sheet_gVO.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-        </e>
         <e p="_AppBase" t="Include">
           <e p="Data" t="Include">
             <e p="BaseExcelClass" t="Include">
               <e p="BaseVO.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="_Res" t="Include">
+          <e p="Resources" t="Include">
+            <e p="Data" t="Include">
+              <e p="ExcelConfig" t="Include">
+                <e p="Sheet1_Data.txt" t="Include" />
+                <e p="Sheet_g_Data.txt" t="Include" />
+              </e>
             </e>
           </e>
         </e>

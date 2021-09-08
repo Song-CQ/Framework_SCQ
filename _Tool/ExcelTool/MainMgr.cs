@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using ExcelTool.Data;
 using ExcelTool.Tool;
 
@@ -24,7 +25,7 @@ namespace ExcelTool
         public string ReadExcelPath { get; private set; }
         public string OutDataPath { get; private set; }
         public string OutClassPath { get; private set; }
-        private  List<ExcelData> excelDataLst = new List<ExcelData>();
+        private List<ExcelData> excelDataLst = new List<ExcelData>();
 
         public void Init()
         {
@@ -42,8 +43,20 @@ namespace ExcelTool
             //检测输出目录
             CheckAndDelect(OutDataPath);
             CheckAndDelect(OutClassPath);
-            CreateClass();
+            //创建程序集生成data
+            CreateAssembly();
+          
+            
         }
+        private void CreateAssembly()
+        {
+            Assembly assembly = CreateAssemblyHelp.ExcelDataToAssembly(excelDataLst);
+            if (assembly!=null)
+            {
+                ExcelToAssemblyDataHelp.Start(assembly,excelDataLst);
+            }
+        }
+        
         private void CheckAndDelect(string path)
         {
             try
@@ -64,12 +77,6 @@ namespace ExcelTool
             }
 
         }
-
-        private void CreateClass()
-        {
-            CreateClassHelp.ExcelDataToAssembly(excelDataLst);
-        }
-        
         public  void DelectDir(DirectoryInfo dir)
         {
             try

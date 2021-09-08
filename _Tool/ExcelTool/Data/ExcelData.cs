@@ -31,7 +31,6 @@ namespace ExcelTool.Data
                         // The result of each spreadsheet is in result.Tables
                         var result = reader.AsDataSet();
                         this.mData = result;
-                      
                         Console.WriteLine("读取表"+filePath+"成功");
                     }
                 }

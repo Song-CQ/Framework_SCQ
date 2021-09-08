@@ -13,7 +13,7 @@ using ExcelTool.Tool;
 
 namespace ExcelTool
 {
-    static class CreateClassHelp
+    static class CreateAssemblyHelp
     {
         public static bool IsDefDll = true;
         
@@ -28,7 +28,7 @@ namespace ExcelTool
             "id","key"
         };
         
-        static CreateClassHelp()
+        static CreateAssemblyHelp()
         {
             
             svBuilder=new StringBuilder();
@@ -98,7 +98,7 @@ namespace ExcelTool
 
        
 
-        public static void ExcelDataToAssembly(List<ExcelData> dataList)
+        public static Assembly ExcelDataToAssembly(List<ExcelData> dataList)
         {
             List<string> allClassval = new List<string>();
             List<string> allClassname = new List<string>();
@@ -123,7 +123,8 @@ namespace ExcelTool
                 }
             }
             //将所有类写入程序集
-            WriteInAssembly(allClassname,allClassval);
+            Assembly assembly = WriteInAssembly(allClassname,allClassval);
+            return assembly; 
         }
 
         private static string ParsingHeaders(DataTable item, DataRow field_Names, DataRow field_description, DataRow field_Types)
@@ -164,10 +165,11 @@ namespace ExcelTool
 
             string[] xx = app.GetManifestResourceNames();
 
-            using (System.IO.Stream ms = app.GetManifestResourceStream("ExcelTool.VoClass.ExcelData.txt"))
+            using (System.IO.Stream ms = app.GetManifestResourceStream("ExcelTool.VoClass.ExcelData.cs"))
             {
                 byte[] bs = new byte[ms.Length];
                 ms.Read(bs, 0, bs.Length);
+                
                 string txt = Encoding.UTF8.GetString(bs);
                 //Console.WriteLine("读取模板成功");
                 return txt;
@@ -175,7 +177,7 @@ namespace ExcelTool
         }
 
 
-        public static void  WriteInAssembly (List<string> allClassName,List<string> allClassVal)
+        public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal)
         {
 
             if (!IsDefDll)
@@ -188,6 +190,8 @@ namespace ExcelTool
                     cp.GenerateInMemory = false;
                 }
             }
+
+            Assembly assembly = null;
             
             Console.WriteLine("开始编译程序集");
             CompilerResults result = provider.CompileAssemblyFromSource(cp, allClassVal.ToArray());
@@ -206,8 +210,8 @@ namespace ExcelTool
                 }
             }
             else
-            {
-                Assembly assembly = result.CompiledAssembly;
+            { 
+                assembly = result.CompiledAssembly;
                 StringColor.WriteLine("编译程序集成功",ConsoleColor.Green);
                 if (cp.GenerateInMemory)
                 {
@@ -220,9 +224,8 @@ namespace ExcelTool
                         WriteIn2Cs(allClassName[i],allClassVal[i]);
                     }
                 }
-
-                
             }
+            return assembly;
         }
 
         private static void WriteIn2Cs(string name,string val)

@@ -7,7 +7,10 @@
         /// </summary>
         public int id;
 
-
+        /// <summary>
+        /// key
+        /// </summary>
+        public string key;
 
     }
 }

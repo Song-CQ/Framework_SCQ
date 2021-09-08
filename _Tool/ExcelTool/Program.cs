@@ -19,7 +19,10 @@ namespace ExcelTool
         
         static void Main(string[] args)
         {
-          
+            
+            // List<int>  asa=new List<int>();
+            // Console.WriteLine(asa.GetType());
+            // return;
             Task task = new Task(Init);
             task.Start();
             Task.WaitAll(task);

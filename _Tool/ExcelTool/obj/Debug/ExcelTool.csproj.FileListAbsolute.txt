@@ -14,3 +14,5 @@ E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\obj\Debug\ExcelTool.csproj.CoreCompile
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\obj\Debug\ExcelTool.csproj.CopyComplete
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\obj\Debug\ExcelTool.exe
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\obj\Debug\ExcelTool.pdb
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\bin\Debug\Newtonsoft.Json.dll
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\bin\Debug\Newtonsoft.Json.xml
