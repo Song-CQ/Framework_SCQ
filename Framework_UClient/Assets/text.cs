@@ -13,7 +13,6 @@ public class text : MonoBehaviour
     
     void Start()
     {
-         
         
     }
 

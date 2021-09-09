@@ -119,7 +119,7 @@ namespace ExcelTool
                     string classStr = ParsingHeaders(item,field_Names,field_description, field_Types);
                     allClassval.Add(classStr);
                     allClassname.Add(item.TableName);
-                    Console.WriteLine("解析"+item.TableName+"类文件成功");
+                    StringColor.WriteLine("解析"+item.TableName+"类文件成功",ConsoleColor.Green);
                 }
             }
             //将所有类写入程序集

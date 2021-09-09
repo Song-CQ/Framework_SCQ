@@ -16,3 +16,13 @@ E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\obj\Debug\ExcelTool.exe
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\obj\Debug\ExcelTool.pdb
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\bin\Debug\Newtonsoft.Json.dll
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\bin\Debug\Newtonsoft.Json.xml
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\bin\Debug\ExcelTool.exe.config
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\bin\Debug\ExcelTool.exe
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\bin\Debug\ExcelTool.pdb
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\bin\Debug\Newtonsoft.Json.dll
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\bin\Debug\Newtonsoft.Json.xml
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.csprojAssemblyReference.cache
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.csproj.CoreCompileInputs.cache
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.csproj.CopyComplete
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.exe
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.pdb

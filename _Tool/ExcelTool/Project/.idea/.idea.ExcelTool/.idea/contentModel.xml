@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_ExcelTool.1577809845.00" t="ExcludeRecursive" />
+    <e p="E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project" t="IncludeRecursive">
+      <e p="App.config" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="CreateAssemblyHelp.cs" t="Include" />
+      <e p="CreateObjFunC2.cs" t="Include" />
+      <e p="Data" t="Include">
+        <e p="ExcelData.cs" t="Include" />
+      </e>
+      <e p="ExcelToAssemblyDataHelp.cs" t="Include" />
+      <e p="ExcelTool.csproj" t="IncludeRecursive" />
+      <e p="ExcelTool.sln" t="IncludeFlat" />
+      <e p="MainMgr.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="packages.config" t="Include" />
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+      </e>
+      <e p="Tool" t="Include">
+        <e p="StringColor.cs" t="Include" />
+      </e>
+      <e p="VoClass" t="Include">
+        <e p="BaseVo.cs" t="Include" />
+        <e p="ExcelData.cs" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>

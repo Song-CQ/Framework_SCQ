@@ -99,7 +99,7 @@ namespace ExcelTool
             {
                 throw;
             }
-            Console.WriteLine("删除输出文件夹文件完成");
+            StringColor.WriteLine("删除"+dir.Name+"文件夹文件完成",ConsoleColor.Green);
         }
 
         private  void SetPath()
