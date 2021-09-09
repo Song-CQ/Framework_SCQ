@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using ExcelTool.Tool;
+using System.Threading;
 
 namespace ExcelTool
 {
@@ -62,7 +63,7 @@ namespace ExcelTool
 
             cp.GenerateInMemory = true;
 
-            cp.OutputAssembly = MainMgr.Instance.OutClassPath+@"\ExcelClass.dll";
+            cp.OutputAssembly = MainMgr.Instance.OutClassPath+ @"\VoClassLib.dll";
             
             // Set the level at which the compiler
 
@@ -93,10 +94,8 @@ namespace ExcelTool
 
             cp.ReferencedAssemblies.Add("System.Drawing.dll");
 
-            cp.ReferencedAssemblies.Add(Assembly.GetExecutingAssembly().Location);
+            cp.ReferencedAssemblies.Add("BaseVoClassLib.dll");
         }
-
-       
 
         public static Assembly ExcelDataToAssembly(List<ExcelData> dataList)
         {
@@ -165,7 +164,7 @@ namespace ExcelTool
 
             string[] xx = app.GetManifestResourceNames();
 
-            using (System.IO.Stream ms = app.GetManifestResourceStream("ExcelTool.VoClass.ExcelData.cs"))
+            using (System.IO.Stream ms = app.GetManifestResourceStream("ExcelTool.Data.VoClassTemplate.cs"))
             {
                 byte[] bs = new byte[ms.Length];
                 ms.Read(bs, 0, bs.Length);
@@ -199,15 +198,16 @@ namespace ExcelTool
             if (result.Errors.Count > 0)
             {
                 for (int i = 0; i < result.Errors.Count; i++)
-                {
-                    
+                {    
                     StringColor.WriteLine(result.Errors[i]);
                 }
-                StringColor.WriteLine("编译程序集失败");
                 for (int i = 0; i < allClassName.Count; i++)
                 {
-                    WriteIn2Cs(allClassName[i],allClassVal[i]);
+                    WriteIn2Cs(allClassName[i], allClassVal[i]);
                 }
+                StringColor.WriteLine("编译程序集失败");
+                
+                Thread.CurrentThread.Abort();
             }
             else
             { 

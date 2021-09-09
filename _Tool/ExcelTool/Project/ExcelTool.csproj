@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="Scr\ExcelToAssemblyDataHelp.cs" />
     <Compile Include="Scr\MainMgr.cs" />
-    <Compile Include="VoClass\BaseVo.cs" />
     <Compile Include="Scr\CreateAssemblyHelp.cs" />
     <Compile Include="Scr\CreateObjFunC2.cs" />
     <Compile Include="Data\ExcelData.cs" />
@@ -73,11 +72,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="VoClass\ExcelData.cs" />
+    <EmbeddedResource Include="Data\VoClassTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Img\favicon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BaseVoClassLib\BaseVoClassLib.csproj">
+      <Project>{19b61cda-0cd7-4501-80d0-57b434110cb5}</Project>
+      <Name>BaseVoClassLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

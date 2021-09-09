@@ -13,7 +13,7 @@ public class text : MonoBehaviour
     
     void Start()
     {
-        
+   
     }
 
     private float val = 0;

@@ -64,9 +64,10 @@ namespace ExcelTool
         
         private void CheckAndDelect(string path)
         {
+  
             try
             {
-                DirectoryInfo theFolder = new DirectoryInfo(path);
+                DirectoryInfo theFolder =  Directory.CreateDirectory(path);
                 if (theFolder.Exists)
                 {
                     DelectDir(theFolder);
@@ -74,14 +75,14 @@ namespace ExcelTool
                 else
                 {
                     StringColor.WriteLine(path+"目录不存在");
+                  
                 }
             }
             catch (Exception e)
             {
                 StringColor.WriteLine(e);
-                throw;
+                Thread.CurrentThread.Abort();
             }
-
         }
         public  void DelectDir(DirectoryInfo dir)
         {
@@ -101,9 +102,10 @@ namespace ExcelTool
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                StringColor.WriteLine(e);
+                Thread.CurrentThread.Abort();
             }
             StringColor.WriteLine("删除"+dir.Name+"文件夹文件完成",ConsoleColor.Yellow);
         }
@@ -167,8 +169,8 @@ namespace ExcelTool
             {
                 // 向用户显示出错消息
                 StringColor.WriteLine("读取路劲失败");
-                StringColor.WriteLine(e.Message);
-                Console.ReadKey(true);
+                StringColor.WriteLine(e);
+                Thread.CurrentThread.Abort();
             }
             Console.WriteLine("读取路劲成功");
         }
@@ -196,7 +198,7 @@ namespace ExcelTool
             {
                 StringColor.WriteLine("读取读取路劲下的配置表失败");
                 StringColor.WriteLine(e);
-                throw;
+                Thread.CurrentThread.Abort();
             }
 
             return pathStr;

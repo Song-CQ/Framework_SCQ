@@ -1,0 +1,6 @@
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\VoClassLib\VoClassLib\obj\Debug\BaseVoClassLib.csprojAssemblyReference.cache
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\VoClassLib\VoClassLib\obj\Debug\BaseVoClassLib.csproj.CoreCompileInputs.cache
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\VoClassLib\VoClassLib\bin\Debug\BaseVoClassLib.dll
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\VoClassLib\VoClassLib\bin\Debug\BaseVoClassLib.pdb
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\VoClassLib\VoClassLib\obj\Debug\BaseVoClassLib.dll
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\VoClassLib\VoClassLib\obj\Debug\BaseVoClassLib.pdb

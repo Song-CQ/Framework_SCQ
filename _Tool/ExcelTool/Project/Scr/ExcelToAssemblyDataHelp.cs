@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using ExcelTool.Data;
 using ExcelTool.Tool;
 using Newtonsoft.Json;
@@ -71,7 +72,7 @@ namespace ExcelTool
             {
                 StringColor.WriteLine(e);
                 StringColor.WriteLine("生成表："+sheet.TableName+"数据失败");
-                return;
+                Thread.CurrentThread.Abort();
             }
             string jsonData = JsonConvert.SerializeObject(myDataLst);
             File.WriteAllText(MainMgr.Instance.OutDataPath+@"\"+sheet.TableName+"_Data.txt",jsonData);
@@ -157,9 +158,8 @@ namespace ExcelTool
                     }
                 }
             }
-            
             StringColor.WriteLine("字段类型"+thisType.ToString()+"不支持");
-            
+           
             return obj;
         }
         private static List<string> tempStrLst=new List<string>();
