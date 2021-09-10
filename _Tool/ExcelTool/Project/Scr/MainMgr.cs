@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using ExcelTool.Data;
 using ExcelTool.Tool;
 
@@ -22,13 +23,16 @@ namespace ExcelTool
             }
         }
 
+        public System.Threading.Tasks.Task CurrTask { get; private set; }
         public string ReadExcelPath { get; private set; }
         public string OutDataPath { get; private set; }
         public string OutClassPath { get; private set; }
         private List<ExcelData> excelDataLst = new List<ExcelData>();
 
-        public void Init()
+        public void Init(System.Threading.Tasks.Task task)
         {
+
+            CurrTask = task;
             //读取路径
             SetPath();
             //获取表路劲
@@ -39,7 +43,7 @@ namespace ExcelTool
                 ExcelData item = new ExcelData(VARIABLE);
                 excelDataLst.Add(item);
             }
-            StringColor.WriteLine("读取表完成,读取数量:"+excelDataLst.Count, ConsoleColor.Green);
+            StringColor.WriteLine("读取表完成,读取数量:"+excelDataLst.Count, ConsoleColor.Yellow);
             //检测输出目录
             CheckAndDelect(OutDataPath);
             CheckAndDelect(OutClassPath);
@@ -53,6 +57,7 @@ namespace ExcelTool
             Assembly assembly = CreateAssemblyHelp.ExcelDataToAssembly(excelDataLst);
             if (assembly!=null)
             {
+                //生成data
                 ExcelToAssemblyDataHelp.Start(assembly,excelDataLst);
             }
         }
@@ -71,8 +76,9 @@ namespace ExcelTool
                     StringColor.WriteLine(path+"目录不存在");
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                StringColor.WriteLine(e);
                 throw;
             }
 
@@ -99,7 +105,7 @@ namespace ExcelTool
             {
                 throw;
             }
-            StringColor.WriteLine("删除"+dir.Name+"文件夹文件完成",ConsoleColor.Green);
+            StringColor.WriteLine("删除"+dir.Name+"文件夹文件完成",ConsoleColor.Yellow);
         }
 
         private  void SetPath()
@@ -186,11 +192,11 @@ namespace ExcelTool
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("读取读取路劲下的配置表失败");
+                StringColor.WriteLine("读取读取路劲下的配置表失败");
+                StringColor.WriteLine(e);
                 throw;
-
             }
 
             return pathStr;

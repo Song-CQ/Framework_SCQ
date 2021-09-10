@@ -75,8 +75,6 @@
      <Compile Include="Assets\Framework_XL\UIFramework\UIWindow.cs" />
      <Compile Include="Assets\text.cs" />
      <None Include="Assets\Framework_XL\PESocket\obj\Debug\PESocket.csproj.FileListAbsolute.txt" />
-     <None Include="Assets\_Res\Resources\Data\ExcelConfig\Sheet1_Data.txt" />
-     <None Include="Assets\_Res\Resources\Data\ExcelConfig\Sheet_g_Data.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

@@ -16,17 +16,29 @@ namespace ExcelTool
 {
     class Program
     {
-        
+        static Task task;
         static void Main(string[] args)
         {
             
             // List<int>  asa=new List<int>();
             // Console.WriteLine(asa.GetType());
             // return;
-            Task task = new Task(Init);
-            task.Start();
-            Task.WaitAll(task);
-            Console.WriteLine("                                ");
+            try
+            {
+                task = new Task(Init);
+                task.Start();
+                Task.WaitAll(task);
+            
+                Console.WriteLine("                                ");
+                StringColor.WriteLine("打表完成",ConsoleColor.Green);
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("                                ");
+                StringColor.WriteLine("打表失败");
+            }
+            
             StringColor.WriteLine("*****************************", ConsoleColor.Yellow);
             Console.WriteLine("按任意键关闭");
             Console.ReadKey();
@@ -34,8 +46,8 @@ namespace ExcelTool
 
         private static void Init()
         {
-            Console.WriteLine("Init_MainMgr");
-            MainMgr.Instance.Init();
+            StringColor.WriteLine("Init_MainMgr",ConsoleColor.Yellow);
+            MainMgr.Instance.Init(task);
         }
         
     }

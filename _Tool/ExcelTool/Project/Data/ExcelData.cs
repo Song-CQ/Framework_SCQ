@@ -31,14 +31,15 @@ namespace ExcelTool.Data
                         // The result of each spreadsheet is in result.Tables
                         var result = reader.AsDataSet();
                         this.mData = result;
-                        Console.WriteLine("读取表"+filePath+"成功");
+                        StringColor.WriteLine("读取表"+filePath+"成功",ConsoleColor.Green);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 StringColor.WriteLine("读取表"+filePath+"失败");
-                throw ;
+
+                throw;
             }
            
             if (this.Sheets.Count < 1) {

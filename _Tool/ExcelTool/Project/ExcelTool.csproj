@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Img\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExcelDataReader, Version=3.7.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,11 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelToAssemblyDataHelp.cs" />
-    <Compile Include="MainMgr.cs" />
+    <Compile Include="Scr\ExcelToAssemblyDataHelp.cs" />
+    <Compile Include="Scr\MainMgr.cs" />
     <Compile Include="VoClass\BaseVo.cs" />
-    <Compile Include="CreateAssemblyHelp.cs" />
-    <Compile Include="CreateObjFunC2.cs" />
+    <Compile Include="Scr\CreateAssemblyHelp.cs" />
+    <Compile Include="Scr\CreateObjFunC2.cs" />
     <Compile Include="Data\ExcelData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,5 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="VoClass\ExcelData.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Img\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
