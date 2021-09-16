@@ -7,11 +7,11 @@ namespace ProjectApp.Data
     /// </summary>
     public class Sheet1VOModel:VOModel<Sheet1VOModel,Sheet1VO>
     {
-        public override string SheetName { get => "Sheet1";}
-        public override bool HasStringKey { get => true; }
-        public override bool HasStringId { get => true; }
-        public override bool HasStaticField { get => false; }
-        public override List<string> HeadFields { get => new List<string>{"id","key","name","syss","dadsa"};}
+        public override string SheetName { get {return "Sheet1";}}
+        public override bool HasStringKey { get {return true;}}
+        public override bool HasStringId { get {return true;}}
+        public override bool HasStaticField { get {return false;}}
+        public override List<string> HeadFields { get {return new List<string>{"id","key","name","syss","dadsa"};}}
 
         public override void Init()
         {

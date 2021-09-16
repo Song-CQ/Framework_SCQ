@@ -18,8 +18,8 @@ namespace ExcelTool
     {
  
         private static Assembly _assembly;
-        private static List<string> tempm_key;
-        private static List<string> tempm_Id;
+        private static List<string> tempm_key =new List<string>();
+        private static List<string> tempm_Id=new List<string>();
          public static void Start(Assembly assembly, List<ExcelData> excelDataLst)
         {
             

@@ -16,7 +16,7 @@ namespace ExcelTool
 {
     static class CreateAssemblyHelp
     {
-        public static bool IsDefDll = true;
+        public static bool IsDefDll = false;
         
         private static StringBuilder svBuilder;
         
@@ -245,14 +245,13 @@ namespace ExcelTool
             if (result.Errors.Count > 0)
             {
                 for (int i = 0; i < result.Errors.Count; i++)
-                {    
-                    StringColor.WriteLine(result.Errors[i]);
+                {               
+                    StringColor.WriteLine(result.Errors[i]);                   
                 }
                 for (int i = 0; i < allClassName.Count; i++)
                 {
-                    string dir = allClassName[i];
-                    dir = dir.Replace("Model", String.Empty);
-                   
+                    string dir = allClassName[i].Replace("Model", String.Empty);
+
                     WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                 }
                 CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
@@ -276,8 +275,8 @@ namespace ExcelTool
                     CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
                     for (int i = 0; i < allClassName.Count; i++)
                     {
-                        string dir = allClassName[i];
-                        dir.Replace("Model", String.Empty);
+                        string dir = allClassName[i].Replace("Model", String.Empty);
+              
                         WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                     }
                 }
