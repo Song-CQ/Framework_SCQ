@@ -55,16 +55,18 @@ namespace ExcelTool
         private void CreateAssembly()
         {
             Assembly assembly = CreateAssemblyHelp.ExcelDataToAssembly(excelDataLst);
+           
             if (assembly!=null)
             {
                 //生成data
                 ExcelToAssemblyDataHelp.Start(assembly,excelDataLst);
             }
         }
-        
+
+       
+
         private void CheckAndDelect(string path)
         {
-  
             try
             {
                 DirectoryInfo theFolder =  Directory.CreateDirectory(path);

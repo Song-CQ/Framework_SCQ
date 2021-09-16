@@ -1,0 +1,3 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=E_003A_005CUnityPro_005CFramework_005FSCQ_005C_005FTool_005CExcelTool_005CProject_005Cpackages_005CUnity_005CUnityEditor_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=E_003A_005CUnityPro_005CFramework_005FSCQ_005C_005FTool_005CExcelTool_005CProject_005Cpackages_005CUnity_005CUnityEngine_002Edll/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

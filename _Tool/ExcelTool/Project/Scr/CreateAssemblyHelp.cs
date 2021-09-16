@@ -63,7 +63,7 @@ namespace ExcelTool
 
             cp.GenerateInMemory = true;
 
-            cp.OutputAssembly = MainMgr.Instance.OutClassPath+ @"\VoClassLib.dll";
+            cp.OutputAssembly = Directory.GetCurrentDirectory()+ @"\VoClassLib.dll";
             
             // Set the level at which the compiler
 
@@ -115,9 +115,13 @@ namespace ExcelTool
                     DataRow field_Names =item.Rows[0];
                     DataRow field_description = item.Rows[1];
                     DataRow field_Types = item.Rows[2];
+                    
                     string classStr = ParsingHeaders(item,field_Names,field_description, field_Types);
                     allClassval.Add(classStr);
                     allClassname.Add(item.TableName);
+                    string VoClassStr = ParsingCreateVoModel(item,field_Names,field_description, field_Types);
+                    allClassval.Add(VoClassStr);
+                    allClassname.Add(item.TableName+"Model");
                     StringColor.WriteLine("解析"+item.TableName+"类文件成功",ConsoleColor.Green);
                 }
             }
@@ -126,10 +130,49 @@ namespace ExcelTool
             return assembly; 
         }
 
+        private static string ParsingCreateVoModel(DataTable item, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
+        {
+            //获取模板
+            string classVal = GetTemplateClass("ExcelTool.Data.VoModelTemplate.cs");
+            classVal = classVal.Replace("#Name",item.TableName+"_Model");
+            classVal = classVal.Replace("#Class", item.TableName+"VOModel");
+            classVal = classVal.Replace("#DataVo", item.TableName+"VO");
+            
+            classVal = classVal.Replace("#SheetName", '"'+item.TableName+'"');
+            bool isHasKey = false;
+            bool isHasId = false;
+            svBuilder.Clear();
+            foreach (DataColumn itemColumn in item.Columns)
+            {
+                string _fieldName = fieldNames[itemColumn].ToString().Trim();
+                if (_fieldName.ToLower() == "id")
+                {
+                    isHasId = true;
+                }
+                if (_fieldName.ToLower() == "key")
+                {
+                    isHasKey = true;
+                }
+                
+                svBuilder.Append('"');
+                svBuilder.Append(_fieldName.ToString()+'"'+',');
+            }
+            svBuilder.Remove(svBuilder.Length-1,1);
+            
+            classVal = classVal.Replace("#HasStringKey", isHasKey.ToString().ToLower());
+            classVal = classVal.Replace("#HasStringId", isHasId.ToString().ToLower());
+            classVal = classVal.Replace("#HasStaticField", "false");
+            
+            classVal = classVal.Replace("#HeadFields", svBuilder.ToString());
+
+            return classVal;
+            
+        }
+
         private static string ParsingHeaders(DataTable item, DataRow field_Names, DataRow field_description, DataRow field_Types)
         {
             //获取模板
-            string classVal = GetTemplateClass();
+            string classVal = GetTemplateClass("ExcelTool.Data.VoClassTemplate.cs");
             classVal = classVal.Replace("#Name",item.TableName);
             classVal = classVal.Replace("#Class", item.TableName+"VO");
             svBuilder.Clear();
@@ -158,13 +201,13 @@ namespace ExcelTool
             return val;
         }
 
-        private static string GetTemplateClass()
+        private static string GetTemplateClass(string path)
         {
             System.Reflection.Assembly app = System.Reflection.Assembly.GetExecutingAssembly();
 
             string[] xx = app.GetManifestResourceNames();
 
-            using (System.IO.Stream ms = app.GetManifestResourceStream("ExcelTool.Data.VoClassTemplate.cs"))
+            using (System.IO.Stream ms = app.GetManifestResourceStream(path))
             {
                 byte[] bs = new byte[ms.Length];
                 ms.Read(bs, 0, bs.Length);
@@ -184,9 +227,13 @@ namespace ExcelTool
                 Console.WriteLine("生成Dll还是CS文件(空格 CS !空格 Dll)");
                 var v =Console.ReadKey();
                 Console.WriteLine(v.Key);
-                if (v.Key== ConsoleKey.Spacebar)
+                if (v.Key == ConsoleKey.Spacebar)
                 {
                     cp.GenerateInMemory = false;
+                }
+                else
+                {
+                    cp.GenerateInMemory = true;
                 }
             }
 
@@ -203,8 +250,12 @@ namespace ExcelTool
                 }
                 for (int i = 0; i < allClassName.Count; i++)
                 {
-                    WriteIn2Cs(allClassName[i], allClassVal[i]);
+                    string dir = allClassName[i];
+                    dir = dir.Replace("Model", String.Empty);
+                   
+                    WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                 }
+                CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
                 StringColor.WriteLine("编译程序集失败");
                 
                 Thread.CurrentThread.Abort();
@@ -213,24 +264,46 @@ namespace ExcelTool
             { 
                 assembly = result.CompiledAssembly;
                 StringColor.WriteLine("编译程序集成功",ConsoleColor.Green);
+                
                 if (cp.GenerateInMemory)
                 {
                     StringColor.WriteLine("生成Dll成功",ConsoleColor.Green);
+                    CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
+                    CopyFileToOutClass(Directory.GetCurrentDirectory()+@"\VoClassLib.dll");
                 }
                 else
                 {
+                    CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
                     for (int i = 0; i < allClassName.Count; i++)
                     {
-                        WriteIn2Cs(allClassName[i],allClassVal[i]);
+                        string dir = allClassName[i];
+                        dir.Replace("Model", String.Empty);
+                        WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                     }
                 }
             }
             return assembly;
         }
-
-        private static void WriteIn2Cs(string name,string val)
+        private static void CopyFileToOutClass(string path)
         {
-            DirectoryInfo infor  = Directory.CreateDirectory(MainMgr.Instance.OutClassPath+@"\"+name+"VO_AutoCreate");
+            if (true)
+            {
+                try
+                {
+                    FileInfo fieldInfo = new FileInfo(path);
+                    fieldInfo.CopyTo(MainMgr.Instance.OutClassPath + @"\"+ fieldInfo.Name);
+                }
+                catch (Exception e)
+                {
+                    StringColor.WriteLine(e);
+                    Thread.CurrentThread.Abort();
+                }      
+               
+            }
+        }
+        private static void WriteIn2Cs(string dirInfo,string name,string val)
+        {
+            DirectoryInfo infor  = Directory.CreateDirectory(dirInfo);
             using( System.IO.StreamWriter file = new System.IO.StreamWriter( infor.FullName+@"\"+name+"VO.cs"))
             {
                 file.Write(val);

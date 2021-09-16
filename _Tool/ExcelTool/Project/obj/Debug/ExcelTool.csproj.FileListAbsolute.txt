@@ -10,3 +10,6 @@ E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.exe
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.pdb
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\bin\Debug\BaseVoClassLib.dll
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\bin\Debug\BaseVoClassLib.pdb
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe.config
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe
+E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.pdb

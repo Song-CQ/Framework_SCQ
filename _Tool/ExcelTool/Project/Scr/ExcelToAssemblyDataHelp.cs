@@ -18,10 +18,13 @@ namespace ExcelTool
     {
  
         private static Assembly _assembly;
-        public static void Start(Assembly assembly, List<ExcelData> excelDataLst)
+        private static List<string> tempm_key;
+        private static List<string> tempm_Id;
+         public static void Start(Assembly assembly, List<ExcelData> excelDataLst)
         {
+            
             _assembly = assembly;
-            foreach (var  excelData in excelDataLst)
+            foreach (var excelData in excelDataLst)
             {
                 foreach (DataTable sheet in excelData.Sheets)
                 {
@@ -42,11 +45,12 @@ namespace ExcelTool
             DataRow field_Names =sheet.Rows[0];
             DataRow field_Types = sheet.Rows[2];
             List<object> myDataLst=new List<object>();
+            tempm_key.Clear();
+            tempm_Id.Clear();
             try
             {
                 for (int i = 3; i < sheet.Rows.Count; i++)
                 {
-                
                     object myObject = _assembly.CreateInstance(className);
                     Type myType = myObject.GetType();
                     DataRow dataRow = sheet.Rows[i];
@@ -55,14 +59,36 @@ namespace ExcelTool
                         string _fieldName = field_Names[itemColumn].ToString().Trim();
                 
                         string _fieldType = field_Types[itemColumn].ToString().Trim();
-                    
+
+                        
                         FieldInfo fieldInfo = myType.GetField(_fieldName);
                         if (fieldInfo==null)
                         {
-                            StringColor.WriteLine(sheet.TableName + "VO:"+_fieldName+"字段不存在");
+                            fieldInfo = myType.GetField(_fieldName.ToLower());
+                            if (fieldInfo==null)
+                            {
+                                StringColor.WriteLine(sheet.TableName + "VO:"+_fieldName+"字段不存在");  
+                            }
                         }
-                        object val = ValToObj(fieldInfo.FieldType,dataRow[itemColumn].ToString());
-                        
+
+                        string valStr = dataRow[itemColumn].ToString();
+                        object val = ValToObj(fieldInfo.FieldType,valStr);
+                        if (_fieldName.ToLower()=="id")
+                        {
+                            if (tempm_Id.Contains(valStr))
+                            {
+                                StringColor.WriteLine(sheet.TableName+"表id重复:"+valStr);
+                            }
+                            tempm_Id.Add(valStr);
+                        }
+                        if (_fieldName.ToLower()=="key")
+                        {
+                            if (tempm_key.Contains(valStr))
+                            {
+                               StringColor.WriteLine(sheet.TableName+"表Key重复:"+valStr);
+                            }
+                            tempm_key.Add(valStr);
+                        }
                         fieldInfo.SetValue(myObject, val);
                     }
                     myDataLst.Add(myObject);
@@ -74,11 +100,11 @@ namespace ExcelTool
                 StringColor.WriteLine("生成表："+sheet.TableName+"数据失败");
                 Thread.CurrentThread.Abort();
             }
-            string jsonData = JsonConvert.SerializeObject(myDataLst);
+            string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
             File.WriteAllText(MainMgr.Instance.OutDataPath+@"\"+sheet.TableName+"_Data.txt",jsonData);
             StringColor.WriteLine("生成表："+sheet.TableName+"数据成功",ConsoleColor.Green);
         }
-      
+        
         public static object ValToObj(Type thisType,string valString)
         {
             object obj = null; 

@@ -7,17 +7,23 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="_AppBase" t="Include">
-          <e p="Data" t="Include">
-            <e p="BaseExcelClass" t="Include">
-              <e p="BaseVO.cs" t="Include" />
+        <e p="_App" t="Include">
+          <e p="AutoCreator" t="Include">
+            <e p="ExcelClass_AutoCreator" t="Include">
+              <e p="Sheet1VO_AutoCreate" t="Include">
+                <e p="Sheet1ModelVO.cs" t="Include" />
+                <e p="Sheet1VO.cs" t="Include" />
+              </e>
+              <e p="Sheet_gVO_AutoCreate" t="Include">
+                <e p="Sheet_gModelVO.cs" t="Include" />
+                <e p="Sheet_gVO.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
         <e p="Framework_XL" t="Include">
           <e p="Common" t="Include">
             <e p="ArrayHelper.cs" t="Include" />
-            <e p="MonoSingleton.cs" t="Include" />
             <e p="TransformHelper.cs" t="Include" />
           </e>
           <e p="Editor" t="Include">
@@ -52,6 +58,15 @@
             <e p="UIEventListener.cs" t="Include" />
             <e p="UIManager.cs" t="Include" />
             <e p="UIWindow.cs" t="Include" />
+          </e>
+        </e>
+        <e p="FutureFrame" t="Include">
+          <e p="FutureCore" t="Include">
+            <e p="Common" t="Include">
+              <e p="Singleton" t="Include">
+                <e p="MonoSingleton.cs" t="Include" />
+              </e>
+            </e>
           </e>
         </e>
         <e p="text.cs" t="Include" />
