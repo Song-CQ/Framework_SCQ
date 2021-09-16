@@ -101,7 +101,7 @@ namespace ExcelTool
         {
             List<string> allClassval = new List<string>();
             List<string> allClassname = new List<string>();
-            
+            List<string> allModel = new List<string>();
             foreach (var data in dataList)
             {
                 Console.WriteLine("解析ExcelData: " + data.Name);
@@ -122,12 +122,21 @@ namespace ExcelTool
                     string VoClassStr = ParsingCreateVoModel(item,field_Names,field_description, field_Types);
                     allClassval.Add(VoClassStr);
                     allClassname.Add(item.TableName+"Model");
+                    string valMode = GetStrMode(item.TableName + "Model");
+                    allModel.Add(valMode);
                     StringColor.WriteLine("解析"+item.TableName+"类文件成功",ConsoleColor.Green);
                 }
             }
             //将所有类写入程序集
-            Assembly assembly = WriteInAssembly(allClassname,allClassval);
+            Assembly assembly = WriteInAssembly(allClassname,allClassval,allModel);
             return assembly; 
+        }
+
+        private static string GetStrMode(string v)
+        {
+            string val = v + @".Instance.Init();\n" + v + @".Instance.SetData();\n";
+
+            return val;
         }
 
         private static string ParsingCreateVoModel(DataTable item, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
@@ -219,7 +228,7 @@ namespace ExcelTool
         }
 
 
-        public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal)
+        public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal, List<string> allModel)
         {
 
             if (!IsDefDll)
@@ -281,6 +290,7 @@ namespace ExcelTool
                     }
                 }
             }
+            
             return assembly;
         }
         private static void CopyFileToOutClass(string path)

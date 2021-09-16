@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ProjectApp.Data
 {
@@ -16,6 +16,7 @@ namespace ProjectApp.Data
         public override void Init()
         {
             base.Init();
+            
         }
 
         public override void Reset()
