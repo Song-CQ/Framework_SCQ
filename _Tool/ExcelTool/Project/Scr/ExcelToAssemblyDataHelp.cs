@@ -70,7 +70,7 @@ namespace ExcelTool
                                 StringColor.WriteLine(sheet.TableName + "VO:"+_fieldName+"字段不存在");  
                             }
                         }
-
+                        
                         string valStr = dataRow[itemColumn].ToString();
                         object val = ValToObj(fieldInfo.FieldType,valStr);
                         if (_fieldName.ToLower()=="id")
@@ -100,11 +100,14 @@ namespace ExcelTool
                 StringColor.WriteLine("生成表："+sheet.TableName+"数据失败");
                 Thread.CurrentThread.Abort();
             }
+
+    
             string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
             File.WriteAllText(MainMgr.Instance.OutDataPath+@"\"+sheet.TableName+"_Data.txt",jsonData);
             StringColor.WriteLine("生成表："+sheet.TableName+"数据成功",ConsoleColor.Green);
         }
-        
+
+       
         public static object ValToObj(Type thisType,string valString)
         {
             object obj = null; 

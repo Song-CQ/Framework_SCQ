@@ -73,6 +73,7 @@ namespace ProjectApp.Data
                 }
             }
             else
+              
             {
                 UnityEngine.Debug.Log("未初始化");   
             }

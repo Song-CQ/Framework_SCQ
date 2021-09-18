@@ -30,11 +30,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/16F5EC47-3C5D-4067-978C-16525CADB6B9/81/5a74e092/VOModel`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1ModelVO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A8063FF0-78A7-45F0-9725-8745911836E5/a9/39b2a0d0/BaseVOModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gModelVO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/836D5242-9AA4-486B-92F7-7A86CF16897D/5a/cf0bd353/Sheet_gVO.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/UIFramework/UIEventListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6741AE73-8B4F-4176-8B69-A7BB4E711203/62/44241bcf/Sheet1VO.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -44,6 +47,7 @@
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" />
         <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1ModelVO.cs" />
         <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gModelVO.cs" />
+        <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" />
       </list>
     </option>
   </component>
@@ -86,7 +90,9 @@
       <workItem from="1631894629986" duration="809000" />
       <workItem from="1631010673136" duration="5310000" />
       <workItem from="1631097751672" duration="4247000" />
-      <workItem from="1631783710709" duration="2218000" />
+      <workItem from="1631783710709" duration="8048000" />
+      <workItem from="1631861727265" duration="842000" />
+      <workItem from="1631863482730" duration="2694000" />
     </task>
     <servers />
   </component>

@@ -122,22 +122,17 @@ namespace ExcelTool
                     string VoClassStr = ParsingCreateVoModel(item,field_Names,field_description, field_Types);
                     allClassval.Add(VoClassStr);
                     allClassname.Add(item.TableName+"Model");
-                    string valMode = GetStrMode(item.TableName + "Model");
-                    allModel.Add(valMode);
+                    allModel.Add(item.TableName);
                     StringColor.WriteLine("解析"+item.TableName+"类文件成功",ConsoleColor.Green);
                 }
             }
             //将所有类写入程序集
-            Assembly assembly = WriteInAssembly(allClassname,allClassval,allModel);
+            Assembly assembly = WriteInAssembly(allClassname,allClassval);
+            GetStrMode(allModel);
             return assembly; 
         }
 
-        private static string GetStrMode(string v)
-        {
-            string val = v + @".Instance.Init();\n" + v + @".Instance.SetData();\n";
-
-            return val;
-        }
+        
 
         private static string ParsingCreateVoModel(DataTable item, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
         {
@@ -210,6 +205,11 @@ namespace ExcelTool
             return val;
         }
 
+        /// <summary>
+        /// 读取模板文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         private static string GetTemplateClass(string path)
         {
             System.Reflection.Assembly app = System.Reflection.Assembly.GetExecutingAssembly();
@@ -228,7 +228,7 @@ namespace ExcelTool
         }
 
 
-        public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal, List<string> allModel)
+        public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal)
         {
 
             if (!IsDefDll)
@@ -261,7 +261,7 @@ namespace ExcelTool
                 {
                     string dir = allClassName[i].Replace("Model", String.Empty);
 
-                    WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
+                    WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i]+"VO", allClassVal[i]);
                 }
                 CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
                 StringColor.WriteLine("编译程序集失败");
@@ -286,13 +286,36 @@ namespace ExcelTool
                     {
                         string dir = allClassName[i].Replace("Model", String.Empty);
               
-                        WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
+                        WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i]+"VO", allClassVal[i]);
                     }
                 }
             }
-            
             return assembly;
         }
+        
+        private static void GetStrMode(List<string> allModel)
+        {
+
+            string setDataToDic = string.Empty;
+            string init = string.Empty;
+            string setDataModel = string.Empty;
+            foreach (var tableName in allModel)
+            {
+                string className = tableName + "VOModel";
+                string setDataVal = "\n            SetExcalData<"+tableName+"VO"+">("+'"'+tableName+'"'+");";
+                setDataToDic += setDataVal;
+                init += "\n            " + className + ".Instance.Init();";
+                setDataModel += "\n            "+ className + ".Instance.SetData(excelDataStrDic[typeof("+tableName+"VO"+")]"+" as "+tableName+"VO"+"[]);";
+            }
+            string mgrTempLate = GetTemplateClass("ExcelTool.Data.ExcelDataMgr.cs");
+            mgrTempLate = mgrTempLate.Replace("#SetDataToDic",setDataToDic);
+            mgrTempLate = mgrTempLate.Replace("#Init",init);
+            mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
+            mgrTempLate = mgrTempLate.Replace("#OutPath",MainMgr.Instance.OutDataPath);
+            WriteIn2Cs(MainMgr.Instance.OutClassPath,"ExcelMgr",mgrTempLate);
+            
+        }
+        
         private static void CopyFileToOutClass(string path)
         {
             if (true)
@@ -313,10 +336,10 @@ namespace ExcelTool
         private static void WriteIn2Cs(string dirInfo,string name,string val)
         {
             DirectoryInfo infor  = Directory.CreateDirectory(dirInfo);
-            using( System.IO.StreamWriter file = new System.IO.StreamWriter( infor.FullName+@"\"+name+"VO.cs"))
+            using( System.IO.StreamWriter file = new System.IO.StreamWriter( infor.FullName+@"\"+name+".cs"))
             {
                 file.Write(val);
-                Console.WriteLine("生成类文件成功:"+name+"VO.cs");
+                Console.WriteLine("生成类文件成功:"+name+".cs");
             }
         }    
         

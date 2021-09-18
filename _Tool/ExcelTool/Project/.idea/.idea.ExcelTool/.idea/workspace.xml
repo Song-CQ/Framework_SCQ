@@ -29,22 +29,32 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/App.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVOModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/VOModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tool/StringColor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/ExcelData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/VoClassTemplate.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/VoModelTemplate.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data/ExcelDataMgr.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Scr/CreateAssemblyHelp.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Scr/CreateObjFunC2.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Scr/MainMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/71/d0002c73/Array.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/VoModelTemplate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/VOModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/d3/80faeee7/MethodBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/ExcelData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tool/StringColor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/44/d5f2db5f/Activator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scr/MainMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVOModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/b3/bc6f2f59/NotImplementedException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/VoClassTemplate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/11/5f31b50b/Int32.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/56/134f0e15/IList.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/808A782E-B93A-4039-AD4E-344A67668503/cb/192e1dc3/DataTable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8F9A7EA3-47A4-4FFD-AD6C-91B550598CCD/80/82aee6e3/List`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/App.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/808A782E-B93A-4039-AD4E-344A67668503/91/44054a40/DataTableCollection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scr/CreateObjFunC2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B6A0E661-5EE0-4EA7-AD53-5B38F9316104/99/3e475638/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scr/CreateAssemblyHelp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9F1299BB-13BD-408F-8049-91B60B8074C7/bd/b37c204d/JsonConverter`1.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -52,20 +62,21 @@
         <option value="$PROJECT_DIR$/BaseVo.cs" />
         <option value="$PROJECT_DIR$/bin/Debug/Path.txt" />
         <option value="$PROJECT_DIR$/CreateClassHelp.cs" />
-        <option value="$PROJECT_DIR$/Data/ExcelData.cs" />
         <option value="$PROJECT_DIR$/VoClass/BaseVO.cs" />
         <option value="$PROJECT_DIR$/ExcelToAssemblyDataHelp.cs" />
         <option value="$PROJECT_DIR$/CreateAssemblyHelp.cs" />
         <option value="$PROJECT_DIR$/MainMgr.cs" />
-        <option value="$PROJECT_DIR$/Scr/MainMgr.cs" />
         <option value="$PROJECT_DIR$/Program.cs" />
         <option value="$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVO.cs" />
-        <option value="$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" />
-        <option value="$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/VOModel.cs" />
         <option value="$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVOModel.cs" />
         <option value="$PROJECT_DIR$/VOMgr/ExcelDataMgr.cs" />
         <option value="$PROJECT_DIR$/Data/VoModelTemplate.cs" />
+        <option value="$PROJECT_DIR$/Data/ExcelData.cs" />
+        <option value="$PROJECT_DIR$/Scr/MainMgr.cs" />
+        <option value="$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" />
         <option value="$PROJECT_DIR$/Scr/CreateAssemblyHelp.cs" />
+        <option value="$PROJECT_DIR$/Data/ExcelDataMgr.cs" />
+        <option value="$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/VOModel.cs" />
       </list>
     </option>
   </component>
@@ -150,6 +161,7 @@
       <workItem from="1631266428232" duration="3851000" />
       <workItem from="1631781234074" duration="7690000" />
       <workItem from="1631807051598" duration="1600000" />
+      <workItem from="1631863286621" duration="4164000" />
     </task>
     <servers />
   </component>
@@ -182,26 +194,26 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="400" height="466" key="DebuggerActiveHint/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631074817818" />
-    <state width="1877" height="329" key="GridCell.Tab.0.bottom" timestamp="1631808671989">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2005" height="347" key="GridCell.Tab.0.bottom" timestamp="1631867299181">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1877" height="329" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1631808671989" />
-    <state width="2005" height="347" key="GridCell.Tab.0.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631788893033" />
-    <state width="1877" height="329" key="GridCell.Tab.0.center" timestamp="1631808671988">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2005" height="347" key="GridCell.Tab.0.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631867299181" />
+    <state width="2005" height="347" key="GridCell.Tab.0.center" timestamp="1631867299181">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1877" height="329" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1631808671988" />
-    <state width="2005" height="347" key="GridCell.Tab.0.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631788893033" />
-    <state width="1877" height="329" key="GridCell.Tab.0.left" timestamp="1631808671988">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2005" height="347" key="GridCell.Tab.0.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631867299181" />
+    <state width="2005" height="347" key="GridCell.Tab.0.left" timestamp="1631867299181">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1877" height="329" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1631808671988" />
-    <state width="2005" height="347" key="GridCell.Tab.0.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631788893033" />
-    <state width="1877" height="329" key="GridCell.Tab.0.right" timestamp="1631808671989">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2005" height="347" key="GridCell.Tab.0.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631867299181" />
+    <state width="2005" height="347" key="GridCell.Tab.0.right" timestamp="1631867299181">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1877" height="329" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1631808671989" />
-    <state width="2005" height="347" key="GridCell.Tab.0.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631788893033" />
+    <state width="2005" height="347" key="GridCell.Tab.0.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631867299181" />
     <state width="2005" height="403" key="GridCell.Tab.1.bottom" timestamp="1631098300968">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -310,9 +322,9 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="802" y="259" width="1698" height="1098" key="dock-window-2/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631788277718" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1631100113905">
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1631867324653">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631100113905" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631867324653" />
   </component>
 </project>

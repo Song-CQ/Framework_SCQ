@@ -22,16 +22,22 @@ namespace ProjectApp
 
         public override void Init()
         { 
-           #SetDataToDic
+           
+            SetExcalData<Sheet_gVO>("Sheet_g");
+            SetExcalData<Sheet1VO>("Sheet1");
           
-           #Init
+           
+            Sheet_gVOModel.Instance.Init();
+            Sheet1VOModel.Instance.Init();
           
-           #SetDataModel
+           
+            Sheet_gVOModel.Instance.SetData(excelDataStrDic[typeof(Sheet_gVO)] as Sheet_gVO[]);
+            Sheet1VOModel.Instance.SetData(excelDataStrDic[typeof(Sheet1VO)] as Sheet1VO[]);
         }
         
         public void SetExcalData<T>(string tableName) where T:BaseVO
         {
-            string val = File.ReadAllText(@"#OutPath"+@"\"+tableName+"_Data.txt");
+            string val = File.ReadAllText(@"E:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Res\Resources\Data\ExcelConfig"+@"\"+tableName+"_Data.txt");
             T[] vos = JsonConvert.DeserializeObject<T[]>(val);
             excelDataStrDic.Add(typeof(T),vos);
         }
