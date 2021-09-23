@@ -124,6 +124,15 @@ namespace ExcelTool
                     allClassval.Add(VoClassStr);
                     allClassname.Add(item.TableName+"Model");
                     allModel.Add(item.TableName);
+
+                    string staticKeyStr = ParsingstaticKey(item);
+                    if (staticKeyStr != string.Empty)
+                    {
+                        allClassval.Add(VoClassStr);
+                        allClassname.Add(item.TableName+"staticKey");
+                    }
+
+
                     StringColor.WriteLine("解析"+item.TableName+"表成功",ConsoleColor.Green);
                 }
             }
@@ -135,7 +144,28 @@ namespace ExcelTool
             return assembly; 
         }
 
-        
+        private static string ParsingstaticKey(DataTable item)
+        {
+
+            DataColumn keyColums = null;
+            DataRow field_Names =item.Rows[0];
+            foreach (DataColumn VARIABLE in item.Columns)
+            {
+                string key = field_Names[VARIABLE].ToString();
+                if (key.ToLower()=="key")
+                {
+                    keyColums = VARIABLE;
+                }
+            }
+            if (keyColums==null)
+            {
+                return String.Empty;
+            }
+
+            return null;
+
+        }
+
 
         private static string ParsingCreateVoModel(DataTable item, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
         {
