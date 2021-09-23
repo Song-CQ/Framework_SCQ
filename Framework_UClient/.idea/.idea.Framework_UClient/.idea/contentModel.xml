@@ -11,14 +11,6 @@
           <e p="AutoCreator" t="Include">
             <e p="ExcelClass_AutoCreator" t="Include">
               <e p="ExcelMgr.cs" t="Include" />
-              <e p="Sheet1VO_AutoCreate" t="Include">
-                <e p="Sheet1ModelVO.cs" t="Include" />
-                <e p="Sheet1VO.cs" t="Include" />
-              </e>
-              <e p="Sheet_gVO_AutoCreate" t="Include">
-                <e p="Sheet_gModelVO.cs" t="Include" />
-                <e p="Sheet_gVO.cs" t="Include" />
-              </e>
             </e>
           </e>
         </e>

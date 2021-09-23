@@ -338,6 +338,9 @@
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
+ <Reference Include="VoClassLib">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/VoClassLib.dll</HintPath>
+ </Reference>
  <Reference Include="nunit.framework">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>

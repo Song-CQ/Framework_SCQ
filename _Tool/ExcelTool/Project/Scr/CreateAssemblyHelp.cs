@@ -16,7 +16,7 @@ namespace ExcelTool
 {
     static class CreateAssemblyHelp
     {
-        public static bool IsDefDll = false;
+        public static bool IsDefDll = true;
         
         private static StringBuilder svBuilder;
         
@@ -116,19 +116,22 @@ namespace ExcelTool
                     DataRow field_description = item.Rows[1];
                     DataRow field_Types = item.Rows[2];
                     
-                    string classStr = ParsingHeaders(item,field_Names,field_description, field_Types);
+                    string classStr = ParsingHeaders(item,field_Names,field_description,field_Types);
                     allClassval.Add(classStr);
                     allClassname.Add(item.TableName);
+                    
                     string VoClassStr = ParsingCreateVoModel(item,field_Names,field_description, field_Types);
                     allClassval.Add(VoClassStr);
                     allClassname.Add(item.TableName+"Model");
                     allModel.Add(item.TableName);
-                    StringColor.WriteLine("解析"+item.TableName+"类文件成功",ConsoleColor.Green);
+                    StringColor.WriteLine("解析"+item.TableName+"表成功",ConsoleColor.Green);
                 }
             }
+            //创建表数据管理器类
+            CreateDataModeMgrToClass(allModel);
             //将所有类写入程序集
             Assembly assembly = WriteInAssembly(allClassname,allClassval);
-            GetStrMode(allModel);
+            
             return assembly; 
         }
 
@@ -293,7 +296,7 @@ namespace ExcelTool
             return assembly;
         }
         
-        private static void GetStrMode(List<string> allModel)
+        private static void CreateDataModeMgrToClass(List<string> allModel)
         {
 
             string setDataToDic = string.Empty;
@@ -313,7 +316,6 @@ namespace ExcelTool
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
             mgrTempLate = mgrTempLate.Replace("#OutPath",MainMgr.Instance.OutDataPath);
             WriteIn2Cs(MainMgr.Instance.OutClassPath,"ExcelMgr",mgrTempLate);
-            
         }
         
         private static void CopyFileToOutClass(string path)
