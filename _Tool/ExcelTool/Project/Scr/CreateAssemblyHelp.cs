@@ -16,7 +16,7 @@ namespace ExcelTool
 {
     static class CreateAssemblyHelp
     {
-        public static bool IsDefDll = true;
+        public static bool IsDefDll = false;
         
         private static StringBuilder svBuilder;
         
@@ -118,21 +118,19 @@ namespace ExcelTool
                     
                     string classStr = ParsingHeaders(item,field_Names,field_description,field_Types);
                     allClassval.Add(classStr);
-                    allClassname.Add(item.TableName);
+                    allClassname.Add(item.TableName+"VO");
                     
                     string VoClassStr = ParsingCreateVoModel(item,field_Names,field_description, field_Types);
                     allClassval.Add(VoClassStr);
-                    allClassname.Add(item.TableName+"Model");
+                    allClassname.Add(item.TableName+"VOModel");
                     allModel.Add(item.TableName);
 
                     string staticKeyStr = ParsingstaticKey(item);
                     if (staticKeyStr != string.Empty)
                     {
-                        allClassval.Add(VoClassStr);
-                        allClassname.Add(item.TableName+"staticKey");
+                        allClassval.Add(staticKeyStr);
+                        allClassname.Add(item.TableName+"StaticKey");
                     }
-
-
                     StringColor.WriteLine("解析"+item.TableName+"表成功",ConsoleColor.Green);
                 }
             }
@@ -161,8 +159,25 @@ namespace ExcelTool
             {
                 return String.Empty;
             }
+            
+            string classVal = GetTemplateClass("ExcelTool.Data.VoStaticKeyTemplate.cs");
+            svBuilder.Clear();
+            for (var index = 3; index < item.Rows.Count; index++)
+            {
+                DataRow row = item.Rows[index];
+                string key = row[keyColums].ToString();
+                if (key == null || key == string.Empty)
+                {
+                    continue;
+                }
 
-            return null;
+                string val = $"\n        public const string {key} = " + '"' + key + '"'+";";
+                svBuilder.Append(val);
+            }
+
+            classVal = classVal.Replace("#Val",svBuilder.ToString());
+            classVal =classVal.Replace("#Name",item.TableName+"StaticKey");
+            return classVal;
 
         }
 
@@ -237,7 +252,7 @@ namespace ExcelTool
             val = String.Format(val,_fieldDescription,field_Type,field_Name);
             return val;
         }
-
+        
         /// <summary>
         /// 读取模板文件
         /// </summary>
@@ -292,9 +307,8 @@ namespace ExcelTool
                 }
                 for (int i = 0; i < allClassName.Count; i++)
                 {
-                    string dir = allClassName[i].Replace("Model", String.Empty);
-
-                    WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i]+"VO", allClassVal[i]);
+                    string dir = GetClassNameDir(allClassName[i]);
+                    WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                 }
                 CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
                 StringColor.WriteLine("编译程序集失败");
@@ -317,15 +331,23 @@ namespace ExcelTool
                     CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
                     for (int i = 0; i < allClassName.Count; i++)
                     {
-                        string dir = allClassName[i].Replace("Model", String.Empty);
-              
-                        WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i]+"VO", allClassVal[i]);
+                        string dir = GetClassNameDir(allClassName[i]);
+                      
+                        WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                     }
                 }
             }
             return assembly;
         }
-        
+
+        private static string GetClassNameDir(string name)
+        {
+            string dir = name.Replace("VO", String.Empty);
+            dir = dir.Replace("Model", String.Empty);
+            dir = dir.Replace("StaticKey", String.Empty);
+            return dir;
+        }
+
         private static void CreateDataModeMgrToClass(List<string> allModel)
         {
 

@@ -35,6 +35,7 @@ namespace ExcelTool
             }
             catch (Exception e)
             {
+                StringColor.WriteLine(e);
                 Console.WriteLine("                                ");
                 StringColor.WriteLine("打表失败");
             }

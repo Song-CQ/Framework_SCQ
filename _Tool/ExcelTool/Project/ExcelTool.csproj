@@ -68,6 +68,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\ExcelDataMgr.cs" />
     <EmbeddedResource Include="Data\VoModelTemplate.cs" />
+    <EmbeddedResource Include="Data\VoStaticKeyTemplate.cs" />
     <Compile Include="Scr\ExcelToAssemblyDataHelp.cs" />
     <Compile Include="Scr\MainMgr.cs" />
     <Compile Include="Scr\CreateAssemblyHelp.cs" />
