@@ -41,16 +41,27 @@ namespace ExcelTool
             foreach (var VARIABLE in path)
             {
                 ExcelData item = new ExcelData(VARIABLE);
-                excelDataLst.Add(item);
+                if (item.Sheet!=null)
+                {
+                    excelDataLst.Add(item);
+                }
             }
             StringColor.WriteLine("读取表完成,读取数量:"+excelDataLst.Count, ConsoleColor.Yellow);
             //检测输出目录
             CheckAndDelect(OutDataPath);
             CheckAndDelect(OutClassPath);
-            //创建程序集生成data
-            CreateAssembly();
-          
-            
+            if (excelDataLst.Count!=0)
+            {
+                //创建程序集生成data
+                CreateAssembly();
+            }
+            else
+            {
+                StringColor.WriteLine("表数量为0");
+            }
+
+
+
         }
         private void CreateAssembly()
         {
@@ -182,7 +193,20 @@ namespace ExcelTool
             List<string> pathStr = new List<string>();
             try
             {
-                DirectoryInfo theFolder = new DirectoryInfo(ReadExcelPath);
+                DirectoryInfo theFolder = Directory.CreateDirectory(ReadExcelPath+@"\游戏配置表");
+                foreach (FileInfo nextFile in theFolder.GetFiles())
+                {
+                    if (nextFile.Name.Contains("~$"))
+                    {
+                        continue;
+                    }
+                    if (nextFile.Extension == ".xlsx"|| nextFile.Extension == ".xls")
+                    {
+                        pathStr.Add(nextFile.FullName);
+                        Console.WriteLine("获取文件路劲:" + nextFile.FullName);
+                    }
+                } 
+                theFolder = Directory.CreateDirectory(ReadExcelPath+@"\静态配置表");
                 foreach (FileInfo nextFile in theFolder.GetFiles())
                 {
                     if (nextFile.Name.Contains("~$"))

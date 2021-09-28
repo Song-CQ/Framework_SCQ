@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace ProjectApp.Data
 {
     /// <summary>
-    /// Sheet1_Model 数据Model
+    /// 表test.xlsx 数据Model
     /// </summary>
     public class Sheet1VOModel:VOModel<Sheet1VOModel,Sheet1VO>
     {

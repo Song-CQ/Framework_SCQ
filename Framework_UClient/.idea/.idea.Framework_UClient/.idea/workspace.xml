@@ -30,7 +30,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/16F5EC47-3C5D-4067-978C-16525CADB6B9/81/5a74e092/VOModel`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A8063FF0-78A7-45F0-9725-8745911836E5/a9/39b2a0d0/BaseVOModel.cs" root0="SKIP_HIGHLIGHTING" />
@@ -93,6 +92,7 @@
       <workItem from="1631863482730" duration="3499000" />
       <workItem from="1632291051394" duration="1524000" />
       <workItem from="1632740183312" duration="645000" />
+      <workItem from="1632812513096" duration="601000" />
     </task>
     <servers />
   </component>

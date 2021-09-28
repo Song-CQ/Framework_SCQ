@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ProjectApp.Data
 {
     /// <summary>
-    /// Sheet_g表 数据类
+    /// 表test - 副本.xlsx 数据类
     /// </summary>
     public class Sheet_gVO:BaseVO
     {

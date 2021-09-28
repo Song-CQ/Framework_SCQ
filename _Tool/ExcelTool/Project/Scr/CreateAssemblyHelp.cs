@@ -104,35 +104,41 @@ namespace ExcelTool
             List<string> allModel = new List<string>();
             foreach (var data in dataList)
             {
-                Console.WriteLine("解析ExcelData: " + data.Name);
-                foreach (DataTable item in data.Sheets)
+                DataTable item = data.Sheet;
+                if (data.IsStart)
                 {
-                    if (item.Rows.Count<3)
+                    
+                }
+                else
+                {
+                    if (item.Rows.Count < 3)
                     {
                         continue;
                     }
-                    Console.WriteLine("解析表："+item.TableName);
-                    DataRow field_Names =item.Rows[0];
+                    Console.WriteLine("解析表: " + data.Name);
+                    DataRow field_Names = item.Rows[0];
                     DataRow field_description = item.Rows[1];
                     DataRow field_Types = item.Rows[2];
-                    
-                    string classStr = ParsingHeaders(item,field_Names,field_description,field_Types);
+
+                    string classStr = ParsingHeaders(data, field_Names, field_description, field_Types);
                     allClassval.Add(classStr);
-                    allClassname.Add(item.TableName+"VO");
-                    
-                    string VoClassStr = ParsingCreateVoModel(item,field_Names,field_description, field_Types);
+                    allClassname.Add(item.TableName + "VO");
+
+                    string VoClassStr = ParsingCreateVoModel(data, field_Names, field_description, field_Types);
                     allClassval.Add(VoClassStr);
-                    allClassname.Add(item.TableName+"VOModel");
+                    allClassname.Add(item.TableName + "VOModel");
                     allModel.Add(item.TableName);
 
-                    string staticKeyStr = ParsingstaticKey(item);
+                    string staticKeyStr = ParsingstaticKey(data);
                     if (staticKeyStr != string.Empty)
                     {
                         allClassval.Add(staticKeyStr);
-                        allClassname.Add(item.TableName+"StaticKey");
+                        allClassname.Add(item.TableName + "StaticKey");
                     }
-                    StringColor.WriteLine("解析"+item.TableName+"表成功",ConsoleColor.Green);
+                    
                 }
+                StringColor.WriteLine("解析" + item.TableName + "表成功", ConsoleColor.Green);
+                
             }
             //创建表数据管理器类
             CreateDataModeMgrToClass(allModel);
@@ -142,10 +148,11 @@ namespace ExcelTool
             return assembly; 
         }
 
-        private static string ParsingstaticKey(DataTable item)
+        private static string ParsingstaticKey(ExcelData excelData)
         {
 
             DataColumn keyColums = null;
+            DataTable item = excelData.Sheet;
             DataRow field_Names =item.Rows[0];
             foreach (DataColumn VARIABLE in item.Columns)
             {
@@ -174,19 +181,20 @@ namespace ExcelTool
                 string val = $"\n        public const string {key} = " + '"' + key + '"'+";";
                 svBuilder.Append(val);
             }
-
+            classVal =classVal.Replace("#Name",excelData.Name);
             classVal = classVal.Replace("#Val",svBuilder.ToString());
-            classVal =classVal.Replace("#Name",item.TableName+"StaticKey");
+            classVal =classVal.Replace("#Class",item.TableName+"StaticKey");
             return classVal;
 
         }
 
 
-        private static string ParsingCreateVoModel(DataTable item, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
+        private static string ParsingCreateVoModel(ExcelData excelData, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
         {
+            DataTable item = excelData.Sheet;
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoModelTemplate.cs");
-            classVal = classVal.Replace("#Name",item.TableName+"_Model");
+            classVal = classVal.Replace("#Name",excelData.Name);
             classVal = classVal.Replace("#Class", item.TableName+"VOModel");
             classVal = classVal.Replace("#DataVo", item.TableName+"VO");
             
@@ -221,11 +229,12 @@ namespace ExcelTool
             
         }
 
-        private static string ParsingHeaders(DataTable item, DataRow field_Names, DataRow field_description, DataRow field_Types)
+        private static string ParsingHeaders(ExcelData excelData, DataRow field_Names, DataRow field_description, DataRow field_Types)
         {
+            DataTable item = excelData.Sheet;
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoClassTemplate.cs");
-            classVal = classVal.Replace("#Name",item.TableName);
+            classVal = classVal.Replace("#Name",excelData.Name);
             classVal = classVal.Replace("#Class", item.TableName+"VO");
             svBuilder.Clear();
             foreach (DataColumn itemColumn in item.Columns)

@@ -26,10 +26,7 @@ namespace ExcelTool
             _assembly = assembly;
             foreach (var excelData in excelDataLst)
             {
-                foreach (DataTable sheet in excelData.Sheets)
-                {
-                    CreateObj(sheet);
-                }
+                CreateObj(excelData.Sheet);
             }
         }
 
@@ -75,6 +72,12 @@ namespace ExcelTool
                         object val = ValToObj(fieldInfo.FieldType,valStr);
                         if (_fieldName.ToLower()=="id")
                         {
+                            if (valStr==string.Empty||valStr==null)
+                            {
+                                myObject = null;
+                                break;
+                            }
+                            
                             if (tempm_Id.Contains(valStr))
                             {
                                 StringColor.WriteLine(sheet.TableName+"表id重复:"+valStr);
@@ -91,7 +94,11 @@ namespace ExcelTool
                         }
                         fieldInfo.SetValue(myObject, val);
                     }
-                    myDataLst.Add(myObject);
+
+                    if (myObject!=null)
+                    {
+                        myDataLst.Add(myObject);
+                    }
                 }
             }
             catch (Exception e)

@@ -3,7 +3,10 @@ using System.Security.Policy;
 
 namespace ProjectApp.Data
 {
-    public class #Name
+    /// <summary>
+    /// 表#Name 静态Key
+    /// </summary>
+    public class #Class
     {
         #Val
     }
