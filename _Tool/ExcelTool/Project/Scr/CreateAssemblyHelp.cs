@@ -102,12 +102,25 @@ namespace ExcelTool
             List<string> allClassval = new List<string>();
             List<string> allClassname = new List<string>();
             List<string> allModel = new List<string>();
+            List<string> allStaticVO = new List<string>();
             foreach (var data in dataList)
             {
                 DataTable item = data.Sheet;
                 if (data.IsStart)
                 {
-                    
+                    if (item.Rows.Count < 3)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine("解析表: " + data.Name);
+                    string classStr = ParsingStaticHeaders(data);
+                    if (classStr!=null||classStr!=string.Empty)
+                    {
+                        allClassval.Add(classStr);
+                        allClassname.Add(item.TableName + "StaticVO");
+                        allStaticVO.Add(item.TableName);
+                    }
+                   
                 }
                 else
                 {
@@ -146,6 +159,134 @@ namespace ExcelTool
             Assembly assembly = WriteInAssembly(allClassname,allClassval);
             
             return assembly; 
+        }
+
+        private static string ParsingStaticHeaders(ExcelData data)
+        {
+            DataTable item = data.Sheet;
+            DataRow field_Names = item.Rows[0];
+            string id = "id";
+            string staticKey = "statickey";
+            string staticDesc = "staticdesc";
+            string staticType = "statictype";
+            string staticValue = "staticvalue";
+
+            DataColumn idColumn = null;
+            DataColumn staticKeyColumn = null;
+            DataColumn staticDescColumn = null;
+            DataColumn staticTypeColumn = null;
+            DataColumn staticValueColumn = null;
+            
+            foreach (DataColumn row in item.Columns)
+            {
+                if (field_Names[row].ToString().Trim().ToLower()==id)
+                {
+                    idColumn = row;
+                }
+                if (field_Names[row].ToString().Trim().ToLower()==staticKey)
+                {
+                    staticKeyColumn = row;
+                }
+                if (field_Names[row].ToString().Trim().ToLower()==staticDesc)
+                {
+                    staticDescColumn = row;
+                }
+                if (field_Names[row].ToString().Trim().ToLower()==staticType)
+                {
+                    staticTypeColumn = row;
+                }
+                if (field_Names[row].ToString().Trim().ToLower()==staticValue)
+                {
+                    staticValueColumn = row;
+                }
+            }
+            if (idColumn==null||staticKeyColumn==null||staticDescColumn==null||staticTypeColumn==null||staticValueColumn==null)
+            {
+                return null;
+            }
+            /*
+                /// <summary>
+                /// id = #id
+                /// #描述
+                /// #Val
+                /// </summary>
+                public #Type #Key = #ValData;
+            */
+            string val = "\n"+
+                         "\n        /// <summary>" +
+                         "\n        /// id = #id" +
+                         "\n        /// #描述" +
+                         "\n        /// #Val" +
+                         "\n        /// </summary>" +
+                         "\n        public #Type #Key#FieldData;";
+            svBuilder.Clear();
+            for (int i = 3; i < item.Rows.Count; i++)
+            {
+                DataRow row = item.Rows[i];
+                string line = val;
+                line = line.Replace("#id",row[idColumn].ToString());
+                line = line.Replace("#描述",row[staticDescColumn].ToString());
+                line = line.Replace("#Val",row[staticValueColumn].ToString());
+                line = line.Replace("#Type",row[staticTypeColumn].ToString());
+                line = line.Replace("#Key",row[staticKeyColumn].ToString());
+
+                string temp = GetValStr(row[staticTypeColumn].ToString(), row[staticValueColumn].ToString());
+                if (temp!=string.Empty)
+                {
+                    temp = " = " + temp;
+                }
+                line = line.Replace("#FieldData",temp);
+                
+                svBuilder.Append(line);
+            }
+            string classVal = GetTemplateClass("ExcelTool.Data.VoStaticExcelTemplate.cs");
+            classVal =classVal.Replace("#Name",data.Name);
+            classVal = classVal.Replace("#Val",svBuilder.ToString());
+            classVal =classVal.Replace("#Class",item.TableName+"StaticVO");
+            
+            return classVal;
+        }
+
+        private static string GetValStr(string type, string val)
+        {
+            string valStr = String.Empty;
+            if (val==String.Empty)
+            {
+                return valStr;
+            }
+            switch (type.ToLower())
+            {
+                case "int":
+                case "bool":
+                    valStr = val;
+                    break;
+                case "float":
+                    valStr = val+"f";
+                    break;
+                case "string":
+                    valStr = '"'+ val +'"';
+                    break;
+                case "string[]":
+                case "int[]":
+                case "float[]":
+                case "bool[]":
+                    val = val.Replace("[",string.Empty);
+                    val = val.Replace("]",string.Empty);
+                    
+                    type = type.Replace("[",string.Empty);
+                    type = type.Replace("]",string.Empty);
+                    string[] vals = val.Split(',');
+                    val = string.Empty;
+                    for (var index = 0; index < vals.Length; index++)
+                    {
+                        var item = vals[index];
+                        val += GetValStr(type, item)+',';
+                    }
+                    val = val.Remove(val.Length-1);
+                    valStr = $"new {type}[]"+'{'+val+'}';
+                    break;
+            }
+            return valStr;
         }
 
         private static string ParsingstaticKey(ExcelData excelData)
@@ -375,7 +516,6 @@ namespace ExcelTool
             mgrTempLate = mgrTempLate.Replace("#SetDataToDic",setDataToDic);
             mgrTempLate = mgrTempLate.Replace("#Init",init);
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
-            mgrTempLate = mgrTempLate.Replace("#OutPath",MainMgr.Instance.OutDataPath);
             WriteIn2Cs(MainMgr.Instance.OutClassPath,"ExcelMgr",mgrTempLate);
         }
         

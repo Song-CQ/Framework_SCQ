@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using ProjectApp.Data;
-using XL.Common;
-using System.IO;
+using FutureCore;
+using UnityEngine;
 
 namespace ProjectApp
 {
     /// <summary>
     /// 表格数据管理器
     /// </summary>
-    public class ExcelDataMgr:MonoSingleton<ExcelDataMgr>
+    public class ExcelDataMgr:BaseMgr<ExcelDataMgr>
     {
 
         private Dictionary<Type, BaseVO[]> excelDataStrDic;
@@ -22,18 +22,42 @@ namespace ProjectApp
 
         public override void Init()
         { 
-           #SetDataToDic
+            base.Init();
+            #SetDataToDic
           
-           #Init
+            #Init
           
-           #SetDataModel
+            #SetDataModel
         }
         
         public void SetExcalData<T>(string tableName) where T:BaseVO
         {
-            string val = File.ReadAllText(@"#OutPath"+@"\"+tableName+"_Data.txt");
-            T[] vos = JsonConvert.DeserializeObject<T[]>(val);
+            TextAsset textAsset = ResMgr.Instance.GetExcelData(tableName + "_Data");
+            T[] vos = null;
+            if (textAsset!=null)
+            { 
+                vos = JsonConvert.DeserializeObject<T[]>(textAsset.text);
+            }
+            else
+            {
+                Debug.LogError("未找到表:"+tableName+"的数据");
+            }
+
             excelDataStrDic.Add(typeof(T),vos);
+        }
+        
+        private T GetStaticExcalData<T>(string tableName) where T:BaseVO
+        {
+            TextAsset textAsset = ResMgr.Instance.GetExcelData(tableName + "_Data");
+            T vo = null;
+            if (textAsset!=null)
+            {
+                vo=JsonConvert.DeserializeObject<T>(textAsset.text);
+            }else
+            {
+                Debug.LogError("未找到表:"+tableName+"的数据");
+            }
+            return vo;
         }
 
     }

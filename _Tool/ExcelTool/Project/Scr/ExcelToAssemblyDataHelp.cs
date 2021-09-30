@@ -26,12 +26,28 @@ namespace ExcelTool
             _assembly = assembly;
             foreach (var excelData in excelDataLst)
             {
-                CreateObj(excelData.Sheet);
+                if (excelData.IsStart)
+                {
+                    CreateStartObj(excelData.Sheet);
+                }
+                else
+                {
+                    CreateObj(excelData.Sheet);
+                }
             }
         }
 
+         private static void CreateStartObj(DataTable excelDataSheet)
+         {
+             if (excelDataSheet.Rows.Count<3)
+             {
+                 return;
+             }
+             
+         }
 
-        private static void CreateObj(DataTable sheet)
+
+         private static void CreateObj(DataTable sheet)
         {
             if (sheet.Rows.Count<3)
             {

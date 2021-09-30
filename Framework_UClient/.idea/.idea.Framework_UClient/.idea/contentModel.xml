@@ -10,11 +10,19 @@
         <e p="_App" t="Include">
           <e p="AutoCreator" t="Include">
             <e p="ExcelClass_AutoCreator" t="Include">
+              <e p="CommonsStaticVO_AutoCreate" t="Include">
+                <e p="CommonsStaticVO.cs" t="Include" />
+              </e>
               <e p="ExcelMgr.cs" t="Include" />
               <e p="Sheet1VO_AutoCreate" t="Include">
                 <e p="Sheet1StaticKey.cs" t="Include" />
                 <e p="Sheet1VO.cs" t="Include" />
                 <e p="Sheet1VOModel.cs" t="Include" />
+              </e>
+              <e p="Sheet8VO_AutoCreate" t="Include">
+                <e p="Sheet8StaticKey.cs" t="Include" />
+                <e p="Sheet8VO.cs" t="Include" />
+                <e p="Sheet8VOModel.cs" t="Include" />
               </e>
               <e p="Sheet_gVO_AutoCreate" t="Include">
                 <e p="Sheet_gStaticKey.cs" t="Include" />
@@ -29,6 +37,7 @@
             <e p="Data" t="Include">
               <e p="ExcelConfig" t="Include">
                 <e p="Sheet1_Data.txt" t="Include" />
+                <e p="Sheet8_Data.txt" t="Include" />
                 <e p="Sheet_g_Data.txt" t="Include" />
               </e>
             </e>
@@ -78,6 +87,15 @@
             <e p="Common" t="Include">
               <e p="Singleton" t="Include">
                 <e p="MonoSingleton.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Manager" t="Include">
+              <e p="Base" t="Include">
+                <e p="BaseMgr.cs" t="Include" />
+                <e p="IMgr.cs" t="Include" />
+              </e>
+              <e p="Mgr" t="Include">
+                <e p="ResMgr.cs" t="Include" />
               </e>
             </e>
           </e>

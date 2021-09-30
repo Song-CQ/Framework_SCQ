@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace XL.Common
+namespace FutureCore
 {
     /// <summary>
     /// 单例父类工具

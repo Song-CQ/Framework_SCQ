@@ -7,6 +7,7 @@
 *****************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using FutureCore;
 using UnityEngine;
 using XL.Common;
 

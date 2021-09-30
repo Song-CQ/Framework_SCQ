@@ -23,6 +23,7 @@
         <e p="ExcelDataMgr.cs" t="Include" />
         <e p="VoClassTemplate.cs" t="Include" />
         <e p="VoModelTemplate.cs" t="Include" />
+        <e p="VoStaticExcelTemplate.cs" t="Include" />
         <e p="VoStaticKeyTemplate.cs" t="Include" />
       </e>
       <e p="ExcelTool.csproj" t="IncludeRecursive" />
