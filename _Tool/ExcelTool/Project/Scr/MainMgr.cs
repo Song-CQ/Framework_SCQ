@@ -29,9 +29,25 @@ namespace ExcelTool
         public string OutClassPath { get; private set; }
         private List<ExcelData> excelDataLst = new List<ExcelData>();
 
+        public string CurrentDirectory
+        {
+            get
+            {
+                if (currentDirectory==null)
+                {
+                    currentDirectory = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase.Remove(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase.Length-1);
+                }
+                return currentDirectory;
+            }
+        }
+        private string currentDirectory;
+
+
         public void Init(System.Threading.Tasks.Task task)
         {
-
+            ///设置运行目录
+            Environment.CurrentDirectory = CurrentDirectory;
+            
             CurrTask = task;
             //读取路径
             SetPath();
@@ -128,7 +144,8 @@ namespace ExcelTool
             string _read = "ReadExcelPath:";
             string _write_Class = "OutClassPath:";
             string _write_Data = "OutDataPath:";
-            string path = System.IO.Directory.GetCurrentDirectory();
+            string path = CurrentDirectory.Substring(0,CurrentDirectory.LastIndexOf(@"\"));
+            
             ReadExcelPath = String.Empty;
             OutDataPath = String.Empty;
             OutClassPath = String.Empty;

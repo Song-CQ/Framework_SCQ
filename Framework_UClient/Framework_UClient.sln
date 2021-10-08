@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeshEditor.Effects.RunTime", "MeshEditor.Effects.RunTime.csproj", "{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{3798781D-C4C4-6001-E6DC-BBBA2D0E25D9}"
 EndProject
@@ -15,6 +17,10 @@ Global
 		{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3798781D-C4C4-6001-E6DC-BBBA2D0E25D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3798781D-C4C4-6001-E6DC-BBBA2D0E25D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3798781D-C4C4-6001-E6DC-BBBA2D0E25D9}.Release|Any CPU.ActiveCfg = Release|Any CPU

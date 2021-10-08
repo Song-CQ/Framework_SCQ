@@ -63,8 +63,7 @@ namespace ProjectApp
             T vo = default;
             if (textAsset!=null)
             {
-                string val =Encoding.UTF8.GetString(textAsset.bytes);
-               // string val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                string val = AESEncryptUtil.Decrypt(textAsset.bytes);
                 vo = JsonConvert.DeserializeObject<T>(val);
             }else
             {

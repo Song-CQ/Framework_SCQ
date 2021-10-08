@@ -16,7 +16,7 @@ namespace ExcelTool
 {
     static class CreateAssemblyHelp
     {
-        public static bool IsDefDll = true;
+        public static bool IsCreateDll = true;
         
         private static StringBuilder svBuilder;
         
@@ -53,7 +53,7 @@ namespace ExcelTool
 
             // Set the assembly file name to generate.
 
-            cp.OutputAssembly = System.IO.Directory.GetCurrentDirectory();
+            cp.OutputAssembly = MainMgr.Instance.CurrentDirectory;
 
             // Generate debug information.
 
@@ -63,7 +63,7 @@ namespace ExcelTool
 
             cp.GenerateInMemory = true;
 
-            cp.OutputAssembly = Directory.GetCurrentDirectory()+ @"\VoClassLib.dll";
+            cp.OutputAssembly = MainMgr.Instance.CurrentDirectory+ @"\VoClassLib.dll";
             
             // Set the level at which the compiler
 
@@ -429,19 +429,16 @@ namespace ExcelTool
         public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal)
         {
 
-            if (!IsDefDll)
+            if (IsCreateDll)
             {
-                Console.WriteLine("生成Dll还是CS文件(空格 CS !空格 Dll)");
-                var v =Console.ReadKey();
-                Console.WriteLine(v.Key);
-                if (v.Key == ConsoleKey.Spacebar)
-                {
-                    cp.GenerateInMemory = false;
-                }
-                else
-                {
-                    cp.GenerateInMemory = true;
-                }
+                // Console.WriteLine("生成Dll还是CS文件(空格 CS !空格 Dll)");
+                // var v =Console.ReadKey();
+                // Console.WriteLine(v.Key);
+                cp.GenerateInMemory = true;
+            }
+            else
+            {
+                cp.GenerateInMemory = false;
             }
 
             Assembly assembly = null;
@@ -460,7 +457,7 @@ namespace ExcelTool
                     string dir = GetClassNameDir(allClassName[i]);
                     WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                 }
-                CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
+                CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll");
                 StringColor.WriteLine("编译程序集失败");
                 
                 Thread.CurrentThread.Abort();
@@ -473,12 +470,14 @@ namespace ExcelTool
                 if (cp.GenerateInMemory)
                 {
                     StringColor.WriteLine("生成Dll成功",ConsoleColor.Green);
-                    CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
-                    CopyFileToOutClass(Directory.GetCurrentDirectory()+@"\VoClassLib.dll");
+                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll");
+                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory+@"\VoClassLib.dll",true);
+                    FileInfo fieldInfo = new FileInfo(MainMgr.Instance.CurrentDirectory+@"\VoClassLib.pdb");
+                    fieldInfo.Delete();
                 }
                 else
                 {
-                    CopyFileToOutClass(Directory.GetCurrentDirectory() + @"\BaseVoClassLib.dll");
+                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll");
                     for (int i = 0; i < allClassName.Count; i++)
                     {
                         string dir = GetClassNameDir(allClassName[i]);
@@ -525,22 +524,28 @@ namespace ExcelTool
             WriteIn2Cs(MainMgr.Instance.OutClassPath,"ExcelMgr",mgrTempLate);
         }
         
-        private static void CopyFileToOutClass(string path)
+        /// <summary>
+        /// 拷贝文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="isDel">是否删除原本文件</param>
+        private static void CopyFileToOutClass(string path,bool isDel=false)
         {
-            if (true)
+            try
             {
-                try
+                FileInfo fieldInfo = new FileInfo(path);
+                fieldInfo.CopyTo(MainMgr.Instance.OutClassPath + @"\"+ fieldInfo.Name);
+                if (isDel)
                 {
-                    FileInfo fieldInfo = new FileInfo(path);
-                    fieldInfo.CopyTo(MainMgr.Instance.OutClassPath + @"\"+ fieldInfo.Name);
+                    fieldInfo.Delete();
                 }
-                catch (Exception e)
-                {
-                    StringColor.WriteLine(e);
-                    Thread.CurrentThread.Abort();
-                }      
-               
             }
+            catch (Exception e)
+            {
+                StringColor.WriteLine(e);
+                Thread.CurrentThread.Abort();
+            }
+            
         }
         private static void WriteIn2Cs(string dirInfo,string name,string val)
         {

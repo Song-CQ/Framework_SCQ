@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_ExcelTool.1577809845.00" t="ExcludeRecursive" />
+    <e p="C:\Users\宋承清\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\宋承清\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_ExcelTool.1577809845.00" t="ExcludeRecursive" />
     <e p="E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib" t="IncludeRecursive">
       <e p="BaseVoClass" t="Include">
         <e p="BaseVo.cs" t="Include" />

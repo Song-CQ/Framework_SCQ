@@ -11,6 +11,7 @@ using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 using System.Text;
 using System.Reflection.Emit;
+using UnityEngine;
 
 namespace ExcelTool
 {
@@ -20,9 +21,15 @@ namespace ExcelTool
         static void Main(string[] args)
         {
             
-            // List<int>  asa=new List<int>();
-            // Console.WriteLine(asa.GetType());
-            // return;
+            if (args==null||args.Length==0||args[0]=="Dll")
+            {
+                CreateAssemblyHelp.IsCreateDll = true;
+            }
+            else if (args[0]=="Cs")
+            {
+                CreateAssemblyHelp.IsCreateDll = false;
+            }
+
             try
             {
                 task = new Task(Init);

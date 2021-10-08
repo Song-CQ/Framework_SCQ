@@ -1,0 +1,14 @@
+﻿/****************************************************
+    文件：#SCRIPTNAME#.cs
+	作者：清
+    邮箱: 2728285639@qq.com
+    日期：#CreateTime#
+	功能：Nothing
+*****************************************************/
+
+using UnityEngine;
+
+public class #SCRIPTNAME# : MonoBehaviour 
+{
+
+}
