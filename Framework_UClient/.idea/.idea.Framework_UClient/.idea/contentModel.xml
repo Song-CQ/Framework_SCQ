@@ -60,6 +60,11 @@
                 <e p="MonoSingleton.cs" t="Include" />
               </e>
             </e>
+            <e p="Define" t="Include">
+              <e p="Const" t="Include">
+                <e p="EncryptConst.cs" t="Include" />
+              </e>
+            </e>
             <e p="Manager" t="Include">
               <e p="Base" t="Include">
                 <e p="BaseMgr.cs" t="Include" />
@@ -67,6 +72,11 @@
               </e>
               <e p="Mgr" t="Include">
                 <e p="ResMgr.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Utility" t="Include">
+              <e p="EncryptUtil" t="Include">
+                <e p="AESEncryptUtil.cs" t="Include" />
               </e>
             </e>
           </e>

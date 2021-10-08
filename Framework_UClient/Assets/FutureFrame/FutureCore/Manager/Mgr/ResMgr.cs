@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Text;
+using UnityEngine;
 
 namespace FutureCore
 {
@@ -8,8 +9,8 @@ namespace FutureCore
         public TextAsset GetExcelData(string tableName)
         {
             string path = @"Data\ExcelConfig"+@"\"+tableName;
-            TextAsset textAsset = Resources.Load<TextAsset>(path);
-            return textAsset;
+            TextAsset data = Resources.Load<TextAsset>(path);
+            return data;
         }
 
     }

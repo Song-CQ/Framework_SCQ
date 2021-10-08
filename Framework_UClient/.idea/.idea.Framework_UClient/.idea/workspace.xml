@@ -30,25 +30,27 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Mgr/ResMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/EncryptUtil/AESEncryptUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/UIFramework/UIEventListener.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/BaseMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/UIFramework/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E8E0D063-373D-45DA-B236-11C3028756EB/42/e917b48a/BaseVO.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/Common/ArrayHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A8063FF0-78A7-45F0-9725-8745911836E5/a9/39b2a0d0/BaseVOModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/IMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/Common/TransformHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/Editor/ScriptsInfoRecoder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/Editor/GenerateResConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Const/EncryptConst.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/Editor/GenerateUnityPackageName.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Mgr/ResMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/BaseMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/PESocket/PESocket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E8E0D063-373D-45DA-B236-11C3028756EB/21/7db3abb5/VOModel`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E8E0D063-373D-45DA-B236-11C3028756EB/42/e917b48a/BaseVO.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/16F5EC47-3C5D-4067-978C-16525CADB6B9/81/5a74e092/VOModel`2.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A8063FF0-78A7-45F0-9725-8745911836E5/a9/39b2a0d0/BaseVOModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/IMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/836D5242-9AA4-486B-92F7-7A86CF16897D/5a/cf0bd353/Sheet_gVO.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate/CommonsStaticVO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6741AE73-8B4F-4176-8B69-A7BB4E711203/62/44241bcf/Sheet1VO.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVOModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gStaticKey.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -58,10 +60,12 @@
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework_XL/UIFramework/UIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/IMgr.cs" />
-        <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Mgr/ResMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/BaseMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate/CommonsStaticVO.cs" />
         <option value="$PROJECT_DIR$/Assets/text.cs" />
+        <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/EncryptUtil/AESEncryptUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Const/EncryptConst.cs" />
+        <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Mgr/ResMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" />
       </list>
     </option>
@@ -73,6 +77,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35017866" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30015314" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -85,10 +91,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17564">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="17564" />
       <method v="2" />
     </configuration>
   </component>
@@ -112,7 +118,7 @@
       <workItem from="1632740183312" duration="645000" />
       <workItem from="1632812513096" duration="1528000" />
       <workItem from="1632970896630" duration="7881000" />
-      <workItem from="1633659443182" duration="3137000" />
+      <workItem from="1633659443182" duration="13667000" />
     </task>
     <servers />
   </component>
@@ -137,6 +143,70 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1990" height="119" key="GridCell.Tab.0.bottom" timestamp="1633689955675">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.0.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955675" />
+    <state width="1990" height="119" key="GridCell.Tab.0.center" timestamp="1633689955675">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.0.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955675" />
+    <state width="1990" height="119" key="GridCell.Tab.0.left" timestamp="1633689955675">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.0.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955675" />
+    <state width="1990" height="119" key="GridCell.Tab.0.right" timestamp="1633689955675">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.0.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955675" />
+    <state width="1990" height="119" key="GridCell.Tab.1.bottom" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.1.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.1.center" timestamp="1633689955675">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.1.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955675" />
+    <state width="1990" height="119" key="GridCell.Tab.1.left" timestamp="1633689955675">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.1.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955675" />
+    <state width="1990" height="119" key="GridCell.Tab.1.right" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.1.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.2.bottom" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.2.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.2.center" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.2.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.2.left" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.2.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.2.right" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.2.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.3.bottom" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.3.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.3.center" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.3.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.3.left" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.3.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
+    <state width="1990" height="119" key="GridCell.Tab.3.right" timestamp="1633689955676">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1990" height="119" key="GridCell.Tab.3.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689955676" />
     <state x="842" y="256" key="RiderGenerateDialog" timestamp="1631788354517">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

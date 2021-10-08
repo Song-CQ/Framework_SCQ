@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Text;
 using ProjectApp.Data;
 using FutureCore;
 using UnityEngine;
@@ -35,7 +36,8 @@ namespace ProjectApp
             T[] vos = null;
             if (textAsset!=null)
             { 
-                vos = JsonConvert.DeserializeObject<T[]>(textAsset.text);
+                string val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                vos = JsonConvert.DeserializeObject<T[]>(val);
             }
             else
             {
@@ -51,7 +53,8 @@ namespace ProjectApp
             T vo = default;
             if (textAsset!=null)
             {
-                vo=JsonConvert.DeserializeObject<T>(textAsset.text);
+                string val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                vo = JsonConvert.DeserializeObject<T>(val);
             }else
             {
                 Debug.LogError("未找到表:"+tableName+"的数据");

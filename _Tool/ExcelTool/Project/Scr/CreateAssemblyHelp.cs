@@ -16,7 +16,7 @@ namespace ExcelTool
 {
     static class CreateAssemblyHelp
     {
-        public static bool IsDefDll = false;
+        public static bool IsDefDll = true;
         
         private static StringBuilder svBuilder;
         

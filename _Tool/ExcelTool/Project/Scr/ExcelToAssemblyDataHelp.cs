@@ -98,9 +98,12 @@ namespace ExcelTool
                      fieldInfo.SetValue(myObject,val);
                  }
                  string jsonData = JsonConvert.SerializeObject(myObject);
+                 byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
+    
                  DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath+@"\StaticExcelData");
-                 File.WriteAllText(directoryInfo.FullName+@"\"+sheet.TableName+"_StaticData.txt",jsonData);
-                 StringColor.WriteLine("生成表："+sheet.TableName+"数据成功",ConsoleColor.Green);
+                 File.WriteAllBytes(directoryInfo.FullName+@"\"+sheet.TableName+"_StaticData.bytes",bytes);
+
+                 StringColor.WriteLine("生成静态表："+sheet.TableName+"数据成功",ConsoleColor.Green);
              }
              catch (Exception e)
              {
@@ -191,8 +194,9 @@ namespace ExcelTool
 
     
             string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
+            byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
             DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath+@"\ExcelData");
-            File.WriteAllText(directoryInfo.FullName+@"\"+sheet.TableName+"_Data.txt",jsonData);
+            File.WriteAllBytes(directoryInfo.FullName+@"\"+sheet.TableName+"_Data.bytes",bytes);
             StringColor.WriteLine("生成表："+sheet.TableName+"数据成功",ConsoleColor.Green);
         }
 

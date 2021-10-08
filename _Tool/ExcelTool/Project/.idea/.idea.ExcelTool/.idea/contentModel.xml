@@ -45,6 +45,7 @@
         <e p="MainMgr.cs" t="Include" />
       </e>
       <e p="Tool" t="Include">
+        <e p="AESEncryptUtil.cs" t="Include" />
         <e p="StringColor.cs" t="Include" />
       </e>
     </e>
