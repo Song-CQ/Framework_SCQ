@@ -41,7 +41,7 @@
     <setting file="file://$PROJECT_DIR$/Scr/CreateAssemblyHelp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data/ExcelData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tool/StringColor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/VoStaticExcelTemplate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/VoStaticExcelTemplate.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/808A782E-B93A-4039-AD4E-344A67668503/63/2aee8882/DataRow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" root0="FORCE_HIGHLIGHTING" />
@@ -71,9 +71,9 @@
         <option value="$PROJECT_DIR$/Data/ExcelData.cs" />
         <option value="$PROJECT_DIR$/Scr/MainMgr.cs" />
         <option value="$PROJECT_DIR$/Data/VoStaticKeyTemplate.cs" />
+        <option value="$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" />
         <option value="$PROJECT_DIR$/Data/VoStaticExcelTemplate.cs" />
         <option value="$PROJECT_DIR$/Scr/CreateAssemblyHelp.cs" />
-        <option value="$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" />
         <option value="$PROJECT_DIR$/Data/ExcelDataMgr.cs" />
       </list>
     </option>
@@ -165,7 +165,8 @@
       <workItem from="1632735770881" duration="4683000" />
       <workItem from="1632810579794" duration="6966000" />
       <workItem from="1632886401481" duration="1331000" />
-      <workItem from="1632968990438" duration="16069000" />
+      <workItem from="1632968990438" duration="16604000" />
+      <workItem from="1633659605480" duration="4047000" />
     </task>
     <servers />
   </component>
@@ -198,26 +199,26 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="400" height="466" key="DebuggerActiveHint/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1632995857664" />
-    <state width="2005" height="328" key="GridCell.Tab.0.bottom" timestamp="1632999828337">
+    <state width="2005" height="323" key="GridCell.Tab.0.bottom" timestamp="1633663559995">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1877" height="329" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1631808671989" />
-    <state width="2005" height="328" key="GridCell.Tab.0.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1632999828337" />
-    <state width="2005" height="328" key="GridCell.Tab.0.center" timestamp="1632999828337">
+    <state width="2005" height="323" key="GridCell.Tab.0.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633663559995" />
+    <state width="2005" height="323" key="GridCell.Tab.0.center" timestamp="1633663559995">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1877" height="329" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1631808671988" />
-    <state width="2005" height="328" key="GridCell.Tab.0.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1632999828337" />
-    <state width="2005" height="328" key="GridCell.Tab.0.left" timestamp="1632999828337">
+    <state width="2005" height="323" key="GridCell.Tab.0.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633663559995" />
+    <state width="2005" height="323" key="GridCell.Tab.0.left" timestamp="1633663559995">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1877" height="329" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1631808671988" />
-    <state width="2005" height="328" key="GridCell.Tab.0.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1632999828337" />
-    <state width="2005" height="328" key="GridCell.Tab.0.right" timestamp="1632999828337">
+    <state width="2005" height="323" key="GridCell.Tab.0.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633663559995" />
+    <state width="2005" height="323" key="GridCell.Tab.0.right" timestamp="1633663559995">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1877" height="329" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1631808671989" />
-    <state width="2005" height="328" key="GridCell.Tab.0.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1632999828337" />
+    <state width="2005" height="323" key="GridCell.Tab.0.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633663559995" />
     <state width="2005" height="403" key="GridCell.Tab.1.bottom" timestamp="1632995910060">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -326,9 +327,9 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="802" y="259" width="1698" height="1098" key="dock-window-2/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631788277718" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1632822584482">
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1633662028844">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1632822584482" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633662028844" />
   </component>
 </project>

@@ -154,7 +154,7 @@ namespace ExcelTool
                 
             }
             //创建表数据管理器类
-            CreateDataModeMgrToClass(allModel);
+            CreateDataModeMgrToClass(allStaticVO,allModel);
             //将所有类写入程序集
             Assembly assembly = WriteInAssembly(allClassname,allClassval);
             
@@ -498,12 +498,17 @@ namespace ExcelTool
             return dir;
         }
 
-        private static void CreateDataModeMgrToClass(List<string> allModel)
+        private static void CreateDataModeMgrToClass(List<string> allStaticVo, List<string> allModel)
         {
-
+            string setStaticDataToDic = string.Empty;
             string setDataToDic = string.Empty;
             string init = string.Empty;
             string setDataModel = string.Empty;
+            foreach (var tableName in allStaticVo)
+            {
+                string setDataVal = "\n            CommonsStaticVO.SetData(GetStaticExcalData<"+tableName+"StaticVO"+">("+'"'+tableName+'"'+"));";
+                setStaticDataToDic += setDataVal;
+            }
             foreach (var tableName in allModel)
             {
                 string className = tableName + "VOModel";
@@ -513,6 +518,7 @@ namespace ExcelTool
                 setDataModel += "\n            "+ className + ".Instance.SetData(excelDataStrDic[typeof("+tableName+"VO"+")]"+" as "+tableName+"VO"+"[]);";
             }
             string mgrTempLate = GetTemplateClass("ExcelTool.Data.ExcelDataMgr.cs");
+            mgrTempLate = mgrTempLate.Replace("#SetStaticDataToDic",setStaticDataToDic);
             mgrTempLate = mgrTempLate.Replace("#SetDataToDic",setDataToDic);
             mgrTempLate = mgrTempLate.Replace("#Init",init);
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
@@ -546,7 +552,7 @@ namespace ExcelTool
             }
         }    
         
-
+        
 
     }
 }

@@ -37,11 +37,76 @@ namespace ExcelTool
             }
         }
 
-         private static void CreateStartObj(DataTable excelDataSheet)
+         private static void CreateStartObj(DataTable sheet)
          {
-             if (excelDataSheet.Rows.Count<3)
+             if (sheet.Rows.Count<3)
              {
                  return;
+             }
+             string id = "id";
+             string staticKey = "statickey";
+             string staticDesc = "staticdesc";
+             string staticType = "statictype";
+             string staticValue = "staticvalue";
+
+             DataColumn idColumn = null;
+             DataColumn staticKeyColumn = null;
+             DataColumn staticDescColumn = null;
+             DataColumn staticTypeColumn = null;
+             DataColumn staticValueColumn = null;
+             
+             DataRow field_Names = sheet.Rows[0];
+             foreach (DataColumn row in sheet.Columns)
+             {
+                 if (field_Names[row].ToString().Trim().ToLower()==id)
+                 {
+                     idColumn = row;
+                 }
+                 if (field_Names[row].ToString().Trim().ToLower()==staticKey)
+                 {
+                     staticKeyColumn = row;
+                 }
+                 if (field_Names[row].ToString().Trim().ToLower()==staticDesc)
+                 {
+                     staticDescColumn = row;
+                 }
+                 if (field_Names[row].ToString().Trim().ToLower()==staticType)
+                 {
+                     staticTypeColumn = row;
+                 }
+                 if (field_Names[row].ToString().Trim().ToLower()==staticValue)
+                 {
+                     staticValueColumn = row;
+                 }
+             }
+             if (idColumn==null||staticKeyColumn==null||staticDescColumn==null||staticTypeColumn==null||staticValueColumn==null)
+             {
+                 return;
+             }
+             Console.WriteLine("开始生成静态表："+sheet.TableName+"数据");
+             try
+             {
+                 string className = "ProjectApp.Data."+sheet.TableName + "StaticVO";
+                 object myObject = _assembly.CreateInstance(className);
+                 Type myType = myObject.GetType();
+                 for (int i = 3; i < sheet.Rows.Count; i++)
+                 {
+                     DataRow dataRow = sheet.Rows[i];
+                     FieldInfo fieldInfo = myType.GetField(dataRow[staticKeyColumn].ToString().Trim());
+                     string valStr = dataRow[staticValueColumn].ToString().Trim();
+                     object val = ValToObj(fieldInfo.FieldType,valStr);
+                     fieldInfo.SetValue(myObject,val);
+                 }
+                 string jsonData = JsonConvert.SerializeObject(myObject);
+                 DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath+@"\StaticExcelData");
+                 File.WriteAllText(directoryInfo.FullName+@"\"+sheet.TableName+"_StaticData.txt",jsonData);
+                 StringColor.WriteLine("生成表："+sheet.TableName+"数据成功",ConsoleColor.Green);
+             }
+             catch (Exception e)
+             {
+                 StringColor.WriteLine(e);
+                 StringColor.WriteLine("生成静态表："+sheet.TableName+"数据失败");
+                 Thread.CurrentThread.Abort();
              }
              
          }
@@ -84,7 +149,7 @@ namespace ExcelTool
                             }
                         }
                         
-                        string valStr = dataRow[itemColumn].ToString();
+                        string valStr = dataRow[itemColumn].ToString().Trim();
                         object val = ValToObj(fieldInfo.FieldType,valStr);
                         if (_fieldName.ToLower()=="id")
                         {
@@ -126,7 +191,8 @@ namespace ExcelTool
 
     
             string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
-            File.WriteAllText(MainMgr.Instance.OutDataPath+@"\"+sheet.TableName+"_Data.txt",jsonData);
+            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath+@"\ExcelData");
+            File.WriteAllText(directoryInfo.FullName+@"\"+sheet.TableName+"_Data.txt",jsonData);
             StringColor.WriteLine("生成表："+sheet.TableName+"数据成功",ConsoleColor.Green);
         }
 

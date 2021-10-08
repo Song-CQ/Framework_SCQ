@@ -16,7 +16,7 @@ public class text : MonoBehaviour
     {
         ExcelDataMgr.Instance.Init();
         realtimeSinceStartupUI.text = Sheet1VOModel.Instance.GetVO(0).name[0];
-        timeUI.text = Sheet_gVOModel.Instance.GetVO(0).ske;
+        timeUI.text = CommonsStaticVO.Instance.hdaslk[0].ToString();
     }
 
     private float val = 0;

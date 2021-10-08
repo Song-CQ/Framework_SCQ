@@ -23,16 +23,15 @@ namespace ProjectApp
         public override void Init()
         { 
             base.Init();
+            #SetStaticDataToDic
             #SetDataToDic
-          
             #Init
-          
             #SetDataModel
         }
-        
+         
         public void SetExcalData<T>(string tableName) where T:BaseVO
         {
-            TextAsset textAsset = ResMgr.Instance.GetExcelData(tableName + "_Data");
+            TextAsset textAsset = ResMgr.Instance.GetExcelData(@"ExcelData\"+tableName + "_Data");
             T[] vos = null;
             if (textAsset!=null)
             { 
@@ -46,10 +45,10 @@ namespace ProjectApp
             excelDataStrDic.Add(typeof(T),vos);
         }
         
-        private T GetStaticExcalData<T>(string tableName) where T:BaseVO
+        private T GetStaticExcalData<T>(string tableName) where T : new()
         {
-            TextAsset textAsset = ResMgr.Instance.GetExcelData(tableName + "_Data");
-            T vo = null;
+            TextAsset textAsset = ResMgr.Instance.GetExcelData(@"StaticExcelData\"+tableName + "_StaticData");
+            T vo = default;
             if (textAsset!=null)
             {
                 vo=JsonConvert.DeserializeObject<T>(textAsset.text);

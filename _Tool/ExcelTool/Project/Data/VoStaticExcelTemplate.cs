@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ExcelTool.Data
+namespace ProjectApp.Data
 {
     /// <summary>
     /// #Name 静态表
@@ -24,7 +24,6 @@ namespace ExcelTool.Data
         {
             m_instance = val;
         }
-
         #Val
         
     }

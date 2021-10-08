@@ -87,10 +87,11 @@
      <Compile Include="Assets\FutureFrame\FutureCore\Manager\Base\IMgr.cs" />
      <Compile Include="Assets\FutureFrame\FutureCore\Manager\Mgr\ResMgr.cs" />
      <Compile Include="Assets\text.cs" />
+     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet_g_Data.txt" />
      <None Include="Assets\Framework_XL\PESocket\obj\Debug\PESocket.csproj.FileListAbsolute.txt" />
-     <None Include="Assets\_Res\Resources\Data\ExcelConfig\Sheet_g_Data.txt" />
-     <None Include="Assets\_Res\Resources\Data\ExcelConfig\Sheet8_Data.txt" />
-     <None Include="Assets\_Res\Resources\Data\ExcelConfig\Sheet1_Data.txt" />
+     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet1_Data.txt" />
+     <None Include="Assets\_Res\Resources\Data\ExcelConfig\StaticExcelData\Commons_StaticData.txt" />
+     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet8_Data.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
