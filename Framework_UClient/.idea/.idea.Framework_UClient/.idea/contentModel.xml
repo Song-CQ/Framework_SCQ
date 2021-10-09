@@ -10,26 +10,112 @@
         <e p="_App" t="Include">
           <e p="AutoCreator" t="Include">
             <e p="ExcelClass_AutoCreator" t="Include">
+              <e p="CommonsStaticVO_AutoCreate" t="Include">
+                <e p="CommonsStaticVO.cs" t="Include" />
+              </e>
               <e p="ExcelMgr.cs" t="Include" />
+              <e p="Sheet1VO_AutoCreate" t="Include">
+                <e p="Sheet1StaticKey.cs" t="Include" />
+                <e p="Sheet1VO.cs" t="Include" />
+                <e p="Sheet1VOModel.cs" t="Include" />
+              </e>
+              <e p="Sheet8VO_AutoCreate" t="Include">
+                <e p="Sheet8StaticKey.cs" t="Include" />
+                <e p="Sheet8VO.cs" t="Include" />
+                <e p="Sheet8VOModel.cs" t="Include" />
+              </e>
+              <e p="Sheet_gVO_AutoCreate" t="Include">
+                <e p="Sheet_gStaticKey.cs" t="Include" />
+                <e p="Sheet_gVO.cs" t="Include" />
+                <e p="Sheet_gVOModel.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="_Editor" t="Include">
+          <e p="WindowEditor" t="Include">
+            <e p="Editor" t="Include">
+              <e p="01_FrameworkTool" t="Include">
+                <e p="FrameworkTool_Win.cs" t="Include" />
+              </e>
+              <e p="02_EditorStyleViewer" t="Include">
+                <e p="EditorStyleViewer.cs" t="Include" />
+              </e>
+              <e p="03_ConfigBatTool" t="Include">
+                <e p="ConfigBatTool.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
         <e p="Framework_XL" t="Include">
-          <e p="Common" t="Include">
-            <e p="ArrayHelper.cs" t="Include" />
-            <e p="TransformHelper.cs" t="Include" />
+          <e p="01_Editor" t="Include">
+            <e p="ConsolePro" t="Include">
+              <e p="ConsoleProDebug.cs" t="Include" />
+              <e p="Remote" t="Include">
+                <e p="ConsoleProRemoteServer.cs" t="Include" />
+                <e p="LiteNetLib" t="Include">
+                  <e p="FastBitConverter.cs" t="Include" />
+                  <e p="INetEventListener.cs" t="Include" />
+                  <e p="NatPunchModule.cs" t="Include" />
+                  <e p="NetConstants.cs" t="Include" />
+                  <e p="NetDataReader.cs" t="Include" />
+                  <e p="NetDataWriter.cs" t="Include" />
+                  <e p="NetDebug.cs" t="Include" />
+                  <e p="NetEndPoint.cs" t="Include" />
+                  <e p="NetManager.cs" t="Include" />
+                  <e p="NetPacket.cs" t="Include" />
+                  <e p="NetPacketPool.cs" t="Include" />
+                  <e p="NetPeer.cs" t="Include" />
+                  <e p="NetPeerCollection.cs" t="Include" />
+                  <e p="NetSerializer.cs" t="Include" />
+                  <e p="NetSocket.cs" t="Include" />
+                  <e p="NetThread.cs" t="Include" />
+                  <e p="NetUtils.cs" t="Include" />
+                  <e p="NtpSyncModule.cs" t="Include" />
+                  <e p="ReliableChannel.cs" t="Include" />
+                  <e p="SequencedChannel.cs" t="Include" />
+                  <e p="SimpleChannel.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Editor" t="Include">
+              <e p="CopyComponentTool.cs" t="Include" />
+              <e p="GameObjectTool.cs" t="Include" />
+              <e p="Hierponent.cs" t="Include" />
+              <e p="UITool.cs" t="Include" />
+              <e p="打AB包" t="Include">
+                <e p="BuildAB.cs" t="Include" />
+              </e>
+              <e p="清除没用的资源" t="Include">
+                <e p="AssetCollector.cs" t="Include" />
+                <e p="ClassReferenceCollection.cs" t="Include" />
+                <e p="FindUnusedAssets.cs" t="Include" />
+                <e p="ShaderReferenceCollection.cs" t="Include" />
+              </e>
+              <e p="自动打包库" t="Include">
+                <e p="GenerateUnityPackageName.cs" t="Include" />
+              </e>
+              <e p="自动生成脚本文件头" t="Include">
+                <e p="81-C# Script-NewBehaviourScript.cs.txt" t="Include" />
+                <e p="ScriptsInfoRecoder.cs" t="Include" />
+              </e>
+            </e>
           </e>
-          <e p="Editor" t="Include">
-            <e p="GenerateResConfig.cs" t="Include" />
-            <e p="GenerateUnityPackageName.cs" t="Include" />
-            <e p="ScriptsInfoRecoder.cs" t="Include" />
+          <e p="02_UI" t="Include">
+            <e p="Image_XL.cs" t="Include" />
+            <e p="Rocker.cs" t="Include" />
+            <e p="TextOutlineEx" t="Include">
+              <e p="OutlineEx.cs" t="Include" />
+              <e p="OutlineEx.shader" t="Include" />
+            </e>
+            <e p="UIDragComp.cs" t="Include" />
           </e>
-          <e p="MouseTool" t="Include">
-            <e p="MouseCtrl.cs" t="Include" />
-            <e p="MouseLook.cs" t="Include" />
-            <e p="MouseRight.cs" t="Include" />
+          <e p="02_UIFramework" t="Include">
+            <e p="UIEventListener.cs" t="Include" />
+            <e p="UIManager.cs" t="Include" />
+            <e p="UIWindow.cs" t="Include" />
           </e>
-          <e p="PESocket" t="Include">
+          <e p="03_PESocket" t="Include">
             <e p="obj" t="Include">
               <e p="Debug" t="Include">
                 <e p="PESocket.csproj.FileListAbsolute.txt" t="Include" />
@@ -44,13 +130,87 @@
               <e p="AssemblyInfo.cs" t="Include" />
             </e>
           </e>
-          <e p="TimeTool" t="Include">
+          <e p="04_TimeTool" t="Include">
             <e p="PETimer.cs" t="Include" />
           </e>
-          <e p="UIFramework" t="Include">
-            <e p="UIEventListener.cs" t="Include" />
-            <e p="UIManager.cs" t="Include" />
-            <e p="UIWindow.cs" t="Include" />
+          <e p="05_Common" t="Include">
+            <e p="InputManager.cs" t="Include" />
+            <e p="Language.cs" t="Include" />
+            <e p="ListTool.cs" t="Include" />
+            <e p="MeshTool" t="Include">
+              <e p="MeshSplit.cs" t="Include" />
+            </e>
+            <e p="MonoSingleton.cs" t="Include" />
+            <e p="MouseTool" t="Include">
+              <e p="MouseCtrl.cs" t="Include" />
+              <e p="MouseLook.cs" t="Include" />
+              <e p="MouseRight.cs" t="Include" />
+            </e>
+            <e p="ObjectPool.cs" t="Include" />
+            <e p="TimeTool.cs" t="Include" />
+            <e p="TransformHelper.cs" t="Include" />
+            <e p="Vector3_Tool.cs" t="Include" />
+          </e>
+          <e p="06_Shader" t="Include">
+            <e p="影子" t="Include">
+              <e p="MobileARShadow.shader" t="Include" />
+            </e>
+            <e p="镜子" t="Include">
+              <e p="Mirror.shader" t="Include" />
+              <e p="MirrorReflection.cs" t="Include" />
+            </e>
+          </e>
+          <e p="07_Plug-in" t="Include">
+            <e p="03_MeshEditor" t="Include">
+              <e p="Editor" t="Include">
+                <e p="Base" t="Include">
+                  <e p="MeshEffectsBaseInspector.cs" t="Include" />
+                </e>
+                <e p="MeshBlow" t="Include">
+                  <e p="MeshBlowInspector.cs" t="Include" />
+                </e>
+                <e p="MeshFragmentization" t="Include">
+                  <e p="MeshFragmentizationInspector.cs" t="Include" />
+                </e>
+                <e p="MeshVortex" t="Include">
+                  <e p="MeshVortexInspector.cs" t="Include" />
+                </e>
+                <e p="MeshWave" t="Include">
+                  <e p="MeshWaveInspector.cs" t="Include" />
+                </e>
+                <e p="Utility" t="Include">
+                  <e p="EditorToolkit.cs" t="Include" />
+                </e>
+              </e>
+              <e p="RunTime" t="Include">
+                <e p="Base" t="Include">
+                  <e p="MeshEffectsBase.cs" t="Include" />
+                </e>
+                <e p="Data" t="Include">
+                  <e p="Fragment.cs" t="Include" />
+                  <e p="MeshData.cs" t="Include" />
+                  <e p="MeshElement.cs" t="Include" />
+                  <e p="Triangle.cs" t="Include" />
+                  <e p="Vertex.cs" t="Include" />
+                </e>
+                <e p="MeshBlow" t="Include">
+                  <e p="MeshBlow.cs" t="Include" />
+                </e>
+                <e p="MeshFragmentization" t="Include">
+                  <e p="FragmentBehaviour.cs" t="Include" />
+                  <e p="MeshFragmentization.cs" t="Include" />
+                </e>
+                <e p="MeshVortex" t="Include">
+                  <e p="MeshVortex.cs" t="Include" />
+                </e>
+                <e p="MeshWave" t="Include">
+                  <e p="MeshWave.cs" t="Include" />
+                </e>
+                <e p="Utility" t="Include">
+                  <e p="Toolkit.cs" t="Include" />
+                </e>
+              </e>
+            </e>
           </e>
         </e>
         <e p="FutureFrame" t="Include">
@@ -78,12 +238,19 @@
               <e p="EncryptUtil" t="Include">
                 <e p="AESEncryptUtil.cs" t="Include" />
               </e>
+              <e p="FillUtil" t="Include">
+                <e p="ClassToFillTool.cs" t="Include" />
+              </e>
+              <e p="String" t="Include">
+                <e p="StringTool.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
         <e p="text.cs" t="Include" />
       </e>
       <e p="Framework_UClient.sln" t="IncludeFlat" />
+      <e p="MeshEditor.Effects.RunTime.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />

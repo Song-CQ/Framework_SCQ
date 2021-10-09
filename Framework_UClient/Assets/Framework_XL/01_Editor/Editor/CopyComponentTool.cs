@@ -9,7 +9,7 @@ namespace XL.Editor
     {
 #if UNITY_EDITOR
         static Component[] copiedComponents;
-        [MenuItem("GameObject/Copy Current Components #W", false, 1)]
+       // [MenuItem("GameObject/Copy Current Components #W", false, 1)]
         static void CopyComponents()
         {
             copiedComponents = Selection.activeGameObject.GetComponents<Component>();

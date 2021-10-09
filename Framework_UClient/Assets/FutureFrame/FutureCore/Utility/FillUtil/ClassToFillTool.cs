@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
 
-namespace XL.Common
+namespace FutureCore
 {
 	/// <summary>
 	/// 类转文件工具
