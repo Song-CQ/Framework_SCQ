@@ -19,7 +19,80 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b893b817-712b-4308-b0ee-fc437a04c0d1" name="默认更改列表" comment="" />
+    <list default="true" id="b893b817-712b-4308-b0ee-fc437a04c0d1" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Framework_UClient/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Framework_UClient/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Framework_UClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Framework_UClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/Framework_UClient/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/Framework_UClient/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FutureFrame/FutureLib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/BaseVoClassLib.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate/CommonsStaticVO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate/CommonsStaticVO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1StaticKey.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1StaticKey.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VOModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VOModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8StaticKey.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8StaticKey.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VOModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VOModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gStaticKey.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gStaticKey.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVOModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVOModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool/FrameworkTool_Win.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool/FrameworkTool_Win.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/02_EditorStyleViewer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/02_EditorStyleViewer/EditorStyleViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/02_EditorStyleViewer/EditorStyleViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/03_ConfigBatTool.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/03_ConfigBatTool/ConfigBatTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/03_ConfigBatTool/ConfigBatTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/GUISkin.guiskin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Editor/WindowEditor/GUISkin.guiskin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Res/Resources/Data/ExcelConfig/ExcelData.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet1_Data.bytes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet8_Data.bytes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet_g_Data.bytes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Res/Resources/Data/ExcelConfig/StaticExcelData.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Res/Resources/Data/ExcelConfig/StaticExcelData/Commons_StaticData.bytes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeshEditor.Effects.RunTime.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MeshEditor.Effects.RunTime.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/MeshEditor.Effects.RunTime.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/MeshEditor.Effects.RunTime.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/1.配置表生成Dll.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/2.配置表生成Cs.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/.idea/.idea.ExcelTool/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/.idea/.idea.ExcelTool/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/Data/ExcelDataMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/Data/ExcelDataMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/Scr/CreateAssemblyHelp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/Scr/CreateAssemblyHelp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/Scr/ExcelToAssemblyDataHelp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/Scr/ExcelToAssemblyDataHelp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/obj/Debug/ExcelTool.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/obj/Debug/ExcelTool.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/obj/Debug/ExcelTool.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/obj/Debug/ExcelTool.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/obj/Debug/ExcelTool.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Project/obj/Debug/ExcelTool.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Release/ExcelTool.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Release/ExcelTool.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Release/ExcelTool.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../_Tool/ExcelTool/Release/ExcelTool.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Release/VoClassLib.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_Tool/ExcelTool/Release/VoClassLib.pdb" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,36 +102,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/EncryptUtil/AESEncryptUtil.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/29A6C194-5F57-4474-95FC-AD42118554C7/ad/ee2d5c9e/Process.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3AF59F10-55BB-41DC-88B8-3E40EE58AF13/98/2a7454cc/ScriptableWizard.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/IMgr.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/13A4D4EB-842F-4C62-913E-8CD5E1A2F14C/f5/10021285/Sheet8VO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool/FrameworkTool_Win.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/02_EditorStyleViewer/EditorStyleViewer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/清除没用的资源/FindUnusedAssets.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/509C587A-3371-4222-B5E8-1666B5099AF1/3b/b3408121/GUILayoutOption.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Mgr/ResMgr.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/清除没用的资源/AssetCollector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/自动打包库/GenerateUnityPackageName.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/03_ConfigBatTool/ConfigBatTool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/BaseMgr.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3AF59F10-55BB-41DC-88B8-3E40EE58AF13/bf/2acdd4f4/MenuItem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/836D5242-9AA4-486B-92F7-7A86CF16897D/5a/cf0bd353/Sheet_gVO.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/05_Common/TransformHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6741AE73-8B4F-4176-8B69-A7BB4E711203/62/44241bcf/Sheet1VO.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/CopyComponentTool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/String/StringTool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E8E0D063-373D-45DA-B236-11C3028756EB/42/e917b48a/BaseVO.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A8063FF0-78A7-45F0-9725-8745911836E5/a9/39b2a0d0/BaseVOModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Const/EncryptConst.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E8E0D063-373D-45DA-B236-11C3028756EB/21/7db3abb5/VOModel`2.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/16F5EC47-3C5D-4067-978C-16525CADB6B9/81/5a74e092/VOModel`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/CopyComponentTool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/EncryptUtil/AESEncryptUtil.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/清除没用的资源/FindUnusedAssets.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/FillUtil/ClassToFillTool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Editor/Editor/WindowEditor/03_ConfigBatTool/ConfigBatTool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/清除没用的资源/AssetCollector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/String/StringTool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Editor/Editor/WindowEditor/01_FrameworkTool/FrameworkTool_Win.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/509C587A-3371-4222-B5E8-1666B5099AF1/80/50e539a9/GUILayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/自动打包库/GenerateUnityPackageName.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/BaseMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/IMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Mgr/ResMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3AF59F10-55BB-41DC-88B8-3E40EE58AF13/11/3c219555/EditorGUIUtility.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -74,7 +136,6 @@
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/EncryptUtil/AESEncryptUtil.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Const/EncryptConst.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Mgr/ResMgr.cs" />
-        <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/FillUtil/ClassToFillTool.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/自动打包库/GenerateUnityPackageName.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/CopyComponentTool.cs" />
@@ -83,8 +144,11 @@
         <option value="$PROJECT_DIR$/Assets/Framework_XL/05_Common/StringTool.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/String/StringTool.cs" />
         <option value="$PROJECT_DIR$/Assets/_Editor/WindowEditor/NewBehaviourScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool/FrameworkTool_Win.cs" />
         <option value="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/03_ConfigBatTool/ConfigBatTool.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool/FrameworkTool_Win.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Editor/Editor/WindowEditor/03_ConfigBatTool/ConfigBatTool.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Editor/Editor/WindowEditor/01_FrameworkTool/FrameworkTool_Win.cs" />
+        <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" />
       </list>
     </option>
   </component>
@@ -95,12 +159,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35005066" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30040526" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30065006" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -109,10 +179,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17564">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12556">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17564" />
+      <option name="pid" value="12556" />
       <method v="2" />
     </configuration>
   </component>
@@ -137,6 +207,8 @@
       <workItem from="1632812513096" duration="1528000" />
       <workItem from="1632970896630" duration="7881000" />
       <workItem from="1633659443182" duration="13667000" />
+      <workItem from="1633843174680" duration="617000" />
+      <workItem from="1633867149817" duration="3259000" />
     </task>
     <servers />
   </component>
@@ -161,37 +233,49 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2005" height="119" key="GridCell.Tab.0.bottom" timestamp="1633768384360">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="385" height="466" key="DebuggerActiveHint" timestamp="1633871059816">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="385" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1633871059816" />
+    <state width="1877" height="375" key="GridCell.Tab.0.bottom" timestamp="1633871035507">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1633871035507" />
     <state width="2005" height="119" key="GridCell.Tab.0.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633768384360" />
-    <state width="2005" height="119" key="GridCell.Tab.0.center" timestamp="1633768384360">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="375" key="GridCell.Tab.0.center" timestamp="1633871035507">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="375" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1633871035507" />
     <state width="2005" height="119" key="GridCell.Tab.0.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633768384360" />
-    <state width="2005" height="119" key="GridCell.Tab.0.left" timestamp="1633768384360">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="375" key="GridCell.Tab.0.left" timestamp="1633871035507">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="375" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1633871035507" />
     <state width="2005" height="119" key="GridCell.Tab.0.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633768384360" />
-    <state width="2005" height="119" key="GridCell.Tab.0.right" timestamp="1633768384360">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="375" key="GridCell.Tab.0.right" timestamp="1633871035507">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="375" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1633871035507" />
     <state width="2005" height="119" key="GridCell.Tab.0.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633768384360" />
-    <state width="2005" height="119" key="GridCell.Tab.1.bottom" timestamp="1633768396097">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="375" key="GridCell.Tab.1.bottom" timestamp="1633871040291">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1633871040291" />
     <state width="2005" height="119" key="GridCell.Tab.1.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633768396097" />
-    <state width="2005" height="119" key="GridCell.Tab.1.center" timestamp="1633768396097">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="375" key="GridCell.Tab.1.center" timestamp="1633871040291">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="375" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1633871040291" />
     <state width="2005" height="119" key="GridCell.Tab.1.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633768396097" />
-    <state width="2005" height="119" key="GridCell.Tab.1.left" timestamp="1633768396097">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="375" key="GridCell.Tab.1.left" timestamp="1633871040291">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="375" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1633871040291" />
     <state width="2005" height="119" key="GridCell.Tab.1.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633768396097" />
-    <state width="2005" height="119" key="GridCell.Tab.1.right" timestamp="1633768396097">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="375" key="GridCell.Tab.1.right" timestamp="1633871040291">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="375" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1633871040291" />
     <state width="2005" height="119" key="GridCell.Tab.1.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633768396097" />
     <state width="2005" height="119" key="GridCell.Tab.2.bottom" timestamp="1633768384269">
       <screen x="0" y="0" width="2048" height="1112" />
@@ -229,6 +313,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="842" y="256" key="RiderGenerateDialog/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1631788354517" />
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1633866962703">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1633866962703" />
     <state x="687" y="247" width="672" height="678" key="search.everywhere.popup" timestamp="1633748332297">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

@@ -24,12 +24,23 @@ namespace ExcelTool
             if (args==null||args.Length==0||args[0]=="Dll")
             {
                 CreateAssemblyHelp.IsCreateDll = true;
+               
             }
-            else if (args[0]=="Cs")
+            else if (args[0]=="CS")
             {
                 CreateAssemblyHelp.IsCreateDll = false;
             }
+            if (args==null||args.Length==0||args[1]=="True")
+            {
+                ExcelToAssemblyDataHelp.IsEnciphermentData = true;
+               
+            }
+            else if (args[1]=="False")
+            {
+                ExcelToAssemblyDataHelp.IsEnciphermentData = false;
+            }
 
+            
             try
             {
                 task = new Task(Init);

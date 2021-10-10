@@ -20,10 +20,14 @@ namespace ExcelTool
         private static Assembly _assembly;
         private static List<string> tempm_key =new List<string>();
         private static List<string> tempm_Id=new List<string>();
+
+        public static bool IsEnciphermentData = true; 
+        
          public static void Start(Assembly assembly, List<ExcelData> excelDataLst)
         {
             
             _assembly = assembly;
+            StringColor.WriteLine("表数据是否加密："+ExcelToAssemblyDataHelp.IsEnciphermentData,ConsoleColor.Yellow);
             foreach (var excelData in excelDataLst)
             {
                 if (excelData.IsStart)
@@ -98,11 +102,17 @@ namespace ExcelTool
                      fieldInfo.SetValue(myObject,val);
                  }
                  string jsonData = JsonConvert.SerializeObject(myObject);
-                 byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-    
                  DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath+@"\StaticExcelData");
-                 File.WriteAllBytes(directoryInfo.FullName+@"\"+sheet.TableName+"_StaticData.bytes",bytes);
-
+                 if (IsEnciphermentData)
+                 {
+                     byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
+                     File.WriteAllBytes(directoryInfo.FullName+@"\"+sheet.TableName+"_StaticData.bytes",bytes);
+                 }
+                 else
+                 {
+                     File.WriteAllText(directoryInfo.FullName+@"\"+sheet.TableName+"_StaticData.txt",jsonData);   
+                 }
+                 
                  StringColor.WriteLine("生成静态表："+sheet.TableName+"数据成功",ConsoleColor.Green);
              }
              catch (Exception e)
@@ -194,9 +204,16 @@ namespace ExcelTool
 
     
             string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
-            byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
             DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath+@"\ExcelData");
-            File.WriteAllBytes(directoryInfo.FullName+@"\"+sheet.TableName+"_Data.bytes",bytes);
+            if (IsEnciphermentData)
+            {
+                byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
+                File.WriteAllBytes(directoryInfo.FullName+@"\"+sheet.TableName+"_Data.bytes",bytes);
+            }
+            else
+            {
+               File.WriteAllText(directoryInfo.FullName+@"\"+sheet.TableName+"_Data.txt",jsonData);   
+            }
             StringColor.WriteLine("生成表："+sheet.TableName+"数据成功",ConsoleColor.Green);
         }
 

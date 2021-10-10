@@ -517,6 +517,7 @@ namespace ExcelTool
                 setDataModel += "\n            "+ className + ".Instance.SetData(excelDataStrDic[typeof("+tableName+"VO"+")]"+" as "+tableName+"VO"+"[]);";
             }
             string mgrTempLate = GetTemplateClass("ExcelTool.Data.ExcelDataMgr.cs");
+            mgrTempLate = mgrTempLate.Replace("#IsEnciphermentData",ExcelToAssemblyDataHelp.IsEnciphermentData.ToString().ToLower());
             mgrTempLate = mgrTempLate.Replace("#SetStaticDataToDic",setStaticDataToDic);
             mgrTempLate = mgrTempLate.Replace("#SetDataToDic",setDataToDic);
             mgrTempLate = mgrTempLate.Replace("#Init",init);

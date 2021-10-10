@@ -41,7 +41,10 @@ namespace FutureEditor
             
             if (toolbatIndex==0)
             {
-                GUILayout.BeginArea(new Rect(10,30,120,100));
+                
+                Texture2D texture = EditorGUIUtility.Load("Icon/box.png") as Texture2D;
+                
+                GUILayout.BeginArea(new Rect(10,30,200,200));
                 GUILayout.BeginVertical(GUILayout.Height(50),GUILayout.Width(100));
                 
                 if (GUILayout.Button("Dll自动打表",GUILayout.Height(40),GUILayout.Width(100)))
@@ -53,6 +56,14 @@ namespace FutureEditor
                 {
                     ConfigBatTool.SyncConfig2CS();
                     
+                }
+                if (GUILayout.Button("Dll自动打表(表数据加密)",GUILayout.Height(40),GUILayout.Width(150)))
+                {
+                    ConfigBatTool.SyncConfig2Dll_EncryptData();
+                }
+                if (GUILayout.Button("CS文件自动打表(表数据加密)",GUILayout.Height(40),GUILayout.Width(160)))
+                {
+                    ConfigBatTool.SyncConfig2CS_EncryptData();
                 }
                 GUILayout.EndVertical();
                 GUILayout.EndArea();

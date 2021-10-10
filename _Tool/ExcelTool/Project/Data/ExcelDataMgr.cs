@@ -15,7 +15,7 @@ namespace ProjectApp
     {
 
         private Dictionary<Type, BaseVO[]> excelDataStrDic;
-        
+        private const bool isEnciphermentData = #IsEnciphermentData;
         protected override void New()
         {
             excelDataStrDic = new Dictionary<Type,BaseVO[]>();
@@ -35,15 +35,22 @@ namespace ProjectApp
             TextAsset textAsset = ResMgr.Instance.GetExcelData(@"ExcelData\"+tableName + "_Data");
             T[] vos = null;
             if (textAsset!=null)
-            { 
-                string val = AESEncryptUtil.Decrypt(textAsset.bytes);
+            {
+                string val = null;
+                if (isEnciphermentData)
+                {
+                    val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                }
+                else
+                {
+                    val = textAsset.text;
+                }
                 vos = JsonConvert.DeserializeObject<T[]>(val);
             }
             else
             {
                 Debug.LogError("未找到表:"+tableName+"的数据");
             }
-
             excelDataStrDic.Add(typeof(T),vos);
         }
         
@@ -53,7 +60,15 @@ namespace ProjectApp
             T vo = default;
             if (textAsset!=null)
             {
-                string val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                string val = null;
+                if (isEnciphermentData)
+                {
+                    val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                }
+                else
+                {
+                    val = textAsset.text;
+                }
                 vo = JsonConvert.DeserializeObject<T>(val);
             }else
             {

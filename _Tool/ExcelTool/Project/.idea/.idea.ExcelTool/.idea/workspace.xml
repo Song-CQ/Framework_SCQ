@@ -20,26 +20,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bee02609-6f9d-4c06-a68e-6f112fd04f87" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/.idea/.idea.Framework_UClient/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/.idea/.idea.Framework_UClient/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/.idea/.idea.Framework_UClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/.idea/.idea.Framework_UClient/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/.vs/Framework_UClient/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/.vs/Framework_UClient/v16/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assembly-CSharp-Editor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/FutureFrame/FutureLib.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/BaseVoClassLib.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/BaseVoClassLib.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/BaseVoClassLib.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate/CommonsStaticVO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate/CommonsStaticVO.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/VoClassLib.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/VoClassLib.dll.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet1_Data.bytes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet1_Data.bytes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet8_Data.bytes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet8_Data.bytes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet_g_Data.bytes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet_g_Data.bytes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/StaticExcelData.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/StaticExcelData.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/StaticExcelData/Commons_StaticData.bytes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/StaticExcelData/Commons_StaticData.bytes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Framework_UClient.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Framework_UClient.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1StaticKey.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1StaticKey.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VOModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1VOModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8StaticKey.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8StaticKey.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VOModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet8VO_AutoCreate/Sheet8VOModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gStaticKey.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gStaticKey.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVOModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gVOModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool/FrameworkTool_Win.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/01_FrameworkTool/FrameworkTool_Win.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/02_EditorStyleViewer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/02_EditorStyleViewer/EditorStyleViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/02_EditorStyleViewer/EditorStyleViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/03_ConfigBatTool.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/03_ConfigBatTool/ConfigBatTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/Editor/03_ConfigBatTool/ConfigBatTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/GUISkin.guiskin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Editor/WindowEditor/GUISkin.guiskin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet1_Data.bytes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet8_Data.bytes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/ExcelData/Sheet_g_Data.bytes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/StaticExcelData.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Assets/_Res/Resources/Data/ExcelConfig/StaticExcelData/Commons_StaticData.bytes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/MeshEditor.Effects.RunTime.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/MeshEditor.Effects.RunTime.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/obj/Debug/Assembly-CSharp-Editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/obj/Debug/Assembly-CSharp-Editor.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Framework_UClient/obj/Debug/MeshEditor.Effects.RunTime.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Framework_UClient/obj/Debug/MeshEditor.Effects.RunTime.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,27 +88,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/808A782E-B93A-4039-AD4E-344A67668503/cb/192e1dc3/DataTable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/App.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/ExcelDataMgr.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/VoModelTemplate.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Scr/CreateObjFunC2.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B6A0E661-5EE0-4EA7-AD53-5B38F9316104/ec/b65083f6/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/VOModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/VoStaticKeyTemplate.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Scr/CreateAssemblyHelp.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/ExcelData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tool/StringColor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data/VoStaticExcelTemplate.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/808A782E-B93A-4039-AD4E-344A67668503/63/2aee8882/DataRow.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/VoStaticKeyTemplate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/App.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVOModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Scr/MainMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data/VoClassTemplate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/BaseVOModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/BaseVoClass/VOModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../BaseVoClassLib/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tool/AESEncryptUtil.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tool/StringColor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/ExcelData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/VoClassTemplate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/VoModelTemplate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data/ExcelDataMgr.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scr/CreateAssemblyHelp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scr/CreateObjFunC2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scr/MainMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/808A782E-B93A-4039-AD4E-344A67668503/cb/192e1dc3/DataTable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -93,11 +129,11 @@
         <option value="$PROJECT_DIR$/Data/VoStaticExcelTemplate.cs" />
         <option value="$PROJECT_DIR$/Tool/AES.cs" />
         <option value="$PROJECT_DIR$/Tool/AESEncryptUtil.cs" />
-        <option value="$PROJECT_DIR$/Data/ExcelDataMgr.cs" />
-        <option value="$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" />
         <option value="$PROJECT_DIR$/Scr/MainMgr.cs" />
-        <option value="$PROJECT_DIR$/Program.cs" />
+        <option value="$PROJECT_DIR$/Data/ExcelDataMgr.cs" />
         <option value="$PROJECT_DIR$/Scr/CreateAssemblyHelp.cs" />
+        <option value="$PROJECT_DIR$/Scr/ExcelToAssemblyDataHelp.cs" />
+        <option value="$PROJECT_DIR$/Program.cs" />
       </list>
     </option>
   </component>
@@ -193,6 +229,7 @@
       <workItem from="1633689872004" duration="1504000" />
       <workItem from="1633694608132" duration="1913000" />
       <workItem from="1633697240989" duration="4571000" />
+      <workItem from="1633867338042" duration="3441000" />
     </task>
     <servers />
   </component>
@@ -225,25 +262,25 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="400" height="466" key="DebuggerActiveHint/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633689577352" />
-    <state width="2005" height="401" key="GridCell.Tab.0.bottom" timestamp="1633746179489">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="229" key="GridCell.Tab.0.bottom" timestamp="1633871671572">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1633701987362" />
+    <state width="1877" height="229" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1633871671572" />
     <state width="2005" height="401" key="GridCell.Tab.0.bottom/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633746179489" />
-    <state width="2005" height="401" key="GridCell.Tab.0.center" timestamp="1633746179489">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="229" key="GridCell.Tab.0.center" timestamp="1633871671572">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1633701987361" />
+    <state width="1877" height="229" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1633871671572" />
     <state width="2005" height="401" key="GridCell.Tab.0.center/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633746179489" />
-    <state width="2005" height="401" key="GridCell.Tab.0.left" timestamp="1633746179489">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="229" key="GridCell.Tab.0.left" timestamp="1633871671572">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1633701987360" />
+    <state width="1877" height="229" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1633871671572" />
     <state width="2005" height="401" key="GridCell.Tab.0.left/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633746179489" />
-    <state width="2005" height="401" key="GridCell.Tab.0.right" timestamp="1633746179489">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1877" height="229" key="GridCell.Tab.0.right" timestamp="1633871671572">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1633701987362" />
+    <state width="1877" height="229" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1633871671572" />
     <state width="2005" height="401" key="GridCell.Tab.0.right/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1633746179489" />
     <state width="1877" height="278" key="GridCell.Tab.1.bottom" timestamp="1633701987362">
       <screen x="0" y="0" width="1920" height="1040" />
