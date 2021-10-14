@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\宋承清\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\宋承清\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Framework_UClient.-569466755.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Framework_UClient.-569466755.00" t="ExcludeRecursive" />
     <e p="E:\UnityPro\Framework_SCQ\Framework_UClient" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -198,6 +198,12 @@
         <e p="FutureFrame" t="Include">
           <e p="FutureCore" t="Include">
             <e p="Common" t="Include">
+              <e p="Pool" t="Include">
+                <e p="ObjectPool" t="Include">
+                  <e p="ListPool.cs" t="Include" />
+                  <e p="ObjectPool.cs" t="Include" />
+                </e>
+              </e>
               <e p="Singleton" t="Include">
                 <e p="MonoSingleton.cs" t="Include" />
               </e>
@@ -205,6 +211,19 @@
             <e p="Define" t="Include">
               <e p="Const" t="Include">
                 <e p="EncryptConst.cs" t="Include" />
+              </e>
+              <e p="Message" t="Include">
+                <e p="AppMsg_Frame_0-9999.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Dispatcher" t="Include">
+              <e p="Base" t="Include">
+                <e p="BaseDispatcher.cs" t="Include" />
+                <e p="BaseThreadDispatcher.cs" t="Include" />
+              </e>
+              <e p="Inherit" t="Include">
+                <e p="AppDispatcher.cs" t="Include" />
+                <e p="MainThreadDispatcher.cs" t="Include" />
               </e>
             </e>
             <e p="Manager" t="Include">
@@ -222,6 +241,9 @@
               </e>
               <e p="FillUtil" t="Include">
                 <e p="ClassToFillTool.cs" t="Include" />
+              </e>
+              <e p="LogUtil" t="Include">
+                <e p="LogUtil.cs" t="Include" />
               </e>
               <e p="String" t="Include">
                 <e p="StringTool.cs" t="Include" />

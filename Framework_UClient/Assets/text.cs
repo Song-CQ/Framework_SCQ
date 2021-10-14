@@ -17,12 +17,14 @@ public class text : MonoBehaviour
         ExcelDataMgr.Instance.Init();
         realtimeSinceStartupUI.text = Sheet1VOModel.Instance.GetVO(0).name[0];
         timeUI.text = CommonsStaticVO.Instance.hdaslk[0].ToString();
+      
     }
 
     private float val = 0;
     // Update is called once per frame
     void Update()
     {
+        //MainThreadDispatcher.Instance.Update();
         return;
         val += Time.deltaTime;
         if (val>=1)

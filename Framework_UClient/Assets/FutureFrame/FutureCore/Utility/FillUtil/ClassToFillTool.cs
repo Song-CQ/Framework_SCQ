@@ -54,13 +54,13 @@ namespace FutureCore
 				}
 				else 
 				{
-					Debug.Log("加载失败,该文件不存在");
+					LogUtil.Log("加载失败,该文件不存在");
 					return null;
 				}
 			}
 			catch (System.Exception)
 			{
-				Debug.LogError("加载失败");
+				LogUtil.LogError("加载失败");
 				return null;
 			}
 			
@@ -315,14 +315,14 @@ namespace FutureCore
 		{
 			string pathStr = FolderPathToPath(path) + "/" + txtName;
 			string txtStr = string.Empty;
-			Debug.Log(pathStr);
+			LogUtil.Log(pathStr);
 			try
 			{
 				txtStr = File.ReadAllText(pathStr, Encoding.UTF8);
 			}
-			catch (System.Exception)
+			catch (System.Exception e)
 			{
-			   
+				LogUtil.LogError(e);
 			}
 			
 			return txtStr;
