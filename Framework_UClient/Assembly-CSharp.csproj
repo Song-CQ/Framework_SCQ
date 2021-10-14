@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\ExcelMgr.cs" />
+     <Compile Include="Assets\_AppBase\ProjectMain\MainLauncher.cs" />
      <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\ConsoleProDebug.cs" />
      <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\ConsoleProRemoteServer.cs" />
      <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\FastBitConverter.cs" />

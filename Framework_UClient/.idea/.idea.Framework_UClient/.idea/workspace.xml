@@ -108,8 +108,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/EncryptUtil/AESEncryptUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/String/StringTool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Dispatcher/Base/BaseThreadDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/3c/47550090/RuntimeInitializeOnLoadMethodAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/02_UIFramework/UIEventListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/IMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/02_UI/Rocker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Editor/Editor/WindowEditor/03_ConfigBatTool/ConfigBatTool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Const/EncryptConst.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" root0="FORCE_HIGHLIGHTING" />
@@ -127,7 +129,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/BaseMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Pool/ObjectPool/ListPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_AppBase/ProjectMain/MainLauncher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/05_Common/TransformHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/35/7031c1d1/RuntimeInitializeLoadType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Dispatcher/Inherit/MainThreadDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/05_Common/ObjectPool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/FillUtil/ClassToFillTool.cs" root0="FORCE_HIGHLIGHTING" />
@@ -168,6 +172,7 @@
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Dispatcher/Inherit/MainThreadDispatcher.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Dispatcher/Inherit/AppDispatcher.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Message/AppMsg_Frame_0-9999.cs" />
+        <option value="$PROJECT_DIR$/Assets/_AppBase/ProjectMain/MainLauncher.cs" />
       </list>
     </option>
   </component>
@@ -229,7 +234,7 @@
       <workItem from="1633659443182" duration="13667000" />
       <workItem from="1633843174680" duration="617000" />
       <workItem from="1633867149817" duration="3259000" />
-      <workItem from="1634200400412" duration="5706000" />
+      <workItem from="1634200400412" duration="7081000" />
     </task>
     <servers />
   </component>
