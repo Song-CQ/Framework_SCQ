@@ -57,30 +57,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\ExcelMgr.cs" />
+     <Compile Include="Assets\_App\ProjectApp\App\AppFacade.cs" />
      <Compile Include="Assets\_AppBase\ProjectMain\MainLauncher.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\ConsoleProDebug.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\ConsoleProRemoteServer.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\FastBitConverter.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\INetEventListener.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NatPunchModule.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetConstants.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetDataReader.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetDataWriter.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetDebug.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetEndPoint.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetManager.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetPacket.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetPacketPool.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetPeer.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetPeerCollection.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetSerializer.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetSocket.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetThread.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NetUtils.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\NtpSyncModule.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\ReliableChannel.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\SequencedChannel.cs" />
-     <Compile Include="Assets\Framework_XL\01_Editor\ConsolePro\Remote\LiteNetLib\SimpleChannel.cs" />
      <Compile Include="Assets\Framework_XL\02_UI\Image_XL.cs" />
      <Compile Include="Assets\Framework_XL\02_UI\Rocker.cs" />
      <Compile Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.cs" />
@@ -94,8 +72,6 @@
      <Compile Include="Assets\Framework_XL\03_PESocket\PESocket.cs" />
      <Compile Include="Assets\Framework_XL\03_PESocket\PETool.cs" />
      <Compile Include="Assets\Framework_XL\03_PESocket\Properties\AssemblyInfo.cs" />
-     <Compile Include="Assets\Framework_XL\04_TimeTool\PETimer.cs" />
-     <Compile Include="Assets\Framework_XL\05_Common\InputManager.cs" />
      <Compile Include="Assets\Framework_XL\05_Common\Language.cs" />
      <Compile Include="Assets\Framework_XL\05_Common\ListTool.cs" />
      <Compile Include="Assets\Framework_XL\05_Common\MeshTool\MeshSplit.cs" />
@@ -108,22 +84,6 @@
      <Compile Include="Assets\Framework_XL\05_Common\TransformHelper.cs" />
      <Compile Include="Assets\Framework_XL\05_Common\Vector3_Tool.cs" />
      <Compile Include="Assets\Framework_XL\06_Shader\镜子\MirrorReflection.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Common\Pool\ObjectPool\ListPool.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPool.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Common\Singleton\MonoSingleton.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Define\Const\EncryptConst.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Define\Message\AppMsg_Frame_0-9999.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Dispatcher\Base\BaseDispatcher.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Dispatcher\Base\BaseThreadDispatcher.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Dispatcher\Inherit\AppDispatcher.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Dispatcher\Inherit\MainThreadDispatcher.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Manager\Base\BaseMgr.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Manager\Base\IMgr.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Manager\Mgr\ResMgr.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Utility\EncryptUtil\AESEncryptUtil.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Utility\FillUtil\ClassToFillTool.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Utility\LogUtil\LogUtil.cs" />
-     <Compile Include="Assets\FutureFrame\FutureCore\Utility\String\StringTool.cs" />
      <Compile Include="Assets\text.cs" />
      <None Include="Assets\Framework_XL\06_Shader\影子\MobileARShadow.shader" />
      <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.csproj.FileListAbsolute.txt" />
@@ -360,9 +320,6 @@
  <Reference Include="PESocket">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Framework_XL/03_PESocket/obj/Debug/PESocket.dll</HintPath>
  </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/FutureFrame/Plugins3rdLibrary/Newtonsoft.Json.13.0.1/Newtonsoft.Json.dll</HintPath>
- </Reference>
  <Reference Include="BaseVoClassLib">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/BaseVoClassLib.dll</HintPath>
  </Reference>
@@ -377,6 +334,18 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+ </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Newtonsoft.Json.13.0.1/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.7f2/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -740,9 +709,21 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{26DD20DD-D0D9-A08D-13ED-697B08DBE3B5}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="MeshEditor.Effects.RunTime.csproj">
       <Project>{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}</Project>
       <Name>MeshEditor.Effects.RunTime</Name>
+    </ProjectReference>
+    <ProjectReference Include="DOTweenPro.Scripts.csproj">
+      <Project>{307D8FAD-A19F-409D-9C0D-D54B51033E92}</Project>
+      <Name>DOTweenPro.Scripts</Name>
+    </ProjectReference>
+    <ProjectReference Include="DOTween.Modules.csproj">
+      <Project>{410B7BDF-BDE4-7F87-9C40-484262B44861}</Project>
+      <Name>DOTween.Modules</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
