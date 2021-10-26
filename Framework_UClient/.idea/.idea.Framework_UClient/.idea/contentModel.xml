@@ -181,6 +181,7 @@
                   <e p="ObjectPool" t="Include">
                     <e p="ListPool.cs" t="Include" />
                     <e p="ObjectPool.cs" t="Include" />
+                    <e p="ObjectPoolStatic.cs" t="Include" />
                   </e>
                 </e>
                 <e p="Singleton" t="Include">
@@ -237,7 +238,7 @@
                 <e p="LogUtil" t="Include">
                   <e p="LogUtil.cs" t="Include" />
                 </e>
-                <e p="String" t="Include">
+                <e p="StringUtil" t="Include">
                   <e p="StringTool.cs" t="Include" />
                 </e>
                 <e p="TimerUtil" t="Include">

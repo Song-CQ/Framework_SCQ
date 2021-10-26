@@ -115,6 +115,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Editor/Editor/WindowEditor/03_ConfigBatTool/ConfigBatTool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Editor/Editor/WindowEditor/01_FrameworkTool/FrameworkTool_Win.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/Pool/ObjectPool/ObjectPoolStatic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/清除没用的资源/FindUnusedAssets.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Manager/MonoMgr/InputMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/509C587A-3371-4222-B5E8-1666B5099AF1/3b/b3408121/GUILayoutOption.cs" root0="SKIP_HIGHLIGHTING" />
@@ -125,6 +126,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Dispatcher/Base/BaseDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Utility/LogUtil/LogUtil.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/Pool/ObjectPool/ObjectPool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Utility/TimerUtil/TimerUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_AppBase/ProjectMain/MainLauncher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/05_Common/TransformHelper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -173,13 +175,14 @@
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" />
         <option value="$PROJECT_DIR$/Assets/_AppBase/ProjectMain/MainLauncher.cs" />
         <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/TaskSequence/TaskSequence.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Manager/MonoMgr/InputMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework_XL/04_TimeTool/PETimer.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Manager/MonoMgr/TimerMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/Timer/SimpleTimer.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/Timer/PETimer.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Utility/TimerUtil/TimerUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/Pool/ObjectPool/StaticObjectPool.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/TaskSequence/TaskSequence.cs" />
       </list>
     </option>
   </component>
@@ -244,7 +247,8 @@
       <workItem from="1634200400412" duration="13024000" />
       <workItem from="1634524107536" duration="2281000" />
       <workItem from="1634542592388" duration="2752000" />
-      <workItem from="1634549720575" duration="4347000" />
+      <workItem from="1634549720575" duration="7427000" />
+      <workItem from="1634809751829" duration="7041000" />
     </task>
     <servers />
   </component>
@@ -357,9 +361,9 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="681" y="259" key="run.anything.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1634205924232" />
-    <state x="687" y="247" width="672" height="678" key="search.everywhere.popup" timestamp="1634553198769">
+    <state x="687" y="247" width="672" height="678" key="search.everywhere.popup" timestamp="1634554314909">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="687" y="247" width="672" height="678" key="search.everywhere.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1634553198769" />
+    <state x="687" y="247" width="672" height="678" key="search.everywhere.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1634554314909" />
   </component>
 </project>

@@ -58,6 +58,7 @@
   <ItemGroup>
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ListPool.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPool.cs" />
+     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPoolStatic.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Singleton\MonoSingleton.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\TaskSequence\TaskSequence.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
@@ -78,7 +79,7 @@
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\EncryptUtil\AESEncryptUtil.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\FillUtil\ClassToFillTool.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\LogUtil\LogUtil.cs" />
-     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\String\StringTool.cs" />
+     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\StringUtil\StringTool.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\TimerUtil\TimerUtil.cs" />
      <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\ver@1.0.244.txt" />
@@ -315,6 +316,18 @@
  <Reference Include="PESocket">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Framework_XL/03_PESocket/obj/Debug/PESocket.dll</HintPath>
  </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Newtonsoft.Json.13.0.1/Newtonsoft.Json.dll</HintPath>
+ </Reference>
  <Reference Include="BaseVoClassLib">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/BaseVoClassLib.dll</HintPath>
  </Reference>
@@ -329,18 +342,6 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
- </Reference>
- <Reference Include="DemiLib">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
- </Reference>
- <Reference Include="DOTween">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTween/DOTween.dll</HintPath>
- </Reference>
- <Reference Include="DOTweenPro">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Newtonsoft.Json.13.0.1/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.7f2/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -704,13 +705,13 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="MeshEditor.Effects.RunTime.csproj">
-      <Project>{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}</Project>
-      <Name>MeshEditor.Effects.RunTime</Name>
-    </ProjectReference>
     <ProjectReference Include="DOTweenPro.Scripts.csproj">
       <Project>{307D8FAD-A19F-409D-9C0D-D54B51033E92}</Project>
       <Name>DOTweenPro.Scripts</Name>
+    </ProjectReference>
+    <ProjectReference Include="MeshEditor.Effects.RunTime.csproj">
+      <Project>{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}</Project>
+      <Name>MeshEditor.Effects.RunTime</Name>
     </ProjectReference>
     <ProjectReference Include="DOTween.Modules.csproj">
       <Project>{410B7BDF-BDE4-7F87-9C40-484262B44861}</Project>

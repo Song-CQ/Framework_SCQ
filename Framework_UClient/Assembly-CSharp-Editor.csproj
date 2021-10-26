@@ -334,6 +334,39 @@
  <Reference Include="PESocket">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Framework_XL/03_PESocket/obj/Debug/PESocket.dll</HintPath>
  </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DemiEditor">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenEditor">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenProEditor">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Newtonsoft.Json.13.0.1/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="ConsoleE">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Standard Assets/EditorStore3rdLibrary/Editor/ConsoleE/Editor/ConsoleE.dll</HintPath>
+ </Reference>
+ <Reference Include="ConsolePro.Editor">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Standard Assets/EditorStore3rdLibrary/Editor/ConsolePro/Editor/ConsolePro.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="RainbowCore">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Standard Assets/EditorStore3rdLibrary/Editor/RainbowAssets/!Core/Assemblies/RainbowCore.dll</HintPath>
+ </Reference>
+ <Reference Include="RainbowFolders">
+ <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Standard Assets/EditorStore3rdLibrary/Editor/RainbowAssets/RainbowFolders/Editor/Assemblies/RainbowFolders.dll</HintPath>
+ </Reference>
  <Reference Include="BaseVoClassLib">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_App/AutoCreator/ExcelClass_AutoCreator/BaseVoClassLib.dll</HintPath>
  </Reference>
@@ -354,39 +387,6 @@
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="DOTweenEditor">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
- </Reference>
- <Reference Include="DOTweenProEditor">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
- </Reference>
- <Reference Include="DemiLib">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
- </Reference>
- <Reference Include="DOTween">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTween/DOTween.dll</HintPath>
- </Reference>
- <Reference Include="DemiEditor">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
- </Reference>
- <Reference Include="DOTweenPro">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Plugins/Plugins3rdLibrary/Newtonsoft.Json.13.0.1/Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="ConsoleE">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Standard Assets/EditorStore3rdLibrary/Editor/ConsoleE/Editor/ConsoleE.dll</HintPath>
- </Reference>
- <Reference Include="ConsolePro.Editor">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Standard Assets/EditorStore3rdLibrary/Editor/ConsolePro/Editor/ConsolePro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="RainbowFolders">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Standard Assets/EditorStore3rdLibrary/Editor/RainbowAssets/RainbowFolders/Editor/Assemblies/RainbowFolders.dll</HintPath>
- </Reference>
- <Reference Include="RainbowCore">
- <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/Standard Assets/EditorStore3rdLibrary/Editor/RainbowAssets/!Core/Assemblies/RainbowCore.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>E:/UnityPro/Framework_SCQ/Framework_UClient/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -765,13 +765,13 @@
       <Project>{A0BDFF35-4D00-0406-DEF6-953389E81A92}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
-    <ProjectReference Include="MeshEditor.Effects.RunTime.csproj">
-      <Project>{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}</Project>
-      <Name>MeshEditor.Effects.RunTime</Name>
-    </ProjectReference>
     <ProjectReference Include="DOTweenPro.Scripts.csproj">
       <Project>{307D8FAD-A19F-409D-9C0D-D54B51033E92}</Project>
       <Name>DOTweenPro.Scripts</Name>
+    </ProjectReference>
+    <ProjectReference Include="MeshEditor.Effects.RunTime.csproj">
+      <Project>{5C8B3840-0E63-AC96-6FCC-960121FAC5A3}</Project>
+      <Name>MeshEditor.Effects.RunTime</Name>
     </ProjectReference>
     <ProjectReference Include="DOTween.Modules.csproj">
       <Project>{410B7BDF-BDE4-7F87-9C40-484262B44861}</Project>
