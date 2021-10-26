@@ -123,6 +123,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/清除没用的资源/AssetCollector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/自动打包库/GenerateUnityPackageName.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Manager/MonoMgr/TimerMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/03_PESocket/PESession.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Dispatcher/Base/BaseDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Utility/LogUtil/LogUtil.cs" root0="FORCE_HIGHLIGHTING" />
@@ -249,6 +250,7 @@
       <workItem from="1634542592388" duration="2752000" />
       <workItem from="1634549720575" duration="7427000" />
       <workItem from="1634809751829" duration="7041000" />
+      <workItem from="1635214634211" duration="1412000" />
     </task>
     <servers />
   </component>

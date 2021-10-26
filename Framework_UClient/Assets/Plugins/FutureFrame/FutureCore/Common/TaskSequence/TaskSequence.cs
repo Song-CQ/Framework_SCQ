@@ -14,8 +14,6 @@ namespace FutureCore
         private List<TaskProcedure> taskList;
         private bool isCancel = false;
         
-        
-        
         public TaskSequence Add(Action<TaskProcedure> taskFunc)
         {
             TaskProcedure taskProcedure = ObjectPoolStatic<TaskProcedure>.Get();
@@ -127,7 +125,6 @@ namespace FutureCore
             Clear();
             return this;
         }
-
         
         /// <summary>
         /// 任务步骤
@@ -142,12 +139,14 @@ namespace FutureCore
             {
                 onComplete?.Invoke();
             }
-
+            public void DelayInvokeComplete(float delayTime)
+            {
+                TimerUtil.Simple.AddTimer(delayTime, InvokeComplete);
+            }
             public void TaskFunc()
             {
                 onTaskFunc?.Invoke(this);
             }
-
             public void Dispose()
             {
                 taskSequence = null;
@@ -155,7 +154,7 @@ namespace FutureCore
                 onTaskFunc = null;
             }
            
-          
+            
         }
         
     }
