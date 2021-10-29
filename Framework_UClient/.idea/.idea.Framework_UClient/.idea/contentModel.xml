@@ -215,6 +215,9 @@
                   <e p="MainThreadDispatcher.cs" t="Include" />
                 </e>
               </e>
+              <e p="Engine" t="Include">
+                <e p="EngineEventSystem.cs" t="Include" />
+              </e>
               <e p="Extend" t="Include">
                 <e p="Engine" t="Include">
                   <e p="GameObjectExtend.cs" t="Include" />

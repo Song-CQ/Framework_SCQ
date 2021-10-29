@@ -25,8 +25,10 @@ namespace FuturePlugin
 
         private void Launcher()
         {
-           // throw new NotImplementedException();
-           appMainFunc?.Invoke();
+            GameObject engineEventSystemGo = new GameObject("[EngineEventSystem]");
+            engineEventSystemGo.AddComponent<EngineEventSystem>();
+            engineEventSystemGo.transform.SetParent(FutureFrame.Instance.transform, false);
+            LogUtil.Log("[EngineLauncher]Launcher EngineEventSystem");
         }
 
         private void InitAssistSetting()

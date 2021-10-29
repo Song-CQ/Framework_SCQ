@@ -71,6 +71,7 @@
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Base\BaseThreadDispatcher.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\AppDispatcher.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\MainThreadDispatcher.cs" />
+     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Engine\EngineEventSystem.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Extend\Engine\GameObjectExtend.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Extend\System\StringExtend.cs" />
      <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\BaseMgr.cs" />
