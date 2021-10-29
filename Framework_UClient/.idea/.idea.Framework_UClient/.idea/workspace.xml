@@ -106,10 +106,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/GameObjectTool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/8c/77ae7ab3/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/CopyComponentTool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/96/987b1a8c/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/TaskSequence/TaskSequence.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/3c/47550090/RuntimeInitializeOnLoadMethodAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/02_UIFramework/UIWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_App/ProjectApp/App/AppFacade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/02_UIFramework/UIEventListener.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FuturePlugin/Launcher/EngineLauncher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FuturePlugin/FutureFrame/FutureFrame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/Timer/SimpleTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/02_UI/Rocker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Editor/Editor/WindowEditor/03_ConfigBatTool/ConfigBatTool.cs" root0="FORCE_HIGHLIGHTING" />
@@ -123,27 +127,28 @@
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/清除没用的资源/AssetCollector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/01_Editor/Editor/自动打包库/GenerateUnityPackageName.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Manager/MonoMgr/TimerMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FuturePlugin/Utility/Unity3dUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/03_PESocket/PESession.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Plugins3rdLibrary/Unity-Logs-Viewer-master/Reporter/Reporter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Dispatcher/Base/BaseDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/text.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Define/Const/AppObjConst.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Utility/LogUtil/LogUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/Pool/ObjectPool/ObjectPool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Utility/TimerUtil/TimerUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_AppBase/ProjectMain/MainLauncher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Extend/Engine/GameObjectExtend.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/05_Common/TransformHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Extend/System/StringExtend.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/35/7031c1d1/RuntimeInitializeLoadType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Manager/Base/BaseMonoMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Framework_XL/05_Common/ObjectPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FutureFrame/FuturePlugin/Define/Const/LauncherConst.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/509C587A-3371-4222-B5E8-1666B5099AF1/80/50e539a9/GUILayout.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet1VO_AutoCreate/Sheet1ModelVO.cs" />
-        <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/Sheet_gVO_AutoCreate/Sheet_gModelVO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Framework_XL/UIFramework/UIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/IMgr.cs" />
-        <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/BaseMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/CommonsStaticVO_AutoCreate/CommonsStaticVO.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Utility/EncryptUtil/AESEncryptUtil.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Const/EncryptConst.cs" />
@@ -170,11 +175,9 @@
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Dispatcher/Inherit/AppDispatcher.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Message/AppMsg_Frame_0-9999.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Define/Const/AppConst.cs" />
-        <option value="$PROJECT_DIR$/Assets/_App/ProjectApp/App/AppFacade.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/Base/BaseMonoMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Manager/MonoMgr/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/FutureFrame/FutureCore/Common/Singleton/MonoSingleton.cs" />
-        <option value="$PROJECT_DIR$/Assets/_AppBase/ProjectMain/MainLauncher.cs" />
         <option value="$PROJECT_DIR$/Assets/_App/AutoCreator/ExcelClass_AutoCreator/ExcelMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Manager/MonoMgr/InputMgr.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework_XL/04_TimeTool/PETimer.cs" />
@@ -184,6 +187,19 @@
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Utility/TimerUtil/TimerUtil.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/Pool/ObjectPool/StaticObjectPool.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Common/TaskSequence/TaskSequence.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Define/Const/AppObjConst.cs" />
+        <option value="$PROJECT_DIR$/Assets/_App/ProjectApp/App/AppFacade.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FuturePlugin/FutureFrame/FutureFrame.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FuturePlugin/Utility/Unity3dUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/UnityFileDebug/Demo/Tester.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FuturePlugin/Define/Const/LauncherConst.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Extend/Engine/GameObjectExtend.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Extend/System/StringColorExtend.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Extend/System/StringTool.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Extend/System/StringExtend.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FuturePlugin/Launcher/EngineLauncher.cs" />
+        <option value="$PROJECT_DIR$/Assets/_AppBase/ProjectMain/MainLauncher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/FutureFrame/FutureCore/Utility/LogUtil/LogUtil.cs" />
       </list>
     </option>
   </component>
@@ -207,6 +223,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="con" />
+    </option>
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -250,7 +271,11 @@
       <workItem from="1634542592388" duration="2752000" />
       <workItem from="1634549720575" duration="7427000" />
       <workItem from="1634809751829" duration="7041000" />
-      <workItem from="1635214634211" duration="1412000" />
+      <workItem from="1635214634211" duration="2714000" />
+      <workItem from="1635401560862" duration="109000" />
+      <workItem from="1635401769673" duration="13000" />
+      <workItem from="1635402001671" duration="3413000" />
+      <workItem from="1635407823691" duration="4965000" />
     </task>
     <servers />
   </component>
@@ -359,10 +384,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1633866962703" />
-    <state x="681" y="259" key="run.anything.popup" timestamp="1634205924232">
+    <state x="681" y="259" key="run.anything.popup" timestamp="1635408595814">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="681" y="259" key="run.anything.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1634205924232" />
+    <state x="681" y="259" key="run.anything.popup/2560.196.1920.1030/0.0.2048.1112@0.0.2048.1112" timestamp="1635408595814" />
     <state x="687" y="247" width="672" height="678" key="search.everywhere.popup" timestamp="1634554314909">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

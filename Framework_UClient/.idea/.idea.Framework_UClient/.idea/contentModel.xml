@@ -198,6 +198,7 @@
               <e p="Define" t="Include">
                 <e p="Const" t="Include">
                   <e p="AppConst.cs" t="Include" />
+                  <e p="AppObjConst.cs" t="Include" />
                   <e p="EncryptConst.cs" t="Include" />
                 </e>
                 <e p="Message" t="Include">
@@ -212,6 +213,14 @@
                 <e p="Inherit" t="Include">
                   <e p="AppDispatcher.cs" t="Include" />
                   <e p="MainThreadDispatcher.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Extend" t="Include">
+                <e p="Engine" t="Include">
+                  <e p="GameObjectExtend.cs" t="Include" />
+                </e>
+                <e p="System" t="Include">
+                  <e p="StringExtend.cs" t="Include" />
                 </e>
               </e>
               <e p="Manager" t="Include">
@@ -238,12 +247,25 @@
                 <e p="LogUtil" t="Include">
                   <e p="LogUtil.cs" t="Include" />
                 </e>
-                <e p="StringUtil" t="Include">
-                  <e p="StringTool.cs" t="Include" />
-                </e>
                 <e p="TimerUtil" t="Include">
                   <e p="TimerUtil.cs" t="Include" />
                 </e>
+              </e>
+            </e>
+            <e p="FuturePlugin" t="Include">
+              <e p="Define" t="Include">
+                <e p="Const" t="Include">
+                  <e p="LauncherConst.cs" t="Include" />
+                </e>
+              </e>
+              <e p="FutureFrame" t="Include">
+                <e p="FutureFrame.cs" t="Include" />
+              </e>
+              <e p="Launcher" t="Include">
+                <e p="EngineLauncher.cs" t="Include" />
+              </e>
+              <e p="Utility" t="Include">
+                <e p="Unity3dUtil.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -284,6 +306,21 @@
               </e>
               <e p="readme_DOTweenPro.txt" t="Include" />
               <e p="ver@1.0.244.txt" t="Include" />
+            </e>
+            <e p="Unity-Logs-Viewer-master" t="Include">
+              <e p="Reporter" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="ReporterEditor.cs" t="Include" />
+                </e>
+                <e p="MultiKeyDictionary.cs" t="Include" />
+                <e p="Reporter.cs" t="Include" />
+                <e p="ReporterGUI.cs" t="Include" />
+                <e p="ReporterMessageReceiver.cs" t="Include" />
+                <e p="Test" t="Include">
+                  <e p="Rotate.cs" t="Include" />
+                  <e p="TestReporter.cs" t="Include" />
+                </e>
+              </e>
             </e>
           </e>
         </e>

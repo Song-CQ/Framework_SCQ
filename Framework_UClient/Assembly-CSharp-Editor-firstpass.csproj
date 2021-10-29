@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\Plugins3rdLibrary\Unity-Logs-Viewer-master\Reporter\Editor\ReporterEditor.cs" />
      <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\ConsoleProDebug.cs" />
      <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\ConsoleProRemoteServer.cs" />
      <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\FastBitConverter.cs" />

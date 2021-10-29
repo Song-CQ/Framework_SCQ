@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace FutureCore
 {
-    public static class StringTool
+    
+    public static class StringExtend
     {
         #region ColorText
-
         public enum ColorType
         {
             White = 0,
@@ -36,7 +36,6 @@ namespace FutureCore
             绿黄,
             灰色,
         }
-
         public static string AddColor(this string str, ColorType color)
         {
             string _str = str;
@@ -130,37 +129,6 @@ namespace FutureCore
             }
 
             return _str;
-        }
-
-        public static Color TypeToColor(ColorType Type)
-        {
-            string ColorStr = TypeToString(Type);
-            try
-            {
-                Color nowColor;
-                ColorUtility.TryParseHtmlString(ColorStr, out nowColor);
-                return nowColor;
-                //float R=0, G=0, B=0;
-                //char[] RGB;
-                //if (ColorStr.Contains("#"))
-                //{
-                //    ColorStr = ColorStr.Replace("#","");
-                //}
-                //ColorStr = Regex.Replace(ColorStr.ToLower(),"g-zG-Z","");
-
-                //if (ColorStr.Length == 6)
-                //{
-                //    RGB = ColorStr.ToCharArray();
-                //    R = Convert.ToInt32(RGB[0].ToString()+RGB[1].ToString(),16);
-                //    G = Convert.ToInt32(RGB[2].ToString()+RGB[3].ToString(),16);
-                //    B = Convert.ToInt32(RGB[4].ToString()+RGB[5].ToString(),16);
-                //}
-                //return new Color(R / 255, G / 255,B / 255);
-            }
-            catch (System.Exception)
-            {
-                return new Color();
-            }
         }
 
         #endregion
