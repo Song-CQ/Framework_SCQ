@@ -13,5 +13,14 @@ namespace FutureCore
             return data;
         }
 
+       
+
+        #region SyncLoad
+        public T SyncLoad<T>(string assetPath) where T : Object
+        {
+            T asset = Resources.Load<T>(assetPath);
+            return asset;
+        }
+        #endregion
     }
 }

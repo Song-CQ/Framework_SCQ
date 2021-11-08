@@ -7,10 +7,12 @@ namespace FutureCore
     public class ObjectPool<T>:IDisposable where T : new()
     {
         private Stack<T> m_Stack = new Stack<T>();
-
+        private List<T> m_List = new List<T>();
+        
         private Func<T> m_FuncOnNew;
         private Action<T> m_ActionOnGet;
         private Action<T> m_ActionOnRelease;
+       
 
         public int CountAll { get; private set; }
         public int CountInactive { get { return m_Stack.Count; } }
@@ -47,6 +49,7 @@ namespace FutureCore
                 { 
                     obj = new T();
                 }
+                m_List.Add(obj);
             }
             else
             {
@@ -69,9 +72,26 @@ namespace FutureCore
             }
         }
 
+        public void ReleaseAll()
+        {
+            foreach (var item in m_List)
+            {
+                if (!m_Stack.Contains(item))
+                {
+                    Release(item);
+                }
+            }
+        }
+        
+        public bool Contains(T item)
+        {
+           return m_List.Contains(item);
+        }
+
         public void Clear()
         {
             m_Stack.Clear();
+            m_List.Clear();
         }
 
         public void Dispose()

@@ -29,6 +29,29 @@ namespace FuturePlugin
             engineEventSystemGo.AddComponent<EngineEventSystem>();
             engineEventSystemGo.transform.SetParent(FutureFrame.Instance.transform, false);
             LogUtil.Log("[EngineLauncher]Launcher EngineEventSystem");
+            StartLauncher();
+        }
+
+        private void StartLauncher()
+        {
+            ParseAppInfo();
+            EnterAppmain();
+        }
+
+        /// <summary>
+        /// 设项目信息
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        private void ParseAppInfo()
+        {
+            AppInfoParser.Init();
+            LogUtil.Log($"[EngineLauncher]ParseAppInfo Time:{Time.unscaledTime}");
+        }
+
+        private void EnterAppmain()
+        {
+            appMainFunc?.Invoke();
+            appMainFunc = null;
         }
 
         private void InitAssistSetting()

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Framework_UClient.-569466755.00" t="ExcludeRecursive" />
-    <e p="E:\UnityPro\Framework_SCQ\Framework_UClient" t="IncludeRecursive">
+    <e p="C:\Users\Song-\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Framework_UClient.-1873860484.00" t="ExcludeRecursive" />
+    <e p="D:\UnityPro\Framework_SCQ\Framework_UClient" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -179,6 +179,7 @@
               <e p="Common" t="Include">
                 <e p="Pool" t="Include">
                   <e p="ObjectPool" t="Include">
+                    <e p="GObjectsPool.cs" t="Include" />
                     <e p="ListPool.cs" t="Include" />
                     <e p="ObjectPool.cs" t="Include" />
                     <e p="ObjectPoolStatic.cs" t="Include" />
@@ -266,6 +267,9 @@
               </e>
               <e p="Launcher" t="Include">
                 <e p="EngineLauncher.cs" t="Include" />
+              </e>
+              <e p="Parser" t="Include">
+                <e p="AppInfoParser.cs" t="Include" />
               </e>
               <e p="Utility" t="Include">
                 <e p="Unity3dUtil.cs" t="Include" />

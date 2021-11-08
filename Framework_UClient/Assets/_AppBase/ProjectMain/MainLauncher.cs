@@ -33,7 +33,7 @@ namespace ProjectApp.App
             LogUtil.Log("[MainLauncher]Main".AddColor(StringExtend.ColorType.Green));
 
             // 版本检测
-            if (!Application.unityVersion.StartsWith("2019.2"))
+            if (!Application.unityVersion.StartsWith("2019.4.32f"))
             {
                 LogUtil.Log("[MainLauncher]UnityVersion mismatching".AddColor(StringExtend.ColorType.亮黄色));
             }

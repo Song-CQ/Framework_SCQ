@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "da2b38b4-be39-1544-b2fb-0b912e8c4fc5": {
+      "ProjectGuid": "da2b38b4-be39-1544-b2fb-0b912e8c4fc5",
+      "DisplayName": "Assembly-CSharp",
+      "ColorIndex": 0
+    },
+    "35ffbda0-004d-0604-def6-953389e81a92": {
+      "ProjectGuid": "35ffbda0-004d-0604-def6-953389e81a92",
+      "DisplayName": "Assembly-CSharp-Editor-firstpass",
+      "ColorIndex": 1
+    },
+    "df7b0b41-e4bd-877f-9c40-484262b44861": {
+      "ProjectGuid": "df7b0b41-e4bd-877f-9c40-484262b44861",
+      "DisplayName": "DOTween.Modules",
+      "ColorIndex": 2
+    },
+    "ad8f7d30-9fa1-9d40-9c0d-d54b51033e92": {
+      "ProjectGuid": "ad8f7d30-9fa1-9d40-9c0d-d54b51033e92",
+      "DisplayName": "DOTweenPro.Scripts",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 4
+}

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.Text;
 using ProjectApp.Data;
 using FutureCore;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace ProjectApp
 {
@@ -64,6 +64,9 @@ namespace ProjectApp
             excelDataStrDic.Add(typeof(T),vos);
         }
         
+        
+        
+
         private T GetStaticExcalData<T>(string tableName) where T : new()
         {
             TextAsset textAsset = ResMgr.Instance.GetExcelData(@"StaticExcelData\"+tableName + "_StaticData");
@@ -79,8 +82,10 @@ namespace ProjectApp
                 {
                     val = textAsset.text;
                 }
+              
                 vo = JsonConvert.DeserializeObject<T>(val);
-            }else
+            }
+            else
             {
                 Debug.LogError("未找到表:"+tableName+"的数据");
             }
