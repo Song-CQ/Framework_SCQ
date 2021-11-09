@@ -13,3 +13,12 @@ E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\bin\Debug\BaseVoClassLib.pdb
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe.config
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe
 E:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.pdb
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe.config
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.pdb
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.csproj.AssemblyReference.cache
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.csproj.SuggestedBindingRedirects.cache
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.csproj.CoreCompileInputs.cache
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.csproj.CopyComplete
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.exe
+D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Project\obj\Debug\ExcelTool.pdb

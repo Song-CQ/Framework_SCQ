@@ -61,6 +61,7 @@ namespace ExcelTool
             StringColor.WriteLine("*****************************", ConsoleColor.Yellow);
             Console.WriteLine("按任意键关闭");
             Console.ReadKey();
+            Environment.Exit(0);
         }
 
         private static void Init()

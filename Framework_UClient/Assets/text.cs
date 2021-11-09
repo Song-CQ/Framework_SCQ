@@ -6,7 +6,6 @@ using ProjectApp;
 using ProjectApp.Data;
 using UnityEngine;
 using UnityEngine.UI;
-using ProjectApp.Data;
 using UnityEngine.Networking;
 
 public class text : MonoBehaviour

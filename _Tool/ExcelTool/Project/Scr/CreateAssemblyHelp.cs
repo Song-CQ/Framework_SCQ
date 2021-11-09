@@ -522,7 +522,7 @@ namespace ExcelTool
             mgrTempLate = mgrTempLate.Replace("#SetDataToDic",setDataToDic);
             mgrTempLate = mgrTempLate.Replace("#Init",init);
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
-            WriteIn2Cs(MainMgr.Instance.OutClassPath,"ExcelMgr",mgrTempLate);
+            WriteIn2Cs(MainMgr.Instance.OutClassPath, "ExcelMgr_AudioCreator", mgrTempLate);
         }
         
         /// <summary>

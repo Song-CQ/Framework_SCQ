@@ -42,6 +42,15 @@ namespace ExcelTool
         }
         private string currentDirectory;
 
+        public string FrameworkDirectory
+        {
+            get
+            {
+                string temp = CurrentDirectory.Substring(0, CurrentDirectory.IndexOf("Framework_SCQ")+13);
+                return temp;
+            }
+        }
+
 
         public void Init(System.Threading.Tasks.Task task)
         {
@@ -163,17 +172,17 @@ namespace ExcelTool
                     {
                         if (line.Contains(_read))
                         {
-                            ReadExcelPath = line.Replace(_read, String.Empty);
+                            ReadExcelPath = FrameworkDirectory +@"\"+ line.Replace(_read, String.Empty);
                             continue;
                         }
                         if (line.Contains(_write_Class))
                         {
-                            OutClassPath = line.Replace(_write_Class, String.Empty);
+                            OutClassPath = FrameworkDirectory + @"\" + line.Replace(_write_Class, String.Empty);
                             continue;
                         }
                         if (line.Contains(_write_Data))
                         {
-                            OutDataPath = line.Replace(_write_Data, String.Empty);
+                            OutDataPath = FrameworkDirectory + @"\" + line.Replace(_write_Data, String.Empty);
                             continue;
                         }
                     }

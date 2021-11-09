@@ -25,7 +25,17 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "杂项文件",
       "ColorIndex": -1
+    },
+    "b4382bda-39be-4415-b2fb-0b912e8c4fc5": {
+      "ProjectGuid": "b4382bda-39be-4415-b2fb-0b912e8c4fc5",
+      "DisplayName": "Assembly-CSharp",
+      "ColorIndex": 4
+    },
+    "dd20dd26-d9d0-8da0-13ed-697b08dbe3b5": {
+      "ProjectGuid": "dd20dd26-d9d0-8da0-13ed-697b08dbe3b5",
+      "DisplayName": "Assembly-CSharp-firstpass",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 6
 }
