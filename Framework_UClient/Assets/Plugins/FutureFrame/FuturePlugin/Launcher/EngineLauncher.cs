@@ -54,6 +54,9 @@ namespace FuturePlugin
             appMainFunc = null;
         }
 
+        /// <summary>
+        /// InitLog
+        /// </summary>
         private void InitAssistSetting()
         {
             LogUtil.EnableLog(LauncherConst.IsEnabledDebugLog);

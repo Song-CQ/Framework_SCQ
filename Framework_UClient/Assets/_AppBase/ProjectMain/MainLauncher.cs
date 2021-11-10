@@ -7,7 +7,7 @@ using FuturePlugin;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ProjectApp.App
+namespace ProjectApp
 {
     public static class MainLauncher
     {
@@ -22,7 +22,7 @@ namespace ProjectApp.App
             if (!IsAutoLauncher) return;
             if (SceneManager.GetActiveScene().name != MainScene) return;
 
-            LogUtil.Log("[MainLauncher]SceneMain".AddColor(StringExtend.ColorType.Green));
+            LogUtil.Log("[MainLauncher]SceneMain".AddColor(ColorType.Green));
             Main();
         }
         
@@ -30,12 +30,12 @@ namespace ProjectApp.App
         {
             if (IsInMain) return;
 
-            LogUtil.Log("[MainLauncher]Main".AddColor(StringExtend.ColorType.Green));
+            LogUtil.Log("[MainLauncher]Main".AddColor(ColorType.Green));
 
             // 版本检测
             if (!Application.unityVersion.StartsWith("2019.4.32f"))
             {
-                LogUtil.Log("[MainLauncher]UnityVersion mismatching".AddColor(StringExtend.ColorType.亮黄色));
+                LogUtil.Log("[MainLauncher]UnityVersion mismatching".AddColor(ColorType.亮黄色));
             }
 
             // 进入框架程序
@@ -63,11 +63,11 @@ namespace ProjectApp.App
         }
         private static void AppMain()
         {
-            return;
+            //启动项目层
             Assembly appAssembly = Assembly.GetExecutingAssembly();
             Type appMainClass = appAssembly.GetType("ProjectApp.Main.AppMain");
             MethodInfo mainFunc = appMainClass.GetMethod("Main", BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Static);
-            mainFunc.Invoke(null, null);
+            mainFunc.Invoke(null,null);
          
         }
     }

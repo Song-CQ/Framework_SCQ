@@ -155,11 +155,14 @@ namespace ExcelTool
             }
             //创建表数据管理器类
             CreateDataModeMgrToClass(allStaticVO,allModel);
+            //创建打表Version
+            CreateVOVersionToClass();
             //将所有类写入程序集
             Assembly assembly = WriteInAssembly(allClassname,allClassval);
             
             return assembly; 
         }
+        
 
         private static string ParsingStaticHeaders(ExcelData data)
         {
@@ -455,9 +458,9 @@ namespace ExcelTool
                 for (int i = 0; i < allClassName.Count; i++)
                 {
                     string dir = GetClassNameDir(allClassName[i]);
-                    WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
+                    WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\VOClass\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                 }
-                CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll");
+                CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll", MainMgr.Instance.OutClassPath+@"\VODll");
                 StringColor.WriteLine("编译程序集失败");
                 
                 Thread.CurrentThread.Abort();
@@ -470,19 +473,19 @@ namespace ExcelTool
                 if (cp.GenerateInMemory)
                 {
                     StringColor.WriteLine("生成Dll成功",ConsoleColor.Green);
-                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll");
-                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory+@"\VoClassLib.dll",true);
+                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll", MainMgr.Instance.OutClassPath + @"\VODll");
+                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory+@"\VoClassLib.dll",MainMgr.Instance.OutClassPath + @"\VODll", true);
                     FileInfo fieldInfo = new FileInfo(MainMgr.Instance.CurrentDirectory+@"\VoClassLib.pdb");
                     fieldInfo.Delete();
                 }
                 else
                 {
-                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll");
+                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll",MainMgr.Instance.OutClassPath + @"\VODll");
                     for (int i = 0; i < allClassName.Count; i++)
                     {
                         string dir = GetClassNameDir(allClassName[i]);
                       
-                        WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
+                        WriteIn2Cs(MainMgr.Instance.OutClassPath+ @"\VOClass\" + dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                     }
                 }
             }
@@ -494,9 +497,31 @@ namespace ExcelTool
             string dir = name.Replace("VO", String.Empty);
             dir = dir.Replace("Model", String.Empty);
             dir = dir.Replace("StaticKey", String.Empty);
+            if (name.Contains("StaticVO"))
+            {
+                dir = @"StaticVO\" + dir;
+            }
+            else 
+            {
+                dir = @"VO\" + dir;
+            }
             return dir;
         }
 
+        /// <summary>
+        /// 创建打表Version
+        /// </summary>
+        private static void CreateVOVersionToClass()
+        {
+            string val = GetTemplateClass("ExcelTool.Data.VersionTemplate.cs");
+            val = val.Replace("#Time",DateTime.Now.ToString("yyyyMMddHHmmss"));
+            WriteIn2Cs(MainMgr.Instance.OutClassPath+ @"\VOVersion", "ConfigVOVersion_AutoCreator", val);
+        }
+        /// <summary>
+        /// 创建表格管理器
+        /// </summary>
+        /// <param name="allStaticVo"></param>
+        /// <param name="allModel"></param>
         private static void CreateDataModeMgrToClass(List<string> allStaticVo, List<string> allModel)
         {
             string setStaticDataToDic = string.Empty;
@@ -522,20 +547,21 @@ namespace ExcelTool
             mgrTempLate = mgrTempLate.Replace("#SetDataToDic",setDataToDic);
             mgrTempLate = mgrTempLate.Replace("#Init",init);
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
-            WriteIn2Cs(MainMgr.Instance.OutClassPath, "ExcelMgr_AudioCreator", mgrTempLate);
+            WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\VOMgr", "ExcelMgr_AudioCreator", mgrTempLate);
         }
         
         /// <summary>
         /// 拷贝文件
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="CopyPath"></param>
         /// <param name="isDel">是否删除原本文件</param>
-        private static void CopyFileToOutClass(string path,bool isDel=false)
+        private static void CopyFileToOutClass(string CopyPath,string toPath,bool isDel=false)
         {
             try
             {
-                FileInfo fieldInfo = new FileInfo(path);
-                fieldInfo.CopyTo(MainMgr.Instance.OutClassPath + @"\"+ fieldInfo.Name);
+                FileInfo fieldInfo = new FileInfo(CopyPath);
+                DirectoryInfo infor = Directory.CreateDirectory(toPath);
+                fieldInfo.CopyTo(infor.FullName + @"\"+ fieldInfo.Name);
                 if (isDel)
                 {
                     fieldInfo.Delete();
@@ -550,8 +576,8 @@ namespace ExcelTool
         }
         private static void WriteIn2Cs(string dirInfo,string name,string val)
         {
-            DirectoryInfo infor  = Directory.CreateDirectory(dirInfo);
-            using( System.IO.StreamWriter file = new System.IO.StreamWriter( infor.FullName+@"\"+name+".cs"))
+            DirectoryInfo infor = Directory.CreateDirectory(dirInfo);
+            using( System.IO.StreamWriter file = new System.IO.StreamWriter(infor.FullName+@"\"+name+".cs"))
             {
                 file.Write(val);
                 Console.WriteLine("生成类文件成功:"+name+".cs");

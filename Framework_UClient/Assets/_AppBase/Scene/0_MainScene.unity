@@ -228,6 +228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   realtimeSinceStartupUI: {fileID: 622697933}
   timeUI: {fileID: 1035623181}
+  imgtest1: {fileID: 1194092141}
+  imgtest2: {fileID: 1485115216}
 --- !u!1 &622697931
 GameObject:
   m_ObjectHideFlags: 0

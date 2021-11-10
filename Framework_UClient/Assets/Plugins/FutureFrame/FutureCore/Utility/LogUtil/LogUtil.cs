@@ -8,7 +8,6 @@ public static class LogUtil
 
     public static void Log(object e)
     {
-       
         Debug.Log(e);
     } 
     public static void Log(object e, Object context)

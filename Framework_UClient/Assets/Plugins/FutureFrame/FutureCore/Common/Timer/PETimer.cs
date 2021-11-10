@@ -636,6 +636,15 @@ namespace FutureCore
         {
             return GetUCTMilliseconds();
         }
+        
+        /// <summary>
+        /// 获取当前时间（秒）
+        /// </summary>
+        /// <returns></returns>
+        public double GetSeconds()
+        {
+            return GetUCTSeconds();
+        }
 
         /// <summary>
         /// 获取当前时间（字符）
@@ -649,12 +658,20 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// 获取当前时间
+        /// 获取当前时间(毫秒)
         /// </summary>
         private double GetUCTMilliseconds()
         {
             TimeSpan span = DateTime.UtcNow - startDataTime;
-            return span.TotalMilliseconds;
+            return span.TotalMilliseconds;   
+        }
+        /// <summary>
+        /// 获取当前时间（秒）
+        /// </summary>
+        private double GetUCTSeconds()
+        {
+            TimeSpan span = DateTime.UtcNow - startDataTime;
+            return span.TotalSeconds;   
         }
 
         private string GetTimeStr(int time)

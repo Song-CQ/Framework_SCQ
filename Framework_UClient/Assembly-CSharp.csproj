@@ -78,18 +78,23 @@
     <Compile Include="Assets\Framework_XL\05_Common\TransformHelper.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\Vector3_Tool.cs" />
     <Compile Include="Assets\Framework_XL\06_Shader\镜子\MirrorReflection.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\ExcelMgr_AudioCreator.cs" />
+    <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VOMgr\ExcelMgr_AudioCreator.cs" />
+    <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VOVersion\ConfigVOVersion_AutoCreator.cs" />
     <Compile Include="Assets\_App\ProjectApp\App\AppFacade.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppFacadeRedirection.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppMain.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppRedirection.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\App\ProjectApplication.cs" />
     <Compile Include="Assets\_AppBase\ProjectMain\MainLauncher.cs" />
     <Compile Include="Assets\text.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VoClassLib.dll" />
-    <None Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\BaseVoClassLib.dll" />
+    <None Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll" />
     <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll" />
     <None Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.shader" />
     <None Include="Assets\Framework_XL\06_Shader\影子\MobileARShadow.shader" />
     <None Include="Assets\Framework_XL\06_Shader\镜子\Mirror.shader" />
+    <None Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll" />
     <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.csproj.FileListAbsolute.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -285,12 +290,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\BaseVoClassLib.dll</HintPath>
-    </Reference>
-    <Reference Include="VoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VoClassLib.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -299,6 +298,12 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseVoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

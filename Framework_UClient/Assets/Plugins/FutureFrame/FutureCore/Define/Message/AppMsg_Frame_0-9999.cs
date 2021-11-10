@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace FutureCore
 {
     /// <summary>
@@ -27,8 +23,10 @@ namespace FutureCore
         public static readonly uint App_GamePause = ++Cursor_BASE;
         // 应用游戏恢复
         public static readonly uint App_GameResume = ++Cursor_BASE;
-        
-        
-        
+
+        //按下Home键
+        public static readonly uint KeyCode_Home = ++Cursor_BASE;
+        //按下退出键
+        public static readonly uint KeyCode_Escape = ++Cursor_BASE;
     }
 }
