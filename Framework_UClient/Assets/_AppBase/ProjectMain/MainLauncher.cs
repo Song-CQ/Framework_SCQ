@@ -18,11 +18,12 @@ namespace ProjectApp
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void SceneMain()
-        {               
+        {
             if (!IsAutoLauncher) return;
             if (SceneManager.GetActiveScene().name != MainScene) return;
-
+   
             LogUtil.Log("[MainLauncher]SceneMain".AddColor(ColorType.Green));
+           
             Main();
         }
         

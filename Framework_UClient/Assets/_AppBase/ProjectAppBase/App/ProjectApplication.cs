@@ -28,7 +28,6 @@ namespace ProjectApp
                     {
                         return null;
                     }
-
                     AppObjConst.ApplicationGo = new GameObject(AppObjConst.ApplicationGoName);
                     AppObjConst.ApplicationGo.SetParent(AppObjConst.FutureFrameGo);
                     m_instance = AppObjConst.ApplicationGo.AddComponent<ProjectApplication>();
@@ -43,15 +42,15 @@ namespace ProjectApp
         public override void Init()
         {
             base.Init();
-            //if (!PrefsUtil.HasKey(PrefsKeyConst.App_isNewInstall))
-            //{
-            //    IsNewInstall = true;
-            //    PrefsUtil.WriteInt(PrefsKeyConst.App_isNewInstall, 1);
-            //}
-            //else
-            //{
-            //    IsNewInstall = false;
-            //}
+            if (!PrefsUtil.HasKey(PrefsKeyConst.App_isNewInstall))
+            {
+                IsNewInstall = true;
+                PrefsUtil.WriteInt(PrefsKeyConst.App_isNewInstall, 1);
+            }
+            else
+            {
+                IsNewInstall = false;
+            }
         }
 
         public override void Enable()
@@ -86,27 +85,33 @@ namespace ProjectApp
 
         #region Enable
 
+        /// <summary>
+        /// 初始化第三方Plugin
+        /// </summary>
         private void InitPlugin()
         {
-            //DOTweenHelper.Init();
-            //SuperInvokeHelper.Init();
+            DOTweenHelper.Init();
+     
         }
 
         private void InitDefine()
         {
             AppConst.Init();
-            //ABPakConst.Init();
-            //ColorConst.Init();
+           // ABPakConst.Init();
+            ColorConst.Init();
         }
 
         private void InitPreSetting()
-        {
+        {           
             // PC测试模式分辨率
 #if !UNITY_EDITOR && UNITY_STANDALONE_WIN
             Screen.SetResolution(AppConst.PCTestResolution.x, AppConst.PCTestResolution.y, false);
 #endif
         }
        
+        /// <summary>
+        /// 初始化项目设置
+        /// </summary>
         private void InitAppSetting()
         {
             if (!AppConst.UseInternalSetting) return;
@@ -129,7 +134,7 @@ namespace ProjectApp
             // Profiler
             InitProfilerSetting();
         }
-
+        
         /// <summary>
         /// 初始化性能分析
         /// </summary>
@@ -222,7 +227,7 @@ namespace ProjectApp
 
         private void InitFrameRateMode()
         {
-           // isHFRMode = PrefsUtil.ReadBool(FutureCore.PrefsKeyConst.Application_isHFRMode, true);
+            //isHFRMode = PrefsUtil.ReadBool(FutureCore.PrefsKeyConst.Application_isHFRMode, true);
             SetFrameRateMode(isHFRMode);
         }
 

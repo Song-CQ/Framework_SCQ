@@ -78,6 +78,7 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Engine\EngineEventSystem.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Extend\Engine\GameObjectExtend.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Extend\System\StringExtend.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Helper3rd\DOTweenHelper.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\BaseMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\BaseMonoMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\IMgr.cs" />
@@ -89,6 +90,8 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\EngineUtil\EngineUtil.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\FillUtil\ClassToFillTool.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\LogUtil\LogUtil.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\PrefsUtil\PrefsUtil.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\SerializeUtil\SerializeUtil.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\TimerUtil\TimerUtil.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FuturePlugin\Define\Const\LauncherConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FuturePlugin\FutureFrame\FutureFrame.cs" />
@@ -306,10 +309,10 @@
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\BaseVoClassLib.dll</HintPath>
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="VoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VoClassLib.dll</HintPath>
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>

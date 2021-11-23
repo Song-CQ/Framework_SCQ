@@ -1,3 +1,0 @@
-ReadExcelPath:_Tool\配置表
-OutClassPath:Framework_UClient\Assets\_App\AutoCreator\ExcelClass_AutoCreator
-OutDataPath:Framework_UClient\Assets\_Res\Resources\Data\ExcelConfig

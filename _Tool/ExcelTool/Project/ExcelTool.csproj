@@ -71,6 +71,7 @@
     <EmbeddedResource Include="Data\VoStaticKeyTemplate.cs" />
     <EmbeddedResource Include="Data\VoStaticExcelTemplate.cs" />
     <EmbeddedResource Include="Data\VersionTemplate.cs" />
+    <Compile Include="Data\UrlData.cs" />
     <Compile Include="Scr\ExcelToAssemblyDataHelp.cs" />
     <Compile Include="Scr\MainMgr.cs" />
     <Compile Include="Scr\CreateAssemblyHelp.cs" />

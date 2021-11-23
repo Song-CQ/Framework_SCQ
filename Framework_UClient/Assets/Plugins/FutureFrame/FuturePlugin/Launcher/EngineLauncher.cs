@@ -60,7 +60,6 @@ namespace FuturePlugin
         private void InitAssistSetting()
         {
             LogUtil.EnableLog(LauncherConst.IsEnabledDebugLog);
-            
             if (LauncherConst.IsShowUnityLogsViewerReporter)
             {
                 string path = "Preset/UnityLogsViewer/Reporter";

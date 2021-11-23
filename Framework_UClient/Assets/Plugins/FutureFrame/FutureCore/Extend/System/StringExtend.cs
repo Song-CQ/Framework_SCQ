@@ -41,6 +41,11 @@ namespace FutureCore
            return  "<Size=" +size+">"+str + "</Size>";
         }
         #endregion
+
+        public static bool IsNullOrEmpty(this string val)
+        {
+            return string.IsNullOrEmpty(val);
+        }
     }
 }
 

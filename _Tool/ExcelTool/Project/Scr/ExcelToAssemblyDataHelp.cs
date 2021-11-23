@@ -87,10 +87,11 @@ namespace ExcelTool
              {
                  return;
              }
-             Console.WriteLine("开始生成静态表："+sheet.TableName+"数据");
+             string tableName = sheet.TableName.RemoveTableNameAnnotation();
+             Console.WriteLine("开始生成静态表："+tableName+ "数据");
              try
              {
-                 string className = "ProjectApp.Data."+sheet.TableName + "StaticVO";
+                 string className = "ProjectApp.Data."+tableName + "StaticVO";
                  object myObject = _assembly.CreateInstance(className);
                  Type myType = myObject.GetType();
                  for (int i = 3; i < sheet.Rows.Count; i++)
@@ -106,19 +107,19 @@ namespace ExcelTool
                  if (IsEnciphermentData)
                  {
                      byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                     File.WriteAllBytes(directoryInfo.FullName+@"\"+sheet.TableName+"_StaticData.bytes",bytes);
+                     File.WriteAllBytes(directoryInfo.FullName+@"\"+tableName + "_StaticData.bytes",bytes);
                  }
                  else
                  {
-                     File.WriteAllText(directoryInfo.FullName+@"\"+sheet.TableName+"_StaticData.txt",jsonData);   
+                     File.WriteAllText(directoryInfo.FullName+@"\"+tableName + "_StaticData.txt",jsonData);   
                  }
                  
-                 StringColor.WriteLine("生成静态表："+sheet.TableName+"数据成功",ConsoleColor.Green);
+                 StringColor.WriteLine("生成静态表："+tableName + "数据成功",ConsoleColor.Green);
              }
              catch (Exception e)
              {
                  StringColor.WriteLine(e);
-                 StringColor.WriteLine("生成静态表："+sheet.TableName+"数据失败");
+                 StringColor.WriteLine("生成静态表："+tableName + "数据失败");
                  Thread.CurrentThread.Abort();
              }
              
@@ -131,8 +132,9 @@ namespace ExcelTool
             {
                 return;
             }
-            Console.WriteLine("开始生成表："+sheet.TableName+"数据");
-            string className = "ProjectApp.Data."+sheet.TableName + "VO";
+            string tableName = sheet.TableName.RemoveTableNameAnnotation();
+            Console.WriteLine("开始生成表："+tableName + "数据");
+            string className = "ProjectApp.Data."+tableName + "VO";
             DataRow field_Names =sheet.Rows[0];
             DataRow field_Types = sheet.Rows[2];
             List<object> myDataLst=new List<object>();
@@ -158,7 +160,7 @@ namespace ExcelTool
                             fieldInfo = myType.GetField(_fieldName.ToLower());
                             if (fieldInfo==null)
                             {
-                                StringColor.WriteLine(sheet.TableName + "VO:"+_fieldName+"字段不存在");  
+                                StringColor.WriteLine(tableName + "VO:"+_fieldName+"字段不存在");  
                             }
                         }
                         
@@ -174,7 +176,7 @@ namespace ExcelTool
                             
                             if (tempm_Id.Contains(valStr))
                             {
-                                StringColor.WriteLine(sheet.TableName+"表id重复:"+valStr);
+                                StringColor.WriteLine(tableName + "表id重复:"+valStr);
                             }
                             tempm_Id.Add(valStr);
                         }
@@ -182,7 +184,7 @@ namespace ExcelTool
                         {
                             if (tempm_key.Contains(valStr))
                             {
-                               StringColor.WriteLine(sheet.TableName+"表Key重复:"+valStr);
+                               StringColor.WriteLine(tableName + "表Key重复:"+valStr);
                             }
                             tempm_key.Add(valStr);
                         }
@@ -198,7 +200,7 @@ namespace ExcelTool
             catch (Exception e)
             {
                 StringColor.WriteLine(e);
-                StringColor.WriteLine("生成表："+sheet.TableName+"数据失败");
+                StringColor.WriteLine("生成表："+tableName + "数据失败");
                 Thread.CurrentThread.Abort();
             }
 
@@ -208,13 +210,13 @@ namespace ExcelTool
             if (IsEnciphermentData)
             {
                 byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                File.WriteAllBytes(directoryInfo.FullName+@"\"+sheet.TableName+"_Data.bytes",bytes);
+                File.WriteAllBytes(directoryInfo.FullName+@"\"+tableName + "_Data.bytes",bytes);
             }
             else
             {
-               File.WriteAllText(directoryInfo.FullName+@"\"+sheet.TableName+"_Data.txt",jsonData);   
+               File.WriteAllText(directoryInfo.FullName+@"\"+tableName + "_Data.txt",jsonData);   
             }
-            StringColor.WriteLine("生成表："+sheet.TableName+"数据成功",ConsoleColor.Green);
+            StringColor.WriteLine("生成表："+tableName + "数据成功",ConsoleColor.Green);
         }
 
        

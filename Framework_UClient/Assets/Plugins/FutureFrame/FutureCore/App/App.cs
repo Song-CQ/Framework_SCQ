@@ -85,7 +85,9 @@ namespace FutureCore
             return AppFacade_Frame.AppName;
         }
 
-
+        /// <summary>
+        /// 项目外观Init
+        /// </summary>
         public static void AppFacadeInit()
         {
             if (AppFacade_Frame.InitFunc != null)

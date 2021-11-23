@@ -34,10 +34,12 @@ namespace FutureCore
         绿黄,
         灰色,
     }
+
     public static class ColorUtil
     {
-        private static Dictionary<ColorType,string> colorTypeDic = new Dictionary<ColorType, string>();
-        static ColorUtil()
+
+        private static Dictionary<ColorType, string> colorTypeDic = new Dictionary<ColorType, string>();
+        public static void Init()
         {
             colorTypeDic.Add(ColorType.White, "FFFFFF");
             colorTypeDic.Add(ColorType.Yellow, "F5FF09");
@@ -75,7 +77,7 @@ namespace FutureCore
 
         public static string ColorTypeToHtml(ColorType colorType)
         {
-            if (!colorTypeDic.TryGetValue(colorType,out string val))
+            if (!colorTypeDic.TryGetValue(colorType, out string val))
             {
                 val = "FFFFFF";
             }

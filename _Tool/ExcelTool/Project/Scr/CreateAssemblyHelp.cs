@@ -106,6 +106,7 @@ namespace ExcelTool
             foreach (var data in dataList)
             {
                 DataTable item = data.Sheet;
+                string tableName = item.TableName.RemoveTableNameAnnotation();
                 if (data.IsStart)
                 {
                     if (item.Rows.Count < 3)
@@ -117,8 +118,8 @@ namespace ExcelTool
                     if (classStr!=null||classStr!=string.Empty)
                     {
                         allClassval.Add(classStr);
-                        allClassname.Add(item.TableName + "StaticVO");
-                        allStaticVO.Add(item.TableName);
+                        allClassname.Add(tableName + "StaticVO");
+                        allStaticVO.Add(tableName);
                     }
                    
                 }
@@ -135,22 +136,22 @@ namespace ExcelTool
 
                     string classStr = ParsingHeaders(data, field_Names, field_description, field_Types);
                     allClassval.Add(classStr);
-                    allClassname.Add(item.TableName + "VO");
+                    allClassname.Add(tableName + "VO");
 
                     string VoClassStr = ParsingCreateVoModel(data, field_Names, field_description, field_Types);
                     allClassval.Add(VoClassStr);
-                    allClassname.Add(item.TableName + "VOModel");
-                    allModel.Add(item.TableName);
+                    allClassname.Add(tableName + "VOModel");
+                    allModel.Add(tableName);
 
                     string staticKeyStr = ParsingstaticKey(data);
                     if (staticKeyStr != string.Empty)
                     {
                         allClassval.Add(staticKeyStr);
-                        allClassname.Add(item.TableName + "StaticKey");
+                        allClassname.Add(tableName + "StaticKey");
                     }
                     
                 }
-                StringColor.WriteLine("解析" + item.TableName + "表成功", ConsoleColor.Green);
+                StringColor.WriteLine("解析" + tableName + "表成功", ConsoleColor.Green);
                 
             }
             //创建表数据管理器类
@@ -245,7 +246,7 @@ namespace ExcelTool
             string classVal = GetTemplateClass("ExcelTool.Data.VoStaticExcelTemplate.cs");
             classVal =classVal.Replace("#Name",data.Name);
             classVal = classVal.Replace("#Val",svBuilder.ToString());
-            classVal =classVal.Replace("#Class",item.TableName+"StaticVO");
+            classVal =classVal.Replace("#Class",item.TableName.RemoveTableNameAnnotation()+"StaticVO");
             
             return classVal;
         }
@@ -327,7 +328,7 @@ namespace ExcelTool
             }
             classVal =classVal.Replace("#Name",excelData.Name);
             classVal = classVal.Replace("#Val",svBuilder.ToString());
-            classVal =classVal.Replace("#Class",item.TableName+"StaticKey");
+            classVal =classVal.Replace("#Class",item.TableName.RemoveTableNameAnnotation()+"StaticKey");
             return classVal;
 
         }
@@ -336,13 +337,14 @@ namespace ExcelTool
         private static string ParsingCreateVoModel(ExcelData excelData, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
         {
             DataTable item = excelData.Sheet;
+            string tableName = item.TableName.RemoveTableNameAnnotation();
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoModelTemplate.cs");
             classVal = classVal.Replace("#Name",excelData.Name);
-            classVal = classVal.Replace("#Class", item.TableName+"VOModel");
-            classVal = classVal.Replace("#DataVo", item.TableName+"VO");
+            classVal = classVal.Replace("#Class", tableName+"VOModel");
+            classVal = classVal.Replace("#DataVo", tableName+"VO");
             
-            classVal = classVal.Replace("#SheetName", '"'+item.TableName+'"');
+            classVal = classVal.Replace("#SheetName", '"'+tableName+'"');
             bool isHasKey = false;
             bool isHasId = false;
             svBuilder.Clear();
@@ -379,7 +381,7 @@ namespace ExcelTool
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoClassTemplate.cs");
             classVal = classVal.Replace("#Name",excelData.Name);
-            classVal = classVal.Replace("#Class", item.TableName+"VO");
+            classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation()+"VO");
             svBuilder.Clear();
             foreach (DataColumn itemColumn in item.Columns)
             {

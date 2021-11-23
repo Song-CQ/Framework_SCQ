@@ -17,7 +17,6 @@ D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\BaseVoClassLi
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\BaseVoClassLib.pdb
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\UnityEditor.dll
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\UnityEngine.dll
-D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.AssemblyReference.cache
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.CoreCompileInputs.cache
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.CopyComplete
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.dll
