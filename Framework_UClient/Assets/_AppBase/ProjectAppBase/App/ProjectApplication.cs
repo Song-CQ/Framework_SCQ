@@ -3,11 +3,6 @@
 * 请勿修改!!!
 ****************************************************************************/
 
-/*
- Author:du
- Time:2017.10.12
-*/
-
 using FutureCore;
 using System.Collections;
 using UnityEngine;
@@ -64,7 +59,7 @@ namespace ProjectApp
             InitPreSetting();
             InitAppSetting();
 
-           // BaseManagerRegister.Register();
+            BaseManagerRegister.Register();
             //AppManagerRegister.Register();
             //BaseManagerRegister.RegisterData();
             //AppManagerRegister.RegisterData();
