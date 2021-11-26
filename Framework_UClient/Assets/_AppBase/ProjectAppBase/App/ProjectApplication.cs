@@ -59,6 +59,8 @@ namespace ProjectApp
             InitPreSetting();
             InitAppSetting();
 
+       
+
             BaseManagerRegister.Register();
             //AppManagerRegister.Register();
             //BaseManagerRegister.RegisterData();

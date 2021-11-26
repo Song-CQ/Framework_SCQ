@@ -82,6 +82,7 @@
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppFacadeRedirection.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppMain.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppRedirection.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\App\BaseManagerRegister.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\ProjectApplication.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\ColorConst.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
