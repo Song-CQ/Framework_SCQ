@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2019.4.32f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="D:\Install\VS2022\Install\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\App.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\AppFacade_Frame.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\FCApplication.cs" />
@@ -60,7 +63,8 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ListPool.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPool.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPoolStatic.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Singleton\MonoSingleton.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Singleton\Singleton.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Singleton\SingletonMono.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\TaskSequence\TaskSequence.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Timer\SimpleTimer.cs" />
@@ -309,10 +313,10 @@
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
+      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="VoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
+      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>

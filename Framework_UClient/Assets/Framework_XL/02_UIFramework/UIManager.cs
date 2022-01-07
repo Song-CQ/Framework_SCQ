@@ -5,6 +5,7 @@
     日期：2020/2/23 18:43
     功能：UI窗口管理器
 *****************************************************/
+using FutureCore;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ using XL.Common;
 
 namespace XL.UI
 {
-    public class UIManager : MonoSingleton<UIManager>
+    public class UIManager : SingletonMono<UIManager>
     {
 
         private Dictionary<string, UIWindow> uiWindowsDic;

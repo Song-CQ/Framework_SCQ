@@ -65,6 +65,7 @@ namespace ProjectApp
             //AppManagerRegister.Register();
             //BaseManagerRegister.RegisterData();
             //AppManagerRegister.RegisterData();
+
             App.AppFacadeStartUp();
             //GlobalMgr.Instance.StartUp();
             //AppManagerRegister.StartUpAfterRegister();
@@ -97,7 +98,9 @@ namespace ProjectApp
            // ABPakConst.Init();
             ColorConst.Init();
         }
-
+        /// <summary>
+        /// 项目基础设置
+        /// </summary>
         private void InitPreSetting()
         {           
             // PC测试模式分辨率

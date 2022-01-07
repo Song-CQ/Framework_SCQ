@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2019.4.32f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="D:\Install\VS2022\Install\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Framework_XL\02_UI\Image_XL.cs" />
     <Compile Include="Assets\Framework_XL\02_UI\Rocker.cs" />
     <Compile Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.cs" />
@@ -69,7 +72,6 @@
     <Compile Include="Assets\Framework_XL\05_Common\Language.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\ListTool.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\MeshTool\MeshSplit.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\MonoSingleton.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\MouseTool\MouseCtrl.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\MouseTool\MouseLook.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\MouseTool\MouseRight.cs" />
@@ -293,6 +295,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="BaseVoClassLib">
+      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
+    </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\VoClassLib.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -301,12 +309,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="VoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\VoClassLib.dll</HintPath>
-    </Reference>
-    <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

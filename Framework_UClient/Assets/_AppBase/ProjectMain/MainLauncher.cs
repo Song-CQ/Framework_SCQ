@@ -54,10 +54,11 @@ namespace ProjectApp
 
         private static void AppLauncher()
         {
+            //创建框架Go
             AppObjConst.FutureFrameGo = new GameObject(AppObjConst.FutureFrameGoName);
             AppObjConst.FutureFrameGo.AddComponent<FutureFrame>();
             Unity3dUtil.SetDontDestroyOnLoad(AppObjConst.FutureFrameGo);
-            
+            //创建引擎go
             AppObjConst.LauncherGo = new GameObject(AppObjConst.LauncherGoName);
             AppObjConst.LauncherGo.SetParent(AppObjConst.FutureFrameGo);
             AppObjConst.LauncherGo.AddComponent<EngineLauncher>().Init(AppMain);

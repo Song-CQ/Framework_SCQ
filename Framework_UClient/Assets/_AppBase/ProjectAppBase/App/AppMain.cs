@@ -17,6 +17,7 @@ namespace ProjectApp.Main
             AppRedirection.RedirectionStaticField();
             //初始化项目
             App.InitApplication(ProjectApplication.Instance);
+
         }
 
     }

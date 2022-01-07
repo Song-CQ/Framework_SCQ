@@ -1,6 +1,6 @@
 namespace FutureCore
 {
-    public abstract class BaseMonoMgr<T> : MonoSingleton<T>, IMgr where T : BaseMonoMgr<T>
+    public abstract class BaseMonoMgr<T> : SingletonMono<T>, IMgr where T : BaseMonoMgr<T>
     {
 
         public bool IsInit { get; private set; }
