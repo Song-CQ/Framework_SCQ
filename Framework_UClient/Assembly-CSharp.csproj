@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,9 +53,6 @@
     <UnityVersion>2019.4.32f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="D:\Install\VS2022\Install\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Framework_XL\02_UI\Image_XL.cs" />
     <Compile Include="Assets\Framework_XL\02_UI\Rocker.cs" />
     <Compile Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.cs" />
@@ -80,7 +77,10 @@
     <Compile Include="Assets\Framework_XL\05_Common\TransformHelper.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\Vector3_Tool.cs" />
     <Compile Include="Assets\Framework_XL\06_Shader\镜子\MirrorReflection.cs" />
+    <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VOMgr\ExcelMgr_AudioCreator.cs" />
+    <Compile Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VOVersion\ConfigVOVersion_AutoCreator.cs" />
     <Compile Include="Assets\_App\ProjectApp\App\AppFacade.cs" />
+    <Compile Include="Assets\_App\ProjectApp\App\AppManagerRegister.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppFacadeRedirection.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppMain.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppRedirection.cs" />
@@ -89,17 +89,19 @@
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\ColorConst.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
     <Compile Include="Assets\_AppBase\ProjectMain\MainLauncher.cs" />
-    <Compile Include="Assets\_Res\Resources\Data\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
-    <Compile Include="Assets\_Res\Resources\Data\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
     <Compile Include="Assets\text.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\VODll\BaseVoClassLib.dll" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet_g_Data.txt" />
     <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet8_Data.txt" />
     <None Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.shader" />
+    <None Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll" />
     <None Include="Assets\Framework_XL\06_Shader\影子\MobileARShadow.shader" />
     <None Include="Assets\Framework_XL\06_Shader\镜子\Mirror.shader" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\VODll\VoClassLib.dll" />
+    <None Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet1_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\StaticExcelData\Commons_StaticData.txt" />
     <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.csproj.FileListAbsolute.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -295,12 +297,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
-    </Reference>
-    <Reference Include="VoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\VoClassLib.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -309,6 +305,12 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseVoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
+    </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

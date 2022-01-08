@@ -40,7 +40,12 @@
       "ProjectGuid": "26dd20dd-d0d9-a08d-13ed-697b08dbe3b5",
       "DisplayName": "Assembly-CSharp-firstpass",
       "ColorIndex": 6
+    },
+    "3798781d-c4c4-6001-e6dc-bbba2d0e25d9": {
+      "ProjectGuid": "3798781d-c4c4-6001-e6dc-bbba2d0e25d9",
+      "DisplayName": "Assembly-CSharp-Editor",
+      "ColorIndex": 7
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 8
 }

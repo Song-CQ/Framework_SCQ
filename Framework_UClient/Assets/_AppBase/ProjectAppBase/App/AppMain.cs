@@ -18,6 +18,7 @@ namespace ProjectApp.Main
             //初始化项目
             App.InitApplication(ProjectApplication.Instance);
 
+
         }
 
     }

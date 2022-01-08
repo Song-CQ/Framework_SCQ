@@ -77,4 +77,5 @@ public static class LogUtil
     {
         IsEnable = isEnabledDebugLog;
     }
+
 }

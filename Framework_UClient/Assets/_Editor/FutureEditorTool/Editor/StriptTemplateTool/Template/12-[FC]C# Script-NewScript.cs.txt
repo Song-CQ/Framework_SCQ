@@ -1,0 +1,20 @@
+﻿/****************************************************
+    文件：#SCRIPTNAME#.cs
+	作者：Clear
+    日期：#CreateTime#
+	功能：Nothing
+*****************************************************/
+
+using UnityEngine;
+
+namespace ProjectApp
+{
+    public class #SCRIPTNAME# : MonoBehaviour
+    {
+
+
+
+
+
+    }
+}

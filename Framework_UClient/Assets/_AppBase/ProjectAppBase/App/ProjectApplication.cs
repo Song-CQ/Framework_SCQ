@@ -59,11 +59,9 @@ namespace ProjectApp
             InitPreSetting();
             InitAppSetting();
 
-       
-
             BaseManagerRegister.Register();
             //AppManagerRegister.Register();
-            //BaseManagerRegister.RegisterData();
+            BaseManagerRegister.RegisterData();
             //AppManagerRegister.RegisterData();
 
             App.AppFacadeStartUp();

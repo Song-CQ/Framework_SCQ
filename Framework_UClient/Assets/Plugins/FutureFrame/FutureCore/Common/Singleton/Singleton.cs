@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public class Singleton : MonoBehaviour
+namespace FutureCore
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// µ¥ÀýÀà
+    /// </summary>
+    public class Singleton<T> : IDisposable where T : class, new()
     {
-        
-    }
+        private static T m_instance;
+        public static T Instance
+        {
+            get
+            {
+                if (m_instance == null)
+                    m_instance = new T();
+                return m_instance;
+            }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public virtual void Dispose()
+        {
+            m_instance = null;
+        }
     }
 }

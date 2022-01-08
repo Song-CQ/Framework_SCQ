@@ -1,5 +1,5 @@
 {
   "ReadExcelPath" : "_Tool\\配置表",
-  "OutDataPath" : "Framework_UClient\\Assets\\_App\\AutoCreator\\ExcelClass_AutoCreator",
-  "OutClassPath" : "Framework_UClient\\Assets\\_Res\\Resources\\Data\\ExcelConfig"
+  "OutDataPath" : "Framework_UClient\\Assets\\_Res\\Resources\\Data\\ExcelConfig",
+  "OutClassPath" : "Framework_UClient\\Assets\\_App\\AutoCreator\\ExcelClass_AutoCreator"
 }

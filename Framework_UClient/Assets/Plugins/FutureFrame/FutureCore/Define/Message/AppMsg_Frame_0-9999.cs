@@ -28,5 +28,11 @@ namespace FutureCore
         public static readonly uint KeyCode_Home = ++Cursor_BASE;
         //按下退出键
         public static readonly uint KeyCode_Escape = ++Cursor_BASE;
+
+
+        /// 系统消息
+
+        // 系统管理器启动完成
+        public static readonly uint System_ManagerStartUpComplete = ++Cursor_BASE;
     }
 }

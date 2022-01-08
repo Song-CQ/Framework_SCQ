@@ -17,7 +17,6 @@ namespace FutureCore
     public class FCApplication : MonoBehaviour
     {
         public static bool IsAppQuit { get; private set; }
-
         public bool IsRestart { get; private set; }
         public int RestartCount { get; private set; }
         public bool IsAppFocus { get; private set; }
@@ -76,9 +75,9 @@ namespace FutureCore
 
         private void CloseApp()
         {
-            //ModuleMgr.Instance.DisposeAllModule();
-            //GlobalMgr.Instance.DisposeAllMgr();
-            //GlobalMgr.Instance.Dispose();
+           // ModuleMgr.Instance.DisposeAllModule();
+            GlobalMgr.Instance.DisposeAllMgr();
+            GlobalMgr.Instance.Dispose();
         }
 
         private void ClearAllObjects()
@@ -88,7 +87,7 @@ namespace FutureCore
             {
                 if (IsCanDestroyObj(otherGo))
                 {
-                    //EngineUtil.Destroy(otherGo);
+                    EngineUtil.Destroy(otherGo);
                 }
             }
         }
