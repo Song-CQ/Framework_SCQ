@@ -112,10 +112,13 @@
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\DemiLib.dll" />
+    <None Include="Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTween\DOTween.dll" />
+    <None Include="Assets\Standard Assets\RainbowAssets\ver@2.2.0.txt" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Standard Assets\RainbowAssets\!Core\NOTICES.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -311,10 +314,10 @@
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="VoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\VoClassLib.dll</HintPath>
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>
@@ -324,6 +327,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="RainbowCore">
+      <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

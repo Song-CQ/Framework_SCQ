@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,77 +53,71 @@
     <UnityVersion>2019.4.32f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="D:\Install\VS2022\Install\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\ConsoleProDebug.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\ConsoleProRemoteServer.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\FastBitConverter.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\INetEventListener.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NatPunchModule.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetConstants.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetDataReader.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetDataWriter.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetDebug.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetEndPoint.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetManager.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetPacket.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetPacketPool.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetPeer.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetPeerCollection.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetSerializer.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetSocket.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetThread.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetUtils.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NtpSyncModule.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\ReliableChannel.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\SequencedChannel.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\SimpleChannel.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\QHierarchyInitializer.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QChildrenCountComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QColorComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QComponentsComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QErrorComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QGameObjectIconComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QLayerIconComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QLockComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QMonoBehaviorIconComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QPrefabComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QRendererComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QSeparatorComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QStaticComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QTagIconComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QTagLayerComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QTreeMapComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QVerticesAndTrianglesCountComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QVisibilityComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\pbase\QBaseComponent.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pdata\QResources.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pdata\QSettings.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pdata\QSettingsObject.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QColorPickerWindow.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QColorUtils.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QComponentsOrderList.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QObjectListInspector.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QObjectListManager.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phierarchy\QHierarchy.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phierarchy\QHierarchySettingsWindow.cs" />
+    <Compile Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\Scripts\QObjectList.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\Unity-Logs-Viewer-master\Reporter\Editor\ReporterEditor.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\ConsoleProDebug.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\ConsoleProRemoteServer.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\FastBitConverter.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\INetEventListener.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NatPunchModule.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetConstants.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetDataReader.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetDataWriter.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetDebug.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetEndPoint.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetManager.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetPacket.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetPacketPool.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetPeer.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetPeerCollection.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetSerializer.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetSocket.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetThread.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NetUtils.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\NtpSyncModule.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\ReliableChannel.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\SequencedChannel.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Remote\LiteNetLib\SimpleChannel.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\QHierarchyInitializer.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QChildrenCountComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QColorComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QComponentsComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QErrorComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QGameObjectIconComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QLayerIconComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QLockComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QMonoBehaviorIconComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QPrefabComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QRendererComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QSeparatorComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QStaticComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QTagIconComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QTagLayerComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QTreeMapComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QVerticesAndTrianglesCountComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\QVisibilityComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pcomponent\pbase\QBaseComponent.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pdata\QResources.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pdata\QSettings.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\pdata\QSettingsObject.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QColorPickerWindow.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QColorUtils.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QComponentsOrderList.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QObjectListInspector.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phelper\QObjectListManager.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phierarchy\QHierarchy.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Editor\Scripts\phierarchy\QHierarchySettingsWindow.cs" />
-    <Compile Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\Scripts\QObjectList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\Editor\DemiEditor.dll" />
-    <None Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll" />
-    <None Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsoleE\Editor\ConsoleE.dll" />
+    <None Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll" />
+    <None Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsoleE\Editor\ConsoleE.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTween\Editor\DOTweenEditor.dll" />
-    <None Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\!Core\Assemblies\RainbowCore.dll" />
-    <None Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsoleE\ver@3.3.txt" />
-    <None Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\ver@2.2.0.txt" />
-    <None Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll" />
+    <None Include="Assets\Plugins\EditorStore3rdLibrary\Editor\ConsoleE\ver@3.3.txt" />
+    <None Include="Assets\Standard Assets\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
-    <None Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\!Core\NOTICES.txt" />
-    <None Include="Assets\Standard Assets\EditorStore3rdLibrary\Editor\QHierarchy\ver@4.4.txt" />
+    <None Include="Assets\Plugins\EditorStore3rdLibrary\Editor\QHierarchy\ver@4.4.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -330,6 +324,12 @@
     <Reference Include="PESocket">
       <HintPath>Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll</HintPath>
     </Reference>
+    <Reference Include="ConsoleE">
+      <HintPath>Assets\Plugins\EditorStore3rdLibrary\Editor\ConsoleE\Editor\ConsoleE.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsolePro.Editor">
+      <HintPath>Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="DemiLib">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
     </Reference>
@@ -351,23 +351,11 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="ConsoleE">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsoleE\Editor\ConsoleE.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsolePro.Editor">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="RainbowCore">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
-    </Reference>
-    <Reference Include="RainbowFolders">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
-    </Reference>
     <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="VoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\VoClassLib.dll</HintPath>
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>
@@ -389,6 +377,12 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.12.5\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="RainbowFolders">
+      <HintPath>Assets\Standard Assets\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
+    </Reference>
+    <Reference Include="RainbowCore">
+      <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
