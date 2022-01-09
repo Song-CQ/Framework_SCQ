@@ -21,7 +21,7 @@ namespace FutureCore
             {
                 mgr.StartUp();
             }
-           //ModuleMgr.Instance.StartUpAllModule();
+            ModuleMgr.Instance.StartUpAllModule();
             AppDispatcher.Instance.Dispatch(AppMsg.System_ManagerStartUpComplete);
             LogUtil.Log("[GlobalMgr]StartUp End");
         }
