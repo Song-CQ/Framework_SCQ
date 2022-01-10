@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace FutureCore
 {
-    public class SimpleTimer : MonoBehaviour
+    public class SimpleTimer 
     {
         private Dictionary<Action, float> mIntervalDic = new Dictionary<Action, float>();
         private List<Action> triggers = new List<Action>();
 
 
-        private void Update()
+        public void Update()
         {
             if (mIntervalDic.Count > 0)
             {
@@ -61,12 +61,7 @@ namespace FutureCore
             triggers.Clear();
         }
 
-        public void Destroy()
-        {
-            Destroy(this);
-        }
-
-        private void OnDestroy()
+        public void Dispose()
         {
             ClearAll();
             mIntervalDic = null;

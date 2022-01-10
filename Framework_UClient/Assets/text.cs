@@ -17,10 +17,12 @@ public class text : MonoBehaviour
 
     public Image imgtest1;
     public Image imgtest2;
-    
-    void Start()
+
+   
+
+    void Init()
     {
-        ExcelDataMgr.Instance.Init();
+  
         realtimeSinceStartupUI.text = Sheet1VOModel.Instance.GetVO(0).name[0];
         timeUI.text = CommonsStaticVO.Instance.hdaslk[0].ToString();
         DownTexture(TestUre, (texture) =>

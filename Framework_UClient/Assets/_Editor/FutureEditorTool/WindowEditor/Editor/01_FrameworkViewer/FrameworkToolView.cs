@@ -50,23 +50,36 @@ namespace FutureEditor
             toolbatIndex = GUILayout.Toolbar(toolbatIndex, toolbatVal);
             switch (toolbatIndex)
             {
+            
+                case (int)ShowType.UnityTool:
+                    RefreshUI_UnityTool();
+                    break;
                 case (int)ShowType.ExcelTool:
                     RefreshUI_ExcelTool();
                     break;
                 case (int)ShowType.AutoRegisterTool:
-                    RefreshUI_EditorTool();
+                    RefreshUI_AutoRegisterTool();
                     break;
             }
         }
 
         private enum ShowType
         {
-            ExcelTool = 0,
-            GameTool = 1,
-            FeilTool = 2,
-            AutoRegisterTool = 3,
+            UnityTool=0,
+            ExcelTool,
+            GameTool,
+            FeilTool,
+            AutoRegisterTool,
         }
-
+        private void RefreshUI_UnityTool()
+        {
+            GUILayout.BeginArea(new Rect(10, 30, 200, 200));
+            if (GUILayout.Button("重启Unity", GUILayout.Height(40), GUILayout.Width(100)))
+            {
+                UnityEditorTool.StartRest();
+            }
+            GUILayout.EndArea();
+        }
 
         private void RefreshUI_ExcelTool()
         {
@@ -96,7 +109,7 @@ namespace FutureEditor
             GUILayout.EndArea();
         }
         
-        private void RefreshUI_EditorTool()
+        private void RefreshUI_AutoRegisterTool()
         {
             GUILayout.BeginArea(new Rect(10, 30, 200, 200));
             if (GUILayout.Button("自动注册编辑器环境", GUILayout.Height(40), GUILayout.Width(180)))

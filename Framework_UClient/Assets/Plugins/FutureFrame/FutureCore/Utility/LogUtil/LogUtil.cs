@@ -3,7 +3,6 @@ using UnityEngine;
 
 public static class LogUtil
 {
-
     public static bool IsEnable { private set; get; } = true;
 
     public static void Log(object e)

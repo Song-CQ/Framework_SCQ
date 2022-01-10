@@ -14,18 +14,20 @@ using UnityEngine.SceneManagement;
 
 namespace FutureEditor
 {
-    public static class RestStartUnityTool
+    public static class UnityEditorTool
     {
         /// <summary>
         /// 重启Unity 
         /// </summary>
-        [MenuItem("[FC Editor]/重启Unity", false, -1000)]
+        [MenuItem("[FC UnityEditor]/重启Unity", false, -1000)]
         private static void StartRestMenu()
         {
             StartRest();
         }
 
-        public static void StartRest(string val="")
+        #region 重启Unity
+
+        public static void StartRest(string val = "")
         {
             val = val == "" ? "是否重启Unity!" : val;
             if (EditorUtility.DisplayDialog("重启Unity", val, "确认", "取消"))
@@ -36,7 +38,7 @@ namespace FutureEditor
                 //开始
                 Start();
             }
-           
+
         }
 
 
@@ -66,6 +68,8 @@ namespace FutureEditor
             }
             return System.Diagnostics.Process.Start(pStartInfo);
         }
-
+        #endregion
+    
+    
     }
 }

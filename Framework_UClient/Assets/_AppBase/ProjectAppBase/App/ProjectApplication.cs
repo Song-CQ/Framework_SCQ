@@ -65,7 +65,7 @@ namespace ProjectApp
             //AppManagerRegister.RegisterData();
 
             App.AppFacadeStartUp();
-            //GlobalMgr.Instance.StartUp();
+            GlobalMgr.Instance.StartUp();
             //AppManagerRegister.StartUpAfterRegister();
 
             AfterInitDefine();
@@ -79,6 +79,22 @@ namespace ProjectApp
             m_instance = null;
         }
 
+        #region Create
+        protected override void CreateEnvironment()
+        {
+            base.CreateEnvironment();
+
+            AppObjConst.MonoManagerGo = new GameObject(AppObjConst.MonoManagerGoName);
+            AppObjConst.MonoManagerGo.SetParent(AppObjConst.EngineSingletonGo);
+
+            //AppObjConst.DispatcherGo = new GameObject(AppObjConst.DispatcherGoName);
+            //AppObjConst.DispatcherGo.SetParent(AppObjConst.EngineSingletonGo);
+
+            //AppObjConst.LoaderGo = new GameObject(AppObjConst.LoaderGoName);
+            //AppObjConst.LoaderGo.SetParent(AppObjConst.EngineSingletonGo);
+        }
+        #endregion
+       
         #region Enable
 
         /// <summary>
@@ -87,13 +103,13 @@ namespace ProjectApp
         private void InitPlugin()
         {
             DOTweenHelper.Init();
-     
+            
         }
 
         private void InitDefine()
         {
             AppConst.Init();
-           // ABPakConst.Init();
+           //ABPakConst.Init();
             ColorConst.Init();
         }
         /// <summary>

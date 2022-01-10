@@ -65,6 +65,10 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\TaskSequence\TaskSequence.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Timer\SimpleTimer.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Ctr\BaseCtrl.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Ctr\BaseUICtrl.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Model\BaseModel.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\AppConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\AppObjConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\EncryptConst.cs" />
@@ -74,8 +78,11 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Message\MainThreadMsg_Frame_0-9999.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Base\BaseDispatcher.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Base\BaseThreadDispatcher.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Common\Dispatcher.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\AppDispatcher.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\CtrlDispatcher.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\MainThreadDispatcher.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\UICtrlDispatcher.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Engine\EngineEventSystem.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Extend\Engine\GameObjectExtend.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Extend\System\StringExtend.cs" />
@@ -314,6 +321,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RainbowCore">
+      <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
+    </Reference>
     <Reference Include="BaseVoClassLib">
       <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
@@ -328,9 +338,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="RainbowCore">
-      <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

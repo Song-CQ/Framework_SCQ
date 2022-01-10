@@ -11,7 +11,7 @@ namespace ProjectApp
         {
             GlobalMgr globalMgr = GlobalMgr.Instance;
             // 模块管理器
-           // globalMgr.AddMgr(ModuleMgr.Instance);
+            globalMgr.AddMgr(ModuleMgr.Instance);
 
             //// PreMonoMgr
             //globalMgr.AddMgr(AssistDebugMgr.Instance);
@@ -20,8 +20,10 @@ namespace ProjectApp
             //globalMgr.AddMgr(AssetBundleMgr.Instance);
             ////globalMgr.AddMgr(CameraMgr.Instance);
             //globalMgr.AddMgr(ConfigMgr.Instance);
+            globalMgr.AddMgr(ExcelDataMgr.Instance);
             //globalMgr.AddMgr(ConsoleMgr.Instance);
             //globalMgr.AddMgr(DateTimeMgr.Instance);
+            globalMgr.AddMgr(TimerMgr.Instance);
             //globalMgr.AddMgr(DispatcherMgr.Instance);
             //globalMgr.AddMgr(GameMgr.Instance);
             //globalMgr.AddMgr(GMMgr.Instance);
@@ -65,7 +67,7 @@ namespace ProjectApp
             //ConfigMgrRegister.AutoRegisterConfig();
             //// WSNetMgr
             //WSNetMgrRegister.AutoRegisterProtoType();
-            //// ModuleMgr
+            // ModuleMgr
             //ModuleMgrRegister.AutoRegisterModel();
             //ModuleMgrRegister.AutoRegisterUIType();
             //ModuleMgrRegister.AutoRegisterCtrl();

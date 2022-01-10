@@ -43,7 +43,7 @@ namespace FutureCore
         // 是否开启调试应用控制台
         public static bool IsEnableAssistAppConsole = false;
         // 是否开启引擎调试日志
-        public static bool IsEnabledEngineLog = false;
+        public static bool IsEnabledEngineLog = true;
         // 是否开启日志
         public static bool IsEnabledLog = true;
         // 是否显示网络日志

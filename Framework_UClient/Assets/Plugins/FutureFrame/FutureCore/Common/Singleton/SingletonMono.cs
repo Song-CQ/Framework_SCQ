@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace FutureCore
 {
@@ -10,7 +7,7 @@ namespace FutureCore
     /// </summary>
     public class SingletonMono<T> : MonoBehaviour where T :SingletonMono<T>
     {
-        protected virtual string ParentRootName { get; private set; }
+        protected virtual string ParentRootName { get { return null; } }
         private static bool isAppQuit = false;
        
         private static T instance;    
@@ -50,7 +47,8 @@ namespace FutureCore
 
         protected virtual void New()
         {
-            gameObject.name = "[MonoMgr]"+nameof(T);
+            
+
         }
 
         public virtual void Init()
@@ -59,6 +57,7 @@ namespace FutureCore
         private static void CreateInstance()
         {
             GameObject instanceGO = new GameObject(typeof(T).Name);
+            Debug.Log("创建"+ instanceGO.name);
             instance = instanceGO.AddComponent<T>();
             SetSelfParentRoot(instanceGO, instance.ParentRootName);
             instance.New();
@@ -77,19 +76,7 @@ namespace FutureCore
                 Transform rootTF = sinleonRoot.Find(parentRootName);
                 if (rootTF == null)
                 {
-                    GameObject rootGo = new GameObject(parentRootName);
-                    switch (parentRootName)
-                    {
-                        case AppObjConst.MonoManagerGoName:
-                            AppObjConst.MonoManagerGo = rootGo;
-                            break;
-                        case AppObjConst.DispatcherGoName:
-                            AppObjConst.DispatcherGo = rootGo;
-                            break;
-                        case AppObjConst.LoaderGoName:
-                            AppObjConst.LoaderGo = rootGo;
-                            break;
-                    }
+                    GameObject rootGo = new GameObject(parentRootName);                  
                     rootTF = rootGo.transform;
                     rootTF.transform.SetParent(sinleonRoot, false);
                 }

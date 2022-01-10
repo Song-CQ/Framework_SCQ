@@ -2,9 +2,9 @@
     文件：#SCRIPTNAME#.cs
 	作者：Clear
     日期：#CreateTime#
+    类型: 逻辑脚本
 	功能：Nothing
 *****************************************************/
-
 using UnityEngine;
 
 namespace ProjectApp

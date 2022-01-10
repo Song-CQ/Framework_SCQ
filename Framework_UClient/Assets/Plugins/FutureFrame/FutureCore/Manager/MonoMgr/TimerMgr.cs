@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace FutureCore
 {
@@ -24,16 +21,16 @@ namespace FutureCore
         }
         private void CreateSimpleTimer()
         {
-            SimpleTimer = new GameObject("[SimpleTimer]").AddComponent<SimpleTimer>();
-            SimpleTimer.transform.SetParent(transform);
-            SimpleTimer.transform.localPosition = Vector3.zero;
+            SimpleTimer = new SimpleTimer();
+  
         } 
         
 
         public override void Init()
         {
-            InitTimeRood();
             base.Init();
+            InitTimeRood();
+            
         }
 
         private void Update()
@@ -42,12 +39,13 @@ namespace FutureCore
             {
                 return;
             }
+            SimpleTimer.Update();
             Timer.Update();
         }
         
         public override void Dispose()
         {
-            SimpleTimer.Destroy();
+            SimpleTimer.Dispose();
             Timer.Dispose();
         }
 

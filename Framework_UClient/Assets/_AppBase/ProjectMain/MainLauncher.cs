@@ -21,7 +21,7 @@ namespace ProjectApp
         {
             if (!IsAutoLauncher) return;
             if (SceneManager.GetActiveScene().name != MainScene) return;
-   
+            LogUtil.EnableLog(AppConst.IsEnabledLog);
             LogUtil.Log("[MainLauncher]SceneMain".AddColor(ColorType.Green));
            
             Main();

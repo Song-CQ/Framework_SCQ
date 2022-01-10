@@ -76,8 +76,9 @@
     <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\Editor\02_EditorStyleViewer\EditorStyleViewer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\12-[FC]C# Script-NewScript.cs.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\11-[FC]C# Class-NewClass.cs.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\22-[FC]C# Script-NewScript.cs.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\23-[FC]Core-NewClass.cs.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\21-[FC]C# Class-NewClass.cs.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -284,6 +285,12 @@
     <Reference Include="PESocket">
       <HintPath>Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll</HintPath>
     </Reference>
+    <Reference Include="ConsoleE">
+      <HintPath>Assets\Plugins\EditorStore3rdLibrary\Editor\ConsoleE\Editor\ConsoleE.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsolePro.Editor">
+      <HintPath>Assets\Plugins\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="DemiLib">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
     </Reference>
@@ -305,23 +312,17 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="ConsoleE">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsoleE\Editor\ConsoleE.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsolePro.Editor">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="RainbowCore">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
+      <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
     <Reference Include="RainbowFolders">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
+      <HintPath>Assets\Standard Assets\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
     </Reference>
     <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="VoClassLib">
-      <HintPath>Assets\_Res\Resources\Data\ExcelConfig\VODll\VoClassLib.dll</HintPath>
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>

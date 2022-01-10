@@ -24,7 +24,7 @@ namespace FutureEditor
             Debug.Log("------------------------------------------自注册完毕----------------------------------------------------------------");
             
 
-            RestStartUnityTool.StartRest("注册环境完成!\n需重启Unity编辑器");
+            UnityEditorTool.StartRest("注册环境完成!\n需重启Unity编辑器");
 
         }
 

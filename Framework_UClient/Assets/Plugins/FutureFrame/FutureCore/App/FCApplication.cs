@@ -53,7 +53,7 @@ namespace FutureCore
 #endif
         }
 
-        private void CreateEnvironment()
+        protected virtual void CreateEnvironment()
         {
             AppObjConst.ApplicationGo = gameObject;
             AppObjConst.EngineSingletonGo = new GameObject(AppObjConst.EngineSingletonGoName);
