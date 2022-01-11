@@ -12,8 +12,8 @@ namespace FutureCore
 {
     public abstract class BaseCtrl
     {
-        public string ctrName;
-        public bool isEnable = false;
+        public string ctrlName;
+        public bool isEnable = true;
         public bool IsNew { get; private set; }
         protected ModuleMgr moduleMgr;
 

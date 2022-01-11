@@ -114,6 +114,109 @@ namespace FutureCore
 
         #endregion
 
+        #region UIMsg
+
+        private static float LoadingProgressDelayTime = 0f;
+
+        public static void DisplayLoadingUI()
+        {
+            AppDispatcher.Instance.Dispatch(AppMsg.UI_DisplayLoadingUI);
+        }
+
+        //public static void HideLoadingUI(bool isDelay = false)
+        //{
+        //    if (!isDelay)
+        //    {
+        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_HideLoadingUI);
+        //        return;
+        //    }
+        //    TimerUtil.Simple.AddTimer(0.5f, () =>
+        //    {
+        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_HideLoadingUI);
+        //    });
+        //}
+
+        //public static void SetLoadingUI(ProgressState state, bool isDelay = false)
+        //{
+        //    currProgressState = state;
+        //    SetLoadingUI(state.ToString(), (int)state, isDelay);
+        //}
+
+        //public static void SetLoadingUI(string info, int progress, bool isDelay = false)
+        //{
+        //    SetLoadingUIInfo(info);
+        //    SetLoadingUIProgress(progress, isDelay);
+        //}
+
+        //public static void SetLoadingUIInfo(string info)
+        //{
+        //    AppDispatcher.Instance.Dispatch(AppMsg.UI_SetLoadingUIInfo, info);
+        //}
+
+        //public static void SetLoadingUIProgress(int progress, bool isDelay = false)
+        //{
+        //    if (!isDelay)
+        //    {
+        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_SetLoadingUIProgress, progress);
+        //        return;
+        //    }
+
+        //    LoadingProgressDelayTime += AppConst.LoadingDelayTime;
+        //    TimerUtil.Simple.AddTimer(LoadingProgressDelayTime, () =>
+        //    {
+        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_SetLoadingUIProgress, progress);
+        //    });
+        //}
+
+        //public static void SetLoadingUIProgressComplete(bool isDelay = false)
+        //{
+        //    if (!isDelay)
+        //    {
+        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_LoadingUIProgressComplete, 100);
+        //        return;
+        //    }
+
+        //    LoadingProgressDelayTime += AppConst.LoadingCompleteDelayTime + (AppConst.LoadingDelayTime * 2);
+        //    TimerUtil.Simple.AddTimer(LoadingProgressDelayTime, () =>
+        //    {
+        //        LoadingProgressDelayTime = 0;
+        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_LoadingUIProgressComplete, 100);
+        //    });
+        //}
+
+        //public static void DisplayWaitUI()
+        //{
+        //    AppDispatcher.Instance.Dispatch(AppMsg.UI_DisplayWaitUI);
+        //}
+
+        //public static void DisplayWaitTimeUI(float funcTime, Action func)
+        //{
+        //    WaitTimeActionClass waitObj = new WaitTimeActionClass(funcTime, func);
+        //    AppDispatcher.Instance.Dispatch(AppMsg.UI_DisplayWaitTimeUI, waitObj);
+        //}
+
+        //public static void HideWaitUI()
+        //{
+        //    AppDispatcher.Instance.Dispatch(AppMsg.UI_HideWaitUI);
+        //}
+
+        //public static void ShowTipsUI(string text)
+        //{
+        //    AppDispatcher.Instance.Dispatch(AppMsg.UI_ShowTipsUI, text);
+        //}
+
+        //public static void ShowAffirmUI(string contentInfo, string affirmInfo, string cancelInfo, Action affirmFunc, Action cancelFunc)
+        //{
+        //    AppDispatcher.Instance.Dispatch(AppMsg.UI_ShowAffirmUI);
+        //}
+
+        //public static void ShowPlatformTipsUI(string text)
+        //{
+        //    AppDispatcher.Instance.Dispatch(AppMsg.UI_ShowPlatformTipsUI, text);
+        //}
+        #endregion UIMsg
+
+
     }
 
 

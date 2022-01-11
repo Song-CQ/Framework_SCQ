@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\22-[FC]C# Script-NewScript.cs.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\23-[FC]Core-NewClass.cs.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\23-[FC]C# Core-NewClass.cs.txt" />
     <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\21-[FC]C# Class-NewClass.cs.txt" />
   </ItemGroup>
   <ItemGroup>

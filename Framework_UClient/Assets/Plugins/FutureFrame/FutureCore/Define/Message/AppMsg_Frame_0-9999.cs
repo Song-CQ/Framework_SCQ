@@ -34,5 +34,16 @@ namespace FutureCore
 
         // 系统管理器启动完成
         public static readonly uint System_ManagerStartUpComplete = ++Cursor_BASE;
+
+
+        ///界面消息
+        // 显示加载界面
+        public static readonly uint UI_DisplayLoadingUI = ++Cursor_BASE;
+
+
+        /// 场景消息
+        // 场景切换
+        public static readonly uint Scene_Switch = ++Cursor_BASE;
+
     }
 }

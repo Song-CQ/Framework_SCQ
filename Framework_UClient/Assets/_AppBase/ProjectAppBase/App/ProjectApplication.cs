@@ -60,13 +60,13 @@ namespace ProjectApp
             InitAppSetting();
 
             BaseManagerRegister.Register();
-            //AppManagerRegister.Register();
+            AppManagerRegister.Register();
             BaseManagerRegister.RegisterData();
-            //AppManagerRegister.RegisterData();
+            AppManagerRegister.RegisterData();
 
             App.AppFacadeStartUp();
             GlobalMgr.Instance.StartUp();
-            //AppManagerRegister.StartUpAfterRegister();
+            AppManagerRegister.StartUpAfterRegister();
 
             AfterInitDefine();
             InitSettingMode();
@@ -175,21 +175,21 @@ namespace ProjectApp
 
         private void AfterInitDefine()
         {
-            //AppConst.AfterInit();
+            AppConst.AfterInit();
             //NetConst.AfterInit();
         }
 
         private void StartUpGameMain()
         {
             LogUtil.Log("[Application]StartUpGameMain");
-            //if (!IsRestart)
-            //{
-            //    GameMgr.Instance.InitialMain();
-            //}
-            //else
-            //{
-            //    GameMgr.Instance.EnterMain();
-            //}
+            if (!IsRestart)
+            {
+                GameMgr.Instance.InitialMain();
+            }
+            else
+            {
+                GameMgr.Instance.EnterMain();
+            }
         }
 
         #endregion Enable

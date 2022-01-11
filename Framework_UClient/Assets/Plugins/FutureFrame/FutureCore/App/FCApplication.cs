@@ -75,7 +75,8 @@ namespace FutureCore
 
         private void CloseApp()
         {
-           // ModuleMgr.Instance.DisposeAllModule();
+            //UIMgr.Instance.DisposeAllUI();
+            ModuleMgr.Instance.DisposeAllModule();
             GlobalMgr.Instance.DisposeAllMgr();
             GlobalMgr.Instance.Dispose();
         }

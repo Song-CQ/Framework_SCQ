@@ -183,5 +183,10 @@ namespace FutureCore
         {
             FrameRateTimestep = 1f / Application.targetFrameRate;
         }
+
+        public static void AfterInit()
+        {
+            
+        }
     }
 }

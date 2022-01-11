@@ -69,6 +69,7 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Ctr\BaseUICtrl.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Model\BaseModel.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\Scene\BaseScene.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\AppConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\AppObjConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\EncryptConst.cs" />
@@ -91,8 +92,11 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\BaseMonoMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\IMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\GlobalMgr.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\GameMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\ModuleMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\ResMgr.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\SceneMgr.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\SceneSwitchMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\InputMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\TimerMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\ColorUtil\ColorUtil.cs" />
