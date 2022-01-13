@@ -61,6 +61,11 @@ namespace FutureCore
             }
             return Resources.UnloadUnusedAssets();
         }
+
+        public void InitAssets()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
     }

@@ -31,9 +31,10 @@ namespace FutureCore
 
 
         /// 系统消息
-
         // 系统管理器启动完成
         public static readonly uint System_ManagerStartUpComplete = ++Cursor_BASE;
+        // 系统资源初始化完成
+        public static readonly uint System_AssetsInitComplete = ++Cursor_BASE;
 
 
         ///界面消息

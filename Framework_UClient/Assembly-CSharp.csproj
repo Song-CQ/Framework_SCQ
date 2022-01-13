@@ -87,7 +87,10 @@
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\BaseManagerRegister.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\ProjectApplication.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\ColorConst.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\PreLoadIdConst.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\SceneConst.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\Scene\MainScene.cs" />
     <Compile Include="Assets\_AppBase\ProjectMain\MainLauncher.cs" />
     <Compile Include="Assets\text.cs" />
   </ItemGroup>
@@ -297,6 +300,15 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RainbowCore">
+      <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseVoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
+    </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -305,12 +317,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="BaseVoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll</HintPath>
-    </Reference>
-    <Reference Include="VoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

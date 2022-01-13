@@ -29,7 +29,7 @@ namespace FutureCore
                 SceneSwitchMgr.Instance.SwitchInitialScene(DefaultMainSceneIdx, scene.SwitchSceneComplete, param);
             }
         }
-        public void SwitchScene(int scenid, object param)
+        public void SwitchScene(int scenid, object param = null)
         {
             LogUtil.LogFormat("[SceneMgr]Switch Scene To {0} Idx", scenid);
             BaseScene scene = GetScene(scenid);

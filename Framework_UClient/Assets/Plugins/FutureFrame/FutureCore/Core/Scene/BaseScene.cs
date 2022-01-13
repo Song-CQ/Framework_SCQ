@@ -15,22 +15,30 @@ namespace FutureCore
         /// </summary>
         public abstract int SceneId { get; }
         /// <summary>
-        /// 资源包加载id
+        /// 资源包预加载id
         /// </summary>
         public abstract int PreLoadId { get; }
 
-
+        /// <summary>
+        /// 进入场景
+        /// </summary>
         public void Enter()
         {
             App.DisplayLoadingUI();
             OnEnter();
         }
-
+        /// <summary>
+        /// 退出场景
+        /// </summary>
         public void Leave()
         {
             OnLeave();
         }
-        public void SwitchSceneComplete(object param)
+        /// <summary>
+        /// 切换场景完成
+        /// </summary>
+        /// <param name="param"></param>
+        public void SwitchSceneComplete(object param = null)
         {
             AppDispatcher.Instance.Dispatch(AppMsg.Scene_Switch, SceneId);
             OnSwitchSceneComplete(param);

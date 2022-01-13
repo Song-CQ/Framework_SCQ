@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\App.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\AppFacade_Frame.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\AppGlobal.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\FCApplication.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\GObjectsPool.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ListPool.cs" />
