@@ -11,10 +11,19 @@ namespace ProjectApp
 {
     public class FGUIDriver : BaseUIDriver
     {
-        
+        public override void Init()
+        {
+            throw new System.NotImplementedException();
+        }
 
+        public override void Register()
+        {
+            throw new System.NotImplementedException();
+        }
 
-
-
+        public override void Unregister()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -6,6 +6,7 @@
 	功能：UI管理器
 *****************************************************/
 using System;
+using UnityEngine;
 
 namespace FutureCore
 {   
@@ -26,6 +27,12 @@ namespace FutureCore
         private void InItUIMgr()
         {
             LogUtil.Log("[UIMgr]InitUIMgr");
+            GameObject uiRootParent = new GameObject(AppObjConst.UIGoName);
+            AppObjConst.UIGo = uiRootParent;
+            AppObjConst.UIGo.layer = LayerMaskConst.UI;
+            AppObjConst.UIGo.SetParent(AppObjConst.FutureFrameGo);
+            
+
             uiDriver.Init();
         }
 
