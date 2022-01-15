@@ -16,133 +16,146 @@ namespace ExcelTool
 {
     public static class ExcelToAssemblyDataHelp
     {
- 
-        private static Assembly _assembly;
-        private static List<string> tempm_key =new List<string>();
-        private static List<string> tempm_Id=new List<string>();
 
-        public static bool IsEnciphermentData = true; 
-        
-         public static void Start(Assembly assembly, List<ExcelData> excelDataLst)
+        private static Assembly _assembly;
+        private static List<string> tempm_key = new List<string>();
+        private static List<string> tempm_Id = new List<string>();
+
+        public static bool IsEnciphermentData = true;
+
+        public static void Start(Assembly assembly, List<ExcelData> excelDataLst)
         {
-            
+
             _assembly = assembly;
-            StringColor.WriteLine("表数据是否加密："+ExcelToAssemblyDataHelp.IsEnciphermentData,ConsoleColor.Yellow);
+            StringColor.WriteLine("表数据是否加密：" + ExcelToAssemblyDataHelp.IsEnciphermentData, ConsoleColor.Yellow);
             foreach (var excelData in excelDataLst)
             {
                 if (excelData.IsStart)
                 {
-                    CreateStartObj(excelData.Sheet);
+                    CreateStartObj(excelData.Name, excelData.Sheet);
                 }
                 else
                 {
-                    CreateObj(excelData.Sheet);
+                    CreateObj(excelData.Name, excelData.Sheet);
                 }
             }
         }
 
-         private static void CreateStartObj(DataTable sheet)
-         {
-             if (sheet.Rows.Count<3)
-             {
-                 return;
-             }
-             string id = "id";
-             string staticKey = "statickey";
-             string staticDesc = "staticdesc";
-             string staticType = "statictype";
-             string staticValue = "staticvalue";
-
-             DataColumn idColumn = null;
-             DataColumn staticKeyColumn = null;
-             DataColumn staticDescColumn = null;
-             DataColumn staticTypeColumn = null;
-             DataColumn staticValueColumn = null;
-             
-             DataRow field_Names = sheet.Rows[0];
-             foreach (DataColumn row in sheet.Columns)
-             {
-                 if (field_Names[row].ToString().Trim().ToLower()==id)
-                 {
-                     idColumn = row;
-                 }
-                 if (field_Names[row].ToString().Trim().ToLower()==staticKey)
-                 {
-                     staticKeyColumn = row;
-                 }
-                 if (field_Names[row].ToString().Trim().ToLower()==staticDesc)
-                 {
-                     staticDescColumn = row;
-                 }
-                 if (field_Names[row].ToString().Trim().ToLower()==staticType)
-                 {
-                     staticTypeColumn = row;
-                 }
-                 if (field_Names[row].ToString().Trim().ToLower()==staticValue)
-                 {
-                     staticValueColumn = row;
-                 }
-             }
-             if (idColumn==null||staticKeyColumn==null||staticDescColumn==null||staticTypeColumn==null||staticValueColumn==null)
-             {
-                 return;
-             }
-             string tableName = sheet.TableName.RemoveTableNameAnnotation();
-             Console.WriteLine("开始生成静态表："+tableName+ "数据");
-             try
-             {
-                 string className = "ProjectApp.Data."+tableName + "StaticVO";
-                 object myObject = _assembly.CreateInstance(className);
-                 Type myType = myObject.GetType();
-                 for (int i = 3; i < sheet.Rows.Count; i++)
-                 {
-                     DataRow dataRow = sheet.Rows[i];
-                     FieldInfo fieldInfo = myType.GetField(dataRow[staticKeyColumn].ToString().Trim());
-                     string valStr = dataRow[staticValueColumn].ToString().Trim();
-                     object val = ValToObj(fieldInfo.FieldType,valStr);
-                     fieldInfo.SetValue(myObject,val);
-                 }
-                 string jsonData = JsonConvert.SerializeObject(myObject);
-                 DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath+@"\StaticExcelData");
-                 if (IsEnciphermentData)
-                 {
-                     byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                     File.WriteAllBytes(directoryInfo.FullName+@"\"+tableName + "_StaticData.bytes",bytes);
-                 }
-                 else
-                 {
-                     File.WriteAllText(directoryInfo.FullName+@"\"+tableName + "_StaticData.txt",jsonData);   
-                 }
-                 
-                 StringColor.WriteLine("生成静态表："+tableName + "数据成功",ConsoleColor.Green);
-             }
-             catch (Exception e)
-             {
-                 StringColor.WriteLine(e);
-                 StringColor.WriteLine("生成静态表："+tableName + "数据失败");
-                 Thread.CurrentThread.Abort();
-             }
-             
-         }
-
-
-         private static void CreateObj(DataTable sheet)
+        private static void CreateStartObj(string name, DataTable sheet)
         {
-            if (sheet.Rows.Count<3)
+            if (sheet.Rows.Count < 3)
+            {
+                return;
+            }
+            string id = "id";
+            string staticKey = "statickey";
+            string staticDesc = "staticdesc";
+            string staticType = "statictype";
+            string staticValue = "staticvalue";
+
+            DataColumn idColumn = null;
+            DataColumn staticKeyColumn = null;
+            DataColumn staticDescColumn = null;
+            DataColumn staticTypeColumn = null;
+            DataColumn staticValueColumn = null;
+
+            DataRow field_Names = sheet.Rows[0];
+            foreach (DataColumn row in sheet.Columns)
+            {
+                if (field_Names[row].ToString().Trim().ToLower() == id)
+                {
+                    idColumn = row;
+                }
+                if (field_Names[row].ToString().Trim().ToLower() == staticKey)
+                {
+                    staticKeyColumn = row;
+                }
+                if (field_Names[row].ToString().Trim().ToLower() == staticDesc)
+                {
+                    staticDescColumn = row;
+                }
+                if (field_Names[row].ToString().Trim().ToLower() == staticType)
+                {
+                    staticTypeColumn = row;
+                }
+                if (field_Names[row].ToString().Trim().ToLower() == staticValue)
+                {
+                    staticValueColumn = row;
+                }
+            }
+            if (idColumn == null || staticKeyColumn == null || staticDescColumn == null || staticTypeColumn == null || staticValueColumn == null)
             {
                 return;
             }
             string tableName = sheet.TableName.RemoveTableNameAnnotation();
-            Console.WriteLine("开始生成表："+tableName + "数据");
-            string className = "ProjectApp.Data."+tableName + "VO";
-            DataRow field_Names =sheet.Rows[0];
+            string className = "ProjectApp.Data." + tableName + "StaticVO";
+            Console.WriteLine("开始生成静态表：" + name + "数据");
+            Console.WriteLine("类名：" + className);
+            try
+            {
+
+                object myObject = _assembly.CreateInstance(className);
+                Type myType = myObject.GetType();
+                for (int i = 4; i < sheet.Rows.Count; i++)
+                {
+                    DataRow dataRow = sheet.Rows[i];
+                    string idStr = dataRow[idColumn].ToString().Trim();
+                    string keyStr = dataRow[staticKeyColumn].ToString().Trim();
+                    string typeStr = dataRow[staticTypeColumn].ToString().Trim();
+                    if (keyStr == "" || id == ""||typeStr =="")
+                    {
+                        ///忽略空
+                        continue;
+                    }
+                    string valStr = dataRow[staticValueColumn].ToString().Trim();
+                    FieldInfo fieldInfo = myType.GetField(keyStr);
+                    
+                    object val = ValToObj(fieldInfo.FieldType, valStr);
+                    fieldInfo.SetValue(myObject, val);
+                }
+                string jsonData = JsonConvert.SerializeObject(myObject);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\StaticExcelData");
+                if (IsEnciphermentData)
+                {
+                    byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
+                    File.WriteAllBytes(directoryInfo.FullName + @"\" + tableName + "_StaticData.bytes", bytes);
+                }
+                else
+                {
+                    File.WriteAllText(directoryInfo.FullName + @"\" + tableName + "_StaticData.txt", jsonData);
+                }
+
+                StringColor.WriteLine("生成静态表：" + name + "数据成功", ConsoleColor.Green);
+            }
+            catch (Exception e)
+            {
+                StringColor.WriteLine(e);
+                StringColor.WriteLine("生成静态表：" + name + "数据失败");
+                Thread.CurrentThread.Abort();
+            }
+
+        }
+
+
+        private static void CreateObj(string Name, DataTable sheet)
+        {
+            if (sheet.Rows.Count < 3)
+            {
+                return;
+            }
+            string tableName = sheet.TableName.RemoveTableNameAnnotation();
+
+            string className = "ProjectApp.Data." + tableName + "VO";
+            Console.WriteLine("开始生成表：" + Name + "数据");
+            Console.WriteLine("类名：" + className);
+            DataRow field_Names = sheet.Rows[0];
             DataRow field_Types = sheet.Rows[2];
-            List<object> myDataLst=new List<object>();
+            List<object> myDataLst = new List<object>();
             tempm_key.Clear();
             tempm_Id.Clear();
             try
             {
-                for (int i = 3; i < sheet.Rows.Count; i++)
+                for (int i = 4; i < sheet.Rows.Count; i++)
                 {
                     object myObject = _assembly.CreateInstance(className);
                     Type myType = myObject.GetType();
@@ -150,48 +163,52 @@ namespace ExcelTool
                     foreach (DataColumn itemColumn in sheet.Columns)
                     {
                         string _fieldName = field_Names[itemColumn].ToString().Trim();
-                
-                        string _fieldType = field_Types[itemColumn].ToString().Trim();
 
-                        
+                        string _fieldType = field_Types[itemColumn].ToString().Trim();
+                        if (_fieldName==""||_fieldType=="")
+                        {
+                            ///忽略空
+                            continue;
+                        }
+
                         FieldInfo fieldInfo = myType.GetField(_fieldName);
-                        if (fieldInfo==null)
+                        if (fieldInfo == null)
                         {
                             fieldInfo = myType.GetField(_fieldName.ToLower());
-                            if (fieldInfo==null)
+                            if (fieldInfo == null)
                             {
-                                StringColor.WriteLine(tableName + "VO:"+_fieldName+"字段不存在");  
+                                StringColor.WriteLine(tableName + "VO:" + _fieldName + "字段不存在");
                             }
                         }
-                        
+
                         string valStr = dataRow[itemColumn].ToString().Trim();
-                        object val = ValToObj(fieldInfo.FieldType,valStr);
-                        if (_fieldName.ToLower()=="id")
+                        object val = ValToObj(fieldInfo.FieldType, valStr);
+                        if (_fieldName.ToLower() == "id")
                         {
-                            if (valStr==string.Empty||valStr==null)
+                            if (valStr == string.Empty || valStr == null)
                             {
                                 myObject = null;
                                 break;
                             }
-                            
+
                             if (tempm_Id.Contains(valStr))
                             {
-                                StringColor.WriteLine(tableName + "表id重复:"+valStr);
+                                StringColor.WriteLine(tableName + "表id重复:" + valStr);
                             }
                             tempm_Id.Add(valStr);
                         }
-                        if (_fieldName.ToLower()=="key")
+                        if (_fieldName.ToLower() == "key")
                         {
                             if (tempm_key.Contains(valStr))
                             {
-                               StringColor.WriteLine(tableName + "表Key重复:"+valStr);
+                                StringColor.WriteLine(tableName + "表Key重复:" + valStr);
                             }
                             tempm_key.Add(valStr);
                         }
                         fieldInfo.SetValue(myObject, val);
                     }
 
-                    if (myObject!=null)
+                    if (myObject != null)
                     {
                         myDataLst.Add(myObject);
                     }
@@ -200,58 +217,58 @@ namespace ExcelTool
             catch (Exception e)
             {
                 StringColor.WriteLine(e);
-                StringColor.WriteLine("生成表："+tableName + "数据失败");
+                StringColor.WriteLine("生成表：" + Name + "数据失败");
                 Thread.CurrentThread.Abort();
             }
 
-    
+
             string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
-            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath+@"\ExcelData");
+            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\ExcelData");
             if (IsEnciphermentData)
             {
                 byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                File.WriteAllBytes(directoryInfo.FullName+@"\"+tableName + "_Data.bytes",bytes);
+                File.WriteAllBytes(directoryInfo.FullName + @"\" + tableName + "_Data.bytes", bytes);
             }
             else
             {
-               File.WriteAllText(directoryInfo.FullName+@"\"+tableName + "_Data.txt",jsonData);   
+                File.WriteAllText(directoryInfo.FullName + @"\" + tableName + "_Data.txt", jsonData);
             }
-            StringColor.WriteLine("生成表："+tableName + "数据成功",ConsoleColor.Green);
+            StringColor.WriteLine("生成表：" + Name + "数据成功", ConsoleColor.Green);
         }
 
-       
-        public static object ValToObj(Type thisType,string valString)
+
+        public static object ValToObj(Type thisType, string valString)
         {
-            object obj = null; 
-           // thisType = GetTypeByString(type);
-            if (thisType!=null)
+            object obj = null;
+            // thisType = GetTypeByString(type);
+            if (thisType != null)
             {
-                if (valString==null||valString==string.Empty)
+                if (valString == null || valString == string.Empty)
                 {
                     obj = thisType.IsValueType ? Activator.CreateInstance(thisType) : null;
                     return obj;
                 }
                 else
                 {
-                    if (thisType.IsValueType&&!thisType.IsEnum||thisType == typeof(string))
+                    if (thisType.IsValueType && !thisType.IsEnum || thisType == typeof(string))
                     {
-                        obj = Convert.ChangeType(valString,thisType);
+                        obj = Convert.ChangeType(valString, thisType);
                         return obj;
                     }
                     else if (thisType.IsArray)
                     {
                         Type Cl_Type = thisType.GetElementType();
-                        if (Cl_Type.IsValueType||Cl_Type == typeof(string))
+                        if (Cl_Type.IsValueType || Cl_Type == typeof(string))
                         {
-                           string[] vals = StringToStringArr(valString);
-                           Array array = Array.CreateInstance(Cl_Type,vals.Length);
-                           for (int i = 0; i < vals.Length; i++)
-                           {
-                               object o = Convert.ChangeType(vals[i],Cl_Type);
-                               array.SetValue(o,i);
-                           }
-                           obj = array;
-                           return obj;
+                            string[] vals = StringToStringArr(valString);
+                            Array array = Array.CreateInstance(Cl_Type, vals.Length);
+                            for (int i = 0; i < vals.Length; i++)
+                            {
+                                object o = Convert.ChangeType(vals[i], Cl_Type);
+                                array.SetValue(o, i);
+                            }
+                            obj = array;
+                            return obj;
                         }
                     }
                     else if (thisType.HasImplementedRawGeneric(typeof(List<>)))
@@ -261,7 +278,7 @@ namespace ExcelTool
                         {
                             string[] vals = StringToStringArr(valString);
                             //创建一个list返回
-                            obj = Activator.CreateInstance(thisType, new object[]{});
+                            obj = Activator.CreateInstance(thisType, new object[] { });
                             MethodInfo methodInfo = thisType.GetMethod("Add");
                             object[] tempObjs = new object[1];
                             for (int i = 0; i < vals.Length; i++)
@@ -275,40 +292,40 @@ namespace ExcelTool
                     }
                     else if (thisType.HasImplementedRawGeneric(typeof(Dictionary<,>)))
                     {
-                       
+
                         Type Cl_TypeKey = thisType.GetGenericArguments()[0];
                         Type Cl_TypeVal = thisType.GetGenericArguments()[1];
-                        if ((Cl_TypeKey.IsValueType || Cl_TypeKey == typeof(string))&&(Cl_TypeVal.IsValueType || Cl_TypeVal == typeof(string)))
+                        if ((Cl_TypeKey.IsValueType || Cl_TypeKey == typeof(string)) && (Cl_TypeVal.IsValueType || Cl_TypeVal == typeof(string)))
                         {
-                            StringToStringDic(valString,out  List<string> keys, out  List<string> vals);
+                            StringToStringDic(valString, out List<string> keys, out List<string> vals);
                             //创建一个list返回
-                            obj = Activator.CreateInstance(thisType,new object[]{});
+                            obj = Activator.CreateInstance(thisType, new object[] { });
                             MethodInfo methodInfo = thisType.GetMethod("Add");
                             object[] tempObjs = new object[2];
                             for (int i = 0; i < keys.Count; i++)
                             {
-                                 object key_o = Convert.ChangeType(keys[i], Cl_TypeKey);
-                                 object val_o = Convert.ChangeType(vals[i], Cl_TypeVal);
-                                 tempObjs[0] = key_o;
-                                 tempObjs[1] = val_o;
-                                 methodInfo.Invoke(obj, tempObjs);
+                                object key_o = Convert.ChangeType(keys[i], Cl_TypeKey);
+                                object val_o = Convert.ChangeType(vals[i], Cl_TypeVal);
+                                tempObjs[0] = key_o;
+                                tempObjs[1] = val_o;
+                                methodInfo.Invoke(obj, tempObjs);
                             }
                             return obj;
                         }
-                        
+
                     }
                 }
             }
-            StringColor.WriteLine("字段类型"+thisType.ToString()+"不支持");
-           
+            StringColor.WriteLine("字段类型" + thisType.ToString() + "不支持");
+
             return obj;
         }
-        private static List<string> tempStrLst=new List<string>();
-        private static void StringToStringDic(string valStr,out List<string> key, out List<string> val)
+        private static List<string> tempStrLst = new List<string>();
+        private static void StringToStringDic(string valStr, out List<string> key, out List<string> val)
         {
-            valStr = valStr.Replace("[","{");
-            valStr = valStr.Replace("]","}");
-            string[] str = valStr.Split('{','}');
+            valStr = valStr.Replace("[", "{");
+            valStr = valStr.Replace("]", "}");
+            string[] str = valStr.Split('{', '}');
             key = new List<string>();
             val = new List<string>();
             foreach (string temp in str)
@@ -332,11 +349,11 @@ namespace ExcelTool
         {
             if (type == null) throw new ArgumentNullException(nameof(type));
             if (generic == null) throw new ArgumentNullException(nameof(generic));
- 
+
             // 测试接口。
             var isTheRawGenericType = type.GetInterfaces().Any(IsTheRawGenericType);
             if (isTheRawGenericType) return true;
- 
+
             // 测试类型。
             while (type != null && type != typeof(object))
             {
@@ -344,25 +361,25 @@ namespace ExcelTool
                 if (isTheRawGenericType) return true;
                 type = type.BaseType;
             }
- 
+
             // 没有找到任何匹配的接口或类型。
             return false;
- 
+
             // 测试某个类型是否是指定的原始接口。
             bool IsTheRawGenericType(Type test)
             {
-               return generic == (test.IsGenericType ? test.GetGenericTypeDefinition() : test);
+                return generic == (test.IsGenericType ? test.GetGenericTypeDefinition() : test);
             }
-            
+
         }
         public static string[] StringToStringArr(string val)
         {
-             val = val.Replace("[",string.Empty);
-             val = val.Replace("]",string.Empty);
-             val = val.Replace("{",string.Empty);
-             val = val.Replace("}",string.Empty);
-             string[] arr = val.Split(',');
-             return arr;
+            val = val.Replace("[", string.Empty);
+            val = val.Replace("]", string.Empty);
+            val = val.Replace("{", string.Empty);
+            val = val.Replace("}", string.Empty);
+            string[] arr = val.Split(',');
+            return arr;
         }
 
     }

@@ -23,8 +23,7 @@ public class text : MonoBehaviour
     void Init()
     {
   
-        realtimeSinceStartupUI.text = Sheet1VOModel.Instance.GetVO(0).name[0];
-        timeUI.text = CommonsStaticVO.Instance.hdaslk[0].ToString();
+        
         DownTexture(TestUre, (texture) =>
         {
             imgtest1.sprite= Sprite.Create(texture, new Rect(0, 0, texture.width,texture.height), Vector2.one/2);

@@ -109,7 +109,7 @@ namespace ExcelTool
                 string tableName = item.TableName.RemoveTableNameAnnotation();
                 if (data.IsStart)
                 {
-                    if (item.Rows.Count < 3)
+                    if (item.Rows.Count < 4)
                     {
                         continue;
                     }
@@ -125,14 +125,15 @@ namespace ExcelTool
                 }
                 else
                 {
-                    if (item.Rows.Count < 3)
+                    if (item.Rows.Count < 4)
                     {
                         continue;
                     }
                     Console.WriteLine("解析表: " + data.Name);
                     DataRow field_Names = item.Rows[0];
-                    DataRow field_description = item.Rows[1];
-                    DataRow field_Types = item.Rows[2];
+                    DataRow field_Types = item.Rows[1];
+                    DataRow field_description = item.Rows[2];
+           
 
                     string classStr = ParsingHeaders(data, field_Names, field_description, field_Types);
                     allClassval.Add(classStr);
@@ -224,7 +225,7 @@ namespace ExcelTool
                          "\n        /// </summary>" +
                          "\n        public #Type #Key#FieldData;";
             svBuilder.Clear();
-            for (int i = 3; i < item.Rows.Count; i++)
+            for (int i = 4; i < item.Rows.Count; i++)
             {
                 DataRow row = item.Rows[i];
                 string line = val;
@@ -314,7 +315,7 @@ namespace ExcelTool
             
             string classVal = GetTemplateClass("ExcelTool.Data.VoStaticKeyTemplate.cs");
             svBuilder.Clear();
-            for (var index = 3; index < item.Rows.Count; index++)
+            for (var index = 4; index < item.Rows.Count; index++)
             {
                 DataRow row = item.Rows[index];
                 string key = row[keyColums].ToString();
@@ -322,8 +323,13 @@ namespace ExcelTool
                 {
                     continue;
                 }
+                string fieldName = key.Replace(" ","_");
+                if (char.IsNumber(fieldName[0]))
+                {
+                    fieldName = "_" + fieldName;
+                }
 
-                string val = $"\n        public const string {key} = " + '"' + key + '"'+";";
+                string val = $"\n        public const string {fieldName} = " + '"' + key + '"'+";";
                 svBuilder.Append(val);
             }
             classVal =classVal.Replace("#Name",excelData.Name);
@@ -380,15 +386,16 @@ namespace ExcelTool
             DataTable item = excelData.Sheet;
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoClassTemplate.cs");
-            classVal = classVal.Replace("#Name",excelData.Name);
+            classVal = classVal.Replace("#Name",excelData.Name.Replace(".xlsx",""));
             classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation()+"VO");
             svBuilder.Clear();
+
             foreach (DataColumn itemColumn in item.Columns)
             {
                 string _fieldName = field_Names[itemColumn].ToString().Trim();
-                if (defFieldLst.Contains(_fieldName.ToLower()))
+                if (_fieldName == "" || defFieldLst.Contains(_fieldName.ToLower()))
                 {
-                    //忽略默认字段
+                    //忽略默认和空字段
                     continue;
                 }
                 string _fieldDescription = field_description[itemColumn].ToString().Trim();
@@ -532,7 +539,7 @@ namespace ExcelTool
             string setDataModel = string.Empty;
             foreach (var tableName in allStaticVo)
             {
-                string setDataVal = "\n            CommonsStaticVO.SetData(GetStaticExcalData<"+tableName+"StaticVO"+">("+'"'+tableName+'"'+"));";
+                string setDataVal = "\n            "+tableName+"StaticVO.SetData(GetStaticExcalData<" + tableName+"StaticVO"+">("+'"'+tableName+'"'+"));";
                 setStaticDataToDic += setDataVal;
             }
             foreach (var tableName in allModel)

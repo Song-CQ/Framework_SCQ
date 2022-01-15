@@ -95,16 +95,35 @@
     <Compile Include="Assets\text.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet_g_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_PP_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\bingoRedeem_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Num_probability_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\rolling_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\turntable_Data.txt" />
     <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet8_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_coin_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Guidance_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\StaticExcelData\Common_StaticData.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\pickBox_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\adReward_Data.txt" />
     <None Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.shader" />
     <None Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\BaseVoClassLib.dll" />
     <None Include="Assets\Framework_XL\06_Shader\影子\MobileARShadow.shader" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\TaskList_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\forceAd_Data.txt" />
     <None Include="Assets\Framework_XL\06_Shader\镜子\Mirror.shader" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\paymentType_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\prop_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\giftList_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\giftcard_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\slotreward_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\lang_Data.txt" />
     <None Include="Assets\_App\AutoCreator\ExcelClass_AutoCreator\VODll\VoClassLib.dll" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Sheet1_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\StaticExcelData\Commons_StaticData.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Flop_reward_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\piggy_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Item_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\SignDailyReward_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_cash_Data.txt" />
     <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.csproj.FileListAbsolute.txt" />
   </ItemGroup>
   <ItemGroup>

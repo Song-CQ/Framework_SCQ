@@ -3,7 +3,7 @@
 namespace ProjectApp.Data
 {
     /// <summary>
-    /// 表#Name 数据Model
+    /// #Name 数据Model
     /// </summary>
     public class #Class:VOModel<#Class,#DataVo>
     {

@@ -57,7 +57,6 @@ namespace FutureCore
         private static void CreateInstance()
         {
             GameObject instanceGO = new GameObject(typeof(T).Name);
-            Debug.Log("创建"+ instanceGO.name);
             instance = instanceGO.AddComponent<T>();
             SetSelfParentRoot(instanceGO, instance.ParentRootName);
             instance.New();
