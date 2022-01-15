@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using FutureCore;
 using UnityEngine;
 
 namespace ProjectApp
@@ -98,6 +97,7 @@ namespace ProjectApp
 
         //public static ISDK[] CustomSDK = null;
         //new ISDK[]{ new BasePlatformOS(), new BaseChannel(), new BaseCoreSDK() };
+
 
 
         /// <summary>

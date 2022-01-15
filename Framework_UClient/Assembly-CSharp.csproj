@@ -91,6 +91,7 @@
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\SceneConst.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Scene\MainScene.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\UI\FGUIDriver.cs" />
     <Compile Include="Assets\_AppBase\ProjectMain\MainLauncher.cs" />
     <Compile Include="Assets\text.cs" />
   </ItemGroup>

@@ -116,6 +116,12 @@ namespace FutureCore
         public static int LogsViewerShowNum_Debug = 10;
         // LogsViewer拉起的圈数 (Release模式)
         public static int LogsViewerShowNum_Release = 20;
+
+        /// <summary>
+        /// 项目使用的UI类型
+        /// </summary>
+        public static UIDriverEnem UIDriver = UIDriverEnem.FGUI;
+
         /// 项目控制参数
         // 控制器关闭列表
         public static List<string> CtrlDisableList = new List<string>();
@@ -123,7 +129,7 @@ namespace FutureCore
         //-----------------------------------------------------运行时参数-------------------------------------------------------------//
 
         
-  
+
         // 应用版本
         public static string[] AppVersions;
 

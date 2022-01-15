@@ -71,11 +71,13 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Model\BaseModel.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\Scene\BaseScene.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\UI\BaseUIDriver.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\AppConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\AppObjConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\EncryptConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\ScreenConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\YieldConst.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Enem\UIDriverEnem.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Message\AppMsg_Frame_0-9999.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Message\MainThreadMsg_Frame_0-9999.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Base\BaseDispatcher.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\SceneSwitchMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\InputMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\TimerMgr.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\UIMgr.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\ColorUtil\ColorUtil.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\EncryptUtil\AESEncryptUtil.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\EngineUtil\EngineUtil.cs" />

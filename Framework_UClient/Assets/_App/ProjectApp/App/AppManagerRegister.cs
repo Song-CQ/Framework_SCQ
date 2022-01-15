@@ -7,12 +7,12 @@ namespace ProjectApp
     {
         public static void Register()
         {
-            //GlobalMgr globalMgr = GlobalMgr.Instance;
+            GlobalMgr globalMgr = GlobalMgr.Instance;
             //// Mgr
             //globalMgr.AddMgr(CameraMgr.Instance);
             //// MonoMgr
             //globalMgr.AddMgr(AudioMgr.Instance);
-            //globalMgr.AddMgr(UIMgr.Instance);
+            globalMgr.AddMgr(UIMgr.Instance);
         }
 
         public static void RegisterData()
@@ -22,6 +22,7 @@ namespace ProjectApp
             // AssetBundleMgr
             RegisterStaticAssetBundle();
             // UIMgr
+            RegisterUIDriver();
             RegisterFont();
             RegisterCustomCommonPackage();
             // WSNetMgr
@@ -54,6 +55,20 @@ namespace ProjectApp
             //assetBundleMgr.AddStaticAssetBundle("atlas/common.bytes");
             //assetBundleMgr.AddStaticAssetBundle("shared/staticshared.bytes");
             //assetBundleMgr.AddStaticAssetBundle("shared/spinelibshared.bytes");
+        }
+
+        /// <summary>
+        /// ×¢²áUIºËÐÄÇý¶¯
+        /// </summary>
+        public static void RegisterUIDriver()
+        {
+            UIMgr uiMgr = UIMgr.Instance;
+            BaseUIDriver baseUIDriver = null;
+            if (AppConst.UIDriver == UIDriverEnem.FGUI)
+            {
+                baseUIDriver = new FGUIDriver();
+            }
+            uiMgr.RegisterUIDriver(baseUIDriver);           
         }
 
         private static void RegisterFont()
