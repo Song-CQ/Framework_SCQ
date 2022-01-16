@@ -430,8 +430,10 @@ namespace ExcelTool
             {
                 byte[] bs = new byte[ms.Length];
                 ms.Read(bs, 0, bs.Length);
-                
-                string txt = Encoding.UTF8.GetString(bs);
+
+                string txt = Encoding.UTF8.GetString(bs)
+                .Replace("#CreateTime#", string.Concat(DateTime.Now.Year, "/", DateTime.Now.Month, "/",
+                                    DateTime.Now.Day, " ", DateTime.Now.Hour, ":", DateTime.Now.Minute, ":", DateTime.Now.Second)); ;
                 //Console.WriteLine("读取模板成功");
                 return txt;
             }

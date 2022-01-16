@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿/****************************************************
+    文件：#Class.cs
+	作者：Clear
+    日期：#CreateTime#
+    类型: 工具自动创建(请勿修改)
+	功能：#Name 数据Model
+*****************************************************/
+using System.Collections.Generic;
 
 namespace ProjectApp.Data
 {
-    /// <summary>
-    /// #Name 数据Model
-    /// </summary>
     public class #Class:VOModel<#Class,#DataVo>
     {
         public override string SheetName { get {return #SheetName;}}

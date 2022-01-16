@@ -1,5 +1,8 @@
 {
-  "ReadExcelPath" : "_Tool\\配置表",
-  "OutDataPath" : "Framework_UClient\\Assets\\_Res\\Resources\\Data\\ExcelConfig",
-  "OutClassPath" : "Framework_UClient\\Assets\\_App\\AutoCreator\\ExcelClass_AutoCreator"
+  //配置表的路劲
+  "ReadExcelPath": "_Tool\\配置表",
+  //生成的打表数据路径
+  "OutDataPath": "Framework_UClient\\Assets\\_Res\\Resources\\Data\\ExcelConfig",
+  //生成的表类文件路径
+  "OutClassPath": "Framework_UClient\\Assets\\_App\\AutoCreator\\ExcelConfig"
 }

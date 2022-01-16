@@ -1,7 +1,13 @@
-﻿using System;
+﻿/****************************************************
+    文件：ExcelDataMgr.cs
+	作者：Clear
+    日期：#CreateTime#
+    类型: 工具自动创建(请勿修改)
+	功能：表格数据管理器
+*****************************************************/
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.Text;
 using ProjectApp.Data;
 using FutureCore;
 using UnityEngine;

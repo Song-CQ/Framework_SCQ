@@ -18,7 +18,7 @@ namespace ProjectApp
 
             //// Mgr
             //globalMgr.AddMgr(AssetBundleMgr.Instance);
-            ////globalMgr.AddMgr(CameraMgr.Instance);
+            globalMgr.AddMgr(CameraMgr.Instance);
             //globalMgr.AddMgr(ConfigMgr.Instance);
             globalMgr.AddMgr(ExcelDataMgr.Instance);
             //globalMgr.AddMgr(ConsoleMgr.Instance);

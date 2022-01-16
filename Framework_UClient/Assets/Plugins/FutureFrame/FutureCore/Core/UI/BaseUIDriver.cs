@@ -5,12 +5,21 @@
     类型: 框架核心脚本(请勿修改)
 	功能：基础UI驱动
 *****************************************************/
+using System;
+using UnityEngine;
+
 namespace FutureCore
 {
     public abstract class BaseUIDriver
     {      
         public abstract void Register();
         public abstract void Init();
-        public abstract void Unregister();
+
+ 
+
+        public abstract void Dispose();
+
+        public abstract Transform CreadUILayer(int index,string name);
+       
     }
 }

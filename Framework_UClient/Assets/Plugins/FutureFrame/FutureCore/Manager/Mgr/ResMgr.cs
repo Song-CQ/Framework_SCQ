@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FairyGUI;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using Object = UnityEngine.Object;
@@ -65,6 +66,20 @@ namespace FutureCore
         public void InitAssets()
         {
             throw new NotImplementedException();
+        }
+
+        public UIPackage AddFguiPackage(string commonPackage, string resUIPath)
+        {
+            return UIPackage.AddPackage(resUIPath);
+            //if (!IsUseEncryptTexture)
+            //{
+            //    return UIPackage.AddPackage(resUIPath);
+            //}
+            //else
+            //{
+            //    //commonPackage = commonPackage + "_fui" + AppConst.ABExtName;
+            //    //return UIPackage.AddPackage(textureDecryptAB, textureDecryptAB, packageName);
+            //}
         }
         #endregion
 

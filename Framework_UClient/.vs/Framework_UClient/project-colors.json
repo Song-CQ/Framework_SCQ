@@ -45,7 +45,17 @@
       "ProjectGuid": "3798781d-c4c4-6001-e6dc-bbba2d0e25d9",
       "DisplayName": "Assembly-CSharp-Editor",
       "ColorIndex": 7
+    },
+    "410b7bdf-bde4-7f87-9c40-484262b44861": {
+      "ProjectGuid": "410b7bdf-bde4-7f87-9c40-484262b44861",
+      "DisplayName": "DOTween.Modules",
+      "ColorIndex": 8
+    },
+    "1d789837-c4c4-0160-e6dc-bbba2d0e25d9": {
+      "ProjectGuid": "1d789837-c4c4-0160-e6dc-bbba2d0e25d9",
+      "DisplayName": "Assembly-CSharp-Editor",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 8
+  "NextColorIndex": 10
 }
