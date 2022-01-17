@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="tm1qhgb4">
+  <resources>
+    <component id="n5d53" name="com_reward.xml" path="/" exported="true"/>
+    <component id="n5d50" name="com_extraItem.xml" path="/" exported="true"/>
+    <component id="n5d5fi" name="com_roll.xml" path="/com/" exported="true"/>
+    <component id="n5d52" name="com_multi.xml" path="/com/" exported="true"/>
+    <component id="jgbufl" name="btn_double.xml" path="/com/" exported="true"/>
+    <component id="jgbufk" name="btn_nothank.xml" path="/com/" exported="true"/>
+    <component id="jgbufn" name="btn_claim.xml" path="/com/" exported="true"/>
+    <image id="n5d5fj" name="zhizhen.png" path="/Img/" exported="true"/>
+    <image id="n5d5fg" name="jinkuang.png" path="/Img/" exported="true"/>
+    <image id="a9pgfb" name="baidi.png" path="/Img/" exported="true"/>
+    <image id="ghncfo" name="c3.png" path="/Img/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

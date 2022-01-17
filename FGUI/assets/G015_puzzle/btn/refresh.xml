@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="360,170" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_lsp6" name="n3" src="lsp6e" fileName="img/anniu lan.png" xy="0,0" pivot="0.5,0.5" size="360,170"/>
+    <image id="n4_lsp6" name="n4" src="lsp6d" fileName="img/zhuanhuan.png" xy="20,55" pivot="0.5,0.5" size="69,59" aspect="true"/>
+    <text id="n5_lsp6" name="n5" xy="87,45" pivot="0.5,0.5" size="248,79" fontSize="60" color="#ffffff" align="center" autoSize="shrink" strokeColor="#336699" strokeSize="3" singleLine="true" text="Refresh"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

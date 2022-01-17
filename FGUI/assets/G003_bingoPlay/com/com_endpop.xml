@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="762,894">
+  <controller name="cont_end" pages="0,reward,1,none" selected="0"/>
+  <controller name="cont_giftSwitch" pages="0,true,1,false" selected="0"/>
+  <displayList>
+    <image id="n10_kmj6" name="n10" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="0,0" size="762,894" aspect="true"/>
+    <image id="n20_rbho" name="n20" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="38,70" pivot="0.5,0.5" size="685,630">
+      <gearDisplay controller="cont_end" pages="0"/>
+    </image>
+    <image id="n13_kmj6" name="n13" src="bvkwey" fileName="img/ppcard.png" pkg="pmf3wbji" xy="103,530">
+      <gearDisplay controller="cont_end" pages="0"/>
+      <gearDisplay2 controller="cont_giftSwitch" pages="0" condition="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n14_kmj6" name="n14" src="kmj6f6" fileName="img/meiyuan.png" pkg="pmf3wbji" xy="96,348" size="165,117" aspect="true">
+      <gearDisplay controller="cont_end" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n15_kmj6" name="n15" src="kmj6f5" fileName="img/jinbi.png" pkg="pmf3wbji" xy="105,157" size="147,128" aspect="true">
+      <gearDisplay controller="cont_end" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n16_kmj6" name="text_coin" xy="393,187" size="295,70" font="ui://pmf3wbjicq6oes" fontSize="50" color="#a0412c" vAlign="middle" autoSize="shrink" text="20,000">
+      <gearDisplay controller="cont_end" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n18_kmj6" name="text_cash" xy="402,366" size="277,70" font="ui://pmf3wbjicq6oes" fontSize="50" color="#a0412c" vAlign="middle" autoSize="shrink" text="$20.00￥">
+      <gearDisplay controller="cont_end" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n19_kmj6" name="cash_pp" xy="403,560" size="275,70" font="ui://pmf3wbjicq6oes" fontSize="50" color="#a0412c" vAlign="middle" autoSize="shrink" text="1">
+      <gearDisplay controller="cont_end" pages="0"/>
+      <gearDisplay2 controller="cont_giftSwitch" pages="0" condition="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n21_rbho" name="n21" src="rbhos" fileName="img/jiangexian.png" xy="69,312" pivot="0.5,0.5" pkg="pmf3wbji">
+      <gearDisplay controller="cont_end" pages="0"/>
+    </image>
+    <image id="n24_rbho" name="n24" src="rbhos" fileName="img/jiangexian.png" xy="69,496" pivot="0.5,0.5" pkg="pmf3wbji">
+      <gearDisplay controller="cont_end" pages="0"/>
+    </image>
+    <image id="n25_rbho" name="n25" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="36,141" pivot="0.5,0.5" size="685,558">
+      <gearDisplay controller="cont_end" pages="1"/>
+    </image>
+    <text id="n26_rbho" name="title" xy="66,26" pivot="0.5,0.5" size="618,107" fontSize="62" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#003366" strokeSize="4" shadowColor="#003366" shadowOffset="1,5" singleLine="true" text="Reward Summary">
+      <gearDisplay controller="cont_end" pages="1"/>
+    </text>
+    <text id="n27_rbho" name="txt" xy="106,335" pivot="0.5,0.5" size="550,107" fontSize="57" color="#a0412c" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="No reward">
+      <gearDisplay controller="cont_end" pages="1"/>
+    </text>
+    <graph id="n28_p0js" name="gp_fx" xy="324,-58" pivot="0.5,0.5" size="100,100" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+  </displayList>
+</component>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_skbw" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="120,423" pivot="0.5,0.5" size="839,966">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_skbw" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="172,578" pivot="0.5,0.5" size="759,778">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_skbw" name="title" xy="231,452" pivot="0.5,0.5" size="618,107" fontSize="72" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Cash out">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n13_skbw" name="text1" xy="209,573" pivot="0.5,0.5" size="662,130" fontSize="44" color="#000066" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" text="You only need to complete any one task to cash out">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n4_skbw" name="text_bingo" xy="194,944" pivot="0.5,0.5" size="692,54" fontSize="35" color="#a0412c" align="center" vAlign="middle" ubb="true" vars="true" autoSize="none" text="Play [color=#336600]{0}[/color] Bingo games to Cash out">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n7_skbw" name="text_video" xy="187,1081" pivot="0.5,0.5" size="706,48" fontSize="35" color="#a0412c" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" text="Watch [color=#336600]{0}[/color] videos to Cash out">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <loader id="n5_skbw" name="loader_giftcard" xy="346,713" pivot="0.5,0.5" size="388,215" aspect="true" url="ui://272c87dsskbw8" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <component id="n6_skbw" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="876,399">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n10_skbw" name="pb_games" src="e2won" fileName="btn/pb.xml" pkg="pmf3wbji" xy="206,1008" pivot="0.5,0.5" size="667,41">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n11_skbw" name="pb_video" src="e2won" fileName="btn/pb.xml" pkg="pmf3wbji" xy="206,1140" pivot="0.5,0.5" size="667,41">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n12_skbw" name="btn_redeem" src="e2woo" fileName="btn/btn_redeem.xml" pkg="pmf3wbji" xy="405,1212" scale="1.1,1.1">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n14_skbw" name="text_num" xy="609,719" pivot="0.5,0.5" size="108,45" font="Arial" fontSize="33" color="#0067af" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" bold="true" text="$20.00">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

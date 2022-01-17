@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="qpan47by">
+  <resources>
+    <image id="p6531" name="dijibiaoti.png" path="/img/" exported="true"/>
+    <image id="p6532" name="dijizhongxin.png" path="/img/" exported="true"/>
+    <image id="p6533" name="dijizhuanpan.png" path="/img/" exported="true"/>
+    <image id="p6534" name="dizuo.png" path="/img/" exported="true"/>
+    <image id="p6535" name="gaojizhongxin .png" path="/img/" exported="true"/>
+    <image id="p6536" name="gaojizhuanpan.png" path="/img/" exported="true"/>
+    <image id="p6538" name="lucky spin.png" path="/img/" exported="true"/>
+    <image id="p653a" name="zhizhen.png" path="/img/" exported="true"/>
+    <image id="p653b" name="zhuanpan - 高级.png" path="/img/" exported="true"/>
+    <component id="p653d" name="com_spin.xml" path="/btn/" exported="true"/>
+    <component id="p653e" name="btn_spin.xml" path="/btn/" exported="true"/>
+    <component id="p653i" name="com_reward.xml" path="/btn/" exported="true"/>
+    <component id="p653j" name="com_wheels.xml" path="/btn/" exported="true"/>
+    <component id="l117k" name="com_wheel.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

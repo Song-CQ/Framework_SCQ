@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1000,362">
+  <displayList>
+    <image id="n0_kmj6" name="n0" src="kmj6d" fileName="img/biaotidiban(1).png" xy="0,0" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,top-top"/>
+    </image>
+    <list id="n28_kmj6" name="list" xy="51,137" pivot="0.5,0.5" size="898,158" layout="row" overflow="scroll" scroll="horizontal" colGap="28" defaultItem="ui://qrqjiu5skmj6f" vAlign="middle">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

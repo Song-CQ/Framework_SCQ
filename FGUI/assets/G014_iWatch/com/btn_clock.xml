@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="320,120" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" pages="0,none,1,clocked" selected="1"/>
+  <displayList>
+    <image id="n3_vn61" name="n3" src="e2wo9" fileName="img/anniu.png" pkg="pmf3wbji" xy="0,0" pivot="0.5,0.5" size="320,120" color="#cccccc">
+      <gearColor controller="cont_button" pages="1" values="#cccccc" default="#ffffff"/>
+    </image>
+    <text id="n4_vn61" name="n4" xy="88,10" pivot="0.5,0.5" size="208,97" fontSize="52" color="#cccccc" align="center" vAlign="middle" autoSize="shrink" strokeColor="#003300" strokeSize="3" text="Clock in">
+      <gearXY controller="cont_button" pages="0" values="56,10" default="88,10"/>
+      <gearColor controller="cont_button" pages="1" values="#cccccc,#003300" default="#ffffff,#003300"/>
+    </text>
+    <image id="n5_vn61" name="n5" src="k97ia" fileName="img/对号（绿色）.png" pkg="pmf3wbji" xy="17,32" pivot="0.5,0.5" size="73,58" aspect="true" color="#cccccc">
+      <gearDisplay controller="cont_button" pages="1"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

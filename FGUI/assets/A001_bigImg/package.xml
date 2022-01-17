@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="m37z5ifz">
+  <resources>
+    <image id="iboy0" name="loading.jpg" path="/img/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true" maxAtlasSize="4096" sizeOption="npot"/>
+</packageDescription>

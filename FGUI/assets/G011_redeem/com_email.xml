@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n1_lfcg" name="n1" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="120,363" pivot="0.5,0.5" size="839,966">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n0_lfcg" name="n0" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="160,518" pivot="0.5,0.5" size="759,778">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_lfcg" name="title" xy="231,392" pivot="0.5,0.5" size="618,107" fontSize="72" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Information Required">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n3_lfcg" name="text" xy="192,784" pivot="0.5,0.5" size="696,110" fontSize="40" color="#a0412c" align="center" vAlign="middle" autoSize="shrink" text="This giftcard is ready, please input your REAL email address.">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n4_plpq" name="com_enter" src="plpq10" fileName="com/com_enter.xml" xy="213,927" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n6_plpq" name="btn_redeem" src="e2woo" fileName="com/btn_redeem.xml" xy="408,1145" scale="1.1,1.1" pkg="pmf3wbji">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <loader id="n7_plpq" name="loader_giftcard" xy="352,542" pivot="0.5,0.5" size="376,208" url="ui://ur2owoijplpqz" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <component id="n9_plpq" name="com_enter2" src="plpq10" fileName="com/com_enter.xml" xy="214,1027" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n10_plpq" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="881,333">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="633,41" extention="ProgressBar">
+  <displayList>
+    <image id="n0_8h4e" name="n0" src="e2woe" fileName="img/jiazaidi.png" pkg="pmf3wbji" xy="0,0" size="633,41">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_8h4e" name="bar" src="e2wof" fileName="img/jiazailan.png" pkg="pmf3wbji" xy="0,2" size="633,37"/>
+    <text id="n2_8h4e" name="n2" xy="135,-3" pivot="0.5,0.5" size="20,44" fontSize="32" color="#ffffff" align="center" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="1"/>
+    <text id="n3_8h4e" name="n3" xy="295,1" pivot="0.5,0.5" size="20,44" fontSize="32" color="#ffffff" align="center" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="2"/>
+    <text id="n4_8h4e" name="n4" xy="450,1" pivot="0.5,0.5" size="20,44" fontSize="32" color="#ffffff" align="center" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="3"/>
+    <text id="n5_8h4e" name="n5" xy="613,1" pivot="0.5,0.5" size="20,44" fontSize="32" color="#ffffff" align="center" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="4"/>
+  </displayList>
+  <ProgressBar/>
+</component>

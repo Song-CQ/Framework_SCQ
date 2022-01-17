@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="568,167" extention="Button">
+  <controller name="cont_state" exported="true" pages="0,video,1,free" selected="1"/>
+  <displayList>
+    <image id="n3_b9hh" name="n3" src="kmj6f2" fileName="img/green.png" xy="0,0" pivot="0.5,0.5" size="568,167"/>
+    <text id="n4_b9hh" name="n4" xy="153,18" pivot="0.5,0.5" size="376,130" fontSize="94" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#006600" strokeSize="6" text="Collect">
+      <gearDisplay controller="cont_state" pages="0"/>
+    </text>
+    <image id="n5_b9hh" name="n5" src="p653f" fileName="img/bofang.png" xy="38,31" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="0"/>
+    </image>
+    <text id="n6_b9hh" name="n6" xy="96,18" pivot="0.5,0.5" size="376,130" fontSize="94" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#006600" strokeSize="6" text="Collect">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </text>
+  </displayList>
+  <Button/>
+</component>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="47,49">
+  <displayList>
+    <image id="n19_cjp2" name="n19" src="cjp2fi" fileName="img/dengbai.png" xy="0,0" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n20_cjp2" name="n20" src="cjp2fj" fileName="img/denghuang.png" xy="-49,-48" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <transition name="fx_light" options="2" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Visible" target="n19_cjp2" value="true"/>
+    <item time="0" type="Visible" target="n20_cjp2" value="false"/>
+    <item time="3" type="Alpha" target="n20_cjp2" tween="true" startValue="0" endValue="1" duration="8"/>
+    <item time="3" type="Visible" target="n19_cjp2" value="true"/>
+    <item time="3" type="Visible" target="n20_cjp2" value="true"/>
+    <item time="11" type="Alpha" target="n20_cjp2" tween="true" startValue="1" endValue="0" duration="8"/>
+    <item time="19" type="Visible" target="n19_cjp2" value="true"/>
+    <item time="19" type="Visible" target="n20_cjp2" value="true"/>
+  </transition>
+</component>

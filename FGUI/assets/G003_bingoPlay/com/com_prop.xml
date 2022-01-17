@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="130,130" extention="ProgressBar">
+  <controller name="cont_prop" pages="0,normal,1,daub,2,coin,3,three" selected="0"/>
+  <displayList>
+    <image id="n11_rbho" name="n11" src="rbhog" fileName="img/propempty.png" xy="0,0" pivot="0.5,0.5" size="130,130" aspect="true"/>
+    <image id="n12_rbho" name="img_prg" src="rbhoh" fileName="img/propfull.png" xy="0,0" pivot="0.5,0.5" size="130,130" aspect="true" fillMethod="radial360" fillAmount="49"/>
+    <image id="n13_rbho" name="n13" src="rbhoi" fileName="img/prop.png" xy="15,15" pivot="0.5,0.5" size="100,100" aspect="true">
+      <gearDisplay controller="cont_prop" pages="0"/>
+    </image>
+    <image id="n14_rbho" name="n14" src="rbhok" fileName="img/propdaub.png" xy="15,15" pivot="0.5,0.5" size="100,100" aspect="true">
+      <gearDisplay controller="cont_prop" pages="1"/>
+    </image>
+    <image id="n15_rbho" name="n15" src="rbhoj" fileName="img/propcoin.png" xy="15,15" pivot="0.5,0.5" size="100,100" aspect="true">
+      <gearDisplay controller="cont_prop" pages="2"/>
+    </image>
+    <image id="n16_rbho" name="n16" src="rbhol" fileName="img/propx3.png" xy="15,15" pivot="0.5,0.5" size="100,100">
+      <gearDisplay controller="cont_prop" pages="3"/>
+    </image>
+    <graph id="n17_xdpa" name="gh_effect" xy="65,65" pivot="0.5,0.5" anchor="true" size="142,136" touchable="false" type="rect" lineColor="#00000000" fillColor="#00ffffff"/>
+  </displayList>
+  <ProgressBar/>
+</component>

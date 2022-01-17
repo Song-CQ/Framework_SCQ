@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="t82rv7bk">
+  <resources>
+    <component id="e2vg0" name="btn_star.xml" path="/btn/" exported="true"/>
+    <component id="e2vg1" name="com_star.xml" path="/btn/" exported="true"/>
+    <component id="e2vg3" name="com_rateUs.xml" path="/" exported="true"/>
+    <image id="sg714" name="star_dark.png" path="/pic/"/>
+    <image id="sg715" name="star_light.png" path="/pic/"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

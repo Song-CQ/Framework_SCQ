@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_skbw" name="n0" src="skbw1" fileName="img/dikuang.png" xy="25,367" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_skbw" name="n1" src="skbwfu" fileName="img/猪.png" pkg="pmf3wbji" xy="234,627" pivot="0.5,0.5" size="579,499" aspect="true"/>
+    <component id="n2_skbw" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="911,314">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n3_skbw" name="pb_cash" src="skbw4" fileName="img/pb1.xml" xy="283,1188" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n4_skbw" name="btn_cashout" src="rbhow" fileName="btn/btn_green.xml" pkg="pmf3wbji" xy="335,1292" size="409,127">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="Cash out" titleFontSize="63"/>
+    </component>
+    <component id="n14_skbw" name="btn_record" src="skbw6" fileName="img/btn_record.xml" xy="79,139">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="660,160" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" pages="0,makemoney,1,redeem" selected="1"/>
+  <displayList>
+    <image id="n3_mgii" name="n3" src="p653c" fileName="img/anniuzise.png" pkg="pmf3wbji" xy="0,0" pivot="0.5,0.5" size="660,160">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n4_mgii" name="n4" xy="37,21" pivot="0.5,0.5" size="586,111" fontSize="79" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#660066" strokeSize="5" text="Redeem">
+      <gearText controller="cont_button" pages="1" values="Redeem" default="Make Money"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,258">
+  <displayList>
+    <text id="n19_sg71" name="n19" xy="32,89" pivot="0.5,0.5" size="1016,169" font="ui://pmf3wbjicq6oes" fontSize="43" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#000000" strokeSize="3" text="Google is not a sponsor nor is involved in any way with these contests and sweepstakes.">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </text>
+    <richtext id="n20_sg71" name="text_privacy" xy="357,-3" pivot="0.5,0.5" size="441,86" aspect="true" fontSize="57" color="#1a2774" align="center" vAlign="middle" autoSize="none" underline="true" strokeColor="#ffffff" strokeSize="3" singleLine="true" text="Privacy Policy">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </richtext>
+    <component id="n22_sg71" name="com_box" src="sg71h" fileName="pic/btn_box.xml" xy="274,5" pivot="0.5,0.5" touchable="false">
+      <relation target="n20_sg71" sidePair="middle-middle,right-left"/>
+    </component>
+  </displayList>
+</component>

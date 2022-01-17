@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="990,702">
+  <controller name="cont_cardStatus" exported="true" pages="0,review,2,inline" selected="0"/>
+  <displayList>
+    <component id="n12_q3mz" name="com_review" src="q3mz4" fileName="com/com_waiting.xml" xy="0,435" pivot="0.5,0.5" size="990,267">
+      <gearDisplay controller="cont_cardStatus" pages="0,2"/>
+    </component>
+    <image id="n3_boow" name="n3" src="e2wob" fileName="img/xinxidi.png" xy="0,0" pivot="0.5,0.5" size="990,438">
+      <gearDisplay controller="cont_cardStatus" pages="0,1,2"/>
+      <gearColor controller="cont_cardStatus" default="#ffffff"/>
+    </image>
+    <text id="n6_q3mz" name="n6" xy="147,161" pivot="0.5,0.5" size="696,66" font="ui://pmf3wbjicq6oes" fontSize="50" color="#000066" align="center" vAlign="middle" autoSize="shrink" text="This order is under review">
+      <gearDisplay controller="cont_cardStatus" pages="0"/>
+    </text>
+    <text id="n7_q3mz" name="text_task" xy="83,240" pivot="0.5,0.5" size="824,49" font="ui://pmf3wbjicq6oes" fontSize="36" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" text="You must watch [color=#336600]{0}[/color] videos in [color=#336600]1[/color] day to get reward">
+      <gearDisplay controller="cont_cardStatus" pages="0"/>
+    </text>
+    <component id="n21_e2wo" name="pb_review" src="e2won" fileName="btn/pb.xml" pkg="pmf3wbji" xy="107,325" pivot="0.5,0.5">
+      <gearDisplay controller="cont_cardStatus" pages="0,2"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <loader id="n22_e2wo" name="loader_logo" xy="34,32" pivot="0.5,0.5" size="482,90" url="ui://ur2owoijboow2" vAlign="middle" fill="scale">
+      <gearXY controller="cont_cardStatus" pages="0,2" values="34,32|35,35"/>
+    </loader>
+    <text id="n23_e2wo" name="text_price" xy="546,25" pivot="0.5,0.5" size="416,106" font="ui://pmf3wbjicq6oes" fontSize="82" color="#000066" align="right" vAlign="middle" autoSize="none" bold="true" text="$1,000">
+      <gearXY controller="cont_cardStatus" pages="0,2" values="546,25|650,26"/>
+    </text>
+    <text id="n24_vwf1" name="n24" xy="147,150" pivot="0.5,0.5" size="696,154" font="ui://pmf3wbjicq6oes" fontSize="44" align="center" vAlign="middle" autoSize="shrink" text="Review Completed.&#xA;This order is in progress">
+      <gearDisplay controller="cont_cardStatus" pages="2"/>
+    </text>
+  </displayList>
+</component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="839,170" mask="n22_umls" designImage="ui://qrqjiu5sumlsm" designImageOffsetX="-18" designImageOffsetY="-200">
+  <displayList>
+    <graph id="n22_umls" name="n22" xy="0,0" size="839,170" type="rect">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <image id="n11_umls" name="n11" src="umls10" fileName="img/box.png" xy="0,0" size="839,170"/>
+    <component id="n12_umls" name="com_Num1" src="umlsy" fileName="com/com_Num.xml" xy="9,7" pivot="0.5,0.5" size="153,153" aspect="true" visible="false"/>
+    <component id="n17_umls" name="com_Num2" src="umlsy" fileName="com/com_Num.xml" xy="168,7" pivot="0.5,0.5" size="153,153" scale="0.8,0.8" visible="false"/>
+    <component id="n18_umls" name="com_Num3" src="umlsy" fileName="com/com_Num.xml" xy="305,7" pivot="0.5,0.5" size="153,153" scale="0.8,0.8" visible="false"/>
+    <component id="n19_umls" name="com_Num4" src="umlsy" fileName="com/com_Num.xml" xy="437,7" pivot="0.5,0.5" size="153,153" scale="0.8,0.8" visible="false"/>
+    <component id="n20_umls" name="com_Num5" src="umlsy" fileName="com/com_Num.xml" xy="571,7" pivot="0.5,0.5" size="153,153" scale="0.8,0.8" visible="false"/>
+    <component id="n15_umls" name="btn_Speed" src="umlsw" fileName="com/btn_Speed.xml" xy="731,8" size="105,144" aspect="true"/>
+  </displayList>
+</component>

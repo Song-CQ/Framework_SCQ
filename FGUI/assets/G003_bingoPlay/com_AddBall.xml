@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="512,511">
+  <displayList>
+    <graph id="n26_vtlv" name="gp_fx" xy="206,205" pivot="0.5,0.5" size="100,100" type="rect"/>
+    <image id="n21_807k" name="item1" src="807kfn" fileName="img/ziqiu.png" xy="391,105" pivot="0.5,0.5" anchor="true"/>
+    <image id="n22_807k" name="n22" src="807kfm" fileName="img/huangqiu.png" xy="100,123" pivot="0.5,0.5" anchor="true"/>
+    <image id="n23_807k" name="n23" src="807kfl" fileName="img/hongqiu.png" xy="254,267" pivot="0.5,0.5" anchor="true"/>
+    <image id="n24_807k" name="n24" src="807kfn" fileName="img/ziqiu.png" xy="132,424" pivot="0.5,0.5" anchor="true"/>
+    <image id="n25_807k" name="n25" src="807kfm" fileName="img/huangqiu.png" xy="419,385" pivot="0.5,0.5" anchor="true"/>
+  </displayList>
+</component>

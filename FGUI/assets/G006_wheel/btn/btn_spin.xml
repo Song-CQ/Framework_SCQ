@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="748,158" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" pages="0,none,2,cd" selected="1"/>
+  <controller name="cont_video" exported="true" pages="0,free,1,isVideo" selected="0"/>
+  <displayList>
+    <image id="n3_p653" name="n3" src="p653c" fileName="img/anniuzise.png" xy="0,0" pivot="0.5,0.5" grayed="true" pkg="pmf3wbji">
+      <gearLook controller="cont_button" pages="2" values="1,0,1,0" default="1,0,0,0"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n4_p653" name="title" xy="126,15" pivot="0.5,0.5" size="496,123" fontSize="85" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#000000" strokeSize="4" shadowColor="#000000" shadowOffset="1,8" text="FREE SPIN">
+      <gearDisplay controller="cont_button" pages="0,1"/>
+      <gearXY controller="cont_video" pages="0,1" values="126,15|173,15"/>
+      <gearText controller="cont_video" pages="0,1" values="FREE SPIN|SPIN GIFTS"/>
+    </text>
+    <image id="n5_p653" name="n5" src="p653f" fileName="img/bofang.png" pkg="pmf3wbji" xy="73,25" pivot="0.5,0.5">
+      <gearDisplay controller="cont_video" pages="1"/>
+      <gearDisplay2 controller="cont_button" pages="0,1" condition="0"/>
+    </image>
+    <text id="n6_mtxl" name="text_time" xy="126,17" pivot="0.5,0.5" size="496,123" fontSize="85" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#000000" strokeSize="4" shadowColor="#000000" shadowOffset="1,8" text="00:00:00">
+      <gearDisplay controller="cont_button" pages="2"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

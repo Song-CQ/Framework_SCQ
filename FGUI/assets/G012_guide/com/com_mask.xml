@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920" opaque="false" mask="n13_nxk8" reversedMask="true">
+  <displayList>
+    <graph id="n12_nxk8" name="gh_mask" xy="0,0" size="1080,1920" type="rect" fillColor="#bf000000">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n13_nxk8" name="gh_shape" xy="606,1078" pivot="0.5,0.5" anchor="true" size="536,504" type="rect" lineColor="#00000000" fillColor="#fcffffff"/>
+  </displayList>
+</component>

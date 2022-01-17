@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="270,97" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_e2wo" name="n3" src="e2wo9" fileName="img/anniu.png" xy="-1,0" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n4_e2wo" name="n4" xy="20,12" pivot="0.5,0.5" size="230,72" fontSize="49" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#006600" strokeSize="4" text="Cash Out">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_n5d5" name="n0" src="n5d51" fileName="img/diban.png" xy="45,324" pivot="0.5,0.5" size="988,1273">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n2_n5d5" name="n2" src="n5d55" fileName="img/gou.png" xy="119,331" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n3_n5d5" name="n3" src="n5d55" fileName="img/gou.png" xy="857,331" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_n5d5" name="n1" src="n5d54" fileName="img/biaoti.png" xy="181,245" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <list id="n11_n5d5" name="list_task" xy="98,485" pivot="0.5,0.5" size="884,1030" lineGap="10" defaultItem="ui://qmomwx89n5d58" align="center" vAlign="middle">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n12_n5d5" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="914,249">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n13_ueo4" name="text_time" xy="303,409" pivot="0.5,0.5" size="470,65" fontSize="48" color="#003366" align="center" vAlign="middle" autoSize="shrink" text="Reset in: 00:00:00">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

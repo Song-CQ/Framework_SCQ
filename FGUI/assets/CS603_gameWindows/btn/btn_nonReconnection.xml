@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="350,76" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n0_rpha" name="n0" src="lo6xl" fileName="pic/btn_buleLong.png" pkg="oauc2zgj" xy="0,0" size="350,76"/>
+    <text id="n2_rpha" name="n2" xy="51,11" pivot="0.5,0.5" size="247,50" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" shadowColor="#116b9e" shadowOffset="0,3" text="RECONNECTION"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.95"/>
+</component>

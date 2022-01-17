@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="sbqrm4wt">
+  <resources>
+    <component id="g2z80" name="com_loading.xml" path="/" exported="true"/>
+    <component id="g2z81" name="PB1.xml" path="/pic/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

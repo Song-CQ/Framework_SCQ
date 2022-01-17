@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="75,75">
+  <controller name="cont_check" pages="1,check" selected="0"/>
+  <displayList>
+    <image id="n3_sg71" name="n3" src="sg71f" fileName="pic/选中框.png" xy="0,0" pivot="0.5,0.5" size="75,75" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n4_sg71" name="icon" src="k97ia" fileName="img/对号（绿色）.png" pkg="pmf3wbji" xy="3,10" pivot="0.5,0.5" size="69,55" aspect="true"/>
+  </displayList>
+</component>

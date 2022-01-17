@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="pc0wa25b">
+  <resources>
+    <component id="t2688" name="PB1.xml" path="/pic/" exported="true"/>
+    <component id="t268a" name="com_loading.xml" path="/" exported="true"/>
+    <image id="d8jsd" name="jiazai.png" path="/pic/" scale="9grid" scale9grid="31,0,30,50"/>
+    <image id="d8jse" name="jiazaidi.png" path="/pic/" scale="9grid" scale9grid="43,0,23,67"/>
+    <image id="sg71f" name="选中框.png" path="/pic/"/>
+    <component id="sg71h" name="btn_box.xml" path="/pic/"/>
+    <component id="sg71i" name="com_entergame.xml" path="/" exported="true"/>
+    <component id="sv84j" name="com_loadingBlacklist.xml" path="/com/" exported="true"/>
+  </resources>
+  <publish name="CS608_loading" genCode="true"/>
+</packageDescription>

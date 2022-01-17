@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="272,368" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" pages="0,back,1,front" selected="0">
+    <action type="play_transition" fromPage="0" toPage="1" transition="fx_flip"/>
+  </controller>
+  <displayList>
+    <image id="n4_kmj6" name="n4" src="kmj67" fileName="img/paimian.png" xy="0,0" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n5_kmj6" name="text_num" xy="17,250" pivot="0.5,0.5" size="238,79" fontSize="60" color="#ffde10" align="center" vAlign="middle" autoSize="shrink" strokeColor="#922fea" strokeSize="4" shadowColor="#751ae3" shadowOffset="1,5" text="20,000">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <loader id="n6_kmj6" name="loader_reward" xy="30,33" pivot="0.5,0.5" size="212,178" url="ui://pmf3wbjikmj6f6" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <image id="n3_kmj6" name="n3" src="kmj68" fileName="img/paibei.png" xy="0,0" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".95"/>
+  <transition name="fx_flip" frameRate="60">
+    <item time="0" type="Scale" tween="true" startValue="1,1" endValue="1.2,1.2" duration="12"/>
+    <item time="0" type="Visible" target="n3_kmj6" value="true"/>
+    <item time="0" type="Visible" target="n4_kmj6" value="false"/>
+    <item time="0" type="Visible" target="n5_kmj6" value="false"/>
+    <item time="0" type="Visible" target="n6_kmj6" value="false"/>
+    <item time="12" type="Scale" tween="true" startValue="1.2,1.2" endValue="0,1.2" duration="6"/>
+    <item time="18" type="Scale" tween="true" startValue="0,1.2" endValue="1.2,1.2" duration="6"/>
+    <item time="18" type="Visible" target="n3_kmj6" value="false"/>
+    <item time="18" type="Visible" target="n4_kmj6" value="true"/>
+    <item time="18" type="Visible" target="n5_kmj6" value="true"/>
+    <item time="18" type="Visible" target="n6_kmj6" value="true"/>
+    <item time="24" type="Scale" tween="true" startValue="1.2,1.2" endValue="1,1" duration="6"/>
+  </transition>
+</component>

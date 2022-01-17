@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,688">
+  <displayList>
+    <image id="n12_lsp6" name="n12" src="lsp68" fileName="img/puzzl.png" xy="32,0" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <list id="n13_lsp6" name="list_giftlist" xy="68,220" pivot="0.5,0.5" size="942,390" layout="row" overflow="scroll" scroll="horizontal" colGap="32" defaultItem="ui://yo1lg36glsp6n" align="center" vAlign="middle">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n14_lsp6" name="n14" xy="342,59" pivot="0.5,0.5" size="396,92" fontSize="70" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="Gift List">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

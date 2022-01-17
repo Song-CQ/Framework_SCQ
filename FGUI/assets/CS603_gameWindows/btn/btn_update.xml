@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="357,88" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n0_rpha" name="n0" src="p67ky4x" fileName="img_orangSmall.png" pkg="oauc2zgj" xy="0,0" pivot="0.5,0.5" size="357,88"/>
+    <text id="n1_rpha" name="n1" xy="100,18" pivot="0.5,0.5" size="156,51" fontSize="38" color="#ffffff" shadowColor="#fd1d00" shadowOffset="1,4" text="UPDATE"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".95"/>
+</component>

@@ -1,0 +1,1 @@
+[{"cardNum":1,"probability":80,"daubNum":[20,25],"bingoprob":[50,100],"id":1,"key":null},{"cardNum":2,"probability":90,"daubNum":[25,30],"bingoprob":[50,100],"id":2,"key":null},{"cardNum":4,"probability":100,"daubNum":[28,33],"bingoprob":[50,100],"id":3,"key":null}]

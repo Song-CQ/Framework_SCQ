@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="800,200">
+  <controller name="cont_showStatus" exported="true" pages="0,showMust,1,showNeed" selected="1"/>
+  <displayList>
+    <component id="n2_iwg9" name="btn_cancel" src="kmj6a" fileName="btn/btn_red.xml" pkg="pmf3wbji" xy="32,30" size="350,140">
+      <gearDisplay controller="cont_showStatus" pages="1"/>
+      <Button title="Cancel" titleFontSize="62"/>
+    </component>
+    <component id="n3_iwg9" name="btn_update" src="rbhow" fileName="btn/btn_green.xml" pkg="pmf3wbji" xy="422,30" size="350,140">
+      <gearDisplay controller="cont_showStatus" pages="0,1"/>
+      <gearXY controller="cont_showStatus" pages="0,1" values="200,30|422,30"/>
+      <gearSize controller="cont_showStatus" pages="0,1" values="400,140,1,1|350,140,1,1"/>
+      <Button title="Update" titleFontSize="62"/>
+    </component>
+  </displayList>
+</component>

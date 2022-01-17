@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="307,278" pivot="0.5,0.5" anchor="true">
+  <displayList>
+    <component id="n0_kov2" name="n0" src="hybwbp" fileName="Btn/com_Coin.xml" xy="91,46" touchable="false"/>
+    <component id="n1_kov2" name="n1" src="hybwbp" fileName="Btn/com_Coin.xml" xy="190,70" touchable="false"/>
+    <component id="n2_kov2" name="n2" src="hybwbp" fileName="Btn/com_Coin.xml" xy="146,171" touchable="false"/>
+    <component id="n3_kov2" name="n3" src="hybwbp" fileName="Btn/com_Coin.xml" xy="157,134" touchable="false"/>
+    <component id="n4_kov2" name="n4" src="hybwbp" fileName="Btn/com_Coin.xml" xy="49,164" touchable="false"/>
+    <component id="n5_kov2" name="n5" src="hybwbp" fileName="Btn/com_Coin.xml" xy="156,249" touchable="false"/>
+    <component id="n6_kov2" name="n6" src="hybwbp" fileName="Btn/com_Coin.xml" xy="68,110" touchable="false"/>
+    <component id="n7_kov2" name="n7" src="hybwbp" fileName="Btn/com_Coin.xml" xy="247,211" touchable="false"/>
+    <component id="n8_kov2" name="n8" src="hybwbp" fileName="Btn/com_Coin.xml" xy="81,223" touchable="false"/>
+    <component id="n9_kov2" name="n9" src="hybwbp" fileName="Btn/com_Coin.xml" xy="233,100" touchable="false"/>
+    <component id="n10_kov2" name="n10" src="hybwbp" fileName="Btn/com_Coin.xml" xy="179,171" touchable="false"/>
+    <component id="n11_kov2" name="n11" src="hybwbp" fileName="Btn/com_Coin.xml" xy="194,22" touchable="false"/>
+    <component id="n12_wb8m" name="n12" src="hybwbp" fileName="Btn/com_Coin.xml" xy="283,23" touchable="false"/>
+    <component id="n13_wb8m" name="n13" src="hybwbp" fileName="Btn/com_Coin.xml" xy="325,76" touchable="false"/>
+    <component id="n14_wb8m" name="n14" src="hybwbp" fileName="Btn/com_Coin.xml" xy="285,137" touchable="false"/>
+    <component id="n15_wb8m" name="n15" src="hybwbp" fileName="Btn/com_Coin.xml" xy="373,160" touchable="false"/>
+    <component id="n16_wb8m" name="n16" src="hybwbp" fileName="Btn/com_Coin.xml" xy="224,176" touchable="false"/>
+    <component id="n17_wb8m" name="n17" src="hybwbp" fileName="Btn/com_Coin.xml" xy="-14,102" touchable="false"/>
+    <component id="n18_wb8m" name="n18" src="hybwbp" fileName="Btn/com_Coin.xml" xy="21,27" touchable="false"/>
+    <component id="n19_wb8m" name="n19" src="hybwbp" fileName="Btn/com_Coin.xml" xy="4,223" touchable="false"/>
+    <component id="n20_wb8m" name="n20" src="hybwbp" fileName="Btn/com_Coin.xml" xy="294,189" touchable="false"/>
+  </displayList>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="210,244" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <loader id="n8_lsp6" name="loader_gift" xy="22,27" pivot="0.5,0.5" size="168,144" group="n11_j0kk" url="ui://yo1lg36glsp6l" align="center" vAlign="middle" fill="scale"/>
+    <image id="n3_lsp6" name="n3" src="lsp69" fileName="img/qipao.png" xy="0,0" pivot="0.5,0.5" group="n11_j0kk"/>
+    <component id="n5_lsp6" name="btn_Claim" src="j0kky" fileName="btn/btn_Claim.xml" xy="-11,166" pivot="0.5,0.5" group="n11_j0kk"/>
+    <group id="n11_j0kk" name="gp_bubble" xy="-11,0" size="234,247" advanced="true"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+  <transition name="fx" autoPlayRepeat="-1">
+    <item time="0" type="XY" target="n11_j0kk" tween="true" startValue="-11,0" endValue="-11,-17" duration="30" ease="Linear" repeat="-1" yoyo="true"/>
+  </transition>
+</component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <component id="n0_rbho" name="com_endPop" src="kmj66" fileName="com/com_endpop.xml" xy="168,445" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n1_r0o1" name="btn_playagain" src="kmj6f4" fileName="btn/btn_playagain.xml" pkg="pmf3wbji" xy="556,1168" size="320,120" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n2_r0o1" name="btn_home" src="kmj6a" fileName="btn/btn_red.xml" pkg="pmf3wbji" xy="222,1168" size="320,120" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+  <transition name="fx_enter"/>
+</component>

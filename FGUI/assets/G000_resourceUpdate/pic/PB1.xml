@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="899,60" extention="ProgressBar">
+  <displayList>
+    <image id="n0_t268" name="n0" src="hi8v4" fileName="icon/加载底.png" pkg="pmf3wbji" xy="0,0" size="899,68">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_t268" name="bar" src="hi8v3" fileName="icon/加载.png" pkg="pmf3wbji" xy="12,10" size="874,45"/>
+    <text id="n2_t268" name="title" xy="9,4" size="899,52" fontSize="38" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#000000" strokeSize="2" text="100%">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <ProgressBar/>
+</component>

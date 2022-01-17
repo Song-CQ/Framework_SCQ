@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_rbho" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="120,478" pivot="0.5,0.5" size="839,672">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_rbho" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="167,631" pivot="0.5,0.5" size="746,346">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n5_rbho" name="title" xy="231,513" pivot="0.5,0.5" size="618,107" fontSize="72" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Are you sure?">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n6_rbho" name="text" xy="192,660" pivot="0.5,0.5" size="696,287" fontSize="55" color="#a0412c" align="center" vAlign="middle" autoSize="shrink" text="You&apos;ll miss the rest rewards if you leave now.">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n3_rbho" name="btn_leave" src="kmj6a" fileName="btn/btn_red.xml" pkg="pmf3wbji" xy="186,1001">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="Leave" titleFontSize="55"/>
+    </component>
+    <component id="n4_rbho" name="btn_stay" src="rbhow" fileName="btn/btn_green.xml" pkg="pmf3wbji" xy="565,1001">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="Stay" titleFontSize="55"/>
+    </component>
+    <component id="n7_rbho" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="873,444">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

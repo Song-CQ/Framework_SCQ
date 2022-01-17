@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace ProjectApp.Data
 {
-    public class #Class:VOModel<#Class,#DataVo>
+    public partial class #Class:VOModel<#Class,#DataVo>
     {
         public override string SheetName { get {return #SheetName;}}
         public override bool HasStringKey { get {return #HasStringKey;}}

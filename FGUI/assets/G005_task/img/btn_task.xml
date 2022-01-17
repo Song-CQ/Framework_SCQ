@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="240,106" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" pages="0,num,1,collect,2,done" selected="2"/>
+  <displayList>
+    <image id="n3_n5d5" name="n3" src="kmj6f2" fileName="img/green.png" pkg="pmf3wbji" xy="0,0" pivot="0.5,0.5" size="240,106" grayed="true">
+      <gearLook controller="cont_button" pages="2" values="1,0,1,0" default="1,0,0,0"/>
+    </image>
+    <text id="n4_n5d5" name="text_num" xy="34,16" pivot="0.5,0.5" size="172,80" fontSize="61" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#006600" strokeSize="4" text="1/5">
+      <gearDisplay controller="cont_button" pages="0"/>
+    </text>
+    <text id="n5_n5d5" name="text_collect" xy="34,16" pivot="0.5,0.5" size="172,80" fontSize="61" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#006600" strokeSize="4" text="Collect">
+      <gearDisplay controller="cont_button" pages="1"/>
+    </text>
+    <text id="n6_n5d5" name="text_done" xy="34,16" pivot="0.5,0.5" size="172,80" fontSize="61" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#003300" strokeSize="4" text="Done">
+      <gearDisplay controller="cont_button" pages="2"/>
+      <gearLook controller="cont_button" default="1,0,0,0"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".9"/>
+</component>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="170,63" extention="Button">
+  <controller name="cont_btn" pages="0,on,1,off" selected="0"/>
+  <displayList>
+    <image id="n3_rhll" name="n3" src="rhll7" fileName="img/offd.png" xy="0,0" pivot="0.5,0.5">
+      <gearDisplay controller="cont_btn" pages="1"/>
+    </image>
+    <image id="n5_rhll" name="n5" src="rhll9" fileName="img/ond.png" xy="0,0" pivot="0.5,0.5">
+      <gearDisplay controller="cont_btn" pages="0"/>
+    </image>
+    <image id="n4_rhll" name="n4" src="rhll8" fileName="img/on.png" xy="91,-7" pivot="0.5,0.5">
+      <gearDisplay controller="cont_btn" pages="0"/>
+    </image>
+    <image id="n6_rhll" name="n6" src="rhll6" fileName="img/off.png" xy="0,-7" pivot="0.5,0.5">
+      <gearDisplay controller="cont_btn" pages="1"/>
+    </image>
+  </displayList>
+  <Button downEffect="dark" downEffectValue=".8"/>
+</component>

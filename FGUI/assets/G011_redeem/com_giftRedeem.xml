@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n14_e2wo" name="n14" src="ozv515" fileName="img/bg.png" xy="0,0" pivot="0.5,0.5" size="1080,1920">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n15_e2wo" name="com_top" src="e2wom" fileName="com/com_top.xml" xy="-1,0" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,top-top"/>
+    </component>
+    <list id="n5_q3mz" name="list_giftcards" xy="16,311" pivot="0.5,0.5" size="1048,314" layout="flow_hz" overflow="scroll" scroll="horizontal" lineGap="15" colGap="36" lineItemCount="6" defaultItem="ui://ur2owoijq3mz5" align="center" vAlign="middle">
+      <relation target="" sidePair="center-center,top-top"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <list id="n9_q3mz" name="list_gifttask" xy="40,636" pivot="0.5,0.5" size="1000,1284" overflow="scroll" lineGap="25" defaultItem="ui://ur2owoijq3mz6" align="center" autoClearItems="true">
+      <relation target="" sidePair="height-height,center-center,top-top"/>
+      <item url="ui://ur2owoije2wou"/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

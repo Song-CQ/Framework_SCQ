@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="762,56">
+  <controller name="cont_status" exported="true" pages="0,progress,1,fail" selected="1"/>
+  <displayList>
+    <text id="n3_skbw" name="text_date" xy="0,2" pivot="0.5,0.5" size="266,54" fontSize="35" color="#a0412c" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" text="2022/01/06">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n9_ibcu" name="text_amount" xy="292,2" pivot="0.5,0.5" size="194,54" fontSize="35" color="#a0412c" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" text="$20.00">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n10_ibcu" name="text_progress" xy="530,0" pivot="0.5,0.5" size="232,54" fontSize="35" color="#333333" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" text="Account not found">
+      <gearColor controller="cont_status" pages="1" values="#333333,#000000" default="#009900,#000000"/>
+      <gearText controller="cont_status" pages="1" values="Account not found" default="In progress"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

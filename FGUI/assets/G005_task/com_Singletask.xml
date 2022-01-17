@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="873,195">
+  <controller name="cont_collect" pages="0,none,1,collect" selected="0"/>
+  <displayList>
+    <image id="n4_n5d5" name="n4" src="n5d52" fileName="img/lanban.png" xy="0,0" pivot="0.5,0.5" size="873,195">
+      <gearDisplay controller="cont_collect" pages="0"/>
+    </image>
+    <image id="n11_n5d5" name="n11" src="n5d53" fileName="img/ziban.png" xy="0,0" pivot="0.5,0.5" size="873,195">
+      <gearDisplay controller="cont_collect" pages="1"/>
+    </image>
+    <text id="n5_n5d5" name="text_taskname" xy="34,20" pivot="0.5,0.5" size="560,82" fontSize="52" color="#4346aa" autoSize="none" strokeColor="#ffffff" strokeSize="4" text="Play 1 bingo game"/>
+    <loader id="n6_n5d5" name="loader_reward" xy="39,96" pivot="0.5,0.5" size="88,78" url="ui://pmf3wbjikmj6f5" align="center" vAlign="middle" fill="scale"/>
+    <text id="n8_n5d5" name="text_num" xy="144,98" pivot="0,0.5" size="388,78" fontSize="59" color="#ffe300" autoSize="none" strokeColor="#003366" strokeSize="4" text="+1,000"/>
+    <component id="n10_n5d5" name="btn_task" src="n5d56" fileName="img/btn_task.xml" xy="606,44"/>
+  </displayList>
+</component>

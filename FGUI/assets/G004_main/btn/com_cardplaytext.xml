@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="678,131">
+  <controller name="cont_text" autoRadioGroupDepth="true" pages="0,one,1,two,2,four" selected="2"/>
+  <displayList>
+    <text id="n9_rps6" name="text_cardplay" xy="0,0" pivot="0.5,0.5" size="678,131" fontSize="70" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#003366" strokeSize="2" shadowColor="#002a54" shadowOffset="1,6" text="4 Cards Played">
+      <gearText controller="cont_text" pages="1,2" values="2 Cards Played|4 Cards Played" default="1 Card Played"/>
+    </text>
+  </displayList>
+</component>

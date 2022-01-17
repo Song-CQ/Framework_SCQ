@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <graph id="n0_tok2" name="gh_pig" xy="429,1199" pivot="0.5,0.5" anchor="true" size="444,231" touchable="false" type="rect" lineColor="#00000000" fillColor="#00ffffff">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <component id="n1_tok2" name="com_coin" src="tok21" fileName="com/com_coin.xml" xy="202,806">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n2_tok2" name="text_add" xy="740,1222" size="208,122" fontSize="95" color="#ffffff" strokeColor="#000000" strokeSize="5" text="2,511">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

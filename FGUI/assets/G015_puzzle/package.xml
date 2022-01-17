@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="yo1lg36g">
+  <resources>
+    <component id="lsp60" name="com_puzzle.xml" path="/" exported="true"/>
+    <image id="lsp62" name="fanhui.png" path="/img/" exported="true"/>
+    <image id="lsp63" name="huangban.png" path="/img/" exported="true" scale="9grid" scale9grid="31,53,62,85"/>
+    <image id="lsp66" name="lucky spin 1.png" path="/img/" exported="true" scale="9grid" scale9grid="0,375,1054,310"/>
+    <image id="lsp67" name="lucky spin2.png" path="/img/" exported="true" scale="9grid" scale9grid="0,398,1054,327"/>
+    <image id="lsp68" name="puzzl.png" path="/img/" exported="true"/>
+    <image id="lsp69" name="qipao.png" path="/img/" exported="true"/>
+    <image id="lsp6a" name="shipin.png" path="/img/" exported="true"/>
+    <image id="lsp6b" name="shuoming.png" path="/img/" exported="true"/>
+    <image id="lsp6c" name="xiaodikuang.png" path="/img/" exported="true"/>
+    <image id="lsp6d" name="zhuanhuan.png" path="/img/" exported="true"/>
+    <image id="lsp6e" name="anniu lan.png" path="/img/" exported="true" scale="9grid" scale9grid="90,31,180,62"/>
+    <image id="lsp6f" name="baiban.png" path="/img/" exported="true" scale="9grid" scale9grid="31,50,62,100"/>
+    <image id="lsp6g" name="beiban1.png" path="/img/" exported="true" scale="9grid" scale9grid="25,0,50,379"/>
+    <image id="lsp6h" name="beijing.png" path="/img/" exported="true" scale="9grid" scale9grid="0,0,1080,117"/>
+    <component id="lsp6j" name="back.xml" path="/btn/" exported="true"/>
+    <component id="lsp6k" name="info.xml" path="/btn/" exported="true"/>
+    <component id="lsp6n" name="com_gift.xml" path="/com/" exported="true"/>
+    <component id="lsp6o" name="com_giftList.xml" path="/com/" exported="true"/>
+    <component id="lsp6p" name="bubble.xml" path="/btn/" exported="true"/>
+    <image id="lsp6q" name="anniulv.png" path="/img/" exported="true" scale="9grid" scale9grid="90,31,180,62"/>
+    <component id="lsp6r" name="com_puzzleBubble.xml" path="/com/" exported="true"/>
+    <component id="lsp6s" name="com_spinItem.xml" path="/com/" exported="true"/>
+    <component id="lsp6u" name="refresh.xml" path="/btn/" exported="true"/>
+    <component id="lsp6v" name="spin.xml" path="/btn/" exported="true"/>
+    <component id="lsp6w" name="com_spincom.xml" path="/com/" exported="true"/>
+    <component id="l01qx" name="com_Puzzleinfo.xml" path="/" exported="true"/>
+    <component id="j0kky" name="btn_Claim.xml" path="/btn/"/>
+    <component id="j0kkz" name="com_infotext.xml" path="/com/" exported="true"/>
+    <image id="hqkl10" name="dingtu(1).png" path="/img/" exported="true"/>
+    <image id="hqkl11" name="hongbailian.png" path="/img/" exported="true" scale="tile"/>
+    <component id="hqkl12" name="com_img.xml" path="/com/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

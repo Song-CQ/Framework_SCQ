@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="262,72" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_e2wo" name="n3" src="bvkwez" fileName="img/topdi.png" pkg="pmf3wbji" xy="42,3" pivot="0.5,0.5" size="220,72"/>
+    <image id="n4_e2wo" name="n4" src="e2wo8" fileName="img/7.png" xy="0,-2" pivot="0.5,0.5" size="112,76" aspect="true"/>
+    <text id="n5_e2wo" name="title" xy="95,11" size="142,50" font="ui://pmf3wbjicq6oes" fontSize="34" color="#b54d0f" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

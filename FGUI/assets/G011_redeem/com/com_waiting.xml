@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="990,267">
+  <controller name="cont_status" pages="0,review,1,inline" selected="0"/>
+  <displayList>
+    <image id="n20_eox8" name="n20" src="e2woi" fileName="img/toumingdi.png" xy="0,-80" pivot="0.5,0.5" size="990,347"/>
+    <text id="n11_q3mz" name="n11" xy="104,3" pivot="0.5,0.5" size="236,54" font="Calibri" fontSize="40" color="#ffffff" vAlign="middle" autoSize="shrink" bold="true" text="Under review:"/>
+    <text id="n12_q3mz" name="n12" xy="103,67" pivot="0.5,0.5" size="198,54" font="Calibri" fontSize="40" color="#ffffff" vAlign="middle" autoSize="shrink" bold="true" text="In progress:">
+      <gearDisplay controller="cont_status" pages="1"/>
+    </text>
+    <text id="n13_q3mz" name="text_InProgress" xy="304,68" pivot="0.5,0.5" size="240,54" font="arial" fontSize="40" color="#00ff33" vAlign="middle" vars="true" autoSize="shrink" bold="true" text="{0}">
+      <gearDisplay controller="cont_status" pages="1"/>
+      <relation target="n12_q3mz" sidePair="middle-middle,right-left"/>
+    </text>
+    <text id="n14_q3mz" name="text_UnderReview" xy="344,3" pivot="0.5,0.5" size="240,54" font="Calibri" fontSize="40" color="#00ff00" vAlign="middle" autoSize="shrink" bold="true" text="00:00:00">
+      <gearDisplay controller="cont_status" pages="0"/>
+      <relation target="n11_q3mz" sidePair="middle-middle,right-left"/>
+    </text>
+    <text id="n15_q3mz" name="text_num" xy="102,120" pivot="0.5,0.5" size="526,69" font="Calibri" fontSize="28" color="#ffffff" ubb="true" vars="true" autoSize="shrink" bold="true" text="There&apos;re [color=#00FF33]{0}[/color] people in front of confirming the payment. Waiting for [color=#00FF33]{0}[/color].">
+      <gearDisplay controller="cont_status" pages="1"/>
+    </text>
+    <text id="n16_q3mz" name="n16" xy="104,184" pivot="0.5,0.5" size="460,54" font="Calibri" fontSize="40" color="#ffffff" vAlign="middle" autoSize="shrink" bold="true" text="Payment successful"/>
+    <component id="n19_e2wo" name="pb_progress" src="e2wos" fileName="com/ProgressBar1.xml" xy="40,32" pivot="0.5,0.5">
+      <ProgressBar value="1" max="2"/>
+    </component>
+  </displayList>
+</component>

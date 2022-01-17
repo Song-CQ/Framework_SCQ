@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_vn61" name="n0" src="vn617" fileName="img/diban.png" xy="70,603" pivot="0.5,0.5" size="938,660">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n1_vn61" name="btn_ok" src="rbhow" fileName="btn/btn_green.xml" pkg="pmf3wbji" xy="330,1065" size="419,135">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="OK" titleFontSize="70"/>
+    </component>
+    <text id="n3_vn61" name="n3" xy="143,700" pivot="0.5,0.5" size="802,224" fontSize="52" color="#7638c8" align="center" vAlign="middle" leading="0" vars="true" autoSize="shrink" text="Sorry, please watch the video {0} times today to clock in successfully.">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n4_kcre" name="text_pro" xy="249,952" pivot="0.5,0.5" size="582,69" fontSize="52" color="#7638c8" align="center" vAlign="middle" leading="0" vars="true" autoSize="shrink" text="Progress:  {0}/{1}">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

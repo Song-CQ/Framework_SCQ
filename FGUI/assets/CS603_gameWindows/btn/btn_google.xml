@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="499,88" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n19_nop9" name="n19" src="p67ky4x" fileName="img_orangSmall.png" pkg="oauc2zgj" xy="0,0" size="499,88"/>
+    <text id="n23_nop9" name="n23" xy="119,20" pivot="0.5,0.5" size="336,41" fontSize="30" color="#ffffff" shadowColor="#fd3800" shadowOffset="0,4" text="SIGN IN WITH GOOGLE">
+      <relation target="n19_nop9" sidePair="left-left%,middle-middle"/>
+    </text>
+    <image id="n24_nop9" name="n24" src="il9e6" fileName="pic/icon_google.png" xy="61,14"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".95"/>
+</component>

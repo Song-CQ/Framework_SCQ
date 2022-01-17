@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920" opaque="false" designImage="ui://todforchd99jo">
+  <displayList>
+    <component id="n0_gmed" name="wnd_tips" src="gmed1" fileName="wnd_tips.xml" xy="540,924" size="1080,160" touchable="false">
+      <relation target="" sidePair="width-width%,middle-middle"/>
+    </component>
+  </displayList>
+</component>

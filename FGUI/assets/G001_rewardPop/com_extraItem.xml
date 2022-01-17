@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <controller name="cont_extra" pages="0,extraCoin,1,extraCard,2,extracash3,3,extracash5,4,extraball" selected="0"/>
+  <displayList>
+    <image id="n0_n5d5" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="97,344" pivot="0.5,0.5" size="885,1240">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_n5d5" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="140,480" pivot="0.5,0.5" size="800,1044">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_n5d5" name="title" xy="231,371" pivot="0.5,0.5" size="618,107" fontSize="72" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Extra Reward">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n3_n5d5" name="n3" xy="160,883" pivot="0.5,0.5" size="760,161" fontSize="58" color="#a0412c" align="center" vAlign="middle" autoSize="none" text="You get a chance to increase reward!">
+      <gearDisplay controller="cont_extra" pages="0,1,2,3"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n8_n5d5" name="text_num" xy="213,759" pivot="0.5,0.5" size="654,118" fontSize="91" color="#fff700" align="center" vAlign="middle" autoSize="shrink" bold="true" strokeColor="#990000" strokeSize="7" text="+1,000">
+      <gearDisplay controller="cont_extra" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n4_n5d5" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="893,303">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n5_n5d5" name="btn_more" src="a9pgfg" fileName="btn/btn_green_vid.xml" pkg="pmf3wbji" xy="299,1291" size="482,147" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button titleFontSize="63"/>
+    </component>
+    <component id="n6_n5d5" name="com_roll" src="n5d5fi" fileName="com/com_roll.xml" xy="262,1054" pivot="0.5,0.5" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <image id="n9_n5d5" name="n9" src="kmj6f5" fileName="img/jinbi.png" pkg="pmf3wbji" xy="402,531" pivot="0.5,0.5" size="275,238" aspect="true">
+      <gearDisplay controller="cont_extra" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n10_b9hh" name="n10" src="ouxd1k" fileName="img/103.png" pkg="qrqjiu5s" xy="379,526" pivot="0.5,0.5" size="322,322" aspect="true">
+      <gearDisplay controller="cont_extra" pages="2"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n11_b9hh" name="n11" src="ouxd1l" fileName="img/104.png" pkg="qrqjiu5s" xy="379,529" pivot="0.5,0.5" size="322,322" aspect="true">
+      <gearDisplay controller="cont_extra" pages="3"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n12_b9hh" name="n12" src="kmj6f7" fileName="img/diban.png" pkg="pmf3wbji" xy="388,522" pivot="0.5,0.5" size="303,317" aspect="true">
+      <gearDisplay controller="cont_extra" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n13_b9hh" name="text_cardnum" xy="348,776" pivot="0.5,0.5" size="384,118" fontSize="91" color="#fff700" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#990000" strokeSize="7" text="+1">
+      <gearDisplay controller="cont_extra" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n14_b9hh" name="n14" src="a9pgff" fileName="img/sanseqiu.png" pkg="qrqjiu5s" xy="109,377" pivot="0.5,0.5">
+      <gearDisplay controller="cont_extra" pages="4"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n15_b9hh" name="n15" xy="152,839" pivot="0.5,0.5" size="776,183" fontSize="50" color="#a0412c" align="center" vAlign="middle" autoSize="none" text="Just one more daub to bingo in some cards. Want more balls?">
+      <gearDisplay controller="cont_extra" pages="4"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n16_k97i" name="btn_claim" src="jgbufn" fileName="com/btn_claim.xml" xy="452,1436">
+      <gearDisplay controller="cont_extra" pages="0,1,2,3"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

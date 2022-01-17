@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="qrqjiu5s">
+  <resources>
+    <component id="lbaa0" name="com_playcard.xml" path="/" exported="true"/>
+    <component id="lbaa1" name="com_playslot.xml" path="/" exported="true"/>
+    <component id="lbaa2" name="com_play.xml" path="/" exported="true"/>
+    <component id="kmj66" name="com_endpop.xml" path="/com/" exported="true"/>
+    <image id="kmj67" name="paimian.png" path="/img/" exported="true"/>
+    <image id="kmj68" name="paibei.png" path="/img/" exported="true"/>
+    <component id="kmj6b" name="btn_card.xml" path="/com/" exported="true"/>
+    <component id="kmj6c" name="com_prize.xml" path="/com/" exported="true"/>
+    <image id="kmj6d" name="biaotidiban(1).png" path="/img/" exported="true"/>
+    <image id="kmj6e" name="juxing.png" path="/img/" exported="true"/>
+    <component id="kmj6f" name="com_prizeitem.xml" path="/com/" exported="true"/>
+    <image id="rbhog" name="propempty.png" path="/img/" exported="true"/>
+    <image id="rbhoh" name="propfull.png" path="/img/" exported="true"/>
+    <image id="rbhoi" name="prop.png" path="/img/" exported="true"/>
+    <image id="rbhoj" name="propcoin.png" path="/img/" exported="true"/>
+    <image id="rbhok" name="propdaub.png" path="/img/" exported="true"/>
+    <image id="rbhol" name="propx3.png" path="/img/" exported="true"/>
+    <component id="rbhom" name="com_prop.xml" path="/com/" exported="true"/>
+    <image id="rbhon" name="card1.png" path="/img/" exported="true"/>
+    <image id="rbhoo" name="card2.png" path="/img/" exported="true"/>
+    <image id="rbhop" name="carddi.png" path="/img/" exported="true"/>
+    <component id="rbhoq" name="com_carditem.xml" path="/com/" exported="true"/>
+    <component id="rbhor" name="com_carddi.xml" path="/com/" exported="true"/>
+    <component id="rbhot" name="com_end.xml" path="/" exported="true"/>
+    <component id="rbhou" name="com_leavegame.xml" path="/" exported="true"/>
+    <component id="umlsw" name="btn_Speed.xml" path="/com/" exported="true"/>
+    <component id="umlsx" name="com_CallNum.xml" path="/com/" exported="true"/>
+    <component id="umlsy" name="com_Num.xml" path="/com/" exported="true"/>
+    <image id="umlsz" name="B.png" path="/img/" exported="true"/>
+    <image id="umls10" name="box.png" path="/img/" exported="true" scale="9grid" scale9grid="22,25,44,50"/>
+    <image id="umls11" name="fast.png" path="/img/" exported="true"/>
+    <image id="umls12" name="G.png" path="/img/" exported="true"/>
+    <image id="umls13" name="i.png" path="/img/" exported="true"/>
+    <image id="umls14" name="N.png" path="/img/" exported="true"/>
+    <image id="umls15" name="O.png" path="/img/" exported="true"/>
+    <component id="cof017" name="com_ball.xml" path="/com/" exported="true"/>
+    <image id="iboy18" name="game over.png" path="/img/" exported="true"/>
+    <image id="iboy19" name="go.png" path="/img/" exported="true"/>
+    <image id="iboy1a" name="ready.png" path="/img/" exported="true"/>
+    <image id="a7ji1c" name="huke.png" path="/img/" exported="true"/>
+    <image id="a7ji1f" name="diban.png" path="/img/" exported="true"/>
+    <image id="a7ji1g" name="hu.png" path="/img/" exported="true"/>
+    <image id="a7ji1h" name="zhen.png" path="/img/" exported="true"/>
+    <image id="ouxd1k" name="103.png" path="/img/" exported="true"/>
+    <image id="ouxd1l" name="104.png" path="/img/" exported="true"/>
+    <image id="ouxd1o" name="108.png" path="/img/" exported="true"/>
+    <component id="ouxd1q" name="com_slotItem.xml" path="/com/" exported="true"/>
+    <image id="a9pgff" name="sanseqiu.png" path="/img/" exported="true"/>
+    <component id="n5d5fk" name="com_morecard.xml" path="/" exported="true"/>
+    <image id="807kfl" name="hongqiu.png" path="/img/" exported="true"/>
+    <image id="807kfm" name="huangqiu.png" path="/img/" exported="true"/>
+    <image id="807kfn" name="ziqiu.png" path="/img/" exported="true"/>
+    <component id="807kfo" name="com_AddBall.xml" path="/" exported="true"/>
+    <image id="fdp2fp" name="baidi.png" path="/img/" exported="true"/>
+    <image id="fdp2fq" name="jinkuang.png" path="/img/" exported="true"/>
+    <image id="fdp2fr" name="zhizhen.png" path="/img/" exported="true"/>
+    <component id="y0npfs" name="com_pickBox.xml" path="/" exported="true"/>
+    <component id="y0npfu" name="btn_box.xml" path="/com/" exported="true"/>
+    <component id="y0npfv" name="com_boxdown.xml" path="/com/" exported="true"/>
+    <component id="y0npfw" name="pb.xml" path="/com/" exported="true"/>
+    <image id="y0npfx" name="beimian.png" path="/img/" exported="true"/>
+    <image id="y0npfy" name="biaoti.png" path="/img/" exported="true"/>
+    <image id="y0npg0" name="lihe.png" path="/img/" exported="true"/>
+    <image id="y0npg1" name="xiafangdb.png" path="/img/" exported="true" scale="9grid" scale9grid="32,62,64,124"/>
+    <component id="ro0ug4" name="com_propInfo.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

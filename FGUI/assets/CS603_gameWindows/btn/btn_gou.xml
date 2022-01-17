@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="50,50" extention="Button" adaptationTest="FitSize">
+  <controller name="cont_gou" pages="0,no,1,yes" selected="0"/>
+  <displayList>
+    <graph id="n30_i6zo" name="n30" xy="0,0" pivot="0.5,0.5" size="50,50" type="rect" lineSize="3" lineColor="#ffe87131" fillColor="#26000203" corner="10"/>
+    <loader id="n32_m39e" name="icon" xy="2,3" size="46,46" fill="scale" shrinkOnly="true"/>
+  </displayList>
+  <Button mode="Check"/>
+</component>

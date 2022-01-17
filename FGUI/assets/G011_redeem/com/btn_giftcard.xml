@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="220,125" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" pages="0,none,1,select" selected="1"/>
+  <displayList>
+    <loader id="n4_q3mz" name="loader_giftcard" xy="0,0" pivot="0.5,0.5" size="220,124" aspect="true" url="ui://pmf3wbjiboowfm" align="center" vAlign="middle" fill="scale"/>
+    <image id="n5_e2wo" name="n5" src="e2woc" fileName="img/xuanzhong.png" xy="-8,-8" pivot="0.5,0.5" size="236,142">
+      <gearDisplay controller="cont_button" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n6_e2wo" name="n6" src="e2wo7" fileName="img/zhuangtai.png" xy="179,-11" pivot="0.5,0.5" size="51,51" aspect="true">
+      <gearDisplay controller="cont_button" pages="1"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".9"/>
+</component>

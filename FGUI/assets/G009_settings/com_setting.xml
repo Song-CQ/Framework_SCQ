@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_rhll" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="92,338" pivot="0.5,0.5" size="887,1244">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_rhll" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="128,487" pivot="0.5,0.5" size="815,1040">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <richtext id="n2_rhll" name="txt_title" xy="171,358" size="718,119" fontSize="90" color="#ffffff" align="center" leading="2" autoSize="none" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Settings">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </richtext>
+    <component id="n10_rhll" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="872,308">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <richtext id="n11_rhll" name="text_privacy" xy="148,1357" pivot="0.5,0.5" size="358,69" fontSize="52" color="#3f38a2" align="center" vAlign="middle" autoSize="none" underline="true" singleLine="true" text="Privacy Policy">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </richtext>
+    <richtext id="n12_rhll" name="text_terms" xy="575,1360" pivot="0.5,0.5" size="358,69" fontSize="52" color="#3f38a2" align="center" vAlign="middle" autoSize="none" underline="true" singleLine="true" text="Terms of use">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </richtext>
+    <text id="n13_rhll" name="text_uid" xy="165,1440" pivot="0.5,0.5" size="358,69" fontSize="41" color="#333333" vAlign="middle" autoSize="shrink" singleLine="true" text="UID:12345">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n14_rhll" name="text_version" xy="611,1440" pivot="0.5,0.5" size="306,69" fontSize="41" color="#333333" align="right" vAlign="middle" autoSize="shrink" singleLine="true" text="Version:1.0.1">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n4_rhll" name="btn_with" src="rhlli" fileName="com/btn_1withdraw.xml" xy="170,508" size="742,136" group="n16_k219">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n5_rhll" name="btn_how" src="rhllj" fileName="com/btn_2howto.xml" xy="170,644" size="742,136" group="n16_k219">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n6_rhll" name="btn_lang" src="rhllk" fileName="com/btn_3lang.xml" xy="170,780" size="742,136" group="n16_k219">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n7_rhll" name="btn_music" src="rhlll" fileName="com/btn_4music.xml" xy="170,916" size="742,135" group="n16_k219">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n8_rhll" name="btn_sound" src="rhllm" fileName="com/btn_5sounds.xml" xy="170,1051" size="742,136" group="n16_k219">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n9_rhll" name="btn_contact" src="rhlln" fileName="com/btn_6contact.xml" xy="170,1187" size="742,135" group="n16_k219">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <group id="n16_k219" name="n16" xy="170,508" size="742,814" advanced="true" layout="vt" excludeInvisibles="true">
+      <relation target="n1_rhll" sidePair="top-top%"/>
+    </group>
+  </displayList>
+</component>

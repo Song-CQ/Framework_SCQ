@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="279,153">
+  <controller name="cont_cardleft" exported="true" pages="0,full,1,left,2,none" selected="0"/>
+  <displayList>
+    <image id="n7_rbho" name="n7" src="kmj6f7" fileName="img/diban.png" pkg="pmf3wbji" xy="13,3" pivot="0.5,0.5" size="93,98" aspect="true"/>
+    <text id="n8_rbho" name="text_num" xy="143,4" pivot="0.5,0.5" size="92,90" fontSize="69" color="#ffffcc" vAlign="middle" autoSize="none" strokeColor="#660000" strokeSize="4" shadowColor="#660000" shadowOffset="1,5" text="12">
+      <gearDisplay controller="cont_cardleft" pages="0,1"/>
+    </text>
+    <text id="n9_rbho" name="text_fx" xy="139,-59" pivot="0.5,0.5" size="92,90" visible="false" fontSize="69" color="#ffffcc" vAlign="middle" autoSize="none" strokeColor="#660000" strokeSize="4" shadowColor="#660000" shadowOffset="1,4" text="-1">
+      <gearDisplay controller="cont_cardleft" pages="0,1"/>
+    </text>
+    <text id="n10_rbho" name="text_time" xy="-24,96" pivot="0.5,0.5" size="327,44" font="ui://pmf3wbjicq6oes" fontSize="32" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#0051a2" strokeSize="3" text="New card in {0}s">
+      <gearDisplay controller="cont_cardleft" pages="1,2"/>
+    </text>
+    <text id="n11_rbho" name="text_free" xy="114,3" pivot="0.5,0.5" size="160,90" fontSize="69" color="#ffffcc" vAlign="middle" autoSize="none" strokeColor="#660000" strokeSize="4" shadowColor="#660000" shadowOffset="1,5" text="Free">
+      <gearDisplay controller="cont_cardleft" pages="2"/>
+    </text>
+  </displayList>
+  <transition name="fx_num">
+    <item time="0" type="Alpha" target="n9_rbho" tween="true" startValue="1" endValue="0" duration="21"/>
+    <item time="0" type="Visible" target="n9_rbho" value="true"/>
+    <item time="0" type="XY" target="n9_rbho" tween="true" startValue="117,-59" endValue="117,-122" duration="21"/>
+    <item time="21" type="Visible" target="n9_rbho" value="false"/>
+  </transition>
+</component>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="jyp6g9ke">
+  <resources>
+    <component id="l1170" name="com_Obj.xml" path="/" exported="true"/>
+    <component id="l1171" name="wnd_obj.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

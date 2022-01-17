@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace ProjectApp.Data
 {
-    public class #Class:BaseVO
+    public partial class #Class:BaseVO
     {
         #Val
     }

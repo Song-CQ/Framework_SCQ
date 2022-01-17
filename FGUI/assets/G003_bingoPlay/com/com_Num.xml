@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="140,140">
+  <controller name="cont_state" pages="0,B,1,I,2,N,3,G,4,O" selected="0"/>
+  <displayList>
+    <loader id="n15_umls" name="Load_bg" xy="0,0" size="140,140" url="ui://qrqjiu5sumlsz" align="center" vAlign="middle" fill="scaleFree">
+      <gearIcon controller="cont_state" pages="0,1,2,3,4" values="ui://qrqjiu5sumlsz|ui://qrqjiu5sumls13|ui://qrqjiu5sumls14|ui://qrqjiu5sumls12|ui://qrqjiu5sumls15"/>
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </loader>
+    <text id="n14_umls" name="text_num" xy="22,45" size="103,82" font="ui://pmf3wbjicq6oes" fontSize="62" align="center" vAlign="middle" autoSize="none" bold="true" text="75">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="820,640">
+  <controller name="cont_state" pages="0,Radio,1,Double" selected="0"/>
+  <displayList>
+    <image id="n1_t01o" name="n1" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="0,0" size="820,640"/>
+    <image id="n2_t01o" name="n2" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="39,123" size="750,468">
+      <relation target="" sidePair=""/>
+      <relation target="n1_t01o" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </image>
+    <text id="n3_t01o" name="text_val" xy="59,162" size="701,262" fontSize="60" color="#a0412c" align="center" vAlign="middle" leading="-10" autoSize="shrink" text="">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n4_t01o" name="text_title" xy="90,8" size="637,114" fontSize="80" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" text="Update Notice">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n13_gmed" name="btn_Close" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="740,-35">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n14_gmed" name="btn_Sure" src="rbhow" fileName="btn/btn_green.xml" pkg="pmf3wbji" xy="250,444" size="320,120">
+      <gearXY controller="cont_state" pages="0,1" values="250,444|425,444"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="Update" titleFontSize="58"/>
+    </component>
+    <component id="n15_gmed" name="btn_Cancel" src="kmj6a" fileName="btn/btn_red.xml" pkg="pmf3wbji" xy="66,444">
+      <gearDisplay controller="cont_state" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="Cancel" titleFontSize="58"/>
+    </component>
+  </displayList>
+</component>

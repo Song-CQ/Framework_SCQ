@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="181,181">
+  <controller name="cont_slot" pages="0,0,1,1,2,2,3,3,4,4,6,5,7,6,8,7" selected="7"/>
+  <displayList>
+    <image id="n6_ouxd" name="n6" src="ouxd1k" fileName="img/103.png" xy="7,7" pivot="0.5,0.5" size="167,167" aspect="true">
+      <gearDisplay controller="cont_slot" pages="4"/>
+    </image>
+    <image id="n7_ouxd" name="n7" src="bvkwew" fileName="img/coin.png" pkg="pmf3wbji" xy="12,5" pivot="0.5,0.5" size="156,171" aspect="true">
+      <gearDisplay controller="cont_slot" pages="0"/>
+    </image>
+    <image id="n8_ouxd" name="n8" src="bvkwex" fileName="img/money.png" pkg="pmf3wbji" xy="13,13" pivot="0.5,0.5" size="154,155" aspect="true">
+      <gearDisplay controller="cont_slot" pages="1"/>
+    </image>
+    <image id="n9_ouxd" name="n9" src="bvkwey" fileName="img/ppcard.png" pkg="pmf3wbji" xy="3,12" pivot="0.5,0.5" size="174,156" aspect="true">
+      <gearDisplay controller="cont_slot" pages="2"/>
+    </image>
+    <image id="n10_ouxd" name="n10" src="kmj6f7" fileName="img/diban.png" pkg="pmf3wbji" xy="10,6" pivot="0.5,0.5" size="161,169" aspect="true">
+      <gearDisplay controller="cont_slot" pages="3"/>
+    </image>
+    <image id="n11_ouxd" name="n11" src="ouxd1l" fileName="img/104.png" xy="7,7" pivot="0.5,0.5" size="167,167" aspect="true">
+      <gearDisplay controller="cont_slot" pages="6"/>
+    </image>
+    <image id="n12_ouxd" name="n12" src="ouxd1o" fileName="img/108.png" xy="16,9" pivot="0.5,0.5" size="149,163" aspect="true">
+      <gearDisplay controller="cont_slot" pages="7"/>
+    </image>
+    <image id="n14_ouxd" name="n14" src="kmj68" fileName="img/paibei.png" xy="27,4" pivot="0.5,0.5" size="127,173" aspect="true">
+      <gearDisplay controller="cont_slot" pages="8"/>
+    </image>
+  </displayList>
+</component>

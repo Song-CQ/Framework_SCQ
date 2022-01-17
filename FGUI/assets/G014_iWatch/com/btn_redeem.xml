@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="280,104" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n3_vn61" name="n3" src="vn61fw" fileName="img/huangannou.png" pkg="pmf3wbji" xy="0,0" pivot="0.5,0.5" size="280,104" aspect="true"/>
+    <text id="n4_vn61" name="n4" xy="29,16" pivot="0.5,0.5" size="222,69" fontSize="48" color="#ffffff" align="center" autoSize="shrink" strokeColor="#c44e00" strokeSize="3" text="Redeem"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

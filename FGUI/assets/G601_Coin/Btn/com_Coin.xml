@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="98,93" pivot="0.5,0.5" anchor="true">
+  <displayList>
+    <loader id="n26_hybw" name="icon" xy="0,0" pivot="0.5,0.5" size="98,93" url="ui://3z2akmm3hybwbd" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <graph id="n27_hr5h" name="lizhi" xy="49,46" pivot="0.5,0.5" anchor="true" size="1,1" alpha="0" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+  </displayList>
+</component>

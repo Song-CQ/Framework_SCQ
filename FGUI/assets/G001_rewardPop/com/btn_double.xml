@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="568,167" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_jgbu" name="n3" src="kmj6f2" fileName="img/green.png" pkg="pmf3wbji" xy="0,0" pivot="0.5,0.5" size="568,167"/>
+    <text id="n7_jgbu" name="n7" xy="149,19" pivot="0.5,0.5" size="376,130" fontSize="94" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#006600" strokeSize="6" text="Double"/>
+    <image id="n8_jgbu" name="n8" src="p653f" fileName="img/bofang.png" pkg="pmf3wbji" xy="34,32" pivot="0.5,0.5"/>
+  </displayList>
+  <Button/>
+</component>

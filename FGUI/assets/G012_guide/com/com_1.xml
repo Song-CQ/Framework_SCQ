@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="420,164">
+  <displayList>
+    <image id="n1_ro0u" name="n1" src="xodxfo" fileName="img/img_white.png" pkg="pmf3wbji" xy="0,0" pivot="0.5,0.5" size="420,164" rotation="-180"/>
+    <text id="n2_ro0u" name="n2" xy="44,33" pivot="0.5,0.5" size="346,97" fontSize="36" color="#a0412c" align="center" vAlign="middle" leading="0" autoSize="shrink" text="Now try &quot;2 cards&quot; to win more!"/>
+  </displayList>
+</component>

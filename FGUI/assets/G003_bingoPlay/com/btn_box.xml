@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="414,426" pivot="0.5,0.5" anchor="true" extention="Button">
+  <controller name="cont_box" pages="0,back,2,front" selected="0"/>
+  <controller name="cont_type" pages="0,coin,1,cash" selected="1"/>
+  <controller name="cont_first" pages="0,none,1,isFirst" selected="1"/>
+  <displayList>
+    <image id="n7_8h4e" name="n7" src="y0npg1" fileName="img/xiafangdb.png" xy="0,0" pivot="0.5,0.5" size="414,426"/>
+    <text id="n9_8h4e" name="text_num" xy="66,287" pivot="0.5,0.5" size="282,112" fontSize="86" color="#ffcc00" align="center" vAlign="middle" autoSize="shrink" strokeColor="#660000" strokeSize="5" text="1,000"/>
+    <loader id="n8_8h4e" name="loader_reward" xy="48,37" pivot="0.5,0.5" size="318,262" url="ui://pmf3wbjikmj6f6" align="center" vAlign="middle" fill="scale">
+      <gearIcon controller="cont_type" pages="0" values="ui://pmf3wbjikmj6f5" default="ui://pmf3wbjikmj6f6"/>
+    </loader>
+    <image id="n3_8h4e" name="n3" src="y0npfx" fileName="img/beimian.png" xy="0,0" pivot="0.5,0.5">
+      <gearDisplay controller="cont_box" pages="0"/>
+    </image>
+    <image id="n4_8h4e" name="n4" src="y0npg0" fileName="img/lihe.png" xy="61,40" pivot="0.5,0.5">
+      <gearDisplay controller="cont_box" pages="0"/>
+    </image>
+    <text id="n6_8h4e" name="n6" xy="110,289" pivot="0.5,0.5" size="194,99" fontSize="76" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#003399" strokeSize="4" text="Flip">
+      <gearDisplay controller="cont_box" pages="0"/>
+      <gearXY controller="cont_first" pages="1" values="110,289" default="143,289"/>
+    </text>
+    <image id="n5_8h4e" name="n5" src="p653f" fileName="img/bofang.png" pkg="pmf3wbji" xy="83,301" pivot="0.5,0.5" size="74,77" aspect="true">
+      <gearDisplay controller="cont_box" pages="0"/>
+      <gearDisplay2 controller="cont_first" pages="0" condition="0"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+  <transition name="fx_backtofront">
+    <item time="0" type="Scale" tween="true" startValue="1,1" endValue="0,1" duration="6"/>
+    <item time="0" type="Visible" target="n3_8h4e" value="true"/>
+    <item time="0" type="Visible" target="n4_8h4e" value="true"/>
+    <item time="0" type="Visible" target="n5_8h4e" value="true"/>
+    <item time="0" type="Visible" target="n6_8h4e" value="true"/>
+    <item time="0" type="Visible" target="n7_8h4e" value="false"/>
+    <item time="0" type="Visible" target="n8_8h4e" value="false"/>
+    <item time="0" type="Visible" target="n9_8h4e" value="false"/>
+    <item time="6" type="Scale" tween="true" startValue="0,1" endValue="1,1" duration="6"/>
+    <item time="6" type="Visible" target="n3_8h4e" value="false"/>
+    <item time="6" type="Visible" target="n4_8h4e" value="false"/>
+    <item time="6" type="Visible" target="n5_8h4e" value="false"/>
+    <item time="6" type="Visible" target="n6_8h4e" value="false"/>
+    <item time="6" type="Visible" target="n7_8h4e" value="true"/>
+    <item time="6" type="Visible" target="n8_8h4e" value="true"/>
+    <item time="6" type="Visible" target="n9_8h4e" value="true"/>
+  </transition>
+  <transition name="fx_fronttoback">
+    <item time="0" type="Scale" tween="true" startValue="1,1" endValue="0,1" duration="6"/>
+    <item time="0" type="Visible" target="n3_8h4e" value="false"/>
+    <item time="0" type="Visible" target="n4_8h4e" value="false"/>
+    <item time="0" type="Visible" target="n5_8h4e" value="false"/>
+    <item time="0" type="Visible" target="n6_8h4e" value="false"/>
+    <item time="6" type="Scale" tween="true" startValue="0,1" endValue="1,1" duration="6"/>
+    <item time="6" type="Visible" target="n3_8h4e" value="true"/>
+    <item time="6" type="Visible" target="n4_8h4e" value="true"/>
+    <item time="6" type="Visible" target="n5_8h4e" value="true"/>
+    <item time="6" type="Visible" target="n6_8h4e" value="true"/>
+  </transition>
+</component>

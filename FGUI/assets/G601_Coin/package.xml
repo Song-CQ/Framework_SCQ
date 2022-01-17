@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="3z2akmm3">
+  <resources>
+    <component id="hybwbp" name="com_Coin.xml" path="/Btn/" exported="true"/>
+    <image id="hybwbd" name="1.png" path="/icon/" exported="true"/>
+    <component id="kov20" name="Com_CoinWnd.xml" path="/" exported="true"/>
+    <component id="kov21" name="com_Coins.xml" path="/Btn/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

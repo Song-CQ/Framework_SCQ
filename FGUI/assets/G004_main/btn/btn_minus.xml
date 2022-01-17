@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="59,59" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" exported="true" pages="0,light,1,dark" selected="0"/>
+  <displayList>
+    <image id="n3_t4cu" name="n3" src="t4cu1" fileName="img/-.png" xy="0,0">
+      <gearColor controller="cont_button" pages="0" values="#ffffff" default="#cccccc"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

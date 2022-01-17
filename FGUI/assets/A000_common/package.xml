@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="pmf3wbji">
+  <resources>
+    <font id="cq6oes" name="PoetsenOne-Regular.otf" path="/font/" exported="true" renderMode="" samplePointSize="16"/>
+    <component id="lbaaet" name="btn_close.xml" path="/btn/" exported="true"/>
+    <component id="lbaaeu" name="btn_coin.xml" path="/btn/" exported="true"/>
+    <component id="lbaa8" name="btn_cash.xml" path="/btn/" exported="true"/>
+    <component id="lbaa9" name="btn_pp.xml" path="/btn/" exported="true"/>
+    <image id="bvkwev" name="close.png" path="/img/" exported="true"/>
+    <image id="bvkwew" name="coin.png" path="/img/" exported="true"/>
+    <image id="bvkwex" name="money.png" path="/img/" exported="true"/>
+    <image id="bvkwey" name="ppcard.png" path="/img/" exported="true"/>
+    <image id="bvkwez" name="topdi.png" path="/img/" exported="true" scale="9grid" scale9grid="63,0,126,72"/>
+    <image id="t4cu4" name="play.png" path="/img/" exported="true" scale="9grid" scale9grid="115,45,230,90"/>
+    <image id="t4cu5" name="shuoming.png" path="/img/" exported="true"/>
+    <component id="t4cuf0" name="btn_play.xml" path="/btn/" exported="true"/>
+    <component id="kmj6f1" name="btn_info.xml" path="/btn/" exported="true"/>
+    <image id="kmj6f2" name="green.png" path="/img/" exported="true" scale="9grid" scale9grid="68,26,136,52"/>
+    <image id="kmj6f3" name="red.png" path="/img/" exported="true" scale="9grid" scale9grid="68,26,136,52"/>
+    <component id="kmj6f4" name="btn_playagain.xml" path="/btn/" exported="true"/>
+    <component id="kmj6a" name="btn_red.xml" path="/btn/" exported="true"/>
+    <image id="kmj6f5" name="jinbi.png" path="/img/" exported="true"/>
+    <image id="kmj6f6" name="meiyuan.png" path="/img/" exported="true"/>
+    <image id="kmj6f7" name="diban.png" path="/img/" exported="true"/>
+    <image id="rbhof9" name="beiban.png" path="/img/" exported="true" scale="9grid" scale9grid="90,125,53,411"/>
+    <image id="rbhofa" name="beibanbaise.png" path="/img/" exported="true" scale="9grid" scale9grid="62,138,35,276"/>
+    <component id="rbhow" name="btn_green.xml" path="/btn/" exported="true"/>
+    <component id="a9pgfg" name="btn_green_vid.xml" path="/btn/" exported="true"/>
+    <image id="p653f" name="bofang.png" path="/img/" exported="true"/>
+    <component id="b9hhfh" name="btn_collect.xml" path="/btn/" exported="true"/>
+    <image id="cjp2fi" name="dengbai.png" path="/img/" exported="true"/>
+    <image id="cjp2fj" name="denghuang.png" path="/img/" exported="true"/>
+    <component id="cjp2l" name="com_light.xml" path="/btn/" exported="true"/>
+    <image id="mgii3" name="jiazai.png" path="/img/" exported="true" scale="9grid" scale9grid="12,0,24,33"/>
+    <image id="mgii4" name="jiazaidi.png" path="/img/" exported="true" scale="9grid" scale9grid="16,0,22,37"/>
+    <component id="mgiifk" name="pb_jiazai.xml" path="/btn/" exported="true"/>
+    <image id="p653c" name="anniuzise.png" path="/img/" exported="true" scale="9grid" scale9grid="187,39,374,78"/>
+    <image id="k97ia" name="对号（绿色）.png" path="/img/" exported="true"/>
+    <image id="boowr" name="cash.png" path="/img/" exported="true"/>
+    <image id="boowt" name="jiazailv.png" path="/img/" exported="true" scale="9grid" scale9grid="7,0,14,16"/>
+    <image id="boows" name="jiazailvdi.png" path="/img/" exported="true" scale="9grid" scale9grid="9,0,18,26"/>
+    <image id="boowp" name="pkaicon.png" path="/img/" exported="true"/>
+    <image id="boowq" name="tubiaoicon.png" path="/img/" exported="true"/>
+    <component id="boowu" name="btn_crazy.xml" path="/btn/" exported="true"/>
+    <component id="boowfl" name="pb_crazy.xml" path="/btn/" exported="true"/>
+    <component id="boowv" name="btn_gift.xml" path="/btn/" exported="true"/>
+    <image id="boowfm" name="c1 .png" path="/img/" exported="true"/>
+    <font id="boowfn" name="Roboto-Medium.ttf" path="/font/" exported="true" renderMode="" samplePointSize="16"/>
+    <image id="e2woe" name="jiazaidi(1).png" path="/img/" exported="true" scale="9grid" scale9grid="24,0,14,41"/>
+    <image id="e2wof" name="jiazailan.png" path="/img/" exported="true" scale="9grid" scale9grid="20,0,12,37"/>
+    <component id="e2woo" name="btn_redeem.xml" path="/btn/" exported="true"/>
+    <component id="e2won" name="pb.xml" path="/btn/" exported="true"/>
+    <image id="e2wo9" name="anniu.png" path="/img/" exported="true" scale="9grid" scale9grid="68,0,136,97"/>
+    <image id="xodxfo" name="img_white.png" path="/img/" exported="true" scale="9grid" scale9grid="61,64,122,128"/>
+    <image id="au06fp" name="气泡.png" path="/img/" exported="true"/>
+    <component id="fczjfq" name="btn_balloon.xml" path="/btn/" exported="true"/>
+    <image id="fczjfr" name="feixing.png" path="/img/" exported="true"/>
+    <image id="pqqvfs" name="img_loading.png" path="/img/" exported="true"/>
+    <image id="ly6xft" name="pkaicon2.png" path="/img/" exported="true"/>
+    <image id="skbwfu" name="猪.png" path="/img/" exported="true"/>
+    <image id="rhll5" name="money(1).png" path="/img/" exported="true"/>
+    <image id="rbhos" name="jiangexian.png" path="/img/" exported="true"/>
+    <image id="vn61fv" name="icon .png" path="/img/" exported="true"/>
+    <image id="vn61fw" name="huangannou.png" path="/img/" exported="true"/>
+    <component id="lsp6m" name="pb_ger.xml" path="/btn/" exported="true"/>
+    <image id="lsp65" name="jiazaidi(2).png" path="/img/" exported="true" scale="9grid" scale9grid="22,0,44,53"/>
+    <image id="lsp64" name="jiazai(1).png" path="/img/" exported="true" scale="9grid" scale9grid="19,0,38,41"/>
+    <component id="e2wog" name="btn_back.xml" path="/btn/" exported="true"/>
+    <image id="e2woj" name="dingbudiban.png" path="/img/" exported="true" scale="9grid" scale9grid="19,0,38,181"/>
+    <image id="e2woa" name="fanhui.png" path="/img/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

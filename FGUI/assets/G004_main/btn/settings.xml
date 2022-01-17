@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="92,92" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_k97i" name="n3" src="k97il" fileName="img/shezhi.png" xy="0,0" pivot="0.5,0.5" size="91,91" aspect="true"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

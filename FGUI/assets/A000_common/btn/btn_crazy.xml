@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="177,220" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" pages="0,event,1,normal" selected="1"/>
+  <displayList>
+    <image id="n3_boow" name="n3" src="boowp" fileName="img/pkaicon.png" xy="0,10" pivot="0.5,0.5" size="177,184" aspect="true">
+      <gearDisplay controller="cont_button" pages="0"/>
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </image>
+    <image id="n7_ly6x" name="n7" src="ly6xft" fileName="img/pkaicon2.png" xy="0,18" pivot="0.5,0.5" size="177,181" aspect="true">
+      <gearDisplay controller="cont_button" pages="1"/>
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </image>
+    <graph id="n6_boow" name="fx_lizi" xy="38,60" pivot="0.5,0.5" size="100,100" type="rect">
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </graph>
+    <component id="n4_boow" name="pb_num" src="boowfl" fileName="btn/pb_crazy.xml" xy="13,194" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+      <ProgressBar value="47" max="100"/>
+    </component>
+    <text id="n5_boow" name="text_time" xy="16,-2" pivot="0.5,0.5" size="148,44" fontSize="32" color="#663399" strokeColor="#ffffff" strokeSize="4" text="00:00:00">
+      <gearDisplay controller="cont_button" pages="0"/>
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

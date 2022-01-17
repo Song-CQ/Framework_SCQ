@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920" opaque="false">
+  <controller name="cont_guide" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <component id="n4_r0o1" name="Com_MaskAndRift" src="r0o1gb" fileName="com/Com_MaskAndRift.xml" xy="-1,0" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <graph id="n5_r0o1" name="gh_finger" xy="-576,556" pivot="0.5,0.5" size="100,100" type="rect"/>
+    <image id="n8_r0o1" name="img_talk" src="xodxfo" fileName="img/img_white.png" pkg="pmf3wbji" xy="415,1320" pivot="0.5,0.5" size="420,164" rotation="-180">
+      <gearXY controller="cont_guide" pages="0,1" values="415,1320|281,376"/>
+      <gearSize controller="cont_guide" pages="1" values="636,164,1,1" default="420,164,1,1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n9_r0o1" name="text_talk" xy="452,1350" pivot="0.5,0.5" size="346,97" fontSize="36" color="#a0412c" align="center" vAlign="middle" leading="0" autoSize="shrink" text="Now try &quot;2 cards&quot; to win more!">
+      <gearXY controller="cont_guide" pages="0,1" values="452,1350|319,408"/>
+      <gearSize controller="cont_guide" pages="1" values="594,97,1,1" default="346,97,1,1"/>
+      <gearText controller="cont_guide" pages="1" values="You&apos;ve unlocked the &quot;Power up&quot;. Daub a square to fill up!" default="Now try &quot;2 cards&quot; to win more!"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

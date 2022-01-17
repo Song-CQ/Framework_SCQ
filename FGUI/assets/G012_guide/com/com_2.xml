@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="640,181">
+  <displayList>
+    <image id="n29_rnlu" name="n29" src="xodxfo" fileName="img/img_white.png" pkg="pmf3wbji" xy="0,0" pivot="0.5,0.5" size="640,181"/>
+    <text id="n30_rnlu" name="n30" xy="27,29" pivot="0.5,0.5" size="594,125" fontSize="36" color="#a0412c" align="center" vAlign="middle" leading="0" autoSize="shrink" text="You&apos;ve unlocked the &quot;Power up&quot;.&#xA;Daub a squre to fill up!"/>
+  </displayList>
+</component>

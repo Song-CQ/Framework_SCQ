@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="499,88" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n5_fqno" name="n5" src="p67ky4x" fileName="img_orangSmall.png" pkg="oauc2zgj" xy="-1,-2" size="499,88"/>
+    <image id="n7_fqno" name="n7" src="il9e4" fileName="pic/icon_facebook.png" xy="53,14"/>
+    <text id="n12_fqno" name="n12" xy="111,23" pivot="0.5,0.5" size="353,41" fontSize="30" color="#ffffff" letterSpacing="-1" shadowColor="#fe2d00" shadowOffset="0,4" text="SIGN IN WITH FACEBOOK">
+      <relation target="n5_fqno" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".95"/>
+</component>

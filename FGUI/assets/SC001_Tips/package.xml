@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="wmeu09xz">
+  <resources>
+    <component id="gmed0" name="com_Tips.xml" path="/" exported="true"/>
+    <component id="gmed1" name="wnd_tips.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>
