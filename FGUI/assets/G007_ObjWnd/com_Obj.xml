@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <component id="n2_l117" name="wnd_obj" src="l1171" fileName="wnd_obj.xml" xy="138,572" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

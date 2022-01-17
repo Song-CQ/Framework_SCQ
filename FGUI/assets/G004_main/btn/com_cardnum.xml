@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="269,62">
+  <controller name="cont_state" pages="0,one,1,two,2,four" selected="0"/>
+  <displayList>
+    <image id="n5_t4cu" name="n5" src="t4cu6" fileName="img/shuzitiao.png" xy="36,0" size="196,62"/>
+    <component id="n8_t4cu" name="btn_add" src="t4cu7" fileName="btn/btn_add.xml" xy="208,0" size="62,62" controller="cont_button,1"/>
+    <component id="n10_t4cu" name="btn_minus" src="t4cu8" fileName="btn/btn_minus.xml" xy="-1,0" size="62,62" aspect="true" controller="cont_button,0"/>
+    <text id="n11_t4cu" name="n11" xy="66,0" size="136,62" font="ui://pmf3wbjicq6oes" fontSize="46" color="#ffffff" align="center" autoSize="shrink" strokeColor="#003366" strokeSize="3" text="1">
+      <gearText controller="cont_state" pages="1,2" values="2|4" default="1"/>
+    </text>
+  </displayList>
+</component>

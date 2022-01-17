@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="671,205" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n0_knau" name="n0" src="t268c" fileName="icon/btn_green.png" pkg="pmf3wbji" xy="0,0" size="671,205">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n3_knau" name="n3" xy="52,43" size="566,119" fontSize="80" color="#ffffff" align="center" autoSize="none" strokeColor="#003333" strokeSize="3" shadowColor="#003300" shadowOffset="1,5" singleLine="true" text="Play">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920" opaque="false">
+  <displayList>
+    <graph id="n2_pqqv" name="fx_enter" xy="580,596" pivot="0.5,0.5" anchor="true" size="60,82" type="rect"/>
+    <component id="n0_kov2" name="com_Coins" src="kov21" fileName="Btn/com_Coins.xml" xy="539,960" touchable="false"/>
+    <text id="n1_hlvi" name="text_Add" xy="677,87" pivot="0,0.5" anchor="true" size="79,86" visible="false" fontSize="66" color="#ffffff" vAlign="middle" vars="true" strokeColor="#000000" strokeSize="4" singleLine="true" text="+{sum=0}"/>
+  </displayList>
+  <transition name="fx_addSum">
+    <item time="0" type="Alpha" target="n1_hlvi" tween="true" startValue="0" endValue="1" duration="6"/>
+    <item time="0" type="Visible" target="n1_hlvi" value="true"/>
+    <item time="15" type="Alpha" target="n1_hlvi" tween="true" startValue="1" endValue="0" duration="9"/>
+    <item time="24" type="Visible" target="n1_hlvi" value="false"/>
+  </transition>
+</component>

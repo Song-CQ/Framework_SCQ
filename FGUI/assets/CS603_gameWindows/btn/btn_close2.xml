@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="38,38" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n2_fqno" name="img_close" src="kxe53" fileName="pic/btn_close.png" xy="0,0" pivot="0.5,0.5"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.95"/>
+</component>

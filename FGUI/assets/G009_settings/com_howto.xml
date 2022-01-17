@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_rhll" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="92,338" pivot="0.5,0.5" size="887,1244">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_rhll" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="128,487" pivot="0.5,0.5" size="815,1040">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_rhll" name="title" xy="171,358" size="718,119" fontSize="90" color="#ffffff" align="center" leading="2" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="How to play">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n3_rhll" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="872,308">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <image id="n4_rhll" name="n4" src="rhllb" fileName="img/w1.png" xy="202,622" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n5_rhll" name="n5" src="rhllc" fileName="img/w2.png" xy="605,622" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n6_rhll" name="n6" src="rhlld" fileName="img/w3.png" xy="202,1086" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n7_rhll" name="n7" src="rhlle" fileName="img/w4.png" xy="605,1086" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n9_rhll" name="n9" xy="168,516" pivot="0.5,0.5" size="723,69" fontSize="48" align="center" autoSize="shrink" text="Complete patterns to bingo">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n10_rhll" name="n10" xy="198,949" pivot="0.5,0.5" size="297,107" fontSize="44" color="#3f38a2" align="center" vAlign="middle" leading="-8" autoSize="shrink" text="Straight Line&#xA;Across">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n13_a9pg" name="n13" xy="594,949" pivot="0.5,0.5" size="297,107" fontSize="44" color="#3f38a2" align="center" vAlign="middle" leading="-8" autoSize="shrink" text="Straight Line&#xA;Down">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n14_a9pg" name="n14" xy="211,1420" pivot="0.5,0.5" size="279,61" fontSize="44" color="#3f38a2" align="center" vAlign="middle" leading="-8" autoSize="shrink" text="Diagonal">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n15_a9pg" name="n15" xy="609,1419" pivot="0.5,0.5" size="279,63" fontSize="44" color="#3f38a2" align="center" vAlign="middle" leading="-8" autoSize="shrink" text="Four Corners">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

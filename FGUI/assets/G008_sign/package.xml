@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="9o0kw0z3">
+  <resources>
+    <component id="ouxd0" name="com_sign.xml" path="/" exported="true"/>
+    <image id="ouxd1" name="huangse.png" path="/img/" exported="true"/>
+    <image id="ouxd2" name="huangseda.png" path="/img/" exported="true"/>
+    <image id="ouxd3" name="lanse.png" path="/img/" exported="true"/>
+    <image id="ouxd4" name="zise.png" path="/img/" exported="true"/>
+    <image id="ouxd5" name="biaoti.png" path="/img/" exported="true"/>
+    <image id="ouxd6" name="diban.png" path="/img/" exported="true" scale="9grid" scale9grid="95,0,51,1336"/>
+    <component id="k0b28" name="btn_day.xml" path="/btn/" exported="true"/>
+    <component id="k0b29" name="btn_day2.xml" path="/btn/" exported="true"/>
+    <image id="k97ic" name="数量按钮.png" path="/img/"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

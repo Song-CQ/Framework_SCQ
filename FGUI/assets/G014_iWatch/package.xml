@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="20dbqk49">
+  <resources>
+    <component id="vn610" name="com_iwatch.xml" path="/" exported="true"/>
+    <image id="vn611" name="xiaodiban.png" path="/img/" exported="true" scale="9grid" scale9grid="63,39,28,27"/>
+    <image id="vn612" name="$449 .png" path="/img/" exported="true"/>
+    <image id="vn614" name="biaoti.png" path="/img/" exported="true"/>
+    <image id="vn615" name="daoju.png" path="/img/" exported="true"/>
+    <image id="vn616" name="daojudi.png" path="/img/" exported="true" scale="9grid" scale9grid="43,0,86,175"/>
+    <image id="vn617" name="diban.png" path="/img/" exported="true" scale="9grid" scale9grid="133,303,43,420"/>
+    <image id="vn618" name="huangban.png" path="/img/" exported="true"/>
+    <component id="vn619" name="btn_day.xml" path="/com/" exported="true"/>
+    <component id="vn61a" name="btn_clock.xml" path="/com/" exported="true"/>
+    <component id="vn61b" name="btn_redeem.xml" path="/com/" exported="true"/>
+    <component id="vn61c" name="com_day3Pop.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

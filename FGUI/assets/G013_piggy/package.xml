@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="272c87ds">
+  <resources>
+    <component id="skbw0" name="com_piggy.xml" path="/" exported="true"/>
+    <image id="skbw1" name="dikuang.png" path="/img/" exported="true"/>
+    <image id="skbw2" name="jiazai.png" path="/img/" exported="true" scale="9grid" scale9grid="20,0,40,45"/>
+    <image id="skbw3" name="jiazaidi.png" path="/img/" exported="true" scale="9grid" scale9grid="24,0,48,67"/>
+    <component id="skbw4" name="pb1.xml" path="/img/" exported="true"/>
+    <image id="skbw5" name="cash.png" path="/img/" exported="true"/>
+    <component id="skbw6" name="btn_record.xml" path="/img/" exported="true"/>
+    <component id="skbw7" name="com_pigTask.xml" path="/" exported="true"/>
+    <image id="skbw8" name="c12.png" path="/img/" exported="true"/>
+    <component id="skbw9" name="com_pigCashout.xml" path="/" exported="true"/>
+    <component id="ibcua" name="com_text.xml" path="/img/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

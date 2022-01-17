@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="634,42">
+  <displayList>
+    <text id="n31_t4td" name="text_rolling" xy="0,0" pivot="0.5,0.5" size="700,42" font="Arial" fontSize="30" color="#ffffff" vAlign="middle" ubb="true" vars="true" autoSize="none" bold="true" singleLine="true" text="[color=#00FF00]{0} [/color]sent to [color=#FF0000]{1}[/color] "/>
+  </displayList>
+</component>

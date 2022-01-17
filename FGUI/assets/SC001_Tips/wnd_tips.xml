@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,160" pivot="0.5,0.5" anchor="true" opaque="false">
+  <displayList>
+    <graph id="n0_gmed" name="n0" xy="540,80" pivot="0.5,0.5" anchor="true" size="1080,156" alpha="0.5" touchable="false" type="rect" fillColor="#ff000000">
+      <relation target="n1_gmed" sidePair="height-height%"/>
+      <relation target="" sidePair="width-width%"/>
+    </graph>
+    <text id="n1_gmed" name="text_tips" xy="542,80" pivot="0.5,0.5" anchor="true" size="1075,84" font="ui://pmf3wbjicq6oes" fontSize="64" color="#ffffff" align="center" vAlign="middle" leading="-8" autoSize="none" strokeColor="#000000" text="Tips example">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <relation target="n0_gmed" sidePair="width-width%"/>
+    </text>
+  </displayList>
+</component>

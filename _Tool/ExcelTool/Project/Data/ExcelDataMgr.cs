@@ -14,10 +14,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    /// <summary>
-    /// 表格数据管理器
-    /// </summary>
-    public class ExcelDataMgr:BaseMgr<ExcelDataMgr>
+    public sealed class ExcelDataMgr:BaseMgr<ExcelDataMgr>
     {
 
         private Dictionary<Type, BaseVO[]> excelDataStrDic;

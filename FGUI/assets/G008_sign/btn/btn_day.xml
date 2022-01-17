@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="201,256" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_color" pages="0,blue,1,yellow" selected="1"/>
+  <controller name="cont_collect" pages="0,uncollect,1,collected,6,miss" selected="0"/>
+  <displayList>
+    <image id="n3_k0b2" name="n3" src="ouxd3" fileName="img/lanse.png" xy="0,0" pivot="0.5,0.5">
+      <gearDisplay controller="cont_color" pages="0"/>
+      <gearColor controller="cont_collect" pages="1,6" values="#cccccc|#cccccc" default="#ffffff"/>
+    </image>
+    <image id="n7_k0b2" name="n7" src="ouxd1" fileName="img/huangse.png" xy="0,0" pivot="0.5,0.5">
+      <gearDisplay controller="cont_color" pages="1"/>
+      <gearColor controller="cont_collect" pages="1" values="#cccccc" default="#ffffff"/>
+    </image>
+    <text id="n4_k0b2" name="text_day" xy="21,7" pivot="0.5,0.5" size="158,46" fontSize="34" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#003366" shadowColor="#003399" shadowOffset="1,4" text="Day 1">
+      <gearColor controller="cont_collect" pages="1,6" values="#cccccc,#003366|#cccccc,#003366" default="#ffffff,#003366"/>
+    </text>
+    <loader id="n5_k0b2" name="loader_reward" xy="25,54" pivot="0.5,0.5" size="150,148" url="ui://pmf3wbjikmj6f6" align="center" vAlign="middle" fill="scale">
+      <gearColor controller="cont_collect" pages="1,6" values="#cccccc|#cccccc" default="#ffffff"/>
+    </loader>
+    <text id="n6_k0b2" name="text_reward" xy="21,181" pivot="0.5,0.5" size="158,64" fontSize="48" color="#990000" align="center" vAlign="middle" autoSize="shrink" strokeColor="#ffffff" strokeSize="3" text="$1.00">
+      <gearDisplay controller="cont_collect" pages="0"/>
+      <gearColor controller="cont_color" pages="1" values="#990000,#ffffff" default="#000066,#ffffff"/>
+    </text>
+    <text id="n9_k97i" name="text_resign" xy="53,184" pivot="0.5,0.5" size="140,54" fontSize="37" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="re-sign">
+      <gearDisplay controller="cont_collect" pages="6"/>
+    </text>
+    <image id="n11_k97i" name="n11" src="p653f" fileName="img/bofang.png" pkg="pmf3wbji" xy="12,192" pivot="0.5,0.5" size="40,43" aspect="true">
+      <gearDisplay controller="cont_collect" pages="6"/>
+    </image>
+    <image id="n13_k97i" name="n13" src="k97ia" fileName="img/对号（绿色）.png" pkg="pmf3wbji" xy="50,164" pivot="0.5,0.5" color="#cccccc">
+      <gearDisplay controller="cont_collect" pages="1"/>
+    </image>
+    <image id="n14_k97i" name="n14" src="k97ic" fileName="img/数量按钮.png" xy="154,-9" pivot="0.5,0.5">
+      <gearDisplay controller="cont_collect" pages="6"/>
+    </image>
+    <graph id="n15_j6fv" name="gp_fx" xy="100,128" pivot="0.5,0.5" anchor="true" size="100,100" type="rect">
+      <gearDisplay controller="cont_color" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".9"/>
+  <transition name="fx_collect">
+    <item time="0" type="Scale" target="n5_k0b2" tween="true" startValue="1,1" endValue="0.9,0.9" duration="6" repeat="-1" yoyo="true"/>
+  </transition>
+</component>

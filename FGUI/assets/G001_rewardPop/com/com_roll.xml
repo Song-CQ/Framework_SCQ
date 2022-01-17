@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="555,191">
+  <displayList>
+    <list id="n13_n5d5" name="list_roll" xy="16,25" pivot="0.5,0.5" size="522,140" layout="row" overflow="scroll" scroll="horizontal" defaultItem="ui://tm1qhgb4n5d52">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <image id="n11_n5d5" name="n11" src="n5d5fg" fileName="img/jinkuang.png" xy="0,0" pivot="0.5,0.5"/>
+    <image id="n14_n5d5" name="n14" src="n5d5fj" fileName="img/zhizhen.png" xy="256,129" pivot="0.5,0.5"/>
+  </displayList>
+</component>

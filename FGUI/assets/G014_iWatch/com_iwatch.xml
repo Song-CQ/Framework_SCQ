@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n2_vn61" name="n2" src="vn617" fileName="img/diban.png" xy="110,419" pivot="0.5,0.5" size="860,950">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n0_vn61" name="n0" src="vn614" fileName="img/biaoti.png" xy="30,354" pivot="0.5,0.5" size="1019,244" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n15_vn61" name="btn_clockin" src="vn61a" fileName="com/btn_clock.xml" xy="380,924">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n12_vn61" name="btn_d1" src="vn619" fileName="com/btn_day.xml" xy="197,685" group="n18_vn61"/>
+    <component id="n13_vn61" name="btn_d2" src="vn619" fileName="com/btn_day.xml" xy="433,685" group="n18_vn61"/>
+    <component id="n14_vn61" name="btn_d3" src="vn619" fileName="com/btn_day.xml" xy="669,685" group="n18_vn61"/>
+    <group id="n18_vn61" name="gp_day" xy="197,685" size="688,216" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n7_vn61" name="n7" src="vn611" fileName="img/xiaodiban.png" xy="161,1081" pivot="0.5,0.5" size="755,211" group="n19_vn61"/>
+    <image id="n6_vn61" name="n6" src="vn616" fileName="img/daojudi.png" xy="201,1098" pivot="0.5,0.5" group="n19_vn61"/>
+    <image id="n8_vn61" name="n8" src="vn612" fileName="img/$449 .png" xy="408,1156" pivot="0.5,0.5" group="n19_vn61"/>
+    <image id="n9_vn61" name="n9" src="vn615" fileName="img/daoju.png" xy="247,1109" pivot="0.5,0.5" group="n19_vn61"/>
+    <component id="n17_vn61" name="btn_redeem" src="vn61b" fileName="com/btn_redeem.xml" xy="608,1138" group="n19_vn61"/>
+    <group id="n19_vn61" name="n19" xy="161,1081" size="755,211" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <text id="n20_vn61" name="n20" xy="169,529" pivot="0.5,0.5" size="746,116" fontSize="44" color="#7638c8" align="center" vAlign="middle" leading="0" autoSize="shrink" text="Clock in for 3 days&#xA;Can redeem $449 iWatch for free!">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n21_vn61" name="btn_close" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="883,340">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

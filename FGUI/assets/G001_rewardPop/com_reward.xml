@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <controller name="cont_reward" pages="1,cash_collect,2,amazon_collect,3,cardgame_collect,4,puzzle_collect" selected="0"/>
+  <controller name="cont_GiftSwitch" pages="0,Yes,1,No" selected="1"/>
+  <displayList>
+    <graph id="n19_pqqv" name="fx_lihua" xy="540,960" pivot="0.5,0.5" anchor="true" size="100,100" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <component id="n3_b9hh" name="btn_collect" src="b9hhfh" fileName="btn/btn_collect.xml" pkg="pmf3wbji" xy="256,1337" pivot="0.5,0.5">
+      <gearDisplay controller="cont_reward" pages="1,2"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n14_k97i" name="btn_cardgame" src="jgbufl" fileName="com/btn_double.xml" xy="256,1335" pivot="0.5,0.5">
+      <gearDisplay controller="cont_reward" pages="3,4"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <graph id="n18_vwf1" name="fx_bg" xy="490,668" pivot="0.5,0.5" size="100,100" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <image id="n7_b9hh" name="n7" src="kmj6f6" fileName="img/meiyuan.png" pkg="pmf3wbji" xy="368,633" pivot="0.5,0.5" size="344,244" aspect="true">
+      <gearDisplay controller="cont_reward" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n20_ghnc" name="n20" src="ghncfo" fileName="Img/c3.png" xy="366,626" pivot="0.5,0.5" size="339,204">
+      <gearDisplay controller="cont_reward" pages="2"/>
+      <gearDisplay2 controller="cont_GiftSwitch" pages="0" condition="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n9_b9hh" name="text_num" xy="360,888" pivot="0.5,0.5" size="354,111" fontSize="83" color="#ffdd54" align="center" vAlign="middle" autoSize="shrink" strokeColor="#660000" strokeSize="7" text="+1,000">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n11_b9hh" name="n11" src="kmj68" fileName="img/paibei.png" pkg="qrqjiu5s" xy="434,587" pivot="0.5,0.5" size="212,287" aspect="true">
+      <gearDisplay controller="cont_reward" pages="3"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n15_n9at" name="btn_claim" src="jgbufn" fileName="com/btn_claim.xml" xy="452,1535">
+      <gearDisplay controller="cont_reward" pages="3,4"/>
+      <relation target="" sidePair=""/>
+      <relation target="n25_j0kk" sidePair="center-center,top-top"/>
+    </component>
+    <component id="n16_n9at" name="btn_no" src="jgbufk" fileName="com/btn_nothank.xml" xy="377,1536">
+      <gearDisplay controller="cont_reward" pages="1,2"/>
+      <relation target="n25_j0kk" sidePair="center-center,bottom-top"/>
+    </component>
+    <graph id="n17_vwf1" name="fx_PiaoDai" xy="540,292" pivot="0.5,0.5" anchor="true" size="100,100" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <image id="n21_ou8f" name="n21" src="kmj6f7" fileName="img/diban.png" pkg="pmf3wbji" xy="383,554" pivot="0.5,0.5" size="298,312">
+      <gearDisplay controller="cont_GiftSwitch" pages="1"/>
+      <gearDisplay2 controller="cont_reward" pages="2,4" condition="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <loader id="n23_pbye" name="loader_puzzle" xy="349,537" pivot="0.5,0.5" size="382,338" align="center" vAlign="middle" fill="scale">
+      <gearDisplay controller="cont_reward" pages="4"/>
+      <gearDisplay2 controller="cont_GiftSwitch" pages="0" condition="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <component id="n24_pbye" name="pb_puzzle" src="lsp6m" fileName="btn/pb_ger.xml" pkg="pmf3wbji" xy="285,1111" pivot="0.5,0.5">
+      <gearDisplay controller="cont_reward" pages="4"/>
+      <gearDisplay2 controller="cont_GiftSwitch" pages="0" condition="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n25_j0kk" name="btn_puzzleCollect" src="b9hhfh" fileName="btn/btn_collect.xml" pkg="pmf3wbji" xy="258,1337" pivot="0.5,0.5" visible="false" controller="cont_state,1">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

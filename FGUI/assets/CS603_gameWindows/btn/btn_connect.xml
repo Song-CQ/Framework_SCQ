@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="206,76" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n0_fw0l" name="n0" src="p67ky4x" fileName="img_orangSmall.png" pkg="oauc2zgj" xy="0,0" size="206,76"/>
+    <text id="n1_fw0l" name="n1" xy="20,5" pivot="0.5,0.5" size="162,65" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" shadowColor="#fd3600" shadowOffset="0,3" text="CONNECT"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".95"/>
+</component>

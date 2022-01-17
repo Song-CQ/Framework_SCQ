@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <component id="n1_t01o" name="wnd_GameWnd" src="gmed2" fileName="wnd_GameWnd.xml" xy="131,635">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

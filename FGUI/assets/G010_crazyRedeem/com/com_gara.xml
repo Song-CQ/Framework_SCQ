@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="246,203">
+  <displayList>
+    <image id="n16_mgii" name="n16" src="mgiid" fileName="img/sale1.png" xy="25,0" pivot="0.5,0.5" rotation="18"/>
+    <text id="n18_mgii" name="n18" xy="36,37" pivot="0.5,0.5" size="208,84" fontSize="55" color="#ffff00" align="center" autoSize="shrink" strokeColor="#660066" strokeSize="4" text="100%"/>
+    <text id="n19_mgii" name="n19" xy="0,99" pivot="0.5,0.5" size="246,50" fontSize="37" color="#ffff00" align="center" autoSize="shrink" strokeColor="#660099" strokeSize="3" text="Guaranteed"/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n16_mgii" tween="true" startValue="18" endValue="26.73" duration="12" repeat="-1" yoyo="true"/>
+    <item time="0" type="Rotation" target="n18_mgii" tween="true" startValue="0" endValue="11" duration="12" repeat="-1" yoyo="true"/>
+    <item time="0" type="Rotation" target="n19_mgii" tween="true" startValue="0" endValue="11" duration="12" repeat="-1" yoyo="true"/>
+  </transition>
+</component>

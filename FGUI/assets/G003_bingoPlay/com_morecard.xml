@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_rbho" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="97,417" pivot="0.5,0.5" size="885,876">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_rbho" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="140,554" pivot="0.5,0.5" size="800,548">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_rbho" name="title" xy="236,439" pivot="0.5,0.5" size="618,107" fontSize="72" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Get More Cards">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n9_a9pg" name="n9" xy="162,898" pivot="0.5,0.5" size="756,161" fontSize="59" color="#a0412c" align="center" vAlign="middle" autoSize="none" text="Running out of cards? &#xA;Get 3 more cards for FREE!">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n6_rbho" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="904,384">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n8_a9pg" name="btn_more" src="a9pgfg" fileName="btn/btn_green_vid.xml" pkg="pmf3wbji" xy="299,1121" size="482,147" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button titleFontSize="63"/>
+    </component>
+    <image id="n12_n5d5" name="n12" src="kmj6f7" fileName="img/diban.png" pkg="pmf3wbji" xy="388,574" pivot="0.5,0.5" size="284,297" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n14_b9hh" name="text_cardnum" xy="477,717" pivot="0.5,0.5" size="384,185" fontSize="145" color="#fff700" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#990000" strokeSize="9" text="+3">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

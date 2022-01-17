@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n1_t01o" name="n1" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="86,549" size="908,636" group="n12_iwg9"/>
+    <image id="n2_t01o" name="n2" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="143,701" size="798,420" group="n12_iwg9">
+      <relation target="" sidePair=""/>
+      <relation target="n1_t01o" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </image>
+    <text id="n3_t01o" name="n3" xy="171,739" size="728,161" group="n12_iwg9" fontSize="60" color="#a0412c" align="center" vAlign="middle" autoSize="shrink" text="New version is avaiable! Please update now."/>
+    <text id="n4_t01o" name="n4" xy="221,578" size="637,104" group="n12_iwg9" fontSize="80" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" text="Update Notice"/>
+    <component id="n11_t01o" name="com_buttomStatus" src="p0wfy" fileName="com_bottomStatus.xml" xy="141,904" size="800,200" group="n12_iwg9" controller="cont_showStatus,1"/>
+    <group id="n12_iwg9" name="gp_update" xy="86,549" size="908,636" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

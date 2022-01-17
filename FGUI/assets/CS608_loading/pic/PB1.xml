@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="899,67" extention="ProgressBar">
+  <displayList>
+    <image id="n0_t268" name="n0" src="d8jse" fileName="pic/jiazaidi.png" xy="0,-3" size="899,74">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_t268" name="bar" src="d8jsd" fileName="pic/jiazai.png" xy="10,8" size="880,52"/>
+    <text id="n2_t268" name="title" xy="19,4" size="861,59" fontSize="38" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#000000" strokeSize="3" text="100%">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <ProgressBar/>
+</component>

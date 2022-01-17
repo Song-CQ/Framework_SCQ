@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ur2owoij">
+  <resources>
+    <component id="boow0" name="com_giftRedeem.xml" path="/" exported="true"/>
+    <component id="boow1" name="com_ppRedeem.xml" path="/" exported="true"/>
+    <image id="boow2" name="12.png" path="/img/" exported="true"/>
+    <component id="q3mz4" name="com_waiting.xml" path="/com/" exported="true"/>
+    <component id="q3mz5" name="btn_giftcard.xml" path="/com/" exported="true"/>
+    <component id="q3mz6" name="com_giftTask.xml" path="/com/" exported="true"/>
+    <image id="e2wo7" name="zhuangtai.png" path="/img/" exported="true"/>
+    <image id="e2wo8" name="7.png" path="/img/" exported="true"/>
+    <image id="e2wob" name="xinxidi.png" path="/img/" exported="true" scale="9grid" scale9grid="59,69,70,138"/>
+    <image id="e2woc" name="xuanzhong.png" path="/img/" exported="true" scale="9grid" scale9grid="32,45,14,90"/>
+    <component id="e2woh" name="btn_777.xml" path="/com/" exported="true"/>
+    <image id="e2woi" name="toumingdi.png" path="/img/" exported="true" scale="9grid" scale9grid="13,0,26,183"/>
+    <component id="e2wom" name="com_top.xml" path="/com/" exported="true"/>
+    <image id="e2wop" name="zhaungtaidiyuan.png" path="/img/" exported="true"/>
+    <image id="e2woq" name="zhuangtaidi.png" path="/img/" exported="true" scale="9grid" scale9grid="0,8,47,16"/>
+    <image id="e2wor" name="lvtiao.png" path="/img/" exported="true" scale="9grid" scale9grid="0,9,47,18"/>
+    <component id="e2wos" name="ProgressBar1.xml" path="/com/" exported="true"/>
+    <component id="e2wot" name="com_PPintask.xml" path="/com/" exported="true"/>
+    <component id="e2wou" name="com_inReview.xml" path="/com/" exported="true"/>
+    <component id="e2wov" name="com_PPexpired.xml" path="/com/" exported="true"/>
+    <component id="rbsnw" name="com_info.xml" path="/" exported="true"/>
+    <component id="rbsnx" name="com_email.xml" path="/" exported="true"/>
+    <image id="plpqy" name="dizhi.png" path="/img/" scale="9grid" scale9grid="18,0,36,81"/>
+    <image id="plpqz" name="c12.png" path="/img/"/>
+    <component id="plpq10" name="com_enter.xml" path="/com/" exported="true"/>
+    <image id="au0611" name="jiazaidi.png" path="/img/"/>
+    <image id="au0612" name="jiazailan.png" path="/img/"/>
+    <component id="xodx14" name="com_infotext.xml" path="/com/" exported="true"/>
+    <image id="ozv515" name="bg.png" path="/img/" scale="9grid" scale9grid="4,0,8,640"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

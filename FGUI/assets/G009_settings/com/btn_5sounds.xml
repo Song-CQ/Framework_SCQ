@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="742,127" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_rhll" name="n3" src="rhll3" fileName="img/beiban1.png" xy="0,0" pivot="0.5,0.5"/>
+    <text id="n4_rhll" name="title" xy="167,2" pivot="0.5,0.5" size="418,119" fontSize="58" color="#3f38a2" vAlign="middle" autoSize="none" strokeColor="#ffffff" strokeSize="5" text="Sounds"/>
+    <component id="n7_rhll" name="btn_on" src="rhllo" fileName="com/btn_on.xml" xy="543,32" pivot="0.5,0.5"/>
+    <image id="n8_rhll" name="n8" src="rhll4" fileName="img/laba.png" xy="50,33" pivot="0.5,0.5"/>
+  </displayList>
+  <Button/>
+</component>

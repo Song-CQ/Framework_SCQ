@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="30,182" extention="ProgressBar">
+  <controller name="cont_status" pages="3,zero,0,first,1,second,2,third" selected="3"/>
+  <displayList>
+    <image id="n0_e2wo" name="n0" src="e2woq" fileName="img/zhuangtaidi.png" xy="0,0" size="30,182">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n2_e2wo" name="n2" src="e2wop" fileName="img/zhaungtaidiyuan.png" xy="-10,-29" pivot="0.5,0.5" size="52,52" aspect="true">
+      <gearDisplay controller="cont_status" pages="3"/>
+    </image>
+    <image id="n3_e2wo" name="n3" src="e2wop" fileName="img/zhaungtaidiyuan.png" xy="-10,65" pivot="0.5,0.5" size="52,52" aspect="true"/>
+    <image id="n5_e2wo" name="n5" src="e2wop" fileName="img/zhaungtaidiyuan.png" xy="-11,163" pivot="0.5,0.5" size="52,52" aspect="true"/>
+    <image id="n1_e2wo" name="bar" src="e2wor" fileName="img/lvtiao.png" xy="0,0" size="30,182" fillMethod="vt" fillAmount="28">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n6_e2wo" name="n6" src="e2wo7" fileName="img/zhuangtai.png" xy="-11,-29" pivot="0.5,0.5" size="52,52" aspect="true">
+      <gearDisplay controller="cont_status" pages="0,1,2"/>
+    </image>
+    <image id="n7_e2wo" name="n7" src="e2wo7" fileName="img/zhuangtai.png" xy="-11,65" pivot="0.5,0.5" size="52,52" aspect="true">
+      <gearDisplay controller="cont_status" pages="1,2"/>
+    </image>
+    <image id="n8_e2wo" name="n8" src="e2wo7" fileName="img/zhuangtai.png" xy="-11,163" pivot="0.5,0.5" size="52,52" aspect="true">
+      <gearDisplay controller="cont_status" pages="2"/>
+    </image>
+  </displayList>
+  <ProgressBar/>
+</component>

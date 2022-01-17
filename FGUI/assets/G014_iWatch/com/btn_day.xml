@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="216,216" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_days" pages="0,1,1,2,2,3" selected="2"/>
+  <controller name="cont_clock" pages="0,none,1,yes" selected="1"/>
+  <displayList>
+    <image id="n3_vn61" name="n3" src="vn618" fileName="img/huangban.png" xy="0,0" pivot="0.5,0.5" size="216,216" aspect="true" color="#999999">
+      <gearColor controller="cont_clock" pages="1" values="#999999" default="#ffffff"/>
+    </image>
+    <text id="n4_vn61" name="text_day" xy="8,17" pivot="0.5,0.5" size="200,181" fontSize="70" color="#652700" align="center" vAlign="middle" leading="-8" vars="true" autoSize="none" strokeColor="#999999" strokeSize="3" text="Day&#xA;3">
+      <gearColor controller="cont_clock" pages="1" values="#652700,#999999" default="#e10042,#ffffff"/>
+      <gearText controller="cont_days" pages="0,1" values="Day&#xA;1|Day&#xA;2" default="Day&#xA;3"/>
+    </text>
+    <image id="n6_vn61" name="n6" src="k97ia" fileName="img/对号（绿色）.png" pkg="pmf3wbji" xy="68,77" pivot="0.5,0.5" color="#ededed">
+      <gearDisplay controller="cont_clock" pages="1"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".9"/>
+</component>

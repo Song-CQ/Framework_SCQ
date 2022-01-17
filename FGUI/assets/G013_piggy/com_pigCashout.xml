@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_skbw" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="108,288" pivot="0.5,0.5" size="863,1208">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_skbw" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="141,471" pivot="0.5,0.5" size="797,1000">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_skbw" name="title" xy="231,289" pivot="0.5,0.5" size="618,187" fontSize="63" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" text="Piggy Bank &#xA;Cash out Record">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n4_skbw" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="878,260">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n13_ibcu" name="t0" xy="167,1365" pivot="0.5,0.5" size="724,75" fontSize="36" color="#666666" align="center" vAlign="middle" ubb="true" autoSize="shrink" text="Please note that order usually takes 7 days to transact to account, make sure your account information is valid.">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n5_skbw" name="t1" xy="181,486" pivot="0.5,0.5" size="216,75" fontSize="46" color="#003399" align="center" vAlign="middle" ubb="true" autoSize="shrink" text="Date">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n6_ibcu" name="t2" xy="440,486" pivot="0.5,0.5" size="210,75" fontSize="46" color="#003399" align="center" vAlign="middle" ubb="true" autoSize="shrink" text="Amount">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n7_ibcu" name="t3" xy="703,486" pivot="0.5,0.5" size="188,75" fontSize="46" color="#003399" align="center" vAlign="middle" ubb="true" autoSize="shrink" text="Status">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n8_ibcu" name="n8" src="rbhos" fileName="img/jiangexian.png" pkg="pmf3wbji" xy="165,561" pivot="0.5,0.5" size="750,5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <list id="n12_ibcu" name="list_record" xy="170,577" pivot="0.5,0.5" size="740,760" overflow="scroll" defaultItem="ui://272c87dsibcua" align="center">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <item/>
+    </list>
+  </displayList>
+</component>

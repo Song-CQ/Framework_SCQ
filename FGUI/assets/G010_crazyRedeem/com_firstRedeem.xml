@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_plpq" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="120,401" pivot="0.5,0.5" size="839,966">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_plpq" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="160,556" pivot="0.5,0.5" size="759,778">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_plpq" name="title" xy="231,430" pivot="0.5,0.5" size="618,107" fontSize="72" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Crazy Redeem">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n15_vwf1" name="text0" xy="231,907" pivot="0.5,0.5" size="132,54" fontSize="35" color="#a0412c" align="center" vAlign="middle" vars="true" autoSize="shrink" text="Collect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n3_plpq" name="text1" xy="430,907" pivot="0.5,0.5" size="464,54" fontSize="35" color="#a0412c" vAlign="middle" ubb="true" vars="true" autoSize="none" text="[color=#336600]{0}[/color] to redeem PayPal card">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <loader id="n6_plpq" name="loader_giftcard" xy="325,641" pivot="0.5,0.5" size="430,238" aspect="true" url="ui://5gy5cjkgplpqj" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <component id="n8_plpq" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="881,373">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n9_plpq" name="text2" xy="182,1044" pivot="0.5,0.5" size="702,48" fontSize="35" color="#a0412c" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" text="Watch [color=#336600]{0}[/color] videos to redeem PayPal card">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n10_plpq" name="n10" src="bvkwex" fileName="img/money.png" pkg="pmf3wbji" xy="372,911" pivot="0.5,0.5" size="45,46" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n11_plpq" name="text_time" xy="192,574" pivot="0.5,0.5" size="696,54" fontSize="35" color="#ffffff" align="center" vAlign="middle" vars="true" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="22h 53m 51s">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n13_plpq" name="pb_pp" src="e2won" fileName="btn/pb.xml" pkg="pmf3wbji" xy="209,971" pivot="0.5,0.5" size="667,41">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n14_plpq" name="pb_video" src="e2won" fileName="btn/pb.xml" pkg="pmf3wbji" xy="206,1103" pivot="0.5,0.5" size="667,41">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n5_plpq" name="btn_redeem" src="e2woo" fileName="btn/btn_redeem.xml" pkg="pmf3wbji" xy="410,1187" scale="1.1,1.1">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

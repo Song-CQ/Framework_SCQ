@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="990,438">
+  <controller name="cont_cardStatus" exported="true" pages="1,expired" selected="0"/>
+  <displayList>
+    <image id="n26_rbsn" name="n26" src="e2wob" fileName="img/xinxidi.png" xy="0,0" pivot="0.5,0.5" size="990,438"/>
+    <loader id="n24_e2wo" name="loader_logo" xy="39,31" pivot="0.5,0.5" size="440,96" url="ui://ur2owoijboow2" vAlign="middle" fill="scale">
+      <gearXY controller="cont_cardStatus" pages="1" values="39,31"/>
+    </loader>
+    <text id="n25_e2wo" name="text_price" xy="548,27" pivot="0.5,0.5" size="416,106" font="ui://pmf3wbjicq6oes" fontSize="82" color="#000066" align="right" vAlign="middle" autoSize="shrink" bold="true" text="$1,000">
+      <gearXY controller="cont_cardStatus" pages="1" values="548,27"/>
+    </text>
+    <graph id="n8_q3mz" name="cover" xy="0,0" pivot="0.5,0.5" size="990,438" alpha="0.55" type="rect" lineSize="0" fillColor="#ff000000" corner="60">
+      <gearDisplay controller="cont_cardStatus" pages="1"/>
+      <gearColor controller="cont_cardStatus" pages="1" values="#000000"/>
+    </graph>
+    <text id="n9_q3mz" name="n10" xy="147,170" pivot="0.5,0.5" size="696,82" font="Calibri" fontSize="62" color="#d5d5d5" align="center" vAlign="middle" autoSize="shrink" bold="true" text="Order expired">
+      <gearDisplay controller="cont_cardStatus" pages="1"/>
+    </text>
+    <text id="n10_q3mz" name="n11" xy="149,263" pivot="0.5,0.5" size="692,56" font="Calibri" fontSize="42" color="#adadad" align="center" vAlign="middle" ubb="true" autoSize="shrink" bold="true" text="Fail to complete review task">
+      <gearDisplay controller="cont_cardStatus" pages="1"/>
+    </text>
+  </displayList>
+</component>

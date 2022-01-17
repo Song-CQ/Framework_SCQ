@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="234,81">
+  <displayList>
+    <image id="n5_lsp6" name="n5" src="lsp6q" fileName="img/anniulv.png" xy="0,0" pivot="0.5,0.5" size="234,81" aspect="true"/>
+    <image id="n6_lsp6" name="n6" src="lsp6a" fileName="img/shipin.png" xy="22,10" pivot="0.5,0.5"/>
+    <text id="n7_lsp6" name="n7" xy="90,6" pivot="0.5,0.5" size="122,58" fontSize="40" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#003300" strokeSize="2" text="Claim"/>
+  </displayList>
+</component>

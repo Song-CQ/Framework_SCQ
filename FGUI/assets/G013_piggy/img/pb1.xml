@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="551,67" extention="ProgressBar">
+  <displayList>
+    <image id="n0_skbw" name="n0" src="skbw3" fileName="img/jiazaidi.png" xy="0,0" size="551,67">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_skbw" name="bar" src="skbw2" fileName="img/jiazai.png" xy="11,11" size="530,45"/>
+    <text id="n2_skbw" name="text_val" xy="0,6" size="551,54" fontSize="40" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="1/20">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+    <image id="n4_skbw" name="n4" src="kmj6f6" fileName="img/meiyuan.png" pkg="pmf3wbji" xy="-53,1" pivot="0.5,0.5" size="98,70" aspect="true"/>
+  </displayList>
+  <ProgressBar titleType="valueAndmax"/>
+</component>

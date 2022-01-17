@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="5gy5cjkg">
+  <resources>
+    <component id="mgii0" name="com_crazy.xml" path="/" exported="true"/>
+    <image id="mgii1" name="beijingguang.png" path="/img/" exported="true"/>
+    <image id="mgii2" name="huangsebanzi.png" path="/img/" exported="true"/>
+    <image id="mgii5" name="juese.png" path="/img/" exported="true"/>
+    <image id="mgii6" name="piaodai.png" path="/img/" exported="true"/>
+    <image id="mgii7" name="ppban.png" path="/img/" exported="true"/>
+    <image id="mgii8" name="qipao.png" path="/img/" exported="true"/>
+    <image id="mgii9" name="shu.png" path="/img/" exported="true"/>
+    <component id="mgiic" name="btn_crazy.xml" path="/com/" exported="true"/>
+    <image id="mgiid" name="sale1.png" path="/img/" exported="true"/>
+    <component id="mgiif" name="com_content.xml" path="/com/" exported="true"/>
+    <component id="mgiig" name="com_bubble.xml" path="/com/" exported="true"/>
+    <component id="mgiih" name="com_gara.xml" path="/com/" exported="true"/>
+    <component id="rbsni" name="com_firstRedeem.xml" path="/" exported="true"/>
+    <image id="plpqj" name="c12.png" path="/img/"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

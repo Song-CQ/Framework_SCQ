@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_lsp6" name="n0" src="lsp6h" fileName="img/beijing.png" xy="0,0" pivot="0.5,0.5" size="1080,1920">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <list id="n41_lsp6" name="list_gifts" xy="540,103" pivot="0.5,0" anchor="true" size="1080,1811" overflow="scroll" clipSoftness="0,300" lineGap="40" align="center">
+      <relation target="" sidePair="width-width%,height-height%,top-top"/>
+      <item url="ui://yo1lg36ghqkl12"/>
+      <item url="ui://yo1lg36glsp6o"/>
+      <item url="ui://yo1lg36glsp6r"/>
+      <item url="ui://yo1lg36glsp6w"/>
+    </list>
+    <image id="n43_hqkl" name="n43" src="hqkl11" fileName="img/hongbailian.png" xy="0,0" pivot="0.5,0.5" size="1080,114">
+      <relation target="" sidePair="width-width,top-top"/>
+    </image>
+    <component id="n2_lsp6" name="btn_back" src="lsp6j" fileName="btn/back.xml" xy="33,12">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
+    <component id="n3_lsp6" name="btn_info" src="lsp6k" fileName="btn/info.xml" xy="995,12">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+  </displayList>
+</component>

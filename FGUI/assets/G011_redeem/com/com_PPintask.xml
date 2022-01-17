@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="990,406">
+  <controller name="cont_cardStatus" exported="true" pages="4,intask" selected="0"/>
+  <displayList>
+    <image id="n16_q3mz" name="n16" src="e2wob" fileName="img/xinxidi.png" xy="0,0" pivot="0.5,0.5" size="990,406">
+      <gearDisplay controller="cont_cardStatus" pages="4"/>
+    </image>
+    <loader id="n13_q3mz" name="loader_logo" xy="34,25" pivot="0.5,0.5" size="470,98" url="ui://ur2owoijboow2" vAlign="middle" fill="scale">
+      <gearXY controller="cont_cardStatus" pages="4" values="34,25"/>
+    </loader>
+    <text id="n5_boow" name="text_price" xy="545,20" pivot="0.5,0.5" size="416,106" font="ui://pmf3wbjicq6oes" fontSize="82" color="#000066" align="right" vAlign="middle" autoSize="shrink" bold="true" text="$1,000">
+      <gearXY controller="cont_cardStatus" pages="4" values="545,20"/>
+    </text>
+    <text id="n14_q3mz" name="text_taskpp" xy="85,130" pivot="0.5,0.5" size="822,66" font="ui://pmf3wbjicq6oes" fontSize="40" align="center" vAlign="middle" ubb="true" vars="true" autoSize="shrink" text="Collect       [color=#336600]{0}[/color] to redeem Paypal card">
+      <gearDisplay controller="cont_cardStatus" pages="4"/>
+    </text>
+    <image id="n17_q3mz" name="n17" src="bvkwex" fileName="img/money.png" pkg="pmf3wbji" xy="266,135" pivot="0.5,0.5" size="55,56" aspect="true">
+      <gearDisplay controller="cont_cardStatus" pages="4"/>
+    </image>
+    <component id="n18_e2wo" name="pb_first" src="e2won" fileName="btn/pb.xml" pkg="pmf3wbji" xy="107,200" pivot="0.5,0.5">
+      <gearDisplay controller="cont_cardStatus" pages="4"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n20_e2wo" name="btn_redeem" src="e2woo" fileName="btn/btn_redeem.xml" pkg="pmf3wbji" xy="360,263" aspect="true">
+      <gearDisplay controller="cont_cardStatus" pages="4"/>
+    </component>
+  </displayList>
+</component>

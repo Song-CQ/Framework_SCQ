@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1081,314">
+  <controller name="cont_top" exported="true" pages="0,gift,1,pp" selected="1"/>
+  <displayList>
+    <image id="n15_e2wo" name="n15" src="e2woj" fileName="img/dingbudiban.png" xy="1,0" pivot="0.5,0.5" size="1080,181" pkg="pmf3wbji">
+      <relation target="" sidePair="width-width,top-top"/>
+    </image>
+    <image id="n16_e2wo" name="n16" src="e2woi" fileName="img/toumingdi.png" xy="0,181" pivot="0.5,0.5" size="1080,133">
+      <relation target="" sidePair="width-width"/>
+      <relation target="n15_e2wo" sidePair="top-bottom"/>
+    </image>
+    <component id="n0_boow" name="btn_info" src="kmj6f1" fileName="btn/btn_info.xml" pkg="pmf3wbji" xy="971,37">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <text id="n2_q3mz" name="n2" xy="217,26" pivot="0.5,0.5" size="648,125" fontSize="68" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#4346aa" strokeSize="6" text="Giftcard Redeem">
+      <gearDisplay controller="cont_top" pages="0"/>
+      <relation target="" sidePair="center-center,top-top"/>
+    </text>
+    <text id="n17_e2wo" name="n17" xy="218,25" pivot="0.5,0.5" size="648,125" fontSize="68" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#4346aa" strokeSize="6" text="PayPal Redeem">
+      <gearDisplay controller="cont_top" pages="1"/>
+      <relation target="" sidePair="center-center,top-top"/>
+    </text>
+    <component id="n10_ch1s" name="btn_coin" src="lbaaeu" fileName="btn/btn_coin.xml" pkg="pmf3wbji" xy="70,210">
+      <gearDisplay controller="cont_top" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n11_ch1s" name="btn_acard" src="lbaa9" fileName="btn/btn_pp.xml" pkg="pmf3wbji" xy="418,210">
+      <gearDisplay controller="cont_top" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n12_e2wo" name="btn_back" src="e2wog" fileName="com/btn_back.xml" xy="29,32" pkg="pmf3wbji">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
+    <component id="n13_e2wo" name="btn_777" src="e2woh" fileName="com/btn_777.xml" xy="744,210">
+      <gearDisplay controller="cont_top" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n18_e2wo" name="btn_cash" src="lbaa8" fileName="btn/btn_cash.xml" pkg="pmf3wbji" xy="395,213" scale="1.2,1.2">
+      <gearDisplay controller="cont_top" pages="1"/>
+      <relation target="" sidePair="center-center,top-top"/>
+    </component>
+  </displayList>
+</component>

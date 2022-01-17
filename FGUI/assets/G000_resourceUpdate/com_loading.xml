@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n18_du6i" name="n18" src="iboy0" fileName="img/loading.jpg" pkg="m37z5ifz" xy="-180,-260" size="1440,2440" aspect="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n2_knau" name="n2" src="iboy1" fileName="img/img_logo.png" pkg="m37z5ifz" xy="147,38" size="785,386" aspect="true">
+      <relation target="" sidePair="center-center,top-top"/>
+    </image>
+    <component id="n14_t268" name="pb_loading" src="t2688" fileName="pic/PB1.xml" pkg="pc0wa25b" xy="86,1431">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+      <ProgressBar max="100"/>
+    </component>
+    <text id="n16_i2uj" name="text_loading" xy="145,1503" size="782,70" fontSize="53" color="#ffffff" align="center" vAlign="middle" strokeColor="#000033" strokeSize="4" shadowColor="#000033" shadowOffset="0,5" text="Updating resources,please wait">
+      <relation target="" sidePair="center-center"/>
+      <relation target="n14_t268" sidePair="top-bottom"/>
+    </text>
+    <text id="n19_g2z8" name="text_1" xy="937,1504" size="17,70" fontSize="53" color="#ffffff" align="center" vAlign="middle" strokeColor="#000000" strokeSize="3" text=".">
+      <relation target="n14_t268" sidePair="top-bottom"/>
+      <relation target="n16_i2uj" sidePair="left-right"/>
+    </text>
+    <text id="n20_g2z8" name="text_2" xy="956,1504" size="17,70" fontSize="53" color="#ffffff" align="center" vAlign="middle" strokeColor="#000000" strokeSize="3" text=".">
+      <relation target="n14_t268" sidePair="top-bottom"/>
+      <relation target="n19_g2z8" sidePair="left-right"/>
+    </text>
+    <text id="n21_g2z8" name="text_3" xy="976,1504" size="17,70" fontSize="53" color="#ffffff" align="center" vAlign="middle" strokeColor="#000000" strokeSize="3" text=".">
+      <relation target="n14_t268" sidePair="top-bottom"/>
+      <relation target="n20_g2z8" sidePair="left-right"/>
+    </text>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="XY" target="n2_knau" value="147,8"/>
+    <item time="0" type="XY" target="n2_knau" tween="true" startValue="147,8" endValue="147,25" duration="24" ease="Linear" repeat="-1" yoyo="true"/>
+  </transition>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="XY" target="n2_knau" value="147,38"/>
+    <item time="0" type="XY" target="n2_knau" tween="true" startValue="147,40" endValue="147,78" duration="24" ease="Linear" repeat="-1" yoyo="true"/>
+  </transition>
+  <transition name="t2" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Visible" target="n19_g2z8" value="false"/>
+    <item time="0" type="Visible" target="n20_g2z8" value="false"/>
+    <item time="0" type="Visible" target="n21_g2z8" value="false"/>
+    <item time="5" type="Visible" target="n19_g2z8" value="true"/>
+    <item time="10" type="Visible" target="n20_g2z8" value="true"/>
+    <item time="17" type="Visible" target="n19_g2z8" value="true"/>
+    <item time="17" type="Visible" target="n20_g2z8" value="true"/>
+    <item time="17" type="Visible" target="n21_g2z8" value="true"/>
+    <item time="20" type="Visible" target="n19_g2z8" value="false"/>
+    <item time="20" type="Visible" target="n20_g2z8" value="false"/>
+    <item time="20" type="Visible" target="n21_g2z8" value="false"/>
+  </transition>
+</component>

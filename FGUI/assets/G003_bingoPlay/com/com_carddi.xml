@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="239,97">
+  <controller name="cont_card" pages="0,keySum_0,1,keySum_1,2,keySum_2,3,keySum_3" selected="2"/>
+  <displayList>
+    <image id="n14_rbho" name="n14" src="rbhop" fileName="img/carddi.png" xy="0,0" pivot="0.5,0.5"/>
+    <image id="n21_ueo4" name="n21" src="rbhoo" fileName="img/card2.png" xy="25,13" pivot="0.5,0.5">
+      <gearDisplay controller="cont_card" pages="0"/>
+    </image>
+    <image id="n19_ueo4" name="n19" src="rbhoo" fileName="img/card2.png" xy="95,13" pivot="0.5,0.5">
+      <gearDisplay controller="cont_card" pages="0,1"/>
+    </image>
+    <image id="n20_ueo4" name="n20" src="rbhoo" fileName="img/card2.png" xy="165,13" pivot="0.5,0.5">
+      <gearDisplay controller="cont_card" pages="0,1,2"/>
+    </image>
+    <image id="n18_ueo4" name="n18" src="rbhon" fileName="img/card1.png" xy="25,11" pivot="0.5,0.5">
+      <gearDisplay controller="cont_card" pages="1,2,3"/>
+    </image>
+    <image id="n22_ueo4" name="n22" src="rbhon" fileName="img/card1.png" xy="96,13" pivot="0.5,0.5">
+      <gearDisplay controller="cont_card" pages="2,3"/>
+    </image>
+    <image id="n23_ueo4" name="n23" src="rbhon" fileName="img/card1.png" xy="166,13" pivot="0.5,0.5">
+      <gearDisplay controller="cont_card" pages="3"/>
+    </image>
+  </displayList>
+</component>

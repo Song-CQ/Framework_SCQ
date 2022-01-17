@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="135,260" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_8h4e" name="n3" src="fczjfr" fileName="img/feixing.png" xy="0,0" pivot="0.5,0.5"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".9"/>
+  <transition name="fx_fly" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="XY" target="n3_8h4e" tween="true" startValue="0,0" endValue="0,-17" duration="18" ease="Linear" repeat="-1" yoyo="true"/>
+  </transition>
+</component>

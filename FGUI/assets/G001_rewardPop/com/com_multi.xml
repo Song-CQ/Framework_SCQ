@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="150,143">
+  <displayList>
+    <image id="n10_n5d5" name="n10" src="a9pgfb" fileName="img/baidi.png" xy="0,0" pivot="0.5,0.5"/>
+    <text id="n12_n5d5" name="text_multi" xy="22,20" pivot="0.5,0.5" size="108,96" fontSize="74" color="#ffcc00" align="center" vAlign="middle" autoSize="none" strokeColor="#990000" strokeSize="4" text="X2"/>
+  </displayList>
+</component>

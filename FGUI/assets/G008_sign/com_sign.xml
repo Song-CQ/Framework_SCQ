@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <graph id="n15_j6fv" name="gp_bg" xy="490,217" pivot="0.5,0.5" size="100,100" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <image id="n0_ouxd" name="n0" src="ouxd6" fileName="img/diban.png" xy="55,300" pivot="0.5,0.5" size="970,1310" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_ouxd" name="n1" src="ouxd5" fileName="img/biaoti.png" xy="35,186" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n2_ouxd" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="930,178">
+      <relation target="" sidePair="middle-middle,right-right"/>
+    </component>
+    <list id="n13_k0b2" name="list_sign" xy="90,473" pivot="0.5,0.5" size="900,1100" layout="flow_hz" lineGap="17" colGap="26" align="center" vAlign="middle">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b29"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b28"/>
+      <item url="ui://9o0kw0z3k0b29"/>
+    </list>
+    <text id="n14_ueo4" name="text_time" xy="184,1616" pivot="0.5,0.5" size="712,95" fontSize="59" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#000000" strokeSize="4" text="Next in: 00:00:00">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

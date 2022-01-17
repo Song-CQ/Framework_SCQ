@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="480,180" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n3_t4cu" name="n3" src="t4cu4" fileName="img/play.png" xy="0,0" size="480,180"/>
+    <text id="n4_t4cu" name="n4" xy="17,38" size="446,104" font="ui://pmf3wbjicq6oes" fontSize="73" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#cc6600" strokeSize="4" shadowColor="#a54700" shadowOffset="1,5" text="Play now"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

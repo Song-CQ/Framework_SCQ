@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n3_mgii" name="n3" src="mgii1" fileName="img/beijingguang.png" xy="0,0" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_mgii" name="n1" src="mgii9" fileName="img/shu.png" xy="0,0" pivot="0.5,0.5">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n4_mgii" name="n4" src="mgii5" fileName="img/juese.png" xy="0,716" pivot="0.5,0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n2_mgii" name="n2" src="mgii6" fileName="img/piaodai.png" xy="27,174" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n5_mgii" name="com_bubble" src="mgiig" fileName="com/com_bubble.xml" xy="187,515" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n6_mgii" name="com_pp" src="mgiif" fileName="com/com_content.xml" xy="381,1000" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n8_mgii" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="935,52">
+      <relation target="" sidePair="middle-middle,right-right"/>
+    </component>
+    <component id="n11_mgii" name="btn_make" src="mgiic" fileName="com/btn_crazy.xml" xy="210,1609">
+      <relation target="" sidePair="center-center,top-bottom%"/>
+    </component>
+    <component id="n16_mgii" name="n16" src="mgiih" fileName="com/com_gara.xml" xy="770,1493" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n17_sv84" name="n17" xy="304,447" pivot="0.5,0.5" size="252,67" fontSize="38" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="Event ends in:">
+      <relation target="" sidePair=""/>
+      <relation target="n18_sv84" sidePair="middle-middle,right-left"/>
+    </text>
+    <text id="n18_sv84" name="text_time" xy="559,448" pivot="0.5,0.5" size="226,67" fontSize="38" color="#ffff00" vAlign="middle" autoSize="shrink" strokeColor="#000000" strokeSize="3" text="00:00:00">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+  <transition name="fx_button" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Scale" target="n11_mgii" tween="true" startValue="1,1" endValue="0.9,0.9" duration="3"/>
+    <item time="3" type="Scale" target="n11_mgii" tween="true" startValue="0.9,0.9" endValue="1,1" duration="3"/>
+    <item time="6" type="Scale" target="n11_mgii" tween="true" startValue="1,1" endValue="0.9,0.9" duration="3"/>
+    <item time="9" type="Scale" target="n11_mgii" tween="true" startValue="0.9,0.9" endValue="0.9,0.9" duration="3"/>
+    <item time="30" type="Scale" target="n11_mgii" value="1,1"/>
+  </transition>
+</component>

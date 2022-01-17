@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="2cbookqi">
+  <resources>
+    <component id="il9e2" name="btn_face.xml" path="/btn/"/>
+    <component id="il9e5" name="btn_google.xml" path="/btn/"/>
+    <component id="il9e7" name="btn_retry.xml" path="/btn/"/>
+    <component id="il9e9" name="btn_update.xml" path="/btn/"/>
+    <component id="il9ea" name="btn_cancel.xml" path="/btn/"/>
+    <component id="il9eb" name="btn_help.xml" path="/btn/"/>
+    <component id="il9ef" name="com_gameLoading.xml" path="/" exported="true"/>
+    <component id="il9eg" name="com_login.xml" path="/" exported="true"/>
+    <component id="il9el" name="com_retry.xml" path="/" exported="true"/>
+    <component id="il9em" name="com_btnStatus.xml" path="/"/>
+    <component id="il9en" name="com_gameUpdate.xml" path="/" exported="true"/>
+    <component id="il9ep" name="com_waterMask.xml" path="/" exported="true"/>
+    <component id="kxe52" name="btn_close2.xml" path="/btn/" exported="true"/>
+    <component id="kxe55" name="btn_connect.xml" path="/btn/"/>
+    <component id="kxe57" name="btn_nonReconnection.xml" path="/btn/"/>
+    <component id="kxe59" name="btn_gou.xml" path="/btn/"/>
+    <component id="kxe50" name="com_networkError.xml" path="/" exported="true"/>
+    <component id="p0wfy" name="com_bottomStatus.xml" path="/"/>
+  </resources>
+  <publish name="CS603_gameWindows" genCode="true"/>
+</packageDescription>

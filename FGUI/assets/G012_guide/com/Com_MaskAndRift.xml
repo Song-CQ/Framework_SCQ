@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1082,1920" opaque="false" mask="n13_nxk8" reversedMask="true">
+  <displayList>
+    <graph id="n12_nxk8" name="gh_mask" xy="0,0" size="1082,1920" type="rect" fillColor="#bf000000">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <component id="n14_9pp6" name="com_mask" src="r0o1ga" fileName="com/com_mask.xml" xy="0,0" visible="false">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <graph id="n13_nxk8" name="gh_shape" xy="439,1546" pivot="0.5,0.5" anchor="true" size="200,260" type="rect" lineColor="#00000000" fillColor="#fcffffff"/>
+  </displayList>
+</component>

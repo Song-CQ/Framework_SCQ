@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="969,970">
+  <controller name="cont_state" exported="true" pages="0,free,1,video" selected="0"/>
+  <displayList>
+    <image id="n1_p653" name="n1" src="p6533" fileName="img/dijizhuanpan.png" xy="0,0" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n18_p653" name="n18" src="p6536" fileName="img/gaojizhuanpan.png" xy="-19,-20" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </image>
+    <component id="n10_p653" name="com_reward1" src="p653i" fileName="btn/com_reward.xml" xy="379,233" pivot="0.5,0.5" anchor="true" rotation="-25"/>
+    <component id="n11_p653" name="com_reward2" src="p653i" fileName="btn/com_reward.xml" xy="594,239" pivot="0.5,0.5" anchor="true" rotation="25"/>
+    <component id="n13_p653" name="com_reward3" src="p653i" fileName="btn/com_reward.xml" xy="736,388" pivot="0.5,0.5" anchor="true" rotation="70"/>
+    <component id="n15_p653" name="com_reward4" src="p653i" fileName="btn/com_reward.xml" xy="727,590" pivot="0.5,0.5" anchor="true" rotation="115"/>
+    <component id="n17_p653" name="com_reward5" src="p653i" fileName="btn/com_reward.xml" xy="592,737" pivot="0.5,0.5" anchor="true" rotation="150"/>
+    <component id="n16_p653" name="com_reward6" src="p653i" fileName="btn/com_reward.xml" xy="370,741" pivot="0.5,0.5" anchor="true" rotation="-150"/>
+    <component id="n14_p653" name="com_reward7" src="p653i" fileName="btn/com_reward.xml" xy="235,590" pivot="0.5,0.5" anchor="true" rotation="-115"/>
+    <component id="n12_p653" name="com_reward8" src="p653i" fileName="btn/com_reward.xml" xy="231,382" pivot="0.5,0.5" anchor="true" rotation="-70"/>
+    <component id="n22_cjp2" name="n22" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="127,122" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n23_cjp2" name="n23" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="129,789" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n25_cjp2" name="n25" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="796,120" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n27_cjp2" name="n27" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="-13,464" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n28_cjp2" name="n28" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="934,461" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n29_cjp2" name="n29" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="798,791" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n30_cjp2" name="n30" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="461,935" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n31_cjp2" name="n31" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="461,-16" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n32_ch1s" name="n32" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="274,25" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n34_ch1s" name="n34" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="644,25" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n35_ch1s" name="n35" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="26,290" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n36_ch1s" name="n36" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="900,290" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n37_ch1s" name="n37" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="27,644" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n38_ch1s" name="n38" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="896,644" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n39_ch1s" name="n39" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="266,884" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <component id="n40_ch1s" name="n40" src="cjp2l" fileName="btn/com_light.xml" pkg="pmf3wbji" xy="655,884" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+    </component>
+    <graph id="n41_fdp2" name="gp_Select" xy="434,435" pivot="0.5,0.5" size="100,100" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+  </displayList>
+</component>

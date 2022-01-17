@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="183,194" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_pbye" name="n3" src="pbyet" fileName="img/box.png" xy="0,-1" pivot="0.5,0.5" size="146,161" aspect="true"/>
+    <loader id="n5_pbye" name="loader_switch" xy="58,37" pivot="0.5,0.5" size="124,130" align="center" vAlign="middle" fill="scale"/>
+    <image id="n4_pbye" name="n4" src="pbyes" fileName="img/Gifts Redeem.png" xy="-15,128" pivot="0.5,0.5" size="213,80" aspect="true"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".9"/>
+  <transition name="fx_Show" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n5_pbye" tween="true" startValue="0" endValue="0" duration="15" label2="CutLoad"/>
+    <item time="0" type="Scale" target="n5_pbye" tween="true" startValue="1,1" endValue="0.85,0.85" duration="10" ease="Bounce.Out" repeat="-1" yoyo="true"/>
+    <item time="10" type="Scale" target="n5_pbye" tween="true" startValue="0.85,0.85" endValue="0.8,0.8" duration="8"/>
+    <item time="15" type="Rotation" target="n5_pbye" label="CutLoad" tween="true" startValue="0" endValue="0" duration="2"/>
+  </transition>
+</component>

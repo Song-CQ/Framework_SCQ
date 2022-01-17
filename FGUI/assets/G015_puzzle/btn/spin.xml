@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="360,170" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_lsp6" name="n3" src="lsp6q" fileName="img/anniulv.png" xy="0,0" pivot="0.5,0.5" size="360,170"/>
+    <image id="n4_lsp6" name="n4" src="lsp6a" fileName="img/shipin.png" xy="41,51" pivot="0.5,0.5" size="72,58" aspect="true"/>
+    <text id="n5_lsp6" name="n5" xy="120,39" pivot="0.5,0.5" size="182,79" fontSize="60" color="#ffffff" align="center" autoSize="shrink" strokeColor="#006600" strokeSize="3" singleLine="true" text="Spin"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

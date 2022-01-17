@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="4yowah4h">
+  <resources>
+    <component id="tok20" name="com_addPig.xml" path="/" exported="true"/>
+    <component id="tok21" name="com_coin.xml" path="/com/" exported="true"/>
+    <image id="jrbt2" name="底板.png" path="/img/"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ae8hdoud">
+  <resources>
+    <component id="rhll0" name="com_setting.xml" path="/" exported="true"/>
+    <image id="rhll3" name="beiban1.png" path="/img/" exported="true"/>
+    <image id="rhll4" name="laba.png" path="/img/" exported="true"/>
+    <image id="rhll6" name="off.png" path="/img/" exported="true"/>
+    <image id="rhll7" name="offd.png" path="/img/" exported="true"/>
+    <image id="rhll8" name="on.png" path="/img/" exported="true"/>
+    <image id="rhll9" name="ond.png" path="/img/" exported="true"/>
+    <image id="rhlla" name="w.png" path="/img/" exported="true"/>
+    <image id="rhllb" name="w1.png" path="/img/" exported="true"/>
+    <image id="rhllc" name="w2.png" path="/img/" exported="true"/>
+    <image id="rhlld" name="w3.png" path="/img/" exported="true"/>
+    <image id="rhlle" name="w4.png" path="/img/" exported="true"/>
+    <image id="rhllf" name="xinxiang.png" path="/img/" exported="true"/>
+    <image id="rhllg" name="yinyue.png" path="/img/" exported="true"/>
+    <image id="rhllh" name="A.png" path="/img/" exported="true"/>
+    <component id="rhlli" name="btn_1withdraw.xml" path="/com/" exported="true"/>
+    <component id="rhllj" name="btn_2howto.xml" path="/com/" exported="true"/>
+    <component id="rhllk" name="btn_3lang.xml" path="/com/" exported="true"/>
+    <component id="rhlll" name="btn_4music.xml" path="/com/" exported="true"/>
+    <component id="rhllm" name="btn_5sounds.xml" path="/com/" exported="true"/>
+    <component id="rhlln" name="btn_6contact.xml" path="/com/" exported="true"/>
+    <component id="rhllo" name="btn_on.xml" path="/com/" exported="true"/>
+    <component id="rhllp" name="com_howto.xml" path="/" exported="true"/>
+    <component id="a9pgq" name="com_lang.xml" path="/" exported="true"/>
+    <component id="a9pgr" name="btn_lang.xml" path="/com/" exported="true"/>
+    <image id="a9pgs" name="check.png" path="/img/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

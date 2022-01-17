@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="371,120" pivot="0.5,0.5" extention="Button">
+  <controller name="cont_button" exported="true" pages="0,video,1,free" selected="0"/>
+  <displayList>
+    <image id="n3_rbho" name="n3" src="kmj6f2" fileName="img/green.png" xy="0,0" pivot="0.5,0.5" size="371,120">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n4_rbho" name="title" xy="96,22" size="256,75" font="ui://pmf3wbjicq6oes" fontSize="47" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#006600" strokeSize="3" shadowColor="#006600" shadowOffset="1,5" text="Get more">
+      <gearXY controller="cont_button" pages="1" values="57,22" default="96,22"/>
+      <gearText controller="cont_button" pages="1" values="Collect" default="Get more"/>
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </text>
+    <image id="n5_a9pg" name="n5" src="p653f" fileName="img/bofang.png" xy="29,25" pivot="0.5,0.5" size="71,74" aspect="true">
+      <gearDisplay controller="cont_button" pages="0"/>
+      <relation target="n4_rbho" sidePair="right-left"/>
+      <relation target="" sidePair="middle-middle"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n4_t4cu" name="n4" src="sv84o" fileName="img/beijing.jpg" xy="-180,-260">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n8_rps6" name="n8" src="rps6b" fileName="img/beibu.png" xy="159,413" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <graph id="n27_pqqv" name="gp_fx" xy="540,925" pivot="0.5,0.5" anchor="true" size="100,100" touchable="false" type="rect" lineColor="#00000000" fillColor="#00ffffff">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <component id="n18_k97i" name="settings" src="k97in" fileName="btn/settings.xml" xy="972,19">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n0_t4cu" name="btn_play" src="t4cuf0" fileName="btn/btn_play.xml" pkg="pmf3wbji" xy="300,1249">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n1_t4cu" name="btn_coin" src="lbaaeu" fileName="btn/btn_coin.xml" pkg="pmf3wbji" xy="29,30">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
+    <component id="n2_t4cu" name="btn_cash" src="lbaa8" fileName="btn/btn_cash.xml" pkg="pmf3wbji" xy="353,30">
+      <relation target="" sidePair="left-center,top-top"/>
+    </component>
+    <component id="n3_t4cu" name="btn_pp" src="lbaa9" fileName="btn/btn_pp.xml" pkg="pmf3wbji" xy="688,30">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n5_t4cu" name="com_cardnum" src="t4cu9" fileName="btn/com_cardnum.xml" xy="405,1076">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n7_rbho" name="com_cards" src="rbhoa" fileName="btn/com_playnum.xml" xy="400,223" pivot="0.5,0.5" controller="cont_cardleft,2">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n9_rps6" name="com_cardplay" src="rps6c" fileName="btn/com_cardplaytext.xml" xy="201,913" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n14_rps6" name="btn_task" src="rps6f" fileName="btn/btn_task.xml" xy="40,1488" aspect="true" scale="0.9,0.9">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n16_rps6" name="btn_wheel" src="rps6h" fileName="btn/btn_wheel.xml" xy="300,1488" scale="0.9,0.9">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n17_tac9" name="btn_sign" src="tac9k" fileName="btn/btn_sign.xml" xy="820,1488" scale="0.9,0.9">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n26_tli7" name="btn_ballon" src="fczjfq" fileName="btn/btn_balloon.xml" pkg="pmf3wbji" xy="9,835"/>
+    <component id="n28_skbw" name="btn_pig" src="skbwp" fileName="btn/btn_pig.xml" xy="560,1488" scale="0.9,0.9">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n24_boow" name="btn_crazy" src="boowu" fileName="btn/btn_crazy.xml" pkg="pmf3wbji" xy="41,146" group="n30_lygp">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
+    <component id="n29_vn61" name="btn_iwatch" src="vn61q" fileName="btn/btn_iwatch.xml" xy="38,411" group="n30_lygp">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
+    <group id="n30_lygp" name="gp_left" xy="38,146" size="183,459" advanced="true" layout="vt" lineGap="45" excludeInvisibles="true">
+      <relation target="" sidePair="left-left,top-top"/>
+    </group>
+    <component id="n25_boow" name="btn_gift" src="boowv" fileName="btn/btn_gift.xml" pkg="pmf3wbji" xy="853,162" group="n34_pbye">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n33_pbye" name="btn_RealItem" src="pbyeu" fileName="btn/RealItem.xml" xy="864,396" group="n34_pbye">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <group id="n34_pbye" name="gp_right" xy="853,162" size="194,428" advanced="true" layout="vt" lineGap="45" excludeInvisibles="true"/>
+    <list id="n35_w5f6" name="list_rollingList" xy="220,135" pivot="0.5,0.5" size="634,42" layout="row" overflow="scroll" scroll="horizontal" colGap="150" defaultItem="ui://qw9x6rf3t4tdr">
+      <relation target="" sidePair="center-center,top-top%"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

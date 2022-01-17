@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="usq9v102">
+  <resources>
+    <component id="rnlu0" name="com_guide.xml" path="/" exported="true"/>
+    <component id="ro0ug3" name="com_1.xml" path="/com/" exported="true"/>
+    <component id="rnlug6" name="com_2.xml" path="/com/" exported="true"/>
+    <component id="r0o1ga" name="com_mask.xml" path="/com/"/>
+    <component id="r0o1gb" name="Com_MaskAndRift.xml" path="/com/"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

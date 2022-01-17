@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,835">
+  <displayList>
+    <image id="n0_hqkl" name="n0" src="hqkl10" fileName="img/dingtu(1).png" xy="0,0">
+      <relation target="" sidePair="width-width%,height-height%,center-center%"/>
+    </image>
+  </displayList>
+</component>

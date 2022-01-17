@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <controller name="cont_state" pages="0,normal,1,videl" selected="1">
+    <action type="change_page" fromPage="0" toPage="1" objectId="n2_l117" controller="cont_state" targetPage="1"/>
+    <action type="change_page" fromPage="1" toPage="0" objectId="n2_l117" controller="cont_state" targetPage="0"/>
+    <action type="change_page" fromPage="0" toPage="1" objectId="n5_l117" controller="cont_video" targetPage="1"/>
+    <action type="change_page" fromPage="1" toPage="0" objectId="n5_l117" controller="cont_video" targetPage="0"/>
+    <action type="change_page" fromPage="0" toPage="1" objectId="n6_l117" controller="cont_state" targetPage="1"/>
+    <action type="change_page" fromPage="1" toPage="0" objectId="n6_l117" controller="cont_state" targetPage="0"/>
+  </controller>
+  <displayList>
+    <image id="n8_snkb" name="n8" src="p6534" fileName="img/dizuo.png" xy="2,955" pivot="0.5,0.5">
+      <gearDisplay controller="cont_state" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n9_ouxd" name="n9" src="p6538" fileName="img/lucky spin.png" xy="205,200" pivot="0.5,0.5" size="670,224" aspect="true">
+      <gearDisplay controller="cont_state" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n2_l117" name="com_wheels" src="p653j" fileName="btn/com_wheels.xml" xy="54,357" pivot="0.5,0.5">
+      <gearXY controller="cont_state" pages="1" values="54,357" default="54,415"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <image id="n3_l117" name="n3" src="p6531" fileName="img/dijibiaoti.png" xy="163,3" pivot="0.5,0.5" size="759,357" aspect="true">
+      <gearDisplay controller="cont_state" pages="0"/>
+      <relation target="" sidePair="center-center,top-top"/>
+    </image>
+    <image id="n4_l117" name="img_zhen" src="p653a" fileName="img/zhizhen.png" xy="467,336" pivot="0.5,0">
+      <gearDisplay controller="cont_state" pages="0,1"/>
+      <gearXY controller="cont_state" pages="1" values="467,336" default="472,414"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n5_l117" name="btn_spin" src="p653e" fileName="btn/btn_spin.xml" xy="168,1563">
+      <gearXY controller="cont_state" pages="1" values="168,1563" default="168,1488"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n6_l117" name="com_Spinn" src="p653d" fileName="btn/com_spin.xml" xy="397,691">
+      <gearXY controller="cont_state" pages="1" values="397,691" default="397,769"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n7_l117" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="948,26">
+      <gearXY controller="cont_state" pages="1" values="948,26" default="945,40"/>
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <graph id="n10_j6fv" name="gp_Fx" xy="546,910" pivot="0.5,0.5" anchor="true" size="100,100" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+  </displayList>
+  <transition name="fx_zhen">
+    <item time="0" type="Rotation" target="n4_l117" tween="true" startValue="-12" endValue="12" duration="3" ease="Linear" repeat="-1" yoyo="true"/>
+  </transition>
+  <transition name="fx_exit">
+    <item time="0" type="Scale" target="n2_l117" tween="true" startValue="1,1" endValue="1.1,1.1" duration="6"/>
+    <item time="0" type="Scale" target="n6_l117" tween="true" startValue="1,1" endValue="0,0" duration="18"/>
+    <item time="0" type="XY" target="n3_l117" tween="true" startValue="163,3" endValue="163,-404" duration="15"/>
+    <item time="5" type="Scale" target="n4_l117" tween="true" startValue="1,1" endValue="0,0" duration="4"/>
+    <item time="6" type="Scale" target="n2_l117" tween="true" startValue="1.1,1.1" endValue="0,0" duration="12"/>
+    <item time="15" type="Visible" target="n3_l117" value="false"/>
+  </transition>
+  <transition name="fx_enter">
+    <item time="0" type="Scale" target="n8_snkb" tween="true" startValue="0,0" endValue="1.1,1.1" duration="9"/>
+    <item time="0" type="Visible" target="n2_l117" value="false"/>
+    <item time="0" type="Visible" target="n4_l117" value="false"/>
+    <item time="0" type="Visible" target="n6_l117" value="false"/>
+    <item time="0" type="Visible" target="n8_snkb" value="false"/>
+    <item time="0" type="Visible" target="n9_ouxd" value="false"/>
+    <item time="1" type="Scale" target="n2_l117" tween="true" startValue="0,0" endValue="1.1,1.1" duration="9"/>
+    <item time="1" type="Scale" target="n6_l117" tween="true" startValue="0,0" endValue="1,1" duration="12"/>
+    <item time="1" type="Visible" target="n2_l117" value="true"/>
+    <item time="1" type="Visible" target="n6_l117" value="true"/>
+    <item time="1" type="Visible" target="n8_snkb" value="true"/>
+    <item time="8" type="Scale" target="n4_l117" tween="true" startValue="0,0" endValue="1,1" duration="4"/>
+    <item time="8" type="Visible" target="n4_l117" value="true"/>
+    <item time="9" type="Scale" target="n8_snkb" tween="true" startValue="1.1,1.1" endValue="1,1" duration="3"/>
+    <item time="10" type="Scale" target="n2_l117" tween="true" startValue="1.1,1.1" endValue="1,1" duration="3"/>
+    <item time="10" type="Visible" target="n9_ouxd" value="true"/>
+    <item time="10" type="XY" target="n9_ouxd" tween="true" startValue="205,324" endValue="205,178" duration="6"/>
+    <item time="16" type="XY" target="n9_ouxd" tween="true" startValue="205,178" endValue="205,200" duration="3"/>
+  </transition>
+</component>

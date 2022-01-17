@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="198,197">
+  <displayList>
+    <loader id="n10_p653" name="loader_reward" xy="7,0" pivot="0.5,0.5" size="184,142" url="ui://pmf3wbjikmj6f6" align="center" vAlign="middle" fill="scale"/>
+    <text id="n11_p653" name="text_num" xy="26,131" pivot="0.5,0.5" size="146,59" fontSize="44" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" strokeColor="#990000" strokeSize="3" singleLine="true" text="1,00000"/>
+  </displayList>
+</component>

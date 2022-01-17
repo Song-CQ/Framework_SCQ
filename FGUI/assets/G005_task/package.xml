@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="qmomwx89">
+  <resources>
+    <component id="lbaa0" name="com_task.xml" path="/" exported="true"/>
+    <image id="n5d51" name="diban.png" path="/img/" exported="true" scale="9grid" scale9grid="94,0,58,1273"/>
+    <image id="n5d52" name="lanban.png" path="/img/" exported="true" scale="9grid" scale9grid="59,0,15,195"/>
+    <image id="n5d53" name="ziban.png" path="/img/" exported="true" scale="9grid" scale9grid="50,0,37,203"/>
+    <image id="n5d54" name="biaoti.png" path="/img/" exported="true"/>
+    <image id="n5d55" name="gou.png" path="/img/" exported="true"/>
+    <component id="n5d56" name="btn_task.xml" path="/img/" exported="true"/>
+    <component id="n5d58" name="com_Singletask.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="176,80" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <text id="n3_jgbu" name="text_claim" xy="0,2" pivot="0.5,0.5" size="176,76" fontSize="58" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" underline="true" strokeColor="#000000" strokeSize="4" text="Claim">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".8"/>
+</component>

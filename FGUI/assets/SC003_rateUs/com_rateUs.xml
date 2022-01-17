@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_mj6a" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="102,494" size="879,765">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n2_mj6a" name="btn_close" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="894,468">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n3_mj6a" name="title" xy="181,515" size="718,109" fontSize="84" color="#ffffff" align="center" leading="2" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Having fun?">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n7_mj6a" name="n7" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="137,634" size="808,588">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n17_mj6a" name="n17" xy="157,842" size="766,174" fontSize="51" color="#a0412c" align="center" vAlign="middle" leading="2" autoSize="shrink" text="Support us by rating 5 STARS!&#xA;Your feedback is meaningful">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n16_mj6a" name="btn_rate" src="rbhow" fileName="btn/btn_green.xml" pkg="pmf3wbji" xy="172,1039" size="352,145" grayed="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="1-4 stars" titleFontSize="63"/>
+    </component>
+    <component id="n28_sg71" name="btn_rate5" src="rbhow" fileName="btn/btn_green.xml" pkg="pmf3wbji" xy="553,1039" size="352,145">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="5 stars" titleFontSize="65"/>
+    </component>
+    <image id="n27_sg71" name="n27" src="sg715" fileName="pic/star_light.png" xy="471,670" pivot="0.5,0.5" size="137,135" group="n37_sg71" aspect="true"/>
+    <image id="n31_sg71" name="n31" src="sg715" fileName="pic/star_light.png" xy="327,670" pivot="0.5,0.5" size="137,135" group="n37_sg71" aspect="true"/>
+    <image id="n32_sg71" name="n32" src="sg715" fileName="pic/star_light.png" xy="183,670" pivot="0.5,0.5" size="137,135" group="n37_sg71" aspect="true"/>
+    <image id="n33_sg71" name="n33" src="sg715" fileName="pic/star_light.png" xy="615,670" pivot="0.5,0.5" size="137,135" group="n37_sg71" aspect="true"/>
+    <image id="n34_sg71" name="n34" src="sg715" fileName="pic/star_light.png" xy="759,670" pivot="0.5,0.5" size="137,135" group="n37_sg71" aspect="true"/>
+    <group id="n37_sg71" name="n37" xy="183,670" size="713,135" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

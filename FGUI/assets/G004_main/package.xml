@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="qw9x6rf3">
+  <resources>
+    <component id="lbaa0" name="com_main.xml" path="/" exported="true"/>
+    <image id="t4cu1" name="-.png" path="/img/" exported="true"/>
+    <image id="t4cu2" name="+.png" path="/img/" exported="true"/>
+    <image id="t4cu6" name="shuzitiao.png" path="/img/" exported="true"/>
+    <component id="t4cu7" name="btn_add.xml" path="/btn/" exported="true"/>
+    <component id="t4cu8" name="btn_minus.xml" path="/btn/" exported="true"/>
+    <component id="t4cu9" name="com_cardnum.xml" path="/btn/" exported="true"/>
+    <component id="rbhoa" name="com_playnum.xml" path="/btn/" exported="true"/>
+    <image id="rps6b" name="beibu.png" path="/img/" exported="true"/>
+    <component id="rps6c" name="com_cardplaytext.xml" path="/btn/" exported="true"/>
+    <image id="rps6d" name="qiandao.png" path="/img/" exported="true"/>
+    <component id="rps6f" name="btn_task.xml" path="/btn/" exported="true"/>
+    <image id="rps6g" name="zhuanpan.png" path="/img/" exported="true"/>
+    <component id="rps6h" name="btn_wheel.xml" path="/btn/" exported="true"/>
+    <image id="tac9i" name="daojudizuo(1).png" path="/img/" exported="true"/>
+    <component id="tac9k" name="btn_sign.xml" path="/btn/" exported="true"/>
+    <image id="k97il" name="shezhi.png" path="/img/" exported="true"/>
+    <image id="k97im" name="rili.png" path="/img/" exported="true"/>
+    <component id="k97in" name="settings.xml" path="/btn/" exported="true"/>
+    <image id="sv84o" name="beijing.jpg" path="/img/" exported="true"/>
+    <component id="skbwp" name="btn_pig.xml" path="/btn/" exported="true"/>
+    <component id="vn61q" name="btn_iwatch.xml" path="/btn/" exported="true"/>
+    <component id="t4tdr" name="com_rolling.xml" path="/btn/" exported="true"/>
+    <image id="pbyes" name="Gifts Redeem.png" path="/img/" exported="true"/>
+    <image id="pbyet" name="box.png" path="/img/" exported="true"/>
+    <component id="pbyeu" name="RealItem.xml" path="/btn/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

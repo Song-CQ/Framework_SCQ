@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,928">
+  <displayList>
+    <image id="n15_lsp6" name="n15" src="lsp66" fileName="img/lucky spin 1.png" xy="13,0" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n16_lsp6" name="btn_gift1" src="lsp6p" fileName="btn/bubble.xml" xy="88,455">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n17_lsp6" name="btn_gift2" src="lsp6p" fileName="btn/bubble.xml" xy="318,299">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n18_lsp6" name="btn_gift3" src="lsp6p" fileName="btn/bubble.xml" xy="318,624">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n19_lsp6" name="btn_gift4" src="lsp6p" fileName="btn/bubble.xml" xy="548,455">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n20_lsp6" name="btn_gift5" src="lsp6p" fileName="btn/bubble.xml" xy="769,298">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n21_lsp6" name="btn_gift6" src="lsp6p" fileName="btn/bubble.xml" xy="769,624">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n22_lsp6" name="n22" xy="278,71" pivot="0.5,0.5" size="524,92" fontSize="70" color="#ffffff" align="center" autoSize="none" text="Puzzle Bubble">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

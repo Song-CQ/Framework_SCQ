@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="990,300">
+  <displayList>
+    <image id="n6_q3mz" name="n6" src="e2wob" fileName="img/xinxidi.png" xy="0,0" pivot="0.5,0.5" size="990,300"/>
+    <loader id="n7_q3mz" name="loader_logo" xy="34,28" pivot="0.5,0.5" size="496,88" url="ui://ur2owoijboow2" vAlign="middle" fill="scale">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <text id="n8_q3mz" name="text_num" xy="34,136" pivot="0.5,0.5" size="546,116" font="ui://pmf3wbjicq6oes" fontSize="90" color="#000066" vAlign="middle" autoSize="shrink" bold="true" text="$1,000">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n9_e2wo" name="btn_redeem" src="e2woo" fileName="btn/btn_redeem.xml" pkg="pmf3wbji" xy="613,141" size="320,97">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n10_e2wo" name="pb_icon" src="e2won" fileName="btn/pb.xml" pkg="pmf3wbji" xy="610,73" pivot="0.5,0.5" size="340,37">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <ProgressBar value="772" max="100000"/>
+    </component>
+    <loader id="n11_e2wo" name="loader_icon" xy="551,54" pivot="0.5,0.5" size="86,74" url="ui://ur2owoije2wo8" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+  </displayList>
+</component>

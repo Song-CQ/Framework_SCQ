@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_sg71" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="88,564" size="908,636">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_sg71" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="136,716" size="818,440">
+      <relation target="" sidePair=""/>
+      <relation target="n0_sg71" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </image>
+    <text id="n2_sg71" name="n2" xy="163,735" size="761,230" fontSize="46" color="#a0412c" align="center" vAlign="middle" autoSize="shrink" text="By agreeing to the Privacy Policy, we can provide you with game services. Confirm the agreement? ">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n3_sg71" name="n3" xy="223,593" size="637,104" fontSize="80" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" text="Enter the game?">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n4_sg71" name="btn_close" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="907,537">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n5_jfbe" name="btn_yes" src="rbhow" fileName="btn/btn_green.xml" pkg="pmf3wbji" xy="575,984" size="332,133">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="Yes" titleFontSize="56"/>
+    </component>
+    <component id="n6_jfbe" name="btn_no" src="kmj6a" fileName="btn/btn_red.xml" pkg="pmf3wbji" xy="194,984" size="332,133">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <Button title="No" titleFontSize="56"/>
+    </component>
+  </displayList>
+</component>

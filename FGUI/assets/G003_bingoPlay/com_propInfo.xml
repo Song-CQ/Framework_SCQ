@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_ro0u" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="97,316" pivot="0.5,0.5" size="885,1089">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_ro0u" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="140,468" pivot="0.5,0.5" size="800,912">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_ro0u" name="title" xy="231,339" pivot="0.5,0.5" size="618,107" fontSize="72" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Powerup Rewards">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n3_ro0u" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="890,287">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n4_ro0u" name="n4" xy="174,486" pivot="0.5,0.5" size="756,161" fontSize="59" color="#a0412c" align="center" vAlign="middle" autoSize="none" text="Daub can trigger randow powerup rewards">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n7_ro0u" name="n7" src="rbhok" fileName="img/propdaub.png" xy="204,689" pivot="0.5,0.5" size="156,156" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n8_ro0u" name="n8" src="rbhol" fileName="img/propx3.png" xy="204,903" pivot="0.5,0.5" size="156,156" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n9_ro0u" name="n9" src="rbhoj" fileName="img/propcoin.png" xy="204,1117" pivot="0.5,0.5" size="156,156" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n6_ro0u" name="n6" src="rbhoh" fileName="img/propfull.png" xy="180,665" pivot="0.5,0.5" size="202,202" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n10_ro0u" name="n10" src="rbhoh" fileName="img/propfull.png" xy="180,879" pivot="0.5,0.5" size="202,202" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n11_ro0u" name="n11" src="rbhoh" fileName="img/propfull.png" xy="180,1093" pivot="0.5,0.5" size="202,202" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n13_ro0u" name="n13" xy="410,684" pivot="0.5,0.5" size="412,161" fontSize="67" color="#ffde67" vAlign="middle" autoSize="shrink" strokeColor="#660000" strokeSize="5" text="Free Daubs">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n15_rnlu" name="n15" xy="410,903" pivot="0.5,0.5" size="502,161" fontSize="67" color="#ffde67" vAlign="middle" autoSize="shrink" strokeColor="#660000" strokeSize="5" text="Extra Rewards">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n16_rnlu" name="n16" xy="410,1114" pivot="0.5,0.5" size="502,161" fontSize="67" color="#ffde67" vAlign="middle" autoSize="shrink" strokeColor="#660000" strokeSize="5" text="Coin Square">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

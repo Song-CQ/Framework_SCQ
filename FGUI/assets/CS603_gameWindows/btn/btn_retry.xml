@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="357,88" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n0_rpha" name="n0" src="lo6xl" fileName="pic/btn_buleLong.png" pkg="oauc2zgj" xy="0,0" pivot="0.5,0.5"/>
+    <text id="n2_rpha" name="n2" xy="28,-8" pivot="0.5,0.5" size="300,104" fontSize="50" color="#ffffff" align="center" vAlign="middle" autoSize="none" shadowColor="#0f6fab" shadowOffset="0,4" text="RETRY"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.95"/>
+</component>

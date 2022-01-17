@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="380,126">
+  <displayList>
+    <image id="n21_7xld" name="n21" src="jrbt2" fileName="img/底板.png" xy="9,0" size="371,126">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n23_7xld" name="n23" src="bvkwex" fileName="img/money.png" pkg="pmf3wbji" xy="-22,-10" size="108,112"/>
+    <text id="n26_mfbg" name="text_val" xy="84,13" size="264,67" fontSize="48" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" strokeColor="#000000" strokeSize="2" text=""/>
+  </displayList>
+</component>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="357,88" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n0_rpha" name="n0" src="lo6xl" fileName="pic/btn_buleLong.png" pkg="oauc2zgj" xy="0,0"/>
+    <text id="n1_rpha" name="n1" xy="108,4" pivot="0.5,0.5" size="140,80" fontSize="38" color="#ffffff" shadowColor="#0f6fab" shadowOffset="0,4" text="CANCEL"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.95"/>
+</component>

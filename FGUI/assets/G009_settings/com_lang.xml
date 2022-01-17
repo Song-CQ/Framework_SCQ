@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920">
+  <displayList>
+    <image id="n0_a9pg" name="n0" src="rbhof9" fileName="img/beiban.png" pkg="pmf3wbji" xy="92,338" pivot="0.5,0.5" size="887,1244">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_a9pg" name="n1" src="rbhofa" fileName="img/beibanbaise.png" pkg="pmf3wbji" xy="128,487" pivot="0.5,0.5" size="815,1040">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n2_a9pg" name="title" xy="171,358" size="718,119" fontSize="90" color="#ffffff" align="center" leading="2" autoSize="shrink" strokeColor="#4346aa" strokeSize="8" singleLine="true" text="Languages">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n3_a9pg" name="closeButton" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="872,308">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <list id="n11_hg1x" name="list_Items" xy="543,1004" pivot="0.5,0.5" anchor="true" size="756,980" overflow="scroll" lineGap="12" defaultItem="ui://ae8hdouda9pgr" align="center">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

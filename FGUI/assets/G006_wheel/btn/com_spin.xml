@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="290,290" pivot="0.5,0.5">
+  <controller name="cont_spin" pages="0,none,1,grey" selected="0"/>
+  <controller name="cont_state" exported="true" pages="0,None,1,Video" selected="0"/>
+  <displayList>
+    <loader id="n3_p653" name="n3" xy="0,0" pivot="0.5,0.5" size="290,290" url="ui://qpan47byp6532" align="center" vAlign="middle">
+      <gearColor controller="cont_spin" pages="1" values="#cccccc" default="#ffffff"/>
+      <gearIcon controller="cont_state" pages="1" values="ui://qpan47byp6535" default="ui://qpan47byp6532"/>
+    </loader>
+  </displayList>
+</component>

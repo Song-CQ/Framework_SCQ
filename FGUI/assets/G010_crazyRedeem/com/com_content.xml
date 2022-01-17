@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="671,414">
+  <displayList>
+    <image id="n6_mgii" name="n6" src="mgii7" fileName="img/ppban.png" xy="0,0" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n0_mgii" name="pb_ppcash" src="mgiifk" fileName="btn/pb_jiazai.xml" pkg="pmf3wbji" xy="108,177" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <image id="n9_mgii" name="n9" src="bvkwex" fileName="img/money.png" pkg="pmf3wbji" xy="67,158" pivot="0.5,0.5" size="67,68" aspect="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n7_mgii" name="n7" src="mgii2" fileName="img/huangsebanzi.png" xy="134,297" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n13_mgii" name="n13" xy="171,310" pivot="0.5,0.5" size="344,43" fontSize="31" color="#990000" align="center" vAlign="middle" autoSize="shrink" text="Redeem reward">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n14_mgii" name="n14" xy="246,346" pivot="0.5,0.5" size="201,56" fontSize="42" color="#990000" align="center" autoSize="shrink" text="$1,000.00">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

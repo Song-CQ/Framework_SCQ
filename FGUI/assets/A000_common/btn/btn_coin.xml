@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="290,72" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n3_lbaa" name="bg" src="bvkwez" fileName="img/topdi.png" xy="36,0"/>
+    <image id="n4_lbaa" name="load_icon" src="bvkwew" fileName="img/coin.png" xy="0,-7" size="78,86" aspect="true"/>
+    <text id="n5_lbaa" name="title" xy="81,11" size="190,50" font="ui://pmf3wbjicq6oes" fontSize="34" color="#b54d0f" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="5,000"/>
+    <graph id="n6_ou8f" name="gp_hand" xy="232,97" pivot="0.5,0.5" anchor="true" size="100,100" visible="false" type="rect">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+  </displayList>
+  <Button downEffect="scale" downEffectValue=".9"/>
+</component>

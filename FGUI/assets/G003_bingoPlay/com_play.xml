@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1080,1920" opaque="false">
+  <displayList>
+    <component id="n6_lbaa" name="btn_coin" src="lbaaeu" fileName="btn/btn_coin.xml" pkg="pmf3wbji" xy="35,44">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
+    <component id="n7_lbaa" name="btn_cash" src="lbaa8" fileName="btn/btn_cash.xml" pkg="pmf3wbji" xy="342,44">
+      <relation target="" sidePair="left-center,top-top"/>
+    </component>
+    <component id="n8_lbaa" name="btn_pp" src="lbaa9" fileName="btn/btn_pp.xml" pkg="pmf3wbji" xy="655,44">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n9_lbaa" name="btn_close" src="lbaaet" fileName="btn/btn_close.xml" pkg="pmf3wbji" xy="971,36" size="87,87" aspect="true">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n15_umls" name="com_CallNum" src="umlsx" fileName="com/com_CallNum.xml" xy="10,172">
+      <relation target="" sidePair="center-center,top-top"/>
+    </component>
+    <component id="n13_rbho" name="com_prop" src="rbhom" fileName="com/com_prop.xml" xy="20,380" pivot="0.5,0.5">
+      <relation target="" sidePair="left-left,top-top"/>
+      <ProgressBar max="100"/>
+    </component>
+    <component id="n14_rbho" name="com_carddi" src="rbhor" fileName="com/com_carddi.xml" xy="806,395" pivot="0.5,0.5">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n16_cof0" name="com_ballleft" src="cof017" fileName="com/com_ball.xml" xy="883,174" pivot="0.5,0.5">
+      <relation target="" sidePair="center-center,top-top"/>
+    </component>
+    <component id="n21_807k" name="com_AddBall" src="807kfo" fileName="com_AddBall.xml" xy="277,762" pivot="0.5,0.5" visible="false" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n22_boow" name="btn_crazy" src="boowu" fileName="btn/btn_crazy.xml" pkg="pmf3wbji" xy="14,1706" aspect="true" scale="0.8,0.8">
+      <relation target="" sidePair="middle-middle,left-left"/>
+    </component>
+    <component id="n23_boow" name="btn_gift" src="boowv" fileName="btn/btn_gift.xml" pkg="pmf3wbji" xy="905,1737" scale="0.8,0.8">
+      <relation target="" sidePair="middle-middle,right-right"/>
+    </component>
+    <component id="n29_tli7" name="btn_ballon" src="fczjfq" fileName="btn/btn_balloon.xml" pkg="pmf3wbji" xy="36,553"/>
+    <graph id="n19_iboy" name="zhezhao" xy="0,0" pivot="0.5,0.5" size="1080,1920" visible="false" type="rect" fillColor="#b2000000">
+      <relation target="" sidePair="width-width,height-height,center-center,middle-middle"/>
+    </graph>
+    <image id="n17_iboy" name="n17" src="iboy1a" fileName="img/ready.png" xy="539,900" pivot="0.5,0.5" anchor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n18_iboy" name="n18" src="iboy19" fileName="img/go.png" xy="531,893" pivot="0.5,0.5" anchor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n20_iboy" name="n20" src="iboy18" fileName="img/game over.png" xy="540,960" pivot="0.5,0.5" anchor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+  </displayList>
+  <transition name="fx_readygo">
+    <item time="0" type="Visible" target="n17_iboy" value="false"/>
+    <item time="0" type="Visible" target="n18_iboy" value="false"/>
+    <item time="0" type="Visible" target="n19_iboy" value="false"/>
+    <item time="1" type="Scale" target="n17_iboy" label="Ready" tween="true" startValue="0,0" endValue="1.1,1.1" duration="8"/>
+    <item time="1" type="Visible" target="n17_iboy" value="true"/>
+    <item time="1" type="Visible" target="n19_iboy" value="true"/>
+    <item time="9" type="Scale" target="n17_iboy" tween="true" startValue="1.1,1.1" endValue="1,1" duration="4"/>
+    <item time="13" type="Scale" target="n17_iboy" tween="true" startValue="1,1" endValue="1,1" duration="3"/>
+    <item time="16" type="Scale" target="n17_iboy" tween="true" startValue="1,1" endValue="0,0" duration="4" label2="Go"/>
+    <item time="20" type="Scale" target="n18_iboy" tween="true" startValue="0,0" endValue="1.1,1.1" duration="6"/>
+    <item time="20" type="Visible" target="n18_iboy" value="true"/>
+    <item time="26" type="Scale" target="n18_iboy" tween="true" startValue="1.1,1.1" endValue="1,1" duration="4"/>
+    <item time="30" type="Scale" target="n18_iboy" tween="true" startValue="1,1" endValue="1,1" duration="4"/>
+    <item time="34" type="Scale" target="n18_iboy" tween="true" startValue="1,1" endValue="0,0" duration="4"/>
+    <item time="37" type="Visible" target="n19_iboy" value="false"/>
+  </transition>
+  <transition name="fx_gameover">
+    <item time="0" type="Visible" target="n19_iboy" value="false"/>
+    <item time="0" type="Visible" target="n20_iboy" value="false"/>
+    <item time="1" type="Alpha" target="n20_iboy" value="1"/>
+    <item time="1" type="Visible" target="n19_iboy" value="true"/>
+    <item time="1" type="Visible" target="n20_iboy" value="true"/>
+    <item time="1" type="XY" target="n20_iboy" tween="true" startValue="-,2045.16,0.5,1.065" endValue="-,761,0.5,0.396" duration="8"/>
+    <item time="9" type="XY" target="n20_iboy" tween="true" startValue="-,761,0.5,0.396" endValue="-,876,0.5,0.456" duration="4"/>
+    <item time="13" type="XY" target="n20_iboy" tween="true" startValue="-,876,0.5,0.456" endValue="-,876,0.5,0.456" duration="6"/>
+    <item time="18" type="Alpha" target="n20_iboy" tween="true" startValue="1" endValue="0" duration="10"/>
+    <item time="19" type="XY" target="n20_iboy" tween="true" startValue="-,876,0.5,0.456" endValue="-,-269,0.5,-0.14" duration="9"/>
+    <item time="29" type="Visible" target="n19_iboy" value="false"/>
+    <item time="29" type="Visible" target="n20_iboy" value="false"/>
+  </transition>
+</component>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="wjt0ioio">
+  <resources>
+    <component id="pqqv0" name="com_FX.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>
