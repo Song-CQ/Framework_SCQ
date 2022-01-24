@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-      
+
 public class UIDragComp : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     //-------------------------- Unity obj ------------
@@ -32,10 +32,10 @@ public class UIDragComp : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         SetRightLeft();
         FindSelectObj();
-       
+
     }
 
-   
+
 
     void SetRightLeft()
     {
@@ -136,7 +136,7 @@ public class UIDragComp : MonoBehaviour, IDragHandler, IEndDragHandler
         if (moveToCenter != null) StopCoroutine(moveToCenter);
     }
 
-    public void OnDrag(float xMove=0.1f)
+    public void OnDrag(float xMove = 0.1f)
     {
         if (leftTrans.position.y + xMove >= (center.position.y + Screen.height / 4))
             xMove = (center.position.y + Screen.height / 4) - leftTrans.position.y;

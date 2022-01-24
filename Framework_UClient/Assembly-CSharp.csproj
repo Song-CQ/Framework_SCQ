@@ -78,57 +78,29 @@
     <Compile Include="Assets\Framework_XL\05_Common\Vector3_Tool.cs" />
     <Compile Include="Assets\Framework_XL\06_Shader\镜子\MirrorReflection.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\UIMgr\UIRegister_FGUI.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\StaticVO\CommonStaticVO_AutoCreate\CommonStaticVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\Flop_rewardVO_AutoCreate\Flop_rewardVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\Flop_rewardVO_AutoCreate\Flop_rewardVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\GuidanceVO_AutoCreate\GuidanceVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\GuidanceVO_AutoCreate\GuidanceVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\ItemVO_AutoCreate\ItemStaticKey.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\ItemVO_AutoCreate\ItemVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\ItemVO_AutoCreate\ItemVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\Num_probabilityVO_AutoCreate\Num_probabilityVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\Num_probabilityVO_AutoCreate\Num_probabilityVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\SignDailyRewardVO_AutoCreate\SignDailyRewardVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\SignDailyRewardVO_AutoCreate\SignDailyRewardVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\TaskListVO_AutoCreate\TaskListVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\TaskListVO_AutoCreate\TaskListVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\adRewardVO_AutoCreate\adRewardStaticKey.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\adRewardVO_AutoCreate\adRewardVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\adRewardVO_AutoCreate\adRewardVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\bingoRedeemVO_AutoCreate\bingoRedeemVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\bingoRedeemVO_AutoCreate\bingoRedeemVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\forceAdVO_AutoCreate\forceAdStaticKey.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\forceAdVO_AutoCreate\forceAdVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\forceAdVO_AutoCreate\forceAdVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\giftListVO_AutoCreate\giftListVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\giftListVO_AutoCreate\giftListVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\giftcardVO_AutoCreate\giftcardVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\giftcardVO_AutoCreate\giftcardVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\langVO_AutoCreate\langVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\langVO_AutoCreate\langVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\out_PPVO_AutoCreate\out_PPVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\out_PPVO_AutoCreate\out_PPVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\out_cashVO_AutoCreate\out_cashVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\out_cashVO_AutoCreate\out_cashVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\out_coinVO_AutoCreate\out_coinVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\out_coinVO_AutoCreate\out_coinVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\paymentTypeVO_AutoCreate\paymentTypeStaticKey.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\paymentTypeVO_AutoCreate\paymentTypeVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\paymentTypeVO_AutoCreate\paymentTypeVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\pickBoxVO_AutoCreate\pickBoxVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\pickBoxVO_AutoCreate\pickBoxVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\piggyVO_AutoCreate\piggyVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\piggyVO_AutoCreate\piggyVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\propVO_AutoCreate\propVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\propVO_AutoCreate\propVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\rollingVO_AutoCreate\rollingVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\rollingVO_AutoCreate\rollingVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\slotrewardVO_AutoCreate\slotrewardVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\slotrewardVO_AutoCreate\slotrewardVOModel.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\turntableVO_AutoCreate\turntableVO.cs" />
-    <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\turntableVO_AutoCreate\turntableVOModel.cs" />
     <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
     <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\A000_commonBinder.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_balloon.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_cash.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_coin.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_collect.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_crazy.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_gift.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_green_vid.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_playagain.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\btn_pp.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\com_light.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\A000_common\pb_jiazai.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\G004_mainBinder.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\RealItem.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\btn_add.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\btn_minus.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_cardnum.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_cardplaytext.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_main.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_playnum.cs" />
+    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_rolling.cs" />
     <Compile Include="Assets\_App\ProjectApp\App\AppFacade.cs" />
     <Compile Include="Assets\_App\ProjectApp\App\AppManagerRegister.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppFacadeRedirection.cs" />
@@ -146,34 +118,12 @@
     <Compile Include="Assets\text.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_PP_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\bingoRedeem_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Num_probability_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\rolling_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\turntable_Data.txt" />
     <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_coin_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Guidance_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\StaticExcelData\Common_StaticData.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\pickBox_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\adReward_Data.txt" />
+    <None Include="Assets\_App\AutoCreator\ExcelConfig\VODll\VoClassLib.dll" />
     <None Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.shader" />
     <None Include="Assets\Framework_XL\06_Shader\影子\MobileARShadow.shader" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\TaskList_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\forceAd_Data.txt" />
     <None Include="Assets\Framework_XL\06_Shader\镜子\Mirror.shader" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\paymentType_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\prop_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\giftList_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\giftcard_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\slotreward_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\lang_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Flop_reward_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\piggy_Data.txt" />
     <None Include="Assets\_App\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Item_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\SignDailyReward_Data.txt" />
-    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_cash_Data.txt" />
     <None Include="Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.csproj.FileListAbsolute.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -383,6 +333,12 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LogUtil">
+      <HintPath>Assets\Plugins\FutureFrame\FutureLib\LogUtil.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

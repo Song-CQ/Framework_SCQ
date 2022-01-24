@@ -38,7 +38,7 @@ namespace ProjectApp
         /// <exception cref="NotImplementedException"></exception>
         private void InitFguiConfig()
         {
-            
+
 
         }
 
@@ -47,6 +47,8 @@ namespace ProjectApp
             AppObjConst.UICacheGo = new GameObject(AppObjConst.UICacheGoName);
             AppObjConst.UICacheGo.SetParent(AppObjConst.FutureFrameGo);
 
+            //DisplayObject.CreateUICacheRoot(AppObjConst.UICacheGo.transform);
+
             Stage.Instantiate();
             Stage.inst.gameObject.transform.SetParent(AppObjConst.UIGo.transform);
             ///设置ui的分辨率
@@ -54,7 +56,7 @@ namespace ProjectApp
             GRoot.inst.SetContentScaleFactor(uiResolution.x, uiResolution.y,
                 UIContentScaler.ScreenMatchMode.MatchWidthOrHeight);
             uiCenterPos = new Vector2(GRoot.inst.width / 2f, GRoot.inst.height / 2f);
-            
+
         }
 
         private void InitFguiCommonPackages()
@@ -69,7 +71,7 @@ namespace ProjectApp
         }
         private string GetPackageUIPath(string packageName)
         {
-            return string.Format("UI/{0}", packageName);
+            return string.Format("FGUI/{0}", packageName);
         }
 
 
@@ -88,9 +90,9 @@ namespace ProjectApp
         }
         public override void Dispose()
         {
-           
+
         }
 
-        
+
     }
 }

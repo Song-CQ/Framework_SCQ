@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace  XL.Common
+namespace XL.Common
 {
     public static class Vector3_Tool
     {
@@ -63,9 +63,9 @@ namespace  XL.Common
         public static int GetVectorApproachingDirection(Vector2 vector2)
         {
             Vector2 val = new Vector2(0, 1);
-            float min = Vector2.Angle(vector2, new Vector2(0,1));
+            float min = Vector2.Angle(vector2, new Vector2(0, 1));
             //小于就fu
-            float cos =Vector2.Angle(vector2, new Vector2(1, 1));
+            float cos = Vector2.Angle(vector2, new Vector2(1, 1));
             if (min > cos)
             {
                 min = Vector2.Angle(vector2, new Vector2(1, 1));
@@ -95,7 +95,7 @@ namespace  XL.Common
                 min = cos;
                 val = new Vector2(-1, 0);
             }
-            cos = Vector2.Angle(vector2, new Vector2(-1,1));
+            cos = Vector2.Angle(vector2, new Vector2(-1, 1));
             if (min > cos)
             {
                 min = cos;
@@ -118,28 +118,35 @@ namespace  XL.Common
             if (val == new Vector2(0, 1))
             {
                 id = 1;
-            } if (val == new Vector2(1, 1))
+            }
+            if (val == new Vector2(1, 1))
             {
                 id = 2;
-            } if (val == new Vector2(1, 0))
+            }
+            if (val == new Vector2(1, 0))
             {
                 id = 3;
-            } if (val == new Vector2(1, -1))
+            }
+            if (val == new Vector2(1, -1))
             {
                 id = 4;
-            } if (val == new Vector2(0, -1))
+            }
+            if (val == new Vector2(0, -1))
             {
                 id = 5;
-            } if (val == new Vector2(-1, -1))
+            }
+            if (val == new Vector2(-1, -1))
             {
                 id = 6;
-            } if (val == new Vector2(-1, 0))
+            }
+            if (val == new Vector2(-1, 0))
             {
                 id = 7;
-            } if (val == new Vector2(-1, 1))
+            }
+            if (val == new Vector2(-1, 1))
             {
                 id = 8;
-            } 
+            }
             return id;
 
 
@@ -160,7 +167,7 @@ namespace  XL.Common
         ///  将大于180度角进行以负数形式输出
         /// </summary>
         /// <returns></returns>
-        public static float CheckAngle(this float value) 
+        public static float CheckAngle(this float value)
         {
             float angle = value - 180;
 
@@ -180,10 +187,10 @@ namespace  XL.Common
 
     public struct EightDirection
     {
-        public Vector2 DirectionVector {  set; get; }
-        public DirectionType Type {  set; get; }
+        public Vector2 DirectionVector { set; get; }
+        public DirectionType Type { set; get; }
 
-       
+
     }
     public enum DirectionType
     {
@@ -198,7 +205,7 @@ namespace  XL.Common
 
     }
 
-   
+
 
 
 }

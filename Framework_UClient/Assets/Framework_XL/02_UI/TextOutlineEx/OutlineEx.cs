@@ -3,9 +3,9 @@
 //
 //  Created by Chiyu Ren on 2018/9/12 23:03:51
 //————————————————————————————————————————————
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 
 namespace TooSimpleFramework.UI
@@ -89,7 +89,7 @@ namespace TooSimpleFramework.UI
 
             if (base.graphic.material != null)
             {
-                if(base.graphic.material.shader.name != "TSF Shaders/UI/OutlineEx")
+                if (base.graphic.material.shader.name != "TSF Shaders/UI/OutlineEx")
                 {
                     var texMaterial = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>(MaterialPath);
                     if (texMaterial != null)
@@ -171,7 +171,7 @@ namespace TooSimpleFramework.UI
                 var uvMax = _Max(v1.uv0, v2.uv0, v3.uv0);
                 //OutlineColor 和 OutlineWidth 也传入，避免出现不同的材质球
                 var col_rg = new Vector2(OutlineColor.r, OutlineColor.g);       //描边颜色 用uv3 和 tangent的 zw传递
-                var col_ba = new Vector4(0,0,OutlineColor.b, OutlineColor.a);   
+                var col_ba = new Vector4(0, 0, OutlineColor.b, OutlineColor.a);
                 var normal = new Vector3(0, 0, OutlineWidth);                   //描边的宽度 用normal的z传递
 
                 // 为每个顶点设置新的Position和UV，并传入原始UV框

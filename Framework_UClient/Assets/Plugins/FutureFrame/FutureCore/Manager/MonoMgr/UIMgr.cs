@@ -21,7 +21,7 @@ namespace FutureCore
 
         private Dictionary<int,Transform> uiLayerWindowDict;
 
-
+        
         public void RegisterUIDriver(BaseUIDriver _uIDriver)
         {
             uiDriver = _uIDriver;
@@ -43,12 +43,12 @@ namespace FutureCore
             AppObjConst.UIGo.SetParent(AppObjConst.FutureFrameGo);
             ///驱动初始化
             uiDriver.Init();
-
+            
             InitLayers();
-          
+            
         }
 
-     
+      
 
         /// <summary>
         /// 初始化UI层级

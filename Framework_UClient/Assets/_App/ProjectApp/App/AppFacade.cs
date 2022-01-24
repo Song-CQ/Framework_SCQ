@@ -1,6 +1,3 @@
-using FutureCore;
-using UnityEngine;
-
 namespace ProjectApp
 {
     /// <summary>
@@ -23,7 +20,7 @@ namespace ProjectApp
         /// °üÃû
         /// </summary>
         public const string PackageName = "com.Framework_SCQ.Test";
-        
+
 
         /// <summary>
         /// ÃÜÔ¿Key

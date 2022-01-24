@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace XL.WinterProject.MainModule
 {
     /// <summary>
     /// 鼠标右键
     /// </summary>
-    public class MouseRight : MonoBehaviour 
-   {
+    public class MouseRight : MonoBehaviour
+    {
 
         private Transform parent;
         Vector3 vector;
@@ -18,7 +16,7 @@ namespace XL.WinterProject.MainModule
         }
         private void Update()
         {
-            
+
             if (Input.GetMouseButtonDown(1))
             {
                 //记录初始鼠标位置
@@ -29,11 +27,11 @@ namespace XL.WinterProject.MainModule
                 //鼠标当前位置-记录位置得到偏移量
                 Vector2 offer = Input.mousePosition - vector;
                 //用偏移量旋转
-                parent.transform.eulerAngles += new Vector3(0,-offer.x, offer.y)/2;
+                parent.transform.eulerAngles += new Vector3(0, -offer.x, offer.y) / 2;
                 vector = Input.mousePosition;
-                
+
             }
-           
+
         }
     }
 }

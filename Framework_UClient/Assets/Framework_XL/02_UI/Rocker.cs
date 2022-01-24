@@ -8,11 +8,10 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using XL.Common;
 using XL.UI;
-using UnityEngine.Events;
-using Debug = UnityEngine.Debug;
 
 
 namespace XL
@@ -32,7 +31,7 @@ namespace XL
         //按下的坐标
         private Vector2 startPoint;
         public bool IsFixed = false;
-       
+
         private enum UpRestType
         {
             None,
@@ -66,23 +65,23 @@ namespace XL
         public event Action<Vector2> StartDrag;
         public event Action<Vector2> Drag;
         public event Action EndDrag;
-   
-        public UnityEvent_StartDrag OnStartDrag;       
-        public UnityEvent_Drag OnDrag;  
+
+        public UnityEvent_StartDrag OnStartDrag;
+        public UnityEvent_Drag OnDrag;
         public UnityEvent_EndDrag OnEndDrag;
 
         [Serializable]
-        public class UnityEvent_StartDrag:UnityEvent<Vector2>
+        public class UnityEvent_StartDrag : UnityEvent<Vector2>
         {
             public UnityEvent_StartDrag() { }
         }
         [Serializable]
-        public class UnityEvent_Drag:UnityEvent<Vector2>
+        public class UnityEvent_Drag : UnityEvent<Vector2>
         {
             public UnityEvent_Drag() { }
         }
         [Serializable]
-        public class UnityEvent_EndDrag:UnityEvent<Vector2>
+        public class UnityEvent_EndDrag : UnityEvent<Vector2>
         {
             public UnityEvent_EndDrag() { }
         }
@@ -90,15 +89,15 @@ namespace XL
 
 
         private void Awake()
-        {          
-            
+        {
+
             MaxPoint = Screen.height / ScreenHeight * MaxPoint;
             imgDirPointStartPot = imgDirPoint.transform.localPosition;
             RegisterTouchevts();
             ArrowsRect?.SetActive(false);
         }
 
-       
+
         /// <summary>
         /// 摇杆注册事件
         /// </summary>
@@ -108,123 +107,123 @@ namespace XL
             //按下事件
             if (!IsFixed)
             {
-                 uIEventListener = UI.UIEventListener.GetEventListener(imgTouch.transform);
+                uIEventListener = UI.UIEventListener.GetEventListener(imgTouch.transform);
             }
-            else 
+            else
             {
-                 uIEventListener = UI.UIEventListener.GetEventListener(imgDirBg.transform);
+                uIEventListener = UI.UIEventListener.GetEventListener(imgDirBg.transform);
             }
 
-            
 
-            uIEventListener.BeginDrag+=(e) =>
-            {
 
-                switch (upRestType)
-                {
-                    case UpRestType.None:
-                        break;
-                    case UpRestType.Vanish:
-                        imgDirBg.SetActive(true);
-                        break;
-                    case UpRestType.RestStartPot:        
-                        imgDirBgStartPot = imgDirBg.rectTransform.position;
-                        break;
-                    default:
-                        break;
-                }
-                ArrowsRect?.SetActive(true);
+            uIEventListener.BeginDrag += (e) =>
+              {
 
-                Vector2 endPoint = Vector2.zero;
-                if (!IsFixed)
-                {
-                    imgDirBg.gameObject.SetActive(true);
-                    imgDirBg.transform.position = e.position;
-                    startPoint = e.position;
-                }
-                else
-                {
-                    startPoint = imgDirBg.transform.position;
-                    endPoint = e.position - startPoint;
-                    if (endPoint.magnitude > MaxPoint)
-                    {
-                        Vector2 max = Vector2.ClampMagnitude(endPoint, MaxPoint);
-                        imgDirPoint.transform.position = startPoint + max;
-                    }
-                    else
-                    {
-                        imgDirPoint.transform.position = e.position;
-                    }
-                    currentDir = endPoint.normalized;
+                  switch (upRestType)
+                  {
+                      case UpRestType.None:
+                          break;
+                      case UpRestType.Vanish:
+                          imgDirBg.SetActive(true);
+                          break;
+                      case UpRestType.RestStartPot:
+                          imgDirBgStartPot = imgDirBg.rectTransform.position;
+                          break;
+                      default:
+                          break;
+                  }
+                  ArrowsRect?.SetActive(true);
 
-                }
-                OnStartDrag?.Invoke(endPoint);
-                StartDrag?.Invoke(endPoint);
-            };
+                  Vector2 endPoint = Vector2.zero;
+                  if (!IsFixed)
+                  {
+                      imgDirBg.gameObject.SetActive(true);
+                      imgDirBg.transform.position = e.position;
+                      startPoint = e.position;
+                  }
+                  else
+                  {
+                      startPoint = imgDirBg.transform.position;
+                      endPoint = e.position - startPoint;
+                      if (endPoint.magnitude > MaxPoint)
+                      {
+                          Vector2 max = Vector2.ClampMagnitude(endPoint, MaxPoint);
+                          imgDirPoint.transform.position = startPoint + max;
+                      }
+                      else
+                      {
+                          imgDirPoint.transform.position = e.position;
+                      }
+                      currentDir = endPoint.normalized;
+
+                  }
+                  OnStartDrag?.Invoke(endPoint);
+                  StartDrag?.Invoke(endPoint);
+              };
             //抬起事件
-            uIEventListener.EndDrag+= (e) =>
-            {
+            uIEventListener.EndDrag += (e) =>
+             {
 
-                startPoint = Vector2.zero;
-                
-                imgDirPoint.rectTransform.localPosition = imgDirPointStartPot;
-                switch (upRestType)
-                {
-                    case UpRestType.None:
-                        break;
-                    case UpRestType.Vanish:
-                        imgTouch.SetActive(false);
-                        break;
-                    case UpRestType.RestStartPot:
-                        imgDirBg.rectTransform.position= imgDirBgStartPot;
-                        break;
-                    default:
-                        break;
-                }
-                ArrowsRect?.SetActive(false);
-                
-                //输出向量
-                currentDir = Vector2.zero;
-                OnEndDrag?.Invoke(e.position);
-                EndDrag?.Invoke();
-            };
+                 startPoint = Vector2.zero;
+
+                 imgDirPoint.rectTransform.localPosition = imgDirPointStartPot;
+                 switch (upRestType)
+                 {
+                     case UpRestType.None:
+                         break;
+                     case UpRestType.Vanish:
+                         imgTouch.SetActive(false);
+                         break;
+                     case UpRestType.RestStartPot:
+                         imgDirBg.rectTransform.position = imgDirBgStartPot;
+                         break;
+                     default:
+                         break;
+                 }
+                 ArrowsRect?.SetActive(false);
+
+                 //输出向量
+                 currentDir = Vector2.zero;
+                 OnEndDrag?.Invoke(e.position);
+                 EndDrag?.Invoke();
+             };
             //拖拽
-            uIEventListener.Drag+=(e) =>
-            {
-                
+            uIEventListener.Drag += (e) =>
+              {
 
-                Vector2 endPoint = e.position - startPoint;
-                if (endPoint.magnitude > MaxPoint)
-                {
-                    Vector2 max = Vector2.ClampMagnitude(endPoint, MaxPoint);
-                    imgDirPoint.transform.position = startPoint + max;
-                    endPoint = max;
-                }
-                else
-                {
-                    imgDirPoint.transform.position = e.position;
-                }              
-                currentDir = endPoint;
-                if (ArrowsRect != null)
-                {
-                    float Angle = Vector2.Angle(Vector2.up, currentDir.normalized);
-                   
-                   
-                    if (Vector3.Cross(Vector2.up, currentDir.normalized).z < 0)
-                    {
-                        Angle *= -1;
-                    }
-                    ArrowsRect.localEulerAngles = new Vector3(0, 0, Angle);
-                }
-                Drag?.Invoke(currentDir);
-                OnDrag?.Invoke(currentDir);
-            };
 
-           
+                  Vector2 endPoint = e.position - startPoint;
+                  if (endPoint.magnitude > MaxPoint)
+                  {
+                      Vector2 max = Vector2.ClampMagnitude(endPoint, MaxPoint);
+                      imgDirPoint.transform.position = startPoint + max;
+                      endPoint = max;
+                  }
+                  else
+                  {
+                      imgDirPoint.transform.position = e.position;
+                  }
+                  currentDir = endPoint;
+                  if (ArrowsRect != null)
+                  {
+                      float Angle = Vector2.Angle(Vector2.up, currentDir.normalized);
+
+
+                      if (Vector3.Cross(Vector2.up, currentDir.normalized).z < 0)
+                      {
+                          Angle *= -1;
+                      }
+                      ArrowsRect.localEulerAngles = new Vector3(0, 0, Angle);
+                  }
+                  Drag?.Invoke(currentDir);
+                  OnDrag?.Invoke(currentDir);
+              };
+
+
 
         }
 
-    
+
 
     }
 

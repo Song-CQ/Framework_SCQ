@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using FutureCore;
 
 namespace ProjectApp
@@ -68,7 +67,7 @@ namespace ProjectApp
             {
                 baseUIDriver = new FGUIDriver();
             }
-            uiMgr.RegisterUIDriver(baseUIDriver);           
+            uiMgr.RegisterUIDriver(baseUIDriver);
         }
 
         private static void RegisterFont()

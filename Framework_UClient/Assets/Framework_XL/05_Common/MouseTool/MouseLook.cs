@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 [AddComponentMenu("Camera-Control/Mouse Look")]
 //这个脚本放进菜单键中的Camera-Control/Mouse Look
@@ -59,7 +58,7 @@ public class MouseLook : MonoBehaviour
             transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
             //当前物体的欧拉角= new Vector（-当前物体X轴要旋转的值，当前物体欧拉角Y轴的值，0 )
         }
-       
+
     }
 
 

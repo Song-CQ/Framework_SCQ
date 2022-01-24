@@ -6,9 +6,6 @@
     功能：UI事件监听器：管理所有UGUI事件，提供事件参数类
     附加到需要交互的UI元素上，用于监听用户的操作，类似于EventTrigger
 *****************************************************/
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,7 +13,7 @@ namespace XL.UI
 {
     public class UIEventListener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IScrollHandler, IUpdateSelectedHandler, ISelectHandler, IDeselectHandler, IMoveHandler, ISubmitHandler, ICancelHandler
     {
-      
+
         public static UIEventListener GetEventListener(Transform tf)
         {
             return tf.GetComponent<UIEventListener>() ?? tf.gameObject.AddComponent<UIEventListener>();
@@ -148,7 +145,7 @@ namespace XL.UI
         #endregion
 
         #region 选择事件
-        public delegate void AxisEvent(AxisEventData eventData);    
+        public delegate void AxisEvent(AxisEventData eventData);
         //物体移动时(与InputManager里的Horizontal和Vertica按键相对应)，前提条件是物体被选中
         public event AxisEvent MoveAxis;
         //提交按钮被按下时(与InputManager里的Submit按键相对应，PC上默认的是Enter键)，前提条件是物体被选中

@@ -53,7 +53,7 @@ namespace ProjectApp
             App.AppFacadeInit();
             base.Enable();
 
-           // SDKGlobal.Init();
+            // SDKGlobal.Init();
             InitPlugin();
             InitDefine();
             InitPreSetting();
@@ -94,7 +94,7 @@ namespace ProjectApp
             //AppObjConst.LoaderGo.SetParent(AppObjConst.EngineSingletonGo);
         }
         #endregion
-       
+
         #region Enable
 
         /// <summary>
@@ -103,26 +103,26 @@ namespace ProjectApp
         private void InitPlugin()
         {
             DOTweenHelper.Init();
-            
+
         }
 
         private void InitDefine()
         {
             AppConst.Init();
-           //ABPakConst.Init();
+            //ABPakConst.Init();
             ColorConst.Init();
         }
         /// <summary>
         /// 项目基础设置
         /// </summary>
         private void InitPreSetting()
-        {           
+        {
             // PC测试模式分辨率
 #if !UNITY_EDITOR && UNITY_STANDALONE_WIN
             Screen.SetResolution(AppConst.PCTestResolution.x, AppConst.PCTestResolution.y, false);
 #endif
         }
-       
+
         /// <summary>
         /// 初始化项目设置
         /// </summary>
@@ -148,7 +148,7 @@ namespace ProjectApp
             // Profiler
             InitProfilerSetting();
         }
-        
+
         /// <summary>
         /// 初始化性能分析
         /// </summary>
@@ -228,7 +228,7 @@ namespace ProjectApp
             set
             {
                 isHFRMode = value;
-               // PrefsUtil.WriteBool(FutureCore.PrefsKeyConst.Application_isHFRMode, isHFRMode);
+                // PrefsUtil.WriteBool(FutureCore.PrefsKeyConst.Application_isHFRMode, isHFRMode);
                 SetFrameRateMode(isHFRMode);
             }
         }

@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using UnityEditor;
-
-namespace XL.Common
+﻿namespace XL.Common
 {
 
     public static class TimeTool

@@ -1,6 +1,6 @@
 {
   //配置表的路劲
-  "ReadExcelPath": "_Tool\\配置表",
+  "ReadExcelPath": "_Resources\\配置表",
   //生成的打表数据路径
   "OutDataPath": "Framework_UClient\\Assets\\_Res\\Resources\\Data\\ExcelConfig",
   //生成的表类文件路径

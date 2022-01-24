@@ -1,0 +1,5 @@
+D:\UnityPro\Framework_SCQ\_Tool\LogTool\LogTool\obj\Debug\LogTool.csproj.CoreCompileInputs.cache
+D:\UnityPro\Framework_SCQ\_Tool\LogTool\LogTool\bin\Debug\FutureCommon.dll
+D:\UnityPro\Framework_SCQ\_Tool\LogTool\LogTool\bin\Debug\FutureCommon.pdb
+D:\UnityPro\Framework_SCQ\_Tool\LogTool\LogTool\obj\Debug\FutureCommon.dll
+D:\UnityPro\Framework_SCQ\_Tool\LogTool\LogTool\obj\Debug\FutureCommon.pdb

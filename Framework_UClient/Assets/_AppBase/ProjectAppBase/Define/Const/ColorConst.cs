@@ -2,7 +2,7 @@ using FutureCore;
 using UnityEngine;
 
 namespace ProjectApp
-{   
+{
     public static partial class ColorConst
     {
         public static Color AllWhite;

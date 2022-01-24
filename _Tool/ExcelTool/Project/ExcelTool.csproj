@@ -46,6 +46,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\ExcelDataReader.DataSet.dll</HintPath>
     </Reference>
+    <Reference Include="LogUtil">
+      <HintPath>..\..\LogTool\LogUtil\bin\Release\LogUtil.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>

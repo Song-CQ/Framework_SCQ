@@ -8,7 +8,7 @@
 
 namespace ProjectApp
 {
-    public static class SceneConst 
+    public static class SceneConst
     {
         public const int MainIdx = 0;
         public const int LobbyIdx = 1;
