@@ -1,5 +1,7 @@
+using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace FutureEditor
 {
@@ -23,8 +25,8 @@ namespace FutureEditor
 
         private void OnEnable()
         {
-            minSize = new Vector2(900, 300);
-
+            minSize = new Vector2(900, 500);
+            maxSize = minSize;
             InitData();
             Show();
             Focus();
@@ -57,33 +59,63 @@ namespace FutureEditor
                 case (int)ShowType.ExcelTool:
                     RefreshUI_ExcelTool();
                     break;
+                case (int)ShowType.CreateTool:
+                    RefreshUI_CreateTool();
+                    break;
                 case (int)ShowType.AutoRegisterTool:
                     RefreshUI_AutoRegisterTool();
                     break;
             }
         }
 
+        
+
         private enum ShowType
         {
             UnityTool=0,
             ExcelTool,
             GameTool,
-            FeilTool,
+            CreateTool,
             AutoRegisterTool,
         }
         private void RefreshUI_UnityTool()
         {
-            GUILayout.BeginArea(new Rect(10, 30, 200, 200));
+            GUILayout.BeginArea(new Rect(10,35, 200, 200));
             if (GUILayout.Button("重启Unity", GUILayout.Height(40), GUILayout.Width(100)))
             {
                 UnityEditorTool.StartRest();
             }
             GUILayout.EndArea();
+
+
+
+            GUILayout.BeginArea(new Rect(550, 60, 300, 500));
+            GUILayout.BeginVertical();
+
+            GUILayout.BeginHorizontal();
+       
+            GUILayout.Label("AppName:", GUILayout.Width(80));
+            GUILayout.Space(30);
+            GUILayout.TextField(ProjectApp.AppFacade.AppName);
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("AppDesc", GUILayout.Width(80));
+            GUILayout.Space(30);
+            GUILayout.TextField(ProjectApp.AppFacade.AppDesc);
+
+            GUILayout.EndHorizontal();
+
+
+            GUILayout.EndVertical();
+            GUILayout.EndArea();
         }
 
         private void RefreshUI_ExcelTool()
         {
-            GUILayout.BeginArea(new Rect(10, 30, 200, 200));
+
+            GUILayout.BeginArea(new Rect(10, 35, 200, 200));
 
             GUILayout.BeginVertical(GUILayout.Height(50), GUILayout.Width(100));
 
@@ -108,10 +140,28 @@ namespace FutureEditor
             GUILayout.EndVertical();
             GUILayout.EndArea();
         }
+
+
+        #region CreateTool
+
+        private void RefreshUI_CreateTool()
+        {
+            GUILayout.BeginArea(new Rect(10, 35, 200, 200));
+            GUILayout.Label("MVC");
+            GUILayout.BeginHorizontal();
+
+            if (GUILayout.Button("创建FGUI_MVC代码模版", GUILayout.Height(40), GUILayout.Width(160)))
+            {
+                MVC_CreadTool.OpenFGUICread();
+            }
         
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
+        }
+        #endregion
         private void RefreshUI_AutoRegisterTool()
         {
-            GUILayout.BeginArea(new Rect(10, 30, 200, 200));
+            GUILayout.BeginArea(new Rect(10, 35, 200, 200));
             if (GUILayout.Button("自动注册编辑器环境", GUILayout.Height(40), GUILayout.Width(180)))
             {
                 EditorEnvironmentAutoRegisterTool.AutoRegisterAll();

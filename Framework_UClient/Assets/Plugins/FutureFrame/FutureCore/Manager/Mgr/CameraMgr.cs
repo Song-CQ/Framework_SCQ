@@ -99,6 +99,7 @@ namespace FutureCore
             uiCamera.depth = CameraConst.UICameraDepth;
             // 默认不使用后效
             uiCamera.forceIntoRenderTexture = false;
+            
             uiCameraGo = uiCamera.gameObject;
 
             GameObject root = new GameObject("FGUICameraRoot");
@@ -106,7 +107,7 @@ namespace FutureCore
             root.transform.position = CameraConst.UICameraPos;
             root.SetParent(AppObjConst.CameraGo);
             uiCameraGo.SetParent(root);
-            uiCameraGo.transform.localPosition = Vector3.zero;
+          
 
            
         }

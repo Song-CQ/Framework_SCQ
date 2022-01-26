@@ -19,7 +19,9 @@ namespace FutureCore
 
         public abstract void Dispose();
 
-        public abstract Transform CreadUILayer(int index,string name);
-       
+        public abstract void InitUILayer();
+
+        public abstract void LoadUI(BaseUI baseUI, object args, Action<BaseUI, object> openUIProcess);
+        public abstract void DestroyUI(BaseUI ui);
     }
 }

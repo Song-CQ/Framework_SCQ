@@ -56,6 +56,7 @@ namespace ProjectApp
             {
                 //InitAssets();
             }
+            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.MainUI_Open);
         }
         private void InitAssets()
         {

@@ -77,6 +77,8 @@
     <Compile Include="Assets\Framework_XL\05_Common\TransformHelper.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\Vector3_Tool.cs" />
     <Compile Include="Assets\Framework_XL\06_Shader\镜子\MirrorReflection.cs" />
+    <Compile Include="Assets\_App\AutoCreator\AutoRegister\ModuleMgr\ModuleMgrRegister.cs" />
+    <Compile Include="Assets\_App\AutoCreator\AutoRegister\SceneMgr\SceneMgrRegister.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\UIMgr\UIRegister_FGUI.cs" />
     <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
     <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
@@ -103,6 +105,11 @@
     <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_rolling.cs" />
     <Compile Include="Assets\_App\ProjectApp\App\AppFacade.cs" />
     <Compile Include="Assets\_App\ProjectApp\App\AppManagerRegister.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\Define\Const\UICtrlMsg_OpenClose.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Main\MainCtrl.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Main\MainModel.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Main\MainUI.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Main\MainUICtrl.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppFacadeRedirection.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppMain.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\App\AppRedirection.cs" />
@@ -113,7 +120,8 @@
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Define\Const\SceneConst.cs" />
     <Compile Include="Assets\_AppBase\ProjectAppBase\Scene\MainScene.cs" />
-    <Compile Include="Assets\_AppBase\ProjectAppBase\UI\FGUIDriver.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\UI\FGUI\FGUIDriver.cs" />
+    <Compile Include="Assets\_AppBase\ProjectAppBase\UI\FGUI\FGUIEntity.cs" />
     <Compile Include="Assets\_AppBase\ProjectMain\MainLauncher.cs" />
     <Compile Include="Assets\text.cs" />
   </ItemGroup>

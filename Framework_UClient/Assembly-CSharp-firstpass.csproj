@@ -69,6 +69,9 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Ctr\BaseCtrl.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Ctr\BaseUICtrl.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Model\BaseModel.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\UI\BaseUI.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\UI\UIEntity.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\UI\UIInfo.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\Scene\BaseScene.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\UI\BaseUIDriver.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\LayerMaskConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\ScreenConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\UILayerConst.cs" />
+    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\VectorConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\YieldConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Enem\UIDriverEnem.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Message\AppMsg_Frame_0-9999.cs" />
