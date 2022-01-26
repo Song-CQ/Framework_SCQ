@@ -7,20 +7,23 @@
 *****************************************************/
 
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Collections.Generic;
 
-namespace PENet {
+namespace PENet
+{
     public class PESocket<T, K>
         where T : PESession<K>, new()
-        where K : PEMsg {
+        where K : PEMsg
+    {
         private Socket skt = null;
         public T session = null;
         public int backlog = 10;
         List<T> sessionLst = new List<T>();
 
-        public PESocket() {
+        public PESocket()
+        {
             skt = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
@@ -28,8 +31,10 @@ namespace PENet {
         /// <summary>
         /// Launch Server
         /// </summary>
-        public void StartAsServer(string ip, int port) {
-            try {
+        public void StartAsServer(string ip, int port)
+        {
+            try
+            {
                 // skt.Bind(new IPEndPoint(IPAddress.Parse(ip), port));
                 IPHostEntry host = Dns.GetHostByName(ip);
                 IPAddress ips = host.AddressList[0];
@@ -38,23 +43,29 @@ namespace PENet {
                 skt.BeginAccept(new AsyncCallback(ClientConnectCB), skt);
                 PETool.LogMsg("\nServer Start Success!\nWaiting for Connecting......", LogLevel.Info);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 PETool.LogMsg(e.Message, LogLevel.Error);
             }
         }
 
-        void ClientConnectCB(IAsyncResult ar) {
-            try {
+        void ClientConnectCB(IAsyncResult ar)
+        {
+            try
+            {
                 Socket clientSkt = skt.EndAccept(ar);
                 T session = new T();
-                session.StartRcvData(clientSkt, () => {
-                    if (sessionLst.Contains(session)) {
+                session.StartRcvData(clientSkt, () =>
+                {
+                    if (sessionLst.Contains(session))
+                    {
                         sessionLst.Remove(session);
                     }
                 });
                 sessionLst.Add(session);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 PETool.LogMsg(e.Message, LogLevel.Error);
             }
             skt.BeginAccept(new AsyncCallback(ClientConnectCB), skt);
@@ -65,32 +76,40 @@ namespace PENet {
         /// <summary>
         /// Launch Client
         /// </summary>
-        public void StartAsClient(string ip, int port) {
-            try {
+        public void StartAsClient(string ip, int port)
+        {
+            try
+            {
                 IPHostEntry host = Dns.GetHostByName(ip);
                 IPAddress ips = host.AddressList[0];
                 skt.BeginConnect(new IPEndPoint(ips, port), new AsyncCallback(ServerConnectCB), skt);
                 PETool.LogMsg("\nClient Start Success!\nConnecting To Server......", LogLevel.Info);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 PETool.LogMsg(e.Message, LogLevel.Error);
             }
         }
 
-        void ServerConnectCB(IAsyncResult ar) {
-            try {
+        void ServerConnectCB(IAsyncResult ar)
+        {
+            try
+            {
                 skt.EndConnect(ar);
                 session = new T();
                 session.StartRcvData(skt, null);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 PETool.LogMsg(e.Message, LogLevel.Error);
             }
         }
         #endregion
 
-        public void Close() {
-            if (skt != null) {
+        public void Close()
+        {
+            if (skt != null)
+            {
                 skt.Close();
             }
         }
@@ -100,11 +119,14 @@ namespace PENet {
         /// </summary>
         /// <param name="log">log switch</param>
         /// <param name="logCB">log function</param>
-        public void SetLog(bool log = true, Action<string, int> logCB = null) {
-            if (log == false) {
+        public void SetLog(bool log = true, Action<string, int> logCB = null)
+        {
+            if (log == false)
+            {
                 PETool.log = false;
             }
-            if (logCB != null) {
+            if (logCB != null)
+            {
                 PETool.logCB = logCB;
             }
         }

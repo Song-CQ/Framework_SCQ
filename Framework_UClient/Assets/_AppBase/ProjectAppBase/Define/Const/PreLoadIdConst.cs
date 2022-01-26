@@ -7,7 +7,7 @@
 *****************************************************/
 namespace ProjectApp
 {
-    public static class PreLoadIdConst 
+    public static class PreLoadIdConst
     {
         public const int MainScene = SceneConst.MainIdx;
         public const int LobbyScene = SceneConst.LobbyIdx;

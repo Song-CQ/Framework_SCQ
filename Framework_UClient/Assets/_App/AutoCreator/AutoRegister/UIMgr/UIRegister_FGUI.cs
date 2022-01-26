@@ -9,18 +9,18 @@ using System.Collections.Generic;
 
 namespace ProjectApp
 {
-    public static class UIRegister_FGUI 
+    public static class UIRegister_FGUI
     {
         public static void AutoRegisterBinder()
         {
-            
+            UI.A000_common.A000_commonBinder.BindAll();
         }
 
 
         public static void AutoRegisterCommonPackages(ref List<string> commonPackages)
-        {           
+        {
             commonPackages.Add("A000_common");
-            
+
         }
 
     }

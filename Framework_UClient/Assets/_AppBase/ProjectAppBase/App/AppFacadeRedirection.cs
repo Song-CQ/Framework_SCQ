@@ -7,7 +7,7 @@ using FutureCore;
 
 namespace ProjectApp
 {
-   
+
     public static class AppFacadeRedirection
     {
         public static void RedirectionStaticField()
@@ -17,7 +17,7 @@ namespace ProjectApp
             AppConst_Redirection();
             EncryptConst_Redirection();
         }
-        
+
         private static void AppFacade_Redirection()
         {
             // Field
@@ -33,7 +33,7 @@ namespace ProjectApp
             //AppFacade_Frame.BuglyAppIDForAndroid = AppFacade.BuglyAppIDForAndroid;
             //AppFacade_Frame.BuglyAppIDForiOS = AppFacade.BuglyAppIDForiOS;
             //AppFacade_Frame.IsWeakNetwork = AppFacade.IsWeakNetwork;
-           // AppFacade_Frame.CustomSDK = AppFacade.CustomSDK;
+            // AppFacade_Frame.CustomSDK = AppFacade.CustomSDK;
             AppFacade_Frame.IsUseUGameAndroid = AppFacade.IsUseUGameAndroid;
             //AppFacade_Frame.IsOfflineGame = AppFacade.IsOfflineGame;
             AppFacade_Frame.AppDesc = AppFacade.AppDesc;

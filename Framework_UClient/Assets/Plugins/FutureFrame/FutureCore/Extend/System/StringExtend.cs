@@ -12,7 +12,7 @@ namespace FutureCore
         #region ColorText
         
         public static string AddColor(this string str, ColorType color)
-        {
+        {        
             return AddColor(str,ColorUtil.ColorTypeToHtml(color));
         }
 

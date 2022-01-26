@@ -9,9 +9,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XL.Common;
 using UnityEngine.UI;
-using UnityEngine.Timeline;
+using XL.Common;
 
 namespace XL.UI
 {
@@ -82,7 +81,7 @@ namespace XL.UI
             }
             if (IsPlayCloseWndAni)
             {
-                
+
                 if (OpenWndAni.isPlaying)
                 {
                     OpenWndAni.Stop();
@@ -123,7 +122,7 @@ namespace XL.UI
                 {
                     OpenWndAni[OpenWndAni.clip.name].speed = 1;
                     OpenWndAni[OpenWndAni.clip.name].time = 0;
-                    OpenWndAni.Play();                   
+                    OpenWndAni.Play();
                 }
                 Init();
 

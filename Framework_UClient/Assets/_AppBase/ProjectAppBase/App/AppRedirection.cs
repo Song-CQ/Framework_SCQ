@@ -20,8 +20,8 @@ namespace ProjectApp
         /// </summary>
         private static void AppConst_Redirection()
         {
-             AppConst.ConfigInternalHash = ConfigVOVersion.InternalVersion;
-             AppConst.ConfigInternalVersion = ConfigVOVersion.InternalVersion;
+            AppConst.ConfigInternalHash = ConfigVOVersion.InternalVersion;
+            AppConst.ConfigInternalVersion = ConfigVOVersion.InternalVersion;
         }
     }
 }

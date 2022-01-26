@@ -225,6 +225,13 @@ namespace FairyGUI
             get { return _onFocusOut ?? (_onFocusOut = new EventListener(this, "onFocusOut")); }
 
         }
+        // [修改]
+        private static Transform uiCacheRoot;
+        // [修改]
+        public static void CreateUICacheRoot(Transform _uiCacheRoot)
+        {
+            uiCacheRoot = _uiCacheRoot;
+        }
 
         protected void CreateGameObject(string gameObjectName)
         {
@@ -239,6 +246,12 @@ namespace FairyGUI
             }
             gameObject.hideFlags = DisplayObject.hideFlags;
             gameObject.SetActive(false);
+
+            // [修改]
+#if UNITY_EDITOR
+            gameObject.transform.SetParent(uiCacheRoot, false);
+#endif
+
         }
 
         protected void SetGameObject(GameObject gameObject)

@@ -37,43 +37,43 @@ namespace FutureCore
 
     public static class ColorUtil
     {
-        private static Dictionary<ColorType, string> colorTypeDic;
-        public static Dictionary<ColorType, string> ColorTypeDic {
+        private static Dictionary<ColorType, string> thisColorTypeDic;
+        private static Dictionary<ColorType, string> ColorTypeDic {
             get
             {
-                if (colorTypeDic==null) 
+                if (thisColorTypeDic==null) 
                 {
-                    colorTypeDic= new Dictionary<ColorType, string>();
+                    thisColorTypeDic= new Dictionary<ColorType, string>();
                     Init();
                 };
-                return colorTypeDic;
+                return thisColorTypeDic;
             }
         }
         private static void Init()
         {
-            colorTypeDic.Add(ColorType.White, "FFFFFF");
-            colorTypeDic.Add(ColorType.Yellow, "F5FF09");
-            colorTypeDic.Add(ColorType.Green, "2EED5F");
-            colorTypeDic.Add(ColorType.Red, "E30A0A");
-            colorTypeDic.Add(ColorType.Blue, "19B3FF");
-            colorTypeDic.Add(ColorType.深粉, "ff4690");
-            colorTypeDic.Add(ColorType.浅粉, "ffb2c4");
-            colorTypeDic.Add(ColorType.亮绿, "33ff38");
-            colorTypeDic.Add(ColorType.浅绿, "9fffa8");
-            colorTypeDic.Add(ColorType.洋红, "fd26fa");
-            colorTypeDic.Add(ColorType.红色, "ff2850");
-            colorTypeDic.Add(ColorType.橙色, "ff701a");
-            colorTypeDic.Add(ColorType.橙红, "fb3711");
-            colorTypeDic.Add(ColorType.亮黄色, "fae910");
-            colorTypeDic.Add(ColorType.浅黄, "fff89c");
-            colorTypeDic.Add(ColorType.紫色, "c954ff");
-            colorTypeDic.Add(ColorType.淡蓝, "a5adff");
-            colorTypeDic.Add(ColorType.青色, "2df3ff");
-            colorTypeDic.Add(ColorType.淡青, "c2fff0");
-            colorTypeDic.Add(ColorType.深天蓝, "0888ff");
-            colorTypeDic.Add(ColorType.荧光绿, "08ffc2");
-            colorTypeDic.Add(ColorType.绿黄, "c1ff19");
-            colorTypeDic.Add(ColorType.灰色, "bdbdbd");
+            thisColorTypeDic.Add(ColorType.White, "FFFFFF");
+            thisColorTypeDic.Add(ColorType.Yellow, "F5FF09");
+            thisColorTypeDic.Add(ColorType.Green, "2EED5F");
+            thisColorTypeDic.Add(ColorType.Red, "E30A0A");
+            thisColorTypeDic.Add(ColorType.Blue, "19B3FF");
+            thisColorTypeDic.Add(ColorType.深粉, "ff4690");
+            thisColorTypeDic.Add(ColorType.浅粉, "ffb2c4");
+            thisColorTypeDic.Add(ColorType.亮绿, "33ff38");
+            thisColorTypeDic.Add(ColorType.浅绿, "9fffa8");
+            thisColorTypeDic.Add(ColorType.洋红, "fd26fa");
+            thisColorTypeDic.Add(ColorType.红色, "ff2850");
+            thisColorTypeDic.Add(ColorType.橙色, "ff701a");
+            thisColorTypeDic.Add(ColorType.橙红, "fb3711");
+            thisColorTypeDic.Add(ColorType.亮黄色, "fae910");
+            thisColorTypeDic.Add(ColorType.浅黄, "fff89c");
+            thisColorTypeDic.Add(ColorType.紫色, "c954ff");
+            thisColorTypeDic.Add(ColorType.淡蓝, "a5adff");
+            thisColorTypeDic.Add(ColorType.青色, "2df3ff");
+            thisColorTypeDic.Add(ColorType.淡青, "c2fff0");
+            thisColorTypeDic.Add(ColorType.深天蓝, "0888ff");
+            thisColorTypeDic.Add(ColorType.荧光绿, "08ffc2");
+            thisColorTypeDic.Add(ColorType.绿黄, "c1ff19");
+            thisColorTypeDic.Add(ColorType.灰色, "bdbdbd");
         }
 
         public static void HtmlParseColor(string htmlStr, out Color color)

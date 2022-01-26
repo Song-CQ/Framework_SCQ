@@ -15,6 +15,9 @@ namespace FutureCore
         public const int DefaultMainSceneIdx = 0;
 
         private Dictionary<int, BaseScene> sceneDict = new Dictionary<int, BaseScene>();
+
+       
+
         private BaseScene m_currScene;
 
 
@@ -39,7 +42,13 @@ namespace FutureCore
                 SceneSwitchMgr.Instance.SwitchScene(scenid, scene.SwitchSceneComplete, param);
             }
         }
-        
+        public void AddScene(BaseScene baseScene)
+        {
+            if (!sceneDict.ContainsKey(baseScene.SceneId))
+            {
+                sceneDict[baseScene.SceneId] = baseScene;
+            }
+        }
         private bool SetScene(BaseScene scene)
         {
             if (scene == null)

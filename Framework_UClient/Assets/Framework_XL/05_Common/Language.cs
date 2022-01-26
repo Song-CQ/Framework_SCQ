@@ -2,9 +2,6 @@
  * 双语设置
  *
  */
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,7 +33,7 @@ namespace XL.Common
                 return languageType;
 
             }
-        }   
+        }
 
         /// <summary>
         ///  

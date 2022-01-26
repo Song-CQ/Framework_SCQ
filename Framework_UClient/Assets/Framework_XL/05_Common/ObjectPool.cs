@@ -8,8 +8,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Object=UnityEngine.Object;
-public class ObjectPool<T>:IDisposable where T:Enum
+using Object = UnityEngine.Object;
+public class ObjectPool<T> : IDisposable where T : Enum
 {
     private Dictionary<T, List<Object>> PoolDic;
     private Dictionary<T, Transform> PollPar;
@@ -20,7 +20,7 @@ public class ObjectPool<T>:IDisposable where T:Enum
     /// </summary>
     /// <param name="_objectPoolPar">null则自自动创建</param>
     public ObjectPool(Transform _objectPoolPar = null)
-    {     
+    {
         objectPoolPar = _objectPoolPar;
         if (objectPoolPar == null)
         {
@@ -39,9 +39,9 @@ public class ObjectPool<T>:IDisposable where T:Enum
     /// <param name="key">对象池Key值</param>
     /// <param name="Go">当对象池没有实体时，则创建新的实体，Null为不创建,默认为Null</param>
     /// <returns></returns>
-    public Obj GetObject<Obj>(T key, Obj Go =null) where Obj : Object
+    public Obj GetObject<Obj>(T key, Obj Go = null) where Obj : Object
     {
-        Obj obj =null;
+        Obj obj = null;
         if (!PoolDic.ContainsKey(key))
         {
             AddKey(key);
@@ -50,7 +50,8 @@ public class ObjectPool<T>:IDisposable where T:Enum
         {
             obj = PoolDic[key][0] as Obj;
             PoolDic[key].RemoveAt(0);
-        }else
+        }
+        else
         {
             obj = LoadObject(key, Go);
         }
@@ -103,7 +104,7 @@ public class ObjectPool<T>:IDisposable where T:Enum
                 if (item != null)
                 {
                     GameObject go = item as GameObject;
-                    if (go==null)
+                    if (go == null)
                     {
                         Component cot = item as Component;
                         go = cot.gameObject;
@@ -121,7 +122,7 @@ public class ObjectPool<T>:IDisposable where T:Enum
         foreach (var item in PoolDic)
         {
             temp.Add(item.Key);
-          
+
         }
         foreach (var item in temp)
         {
@@ -139,7 +140,7 @@ public class ObjectPool<T>:IDisposable where T:Enum
         PoolDic = null;
         PollPar = null;
         temp = null;
-        
+
 
     }
 }

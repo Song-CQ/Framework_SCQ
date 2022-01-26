@@ -6,7 +6,6 @@
 	功能：主场景
 *****************************************************/
 using FutureCore;
-using System;
 
 namespace ProjectApp
 {
@@ -18,7 +17,7 @@ namespace ProjectApp
 
         public override int PreLoadId => PreLoadIdConst.MainScene;
 
-        
+
 
         protected override void OnEnter()
         {
@@ -50,13 +49,14 @@ namespace ProjectApp
             // 初始化资源
             if (!AppConst.IsDevelopMode)
             {
-                
+
                 //VersionUpdateMgr.Instance.StartUpProcess(InitAssets);
             }
             else
             {
                 //InitAssets();
             }
+            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.MainUI_Open);
         }
         private void InitAssets()
         {
@@ -69,7 +69,7 @@ namespace ProjectApp
 
         private void OnAssetsInitComplete(object obj)
         {
-          
+
 
 
         }

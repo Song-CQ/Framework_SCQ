@@ -25,12 +25,12 @@ namespace ProjectApp
             //globalMgr.AddMgr(DateTimeMgr.Instance);
             globalMgr.AddMgr(TimerMgr.Instance);
             //globalMgr.AddMgr(DispatcherMgr.Instance);
-            //globalMgr.AddMgr(GameMgr.Instance);
+            globalMgr.AddMgr(GameMgr.Instance);
             //globalMgr.AddMgr(GMMgr.Instance);
             //globalMgr.AddMgr(GraphicsMgr.Instance);
             //globalMgr.AddMgr(LoadPipelineMgr.Instance);
             //globalMgr.AddMgr(ResMgr.Instance);
-            //globalMgr.AddMgr(SceneMgr.Instance);
+            globalMgr.AddMgr(SceneMgr.Instance);
             //globalMgr.AddMgr(VersionMgr.Instance);
             //globalMgr.AddMgr(WSNetMgr.Instance);
             //globalMgr.AddMgr(WSNetProxyMgr.Instance);
@@ -45,7 +45,7 @@ namespace ProjectApp
             ////globalMgr.AddMgr(ThreadMgr.Instance);
             //globalMgr.AddMgr(TickMgr.Instance);
             //globalMgr.AddMgr(TimerMgr.Instance);
-            ////globalMgr.AddMgr(UIMgr.Instance);
+            globalMgr.AddMgr(UIMgr.Instance);
             //globalMgr.AddMgr(VersionUpdateMgr.Instance);
             //globalMgr.AddMgr(WorldSpaceMgr.Instance);
 
@@ -62,16 +62,16 @@ namespace ProjectApp
         public static void RegisterData()
         {
             // SceneMgr
-            //SceneMgrRegister.AutoRegisterScene();
+            SceneMgrRegister.AutoRegisterScene();
             //// ConfigMgr
             //ConfigMgrRegister.AutoRegisterConfig();
             //// WSNetMgr
             //WSNetMgrRegister.AutoRegisterProtoType();
             // ModuleMgr
-            //ModuleMgrRegister.AutoRegisterModel();
-            //ModuleMgrRegister.AutoRegisterUIType();
-            //ModuleMgrRegister.AutoRegisterCtrl();
-            //ModuleMgrRegister.AutoRegisterUICtrl();
+            ModuleMgrRegister.AutoRegisterModel();
+            ModuleMgrRegister.AutoRegisterUIType();
+            ModuleMgrRegister.AutoRegisterCtrl();
+            ModuleMgrRegister.AutoRegisterUICtrl();
             //// UIMgr
             //UIMgrRegister.AutoRegisterBinder();
             //UIMgrRegister.AutoRegisterCommonPackages();

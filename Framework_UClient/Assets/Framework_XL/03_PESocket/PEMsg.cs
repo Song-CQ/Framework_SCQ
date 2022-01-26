@@ -6,15 +6,17 @@
 	功能：消息定义类
 *****************************************************/
 
-namespace PENet {
+namespace PENet
+{
 
     using System;
     using System.Collections.Generic;
 
     [Serializable]
-    public abstract class PEMsg {
+    public abstract class PEMsg
+    {
         public int seq;
-        public List<int> cmd=new List<int>();
+        public List<int> cmd = new List<int>();
         public int err;
     }
 }

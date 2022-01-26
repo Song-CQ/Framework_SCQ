@@ -315,7 +315,7 @@ namespace FairyGUI
                 _relatedPageId = value;
             }
         }
-
+        
         /// <summary>
         /// Simulates a click on this button.
         /// 模拟点击这个按钮。
@@ -399,6 +399,8 @@ namespace FairyGUI
                 {
                     if (!_downScaled)
                     {
+                        // [修改]
+                        if (isCloseClickAnim) return;
                         _downScaled = true;
                         SetScale(this.scaleX * _downEffectValue, this.scaleY * _downEffectValue);
                     }
@@ -407,6 +409,8 @@ namespace FairyGUI
                 {
                     if (_downScaled)
                     {
+                        // [修改]
+                        if (isCloseClickAnim) return;
                         _downScaled = false;
                         SetScale(this.scaleX / _downEffectValue, this.scaleY / _downEffectValue);
                     }
@@ -653,5 +657,46 @@ namespace FairyGUI
                     _relatedController.selectedPageId = _relatedPageId;
             }
         }
+
+        // [修改]
+        #region 自定义属性
+        /// <summary>
+        /// 是否关闭点击音效
+        /// </summary>
+        public bool isCloseClickSound = false;
+        /// <summary>
+        /// 是否关闭点击动效
+        /// </summary>
+        public bool isCloseClickAnim = false;
+        #endregion
+        /// <summary>
+        /// [修改]
+        /// 设置按下动画特效值
+        /// </summary>
+        public void SetClickDownEffect(float value)
+        {
+            _downEffect = 2;
+            _downEffectValue = value;
+        }
+        /// <summary>
+        /// [修改]
+        /// 播放点击声效
+        /// </summary>
+        private void PlayClickSound()
+        {
+            if (isCloseClickSound) return;
+
+            PlaySound();
+        }
+
+        // [修改]
+        public void PlaySound()
+        {
+            if (sound != null && sound.nativeClip != null)
+            {
+                Stage.inst.PlayOneShotSound(sound.nativeClip, soundVolumeScale);
+            }
+        }
+
     }
 }

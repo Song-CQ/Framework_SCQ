@@ -6,10 +6,7 @@
     功能：UI窗口管理器
 *****************************************************/
 using FutureCore;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using XL.Common;
 
 namespace XL.UI
 {
@@ -17,27 +14,27 @@ namespace XL.UI
     {
 
         private Dictionary<string, UIWindow> uiWindowsDic;
-       
+
         public override void Init()
         {
 
             uiWindowsDic = new Dictionary<string, UIWindow>();
-        
-            UIWindow[] uiWindows=FindObjectsOfType<UIWindow>();
+
+            UIWindow[] uiWindows = FindObjectsOfType<UIWindow>();
             foreach (var item in uiWindows)
             {
-                if(!item.IsStart)
-                item.StartWnd();
+                if (!item.IsStart)
+                    item.StartWnd();
                 item.SetVisibleWnd(false);
                 uiWindowsDic.Add(item.GetType().Name, item);
-                
+
             }
         }
 
         public T GetUIWindow<T>() where T : UIWindow
         {
             UIWindow wnd = null;
-            
+
             if (uiWindowsDic.TryGetValue(typeof(T).Name, out wnd))
             {
                 return wnd as T;
@@ -54,7 +51,7 @@ namespace XL.UI
                 window.StartWnd();
             window.SetVisibleWnd(false);
             //window.SetCanvasGroup(0);
-            uiWindowsDic.Add(window.GetType().Name, window);   
+            uiWindowsDic.Add(window.GetType().Name, window);
             return true;
         }
 
@@ -78,8 +75,8 @@ namespace XL.UI
                 uiWindowsDic.Clear();
             }
         }
-       
-        
+
+
 
     }
 }

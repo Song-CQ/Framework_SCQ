@@ -176,17 +176,29 @@ namespace ExcelTool
                 StringColor.WriteLine("ReadExcelPath:" + "无路径");
                 Console.ReadKey(true);
             }
+            else
+            {
+                StringColor.WriteLine("ReadExcelPath:" + urlData.ReadExcelPath, ConsoleColor.Green);
+            }
             if (urlData.OutDataPath == String.Empty)
             {
                 StringColor.WriteLine("OutClassPath:" + "无路径");
                 Console.ReadKey(true);
+            }
+            else
+            {
+                StringColor.WriteLine("OutClassPath:" + urlData.OutDataPath , ConsoleColor.Green);
             }
             if (urlData.OutDataPath == String.Empty)
             {
                 StringColor.WriteLine("OutDataPath:" + "无路径");
                 Console.ReadKey(true);
             }
-            Console.WriteLine("读取路劲成功");
+            else
+            {
+                StringColor.WriteLine("OutDataPath:" + urlData.OutDataPath, ConsoleColor.Green);
+            }
+            Console.WriteLine("读取路劲成功\n");
         }
 
         private List<string> FindAllExcelPath()
@@ -204,7 +216,7 @@ namespace ExcelTool
                     if (nextFile.Extension == ".xlsx" || nextFile.Extension == ".xls")
                     {
                         pathStr.Add(nextFile.FullName);
-                        Console.WriteLine("获取文件路劲:" + nextFile.FullName);
+                        //Console.WriteLine("获取文件路劲:" + nextFile.FullName);
                     }
                 }
                 theFolder = Directory.CreateDirectory(ReadExcelPath + @"\静态配置表");
@@ -217,7 +229,7 @@ namespace ExcelTool
                     if (nextFile.Extension == ".xlsx" || nextFile.Extension == ".xls")
                     {
                         pathStr.Add(nextFile.FullName);
-                        Console.WriteLine("获取文件路劲:" + nextFile.FullName);
+                       // Console.WriteLine("获取文件路劲:" + nextFile.FullName);
                     }
                 }
             }

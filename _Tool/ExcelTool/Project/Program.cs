@@ -1,7 +1,26 @@
-﻿using System;
+﻿/*******************************************
+       く__,.ヘヽ.        /  ,ー､ 〉
+           ＼ ', !-─‐-i  /  /´
+           ／｀ｰ'       L/／｀ヽ､
+         /   ／,   /|   ,   ,       ',
+       ｲ   / /-‐/  ｉ L_ ﾊ ヽ!   i
+       ﾚ ﾍ 7ｲ｀ﾄ ﾚ'ｧ-ﾄ､!ハ|   |
+          !,/7 '0'     ´0iソ|    |
+          |.从*    _     ,,,, / |./    |
+          ﾚ'| i＞.､,,__  _,.イ /   .i   |
+            ﾚ'| | / k_７_/ﾚ'ヽ,  ﾊ.  |
+              | |/i 〈|/   i  ,.ﾍ |  i  |
+             .|/ /  ｉ：    ﾍ!    ＼  |
+              kヽ&gt;､ﾊ _,.ﾍ､    /､!
+              !'〈//｀Ｔ´', ＼ ｀'7'ｰr'
+              ﾚ'ヽL__|___i,___,ンﾚ|ノ
+                  ﾄ-,/  |___./
+                  'ｰ'    !_,.:
+ ******************************************/
+
+using System;
 using ExcelTool.Tool;
 using System.Threading.Tasks;
-
 
 namespace ExcelTool
 {
@@ -10,7 +29,11 @@ namespace ExcelTool
         static Task task;
         static void Main(string[] args)
         {
-            
+
+            LogUtil.SetLogCallBack_Log((e) => {
+                Console.WriteLine(e);
+            },null);
+            LogUtil.LogGirl();
             if (args==null||args.Length==0||args[0]=="Dll")
             {
                 CreateAssemblyHelp.IsCreateDll = true;
@@ -29,8 +52,7 @@ namespace ExcelTool
             {
                 ExcelToAssemblyDataHelp.IsEnciphermentData = false;
             }
-
-            
+           
             try
             {
                 task = new Task(Init);
@@ -56,9 +78,11 @@ namespace ExcelTool
 
         private static void Init()
         {
-            StringColor.WriteLine("Init_MainMgr",ConsoleColor.Yellow);
+            StringColor.WriteLine("Init_MainMgr\n",ConsoleColor.Yellow);
             MainMgr.Instance.Init(task);
         }
+
         
+
     }
 }

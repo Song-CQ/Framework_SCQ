@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using FutureCore;
 using FuturePlugin;
+using System;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 namespace ProjectApp
 {
     public static class MainLauncher
@@ -15,18 +12,28 @@ namespace ProjectApp
         private const string MainScene = "0_MainScene";
 
         private static bool IsInMain = false;
-        
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void SceneMain()
         {
             if (!IsAutoLauncher) return;
             if (SceneManager.GetActiveScene().name != MainScene) return;
-            LogUtil.EnableLog(AppConst.IsEnabledLog);
+
+            SetLog();
+            
             LogUtil.Log("[MainLauncher]SceneMain".AddColor(ColorType.Green));
-           
+
             Main();
         }
-        
+
+        private static void SetLog()
+        {
+            LogUtil.SetLogCallBack_Log(Debug.Log,Debug.LogFormat);
+            LogUtil.SetLogCallBack_LogError(Debug.LogError,Debug.LogErrorFormat);
+            LogUtil.SetLogCallBack_LogWarning(Debug.LogWarning,Debug.LogWarningFormat);
+            LogUtil.EnableLog(AppConst.IsEnabledLog);
+        }
+
         private static void Main()
         {
             if (IsInMain) return;
@@ -69,8 +76,8 @@ namespace ProjectApp
             Assembly appAssembly = Assembly.GetExecutingAssembly();
             Type appMainClass = appAssembly.GetType("ProjectApp.Main.AppMain");
             MethodInfo mainFunc = appMainClass.GetMethod("Main", BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Static);
-            mainFunc.Invoke(null,null);
-         
+            mainFunc.Invoke(null, null);
+
         }
     }
 }

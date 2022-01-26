@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using XL.WinterProject.MainModule;
 
 namespace XL.WinterProject.MainModule
 {
@@ -26,7 +24,7 @@ namespace XL.WinterProject.MainModule
             //	GameObject.Find("Main Camera").GetComponent<UIset>().enabled = true;
             //}
 
-            if(Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0))
             {
 
                 // 存储鼠标的屏幕空间坐标（Z值使用目标物体的屏幕空间坐标）
@@ -53,12 +51,12 @@ namespace XL.WinterProject.MainModule
 
 
         }
-        
+
         void OnMouseDown()
 
         {
 
-         
+
             // 把目标物体的世界空间坐标转换到它自身的屏幕空间坐标 
 
             TargetScreenSpace = Camera.main.WorldToScreenPoint(trans.position);
@@ -73,7 +71,7 @@ namespace XL.WinterProject.MainModule
 
             // 鼠标左键按下 
 
-           
+
         }
     }
 }

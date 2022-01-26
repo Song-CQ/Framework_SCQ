@@ -1,12 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using ProjectApp;
-using ProjectApp.Data;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class text : MonoBehaviour
 {
@@ -18,15 +15,15 @@ public class text : MonoBehaviour
     public Image imgtest1;
     public Image imgtest2;
 
-   
+
 
     void Init()
     {
-  
-        
+
+
         DownTexture(TestUre, (texture) =>
         {
-            imgtest1.sprite= Sprite.Create(texture, new Rect(0, 0, texture.width,texture.height), Vector2.one/2);
+            imgtest1.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one / 2);
             WriteHead(texture);
 
             UnityWebRequestFile(GetHeadPath());
@@ -41,7 +38,7 @@ public class text : MonoBehaviour
         //如果在编译器或者单机中
 #if UNITY_EDITOR || UNITY_STANDALONE
 
-        url = "file://"+ fileName;
+        url = "file://" + fileName;
         //否则如果在Iphone下
 #elif UNITY_IPHONE
         url = "file://"+ fileName;
@@ -52,12 +49,12 @@ public class text : MonoBehaviour
         #endregion
         DownTexture(url, (texture) =>
         {
-            imgtest2.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width,texture.height), Vector2.one/2);
+            imgtest2.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one / 2);
             Debug.Log("加载本地fb头像");
         });
     }
-    
-    
+
+
     private void WriteHead(Texture2D texture)
     {
         byte[] datas = texture.EncodeToPNG();
@@ -71,10 +68,10 @@ public class text : MonoBehaviour
             fs.Write(datas, 0, datas.Length);
             fs.Dispose();
         }
-            
+
 
     }
-    
+
     private string GetHeadPath()
     {
         string pal = string.Empty;
@@ -83,8 +80,8 @@ public class text : MonoBehaviour
         Debug.Log(pal);
         return pal;
     }
-    private string TestUre="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=779586112905584&height=50&width=50&ext=1638613024&hash=AeR2chwRDdqSyyvm5X0"; 
-    
+    private string TestUre = "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=779586112905584&height=50&width=50&ext=1638613024&hash=AeR2chwRDdqSyyvm5X0";
+
     private float val = 0;
     // Update is called once per frame
     void Update()
@@ -92,10 +89,10 @@ public class text : MonoBehaviour
         //MainThreadDispatcher.Instance.Update();
         return;
         val += Time.deltaTime;
-        if (val>=1)
+        if (val >= 1)
         {
-            realtimeSinceStartupUI.text=(Time.realtimeSinceStartup).ToString();
-            timeUI.text=(Time.time).ToString();
+            realtimeSinceStartupUI.text = (Time.realtimeSinceStartup).ToString();
+            timeUI.text = (Time.time).ToString();
             val = 0;
         }
     }
@@ -122,7 +119,7 @@ public class text : MonoBehaviour
             callback(texture2D);
         }
     }
-    
-    
-    
+
+
+
 }

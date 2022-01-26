@@ -12,16 +12,16 @@ using UnityEngine;
 namespace XL.Common
 {
     public static class TransformHelper
-    { 
+    {
 
-        public static Transform FindTransformByName(this Transform trf,string name)
+        public static Transform FindTransformByName(this Transform trf, string name)
         {
             if (trf == null)
             {
                 Debug.LogError("空物体不能查找");
                 return null;
             }
-            Transform target = trf.name==name?trf:null;
+            Transform target = trf.name == name ? trf : null;
             if (target != null) return target;
             for (int i = 0; i < trf.childCount; i++)
             {
@@ -31,7 +31,7 @@ namespace XL.Common
             if (target != null) return target;
             for (int i = 0; i < trf.childCount; i++)
             {
-                target = FindTransformByName(trf.GetChild(i),name);
+                target = FindTransformByName(trf.GetChild(i), name);
                 if (target != null) return target;
             }
             return null;
@@ -73,7 +73,7 @@ namespace XL.Common
             return null;
         }
 
-        public static void SetActive<T>(this T t,bool active=true) where T: Component
+        public static void SetActive<T>(this T t, bool active = true) where T : Component
         {
             t.gameObject.SetActive(active);
         }
