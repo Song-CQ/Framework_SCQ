@@ -1,0 +1,44 @@
+/****************************************************
+    文件：Ctr.cs
+	作者：Clear
+    日期：#CreateTime#
+    类型: MVC_AutoCread
+	功能：#ClassName#控制器
+*****************************************************/
+using FutureCore;
+using UnityEngine;
+
+namespace ProjectApp
+{
+    public class #ClassName#Ctrl : BaseCtrl
+    {
+        public static #ClassName#Ctrl Instance { get; private set; }
+
+        private #ClassName#Model model;
+
+        #region 生命周期
+        protected override void OnInit()
+        {
+            Instance = this;
+            //model = moduleMgr.GetModel(ModelConst.#ClassName#Model) as #ClassName#Model;
+        }
+
+        protected override void OnDispose()
+        {
+            Instance = null;
+        }
+        #endregion
+
+        #region 消息
+        protected override void AddListener()
+        {
+            //ctrlDispatcher.AddListener(CtrlMsg.XXX, OnXXX);
+        }
+        protected override void RemoveListener()
+        {
+            //ctrlDispatcher.RemoveListener(CtrlMsg.XXX, OnXXX);
+        }
+        #endregion
+       
+    }
+}

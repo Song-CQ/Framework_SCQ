@@ -71,5 +71,17 @@ namespace FutureEditor
         #endregion
 
 
+
+        #region Assets
+        public static void SelectObject_Assets(string path)
+        {
+            Object obj = AssetDatabase.LoadMainAssetAtPath(path);
+            if (obj == null) return;
+
+            EditorGUIUtility.PingObject(obj);
+            Selection.activeObject = obj;
+        }
+        #endregion
+
     }
 }

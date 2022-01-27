@@ -106,6 +106,10 @@
     <Compile Include="Assets\_App\ProjectApp\App\AppFacade.cs" />
     <Compile Include="Assets\_App\ProjectApp\App\AppManagerRegister.cs" />
     <Compile Include="Assets\_App\ProjectApp\Logic\Define\Const\UICtrlMsg_OpenClose.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Game\GameCtrl.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Game\GameModel.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Game\GameUI.cs" />
+    <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Game\GameUICtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Main\MainCtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Main\MainModel.cs" />
     <Compile Include="Assets\_App\ProjectApp\Logic\ModuleUI\Main\MainUI.cs" />
@@ -315,6 +319,9 @@
     <Reference Include="PESocket">
       <HintPath>Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll</HintPath>
     </Reference>
+    <Reference Include="LogUtil">
+      <HintPath>Assets\Plugins\FutureFrame\FutureLib\LogUtil.dll</HintPath>
+    </Reference>
     <Reference Include="DemiLib">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
     </Reference>
@@ -333,6 +340,9 @@
     <Reference Include="BaseVoClassLib">
       <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -341,12 +351,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="VoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
-    </Reference>
-    <Reference Include="LogUtil">
-      <HintPath>Assets\Plugins\FutureFrame\FutureLib\LogUtil.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

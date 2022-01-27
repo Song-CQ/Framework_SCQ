@@ -79,8 +79,12 @@
     <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\Editor\03_CreadView\EditorCreadWnd.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template\UI_FGUITemplate.txt" />
     <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\32-[FC]C# Script-NewScript.cs.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template\UICtrlTemplate.txt" />
     <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\33-[FC]C# Core-NewClass.cs.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template\CtrlTemplate.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template\ModelTemplate.txt" />
     <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\31-[FC]C# Class-NewClass.cs.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +292,9 @@
     <Reference Include="PESocket">
       <HintPath>Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll</HintPath>
     </Reference>
+    <Reference Include="LogUtil">
+      <HintPath>Assets\Plugins\FutureFrame\FutureLib\LogUtil.dll</HintPath>
+    </Reference>
     <Reference Include="DemiLib">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
     </Reference>
@@ -309,6 +316,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ConsoleE">
+      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsoleE\Editor\ConsoleE.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsolePro.Editor">
+      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="RainbowCore">
       <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
@@ -317,6 +330,9 @@
     </Reference>
     <Reference Include="BaseVoClassLib">
       <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
+    </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\Unity.Analytics.Editor.dll</HintPath>
@@ -338,18 +354,6 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.12.5\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="VoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
-    </Reference>
-    <Reference Include="LogUtil">
-      <HintPath>Assets\Plugins\FutureFrame\FutureLib\LogUtil.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsolePro.Editor">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleE">
-      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsoleE\Editor\ConsoleE.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

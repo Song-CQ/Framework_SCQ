@@ -25,6 +25,7 @@ namespace FutureEditor
 
         private void OnEnable()
         {
+      
             minSize = new Vector2(900, 500);
             maxSize = minSize;
             InitData();
@@ -48,7 +49,7 @@ namespace FutureEditor
         private int toolbatIndex = 0;
         private void OnGUI()
         {
-
+          
             toolbatIndex = GUILayout.Toolbar(toolbatIndex, toolbatVal);
             switch (toolbatIndex)
             {
@@ -121,20 +122,24 @@ namespace FutureEditor
 
             if (GUILayout.Button("Dll自动打表", GUILayout.Height(40), GUILayout.Width(100)))
             {
+                Close();
                 ConfigBatTool.SyncConfig2Dll();
 
             }
             if (GUILayout.Button("CS文件自动打表", GUILayout.Height(40), GUILayout.Width(100)))
             {
+                Close();
                 ConfigBatTool.SyncConfig2CS();
 
             }
             if (GUILayout.Button("Dll自动打表(表数据加密)", GUILayout.Height(40), GUILayout.Width(150)))
             {
+                Close();
                 ConfigBatTool.SyncConfig2Dll_EncryptData();
             }
             if (GUILayout.Button("CS文件自动打表(表数据加密)", GUILayout.Height(40), GUILayout.Width(180)))
             {
+                Close();
                 ConfigBatTool.SyncConfig2CS_EncryptData();
             }
             GUILayout.EndVertical();
@@ -153,6 +158,7 @@ namespace FutureEditor
             if (GUILayout.Button("创建FGUI_MVC代码模版", GUILayout.Height(40), GUILayout.Width(160)))
             {
                 MVC_CreadTool.OpenFGUICread();
+                Close();
             }
         
             GUILayout.EndHorizontal();
@@ -165,6 +171,7 @@ namespace FutureEditor
             if (GUILayout.Button("自动注册编辑器环境", GUILayout.Height(40), GUILayout.Width(180)))
             {
                 EditorEnvironmentAutoRegisterTool.AutoRegisterAll();
+                Close();
             }
             GUILayout.EndArea();
         }

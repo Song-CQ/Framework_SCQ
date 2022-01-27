@@ -38,6 +38,8 @@ namespace FutureEditor
             maxSize = minSize;
             name = string.Empty;
             tipsStr = string.Empty;
+            
+
         }
 
         public void OnGUI()
@@ -74,7 +76,7 @@ namespace FutureEditor
                 return;
             }
             tipsStr = complete.Invoke(val.Trim());
-            if (tipsStr==string.Empty)
+            if (tipsStr== "End")
             {
                 Close();
             }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,5 +34,12 @@ namespace FutureCore
                 return _PETimer;
             }
         }
+
+        public static string GetLacalTimeYMD_HHMMSS()
+        {
+            return string.Concat(DateTime.Now.Year, "/", DateTime.Now.Month, "/",
+                                    DateTime.Now.Day, " ", DateTime.Now.Hour, ":", DateTime.Now.Minute, ":", DateTime.Now.Second);
+        }
+    
     }
 }
