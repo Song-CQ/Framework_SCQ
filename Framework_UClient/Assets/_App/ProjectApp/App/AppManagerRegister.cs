@@ -23,7 +23,6 @@ namespace ProjectApp
             // UIMgr
             RegisterUIDriver();
             RegisterFont();
-            RegisterCustomCommonPackage();
             // WSNetMgr
             RegisterProtoLogIgnore();
         }
@@ -69,19 +68,13 @@ namespace ProjectApp
             }
             uiMgr.RegisterUIDriver(baseUIDriver);
         }
-
         private static void RegisterFont()
         {
-            //UIMgr uiMgr = UIMgr.Instance;
-            //uiMgr.RegisterDefaultFont("POETSENONE-REGULAR");
-            //// uiMgr.RegisterFont("Impact");
+            UIMgr uiMgr = UIMgr.Instance;
+            uiMgr.RegisterDefaultFont("POETSENONE-REGULAR");
+            // uiMgr.RegisterFont("Impact");
         }
 
-        private static void RegisterCustomCommonPackage()
-        {
-            //UIMgr uiMgr = UIMgr.Instance;
-            ////uiMgr.RegisterCommonPackage("自定义公共UI资源包名");
-        }
 
         private static void RegisterProtoLogIgnore()
         {

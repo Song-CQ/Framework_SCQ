@@ -70,21 +70,23 @@
     <Compile Include="Assets\Framework_XL\07_Plug-in\03_MeshEditor\Editor\Utility\EditorToolkit.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\Editor\ConfigBatTool\ConfigBatTool.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\Editor\OpenPathTool\OpenPathTool.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\MVC_CreadTool.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC_AudioCread\MVC_CreadTool.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\Module_AudioCread\ModuleMgr_AudioCread.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\EditorEnvironmentAutoRegisterTool\EditorEnvironmentAutoRegisterTool.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\RegisterStriptTemplate.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\Editor\UnityTool\UnityEditorPathConst.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\Editor\UnityTool\UnityEditorTool.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\Editor\01_FrameworkViewer\FrameworkToolView.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\Editor\02_EditorStyleViewer\EditorStyleViewer.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\Editor\03_CreadView\EditorCreadWnd.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template\UI_FGUITemplate.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC_AudioCread\Template\UI_FGUITemplate.txt" />
     <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\32-[FC]C# Script-NewScript.cs.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template\UICtrlTemplate.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC_AudioCread\Template\UICtrlTemplate.txt" />
     <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\33-[FC]C# Core-NewClass.cs.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template\CtrlTemplate.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template\ModelTemplate.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC_AudioCread\Template\CtrlTemplate.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC_AudioCread\Template\ModelTemplate.txt" />
     <None Include="Assets\_Editor\FutureEditorTool\Editor\StriptTemplateTool\Template\31-[FC]C# Class-NewClass.cs.txt" />
   </ItemGroup>
   <ItemGroup>

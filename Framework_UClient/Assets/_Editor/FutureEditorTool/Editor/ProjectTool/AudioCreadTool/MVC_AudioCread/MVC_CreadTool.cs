@@ -15,20 +15,19 @@ using FutureCore;
 
 namespace FutureEditor
 {
-    public static class MVC_CreadTool 
+    public static class MVC_CreadTool
     {
-        private static string assetsPath = @"\_App\ProjectApp\Logic\ModuleUI";
-        private static string outPath = Application.dataPath + assetsPath;       
-        private static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template";
+        public static string outPath = Application.dataPath +@"\"+ UnityEditorPathConst.ModuleUIPath;
+        public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template";
+
+
         public static void OpenFGUICread()
         {
             EditorCreadWnd.ShowWindow("创建 FGUI MVC 代码模版", CreadFGUIMVC);
-
         }
-
         private static string CreadFGUIMVC(string name)
         {
-
+          
             string[] nasmes = Directory.GetDirectories(outPath);
             foreach (var item in nasmes)
             {
@@ -47,7 +46,7 @@ namespace FutureEditor
             CreadModel(directoryInfo, name);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            UnityEditorTool.SelectObject_Assets("Assets" + assetsPath + @"\" + name);
+            UnityEditorTool.SelectObject_Assets(@"Assets\" + UnityEditorPathConst.ModuleUIPath+ @"\" + name);
             Debug.Log("[MVC_AudioCread]MVC生成完成".AddColor(ColorType.浅黄));
 
             return "End";
