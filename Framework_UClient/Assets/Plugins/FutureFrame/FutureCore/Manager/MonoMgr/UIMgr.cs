@@ -43,6 +43,11 @@ namespace FutureCore
             uiDriver.Register();
         }
 
+        public void RegisterDefaultFont(string Font)
+        {
+            uiDriver.RegisterDefaultFont(Font);
+        }
+
         public override void Init()
         {
             base.Init();           

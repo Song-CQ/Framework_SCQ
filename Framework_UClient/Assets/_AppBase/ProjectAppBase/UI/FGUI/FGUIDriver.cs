@@ -24,13 +24,23 @@ namespace ProjectApp
         /// 是否自动设置按钮中心点
         /// </summary>
         private bool IsSetButtonPivotCenter  = true;
+        /// <summary>
+        /// 默认字体
+        /// </summary>
+        private string uiDefaultFontName;
 
         public override void Register()
         {
+           
             UIRegister_FGUI.AutoRegisterBinder();
             UIRegister_FGUI.AutoRegisterCommonPackages(ref commonPackageList);
-
+            
         }
+        public override void RegisterDefaultFont(string font)
+        {
+            uiDefaultFontName = font;
+        }
+
 
         public override void Init()
         {
@@ -46,7 +56,21 @@ namespace ProjectApp
         /// <exception cref="NotImplementedException"></exception>
         private void InitFguiConfig()
         {
+            /// 设置FGUI的分支
+            UIPackage.branch = null;
 
+            /// 设置FGUI的配置
+            AppObjConst.UIGo.AddComponent<UIConfig>();
+            // UI默认字体
+            UIConfig.defaultFont = uiDefaultFontName;
+            // UI字体八方向描边效果
+            UIConfig.enhancedTextOutlineEffect = true;
+            // 关闭Window点击自动排序功能
+            UIConfig.bringWindowToFrontOnClick = false;
+            // 设置动态窗口的背景颜色
+            UIConfig.modalLayerColor = new Color(0f, 0f, 0f, (255f / 2f) / 255f);
+            // 设置按钮音效大小
+            UIConfig.buttonSoundVolumeScale = 1;
 
         }
 
@@ -219,6 +243,6 @@ namespace ProjectApp
             
         }
 
-        
+       
     }
 }
