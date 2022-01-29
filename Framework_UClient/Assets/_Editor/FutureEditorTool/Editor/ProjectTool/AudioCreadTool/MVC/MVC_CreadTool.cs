@@ -48,7 +48,7 @@ namespace FutureEditor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             UnityEditorTool.SelectObject_Assets("Assets" + assetsPath + @"\" + name);
-            Debug.Log("[MVC_AudioCread]MVC生成完成".AddColor(ColorType.浅黄));
+            Debug.Log($"[MVC_AudioCread]MVC{name}生成完成".AddColor(ColorType.浅黄));
 
             return "End";
         }

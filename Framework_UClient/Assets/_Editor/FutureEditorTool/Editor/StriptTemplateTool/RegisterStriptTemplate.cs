@@ -17,7 +17,7 @@ namespace FutureEditor
     public class RegisterStriptTemplate : UnityEditor.AssetModificationProcessor
     {
         private static void OnWillCreateAsset(string path)
-        {
+        { 
             path = path.Replace(".meta", "");
             if (path.EndsWith(".cs"))
             {
