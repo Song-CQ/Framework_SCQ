@@ -1,9 +1,9 @@
 /****************************************************
-    文件：Model.cs
-	作者：Clear
-    日期：#CreateTime#
+    文件: Model.cs
+    作者: Clear
+    日期: #CreateTime#
     类型: MVC_AutoCread
-	功能：#ClassName#Model
+    功能: #ClassName#Model
 *****************************************************/
 using UnityEngine;
 using FutureCore;

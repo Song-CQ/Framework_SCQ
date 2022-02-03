@@ -1,9 +1,9 @@
 /****************************************************
-    文件：UICtr.cs
-	作者：Clear
-    日期：#CreateTime#
+    文件: UICtr.cs
+    作者: Clear
+    日期: #CreateTime#
     类型: MVC_AutoCread
-	功能：#ClassName#UI控制器
+    功能: #ClassName#UI控制器
 *****************************************************/
 using UnityEngine;
 using FutureCore;
@@ -15,8 +15,8 @@ namespace ProjectApp
         private #ClassName#UI ui;
         private #ClassName#Model model;
 
-        private uint openUIMsg = 0;//UICtrlMsg.#ClassName#UI_Open;
-        private uint closeUIMsg = 0;//UICtrlMsg.#ClassName#UI_Close;
+        private uint openUIMsg = UICtrlMsg.#ClassName#UI_Open;
+        private uint closeUIMsg = UICtrlMsg.#ClassName#UI_Close;
 
         #region 生命周期
         protected override void OnInit()

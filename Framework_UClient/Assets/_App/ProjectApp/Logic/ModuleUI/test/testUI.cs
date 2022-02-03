@@ -1,32 +1,32 @@
 /****************************************************
-    文件：GameUI.cs
-	作者：Clear
-    日期：2022/1/27 18:36:51
+    文件: testUI.cs
+    作者: Clear
+    日期: 2022/2/3 17:50:52
     类型: MVC_AutoCread
-	功能：GameUI界面
+    功能: testUI界面
 *****************************************************/
 using FutureCore;
 using FairyGUI;
 using UnityEngine;
-//using UI.G000_Game;
+//using UI.G000_test;
 
 namespace ProjectApp
 {
-    public class GameUI : BaseUI
+    public class testUI : BaseUI
     {
-        private GameUICtrl uiCtrl;
-        private GameModel model;
+        private testUICtrl uiCtrl;
+        private testModel model;
 
-        public GameUI(GameUICtrl ctrl) : base(ctrl)
+        public testUI(testUICtrl ctrl) : base(ctrl)
         {
-            //uiName = UIConst.GameUI;
+            uiName = UIConst.testUI;
             this.uiCtrl = ctrl;
         }
 
         protected override void SetUIInfo(UIInfo uiInfo)
         {
-            uiInfo.packageName = "G000_Game";
-            uiInfo.assetName = "G000_Game";
+            uiInfo.packageName = "G000_test";
+            uiInfo.assetName = "G000_test";
             uiInfo.layerType = UILayerType.None;
             uiInfo.isNeedOpenAnim = true;
             uiInfo.isNeedCloseAnim = true;
@@ -36,7 +36,7 @@ namespace ProjectApp
         #region 生命周期
         protected override void OnInit()
         {
-            //model = moduleMgr.GetModel(ModelConst.GameModel) as GameModel;
+            //model = moduleMgr.GetModel(ModelConst.testModel) as testModel;
         }
 
         protected override void OnClose()
@@ -45,7 +45,7 @@ namespace ProjectApp
 
         protected override void OnBind()
         {
-            //ui = baseUI as UI.G000_Game.UI_Game;
+            //ui = baseUI as UI.G000_test.UI_test;
         }
 
         protected override void OnOpenBefore(object args)

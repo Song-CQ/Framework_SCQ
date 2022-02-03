@@ -1,26 +1,26 @@
 /****************************************************
-    文件：Ctr.cs
-	作者：Clear
-    日期：2022/1/27 18:36:51
+    文件: Ctr.cs
+    作者: Clear
+    日期: 2022/2/3 17:50:52
     类型: MVC_AutoCread
-	功能：Game控制器
+    功能: test控制器
 *****************************************************/
 using FutureCore;
 using UnityEngine;
 
 namespace ProjectApp
 {
-    public class GameCtrl : BaseCtrl
+    public class testCtrl : BaseCtrl
     {
-        public static GameCtrl Instance { get; private set; }
+        public static testCtrl Instance { get; private set; }
 
-        private GameModel model;
+        private testModel model;
 
         #region 生命周期
         protected override void OnInit()
         {
             Instance = this;
-            //model = moduleMgr.GetModel(ModelConst.GameModel) as GameModel;
+            //model = moduleMgr.GetModel(ModelConst.testModel) as testModel;
         }
 
         protected override void OnDispose()

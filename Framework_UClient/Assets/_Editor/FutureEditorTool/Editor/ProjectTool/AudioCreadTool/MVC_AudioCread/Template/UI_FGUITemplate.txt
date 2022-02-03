@@ -1,9 +1,9 @@
 /****************************************************
-    文件：#ClassName#UI.cs
-	作者：Clear
-    日期：#CreateTime#
+    文件: #ClassName#UI.cs
+    作者: Clear
+    日期: #CreateTime#
     类型: MVC_AutoCread
-	功能：#ClassName#UI界面
+    功能: #ClassName#UI界面
 *****************************************************/
 using FutureCore;
 using FairyGUI;
@@ -19,7 +19,7 @@ namespace ProjectApp
 
         public #ClassName#UI(#ClassName#UICtrl ctrl) : base(ctrl)
         {
-            //uiName = UIConst.#ClassName#UI;
+            uiName = UIConst.#ClassName#UI;
             this.uiCtrl = ctrl;
         }
 

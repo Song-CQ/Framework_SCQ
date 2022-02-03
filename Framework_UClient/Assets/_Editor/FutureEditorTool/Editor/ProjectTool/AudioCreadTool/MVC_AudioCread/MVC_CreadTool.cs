@@ -1,9 +1,9 @@
 /****************************************************
-    文件：MVC_CreadTool.cs
-	作者：Clear
-    日期：2022/1/26 17:22:11
-    类型: 框架核心脚本(请勿修改)
-	功能：MVC创建
+    文件:MVC_CreadTool.cs
+    作者:Clear
+    日期:2022/1/26 17:22:11
+    类型:框架核心脚本(请勿修改)
+    功能:MVC创建
 *****************************************************/
 using System;
 using System.IO;
@@ -18,7 +18,7 @@ namespace FutureEditor
     public static class MVC_CreadTool
     {
         public static string outPath = Application.dataPath +@"\"+ UnityEditorPathConst.ModuleUIPath;
-        public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC\Template";
+        public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\Editor\ProjectTool\AudioCreadTool\MVC_AudioCread\Template";
 
 
         public static void OpenFGUICread()
@@ -43,12 +43,12 @@ namespace FutureEditor
             CreadUI_FGUI(directoryInfo, name);
             CreadUICtr(directoryInfo, name);
             CreadCtr(directoryInfo, name);       
-            CreadModel(directoryInfo, name);
+            CreadModel(directoryInfo, name);                            
+            ModuleMgr_AudioCread.CheckModule();
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            UnityEditorTool.SelectObject_Assets(@"Assets\" + UnityEditorPathConst.ModuleUIPath+ @"\" + name);
+            UnityEditorTool.SelectObject_Assets(@"Assets\" + UnityEditorPathConst.ModuleUIPath + @"\" + name);
             Debug.Log("[MVC_AudioCread]MVC生成完成".AddColor(ColorType.浅黄));
-
             return "End";
         }
 

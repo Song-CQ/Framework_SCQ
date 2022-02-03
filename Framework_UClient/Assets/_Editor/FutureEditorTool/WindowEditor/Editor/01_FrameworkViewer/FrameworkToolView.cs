@@ -173,6 +173,13 @@ namespace FutureEditor
                 EditorEnvironmentAutoRegisterTool.AutoRegisterAll();
                 Close();
             }
+            if (GUILayout.Button("自动注册项目代码", GUILayout.Height(40), GUILayout.Width(180)))
+            {
+                ModuleMgr_AudioCread.CheckModule();
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+                Close();
+            }
             GUILayout.EndArea();
         }
 

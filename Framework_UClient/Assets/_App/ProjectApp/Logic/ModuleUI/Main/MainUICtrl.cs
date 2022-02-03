@@ -1,7 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+/****************************************************
+    文件:UICtr.cs
+    作者:Clear
+    日期:2022/1/29 23:8:15
+    类型:MVC_AutoCread
+    功能:MainUI控制器
+*****************************************************/
+using UnityEngine;
 using FutureCore;
-using ProjectApp.Data;
 
 namespace ProjectApp
 {
@@ -10,13 +15,13 @@ namespace ProjectApp
         private MainUI ui;
         private MainModel model;
 
-        private uint openUIMsg = UICtrlMsg.MainUI_Open;
-        private uint closeUIMsg = UICtrlMsg.MainUI_Close;
+        private uint openUIMsg = 0;//UICtrlMsg.MainUI_Open;
+        private uint closeUIMsg = 0;//UICtrlMsg.MainUI_Close;
 
         #region 生命周期
         protected override void OnInit()
         {
-            //model = moduleMgr.GetModel(ModelConst.MainModel) as MainModel;
+           //model = moduleMgr.GetModel(ModelConst.MainModel) as MainModel;
         }
 
         protected override void OnDispose()
@@ -25,16 +30,10 @@ namespace ProjectApp
 
         public override void OpenUI(object args = null)
         {
-            
             if (ui == null)
             {
                 ui = new MainUI(this);
                 ui.Open(args);
-            }
-            else
-            {
-                ui.Display(args);
-          
             }
         }
 
@@ -42,8 +41,9 @@ namespace ProjectApp
         {
             if (ui != null && !ui.isClose)
             {
-                ui.Hide();
+                ui.Close();
             }
+            ui = null;
         }
         #endregion
 
@@ -67,8 +67,6 @@ namespace ProjectApp
             uiCtrlDispatcher.RemoveListener(openUIMsg, OpenUI);
             uiCtrlDispatcher.RemoveListener(closeUIMsg, CloseUI);
         }
-
-       
         #endregion
 
     }
