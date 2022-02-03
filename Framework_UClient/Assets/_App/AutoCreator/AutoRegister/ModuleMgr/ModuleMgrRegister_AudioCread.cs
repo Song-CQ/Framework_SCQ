@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件: ModuleMgrRegister.cs
     作者: Clear
-    日期: 2022/2/3 18:51:33
+    日期: 2022/2/3 19:22:0
     类型: 自动创建
     功能: 模块数据注册
 *****************************************************/
@@ -16,7 +16,6 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddModel(ModelConst.MainModel,new MainModel());
-            moduleMgr.AddModel(ModelConst.testModel,new testModel());
 
         }
 
@@ -24,7 +23,6 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddUIType(UIConst.MainUI,typeof(MainUI));
-            moduleMgr.AddUIType(UIConst.testUI,typeof(testUI));
 
         }
 
@@ -32,7 +30,6 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddCtrl(CtrlConst.MainCtrl,new MainCtrl());
-            moduleMgr.AddCtrl(CtrlConst.testCtrl,new testCtrl());
 
         }
 
@@ -40,7 +37,6 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddUICtrl(UICtrlConst.MainUICtrl,new MainUICtrl());
-            moduleMgr.AddUICtrl(UICtrlConst.testUICtrl,new testUICtrl());
 
         }
 
