@@ -15,8 +15,8 @@ namespace ProjectApp
         private MainUI ui;
         private MainModel model;
 
-        private uint openUIMsg = 0;//UICtrlMsg.MainUI_Open;
-        private uint closeUIMsg = 0;//UICtrlMsg.MainUI_Close;
+        private uint openUIMsg = UICtrlMsg.MainUI_Open;
+        private uint closeUIMsg = UICtrlMsg.MainUI_Close;
 
         #region 生命周期
         protected override void OnInit()

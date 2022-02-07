@@ -22,7 +22,7 @@ namespace FutureEditor
         /// <summary>
         /// 重启Unity 
         /// </summary>
-        [MenuItem("[FC UnityEditor]/重启Unity", false, -1000)]
+        [MenuItem("[FC Tool]/Unity Editor/重启Unity", false, -1000)]
         private static void StartRestMenu()
         {
             StartRest();

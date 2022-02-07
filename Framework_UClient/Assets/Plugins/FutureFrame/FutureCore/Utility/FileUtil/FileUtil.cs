@@ -13,11 +13,14 @@ namespace FutureCore
     public static class FileUtil 
     {
 
-        public static void WriteAllText(string path, string val)
+        public static void WriteFile(string targetPath, string classStr)
         {
-            File.WriteAllText(path, val + "", Encoding.UTF8);
-
-
+            DirectoryInfo directoryInfo = new DirectoryInfo(targetPath);
+            if (!directoryInfo.Parent.Exists)
+            {
+                Directory.CreateDirectory(directoryInfo.Parent.FullName);
+            }
+            File.WriteAllText(targetPath, classStr, new UTF8Encoding(false));
         }
 
 

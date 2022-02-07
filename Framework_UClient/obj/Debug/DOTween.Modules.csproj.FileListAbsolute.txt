@@ -576,3 +576,6 @@ E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTween.Modules.csproj.Cor
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTween.Modules.csproj.CopyComplete
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTween.Modules.dll
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTween.Modules.pdb
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\ConsoleE.dll
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\ConsolePro.Editor.dll
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\LogUtil.dll

@@ -32,8 +32,8 @@ namespace ProjectApp
         public override void Register()
         {
            
-            UIRegister_FGUI.AutoRegisterBinder();
-            UIRegister_FGUI.AutoRegisterCommonPackages(ref commonPackageList);
+            //UIRegister_FGUI.AutoRegisterBinder();
+            //UIRegister_FGUI.AutoRegisterCommonPackages(ref commonPackageList);
             
         }
         public override void RegisterDefaultFont(string font)

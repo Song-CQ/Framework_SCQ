@@ -576,3 +576,6 @@ E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime.csproj.CopyComplete
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime.dll
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime.pdb
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\ConsoleE.dll
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\ConsolePro.Editor.dll
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\LogUtil.dll

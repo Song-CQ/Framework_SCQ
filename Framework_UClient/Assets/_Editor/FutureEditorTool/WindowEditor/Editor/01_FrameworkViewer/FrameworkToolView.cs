@@ -168,16 +168,14 @@ namespace FutureEditor
         private void RefreshUI_AutoRegisterTool()
         {
             GUILayout.BeginArea(new Rect(10, 35, 200, 200));
-            if (GUILayout.Button("自动注册编辑器环境", GUILayout.Height(40), GUILayout.Width(180)))
+            if (GUILayout.Button("注册编辑器环境", GUILayout.Height(40), GUILayout.Width(180)))
             {
-                EditorEnvironmentAutoRegisterTool.AutoRegisterAll();
+                EditorAutoRegisterTool_Editor.AutoRegisterAll();
                 Close();
             }
-            if (GUILayout.Button("自动注册项目代码", GUILayout.Height(40), GUILayout.Width(180)))
+            if (GUILayout.Button("自动注册项目数据", GUILayout.Height(40), GUILayout.Width(180)))
             {
-                ModuleMgr_AudioCread.CheckModule();
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
+                ProjectAutoRegisterTool.AutoRegisterAll();
                 Close();
             }
             GUILayout.EndArea();

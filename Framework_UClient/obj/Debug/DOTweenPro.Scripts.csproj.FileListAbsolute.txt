@@ -578,3 +578,6 @@ E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.csproj.
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.csproj.CopyComplete
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.dll
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.pdb
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\ConsoleE.dll
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\ConsolePro.Editor.dll
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\LogUtil.dll

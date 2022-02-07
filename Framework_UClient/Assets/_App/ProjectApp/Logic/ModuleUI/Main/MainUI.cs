@@ -25,9 +25,9 @@ namespace ProjectApp
 
         protected override void SetUIInfo(UIInfo uiInfo)
         {
-            uiInfo.packageName = "G000_Main";
-            uiInfo.assetName = "G000_Main";
-            uiInfo.layerType = UILayerType.None;
+            uiInfo.packageName = "G004_main";
+            uiInfo.assetName = "com_main";
+            uiInfo.layerType = UILayerType.Normal;
             uiInfo.isNeedOpenAnim = true;
             uiInfo.isNeedCloseAnim = true;
             uiInfo.isNeedUIMask = true;

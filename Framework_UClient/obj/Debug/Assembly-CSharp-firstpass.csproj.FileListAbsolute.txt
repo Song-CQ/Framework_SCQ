@@ -1,7 +1,6 @@
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\Analytics.dll
-D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\BaseVoClassLib.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\com.unity.multiplayer-hlapi.Editor.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\com.unity.multiplayer-hlapi.Runtime.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\com.unity.multiplayer-weaver.Editor.dll
@@ -216,7 +215,6 @@ D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.VRModule.
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.WindModule.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.XR.LegacyInputHelpers.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.XRModule.dll
-D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\VoClassLib.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.Purchasing.AppleCore.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.Purchasing.WinRTCore.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.Purchasing.AppleStub.dll
@@ -352,3 +350,5 @@ D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.
 D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.csproj.CopyComplete
 D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.pdb
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\LogUtil.dll
+D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\RainbowCore.dll
