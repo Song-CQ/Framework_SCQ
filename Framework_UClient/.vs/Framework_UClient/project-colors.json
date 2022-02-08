@@ -55,7 +55,12 @@
       "ProjectGuid": "1d789837-c4c4-0160-e6dc-bbba2d0e25d9",
       "DisplayName": "Assembly-CSharp-Editor",
       "ColorIndex": 9
+    },
+    "770f953c-7d9e-9f11-7d0d-7c6ee41fc4ab": {
+      "ProjectGuid": "770f953c-7d9e-9f11-7d0d-7c6ee41fc4ab",
+      "DisplayName": "UnityGameFramework.Runtime",
+      "ColorIndex": 10
     }
   },
-  "NextColorIndex": 10
+  "NextColorIndex": 11
 }

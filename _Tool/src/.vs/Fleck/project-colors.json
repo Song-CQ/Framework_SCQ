@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "8b12d929-afa9-4307-beff-2ed0f1070fee": {
+      "ProjectGuid": "8b12d929-afa9-4307-beff-2ed0f1070fee",
+      "DisplayName": "Fleck",
+      "ColorIndex": 0
+    },
+    "3d7680b4-0224-4f0c-b1f6-74fb7586ebdc": {
+      "ProjectGuid": "3d7680b4-0224-4f0c-b1f6-74fb7586ebdc",
+      "DisplayName": "ConsoleApp",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

@@ -35,8 +35,8 @@ namespace PENet
         {
             try
             {
-                // skt.Bind(new IPEndPoint(IPAddress.Parse(ip), port));
-                IPHostEntry host = Dns.GetHostByName(ip);
+                 //skt.Bind(new IPEndPoint(IPAddress.Parse(ip), port));
+                IPHostEntry host = Dns.GetHostEntry(ip);
                 IPAddress ips = host.AddressList[0];
                 skt.Bind(new IPEndPoint(ips, port));
                 skt.Listen(backlog);

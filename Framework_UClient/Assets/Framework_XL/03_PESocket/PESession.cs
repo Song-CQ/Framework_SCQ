@@ -9,12 +9,14 @@
 using System;
 using System.Net.Sockets;
 
+
 namespace PENet
 {
     public abstract class PESession<T> where T : PEMsg
     {
         private Socket skt;
         private Action closeCB;
+
 
         #region Recevie
         public void StartRcvData(Socket skt, Action closeCB)
@@ -27,6 +29,7 @@ namespace PENet
                 OnConnected();
 
                 PEPkg pack = new PEPkg();
+                
                 skt.BeginReceive(
                     pack.headBuff,
                     0,

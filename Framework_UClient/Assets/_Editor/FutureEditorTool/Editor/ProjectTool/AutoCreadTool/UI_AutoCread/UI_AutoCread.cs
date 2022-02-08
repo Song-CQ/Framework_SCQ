@@ -13,9 +13,6 @@ namespace FutureEditor
 {
     public static class UI_AutoCread
     {
-        private static string TableStr = "    ";
-        private static string ThreeTab = TableStr + TableStr + TableStr;
-
         private static string Auto_UIMgr;
 
         public static void AutoRegister()
@@ -77,7 +74,7 @@ namespace FutureEditor
                         if (file.Name.StartsWith("A") || file.Name.StartsWith("Font_"))
                         {
                             string packageName = "\"" + file.Name.Replace(fguiPackage, string.Empty) + "\"";
-                            string row = ThreeTab + "commonPackages.Add(" + packageName + ");" + "\r\n";
+                            string row = "            " + "commonPackages.Add(" + packageName + ");" + "\r\n";
                             uiCommonPackageInfo += row;
                         }
                     }
