@@ -7,7 +7,7 @@ using Fleck;
 
 namespace XLNet
 {
-    public class XLSocket
+    public class XLSocket<Msg> where Msg : XLNetMsg
     {
         private Socket skt = null;
         
@@ -41,7 +41,10 @@ namespace XLNet
             
 
         }
-
+        /// <summary>
+        /// 一个客户端链接
+        /// </summary>
+        /// <param name="ar"></param>
         private void ClientConnectCB(IAsyncResult ar)
         {
             try
@@ -51,7 +54,7 @@ namespace XLNet
                 //获得客户端Socket
                 Socket clientSkt = skt.EndAccept(ar);
                 //将Socket包装成网络链接
-
+                XLSocketLink<Msg> xLSocketLink = new XLSocketLink<Msg>(clientSkt);
             }
             catch (Exception)
             {
