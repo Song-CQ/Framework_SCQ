@@ -9,6 +9,7 @@ namespace XLNet
     [Serializable]
     public class XLNetMsg
     {
+        public string Val;
         public string Name;
     }
 }

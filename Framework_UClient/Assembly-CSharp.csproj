@@ -336,6 +336,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="XLNet">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\XlNet\XLNet.dll</HintPath>
+    </Reference>
     <Reference Include="RainbowCore">
       <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>

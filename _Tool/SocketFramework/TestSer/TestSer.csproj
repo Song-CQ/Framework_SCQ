@@ -53,5 +53,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XLNet\XLNet.csproj">
+      <Project>{abbdddbd-fa6e-4e6c-afd1-1bfb35f32f23}</Project>
+      <Name>XLNet</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

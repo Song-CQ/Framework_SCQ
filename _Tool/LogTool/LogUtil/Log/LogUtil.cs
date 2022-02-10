@@ -32,6 +32,10 @@ public static class LogUtil
 
     public static void LogGirl()
     {
+        if (!IsEnable)
+        {
+            return;
+        }
         Log("*********************************************");
         Log("        く__,.ヘヽ.        /  ,ー､ 〉        ");
         Log("           ＼ ', !-─‐-i  /  /´             ");

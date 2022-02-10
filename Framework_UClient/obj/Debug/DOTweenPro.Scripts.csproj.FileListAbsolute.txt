@@ -11,7 +11,6 @@ D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\Microsoft.Win32.Primi
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\mscorlib.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\netstandard.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\Newtonsoft.Json.dll
-D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\PESocket.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\RainbowCore.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\RainbowFolders.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\System.AppContext.dll
@@ -272,7 +271,6 @@ D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.WindModul
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEngine.XRModule.xml
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEditor.xml
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\UnityEditor.iOS.Extensions.pdb
-D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\PESocket.pdb
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\DemiLib.xml
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\DemiEditor.xml
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\DOTween.xml

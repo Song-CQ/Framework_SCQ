@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,11 +47,14 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
     <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2019.4.32f1c1</UnityVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="D:\Install\VS2022\Install\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\App.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\AppFacade_Frame.cs" />
@@ -349,6 +352,7 @@
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTween\DOTween.dll" />
     <None Include="Assets\Plugins\FutureFrame\FutureLib\LogUtil.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Resources\Shaders\AddOn\FairyGUI-BlurFilter.shader" />
+    <None Include="Assets\Plugins\Plugins3rdLibrary\XlNet\XLNet.dll" />
     <None Include="Assets\Standard Assets\RainbowAssets\ver@2.2.0.txt" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\ReadMe - 4.3.0.txt" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\DemiLib.xml" />
@@ -536,9 +540,6 @@
     <Reference Include="UnityEditor">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="PESocket">
-      <HintPath>Assets\Framework_XL\03_PESocket\obj\Debug\PESocket.dll</HintPath>
-    </Reference>
     <Reference Include="LogUtil">
       <HintPath>Assets\Plugins\FutureFrame\FutureLib\LogUtil.dll</HintPath>
     </Reference>
@@ -553,6 +554,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="XLNet">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\XlNet\XLNet.dll</HintPath>
     </Reference>
     <Reference Include="RainbowCore">
       <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>

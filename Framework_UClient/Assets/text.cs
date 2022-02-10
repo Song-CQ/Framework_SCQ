@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using XLNet;
 
 public class text : MonoBehaviour
 {
@@ -120,6 +121,43 @@ public class text : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        XLNetTool.SetLog((e) => Debug.Log(e), (e) => Debug.LogWarning(e), (e) => Debug.LogError(e));
 
+        XLSocket<XLNetMsg, SocketLink> xLSocket = new XLSocket<XLNetMsg, SocketLink>();
+        xLSocket.StartAsClient("127.0.0.1", 8037);
+
+        //PENet.PESocket<swedas, peMsg> xLSocket33 = new PENet.PESocket<swedas, peMsg>();
+        //xLSocket33.StartAsClient("127.0.0.1", 8037);
+
+    }
+
+ 
+ 
+}
+
+
+namespace XLNet
+{
+   
+
+    public class SocketLink : XLSocketLink<XLNetMsg>
+    {
+        protected override void OnConnected()
+        {
+            base.OnConnected();
+            XLNetMsg Val = new XLNetMsg();
+            Val.Name = "服务器";
+            Val.Val = "你好";
+            Send(Val);
+        }
+        protected override void OnReciveMsg(XLNetMsg msg)
+        {
+            base.OnReciveMsg(msg);
+            Debug.Log(msg.Name);
+            Debug.Log(msg.Val);
+        }
+    }   
 
 }

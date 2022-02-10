@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XLNet
 {
-    public class NetPkg
+    public class XLNetPkg
     {
         public byte[] headBuff = null;
         public int headIndex = 0;
@@ -16,17 +16,17 @@ namespace XLNet
         public int bobyIndex;
         public int bobyLen;
 
-        public NetPkg()
+        public XLNetPkg()
         {
             //在头部放入该消息的长度 一个int的长度是4个字节
             headBuff = new byte[4];
             headIndex = 0;
         }
 
-        public void InitBodyBuff()
+        public void InitBodyBuff(int len)
         {
+            bobyLen = len;
             bobyIndex = 0;
-            bobyLen = BitConverter.ToInt32(headBuff, 0);
             bobyBuff = new byte[bobyLen];
         }
 

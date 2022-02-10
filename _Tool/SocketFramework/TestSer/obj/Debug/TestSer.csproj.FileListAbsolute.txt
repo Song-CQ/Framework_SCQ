@@ -7,3 +7,6 @@ D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestSer\obj\Debug\TestSer.csproj
 D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestSer\obj\Debug\TestSer.csproj.CopyComplete
 D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestSer\obj\Debug\TestSer.exe
 D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestSer\obj\Debug\TestSer.pdb
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestSer\bin\Debug\XLNet.dll
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestSer\bin\Debug\XLNet.pdb
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestSer\obj\Debug\TestSer.csproj.AssemblyReference.cache
