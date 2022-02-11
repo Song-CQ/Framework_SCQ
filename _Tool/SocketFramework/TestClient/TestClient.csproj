@@ -41,8 +41,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="XLNet">
-      <HintPath>..\XLNet\bin\Debug\XLNet.dll</HintPath>
+    <Reference Include="XLNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\XLNet\bin\Release\XLNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -46,14 +46,13 @@ namespace XLNet
         {
             base.OnConnected();
             XLNetMsg Val = new XLNetMsg();
-            Val.Name = "客户端";
-            Val.Val = "你好";
+            Val.msgLst.Add("发送给客户端");
             Send(Val);
         }
         protected override void OnReciveMsg(XLNetMsg msg)
         {
-            Console.WriteLine(msg.Name);
-            Console.WriteLine(msg.Val);
+            Console.WriteLine(msg.msgLst[0]);
+
 
         }
     }

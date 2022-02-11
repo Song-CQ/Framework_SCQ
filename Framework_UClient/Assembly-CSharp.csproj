@@ -63,12 +63,6 @@
     <Compile Include="Assets\Framework_XL\02_UIFramework\UIEventListener.cs" />
     <Compile Include="Assets\Framework_XL\02_UIFramework\UIManager.cs" />
     <Compile Include="Assets\Framework_XL\02_UIFramework\UIWindow.cs" />
-    <Compile Include="Assets\Framework_XL\03_PESocket\PEMsg.cs" />
-    <Compile Include="Assets\Framework_XL\03_PESocket\PEPkg.cs" />
-    <Compile Include="Assets\Framework_XL\03_PESocket\PESession.cs" />
-    <Compile Include="Assets\Framework_XL\03_PESocket\PESocket.cs" />
-    <Compile Include="Assets\Framework_XL\03_PESocket\PETool.cs" />
-    <Compile Include="Assets\Framework_XL\03_PESocket\Properties\AssemblyInfo.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\Language.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\ListTool.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\MeshTool\MeshSplit.cs" />

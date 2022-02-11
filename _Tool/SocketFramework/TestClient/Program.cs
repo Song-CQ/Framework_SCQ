@@ -14,7 +14,7 @@ namespace TestClient
         {
             XLNetTool.SetLog((e) => Console.WriteLine(e), (e) => Console.WriteLine(e), (e) => Console.WriteLine(e));
 
-            XLSocket<Msg, SocketLink> xLSocket = new XLSocket<Msg, SocketLink>();
+            XLSocket<XLNetMsg, SocketLink> xLSocket = new XLSocket<XLNetMsg, SocketLink>();
             xLSocket.StartAsClient("127.0.0.1", 8037);
             Console.WriteLine("启动完成");
 
@@ -25,27 +25,21 @@ namespace TestClient
         }
 
     }
-    [Serializable]
-    public class Msg : XLNetMsg
-    {
-        public string Val;
-    }
 
-    public class SocketLink : XLSocketLink<Msg>
+    public class SocketLink : XLSocketLink<XLNetMsg>
     {
         protected override void OnConnected()
         {
             base.OnConnected();
-            Msg Val = new Msg();
-            Val.Name = "客户端";
-            Val.Val = "sdadasd";
+            XLNetMsg Val = new XLNetMsg();
+            Console.WriteLine("连接成功");
+            Val.msgLst.Add("发送给服务器");
             Send(Val);
         }
-        protected override void OnReciveMsg(Msg msg)
+        protected override void OnReciveMsg(XLNetMsg msg)
         {
             base.OnReciveMsg(msg);
-            Console.WriteLine(msg.Name);
-            Console.WriteLine(msg.Val);
+            Console.WriteLine(msg.msgLst[0]);
         }
 
 

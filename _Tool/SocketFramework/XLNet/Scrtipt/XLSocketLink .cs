@@ -45,7 +45,7 @@ namespace XLNet
         /// <param name="ar"></param>
         private void RcvHeadData(IAsyncResult ar)
         {
-            //try
+            try
             {
                 XLNetPkg netPkg = (XLNetPkg)ar.AsyncState;
                 //获取接收到的字节数组
@@ -77,12 +77,12 @@ namespace XLNet
                     Clear();
                 }
             }
-            //catch (Exception e)
-            //{
-            //    XLNetTool.LogError("接收包头数据错误:"+e.Message);
-            //    Close();
-            //}
-           
+            catch (Exception e)
+            {
+                XLNetTool.LogError("接收包头数据错误:" + e.Message);
+                Close();
+            }
+
 
         }
         /// <summary>
@@ -91,7 +91,7 @@ namespace XLNet
         /// <param name="ar"></param>
         private void RcvBobyData(IAsyncResult ar)
         {
-            //try
+            try
             {
                 XLNetPkg netPkg = (XLNetPkg)ar.AsyncState;
                 //获取接收到的字节数组
@@ -133,11 +133,11 @@ namespace XLNet
                     Clear();
                 }
             }
-            //catch (Exception e)
-            //{
-            //    XLNetTool.LogError("接收包体数据错误:" + e.Message);
-            //    Close();
-            //}
+            catch (Exception e)
+            {
+                XLNetTool.LogError("接收包体数据错误:" + e.Message);
+                Close();
+            }
         }
         #endregion
 
@@ -183,18 +183,16 @@ namespace XLNet
                 //创建序列化类
                 BinaryFormatter bf = new BinaryFormatter();
                 //将流中数据 反序列化
-                Msg msg = bf.Deserialize(ms) as Msg;
-                return msg;
-                //try
-                //{
-                //    Msg msg = bf.Deserialize(ms) as Msg;
-                //    return msg;
-                //}
-                //catch (Exception e)
-                //{
-                //    XLNetTool.LogWarn(e.Message);
-                //    return null;
-                //}                    
+                try
+                {
+                    Msg msg = bf.Deserialize(ms) as Msg;
+                    return msg;
+                }
+                catch (Exception e)
+                {
+                    XLNetTool.LogWarn(e.Message);
+                    return null;
+                }
             }
 
         }
@@ -313,7 +311,7 @@ namespace XLNet
         }
 
         /// <summary>
-        /// Connect network
+        /// 建立连接
         /// </summary>
         protected virtual void OnConnected()
         {
@@ -321,7 +319,7 @@ namespace XLNet
         }
 
         /// <summary>
-        /// Receive network message
+        /// 收到消息
         /// </summary>
         protected virtual void OnReciveMsg(Msg msg)
         {
@@ -337,7 +335,7 @@ namespace XLNet
         }
 
         /// <summary>
-        /// Disconnect network
+        /// 连接断开
         /// </summary>
         protected virtual void OnDisConnected()
         {

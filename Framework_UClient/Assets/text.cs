@@ -130,7 +130,6 @@ public class text : MonoBehaviour
 
         //PENet.PESocket<swedas, peMsg> xLSocket33 = new PENet.PESocket<swedas, peMsg>();
         //xLSocket33.StartAsClient("127.0.0.1", 8037);
-
     }
 
  
@@ -148,15 +147,14 @@ namespace XLNet
         {
             base.OnConnected();
             XLNetMsg Val = new XLNetMsg();
-            Val.Name = "服务器";
-            Val.Val = "你好";
+            Debug.Log("连接成功");
+            Val.msgLst.Add("发送给服务器");
             Send(Val);
         }
         protected override void OnReciveMsg(XLNetMsg msg)
         {
             base.OnReciveMsg(msg);
-            Debug.Log(msg.Name);
-            Debug.Log(msg.Val);
+            Debug.Log(msg.msgLst[0]);
         }
     }   
 

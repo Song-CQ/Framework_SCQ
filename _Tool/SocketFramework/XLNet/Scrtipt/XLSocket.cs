@@ -67,7 +67,8 @@ namespace XLNet
             { 
                 XLNetTool.LogError("客户端连接失败:"+e.Message);
             }
-
+            //继续监听
+            skt.BeginAccept(ClientConnectCB, skt);
         }
         #endregion
 

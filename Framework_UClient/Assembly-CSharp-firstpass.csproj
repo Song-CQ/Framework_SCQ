@@ -352,7 +352,7 @@
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTween\DOTween.dll" />
     <None Include="Assets\Plugins\FutureFrame\FutureLib\LogUtil.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Resources\Shaders\AddOn\FairyGUI-BlurFilter.shader" />
-    <None Include="Assets\Plugins\Plugins3rdLibrary\XlNet\XLNet.dll" />
+    <None Include="Assets\Plugins\FutureFrame\FutureLib\XlNet\XLNet.dll" />
     <None Include="Assets\Standard Assets\RainbowAssets\ver@2.2.0.txt" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\ReadMe - 4.3.0.txt" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DemiLib\Core\DemiLib.xml" />
@@ -555,9 +555,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="XLNet">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\XlNet\XLNet.dll</HintPath>
-    </Reference>
     <Reference Include="RainbowCore">
       <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
@@ -575,6 +572,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="XLNet">
+      <HintPath>Assets\Plugins\FutureFrame\FutureLib\XlNet\XLNet.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\unity\2019.4.32f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
