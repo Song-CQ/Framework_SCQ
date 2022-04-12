@@ -27,7 +27,7 @@ namespace XL.UI
                     item.StartWnd();
                 item.SetVisibleWnd(false);
                 uiWindowsDic.Add(item.GetType().Name, item);
-
+                
             }
         }
 

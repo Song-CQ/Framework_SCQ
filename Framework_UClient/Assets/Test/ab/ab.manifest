@@ -1,0 +1,15 @@
+ManifestFileVersion: 0
+CRC: 1083632319
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ab_test
+      Dependencies:
+        Dependency_0: abimage
+    Info_1:
+      Name: abtest2
+      Dependencies:
+        Dependency_0: abimage
+    Info_2:
+      Name: abimage
+      Dependencies: {}
