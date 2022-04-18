@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -71,6 +71,10 @@
     <Compile Include="Assets\Framework_XL\07_Plug-in\03_MeshEditor\Editor\MeshVortex\MeshVortexInspector.cs" />
     <Compile Include="Assets\Framework_XL\07_Plug-in\03_MeshEditor\Editor\MeshWave\MeshWaveInspector.cs" />
     <Compile Include="Assets\Framework_XL\07_Plug-in\03_MeshEditor\Editor\Utility\EditorToolkit.cs" />
+    <Compile Include="Assets\Samples\ILRuntime\2.0.2\Demo\Editor\ILRuntimeCLRBinding.cs" />
+    <Compile Include="Assets\Samples\ILRuntime\2.0.2\Demo\Editor\ILRuntimeCrossBinding.cs" />
+    <Compile Include="Assets\Samples\ILRuntime\2.0.2\Demo\Editor\ILRuntimeMenu.cs" />
+    <Compile Include="Assets\Samples\ILRuntime\2.0.2\Demo\Scripts\Examples\08_MonoBehaviour\Editor\MonoBehaviourAdapterEditor.cs" />
     <Compile Include="Assets\Test\Editor\text.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\Editor\ConfigBatTool\ConfigBatTool.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\Editor\OpenPathTool\OpenPathTool.cs" />
@@ -364,6 +368,15 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.12.5\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="ILRuntime.Mono.Cecil">
+      <HintPath>Library\PackageCache\com.ourpalm.ilruntime@2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="ILRuntime.Mono.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.ourpalm.ilruntime@2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="ILRuntime.Mono.Cecil.Mdb">
+      <HintPath>Library\PackageCache\com.ourpalm.ilruntime@2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -829,6 +842,9 @@
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ILRuntime">
+      <HintPath>Library\ScriptAssemblies\ILRuntime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
