@@ -5,10 +5,12 @@
     类型: 逻辑脚本
 	功能：Nothing
 *****************************************************/
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 
 namespace ProjectApp
 {
@@ -20,7 +22,13 @@ namespace ProjectApp
 
         private List<ItemData> itemDataLst;
 
-        private void Start()
+        public void StartLoad()
+        {
+            Debug.Log("开始加载");
+            StartCoroutine(GameStart());
+        }
+
+        private IEnumerator GameStart()
         {
             itemDataLst = new List<ItemData>();
 
@@ -46,8 +54,12 @@ namespace ProjectApp
             eventTrigger.triggers.Add(EndDrag);
 
 
-            var assetBundlePath = Application.dataPath + "/Test/ab";
-            var myLoadedAssetBundle = AssetBundle.LoadFromFile(Path.Combine(assetBundlePath, "sh_img"));
+            var assetBundlePath = "file://"+Application.persistentDataPath + "/AssetBundle/imgab";
+            var request = UnityWebRequestAssetBundle.GetAssetBundle(assetBundlePath);
+
+            yield return request;
+            var myLoadedAssetBundle = AssetBundle.LoadFromMemory(request.downloadHandler.data);
+
             Sprite[] sprites = myLoadedAssetBundle.LoadAllAssets<Sprite>();
             int Conts = 5;
 
@@ -85,6 +97,8 @@ namespace ProjectApp
                 }
 
             }
+            isStart = true;
+
         }
 
         private Vector2 startPot;
@@ -120,7 +134,10 @@ namespace ProjectApp
 
         private void Update()
         {
-
+            if (!isStart)
+            {
+                return;
+            }
 
 
             RoodItem.pot = RoodItem.trf.localPosition;
@@ -145,6 +162,7 @@ namespace ProjectApp
 
         
         public float MoveSeep = 10;
+        private bool isStart =false;
 
         public class ItemData
         {
