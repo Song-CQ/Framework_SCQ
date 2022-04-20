@@ -56,9 +56,10 @@ namespace ProjectApp
 
             var assetBundlePath = "file://"+Application.persistentDataPath + "/AssetBundle/imgab";
             var request = UnityWebRequestAssetBundle.GetAssetBundle(assetBundlePath);
-
-            yield return request;
-            var myLoadedAssetBundle = AssetBundle.LoadFromMemory(request.downloadHandler.data);
+            
+            yield return request.SendWebRequest();
+            //var myLoadedAssetBundle = AssetBundle.LoadFromMemory(request.downloadHandler.data);
+            var myLoadedAssetBundle = DownloadHandlerAssetBundle.GetContent(request);
 
             Sprite[] sprites = myLoadedAssetBundle.LoadAllAssets<Sprite>();
             int Conts = 5;
@@ -114,7 +115,7 @@ namespace ProjectApp
         {
             PointerEventData pointerEventData = arg0 as PointerEventData;
             startPot = pointerEventData.position;
-            Debug.Log("开始拖拽"+ startPot);
+           // Debug.Log("开始拖拽"+ startPot);
         }
 
         private void OnDrag(BaseEventData arg0)
@@ -124,12 +125,12 @@ namespace ProjectApp
             Vector2 pot = pointerEventData.position - startPot;
             RoodItem.trf.localPosition = (Vector2)RoodItem.trf.localPosition + pot * Time.deltaTime * MoveSeep;
             startPot = pointerEventData.position;
-            Debug.Log("拖拽" + pointerEventData.position);
+            //Debug.Log("拖拽" + pointerEventData.position);
         }
 
         public void OnClick()
         {
-            Debug.Log("点击");
+            //Debug.Log("点击");
         }
 
         private void Update()

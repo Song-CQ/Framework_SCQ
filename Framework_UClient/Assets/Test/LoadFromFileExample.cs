@@ -17,6 +17,9 @@ public class LoadFromFileExample : MonoBehaviour
 
     IEnumerator Start()
     {
+        OnCom();
+        yield break;
+
         var assetBundlePath = Application.persistentDataPath + "/AssetBundle/imgab";
 
        // DirectoryInfo directoryInfoas = Directory.CreateDirectory(assetBundlePath + "/...");
@@ -30,6 +33,7 @@ public class LoadFromFileExample : MonoBehaviour
 
         }
         Debug.Log("¿ªÊ¼ÏÂÔØ");
+        Debug.Log(assetBundlePath);
         UnityWebRequest unityWebRequestAssetBundle = UnityWebRequest.Get("https://gzc-download.weiyun.com/ftn_handler/c3c5b96e92f6384abf4c4f2fa970389cc03ba3b3fac9197637c53b5afedf1cb36e78262f56f3c71622b7d2f9d11c24afa9f8bfb0dc4fc6d45fa3411bf43d0264/imgab?fname=imgab&from=30113&version=3.3.3.3");
 
         unityWebRequestAssetBundle.downloadHandler = new DownloadHandlerFile(assetBundlePath);
@@ -58,7 +62,7 @@ public class LoadFromFileExample : MonoBehaviour
         //    yield break;
         //}
 
-        //OnCom();
+        
 
 
 
