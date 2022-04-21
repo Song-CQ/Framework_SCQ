@@ -28,6 +28,9 @@ namespace ProjectApp
             StartCoroutine(GameStart());
         }
 
+
+
+
         private IEnumerator GameStart()
         {
             itemDataLst = new List<ItemData>();
