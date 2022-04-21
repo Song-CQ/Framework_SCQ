@@ -17,7 +17,13 @@ public class LoadFromFileExample : MonoBehaviour
 
     IEnumerator Start()
     {
+<<<<<<< HEAD
         
+=======
+        OnCom();
+        yield break;
+
+>>>>>>> 1293644c65bff27a541748b2abb1bd5068ecff31
         var assetBundlePath = Application.persistentDataPath + "/AssetBundle/imgab";
 
         if (!Directory.Exists(assetBundlePath+"/.."))
@@ -34,7 +40,10 @@ public class LoadFromFileExample : MonoBehaviour
 
         }
         Debug.Log("¿ªÊ¼ÏÂÔØ");
+
         UnityWebRequest unityWebRequestAssetBundle = UnityWebRequest.Get("https://xl2728295639-1307682036.cos.ap-guangzhou.myqcloud.com/AssetBundles/imgab");
+
+       
 
         unityWebRequestAssetBundle.downloadHandler = new DownloadHandlerFile(assetBundlePath);
 
@@ -62,7 +71,11 @@ public class LoadFromFileExample : MonoBehaviour
         //    yield break;
         //}
 
+<<<<<<< HEAD
         OnCom();
+=======
+        
+>>>>>>> 1293644c65bff27a541748b2abb1bd5068ecff31
 
 
 
