@@ -103,6 +103,7 @@
     <Compile Include="Assets\Samples\ILRuntime\2.0.2\Demo\Scripts\Examples\12_Performance\Performance.cs" />
     <Compile Include="Assets\Test\GameRoodMgr.cs" />
     <Compile Include="Assets\Test\LoadFromFileExample.cs" />
+    <Compile Include="Assets\Test\Mgr\ILRuntimeMgr.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\ModuleMgr\CtrlConst_AutoCread.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\ModuleMgr\ModelConst_AutoCread.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
