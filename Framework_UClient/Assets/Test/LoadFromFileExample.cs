@@ -17,13 +17,7 @@ public class LoadFromFileExample : MonoBehaviour
 
     IEnumerator Start()
     {
-<<<<<<< HEAD
-        
-=======
-        OnCom();
-        yield break;
-
->>>>>>> 1293644c65bff27a541748b2abb1bd5068ecff31
+      
         var assetBundlePath = Application.persistentDataPath + "/AssetBundle/imgab";
 
         if (!Directory.Exists(assetBundlePath+"/.."))
@@ -35,7 +29,7 @@ public class LoadFromFileExample : MonoBehaviour
         if (!File.Exists(assetBundlePath))
         {
             File.Delete(assetBundlePath);
-     
+            
 
 
         }
@@ -71,11 +65,9 @@ public class LoadFromFileExample : MonoBehaviour
         //    yield break;
         //}
 
-<<<<<<< HEAD
+
         OnCom();
-=======
-        
->>>>>>> 1293644c65bff27a541748b2abb1bd5068ecff31
+
 
 
 
