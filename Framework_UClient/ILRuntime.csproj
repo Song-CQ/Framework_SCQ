@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{307D8FAD-A19F-409D-9C0D-D54B51033E92}</ProjectGuid>
+    <ProjectGuid>{317C615A-304C-5469-D3C9-8A5A5E25B50D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>DOTweenPro.Scripts</AssemblyName>
+    <AssemblyName>ILRuntime</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -56,18 +56,100 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenDeAudio.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenDeUnityExtended.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenProShortcuts.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenTextMeshPro.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenTk2d.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\Method\CLRMethod.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\Method\ExceptionHandler.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\Method\ILMethod.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\Method\IMethod.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\Method\IMethodExtensions.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\TypeSystem\CLRType.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\TypeSystem\ILGenericParameterType.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\TypeSystem\ILType.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\TypeSystem\IType.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\CLR\Utils\Extensions.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Other\ByReferenceKeyComparer.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Other\DelegateExportAttribute.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Other\NeedAdaptorAttribute.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Other\ThreadSafeDictionary.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Other\UncheckedList.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Other\UncheckedStack.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Reflection\Extensions.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Reflection\ILRuntimeConstructorInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Reflection\ILRuntimeFieldInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Reflection\ILRuntimeMethodInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Reflection\ILRuntimeParameterInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Reflection\ILRuntimePropertyInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Reflection\ILRuntimeType.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Reflection\ILRuntimeWrapperType.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Adaptors\CLRCrossBindingAdaptors.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\CLRBinding\BindingCodeGenerator.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\CLRBinding\BindingGeneratorExtensions.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\CLRBinding\CLRBindingUtils.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\CLRBinding\CommonBindingGenerator.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\CLRBinding\ConstructorBindingGenerator.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\CLRBinding\FieldBindingGenerator.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\CLRBinding\MethodBindingGenerator.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\CLRBinding\ValueTypeBindingGenerator.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\BreakPointContext.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\BreakpointInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\DebugMessageType.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\DebugService.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\DebugSocket.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\DebuggerServer\DebuggerServer.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\CSBindBreakpoint.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\CSDeleteBreakpoint.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\CSEnumChildren.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\CSExecute.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\CSResolveIndexer.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\CSResolveVariable.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\CSStep.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\SCAttachResult.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\SCBindBreakpointResult.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\SCBreakpointHit.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\SCEnumChildrenResult.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\SCModuleLoaded.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\SCResolveVariableResult.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\SCStepComplete.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\Protocol\SCThreadStarted.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\StackFrameInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\StepTypes.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Debugger\VariableInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Enviorment\AppDomain.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Enviorment\CLRRedirections.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Enviorment\CrossBindingAdaptor.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Enviorment\CrossBindingCodeGenerator.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Enviorment\CrossBindingMethodInfo.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Enviorment\DelegateManager.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Enviorment\InvocationContext.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Enviorment\ValueTypeBinder.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Extensions.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\ILRuntimeJITAttribute.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\DelegateAdapter.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\ILIntepreter.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\ILRuntimeException.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\ILTypeInstance.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\OpCodes\OpCode.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\OpCodes\OpCodeEnum.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\OpCodes\OpCodeREnum.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\AsyncJITCompileWorker.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\CodeBasicBlock.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\ILIntepreter.Register.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\JITCompiler.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\Optimizer.BCP.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\Optimizer.ELDC.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\Optimizer.FCP.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\Optimizer.InlineMethod.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\Optimizer.RegisterCleanup.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Intepreter\RegisterVM\Optimizer.Utils.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Stack\RuntimeStack.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Stack\StackFrame.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Stack\StackObject.cs" />
+    <Compile Include="Packages\com.ourpalm.ilruntime\Runtime\Stack\StackObjectAllocator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenPro.Scripts.asmdef" />
-    <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenPro.dll" />
-    <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\readme.txt" />
-    <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\DOTweenPro\DOTweenPro.XML" />
+    <None Include="Packages\com.ourpalm.ilruntime\Plugins\ILRuntime.Mono.Cecil.dll" />
+    <None Include="Packages\com.ourpalm.ilruntime\ILRuntime.asmdef" />
+    <None Include="Packages\com.ourpalm.ilruntime\Plugins\ILRuntime.Mono.Cecil.Pdb.dll" />
+    <None Include="Packages\com.ourpalm.ilruntime\Plugins\ILRuntime.Mono.Cecil.Mdb.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -687,10 +769,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DOTween.Modules.csproj">
-      <Project>{410B7BDF-BDE4-7F87-9C40-484262B44861}</Project>
-      <Name>DOTween.Modules</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
