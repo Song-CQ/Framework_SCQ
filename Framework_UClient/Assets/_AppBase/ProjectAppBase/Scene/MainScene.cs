@@ -56,7 +56,8 @@ namespace ProjectApp
             {
                 //InitAssets();
             }
-            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.MainUI_Open);
+            //接入登录 加载热更模块
+
         }
         private void InitAssets()
         {

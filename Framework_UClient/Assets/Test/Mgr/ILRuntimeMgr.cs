@@ -41,8 +41,13 @@ namespace FutureCore
 #else
             dicPath = Application.persistentDataPath;
 #endif
-            StartCoroutine(LoadAssembly());
+            
 
+        }
+
+        public void StartLoadHotFix()
+        {
+            StartCoroutine(LoadAssembly());
         }
 
         private IEnumerator LoadAssembly()

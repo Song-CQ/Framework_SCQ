@@ -122,6 +122,10 @@ namespace FutureCore
         /// </summary>
         public static UIDriverEnem UIDriver = UIDriverEnem.FGUI;
 
+        /// <summary>
+        /// 是否UI热更
+        /// </summary>
+        public static bool IsHotFix_UI = true;
         /// 项目控制参数
         // 控制器关闭列表
         public static List<string> CtrlDisableList = new List<string>();
