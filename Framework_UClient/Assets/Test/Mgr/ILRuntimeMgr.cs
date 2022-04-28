@@ -6,7 +6,7 @@
     功能: ILRuntime C#热更管理器
 *****************************************************/
 using ILRuntime.Runtime.Enviorment;
-using System.Collections.Generic;
+using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -15,15 +15,21 @@ namespace FutureCore
 {
     public class ILRuntimeMgr : BaseMonoMgr<ILRuntimeMgr>
     {
-        public AppDomain AppDomain { get; private set; }
+        private AppDomain this_AppDomain;
 
         private MemoryStream dll_ms;
         private MemoryStream pdb_ms;
 
         private string dicPath;
 
-        private string dllPath = "";
-        private string pdbPath = "";
+        private string dllPath = @"HotFix\HotFix_Project.dll";
+        private string pdbPath = @"HotFix\HotFix_Project.pdb";
+
+
+        private void Start()
+        {
+            Init();
+        }
 
         public override void Init()
         {
@@ -31,7 +37,7 @@ namespace FutureCore
 
             dicPath = string.Empty;
 #if UNITY_EDITOR
-            dicPath = Application.streamingAssetsPath;
+            dicPath = "file:///" + Application.streamingAssetsPath;
 #else
             dicPath = Application.persistentDataPath;
 #endif
@@ -41,14 +47,61 @@ namespace FutureCore
 
         private IEnumerator LoadAssembly()
         {
+
             string _dllPath = Path.Combine(dicPath,dllPath);
-            UnityWebRequest loadRequestDll = UnityWebRequest.Get();
+            UnityWebRequest loadRequestDll = UnityWebRequest.Get(_dllPath);
 
+            yield return loadRequestDll.SendWebRequest();
+            if (loadRequestDll.isNetworkError)
+            {
+                LogUtil.LogError($"[ILRuntimeMgr]加载热更Dll错误,路劲:{_dllPath}");
+                //to do 下载
+            }
+            else
+            {
+                dll_ms = new MemoryStream(loadRequestDll.downloadHandler.data);
+            }
 
+#if UNITY_EDITOR
+            //PDB文件是调试数据库，如需要在日志中显示报错的行号，则必须提供PDB文件，不过由于会额外耗用内存，正式发布时请将PDB去掉，下面LoadAssembly的时候pdb传null即可
+            string _pdbPath = Path.Combine(dicPath, pdbPath);
+            UnityWebRequest loadRequestPdb = UnityWebRequest.Get(_pdbPath);
 
+            yield return loadRequestPdb.SendWebRequest();
+            if (loadRequestPdb.isNetworkError)
+            {
+                LogUtil.LogError($"[ILRuntimeMgr]加载调试文件Pdb错误,路劲:{_pdbPath}");
+            }
+            else
+            {
+                pdb_ms = new MemoryStream(loadRequestPdb.downloadHandler.data);
+            }
+#endif
 
+            this_AppDomain = new AppDomain();
 
+#if UNITY_EDITOR
+            this_AppDomain.LoadAssembly(dll_ms,pdb_ms,new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+#else
+            this_AppDomain.LoadAssembly(dll_ms);
+#endif
 
+            OnHotFixLoaded();
+            
         }
+
+        void OnHotFixLoaded()
+        {
+
+            LogUtil.EnableLog(true);
+            LogUtil.SetLogCallBack_Log(Debug.Log, Debug.LogFormat);
+            LogUtil.SetLogCallBack_LogError(Debug.LogError, Debug.LogErrorFormat);
+            LogUtil.SetLogCallBack_LogWarning(Debug.LogWarning, Debug.LogWarningFormat);
+            //HelloWorld，第一次方法调用
+            this_AppDomain.Invoke("HotFix_Project.MainTest", "ShowMain", null, null);
+
+            Debug.Log("执行完毕");
+        }
+
     }
 }

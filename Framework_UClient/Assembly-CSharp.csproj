@@ -164,8 +164,8 @@
     <None Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.shader" />
     <None Include="Assets\Framework_XL\06_Shader\影子\MobileARShadow.shader" />
     <None Include="Assets\Framework_XL\06_Shader\镜子\Mirror.shader" />
+    <None Include="Assets\StreamingAssets\HotFix\HotFix_Project.dll" />
     <None Include="Assets\_App\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll" />
-    <None Include="Assets\StreamingAssets\HotFix_Project.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
