@@ -23,7 +23,20 @@ namespace FutureCore
             File.WriteAllText(targetPath, classStr, new UTF8Encoding(false));
         }
 
-
+        public static bool DeleteFileOrDirectory(string path)
+        {  
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+                return true;
+            }
+            if (Directory.Exists(path))
+            {
+                Directory.Delete(path);
+                return true;
+            }
+            return false;
+        }
 
     }
 }

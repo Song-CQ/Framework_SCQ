@@ -36,6 +36,10 @@ namespace FutureEditor
         public readonly static string ResFGUIPath = ResFGUIPath_Assets.Replace(Application.dataPath, string.Empty);
 
 
+        /// <summary>
+        /// 项目解决方案路劲
+        /// </summary>
+        public readonly static string Project_Sin_Path = $"{Application.dataPath}/../{ProjectApp.AppFacade.AppName}_UClient.sln";
 
 
     }

@@ -9,7 +9,7 @@ namespace ProjectApp
         /// <summary>
         /// 应用代号
         /// </summary>
-        public const string AppName = "Framework_SCQ";
+        public const string AppName = "Framework";
 
         /// <summary>
         /// 项目描述

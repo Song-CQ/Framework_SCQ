@@ -2,6 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using FutureCore;
 
 namespace FutureEditor
 {
@@ -79,22 +80,24 @@ namespace FutureEditor
             CreateTool,
             AutoRegisterTool,
         }
+     
+        #region UnityTool
         private void RefreshUI_UnityTool()
         {
-            GUILayout.BeginArea(new Rect(10,35, 200, 200));
+            
+            GUILayout.BeginArea(new Rect(10, 35, 200, 800));
+            GUILayout.Label("Unity Editor",  GUILayout.Height(20),GUILayout.Width(80));
             if (GUILayout.Button("重启Unity", GUILayout.Height(40), GUILayout.Width(100)))
             {
                 UnityEditorTool.StartRest();
-            }
+            }     
             GUILayout.EndArea();
-
-
 
             GUILayout.BeginArea(new Rect(550, 60, 300, 500));
             GUILayout.BeginVertical();
 
             GUILayout.BeginHorizontal();
-       
+
             GUILayout.Label("AppName:", GUILayout.Width(80));
             GUILayout.Space(30);
             GUILayout.TextField(ProjectApp.AppFacade.AppName);
@@ -102,7 +105,7 @@ namespace FutureEditor
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("AppDesc", GUILayout.Width(80));
+            GUILayout.Label("AppDesc:", GUILayout.Width(80));
             GUILayout.Space(30);
             GUILayout.TextField(ProjectApp.AppFacade.AppDesc);
 
@@ -111,8 +114,33 @@ namespace FutureEditor
 
             GUILayout.EndVertical();
             GUILayout.EndArea();
+
+            GUILayout.BeginArea(new Rect(10, 235, 200, 800));
+            GUILayout.Label("Visual Studio Editor", GUILayout.Height(20));
+            if (GUILayout.Button("删除VS解决方案", GUILayout.Height(40), GUILayout.Width(100)))
+            {
+                DeleteSin();
+            }
+            GUILayout.EndArea();
+
         }
 
+        private void DeleteSin()
+        {
+            if (FutureCore.FileUtil.DeleteFileOrDirectory(UnityEditorPathConst.Project_Sin_Path))
+            {
+                EditorUtility.DisplayDialog("删除完成!", "请重新打开VS,生成解决方案!", "确定");
+            }
+            else
+            {
+                EditorUtility.DisplayDialog("删除失败!", "请确认是否解决方案和项目名一致或文件不存在!", "确定");
+            }
+
+
+        }
+        #endregion
+
+        #region ExcelTool
         private void RefreshUI_ExcelTool()
         {
 
@@ -145,7 +173,7 @@ namespace FutureEditor
             GUILayout.EndVertical();
             GUILayout.EndArea();
         }
-
+        #endregion
 
         #region CreateTool
 
@@ -165,6 +193,8 @@ namespace FutureEditor
             GUILayout.EndArea();
         }
         #endregion
+
+        #region AutoRegisterTool
         private void RefreshUI_AutoRegisterTool()
         {
             GUILayout.BeginArea(new Rect(10, 35, 200, 200));
@@ -181,7 +211,18 @@ namespace FutureEditor
             GUILayout.EndArea();
         }
 
-
+        #endregion
     }
 }
 
+/*
+增加删除解决方案 
+
+增加编辑该脚本功能
+
+
+
+
+ 
+ 
+ */
