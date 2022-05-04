@@ -9,15 +9,12 @@ namespace FutureCore
     {
         // 未启动
         Unstart = -10,
-        // 资源版本热更新
-        //[InspectorName("资源版本热更新")]
+        // 检测版本更新
         VersionUpdate = 0,
-        // 资源初始化
+        // 资源初始化完成
         AssetsInit = 20,
-        // 基础资源初始化
-        PermanentAssetsInit = 25,
-        // 连接登录
-        ConnectLogin = 30,
+        // 加载热更代码
+        LoadHotFix = 30,
         // 远程存储初始化
         PreferencesInit = 60,
         // 配置表初始化
@@ -75,6 +72,8 @@ namespace FutureCore
             currApplication.Quit();
         }
 
+        
+
         #endregion
 
 
@@ -123,18 +122,20 @@ namespace FutureCore
             AppDispatcher.Instance.Dispatch(AppMsg.UI_DisplayLoadingUI);
         }
 
-        //public static void HideLoadingUI(bool isDelay = false)
-        //{
-        //    if (!isDelay)
-        //    {
-        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_HideLoadingUI);
-        //        return;
-        //    }
-        //    TimerUtil.Simple.AddTimer(0.5f, () =>
-        //    {
-        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_HideLoadingUI);
-        //    });
-        //}
+
+
+        public static void SetLoadingSchedule(ProgressState state,Action onComplete = null)
+        {
+            GenericDispatcher.Instance.Dispatch<int, Action>(AppMsg.UI_SetLoadingValueUI,(int)state,onComplete);
+
+        }
+        public static void HideLoadingUI(bool isDelay = false)
+        {
+            
+             AppDispatcher.Instance.Dispatch(AppMsg.UI_HideLoadingUI);
+       
+            
+        }
 
         //public static void SetLoadingUI(ProgressState state, bool isDelay = false)
         //{

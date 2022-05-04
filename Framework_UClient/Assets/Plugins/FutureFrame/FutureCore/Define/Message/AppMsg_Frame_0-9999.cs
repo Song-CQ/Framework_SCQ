@@ -35,11 +35,25 @@ namespace FutureCore
         public static readonly uint System_ManagerStartUpComplete = ++Cursor_BASE;
         // 系统资源初始化完成
         public static readonly uint System_AssetsInitComplete = ++Cursor_BASE;
+        /// <summary>
+        /// 加载热更代码完成
+        /// </summary>
+        public static readonly uint System_LoadHotFixComplete = ++Cursor_BASE;
 
 
-        ///界面消息
-        // 显示加载界面
+
+        /// <summary>
+        /// 显示加载界面
+        /// </summary>
         public static readonly uint UI_DisplayLoadingUI = ++Cursor_BASE;
+        /// <summary>
+        /// 设置加载界面进度
+        /// </summary>
+        public static readonly uint UI_SetLoadingValueUI = ++Cursor_BASE;
+        /// <summary>
+        /// 隐藏加载界面
+        /// </summary>
+        public static readonly uint UI_HideLoadingUI = ++Cursor_BASE;
 
 
         /// 场景消息

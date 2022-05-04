@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件: ModuleMgrRegister.cs
     作者: Clear
-    日期: 2022/2/7 19:17:9
+    日期: 2022/5/4 12:53:10
     类型: 自动创建
     功能: 模块数据注册
 *****************************************************/
@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public static class ModuleMgrRegister 
+    public static partial class ModuleMgrRegister 
     {
         public static void AutoRegisterModel()
         {

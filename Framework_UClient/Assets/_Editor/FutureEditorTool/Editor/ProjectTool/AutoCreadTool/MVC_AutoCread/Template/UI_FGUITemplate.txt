@@ -16,6 +16,8 @@ namespace ProjectApp
     {
         private #ClassName#UICtrl uiCtrl;
         private #ClassName#Model model;
+        private FGUIEntity fGuiEntity;
+        //private UI.G000_#ClassName#.UI_#ClassName# ui;
 
         public #ClassName#UI(#ClassName#UICtrl ctrl) : base(ctrl)
         {
@@ -45,7 +47,8 @@ namespace ProjectApp
 
         protected override void OnBind()
         {
-            //ui = baseUI as UI.G000_#ClassName#.UI_#ClassName#;
+            fGuiEntity = uiEntity as FGUIEntity;
+            //ui = fGuiEntity.ui as UI.G000_#ClassName#.UI_#ClassName#;
         }
 
         protected override void OnOpenBefore(object args)

@@ -68,6 +68,9 @@ namespace ProjectApp
             //// WSNetMgr
             //WSNetMgrRegister.AutoRegisterProtoType();
             // ModuleMgr
+
+            ModuleMgrRegister.RegisterCommom();
+
             ModuleMgrRegister.AutoRegisterModel();
             ModuleMgrRegister.AutoRegisterUIType();
             ModuleMgrRegister.AutoRegisterCtrl();

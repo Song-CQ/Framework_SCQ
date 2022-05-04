@@ -17,6 +17,7 @@ namespace FutureEditor
     public static class ModuleMgr_AutoCread
     {
         private static string ModuleUIPath = UnityEditorPathConst.ModuleUIPath_Assets;
+        private static string CommonModuleUIPath = UnityEditorPathConst.CommonModuleUIPath_Assets;
 
         private const string ConstClassTemplate = @"/****************************************************
     文件: #ClassName#Const.cs
@@ -27,7 +28,7 @@ namespace FutureEditor
 *****************************************************/
 namespace ProjectApp
 {
-    public static class #ClassName#Const
+    public static partial class #ClassName#Const
     {
 #Val#
     }   
@@ -47,7 +48,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public static class ModuleMgrRegister 
+    public static partial class ModuleMgrRegister 
     {
         public static void AutoRegisterModel()
         {
@@ -88,7 +89,7 @@ namespace ProjectApp
     类型: 框架自动创建(请勿修改)
 	功能: UI打开关闭消息
 *****************************************************/
-namespace FutureCore
+namespace ProjectApp
 {
     public static partial class UICtrlMsg
     {
@@ -105,11 +106,17 @@ namespace FutureCore
         public static void AutoRegister()
         {
             string[] DirectoriePath = Directory.GetDirectories(ModuleUIPath);
+            //string[] CommDirectoriePath = Directory.GetDirectories(CommonModuleUIPath);
             List<string> nameLst = new List<string>();
             foreach (string path in DirectoriePath)
             {
                 nameLst.Add(path.Replace(ModuleUIPath + @"\", string.Empty));
-            }          
+            }       
+            //foreach (string path in CommDirectoriePath)
+            //{
+            //    nameLst.Add(path.Replace(CommonModuleUIPath + @"\", string.Empty));
+            //}       
+                    
             Debug.Log("[ModuleMgr_AutoCread]开始自动模块注册");
             CreadUIConst(nameLst);
             CreadCtrlConst(nameLst);

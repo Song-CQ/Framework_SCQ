@@ -91,8 +91,13 @@ namespace FutureCore
             this_AppDomain.LoadAssembly(dll_ms);
 #endif
 
-            OnHotFixLoaded();
-            
+            OnLoadHotFixComplete();
+           
+        }
+
+        private void OnLoadHotFixComplete()
+        {
+            AppDispatcher.Instance.Dispatch(AppMsg.System_LoadHotFixComplete);
         }
 
         void OnHotFixLoaded()

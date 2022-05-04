@@ -17,6 +17,11 @@ namespace FutureEditor
         /// </summary>      
         public readonly static string ModuleUIPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ModuleUIPath);
         public readonly static string ModuleUIPath = ModuleUIPath_Assets.Replace(Application.dataPath,string.Empty);
+        /// <summary>
+        /// CommModuleUI路劲
+        /// </summary>      
+        public readonly static string CommonModuleUIPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.CommonModuleUIPath);
+        public readonly static string CommonModuleUIPath = CommonModuleUIPath_Assets.Replace(Application.dataPath,string.Empty);
 
         /// <summary>
         /// 自动注册目录

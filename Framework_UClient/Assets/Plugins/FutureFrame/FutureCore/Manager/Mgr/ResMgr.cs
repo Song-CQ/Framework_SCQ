@@ -65,7 +65,9 @@ namespace FutureCore
 
         public void InitAssets()
         {
-            throw new NotImplementedException();
+            ////检测版本资源更新
+            
+            AppDispatcher.Instance.Dispatch(AppMsg.System_AssetsInitComplete);
         }
 
         public UIPackage AddFguiPackage(string commonPackage, string resUIPath)

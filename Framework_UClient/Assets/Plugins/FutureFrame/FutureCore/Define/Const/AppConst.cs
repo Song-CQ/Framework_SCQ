@@ -100,10 +100,7 @@ namespace FutureCore
         public static string InternalLanguage = "en";
         // 默认语言
         public static string DefaultLanguage = "en";
-        // 是否提示App更新
-        //public static bool IsNeedPromptAppUpdate = true;
-        // 显示拉起应用闪屏时间
-        //public static float ShowLoadingSplashPageTime = 0.5f;
+        
         // Loading进度进度是否延迟
         public static bool IsLoadingDelay = true;
         // Loading进度延迟时间

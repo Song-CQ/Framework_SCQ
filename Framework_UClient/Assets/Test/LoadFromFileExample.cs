@@ -24,6 +24,7 @@ public class LoadFromFileExample : MonoBehaviour
         {
             Directory.CreateDirectory(assetBundlePath + "/..");
         }
+        
     
 
         if (!File.Exists(assetBundlePath))
@@ -33,7 +34,7 @@ public class LoadFromFileExample : MonoBehaviour
 
 
         }
-        Debug.Log("©╙й╪обть");
+        Debug.Log("О©╫О©╫й╪О©╫О©╫О©╫О©╫");
 
         UnityWebRequest unityWebRequestAssetBundle = UnityWebRequest.Get("https://xl2728295639-1307682036.cos.ap-guangzhou.myqcloud.com/AssetBundles/imgab");
 
@@ -45,15 +46,15 @@ public class LoadFromFileExample : MonoBehaviour
        
         while (!unityWebRequestAssetBundle.isDone)
         {
-            Debug.Log("обть╫Ь╤х" + unityWebRequestAssetBundle.downloadProgress);
+            Debug.Log("О©╫О©╫О©╫ь╫О©╫О©╫О©╫" + unityWebRequestAssetBundle.downloadProgress);
             yield return new WaitForSeconds(1);
         }
 
 
-        Debug.Log("обть╫Ь╤х" + unityWebRequestAssetBundle.downloadProgress);
+        Debug.Log("О©╫О©╫О©╫ь╫О©╫О©╫О©╫" + unityWebRequestAssetBundle.downloadProgress);
         if (unityWebRequestAssetBundle.isNetworkError)
         {
-            Debug.LogError("обть╢МнС");
+            Debug.LogError("О©╫О©╫О©╫ь╢О©╫О©╫О©╫");
             yield break;
         }
 

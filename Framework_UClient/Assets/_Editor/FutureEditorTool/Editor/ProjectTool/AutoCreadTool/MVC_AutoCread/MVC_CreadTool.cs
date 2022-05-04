@@ -18,6 +18,7 @@ namespace FutureEditor
     public static class MVC_CreadTool
     {
         public static string outPath =  UnityEditorPathConst.ModuleUIPath_Assets;
+        public static string commOutPath =  UnityEditorPathConst.CommonModuleUIPath_Assets;
         public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\Editor\ProjectTool\AutoCreadTool\MVC_AutoCread\Template";
 
 
@@ -28,8 +29,8 @@ namespace FutureEditor
         private static string CreadFGUIMVC(string name)
         {
           
-            string[] nasmes = Directory.GetDirectories(outPath);
-            foreach (var item in nasmes)
+            string[] names = Directory.GetDirectories(outPath);
+            foreach (var item in names)
             {
                 if (item.Replace(outPath+@"\", string.Empty) == name)
                 {
@@ -38,12 +39,23 @@ namespace FutureEditor
                     return "已有同名模块";
                 }
             }
+            names = Directory.GetDirectories(commOutPath);
+            foreach (var item in names)
+            {
+                if (item.Replace(commOutPath + @"\", string.Empty) == name)
+                {
+
+                    if (Directory.GetFiles(item).Length != 0)
+                        return "通用模块已有同名模块";
+                }
+            }
+
             DirectoryInfo directoryInfo = Directory.CreateDirectory(outPath + @"\" + name);
             Debug.LogFormat("[MVC_AudioCread]开始生成{0}MVC代码".AddColor(ColorType.淡青), name);
             CreadUI_FGUI(directoryInfo, name);
             CreadUICtr(directoryInfo, name);
-            CreadCtr(directoryInfo, name);       
-            CreadModel(directoryInfo, name);                            
+            CreadCtr(directoryInfo, name);
+            CreadModel(directoryInfo, name);
             ModuleMgr_AutoCread.AutoRegister();
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
