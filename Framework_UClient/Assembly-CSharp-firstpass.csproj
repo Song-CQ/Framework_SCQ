@@ -56,75 +56,6 @@
     <Analyzer Include="D:\Inst\VS\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\App.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\AppFacade_Frame.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\AppGlobal.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\App\FCApplication.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\GObjectsPool.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ListPool.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPool.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPoolStatic.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Singleton\Singleton.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Singleton\SingletonMono.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\TaskSequence\TaskSequence.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Common\Timer\SimpleTimer.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Ctr\BaseCtrl.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Ctr\BaseUICtrl.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\Model\BaseModel.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\UI\BaseUI.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\UI\UIEntity.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\UI\UIInfo.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\Scene\BaseScene.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Core\UI\BaseUIDriver.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\AppConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\AppObjConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\CameraConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\EncryptConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\LayerMaskConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\ScreenConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\UILayerConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\VectorConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Const\YieldConst.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Enem\UIDriverEnem.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Message\AppMsg_Frame_0-9999.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Define\Message\MainThreadMsg_Frame_0-9999.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Base\BaseDispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Base\BaseGenericDispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Base\BaseThreadDispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Common\Dispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Common\GenericDispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\AppDispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\CtrlDispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\MainThreadDispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Dispatcher\Inherit\UICtrlDispatcher.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Engine\EngineEventSystem.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Extend\Engine\GameObjectExtend.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Extend\System\StringExtend.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Helper3rd\DOTweenHelper.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\BaseMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\BaseMonoMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Base\IMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\GlobalMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\CameraMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\GameMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\ModuleMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\ResMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\SceneMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\Mgr\SceneSwitchMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\InputMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\TimerMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\UIMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Manager\MonoMgr\VersionUpdateMgr.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\ColorUtil\ColorUtil.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\EncryptUtil\AESEncryptUtil.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\EngineUtil\EngineUtil.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\FileUtil\FileUtil.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\FillUtil\ClassToFillTool.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\PrefsUtil\PrefsUtil.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\SerializeUtil\SerializeUtil.cs" />
-    <Compile Include="Assets\Plugins\FutureFrame\FutureCore\Utility\TimerUtil\TimerUtil.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FuturePlugin\Define\Const\LauncherConst.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FuturePlugin\FutureFrame\FutureFrame.cs" />
     <Compile Include="Assets\Plugins\FutureFrame\FuturePlugin\Launcher\EngineLauncher.cs" />
@@ -343,6 +274,7 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\Unity-Logs-Viewer-master\Reporter\Test\TestReporter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\FutureCore\FutureCore.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Examples\Resources\RenderTexture\FullScreen.shader" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Examples\Resources\Role\Materials\Role-Diffuse.shader" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Demigiant\ver@1.0.244.txt" />
@@ -567,9 +499,6 @@
     <Reference Include="BaseVoClassLib">
       <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
-    <Reference Include="VoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
-    </Reference>
     <Reference Include="ILRuntime.Mono.Cecil">
       <HintPath>Library\PackageCache\com.ourpalm.ilruntime@2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
     </Reference>
@@ -587,6 +516,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="FutureCore">
+      <HintPath>Assets\Plugins\FutureCore\FutureCore.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Unity\2019.4.32f1c1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

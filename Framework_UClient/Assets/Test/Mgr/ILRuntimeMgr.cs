@@ -22,8 +22,8 @@ namespace FutureCore
 
         private string dicPath;
 
-        private string dllPath = @"HotFix\HotFix_Project.dll";
-        private string pdbPath = @"HotFix\HotFix_Project.pdb";
+        private string dllPath = @"HotFix\HotFix.dll";
+        private string pdbPath = @"HotFix\HotFix.pdb";
 
 
         private void Start()
@@ -97,20 +97,21 @@ namespace FutureCore
 
         private void OnLoadHotFixComplete()
         {
+            OnHotFixLoaded();
             AppDispatcher.Instance.Dispatch(AppMsg.System_LoadHotFixComplete);
         }
 
         void OnHotFixLoaded()
         {
 
-            LogUtil.EnableLog(true);
-            LogUtil.SetLogCallBack_Log(Debug.Log, Debug.LogFormat);
-            LogUtil.SetLogCallBack_LogError(Debug.LogError, Debug.LogErrorFormat);
-            LogUtil.SetLogCallBack_LogWarning(Debug.LogWarning, Debug.LogWarningFormat);
+            //LogUtil.EnableLog(true);
+            //LogUtil.SetLogCallBack_Log(Debug.Log, Debug.LogFormat);
+            //LogUtil.SetLogCallBack_LogError(Debug.LogError, Debug.LogErrorFormat);
+            //LogUtil.SetLogCallBack_LogWarning(Debug.LogWarning, Debug.LogWarningFormat);
             //HelloWorld，第一次方法调用
-            this_AppDomain.Invoke("HotFix_Project.MainTest", "ShowMain", null, null);
+            this_AppDomain.Invoke("HotFix.MainShow", "Show", null, null);
 
-            Debug.Log("执行完毕");
+            LogUtil.Log("执行完毕");
         }
 
     }

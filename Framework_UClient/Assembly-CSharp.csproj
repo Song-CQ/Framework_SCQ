@@ -237,12 +237,12 @@
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Flop_reward_Data.txt" />
     <None Include="Assets\Framework_XL\06_Shader\镜子\Mirror.shader" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\slotreward_Data.txt" />
+    <None Include="Assets\StreamingAssets\HotFix\HotFix.dll" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\forceAd_Data.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\StaticExcelData\Common_StaticData.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\prop_Data.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\turntable_Data.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\giftcard_Data.txt" />
-    <None Include="Assets\StreamingAssets\HotFix\HotFix_Project.dll" />
     <None Include="Assets\_App\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\pickBox_Data.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\SignDailyReward_Data.txt" />
@@ -476,6 +476,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.11\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="FutureCore">
+      <HintPath>Assets\Plugins\FutureCore\FutureCore.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Unity\2019.4.32f1c1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
