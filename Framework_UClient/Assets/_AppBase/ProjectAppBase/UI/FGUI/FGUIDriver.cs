@@ -123,7 +123,8 @@ namespace ProjectApp
         {
             if (UIPackage.GetByName(packageName) == null)
             {
-                ResMgr.Instance.AddFguiPackage(packageName, GetPackageUIPath(packageName));
+                //ResMgr.Instance.AddFguiPackage(packageName, GetPackageUIPath(packageName));
+                UIPackage.AddPackage(GetPackageUIPath(packageName));
             }
         }
 
@@ -226,7 +227,7 @@ namespace ProjectApp
                     continue;
                 }
                 GButton gButton = item.asButton;
-                if (gButton!=null && gButton.mode== ButtonMode.Common)
+                if (gButton!=null && gButton.mode == ButtonMode.Common)
                 {
                     if (IsSetButtonPivotCenter)
                     {
@@ -236,8 +237,11 @@ namespace ProjectApp
                 }
 
             }
-
-
+        }
+        public override Camera GetUICamera()
+        {
+            StageCamera.CheckMainCamera();
+            return StageCamera.main;
         }
 
         public override void Dispose()
@@ -245,6 +249,6 @@ namespace ProjectApp
             
         }
 
-       
+        
     }
 }
