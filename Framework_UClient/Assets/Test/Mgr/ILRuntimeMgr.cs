@@ -6,10 +6,12 @@
     功能: ILRuntime C#热更管理器
 *****************************************************/
 using ILRuntime.Runtime.Enviorment;
+using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using AppDomain = ILRuntime.Runtime.Enviorment.AppDomain;
 
 namespace FutureCore
 {
@@ -90,9 +92,20 @@ namespace FutureCore
 #else
             this_AppDomain.LoadAssembly(dll_ms);
 #endif
-
+            InitializeILRuntime();
             OnLoadHotFixComplete();
            
+        }
+
+        private void InitializeILRuntime()
+        {
+#if DEBUG && (UNITY_EDITOR || UNITY_ANDROID || UNITY_IPHONE)
+            //由于Unity的Profiler接口只允许在主线程使用，为了避免出异常，需要告诉ILRuntime主线程的线程ID才能正确将函数运行耗时报告给Profiler
+            this_AppDomain.UnityMainThreadID = System.Threading.Thread.CurrentThread.ManagedThreadId;
+#endif
+           
+           // this_AppDomain.DelegateManager.RegisterMethodDelegate<object>();
+
         }
 
         private void OnLoadHotFixComplete()

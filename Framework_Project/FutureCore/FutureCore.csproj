@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Framework_UClient\Assets\Plugins\FutureCore\</OutputPath>
+    <OutputPath>..\..\Framework_UClient\Assets\Plugins\FutureCore\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,15 +33,19 @@
   <ItemGroup>
     <Reference Include="DOTween">
       <HintPath>..\..\_Plugins\DoTween\DOTween.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenPro">
       <HintPath>..\..\_Plugins\DoTween\DOTweenPro.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="LogUtil">
       <HintPath>..\..\_Plugins\LogUtil\LogUtil.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\_Plugins\JsonNet-Lite\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,12 +57,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\_Plugins\Unity_2019_4_32\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\_Plugins\Unity_2019_4_32\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
       <HintPath>..\..\_Plugins\Unity_2019_4_32\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

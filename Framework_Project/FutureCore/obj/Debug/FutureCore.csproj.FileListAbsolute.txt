@@ -14,3 +14,9 @@ D:\UnityPro\Framework_SCQ\Framework_Project\FutureCore\bin\Debug\UnityEngine.UIM
 D:\UnityPro\Framework_SCQ\Framework_Project\FutureCore\obj\Debug\FutureCore.csproj.CopyComplete
 D:\UnityPro\Framework_SCQ\Framework_Project\Framework_UClient\Assets\Plugins\FutureCore\FutureCore.dll
 D:\UnityPro\Framework_SCQ\Framework_Project\Framework_UClient\Assets\Plugins\FutureCore\FutureCore.pdb
+E:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\FutureCore\FutureCore.dll
+E:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\FutureCore\FutureCore.pdb
+E:\UnityPro\Framework_SCQ\Framework_Project\FutureCore\obj\Debug\FutureCore.csprojAssemblyReference.cache
+E:\UnityPro\Framework_SCQ\Framework_Project\FutureCore\obj\Debug\FutureCore.csproj.CoreCompileInputs.cache
+E:\UnityPro\Framework_SCQ\Framework_Project\FutureCore\obj\Debug\FutureCore.dll
+E:\UnityPro\Framework_SCQ\Framework_Project\FutureCore\obj\Debug\FutureCore.pdb
