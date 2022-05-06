@@ -238,11 +238,7 @@ namespace ProjectApp
 
             }
         }
-        public override Camera GetUICamera()
-        {
-            StageCamera.CheckMainCamera();
-            return StageCamera.main;
-        }
+
 
         public override void Dispose()
         {

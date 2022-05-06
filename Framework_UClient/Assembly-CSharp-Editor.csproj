@@ -334,16 +334,13 @@
       <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="RainbowCore">
-      <HintPath>Assets\Standard Assets\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
+      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
     <Reference Include="RainbowFolders">
-      <HintPath>Assets\Standard Assets\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
+      <HintPath>Assets\Standard Assets\EditorStore3rdLibrary\Editor\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
     </Reference>
     <Reference Include="BaseVoClassLib">
       <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
-    </Reference>
-    <Reference Include="VoClassLib">
-      <HintPath>Assets\_App\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil">
       <HintPath>Library\PackageCache\com.ourpalm.ilruntime@2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
@@ -374,6 +371,9 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.12.5\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="FutureCore">
+      <HintPath>Assets\Plugins\FutureCore\FutureCore.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

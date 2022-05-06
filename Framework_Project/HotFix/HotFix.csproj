@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="LogUtil">
       <HintPath>..\..\_Plugins\LogUtil\LogUtil.dll</HintPath>
       <Private>False</Private>
@@ -47,13 +55,6 @@
   <ItemGroup>
     <Compile Include="MainShow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FutureCore\FutureCore.csproj">
-      <Project>{3f02aacf-396a-4fb7-94f0-af9f7f3b6570}</Project>
-      <Name>FutureCore</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@ namespace HotFix
         public static void Show()
         {
             LogUtil.Log("怎在");
-            FutureCore.CtrlDispatcher.Instance.AddListener(8000000, (o) =>
+            FutureCore.CtrlDispatcher.Instance.AddListener(ProjectApp.CtrlMsg.Game_Start,(o) =>
             {
                 LogUtil.Log("成功了");
 

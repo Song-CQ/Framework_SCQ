@@ -23,7 +23,7 @@ namespace ProjectApp
         // 游戏 开始之前
         public static readonly uint Game_StartBefore = ++Cursor_BASE;
         // 游戏 开始
-        public static readonly uint Game_Start = 8000000;
+        public static readonly uint Game_Start = ++Cursor_BASE;
         // 游戏 开始之后
         public static readonly uint Game_StartLater = ++Cursor_BASE;
 
