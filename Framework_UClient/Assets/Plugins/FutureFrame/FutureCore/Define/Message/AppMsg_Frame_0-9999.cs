@@ -39,6 +39,10 @@ namespace FutureCore
         /// 加载热更代码完成
         /// </summary>
         public static readonly uint System_LoadHotFixComplete = ++Cursor_BASE;
+        /// <summary>
+        /// Config 初始化完成
+        /// </summary>
+        public static readonly uint System_ConfigInitComplete = ++Cursor_BASE;
 
 
 

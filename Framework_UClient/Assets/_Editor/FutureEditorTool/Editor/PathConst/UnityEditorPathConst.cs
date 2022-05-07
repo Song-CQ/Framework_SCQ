@@ -17,6 +17,11 @@ namespace FutureEditor
         /// </summary>      
         public readonly static string ModuleUIPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ModuleUIPath);
         public readonly static string ModuleUIPath = ModuleUIPath_Assets.Replace(Application.dataPath,string.Empty);
+
+        /// <summary>
+        /// ModuleUI路劲(热更)
+        /// </summary>
+        public readonly static string ModuleUIPath_HotFix = Application.dataPath + "../../Framework_Project/HotFix/Model";
         /// <summary>
         /// CommModuleUI路劲
         /// </summary>      
@@ -27,13 +32,21 @@ namespace FutureEditor
         /// 自动注册目录
         /// </summary>   
         public readonly static string AutoCreadPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.AutoCreadPath);
-        public readonly static string AutoCreadPath = AutoCreadPath_Assets.Replace(Application.dataPath, string.Empty); 
-        
+        public readonly static string AutoCreadPath = AutoCreadPath_Assets.Replace(Application.dataPath, string.Empty);
         /// <summary>
-        /// FGUI代码目录
+        /// 自动注册目录(热更)
+        /// </summary>
+        public readonly static string AutoCreadPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoCread";
+        /// <summary>
+        /// Unity 存放FGUI代码目录
         /// </summary>   
-        public readonly static string FGUIClassPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.FGUIClassPath);
+        public readonly static string FGUIClassPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.FGUIClassPath);    
         public readonly static string FGUIClassPath = FGUIClassPath_Assets.Replace(Application.dataPath, string.Empty);
+        /// <summary>
+        /// 热更 存放FGUI代码目录
+        /// </summary>   
+        public readonly static string FGUIClassPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoCread/FGUI_Script";
+
         /// <summary>
         /// 存放UI的目录
         /// </summary>   
@@ -45,6 +58,13 @@ namespace FutureEditor
         /// 项目解决方案路劲
         /// </summary>
         public readonly static string Project_Sin_Path = $"{Application.dataPath}/../{ProjectApp.AppFacade.AppName}_UClient.sln";
+
+
+        /// <summary>
+        /// Fgui编辑器脚本的生成路劲
+        /// </summary>
+        public readonly static string Fgui_Stript_Patn = $"{Application.dataPath}/../../_Resources/FGUI/FGUI_Script";
+
 
 
     }

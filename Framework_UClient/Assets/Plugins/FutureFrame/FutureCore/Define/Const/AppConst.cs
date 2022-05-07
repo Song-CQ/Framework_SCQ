@@ -35,7 +35,7 @@ namespace FutureCore
         // 是否调试模式
         public static bool IsDebugMode = true;
         // 是否热更新模式
-        public static bool IsHotUpdateMode = false;
+        public static bool IsHotUpdateMode = true;
         // 是否开启调试引擎分析器
         public static bool IsEnabledEngineProfiler = false;
         // 是否开启调试应用分析器
@@ -106,9 +106,9 @@ namespace FutureCore
         // Loading进度延迟时间
         public static float LoadingDelayTime = LowFrameRateTimestep;
         // Loading进度完成延迟时间
-        public static float LoadingCompleteDelayTime = 0.5f;
+        public static float LoadingCompleteDelayTime = 0.2f;
         // 准备游戏开始前延迟时间
-        public static float GameStartReadyDelayTime = 0.5f;
+        public static float GameStartReadyDelayTime = 0.1f;
         // LogsViewer拉起的圈数 (Debug模式)
         public static int LogsViewerShowNum_Debug = 10;
         // LogsViewer拉起的圈数 (Release模式)

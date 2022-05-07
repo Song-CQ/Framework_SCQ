@@ -87,22 +87,41 @@ namespace ProjectApp
         private void OnLoadHotFixComplete(object obj)
         {
             
-            App.SetLoadingSchedule(ProgressState.ShowScene,()=> TimerUtil.Simple.AddTimer(0.1f, ShowScene));
+            App.SetLoadingSchedule(ProgressState.ConfigInit);
+            AppDispatcher.Instance.AddOnceListener(AppMsg.System_ConfigInitComplete, LoadComplete);
 
+            //to do
+            AppDispatcher.Instance.Dispatch(AppMsg.System_ConfigInitComplete);
 
+        }
+
+        
+
+        private void LoadComplete(object o)
+        {
+            App.SetLoadingSchedule(ProgressState.ShowScene);
+            TimerUtil.Simple.AddTimer(AppConst.LoadingCompleteDelayTime, () => ShowScene());
+       
         }
 
         private void ShowScene()
         {
             LogUtil.Log("[MainScene]Show Scene");
-      
+            
+          
             CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartReady);
+            
+            TimerUtil.Simple.AddTimer(AppConst.GameStartReadyDelayTime, () => {
 
-            App.HideLoadingUI();
+                ModuleMgr.Instance.AllModuleGameStart();
+                App.HideLoadingUI();
 
-            CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartBefore);
-            CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_Start);
-            CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartLater);
+                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartBefore);
+                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_Start);
+                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartLater);
+
+            });
+            
 
         }
 

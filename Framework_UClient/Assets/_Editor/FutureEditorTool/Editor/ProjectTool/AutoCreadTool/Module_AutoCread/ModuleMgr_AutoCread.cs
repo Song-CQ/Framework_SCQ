@@ -111,22 +111,56 @@ namespace ProjectApp
             foreach (string path in DirectoriePath)
             {
                 nameLst.Add(path.Replace(ModuleUIPath + @"\", string.Empty));
-            }       
+            }
             //foreach (string path in CommDirectoriePath)
             //{
             //    nameLst.Add(path.Replace(CommonModuleUIPath + @"\", string.Empty));
             //}       
-                    
+
+            string ModuleMgrPath = UnityEditorPathConst.AutoCreadPath_Assets + "/ModuleMgr";
+            if (!Directory.Exists(ModuleMgrPath))
+            {
+                Directory.CreateDirectory(ModuleMgrPath);
+            }
+
             Debug.Log("[ModuleMgr_AutoCread]开始自动模块注册");
-            CreadUIConst(nameLst);
-            CreadCtrlConst(nameLst);
-            CreadUICtrlConst(nameLst);
-            CreadModelConst(nameLst);
-            CreadModuleMgrRegister(nameLst);
-            CreadUICtrlMsgConst(nameLst);
+            CreadUIConst(nameLst, ModuleMgrPath);
+            CreadCtrlConst(nameLst, ModuleMgrPath);
+            CreadUICtrlConst(nameLst, ModuleMgrPath);
+            CreadModelConst(nameLst, ModuleMgrPath);
+            CreadModuleMgrRegister(nameLst, ModuleMgrPath);
+            CreadUICtrlMsgConst(nameLst, ModuleMgrPath);
             Debug.Log("[ModuleMgr_AutoCread]模块自动注册完成");
-        }       
-        private static void CreadModelConst(List<string> nameLst)
+        }
+
+        public static void AutoRegister_HotFix()
+        {
+            string[] DirectoriePath = Directory.GetDirectories(ModuleUIPath);
+          
+            List<string> nameLst = new List<string>();
+            foreach (string path in DirectoriePath)
+            {
+                nameLst.Add(path.Replace(ModuleUIPath + @"\", string.Empty));
+            }
+
+            string ModuleMgrPath = UnityEditorPathConst.AutoCreadPath_HotFix + "/ModuleMgr";
+            if (!Directory.Exists(ModuleMgrPath))
+            {
+                Directory.CreateDirectory(ModuleMgrPath);
+            }
+
+            Debug.Log("[ModuleMgr_AutoCread]开始自动模块注册(热更)");
+            CreadUIConst(nameLst, ModuleMgrPath);
+            CreadCtrlConst(nameLst, ModuleMgrPath);
+            CreadUICtrlConst(nameLst, ModuleMgrPath);
+            CreadModelConst(nameLst, ModuleMgrPath);
+            CreadModuleMgrRegister(nameLst, ModuleMgrPath);
+            CreadUICtrlMsgConst(nameLst, ModuleMgrPath);
+            Debug.Log("[ModuleMgr_AutoCread]模块自动注册完成(热更)");
+
+        }
+
+        private static void CreadModelConst(List<string> nameLst,string AutoCreadPath)
         {
             string classStr = ConstClassTemplate.Replace("#CreateTime#", TimerUtil.GetLacalTimeYMD_HHMMSS());
             classStr = classStr.Replace("#ClassName#", "Model");
@@ -137,11 +171,11 @@ namespace ProjectApp
                 val += FieldTemplate.Replace("#FieldName#",item+ "Model") + "\r\n";
             }
             classStr = classStr.Replace("#Val#",val);
-            File.WriteAllText(UnityEditorPathConst.AutoCreadPath_Assets + @"/ModuleMgr/ModelConst_AutoCread.cs", classStr, Encoding.UTF8);
+            File.WriteAllText(AutoCreadPath + @"/ModelConst_AutoCread.cs", classStr, Encoding.UTF8);
             Debug.Log("[ModuleMgr_AutoCread]注册模块常量完成");
         }
 
-        private static void CreadUICtrlConst(List<string> nameLst)
+        private static void CreadUICtrlConst(List<string> nameLst, string AutoCreadPath)
         {
             string classStr = ConstClassTemplate.Replace("#CreateTime#", TimerUtil.GetLacalTimeYMD_HHMMSS());
             classStr = classStr.Replace("#ClassName#", "UICtrl");
@@ -152,11 +186,11 @@ namespace ProjectApp
                 val += FieldTemplate.Replace("#FieldName#", item + "UICtrl") + "\r\n";
             }
             classStr = classStr.Replace("#Val#", val);
-            File.WriteAllText(UnityEditorPathConst.AutoCreadPath_Assets + @"/ModuleMgr/UICtrlConst_AutoCread.cs", classStr, Encoding.UTF8);
+            File.WriteAllText(AutoCreadPath + @"/UICtrlConst_AutoCread.cs", classStr, Encoding.UTF8);
             Debug.Log("[ModuleMgr_AutoCread]注册UI控制器常量完成");
         }
 
-        private static void CreadCtrlConst(List<string> nameLst)
+        private static void CreadCtrlConst(List<string> nameLst, string AutoCreadPath)
         {
             string classStr = ConstClassTemplate.Replace("#CreateTime#", TimerUtil.GetLacalTimeYMD_HHMMSS());
             classStr = classStr.Replace("#ClassName#", "Ctrl");
@@ -167,11 +201,11 @@ namespace ProjectApp
                 val += FieldTemplate.Replace("#FieldName#", item + "Ctrl") + "\r\n";
             }
             classStr = classStr.Replace("#Val#", val);
-            File.WriteAllText(UnityEditorPathConst.AutoCreadPath_Assets + @"/ModuleMgr/CtrlConst_AutoCread.cs", classStr, Encoding.UTF8);
+            File.WriteAllText(AutoCreadPath + @"/CtrlConst_AutoCread.cs", classStr, Encoding.UTF8);
             Debug.Log("[ModuleMgr_AutoCread]注册控制器常量完成");
         }
 
-        private static void CreadUIConst(List<string> nameLst)
+        private static void CreadUIConst(List<string> nameLst, string AutoCreadPath)
         {
             string classStr = ConstClassTemplate.Replace("#CreateTime#", TimerUtil.GetLacalTimeYMD_HHMMSS());
             classStr = classStr.Replace("#ClassName#", "UI");
@@ -182,10 +216,10 @@ namespace ProjectApp
                 val += FieldTemplate.Replace("#FieldName#", item + "UI") + "\r\n";
             }
             classStr = classStr.Replace("#Val#", val);
-            File.WriteAllText(UnityEditorPathConst.AutoCreadPath_Assets + @"/ModuleMgr/UIConst_AutoCread.cs", classStr, Encoding.UTF8);
+            File.WriteAllText(AutoCreadPath + @"/UIConst_AutoCread.cs", classStr, Encoding.UTF8);
             Debug.Log("[ModuleMgr_AutoCread]注册UI常量完成");
         }
-        private static void CreadModuleMgrRegister(List<string> nameLst)
+        private static void CreadModuleMgrRegister(List<string> nameLst, string AutoCreadPath)
         {
             string classStr = ModuleMgrRegisterTemplate.Replace("#CreateTime#", TimerUtil.GetLacalTimeYMD_HHMMSS());
             string UIval = string.Empty;
@@ -203,10 +237,10 @@ namespace ProjectApp
             classStr = classStr.Replace("#UICtrlVal#", UICtrlval);
             classStr = classStr.Replace("#CtrlVal#", Ctrlval);
             classStr = classStr.Replace("#ModelVal#", Modelval);
-            File.WriteAllText(UnityEditorPathConst.AutoCreadPath_Assets + @"/ModuleMgr/ModuleMgrRegister_AutoCread.cs", classStr, Encoding.UTF8);
+            File.WriteAllText(AutoCreadPath + @"/ModuleMgrRegister_AutoCread.cs", classStr, Encoding.UTF8);
         }
 
-        private static void CreadUICtrlMsgConst(List<string> nameLst)
+        private static void CreadUICtrlMsgConst(List<string> nameLst, string AutoCreadPath)
         {
             string classStr = UICtrlMsgClassTemplate.Replace("#CreateTime#", TimerUtil.GetLacalTimeYMD_HHMMSS());
             string val = string.Empty;
@@ -215,7 +249,7 @@ namespace ProjectApp
                 val += UICtrlMsgFieldTemplate.Replace("#FieldName#", item) + "\r\n";
             }
             classStr = classStr.Replace("#Val#",val);
-            File.WriteAllText(UnityEditorPathConst.AutoCreadPath_Assets + @"/ModuleMgr/UICtrlMsg_OpenClose_AutoCread.cs", classStr, new UTF8Encoding(false));
+            File.WriteAllText(AutoCreadPath + @"/UICtrlMsg_OpenClose_AutoCread.cs", classStr, new UTF8Encoding(false));
             Debug.Log("[ModuleMgr_AutoCread]UI消息注册完成");
         }
 

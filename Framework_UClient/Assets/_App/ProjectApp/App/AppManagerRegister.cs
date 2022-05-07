@@ -95,14 +95,14 @@ namespace ProjectApp
         private static void RegisterModuleMgr()
         {
             // ModuleMgr     
-            if (AppConst.IsHotUpdateMode)
+            if (!AppConst.IsHotUpdateMode)
             {
-
+                ModuleMgrRegister.AutoRegisterModel();
+                ModuleMgrRegister.AutoRegisterUIType();
+                ModuleMgrRegister.AutoRegisterCtrl();
+                ModuleMgrRegister.AutoRegisterUICtrl();
             }
-            ModuleMgrRegister.AutoRegisterModel();
-            ModuleMgrRegister.AutoRegisterUIType();
-            ModuleMgrRegister.AutoRegisterCtrl();
-            ModuleMgrRegister.AutoRegisterUICtrl();
+            
         }
 
 

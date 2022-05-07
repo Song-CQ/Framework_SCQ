@@ -9,19 +9,17 @@ namespace FutureCore
     {
         // δ���
         Unstart = -10,
-        // ���汾����
+        // 检测版本更新
         VersionUpdate = 0,
-        // ��Դ��ʼ�����
+        // 资源初始化
         AssetsInit = 20,
-        // �����ȸ�����
+        // 加载热更代码
         LoadHotFix = 30,
-        // Զ�̴洢��ʼ��
+        // 远程存储初始化
         PreferencesInit = 60,
-        // ���ñ��ʼ��
+        // 数据初始化
         ConfigInit = 70,
-        // Ԥ���ؿ�ʼ
-        PreloadStart = 80,
-        // ��ʾ����
+        // 加载完成
         ShowScene = 100,
     }
 

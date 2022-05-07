@@ -181,15 +181,20 @@ namespace FutureEditor
         {
             GUILayout.BeginArea(new Rect(10, 35, 200, 200));
             GUILayout.Label("MVC");
-            GUILayout.BeginHorizontal();
+            GUILayout.BeginVertical();
 
             if (GUILayout.Button("创建FGUI_MVC代码模版", GUILayout.Height(40), GUILayout.Width(160)))
             {
                 MVC_CreadTool.OpenFGUICread();
                 Close();
+            } 
+            if (GUILayout.Button("创建FGUI_MVC代码模版(热更)", GUILayout.Height(40), GUILayout.Width(200)))
+            {
+                MVC_CreadTool.OpenFGUICread_HotFix();
+                Close();
             }
         
-            GUILayout.EndHorizontal();
+            GUILayout.EndVertical();
             GUILayout.EndArea();
         }
         #endregion
@@ -202,10 +207,15 @@ namespace FutureEditor
             {
                 EditorAutoRegisterTool_Editor.AutoRegisterAll();
                 Close();
-            }
+            }          
             if (GUILayout.Button("自动注册项目数据", GUILayout.Height(40), GUILayout.Width(180)))
             {
                 ProjectAutoRegisterTool.AutoRegisterAll();
+                Close();
+            }
+            if (GUILayout.Button("自动注册项目模块(热更)", GUILayout.Height(40), GUILayout.Width(180)))
+            {
+                ProjectAutoRegisterTool.AutoRegisterAll_HotFix();
                 Close();
             }
             GUILayout.EndArea();
