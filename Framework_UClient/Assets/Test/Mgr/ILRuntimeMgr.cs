@@ -103,6 +103,8 @@ namespace FutureCore
             //由于Unity的Profiler接口只允许在主线程使用，为了避免出异常，需要告诉ILRuntime主线程的线程ID才能正确将函数运行耗时报告给Profiler
             this_AppDomain.UnityMainThreadID = System.Threading.Thread.CurrentThread.ManagedThreadId;
 #endif          
+
+            ILRuntimeMgr_Register.RegisterAll(this_AppDomain);
             this_AppDomain.DelegateManager.RegisterMethodDelegate<object>();
 
         }
@@ -121,9 +123,9 @@ namespace FutureCore
             //LogUtil.SetLogCallBack_LogError(Debug.LogError, Debug.LogErrorFormat);
             //LogUtil.SetLogCallBack_LogWarning(Debug.LogWarning, Debug.LogWarningFormat);
             //HelloWorld，第一次方法调用
-            this_AppDomain.Invoke("HotFix.MainShow", "Show", null, null);
+            this_AppDomain.Invoke("ProjectApp.HotFix.MainLaunch", "Init", null, null);
 
-            LogUtil.Log("执行完毕");
+            LogUtil.Log("启动热更完毕");
         }
 
     }

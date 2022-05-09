@@ -31,12 +31,12 @@ namespace FutureEditor
         /// <summary>
         /// 自动注册目录
         /// </summary>   
-        public readonly static string AutoCreadPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.AutoCreadPath);
-        public readonly static string AutoCreadPath = AutoCreadPath_Assets.Replace(Application.dataPath, string.Empty);
+        public readonly static string AutoRegisterPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.AutoRegisterPath);
+        public readonly static string AutoRegisterPath = AutoRegisterPath_Assets.Replace(Application.dataPath, string.Empty);
         /// <summary>
         /// 自动注册目录(热更)
         /// </summary>
-        public readonly static string AutoCreadPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoCread";
+        public readonly static string AutoRegisterPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoRegister";
         /// <summary>
         /// Unity 存放FGUI代码目录
         /// </summary>   
@@ -45,7 +45,7 @@ namespace FutureEditor
         /// <summary>
         /// 热更 存放FGUI代码目录
         /// </summary>   
-        public readonly static string FGUIClassPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoCread/FGUI_Script";
+        public readonly static string FGUIClassPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoCreator/FGUI_Script";
 
         /// <summary>
         /// 存放UI的目录

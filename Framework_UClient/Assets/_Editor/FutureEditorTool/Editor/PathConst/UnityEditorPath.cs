@@ -35,8 +35,8 @@ namespace FutureEditor
 
         
 
-        [Header("存放自动生成文件的目录")]
-        public DefaultAsset AutoCreadPath;
+        [Header("存放自动注册文件的目录")]
+        public DefaultAsset AutoRegisterPath;
         [Header("存放MVC模块的目录")]
         public DefaultAsset ModuleUIPath;  
         [Header("存放通用模块的目录")]
@@ -45,6 +45,7 @@ namespace FutureEditor
         public DefaultAsset FGUIClassPath;
         [Header("存放FGUI的目录")]
         public DefaultAsset ResFGUIPath;
+
 
         
 

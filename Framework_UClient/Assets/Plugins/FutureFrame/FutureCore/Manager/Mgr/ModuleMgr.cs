@@ -27,7 +27,7 @@ namespace FutureCore
         public override void Init()
         {
             base.Init();
-
+            InitAllModule();
         }
 
         public void InitAllModule()

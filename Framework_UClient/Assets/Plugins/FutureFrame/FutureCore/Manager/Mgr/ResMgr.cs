@@ -1,3 +1,4 @@
+using FairyGUI;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -68,7 +69,12 @@ namespace FutureCore
             
             AppDispatcher.Instance.Dispatch(AppMsg.System_AssetsInitComplete);
         }
-   
+
+        public void AddFguiPackage(string packageName, string PackageUIPath)
+        {
+             UIPackage.AddPackage(PackageUIPath);
+        }
+
         #endregion
 
     }

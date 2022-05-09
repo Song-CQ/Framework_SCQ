@@ -53,7 +53,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainShow.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\btn_add.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\btn_minus.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\com_cardnum.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\com_cardplaytext.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\com_main.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\com_playnum.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\com_rolling.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\G004_mainBinder.cs" />
+    <Compile Include="AutoCread\FGUI_Script\G004_main\RealItem.cs" />
+    <Compile Include="AutoRegister\ModuleMgr\CtrlConst_AutoCread.cs" />
+    <Compile Include="AutoRegister\ModuleMgr\ModelConst_AutoCread.cs" />
+    <Compile Include="AutoRegister\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
+    <Compile Include="AutoRegister\ModuleMgr\UIConst_AutoCread.cs" />
+    <Compile Include="AutoRegister\ModuleMgr\UICtrlConst_AutoCread.cs" />
+    <Compile Include="AutoRegister\ModuleMgr\UICtrlMsg_OpenClose_AutoCread.cs" />
+    <Compile Include="AutoRegister\UIMgr\UIRegister_FGUI.cs" />
+    <Compile Include="MainStart\MainLaunch.cs" />
+    <Compile Include="Model\Game\GameCtrl.cs" />
+    <Compile Include="Model\Game\GameModel.cs" />
+    <Compile Include="Model\Game\GameUI.cs" />
+    <Compile Include="Model\Game\GameUICtrl.cs" />
+    <Compile Include="Model\Main\MainCtrl.cs" />
+    <Compile Include="Model\Main\MainModel.cs" />
+    <Compile Include="Model\Main\MainUI.cs" />
+    <Compile Include="Model\Main\MainUICtrl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ccf255e4d58fc8409cbe8effec9b082, type: 3}
   m_Name: UnityEditorPath
   m_EditorClassIdentifier: 
-  AutoCreadPath: {fileID: 102900000, guid: 72ae497b038f30a4e9a980863f137d54, type: 3}
+  AutoRegisterPath: {fileID: 102900000, guid: 72ae497b038f30a4e9a980863f137d54, type: 3}
   ModuleUIPath: {fileID: 102900000, guid: 3c955cf277ce3a44f95ebd276247a2b0, type: 3}
   CommonModuleUIPath: {fileID: 102900000, guid: ca5142f5407d6ea4686d8eaf03d5ef8d,
     type: 3}

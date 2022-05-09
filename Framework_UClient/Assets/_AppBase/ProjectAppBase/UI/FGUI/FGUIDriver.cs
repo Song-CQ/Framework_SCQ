@@ -123,8 +123,8 @@ namespace ProjectApp
         {
             if (UIPackage.GetByName(packageName) == null)
             {
-                //ResMgr.Instance.AddFguiPackage(packageName, GetPackageUIPath(packageName));
-                UIPackage.AddPackage(GetPackageUIPath(packageName));
+                ResMgr.Instance.AddFguiPackage(packageName, GetPackageUIPath(packageName));
+                
             }
         }
 

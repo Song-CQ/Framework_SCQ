@@ -49,14 +49,14 @@ namespace FutureEditor
         private static void RegisterAutoAssetInAllDirectory()
         {
 
-            UI_AutoCread.AutoRegister();
-            ModuleMgr_AutoCread.AutoRegister();
+            UI_AutoCreator.AutoRegister();
+            ModuleMgr_AutoCreator.AutoRegister();
         }  
         private static void RegisterAutoAssetInAllDirectory_HotFix()
         {
-
-            UI_AutoCread.AutoRegister_HotFix();
-            ModuleMgr_AutoCread.AutoRegister_HotFix();
+            ILRuntimeMgr_AutoCreator.CreatorAdapter();
+            UI_AutoCreator.AutoRegister_HotFix();
+            ModuleMgr_AutoCreator.AutoRegister_HotFix();     
         }  
         
         

@@ -104,6 +104,11 @@
     <Compile Include="Assets\Test\GameRoodMgr.cs" />
     <Compile Include="Assets\Test\LoadFromFileExample.cs" />
     <Compile Include="Assets\Test\Mgr\ILRuntimeMgr.cs" />
+    <Compile Include="Assets\_App\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseCtrlAdapter.cs" />
+    <Compile Include="Assets\_App\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseModelAdapter.cs" />
+    <Compile Include="Assets\_App\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUIAdapter.cs" />
+    <Compile Include="Assets\_App\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUICtrlAdapter.cs" />
+    <Compile Include="Assets\_App\AutoCreator\AutoRegister\ILRuntimeMgr\Register_AutoCreator\ILRuntimeMgr_Register.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\ModuleMgr\CtrlConst_AutoCread.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\ModuleMgr\ModelConst_AutoCread.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
@@ -164,15 +169,6 @@
     <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOClass\VO\turntableVO_AutoCreate\turntableVOModel.cs" />
     <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
     <Compile Include="Assets\_App\AutoCreator\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\G004_mainBinder.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\RealItem.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\btn_add.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\btn_minus.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_cardnum.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_cardplaytext.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_main.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_playnum.cs" />
-    <Compile Include="Assets\_App\AutoCreator\FGUI_AutoCreator\G004_main\com_rolling.cs" />
     <Compile Include="Assets\_App\AutoCreator\FGUI_Common\A001_common\A001_commonBinder.cs" />
     <Compile Include="Assets\_App\AutoCreator\FGUI_Common\A001_common\btn_balloon.cs" />
     <Compile Include="Assets\_App\AutoCreator\FGUI_Common\A001_common\btn_cash.cs" />

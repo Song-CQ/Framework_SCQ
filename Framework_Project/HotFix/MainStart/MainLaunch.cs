@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotFix
+namespace ProjectApp.HotFix
 {
     public static class MainLaunch
     {
@@ -13,7 +13,6 @@ namespace HotFix
         public static void Init()
         {
             InitModule();
-
 
 
 
@@ -27,43 +26,15 @@ namespace HotFix
             ModuleMgrRegister.AutoRegisterUIType();
             ModuleMgrRegister.AutoRegisterCtrl();
             ModuleMgrRegister.AutoRegisterUICtrl();
+
+
+            ModuleMgr.Instance.InitAllModule();
+            ModuleMgr.Instance.StartUpAllModule(); 
         }
 
 
-        public static partial class ModuleMgrRegister
-        {
-            public static void AutoRegisterModel()
-            {
-                ModuleMgr moduleMgr = ModuleMgr.Instance;
-                moduleMgr.AddModel(ModelConst.GameModel, new GameModel());
-                moduleMgr.AddModel(ModelConst.MainModel, new MainModel());
+      
 
-            }
-
-            public static void AutoRegisterUIType()
-            {
-                ModuleMgr moduleMgr = ModuleMgr.Instance;
-                moduleMgr.AddUIType(UIConst.GameUI, typeof(GameUI));
-                moduleMgr.AddUIType(UIConst.MainUI, typeof(MainUI));
-
-            }
-
-            public static void AutoRegisterCtrl()
-            {
-                ModuleMgr moduleMgr = ModuleMgr.Instance;
-                moduleMgr.AddCtrl(CtrlConst.GameCtrl, new GameCtrl());
-                moduleMgr.AddCtrl(CtrlConst.MainCtrl, new MainCtrl());
-
-            }
-
-            public static void AutoRegisterUICtrl()
-            {
-                ModuleMgr moduleMgr = ModuleMgr.Instance;
-                moduleMgr.AddUICtrl(UICtrlConst.GameUICtrl, new GameUICtrl());
-                moduleMgr.AddUICtrl(UICtrlConst.MainUICtrl, new MainUICtrl());
-
-            }
-
-        }
+        
     }
 }
