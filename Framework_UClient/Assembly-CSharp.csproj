@@ -103,6 +103,7 @@
     <Compile Include="Assets\Samples\ILRuntime\2.0.2\Demo\Scripts\Examples\12_Performance\Performance.cs" />
     <Compile Include="Assets\Test\GameRoodMgr.cs" />
     <Compile Include="Assets\Test\LoadFromFileExample.cs" />
+    <Compile Include="Assets\Test\Mgr\AssetBundleMgr.cs" />
     <Compile Include="Assets\Test\Mgr\ILRuntimeMgr.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseCtrlAdapter.cs" />
     <Compile Include="Assets\_App\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseModelAdapter.cs" />
@@ -912,6 +913,9 @@
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AssetBundleBrowser.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
