@@ -82,7 +82,7 @@ public class LoadFromFileExample : MonoBehaviour
     
     public void OnCom()
     {
-        GameObject.FindObjectOfType<GameRoodMgr>().StartLoad();
+       // GameObject.FindObjectOfType<GameRoodMgr>().StartLoad();
     }
 
 }

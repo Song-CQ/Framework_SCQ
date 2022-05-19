@@ -22,7 +22,9 @@ namespace ProjectApp
 
         private List<ItemData> itemDataLst;
 
-        public void StartLoad()
+
+
+        public void Start()
         {
             Debug.Log("开始加载");
             StartCoroutine(GameStart());
@@ -57,13 +59,16 @@ namespace ProjectApp
             eventTrigger.triggers.Add(EndDrag);
 
 
-            var assetBundlePath = "file://"+Application.persistentDataPath + "/AssetBundle/imgab";
+            var assetBundlePath = Application.dataPath + "/../AssetBundles/StandaloneWindows/gamerood";
             var request = UnityWebRequestAssetBundle.GetAssetBundle(assetBundlePath);
-            
-            yield return request.SendWebRequest();
-            //var myLoadedAssetBundle = AssetBundle.LoadFromMemory(request.downloadHandler.data);
-            var myLoadedAssetBundle = DownloadHandlerAssetBundle.GetContent(request);
 
+            // yield return request.SendWebRequest();
+            var temp = AssetBundle.LoadFromFileAsync(assetBundlePath);
+            var myLoadedAssetBundle = AssetBundle.LoadFromFile(assetBundlePath);
+             
+            yield return temp;
+            // var myLoadedAssetBundle = DownloadHandlerAssetBundle.GetContent(request);
+            yield break;
             Sprite[] sprites = myLoadedAssetBundle.LoadAllAssets<Sprite>();
             int Conts = 5;
 
