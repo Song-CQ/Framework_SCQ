@@ -206,8 +206,8 @@ namespace ExcelTool
             List<string> pathStr = new List<string>();
             try
             {
-                DirectoryInfo theFolder = Directory.CreateDirectory(ReadExcelPath + @"\游戏配置表");
-                foreach (FileInfo nextFile in theFolder.GetFiles())
+                DirectoryInfo theFolder = Directory.CreateDirectory(ReadExcelPath);
+                foreach (FileInfo nextFile in theFolder.GetFiles("*",SearchOption.AllDirectories))
                 {
                     if (nextFile.Name.Contains("~$"))
                     {
@@ -217,19 +217,6 @@ namespace ExcelTool
                     {
                         pathStr.Add(nextFile.FullName);
                         //Console.WriteLine("获取文件路劲:" + nextFile.FullName);
-                    }
-                }
-                theFolder = Directory.CreateDirectory(ReadExcelPath + @"\静态配置表");
-                foreach (FileInfo nextFile in theFolder.GetFiles())
-                {
-                    if (nextFile.Name.Contains("~$"))
-                    {
-                        continue;
-                    }
-                    if (nextFile.Extension == ".xlsx" || nextFile.Extension == ".xls")
-                    {
-                        pathStr.Add(nextFile.FullName);
-                       // Console.WriteLine("获取文件路劲:" + nextFile.FullName);
                     }
                 }
             }
