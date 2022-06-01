@@ -79,35 +79,5 @@ namespace FutureEditor
         public string selfbag;
         public List<string> bedepends = new List<string>();
     }
-    public class ABConfig
-    {
-        /// <summary>
-        /// 输出路径
-        /// </summary>
-        public static string outputpath = Application.dataPath.Substring(0, Application.dataPath.Length - 6) + "AB";  //最后是主包名字
-        /// <summary>
-        /// 项目AB包文件夹
-        /// </summary>
-        public static string abroot = "ABres";
-        /// <summary>
-        /// 校验文件路径
-        /// </summary>
-        public static string verifypath = Application.dataPath + "/Editor/version.json";
-        /// <summary>
-        /// 全被依赖文件路径
-        /// </summary>
-        public static string allbedependpath = Application.dataPath + "/Editor/allbedependdata.json";
-        /// <summary>
-        /// 全依赖文件路径
-        /// </summary>
-        public static string alldependpath = Application.dataPath + "/Editor/alldependdata.json";
-        /// <summary>
-        /// 打包压缩设置
-        /// </summary>
-        public static BuildAssetBundleOptions ABOptions = BuildAssetBundleOptions.ChunkBasedCompression;
-        /// <summary>
-        /// 打包平台
-        /// </summary>
-        public static BuildTarget ABPlatform = BuildTarget.StandaloneWindows;
-    }
+    
 }

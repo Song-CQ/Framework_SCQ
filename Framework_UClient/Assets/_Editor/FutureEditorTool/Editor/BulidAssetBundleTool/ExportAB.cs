@@ -18,6 +18,8 @@ namespace FutureEditor
     public class ExportAB 
     {
 
+        public static ABConfig ABConfig;
+
         #region 全局变量
 
         /// <summary>
@@ -63,9 +65,7 @@ namespace FutureEditor
 
         #endregion
 
-
-        [MenuItem("AB包/导出")]
-        private static void Export()
+        public static void Export()
         {
             DateTime starttime = DateTime.Now;
             #region 打包前数据初始化
@@ -82,9 +82,9 @@ namespace FutureEditor
             versiondata = new VerifyData();
             allbedependData = new BeDependData();
             alldependData = new DependData();
-            if (File.Exists(ABConfig.verifypath))
+            if (File.Exists(ABConfig.verifyPath))
             {
-                string json = File.ReadAllText(ABConfig.verifypath);
+                string json = File.ReadAllText(ABConfig.verifyPath);
                 versiondata = JsonUtility.FromJson<VerifyData>(json);
             }
             for (int i = 0; i < versiondata.filemap.Count; i++)
@@ -96,18 +96,18 @@ namespace FutureEditor
                 bagdict.Add(versiondata.bagmap[i].bagname, versiondata.bagmap[i].num);
             }
 
-            if (File.Exists(ABConfig.allbedependpath))
+            if (File.Exists(ABConfig.allBeDependPath))
             {
-                string json = File.ReadAllText(ABConfig.allbedependpath);
+                string json = File.ReadAllText(ABConfig.allBeDependPath);
                 allbedependData = JsonUtility.FromJson<BeDependData>(json);
             }
             for (int i = 0; i < allbedependData.bedepsmap.Count; i++)
             {
                 allbedependdict.Add(allbedependData.bedepsmap[i].selfbag, allbedependData.bedepsmap[i].bedepends);
             }
-            if (File.Exists(ABConfig.alldependpath))
+            if (File.Exists(ABConfig.allDependPath))
             {
-                string json = File.ReadAllText(ABConfig.alldependpath);
+                string json = File.ReadAllText(ABConfig.allDependPath);
                 alldependData = JsonUtility.FromJson<DependData>(json);
             }
             for (int i = 0; i < alldependData.depsmap.Count; i++)
@@ -119,7 +119,7 @@ namespace FutureEditor
             #endregion
 
             //遍历项目中AB包文件夹目录,设置里面各个文件的包名
-            DirectoryInfo rootfolder = new DirectoryInfo(Application.dataPath + string.Concat("/", ABConfig.abroot)); ;
+            DirectoryInfo rootfolder = new DirectoryInfo(ABConfig.abRoot);
             SetBundlesName(rootfolder);
             if (bagnum == 0)
             {
@@ -174,12 +174,12 @@ namespace FutureEditor
             try
             {
                 //检测路径是否存在，没有则创建
-                if (!Directory.Exists(ABConfig.outputpath))
+                if (!Directory.Exists(ABConfig.outputPath))
                 {
-                    Directory.CreateDirectory(ABConfig.outputpath);
+                    Directory.CreateDirectory(ABConfig.outputPath);
                 }
                 //导出ab包 ab包存储位置，打包设置，平台
-                BuildPipeline.BuildAssetBundles(ABConfig.outputpath, ABConfig.ABOptions, ABConfig.ABPlatform);
+                BuildPipeline.BuildAssetBundles(ABConfig.outputPath, ABConfig.abOptions, ABConfig.abPlatform);
             }
             catch
             {
@@ -194,8 +194,8 @@ namespace FutureEditor
         /// <param name="folder"></param>
         private static void SetBundlesName(DirectoryInfo folder)
         {
-            string newbagname = folder.FullName.
-                Substring(folder.FullName.IndexOf(ABConfig.abroot)).Replace("\\", "/").ToLower(); // abres/...
+            string newbagname = folder.FullName.Replace("\\", "/").Replace(@"\","/").
+                Replace(ABConfig.abRoot,string.Empty).ToLower(); // abres/...
             StringBuilder md5 = new StringBuilder();
             int checknum = 0;  //记录当前目录检测完毕的文件个数(处理文件删减情况)
             bool Nofile = false;  //是否有文件
@@ -346,19 +346,19 @@ namespace FutureEditor
             }
             versiondata.version++;
             versiondata.builddate = DateTime.Now.ToString();
-            if (!File.Exists(ABConfig.verifypath))
+            if (!File.Exists(ABConfig.verifyPath))
             {
-                File.Create(ABConfig.verifypath).Dispose();
+                File.Create(ABConfig.verifyPath).Dispose();
             }
             string json = JsonUtility.ToJson(versiondata, true);
-            File.WriteAllText(ABConfig.verifypath, json);
+            File.WriteAllText(ABConfig.verifyPath, json);
 
             #endregion
 
             #region 读取主包
 
             //读取打包后的主包
-            AssetBundle main = AssetBundle.LoadFromFile(ABConfig.outputpath + "/AB");
+            AssetBundle main = AssetBundle.LoadFromFile(ABConfig.outputPath + "/AB");
             AssetBundleManifest fest = main.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
 
             #endregion
@@ -434,19 +434,19 @@ namespace FutureEditor
                 allbedependlist.bedepsmap.Add(allbedependmsg);
             }
 
-            if (!File.Exists(ABConfig.alldependpath))
+            if (!File.Exists(ABConfig.allDependPath))
             {
-                File.Create(ABConfig.alldependpath).Dispose();
+                File.Create(ABConfig.allDependPath).Dispose();
             }
             json = JsonUtility.ToJson(alldependlist, true);
-            File.WriteAllText(ABConfig.alldependpath, json);
+            File.WriteAllText(ABConfig.allDependPath, json);
 
-            if (!File.Exists(ABConfig.allbedependpath))
+            if (!File.Exists(ABConfig.allBeDependPath))
             {
-                File.Create(ABConfig.allbedependpath).Dispose();
+                File.Create(ABConfig.allBeDependPath).Dispose();
             }
             json = JsonUtility.ToJson(allbedependlist, true);
-            File.WriteAllText(ABConfig.allbedependpath, json);
+            File.WriteAllText(ABConfig.allBeDependPath, json);
 
             #endregion
             main.Unload(true);

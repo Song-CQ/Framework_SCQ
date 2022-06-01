@@ -16,5 +16,6 @@ MonoBehaviour:
   ModuleUIPath: {fileID: 102900000, guid: 3c955cf277ce3a44f95ebd276247a2b0, type: 3}
   CommonModuleUIPath: {fileID: 102900000, guid: ca5142f5407d6ea4686d8eaf03d5ef8d,
     type: 3}
-  FGUIClassPath: {fileID: 102900000, guid: ac2e3944869642a40bb57ae870dfa8ff, type: 3}
+  FGUIClassPath: {fileID: 102900000, guid: d0938482a8b902049ac7469402e9a581, type: 3}
   ResFGUIPath: {fileID: 102900000, guid: 2a73dd5a3c62d3f4dbe20525b199b8df, type: 3}
+  ABConfigPath: {fileID: 102900000, guid: 1c8c91f468b53494496b30a211b26474, type: 3}

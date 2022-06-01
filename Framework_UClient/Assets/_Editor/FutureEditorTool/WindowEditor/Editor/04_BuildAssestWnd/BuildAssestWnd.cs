@@ -8,20 +8,21 @@ namespace FutureEditor
 {
     public class BuildAssetBundleWnd : EditorWindow
     {
-        [MenuItem("GameObject/[Window]/BuildAssetBundle", false, -1000)]
+        [MenuItem("GameObject/[Window]/BuildAssetBundle", false, -100)]
         private static void GoOpenFrameworkWin()
         {
-            OpenFrameworkWin();
+            OpenWnd();
         }
-        [MenuItem("Assets/[Window]/BuildAssetBundle", false, -1000)]
+
+        [MenuItem("Assets/[Window]/BuildAssetBundle", false, -100),MenuItem("Assets/[Window]",false,-100)]
         private static void AssOpenFrameworkWin()
         {
-            OpenFrameworkWin();
+            OpenWnd();
         }
         [MenuItem("[FC Window]/打包AssetBundle窗口", false, -100)]
-        private static void OpenFrameworkWin()
+        public static void OpenWnd()
         {
-            CreateWindow<BuildAssetBundleWnd>("AssetBundle Window");
+            CreateWindow<BuildAssetBundleWnd>("Build AssetBundle Window");
         }
 
         private void OnEnable()
@@ -34,52 +35,94 @@ namespace FutureEditor
             Focus();
         }
 
+        private ABConfig abConfig;
+
+        private string versionPath;
+
         private void InitData()
         {
-            toolbatVal = new string[System.Enum.GetValues(typeof(ShowType)).Length];
-            System.Collections.IList list = System.Enum.GetValues(typeof(ShowType));
-            for (int i = 0; i < list.Count; i++)
+            string abConfigPath = UnityEditorPathConst.ABConfigPatn_Assest + "/ABConfig.asset";
+            abConfig = AssetDatabase.LoadAssetAtPath<ABConfig>(abConfigPath);
+            if (abConfig == null)
             {
-                ShowType t = (ShowType)list[i];
-                toolbatVal[i] = t.ToString();
+                ScriptableObjectTool.CreadScriptableObject<ABConfig>(UnityEditorPathConst.ABConfigPatn_Assest);
+                abConfig = AssetDatabase.LoadAssetAtPath<ABConfig>(abConfigPath);
+                abConfig.outputPath = Application.dataPath.Substring(0, Application.dataPath.Length - 6) + "AssetBundle";
+                abConfig.abRoot = Application.dataPath+ "/_AssetBundleRes";
+                abConfig.verifyPath = UnityEditorPathConst.ABConfigPatn_Assest + "/version.json";
+                abConfig.allBeDependPath = UnityEditorPathConst.ABConfigPatn_Assest + "/allBeDependData.json";
+                abConfig.allDependPath = UnityEditorPathConst.ABConfigPatn_Assest + "/allDependData.json";
+                abConfig.abOptions = BuildAssetBundleOptions.None;
+                abConfig.abPlatform = BuildTarget.StandaloneWindows;
             }
+            versionPath = abConfig.verifyPath.Replace("/version.json",string.Empty);
         }
 
-
-        private string[] toolbatVal;
-        private int toolbatIndex = 0;
         private void OnGUI()
         {
-          
-            toolbatIndex = GUILayout.Toolbar(toolbatIndex, toolbatVal);
-            switch (toolbatIndex)
-            {
-            
-                case (int)ShowType.UnityTool:
-                    RefreshUI_UnityTool();
-                    break;
-                case (int)ShowType.ExcelTool:
-                    RefreshUI_ExcelTool();
-                    break;
-                case (int)ShowType.CreateTool:
-                    RefreshUI_CreateTool();
-                    break;
-                case (int)ShowType.AutoRegisterTool:
-                    RefreshUI_AutoRegisterTool();
-                    break;
-            }
+            RefreshABConfig();
+
+
+
+
         }
 
-        
-
-        private enum ShowType
+        private void RefreshABConfig()
         {
-            UnityTool=0,
-            ExcelTool,
-            GameTool,
-            CreateTool,
-            AutoRegisterTool,
+            GUILayout.BeginArea(new Rect(450, 0 , 450, 500), GUI.skin.GetStyle("ShurikenModuleBg"));
+            GUILayout.BeginVertical();
+
+            GUILayout.Space(10);
+
+            GUIStyle gUIStyle = new GUIStyle();
+
+            GUILayout.BeginHorizontal();
+
+            gUIStyle.fontStyle = FontStyle.BoldAndItalic;
+            gUIStyle.fontSize = 16;
+
+            GUILayout.Label("AssetBundle Config", gUIStyle);
+            GUILayout.EndHorizontal();
+
+            
+
+            GUILayout.Label("资源文件夹(Asset):", GUILayout.Height(20));
+
+            GUILayout.BeginHorizontal();
+            abConfig.abRoot = GUILayout.TextField(abConfig.abRoot, GUILayout.Width(300));
+            if (GUILayout.Button("浏览", GUILayout.Width(50f)))
+            {
+                string path = EditorUtility.OpenFolderPanel("选择资源文件夹", Application.dataPath, "").Replace(@"\","/").Replace(@"\\","/");
+                if (path.Contains(Application.dataPath))
+                {
+                    abConfig.abRoot = path;
+                }
+            }
+            GUILayout.EndHorizontal();
+          
+         
+       
+            GUILayout.Label("校验缓存文件夹:", GUILayout.Height(20));
+
+            versionPath = GUILayout.TextField(versionPath, GUILayout.Height(20),GUILayout.Width(450));
+            abConfig.verifyPath = versionPath + "/version.json";
+            abConfig.allBeDependPath = versionPath + "/allBeDependData.json";
+            abConfig.allDependPath = versionPath + "/allDependData.json";
+
+  
+
+            GUILayout.EndVertical();
+            GUILayout.EndArea();
+
+
+            GUILayout.BeginScrollView(new Vector2(0,0), GUILayout.Height(400), GUILayout.Width(450));
+
+            
+            GUILayout.EndScrollView();
+
         }
+
+
      
         #region UnityTool
         private void RefreshUI_UnityTool()

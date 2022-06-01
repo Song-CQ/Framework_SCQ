@@ -52,6 +52,11 @@ namespace FutureEditor
         /// </summary>   
         public readonly static string ResFGUIPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ResFGUIPath);
         public readonly static string ResFGUIPath = ResFGUIPath_Assets.Replace(Application.dataPath, string.Empty);
+        
+        /// <summary>
+        /// 存放ABConfig(打包Ab包设置)的路劲 
+        /// </summary>
+        public readonly static string ABConfigPatn_Assest = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ABConfigPath);
 
 
         /// <summary>
@@ -65,6 +70,7 @@ namespace FutureEditor
         /// </summary>
         public readonly static string Fgui_Stript_Patn = $"{Application.dataPath}/../../_Resources/FGUI/FGUI_Script";
 
+        
 
 
     }

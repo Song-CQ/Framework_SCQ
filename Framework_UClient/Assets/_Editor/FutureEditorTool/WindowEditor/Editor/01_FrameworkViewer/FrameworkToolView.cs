@@ -66,11 +66,14 @@ namespace FutureEditor
                     break;
                 case (int)ShowType.AutoRegisterTool:
                     RefreshUI_AutoRegisterTool();
+                    break; 
+                case (int)ShowType.OpenWnidow:
+                    RefreshUI_OpenWnidow();
                     break;
             }
         }
 
-        
+       
 
         private enum ShowType
         {
@@ -79,6 +82,7 @@ namespace FutureEditor
             GameTool,
             CreateTool,
             AutoRegisterTool,
+            OpenWnidow,
         }
      
         #region UnityTool
@@ -222,6 +226,20 @@ namespace FutureEditor
         }
 
         #endregion
+
+        #region OpenWnidowTool
+        private void RefreshUI_OpenWnidow()
+        {
+            GUILayout.BeginArea(new Rect(10, 35, 200, 200));
+            if (GUILayout.Button("AssetBundle窗口", GUILayout.Height(40), GUILayout.Width(180)))
+            {
+                BuildAssetBundleWnd.OpenWnd();
+                Close();
+            }   
+            GUILayout.EndArea();
+        }
+        #endregion
+
     }
 }
 
