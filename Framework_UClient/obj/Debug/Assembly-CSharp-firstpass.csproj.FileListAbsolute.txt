@@ -352,3 +352,7 @@ D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.
 D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.pdb
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\LogUtil.dll
 D:\UnityPro\Framework_SCQ\Framework_UClient\Temp\bin\Debug\RainbowCore.dll
+E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.csprojAssemblyReference.cache
+E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache
+E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.dll
+E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\Assembly-CSharp-firstpass.pdb
