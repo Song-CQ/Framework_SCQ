@@ -17,13 +17,13 @@ namespace FutureEditor
 {
     public static class MVC_CreadTool
     {
-        public static string outPath = UnityEditorPathConst.ModuleUIPath_Assets;
+        public static string outPath = Application.dataPath +"/../"+ UnityEditorPathConst.ModuleUIPath;
 
-        public static string commOutPath = UnityEditorPathConst.CommonModuleUIPath_Assets;
+        public static string commOutPath = Application.dataPath + "/../" + UnityEditorPathConst.CommonModuleUIPath;
 
         public static string hotFixOutPath = UnityEditorPathConst.ModuleUIPath_HotFix;
 
-        public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\Editor\ProjectTool\AutoCreadTool\MVC_AutoCread\Template";
+        public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\Editor\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template";
 
 
         public static void OpenFGUICread()

@@ -20,6 +20,8 @@ namespace FutureEditor
 
         public static ABConfig ABConfig;
 
+        public static string abRoodPath;
+
         #region 全局变量
 
         /// <summary>
@@ -118,8 +120,10 @@ namespace FutureEditor
 
             #endregion
 
+            abRoodPath = Application.dataPath + "/../" + ABConfig.abRoot;
+
             //遍历项目中AB包文件夹目录,设置里面各个文件的包名
-            DirectoryInfo rootfolder = new DirectoryInfo(ABConfig.abRoot);
+            DirectoryInfo rootfolder = new DirectoryInfo(abRoodPath);
             SetBundlesName(rootfolder);
             if (bagnum == 0)
             {
@@ -195,7 +199,7 @@ namespace FutureEditor
         private static void SetBundlesName(DirectoryInfo folder)
         {
             string newbagname = folder.FullName.Replace("\\", "/").Replace(@"\","/").
-                Replace(ABConfig.abRoot,string.Empty).ToLower(); // abres/...
+                Replace(abRoodPath, string.Empty).ToLower(); // abres/...
             StringBuilder md5 = new StringBuilder();
             int checknum = 0;  //记录当前目录检测完毕的文件个数(处理文件删减情况)
             bool Nofile = false;  //是否有文件

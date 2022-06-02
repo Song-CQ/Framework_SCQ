@@ -3,6 +3,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using FutureCore;
+using System.IO;
+using UnityEditor.AnimatedValues;
 
 namespace FutureEditor
 {
@@ -35,12 +37,20 @@ namespace FutureEditor
             Focus();
         }
 
+
+
+        private string abConfigPath;
         private ABConfig abConfig;
 
         private string versionPath;
 
+
+        private AnimBool m_ShowExtraFields;
+        UnityEngine.Object abRoot = null;
         private string[] toolbatVal;
         private int toolbatIndex = 0;
+        private bool showFoldout=false;
+
         private void InitData()
         {
             toolbatVal = new string[System.Enum.GetValues(typeof(ShowType)).Length];
@@ -51,14 +61,14 @@ namespace FutureEditor
                 toolbatVal[i] = t.ToString();
             }
 
-            string abConfigPath = UnityEditorPathConst.ABConfigPatn_Assest + "/ABConfig.asset";
+            abConfigPath = UnityEditorPathConst.ABConfigPatn_Assest + "/ABConfig.asset";
             abConfig = AssetDatabase.LoadAssetAtPath<ABConfig>(abConfigPath);
             if (abConfig == null)
             {
                 ScriptableObjectTool.CreadScriptableObject<ABConfig>(UnityEditorPathConst.ABConfigPatn_Assest);
                 abConfig = AssetDatabase.LoadAssetAtPath<ABConfig>(abConfigPath);
                 abConfig.outputPath = Application.dataPath.Substring(0, Application.dataPath.Length - 6) + "AssetBundle";
-                abConfig.abRoot = Application.dataPath+ "/_AssetBundleRes";
+                abConfig.abRoot = "_AssetBundleRes";
                 abConfig.verifyPath = UnityEditorPathConst.ABConfigPatn_Assest + "/version.json";
                 abConfig.allBeDependPath = UnityEditorPathConst.ABConfigPatn_Assest + "/allBeDependData.json";
                 abConfig.allDependPath = UnityEditorPathConst.ABConfigPatn_Assest + "/allDependData.json";
@@ -66,6 +76,19 @@ namespace FutureEditor
                 abConfig.abPlatform = BuildTarget.StandaloneWindows;
             }
             versionPath = abConfig.verifyPath.Replace("/version.json",string.Empty);
+
+
+            m_ShowExtraFields = new AnimBool(false);
+            m_ShowExtraFields.speed = 10;
+            //监听重绘
+            m_ShowExtraFields.valueChanged.AddListener(Repaint);
+
+            if (abConfig.abRoot!=null)
+            {
+                abRoot = AssetDatabase.LoadAssetAtPath<DefaultAsset>(abConfig.abRoot);
+
+            }
+
         }
 
         
@@ -96,39 +119,68 @@ namespace FutureEditor
 
 
         }
-
+       
         private void Refresh_AllPag()
         {
             //左
             GUILayout.BeginArea(new Rect(10, 30, 420, 450), GUI.skin.GetStyle("GameViewBackground"));
-  
+
+
+
             
 
             GUILayout.BeginScrollView( Vector2.zero);
 
+           
 
             GUILayout.EndScrollView();
 
 
             GUILayout.EndArea();
-            
+        
 
             //右
             GUILayout.BeginArea(new Rect(450,30,440,450),GUI.skin.GetStyle("FrameBox"));
-          
             
             GUILayout.BeginVertical();
+
+
+           
             GUILayout.BeginHorizontal();
-            abConfig.abRoot = EditorGUILayout.TextField("资源文件夹(Asset)", abConfig.abRoot);
-            if (GUILayout.Button("浏览", GUILayout.Width(50f)))
+       
+            
+            DefaultAsset pathObj = abRoot as DefaultAsset;
+            if (pathObj != null)
             {
-                string path = EditorUtility.OpenFolderPanel("选择资源文件夹", Application.dataPath, "").Replace(@"\", "/").Replace(@"\\", "/");
-                if (path.Contains(Application.dataPath))
-                {
-                    abConfig.abRoot = path;
-                }
+                string path = AssetDatabase.GetAssetPath(pathObj);
+                abConfig.abRoot = path;
+                showFoldout = EditorGUILayout.Foldout(showFoldout, "资源文件夹(Asset):");
+                m_ShowExtraFields.target = showFoldout;
             }
+            else
+            {
+                GUILayout.Label(" 资源文件夹(Asset):", GUI.skin.GetStyle("IN TitleText"), GUILayout.Width(155));
+                m_ShowExtraFields.target = false;
+            }
+
+            abRoot = EditorGUILayout.ObjectField(abRoot, typeof(DefaultAsset), true);
+
             GUILayout.EndHorizontal();
+
+            if (showFoldout)
+            {
+                EditorGUI.indentLevel++; //缩进深度增加，以下的GUI会增加缩进
+
+                EditorGUILayout.TextField(abConfig.abRoot, GUILayout.Height(20));
+
+                EditorGUI.indentLevel--; //缩进深度减少，以下的GUI会减少缩进
+            }
+
+
+
+
+
+
 
             GUILayout.EndVertical();
             GUILayout.EndArea();
@@ -141,13 +193,27 @@ namespace FutureEditor
             GUILayout.BeginVertical();
 
 
+            GUILayout.Label(" AB包输出目录:", GUI.skin.GetStyle("IN TitleText"));
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.SelectableLabel(abConfig.outputPath,EditorStyles.textField,GUILayout.Height(20));
+
+            if (GUILayout.Button("浏览", GUILayout.Width(50f)))
+            {
+                string path = EditorUtility.OpenFolderPanel("选择AB包输出目录", Application.dataPath+@"\..", "").Replace(@"\", "/").Replace(@"\\", "/");
+                if (!path.IsNullOrEmpty())
+                {
+                    abConfig.outputPath = path;
+                    Repaint();
+                }
+            
+            }
+            GUILayout.EndHorizontal();
 
 
 
             GUILayout.Label(" 导出AB信息文件夹:",  GUI.skin.GetStyle("IN TitleText"));
-
             GUILayout.BeginHorizontal();
-            versionPath = GUILayout.TextField(versionPath, GUILayout.Height(20),GUILayout.MinWidth(300));
+            EditorGUILayout.SelectableLabel(versionPath,EditorStyles.textField, GUILayout.Height(20));
 
             if (GUILayout.Button("浏览", GUILayout.Width(50f)))
             {
@@ -155,6 +221,7 @@ namespace FutureEditor
                 if (path.Contains(Application.dataPath))
                 {
                     versionPath = path;
+                    Repaint();
                 }
             }
             abConfig.verifyPath = versionPath + "/version.json";
@@ -162,9 +229,13 @@ namespace FutureEditor
             abConfig.allDependPath = versionPath + "/allDependData.json";
             GUILayout.EndHorizontal();
 
+            GUILayout.Space(3);
+            abConfig.abOptions = (BuildAssetBundleOptions)EditorGUILayout.EnumPopup("AB包压缩方式:", abConfig.abOptions,GUILayout.Width(400));
+            
+            GUILayout.Space(3);
+            abConfig.abPlatform = (BuildTarget)EditorGUILayout.EnumPopup("AB包打包平台:", abConfig.abPlatform, GUILayout.Width(400));
 
-
-            GUILayout.EndVertical();
+            GUILayout.EndVertical(); 
             GUILayout.EndArea();
 
 
@@ -172,7 +243,12 @@ namespace FutureEditor
 
         }
 
-       
+        private void OnDisable()
+        {
+            //标记目标已被改变数值
+            EditorUtility.SetDirty(abConfig);
+            AssetDatabase.SaveAssets();
+        }
 
 
     }

@@ -15,8 +15,7 @@ namespace FutureEditor
         /// <summary>
         /// ModuleUI路劲
         /// </summary>      
-        public readonly static string ModuleUIPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ModuleUIPath);
-        public readonly static string ModuleUIPath = ModuleUIPath_Assets.Replace(Application.dataPath,string.Empty);
+        public readonly static string ModuleUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ModuleUIPath);
 
         /// <summary>
         /// ModuleUI路劲(热更)
@@ -25,14 +24,13 @@ namespace FutureEditor
         /// <summary>
         /// CommModuleUI路劲
         /// </summary>      
-        public readonly static string CommonModuleUIPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.CommonModuleUIPath);
-        public readonly static string CommonModuleUIPath = CommonModuleUIPath_Assets.Replace(Application.dataPath,string.Empty);
+        public readonly static string CommonModuleUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.CommonModuleUIPath);
 
         /// <summary>
         /// 自动注册目录
         /// </summary>   
-        public readonly static string AutoRegisterPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.AutoRegisterPath);
-        public readonly static string AutoRegisterPath = AutoRegisterPath_Assets.Replace(Application.dataPath, string.Empty);
+        public readonly static string AutoRegisterPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.AutoRegisterPath);
+
         /// <summary>
         /// 自动注册目录(热更)
         /// </summary>
@@ -40,8 +38,7 @@ namespace FutureEditor
         /// <summary>
         /// Unity 存放FGUI代码目录
         /// </summary>   
-        public readonly static string FGUIClassPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.FGUIClassPath);    
-        public readonly static string FGUIClassPath = FGUIClassPath_Assets.Replace(Application.dataPath, string.Empty);
+        public readonly static string FGUIClassPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.FGUIClassPath);         
         /// <summary>
         /// 热更 存放FGUI代码目录
         /// </summary>   
@@ -50,8 +47,7 @@ namespace FutureEditor
         /// <summary>
         /// 存放UI的目录
         /// </summary>   
-        public readonly static string ResFGUIPath_Assets = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ResFGUIPath);
-        public readonly static string ResFGUIPath = ResFGUIPath_Assets.Replace(Application.dataPath, string.Empty);
+        public readonly static string ResFGUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ResFGUIPath);
         
         /// <summary>
         /// 存放ABConfig(打包Ab包设置)的路劲 

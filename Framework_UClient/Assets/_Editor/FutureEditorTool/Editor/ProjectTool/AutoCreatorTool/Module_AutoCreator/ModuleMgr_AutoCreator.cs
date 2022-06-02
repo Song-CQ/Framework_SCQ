@@ -16,8 +16,8 @@ namespace FutureEditor
 {
     public static class ModuleMgr_AutoCreator
     {
-        private static string ModuleUIPath = UnityEditorPathConst.ModuleUIPath_Assets;
-        private static string CommonModuleUIPath = UnityEditorPathConst.CommonModuleUIPath_Assets;
+        private static string ModuleUIPath = Application.dataPath + "/../" + UnityEditorPathConst.ModuleUIPath;
+        private static string CommonModuleUIPath = Application.dataPath + "/../" + UnityEditorPathConst.CommonModuleUIPath;
 
         private const string ConstClassTemplate = @"/****************************************************
     文件: #ClassName#Const.cs
@@ -116,7 +116,7 @@ namespace #namespace#
             //    nameLst.Add(path.Replace(CommonModuleUIPath + @"\", string.Empty));
             //}       
 
-            string ModuleMgrPath = UnityEditorPathConst.AutoRegisterPath_Assets + "/ModuleMgr";
+            string ModuleMgrPath = UnityEditorPathConst.AutoRegisterPath+ "/ModuleMgr";
             if (!Directory.Exists(ModuleMgrPath))
             {
                 Directory.CreateDirectory(ModuleMgrPath);

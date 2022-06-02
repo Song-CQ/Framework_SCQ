@@ -22,7 +22,7 @@ namespace FutureEditor
             if (AppConst.UIDriver == UIDriverEnem.FGUI)
             {
                 Auto_UIMgr = string.Empty;
-                CopyFGUIStript(UnityEditorPathConst.FGUIClassPath_Assets);
+                CopyFGUIStript(UnityEditorPathConst.FGUIClassPath);
                 AutoRegisterFGUI(UnityEditorPathConst.FGUIClassPath);
                 FinishRegisterFGUI();
             }
@@ -137,7 +137,7 @@ namespace ProjectApp
             classStr = classStr.Replace(replaceBinderConst, Auto_UIMgr);
             //string replaceCommonPackageConst = "//ReplaceCommonPackage";
             //classStr = classStr.Replace(replaceCommonPackageConst, uiCommonPackageInfo);
-            string targetPath = UnityEditorPathConst.AutoRegisterPath_Assets + "/UIMgr/UIRegister_FGUI.cs";
+            string targetPath = UnityEditorPathConst.AutoRegisterPath + "/UIMgr/UIRegister_FGUI.cs";
             FutureCore.FileUtil.WriteFile(targetPath, classStr);
             Debug.Log("[UI_AutoCread]注册FGUI包完成");
         }
