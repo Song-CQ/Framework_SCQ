@@ -2,14 +2,18 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Vision.Editor
+namespace FutureEditor
 {
-    public class VisionGUIWindowKit
+    public class GUIWindowKit
     {
-        public static void InitExpendBox(string smallTabTitle, ref bool isShow, Action action)
+        public static void InitExpendBox(string smallTabTitle, ref bool isShow, Action action,bool IsNeedSeparator=true)
         {
-            EditorGUILayout.Separator();
+            if (IsNeedSeparator)
+            {
+                EditorGUILayout.Separator();
+            }         
             EditorGUILayout.BeginVertical(new GUIStyle(EditorStyles.helpBox));
+        
             InitExpendTitle(smallTabTitle, ref isShow);
 
             if (isShow)
@@ -24,8 +28,8 @@ namespace Vision.Editor
 
         public static void InitExpendTitle(string smallTabTitle, ref bool isShow)
         {
-            EditorGUILayout.BeginHorizontal(new GUIStyle(EditorStyles.colorField));
-            isShow = EditorGUILayout.Foldout(isShow, smallTabTitle, true, EditorStyles.boldLabel);
+            EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
+            isShow = EditorGUILayout.Foldout(isShow,smallTabTitle,true);
             EditorGUILayout.EndHorizontal();
         }
         

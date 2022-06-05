@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using Vision.Editor;
 
 namespace FutureEditor
 {
@@ -42,14 +41,14 @@ namespace FutureEditor
 
         private void OnEnable()
         {
-            VisionGUIStyleWindow.Instance.InitEvent(this);
+            GUIStyleWindow.Instance.InitEvent(this);
         }
 
 
         private void OnGUI()
         {
 
-            VisionGUIStyleWindow.Instance.InitEditorDemo();
+            GUIStyleWindow.Instance.InitEditorDemo();
 
         }
 

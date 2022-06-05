@@ -1,15 +1,14 @@
 using UnityEditor.AnimatedValues;
 using UnityEditor.EditorTools;
 using UnityEditor.Tilemaps;
-using Vision.Editor;
 using FutureCore;
 
-namespace Vision.Editor
+namespace FutureEditor
 {
     using UnityEngine;
     using UnityEditor;
 
-    public class VisionGUIStyleWindow:Singleton<VisionGUIStyleWindow>
+    public class GUIStyleWindow:Singleton<GUIStyleWindow>
     {
         private Vector2 scrollPosition = Vector2.zero;
         private string search = string.Empty;
@@ -190,7 +189,7 @@ namespace Vision.Editor
         {
             scrollPosition = GUILayout.BeginScrollView(scrollPosition);
 
-            VisionGUIWindowKit.InitExpendBox("文本模块", ref isShowText, () =>
+            GUIWindowKit.InitExpendBox("文本模块", ref isShowText, () =>
             {
                 // 文本
                 EditorGUILayout.LabelField("EditorGUILayout.LabelField: 文本");
@@ -221,7 +220,7 @@ namespace Vision.Editor
                 #endregion
             });
 
-            VisionGUIWindowKit.InitExpendBox("进度模块", ref isShowProgress, () =>
+            GUIWindowKit.InitExpendBox("进度模块", ref isShowProgress, () =>
             {
                 //环形进度条
                 knob = EditorGUILayout.Knob(new Vector2(50, 50), knob, 5, 10, "斤", Color.black, Color.blue, true);
@@ -248,7 +247,7 @@ namespace Vision.Editor
                 #endregion
             });
 
-            VisionGUIWindowKit.InitExpendBox("布局相关模块", ref isShowLayout, () =>
+            GUIWindowKit.InitExpendBox("布局相关模块", ref isShowLayout, () =>
             {
                 //收缩栏
                 isFoldout = EditorGUILayout.Foldout(isFoldout, "展开收起", true);
@@ -272,7 +271,7 @@ namespace Vision.Editor
             });
 
 
-            VisionGUIWindowKit.InitExpendBox("单选与多选", ref isShowChoose, () =>
+            GUIWindowKit.InitExpendBox("单选与多选", ref isShowChoose, () =>
             {
                 EditorGUILayout.LabelField("EditorGUILayout.Toggle");
                 isToggle = EditorGUILayout.Toggle("勾选", isToggle);
@@ -318,7 +317,7 @@ namespace Vision.Editor
                 InitDropdownButton();
             });
 
-            VisionGUIWindowKit.InitExpendBox("数值编辑模块", ref isShowEditor, () =>
+            GUIWindowKit.InitExpendBox("数值编辑模块", ref isShowEditor, () =>
             {
                 Bounds = EditorGUILayout.BoundsField("边界输入框", Bounds);
                 EditorGUILayout.Separator();
@@ -335,9 +334,9 @@ namespace Vision.Editor
                 m_vector4 = EditorGUILayout.Vector4Field("Vector4:", m_vector4);
             });
 
-            VisionGUIWindowKit.InitExpendBox("TileMap编辑工具", ref isShowTileMapEditor, () => { InitTilemapsTool(); });
+            GUIWindowKit.InitExpendBox("TileMap编辑工具", ref isShowTileMapEditor, () => { InitTilemapsTool(); });
 
-            VisionGUIWindowKit.InitExpendBox("HelpBox", ref isShowHelpBox, () =>
+            GUIWindowKit.InitExpendBox("HelpBox", ref isShowHelpBox, () =>
             {
                 #region HelpBox
 
@@ -349,7 +348,7 @@ namespace Vision.Editor
                 #endregion
             });
 
-            VisionGUIWindowKit.InitExpendBox("InspectorTitlebar", ref isShowInspectorTitlebar, () =>
+            GUIWindowKit.InitExpendBox("InspectorTitlebar", ref isShowInspectorTitlebar, () =>
             {
                 #region InspectorTitlebar
 

@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace FutureEditor
 {
-    public class ExportAB 
+    public static class ExportABTool 
     {
 
         public static ABConfig ABConfig;

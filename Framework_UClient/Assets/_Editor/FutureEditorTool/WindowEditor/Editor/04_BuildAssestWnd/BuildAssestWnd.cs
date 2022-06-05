@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 using FutureCore;
 using System.IO;
 using UnityEditor.AnimatedValues;
+using System.Collections.Generic;
+using FutureEditor;
 
 namespace FutureEditor
 {
@@ -30,7 +32,7 @@ namespace FutureEditor
         private void OnEnable()
         {
       
-            minSize = new Vector2(900, 500);
+            minSize = new Vector2(900, 510);
             maxSize = minSize;
             InitData();
             Show();
@@ -78,10 +80,10 @@ namespace FutureEditor
             versionPath = abConfig.verifyPath.Replace("/version.json",string.Empty);
 
 
-            m_ShowExtraFields = new AnimBool(false);
-            m_ShowExtraFields.speed = 10;
-            //监听重绘
-            m_ShowExtraFields.valueChanged.AddListener(Repaint);
+            //m_ShowExtraFields = new AnimBool(false);
+            //m_ShowExtraFields.speed = 10;
+            ////监听重绘
+            //m_ShowExtraFields.valueChanged.AddListener(Repaint);
 
             if (abConfig.abRoot!=null)
             {
@@ -89,14 +91,17 @@ namespace FutureEditor
 
             }
 
-        }
+            SlideVal = EditorPrefs.GetFloat(SlideValKey, 0.5f);
 
-        
+            RestAbRoodData();
+        }
+        private string SlideValKey = "BuildAssetBundleWndSlideVal";
+
 
         private enum ShowType
         {
             AllPag=0,
-            Build 
+            BuildSetting 
 
         }
 
@@ -110,7 +115,7 @@ namespace FutureEditor
                 case (int)ShowType.AllPag:
                     Refresh_AllPag();
                     break;
-                case (int)ShowType.Build:
+                case (int)ShowType.BuildSetting:
                     RefreshABConfig();
                     break;
             
@@ -119,52 +124,107 @@ namespace FutureEditor
 
 
         }
-       
+
+    
+
+        private void GetPackName(DirectoryInfo directory,Dictionary<string, DirectoryData> AllDic,bool isAdd=false)
+        {
+            bool isNeedFile = false;
+            foreach (var item in directory.GetDirectories())
+            {
+                isNeedFile = true;
+                GetPackName(item,AllDic,true);
+            }
+            if (!isAdd)
+            {
+                return;
+            }
+            if (isNeedFile)
+            {
+                return;
+            }
+            FileInfo[] fileInfos = directory.GetFiles();
+            if (fileInfos.Length==0)
+            {
+                return;
+            }
+            List<FileInfo> fileInfoLst = new List<FileInfo>();
+            long size = 0;
+            foreach (var file in fileInfos)
+            {
+                if (file.FullName.EndsWith(".meta"))
+                {
+                    continue;
+                }
+                fileInfoLst.Add(file);
+                size += file.Length;
+            }
+
+            string path = directory.FullName.Replace("\\", "/").Replace(@"\", "/");
+            int index = path.IndexOf(abConfig.abRoot)+abConfig.abRoot.Length+1;
+            path = path.Substring(index, path.Length-index);
+            DirectoryData directoryData = new DirectoryData();
+            directoryData.path = path;
+            directoryData.directory = directory;
+            directoryData.allFiles = fileInfoLst;
+            directoryData.size = size;
+
+            allDicInfoLst.Add(path, directoryData);
+        }
+        private Vector2 scPot;     
+        private float SlideVal = 0.5f;
+
+
+        #region data
+        DirectoryInfo abRootInfo;
+        private class DirectoryData
+        {
+            public bool isShow;
+            public string path;
+            public long size;
+            public DirectoryInfo directory;
+            public List<FileInfo> allFiles;
+        }
+
+        private Dictionary<string, DirectoryData> allDicInfoLst = new Dictionary<string, DirectoryData>();
+
+        private DirectoryData currSelectDirectoryData;
+        #endregion
+
         private void Refresh_AllPag()
         {
-            //左
-            GUILayout.BeginArea(new Rect(10, 30, 420, 450), GUI.skin.GetStyle("GameViewBackground"));
-
-
-
-            
-
-            GUILayout.BeginScrollView( Vector2.zero);
 
            
-
-            GUILayout.EndScrollView();
-
-
+            GUILayout.BeginArea(new Rect(10, 480, 880, 30), GUI.skin.GetStyle("FrameBox"));
+            SlideVal = EditorGUILayout.Slider(SlideVal, 0.3f,0.7f,GUILayout.Height(20));
             GUILayout.EndArea();
-        
 
-            //右
-            GUILayout.BeginArea(new Rect(450,30,440,450),GUI.skin.GetStyle("FrameBox"));
+            //右上
+            GUILayout.BeginArea(new Rect(minSize.x* SlideVal, 30, minSize.x * (1-SlideVal) -10, 300),GUI.skin.GetStyle("FrameBox"));
             
             GUILayout.BeginVertical();
+          
 
-
-           
-            GUILayout.BeginHorizontal();
-       
-            
+            GUILayout.BeginHorizontal();                 
             DefaultAsset pathObj = abRoot as DefaultAsset;
             if (pathObj != null)
             {
                 string path = AssetDatabase.GetAssetPath(pathObj);
-                abConfig.abRoot = path;
-                showFoldout = EditorGUILayout.Foldout(showFoldout, "资源文件夹(Asset):");
-                m_ShowExtraFields.target = showFoldout;
+                if (abConfig.abRoot != path)
+                {
+                    abConfig.abRoot = path;
+                    RestAbRoodData();
+                } 
+                showFoldout = EditorGUILayout.Foldout(showFoldout, "资源文件夹(Asset):");               
             }
             else
             {
                 GUILayout.Label(" 资源文件夹(Asset):", GUI.skin.GetStyle("IN TitleText"), GUILayout.Width(155));
-                m_ShowExtraFields.target = false;
+                showFoldout = false;
+                abConfig.abRoot = string.Empty;
             }
 
             abRoot = EditorGUILayout.ObjectField(abRoot, typeof(DefaultAsset), true);
-
             GUILayout.EndHorizontal();
 
             if (showFoldout)
@@ -175,15 +235,131 @@ namespace FutureEditor
 
                 EditorGUI.indentLevel--; //缩进深度减少，以下的GUI会减少缩进
             }
+            EditorGUILayout.HelpBox("   以文件夹为标准资源包打包,不允许文件夹和文件共存,如有共存会忽略文件!",MessageType.Info);
 
+            if (GUILayout.Button("刷新路劲"))
+            {
+                RestAbRoodData();
+            }
 
-
-
-
-
+            GUILayout.Space(100);
+            if (GUILayout.Button("一键打包AB",GUILayout.Height(100)))
+            {
+                Build();
+            }
 
             GUILayout.EndVertical();
             GUILayout.EndArea();
+
+         
+            //右下
+            GUILayout.BeginArea(new Rect(minSize.x * SlideVal+1, 335, minSize.x * (1 - SlideVal) - 12, 145), GUI.skin.GetStyle("grey_border"));
+            if (currSelectDirectoryData!=null)
+            {
+                EditorGUILayout.BeginVertical();
+                EditorGUILayout.LabelField(currSelectDirectoryData.path, GUI.skin.GetStyle("IN TitleText"));
+                EditorGUI.indentLevel++;
+
+                EditorGUILayout.LabelField("Size:    " + FutureCore.FileUtil.ConvertFileSize(currSelectDirectoryData.size), GUI.skin.GetStyle("IN TitleText"));
+                EditorGUILayout.LabelField("File Cont:    " + currSelectDirectoryData.allFiles.Count, GUI.skin.GetStyle("IN TitleText"));
+                
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Space(18);
+                GUILayout.Label("AB Path:",GUI.skin.GetStyle("IN TitleText")); 
+                EditorGUILayout.TextField(currSelectDirectoryData.directory.FullName,GUILayout.Width(300));
+                EditorGUILayout.EndHorizontal();
+
+                EditorGUI.indentLevel--;
+                EditorGUILayout.EndVertical();
+
+            }
+
+            GUILayout.EndArea();
+
+
+
+            //左
+            GUILayout.BeginArea(new Rect(10, 30, minSize.x * SlideVal-20, 450), GUI.skin.GetStyle("GameViewBackground"));
+
+
+            if (abConfig.abRoot == null || !Directory.Exists(abConfig.abRoot))
+            {
+                GUILayout.BeginArea(new Rect(80, 130, 300, 400));
+                GUILayout.Box("请选择资源文件夹", GUI.skin.GetStyle("NotificationBackground"), GUILayout.Height(110));
+                GUILayout.EndArea();
+            }
+            else
+            {
+                scPot = GUILayout.BeginScrollView(scPot);
+                GUILayout.BeginVertical();
+              
+                foreach (var item in allDicInfoLst)
+                {
+                    bool isShow = item.Value.isShow;
+
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
+                    bool isSelect = false;
+                    if (!isShow)
+                    {
+                        isSelect = true;
+                    }
+                    isShow = EditorGUILayout.Foldout(isShow,item.Key, true,EditorStyles.foldout);
+                    if (isShow&&isSelect)
+                    {
+                        currSelectDirectoryData = item.Value;
+                    }
+
+                    int val = item.Key.Length - 55;
+                    if (val < 0)
+                    {
+                        val = 0;
+                    }
+                    else
+                    {
+                        val = val * 8;
+                    }
+                    GUILayout.Space(290+val);
+                    GUILayout.Label(FutureCore.FileUtil.ConvertFileSize(item.Value.size));
+                    EditorGUILayout.EndHorizontal();
+                    if (isShow)
+                    {
+                        foreach (var file in item.Value.allFiles)
+                        {
+                            GUILayout.BeginHorizontal();
+                            GUILayout.Space(25);
+                            GUILayout.Label(file.Name);
+                            EditorGUILayout.LabelField(FutureCore.FileUtil.ConvertFileSize(file.Length));
+                            GUILayout.EndHorizontal();
+                        }
+                    }
+                    EditorGUILayout.EndVertical();
+                    item.Value.isShow = isShow;
+                }
+                GUILayout.EndVertical();
+                GUILayout.EndScrollView();
+            }
+
+
+
+
+            GUILayout.EndArea();
+
+        }
+
+        private void Build()
+        {
+
+            ExportABTool.Export();
+
+        }
+
+        private void RestAbRoodData()
+        {
+            abRootInfo  = new DirectoryInfo(abConfig.abRoot);
+            allDicInfoLst.Clear();
+            currSelectDirectoryData = null;
+            GetPackName(abRootInfo, allDicInfoLst);
         }
 
         private void RefreshABConfig()
@@ -243,11 +419,13 @@ namespace FutureEditor
 
         }
 
+
         private void OnDisable()
         {
             //标记目标已被改变数值
             EditorUtility.SetDirty(abConfig);
             AssetDatabase.SaveAssets();
+            EditorPrefs.SetFloat(SlideValKey, SlideVal);
         }
 
 
