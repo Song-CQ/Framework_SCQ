@@ -101,6 +101,11 @@ namespace ProjectApp
         /// 是否使用UGameAndroid编译(只影响Android编译，不影响iOS编译)
         /// </summary>
         public const bool IsUseUGameAndroid = true;
+
+        /// <summary>
+        /// 服务器资源路劲
+        /// </summary>
+        public const string ServerAssestUrl = "";
         #endregion
 
         #region 方法

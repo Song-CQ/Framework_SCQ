@@ -38,15 +38,14 @@ namespace ProjectApp
             //// MonoMgr
             ////globalMgr.AddMgr(AudioMgr.Instance);
             //globalMgr.AddMgr(CoroutineMgr.Instance);
-            //globalMgr.AddMgr(HttpMgr.Instance);
-            //globalMgr.AddMgr(SceneSwitchMgr.Instance);
+            globalMgr.AddMgr(HttpMgr.Instance);
             //globalMgr.AddMgr(ScreenshotMgr.Instance);
             //globalMgr.AddMgr(TestMgr.Instance);
             ////globalMgr.AddMgr(ThreadMgr.Instance);
             //globalMgr.AddMgr(TickMgr.Instance);
-            //globalMgr.AddMgr(TimerMgr.Instance);
+            globalMgr.AddMgr(TimerMgr.Instance);
             globalMgr.AddMgr(UIMgr.Instance);
-            //globalMgr.AddMgr(VersionUpdateMgr.Instance);
+            globalMgr.AddMgr(VersionUpdateMgr.Instance);
             //globalMgr.AddMgr(WorldSpaceMgr.Instance);
 
             //// AppMgr

@@ -148,9 +148,15 @@ namespace FutureCore
         // 服务器资源版本
         public static string[] ServerAssetVersions = DefaultAssetVersions;
 
+       
+
         // 应用启动时间
         public static DateTime LaunchDateTime;
-      
+        /// <summary>
+        /// 本地资源路径
+        /// </summary>
+        public static string LocalAssestUrl = Application.dataPath+ "/../AssetBundles";
+
         #endregion
 
         public static void Init()
@@ -160,38 +166,19 @@ namespace FutureCore
 
             if (Application.isEditor)
             {
-                // 1) �༭����������
-                IsDevelopMode = true;
+                IsDevelopMode = false;
                 IsHotUpdateMode = false;
                 IsDebugMode = true;
 
-                // 2) �༭����ʽ����
-                //IsDevelopMode = false;
-                //IsHotUpdateMode = true;
-                //IsDebugMode = false;
+
             }
             else
             {
-                // 1) ��������
+
                 IsDevelopMode = true;
                 IsHotUpdateMode = false;
                 IsDebugMode = true;
 
-                // 2) ��ʽ��������
-                //IsDevelopMode = false;
-                //IsHotUpdateMode = true;
-                //IsDebugMode = true;
-
-                // 2) ��ʽ����
-                //IsDevelopMode = false;
-                //IsHotUpdateMode = true;
-                //IsDebugMode = false;
-                //IsEnabledDebugLog = false;
-
-                // 3) ���ȸ���ʽ����
-                //IsDevelopMode = true;
-                //IsHotUpdateMode = false;
-                //IsDebugMode = false;
             }
         }
 

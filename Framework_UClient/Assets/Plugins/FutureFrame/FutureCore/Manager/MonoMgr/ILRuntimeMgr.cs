@@ -18,6 +18,7 @@ namespace FutureCore
     public class ILRuntimeMgr : BaseMonoMgr<ILRuntimeMgr>
     {
         private AppDomain this_AppDomain;
+        public AppDomain AppDomain => this_AppDomain;
 
         private MemoryStream dll_ms;
         private MemoryStream pdb_ms;
@@ -43,8 +44,8 @@ namespace FutureCore
 #else
             dicPath = Application.persistentDataPath;
 #endif
-            
 
+            this_AppDomain = new AppDomain();
         }
 
         public void StartLoadHotFix()
@@ -56,6 +57,7 @@ namespace FutureCore
         {
 
             string _dllPath = Path.Combine(dicPath,dllPath);
+   
             UnityWebRequest loadRequestDll = UnityWebRequest.Get(_dllPath);
 
             yield return loadRequestDll.SendWebRequest();
@@ -85,7 +87,7 @@ namespace FutureCore
             }
 #endif
 
-            this_AppDomain = new AppDomain();
+            
 
 #if UNITY_EDITOR
             this_AppDomain.LoadAssembly(dll_ms,pdb_ms,new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
@@ -104,7 +106,7 @@ namespace FutureCore
             this_AppDomain.UnityMainThreadID = System.Threading.Thread.CurrentThread.ManagedThreadId;
 #endif          
 
-            ILRuntimeMgr_Register.RegisterAll(this_AppDomain);
+           
             this_AppDomain.DelegateManager.RegisterMethodDelegate<object>();
 
         }

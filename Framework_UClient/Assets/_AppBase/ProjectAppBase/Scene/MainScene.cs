@@ -57,11 +57,11 @@ namespace ProjectApp
             }
             else
             {
-                InitAssets();
+                InitAssets(true);
             }
         }
 
-        private void InitAssets()
+        private void InitAssets(bool isComplete)
         {
             AppDispatcher.Instance.AddOnceListener(AppMsg.System_AssetsInitComplete, OnAssetsInitComplete);
 
@@ -79,6 +79,7 @@ namespace ProjectApp
             LogUtil.Log("[MainScene]Load HotFix");
             App.SetLoadingSchedule(ProgressState.LoadHotFix);
             //加载热更代码
+            ILRuntimeMgr_Register.RegisterAll(ILRuntimeMgr.Instance.AppDomain);
             ILRuntimeMgr.Instance.StartLoadHotFix();
             
 
