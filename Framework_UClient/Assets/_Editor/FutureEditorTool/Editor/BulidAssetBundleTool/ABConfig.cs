@@ -40,5 +40,22 @@ namespace FutureEditor
         /// 打包平台
         /// </summary>
         public BuildTarget abPlatform;
+
+        /// <summary>
+        /// 是否拷贝至StreamingAssets
+        /// </summary>
+        public bool isCopyStreamingAssets;
+        /// <summary>
+        /// 是否导出version文件
+        /// </summary>
+        public bool isImputVersion;
+        /// <summary>
+        /// 是否增量打包
+        /// </summary>
+        public bool isIncrementalBulie;
+        /// <summary>
+        /// 是否自动增加版本号
+        /// </summary>
+        public bool isAutoAddVersion;
     }
 }

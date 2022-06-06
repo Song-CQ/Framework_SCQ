@@ -18,9 +18,11 @@ namespace FutureEditor
     public static class ExportABTool 
     {
 
-        public static ABConfig ABConfig;
+        private static ABConfig ABConfig;
 
-        public static string abRoodPath;
+        private static string abRoodPath;
+
+        private static string outputPath;
 
         #region 全局变量
 
@@ -67,8 +69,10 @@ namespace FutureEditor
 
         #endregion
 
-        public static void Export()
+        public static void Export(ABConfig aBConfig)
         {
+            ABConfig = aBConfig;
+
             DateTime starttime = DateTime.Now;
             #region 打包前数据初始化
 
@@ -89,38 +93,42 @@ namespace FutureEditor
                 string json = File.ReadAllText(ABConfig.verifyPath);
                 versiondata = JsonUtility.FromJson<VerifyData>(json);
             }
-            for (int i = 0; i < versiondata.filemap.Count; i++)
-            {
-                filedict.Add(versiondata.filemap[i].Path, versiondata.filemap[i].MD5);
-            }
-            for (int i = 0; i < versiondata.bagmap.Count; i++)
-            {
-                bagdict.Add(versiondata.bagmap[i].bagname, versiondata.bagmap[i].num);
-            }
+            if (ABConfig.isIncrementalBulie)
+            {              
+                for (int i = 0; i < versiondata.filemap.Count; i++)
+                {
+                    filedict.Add(versiondata.filemap[i].Path, versiondata.filemap[i].MD5);
+                }
+                for (int i = 0; i < versiondata.bagmap.Count; i++)
+                {
+                    bagdict.Add(versiondata.bagmap[i].bagname, versiondata.bagmap[i].num);
+                }
 
-            if (File.Exists(ABConfig.allBeDependPath))
-            {
-                string json = File.ReadAllText(ABConfig.allBeDependPath);
-                allbedependData = JsonUtility.FromJson<BeDependData>(json);
+                if (File.Exists(ABConfig.allBeDependPath))
+                {
+                    string json = File.ReadAllText(ABConfig.allBeDependPath);
+                    allbedependData = JsonUtility.FromJson<BeDependData>(json);
+                }
+                for (int i = 0; i < allbedependData.bedepsmap.Count; i++)
+                {
+                    allbedependdict.Add(allbedependData.bedepsmap[i].selfbag, allbedependData.bedepsmap[i].bedepends);
+                }
+                if (File.Exists(ABConfig.allDependPath))
+                {
+                    string json = File.ReadAllText(ABConfig.allDependPath);
+                    alldependData = JsonUtility.FromJson<DependData>(json);
+                }
+                for (int i = 0; i < alldependData.depsmap.Count; i++)
+                {
+                    alldependdict.Add(alldependData.depsmap[i].selfbag, alldependData.depsmap[i].depends);
+                }
             }
-            for (int i = 0; i < allbedependData.bedepsmap.Count; i++)
-            {
-                allbedependdict.Add(allbedependData.bedepsmap[i].selfbag, allbedependData.bedepsmap[i].bedepends);
-            }
-            if (File.Exists(ABConfig.allDependPath))
-            {
-                string json = File.ReadAllText(ABConfig.allDependPath);
-                alldependData = JsonUtility.FromJson<DependData>(json);
-            }
-            for (int i = 0; i < alldependData.depsmap.Count; i++)
-            {
-                alldependdict.Add(alldependData.depsmap[i].selfbag, alldependData.depsmap[i].depends);
-            }
+           
 
 
             #endregion
 
-            abRoodPath = Application.dataPath + "/../" + ABConfig.abRoot;
+            abRoodPath = Application.dataPath.Substring(0, Application.dataPath.Length-6) + ABConfig.abRoot;
 
             //遍历项目中AB包文件夹目录,设置里面各个文件的包名
             DirectoryInfo rootfolder = new DirectoryInfo(abRoodPath);
@@ -128,6 +136,7 @@ namespace FutureEditor
             if (bagnum == 0)
             {
                 Debug.LogError("没有需要打包的文件");
+                BuildAssetBundleWnd.ShowNotificationTips("没有需要打包的文件");
                 return;
             }
             else
@@ -155,17 +164,19 @@ namespace FutureEditor
                     }
                     md5.Clear();
                 }
-                Debug.Log("<size=15>" + string.Concat("【设置包名】 ", (DateTime.Now - starttime).TotalSeconds) + "</size>");
+                Debug.Log(string.Concat("【设置包名】消耗时间 :",(DateTime.Now - starttime).TotalSeconds));
                 //最终打包
                 if (Build())
                 {
                     Debug.Log("导出AB包成功");
                     Debug.Log($"共打包{bagnum}个");
-                    Debug.Log("<size=15>" + string.Concat("【打包】 ", (DateTime.Now - starttime).TotalSeconds) + "</size>");
+                    Debug.Log(string.Concat("【打包】消耗时间 ", (DateTime.Now - starttime).TotalSeconds));
                     UpdateVersion();
                     Debug.Log("校验文件 依赖文件 被依赖文件 保存成功");
                     Debug.Log("<size=15>" + string.Concat("【总计用时】 ", (DateTime.Now - starttime).TotalSeconds) + "</size>");
                 }
+                BuildAssetBundleWnd.ShowNotificationTips("打包完成");
+
             }
         }
 
@@ -177,13 +188,14 @@ namespace FutureEditor
         {
             try
             {
+                outputPath = ABConfig.outputPath + "/" + ABConfig.abPlatform.ToString();
                 //检测路径是否存在，没有则创建
-                if (!Directory.Exists(ABConfig.outputPath))
+                if (!Directory.Exists(outputPath))
                 {
-                    Directory.CreateDirectory(ABConfig.outputPath);
+                    Directory.CreateDirectory(outputPath);
                 }
                 //导出ab包 ab包存储位置，打包设置，平台
-                BuildPipeline.BuildAssetBundles(ABConfig.outputPath, ABConfig.abOptions, ABConfig.abPlatform);
+                BuildPipeline.BuildAssetBundles(outputPath, ABConfig.abOptions, ABConfig.abPlatform);
             }
             catch
             {
@@ -192,6 +204,8 @@ namespace FutureEditor
             }
             return true;
         }
+
+
         /// <summary>
         /// 增加,修改,修改都会会导致该文件所在包被记录
         /// </summary>
@@ -199,7 +213,7 @@ namespace FutureEditor
         private static void SetBundlesName(DirectoryInfo folder)
         {
             string newbagname = folder.FullName.Replace("\\", "/").Replace(@"\","/").
-                Replace(abRoodPath, string.Empty).ToLower(); // abres/...
+                Replace(abRoodPath+"/", string.Empty).ToLower(); // abres/...
             StringBuilder md5 = new StringBuilder();
             int checknum = 0;  //记录当前目录检测完毕的文件个数(处理文件删减情况)
             bool Nofile = false;  //是否有文件
@@ -299,8 +313,98 @@ namespace FutureEditor
                     bagnum++;
                 }
             }
-        }
+        }       
+       
+        /// <summary>
+        /// 最终遍历，设置包名
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="bagname"></param>
+        /// <param name="assetsfilepath"></param>
+        /// <param name="check">是否要检测待打包表</param>
+        private static bool FinalSetName(DirectoryInfo folder, string newbagname, StringBuilder md5, bool check = true)
+        {
+            if (check)
+            {
+                //将自己被依赖的和依赖的全添加到待打包表中
+                List<string> bedeps;
+                if (allbedependdict.TryGetValue(newbagname, out bedeps))
+                {
+                    for (int i = 0; i < bedeps.Count; i++)
+                    {
+                        if (!addbagdict.ContainsKey(bedeps[i]))
+                        {
+                            addbagdict.Add(bedeps[i], 0);
+                        }
+                    }
+                }
+                List<string> deps;
+                if (alldependdict.TryGetValue(newbagname, out deps))
+                {
+                    for (int i = 0; i < deps.Count; i++)
+                    {
+                        if (!addbagdict.ContainsKey(deps[i]))
+                        {
+                            addbagdict.Add(deps[i], 0);
+                        }
+                    }
+                }
 
+            }
+            int checknum = 0;
+            //最终遍历该AB包的所有文件,并更新AB校验文件中的信息
+            foreach (FileInfo tar in folder.GetFiles())
+            {
+                //todo 排除某些文件
+                if (tar.Extension.Equals(".meta"))
+                {
+                    continue;
+                }
+                md5.Clear();
+                //如果dict中有当前文件的记录，进行比较
+                if (filedict.ContainsKey(tar.FullName))
+                {
+                    md5.Append(filedict[tar.FullName]);
+                    //如果MD5一样，说明该文件没有被修改
+                    if (VerifyTool.Compare(tar.FullName, md5))
+                    {
+                        //设置包名
+                        DealSingleABName(tar, newbagname, md5);
+                    }
+                    //如果该文件被修改了
+                    else
+                    {
+                        //设置包名
+                        DealSingleABName(tar, newbagname, md5);
+                        //更新校验文件中该文件的md5
+                        filedict[tar.FullName] = md5.ToString();
+                    }
+                }
+                //如果dict中没有当前文件的记录，添加信息
+                else
+                {
+                    //设置包名
+                    DealSingleABName(tar, newbagname, md5);
+                    //添加当前文件的校验信息
+                    filedict.Add(tar.FullName, VerifyTool.GetFileMD5(tar.FullName));
+                }
+                checknum++;
+            }
+            //可能没文件
+            if (checknum == 0) return false;
+            //更新当前包的文件个数
+            if (bagdict.ContainsKey(newbagname))
+            {
+                if (bagdict[newbagname] != checknum) bagdict[newbagname] = checknum;
+            }
+            else
+            {
+                bagdict.Add(newbagname, checknum);
+            }
+            //登记打包
+            builtbagdict.Add(newbagname, 0);
+            return true;
+        }
 
         /// <summary>
         /// 具体设置单个资源的包名
@@ -324,6 +428,7 @@ namespace FutureEditor
                 Debug.LogError("设置包名异常：" + assetsfilepath.ToString());
             }
         }
+
         /// <summary>
         /// 更新校验文件信息,依赖信息，被依赖信息
         /// </summary>
@@ -348,7 +453,10 @@ namespace FutureEditor
                 bagmsg.num = bagdict.ElementAt(i).Value;
                 versiondata.bagmap.Add(bagmsg);
             }
-            versiondata.version++;
+            if (ABConfig.isAutoAddVersion)
+            {
+                versiondata.version++;
+            }
             versiondata.builddate = DateTime.Now.ToString();
             if (!File.Exists(ABConfig.verifyPath))
             {
@@ -356,13 +464,27 @@ namespace FutureEditor
             }
             string json = JsonUtility.ToJson(versiondata, true);
             File.WriteAllText(ABConfig.verifyPath, json);
+            if (ABConfig.isImputVersion)
+            {
+                File.WriteAllText(outputPath + "/version.json", json);
+            }
+
+            if (ABConfig.isCopyStreamingAssets)
+            {
+                string tar = Application.streamingAssetsPath + "/" + ABConfig.abPlatform.ToString();
+                if (Directory.Exists(tar))
+                {
+                    Directory.Delete(tar,true);
+                }
+                FileUtil.CopyFileOrDirectoryFollowSymlinks(outputPath,tar);
+            }
 
             #endregion
 
             #region 读取主包
 
             //读取打包后的主包
-            AssetBundle main = AssetBundle.LoadFromFile(ABConfig.outputPath + "/AB");
+            AssetBundle main = AssetBundle.LoadFromFile(outputPath + "/" + ABConfig.abPlatform.ToString());
             AssetBundleManifest fest = main.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
 
             #endregion
@@ -455,96 +577,9 @@ namespace FutureEditor
             #endregion
             main.Unload(true);
 
-        }
-        /// <summary>
-        /// 最终遍历，设置包名
-        /// </summary>
-        /// <param name="folder"></param>
-        /// <param name="bagname"></param>
-        /// <param name="assetsfilepath"></param>
-        /// <param name="check">是否要检测待打包表</param>
-        private static bool FinalSetName(DirectoryInfo folder, string newbagname, StringBuilder md5, bool check = true)
-        {
-            if (check)
-            {
-                //将自己被依赖的和依赖的全添加到待打包表中
-                List<string> bedeps;
-                if (allbedependdict.TryGetValue(newbagname, out bedeps))
-                {
-                    for (int i = 0; i < bedeps.Count; i++)
-                    {
-                        if (!addbagdict.ContainsKey(bedeps[i]))
-                        {
-                            addbagdict.Add(bedeps[i], 0);
-                        }
-                    }
-                }
-                List<string> deps;
-                if (alldependdict.TryGetValue(newbagname, out deps))
-                {
-                    for (int i = 0; i < deps.Count; i++)
-                    {
-                        if (!addbagdict.ContainsKey(deps[i]))
-                        {
-                            addbagdict.Add(deps[i], 0);
-                        }
-                    }
-                }
+            AssetDatabase.Refresh();
 
-            }
-            int checknum = 0;
-            //最终遍历该AB包的所有文件,并更新AB校验文件中的信息
-            foreach (FileInfo tar in folder.GetFiles())
-            {
-                //todo 排除某些文件
-                if (tar.Extension.Equals(".meta"))
-                {
-                    continue;
-                }
-                md5.Clear();
-                //如果dict中有当前文件的记录，进行比较
-                if (filedict.ContainsKey(tar.FullName))
-                {
-                    md5.Append(filedict[tar.FullName]);
-                    //如果MD5一样，说明该文件没有被修改
-                    if (VerifyTool.Compare(tar.FullName, md5))
-                    {
-                        //设置包名
-                        DealSingleABName(tar, newbagname, md5);
-                    }
-                    //如果该文件被修改了
-                    else
-                    {
-                        //设置包名
-                        DealSingleABName(tar, newbagname, md5);
-                        //更新校验文件中该文件的md5
-                        filedict[tar.FullName] = md5.ToString();
-                    }
-                }
-                //如果dict中没有当前文件的记录，添加信息
-                else
-                {
-                    //设置包名
-                    DealSingleABName(tar, newbagname, md5);
-                    //添加当前文件的校验信息
-                    filedict.Add(tar.FullName, VerifyTool.GetFileMD5(tar.FullName));
-                }
-                checknum++;
-            }
-            //可能没文件
-            if (checknum == 0) return false;
-            //更新当前包的文件个数
-            if (bagdict.ContainsKey(newbagname))
-            {
-                if (bagdict[newbagname] != checknum) bagdict[newbagname] = checknum;
-            }
-            else
-            {
-                bagdict.Add(newbagname, checknum);
-            }
-            //登记打包
-            builtbagdict.Add(newbagname, 0);
-            return true;
         }
+
     }
 }

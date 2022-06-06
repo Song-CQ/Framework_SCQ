@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FutureCore;
+using System;
 using UnityEngine;
 
 namespace FairyGUI
@@ -50,8 +51,11 @@ namespace FairyGUI
         public const string Name = "Stage Camera";
         public const string LayerName = "UI";
 
-        public static float DefaultCameraSize = 5;
-        public static float DefaultUnitsPerPixel = 0.02f;
+        public static float DefaultCameraSize = Screen.height / 2 * AppConst.FGUIRatio;
+        //public static float DefaultCameraSize = 5;
+         //public static float DefaultUnitsPerPixel = 0.02f;
+        //修改
+        public static float DefaultUnitsPerPixel = AppConst.FGUIRatio;
 
         void OnEnable()
         {

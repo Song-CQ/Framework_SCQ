@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
   <displayList>
-    <image id="n20_nbg9" name="n20" src="nbg9k" fileName="img/bg.jpg" xy="0,-60" pivot="0.5,0.5">
+    <image id="n20_nbg9" name="n20" src="nbg9k" fileName="img/bg.jpg" xy="0,0" pivot="0.5,0.5" size="1920,1080">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <component id="n14_t268" name="pb_loading" src="t2688" fileName="com/PB.xml" xy="335,1015" size="1349,67">
+    <component id="n14_t268" name="pb_loading" src="t2688" fileName="com/PB.xml" xy="338,958" size="1349,67">
       <relation target="" sidePair="center-center,bottom-bottom"/>
       <ProgressBar value="100" max="100"/>
     </component>
-    <text id="n16_i2uj" name="text_severStatus" xy="636,874" size="695,106" fontSize="82" color="#3399ff" align="center" vAlign="middle" autoSize="none" strokeColor="#ffffff" strokeSize="4" singleLine="true" text="Framework Test">
+    <text id="n16_i2uj" name="text_severStatus" xy="639,817" size="695,106" fontSize="82" color="#3399ff" align="center" vAlign="middle" autoSize="none" strokeColor="#ffffff" strokeSize="4" singleLine="true" text="Framework Test">
       <relation target="" sidePair="center-center,middle-middle"/>
     </text>
   </displayList>

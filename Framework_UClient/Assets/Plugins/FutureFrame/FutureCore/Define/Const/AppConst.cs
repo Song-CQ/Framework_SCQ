@@ -120,6 +120,11 @@ namespace FutureCore
         public static UIDriverEnem UIDriver = UIDriverEnem.FGUI;
 
         /// <summary>
+        /// Fgui和世界物体的大小比例（0.01f代表世界物体大小乘以100等于UI物体大小）
+        /// </summary>
+        public const float FGUIRatio = 0.01f;
+
+        /// <summary>
         /// 是否热更
         /// </summary>
         public static bool IsHotFix_UI = true;
@@ -145,6 +150,7 @@ namespace FutureCore
 
         // 应用启动时间
         public static DateTime LaunchDateTime;
+      
         #endregion
 
         public static void Init()

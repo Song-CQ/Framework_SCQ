@@ -48,9 +48,9 @@ namespace FutureEditor
                 foreach (var item in infos)
                 {
                     if (item.Name.StartsWith("A")) continue;
-                    FileUtil.CopyFolder(item.FullName,path);
+                    FileUtil.CopyFolder(item.FullName,path);                   
                 }
-
+                Debug.Log("[UI_AutoCread]拷贝项目FGUI包代码完成");
             }
         }
 
