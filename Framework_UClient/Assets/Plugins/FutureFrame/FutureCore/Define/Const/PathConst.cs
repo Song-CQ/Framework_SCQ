@@ -27,7 +27,27 @@ namespace FutureCore
         /// AB包下载缓存目录
         /// </summary>
         public static string AssetBundleCachePath = Application.temporaryCachePath + "/LoadABCache/";
+        
+        
+        /// <summary>
+        /// HotFix存放目录
+        /// </summary>
+#if UNITY_EDITOR || UNITY_STANDALONE
+        public static string HotFixPath = Application.persistentDataPath + "/HotFix/";
+#elif UNITY_IOS
+        public static string HotFixPath = Application.temporaryCachePath + "/HotFix/";
+#elif UNITY_ANDROID
+        public static string HotFixPath = Application.persistentDataPath + "/HotFix/";
+#endif
 
+        /// <summary>
+        /// HotFix下载缓存目录
+        /// </summary>
+        public static string HotFixCachePath = Application.temporaryCachePath + "/HotFix/";
+        /// <summary>
+        /// HotFix本地目录
+        /// </summary>
+        public static string HotFixPath_StreamingAssets = Application.streamingAssetsPath + "/HotFix/";
 
 
     }

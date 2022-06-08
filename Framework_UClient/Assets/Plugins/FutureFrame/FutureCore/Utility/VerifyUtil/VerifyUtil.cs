@@ -1,23 +1,21 @@
 /****************************************************
-    文件: VerifyTool.cs
+    文件: VerifyUtil.cs
     作者: Clear
-    日期: 2022/5/31 17:47:29
-    类型: 逻辑脚本
-    功能: AB包自动打包 校验工具
+    日期: 2022/6/8 18:22:0
+    类型: 框架核心脚本(请勿修改)
+    功能: 版本工具
 *****************************************************/
 using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using UnityEngine;
 
-namespace FutureEditor
+namespace FutureCore
 {
-    public static class VerifyTool 
+    public class VerifyUtil 
     {
         private static MD5 md5 = new MD5CryptoServiceProvider();
         private static StringBuilder sb = new StringBuilder();
-
         /// <summary>
         /// 获取文件的MD5码
         /// </summary>
@@ -49,7 +47,7 @@ namespace FutureEditor
         /// <param name="Template"></param>
         /// <param name="curmd5">文件当前的md5</param>
         /// <returns>true 没修改  false 修改</returns>
-        public static bool Compare(string fileName, StringBuilder Template)
+        public static bool CompareMD5(string fileName, StringBuilder Template)
         {
             string newmd5 = GetFileMD5(fileName);
             if (newmd5.Equals(Template.ToString()))
@@ -68,7 +66,7 @@ namespace FutureEditor
         /// <param name="fileName"></param>
         /// <param name="Template"></param>
         /// <returns></returns>
-        public static bool Compare(string fileName, string Template)
+        public static bool CompareMD5(string fileName, string Template)
         {
             string newmd5 = GetFileMD5(fileName);
             if (newmd5.Equals(Template))
@@ -77,6 +75,10 @@ namespace FutureEditor
             }
             return false;
         }
-    
+
+
+
+
+
     }
 }

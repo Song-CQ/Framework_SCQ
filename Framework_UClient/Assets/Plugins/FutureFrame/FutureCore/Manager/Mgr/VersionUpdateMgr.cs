@@ -6,6 +6,7 @@
 	功能：检测更新资源版本
 *****************************************************/
 using System;
+using System.Collections;
 using System.IO;
 using UnityEngine.Networking;
 
@@ -28,7 +29,7 @@ namespace FutureCore
         private void InitVersionPath()
         {
 #if UNITY_EDITOR 
-            versionPath = "file:///" + AppConst.LocalAssestUrl + "/" + UnityEditor.BuildTarget.StandaloneWindows + "/version.json";
+            versionPath =  AppConst.LocalAssestUrl + "/" + UnityEditor.BuildTarget.StandaloneWindows + "/version.json";
 #elif UNITY_STANDALONE
 
 #elif UNITY_ANDROID
@@ -37,13 +38,42 @@ namespace FutureCore
 
         }
 
+
         public void StartUpProcess(Action<bool> initAssets)
         {
             //检测资源加载
             OnComplete = initAssets;
 
+            //本地文件检测
+            App.SetLoadingSchedule(ProgressState.AssetsPrepare);
+            CheckLocalFile();
+
+            //版本检测
+            App.SetLoadingSchedule(ProgressState.VersionUpdate);
             HttpMgr.Instance.Send(versionPath, GetVersion);
         }
+
+        #region 本地文件检测
+
+        private void CheckLocalFile()
+        {
+            CheckLocalHotFixFile();
+        }
+
+  
+        private void CheckLocalHotFixFile()
+        {
+            string filePath = PathConst.HotFixPath+"HotFix.dll";
+            if (!File.Exists(filePath))
+            {
+                File.Copy(PathConst.HotFixPath_StreamingAssets+"HotFix.dll",filePath);              
+            }
+
+
+            LogUtil.Log("[VersionUpdateMgr]更新本地热更文件完成");
+        }
+        #endregion
+
 
         private void GetVersion(bool isError, DownloadHandler download)
         {

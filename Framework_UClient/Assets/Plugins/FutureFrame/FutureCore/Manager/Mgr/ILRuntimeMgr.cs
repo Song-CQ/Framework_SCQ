@@ -25,7 +25,7 @@ namespace FutureCore
 
         private string dicPath;
 
-        private string dllPath = @"HotFix\HotFix.dll";
+        private string dllPath = @"HotFix\HotFix";
         private string pdbPath = @"HotFix\HotFix.pdb";
 
 
@@ -50,14 +50,18 @@ namespace FutureCore
 
         public void StartLoadHotFix()
         {
-            StartCoroutine(LoadAssembly());
+            CoroutineMgr.Instance.StartCoroutineToInt(LoadAssembly());
         }
 
         private IEnumerator LoadAssembly()
         {
 
             string _dllPath = Path.Combine(dicPath,dllPath);
-   
+            if (!File.Exists(_dllPath))
+            {
+                _dllPath += ".dll";
+            }
+
             UnityWebRequest loadRequestDll = UnityWebRequest.Get(_dllPath);
 
             yield return loadRequestDll.SendWebRequest();

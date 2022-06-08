@@ -18,6 +18,7 @@ namespace ProjectApp
 
             //// Mgr
             //globalMgr.AddMgr(AssetBundleMgr.Instance);
+            globalMgr.AddMgr(CoroutineMgr.Instance);
             globalMgr.AddMgr(CameraMgr.Instance);
             //globalMgr.AddMgr(ConfigMgr.Instance);
             globalMgr.AddMgr(ExcelDataMgr.Instance);
@@ -43,15 +44,16 @@ namespace ProjectApp
             //globalMgr.AddMgr(TestMgr.Instance);
             ////globalMgr.AddMgr(ThreadMgr.Instance);
             //globalMgr.AddMgr(TickMgr.Instance);
-            globalMgr.AddMgr(TimerMgr.Instance);
             globalMgr.AddMgr(UIMgr.Instance);
             globalMgr.AddMgr(VersionUpdateMgr.Instance);
+            globalMgr.AddMgr(ILRuntimeMgr.Instance);
             //globalMgr.AddMgr(WorldSpaceMgr.Instance);
 
             //// AppMgr
             //globalMgr.AddMgr(ChannelMgr.Instance);
             //globalMgr.AddMgr(GameDataMgr.Instance);
             //globalMgr.AddMgr(PreferencesMgr.Instance);
+
 
             //// AppMonoMgr
             //globalMgr.AddMgr(AntiCheatMgr.Instance);

@@ -9,8 +9,10 @@ namespace FutureCore
     {
         // δ���
         Unstart = -10,
+        //资源准备
+         AssetsPrepare = 0,
         // 检测版本更新
-        VersionUpdate = 0,
+        VersionUpdate = 10,
         // 资源初始化
         AssetsInit = 20,
         // 加载热更代码

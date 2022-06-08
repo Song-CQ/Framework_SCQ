@@ -5,6 +5,8 @@
     类型: 逻辑脚本
     功能: 导出
 *****************************************************/
+using FutureCore;
+using FutureCore.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,7 +35,7 @@ namespace FutureEditor
         /// <summary>
         /// 文件校验对象
         /// </summary>
-        private static VerifyData versiondata;
+        private static AssetBundleVerify versiondata;
         /// <summary>
         /// 全被依赖关系对象
         /// </summary>
@@ -85,13 +87,13 @@ namespace FutureEditor
             addbagdict = new Dictionary<string, int>();
 
             //读取校验文件和被依赖信息,将其中的数据读进字典中
-            versiondata = new VerifyData();
+            versiondata = new AssetBundleVerify();
             allbedependData = new BeDependData();
             alldependData = new DependData();
             if (File.Exists(ABConfig.verifyPath))
             {
                 string json = File.ReadAllText(ABConfig.verifyPath);
-                versiondata = JsonUtility.FromJson<VerifyData>(json);
+                versiondata = JsonUtility.FromJson<AssetBundleVerify>(json);
             }
             if (ABConfig.isIncrementalBulie)
             {              
@@ -254,7 +256,7 @@ namespace FutureEditor
                 {
                     md5.Append(filedict[file.FullName]);
                     //如果MD5一样，说明该文件没有被修改
-                    if (VerifyTool.Compare(file.FullName, md5.ToString()))
+                    if (VerifyUtil.CompareMD5(file.FullName, md5.ToString()))
                     {
                         //取消其包名
                         DealSingleABName(file, string.Empty, md5);
@@ -366,7 +368,7 @@ namespace FutureEditor
                 {
                     md5.Append(filedict[tar.FullName]);
                     //如果MD5一样，说明该文件没有被修改
-                    if (VerifyTool.Compare(tar.FullName, md5))
+                    if (VerifyUtil.CompareMD5(tar.FullName, md5))
                     {
                         //设置包名
                         DealSingleABName(tar, newbagname, md5);
@@ -386,7 +388,7 @@ namespace FutureEditor
                     //设置包名
                     DealSingleABName(tar, newbagname, md5);
                     //添加当前文件的校验信息
-                    filedict.Add(tar.FullName, VerifyTool.GetFileMD5(tar.FullName));
+                    filedict.Add(tar.FullName, VerifyUtil.GetFileMD5(tar.FullName));
                 }
                 checknum++;
             }
@@ -476,7 +478,7 @@ namespace FutureEditor
                 {
                     Directory.Delete(tar,true);
                 }
-                FileUtil.CopyFileOrDirectoryFollowSymlinks(outputPath,tar);
+                UnityEditor.FileUtil.CopyFileOrDirectoryFollowSymlinks(outputPath,tar);
             }
 
             #endregion

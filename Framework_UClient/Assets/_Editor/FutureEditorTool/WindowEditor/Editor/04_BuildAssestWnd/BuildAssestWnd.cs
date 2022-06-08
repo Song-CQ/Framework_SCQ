@@ -310,7 +310,7 @@ namespace FutureEditor
                 EditorGUILayout.LabelField(currSelectDirectoryData.path, GUI.skin.GetStyle("IN TitleText"));
                 EditorGUI.indentLevel++;
 
-                EditorGUILayout.LabelField("Size:    " + FutureCore.FileUtil.ConvertFileSize(currSelectDirectoryData.size), GUI.skin.GetStyle("IN TitleText"));
+                EditorGUILayout.LabelField("Size:    " + StringConvertUnit.ConvertFileSize(currSelectDirectoryData.size), GUI.skin.GetStyle("IN TitleText"));
                 EditorGUILayout.LabelField("File Cont:    " + currSelectDirectoryData.allFiles.Count, GUI.skin.GetStyle("IN TitleText"));
 
                 EditorGUILayout.BeginHorizontal();
@@ -371,7 +371,7 @@ namespace FutureEditor
                         val = val * 8;
                     }
                     GUILayout.Space(290 + val);
-                    GUILayout.Label(FutureCore.FileUtil.ConvertFileSize(item.Value.size));
+                    GUILayout.Label(StringConvertUnit.ConvertFileSize(item.Value.size));
                     EditorGUILayout.EndHorizontal();
                     if (isShow)
                     {
@@ -380,7 +380,7 @@ namespace FutureEditor
                             GUILayout.BeginHorizontal();
                             GUILayout.Space(25);
                             GUILayout.Label(file.Name);
-                            EditorGUILayout.LabelField(FutureCore.FileUtil.ConvertFileSize(file.Length));
+                            EditorGUILayout.LabelField(StringConvertUnit.ConvertFileSize(file.Length));
                             GUILayout.EndHorizontal();
                         }
                     }

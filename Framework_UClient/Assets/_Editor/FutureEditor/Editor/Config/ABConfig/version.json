@@ -1,10 +1,14 @@
 {
-    "version": 1,
-    "builddate": "2022/6/6 19:08:29",
+    "version": 4,
+    "builddate": "2022/6/8 17:00:13",
     "filemap": [
         {
             "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood.jpg",
             "MD5": "eedeade6487c22fad4011eb85731fd7e"
+        },
+        {
+            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\HotFix\\HotFix.dll",
+            "MD5": "1529132b056fb1e12785c3a40db6100b"
         },
         {
             "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\ImgAB\\IMG_20220220_155410.jpg",
@@ -22,6 +26,10 @@
     "bagmap": [
         {
             "bagname": "gamerood",
+            "num": 1
+        },
+        {
+            "bagname": "hotfix",
             "num": 1
         },
         {

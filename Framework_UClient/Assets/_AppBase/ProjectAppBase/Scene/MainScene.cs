@@ -51,8 +51,11 @@ namespace ProjectApp
             // 初始化资源
             if (!AppConst.IsDevelopMode)
             {
+                //资源准备 将
+
+
                 //检测版本资源更新
-                App.SetLoadingSchedule(ProgressState.VersionUpdate);
+                App.SetLoadingSchedule(ProgressState.AssetsPrepare);
                 VersionUpdateMgr.Instance.StartUpProcess(InitAssets);
             }
             else

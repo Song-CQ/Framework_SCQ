@@ -7,15 +7,14 @@
 *****************************************************/
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-namespace FutureEditor
+namespace FutureCore.Data
 {
     /// <summary>
     /// 文件校验
     /// </summary>
-    public class VerifyData
+    public class AssetBundleVerify
     {
         /// <summary>
         /// 版本号

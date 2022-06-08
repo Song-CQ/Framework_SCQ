@@ -7,13 +7,14 @@
 *****************************************************/
 using System;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace FutureCore
 {
     public static class FileUtil 
     {
-
         public static void WriteFile(string targetPath, string classStr)
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(targetPath);
@@ -84,27 +85,77 @@ namespace FutureCore
 
 
         /// <summary>
-        /// 将⽂件⼤⼩(字节)转换为最适合的显⽰⽅式
+        /// 将文件转换为类
         /// </summary>
-        /// <param name="size">⽂件字节</param>
-        /// <returns>返回转换后的字符串</returns>
-        public static string ConvertFileSize(long size)
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="FilePath">文件路径</param>
+        /// <returns></returns>
+        public static T LoadFileToClass<T>(string FilePath) where T : class
         {
-            string result = "0KB";
-            int filelength = size.ToString().Length;
-            if (size==0)
-                return result;
-            else if (filelength < 4)
-                result = size + "byte";
-            else if (filelength < 7)
-                result = Math.Round(Convert.ToDouble(size / 1024d), 2) + "KB";
-            else if (filelength < 10)
-                result = Math.Round(Convert.ToDouble(size / 1024d / 1024), 2) + "MB";
-            else if (filelength < 13)
-                result = Math.Round(Convert.ToDouble(size / 1024d / 1024 / 1024), 2) + "GB";
-            else
-                result = Math.Round(Convert.ToDouble(size / 1024d / 1024 / 1024 / 1024), 2) + "TB";
-            return result;
+            string path = FilePath;
+
+            try
+            {
+                if (File.Exists(path))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    FileStream file = File.Open(path, FileMode.Open);
+                    T t = (T)bf.Deserialize(file);
+                    file.Close();
+                    return t;
+                }
+                else
+                {
+                    LogUtil.LogError("该文件不存在");
+                    return null;
+                }
+            }
+            catch (System.Exception)
+            {
+                LogUtil.LogError("加载失败");
+                return null;
+            }
+
+        }
+        /// <summary>
+		/// 将类转换为文件保存
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="FilePath">路径名</param>
+		/// <param name="this_Class">保存的类</param>
+		/// <param name="isReplace">如果已经存在同名文件是否替换该文件</param>
+		/// <returns></returns>
+		public static bool SaveClassToFile<T>(string FilePath, T this_Class, bool isReplace = true) where T : class
+        {
+            string path = FilePath;
+
+            try
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                if (File.Exists(path))
+                {
+                    if (isReplace)
+                    {
+                        File.Delete(path);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                FileStream file = File.Create(path);
+                bf.Serialize(file, this_Class);
+                file.Close();
+                return true;
+            }
+            catch (System.Exception)
+            {
+
+                LogUtil.LogError("保存失败");
+                return false;
+            }
+
+
         }
 
 
