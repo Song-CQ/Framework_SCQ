@@ -58,9 +58,9 @@ namespace FutureCore
         private void CheckLocalFile()
         {
             CheckLocalHotFixFile();
-        }
+            CheckLocalAssetsFile();
+        }       
 
-  
         private void CheckLocalHotFixFile()
         {
             string filePath = PathConst.HotFixPath+"HotFix.dll";
@@ -71,6 +71,15 @@ namespace FutureCore
 
 
             LogUtil.Log("[VersionUpdateMgr]更新本地热更文件完成");
+        }
+
+        private void CheckLocalAssetsFile()
+        {
+           
+            
+
+
+
         }
         #endregion
 

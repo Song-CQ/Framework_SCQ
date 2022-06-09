@@ -15,12 +15,24 @@ namespace FutureCore
         /// AB包存放目录
         /// </summary>
 #if UNITY_EDITOR || UNITY_STANDALONE
-        public static string AssetBundlesPath = Application.persistentDataPath + "/AssetBundles/";
+        public static string AssetBundlesPath = Application.persistentDataPath + "/AssetBundles";
 #elif UNITY_IOS
-        public static string AssetBundlesPath = Application.temporaryCachePath + "/AssetBundles/";
+        public static string AssetBundlesPath = Application.temporaryCachePath + "/AssetBundles";
 #elif UNITY_ANDROID
-        public static string AssetBundlesPath = Application.persistentDataPath + "/AssetBundles/";
+        public static string AssetBundlesPath = Application.persistentDataPath + "/AssetBundles";
 #endif
+
+        /// <summary>
+        ///  Ab包平台
+        /// </summary>
+#if UNITY_EDITOR || UNITY_STANDALONE
+        public static string AssetBundlesTarget = "StandaloneWindows";
+#elif UNITY_IOS
+        public static string AssetBundlesTarget = "IOS";
+#elif UNITY_ANDROID
+        public static string AssetBundlesTarget = "Android";
+#endif
+
 
 
         /// <summary>
