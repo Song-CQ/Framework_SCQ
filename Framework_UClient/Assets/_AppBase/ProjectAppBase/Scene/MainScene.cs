@@ -78,12 +78,20 @@ namespace ProjectApp
 
         private void OnAssetsInitComplete(object obj)
         {
-            AppDispatcher.Instance.AddOnceListener(AppMsg.System_LoadHotFixComplete, OnLoadHotFixComplete);
-            LogUtil.Log("[MainScene]Load HotFix");
-            App.SetLoadingSchedule(ProgressState.LoadHotFix);
-            //加载热更代码
-            ILRuntimeMgr_Register.RegisterAll(ILRuntimeMgr.Instance.AppDomain);
-            ILRuntimeMgr.Instance.StartLoadHotFix();
+            if (AppConst.IsHotUpdateMode)
+            {
+                AppDispatcher.Instance.AddOnceListener(AppMsg.System_LoadHotFixComplete, OnLoadHotFixComplete);
+                LogUtil.Log("[MainScene]Load HotFix");
+                App.SetLoadingSchedule(ProgressState.LoadHotFix);
+                //加载热更代码
+                ILRuntimeMgr_Register.RegisterAll(ILRuntimeMgr.Instance.AppDomain);
+                ILRuntimeMgr.Instance.StartLoadHotFix();
+            }
+            else
+            {
+                OnLoadHotFixComplete(null);
+            }
+            
             
 
         }

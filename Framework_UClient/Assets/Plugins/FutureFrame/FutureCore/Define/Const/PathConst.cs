@@ -45,17 +45,17 @@ namespace FutureCore
         /// HotFix存放目录
         /// </summary>
 #if UNITY_EDITOR || UNITY_STANDALONE
-        public static string HotFixPath = Application.persistentDataPath + "/HotFix/";
+        public static string HotFixPath = Application.persistentDataPath + "/HotFix";
 #elif UNITY_IOS
-        public static string HotFixPath = Application.temporaryCachePath + "/HotFix/";
+        public static string HotFixPath = Application.temporaryCachePath + "/HotFix";
 #elif UNITY_ANDROID
-        public static string HotFixPath = Application.persistentDataPath + "/HotFix/";
+        public static string HotFixPath = Application.persistentDataPath + "/HotFix";
 #endif
 
         /// <summary>
         /// HotFix下载缓存目录
         /// </summary>
-        public static string HotFixCachePath = Application.temporaryCachePath + "/HotFix/";
+        public static string HotFixCachePath = Application.temporaryCachePath + "/Cache/HotFix/";
         /// <summary>
         /// HotFix本地目录
         /// </summary>

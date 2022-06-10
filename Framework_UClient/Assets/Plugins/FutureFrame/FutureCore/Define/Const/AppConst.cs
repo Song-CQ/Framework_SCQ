@@ -28,12 +28,15 @@ namespace FutureCore
         // 默认加载模式 是否同步加载模式
         public const bool IsSyncLoadMode_Default = false;
 
+        /// <summary>
+        /// 是否资源热更模式
+        /// </summary>
+        public const bool IsAssetBundlesUpdateMode = true; 
+
         // 是否是开发构建
         public const bool IsDevelopmentBuild = false;
         // 是否开发模式 (不拷贝资源)
-        public static bool IsDevelopMode = true;
-        // 是否调试模式
-        public static bool IsDebugMode = true;
+        public static bool IsDevelopMode = false;
         // 是否热更新模式
         public static bool IsHotUpdateMode = true;
         // 是否开启调试引擎分析器
@@ -124,10 +127,6 @@ namespace FutureCore
         /// </summary>
         public const float FGUIRatio = 0.01f;
 
-        /// <summary>
-        /// 是否热更
-        /// </summary>
-        public static bool IsHotFix_UI = true;
         /// 项目控制参数
         // 控制器关闭列表
         public static List<string> CtrlDisableList = new List<string>();
@@ -148,14 +147,11 @@ namespace FutureCore
         // 服务器资源版本
         public static string[] ServerAssetVersions = DefaultAssetVersions;
 
-       
+        
 
         // 应用启动时间
         public static DateTime LaunchDateTime;
-        /// <summary>
-        /// 本地资源路径
-        /// </summary>
-        public static string LocalAssestUrl = Application.dataPath+ "/../AssetBundles";
+        
 
         #endregion
 
@@ -166,19 +162,14 @@ namespace FutureCore
 
             if (Application.isEditor)
             {
-                IsDevelopMode = false;
-                IsHotUpdateMode = false;
-                IsDebugMode = true;
-
+                IsDevelopMode = true;
+                IsHotUpdateMode = true;
 
             }
             else
             {
-
-                IsDevelopMode = true;
+                IsDevelopMode = false;
                 IsHotUpdateMode = false;
-                IsDebugMode = true;
-
             }
         }
 

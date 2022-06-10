@@ -5,9 +5,11 @@
     类型: 框架核心脚本(请勿修改)
 	功能：检测更新资源版本
 *****************************************************/
+using FutureCore.Data;
 using System;
 using System.Collections;
 using System.IO;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace FutureCore
@@ -16,7 +18,18 @@ namespace FutureCore
     {
         private Action<bool> OnComplete;
 
-        private string versionPath;
+        private string ABPath_Server;
+
+
+        private string HotFixPath;
+
+        
+
+
+        /// <summary>
+        /// 本地资源路径
+        /// </summary>
+        public string LocalAssestUrl = Application.dataPath + "/..";
 
         public override void Init()
         {
@@ -29,12 +42,26 @@ namespace FutureCore
         private void InitVersionPath()
         {
 #if UNITY_EDITOR 
-            versionPath =  AppConst.LocalAssestUrl + "/" + UnityEditor.BuildTarget.StandaloneWindows + "/version.json";
+            ABPath_Server =  LocalAssestUrl + "/AssetBundles/" + UnityEditor.BuildTarget.StandaloneWindows.ToString();
+
+
 #elif UNITY_STANDALONE
 
 #elif UNITY_ANDROID
-            versionPath = AppFacade_Frame.ServerAssestUrl;
+            
 #endif
+
+
+
+#if UNITY_EDITOR 
+            HotFixPath = LocalAssestUrl + "/HotFix";
+#elif UNITY_STANDALONE
+
+#elif UNITY_ANDROID
+          
+#endif
+
+
 
         }
 
@@ -48,34 +75,64 @@ namespace FutureCore
             App.SetLoadingSchedule(ProgressState.AssetsPrepare);
             CheckLocalFile();
 
-            //版本检测
+            //版本云端检测更新
             App.SetLoadingSchedule(ProgressState.VersionUpdate);
-            HttpMgr.Instance.Send(versionPath, GetVersion);
-        }
+            CheckServerUpdate();
+           
+        }      
 
         #region 本地文件检测
 
         private void CheckLocalFile()
         {
+            if (AppConst.IsDevelopMode)
+            {
+                return;
+            }
             CheckLocalHotFixFile();
             CheckLocalAssetsFile();
+            LogUtil.Log("[VersionUpdateMgr]检测本地文件完成");
         }       
 
         private void CheckLocalHotFixFile()
         {
-            string filePath = PathConst.HotFixPath+"HotFix.dll";
+            if (!AppConst.IsHotUpdateMode)
+            {
+                return;
+            }
+            string filePath = PathConst.HotFixPath+"/HotFix.dll";
             if (!File.Exists(filePath))
             {
-                File.Copy(PathConst.HotFixPath_StreamingAssets+"HotFix.dll",filePath);              
+                File.Copy(PathConst.HotFixPath_StreamingAssets+"/HotFix.dll",filePath);              
             }
-
-
-            LogUtil.Log("[VersionUpdateMgr]更新本地热更文件完成");
+            string verifyPath = PathConst.HotFixPath + "/verify.json";
+            if (!File.Exists(verifyPath))
+            {
+                File.Copy(PathConst.HotFixPath_StreamingAssets + "/verify.json", verifyPath);
+            }
+            
         }
 
         private void CheckLocalAssetsFile()
         {
-           
+            if (!AppConst.IsAssetBundlesUpdateMode)
+            {
+                return;
+            }
+            string filePath = (PathConst.AssetBundlesPath + "/"+PathConst.AssetBundlesTarget);
+            if (!Directory.Exists(filePath))
+            {
+                string streamingAssetsPath = Application.streamingAssetsPath + "/" + PathConst.AssetBundlesTarget;
+                if (Directory.Exists(streamingAssetsPath))
+                {
+                    FileUtil.CopyFolder(streamingAssetsPath,filePath);
+                }
+                else
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+
+            }
             
 
 
@@ -84,18 +141,67 @@ namespace FutureCore
         #endregion
 
 
-        private void GetVersion(bool isError, DownloadHandler download)
+        #region 服务器更新检测
+
+        private HotFixVerify localhotFixVerify;
+        private HotFixVerify serverFixVerify;
+        private void CheckServerUpdate()
+        {
+            CheckServerHotFixFile();
+
+
+
+            
+        }
+
+        private void CheckServerHotFixFile()
+        {
+            //取本地
+            localhotFixVerify = new HotFixVerify();
+            string filePath = PathConst.HotFixPath + "/verify.json";
+            if (File.Exists(filePath))
+            {
+                string fileJson = File.ReadAllText(filePath);
+                HotFixVerify _hotFixVerify = JsonUtility.FromJson<HotFixVerify>(fileJson);
+                if (_hotFixVerify != null)
+                {
+                    localhotFixVerify = _hotFixVerify;
+                }
+            }
+            //取网络
+            HttpMgr.Instance.Send(HotFixPath, GetHotFixVersion);
+        }
+
+        private void GetHotFixVersion(bool isError, DownloadHandler download)
         {
             if (isError)
             {
-                LogUtil.LogError("获取版本信息失败");
-                OnComplete(false);
+                LogUtil.LogError("获取热更版本信息失败");
+                
                 return;
             }
+            string filePath = Path.Combine(PathConst.HotFixPath, "verify.json");
 
-            LogUtil.Log("获取版本信息成功");
-            OnComplete(true);
+            string fileJson = download.text;       
+            serverFixVerify = JsonUtility.FromJson<HotFixVerify>(fileJson);
+            if (serverFixVerify.MD5!=localhotFixVerify.MD5)
+            {
+                if (serverFixVerify.version >= localhotFixVerify.version)
+                {
+
+                    File.WriteAllText(filePath, fileJson);
+                }
+            }
+            
 
         }
+
+
+
+
+
+        #endregion
+
+
     }
 }

@@ -38,6 +38,11 @@ namespace FutureCore
         {
             base.Init();
 
+            if (!AppConst.IsHotUpdateMode)
+            {
+                return;
+            }
+
             dicPath = string.Empty;
 #if UNITY_EDITOR
             dicPath = "file:///" + Application.streamingAssetsPath;
