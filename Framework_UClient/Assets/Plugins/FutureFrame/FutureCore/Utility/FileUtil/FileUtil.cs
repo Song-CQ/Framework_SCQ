@@ -83,6 +83,13 @@ namespace FutureCore
             }
         }
 
+        public static void WriteAllText(string filePath,string allStr)
+        {
+            string direName = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(direName)) Directory.CreateDirectory(direName);
+
+            File.WriteAllText(filePath,allStr);
+        }
 
         /// <summary>
         /// 将文件转换为类

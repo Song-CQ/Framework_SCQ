@@ -46,8 +46,10 @@ namespace FutureCore.Data
     [Serializable]
     public class BundleMsg
     {
-        public string bagname;
+        public string bagName;
         public int num;
+        public long size;
+        public string MD5;
     }
     /// <summary>
     /// 依赖关系信息

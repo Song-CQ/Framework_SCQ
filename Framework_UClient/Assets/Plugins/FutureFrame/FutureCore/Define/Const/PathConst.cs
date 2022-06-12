@@ -12,17 +12,6 @@ namespace FutureCore
     public static class PathConst
     {
         /// <summary>
-        /// AB包存放目录
-        /// </summary>
-#if UNITY_EDITOR || UNITY_STANDALONE
-        public static string AssetBundlesPath = Application.persistentDataPath + "/AssetBundles";
-#elif UNITY_IOS
-        public static string AssetBundlesPath = Application.temporaryCachePath + "/AssetBundles";
-#elif UNITY_ANDROID
-        public static string AssetBundlesPath = Application.persistentDataPath + "/AssetBundles";
-#endif
-
-        /// <summary>
         ///  Ab包平台
         /// </summary>
 #if UNITY_EDITOR || UNITY_STANDALONE
@@ -33,12 +22,30 @@ namespace FutureCore
         public static string AssetBundlesTarget = "Android";
 #endif
 
+        /// <summary>
+        /// 下载缓存目录
+        /// </summary>
+        public static string DownloadCachePath = Application.temporaryCachePath + "/DownloadCache";
+
+        /// <summary>
+        /// AB包存放目录
+        /// </summary>
+#if UNITY_EDITOR || UNITY_STANDALONE
+        public static string AssetBundlesPath = Application.persistentDataPath  + "/AssetBundles/" + AssetBundlesTarget;
+#elif UNITY_IOS
+        public static string AssetBundlesPath = Application.temporaryCachePath + "/AssetBundles/" + AssetBundlesTarget;
+#elif UNITY_ANDROID
+        public static string AssetBundlesPath = Application.persistentDataPath + "/AssetBundles/" + AssetBundlesTarget;
+#endif
+
+
+
 
 
         /// <summary>
         /// AB包下载缓存目录
         /// </summary>
-        public static string AssetBundleCachePath = Application.temporaryCachePath + "/LoadABCache/";
+        public static string AssetBundleCachePath = DownloadCachePath + "/AssetBundle/" + AssetBundlesTarget;
         
         
         /// <summary>
@@ -52,15 +59,16 @@ namespace FutureCore
         public static string HotFixPath = Application.persistentDataPath + "/HotFix";
 #endif
 
-        /// <summary>
-        /// HotFix下载缓存目录
-        /// </summary>
-        public static string HotFixCachePath = Application.temporaryCachePath + "/Cache/HotFix/";
+
+        
         /// <summary>
         /// HotFix本地目录
         /// </summary>
-        public static string HotFixPath_StreamingAssets = Application.streamingAssetsPath + "/HotFix/";
-
+        public static string HotFixPath_StreamingAssets = Application.streamingAssetsPath + "/HotFix";
+        /// <summary>
+        /// HotFix缓存目录
+        /// </summary>
+        public static string HotFixCachePath = DownloadCachePath + "/HotFix";
 
     }
 }

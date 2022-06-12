@@ -18,6 +18,9 @@ namespace FutureCore.Data
         /// MD5码
         /// </summary>
         public string MD5;
-
+        /// <summary>
+        /// 文件大小
+        /// </summary>
+        public long size;
     }
 }

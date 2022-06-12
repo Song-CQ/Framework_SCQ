@@ -17,7 +17,7 @@ namespace FutureCore
         private static MD5 md5 = new MD5CryptoServiceProvider();
         private static StringBuilder sb = new StringBuilder();
         /// <summary>
-        /// 获取文件的MD5码
+        /// 获取文件的MD5码 和大小
         /// </summary>
         /// <param name="fileName">传入的文件名（含路径及后缀名）</param>
         /// <returns></returns>
@@ -26,8 +26,9 @@ namespace FutureCore
             try
             {
                 sb.Clear();
-                FileStream file = new FileStream(fileName, FileMode.Open);
+                FileStream file = new FileStream(fileName, FileMode.Open);         
                 byte[] retVal = md5.ComputeHash(file);
+ 
                 file.Close();
                 for (int i = 0; i < retVal.Length; i++)
                 {
@@ -39,6 +40,22 @@ namespace FutureCore
             {
                 throw new Exception("获取MD5出错:" + ex.Message);
             }
+        }
+        /// <summary>
+        /// 获取文件大小
+        /// </summary>
+        /// <param name="fileName">传入的文件名（含路径及后缀名）</param>
+        /// <returns></returns>
+        public static long GetFileSize(string fileName)
+        {
+            long size = 0;
+            if (File.Exists(fileName))
+            {
+                FileStream file = new FileStream(fileName, FileMode.Open);
+         
+                file.Close();
+            }
+            return size;
         }
         /// <summary>
         /// 比较指定文件的MD5值与目标值是否相等,并返回文件当前md5

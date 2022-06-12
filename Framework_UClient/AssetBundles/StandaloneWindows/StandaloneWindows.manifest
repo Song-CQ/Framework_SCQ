@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
-CRC: 1777176475
+CRC: 2287452332
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: gamerood
-      Dependencies: {}
-    Info_1:
       Name: imgab
       Dependencies: {}
+    Info_1:
+      Name: gamerood
+      Dependencies: {}
     Info_2:
-      Name: testgood/main1
+      Name: testgood/main2
       Dependencies: {}
     Info_3:
-      Name: testgood/main2
+      Name: testgood/main1
       Dependencies: {}

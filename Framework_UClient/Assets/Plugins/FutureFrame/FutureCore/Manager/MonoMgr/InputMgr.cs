@@ -11,6 +11,12 @@ namespace FutureCore
 
         private float timeTemp_Second = 0;
 
+        public override void Init()
+        {
+            base.Init();
+            UpData+=MainThreadLog.LoopLog;
+        }
+
         private void Update()
         {
             if (!IsStartUp||IsDispose)
@@ -22,8 +28,10 @@ namespace FutureCore
                 ClickScreen?.Invoke(Input.mousePosition);
             }
             UpData?.Invoke();
+            timeTemp_Second += Time.deltaTime;
             if (timeTemp_Second >= 1)
             {
+                timeTemp_Second = 0;
                 UpData_Second?.Invoke();
             }
         }

@@ -8,6 +8,7 @@
 using System;
 using System.IO;
 using FutureCore;
+using FutureCore.Data;
 using UnityEngine;
 
 namespace FutureEditor
@@ -37,7 +38,7 @@ namespace FutureCore
 }";
     
         private static string tempStr;
-        public static void CreatorAdapter()
+        public static void CreateAdapter()
         {
             Debug.Log("[ILRuntimeMgr_AutoCreator]开始注册热更适配器");
 
@@ -47,22 +48,22 @@ namespace FutureCore
                 Directory.CreateDirectory(autoRegisterPath + "/Adapter_AutoCreator");
             }
             tempStr = string.Empty;
-            CreatorTypeAdapter(typeof(BaseCtrl));
-            CreatorTypeAdapter(typeof(BaseModel));
-            CreatorTypeAdapter(typeof(BaseUICtrl));
-            CreatorTypeAdapter(typeof(BaseUI));
+            CreateTypeAdapter(typeof(BaseCtrl));
+            CreateTypeAdapter(typeof(BaseModel));
+            CreateTypeAdapter(typeof(BaseUICtrl));
+            CreateTypeAdapter(typeof(BaseUI));
 
             if (!Directory.Exists(autoRegisterPath + "/Register_AutoCreator"))
             {
                 Directory.CreateDirectory(autoRegisterPath + "/Register_AutoCreator");
             }
-            CreatorRegister();
+            CreateRegister();
             
             
             Debug.Log("[ILRuntimeMgr_AutoCreator]注册热更适配器完成");
         }
 
-        private static void CreatorRegister()
+        private static void CreateRegister()
         {
             string path = autoRegisterPath + "/Register_AutoCreator/ILRuntimeMgr_Register.cs";
             string classVal = ILRuntimeMgr_RegisterClass.Replace("//ReplaceBinder", tempStr);  
@@ -70,7 +71,7 @@ namespace FutureCore
             Debug.Log($"[ILRuntimeMgr_AutoCreator]生成注册器完成");
         }
 
-        private static void CreatorTypeAdapter(Type type)
+        private static void CreateTypeAdapter(Type type)
         {
             string path = autoRegisterPath + "/Adapter_AutoCreator/" + type.Name+ "Adapter.cs";
             
@@ -80,6 +81,37 @@ namespace FutureCore
             Debug.Log($"[ILRuntimeMgr_AutoCreator]注册{type.Name}适配器完成");
         }
 
+        public static void CreateVersionData()
+        {
+            string filePath = Path.Combine(PathConst.HotFixPath_StreamingAssets, "version.json");
+            string dllPath = Path.Combine(PathConst.HotFixPath_StreamingAssets, "HotFix.dll");
+   
+            HotFixVerify hotFixVerify;
+            if (!File.Exists(filePath))
+            {
+                hotFixVerify = new HotFixVerify();
+            }
+            else
+            {
+                string data = File.ReadAllText(filePath);       
+                hotFixVerify = JsonUtility.FromJson<HotFixVerify>(data);
+            }
+            hotFixVerify.version++;
+            if (File.Exists(dllPath))
+            {
+                hotFixVerify.MD5 = VerifyUtil.GetFileMD5(dllPath);
+                hotFixVerify.size = VerifyUtil.GetFileSize(dllPath);
+            }
+            else
+            {
+                LogUtil.LogError("[ILRuntimeMgr_AutoCreator]HotFix.dll文件不存在，请生成!");
+                return;
+            }
+            
+            string val =JsonUtility.ToJson(hotFixVerify);
+
+            FileUtil.WriteAllText(filePath,val);
+        }
 
     }
 }

@@ -103,7 +103,7 @@ namespace FutureEditor
                 }
                 for (int i = 0; i < versiondata.bagmap.Count; i++)
                 {
-                    bagdict.Add(versiondata.bagmap[i].bagname, versiondata.bagmap[i].num);
+                    bagdict.Add(versiondata.bagmap[i].bagName, versiondata.bagmap[i].num);
                 }
 
                 if (File.Exists(ABConfig.allBeDependPath))
@@ -451,8 +451,11 @@ namespace FutureEditor
             for (int i = 0; i < bagdict.Count; i++)
             {
                 BundleMsg bagmsg = new BundleMsg();
-                bagmsg.bagname = bagdict.ElementAt(i).Key;
+                bagmsg.bagName = bagdict.ElementAt(i).Key;
                 bagmsg.num = bagdict.ElementAt(i).Value;
+                bagmsg.MD5 = VerifyUtil.GetFileMD5(outputPath+"/"+bagmsg.bagName);
+                bagmsg.size = VerifyUtil.GetFileSize(outputPath + "/" + bagmsg.bagName);
+
                 versiondata.bagmap.Add(bagmsg);
             }
             if (ABConfig.isAutoAddVersion)
@@ -460,10 +463,12 @@ namespace FutureEditor
                 versiondata.version++;
             }
             versiondata.builddate = DateTime.Now.ToString();
-            if (!File.Exists(ABConfig.verifyPath))
-            {
-                File.Create(ABConfig.verifyPath).Dispose();
-            }
+            //if (!File.Exists(ABConfig.verifyPath))
+            //{
+            //    string direName = Path.GetDirectoryName(ABConfig.verifyPath);
+            //    if (!Directory.Exists(direName)) Directory.CreateDirectory(direName);
+            //    File.Create(ABConfig.verifyPath).Dispose();
+            //}
             string json = JsonUtility.ToJson(versiondata, true);
             File.WriteAllText(ABConfig.verifyPath, json);
             if (ABConfig.isImputVersion)
@@ -577,6 +582,9 @@ namespace FutureEditor
             File.WriteAllText(ABConfig.allBeDependPath, json);
 
             #endregion
+           
+
+            
             main.Unload(true);
 
             AssetDatabase.Refresh();

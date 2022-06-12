@@ -1,48 +1,22 @@
 {
-    "version": 4,
-    "builddate": "2022/6/8 17:00:13",
-    "filemap": [
+    "version": 3,
+    "buildDate": "2022/6/12 21:32:07",
+    "fileMap": [
         {
-            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood.jpg",
+            "path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood.jpg",
             "MD5": "eedeade6487c22fad4011eb85731fd7e"
         },
         {
-            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\HotFix\\HotFix.dll",
-            "MD5": "1529132b056fb1e12785c3a40db6100b"
-        },
-        {
-            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\ImgAB\\IMG_20220220_155410.jpg",
+            "path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\ImgAB\\IMG_20220220_155410.jpg",
             "MD5": "92369493e59436b77d9e470f1c0aac8d"
         },
         {
-            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main1\\play.jpg",
+            "path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main1\\play.jpg",
             "MD5": "67c1640168a71ac6279f02c4d9c3ab3f"
         },
         {
-            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main2\\sccard_launcher_bg.png",
+            "path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main2\\sccard_launcher_bg.png",
             "MD5": "0899f851a063ecf7e5fdfe6a10ba3ec7"
-        }
-    ],
-    "bagmap": [
-        {
-            "bagname": "gamerood",
-            "num": 1
-        },
-        {
-            "bagname": "hotfix",
-            "num": 1
-        },
-        {
-            "bagname": "imgab",
-            "num": 1
-        },
-        {
-            "bagname": "testgood/main1",
-            "num": 1
-        },
-        {
-            "bagname": "testgood/main2",
-            "num": 1
         }
     ]
 }

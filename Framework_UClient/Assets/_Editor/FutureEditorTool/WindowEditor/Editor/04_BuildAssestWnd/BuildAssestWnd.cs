@@ -272,8 +272,7 @@ namespace FutureEditor
             GUILayout.Space(5);
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("删除打包记录"))
-            {
-
+            {               
                 if (File.Exists(abConfig.verifyPath))
                 {
                     File.Delete(abConfig.verifyPath);

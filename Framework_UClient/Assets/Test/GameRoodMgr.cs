@@ -65,7 +65,9 @@ namespace ProjectApp
             // yield return request.SendWebRequest();
             var temp = AssetBundle.LoadFromFileAsync(assetBundlePath);
             var myLoadedAssetBundle = AssetBundle.LoadFromFile(assetBundlePath);
-             
+
+            
+
             yield return temp;
             // var myLoadedAssetBundle = DownloadHandlerAssetBundle.GetContent(request);
             yield break;

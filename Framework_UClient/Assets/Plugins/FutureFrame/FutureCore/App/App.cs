@@ -14,13 +14,13 @@ namespace FutureCore
         // 检测版本更新
         VersionUpdate = 10,
         // 资源初始化
-        AssetsInit = 20,
+        AssetsInit = 70,
         // 加载热更代码
-        LoadHotFix = 30,
+        LoadHotFix = 80,
         // 远程存储初始化
-        PreferencesInit = 60,
+        PreferencesInit = 85,
         // 数据初始化
-        ConfigInit = 70,
+        ConfigInit = 90,
         // 加载完成
         ShowScene = 100,
     }
