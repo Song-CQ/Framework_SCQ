@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -39,7 +40,7 @@ namespace FutureCore
 
 #if UNITY_EDITOR
 
-            serverDownload = Application.dataPath + "/../../_Resources";
+            serverDownload = "http://192.168.100.4";
 #elif UNITY_STANDALONE
 
 #elif UNITY_ANDROID
@@ -56,21 +57,39 @@ namespace FutureCore
 
         public void StartUpProcess(Action<bool> initAssets)
         {
-
-            //string saveFilePath = Path.Combine(PathConst.HotFixCachePath, "HotFix.dlld");
-            //string downFilePath = Path.Combine(serverDownload, "HotFix/HotFix.dlld");
-            ////缓存本地数据
-            //DownloadUnit downloadUnit = new DownloadUnit()
+            //HttpWebRequest request = null;
+            //WebResponse respone = null;
+            //string path = @"http://192.168.100.4//AssetBundles/StandaloneWindows\testgood\main1";
+            //WebRequest webRequest = WebRequest.Create(path);
+            //request = webRequest as HttpWebRequest;
+            //if (request == null)
             //{
-            //    name = "HotFix",
-            //    savePath = saveFilePath,
-            //    downUrl = downFilePath,
-            //    completeFun = (e) => { Debug.LogError("下载完成"); },
-            //    errorFun = (e,msg) => { Debug.LogError(msg);}
-            //};
-            //DownloadTaskMgr.Instance.DownloadAsync(downloadUnit);
-            //return;
-            //检测资源加载
+            //    MainThreadLog.Log("文件不存在:" + path);
+                
+            //}
+            //else
+            //{
+            //    request.Timeout = 3000;
+            //    request.ReadWriteTimeout = 300;
+            //    //向服务器请求，获得服务器回应数据流
+            //    respone = request.GetResponse();
+            //}
+            //Debug.Log(respone.ContentLength);
+            ////string saveFilePath = Path.Combine(PathConst.HotFixCachePath, "HotFix.dlld");
+            ////string downFilePath = Path.Combine(serverDownload, "HotFix/HotFix.dlld");
+            //////缓存本地数据
+            ////DownloadUnit downloadUnit = new DownloadUnit()
+            ////{
+            ////    name = "HotFix",
+            ////    savePath = saveFilePath,
+            ////    downUrl = downFilePath,
+            ////    completeFun = (e) => { Debug.LogError("下载完成"); },
+            ////    errorFun = (e,msg) => { Debug.LogError(msg);}
+            ////};
+            ////DownloadTaskMgr.Instance.DownloadAsync(downloadUnit);
+            ////return;
+            
+      
             OnComplete = initAssets;
             
             //本地文件检测
@@ -212,6 +231,10 @@ namespace FutureCore
                 startPro = (int)ProgressState.AssetsPrepare;
                 allProgre = (int)ProgressState.AssetsInit - startPro;
                 IsUpdate = true;
+
+                //DownloadUnit download = allDownloadUnit.Find((e)=>e.name == "testgood/main2");
+                //allDownloadUnit.Clear();
+                //allDownloadUnit.Add(download);
 
                 foreach (var item in allDownloadUnit)
                 {
@@ -373,7 +396,7 @@ namespace FutureCore
             //缓存本地数据
             DownloadUnit downloadUnit = new DownloadUnit()
             {
-                name = "HotFix",
+                name = bundleMsg.bagName,
                 md5 = bundleMsg.MD5,
                 savePath = Path.Combine(PathConst.AssetBundleCachePath, bundleMsg.bagName),
                 downUrl = Path.Combine(ABPath_Server, bundleMsg.bagName),
@@ -381,8 +404,9 @@ namespace FutureCore
                 completeFun = DownComplete,
                 errorFun = DownError
             };
-            allDoneloadSize += serverHotFixVerify.size;
+            allDoneloadSize += bundleMsg.size;
             allFileDownloadProgre.Add(downloadUnit, 0);
+            allDownloadUnit.Add(downloadUnit);
 
             DownloadUnit manifestUnit = new DownloadUnit()
             {
@@ -410,7 +434,7 @@ namespace FutureCore
             {
                 allFileDownloadProgre[downUnit] = downUnit.size;
             }
-            LogUtil.Log($"[VersionUpdateMgr]文件:{downUnit}下载完成");
+            LogUtil.Log($"[VersionUpdateMgr]文件:{downUnit.name}下载完成!当前下载数量{doneloadCompleteSum}");
             if (CheckVersionUpdateComplete())
             {
                 MoveTempFileToOfficial();
@@ -468,6 +492,7 @@ namespace FutureCore
                 LogUtil.LogError($"[VersionUpdateMgr]AssetBundle版本没有检测更新");
                 return;
             }
+            LogUtil.Log($"[VersionUpdateMgr]开始移动临时文件到正式目录");
             foreach (var item in allDownloadUnit)
             {
                 if (item.isDownload)
@@ -496,6 +521,7 @@ namespace FutureCore
             string _assetBundleFileJson = JsonUtility.ToJson(serverAssetBundleVerify);
             FileUtil.WriteAllText(_assetBundlePath, _assetBundleFileJson);
 
+            LogUtil.Log($"[VersionUpdateMgr]更新完成");
         }
 
 

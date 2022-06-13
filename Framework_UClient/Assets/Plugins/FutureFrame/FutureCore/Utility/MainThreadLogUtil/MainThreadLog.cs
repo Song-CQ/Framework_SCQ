@@ -14,6 +14,7 @@ namespace FutureCore
     {
         private const string Lock = "Lock";
         private static List<string> allLogCallBack = new List<string>();
+        private static List<string> allLogWarningCallBack = new List<string>();
         private static List<string> allLogErrorCallBack = new List<string>();
         public static void LoopLog()
         {
@@ -28,6 +29,12 @@ namespace FutureCore
                     LogUtil.Log(msg);
                 }
                 allLogCallBack.Clear();
+                
+                foreach (var msg in allLogWarningCallBack)
+                {
+                    LogUtil.LogWarning(msg);
+                }
+                allLogWarningCallBack.Clear();
 
                 foreach (var msg in allLogErrorCallBack)
                 {
@@ -42,6 +49,13 @@ namespace FutureCore
             lock (Lock)
             {
                 allLogCallBack.Add(msg);
+            }
+        }   
+        public static void LogWarning(string msg)
+        {
+            lock (Lock)
+            {
+                allLogWarningCallBack.Add(msg);
             }
         }
         public static void LogError(string msg)

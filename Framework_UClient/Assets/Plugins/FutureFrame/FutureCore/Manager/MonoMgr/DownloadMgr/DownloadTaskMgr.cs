@@ -90,9 +90,9 @@ namespace FutureCore
 
         public void DownloadAsync(DownloadUnit info)
         {
-            Debug.LogError($"文件{info.name}开始加入下载");
+            
             if (info == null) return;
-
+            Debug.Log($"文件{info.name}开始加入下载队列");
             var fileMac = new DownloadFileMac(info);
 
             lock (_lock)
@@ -176,7 +176,7 @@ namespace FutureCore
                     {
                   
                         mac = _readyList.Dequeue();
-                        //Debug.LogError($"文件{info.name}开始加入下载");
+                        //Debug.LogError($"文件{mac._downUnit.name}开始加入下载,当前_readyList数量{_readyList.Count}");
                         _runningList[Thread.CurrentThread] = mac;
 
                         if (mac != null && mac._downUnit.isDelete)
@@ -190,6 +190,7 @@ namespace FutureCore
                 //已经没有需要下载的了
                 if (mac == null) break;
 
+                MainThreadLog.LogError($"文件{mac._downUnit.name}开始下载");
                 mac.Run();
 
                 if (mac._state == DownloadMacState.Complete)
@@ -198,6 +199,7 @@ namespace FutureCore
                     {
                         _completeList.Add(mac._downUnit);
                         _runningList[Thread.CurrentThread] = null;
+                        Debug.Log($"文件{mac._downUnit.name}下载完成");
                     }
                 }
                 else if (mac._state == DownloadMacState.Error)
@@ -205,6 +207,8 @@ namespace FutureCore
                     lock (_lock)
                     {
                         _readyList.Enqueue(mac);
+                        _runningList[Thread.CurrentThread] = null;
+                        //Debug.LogError($"文件{mac._downUnit.name}下载错误加入下载对列,当前_readyList数量{_readyList.Count}");
                         //防止失败频繁回调，只在特定次数回调
                         if (mac.IsNeedErrorCall())
                             _errorList.Add(mac);

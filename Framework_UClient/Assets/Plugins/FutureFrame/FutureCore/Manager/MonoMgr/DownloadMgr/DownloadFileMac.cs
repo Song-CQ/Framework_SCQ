@@ -101,7 +101,7 @@ namespace FutureCore
             if (md5 != _downUnit.md5)
             {
                 File.Delete(_downUnit.savePath);
-                MainThreadLog.Log("文件MD5校验出错：" + _downUnit.name);
+                MainThreadLog.LogWarning("文件MD5校验错误：" + _downUnit.name);
                 _state = DownloadMacState.Error;
                 _error = "Check MD5 Error ";
                 return false;
@@ -119,7 +119,7 @@ namespace FutureCore
             if (File.Exists(_downUnit.savePath))
             {
                 //文件已存在，跳过
-                //ThreadDebugLog.Log("File is Exists " + _downUnit.savePath);
+                MainThreadLog.Log("File is Exists " + _downUnit.savePath);
                 _curSize = _downUnit.size;
                 return true;
             }
@@ -235,10 +235,11 @@ namespace FutureCore
             int length = 0;
             try
             {
-                request = WebRequest.Create(url) as HttpWebRequest;
+                WebRequest webRequest = WebRequest.Create(url);
+                request = webRequest as HttpWebRequest;
                 if (request == null)
                 {
-                    //MainThreadLog.Log("文件不存在:" + url);
+                    MainThreadLog.LogWarning("文件不存在:" + url);
                     _state = DownloadMacState.Error;
                     _error = "文件不存在: " + url;                  
                 }
@@ -254,7 +255,7 @@ namespace FutureCore
             }
             catch (WebException e)
             {
-                MainThreadLog.Log("获取文件长度出错：" + e.Message);
+                MainThreadLog.LogWarning($"获取文件{url}长度出错：{e.Message}" );
                 _state = DownloadMacState.Error;
                 _error = "Request File Length Error " + e.Message;
             }
