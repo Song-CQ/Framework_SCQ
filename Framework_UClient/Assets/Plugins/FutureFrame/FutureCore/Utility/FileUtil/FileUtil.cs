@@ -83,6 +83,19 @@ namespace FutureCore
             }
         }
 
+        /// <summary>
+        /// 创建该文件上级目录
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void CreadFileLastDirectory(string filePath)
+        {
+            string strFromPath = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(strFromPath))
+            {
+                Directory.CreateDirectory(strFromPath);
+            }
+        }
+
         public static void WriteAllText(string filePath,string allStr)
         {
             string direName = Path.GetDirectoryName(filePath);

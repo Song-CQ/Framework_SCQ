@@ -55,6 +55,10 @@ namespace FutureCore
         /// </summary>
         public static readonly uint UI_SetLoadingValueUI = ++Cursor_BASE;
         /// <summary>
+        /// 设置加载界面消息
+        /// </summary>
+        public static readonly uint UI_SetLoadingMsg = ++Cursor_BASE;
+        /// <summary>
         /// 隐藏加载界面
         /// </summary>
         public static readonly uint UI_HideLoadingUI = ++Cursor_BASE;

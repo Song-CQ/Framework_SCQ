@@ -13,7 +13,10 @@ namespace FutureCore.Data
         /// 版本号
         /// </summary>
         public int version;
-
+        /// <summary>
+        /// 最新的打包时间
+        /// </summary>
+        public string buildDate;
         /// <summary>
         /// MD5码
         /// </summary>

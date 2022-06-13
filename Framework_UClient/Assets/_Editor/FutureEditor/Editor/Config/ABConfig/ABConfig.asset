@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e77561e3c055334ebc63a1ce37b8b58, type: 3}
   m_Name: ABConfig
   m_EditorClassIdentifier: 
-  outputPath: E:/UnityPro/Framework_SCQ/Framework_UClient/AssetBundles
+  outputPath: D:/UnityPro/Framework_SCQ/Framework_UClient/AssetBundles
   abRoot: Assets/_AssetBundleRes
-  verifyPath: E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Editor/Config/ABConfig/version.json
-  allBeDependPath: E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Editor/Config/ABConfig/allBeDependData.json
-  allDependPath: E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Editor/Config/ABConfig/allDependData.json
+  verifyPath: D:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Editor/Config/ABConfig/version.json
+  allBeDependPath: D:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Editor/Config/ABConfig/allBeDependData.json
+  allDependPath: D:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Editor/Config/ABConfig/allDependData.json
   abOptions: 0
   abPlatform: 5
   isCopyStreamingAssets: 1

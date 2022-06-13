@@ -52,7 +52,7 @@ namespace FutureCore
             if (File.Exists(fileName))
             {
                 FileStream file = new FileStream(fileName, FileMode.Open);
-         
+                size = file.Length;
                 file.Close();
             }
             return size;

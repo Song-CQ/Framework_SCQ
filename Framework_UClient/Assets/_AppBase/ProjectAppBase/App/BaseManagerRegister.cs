@@ -17,8 +17,7 @@ namespace ProjectApp
             //globalMgr.AddMgr(AssistDebugMgr.Instance);
 
             //// Mgr
-            //globalMgr.AddMgr(AssetBundleMgr.Instance);
-            globalMgr.AddMgr(CoroutineMgr.Instance);
+           
             globalMgr.AddMgr(CameraMgr.Instance);
             //globalMgr.AddMgr(ConfigMgr.Instance);
             globalMgr.AddMgr(ExcelDataMgr.Instance);
@@ -38,8 +37,11 @@ namespace ProjectApp
 
             //// MonoMgr
             ////globalMgr.AddMgr(AudioMgr.Instance);
-            //globalMgr.AddMgr(CoroutineMgr.Instance);
+            globalMgr.AddMgr(InputMgr.Instance);
+            globalMgr.AddMgr(AssetBundleMgr.Instance);
+            globalMgr.AddMgr(CoroutineMgr.Instance);
             globalMgr.AddMgr(HttpMgr.Instance);
+            globalMgr.AddMgr(DownloadTaskMgr.Instance);
             //globalMgr.AddMgr(ScreenshotMgr.Instance);
             //globalMgr.AddMgr(TestMgr.Instance);
             ////globalMgr.AddMgr(ThreadMgr.Instance);

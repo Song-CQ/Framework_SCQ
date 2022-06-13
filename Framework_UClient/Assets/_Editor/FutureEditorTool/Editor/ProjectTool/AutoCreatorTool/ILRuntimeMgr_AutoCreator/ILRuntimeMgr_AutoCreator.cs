@@ -97,6 +97,7 @@ namespace FutureCore
                 hotFixVerify = JsonUtility.FromJson<HotFixVerify>(data);
             }
             hotFixVerify.version++;
+            hotFixVerify.buildDate = DateTime.Now.ToString();
             if (File.Exists(dllPath))
             {
                 hotFixVerify.MD5 = VerifyUtil.GetFileMD5(dllPath);

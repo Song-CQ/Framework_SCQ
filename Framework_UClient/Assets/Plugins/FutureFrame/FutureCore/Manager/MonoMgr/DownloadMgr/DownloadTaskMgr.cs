@@ -28,6 +28,7 @@ namespace FutureCore
         public int size; //文件长度，非必须
         public string md5; //需要校验的md5，非必须
         public bool isDelete; //用于清理正在下载的文件
+        public bool isDownload;//是否下载完成
 
         public DonwloadErrorCallBack errorFun;
         public DonwloadProgressCallBack progressFun;
@@ -50,6 +51,7 @@ namespace FutureCore
 
         public override void Init()
         {
+            base.Init();
             _readyList = new Queue<DownloadFileMac>();
             _runningList = new Dictionary<Thread, DownloadFileMac>();
             _completeList = new List<DownloadUnit>();
@@ -88,6 +90,7 @@ namespace FutureCore
 
         public void DownloadAsync(DownloadUnit info)
         {
+            Debug.LogError($"文件{info.name}开始加入下载");
             if (info == null) return;
 
             var fileMac = new DownloadFileMac(info);
@@ -171,7 +174,9 @@ namespace FutureCore
                 {
                     if (_readyList.Count > 0)
                     {
+                  
                         mac = _readyList.Dequeue();
+                        //Debug.LogError($"文件{info.name}开始加入下载");
                         _runningList[Thread.CurrentThread] = mac;
 
                         if (mac != null && mac._downUnit.isDelete)
@@ -242,6 +247,7 @@ namespace FutureCore
                 {
                     try
                     {
+                        info.isDownload = true;
                         info.completeFun(info);
                     }
                     catch (Exception ex)

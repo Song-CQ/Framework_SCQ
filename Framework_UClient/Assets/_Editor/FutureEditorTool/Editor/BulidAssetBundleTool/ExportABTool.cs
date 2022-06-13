@@ -462,7 +462,7 @@ namespace FutureEditor
             {
                 versiondata.version++;
             }
-            versiondata.builddate = DateTime.Now.ToString();
+            versiondata.buildDate = DateTime.Now.ToString();
             //if (!File.Exists(ABConfig.verifyPath))
             //{
             //    string direName = Path.GetDirectoryName(ABConfig.verifyPath);
@@ -470,7 +470,7 @@ namespace FutureEditor
             //    File.Create(ABConfig.verifyPath).Dispose();
             //}
             string json = JsonUtility.ToJson(versiondata, true);
-            File.WriteAllText(ABConfig.verifyPath, json);
+            FutureCore.FileUtil.WriteAllText(ABConfig.verifyPath, json);
             if (ABConfig.isImputVersion)
             {
                 File.WriteAllText(outputPath + "/version.json", json);

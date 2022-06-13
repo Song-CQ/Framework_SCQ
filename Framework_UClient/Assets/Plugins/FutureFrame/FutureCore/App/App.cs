@@ -124,9 +124,16 @@ namespace FutureCore
 
         public static void SetLoadingSchedule(ProgressState state,Action onComplete = null)
         {
+            SetLoadingMsg(state.ToString());
             GenericDispatcher.Instance.Dispatch<int, Action>(AppMsg.UI_SetLoadingValueUI,(int)state,onComplete);
 
         }
+
+        public static void SetLoadingMsg(string msg)
+        {
+            GenericDispatcher.Instance.Dispatch<string>(AppMsg.UI_SetLoadingMsg, msg);
+        }
+
         public static void HideLoadingUI(bool isDelay = false)
         {
             

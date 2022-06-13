@@ -68,6 +68,7 @@ namespace ProjectApp
             AppDispatcher.Instance.AddListener(AppMsg.UI_HideLoadingUI, CloseUI);
 
             GenericDispatcher.Instance.AddListener<int, Action>(AppMsg.UI_SetLoadingValueUI, SetLoadingValue);
+            GenericDispatcher.Instance.AddListener<string>(AppMsg.UI_SetLoadingMsg, SetLoadingMsg);
         }
         protected override void RemoveListener()
         {
@@ -78,7 +79,7 @@ namespace ProjectApp
             AppDispatcher.Instance.RemoveListener(AppMsg.UI_HideLoadingUI, CloseUI);
 
             GenericDispatcher.Instance.RemoveListener<int,Action>(AppMsg.UI_SetLoadingValueUI, SetLoadingValue);
-
+            GenericDispatcher.Instance.RemoveListener<string>(AppMsg.UI_SetLoadingMsg, SetLoadingMsg);
         }
         #endregion
 
@@ -89,6 +90,13 @@ namespace ProjectApp
                 ui.SetLoadingValue(val,LoadingTrasitionConst.loadingTraTime,OnComplete);
             }
 
+        }
+        private void SetLoadingMsg(string val)
+        {
+            if (ui!=null)
+            {
+                ui.SetLoadingMsg(val);
+            }
         }
 
     }

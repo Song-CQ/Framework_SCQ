@@ -115,5 +115,10 @@ namespace ProjectApp
             });
 
         }
+
+        public void SetLoadingMsg(string val)
+        {
+            ui.text_severStatus.text = val;
+        }
     }
 }

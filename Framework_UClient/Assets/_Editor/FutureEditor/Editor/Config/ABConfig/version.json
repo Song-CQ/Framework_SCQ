@@ -1,22 +1,68 @@
 {
-    "version": 3,
-    "buildDate": "2022/6/12 21:32:07",
-    "fileMap": [
+    "version": 6,
+    "buildDate": "2022/6/13 14:35:52",
+    "filemap": [
         {
-            "path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood.jpg",
+            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood.jpg",
             "MD5": "eedeade6487c22fad4011eb85731fd7e"
         },
         {
-            "path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\ImgAB\\IMG_20220220_155410.jpg",
+            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\ImgAB\\IMG_20220220_155410.jpg",
             "MD5": "92369493e59436b77d9e470f1c0aac8d"
         },
         {
-            "path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main1\\play.jpg",
+            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main1\\play.jpg",
             "MD5": "67c1640168a71ac6279f02c4d9c3ab3f"
         },
         {
-            "path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main2\\sccard_launcher_bg.png",
+            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main2\\sccard_launcher_bg.png",
             "MD5": "0899f851a063ecf7e5fdfe6a10ba3ec7"
+        },
+        {
+            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main3\\sccard_launcher_bg.prefab",
+            "MD5": "96fcd96386d84604372be704f3df98e5"
+        },
+        {
+            "Path": "D:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\main4\\test_mat.mat",
+            "MD5": "91211d33a2ac8ca92054621ece13182c"
+        }
+    ],
+    "bagmap": [
+        {
+            "bagName": "gamerood",
+            "num": 1,
+            "size": 964828,
+            "MD5": "06f53f7b55c8728fbe60b71b73f8a68c"
+        },
+        {
+            "bagName": "imgab",
+            "num": 1,
+            "size": 721194,
+            "MD5": "22a825f2cc1b2294d279e23753b671eb"
+        },
+        {
+            "bagName": "testgood/main1",
+            "num": 1,
+            "size": 704332,
+            "MD5": "aca6e5ceb692c4fbb91076d0f3b0b22c"
+        },
+        {
+            "bagName": "testgood/main2",
+            "num": 1,
+            "size": 1226291,
+            "MD5": "f14dfb88fbb4b7d3bc4e28f2f3751cd9"
+        },
+        {
+            "bagName": "testgood/main3",
+            "num": 1,
+            "size": 2488,
+            "MD5": "747553054bee74ece40bbfe331395057"
+        },
+        {
+            "bagName": "testgood/main4",
+            "num": 1,
+            "size": 1226041,
+            "MD5": "34e9c6d9a3c630e1ba5e4f608030c3c2"
         }
     ]
 }

@@ -1,3 +1,16 @@
 {
-    "depsmap": []
+    "depsmap": [
+        {
+            "selfbag": "testgood/main3",
+            "depends": [
+                "testgood/main2"
+            ]
+        },
+        {
+            "selfbag": "testgood/main4",
+            "depends": [
+                "testgood/main2"
+            ]
+        }
+    ]
 }

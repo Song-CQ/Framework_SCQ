@@ -120,12 +120,41 @@ namespace FutureEditor
             GUILayout.EndArea();
 
             GUILayout.BeginArea(new Rect(10, 235, 200, 800));
+            GUILayout.BeginVertical();
             GUILayout.Label("Visual Studio Editor", GUILayout.Height(20));
             if (GUILayout.Button("删除VS解决方案", GUILayout.Height(40), GUILayout.Width(100)))
             {
                 DeleteSin();
             }
+            
+            GUILayout.EndVertical();
             GUILayout.EndArea();
+
+
+            GUILayout.BeginArea(new Rect(550, 235, 200, 800));
+            GUILayout.Label("  Open Path", GUI.skin.GetStyle("IN TitleText"), GUILayout.Height(20));
+            GUILayout.BeginVertical(GUI.skin.GetStyle("FrameBox"));
+
+            if (GUILayout.Button("Open AssetDataPath"))
+            {
+                Application.OpenURL(Application.dataPath);
+            }
+
+            if (GUILayout.Button("Open PersistentDataPath"))
+            {
+                Application.OpenURL(Application.persistentDataPath);
+            }
+            GUILayout.Space(3);
+            if (GUILayout.Button("Open TemporaryCachePath"))
+            {
+                Application.OpenURL(Application.temporaryCachePath);
+            }
+
+            GUILayout.EndVertical();
+            GUILayout.EndArea();
+
+
+           
 
         }
 

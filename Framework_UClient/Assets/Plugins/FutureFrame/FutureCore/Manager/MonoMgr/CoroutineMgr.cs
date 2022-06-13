@@ -14,6 +14,7 @@ namespace FutureCore
     {
         private int id;
         private Dictionary<int, IEnumerator> allCoroutine;
+        private Dictionary<int, IEnumerator> allRomveCoroutine;
 
         public override void Init()
         {
@@ -22,12 +23,14 @@ namespace FutureCore
             allCoroutine = new Dictionary<int, IEnumerator>();
         }
 
-        public int StartCoroutineToInt(IEnumerator coroutine)
+        public void StartCoroutineToInt(IEnumerator coroutine)
         {
             id++;
             allCoroutine.Add(id,coroutine);
-            StartCoroutine(DelayRomve(id,coroutine));
-            return id;
+            IEnumerator enumerator = DelayRomve(id, coroutine);
+            allRomveCoroutine.Add(id, enumerator);
+            StartCoroutine(enumerator);
+
         }
 
         public bool StopCoroutineToInt(int id)
@@ -36,6 +39,11 @@ namespace FutureCore
             {
                 StopCoroutine(allCoroutine[id]);
                 allCoroutine.Remove(id);
+                if (allRomveCoroutine.ContainsKey(id))
+                {
+                    StopCoroutine(allRomveCoroutine[id]);
+                    allRomveCoroutine.Remove(id);
+                } 
                 return true;
             }
             return false;
@@ -44,6 +52,11 @@ namespace FutureCore
         private IEnumerator DelayRomve(int id, IEnumerator coroutine)
         {
             yield return StartCoroutine(coroutine);
+
+            if (allRomveCoroutine.ContainsKey(id))
+            {
+                allRomveCoroutine.Remove(id);
+            }
 
             if (allCoroutine.ContainsKey(id))
             {

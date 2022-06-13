@@ -236,11 +236,21 @@ namespace FutureCore
             try
             {
                 request = WebRequest.Create(url) as HttpWebRequest;
-                request.Timeout = TimeOutWait;
-                request.ReadWriteTimeout = ReadWriteTimeOut;
-                //向服务器请求，获得服务器回应数据流
-                respone = request.GetResponse();
-                length = (int)respone.ContentLength;
+                if (request == null)
+                {
+                    //MainThreadLog.Log("文件不存在:" + url);
+                    _state = DownloadMacState.Error;
+                    _error = "文件不存在: " + url;                  
+                }
+                else
+                {
+                    request.Timeout = TimeOutWait;
+                    request.ReadWriteTimeout = ReadWriteTimeOut;
+                    //向服务器请求，获得服务器回应数据流
+                    respone = request.GetResponse();
+                    length = (int)respone.ContentLength;
+                }
+               
             }
             catch (WebException e)
             {

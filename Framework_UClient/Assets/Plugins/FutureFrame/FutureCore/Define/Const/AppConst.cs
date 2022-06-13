@@ -162,14 +162,11 @@ namespace FutureCore
 
             if (Application.isEditor)
             {
-                IsDevelopMode = true;
-                IsHotUpdateMode = true;
-
+                IsDevelopMode = false;
             }
             else
             {
                 IsDevelopMode = false;
-                IsHotUpdateMode = false;
             }
         }
 

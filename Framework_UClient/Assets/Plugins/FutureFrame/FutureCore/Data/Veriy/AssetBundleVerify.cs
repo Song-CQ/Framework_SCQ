@@ -23,7 +23,7 @@ namespace FutureCore.Data
         /// <summary>
         /// 最新的打包时间
         /// </summary>
-        public string builddate;
+        public string buildDate;
         /// <summary>
         /// 文件总表
         /// </summary>

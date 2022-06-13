@@ -24,10 +24,7 @@ namespace FutureCore
         private string HotFixPath_Server;
 
         private string serverDownload;
-        /// <summary>
-        /// 本地资源路径
-        /// </summary>
-        public string LocalAssestUrl = Application.dataPath + "/..";
+       
 
         public override void Init()
         {
@@ -42,7 +39,7 @@ namespace FutureCore
 
 #if UNITY_EDITOR
 
-            serverDownload = LocalAssestUrl;
+            serverDownload = Application.dataPath + "/../../_Resources";
 #elif UNITY_STANDALONE
 
 #elif UNITY_ANDROID
@@ -59,9 +56,23 @@ namespace FutureCore
 
         public void StartUpProcess(Action<bool> initAssets)
         {
+
+            //string saveFilePath = Path.Combine(PathConst.HotFixCachePath, "HotFix.dlld");
+            //string downFilePath = Path.Combine(serverDownload, "HotFix/HotFix.dlld");
+            ////缓存本地数据
+            //DownloadUnit downloadUnit = new DownloadUnit()
+            //{
+            //    name = "HotFix",
+            //    savePath = saveFilePath,
+            //    downUrl = downFilePath,
+            //    completeFun = (e) => { Debug.LogError("下载完成"); },
+            //    errorFun = (e,msg) => { Debug.LogError(msg);}
+            //};
+            //DownloadTaskMgr.Instance.DownloadAsync(downloadUnit);
+            //return;
             //检测资源加载
             OnComplete = initAssets;
-
+            
             //本地文件检测
             App.SetLoadingSchedule(ProgressState.AssetsPrepare);
             CheckLocalFile();
@@ -94,15 +105,19 @@ namespace FutureCore
             string filePath = PathConst.HotFixPath + "/HotFix.dll";
             if (!File.Exists(filePath))
             {
+                FileUtil.CreadFileLastDirectory(filePath);
                 File.Copy(PathConst.HotFixPath_StreamingAssets + "/HotFix.dll", filePath);
             }
-            string verifyPath = PathConst.HotFixPath + "/verify.json";
+            string verifyPath = PathConst.HotFixPath + "/version.json";
             if (!File.Exists(verifyPath))
             {
-                File.Copy(PathConst.HotFixPath_StreamingAssets + "/verify.json", verifyPath);
+                FileUtil.CreadFileLastDirectory(filePath);
+                File.Copy(PathConst.HotFixPath_StreamingAssets + "/version.json", verifyPath);
             }
 
         }
+
+        
 
         private void CheckLocalAssetsFile()
         {
@@ -122,7 +137,6 @@ namespace FutureCore
                 {
                     Directory.CreateDirectory(filePath);
                 }
-
             }
 
 
@@ -134,8 +148,13 @@ namespace FutureCore
 
         #region 服务器更新检测
 
+        private int MaxCheckFixCont = 3;
+
+        private int CheckHotFixCont;
+        private int CheckAssetBundleCont;
+
         private HotFixVerify serverHotFixVerify;
-        private AssetBundleVerify assetBundleVerify;
+        private AssetBundleVerify serverAssetBundleVerify;
 
         private List<DownloadUnit> allDownloadUnit = new List<DownloadUnit>();
         /// <summary>
@@ -160,6 +179,8 @@ namespace FutureCore
         private int allProgre;
         private bool IsUpdate = false;
 
+        private IEnumerator CheckCoroutine;
+
         private void CheckServerUpdate()
         {
             isCheckHotFixVerify = false;
@@ -167,19 +188,27 @@ namespace FutureCore
             allDownloadUnit.Clear();
             allFileDownloadProgre.Clear();
             serverHotFixVerify = null;
-            assetBundleVerify = null;
+            serverAssetBundleVerify = null;
             doneloadCompleteSum = 0;
             allDoneloadSize = 0;
 
-            CheckServerHotFixVerify();
-            CheckServerAssetBundleVerify();
-            StartDownload();
+            CheckServerHotFixVersion();
+            CheckServerAssetBundleVersion();
+
+            CheckCoroutine = StartDownload();
+            CoroutineMgr.Instance.StartCoroutine(CheckCoroutine);
         }
 
-        private void StartDownload()
+        private IEnumerator StartDownload()
         {
-            if (!CheckVersion())
+            while (!isCheckAssetBundleVerify || !isCheckHotFixVerify)
             {
+                yield return 0;
+            }
+
+            if (!CheckVersionUpdateComplete())
+            {
+                LogUtil.Log("[VersionUpdateMgr]开始进行文件更新");
                 startPro = (int)ProgressState.AssetsPrepare;
                 allProgre = (int)ProgressState.AssetsInit - startPro;
                 IsUpdate = true;
@@ -189,14 +218,24 @@ namespace FutureCore
                     DownloadTaskMgr.Instance.DownloadAsync(item);
                 }
             }
+            //没有更新进入游戏
+            else
+            {
+                LogUtil.Log("[VersionUpdateMgr]版本检测更新完成");
+                OnComplete.Invoke(true);
+            }
 
         }
 
+
+
         #region HotFix
-        private void CheckServerHotFixVerify()
+        
+     
+        private void CheckServerHotFixVersion()
         {
             //检测
-            string verifySeverPath = Path.Combine(HotFixPath_Server + "verify.json");
+            string verifySeverPath = Path.Combine(HotFixPath_Server,"version.json");
             HttpMgr.Instance.Send(verifySeverPath, GetHotFixVersion);
         }
 
@@ -205,13 +244,17 @@ namespace FutureCore
             if (isError)
             {
                 LogUtil.LogError("获取热更版本信息失败");
-
+                CheckHotFixCont++;
+                if (CheckHotFixCont<MaxCheckFixCont)
+                {
+                    CheckServerHotFixVersion();
+                }
                 return;
             }
 
             //获取本地
             HotFixVerify localhotFixVerify = new HotFixVerify();
-            string filePath = PathConst.HotFixPath + "/verify.json";
+            string filePath = PathConst.HotFixPath + "/version.json";
 
             if (File.Exists(filePath))
             {
@@ -232,10 +275,6 @@ namespace FutureCore
             {
                 if (serverHotFixVerify.MD5 != localhotFixVerify.MD5)
                 {
-                    //网络版本写入本地临时目录 在所有下载完后移入正式目录
-                    string cachePath = Path.Combine(PathConst.HotFixCachePath, "verify.json");
-                    FileUtil.WriteAllText(cachePath, fileJson);
-
                     string saveFilePath = Path.Combine(PathConst.HotFixCachePath, "HotFix.dll");
                     string downFilePath = Path.Combine(serverDownload, "HotFix/HotFix.dll");
                     //缓存本地数据
@@ -260,10 +299,10 @@ namespace FutureCore
         #endregion
 
         #region AssetBundle
-        private void CheckServerAssetBundleVerify()
+        private void CheckServerAssetBundleVersion()
         {
             //检测云端
-            string verifySeverPath = Path.Combine(ABPath_Server + "verify.json");
+            string verifySeverPath = Path.Combine(ABPath_Server,"version.json");
             HttpMgr.Instance.Send(verifySeverPath, GetAssetBundleVersion);
         }
 
@@ -272,13 +311,17 @@ namespace FutureCore
             if (isError)
             {
                 LogUtil.LogError("获取AB包版本信息失败");
-
+                CheckAssetBundleCont++;
+                if (CheckAssetBundleCont < MaxCheckFixCont)
+                {
+                    CheckServerAssetBundleVersion();
+                }
                 return;
             }
 
             //获取本地
             AssetBundleVerify localAssetBundleVerify = new AssetBundleVerify();
-            string filePath = PathConst.AssetBundlesPath + "/verify.json";
+            string filePath = PathConst.AssetBundlesPath + "/version.json";
             if (File.Exists(filePath))
             {
                 string LocaFileJson = File.ReadAllText(filePath);
@@ -291,16 +334,12 @@ namespace FutureCore
 
             //得到网络版本
             string fileJson = download.text;
-            assetBundleVerify = JsonUtility.FromJson<AssetBundleVerify>(fileJson);
+            serverAssetBundleVerify = JsonUtility.FromJson<AssetBundleVerify>(fileJson);
 
             //网络版本高 进入更新
-            if (assetBundleVerify.version > localAssetBundleVerify.version)
+            if (serverAssetBundleVerify.version > localAssetBundleVerify.version)
             {
-                //网络版本写入本地临时目录 在所有下载完后移入正式目录
-                string tempPath = Path.Combine(PathConst.AssetBundleCachePath, "verify.json");
-                FileUtil.WriteAllText(tempPath, fileJson);
-
-                foreach (var bundleMsg in assetBundleVerify.bagmap)
+                foreach (var bundleMsg in serverAssetBundleVerify.bagmap)
                 {
                     bool isNeedUpdata = true;
                     foreach (var loadbundleMsg in localAssetBundleVerify.bagmap)
@@ -355,6 +394,7 @@ namespace FutureCore
         }
 
         #endregion
+       
         private void UpdateDownProgre(DownloadUnit downUnit, int curSize, int allSize)
         {
             if (allFileDownloadProgre.ContainsKey(downUnit))
@@ -370,8 +410,11 @@ namespace FutureCore
             {
                 allFileDownloadProgre[downUnit] = downUnit.size;
             }
-
-            CheckVersion();
+            LogUtil.Log($"[VersionUpdateMgr]文件:{downUnit}下载完成");
+            if (CheckVersionUpdateComplete())
+            {
+                MoveTempFileToOfficial();
+            }           
         }
 
         private void DownError(DownloadUnit downUnit,string msg)
@@ -397,17 +440,64 @@ namespace FutureCore
             GenericDispatcher.Instance.Dispatch<int, Action>(AppMsg.UI_SetLoadingValueUI,ProgreVal,null);
         }
 
-        private bool CheckVersion()
+        /// <summary>
+        /// 检测更新完成
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckVersionUpdateComplete()
         {
             if (doneloadCompleteSum>= allDownloadUnit.Count)
             {
-                IsUpdate = false;
-                LogUtil.Log("[VersionUpdateMgr]版本检测更新完成");
-                OnComplete.Invoke(true);
+                IsUpdate = false;              
                 return true;
             }
             return false;
         }
+        /// <summary>
+        /// 移动下载好的缓存文件到正式文件夹
+        /// </summary>
+        private void MoveTempFileToOfficial()
+        {
+            if (!isCheckHotFixVerify)
+            {
+                LogUtil.LogError($"[VersionUpdateMgr]HotFix版本没有检测更新");
+                return;
+            }
+            if (!isCheckAssetBundleVerify)
+            {
+                LogUtil.LogError($"[VersionUpdateMgr]AssetBundle版本没有检测更新");
+                return;
+            }
+            foreach (var item in allDownloadUnit)
+            {
+                if (item.isDownload)
+                {
+                    string path = string.Empty;
+                    if (Path.GetFileName(item.name).Contains("HotFix"))
+                    {
+                        path = Path.Combine(PathConst.HotFixPath,item.name);
+                    }
+                    else
+                    {
+                        path = Path.Combine(PathConst.AssetBundlesPath, item.name);
+                    }
+       
+                    File.Move(item.savePath,path);
+                }
+            }
+
+            //将网络版本写入本地临时目录
+            string _hotFixPath = Path.Combine(PathConst.HotFixPath, "version.json");
+            string _hotFixFileJson = JsonUtility.ToJson(serverHotFixVerify);
+            FileUtil.WriteAllText(_hotFixPath, _hotFixFileJson);
+
+            //网络版本写入本地临时目录 
+            string _assetBundlePath = Path.Combine(PathConst.AssetBundlesPath, "version.json");
+            string _assetBundleFileJson = JsonUtility.ToJson(serverAssetBundleVerify);
+            FileUtil.WriteAllText(_assetBundlePath, _assetBundleFileJson);
+
+        }
+
 
     }
 

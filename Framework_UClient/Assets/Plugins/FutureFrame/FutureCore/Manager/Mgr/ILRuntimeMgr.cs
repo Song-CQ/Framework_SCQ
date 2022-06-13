@@ -55,7 +55,7 @@ namespace FutureCore
 
         public void StartLoadHotFix()
         {
-            CoroutineMgr.Instance.StartCoroutineToInt(LoadAssembly());
+            CoroutineMgr.Instance.StartCoroutine(LoadAssembly());
         }
 
         private IEnumerator LoadAssembly()
