@@ -102,6 +102,12 @@ namespace FutureCore
 
         }
 
+        private void OnUpdateComplete(bool isUpdateSucceed)
+        {
+            LogUtil.Log("[VersionUpdateMgr]版本检测更新完成");
+            OnComplete(isUpdateSucceed);
+        }
+
         #region 本地文件检测
 
         private void CheckLocalFile()
@@ -163,7 +169,6 @@ namespace FutureCore
 
         }
         #endregion
-
 
         #region 服务器更新检测
 
@@ -232,10 +237,6 @@ namespace FutureCore
                 allProgre = (int)ProgressState.AssetsInit - startPro;
                 IsUpdate = true;
 
-                //DownloadUnit download = allDownloadUnit.Find((e)=>e.name == "testgood/main2");
-                //allDownloadUnit.Clear();
-                //allDownloadUnit.Add(download);
-
                 foreach (var item in allDownloadUnit)
                 {
                     DownloadTaskMgr.Instance.DownloadAsync(item);
@@ -243,9 +244,8 @@ namespace FutureCore
             }
             //没有更新进入游戏
             else
-            {
-                LogUtil.Log("[VersionUpdateMgr]版本检测更新完成");
-                OnComplete.Invoke(true);
+            { 
+                OnUpdateComplete(true);
             }
 
         }
@@ -413,6 +413,8 @@ namespace FutureCore
                 name = bundleMsg.bagName + ".manifest",
                 savePath = Path.Combine(PathConst.AssetBundleCachePath, bundleMsg.bagName + ".manifest"),
                 downUrl = Path.Combine(ABPath_Server, bundleMsg.bagName + ".manifest"),
+                completeFun = DownComplete,
+                errorFun = DownError
             };
             allDownloadUnit.Add(manifestUnit);
         }
@@ -437,6 +439,7 @@ namespace FutureCore
             LogUtil.Log($"[VersionUpdateMgr]文件:{downUnit.name}下载完成!当前下载数量{doneloadCompleteSum}");
             if (CheckVersionUpdateComplete())
             {
+                IsUpdate = false;
                 MoveTempFileToOfficial();
             }           
         }
@@ -472,7 +475,7 @@ namespace FutureCore
         {
             if (doneloadCompleteSum>= allDownloadUnit.Count)
             {
-                IsUpdate = false;              
+                          
                 return true;
             }
             return false;
@@ -506,8 +509,10 @@ namespace FutureCore
                     {
                         path = Path.Combine(PathConst.AssetBundlesPath, item.name);
                     }
-       
-                    File.Move(item.savePath,path);
+                    LogUtil.Log($"[VersionUpdateMgr]开始移动文件{item.savePath}到{path}");
+                    FileUtil.CreadFileLastDirectory(path);
+                    if (File.Exists(path)) File.Delete(path);
+                    File.Move(item.savePath,path);           
                 }
             }
 
@@ -521,10 +526,15 @@ namespace FutureCore
             string _assetBundleFileJson = JsonUtility.ToJson(serverAssetBundleVerify);
             FileUtil.WriteAllText(_assetBundlePath, _assetBundleFileJson);
 
-            LogUtil.Log($"[VersionUpdateMgr]更新完成");
+            LogUtil.Log($"[VersionUpdateMgr]版本更新完成");
+
+            //回调
+            OnUpdateComplete(true);
+
+
         }
 
-
+       
     }
 
 

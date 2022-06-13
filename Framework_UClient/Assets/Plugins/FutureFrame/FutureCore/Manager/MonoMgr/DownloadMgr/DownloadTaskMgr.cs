@@ -190,7 +190,7 @@ namespace FutureCore
                 //已经没有需要下载的了
                 if (mac == null) break;
 
-                MainThreadLog.LogError($"文件{mac._downUnit.name}开始下载");
+                MainThreadLog.Log($"文件{mac._downUnit.name}开始下载");
                 mac.Run();
 
                 if (mac._state == DownloadMacState.Complete)
@@ -199,7 +199,7 @@ namespace FutureCore
                     {
                         _completeList.Add(mac._downUnit);
                         _runningList[Thread.CurrentThread] = null;
-                        Debug.Log($"文件{mac._downUnit.name}下载完成");
+                        MainThreadLog.Log($"文件{mac._downUnit.name}下载完成");
                     }
                 }
                 else if (mac._state == DownloadMacState.Error)
@@ -217,7 +217,7 @@ namespace FutureCore
                 }
                 else
                 {
-                    LogUtil.Log("[ThreadDebugLog]Error DownloadMacState " + mac._state + " " + mac._downUnit.name);
+                    MainThreadLog.LogError("[ThreadDebugLog]Error DownloadMacState " + mac._state + " " + mac._downUnit.name);
                     break;
                 }
             }

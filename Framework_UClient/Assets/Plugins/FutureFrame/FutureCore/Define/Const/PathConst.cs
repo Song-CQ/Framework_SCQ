@@ -45,7 +45,7 @@ namespace FutureCore
         /// <summary>
         /// AB包下载缓存目录
         /// </summary>
-        public static string AssetBundleCachePath = DownloadCachePath + "/AssetBundle/" + AssetBundlesTarget;
+        public static string AssetBundleCachePath = DownloadCachePath + "/AssetBundles/" + AssetBundlesTarget;
         
         
         /// <summary>

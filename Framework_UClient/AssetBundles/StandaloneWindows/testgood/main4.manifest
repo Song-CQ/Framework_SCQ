@@ -3,7 +3,7 @@ CRC: 4186458937
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5fe37a21f3142ae2471dd81b539b27c8
+    Hash: d70766bfa5e729dd76a05f6628e5ca49
   TypeTreeHash:
     serializedVersion: 2
     Hash: cc27a7c2b7aeda57fe404097db2213c0
@@ -19,4 +19,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_AssetBundleRes/TestGood/main4/test_mat.mat
 Dependencies:
-- D:/UnityPro/Framework_SCQ/Framework_UClient/AssetBundles/StandaloneWindows/testgood/main2
+- E:/UnityPro/Framework_SCQ/Framework_UClient/AssetBundles/StandaloneWindows/testgood/main2
