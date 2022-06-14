@@ -1,6 +1,6 @@
 {
-    "version": 7,
-    "buildDate": "2022/6/14 1:13:23",
+    "version": 10,
+    "buildDate": "2022/6/14 23:06:49",
     "filemap": [
         {
             "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood.jpg",
@@ -67,6 +67,12 @@
             "num": 1,
             "size": 1226041,
             "MD5": "34e9c6d9a3c630e1ba5e4f608030c3c2"
+        },
+        {
+            "bagName": "StandaloneWindows",
+            "num": 1,
+            "size": 1177,
+            "MD5": "f1a109c0598cbc9a073de2d4fc38f0f4"
         }
     ]
 }

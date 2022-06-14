@@ -8,7 +8,7 @@ D:\UnityPro\Framework_SCQ\Framework_UClient\Assets\StreamingAssets\HotFix\HotFix
 D:\UnityPro\Framework_SCQ\Framework_UClient\Assets\StreamingAssets\HotFix\HotFix.pdb
 E:\UnityPro\Framework_SCQ\Framework_UClient\Assets\StreamingAssets\HotFix\HotFix.dll
 E:\UnityPro\Framework_SCQ\Framework_UClient\Assets\StreamingAssets\HotFix\HotFix.pdb
-E:\UnityPro\Framework_SCQ\Framework_Project\HotFix\obj\Debug\HotFix.csprojAssemblyReference.cache
 E:\UnityPro\Framework_SCQ\Framework_Project\HotFix\obj\Debug\HotFix.csproj.CoreCompileInputs.cache
 E:\UnityPro\Framework_SCQ\Framework_Project\HotFix\obj\Debug\HotFix.dll
 E:\UnityPro\Framework_SCQ\Framework_Project\HotFix\obj\Debug\HotFix.pdb
+E:\UnityPro\Framework_SCQ\Framework_Project\HotFix\obj\Debug\HotFix.csproj.AssemblyReference.cache

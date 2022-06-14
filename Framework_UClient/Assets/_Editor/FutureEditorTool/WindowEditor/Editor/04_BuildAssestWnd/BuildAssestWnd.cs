@@ -291,7 +291,7 @@ namespace FutureEditor
 
             }
             GUILayout.EndHorizontal();
-            GUILayout.Space(60);
+            GUILayout.Space(50);
             if (GUILayout.Button("一键打包AB", GUILayout.Height(100)))
             {
                 Build();
