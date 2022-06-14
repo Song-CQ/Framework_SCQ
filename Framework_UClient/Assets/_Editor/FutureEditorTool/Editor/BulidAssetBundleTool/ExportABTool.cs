@@ -76,6 +76,7 @@ namespace FutureEditor
             ABConfig = aBConfig;
 
             DateTime starttime = DateTime.Now;
+     
             #region 打包前数据初始化
 
             bagnum = 0;
@@ -447,7 +448,7 @@ namespace FutureEditor
                 filemsg.Path = filedict.ElementAt(i).Key;
                 filemsg.MD5 = filedict.ElementAt(i).Value;
                 versiondata.filemap.Add(filemsg);
-            }
+            }        
             for (int i = 0; i < bagdict.Count; i++)
             {
                 BundleMsg bagmsg = new BundleMsg();
@@ -458,6 +459,17 @@ namespace FutureEditor
 
                 versiondata.bagmap.Add(bagmsg);
             }
+            string mainBagPath = Path.Combine(outputPath,ABConfig.abPlatform.ToString());
+            //加入主包
+            BundleMsg mainBagmsg = new BundleMsg()
+            {
+                bagName = ABConfig.abPlatform.ToString(),
+                num = 1,
+                MD5 = VerifyUtil.GetFileMD5(mainBagPath),
+                size = VerifyUtil.GetFileSize(mainBagPath),
+            };
+            versiondata.bagmap.Add(mainBagmsg);
+
             if (ABConfig.isAutoAddVersion)
             {
                 versiondata.version++;
@@ -491,7 +503,8 @@ namespace FutureEditor
             #region 读取主包
 
             //读取打包后的主包
-            AssetBundle main = AssetBundle.LoadFromFile(outputPath + "/" + ABConfig.abPlatform.ToString());
+            AssetBundle main = AssetBundle.LoadFromFile(mainBagPath);
+           
             AssetBundleManifest fest = main.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
 
             #endregion

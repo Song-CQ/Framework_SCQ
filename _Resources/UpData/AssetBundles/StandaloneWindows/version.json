@@ -1,6 +1,6 @@
 {
-    "version": 7,
-    "buildDate": "2022/6/14 1:13:23",
+    "version": 9,
+    "buildDate": "2022/6/14 11:10:25",
     "filemap": [
         {
             "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood.jpg",
@@ -24,11 +24,11 @@
         },
         {
             "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main3\\sccard_launcher_bg.prefab",
-            "MD5": "bfada6a3f6264d8db8f81995bf191024"
+            "MD5": "96fcd96386d84604372be704f3df98e5"
         },
         {
             "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\main4\\test_mat.mat",
-            "MD5": "14f31d8f8d55d3692fe52e210dded454"
+            "MD5": "91211d33a2ac8ca92054621ece13182c"
         }
     ],
     "bagmap": [
@@ -67,6 +67,12 @@
             "num": 1,
             "size": 1226041,
             "MD5": "34e9c6d9a3c630e1ba5e4f608030c3c2"
+        },
+        {
+            "bagName": "StandaloneWindows",
+            "num": 1,
+            "size": 1177,
+            "MD5": "5bb12d9decf2692e474d4feb7012ea9c"
         }
     ]
 }

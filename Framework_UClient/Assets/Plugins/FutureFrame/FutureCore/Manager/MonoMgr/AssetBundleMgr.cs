@@ -158,19 +158,8 @@ namespace FutureCore
         //主包中配置文件---用以获取依赖包
         private AssetBundleManifest mainManifest = null;
         //各个平台下的主包名称 --- 用以加载主包获取依赖信息
-        private string mainABName
-        {
-            get
-            {
-#if UNITY_EDITOR || UNITY_STANDALONE
-                return "/StandaloneWindows/StandaloneWindows";
-#elif UNITY_IOS
-                return "/IOS/IOS";
-#elif UNITY_ANDROID
-                return "/Android/Android";
-#endif
-            }
-        }
+        private string MainABName => PathConst.AssetBundlesTarget;
+     
         //ab包存放目录
         private string AssetBundlesPath => PathConst.AssetBundlesPath;
 
@@ -196,7 +185,7 @@ namespace FutureCore
         private void InitMainPackage(object obj)
         {
             //根据各个平台下的基础路径和主包名加载主包
-            AssetBundle mainAB = AssetBundle.LoadFromFile(AssetBundlesPath + mainABName);
+            AssetBundle mainAB = AssetBundle.LoadFromFile($"{AssetBundlesPath}/{MainABName}");
             //获取主包下的AssetBundleManifest资源文件（存有依赖信息）
             mainManifest = mainAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
             mainAB.Unload(false);
