@@ -11,6 +11,7 @@ namespace ProjectApp
             //globalMgr.AddMgr(CameraMgr.Instance);
             //// MonoMgr
             //globalMgr.AddMgr(AudioMgr.Instance);
+            globalMgr.AddMgr(ILRuntimeMgr.Instance);
             globalMgr.AddMgr(UIMgr.Instance);
         }
 

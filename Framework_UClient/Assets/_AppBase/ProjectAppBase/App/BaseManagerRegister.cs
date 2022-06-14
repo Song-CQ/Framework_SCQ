@@ -46,6 +46,7 @@ namespace ProjectApp
             //globalMgr.AddMgr(TestMgr.Instance);
             ////globalMgr.AddMgr(ThreadMgr.Instance);
             //globalMgr.AddMgr(TickMgr.Instance);
+            globalMgr.AddMgr(UIMgr.Instance);
             globalMgr.AddMgr(VersionUpdateMgr.Instance);
             globalMgr.AddMgr(ILRuntimeMgr.Instance);
             //globalMgr.AddMgr(WorldSpaceMgr.Instance);
