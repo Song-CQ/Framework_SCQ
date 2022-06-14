@@ -1,0 +1,11 @@
+{
+    "bedepsmap": [
+        {
+            "selfbag": "testgood/main2",
+            "bedepends": [
+                "testgood/main3",
+                "testgood/main4"
+            ]
+        }
+    ]
+}
