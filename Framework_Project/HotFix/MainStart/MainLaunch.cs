@@ -15,7 +15,7 @@ namespace ProjectApp.HotFix
             InitModule();
 
 
-            LogUtil.Log("热更模块加载完成!");
+
 
         }
 

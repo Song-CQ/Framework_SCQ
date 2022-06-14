@@ -96,25 +96,18 @@ namespace FutureCore
                 string data = File.ReadAllText(filePath);       
                 hotFixVerify = JsonUtility.FromJson<HotFixVerify>(data);
             }
-            string md5Str = string.Empty;
+            hotFixVerify.version++;
+            hotFixVerify.buildDate = DateTime.Now.ToString();
             if (File.Exists(dllPath))
             {
-                md5Str = VerifyUtil.GetFileMD5(dllPath);
-                if (md5Str == hotFixVerify.MD5)
-                {
-                    //dll没有更改不用更新新版本
-                    return;
-                }
+                hotFixVerify.MD5 = VerifyUtil.GetFileMD5(dllPath);
+                hotFixVerify.size = VerifyUtil.GetFileSize(dllPath);
             }
             else
             {
                 LogUtil.LogError("[ILRuntimeMgr_AutoCreator]HotFix.dll文件不存在，请生成!");
                 return;
             }
-            hotFixVerify.version++;
-            hotFixVerify.buildDate = DateTime.Now.ToString();
-            hotFixVerify.MD5 = md5Str;
-            hotFixVerify.size = VerifyUtil.GetFileSize(dllPath);
             
             string val =JsonUtility.ToJson(hotFixVerify);
 

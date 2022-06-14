@@ -40,7 +40,7 @@ namespace FutureCore
 
 #if UNITY_EDITOR
 
-            serverDownload = "http://192.168.31.195/";
+            serverDownload = "http://192.168.100.4";
 #elif UNITY_STANDALONE
 
 #elif UNITY_ANDROID

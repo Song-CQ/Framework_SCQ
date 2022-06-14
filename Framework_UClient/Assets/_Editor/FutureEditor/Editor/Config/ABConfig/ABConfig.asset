@@ -19,7 +19,7 @@ MonoBehaviour:
   allDependPath: E:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Editor/Config/ABConfig/allDependData.json
   abOptions: 0
   abPlatform: 5
-  isCopyStreamingAssets: 0
+  isCopyStreamingAssets: 1
   isImputVersion: 1
   isIncrementalBulie: 0
   isAutoAddVersion: 1
