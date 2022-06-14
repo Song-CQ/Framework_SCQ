@@ -10,7 +10,7 @@ namespace FutureCore
             IDOTweenInit doTweenInit = DOTween.Init();
 
             DOTween.SetTweensCapacity(1024, 1024);
-            // ÉèÖÃÄ¬ÈÏ¶¯»­»º¶¯ÇúÏßÀàÐÍ
+            // ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             DOTween.defaultEaseType = Ease.Linear;
            
         }

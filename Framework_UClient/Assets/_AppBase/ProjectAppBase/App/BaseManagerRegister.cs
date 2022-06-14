@@ -17,7 +17,7 @@ namespace ProjectApp
             //globalMgr.AddMgr(AssistDebugMgr.Instance);
 
             //// Mgr
-            //globalMgr.AddMgr(AssetBundleMgr.Instance);
+           
             globalMgr.AddMgr(CameraMgr.Instance);
             //globalMgr.AddMgr(ConfigMgr.Instance);
             globalMgr.AddMgr(ExcelDataMgr.Instance);
@@ -37,22 +37,24 @@ namespace ProjectApp
 
             //// MonoMgr
             ////globalMgr.AddMgr(AudioMgr.Instance);
-            //globalMgr.AddMgr(CoroutineMgr.Instance);
-            //globalMgr.AddMgr(HttpMgr.Instance);
-            //globalMgr.AddMgr(SceneSwitchMgr.Instance);
+            globalMgr.AddMgr(InputMgr.Instance);
+            globalMgr.AddMgr(AssetBundleMgr.Instance);
+            globalMgr.AddMgr(CoroutineMgr.Instance);
+            globalMgr.AddMgr(HttpMgr.Instance);
+            globalMgr.AddMgr(DownloadTaskMgr.Instance);
             //globalMgr.AddMgr(ScreenshotMgr.Instance);
             //globalMgr.AddMgr(TestMgr.Instance);
             ////globalMgr.AddMgr(ThreadMgr.Instance);
             //globalMgr.AddMgr(TickMgr.Instance);
-            //globalMgr.AddMgr(TimerMgr.Instance);
-            globalMgr.AddMgr(UIMgr.Instance);
-            //globalMgr.AddMgr(VersionUpdateMgr.Instance);
+            globalMgr.AddMgr(VersionUpdateMgr.Instance);
+            globalMgr.AddMgr(ILRuntimeMgr.Instance);
             //globalMgr.AddMgr(WorldSpaceMgr.Instance);
 
             //// AppMgr
             //globalMgr.AddMgr(ChannelMgr.Instance);
             //globalMgr.AddMgr(GameDataMgr.Instance);
             //globalMgr.AddMgr(PreferencesMgr.Instance);
+
 
             //// AppMonoMgr
             //globalMgr.AddMgr(AntiCheatMgr.Instance);
@@ -67,11 +69,8 @@ namespace ProjectApp
             //ConfigMgrRegister.AutoRegisterConfig();
             //// WSNetMgr
             //WSNetMgrRegister.AutoRegisterProtoType();
-            // ModuleMgr
-            ModuleMgrRegister.AutoRegisterModel();
-            ModuleMgrRegister.AutoRegisterUIType();
-            ModuleMgrRegister.AutoRegisterCtrl();
-            ModuleMgrRegister.AutoRegisterUICtrl();
+            
+            ModuleMgrRegister.RegisterCommom();
             //// UIMgr
             //UIMgrRegister.AutoRegisterBinder();
             //UIMgrRegister.AutoRegisterCommonPackages();

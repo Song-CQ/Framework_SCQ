@@ -13,7 +13,7 @@ namespace FutureEditor
     public class UnityEditorPath : ScriptableObject
     {
 
-        public const string AsssetPath = @"Assets\Editor\UnityEditorPath";
+        public const string AsssetPath = @"Assets\_Editor\FutureEditor\Editor\UnityEditorPath";
 
         private static UnityEditorPath m_instance;
         public static UnityEditorPath Instance
@@ -35,14 +35,19 @@ namespace FutureEditor
 
         
 
-        [Header("存放自动生成文件的目录")]
-        public DefaultAsset AutoCreadPath;
+        [Header("存放自动注册文件的目录")]
+        public DefaultAsset AutoRegisterPath;
         [Header("存放MVC模块的目录")]
-        public DefaultAsset ModuleUIPath;   
+        public DefaultAsset ModuleUIPath;  
+        [Header("存放通用模块的目录")]
+        public DefaultAsset CommonModuleUIPath;   
         [Header("存放FGUI生成代码的目录")]
         public DefaultAsset FGUIClassPath;
         [Header("存放FGUI的目录")]
         public DefaultAsset ResFGUIPath;
+        [Header("存放ABConfig的目录")]
+        public DefaultAsset ABConfigPath;
+
 
         
 

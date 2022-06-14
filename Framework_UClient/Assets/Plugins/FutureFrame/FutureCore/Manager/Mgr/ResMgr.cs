@@ -1,4 +1,4 @@
-﻿using FairyGUI;
+using FairyGUI;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -54,7 +54,7 @@ namespace FutureCore
             // 清理资源之前，一般不需要调用GC
             if (isSystemGC)
             {
-                UnityWebRequest.ClearCookieCache();
+                //UnityWebRequest.ClearCookieCache();
                 Caching.ClearCache();
 
                 GC.Collect();
@@ -65,22 +65,16 @@ namespace FutureCore
 
         public void InitAssets()
         {
-            throw new NotImplementedException();
+            ////检测版本资源更新
+            
+            AppDispatcher.Instance.Dispatch(AppMsg.System_AssetsInitComplete);
         }
 
-        public UIPackage AddFguiPackage(string commonPackage, string resUIPath)
+        public void AddFguiPackage(string packageName, string PackageUIPath)
         {
-            return UIPackage.AddPackage(resUIPath);
-            //if (!IsUseEncryptTexture)
-            //{
-            //    return UIPackage.AddPackage(resUIPath);
-            //}
-            //else
-            //{
-            //    //commonPackage = commonPackage + "_fui" + AppConst.ABExtName;
-            //    //return UIPackage.AddPackage(textureDecryptAB, textureDecryptAB, packageName);
-            //}
+             UIPackage.AddPackage(PackageUIPath);
         }
+
         #endregion
 
     }

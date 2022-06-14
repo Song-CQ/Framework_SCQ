@@ -13,7 +13,16 @@ namespace FutureCore
         public Action onFinish;
         private List<TaskProcedure> taskList;
         private bool isCancel = false;
-        
+        public TaskSequence()
+        {
+            taskList = new List<TaskProcedure>();
+        }
+
+        public TaskSequence(Action onFinish)
+        {
+            taskList = new List<TaskProcedure>();
+            this.onFinish = onFinish;
+        }
         public TaskSequence Add(Action<TaskProcedure> taskFunc)
         {
             TaskProcedure taskProcedure = ObjectPoolStatic<TaskProcedure>.Get();

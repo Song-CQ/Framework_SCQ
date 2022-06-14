@@ -1,22 +1,22 @@
 ﻿/****************************************************
     文件: ModuleMgrRegister.cs
     作者: Clear
-    日期: 2022/2/7 19:17:9
+    日期: 2022/6/6 16:7:12
     类型: 自动创建
     功能: 模块数据注册
 *****************************************************/
 using FutureCore;
-using UnityEngine;
 
 namespace ProjectApp
 {
-    public static class ModuleMgrRegister 
+    public static partial class ModuleMgrRegister 
     {
         public static void AutoRegisterModel()
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddModel(ModelConst.GameModel,new GameModel());
             moduleMgr.AddModel(ModelConst.MainModel,new MainModel());
+            moduleMgr.AddModel(ModelConst.TipsModel,new TipsModel());
 
         }
 
@@ -25,6 +25,7 @@ namespace ProjectApp
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddUIType(UIConst.GameUI,typeof(GameUI));
             moduleMgr.AddUIType(UIConst.MainUI,typeof(MainUI));
+            moduleMgr.AddUIType(UIConst.TipsUI,typeof(TipsUI));
 
         }
 
@@ -33,6 +34,7 @@ namespace ProjectApp
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddCtrl(CtrlConst.GameCtrl,new GameCtrl());
             moduleMgr.AddCtrl(CtrlConst.MainCtrl,new MainCtrl());
+            moduleMgr.AddCtrl(CtrlConst.TipsCtrl,new TipsCtrl());
 
         }
 
@@ -41,6 +43,7 @@ namespace ProjectApp
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddUICtrl(UICtrlConst.GameUICtrl,new GameUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.MainUICtrl,new MainUICtrl());
+            moduleMgr.AddUICtrl(UICtrlConst.TipsUICtrl,new TipsUICtrl());
 
         }
 

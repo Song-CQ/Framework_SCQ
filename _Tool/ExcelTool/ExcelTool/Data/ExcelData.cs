@@ -44,6 +44,7 @@ namespace ExcelTool.Data
                         this.mData = result;
                         StringColor.WriteLine("路劲:" + filePath + "\n读取表:" + Name + "成功", ConsoleColor.Green);
                     }
+                    
                 }
             }
             catch (Exception e)
@@ -55,6 +56,32 @@ namespace ExcelTool.Data
             if (mData.Tables.Count < 1)
             {
                 StringColor.WriteLine(filePath + "表为空", ConsoleColor.Blue);
+            }
+            else
+            {
+                bool IsHaveStaticKeyRow = false;
+                bool IsHaveStaticTypeRow = false;
+                DataRow dataRow = Sheet.Rows[0];
+                foreach (DataColumn itemColumn in Sheet.Columns)
+                {
+                    if (dataRow[itemColumn].ToString().ToLower().Trim()== "statickey")
+                    {
+                        IsHaveStaticKeyRow = true;
+                    }
+                    if (dataRow[itemColumn].ToString().ToLower().Trim() == "statictype")
+                    {
+                        IsHaveStaticTypeRow = true;
+                    }
+                }
+                if (IsHaveStaticKeyRow && IsHaveStaticTypeRow)
+                {
+                    IsStart = true;
+                }
+                else
+                {
+                    IsStart = false;
+                }
+
             }
         }
 

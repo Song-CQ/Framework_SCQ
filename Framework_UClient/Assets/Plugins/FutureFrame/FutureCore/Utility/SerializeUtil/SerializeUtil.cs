@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace FutureCore
 {
     /// <summary>
-    /// 对Newtonsoft.Json包装
+    /// 锟斤拷Newtonsoft.Json锟斤拷装
     /// </summary>
     public class SerializeUtil 
     {
@@ -19,15 +19,15 @@ namespace FutureCore
 
         private static JsonSerializerSettings JsonSettings = new JsonSerializerSettings
         {
-            // 不缩进
+            // 锟斤拷锟斤拷锟斤拷
             Formatting = Formatting.None,
-            // 日期类型默认格式化处理  
+            // 锟斤拷锟斤拷锟斤拷锟斤拷默锟较革拷式锟斤拷锟斤拷锟斤拷  
             DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
-            // 日期类型默认格式化处理 
+            // 锟斤拷锟斤拷锟斤拷锟斤拷默锟较革拷式锟斤拷锟斤拷锟斤拷 
             DateFormatString = "yyyy-MM-dd HH:mm:ss",
-            // 忽略默认值
+            // 锟斤拷锟斤拷默锟斤拷值
             //DefaultValueHandling = DefaultValueHandling.Ignore,
-            // 忽略空值
+            // 锟斤拷锟皆匡拷值
             //NullValueHandling = NullValueHandling.Ignore,
         };
 

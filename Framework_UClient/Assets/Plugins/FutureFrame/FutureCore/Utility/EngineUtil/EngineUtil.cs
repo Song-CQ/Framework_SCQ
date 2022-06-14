@@ -145,10 +145,10 @@ namespace FutureCore
             return GameObject.CreatePrimitive(type);
         }
 
-        public static float GetAduioTrackTime(AudioSource audioSource)
-        {
-            return 1f * audioSource.timeSamples / audioSource.clip.frequency;
-        }
+        //public static float GetAduioTrackTime(AudioSource audioSource)
+        //{
+        //    return 1f * audioSource.timeSamples / audioSource.clip.frequency;
+        //}
 
         public static void ForceCrash()
         {

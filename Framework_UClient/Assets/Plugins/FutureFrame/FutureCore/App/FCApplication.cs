@@ -33,6 +33,7 @@ namespace FutureCore
         public virtual void Enable()
         {
             LogUtil.Log("[Application]Enable " + App.GetAppName());
+           
             CreateEnvironment();
         }
 

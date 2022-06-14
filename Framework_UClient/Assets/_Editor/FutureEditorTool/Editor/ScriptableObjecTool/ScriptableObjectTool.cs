@@ -13,11 +13,10 @@ namespace FutureEditor
 {
     public static class ScriptableObjectTool 
     {
-        [MenuItem("[FC Tool]/ScriptableObject Tool/Cread AutoRegisterSettings")]
-        public static void CreadAutoRegisterSettings()
+        [MenuItem("[FC Tool]/ScriptableObject Tool/Cread UnityEditorPath")]
+        public static void CreadUnityEditorPath()
         {
-            CreadScriptableObject<UnityEditorPath>(UnityEditorPath.AsssetPath);
-        
+            CreadScriptableObject<UnityEditorPath>(UnityEditorPath.AsssetPath);     
         }
 
 

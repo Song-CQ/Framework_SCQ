@@ -60,6 +60,7 @@ namespace ProjectApp
         protected override void AddListener()
         {
             uiCtrlDispatcher.AddListener(openUIMsg, OpenUI);
+            ctrlDispatcher.AddListener(CtrlMsg.Game_Start, OpenUI);
             uiCtrlDispatcher.AddListener(closeUIMsg, CloseUI);
         }
         protected override void RemoveListener()

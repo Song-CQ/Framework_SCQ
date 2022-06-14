@@ -107,5 +107,10 @@ namespace FutureCore
         /// 开始游戏 自定义项目设置
         /// </summary>
         public static Action GameStartFunc;
+
+        /// <summary>
+        /// 服务器资源路劲
+        /// </summary>
+        public static string ServerAssestUrl;
     }
 }

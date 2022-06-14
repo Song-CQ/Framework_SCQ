@@ -32,6 +32,7 @@ namespace ProjectApp
             LogUtil.SetLogCallBack_LogError(Debug.LogError,Debug.LogErrorFormat);
             LogUtil.SetLogCallBack_LogWarning(Debug.LogWarning,Debug.LogWarningFormat);
             LogUtil.EnableLog(AppConst.IsEnabledLog);
+            
         }
 
         private static void Main()

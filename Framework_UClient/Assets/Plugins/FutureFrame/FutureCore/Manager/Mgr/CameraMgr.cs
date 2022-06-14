@@ -91,12 +91,11 @@ namespace FutureCore
         }
         private void CreadUICamera_FGUI()
         {
-           // return;
+
             if (uiCamera) return;
 
             StageCamera.CheckMainCamera();
             uiCamera = StageCamera.main;
-            uiCamera.depth = CameraConst.UICameraDepth;
             // 默认不使用后效
             uiCamera.forceIntoRenderTexture = false;
             

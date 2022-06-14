@@ -24,5 +24,6 @@ namespace FutureCore
         public abstract void LoadUI(BaseUI baseUI, object args, Action<BaseUI, object> openUIProcess);
         public abstract void DestroyUI(BaseUI ui);
         public abstract void RegisterDefaultFont(string fontName);
+
     }
 }
