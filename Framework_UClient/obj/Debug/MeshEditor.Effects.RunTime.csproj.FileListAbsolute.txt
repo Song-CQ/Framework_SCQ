@@ -288,3 +288,4 @@ E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime.pdb
 D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime.csproj.AssemblyReference.cache
 D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime.csproj.CoreCompileInputs.cache
+E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\MeshEditor.Effects.RunTime.csproj.AssemblyReference.cache

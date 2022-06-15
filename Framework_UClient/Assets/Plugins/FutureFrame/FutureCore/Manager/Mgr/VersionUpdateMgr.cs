@@ -40,7 +40,7 @@ namespace FutureCore
 
 #if UNITY_EDITOR
 
-            serverDownload = "http://192.168.31.195/";
+            serverDownload = "https://githubusercontent.com/Song-CQ/UnityRes/main";
 #elif UNITY_STANDALONE
 
 #elif UNITY_ANDROID
@@ -258,7 +258,7 @@ namespace FutureCore
         private void CheckServerHotFixVersion()
         {
             //检测
-            string verifySeverPath = Path.Combine(HotFixPath_Server,"version.json");
+            string verifySeverPath = Path.Combine(HotFixPath_Server, "version.json");
             HttpMgr.Instance.Send(verifySeverPath, GetHotFixVersion);
         }
 

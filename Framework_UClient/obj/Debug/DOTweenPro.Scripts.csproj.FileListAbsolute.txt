@@ -289,3 +289,4 @@ E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.dll
 E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.pdb
 D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.csproj.AssemblyReference.cache
 D:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.csproj.CoreCompileInputs.cache
+E:\UnityPro\Framework_SCQ\Framework_UClient\obj\Debug\DOTweenPro.Scripts.csproj.AssemblyReference.cache
