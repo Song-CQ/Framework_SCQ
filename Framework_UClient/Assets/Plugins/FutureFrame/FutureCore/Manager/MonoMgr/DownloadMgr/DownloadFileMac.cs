@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using UnityEngine;
 
 namespace FutureCore
 {
@@ -51,13 +52,18 @@ namespace FutureCore
                 || _tryCount == 10
                 || _tryCount == 100)
                 return true;
-
+           
             return false;
         }
 
         public void Run()
         {
             _tryCount++;
+
+            if (_downUnit.name== "gamerood")
+            {
+                string var = "gamerood";
+            }
 
             _state = DownloadMacState.ResetSize;
             if (!ResetSize()) return;
@@ -80,9 +86,15 @@ namespace FutureCore
 
         private bool ResetSize()
         {
+            if (_downUnit.name == "gamerood")
+            {
+                string var = "gamerood";
+            }
+
             if (_downUnit.size <= 0)
             {
                 _downUnit.size = GetWebFileSize(_downUnit.downUrl);
+
                 if (_downUnit.size == 0) return false;
             }
 
@@ -91,6 +103,8 @@ namespace FutureCore
 
             return true;
         }
+
+        
 
         private bool CheckMd5()
         {
@@ -106,7 +120,6 @@ namespace FutureCore
                 _error = "Check MD5 Error ";
                 return false;
             }
-
             return true;
         }
 
@@ -130,7 +143,7 @@ namespace FutureCore
                 fs.Seek(startPos, SeekOrigin.Current); //移动文件流中的当前指针
 
                 //文件已经下载完，没改名字，结束
-                if (startPos == _downUnit.size)
+                if (startPos >= _downUnit.size)
                 {
                     fs.Flush();
                     fs.Close();
@@ -162,10 +175,12 @@ namespace FutureCore
                                                                     //向服务器请求，获得服务器回应数据流
                 respone = (HttpWebResponse)request.GetResponse();
                 ns = respone.GetResponseStream();
+                
                 ns.ReadTimeout = TimeOutWait;
                 long totalSize = respone.ContentLength;
+               
                 long curSize = startPos;
-                if (curSize == totalSize)
+                if (curSize >= totalSize)
                 {
                     fs.Flush();
                     fs.Close();
@@ -212,7 +227,7 @@ namespace FutureCore
                 if (File.Exists(_downUnit.savePath))
                     File.Delete(_downUnit.savePath);
 
-                MainThreadLog.Log("下载出错：" + ex.Message);
+                MainThreadLog.Log($"文件{_downUnit.name}下载出错：{ex.Message}");
                 _state = DownloadMacState.Error;
                 _error = "Download Error " + ex.Message;
             }
@@ -249,7 +264,12 @@ namespace FutureCore
                     request.ReadWriteTimeout = ReadWriteTimeOut;
                     //向服务器请求，获得服务器回应数据流
                     respone = request.GetResponse();
+                    if (_downUnit.name == "gamerood")
+                    {
+                        string var = "gamerood";
+                    }                 
                     length = (int)respone.ContentLength;
+
                 }
                
             }
@@ -264,9 +284,14 @@ namespace FutureCore
                 if (respone != null) { respone.Close(); respone = null; }
                 if (request != null) { request.Abort(); request = null; }
             }
+            if (length==-1)
+            {
+                MainThreadLog.LogError($"获取文件{url}长度失败为-1");
+                length = 0;
+            }
             return length;
         }
-
+       
 
         private string GetMD5HashFromFile(string fileName)
         {

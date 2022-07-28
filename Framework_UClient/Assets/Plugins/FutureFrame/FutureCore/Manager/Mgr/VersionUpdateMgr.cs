@@ -39,8 +39,8 @@ namespace FutureCore
         {
 
 #if UNITY_EDITOR
-
-            serverDownload = "https://githubusercontent.com/Song-CQ/UnityRes/main";
+           
+            serverDownload = "https://raw.githubusercontent.com/Song-CQ/UnityRes/main";
 #elif UNITY_STANDALONE
 
 #elif UNITY_ANDROID
