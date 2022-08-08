@@ -16,6 +16,8 @@ namespace ProjectApp
 
         public static void RegisterData()
         {
+            //Module
+            RegisterModuleMgr();
             // ResMgr
             RegisterPermanentAssets();
             // AssetBundleMgr
@@ -25,8 +27,12 @@ namespace ProjectApp
             RegisterFont();
             // WSNetMgr
             RegisterProtoLogIgnore();
+
+            
+
         }
 
+        
         public static void StartUpAfterRegister()
         {
         }
@@ -83,6 +89,22 @@ namespace ProjectApp
             //wsNetMgr.RegisterS2CProtoLogIgnore(WSNetMsg.S2C_heartbeat);
             //wsNetMgr.RegisterC2SProtoLogIgnore(WSNetMsg.C2S_preferences);
             //wsNetMgr.RegisterC2SProtoLogIgnore(WSNetMsg.S2C_preferences);
+        } 
+        
+        private static void RegisterModuleMgr()
+        {
+            // ModuleMgr     
+            if (!AppConst.IsHotUpdateMode)
+            {
+                ModuleMgrRegister.AutoRegisterModel();
+                ModuleMgrRegister.AutoRegisterUIType();
+                ModuleMgrRegister.AutoRegisterCtrl();
+                ModuleMgrRegister.AutoRegisterUICtrl();
+            }
+            
         }
+
+
+
     }
 }

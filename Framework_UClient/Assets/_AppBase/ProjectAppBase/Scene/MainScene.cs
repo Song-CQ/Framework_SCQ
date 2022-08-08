@@ -6,6 +6,7 @@
 	功能：主场景
 *****************************************************/
 using FutureCore;
+using System;
 
 namespace ProjectApp
 {
@@ -46,31 +47,90 @@ namespace ProjectApp
             LogUtil.Log("[MainScene]Start Up App Process");
             AppDispatcher.Instance.Dispatch(AppMsg.App_StartUp);
 
+            
             // 初始化资源
             if (!AppConst.IsDevelopMode)
             {
-
-                //VersionUpdateMgr.Instance.StartUpProcess(InitAssets);
+                //检测版本资源更新
+                App.SetLoadingSchedule(ProgressState.AssetsPrepare);
+                VersionUpdateMgr.Instance.StartUpProcess(InitAssets);
             }
             else
             {
-                //InitAssets();
+                InitAssets(true);
             }
-            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.MainUI_Open);
         }
-        private void InitAssets()
-        {
-            AppDispatcher.Instance.AddListener(AppMsg.System_AssetsInitComplete, OnAssetsInitComplete);
 
-            LogUtil.Log("[MainScene]Init Assets");
-            //App.SetLoadingUI(ProgressState.AssetsInit_20, AppConst.IsLoadingDelay);
-            //ResMgr.Instance.InitAssets();
+        private void InitAssets(bool isComplete)
+        {
+            AppDispatcher.Instance.AddOnceListener(AppMsg.System_AssetsInitComplete, OnAssetsInitComplete);
+
+            LogUtil.Log("[MainScene]Init Assets");            
+            App.SetLoadingSchedule(ProgressState.AssetsInit);
+            
+            ResMgr.Instance.InitAssets();
+           
+
         }
 
         private void OnAssetsInitComplete(object obj)
         {
+            if (AppConst.IsHotUpdateMode)
+            {
+                AppDispatcher.Instance.AddOnceListener(AppMsg.System_LoadHotFixComplete, OnLoadHotFixComplete);
+                LogUtil.Log("[MainScene]Load HotFix");
+                App.SetLoadingSchedule(ProgressState.LoadHotFix);
+                //加载热更代码
+                ILRuntimeMgr_Register.RegisterAll(ILRuntimeMgr.Instance.AppDomain);
+                ILRuntimeMgr.Instance.StartLoadHotFix();
+            }
+            else
+            {
+                OnLoadHotFixComplete(null);
+            }
+            
+            
 
+        }
 
+        private void OnLoadHotFixComplete(object obj)
+        {
+            
+            App.SetLoadingSchedule(ProgressState.ConfigInit);
+            AppDispatcher.Instance.AddOnceListener(AppMsg.System_ConfigInitComplete, LoadComplete);
+
+            //to do
+            AppDispatcher.Instance.Dispatch(AppMsg.System_ConfigInitComplete);
+
+        }
+
+        
+
+        private void LoadComplete(object o)
+        {
+            App.SetLoadingSchedule(ProgressState.ShowScene);
+            TimerUtil.Simple.AddTimer(AppConst.LoadingCompleteDelayTime, () => ShowScene());
+       
+        }
+
+        private void ShowScene()
+        {
+            LogUtil.Log("[MainScene]Show Scene");
+            
+          
+            CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartReady);
+            
+            TimerUtil.Simple.AddTimer(AppConst.GameStartReadyDelayTime, () => {
+
+                ModuleMgr.Instance.AllModuleGameStart();
+                App.HideLoadingUI();
+
+                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartBefore);
+                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_Start);
+                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartLater);
+
+            });
+            
 
         }
 

@@ -10,7 +10,7 @@ namespace FutureEditor
  
         private static string ToolDir = Path.GetFullPath(Application.dataPath + @"\..\..\_Tool\");
         
-        [MenuItem("[FC Tool]/ExcelConfig/自动化打表 Dll")]
+        [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 Dll")]
         public static void SyncConfig2Dll()
         {
             if (EditorUtility.DisplayDialog("【自动化】Dll自动打表", "是否进行Dll自动化打表！", "确认", "取消"))
@@ -36,7 +36,7 @@ namespace FutureEditor
                      
             }
         }
-        [MenuItem("[FC Tool]/ExcelConfig/自动化打表 Dll(表数据加密)")]
+        [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 Dll(表数据加密)")]
         public static void SyncConfig2Dll_EncryptData()
         {
             if (EditorUtility.DisplayDialog("【自动化】Dll自动打表 数据加密", "是否进行Dll自动化打表!(表数据加密)", "确认", "取消"))
@@ -62,7 +62,7 @@ namespace FutureEditor
                      
             }
         }
-        [MenuItem("[FC Tool]/ExcelConfig/自动化打表 CS")]
+        [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 CS")]
         public static void SyncConfig2CS()
         {
             if (EditorUtility.DisplayDialog("【自动化】CS文件自动打表", "是否进行CS文件自动化打表！", "确认", "取消"))
@@ -86,7 +86,7 @@ namespace FutureEditor
                 }
             }
         }
-        [MenuItem("[FC Tool]/ExcelConfig/自动化打表 CS(表数据加密)")]
+        [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 CS(表数据加密)")]
         public static void SyncConfig2CS_EncryptData()
         {
             if (EditorUtility.DisplayDialog("【自动化】CS文件自动打表", "是否进行CS文件自动化打表！(表数据加密)", "确认", "取消"))

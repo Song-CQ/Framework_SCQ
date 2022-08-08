@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1578955568
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9460f5ea1c08aa1d3e05f8aa754ba698
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 46bbd9da48cff8d17f0c89eef78da528
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/_AssetBundleRes/GameRood/GameRood1.jpg
+- Assets/_AssetBundleRes/GameRood/GameRood.jpg
+Dependencies: []

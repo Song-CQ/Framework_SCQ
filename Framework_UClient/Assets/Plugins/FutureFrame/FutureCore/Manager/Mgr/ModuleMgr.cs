@@ -1,8 +1,8 @@
 /****************************************************
-    文件：NewScript.cs
+    文件：ModuleMgr.cs
 	作者：Clear
     日期：2022/1/9 14:26:35
-	功能：Nothing
+	功能：模块管理器
 *****************************************************/
 
 using System;
@@ -17,6 +17,11 @@ namespace FutureCore
         private Dictionary<string, Type> uiTypeDict = new Dictionary<string, Type>();
         private Dictionary<string, BaseCtrl> ctrlDict = new Dictionary<string, BaseCtrl>();
         private Dictionary<string, BaseUICtrl> uiCtrlDict = new Dictionary<string, BaseUICtrl>();
+        
+        private List<string> initModelLst = new List<string>();
+        private List<string> initUITypeLst = new List<string>();
+        private List<string> initCtrlLst = new List<string>();
+        private List<string> initUICtrlLst = new List<string>();
 
 
         public override void Init()
@@ -25,17 +30,25 @@ namespace FutureCore
             InitAllModule();
         }
 
-        private void InitAllModule()
+        public void InitAllModule()
         {
             //不激活的控制器列表
             List<string> ctrlDisableList = AppConst.CtrlDisableList;
             ///New
             foreach (BaseModel model in modelDict.Values)
             {
-                model.New();
+                if (!initModelLst.Contains(model.modelName))
+                {
+                    model.New();
+                }
+             
             }
             foreach (BaseCtrl ctrl in ctrlDict.Values)
             {
+                if (initCtrlLst.Contains(ctrl.ctrlName))
+                {
+                    continue;
+                }
                 if (!ctrl.isEnable)
                 {
                     continue;
@@ -50,6 +63,10 @@ namespace FutureCore
             }
             foreach (BaseUICtrl uiCtrl in uiCtrlDict.Values)
             {
+                if (initUICtrlLst.Contains(uiCtrl.ctrlName))
+                {
+                    continue;
+                }
                 if (!uiCtrl.isEnable)
                 {
                     continue;
@@ -64,16 +81,25 @@ namespace FutureCore
             }
             // Init
             foreach (BaseModel model in modelDict.Values)
-            {
-                model.Init();
+            {        
+                if (!initModelLst.Contains(model.modelName))
+                {
+                    model.Init();
+                }
             }
             foreach (BaseCtrl ctrl in ctrlDict.Values)
-            {
-                ctrl.Init();
+            {    
+                if (!initCtrlLst.Contains(ctrl.ctrlName))
+                {
+                    ctrl.Init();
+                }
             }
             foreach (BaseUICtrl uiCtrl in uiCtrlDict.Values)
             {
-                uiCtrl.Init();
+                if (!initUICtrlLst.Contains(uiCtrl.ctrlName))
+                {
+                    uiCtrl.Init();
+                }              
             }
             LogUtil.Log("[ModuleMgr]InitModule".AddColor(ColorType.Green));
 
@@ -84,15 +110,28 @@ namespace FutureCore
 
             foreach (BaseModel model in modelDict.Values)
             {
-                model.StartUp();
+                if (!initModelLst.Contains(model.modelName))
+                {
+                    model.StartUp();
+                    initModelLst.Add(model.modelName);
+                }
+               
             }
             foreach (BaseCtrl ctrl in ctrlDict.Values)
             {
-                ctrl.StartUp();
+                if (!initCtrlLst.Contains(ctrl.ctrlName))
+                {
+                    ctrl.StartUp();
+                    initModelLst.Add(ctrl.ctrlName);
+                }
             }
             foreach (BaseUICtrl uiCtrl in uiCtrlDict.Values)
             {
-                uiCtrl.StartUp();
+                if (!initUICtrlLst.Contains(uiCtrl.ctrlName))
+                {
+                    uiCtrl.StartUp();
+                    initModelLst.Add(uiCtrl.ctrlName);
+                }           
             }
             LogUtil.Log("[ModuleMgr]StartUpAllModule");
 

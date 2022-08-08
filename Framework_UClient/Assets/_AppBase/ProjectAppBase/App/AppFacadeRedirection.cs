@@ -37,6 +37,7 @@ namespace ProjectApp
             AppFacade_Frame.IsUseUGameAndroid = AppFacade.IsUseUGameAndroid;
             //AppFacade_Frame.IsOfflineGame = AppFacade.IsOfflineGame;
             AppFacade_Frame.AppDesc = AppFacade.AppDesc;
+            AppFacade_Frame.ServerAssestUrl = AppFacade.ServerAssestUrl;
             // Func
             AppFacade_Frame.InitFunc = AppFacade.InitFunc;
             AppFacade_Frame.StartUpFunc = AppFacade.StartUpFunc;

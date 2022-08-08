@@ -1,0 +1,3 @@
+D:\UnityPro\Framework_SCQ\_Tool\src\Samples\ConsoleApp\obj\x86\Debug\ConsoleApp.csproj.AssemblyReference.cache
+D:\UnityPro\Framework_SCQ\_Tool\src\Samples\ConsoleApp\obj\x86\Debug\ConsoleApp.csproj.SuggestedBindingRedirects.cache
+D:\UnityPro\Framework_SCQ\_Tool\src\Samples\ConsoleApp\obj\x86\Debug\ConsoleApp.csproj.CoreCompileInputs.cache

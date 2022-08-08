@@ -3,7 +3,7 @@ using System;
 namespace FutureCore
 {
     /// <summary>
-    /// µ¥ÀýÀà
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public class Singleton<T> : IDisposable where T : class, new()
     {

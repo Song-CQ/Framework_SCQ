@@ -5,51 +5,54 @@ using UnityEngine;
 
 namespace FutureCore
 {
-    public class AppConst 
+    public class AppConst
     {
         #region Field
-        // °üÃû
+        // åŒ…å
         public static string PackageName = AppFacade_Frame.PackageName;
-        // ÊÇ·ñÊÇµ÷ÊÔ°æ±¾
+        // æ˜¯å¦æ˜¯è°ƒè¯•ç‰ˆæœ¬
         public static bool IsDebugVersion = true;
-        // °ü°æ±¾ºÅ
-        public static string PackageVersion = "null";
-        // ÄÚÖÃÅäÖÃ±í¹şÏ£Öµ
+        // åŒ…ç‰ˆæœ¬å·
+        public static string PackageVersion = "1.0.0";
+        // å†…ç½®é…ç½®è¡¨å“ˆå¸Œå€¼
         public static string ConfigInternalHash = null;
-        // ÄÚÖÃÅäÖÃ±í°æ±¾ºÅ
+        // å†…ç½®é…ç½®è¡¨ç‰ˆæœ¬å·
         public static string ConfigInternalVersion = null;
-        // ·şÎñÆ÷ÅäÖÃ±í¹şÏ£Öµ
+        // æœåŠ¡å™¨é…ç½®è¡¨å“ˆå¸Œå€¼
         //public static string ConfigServerHash = null;
-        // ·şÎñÆ÷ÅäÖÃ±í°æ±¾ºÅ
-        //public static string ConfigServerVersion = null;
+        // æœåŠ¡å™¨é…ç½®è¡¨ç‰ˆæœ¬å·
+        // public static string ConfigServerVersion = null;
 
-        // Ä¬ÈÏ×ÊÔ´Ä£Ê½ ÊÇ·ñResourcesÄ£Ê½
+        // é»˜è®¤èµ„æºæ¨¡å¼ æ˜¯å¦Resourcesæ¨¡å¼
         public const bool IsResourcesMode_Default = true;
-        // Ä¬ÈÏ¼ÓÔØÄ£Ê½ ÊÇ·ñÍ¬²½¼ÓÔØÄ£Ê½
+        // é»˜è®¤åŠ è½½æ¨¡å¼ æ˜¯å¦åŒæ­¥åŠ è½½æ¨¡å¼
         public const bool IsSyncLoadMode_Default = false;
 
-        // ÊÇ·ñÊÇ¿ª·¢¹¹½¨`    
+        /// <summary>
+        /// æ˜¯å¦èµ„æºçƒ­æ›´æ¨¡å¼
+        /// </summary>
+        public const bool IsAssetBundlesUpdateMode = true; 
+
+        // æ˜¯å¦æ˜¯å¼€å‘æ„å»º
         public const bool IsDevelopmentBuild = false;
-        // ÊÇ·ñ¿ª·¢Ä£Ê½ (²»¿½±´×ÊÔ´)
-        public static bool IsDevelopMode = true;
-        // ÊÇ·ñµ÷ÊÔÄ£Ê½
-        public static bool IsDebugMode = true;
-        // ÊÇ·ñÈÈ¸üĞÂÄ£Ê½
-        public static bool IsHotUpdateMode = false;
-        // ÊÇ·ñ¿ªÆôµ÷ÊÔÒıÇæ·ÖÎöÆ÷
+        // æ˜¯å¦å¼€å‘æ¨¡å¼ (ä¸æ‹·è´èµ„æº)
+        public static bool IsDevelopMode = false;
+        // æ˜¯å¦çƒ­æ›´æ–°æ¨¡å¼
+        public static bool IsHotUpdateMode = true;
+        // æ˜¯å¦å¼€å¯è°ƒè¯•å¼•æ“åˆ†æå™¨
         public static bool IsEnabledEngineProfiler = false;
-        // ÊÇ·ñ¿ªÆôµ÷ÊÔÓ¦ÓÃ·ÖÎöÆ÷
+        // æ˜¯å¦å¼€å¯è°ƒè¯•åº”ç”¨åˆ†æå™¨
         public static bool IsEnableAssistAppProfiler = false;
-        // ÊÇ·ñ¿ªÆôµ÷ÊÔÓ¦ÓÃ¿ØÖÆÌ¨
+        // æ˜¯å¦å¼€å¯è°ƒè¯•åº”ç”¨æ§åˆ¶å°
         public static bool IsEnableAssistAppConsole = false;
-        // ÊÇ·ñ¿ªÆôÒıÇæµ÷ÊÔÈÕÖ¾
+        // æ˜¯å¦å¼€å¯å¼•æ“è°ƒè¯•æ—¥å¿—
         public static bool IsEnabledEngineLog = true;
-        // ÊÇ·ñ¿ªÆôÈÕÖ¾
+        // æ˜¯å¦å¼€å¯æ—¥å¿—
         public static bool IsEnabledLog = true;
-        // ÊÇ·ñÏÔÊ¾ÍøÂçÈÕÖ¾
+        // æ˜¯å¦æ˜¾ç¤ºç½‘ç»œæ—¥å¿—
         //public const bool IsDisplayNetLog = false;
-        // ÊÇ·ñÏÔÊ¾ÍøÂçĞ­ÒéÍ¨Ñ¶ÈÕÖ¾
-       // public const bool IsDisplayNetProtoLog = true;
+        // æ˜¯å¦æ˜¾ç¤ºç½‘ç»œåè®®é€šè®¯æ—¥å¿—
+        //public const bool IsDisplayNetProtoLog = true;
 
         public const LogType EnabledFilterLogType = LogType.Log | LogType.Warning | LogType.Error | LogType.Assert | LogType.Exception; //(LogType.Log | LogType.Warning | LogType.Error | LogType.Assert | LogType.Exception) &~ LogType.Log;
         public const bool IsRunInBG = true;
@@ -62,87 +65,96 @@ namespace FutureCore
         public const float PixelsPerUnit = 100f;
         public static float FrameRateTimestep = 1f / HighFrameRate;
         public const float LowFrameRateTimestep = 1f / LowFrameRate;
-        // Streaming AssetsÏÂÄ¬ÈÏÊÇ²»Ñ¹ËõµÄ
-        // ½«´Ëºó×ºÃû¼ÓÈëµ½°²×¿Gradle¹¤³ÌµÄandroid_aaptOptions_noCompressÖĞ, ¼´¿É±£Ö¤ÔÚ´ò°üapkµÄÊ±ºò²»ÒªÑ¹ËõÕâ²¿·Ö×ÊÔ´¼´¿É
+        // Streaming Assetsä¸‹é»˜è®¤æ˜¯ä¸å‹ç¼©çš„
+        // å°†æ­¤åç¼€ååŠ å…¥åˆ°å®‰å“Gradleå·¥ç¨‹çš„android_aaptOptions_noCompressä¸­, å³å¯ä¿è¯åœ¨æ‰“åŒ…apkçš„æ—¶å€™ä¸è¦å‹ç¼©è¿™éƒ¨åˆ†èµ„æºå³å¯
         public const string ABExtName = ".bytes";
         public static bool HasAssetPackage = true;
 
-        /// Ó¦ÓÃÉèÖÃ²ÎÊı
-        // ±ê×¼·Ö±æÂÊ
+        /// åº”ç”¨è®¾ç½®å‚æ•°
+        // æ ‡å‡†åˆ†è¾¨ç‡
         public static Vector2Int StandardResolution = new Vector2Int(1080, 1920);
-        // UI·Ö±æÂÊ
+        // UIåˆ†è¾¨ç‡
         public static Vector2Int UIResolution = new Vector2Int(1080, 1920);
-        // PC²âÊÔ·Ö±æÂÊ
+        // PCæµ‹è¯•åˆ†è¾¨ç‡
         public static Vector2Int PCTestResolution = new Vector2Int(1080, 1920);
-        // ÊÇ·ñ±à¼­Æ÷¼ÓÔØÄÚÖÃÅäÖÃ
+        // æ˜¯å¦ç¼–è¾‘å™¨åŠ è½½å†…ç½®é…ç½®
         public static bool IsConfigEditorLoadInternally = true;
-        // ÊÇ·ñÔÊĞíÅäÖÃ±í»Ø¹ö
+        // æ˜¯å¦å…è®¸é…ç½®è¡¨å›æ»š
         public static bool IsConfigRollback = false;
-        // ÊÇ·ñÅäÖÃ±íÌáÇ°±¾µØ³õÊ¼»¯
+        // æ˜¯å¦é…ç½®è¡¨æå‰æœ¬åœ°åˆå§‹åŒ–
         public static bool IsConfigPreInit = false;
-        // Ê¹ÓÃÄÚÖÃÉèÖÃ
+        // ä½¿ç”¨å†…ç½®è®¾ç½®
         public static bool UseInternalSetting = true;
-        // °²×¿SDKÀàÃû
+        //  å®‰å“SDKç±»å
         //public static string AndroidSDKClassName = "com.unity3d.player.UnityPlayer";
-        //// ÇşµÀ²âÊÔ_Debug°æ±¾
+        //// æ¸ é“æµ‹è¯•_Debugç‰ˆæœ¬
         //public static bool ChannelTest_Debug = true;
-        //// ÇşµÀ²âÊÔ_±àÒëÀàĞÍ
+        //// æ¸ é“æµ‹è¯•_ç¼–è¯‘ç±»å‹
         //public static AppBuildType ChannelTest_BuildType = AppBuildType.Debug;
-        // ÇşµÀ²âÊÔ_¿ª·¢»ú°æ±¾ºÅ
-        //public static int ChannelTest_VerCode = 5;
-        // ÇşµÀ²âÊÔ_ÊÇ·ñ»º´æ²åÆÁ¹ã¸æÍê³É
+        //// æ¸ é“æµ‹è¯•_å¼€å‘æœºç‰ˆæœ¬å·
+        //public static int ChannelTest_VerCode = 1;
+        //// æ¸ é“æµ‹è¯•_æ˜¯å¦ç¼“å­˜æ’å±å¹¿å‘Šå®Œæˆ
         //public static bool ChannelTest_IsPreLoadIntersititialAd = true;
-        // ÇşµÀ²âÊÔ_ÊÓÆµ¹ã¸æÊÇ·ñ»º´æ³É¹¦
+        //// æ¸ é“æµ‹è¯•_è§†é¢‘å¹¿å‘Šæ˜¯å¦ç¼“å­˜æˆåŠŸ
         //public static bool ChannelTest_isPreLoadVideoAdSuccess = true;
-        // ÊÇ·ñ¶àÓïÑÔ
+        // æ˜¯å¦å¤šè¯­è¨€
         public static bool IsMultiLanguage = true;
-        // ÄÚÖÃÓïÑÔ
-        public static string InternalLanguage = "en";
-        // Ä¬ÈÏÓïÑÔ
-        public static string DefaultLanguage = "en";
-        // ÊÇ·ñÌáÊ¾App¸üĞÂ
-        //public static bool IsNeedPromptAppUpdate = true;
-        // ÏÔÊ¾À­ÆğÓ¦ÓÃÉÁÆÁÊ±¼ä
-        //public static float ShowLoadingSplashPageTime = 0.5f;
-        // Loading½ø¶È½ø¶ÈÊÇ·ñÑÓ³Ù
-        public static bool IsLoadingDelay = true;
-        // Loading½ø¶ÈÑÓ³ÙÊ±¼ä
-        public static float LoadingDelayTime = LowFrameRateTimestep;
-        // Loading½ø¶ÈÍê³ÉÑÓ³ÙÊ±¼ä
-        public static float LoadingCompleteDelayTime = 0.5f;
-        // ×¼±¸ÓÎÏ·¿ªÊ¼Ç°ÑÓ³ÙÊ±¼ä
-        public static float GameStartReadyDelayTime = 0.5f;
-        // LogsViewerÀ­ÆğµÄÈ¦Êı (DebugÄ£Ê½)
-        public static int LogsViewerShowNum_Debug = 10;
-        // LogsViewerÀ­ÆğµÄÈ¦Êı (ReleaseÄ£Ê½)
-        public static int LogsViewerShowNum_Release = 20;
+        // é»˜è®¤è¯­è¨€
+        public static string DefaultLangue = "en";
+        // å†…ç½®è¯­è¨€
+        public static string InternalLangue = "en";
 
+        // Loadingè¿›åº¦è¿›åº¦æ˜¯å¦å»¶è¿Ÿ
+        public static bool IsLoadingDelay = true;
+        // Loadingè¿›åº¦å»¶è¿Ÿæ—¶é—´
+        public static float LoadingDelayTime = LowFrameRateTimestep;
+        // Loadingè¿›åº¦å®Œæˆå»¶è¿Ÿæ—¶é—´
+        public static float LoadingCompleteDelayTime = 0.2f;
+        // å‡†å¤‡æ¸¸æˆå¼€å§‹å‰å»¶è¿Ÿæ—¶é—´
+        public static float GameStartReadyDelayTime = 0.1f;
+        // LogsVieweræ‹‰èµ·çš„åœˆæ•° (Debugæ¨¡å¼)
+        public static int LogsViewerShowNum_Debug = 10;
+        // LogsVieweræ‹‰èµ·çš„åœˆæ•° (Releaseæ¨¡å¼)
+        public static int LogsViewerShowNum_Release = 50;
+  
         /// <summary>
-        /// ÏîÄ¿Ê¹ÓÃµÄUIÀàĞÍ
+        /// uié©±åŠ¨ç±»å‹
         /// </summary>
         public static UIDriverEnem UIDriver = UIDriverEnem.FGUI;
 
-        /// ÏîÄ¿¿ØÖÆ²ÎÊı
-        // ¿ØÖÆÆ÷¹Ø±ÕÁĞ±í
+        /// <summary>
+        /// Fguiå’Œä¸–ç•Œç‰©ä½“çš„å¤§å°æ¯”ä¾‹ï¼ˆ0.01fä»£è¡¨ä¸–ç•Œç‰©ä½“å¤§å°ä¹˜ä»¥100ç­‰äºUIç‰©ä½“å¤§å°ï¼‰
+        /// </summary>
+        public const float FGUIRatio = 0.01f;
+
+        /// é¡¹ç›®æ§åˆ¶å‚æ•°
+        // æ§åˆ¶å™¨å…³é—­åˆ—è¡¨
         public static List<string> CtrlDisableList = new List<string>();
 
-        //-----------------------------------------------------ÔËĞĞÊ±²ÎÊı-------------------------------------------------------------//
+        //-----------------------------------------------------ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½-------------------------------------------------------------//
+
+
+
+        // æ˜¯å¦å‘å¸ƒç‰ˆåº”ç”¨
+        public static bool IsReleaseApp;
+        // åº”ç”¨ç‰ˆæœ¬
+        public static string[] AppVersions;
+
+        // é»˜è®¤èµ„æºç‰ˆæœ¬
+        private static string[] DefaultAssetVersions = new string[] { "0", "0", "0" };
+        // æœ¬åœ°èµ„æºç‰ˆæœ¬
+        public static string[] LocalAssetVersions = DefaultAssetVersions;
+        // æœåŠ¡å™¨èµ„æºç‰ˆæœ¬
+        public static string[] ServerAssetVersions = DefaultAssetVersions;
 
         
 
-        // Ó¦ÓÃ°æ±¾
-        public static string[] AppVersions;
-
-        // Ä¬ÈÏ×ÊÔ´°æ±¾
-        private static string[] DefaultAssetVersions = new string[] { "0", "0", "0" };
-        // ±¾µØ×ÊÔ´°æ±¾
-        public static string[] LocalAssetVersions = DefaultAssetVersions;
-        // ·şÎñÆ÷×ÊÔ´°æ±¾
-        public static string[] ServerAssetVersions = DefaultAssetVersions;
-
-        // Ó¦ÓÃÆô¶¯Ê±¼ä
+        // åº”ç”¨å¯åŠ¨æ—¶é—´
         public static DateTime LaunchDateTime;
+        
+
         #endregion
+
         public static void Init()
         {
             PackageVersion = Application.version;
@@ -150,38 +162,11 @@ namespace FutureCore
 
             if (Application.isEditor)
             {
-                // 1) ±à¼­Æ÷²âÊÔÅäÖÃ
-                IsDevelopMode = true;
-                IsHotUpdateMode = false;
-                IsDebugMode = true;
-
-                // 2) ±à¼­Æ÷ÕıÊ½ÅäÖÃ
-                //IsDevelopMode = false;
-                //IsHotUpdateMode = true;
-                //IsDebugMode = false;
+                IsDevelopMode = false;
             }
             else
             {
-                // 1) ²âÊÔÅäÖÃ
-                IsDevelopMode = true;
-                IsHotUpdateMode = false;
-                IsDebugMode = true;
-
-                // 2) ÕıÊ½²âÊÔÅäÖÃ
-                //IsDevelopMode = false;
-                //IsHotUpdateMode = true;
-                //IsDebugMode = true;
-
-                // 2) ÕıÊ½ÅäÖÃ
-                //IsDevelopMode = false;
-                //IsHotUpdateMode = true;
-                //IsDebugMode = false;
-                //IsEnabledDebugLog = false;
-
-                // 3) ·ÇÈÈ¸üÕıÊ½ÅäÖÃ
-                //IsDevelopMode = true;
-                //IsHotUpdateMode = false;
-                //IsDebugMode = false;
+                IsDevelopMode = false;
             }
         }
 
@@ -192,7 +177,7 @@ namespace FutureCore
 
         public static void AfterInit()
         {
-            
+
         }
     }
 }

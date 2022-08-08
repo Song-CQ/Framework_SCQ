@@ -1,9 +1,9 @@
 /****************************************************
-    文件：Model.cs
-	作者：Clear
-    日期：2022/1/27 18:36:51
+    文件: Model.cs
+    作者: Clear
+    日期: 2022/2/7 11:44:43
     类型: MVC_AutoCread
-	功能：GameModel
+    功能: GameModel
 *****************************************************/
 using UnityEngine;
 using FutureCore;

@@ -1,0 +1,8 @@
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\XLNet\bin\Debug\XLNet.dll
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\XLNet\bin\Debug\XLNet.pdb
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\XLNet\obj\Debug\XLNet.csproj.AssemblyReference.cache
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\XLNet\obj\Debug\XLNet.csproj.CoreCompileInputs.cache
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\XLNet\obj\Debug\XLNet.dll
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\XLNet\obj\Debug\XLNet.pdb
+D:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\XlNet\XLNet.dll
+D:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\XlNet\XLNet.pdb

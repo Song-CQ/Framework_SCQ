@@ -1,0 +1,11 @@
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\bin\Debug\TestClient.exe.config
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\bin\Debug\TestClient.exe
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\bin\Debug\TestClient.pdb
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\bin\Debug\XLNet.dll
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\bin\Debug\XLNet.pdb
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\obj\Debug\TestClient.csproj.AssemblyReference.cache
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\obj\Debug\TestClient.csproj.SuggestedBindingRedirects.cache
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\obj\Debug\TestClient.csproj.CoreCompileInputs.cache
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\obj\Debug\TestClient.csproj.CopyComplete
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\obj\Debug\TestClient.exe
+D:\UnityPro\Framework_SCQ\_Tool\SocketFramework\TestClient\obj\Debug\TestClient.pdb

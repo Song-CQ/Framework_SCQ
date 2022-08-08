@@ -17,8 +17,7 @@ namespace FuturePlugin
         private void Awake()
         {
             Instance = this;
-            Unity3dUtil.SetDontDestroyOnLoad(gameObject);
-
+            DontDestroyOnLoad(gameObject);
             Init();
         }
 

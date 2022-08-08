@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="pc0wa25b">
+  <resources>
+    <component id="t2688" name="PB.xml" path="/com/" exported="true"/>
+    <component id="t268a" name="com_loading.xml" path="/" exported="true"/>
+    <image id="d8jsd" name="jiazai.png" path="/img/" scale="9grid" scale9grid="31,0,30,50"/>
+    <image id="d8jse" name="jiazaidi.png" path="/img/" scale="9grid" scale9grid="43,0,23,67"/>
+    <image id="nbg9k" name="bg.jpg" path="/img/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

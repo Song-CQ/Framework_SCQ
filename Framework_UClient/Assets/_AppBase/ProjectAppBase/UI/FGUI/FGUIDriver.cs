@@ -32,9 +32,11 @@ namespace ProjectApp
         public override void Register()
         {
            
-            UIRegister_FGUI.AutoRegisterBinder();
+            UIRegister_FGUI.AutoRegisterCommonBinder(); 
             UIRegister_FGUI.AutoRegisterCommonPackages(ref commonPackageList);
-            
+           
+            UIRegister_FGUI.AutoRegisterBinder();
+
         }
         public override void RegisterDefaultFont(string font)
         {
@@ -122,6 +124,7 @@ namespace ProjectApp
             if (UIPackage.GetByName(packageName) == null)
             {
                 ResMgr.Instance.AddFguiPackage(packageName, GetPackageUIPath(packageName));
+                
             }
         }
 
@@ -224,7 +227,7 @@ namespace ProjectApp
                     continue;
                 }
                 GButton gButton = item.asButton;
-                if (gButton!=null && gButton.mode== ButtonMode.Common)
+                if (gButton!=null && gButton.mode == ButtonMode.Common)
                 {
                     if (IsSetButtonPivotCenter)
                     {
@@ -234,15 +237,14 @@ namespace ProjectApp
                 }
 
             }
-
-
         }
+
 
         public override void Dispose()
         {
             
         }
 
-       
+        
     }
 }

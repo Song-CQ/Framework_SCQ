@@ -1,4 +1,4 @@
-﻿namespace FutureCore
+namespace FutureCore
 {
     public interface IMgr
     {

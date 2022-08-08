@@ -1,9 +1,9 @@
 /****************************************************
-    文件：UICtr.cs
-	作者：Clear
-    日期：2022/1/27 18:36:51
+    文件: UICtr.cs
+    作者: Clear
+    日期: 2022/2/7 11:44:43
     类型: MVC_AutoCread
-	功能：GameUI控制器
+    功能: GameUI控制器
 *****************************************************/
 using UnityEngine;
 using FutureCore;
@@ -15,8 +15,8 @@ namespace ProjectApp
         private GameUI ui;
         private GameModel model;
 
-        private uint openUIMsg = 0;//UICtrlMsg.GameUI_Open;
-        private uint closeUIMsg = 0;//UICtrlMsg.GameUI_Close;
+        private uint openUIMsg = UICtrlMsg.GameUI_Open;
+        private uint closeUIMsg = UICtrlMsg.GameUI_Close;
 
         #region 生命周期
         protected override void OnInit()

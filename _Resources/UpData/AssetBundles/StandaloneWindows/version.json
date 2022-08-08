@@ -1,0 +1,78 @@
+{
+    "version": 9,
+    "buildDate": "2022/6/14 11:10:25",
+    "filemap": [
+        {
+            "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood.jpg",
+            "MD5": "67c1640168a71ac6279f02c4d9c3ab3f"
+        },
+        {
+            "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\GameRood\\GameRood1.jpg",
+            "MD5": "eedeade6487c22fad4011eb85731fd7e"
+        },
+        {
+            "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\ImgAB\\IMG_20220220_155410.jpg",
+            "MD5": "92369493e59436b77d9e470f1c0aac8d"
+        },
+        {
+            "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main1\\play.jpg",
+            "MD5": "67c1640168a71ac6279f02c4d9c3ab3f"
+        },
+        {
+            "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main2\\sccard_launcher_bg.png",
+            "MD5": "0899f851a063ecf7e5fdfe6a10ba3ec7"
+        },
+        {
+            "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\Main3\\sccard_launcher_bg.prefab",
+            "MD5": "96fcd96386d84604372be704f3df98e5"
+        },
+        {
+            "Path": "E:\\UnityPro\\Framework_SCQ\\Framework_UClient\\Assets\\_AssetBundleRes\\TestGood\\main4\\test_mat.mat",
+            "MD5": "91211d33a2ac8ca92054621ece13182c"
+        }
+    ],
+    "bagmap": [
+        {
+            "bagName": "gamerood",
+            "num": 2,
+            "size": 1667946,
+            "MD5": "d09438f4fc1777298322f7524cfb1b09"
+        },
+        {
+            "bagName": "imgab",
+            "num": 1,
+            "size": 721194,
+            "MD5": "22a825f2cc1b2294d279e23753b671eb"
+        },
+        {
+            "bagName": "testgood/main1",
+            "num": 1,
+            "size": 704332,
+            "MD5": "aca6e5ceb692c4fbb91076d0f3b0b22c"
+        },
+        {
+            "bagName": "testgood/main2",
+            "num": 1,
+            "size": 1226364,
+            "MD5": "3683f20b140df4e7880daa3529c56d51"
+        },
+        {
+            "bagName": "testgood/main3",
+            "num": 1,
+            "size": 2488,
+            "MD5": "747553054bee74ece40bbfe331395057"
+        },
+        {
+            "bagName": "testgood/main4",
+            "num": 1,
+            "size": 1226041,
+            "MD5": "34e9c6d9a3c630e1ba5e4f608030c3c2"
+        },
+        {
+            "bagName": "StandaloneWindows",
+            "num": 1,
+            "size": 1177,
+            "MD5": "5bb12d9decf2692e474d4feb7012ea9c"
+        }
+    ]
+}

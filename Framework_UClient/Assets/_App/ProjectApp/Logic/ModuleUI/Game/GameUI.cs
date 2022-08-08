@@ -1,9 +1,9 @@
 /****************************************************
-    文件：GameUI.cs
-	作者：Clear
-    日期：2022/1/27 18:36:51
+    文件: GameUI.cs
+    作者: Clear
+    日期: 2022/2/7 11:44:43
     类型: MVC_AutoCread
-	功能：GameUI界面
+    功能: GameUI界面
 *****************************************************/
 using FutureCore;
 using FairyGUI;
@@ -19,7 +19,7 @@ namespace ProjectApp
 
         public GameUI(GameUICtrl ctrl) : base(ctrl)
         {
-            //uiName = UIConst.GameUI;
+            uiName = UIConst.GameUI;
             this.uiCtrl = ctrl;
         }
 

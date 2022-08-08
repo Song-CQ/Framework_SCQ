@@ -3,28 +3,25 @@ using System;
 namespace FutureCore
 {
     /// <summary>
-    /// Loading½ø¶ÈÁ÷³Ì×´Ì¬
+    /// Loadingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
     /// </summary>
     public enum ProgressState : int
     {
-        // Î´Æô¶¯
+        // Î´ï¿½ï¿½ï¿½
         Unstart = -10,
-        // ×ÊÔ´°æ±¾ÈÈ¸üĞÂ
-        //[InspectorName("×ÊÔ´°æ±¾ÈÈ¸üĞÂ")]
-        VersionUpdate = 0,
-        // ×ÊÔ´³õÊ¼»¯
-        AssetsInit = 20,
-        // »ù´¡×ÊÔ´³õÊ¼»¯
-        PermanentAssetsInit = 25,
-        // Á¬½ÓµÇÂ¼
-        ConnectLogin = 30,
-        // Ô¶³Ì´æ´¢³õÊ¼»¯
-        PreferencesInit = 60,
-        // ÅäÖÃ±í³õÊ¼»¯
-        ConfigInit = 70,
-        // Ô¤¼ÓÔØ¿ªÊ¼
-        PreloadStart = 80,
-        // ÏÔÊ¾³¡¾°
+        //èµ„æºå‡†å¤‡
+         AssetsPrepare = 0,
+        // æ£€æµ‹ç‰ˆæœ¬æ›´æ–°
+        VersionUpdate = 10,
+        // èµ„æºåˆå§‹åŒ–
+        AssetsInit = 70,
+        // åŠ è½½çƒ­æ›´ä»£ç 
+        LoadHotFix = 80,
+        // è¿œç¨‹å­˜å‚¨åˆå§‹åŒ–
+        PreferencesInit = 85,
+        // æ•°æ®åˆå§‹åŒ–
+        ConfigInit = 90,
+        // åŠ è½½å®Œæˆ
         ShowScene = 100,
     }
 
@@ -34,8 +31,8 @@ namespace FutureCore
     }
 
     /// <summary>
-    /// È«¾ÖÓ¦ÓÃ
-    /// Ó¦ÓÃ²ãÂß¼­×¢Èëµ½¿ò¼Ü²ã
+    /// È«ï¿½ï¿½Ó¦ï¿½ï¿½
+    /// Ó¦ï¿½Ã²ï¿½ï¿½ß¼ï¿½×¢ï¿½ëµ½ï¿½ï¿½Ü²ï¿½
     /// </summary>
     public static class App
     {
@@ -75,6 +72,8 @@ namespace FutureCore
             currApplication.Quit();
         }
 
+        
+
         #endregion
 
 
@@ -86,7 +85,7 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ÏîÄ¿Íâ¹ÛInit
+        /// ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Init
         /// </summary>
         public static void AppFacadeInit()
         {
@@ -116,25 +115,32 @@ namespace FutureCore
 
         #region UIMsg
 
-        private static float LoadingProgressDelayTime = 0f;
-
         public static void DisplayLoadingUI()
         {
             AppDispatcher.Instance.Dispatch(AppMsg.UI_DisplayLoadingUI);
         }
 
-        //public static void HideLoadingUI(bool isDelay = false)
-        //{
-        //    if (!isDelay)
-        //    {
-        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_HideLoadingUI);
-        //        return;
-        //    }
-        //    TimerUtil.Simple.AddTimer(0.5f, () =>
-        //    {
-        //        AppDispatcher.Instance.Dispatch(AppMsg.UI_HideLoadingUI);
-        //    });
-        //}
+
+
+        public static void SetLoadingSchedule(ProgressState state,Action onComplete = null)
+        {
+            SetLoadingMsg(state.ToString());
+            GenericDispatcher.Instance.Dispatch<int, Action>(AppMsg.UI_SetLoadingValueUI,(int)state,onComplete);
+
+        }
+
+        public static void SetLoadingMsg(string msg)
+        {
+            GenericDispatcher.Instance.Dispatch<string>(AppMsg.UI_SetLoadingMsg, msg);
+        }
+
+        public static void HideLoadingUI(bool isDelay = false)
+        {
+            
+             AppDispatcher.Instance.Dispatch(AppMsg.UI_HideLoadingUI);
+       
+            
+        }
 
         //public static void SetLoadingUI(ProgressState state, bool isDelay = false)
         //{
