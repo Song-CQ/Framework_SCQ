@@ -76,7 +76,7 @@ namespace qtools.qhierarchy.pcomponent
             drawQuad(33, 3, 4, ((staticFlags & StaticEditorFlags.BatchingStatic) > 0));
             drawQuad(41, 3, 4, ((staticFlags & StaticEditorFlags.ReflectionProbeStatic) > 0));
 #else
-            drawQuad(37, 3, 4, ((staticFlags & StaticEditorFlags.LightmapStatic       ) > 0));
+            drawQuad(37, 3, 4, ((staticFlags & StaticEditorFlags.ContributeGI       ) > 0));
             drawQuad(33, 3, 4, ((staticFlags & StaticEditorFlags.BatchingStatic       ) > 0));
             drawQuad(41, 3, 4, ((staticFlags & StaticEditorFlags.ReflectionProbeStatic) > 0));
 #endif
@@ -107,7 +107,7 @@ namespace qtools.qhierarchy.pcomponent
                 // LightmapStatic -> ContributeGI
                 menu.AddItem(new GUIContent("Lightmap Static"), (intStaticFlags & (int)StaticEditorFlags.ContributeGI) > 0, staticChangeHandler, (int)StaticEditorFlags.ContributeGI);
 #else
-                menu.AddItem(new GUIContent("Lightmap Static"), (intStaticFlags & (int)StaticEditorFlags.LightmapStatic) > 0, staticChangeHandler, (int)StaticEditorFlags.LightmapStatic);
+                menu.AddItem(new GUIContent("Lightmap Static"), (intStaticFlags & (int)StaticEditorFlags.ContributeGI) > 0, staticChangeHandler, (int)StaticEditorFlags.ContributeGI);
 #endif
                 menu.AddItem(new GUIContent("Occluder Static"), (intStaticFlags & (int)StaticEditorFlags.OccluderStatic) > 0, staticChangeHandler, (int)StaticEditorFlags.OccluderStatic);
                 menu.AddItem(new GUIContent("Batching Static"), (intStaticFlags & (int)StaticEditorFlags.BatchingStatic) > 0, staticChangeHandler, (int)StaticEditorFlags.BatchingStatic);
