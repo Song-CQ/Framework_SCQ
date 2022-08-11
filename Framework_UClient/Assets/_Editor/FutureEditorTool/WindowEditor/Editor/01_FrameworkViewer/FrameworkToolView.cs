@@ -19,7 +19,7 @@ namespace FutureEditor
             OpenFrameworkWin();
         }
         [MenuItem("[FC Window]/框架工具窗口", false, -100)]
-        private static void OpenFrameworkWin()
+        public static void OpenFrameworkWin()
         {
             CreateWindow<FrameworkToolView>("Framework Tool");
         }
