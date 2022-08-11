@@ -33,11 +33,13 @@ namespace FutureEditor
 
 		static void OnToolbarGUILeft()
 		{
-            //下面只是Demo，可随便更改
-            GUILayout.FlexibleSpace();
-			string finalStr = "当前是：主框架";
-			GUILayout.Label(finalStr, new GUIStyle("WarningOverlay"));
-			
+			//下面只是Demo，可随便更改
+			GUILayout.Space(100);
+			string finalStr = $"AppName : {ProjectApp.AppFacade.AppDesc}";
+
+			GUILayout.Label(finalStr, new GUIStyle("SelectionRect"));
+
+			GUILayout.FlexibleSpace();
 			if (GUILayout.Button(new GUIContent("Play MainScene", EditorGUIUtility.FindTexture("PlayButton"), "跳转主场景并播放")))
 			{
 				EditorSceneTool.PlayMainScene();
@@ -50,7 +52,7 @@ namespace FutureEditor
 		{
 			//下面只是Demo，可随便更改
 			GUILayout.Space(1);
-			if (GUILayout.Button(new GUIContent("TestScene", EditorGUIUtility.FindTexture("Button"), "跳转测试场景")))
+			if (GUILayout.Button(new GUIContent("Test Scene", EditorGUIUtility.FindTexture("Button"), "跳转测试场景")))
 			{
 				EditorSceneTool.LoadTestScene();
 			}
