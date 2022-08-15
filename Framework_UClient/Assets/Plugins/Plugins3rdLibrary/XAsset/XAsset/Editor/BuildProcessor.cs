@@ -35,15 +35,15 @@ namespace Plugins.XAsset.Editor
 {
     public class BuildProcessor : IPreprocessBuild, IPostprocessBuild
     {
-        // [ÐÞ¸Ä]
+        // [ï¿½Þ¸ï¿½]
         private bool isUse = false;
 
         /// <summary>
-        /// ±àÒëºóµ÷ÓÃ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public void OnPostprocessBuild(BuildTarget target, string path)
         {
-            // [ÐÞ¸Ä]
+            // [ï¿½Þ¸ï¿½]
             if (!isUse) return;
 
             if (target != BuildTarget.iOS || Environment.OSVersion.Platform != PlatformID.MacOSX) return;
@@ -64,18 +64,18 @@ namespace Plugins.XAsset.Editor
                 PlayerSettings.bundleVersion,
                 ipaType);
 
-            var configType = EditorUserBuildSettings.iOSBuildConfigType.ToString();
+            var configType = EditorUserBuildSettings.iOSXcodeBuildConfig.ToString();
             var openTerminalBash = Path.Combine(path, "OpenTerminal.sh");
             var args = openTerminalBash + " " + path + " " + ipaName + " " + ipaType + " " + appName + " " + configType;
             Process.Start("/bin/bash", args);
         }
 
         /// <summary>
-        /// ±àÒëÇ°µ÷ÓÃ
+        /// ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public void OnPreprocessBuild(BuildTarget target, string path)
         {
-            // [ÐÞ¸Ä]
+            // [ï¿½Þ¸ï¿½]
             if (!isUse) return;
 
             BuildScript.CopyAssetBundlesTo(Path.Combine(Application.streamingAssetsPath, Utility.AssetBundles));

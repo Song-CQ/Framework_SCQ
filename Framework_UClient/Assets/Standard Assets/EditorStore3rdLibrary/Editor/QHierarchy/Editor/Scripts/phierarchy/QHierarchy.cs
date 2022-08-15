@@ -106,7 +106,7 @@ namespace qtools.qhierarchy.phierarchy
             {
                 if (errorHandled.Add(instanceId))
                 {
-                    Debug.LogError(exception.ToString());
+                 //   Debug.LogError(exception.ToString());
                 }
             }
         }

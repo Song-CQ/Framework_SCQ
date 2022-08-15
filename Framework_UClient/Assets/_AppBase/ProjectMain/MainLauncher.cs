@@ -19,21 +19,14 @@ namespace ProjectApp
             if (!IsAutoLauncher) return;
             if (SceneManager.GetActiveScene().name != MainScene) return;
 
-            SetLog();
+            LogInit.InitLog();
             
             LogUtil.Log("[MainLauncher]SceneMain".AddColor(ColorType.Green));
 
             Main();
         }
 
-        private static void SetLog()
-        {
-            LogUtil.SetLogCallBack_Log(Debug.Log,Debug.LogFormat);
-            LogUtil.SetLogCallBack_LogError(Debug.LogError,Debug.LogErrorFormat);
-            LogUtil.SetLogCallBack_LogWarning(Debug.LogWarning,Debug.LogWarningFormat);
-            LogUtil.EnableLog(AppConst.IsEnabledLog);
-            
-        }
+        
 
         private static void Main()
         {

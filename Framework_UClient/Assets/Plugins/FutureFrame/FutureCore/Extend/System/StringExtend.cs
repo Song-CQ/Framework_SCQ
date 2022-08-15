@@ -9,8 +9,10 @@ namespace FutureCore
     
     public static class StringExtend
     {
+        public const string WarningStr = "⚠";
+
         #region ColorText
-        
+
         public static string AddColor(this string str, ColorType color)
         {        
             return AddColor(str,ColorUtil.ColorTypeToHtml(color));

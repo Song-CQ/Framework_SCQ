@@ -7,6 +7,7 @@ namespace FutureEditor
 {
     using UnityEngine;
     using UnityEditor;
+    using System.Collections.Generic;
 
     public class GUIStyleWindow:Singleton<GUIStyleWindow>
     {
@@ -169,7 +170,7 @@ namespace FutureEditor
         public void InitEditorDemo()
         {
 
-            tabIndexDemo = GUILayout.Toolbar(tabIndexDemo, new[] { "编辑器测试1", "编辑器测试2", "编辑器样式示例" });
+            tabIndexDemo = GUILayout.Toolbar(tabIndexDemo, new[] { "编辑器测试1", "编辑器测试2", "编辑器样式示例", "编辑器图标示例" });
 
             switch (tabIndexDemo)
             {
@@ -182,8 +183,13 @@ namespace FutureEditor
                 case 2:
                     ShowGUIStyleWindow();
                     break;
+                case 3:
+                    ShowGUIIconWindow();
+                    break;
             }
         }
+
+       
 
         private void InitDemo1()
         {
@@ -448,6 +454,49 @@ namespace FutureEditor
 
             GUILayout.EndScrollView();
         }
+
+        private List<Texture2D> icons = new List<Texture2D>();
+        private void ShowGUIIconWindow()
+        {
+            if (icons.Count==0)
+            {
+                Texture2D[] textures = Resources.FindObjectsOfTypeAll<Texture2D>();
+                foreach (Texture2D texture in textures)
+                {
+                    icons.Add(texture);
+                    //GUIContent icon = EditorGUIUtility.IconContent(texture.name, $"|{texture.name}");
+                    //if (icon != null && icon.image != null) ;
+                }
+            }
+            
+
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition);
+            for (int i = 0; i < icons.Count; i += 35)
+            {
+                GUILayout.BeginHorizontal();
+                for (int j = 0; j < 35; j++)
+                {
+                    if (i + j < icons.Count)
+                    {
+                        //GUIContent gUIContent = icons[i + j];
+                        if (GUILayout.Button(icons[i + j], GUILayout.Width(25), GUILayout.Height(25)))
+                        {
+                            Debug.Log(icons[i + j].name);
+                            UnityEngine.GUIUtility.systemCopyBuffer = icons[i + j].name;
+                            
+                        };
+                    }
+                       
+                }
+                GUILayout.EndHorizontal();
+            }
+            GUILayout.EndScrollView();
+        }
+        
+
+   
+
+
 
         private void InitTilemapsTool()
         {

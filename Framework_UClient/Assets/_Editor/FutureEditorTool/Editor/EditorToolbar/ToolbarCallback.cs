@@ -11,6 +11,7 @@ using UnityEngine.Experimental.UIElements;
 
 namespace FutureEditor
 {
+
 	public static class ToolbarCallback
 	{
 		static Type m_toolbarType = typeof(Editor).Assembly.GetType("UnityEditor.Toolbar");
@@ -33,6 +34,8 @@ namespace FutureEditor
 		/// Callback for toolbar OnGUI method.
 		/// </summary>
 		public static Action OnToolbarGUI;
+		public static Action OnToolbarGUILeft;
+		public static Action OnToolbarGUIRight;
 
 		static ToolbarCallback()
 		{
@@ -42,7 +45,6 @@ namespace FutureEditor
 
 		static void OnUpdate()
 		{
-			// Relying on the fact that toolbar is ScriptableObject and gets deleted when layout changes
 			// Relying on the fact that toolbar is ScriptableObject and gets deleted when layout changes
 			if (m_currentToolbar == null)
 			{
@@ -58,7 +60,8 @@ namespace FutureEditor
 					RegisterCallback("ToolbarZoneLeftAlign", OnToolbarGUILeft);
 					RegisterCallback("ToolbarZoneRightAlign", OnToolbarGUIRight);
 
-					void RegisterCallback(string root, Action cb) {
+					void RegisterCallback(string root, Action cb)
+					{
 						var toolbarZone = mRoot.Q(root);
 
 						var parent = new VisualElement()
@@ -70,9 +73,9 @@ namespace FutureEditor
 						};
 						var container = new IMGUIContainer();
 						container.style.flexGrow = 1;
-						container.onGUIHandler += () => { 
+						container.onGUIHandler += () => {
 							cb?.Invoke();
-						}; 
+						};
 						parent.Add(container);
 						toolbarZone.Add(parent);
 					}
@@ -81,21 +84,21 @@ namespace FutureEditor
 					var windowBackend = m_windowBackend.GetValue(m_currentToolbar);
 
 					// Get it's visual tree
-					var visualTree = (VisualElement)m_viewVisualTree.GetValue(windowBackend, null);
+					var visualTree = (VisualElement) m_viewVisualTree.GetValue(windowBackend, null);
 #else
 					// Get it's visual tree
 					var visualTree = (VisualElement) m_viewVisualTree.GetValue(m_currentToolbar, null);
 #endif
 
 					// Get first child which 'happens' to be toolbar IMGUIContainer
-					var container = (IMGUIContainer)visualTree[0];
+					var container = (IMGUIContainer) visualTree[0];
 
 					// (Re)attach handler
-					var handler = (Action)m_imguiContainerOnGui.GetValue(container);
+					var handler = (Action) m_imguiContainerOnGui.GetValue(container);
 					handler -= OnGUI;
 					handler += OnGUI;
 					m_imguiContainerOnGui.SetValue(container, handler);
-
+					
 #endif
 				}
 			}
