@@ -73,6 +73,10 @@ namespace FutureEditor
 
 
         #region Assets
+        /// <summary>
+        /// 高亮选中路劲
+        /// </summary>
+        /// <param name="path"></param>
         public static void SelectObject_Assets(string path)
         {
             Object obj = AssetDatabase.LoadMainAssetAtPath(path);

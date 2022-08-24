@@ -9,7 +9,7 @@ namespace FutureEditor
 {
     public static class EditorSceneTool
     {
-        public const string MainScene = "Assets/_AppBase/Scene/0_MainScene.unity";
+        public const string MainScene = "Assets/_App/_AppBase/Scene/0_MainScene.unity";
         public const string TestScene = "Assets/_Editor/EditorScene/0_TestScene.unity";
 
         public static void PlayMainScene()

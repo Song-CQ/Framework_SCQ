@@ -1,0 +1,18 @@
+{
+    "name": "TestScript",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7b1883f5021451c4fa775094cc0b152a",
+        "GUID:7800164fe771ef84a9bf718aac992913",
+        "GUID:656fb9ea966b1be41b0af5ee2e454905"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
