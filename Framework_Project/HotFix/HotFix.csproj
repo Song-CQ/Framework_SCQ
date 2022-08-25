@@ -35,13 +35,15 @@
       <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\Assembly-CSharp-firstpass.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="FutureFrame">
+      <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\FutureFrame.dll</HintPath>
     </Reference>
     <Reference Include="LogUtil">
       <HintPath>..\..\_Plugins\LogUtil\LogUtil.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="ProjectApp">
+      <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\ProjectApp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

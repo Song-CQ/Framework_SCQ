@@ -7,8 +7,8 @@ namespace FutureEditor
     public class GameObjectTool
     {
         static Component[] copiedComponents;
-        [MenuItem("GameObject/GameObject工具/提出父物体", priority = 0)]
-        static void test()
+        [MenuItem("GameObject/{Object Toos}/提出父物体", priority = 0)]
+        static void SetParentNull()
         {
             GameObject[] games = Selection.gameObjects;
             foreach (var item in games)
@@ -17,19 +17,19 @@ namespace FutureEditor
             }
            
         }
-        [MenuItem("GameObject/GameObject工具/拷贝全部组件 #W", false, 0)]
+        [MenuItem("GameObject/{Object Toos}/拷贝全部组件 #W", false, 0)]
         static void CopyComponents()
         {
             copiedComponents = Selection.activeGameObject.GetComponents<Component>();
         }
-        [MenuItem("GameObject/GameObject工具/拷贝全部组件", true)]
+        [MenuItem("GameObject/{Object Toos}/拷贝全部组件", true)]
         static bool CheckCopyComponents()
         {
             return Selection.gameObjects.Length == 1;
 
         }
 
-        [MenuItem("GameObject/GameObject工具/复制全部组件 #E", false,1)]
+        [MenuItem("GameObject/{Object Toos}/复制全部组件 #E", false,1)]
         static void PasteComponents()
         {
             Debug.Log("复制完成");
@@ -63,14 +63,13 @@ namespace FutureEditor
             }
         }
 
-        [MenuItem("GameObject/GameObject工具/复制全部组件", true)]
+        [MenuItem("GameObject/{Object Toos}/复制全部组件", true)]
         static bool CheckPasteComponents()
         {
             return Selection.gameObjects.Length == 1;
-
         }
 
-        [MenuItem("GameObject/GameObject工具/删除全部组件 #R", false, 2)]
+        [MenuItem("GameObject/{Object Toos}/删除全部组件 #R", false, 2)]
         static void RemoveComponents()
         {
             foreach (var con in Selection.gameObjects)
@@ -84,38 +83,33 @@ namespace FutureEditor
             }  
             
         }
-        [MenuItem("GameObject/GameObject工具/删除全部组件", true)]
+        [MenuItem("GameObject/{Object Toos}/删除全部组件", true)]
         static bool CheckRemoveComponents()
         {
             return Selection.gameObjects.Length == 1;            
             
         }
 
-        [MenuItem("GameObject/GameObject工具/在同级的顶部产生空物体", priority = 3)]
+        [MenuItem("GameObject/{Object Toos}/在同级的顶部产生空物体", priority = 3)]
         private static void AddEmpty()
         {
             GameObject Empty = new GameObject();
             Empty.transform.SetParent(Selection.activeGameObject.transform.parent);
             Empty.transform.SetSiblingIndex(0);
         }
-        [MenuItem("GameObject/GameObject工具/在同级的顶部产生空物体", true)]
+        [MenuItem("GameObject/{Object Toos}/在同级的顶部产生空物体", true)]
         private static bool CheckAddEmpty()
         {
             return (Selection.gameObjects.Length > 0);
         }
-        [MenuItem("GameObject/GameObject工具/在当前对象的下面产生空物体", priority = 4)]
+        [MenuItem("GameObject/{Object Toos}/在当前对象的下面产生空物体", priority = 4)]
         private static void InsertEmpty()
         {
             GameObject Empty = new GameObject();
             Empty.transform.SetParent(Selection.activeGameObject.transform.parent);
             Empty.transform.SetSiblingIndex(Selection.activeGameObject.transform.GetSiblingIndex() + 1);
         }
-        [MenuItem("GameObject/GameObject工具/并入一个空物体", true)]
-        private static bool CheckInsertEmpty()
-        {
-            return (Selection.gameObjects.Length > 0);
-        }
-        [MenuItem("GameObject/GameObject工具/并入一个空物体", priority = 5)]
+        [MenuItem("GameObject/{Object Toos}/并入一个空物体", priority = 5)]
         private static void PackEmpty()
         {
             GameObject Empty;
@@ -146,7 +140,7 @@ namespace FutureEditor
 
         }
 
-        [MenuItem("GameObject/GameObject工具/并入一个空物体", true)]
+        [MenuItem("GameObject/{Object Toos}/并入一个空物体", true)]
         private static bool CheckPackEmpty()
         {
             return (Selection.gameObjects.Length >= 2);

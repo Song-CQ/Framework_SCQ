@@ -55,8 +55,6 @@
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_FutureFrame\FutureLib\LogUtil.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_FutureFrame\FutureLib\XLNet\XLNet.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll" />

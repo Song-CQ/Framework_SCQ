@@ -58,9 +58,7 @@
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Store3rdEditorLib\ConsoleE\Editor\ConsoleE.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Plugins3rdEditorLib\Editor\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_FutureFrame\FutureLib\LogUtil.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Plugins3rdEditorLib\Editor\DOTweenEditor\CoreEditor\DemiEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_FutureFrame\FutureLib\XLNet\XLNet.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Store3rdEditorLib\ConsolePro\Editor\ConsolePro.Editor.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Store3rdEditorLib\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll" />
