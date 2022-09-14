@@ -460,6 +460,7 @@ namespace FutureEditor
         {
             if (icons.Count==0)
             {
+
                 Texture2D[] textures = Resources.FindObjectsOfTypeAll<Texture2D>();
                 foreach (Texture2D texture in textures)
                 {

@@ -40,7 +40,7 @@ namespace FutureEditor
         private void OnEnable()
         {
             Instance = this;
-            minSize = new Vector2(900, 510);
+            minSize = new Vector2(900, 520);
             maxSize = minSize;
             InitData();
             Show();
@@ -78,7 +78,7 @@ namespace FutureEditor
                 ScriptableObjectTool.CreadScriptableObject<ABConfig>(UnityEditorPathConst.ABConfigPatn_Assest);
                 abConfig = AssetDatabase.LoadAssetAtPath<ABConfig>(abConfigPath);
                 abConfig.outputPath = Application.dataPath.Substring(0, Application.dataPath.Length - 6) + "AssetBundle";
-                abConfig.abRoot = "_AssetBundleRes";
+                abConfig.abRoot = "Assets/_Res/AssetBundleRes";
                 abConfig.verifyPath = UnityEditorPathConst.ABConfigPatn_Assest + "/version.json";
                 abConfig.allBeDependPath = UnityEditorPathConst.ABConfigPatn_Assest + "/allBeDependData.json";
                 abConfig.allDependPath = UnityEditorPathConst.ABConfigPatn_Assest + "/allDependData.json";
@@ -103,8 +103,6 @@ namespace FutureEditor
 
             }
 
-            SlideVal = EditorPrefs.GetFloat(SlideValKey, 0.5f);
-
             RestAbRoodData();
         }
         private string SlideValKey = "BuildAssetBundleWndSlideVal";
@@ -119,8 +117,10 @@ namespace FutureEditor
 
         private void OnGUI()
         {
-
+            GUILayout.BeginHorizontal();
             toolbatIndex = GUILayout.Toolbar(toolbatIndex, toolbatVal);
+            
+            GUILayout.EndHorizontal();
             switch (toolbatIndex)
             {
 
@@ -161,6 +161,8 @@ namespace FutureEditor
                 return;
             }
             List<FileInfo> fileInfoLst = new List<FileInfo>();
+            List<Texture2D> allFileTexture2D = new List<Texture2D>();
+            
             long size = 0;
             foreach (var file in fileInfos)
             {
@@ -169,23 +171,26 @@ namespace FutureEditor
                     continue;
                 }
                 fileInfoLst.Add(file);
+                string assetsPath =Path.GetFullPath(file.FullName).Replace("\\", "/").Replace(@"\", "/").Replace(Application.dataPath, "Assets");
+                Texture2D texture2D = AssetDatabase.GetCachedIcon(assetsPath) as Texture2D;
+                allFileTexture2D.Add(texture2D);
                 size += file.Length;
             }
 
-            string path = directory.FullName.Replace("\\", "/").Replace(@"\", "/");
+            string path = directory.FullName.Replace("\\", "/").Replace(@"\", "/").Replace(Application.dataPath, "Assets");
             int index = path.IndexOf(abConfig.abRoot) + abConfig.abRoot.Length + 1;
             path = path.Substring(index, path.Length - index);
             DirectoryData directoryData = new DirectoryData();
             directoryData.path = path;
             directoryData.directory = directory;
             directoryData.allFiles = fileInfoLst;
+            directoryData.allFilesTexture2D = allFileTexture2D;
             directoryData.size = size;
+            
 
             allDicInfoLst.Add(path, directoryData);
         }
         private Vector2 scPot;
-        private float SlideVal = 0.5f;
-
 
         #region data
         DirectoryInfo abRootInfo;
@@ -196,67 +201,132 @@ namespace FutureEditor
             public long size;
             public DirectoryInfo directory;
             public List<FileInfo> allFiles;
+            public List<Texture2D> allFilesTexture2D;
         }
 
         private Dictionary<string, DirectoryData> allDicInfoLst = new Dictionary<string, DirectoryData>();
 
         private DirectoryData currSelectDirectoryData;
-        #endregion
+        #endregion    
 
-        #region com
-        private float maxVal;
-        #endregion
+        Rect m_HorizontalSplitterRect;
+        Rect m_VerticalSplitterRect;
+        bool m_ResizingHorizontalSplitter;
+        bool m_ResizingVerticalSplitter;
+        [SerializeField]
+        float m_HorizontalSplitterPercent = 0.5f;
+        [SerializeField]
+        float m_VerticalSplitterPercent = 0.7f;
+        private void HandleHorizontalResize()
+        {
+            m_HorizontalSplitterRect.x = (int)(position.width * m_HorizontalSplitterPercent);
+            m_HorizontalSplitterRect.y = 30;
+            m_HorizontalSplitterRect.height = position.height - 40;
+            m_HorizontalSplitterRect.width = 3;
+
+            EditorGUIUtility.AddCursorRect(m_HorizontalSplitterRect, MouseCursor.ResizeHorizontal);
+            if (Event.current.type == EventType.MouseDown && m_HorizontalSplitterRect.Contains(Event.current.mousePosition))
+                m_ResizingHorizontalSplitter = true;
+
+            if (m_ResizingHorizontalSplitter)
+            {
+                m_HorizontalSplitterPercent = Mathf.Clamp(Event.current.mousePosition.x / position.width, 0.3f, 0.7f);
+                m_HorizontalSplitterRect.x = (int)(this.maxSize.x * m_HorizontalSplitterPercent);              
+            }
+
+            if (Event.current.type == EventType.MouseUp)
+                m_ResizingHorizontalSplitter = false;
+
+            //EditorGUIUtility.DrawColorSwatch(m_HorizontalSplitterRect, Color.white);
+        }
+
+        private void HandleVerticalResize()
+        {
+            m_VerticalSplitterRect.x = m_HorizontalSplitterRect.x+5;
+            m_VerticalSplitterRect.y = (int)((position.height - 30) * m_VerticalSplitterPercent) + 30;
+            m_VerticalSplitterRect.height = 3;
+            m_VerticalSplitterRect.width = position.width - m_HorizontalSplitterRect.x - 10;
+           
+            EditorGUIUtility.AddCursorRect(m_VerticalSplitterRect, MouseCursor.ResizeVertical);
+            if (Event.current.type == EventType.MouseDown && m_VerticalSplitterRect.Contains(Event.current.mousePosition))
+                m_ResizingVerticalSplitter = true;
+
+            if (m_ResizingVerticalSplitter)
+            {
+                m_VerticalSplitterPercent = Mathf.Clamp(Event.current.mousePosition.y / position.height, 0.2f, 0.8f);
+                m_VerticalSplitterRect.y = (int)((this.maxSize.y-30) * m_VerticalSplitterPercent)+30;
+            }
+
+            if (Event.current.type == EventType.MouseUp)
+                m_ResizingVerticalSplitter = false;
+          
+            //EditorGUIUtility.DrawColorSwatch(m_VerticalSplitterRect, new Color(1,1,1,0.5f));
+
+        }
 
         private void Refresh_AllPag()
         {
 
+            HandleHorizontalResize();
+            HandleVerticalResize();
 
-            GUILayout.BeginArea(new Rect(10, 480, 880, 30), GUI.skin.GetStyle("FrameBox"));
-            SlideVal = EditorGUILayout.Slider(SlideVal, 0.3f, 0.7f, GUILayout.Height(20));
-
-            GUILayout.EndArea();
+            
 
             //右上
-            GUILayout.BeginArea(new Rect(minSize.x * SlideVal, 30, minSize.x * (1 - SlideVal) - 10, 300), GUI.skin.GetStyle("FrameBox"));
+            GUILayout.BeginArea(new Rect(m_HorizontalSplitterRect.x+5, 30,position.width - m_HorizontalSplitterRect.x - 10, m_VerticalSplitterRect.y - 30), GUI.skin.GetStyle("FrameBox"));
 
             GUILayout.BeginVertical();
 
 
             GUILayout.BeginHorizontal();
-            DefaultAsset pathObj = abRoot as DefaultAsset;
-            if (pathObj != null)
+
+            EditorGUI.BeginChangeCheck();
+            abRoot = EditorGUILayout.ObjectField(abRoot, typeof(DefaultAsset), true);
+            if (GUILayout.Button(EditorGUIUtility.FindTexture("Refresh"),GUILayout.Width(30)))
             {
-                string path = AssetDatabase.GetAssetPath(pathObj);
-                if (abConfig.abRoot != path)
-                {
-                    abConfig.abRoot = path;
-                    RestAbRoodData();
-                }
-                showFoldout = EditorGUILayout.Foldout(showFoldout, "资源文件夹(Asset):");
+                RestAbRoodData();
             }
-            else
+            if (EditorGUI.EndChangeCheck())
             {
-                GUILayout.Label(" 资源文件夹(Asset):", GUI.skin.GetStyle("IN TitleText"), GUILayout.Width(155));
-                showFoldout = false;
-                abConfig.abRoot = string.Empty;
+                DefaultAsset pathObj = abRoot as DefaultAsset;
+                if (pathObj != null)
+                {
+                    string path = AssetDatabase.GetAssetPath(pathObj);
+                    if (abConfig.abRoot != path)
+                    {
+                        abConfig.abRoot = path;
+                        RestAbRoodData();
+                    }
+                    showFoldout = EditorGUILayout.Foldout(showFoldout, "资源文件夹(Asset):");
+                }
+                else
+                {
+                    GUILayout.Label(" 资源文件夹(Asset):", GUI.skin.GetStyle("IN TitleText"), GUILayout.Width(155));
+                    showFoldout = false;
+                    abConfig.abRoot = string.Empty;
+                }
             }
 
-            abRoot = EditorGUILayout.ObjectField(abRoot, typeof(DefaultAsset), true);
+
             GUILayout.EndHorizontal();
 
             if (showFoldout)
             {
+                GUILayout.Space(3);
                 EditorGUI.indentLevel++; //缩进深度增加，以下的GUI会增加缩进
 
                 EditorGUILayout.TextField(abConfig.abRoot, GUILayout.Height(20));
 
                 EditorGUI.indentLevel--; //缩进深度减少，以下的GUI会减少缩进
             }
+            GUILayout.Space(3);
             EditorGUILayout.HelpBox("   以文件夹为标准资源包打包,不允许文件夹和文件共存,如有共存会忽略文件!", MessageType.Info);
-
-            if (GUILayout.Button("刷新路劲"))
+           
+            if (GUILayout.Button("恢复初始化设置"))
             {
-                RestAbRoodData();
+                DestroyImmediate(abConfig,true);
+                InitData();
+                Repaint();
             }
             GUILayout.Space(5);
             GUILayout.BeginHorizontal();
@@ -291,20 +361,22 @@ namespace FutureEditor
 
             }
             GUILayout.EndHorizontal();
-            GUILayout.Space(50);
-            if (GUILayout.Button("一键打包AB", GUILayout.Height(100)))
+
+            GUILayout.FlexibleSpace();
+            if (GUILayout.Button("一键打包AB",GUILayout.Height(100)))
             {
                 Build();
             }
-
             GUILayout.EndVertical();
             GUILayout.EndArea();
 
 
             //右下
-            GUILayout.BeginArea(new Rect(minSize.x * SlideVal + 1, 335, minSize.x * (1 - SlideVal) - 12, 145), GUI.skin.GetStyle("grey_border"));
+            GUILayout.BeginArea(new Rect(m_HorizontalSplitterRect.x + 5, m_VerticalSplitterRect.y+3, position.width - m_HorizontalSplitterRect.x - 12,position.height - m_VerticalSplitterRect.y - 13), GUI.skin.GetStyle("grey_border"));
             if (currSelectDirectoryData != null)
             {
+                
+
                 EditorGUILayout.BeginVertical();
                 EditorGUILayout.LabelField(currSelectDirectoryData.path, GUI.skin.GetStyle("IN TitleText"));
                 EditorGUI.indentLevel++;
@@ -315,10 +387,11 @@ namespace FutureEditor
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Space(18);
                 GUILayout.Label("AB Path:", GUI.skin.GetStyle("IN TitleText"));
-                EditorGUILayout.TextField(currSelectDirectoryData.directory.FullName, GUILayout.Width(300));
+               
                 GUILayout.Space(5);
                 EditorGUILayout.EndHorizontal();
-
+                EditorGUILayout.TextField(currSelectDirectoryData.directory.FullName.Replace("\\", "/").Replace(@"\", "/").Replace(Application.dataPath, "Assets"));
+               
                 EditorGUI.indentLevel--;
                 EditorGUILayout.EndVertical();
 
@@ -329,13 +402,14 @@ namespace FutureEditor
 
 
             //左
-            GUILayout.BeginArea(new Rect(10, 30, minSize.x * SlideVal - 20, 450), GUI.skin.GetStyle("GameViewBackground"));
+            GUILayout.BeginArea(new Rect(10, 30, m_HorizontalSplitterRect.x-10, 480), GUI.skin.GetStyle("GameViewBackground"));
 
+            
 
             if (abConfig.abRoot == null || !Directory.Exists(abConfig.abRoot))
             {
-                GUILayout.BeginArea(new Rect(80, 130, 300, 400));
-                GUILayout.Box("请选择资源文件夹", GUI.skin.GetStyle("NotificationBackground"), GUILayout.Height(110));
+                GUILayout.BeginArea(new Rect((m_HorizontalSplitterRect.x-10)/2-150, 130, 300, 400));              
+                GUILayout.Box("请选择资源文件夹", GUI.skin.GetStyle("NotificationBackground"));
                 GUILayout.EndArea();
             }
             else
@@ -369,17 +443,34 @@ namespace FutureEditor
                     {
                         val = val * 8;
                     }
-                    GUILayout.Space(290 + val);
+                    GUILayout.Space(300 + val);
                     GUILayout.Label(StringConvertUnit.ConvertFileSize(item.Value.size));
                     EditorGUILayout.EndHorizontal();
                     if (isShow)
                     {
-                        foreach (var file in item.Value.allFiles)
+                        for (int i = 0; i < item.Value.allFiles.Count; i++)
                         {
+                            
+                            FileInfo file = item.Value.allFiles[i];
+                            Texture2D texture2D = item.Value.allFilesTexture2D[i]; 
                             GUILayout.BeginHorizontal();
-                            GUILayout.Space(25);
+                         
+                            Rect rect = GUILayoutUtility.GetRect(15, 15);
+                            rect.width = 15;
+                            rect.height = 15;
+                            rect.y += 4;
+                            rect.x += 5;
+                            GUI.DrawTexture(rect, texture2D);                         
+                            GUILayout.Space(10);
                             GUILayout.Label(file.Name);
+                            GUILayout.FlexibleSpace();
                             EditorGUILayout.LabelField(StringConvertUnit.ConvertFileSize(file.Length));
+                            GUILayout.FlexibleSpace();
+                            if (GUILayout.Button(EditorGUIUtility.IconContent("d_CanvasRenderer Icon")))
+                            {
+                                string assetsPath = Path.GetFullPath(file.FullName).Replace("\\", "/").Replace(@"\", "/").Replace(Application.dataPath, "Assets");
+                                UnityEditorTool.SelectObject_Assets(assetsPath);                     
+                            }
                             GUILayout.EndHorizontal();
                         }
                     }
@@ -390,12 +481,16 @@ namespace FutureEditor
                 GUILayout.EndScrollView();
             }
 
-
-
-
             GUILayout.EndArea();
 
+            if (m_ResizingHorizontalSplitter || m_ResizingVerticalSplitter)
+            {
+                Repaint();
+            }
+
+
         }
+       
 
         private void Build()
         {
@@ -406,6 +501,8 @@ namespace FutureEditor
 
         private void RestAbRoodData()
         {
+            if (abConfig.abRoot.IsNullOrEmpty()) return;
+
             abRootInfo = new DirectoryInfo(abConfig.abRoot);
             allDicInfoLst.Clear();
             currSelectDirectoryData = null;
@@ -415,7 +512,7 @@ namespace FutureEditor
         private void RefreshABConfig()
         {
 
-            GUILayout.BeginArea(new Rect(10, 30, 880, 450), GUI.skin.GetStyle("sv_iconselector_back"));
+            GUILayout.BeginArea(new Rect(10, 30, 880, 480), GUI.skin.GetStyle("sv_iconselector_back"));
             GUILayout.BeginVertical();
 
 
@@ -433,12 +530,19 @@ namespace FutureEditor
                 }
 
             }
+            
+
             GUILayout.EndHorizontal();
 
+            
 
 
             GUILayout.Label(" 导出AB信息文件夹:", GUI.skin.GetStyle("IN TitleText"));
             GUILayout.BeginHorizontal();
+            EditorGUI.BeginChangeCheck();
+
+
+            
             EditorGUILayout.SelectableLabel(versionPath, EditorStyles.textField, GUILayout.Height(20));
 
             if (GUILayout.Button("浏览", GUILayout.Width(50f)))
@@ -447,52 +551,65 @@ namespace FutureEditor
                 if (path.Contains(Application.dataPath))
                 {
                     versionPath = path;
-                    Repaint();
+                    
                 }
             }
-            abConfig.verifyPath = versionPath + "/version.json";
-            abConfig.allBeDependPath = versionPath + "/allBeDependData.json";
-            abConfig.allDependPath = versionPath + "/allDependData.json";
+            
+           
             GUILayout.EndHorizontal();
 
             GUILayout.Space(3);
-            abConfig.abOptions = (BuildAssetBundleOptions)EditorGUILayout.EnumPopup("AB包压缩方式:", abConfig.abOptions, GUILayout.Width(400));
+            BuildAssetBundleOptions abOptions = (BuildAssetBundleOptions)EditorGUILayout.EnumPopup("AB包压缩方式:", abConfig.abOptions, GUILayout.Width(400));
 
             GUILayout.Space(3);
-            abConfig.abPlatform = (BuildTarget)EditorGUILayout.EnumPopup("AB包打包平台:", abConfig.abPlatform, GUILayout.Width(400));
+            BuildTarget abPlatform = (BuildTarget)EditorGUILayout.EnumPopup("AB包打包平台:", abConfig.abPlatform, GUILayout.Width(400));
 
             GUILayout.Space(3);
             GUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("Imput Version");
             GUILayout.Space(3);
-            abConfig.isImputVersion = EditorGUILayout.Toggle(abConfig.isImputVersion);
+            bool isImputVersion = EditorGUILayout.Toggle(abConfig.isImputVersion);
             GUILayout.EndHorizontal();
 
             GUILayout.Space(3);
             GUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("Copy to StreamingAssets");
             GUILayout.Space(3);
-            abConfig.isCopyStreamingAssets = EditorGUILayout.Toggle(abConfig.isCopyStreamingAssets);
+            bool isCopyStreamingAssets = EditorGUILayout.Toggle(abConfig.isCopyStreamingAssets);
             GUILayout.EndHorizontal();
 
             GUILayout.Space(3);
             GUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("增量打包");
             GUILayout.Space(3);
-            abConfig.isIncrementalBulie = EditorGUILayout.Toggle(abConfig.isIncrementalBulie);
+            bool isIncrementalBulie = EditorGUILayout.Toggle(abConfig.isIncrementalBulie);
             GUILayout.EndHorizontal();
 
             GUILayout.Space(3);
             GUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("自动追加版本号");
             GUILayout.Space(3);
-            abConfig.isAutoAddVersion = EditorGUILayout.Toggle(abConfig.isAutoAddVersion);
+            bool isAutoAddVersion = EditorGUILayout.Toggle(abConfig.isAutoAddVersion);
             GUILayout.EndHorizontal();
 
             GUILayout.EndVertical();
             GUILayout.EndArea();
 
-
+            if (EditorGUI.EndChangeCheck())
+            {
+                abConfig.verifyPath = versionPath + "/version.json";
+                abConfig.allBeDependPath = versionPath + "/allBeDependData.json";
+                abConfig.allDependPath = versionPath + "/allDependData.json";
+                abConfig.abOptions = abOptions;
+                abConfig.abPlatform = abPlatform;
+                abConfig.isImputVersion = isImputVersion;
+                abConfig.isCopyStreamingAssets = isCopyStreamingAssets;
+                abConfig.isIncrementalBulie = isIncrementalBulie;
+                abConfig.isAutoAddVersion = isAutoAddVersion;
+                EditorUtility.SetDirty(abConfig);
+                AssetDatabase.SaveAssets();
+                Repaint();
+            }
 
 
         }
@@ -504,8 +621,9 @@ namespace FutureEditor
             //标记目标已被改变数值
             EditorUtility.SetDirty(abConfig);
             AssetDatabase.SaveAssets();
-            EditorPrefs.SetFloat(SlideValKey, SlideVal);
         }
+
+
 
 
     }
