@@ -54,37 +54,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Plugins3rdEditorLib\Editor\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Store3rdEditorLib\ConsoleE\Editor\ConsoleE.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Plugins3rdEditorLib\Editor\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Plugins3rdEditorLib\Editor\DOTweenEditor\CoreEditor\DemiEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Store3rdEditorLib\ConsolePro\Editor\ConsolePro.Editor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\_Editor\Store3rdEditorLib\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Framework_XL\05_Common\TransformHelper.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\MouseTool\MouseCtrl.cs" />
-    <Compile Include="Assets\Framework_XL\02_UI\Image_XL.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\TimeTool.cs" />
-    <Compile Include="Assets\Framework_XL\02_UIFramework\UIEventListener.cs" />
-    <Compile Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\Language.cs" />
-    <Compile Include="Assets\Framework_XL\06_Shader\镜子\MirrorReflection.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\MouseTool\MouseRight.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\ListTool.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\MeshTool\MeshSplit.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\MouseTool\MouseLook.cs" />
-    <Compile Include="Assets\Framework_XL\02_UIFramework\UIWindow.cs" />
-    <Compile Include="Assets\Framework_XL\05_Common\Vector3_Tool.cs" />
-    <Compile Include="Assets\Framework_XL\02_UIFramework\UIManager.cs" />
     <Compile Include="Assets\Framework_XL\05_Common\ObjectPool.cs" />
-    <Compile Include="Assets\Framework_XL\02_UI\Rocker.cs" />
-    <Compile Include="Assets\Framework_XL\02_UI\UIDragComp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\turntable_Data.txt" />
@@ -96,10 +68,7 @@
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\pickBox_Data.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\forceAd_Data.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\SignDailyReward_Data.txt" />
-    <None Include="Assets\Framework_XL\02_UI\TextOutlineEx\OutlineEx.shader" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Item_Data.txt" />
-    <None Include="Assets\Framework_XL\06_Shader\影子\MobileARShadow.shader" />
-    <None Include="Assets\Framework_XL\06_Shader\镜子\Mirror.shader" />
     <None Include="Assets\StreamingAssets\HotFix\HotFix.dll" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Guidance_Data.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\piggy_Data.txt" />
@@ -366,11 +335,23 @@
     <Reference Include="ILRuntime.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
+    <Reference Include="LogUtil">
+      <HintPath>Assets\_FutureFrame\FutureLib\LogUtil.dll</HintPath>
+    </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Pdb">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="ILRuntime.Mono.Cecil">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="RainbowCore">
+      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
@@ -378,32 +359,20 @@
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="BaseVoClassLib">
       <HintPath>Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenPro">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="RainbowCore">
-      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
-    </Reference>
-    <Reference Include="LogUtil">
-      <HintPath>Assets\_FutureFrame\FutureLib\LogUtil.dll</HintPath>
-    </Reference>
     <Reference Include="XLNet">
       <HintPath>Assets\_FutureFrame\FutureLib\XLNet\XLNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Unity\Unity2020.3.35f1\Editor\2022.1.12f1c1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -840,9 +809,6 @@
     <Reference Include="Unity.Services.Core">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
     </Reference>
@@ -851,6 +817,9 @@
     </Reference>
     <Reference Include="UnityEngine.Purchasing.Codeless">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
@@ -886,13 +855,13 @@
       <Project>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</Project>
       <Name>Plugins3rdLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="ProjectApp.csproj">
-      <Project>{87F2FCF0-988D-6D8B-EB81-CE63C02B0DBE}</Project>
-      <Name>ProjectApp</Name>
-    </ProjectReference>
     <ProjectReference Include="TestScript.csproj">
       <Project>{6F118E5F-3E97-BC83-81C1-A4667CB811CB}</Project>
       <Name>TestScript</Name>
+    </ProjectReference>
+    <ProjectReference Include="ProjectApp.csproj">
+      <Project>{87F2FCF0-988D-6D8B-EB81-CE63C02B0DBE}</Project>
+      <Name>ProjectApp</Name>
     </ProjectReference>
     <ProjectReference Include="FutureFrame.csproj">
       <Project>{8690BC45-7C33-6280-6C0D-F0AC44804CCE}</Project>

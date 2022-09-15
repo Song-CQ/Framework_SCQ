@@ -11,20 +11,20 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using FutureCore;
+using Sirenix.OdinInspector;
 
 namespace ProjectApp.UGUI
 {
     public class RockerComponent : MonoBehaviour
     {
         #region 摇杆相关
-        [Tooltip("摇杆出现面板"), SerializeField]
-
+        [LabelText("摇杆出现面板"), SerializeField]
         private Image imgTouch;
-        [Tooltip("摇杆背景"), SerializeField]
+        [LabelText("摇杆背景"), SerializeField]
         private Image imgDirBg;
-        [Tooltip("摇杆中心点"), SerializeField]
+        [LabelText("摇杆中心点"), SerializeField]
         private Image imgDirPoint;
-        [Tooltip("箭头图标"), SerializeField]
+        [LabelText("箭头图标"), SerializeField]
         private RectTransform ArrowsRect;
 
         //按下的坐标

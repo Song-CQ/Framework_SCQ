@@ -133,7 +133,7 @@ namespace ProjectApp
             // 可选择禁用物理模拟 手动调用Physics.Simulate/Physics2D.Simulate来模拟
             Physics.autoSimulation = true;
             Physics.autoSyncTransforms = true;
-            Physics2D.autoSimulation = true;
+            Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
             Physics2D.autoSyncTransforms = true;
             // 项目设置
             Debug.unityLogger.logEnabled = AppConst.IsEnabledEngineLog;

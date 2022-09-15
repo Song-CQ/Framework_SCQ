@@ -5,6 +5,7 @@
 	功能：Image扩展
 *****************************************************/
 
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,12 +37,10 @@ namespace ProjectApp.UGUI
             }
         }
 
-        [SerializeField]
+        [LabelText("水平翻转图片"), SerializeField]
         private bool flipHor;
-        [SerializeField]
+        [LabelText("垂直翻转图片"), SerializeField]
         private bool flipVer;
-
-
         private RectTransform _rectTrans;
         public RectTransform RectTrans
         {
@@ -86,7 +85,7 @@ namespace ProjectApp.UGUI
                         flipHor ? (pos.x + (rectCenter.x - pos.x) * 2) : pos.x,
                         flipVer ? (pos.y + (rectCenter.y - pos.y) * 2) : pos.y,
                         pos.z);
-
+                    
                     toFill.SetUIVertex(uiVertex, i);
                 }
             }

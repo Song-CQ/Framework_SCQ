@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_1_12;UNITY_2022_1;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_QUERY_BUILDER;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_1_12;UNITY_2022_1;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_QUERY_BUILDER;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -54,12 +54,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\SceneMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\TransformExtend.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\WebRequestConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\SimpleTimer.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\StringConvertUnit\StringConvertUnit.cs" />
@@ -81,17 +79,17 @@
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ListPool.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\UIMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Utility\Unity3dUtil\Unity3dUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Helper3rd\DOTweenHelper.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Helper\DOTweenHelper.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\EngineUtil\EngineUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\GObjectsPool.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\Engine\MeshExtend\MeshExtend.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\MeshExtend\MeshExtend.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\PrefsUtil\PrefsUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\GlobalMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\BaseUI.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\App\App.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\VersionUpdateMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\System\StringExtend.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\CommonsExtend\StringExtend.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseGenericDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\NewClass.cs" />
@@ -111,10 +109,11 @@
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\LayerMaskConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\YieldConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ModuleMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\CommonsExtend\ListExtend.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\AppConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\FileUtil\FileUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\CtrlDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\Engine\GameObjectExtend.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\GameObjectExtend.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\App\FCApplication.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\EncryptUtil\AESEncryptUtil.cs" />
@@ -122,6 +121,7 @@
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\UICtrlDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\DownloadMgr\DownloadFileMac.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\CameraConst.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Helper\Vector3Helper.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\AppDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\DownloadMgr\DownloadTaskMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\HttpMgr.cs" />
@@ -413,17 +413,44 @@
     <Reference Include="ILRuntime.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
+    <Reference Include="LogUtil">
+      <HintPath>Assets\_FutureFrame\FutureLib\LogUtil.dll</HintPath>
+    </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Pdb">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsolePro.Editor">
+      <HintPath>Assets\_Editor\Store3rdEditorLib\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiEditor">
+      <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="ILRuntime.Mono.Cecil">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
     </Reference>
+    <Reference Include="RainbowCore">
+      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
@@ -431,56 +458,47 @@
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="BaseVoClassLib">
       <HintPath>Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
     </Reference>
-    <Reference Include="DemiEditor">
-      <HintPath>Assets\_Editor\Plugins3rdEditorLib\Editor\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenProEditor">
-      <HintPath>Assets\_Editor\Plugins3rdEditorLib\Editor\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenEditor">
-      <HintPath>Assets\_Editor\Plugins3rdEditorLib\Editor\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenPro">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsolePro.Editor">
-      <HintPath>Assets\_Editor\Store3rdEditorLib\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="RainbowCore">
-      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="ConsoleE">
       <HintPath>Assets\_Editor\Store3rdEditorLib\ConsoleE\Editor\ConsoleE.dll</HintPath>
     </Reference>
-    <Reference Include="RainbowFolders">
-      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
+    <Reference Include="Sirenix.OdinInspector.Editor">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="LogUtil">
-      <HintPath>Assets\_FutureFrame\FutureLib\LogUtil.dll</HintPath>
+    <Reference Include="DOTweenProEditor">
+      <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
     </Reference>
     <Reference Include="XLNet">
       <HintPath>Assets\_FutureFrame\FutureLib\XLNet\XLNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="RainbowFolders">
+      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Unity\Unity2020.3.35f1\Editor\2022.1.12f1c1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
