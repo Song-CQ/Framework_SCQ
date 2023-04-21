@@ -216,7 +216,7 @@ namespace ProjectApp.UGUI
                   }
                   Drag?.Invoke(currentDir);
                   OnDrag?.Invoke(currentDir);
-              };
+            };
 
 
 

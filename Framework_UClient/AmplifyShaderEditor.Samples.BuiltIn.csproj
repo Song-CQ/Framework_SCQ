@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A8FE5CC3-E592-D4DB-71E1-1CCF75782131}</ProjectGuid>
+    <ProjectGuid>{F7EA85DD-85B7-9EDD-3F6F-A8E92287AE42}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Sirenix.OdinInspector.CompatibilityLayer</AssemblyName>
+    <AssemblyName>AmplifyShaderEditor.Samples.BuiltIn</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -22,11 +22,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_1_12;UNITY_2022_1;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_QUERY_BUILDER;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_1_12;UNITY_2022_1;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_QUERY_BUILDER;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;AMPLIFY_SHADER_EDITOR;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -48,7 +48,7 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.16</UnityProjectGeneratorVersion>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2022.1.12f1c1</UnityVersion>
   </PropertyGroup>
@@ -56,20 +56,136 @@
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\VectorIntDrawers.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\SyncVarAttributeDrawer.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\Vector2IntMinMaxAttributeDrawer.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\SerializedNetworkBehaviour.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\SyncListDrawer.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\FixBrokenUnityObjectWrapperDrawer.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\EnsureOdinInspectorDefine.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\BuildAOTAutomation.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\AssemblyImportSettingsAutomation.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Editor\VectorIntPropertyResolvers.cs" />
-    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\VectorIntFormatters.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community HighlightAnimated\highlightAnimated.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Smear\Smear.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Volumetric Pixelization\VolumetricSphere.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\Sprites\SpriteMask\SpriteMaskController.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\PlaneClip\PlaneClip.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleGPUInstancing\SimpleGPUInstancingExample.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community ForceShield\ForceShieldImpactDetection.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Volumetric Pixelization\Pixelize.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\PostProcess\Sobel\PostProcessExample.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community ForceShield\ForceShieldShootBall.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Smear\SimpleMoveExample.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community ForceShield\ForceShieldDestroyBall.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\Sirenix.OdinInspector.CompatibilityLayer.asmdef" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\MultiPassDistortion\DoublePassUnlitTemplate.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\StencilExample\RefractionsPanels\AnimatedRefraction.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\VertexNormalReconstruction\VertexNormalReconstruction.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TwoSidedWithFace\TwoSideWithFace.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Projectors\ProjectorLight.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Projectors\ProjectorShadow.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleTerrain\SimpleWater.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\PostProcess\Sobel\Sobel.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Dithering\DitheringFade.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Volumetric Pixelization\Screen And Mask.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\UI\SimpleUI\SimpleUI.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Volumetric Pixelization\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\StencilExample\Portals\Portal03\StencilMask03.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleTerrain\SimpleTerrainBase.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\PlaneClip\PlaneClip.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\StencilExample\Portals\Portal03\StencilDiffuse03.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TriplanarProjection\TriplanarProjection.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Transparency\Transparency.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community EnvironmentGradient\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community LowPolyWater\LowPolyWater.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community ForceShield\ForceShield.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Skybox Cubemap Extended\Shaders\Skybox Cubemap Extended.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ParallaxOffsetFakeInterior\ParallaxWindow.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community EnvironmentGradient\MourEnvironmentGradient.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\AmplifyShaderEditor.Samples.BuiltIn.asmdef" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\XRay\ProceduralWall.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ScreenSpaceDetail\ScreenSpaceDetail.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community SingleChannelMasking\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleLambert\SimpleLambert.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community 2Sided\2Sided.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Volumetric Pixelization\Breakdown.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ReflectRefractSoapBubble\ReflectRefractSoapBubble.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleBlur\SimpleBlur.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimplePotionLiquid\SimplePotionLiquid.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\XRay\XRay.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleTerrain\SimpleTerrainFirstPass.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Dissolve Burn\DissolveBurn.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\AnimatedFire\AnimatedFire.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\UVLightReveal\UV light.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Extrusion\NormalExtrusion.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\StencilExample\Portals\Portal02\StencilDiffuse02.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community HologramSimple\Hologram Simple.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\WorldPosSLices\WorldPosSlices.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community HologramSimple\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\CubemapReflections\CubemapReflections.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\Sprites\SpriteMask\SpritesMask.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\RadialUVDistortion\RadialUVDistortion.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Substance2018\Readme.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\PostProcess\Sobel\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\RimLight\RimLight.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\Particles\HeatHaze\ParticlesTest.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\PostProcess\FilmGrain\FilmGrain.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TriplanarProjection\TriplanarSimple.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\CustomRTRain\Readme.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimplePotionLiquid\SimpleGlass.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Outline\Outline.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Translucency\Translucency.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\UISpriteFX\UISpriteFX 3.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\RefractedShadows\RefractedShadows.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TextureArray\TextureArray.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community LowPolyWater\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Dissolve Burn\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community HighlightAnimated\Highlight_Animated.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\PositionCutoff\LocalPosCutoff.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community HighlightAnimated\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ObjectNormalRefraction\ShaderBallInterior.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\MultiPassDistortion\MultiPassDistortion.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleTexture\SimpleTexture.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ObjectNormalRefraction\ObjectNormalRefraction.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Mosaic Effect PPS\Readme.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleGPUInstancing\SimpleGPUInstancing.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\StencilExample\Portals\Portal02\StencilMask02.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\AnimatedUVDistortion\AnimatedUVDistortion.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleTerrain\SimpleTerrainAddPass.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\Sprites\SimpleSprite\SimpleSprite.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ScaleIndependentTile\ScaleIndependentTile.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Tessellation\Tessellation.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Water\WaterSample.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Matcap\MatcapSample.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TerrainSnowCoverage\TerrainSnowCoverageFirstPass.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ParallaxOcclusionMappingPOM\SandPOM.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TerrainSnowCoverage\TerrainBase.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community ForceShield\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Substance\Readme.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Transmission\Transmission.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\PlaneClip\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Melting\Melting.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ReadFromAtlasTiled\ImprovedReadFromAtlasTiled.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ScreenSpaceCurvature\ScreenSpaceCurvature.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community SingleChannelMasking\SingleChannelMasking.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\OrientationBasedSprite\OrientationBasedSprite.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\DoubleLayerCustomSurface\DoubleLayerCustomSurface.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Burn\BurnEffect.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\CustomOutlineToon\CustomOutlineToon.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Dithering\DitheringFadeBlueNoise.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\UISpriteFX\UISpriteFX.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\PostProcess\FilmGrain\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ReadFromAtlasTiled\ReadFromAtlasTiled.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleNoise\SimpleNoise.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\ParallaxMapping\ParallaxMappingIterations.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SnowAccum\SnowAccum.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Skybox Cubemap Extended\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Melting\Credits.txt" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\PlaneClip\ClipArea.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleRefraction\SimpleRefraction.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Water\Ground.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\SimpleTerrain\GrassBlades.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\CustomLightingToon\CustomLightingToon.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\StencilExample\Portals\Portal01\StencilDiffuse01.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community Volumetric Pixelization\Combine Layers.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\StencilExample\Portals\Portal01\StencilMask01.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\TemplateExamples\UI\MaskedUI\MaskedUI.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\AnimatedFire-ShaderFunction\AnimatedFire-ShaderFunction.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\UnlitWithLightmap\UnlitWithLightmap.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Smear\Smear.shader" />
+    <None Include="Assets\Test\AmplifyShaderEditor\Examples\Built-In\Community 2Sided\Credits.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -339,8 +455,17 @@
     <Reference Include="ConsolePro.Editor">
       <HintPath>Assets\_Editor\Store3rdEditorLib\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="DemiEditor">
+      <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll</HintPath>
@@ -356,6 +481,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
@@ -378,44 +506,32 @@
     <Reference Include="ConsoleE">
       <HintPath>Assets\_Editor\Store3rdEditorLib\ConsoleE\Editor\ConsoleE.dll</HintPath>
     </Reference>
-    <Reference Include="XLNet">
-      <HintPath>Assets\_FutureFrame\FutureLib\XLNet\XLNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="RainbowFolders">
-      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiEditor">
-      <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenProEditor">
       <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenEditor">
       <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="XLNet">
+      <HintPath>Assets\_FutureFrame\FutureLib\XLNet\XLNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.7.1\Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="RainbowFolders">
+      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Unity\Unity2020.3.35f1\Editor\2022.1.12f1c1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>

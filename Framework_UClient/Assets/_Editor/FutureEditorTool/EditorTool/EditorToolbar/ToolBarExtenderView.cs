@@ -93,6 +93,7 @@ namespace FutureEditor
 			GUILayout.FlexibleSpace();
 			if (GUILayout.Button(new GUIContent("Play MainScene", EditorGUIUtility.FindTexture("PlayButton"), "跳转主场景并播放")))
 			{
+				AssetDatabase.Refresh();
 				EditorSceneTool.PlayMainScene();
             }
 			
@@ -102,7 +103,12 @@ namespace FutureEditor
 		public static void OnToolbarGUIRight()
 		{
 			//下面只是Demo，可随便更改
-			GUILayout.Space(1);
+			if (GUILayout.Button(new GUIContent(EditorGUIUtility.FindTexture("d_RotateTool On"), "刷新编译代码"), /*ToolbarStyles.ToolBarExtenderBtnStyle,*/GUILayout.Width(30)))
+			{
+				AssetDatabase.Refresh();
+				Debug.Log("TODO :刷新完成");
+			}
+			GUILayout.Space(10);
 			
 			if (GUILayout.Button(new GUIContent("Test Scene", EditorGUIUtility.FindTexture("Button"), "跳转测试场景")))
 			{

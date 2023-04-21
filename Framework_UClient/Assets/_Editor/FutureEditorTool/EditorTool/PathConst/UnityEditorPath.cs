@@ -10,10 +10,12 @@ using UnityEngine;
 
 namespace FutureEditor
 {
+
+    [InitializeOnLoad]
     public class UnityEditorPath : ScriptableObject
     {
 
-        public const string AsssetPath = @"Assets\_Editor\FutureEditor\Editor\UnityEditorPath";
+        public const string AsssetPath = @"Assets\_Editor\FutureEditor\UnityEditorPath";
 
         private static UnityEditorPath m_instance;
         public static UnityEditorPath Instance

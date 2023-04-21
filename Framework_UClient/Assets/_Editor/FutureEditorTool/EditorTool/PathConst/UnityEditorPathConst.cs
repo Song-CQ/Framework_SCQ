@@ -10,6 +10,8 @@ using UnityEngine;
 
 namespace FutureEditor
 {
+
+    [InitializeOnLoad]
     public static class UnityEditorPathConst 
     {
         /// <summary>
