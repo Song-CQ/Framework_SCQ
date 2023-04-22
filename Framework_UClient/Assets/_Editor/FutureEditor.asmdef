@@ -1,0 +1,22 @@
+{
+    "name": "FutureEditor",
+    "rootNamespace": "FutureEditor",
+    "references": [
+        "GUID:656fb9ea966b1be41b0af5ee2e454905",
+        "GUID:c4b8fc492eac8184fb9a42684cf8c464",
+        "GUID:7800164fe771ef84a9bf718aac992913",
+        "GUID:3a9781db4804a9945b9883f3a7c46d45",
+        "GUID:f91cfccad0a56014faafa9d56a7f2949"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

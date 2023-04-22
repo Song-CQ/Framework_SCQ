@@ -1,0 +1,17 @@
+{
+    "name": "ProjectApp",
+    "rootNamespace": "ProjectApp",
+    "references": [
+        "GUID:656fb9ea966b1be41b0af5ee2e454905",
+        "GUID:7800164fe771ef84a9bf718aac992913"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
