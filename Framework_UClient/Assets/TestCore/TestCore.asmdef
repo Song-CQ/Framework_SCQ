@@ -1,0 +1,16 @@
+{
+    "name": "TestCore",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f91cfccad0a56014faafa9d56a7f2949"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
