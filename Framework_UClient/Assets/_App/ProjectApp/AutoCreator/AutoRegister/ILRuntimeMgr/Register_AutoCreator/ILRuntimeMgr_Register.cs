@@ -7,7 +7,9 @@
 * ****************************************************/
 using ILRuntime.Runtime.Enviorment;
 using System.Collections.Generic;
-namespace FutureCore
+using FutureCore;
+
+namespace ProjectApp
 {
     public static partial class ILRuntimeMgr_Register
     {

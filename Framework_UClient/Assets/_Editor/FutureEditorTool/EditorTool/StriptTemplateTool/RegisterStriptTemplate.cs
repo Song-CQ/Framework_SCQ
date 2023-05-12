@@ -39,7 +39,7 @@ namespace FutureEditor
         public static void StartRegisterTemplate()
         {
             string prth = EditorApplication.applicationContentsPath + "/Resources/ScriptTemplates/";
-            string srcPath = Application.dataPath + "/_Editor/FutureEditorTool/Editor/StriptTemplateTool/Template";
+            string srcPath = Application.dataPath + "/_Editor/FutureEditorTool/EditorTool/StriptTemplateTool/Template";
             try
             {
                 DirectoryInfo dir = new DirectoryInfo(srcPath);
@@ -113,9 +113,9 @@ namespace FutureEditor
         }
 
         private static Dictionary<CreateScriptType, string> createScriptTypeDic = new Dictionary<CreateScriptType, string> {
-            {CreateScriptType.NewClass,"Assets/_Editor/FutureEditorTool/Editor/StriptTemplateTool/Template/31-[FC]C# Class-NewClass.cs.txt"},
-            {CreateScriptType.NewScript,"Assets/_Editor/FutureEditorTool/Editor/StriptTemplateTool/Template/32-[FC]C# Script-NewScript.cs.txt"},
-            {CreateScriptType.NewCoreClass,"Assets/_Editor/FutureEditorTool/Editor/StriptTemplateTool/Template/33-[FC]C# Core-NewClass.cs.txt"},
+            {CreateScriptType.NewClass,"Assets/_Editor/FutureEditorTool/EditorTool/StriptTemplateTool/Template/31-[FC]C# Class-NewClass.cs.txt"},
+            {CreateScriptType.NewScript,"Assets/_Editor/FutureEditorTool/EditorTool/StriptTemplateTool/Template/32-[FC]C# Script-NewScript.cs.txt"},
+            {CreateScriptType.NewCoreClass,"Assets/_Editor/FutureEditorTool/EditorTool/StriptTemplateTool/Template/33-[FC]C# Core-NewClass.cs.txt"},
         };
 
         [MenuItem("Assets/[FC] Create/NewClass",priority = 1)]

@@ -41,5 +41,11 @@ namespace FutureCore
         {
             onComplete?.Invoke();
         }
+
+        public abstract void Dispose();
+   
+
+
+
     }
 }

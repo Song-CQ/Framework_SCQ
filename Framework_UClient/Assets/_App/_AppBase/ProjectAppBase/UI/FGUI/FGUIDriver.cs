@@ -183,8 +183,7 @@ namespace ProjectApp
         private void DisposeUI(UILayerType layerType, FGUIEntity fGUIEntity)
         {
             uiLayerWindowDict[layerType].RemoveChild(fGUIEntity.ui);
-            fGUIEntity.ui.Dispose();
-            fGUIEntity.ui = null;
+            fGUIEntity.Dispose();
         }
 
         private void ReleaseUIMaskToPool(FGUIEntity fGUIEntity)

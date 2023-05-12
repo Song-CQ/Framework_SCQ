@@ -899,14 +899,6 @@
       <Project>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</Project>
       <Name>Plugins3rdLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="TestCore.csproj">
-      <Project>{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}</Project>
-      <Name>TestCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="TestScript.csproj">
-      <Project>{6F118E5F-3E97-BC83-81C1-A4667CB811CB}</Project>
-      <Name>TestScript</Name>
-    </ProjectReference>
     <ProjectReference Include="ProjectApp.csproj">
       <Project>{87F2FCF0-988D-6D8B-EB81-CE63C02B0DBE}</Project>
       <Name>ProjectApp</Name>
@@ -914,6 +906,10 @@
     <ProjectReference Include="FutureFrame.csproj">
       <Project>{8690BC45-7C33-6280-6C0D-F0AC44804CCE}</Project>
       <Name>FutureFrame</Name>
+    </ProjectReference>
+    <ProjectReference Include="TestCore.csproj">
+      <Project>{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}</Project>
+      <Name>TestCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

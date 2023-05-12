@@ -56,5 +56,10 @@ namespace ProjectApp
             });
         }
 
+        public override void Dispose()
+        {
+            ui.Dispose();
+            ui = null;
+        }
     }
 }

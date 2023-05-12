@@ -140,6 +140,7 @@
     <Compile Include="Assets\_App\_AppBase\ProjectMain\MainLauncher.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlConst_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOClass\VO\turntableVO_AutoCreate\turntableVO.cs" />
+    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIEntity.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOClass\VO\out_PPVO_AutoCreate\out_PPVO.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainCtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOClass\VO\Num_probabilityVO_AutoCreate\Num_probabilityVO.cs" />

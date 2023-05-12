@@ -25,7 +25,9 @@ namespace FutureEditor
 * ****************************************************/
 using ILRuntime.Runtime.Enviorment;
 using System.Collections.Generic;
-namespace FutureCore
+using FutureCore;
+
+namespace ProjectApp
 {
     public static partial class ILRuntimeMgr_Register
     {
@@ -75,7 +77,7 @@ namespace FutureCore
         {
             string path = autoRegisterPath + "/Adapter_AutoCreator/" + type.Name+ "Adapter.cs";
             
-            string classVal = ILRuntime.Runtime.Enviorment.CrossBindingCodeGenerator.GenerateCrossBindingAdapterCode(type, "FutureCore");
+            string classVal = ILRuntime.Runtime.Enviorment.CrossBindingCodeGenerator.GenerateCrossBindingAdapterCode(type, "ProjectApp");
             tempStr += $"            appDomain.RegisterCrossBindingAdaptor(new {type.Name}Adapter());\r\n";
             File.WriteAllText(path,classVal,System.Text.Encoding.UTF8);
             Debug.Log($"[ILRuntimeMgr_AutoCreator]注册{type.Name}适配器完成");

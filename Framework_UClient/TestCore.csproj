@@ -56,10 +56,65 @@
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TestCore\TestCore.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\PutAttributesOnAnyType.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\WeaponItem.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\EquipableItem.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\CustomAttributeProcessorLocatorExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\CharacterAlignment.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Misc\StatType.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\CharacterEquipment.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Misc\StatValue.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\ValueAndActionResolversExample.cs" />
+    <Compile Include="Assets\Test\GameRoodMgr.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Editor\ItemSlotCellDrawer.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\ItemTypes.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Editor Windows\Scripts\Editor\OdinMenuStyleExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Editor Windows\Scripts\Editor\OdinMenuEditorWindowExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\ConsumableItem.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Editor\ItemDrawer.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\CustomizeDictionaryKeyValueExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\GenericMenuExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\CustomGroupExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Misc\StatList.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\CharacterStats.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\ValidationExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Editor\ScriptableObjectCreator.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Editor\CharacterTable.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Editor Windows\Scripts\Editor\SomeData.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Editor\RPGEditorWindow.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\TabGroupByDeclaringType.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\MinesweeperExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\Armor.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\HealthBarExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\AttributeProcessorForListItemsExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Editor Windows\Scripts\Editor\OverrideGetTargetsExampleWindow.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Editor Windows\Scripts\Editor\SomeTextureToolWindow.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\BasicAttributeProcessorExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\PriorityExamples.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\CustomDrawerExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\CharacterOverview.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Misc\ItemSlot.cs" />
+    <Compile Include="Assets\Test\text.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Editor Windows\Scripts\Editor\BasicOdinEditorExampleWindow.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\GenericDrawerExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\Foo.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\ReflectionExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\Bar.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Drawers\Scripts\InstancedDrawerExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\Character.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\AttributeProcessorPriorityExample.cs" />
+    <Compile Include="Assets\Test\LoadFromFileExample.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Editor Windows\Scripts\Editor\QuicklyInspectObjects.cs" />
+    <Compile Include="Assets\Test\Sirenix\Demos\Custom Attribute Processors\Scripts\SelfAndChildrenExample.cs" />
+    <Compile Include="Assets\Test\editor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\TestCore\TestCore.asmdef" />
+    <None Include="Assets\Test\TestCore.asmdef" />
+    <None Include="Assets\Test\testShader.shader" />
+    <None Include="Assets\Test\ExtraTools\Shaders\PlayerShader\Character_Plain_Simple.shader" />
+    <None Include="Assets\Test\Sirenix\Demos\Sample - RPG Editor\Icons\icons_by_ravenmore.txt" />
+    <None Include="Assets\Test\ExtraTools\Shaders\PlayerShader\Character_Plain.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

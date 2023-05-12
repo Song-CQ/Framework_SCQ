@@ -13,6 +13,18 @@ namespace FutureCore
             }
             return false;
         }
+        public static void Destroy(this Object obj, float t = 0)
+        {
+            if (t == 0)
+            {
+                Object.Destroy(obj, t);
+            }
+            else
+            {
+                Object.Destroy(obj);
+            }
+            
+        }
 
         public static void SetParent(this GameObject gameObject, GameObject parentGo, bool worldPositionStays = false)
         {
@@ -78,5 +90,8 @@ namespace FutureCore
             }
             return sb.ToString();
         }
+
+       
+
     }
 }

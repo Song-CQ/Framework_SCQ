@@ -68,9 +68,17 @@ namespace ProjectApp
         {
             UIMgr uiMgr = UIMgr.Instance;
             BaseUIDriver baseUIDriver = null;
-            if (AppConst.UIDriver == UIDriverEnem.FGUI)
+            switch (AppConst.UIDriver)
             {
-                baseUIDriver = new FGUIDriver();
+                case UIDriverEnem.UGUI:
+                    baseUIDriver = new UGUIDriver();
+                    break;
+                case UIDriverEnem.FGUI:
+                    baseUIDriver = new FGUIDriver();
+                    break;
+                default:
+                    baseUIDriver = new UGUIDriver();
+                    break;
             }
             uiMgr.RegisterUIDriver(baseUIDriver);
         }

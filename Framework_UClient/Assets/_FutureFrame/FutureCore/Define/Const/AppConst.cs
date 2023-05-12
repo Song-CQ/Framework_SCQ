@@ -120,7 +120,7 @@ namespace FutureCore
         /// <summary>
         /// ui驱动类型
         /// </summary>
-        public static UIDriverEnem UIDriver = UIDriverEnem.FGUI;
+        public static UIDriverEnem UIDriver = UIDriverEnem.UGUI;
 
         /// <summary>
         /// Fgui和世界物体的大小比例（0.01f代表世界物体大小乘以100等于UI物体大小）

@@ -1,3 +1,10 @@
+/****************************************************
+    文件: UGUIDriver.cs
+    作者: Clear
+    日期: 2023/4/23 14:58:37
+    类型: 框架核心脚本(请勿修改)
+    功能: UGUI驱动
+*****************************************************/
 using FutureCore;
 using System;
 using System.Collections;
@@ -12,38 +19,40 @@ namespace ProjectApp
 
         public override void Init()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void InitUILayer()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void LoadUI(BaseUI baseUI, object args, Action<BaseUI, object> openUIProcess)
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void Register()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void RegisterDefaultFont(string fontName)
         {
-            throw new NotImplementedException();
+            
         }
 
 
         public override void DestroyUI(BaseUI ui)
         {
-            throw new NotImplementedException();
+           
         }
 
         public override void Dispose()
         {
-            throw new NotImplementedException();
+           
+            
+
         }
 
 
