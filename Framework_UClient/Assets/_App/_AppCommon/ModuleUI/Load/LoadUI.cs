@@ -53,7 +53,7 @@ namespace ProjectApp
         protected override void OnBind()
         {
             fGuiEntity = uiEntity as FGUIEntity;
-            ui = (com_loading)fGuiEntity.ui;
+            ui = (com_loading)fGuiEntity.UI;
 
         }
 

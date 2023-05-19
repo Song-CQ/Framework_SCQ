@@ -148,6 +148,8 @@
     <Compile Include="Assets\_FutureFrame\FutureCore\App\AppFacade_Frame.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Message\AppMsg_Frame_0-9999.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Ctr\BaseUICtrl.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Res\ResLoadInfo.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Res\ResLoadNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_FutureFrame\FutureFrame.asmdef" />

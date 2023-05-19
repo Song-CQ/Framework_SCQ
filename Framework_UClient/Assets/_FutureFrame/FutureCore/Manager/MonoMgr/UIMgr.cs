@@ -35,7 +35,10 @@ namespace FutureCore
         /// Updata的界面
         /// </summary>
         private List<BaseUI> tickUpdateUILst = new List<BaseUI>();
-
+        /// <summary>
+        /// UI类型的GameObj的对象池
+        /// </summary>
+        public GObjectsPool ui_GObjectsPool = new GObjectsPool();
 
         public void RegisterUIDriver(BaseUIDriver _uIDriver)
         {
@@ -62,6 +65,12 @@ namespace FutureCore
             AppObjConst.UIGo.layer = LayerMaskConst.UI;
             AppObjConst.UIGo.SetParent(AppObjConst.FutureFrameGo);
             AppObjConst.UIGo.transform.position = new Vector3(CameraConst.UICameraPos.x, CameraConst.UICameraPos.y, 0);
+
+            AppObjConst.UICacheGo = new GameObject(AppObjConst.UICacheGoName);
+            AppObjConst.UICacheGo.SetParent(AppObjConst.FutureFrameGo);
+
+            ui_GObjectsPool.InitRoot("[UI_GObjectsPool]", AppObjConst.UICacheGo.transform);
+
             ///驱动初始化
             uiDriver.Init();
             

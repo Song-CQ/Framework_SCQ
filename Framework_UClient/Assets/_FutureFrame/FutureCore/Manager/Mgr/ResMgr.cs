@@ -1,5 +1,7 @@
 using FairyGUI;
 using System;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Object = UnityEngine.Object;
@@ -19,12 +21,52 @@ namespace FutureCore
        
 
         #region SyncLoad
-        public T SyncLoad<T>(string assetPath) where T : Object
+        public T GetLocalRes<T>(string assetPath) where T : Object
         {
             T asset = Resources.Load<T>(assetPath);
             return asset;
         }
+        #endregion
 
+        #region AsyncLoad
+        public async Task<T> LoadResourcesAsync<T>(string path) where T : UnityEngine.Object
+        {
+            return await ExtensionsResources.LoadResourcesAsync<T>(path);
+        }
+
+
+        public void LoadRes(string[] assetPath,ResLoadInfo.callback callback, object callbackPara = null,string rootPath = null)
+        {
+                      
+            if (rootPath == null)
+            {
+                rootPath = PathConst.AssetBundlesPath;
+            }
+            ResLoadInfo info = ObjectPoolStatic<ResLoadInfo>.Get();
+            info.Start(assetPath, callback, callbackPara, rootPath);
+
+
+        }
+
+        public void LoadUI(string[] UIName, ResLoadInfo.callback callback, object callbackPara = null)
+        {
+            for (int i = 0; i < UIName.Length; i++)
+            {
+                if (AppConst.IsUseAssetBundlesLoad)
+                {
+                    UIName[i] += ".unity3d";
+                }         
+            }
+            LoadRes(UIName, callback, callbackPara, PathConst.AssetBundlesPath + "/" + AppConst.UIDriver.ToString() + "/");
+        }
+        public void LoadUI(string UIName, ResLoadInfo.callback callback, object callbackPara = null)
+        {
+            if (AppConst.IsUseAssetBundlesLoad)
+            {
+                UIName += ".unity3d";
+            }
+            LoadRes(new string[] { UIName }, callback, callbackPara, PathConst.AssetBundlesPath + "/" + AppConst.UIDriver.ToString() + "/");
+        }
 
         #endregion
 
@@ -78,4 +120,37 @@ namespace FutureCore
         #endregion
 
     }
+    public static class ExtensionsResources
+    {
+        public static ResourceRequestAwaiter GetAwaiter(this ResourceRequest request) => new ResourceRequestAwaiter(request);
+
+        public static async Task<T> LoadResourcesAsync<T>(string path) where T : UnityEngine.Object
+        {
+            var gres = Resources.LoadAsync(path);
+            await gres;
+            return gres.asset as T;
+        }
+    }
+    public class ResourceRequestAwaiter : INotifyCompletion
+    {
+        public Action Continuation;
+        public ResourceRequest resourceRequest;
+        public bool IsCompleted => resourceRequest.isDone;
+        public ResourceRequestAwaiter(ResourceRequest resourceRequest)
+        {
+            this.resourceRequest = resourceRequest;
+
+            //注册完成时的回调
+            this.resourceRequest.completed += Accomplish;
+        }
+
+        //awati 后面的代码包装成 continuation ，保存在类中方便完成是调用
+        public void OnCompleted(Action continuation) => this.Continuation = continuation;
+
+        public void Accomplish(AsyncOperation asyncOperation) => Continuation?.Invoke();
+
+        public void GetResult() { }
+    }
+
 }
+

@@ -13,7 +13,7 @@ namespace ProjectApp
 {
     public class FGUIEntity:UIEntity
     {
-        public GComponent ui;
+        public GComponent UI { get; private set; }
         public GGraph UIMask;
 
         public GTweener openUiGTweener;
@@ -21,26 +21,26 @@ namespace ProjectApp
 
         public FGUIEntity(GComponent _ui)
         {
-            ui = _ui;
+            UI = _ui;
         }
 
         public override void SetVisible(bool arse)
         {
-            if (ui == null) return;
-            ui.visible = arse;
+            if (UI == null) return;
+            UI.visible = arse;
         }
         protected override void SetName(string uiName)
         {
-            if (ui == null) return;
-            ui.gameObjectName = uiName;       
+            if (UI == null) return;
+            UI.gameObjectName = uiName;       
         }
 
         public override void OpenUIAnim(Action onComplete)
         {
-            ui.pivot = VectorConst.Half;
-            ui.SetScale(UIMgrConst.OpenUIAnimEffectScale.x, UIMgrConst.OpenUIAnimEffectScale.y);
-            ui.touchable = true;
-            openUiGTweener = ui.TweenScale(VectorConst.One, UIMgrConst.UIAnimEffectTime).SetIgnoreEngineTimeScale(true).SetEase(EaseType.BackInOut).OnComplete(() => {
+            UI.pivot = VectorConst.Half;
+            UI.SetScale(UIMgrConst.OpenUIAnimEffectScale.x, UIMgrConst.OpenUIAnimEffectScale.y);
+            UI.touchable = true;
+            openUiGTweener = UI.TweenScale(VectorConst.One, UIMgrConst.UIAnimEffectTime).SetIgnoreEngineTimeScale(true).SetEase(EaseType.BackInOut).OnComplete(() => {
                 openUiGTweener = null;
                 onComplete?.Invoke(); 
             });
@@ -48,8 +48,8 @@ namespace ProjectApp
 
         public override void CloseUIAnim(Action onComplete)
         {
-            ui.touchable = false;
-            closeUiGTweener = ui.TweenScale(UIMgrConst.OpenUIAnimEffectScale, UIMgrConst.UIAnimEffectTime).SetIgnoreEngineTimeScale(true).SetEase(EaseType.BackIn).OnComplete(() => { 
+            UI.touchable = false;
+            closeUiGTweener = UI.TweenScale(UIMgrConst.OpenUIAnimEffectScale, UIMgrConst.UIAnimEffectTime).SetIgnoreEngineTimeScale(true).SetEase(EaseType.BackIn).OnComplete(() => { 
             
                 closeUiGTweener = null;
                 onComplete?.Invoke();
@@ -58,8 +58,8 @@ namespace ProjectApp
 
         public override void Dispose()
         {
-            ui.Dispose();
-            ui = null;
+            UI.Dispose();
+            UI = null;
         }
     }
 }

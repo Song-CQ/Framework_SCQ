@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FutureCore
 {
-    public class DOTweenHelper
+    public static class DOTweenHelper
     {
         public static void Init()
         {
@@ -14,6 +14,7 @@ namespace FutureCore
             DOTween.defaultEaseType = Ease.Linear;
            
         }
+
 
 
     }

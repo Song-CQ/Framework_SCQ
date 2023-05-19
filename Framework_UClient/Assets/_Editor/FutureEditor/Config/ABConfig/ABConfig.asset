@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outputPath: 
   abRoot: Assets/_Res/AssetBundleRes
-  verifyPath: 
-  allBeDependPath: 
-  allDependPath: 
+  verifyPath: /version.json
+  allBeDependPath: /allBeDependData.json
+  allDependPath: /allDependData.json
   abOptions: 0
-  abPlatform: 0
+  abPlatform: 13
   isCopyStreamingAssets: 0
   isImputVersion: 0
   isIncrementalBulie: 0

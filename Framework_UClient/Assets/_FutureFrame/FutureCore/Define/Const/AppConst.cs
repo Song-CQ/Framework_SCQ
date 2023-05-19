@@ -29,9 +29,13 @@ namespace FutureCore
         public const bool IsSyncLoadMode_Default = false;
 
         /// <summary>
-        /// 是否资源热更模式
+        /// 是否要资源热更模式
         /// </summary>
-        public const bool IsAssetBundlesUpdateMode = true; 
+        public const bool IsAssetBundlesUpdateMode = true;
+        /// <summary>
+        /// 是否要使用AB包加载资源
+        /// </summary>
+        public const bool IsUseAssetBundlesLoad = false;
 
         // 是否是开发构建
         public const bool IsDevelopmentBuild = false;
@@ -72,11 +76,11 @@ namespace FutureCore
 
         /// 应用设置参数
         // 标准分辨率
-        public static Vector2Int StandardResolution = new Vector2Int(1080, 1920);
+        public static Vector2Int StandardResolution = new Vector2Int(1920, 1080);
         // UI分辨率
-        public static Vector2Int UIResolution = new Vector2Int(1080, 1920);
+        public static Vector2Int UIResolution = new Vector2Int(1920, 1080);
         // PC测试分辨率
-        public static Vector2Int PCTestResolution = new Vector2Int(1080, 1920);
+        public static Vector2Int PCTestResolution = new Vector2Int(1920, 1080);
         // 是否编辑器加载内置配置
         public static bool IsConfigEditorLoadInternally = true;
         // 是否允许配置表回滚

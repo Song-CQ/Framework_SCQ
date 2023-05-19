@@ -24,32 +24,21 @@ namespace ProjectApp
         /// 是否自动设置按钮中心点
         /// </summary>
         private bool IsSetButtonPivotCenter  = true;
-        /// <summary>
-        /// 默认字体
-        /// </summary>
-        private string uiDefaultFontName;
+        
 
         public override void Register()
-        {
-           
+        {          
             UIRegister_FGUI.AutoRegisterCommonBinder(); 
-            UIRegister_FGUI.AutoRegisterCommonPackages(ref commonPackageList);
-           
+            UIRegister_FGUI.AutoRegisterCommonPackages(ref commonPackageList);          
             UIRegister_FGUI.AutoRegisterBinder();
-
         }
-        public override void RegisterDefaultFont(string font)
-        {
-            uiDefaultFontName = font;
-        }
-
-
+       
         public override void Init()
         {
+            InitUILayer();
             InitFguiConfig();
             InitFguiSettings();
-            InitFguiCommonPackages();
-            InitUILayer();
+            InitFguiCommonPackages();       
         }
       
         /// <summary>
@@ -78,9 +67,6 @@ namespace ProjectApp
 
         private void InitFguiSettings()
         {
-            AppObjConst.UICacheGo = new GameObject(AppObjConst.UICacheGoName);
-            AppObjConst.UICacheGo.SetParent(AppObjConst.FutureFrameGo);
-
             DisplayObject.CreateUICacheRoot(AppObjConst.UICacheGo.transform);
 
             Stage.Instantiate();
@@ -154,19 +140,19 @@ namespace ProjectApp
             FGUIEntity uiEntity = new FGUIEntity(gUI.asCom);
             ui.uiEntity = uiEntity;
             // 启用深度自动调整合批
-            uiEntity.ui.fairyBatching = true;
-            uiEntity.ui.SetSize(GRoot.inst.width, GRoot.inst.height, false);
+            uiEntity.UI.fairyBatching = true;
+            uiEntity.UI.SetSize(GRoot.inst.width, GRoot.inst.height, false);
 
-            SetButtonClickDownEffect(uiEntity.ui);
+            SetButtonClickDownEffect(uiEntity.UI);
 
             if (ui.uiInfo.isNeedUIMask)
             {
                 GGraph mask = CreateUIMask(ui.uiInfo.uiMaskCustomColor);
                 uiEntity.UIMask = mask;
-                uiEntity.ui.AddChildAt(mask,0);
+                uiEntity.UI.AddChildAt(mask,0);
             }
             ui.currUILayer = ui.uiInfo.layerType;
-            uiLayerWindowDict[ui.currUILayer].AddChild(uiEntity.ui);
+            uiLayerWindowDict[ui.currUILayer].AddChild(uiEntity.UI);
 
         }
         public override void DestroyUI(BaseUI ui)
@@ -182,7 +168,7 @@ namespace ProjectApp
 
         private void DisposeUI(UILayerType layerType, FGUIEntity fGUIEntity)
         {
-            uiLayerWindowDict[layerType].RemoveChild(fGUIEntity.ui);
+            uiLayerWindowDict[layerType].RemoveChild(fGUIEntity.UI);
             fGUIEntity.Dispose();
         }
 
@@ -241,7 +227,17 @@ namespace ProjectApp
 
         public override void Dispose()
         {
-            
+            commonPackageList.Clear();
+            foreach (var item in uiMaskCacheQueue)
+            {
+                item.Dispose();
+            }
+            uiMaskCacheQueue.Clear();
+            foreach (var item in uiLayerWindowDict)
+            {
+                item.Value.Dispose();
+            }
+            uiLayerWindowDict.Clear();
         }
 
         

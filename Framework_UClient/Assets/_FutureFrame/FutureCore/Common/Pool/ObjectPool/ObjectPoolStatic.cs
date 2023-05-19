@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace FutureCore
 {
+    /// <summary>
+    /// 静态类池
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// 后面可能需要一个类去释放池子的资源，避免内存过多
     public static class ObjectPoolStatic<T> where T :new()
     {
         private static ObjectPool<T> _pool = new ObjectPool<T>();

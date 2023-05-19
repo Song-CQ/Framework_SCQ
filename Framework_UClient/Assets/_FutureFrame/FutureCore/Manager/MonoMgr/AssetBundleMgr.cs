@@ -293,7 +293,7 @@ namespace FutureCore
                     //设置加载状态
                     bundleInfo.state = ABState.Loading;
                 }
-
+                //加载合并
                 bundleInfo.AddReferencedCount();
                 if (onCom != null)
                 {
