@@ -144,7 +144,7 @@ namespace ExcelTool
                 StringColor.WriteLine(e);
                 Thread.CurrentThread.Abort();
             }
-            StringColor.WriteLine("删除" + dir.Name + "文件夹文件完成", ConsoleColor.Yellow);
+            StringColor.WriteLine("删除" + dir.FullName + "文件夹文件完成", ConsoleColor.Yellow);
         }
 
         private void LoadUrlData()

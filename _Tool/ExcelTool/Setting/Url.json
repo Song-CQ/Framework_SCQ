@@ -4,5 +4,5 @@
   //生成的打表数据路径
   "OutDataPath": "Framework_UClient\\Assets\\_Res\\Resources\\Data\\ExcelConfig",
   //生成的表类文件路径
-  "OutClassPath": "Framework_UClient\\Assets\\_App\\AutoCreator\\ExcelConfig"
+  "OutClassPath": "Framework_UClient\\Assets\\_App\\ProjectApp\\AutoCreator\\ExcelConfig"
 }

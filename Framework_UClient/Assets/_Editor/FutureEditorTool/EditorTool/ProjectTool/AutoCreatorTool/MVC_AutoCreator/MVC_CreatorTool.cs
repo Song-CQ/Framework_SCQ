@@ -23,7 +23,7 @@ namespace FutureEditor
 
         public static string hotFixOutPath = UnityEditorPathConst.ModuleUIPath_HotFix;
 
-        public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\Editor\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template";
+        public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template";
 
 
         public static void OpenFGUICread()
