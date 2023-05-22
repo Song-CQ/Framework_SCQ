@@ -28,14 +28,14 @@ namespace FutureEditor
 
         public static void OpenFGUICread()
         {
-            EditorCreadWnd.ShowWindow("创建 FGUI MVC 代码模版", CreadFGUIMVC);
+            EditorCreadWnd.ShowWindow("创建 GUI MVC 代码模版", CreadGUIMVC);
         }
         public static void OpenFGUICread_HotFix()
         {
-            EditorCreadWnd.ShowWindow("创建 FGUI MVC 代码模版(热更)", CreadFGUIMVC_HotFix);
+            EditorCreadWnd.ShowWindow("创建 GUI MVC 代码模版(热更)", CreadGUIMVC_HotFix);
         }
 
-        private static string CreadFGUIMVC_HotFix(string name)
+        private static string CreadGUIMVC_HotFix(string name)
         {
             string[] names = Directory.GetDirectories(hotFixOutPath);
             foreach (var item in names)
@@ -58,8 +58,10 @@ namespace FutureEditor
                 }
             }
             DirectoryInfo directoryInfo = Directory.CreateDirectory(hotFixOutPath + @"\" + name);
-            Debug.LogFormat("[MVC_AudioCread]开始生成{0}MVC 热更代码".AddColor(ColorType.淡青), name);
-            CreadUI_FGUI(directoryInfo, name,true);
+            Debug.LogFormat("[MVC_AudioCread]开始生成{0}MVC({1}) 热更代码".AddColor(ColorType.淡青),name,AppConst.UIDriver.ToString());
+
+            string TemplateName = string.Format("UI_{0}Template", AppConst.UIDriver.ToString());
+            CreadUI_GUI(directoryInfo, name, TemplateName,true);
             CreadUICtr(directoryInfo, name, true);
             CreadCtr(directoryInfo, name, true);
             CreadModel(directoryInfo, name, true);
@@ -67,13 +69,11 @@ namespace FutureEditor
 
             Debug.Log("[MVC_AudioCread]MVC 热更代码生成完成".AddColor(ColorType.浅黄));
             return "End";
-
-
         }
 
 
 
-        private static string CreadFGUIMVC(string name)
+        private static string CreadGUIMVC(string name)
         {
           
             string[] names = Directory.GetDirectories(outPath);
@@ -98,8 +98,10 @@ namespace FutureEditor
             }
 
             DirectoryInfo directoryInfo = Directory.CreateDirectory(outPath + @"\" + name);
-            Debug.LogFormat("[MVC_AudioCread]开始生成{0}MVC代码".AddColor(ColorType.淡青), name);
-            CreadUI_FGUI(directoryInfo, name);
+            Debug.LogFormat("[MVC_AudioCread]开始生成{0}MVC代码({1})".AddColor(ColorType.淡青),name,AppConst.UIDriver.ToString());
+
+            string TemplateName = string.Format("UI_{0}Template",AppConst.UIDriver.ToString());
+            CreadUI_GUI(directoryInfo, name,TemplateName);
             CreadUICtr(directoryInfo, name);
             CreadCtr(directoryInfo, name);
             CreadModel(directoryInfo, name);
@@ -111,9 +113,9 @@ namespace FutureEditor
             return "End";
         }
 
-        private static void CreadUI_FGUI(DirectoryInfo directoryInfo, string name,bool isHotFix=false)
-        {   
-            string uiClassStr = File.ReadAllText(templatePath + @"\UI_FGUITemplate.txt");
+        private static void CreadUI_GUI(DirectoryInfo directoryInfo, string name,string templateName, bool isHotFix=false)
+        {       
+            string uiClassStr = File.ReadAllText(string.Format(@"{0}\{1}.txt", templatePath,templateName));
             uiClassStr = uiClassStr.Replace("#ClassName#",name).Replace(
             "#CreateTime#",TimerUtil.GetLacalTimeYMD_HHMMSS());
             string targetPath = directoryInfo.FullName + @"\" + name + "UI.cs";
@@ -127,8 +129,10 @@ namespace FutureEditor
             }
             File.WriteAllText(targetPath, uiClassStr, Encoding.UTF8);
             Debug.Log($"[MVC_AudioCread]{name}UI.cs生成完成".AddColor(ColorType.淡蓝));
-        } 
-        
+        }
+
+
+
         private static void CreadCtr(DirectoryInfo directoryInfo, string name, bool isHotFix = false)
         {   
             string uiClassStr = File.ReadAllText(templatePath + @"\CtrlTemplate.txt");

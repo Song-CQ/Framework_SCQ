@@ -345,8 +345,8 @@
     <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Nodes\Misc\CustomExpressionNode.cs" />
     <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Menu\ShaderLibrary.cs" />
     <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Native\FallbackVector2.cs" />
-    <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Nodes\Constants\ShaderVariables\Transform\Texture0MatrixNode.cs" />
     <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Nodes\LogicalOperators\TFHCCompareGreater.cs" />
+    <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Nodes\Constants\ShaderVariables\Transform\Texture0MatrixNode.cs" />
     <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Utils\ASEPPSHelperTool.cs" />
     <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Utils\ASESaveBundleTool.cs" />
     <Compile Include="Assets\Test\AmplifyShaderEditor\Plugins\Editor\Menu\Tools\ToolsMenuButton.cs" />
@@ -1013,6 +1013,9 @@
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
     </Reference>
     <Reference Include="RainbowCore">
       <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>

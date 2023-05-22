@@ -6,8 +6,8 @@
     功能: #ClassName#UI界面
 *****************************************************/
 using FutureCore;
-using FairyGUI;
-//using UI.G000_#ClassName#;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace #namespace#
 {
@@ -15,8 +15,7 @@ namespace #namespace#
     {
         private #ClassName#UICtrl uiCtrl;
         private #ClassName#Model model;
-        private FGUIEntity f_Entity;
-        //private UI.G000_#ClassName#.UI_#ClassName# ui;
+        private UGUIEntity u_Entity;
 
         public #ClassName#UI(#ClassName#UICtrl ctrl) : base(ctrl)
         {
@@ -26,8 +25,8 @@ namespace #namespace#
 
         protected override void SetUIInfo(UIInfo uiInfo)
         {
-            uiInfo.packageName = "G000_#ClassName#";
-            uiInfo.assetName = "G000_#ClassName#";
+            uiInfo.packageName = "#ClassName#";
+            uiInfo.assetName = "#ClassName#";
             uiInfo.layerType = UILayerType.Normal;
             uiInfo.isNeedOpenAnim = true;
             uiInfo.isNeedCloseAnim = true;
@@ -46,8 +45,8 @@ namespace #namespace#
 
         protected override void OnBind()
         {
-            f_Entity = uiEntity as FGUIEntity;
-            //ui = f_Entity.ui as UI.G000_#ClassName#.UI_#ClassName#;
+            u_Entity = uiEntity as UGUIEntity;
+
         }
 
         protected override void OnOpenBefore(object args)

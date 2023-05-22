@@ -213,15 +213,15 @@ namespace FutureEditor
         private void RefreshUI_CreateTool()
         {
             GUILayout.BeginArea(new Rect(10, 35, 200, 200));
-            GUILayout.Label("MVC");
+            GUILayout.Label("MVC (根据UI驱动类型)");
             GUILayout.BeginVertical();
 
-            if (GUILayout.Button("创建FGUI_MVC代码模版", GUILayout.Height(40), GUILayout.Width(160)))
+            if (GUILayout.Button("创建GUI_MVC代码模版", GUILayout.Height(40), GUILayout.Width(160)))
             {
                 MVC_CreadTool.OpenFGUICread();
                 Close();
             } 
-            if (GUILayout.Button("创建FGUI_MVC代码模版(热更)", GUILayout.Height(40), GUILayout.Width(200)))
+            if (GUILayout.Button("创建GUI_MVC代码模版(热更)", GUILayout.Height(40), GUILayout.Width(200)))
             {
                 MVC_CreadTool.OpenFGUICread_HotFix();
                 Close();

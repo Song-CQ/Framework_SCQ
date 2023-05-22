@@ -16,6 +16,7 @@ namespace FutureCore
         protected ModuleMgr moduleMgr;
 
         protected UICtrlDispatcher uiCtrlDispatcher;
+        protected ModelDispatcher modelDispatcher;
 
         public BaseUICtrl baseUICtrl;
 
@@ -64,6 +65,7 @@ namespace FutureCore
             moduleMgr = ModuleMgr.Instance;
 
             uiCtrlDispatcher = UICtrlDispatcher.Instance;
+            modelDispatcher = ModelDispatcher.Instance;
 
         }
         protected virtual void UnAssignment()

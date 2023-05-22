@@ -473,6 +473,9 @@
     <Reference Include="ILRuntime.Mono.Cecil">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
     </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
+    </Reference>
     <Reference Include="RainbowCore">
       <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
