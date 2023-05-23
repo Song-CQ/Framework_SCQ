@@ -42,10 +42,11 @@ namespace FutureCore
             onComplete?.Invoke();
         }
 
-        public abstract void Dispose();
+        public virtual void Dispose() 
+        {
+            thisName = null;
+        }
    
-
-
 
     }
 }

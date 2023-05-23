@@ -17,10 +17,10 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
          
-            moduleMgr.AddModel(ModelConst.LoadModel, new LoadModel()); 
-            moduleMgr.AddUIType(UIConst.LoadUI, typeof(LoadUI));
+            moduleMgr.AddModel(ModelConst.LoadModel, new LoadingModel()); 
+            moduleMgr.AddUIType(UIConst.LoadUI, typeof(LoadingUI));
             moduleMgr.AddCtrl(CtrlConst.LoadCtrl, new LoadCtrl());      
-            moduleMgr.AddUICtrl(UICtrlConst.LoadUICtrl, new LoadUICtrl());
+            moduleMgr.AddUICtrl(UICtrlConst.LoadUICtrl, new LoadingUICtrl());
 
 
         }

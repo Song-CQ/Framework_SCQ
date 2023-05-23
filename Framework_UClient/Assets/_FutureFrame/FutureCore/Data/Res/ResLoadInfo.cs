@@ -37,8 +37,12 @@ namespace FutureCore
         public Dictionary<string, ResLoadNode> nodeDict = new Dictionary<string, ResLoadNode>();
 
         public ResLoadNode content;
+        /// <summary>
+        /// 是否使用Res加载
+        /// </summary>
+        public bool isResLoad=false;
 
-        public void Start(string[] pathArr, callback fn = null, object fnPara = null, string dataRoot = "")
+        public void Start(string[] pathArr, callback fn = null, object fnPara = null, string dataRoot = "",bool isResLoad = false)
         {
             this.dataRoot = dataRoot;
             this.pathArr = pathArr;
@@ -46,6 +50,7 @@ namespace FutureCore
             this.fnPara = fnPara;
             this.fileCount = pathArr.Length;
             this.IsCompleted = false;
+            this.isResLoad = isResLoad;
             this.LoadAll();
         }
 
@@ -62,7 +67,7 @@ namespace FutureCore
             {
                 ResLoadNode node = ResLoadNode.Get();
                 node.AddLoadCallBack(OnNodeLoaded);
-                node.Load(dataRoot,item);                
+                node.Load(dataRoot,item,isResLoad);                
             }
             
         }

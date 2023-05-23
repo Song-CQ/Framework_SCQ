@@ -39,6 +39,12 @@ namespace FutureCore
 #endif
 
 
+#if UNITY_EDITOR
+        /// <summary>
+        /// AB包编辑器存放目录
+        /// </summary>
+        public static string EditorAssetBundlesPath = Application.persistentDataPath + "/AssetBundles/" + AssetBundlesTarget;
+#endif
 
 
 

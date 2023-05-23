@@ -24,7 +24,7 @@ namespace ProjectApp
        
 
         public GameObject UI { get; private set; }
-        public Transform Transform { get; private set; }
+        public RectTransform Transform { get; private set; }
         public bool Visible { get; private set; }
 
         public UIEventListener UIMask;
@@ -35,8 +35,10 @@ namespace ProjectApp
         public UGUIEntity(GameObject ui)
         {
             UI = ui;
-            Transform = ui.transform;
+            Transform = ui.GetComponent<RectTransform>();
+           
             Visible = true;
+            Name = ui.name;
             ui.gameObject.SetActive(true);
         }
         /// <summary>
@@ -71,9 +73,9 @@ namespace ProjectApp
             return _component as T; 
         }
 
-        public Transform GetTransform(string namePath, bool isCance = true)
+        public RectTransform GetTransform(string namePath, bool isCance = true)
         {
-            return GetComponent<Transform>(namePath, false,isCance);
+            return GetComponent<RectTransform>(namePath, false,isCance);
         }
 
         public GameObject GetGameObject(string namePath, bool isCance = true)
@@ -95,6 +97,11 @@ namespace ProjectApp
             return _go;
         }
 
+        protected override void SetName(string value)
+        {
+            base.SetName(value);
+            Transform.name = value;
+        }
 
         public override void SetVisible(bool State)
         {
@@ -148,6 +155,7 @@ namespace ProjectApp
             UI = null;
             Transform = null;
             Visible = false;
+            base.Dispose();
         }
 
     }

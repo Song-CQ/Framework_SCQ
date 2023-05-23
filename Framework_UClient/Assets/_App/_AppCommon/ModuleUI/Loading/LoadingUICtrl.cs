@@ -3,7 +3,7 @@
     作者: Clear
     日期: 2022/5/3 14:23:13
     类型: MVC_AutoCread
-    功能: LoadUI控制器
+    功能: LoadingUI控制器
 *****************************************************/
 using UnityEngine;
 using FutureCore;
@@ -11,13 +11,13 @@ using System;
 
 namespace ProjectApp
 {
-    public class LoadUICtrl : BaseUICtrl
+    public class LoadingUICtrl : BaseUICtrl
     {
-        private LoadUI ui;
-        private LoadModel model;
+        private LoadingUI ui;
+        private LoadingModel model;
 
-        private uint openUIMsg = UICtrlMsg.LoadUI_Open;
-        private uint closeUIMsg = UICtrlMsg.LoadUI_Close;
+        private uint openUIMsg = UICtrlMsg.LoadingUI_Open;
+        private uint closeUIMsg = UICtrlMsg.LoadingUI_Close;
 
         #region 生命周期
         protected override void OnInit()
@@ -33,9 +33,8 @@ namespace ProjectApp
         {
             if (ui == null)
             {
-                ui = new LoadUI(this);
+                ui = new LoadingUI(this);
                 ui.Open(args);
-                ui.SetLoadingValue(0);
             }
         }
 

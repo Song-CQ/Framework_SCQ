@@ -3,7 +3,7 @@
     作者: Clear
     日期: 2022/5/3 14:23:13
     类型: MVC_AutoCread
-    功能: Load控制器
+    功能: Loading控制器
 *****************************************************/
 using FutureCore;
 using UnityEngine;
@@ -14,7 +14,7 @@ namespace ProjectApp
     {
         public static LoadCtrl Instance { get; private set; }
 
-        private LoadModel model;
+        private LoadingModel model;
 
         #region 生命周期
         protected override void OnInit()

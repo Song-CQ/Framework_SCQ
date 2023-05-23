@@ -22,6 +22,7 @@ namespace ProjectApp
         public FGUIEntity(GComponent _ui)
         {
             UI = _ui;
+            base.SetName(UI.name);
         }
 
         public override void SetVisible(bool arse)
@@ -60,6 +61,7 @@ namespace ProjectApp
         {
             UI.Dispose();
             UI = null;
+            base.Dispose();
         }
     }
 }

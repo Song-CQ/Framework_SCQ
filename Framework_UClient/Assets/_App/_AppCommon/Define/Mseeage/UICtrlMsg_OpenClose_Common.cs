@@ -11,8 +11,8 @@ namespace ProjectApp
     {
         private static uint cursor_UIOpenClose_Common = 110000;
 
-        public static uint LoadUI_Open = ++cursor_UIOpenClose_Common;
-        public static uint LoadUI_Close = ++cursor_UIOpenClose_Common;
+        public static uint LoadingUI_Open = ++cursor_UIOpenClose_Common;
+        public static uint LoadingUI_Close = ++cursor_UIOpenClose_Common;
 
 
     }

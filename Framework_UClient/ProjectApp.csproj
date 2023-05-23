@@ -65,7 +65,7 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\btn_minus.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\FGUI\FGUIDriver.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Extend\ImageExtend.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Load\LoadUI.cs" />
+    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_gift.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Mseeage\CtrlMsg_Base.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A002_loading\com_loading.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="Assets\_App\_AppCommon\Define\Cont\LoadingTrasitionConst.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlMsg_OpenClose_AutoCread.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UICtrlMsg_OpenClose_Common.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Load\LoadModel.cs" />
+    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingModel.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\A001_commonBinder.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Register_AutoCreator\ILRuntimeMgr_Register.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIDriver.cs" />
@@ -101,7 +101,7 @@
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\App\AppManagerRegister.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\AppMain.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\ProjectApplication.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Load\LoadUICtrl.cs" />
+    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUICtrl.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectMain\MainLauncher.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlConst_AutoCread.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIEntity.cs" />
@@ -111,7 +111,7 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModelConst_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsUI.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\SimpleUIMgr\UIWindow.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Load\LoadCtrl.cs" />
+    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingCtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainUICtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />

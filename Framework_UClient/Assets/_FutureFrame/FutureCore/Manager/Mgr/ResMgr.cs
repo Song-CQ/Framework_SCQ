@@ -8,17 +8,17 @@ using Object = UnityEngine.Object;
 
 namespace FutureCore
 {
-    public class ResMgr:BaseMgr<ResMgr>
+    public class ResMgr : BaseMgr<ResMgr>
     {
 
         public TextAsset GetExcelData(string tableName)
         {
-            string path = @"Data\ExcelConfig"+@"\"+tableName;
+            string path = @"Data\ExcelConfig" + @"\" + tableName;
             TextAsset data = Resources.Load<TextAsset>(path);
             return data;
         }
 
-       
+
 
         #region SyncLoad
         public T GetLocalRes<T>(string assetPath) where T : Object
@@ -35,37 +35,75 @@ namespace FutureCore
         }
 
 
-        public void LoadRes(string[] assetPath,ResLoadInfo.callback callback, object callbackPara = null,string rootPath = null)
+        public void LoadRes(string[] assetPath, ResLoadInfo.callback callback, object callbackPara = null, string rootPath = null, bool isRes = false)
         {
-                      
+
             if (rootPath == null)
             {
                 rootPath = PathConst.AssetBundlesPath;
             }
             ResLoadInfo info = ObjectPoolStatic<ResLoadInfo>.Get();
-            info.Start(assetPath, callback, callbackPara, rootPath);
+
+            info.Start(assetPath, callback, callbackPara, rootPath, isRes);
 
 
         }
 
         public void LoadUI(string[] UIName, ResLoadInfo.callback callback, object callbackPara = null)
         {
-            for (int i = 0; i < UIName.Length; i++)
+
+            string rootPath = string.Empty;
+            bool IsRes = false;
+            if (AppConst.IsUseAssetBundlesLoad)
             {
-                if (AppConst.IsUseAssetBundlesLoad)
+                IsRes = false;
+                for (int i = 0; i < UIName.Length; i++)
                 {
                     UIName[i] += ".unity3d";
-                }         
+                }
+               
+                rootPath = PathConst.AssetBundlesPath + "/";
+#if UNITY_EDITOR
+                if (!AppConst.IsUseReleaseAB)
+                {
+                    rootPath = PathConst.EditorAssetBundlesPath;
+                }
+#endif
             }
-            LoadRes(UIName, callback, callbackPara, PathConst.AssetBundlesPath + "/" + AppConst.UIDriver.ToString() + "/");
+            else
+            {
+                IsRes = true;
+
+
+            }
+
+            rootPath = rootPath + AppConst.UIDriver.ToString();
+            LoadRes(UIName, callback, callbackPara, rootPath, IsRes);
         }
         public void LoadUI(string UIName, ResLoadInfo.callback callback, object callbackPara = null)
         {
+            string rootPath = string.Empty;
+            bool IsRes = false;
             if (AppConst.IsUseAssetBundlesLoad)
             {
+                IsRes = false;
                 UIName += ".unity3d";
+                rootPath = PathConst.AssetBundlesPath + "/";
+#if UNITY_EDITOR
+                if (!AppConst.IsUseReleaseAB)
+                {
+                    rootPath = PathConst.EditorAssetBundlesPath;
+                }
+#endif
             }
-            LoadRes(new string[] { UIName }, callback, callbackPara, PathConst.AssetBundlesPath + "/" + AppConst.UIDriver.ToString() + "/");
+            else
+            {
+                IsRes = true;
+
+            }
+
+            rootPath = rootPath + AppConst.UIDriver.ToString();
+            LoadRes(new string[] { UIName }, callback, callbackPara, rootPath, IsRes);
         }
 
         #endregion
@@ -77,14 +115,14 @@ namespace FutureCore
         /// </summary>
         public void UnloadNullReferenceAssets()
         {
-           
+
         }
         /// <summary>
         /// 清除动态缓存
         /// </summary>
         public void ClearDynamicCache()
         {
-            
+
         }
         /// <summary>
         /// 释放Gc资源
@@ -108,13 +146,13 @@ namespace FutureCore
         public void InitAssets()
         {
             ////检测版本资源更新
-            
+
             AppDispatcher.Instance.Dispatch(AppMsg.System_AssetsInitComplete);
         }
 
         public void AddFguiPackage(string packageName, string PackageUIPath)
         {
-             UIPackage.AddPackage(PackageUIPath);
+            UIPackage.AddPackage(PackageUIPath);
         }
 
         #endregion
@@ -152,5 +190,7 @@ namespace FutureCore
         public void GetResult() { }
     }
 
+
+ 
 }
 

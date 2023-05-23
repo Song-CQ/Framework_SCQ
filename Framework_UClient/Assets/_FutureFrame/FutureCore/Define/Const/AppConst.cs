@@ -36,6 +36,10 @@ namespace FutureCore
         /// 是否要使用AB包加载资源
         /// </summary>
         public const bool IsUseAssetBundlesLoad = false;
+        /// <summary>
+        /// 是否要使用正式安装路径下的ab包加载资源（false使用ab打包工具的输出路径编辑器有效）
+        /// </summary>
+        public const bool IsUseReleaseAB = false;
 
         // 是否是开发构建
         public const bool IsDevelopmentBuild = false;

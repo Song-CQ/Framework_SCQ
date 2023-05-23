@@ -37,7 +37,7 @@ namespace FutureCore
         /// </summary>
         public bool IsSuccess { get; private set; } = false;
         /// <summary>
-        /// 是否ab加载
+        /// 是否ab文件
         /// </summary>
         public bool IsABFile { get; private set; } = false;
 
@@ -46,21 +46,26 @@ namespace FutureCore
         /// 加载的数据 如果是ab文件则为空
         /// </summary>
         public UnityEngine.Object Data { get; private set; }
+        /// <summary>
+        /// 是否使用Res文件夹下载
+        /// </summary>
+        public bool IsRes { get; private set; }
 
         private ResourceRequest resource;
 
         public List<loadCallBack> loadCallBackLst = new List<loadCallBack>();
 
 
-        public void Load(string dataRoot, string _relaPath)
+        public void Load(string dataRoot, string _relaPath,bool isRes)
         {
             IsFinish = false;
             IsSuccess = false;
             RelaPath = _relaPath;
             Path = dataRoot + "/" + _relaPath;
             IsABFile = RelaPath.IndexOf(".unity3d") != -1;
+            IsRes = isRes;
 
-            if (AppConst.IsUseAssetBundlesLoad)
+            if (!IsRes)
             {
                 //使用正式ab包加载资源
                 if (IsABFile)
@@ -69,8 +74,14 @@ namespace FutureCore
             else
             {
                 //使用res加载
-
-                resource = Resources.LoadAsync(Path.Substring(0, Path.LastIndexOf(".")));
+                string loadPath = Path;
+                int lastIndex = Path.LastIndexOf(".");
+                if (lastIndex!=-1)
+                {
+                    loadPath = Path.Substring(0,lastIndex);
+                }
+                                
+                resource = Resources.LoadAsync(loadPath);
                 resource.completed += ResLoadNode_completed;
 
             }
@@ -179,7 +190,7 @@ namespace FutureCore
         private void ResLoadNode_completed(AsyncOperation obj)
         {
             IsFinish = true;
-            IsSuccess = resource.isDone;
+            IsSuccess = resource.isDone&& resource.asset!=null;
             if (!IsSuccess)
             {
                 IsFinish = false;

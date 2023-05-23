@@ -3,8 +3,9 @@
     作者: Clear
     日期: 2022/5/3 14:23:13
     类型: MVC_AutoCread
-    功能: LoadUI界面
+    功能: LoadingUI界面
 *****************************************************/
+using DG.Tweening;
 using FutureCore;
 using System;
 using UnityEngine;
@@ -127,21 +128,22 @@ namespace ProjectApp
     */
     #endregion
 
-    public class LoadUI : BaseUI
+    public class LoadingUI : BaseUI
     {
-        private LoadUICtrl uiCtrl;
-        private LoadModel model;
+        private LoadingUICtrl uiCtrl;
+        private LoadingModel model;
         private UGUIEntity u_Entity;
         //to do 代码创建时根据名字创建字符串
         private const string ui_loadingImg_Key = "ui_loading_Img";
-        private const string ui_loadingText_Key = "ui_loadingText_Img";
+        private const string ui_loadingText_Key = "ui_loading_text";
 
         private float currVal;
         private Image loadingImg;
         private Text loadingText;
 
+        private Tweener pdTweener;
 
-        public LoadUI(LoadUICtrl ctrl) : base(ctrl)
+        public LoadingUI(LoadingUICtrl ctrl) : base(ctrl)
         {
             uiName = UIConst.LoadUI;
             this.uiCtrl = ctrl;
@@ -149,7 +151,7 @@ namespace ProjectApp
 
         protected override void SetUIInfo(UIInfo uiInfo)
         {
-            uiInfo.packageName = "Loading";
+            uiInfo.packageName = "Common";
             uiInfo.assetName = "Loading";
             uiInfo.layerType = UILayerType.Loading;
 
@@ -171,12 +173,14 @@ namespace ProjectApp
         {
             u_Entity = uiEntity as UGUIEntity;
 
-            loadingImg = u_Entity.GetComponent<Image>(LoadingImg);
+            loadingImg = u_Entity.GetComponent<Image>(ui_loadingImg_Key);
+            loadingText = u_Entity.GetComponent<Text>(ui_loadingText_Key);
 
         }
 
         protected override void OnOpenBefore(object args)
         {
+            SetLoadingValue(0);
         }
 
         protected override void OnOpen(object args)
@@ -205,7 +209,10 @@ namespace ProjectApp
         public void SetLoadingValue(int v)
         {
             currVal = v;
-            loadingImg.fillAmount = currVal;
+            if (loadingImg)
+            { 
+               loadingImg.fillAmount = currVal;
+            }
         }
         public void SetLoadingValue(int val, float duration, Action cb)
         {
@@ -218,10 +225,14 @@ namespace ProjectApp
                 pdTweener.Kill();
             }
             currVal = val;
-            pdTweener = ui.pb_loading.TweenValue(currVal, duration).OnComplete(() =>
+            pdTweener = DOTween.To(()=>loadingImg.fillAmount,(v)=>loadingImg.fillAmount= v,val,duration);
+            pdTweener.OnComplete(() =>
             {
-                pdGTweener = null;
-                ui.pb_loading.value = currVal; 
+                pdTweener = null;
+                if (loadingImg)
+                {
+                    loadingImg.fillAmount = currVal;
+                }             
                 cb?.Invoke();
             });
 
@@ -229,7 +240,11 @@ namespace ProjectApp
 
         public void SetLoadingMsg(string val)
         {
-            ui.text_severStatus.text = val;
+            if (loadingText)
+            {
+                loadingText.text = val;
+            }
+          
         }
     }
 }

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e77561e3c055334ebc63a1ce37b8b58, type: 3}
   m_Name: ABConfig
   m_EditorClassIdentifier: 
-  outputPath: 
+  outputPath: H:/UnityPro/Framework_SCQ/_Resources/UpData/AssetBundles
   abRoot: Assets/_Res/AssetBundleRes
-  verifyPath: /version.json
-  allBeDependPath: /allBeDependData.json
-  allDependPath: /allDependData.json
+  verifyPath: H:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Config/ABConfig/version.json
+  allBeDependPath: H:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Config/ABConfig/allBeDependData.json
+  allDependPath: H:/UnityPro/Framework_SCQ/Framework_UClient/Assets/_Editor/FutureEditor/Config/ABConfig/allDependData.json
   abOptions: 0
   abPlatform: 13
   isCopyStreamingAssets: 0
   isImputVersion: 0
-  isIncrementalBulie: 0
-  isAutoAddVersion: 0
+  isIncrementalBulie: 1
+  isAutoAddVersion: 1

@@ -161,7 +161,8 @@ namespace FutureCore
         private string MainABName => PathConst.AssetBundlesTarget;
      
         //ab包存放目录
-        private string AssetBundlesPath => PathConst.AssetBundlesPath;
+        private string AssetBundlesPath = PathConst.AssetBundlesPath;
+
 
         protected override void New()
         {
@@ -184,6 +185,13 @@ namespace FutureCore
 
         private void InitMainPackage(object obj)
         {
+#if UNITY_EDITOR
+            if (!AppConst.IsUseReleaseAB)
+            {
+                AssetBundlesPath = PathConst.EditorAssetBundlesPath;
+            }
+#endif
+
             //根据各个平台下的基础路径和主包名加载主包
             AssetBundle mainAB = AssetBundle.LoadFromFile($"{AssetBundlesPath}/{MainABName}");
             //获取主包下的AssetBundleManifest资源文件（存有依赖信息）

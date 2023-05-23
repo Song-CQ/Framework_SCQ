@@ -3,14 +3,14 @@
     作者: Clear
     日期: 2022/5/3 14:23:13
     类型: MVC_AutoCread
-    功能: LoadModel
+    功能: LoadingModel
 *****************************************************/
 using UnityEngine;
 using FutureCore;
 
 namespace ProjectApp
 {
-    public class LoadModel:BaseModel
+    public class LoadingModel:BaseModel
     {
 
         #region 生命周期

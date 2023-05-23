@@ -254,6 +254,7 @@
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\Extension\MailItem.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ConfigBatTool\ConfigBatTool.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\SyncListDrawer.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\FutureEditor_Init.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\UI_FGUITemplate.txt" />

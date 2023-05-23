@@ -12,7 +12,8 @@ namespace FutureCore
             DOTween.SetTweensCapacity(1024, 1024);
             // ����Ĭ�϶���������������
             DOTween.defaultEaseType = Ease.Linear;
-           
+
+            DOTween.logBehaviour = LogBehaviour.Default;
         }
 
 
