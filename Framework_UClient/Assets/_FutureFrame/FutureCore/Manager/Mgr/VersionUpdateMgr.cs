@@ -98,15 +98,7 @@ namespace FutureCore
            
             //版本云端检测更新
             App.SetLoadingSchedule(ProgressState.VersionUpdate);
-            if (AppConst.IsUseAssetBundlesLoad)//应该再判断配置表数据 
-            {
-                CheckServerUpdate();
-            }
-            else
-            {
-                OnUpdateComplete(true);
-            }
-            
+            CheckServerUpdate();
 
         }
 

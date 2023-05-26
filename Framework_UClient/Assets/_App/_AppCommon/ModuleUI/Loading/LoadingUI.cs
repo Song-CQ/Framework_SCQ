@@ -161,6 +161,7 @@ namespace ProjectApp
         protected override void OnInit()
         {
             //model = moduleMgr.GetModel(ModelConst.LoadModel) as LoadModel;
+            SetLoadingValue(0);
         }
 
 
@@ -180,11 +181,13 @@ namespace ProjectApp
 
         protected override void OnOpenBefore(object args)
         {
-            SetLoadingValue(0);
+            
+           
         }
 
         protected override void OnOpen(object args)
         {
+            loadingImg.fillAmount = currVal;
         }
 
         protected override void OnHide()
@@ -225,7 +228,25 @@ namespace ProjectApp
                 pdTweener.Kill();
             }
             currVal = val;
-            pdTweener = DOTween.To(()=>loadingImg.fillAmount,(v)=>loadingImg.fillAmount= v,val,duration);
+            pdTweener = DOTween.To(()=>
+            {
+                if (loadingImg)
+                {
+                    return loadingImg.fillAmount;
+                }
+                else
+                {
+                    return 0;
+                }
+               
+            }
+            ,(v)=>
+            {
+                if (loadingImg)
+                {
+                    loadingImg.fillAmount = v;
+                } 
+            } ,val,duration);
             pdTweener.OnComplete(() =>
             {
                 pdTweener = null;

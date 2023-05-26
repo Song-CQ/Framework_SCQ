@@ -44,7 +44,7 @@ namespace FutureCore
         // 是否是开发构建
         public const bool IsDevelopmentBuild = false;
         // 是否开发模式 (不拷贝资源)
-        public static bool IsDevelopMode = false;
+        public static bool IsDevelopMode = true;
         // 是否热更新模式
         public static bool IsHotUpdateMode = true;
         // 是否开启调试引擎分析器
@@ -170,7 +170,7 @@ namespace FutureCore
 
             if (Application.isEditor)
             {
-                IsDevelopMode = false;
+                IsDevelopMode = true;
             }
             else
             {
