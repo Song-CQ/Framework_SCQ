@@ -24,6 +24,7 @@ namespace FutureEditor
         public static string hotFixOutPath = UnityEditorPathConst.ModuleUIPath_HotFix;
 
         public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template";
+        public static string uguiPrefabPath = Application.dataPath + @"\_Res\Resources\UGUI";
 
 
         public static void OpenFGUICread()
@@ -127,11 +128,42 @@ namespace FutureEditor
             {
                 uiClassStr = uiClassStr.Replace("#namespace#", "ProjectApp");
             }
+            if (AppConst.UIDriver == UIDriverEnem.UGUI)
+            {
+                Fill_UGUICont(name, uiClassStr);
+            }
+            
+
             File.WriteAllText(targetPath, uiClassStr, Encoding.UTF8);
             Debug.Log($"[MVC_AudioCread]{name}UI.cs生成完成".AddColor(ColorType.淡蓝));
         }
 
+        private static string Fill_UGUICont(string name,string uiClassStr)
+        {         
+            GameObject wnd = Resources.Load<GameObject>(string.Format("UGUI/{0}_UIPack/{0}_Wnd",name));
+            if (wnd == null)
+            {
+                wnd = Resources.Load<GameObject>(string.Format("UGUI/Common_UIPack/{0}_Wnd", name));
+            }
+            if (wnd!=null)
+            {
+                string val = string.Empty;
+                
+                foreach (var item in wnd.GetComponentsInChildren<Transform>())
+                {
+                    string item_name = item.name; 
+                    if (item_name.Trim().StartsWith("ui_"))
+                    {
+                        val += string.Format("private const string {0}_Key = \"{0}\";\n", item_name);
+                    }
+                }
 
+                uiClassStr.Replace("#region 控件常量\n#endregion", "#region 控件常量\n" + val+"#endregion");
+            }
+            return uiClassStr;
+
+        }
+        private const string ui_loadingImg_Key = "";
 
         private static void CreadCtr(DirectoryInfo directoryInfo, string name, bool isHotFix = false)
         {   

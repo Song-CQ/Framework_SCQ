@@ -130,12 +130,16 @@ namespace ProjectApp
 
     public class LoadingUI : BaseUI
     {
+        #region 控件常量
+        private const string ui_loadingImg_Key = "ui_loading_Img";
+        private const string ui_loadingText_Key = "ui_loading_text";
+        #endregion
+
         private LoadingUICtrl uiCtrl;
         private LoadingModel model;
         private UGUIEntity u_Entity;
         //to do 代码创建时根据名字创建字符串
-        private const string ui_loadingImg_Key = "ui_loading_Img";
-        private const string ui_loadingText_Key = "ui_loading_text";
+       
 
         private float currVal;
         private Image loadingImg;
