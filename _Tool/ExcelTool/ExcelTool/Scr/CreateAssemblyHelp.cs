@@ -538,6 +538,7 @@ namespace ExcelTool
             string setStaticDataToDic = string.Empty;
             string setDataToDic = string.Empty;
             string init = string.Empty;
+            string reset = string.Empty;
             string setDataModel = string.Empty;
             foreach (var tableName in allStaticVo)
             {
@@ -550,6 +551,7 @@ namespace ExcelTool
                 string setDataVal = "\n            SetExcalData<"+tableName+"VO"+">("+'"'+tableName+'"'+");";
                 setDataToDic += setDataVal;
                 init += "\n            " + className + ".Instance.Init();";
+                reset += "\n            " + className + ".Instance.Reset();";
                 setDataModel += "\n            "+ className + ".Instance.SetData(excelDataStrDic[typeof("+tableName+"VO"+")]"+" as "+tableName+"VO"+"[]);";
             }
             string mgrTempLate = GetTemplateClass("ExcelTool.Data.ExcelDataMgr.cs");
@@ -557,6 +559,7 @@ namespace ExcelTool
             mgrTempLate = mgrTempLate.Replace("#SetStaticDataToDic",setStaticDataToDic);
             mgrTempLate = mgrTempLate.Replace("#SetDataToDic",setDataToDic);
             mgrTempLate = mgrTempLate.Replace("#Init",init);
+            mgrTempLate = mgrTempLate.Replace("#Reset", reset);
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
             WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\VOMgr", "ExcelMgr_AudioCreator", mgrTempLate);
         }

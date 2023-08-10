@@ -21,3 +21,10 @@ D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLi
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.CopyComplete
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.dll
 D:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.pdb
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\BaseVoClassLib.dll
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\BaseVoClassLib.pdb
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.AssemblyReference.cache
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.CoreCompileInputs.cache
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.CopyComplete
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.dll
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.pdb

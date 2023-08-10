@@ -1,12 +1,12 @@
 /****************************************************
-    ÎÄ¼ş: UGUIDriver.cs
-    ×÷Õß: Clear
-    ÈÕÆÚ: 2023/4/23 14:58:37
-    ÀàĞÍ: ¿ò¼ÜºËĞÄ½Å±¾(ÇëÎğĞŞ¸Ä)
-    ¹¦ÄÜ: UGUIÇı¶¯
+    æ–‡ä»¶: UGUIDriver.cs
+    ä½œè€…: Clear
+    æ—¥æœŸ: 2023/4/23 14:58:37
+    ç±»å‹: æ¡†æ¶æ ¸å¿ƒè„šæœ¬(è¯·å‹¿ä¿®æ”¹)
+    åŠŸèƒ½: UGUIé©±åŠ¨
 
-    UIGUI½çÃæÃüÃû¹æ·¶:
-    1:½çÃæ´æ·ÅÂ·¾¶±ØĞëÊÇ /UGUI/XXX(½çÃæ»òÕß°üÃû)_UIPack/½çÃæÃû_Wnd
+    UIGUIç•Œé¢å‘½åè§„èŒƒ:
+    1:ç•Œé¢å­˜æ”¾è·¯å¾„å¿…é¡»æ˜¯ /UGUI/XXX(ç•Œé¢æˆ–è€…åŒ…å)_UIPack/ç•Œé¢å_Wnd
 
 *****************************************************/
 using FutureCore;
@@ -60,7 +60,7 @@ namespace ProjectApp
            
             for (int i = 0; i < UILayerConst.AllUILayer.Length; i++)
             {
-                string name = UILayerConst.AllUILayer[i];//ÆäÊµÃ¿¸öUIlayer¶¼Ó¦¸ÃÊÇ¸öCanvas£¬µ«ÊÇÏÈÕâÑù
+                string name = UILayerConst.AllUILayer[i];//å…¶å®æ¯ä¸ªUIlayeréƒ½åº”è¯¥æ˜¯ä¸ªCanvasï¼Œä½†æ˜¯å…ˆè¿™æ ·
                 RectTransform rtrf = new GameObject(name).AddComponent<RectTransform>();
                 rtrf.SetParent(UIRoot);
                 rtrf.gameObject.layer = LayerMaskConst.UI;
@@ -90,7 +90,7 @@ namespace ProjectApp
 
         public override void Register()
         {
-            //todo ¼ÓÔØÍ¨ÓÃ×ÊÔ´
+            //todo åŠ è½½é€šç”¨èµ„æº
         }
 
 
@@ -119,8 +119,8 @@ namespace ProjectApp
 
         public override void LoadUI(BaseUI baseUI, object args, Action<BaseUI, object> openUIProcess)
         {
-            //todo ºóÃæ¿ÉÒÔ¿¼ÂÇ¶à¸ö½çÃæºÏ²¢¼ÓÔØ
-            //×ÊÔ´°ü
+            //todo åé¢å¯ä»¥è€ƒè™‘å¤šä¸ªç•Œé¢åˆå¹¶åŠ è½½
+            //èµ„æºåŒ…
             string path = GetUIPath(baseUI.uiInfo);
             OpenUIProcess _openUIProcess = ObjectPoolStatic<OpenUIProcess>.Get();
             _openUIProcess.args = args;
@@ -141,7 +141,12 @@ namespace ProjectApp
 
         private void CreateUI(ResLoadInfo res, BaseUI _ui)
         {
-            GameObject uiObj = GameObject.Instantiate(res.content.GetAsset<GameObject>(_ui.uiInfo.assetName));
+            var obj = res.content.GetAsset<GameObject>(_ui.uiInfo.assetName);
+            if (obj==null)
+            {
+                return;
+            }
+            GameObject uiObj = GameObject.Instantiate(obj);
             if (uiObj != null)
             {
                 UGUIEntity uiEntity = new UGUIEntity(uiObj);
@@ -161,7 +166,7 @@ namespace ProjectApp
                 _ui.currUILayer = _ui.uiInfo.layerType;
                 
                 uiLayerWindowDict[_ui.currUILayer].AddChild(uiEntity);
-                //¼ÓÔØ³öÀ´ºóÆ¥Åäµ±Ç°²ã¼¶µÄÊÊÅä
+                //åŠ è½½å‡ºæ¥ååŒ¹é…å½“å‰å±‚çº§çš„é€‚é…
                 uiEntity.Transform.sizeDelta = Vector2.zero;
                 uiEntity.Transform.localPosition = Vector3.zero;
             }
@@ -177,7 +182,7 @@ namespace ProjectApp
 
         private string GetUIPath(UIInfo uIInfo)
         {
-            return uIInfo.packageName+"_UIPack/"+uIInfo.assetName+"_Wnd";
+            return uIInfo.packageName+"_UIPack/"+uIInfo.assetName;
         }
 
         public override void DestroyUI(BaseUI ui)
@@ -218,7 +223,7 @@ namespace ProjectApp
 
             public void AddChild(UGUIEntity entity)
             {
-                entity.Transform.SetParent(r_trf);//¸ü»»ÁË¸¸½ÚµãºóÒªÉèÖÃ sizeDelta
+                entity.Transform.SetParent(r_trf);//æ›´æ¢äº†çˆ¶èŠ‚ç‚¹åè¦è®¾ç½® sizeDelta
                
                 childDic[entity.Name] = entity;
             }

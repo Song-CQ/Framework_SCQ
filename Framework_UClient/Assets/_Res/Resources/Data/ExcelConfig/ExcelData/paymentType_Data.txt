@@ -1,1 +1,0 @@
-[{"payicon":"$","logo_id":[1,13,14],"id":1,"key":"US"},{"payicon":"Rp","logo_id":[15,16,17],"id":2,"key":"ID"},{"payicon":"R$","logo_id":[1,18,19],"id":3,"key":"BR"},{"payicon":"฿","logo_id":[20,21,22],"id":4,"key":"TH"},{"payicon":"€","logo_id":[1,23,24],"id":5,"key":"FR"}]

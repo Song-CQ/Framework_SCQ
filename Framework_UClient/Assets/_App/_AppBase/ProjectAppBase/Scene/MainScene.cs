@@ -99,11 +99,24 @@ namespace ProjectApp
             App.SetLoadingSchedule(ProgressState.ConfigInit);
             AppDispatcher.Instance.AddOnceListener(AppMsg.System_ConfigInitComplete, LoadComplete);
 
-            //to do
-            AppDispatcher.Instance.Dispatch(AppMsg.System_ConfigInitComplete);
+            //to do 读取数据
+
+            LoadConfigInit();
 
         }
 
+        /// <summary>
+        /// 加载Config资源
+        /// </summary>
+        private void LoadConfigInit()
+        {
+            //先重置 再设置
+            ExcelDataMgr.Instance.ResetData();
+
+            ExcelDataMgr.Instance.ReadData();
+            ModuleMgr.Instance.AllModuleReadData();
+            AppDispatcher.Instance.Dispatch(AppMsg.System_ConfigInitComplete);
+        }
         
 
         private void LoadComplete(object o)

@@ -27,12 +27,25 @@ namespace ProjectApp
         public override void Init()
         { 
             base.Init();
+            
+            #Init           
+        }
+
+
+        public void ReadData()
+        {
             #SetStaticDataToDic
             #SetDataToDic
-            #Init
             #SetDataModel
         }
-         
+
+
+        public void ResetData()
+        {           
+            #Reset
+        }
+
+
         public void SetExcalData<T>(string tableName) where T:BaseVO
         {
             TextAsset textAsset = ResMgr.Instance.GetExcelData(@"ExcelData\"+tableName + "_Data");

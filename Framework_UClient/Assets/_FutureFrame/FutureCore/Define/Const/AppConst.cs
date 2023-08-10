@@ -45,8 +45,8 @@ namespace FutureCore
         public const bool IsDevelopmentBuild = false;
         // 是否开发模式 (不拷贝资源)
         public static bool IsDevelopMode = true;
-        // 是否热更新模式
-        public static bool IsHotUpdateMode = true;
+        // 是否热更新代码模式
+        public static bool IsHotUpdateMode = false;
         // 是否开启调试引擎分析器
         public static bool IsEnabledEngineProfiler = false;
         // 是否开启调试应用分析器
@@ -139,7 +139,7 @@ namespace FutureCore
         // 控制器关闭列表
         public static List<string> CtrlDisableList = new List<string>();
 
-        //-----------------------------------------------------����ʱ����-------------------------------------------------------------//
+        //------------------------------------------------------------------------------------------------------------------//
 
 
 

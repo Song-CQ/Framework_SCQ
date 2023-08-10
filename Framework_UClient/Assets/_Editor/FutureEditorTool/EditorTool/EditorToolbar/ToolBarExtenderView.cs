@@ -84,16 +84,17 @@ namespace FutureEditor
 
 		public static void OnToolbarGUILeft()
 		{
-			//ÏÂÃæÖ»ÊÇDemo£¬¿ÉËæ±ã¸ü¸Ä
+			//ä¸‹é¢åªæ˜¯Demoï¼Œå¯éšä¾¿æ›´æ”¹
 			GUILayout.FlexibleSpace();
 			string finalStr = $"AppName : {ProjectApp.AppFacade.AppDesc}";
 
 			GUILayout.Label(finalStr, new GUIStyle("SelectionRect"));
 
 			GUILayout.FlexibleSpace();
-			if (GUILayout.Button(new GUIContent("Play MainScene", EditorGUIUtility.FindTexture("PlayButton"), "Ìø×ªÖ÷³¡¾°²¢²¥·Å")))
+			if (GUILayout.Button(new GUIContent("Play MainScene", EditorGUIUtility.FindTexture("PlayButton"), "è·³è½¬ä¸»åœºæ™¯å¹¶æ’­æ”¾")))
 			{
 				AssetDatabase.Refresh();
+				Debug.Log("TODO :åˆ·æ–°å®Œæˆ");
 				EditorSceneTool.PlayMainScene();
             }
 			
@@ -102,20 +103,20 @@ namespace FutureEditor
 
 		public static void OnToolbarGUIRight()
 		{
-			//ÏÂÃæÖ»ÊÇDemo£¬¿ÉËæ±ã¸ü¸Ä
-			if (GUILayout.Button(new GUIContent(EditorGUIUtility.FindTexture("d_RotateTool On"), "Ë¢ĞÂ±àÒë´úÂë"), /*ToolbarStyles.ToolBarExtenderBtnStyle,*/GUILayout.Width(30)))
+			//ä¸‹é¢åªæ˜¯Demoï¼Œå¯éšä¾¿æ›´æ”¹
+			if (GUILayout.Button(new GUIContent(EditorGUIUtility.FindTexture("d_RotateTool On"), "åˆ·æ–°ç¼–è¯‘ä»£ç "), /*ToolbarStyles.ToolBarExtenderBtnStyle,*/GUILayout.Width(30)))
 			{
 				AssetDatabase.Refresh();
-				Debug.Log("TODO :Ë¢ĞÂÍê³É");
+				Debug.Log("TODO :åˆ·æ–°å®Œæˆ");
 			}
 			GUILayout.Space(10);
 			
-			if (GUILayout.Button(new GUIContent("Test Scene", EditorGUIUtility.FindTexture("Button"), "Ìø×ª²âÊÔ³¡¾°")))
+			if (GUILayout.Button(new GUIContent("Test Scene", EditorGUIUtility.FindTexture("Button"), "è·³è½¬æµ‹è¯•åœºæ™¯")))
 			{
 				EditorSceneTool.LoadTestScene();
 			}
 
-			if (GUILayout.Button(new GUIContent("Open Framework View", EditorGUIUtility.FindTexture("Button"), "´ò¿ª¹¤¾ß½çÃæ")))
+			if (GUILayout.Button(new GUIContent("Open Framework View", EditorGUIUtility.FindTexture("Button"), "æ‰“å¼€å·¥å…·ç•Œé¢")))
 			{
 				FrameworkToolView.OpenFrameworkWin();
 			}
@@ -124,16 +125,16 @@ namespace FutureEditor
 
 			
 
-			//if (GUILayout.Button(new GUIContent("SVN¸üĞÂ", "¸üĞÂµ±Ç°µÄ¿Í»§¶Ë"), ToolbarStyles.ToolBarExtenderBtnStyle))
+			//if (GUILayout.Button(new GUIContent("SVNæ›´æ–°", "æ›´æ–°å½“å‰çš„å®¢æˆ·ç«¯"), ToolbarStyles.ToolBarExtenderBtnStyle))
 			//{
 			//	SVNUtils.UpdateSVNProject();
 
-			//	Debug.Log("TODO : SVN¸üĞÂ");
+			//	Debug.Log("TODO : SVNæ›´æ–°");
 			//}
-			//if (GUILayout.Button(new GUIContent("SVNÌá½»", "Ìá½»¿Í»§¶Ë"), ToolbarStyles.ToolBarExtenderBtnStyle))
+			//if (GUILayout.Button(new GUIContent("SVNæäº¤", "æäº¤å®¢æˆ·ç«¯"), ToolbarStyles.ToolBarExtenderBtnStyle))
 			//{
 			//	SVNUtils.UpdateCommitProject();
-			//	Debug.Log("TODO : SVNÌá½»");
+			//	Debug.Log("TODO : SVNæäº¤");
 			//}
 			//Time.timeScale = GUILayout.HorizontalSlider(Time.timeScale, 0, 10, new GUIStyle("MiniSliderHorizontal"), new GUIStyle("MinMaxHorizontalSliderThumb"), GUILayout.MinWidth(200), GUILayout.MinHeight(20));
 		}

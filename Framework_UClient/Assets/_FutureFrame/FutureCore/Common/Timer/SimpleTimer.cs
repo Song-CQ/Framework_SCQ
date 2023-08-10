@@ -9,16 +9,24 @@ namespace FutureCore
     {
         private Dictionary<Action, float> mIntervalDic = new Dictionary<Action, float>();
         private List<Action> triggers = new List<Action>();
+        private float currTime;
 
+        public SimpleTimer()
+        {
+            currTime = 0;
+        }
 
         public void Update()
         {
+
+            UpdateTime();
+
             if (mIntervalDic.Count > 0)
             {
                 triggers.Clear();
                 foreach (var task in mIntervalDic)
                 {
-                    if (task.Value >= GetTime())
+                    if (GetTime() >= task.Value)
                     {
                         triggers.Add(task.Key);
                     }
@@ -82,7 +90,12 @@ namespace FutureCore
 
         private float GetTime()
         {
-            return Time.time;
+            return currTime;
         }
+        private void UpdateTime()
+        {
+            currTime += Time.deltaTime;
+        }
+
     }
 }

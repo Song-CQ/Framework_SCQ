@@ -25,12 +25,12 @@ namespace ProjectApp
 
         protected override void SetUIInfo(UIInfo uiInfo)
         {
-            uiInfo.packageName = "G004_main";
-            uiInfo.assetName = "com_main";
+            uiInfo.packageName = "Main";
+            uiInfo.assetName = "Main_Wnd";
             uiInfo.layerType = UILayerType.Normal;
             uiInfo.isNeedOpenAnim = true;
             uiInfo.isNeedCloseAnim = true;
-            uiInfo.isNeedUIMask = true;
+           
         }
 
         #region 生命周期

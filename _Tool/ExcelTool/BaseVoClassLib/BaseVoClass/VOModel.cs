@@ -35,14 +35,17 @@ namespace ProjectApp.Data
 
         public override void Reset()
         {
-            
+            m_idDic.Clear();
+            m_keyDic.Clear();
+            m_voLst.Clear();
         }
         
         public override void Dispose()
         {
-            m_idDic.Clear();
-            m_keyDic.Clear();
-            m_voLst.Clear();
+            Reset();
+            m_idDic = null;
+            m_keyDic = null;
+            m_voLst = null;
         }
         
         public void SetData(VOClass[] voLists)

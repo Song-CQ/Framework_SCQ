@@ -27,11 +27,11 @@ namespace FutureEditor
         public static string uguiPrefabPath = Application.dataPath + @"\_Res\Resources\UGUI";
 
 
-        public static void OpenFGUICread()
+        public static void OpenGUICread()
         {
             EditorCreadWnd.ShowWindow("创建 GUI MVC 代码模版", CreadGUIMVC);
         }
-        public static void OpenFGUICread_HotFix()
+        public static void OpenGUICread_HotFix()
         {
             EditorCreadWnd.ShowWindow("创建 GUI MVC 代码模版(热更)", CreadGUIMVC_HotFix);
         }
@@ -163,7 +163,6 @@ namespace FutureEditor
             return uiClassStr;
 
         }
-        private const string ui_loadingImg_Key = "";
 
         private static void CreadCtr(DirectoryInfo directoryInfo, string name, bool isHotFix = false)
         {   

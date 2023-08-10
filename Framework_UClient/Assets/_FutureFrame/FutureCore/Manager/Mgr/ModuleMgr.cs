@@ -161,11 +161,11 @@ namespace FutureCore
             }
             foreach (BaseCtrl ctrl in ctrlDict.Values)
             {
-                ctrl.ReadData();
+                ctrl.GameStart();
             }
             foreach (BaseUICtrl uiCtrl in uiCtrlDict.Values)
             {
-                uiCtrl.ReadData();
+                uiCtrl.GameStart();
             }
             LogUtil.Log("[ModuleMgr]AllModuleGameStart");
         }

@@ -131,7 +131,7 @@ namespace ProjectApp
     public class LoadingUI : BaseUI
     {
         #region 控件常量
-        private const string ui_loadingImg_Key = "ui_loading_Img";
+        private const string ui_loadingImg_Key = "ui_loading_img";
         private const string ui_loadingText_Key = "ui_loading_text";
         #endregion
 
@@ -156,7 +156,7 @@ namespace ProjectApp
         protected override void SetUIInfo(UIInfo uiInfo)
         {
             uiInfo.packageName = "Common";
-            uiInfo.assetName = "Loading";
+            uiInfo.assetName = "Loading_Wnd";
             uiInfo.layerType = UILayerType.Loading;
 
         }

@@ -218,12 +218,12 @@ namespace FutureEditor
 
             if (GUILayout.Button("创建GUI_MVC代码模版", GUILayout.Height(40), GUILayout.Width(160)))
             {
-                MVC_CreadTool.OpenFGUICread();
+                MVC_CreadTool.OpenGUICread();
                 Close();
             } 
             if (GUILayout.Button("创建GUI_MVC代码模版(热更)", GUILayout.Height(40), GUILayout.Width(200)))
             {
-                MVC_CreadTool.OpenFGUICread_HotFix();
+                MVC_CreadTool.OpenGUICread_HotFix();
                 Close();
             }
         

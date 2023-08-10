@@ -1,7 +1,7 @@
 /****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2023/5/21 23:35:23
+    日期：2023/8/10 17:24:31
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -18,7 +18,7 @@ namespace ProjectApp
     {
 
         private Dictionary<Type, BaseVO[]> excelDataStrDic;
-        private const bool isEnciphermentData = false;
+        private const bool isEnciphermentData = true;
         protected override void New()
         {
             excelDataStrDic = new Dictionary<Type,BaseVO[]>();
@@ -27,6 +27,35 @@ namespace ProjectApp
         public override void Init()
         { 
             base.Init();
+            
+            
+            paymentTypeVOModel.Instance.Init();
+            forceAdVOModel.Instance.Init();
+            giftcardVOModel.Instance.Init();
+            bingoRedeemVOModel.Instance.Init();
+            out_PPVOModel.Instance.Init();
+            out_coinVOModel.Instance.Init();
+            out_cashVOModel.Instance.Init();
+            Flop_rewardVOModel.Instance.Init();
+            pickBoxVOModel.Instance.Init();
+            adRewardVOModel.Instance.Init();
+            rollingVOModel.Instance.Init();
+            slotrewardVOModel.Instance.Init();
+            SignDailyRewardVOModel.Instance.Init();
+            Num_probabilityVOModel.Instance.Init();
+            TaskListVOModel.Instance.Init();
+            giftListVOModel.Instance.Init();
+            propVOModel.Instance.Init();
+            piggyVOModel.Instance.Init();
+            GuidanceVOModel.Instance.Init();
+            langVOModel.Instance.Init();
+            ItemVOModel.Instance.Init();
+            turntableVOModel.Instance.Init();           
+        }
+
+
+        public void ReadData()
+        {
             
             pathStaticVO.SetData(GetStaticExcalData<pathStaticVO>("path"));
             CommonStaticVO.SetData(GetStaticExcalData<CommonStaticVO>("Common"));
@@ -54,29 +83,6 @@ namespace ProjectApp
             SetExcalData<ItemVO>("Item");
             SetExcalData<turntableVO>("turntable");
             
-            paymentTypeVOModel.Instance.Init();
-            forceAdVOModel.Instance.Init();
-            giftcardVOModel.Instance.Init();
-            bingoRedeemVOModel.Instance.Init();
-            out_PPVOModel.Instance.Init();
-            out_coinVOModel.Instance.Init();
-            out_cashVOModel.Instance.Init();
-            Flop_rewardVOModel.Instance.Init();
-            pickBoxVOModel.Instance.Init();
-            adRewardVOModel.Instance.Init();
-            rollingVOModel.Instance.Init();
-            slotrewardVOModel.Instance.Init();
-            SignDailyRewardVOModel.Instance.Init();
-            Num_probabilityVOModel.Instance.Init();
-            TaskListVOModel.Instance.Init();
-            giftListVOModel.Instance.Init();
-            propVOModel.Instance.Init();
-            piggyVOModel.Instance.Init();
-            GuidanceVOModel.Instance.Init();
-            langVOModel.Instance.Init();
-            ItemVOModel.Instance.Init();
-            turntableVOModel.Instance.Init();
-            
             paymentTypeVOModel.Instance.SetData(excelDataStrDic[typeof(paymentTypeVO)] as paymentTypeVO[]);
             forceAdVOModel.Instance.SetData(excelDataStrDic[typeof(forceAdVO)] as forceAdVO[]);
             giftcardVOModel.Instance.SetData(excelDataStrDic[typeof(giftcardVO)] as giftcardVO[]);
@@ -100,7 +106,36 @@ namespace ProjectApp
             ItemVOModel.Instance.SetData(excelDataStrDic[typeof(ItemVO)] as ItemVO[]);
             turntableVOModel.Instance.SetData(excelDataStrDic[typeof(turntableVO)] as turntableVO[]);
         }
-         
+
+
+        public void ResetData()
+        {           
+            
+            paymentTypeVOModel.Instance.Reset();
+            forceAdVOModel.Instance.Reset();
+            giftcardVOModel.Instance.Reset();
+            bingoRedeemVOModel.Instance.Reset();
+            out_PPVOModel.Instance.Reset();
+            out_coinVOModel.Instance.Reset();
+            out_cashVOModel.Instance.Reset();
+            Flop_rewardVOModel.Instance.Reset();
+            pickBoxVOModel.Instance.Reset();
+            adRewardVOModel.Instance.Reset();
+            rollingVOModel.Instance.Reset();
+            slotrewardVOModel.Instance.Reset();
+            SignDailyRewardVOModel.Instance.Reset();
+            Num_probabilityVOModel.Instance.Reset();
+            TaskListVOModel.Instance.Reset();
+            giftListVOModel.Instance.Reset();
+            propVOModel.Instance.Reset();
+            piggyVOModel.Instance.Reset();
+            GuidanceVOModel.Instance.Reset();
+            langVOModel.Instance.Reset();
+            ItemVOModel.Instance.Reset();
+            turntableVOModel.Instance.Reset();
+        }
+
+
         public void SetExcalData<T>(string tableName) where T:BaseVO
         {
             TextAsset textAsset = ResMgr.Instance.GetExcelData(@"ExcelData\"+tableName + "_Data");

@@ -55,11 +55,11 @@ namespace ProjectApp
             Component _component = null;
             if (!componentPool.TryGetValue(namePath, out _component))
             {
-                Transform trf = Transform.Find(namePath);
+                Transform trf = Transform.FindTransformByName(namePath);
                 if (trf)
                 {
                     _component = trf.GetComponent<T>();
-                    if (_component&&isAdd)
+                    if (!_component&&isAdd)
                     {
                         _component = trf.gameObject.AddComponent<T>();
                     }
@@ -84,7 +84,7 @@ namespace ProjectApp
             GameObject _go = null;
             if (!gameObjectPool.TryGetValue(namePath, out _go))
             {
-                Transform trf = Transform.Find(namePath);
+                Transform trf = Transform.FindTransformByName(namePath);
                 if (trf)
                 {
                     _go = trf.gameObject;
