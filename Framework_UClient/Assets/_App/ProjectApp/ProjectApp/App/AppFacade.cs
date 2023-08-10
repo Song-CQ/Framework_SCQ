@@ -1,70 +1,70 @@
 namespace ProjectApp
 {
     /// <summary>
-    /// ÏîÄ¿ÅäÊôÊôĞÔ
+    /// é¡¹ç›®é…å±å±æ€§
     /// </summary>
     public static class AppFacade
     {
-        #region Ó¦ÓÃÅäÖÃ
+        #region åº”ç”¨é…ç½®
         /// <summary>
-        /// Ó¦ÓÃ´úºÅ
+        /// åº”ç”¨ä»£å·
         /// </summary>
-        public const string AppName = "Framework";
+        public const string AppName = "Grimore";
 
         /// <summary>
-        /// ÏîÄ¿ÃèÊö
+        /// é¡¹ç›®æè¿°
         /// </summary>
-        public const string AppDesc = "»ù´¡¿ò¼Ü";
+        public const string AppDesc = "æ•…äº‹ä¹¦";
 
         /// <summary>
-        /// °üÃû
+        /// åŒ…å
         /// </summary>
-        public const string PackageName = "com.Framework_SCQ.Test";
+        public const string PackageName = "com.Framework.Grimore";
 
 
         /// <summary>
-        /// ÃÜÔ¿Key
+        /// å¯†é’¥Key
         /// </summary>
         public const string AESKey = "1543065415321000";
 
         /// <summary>
-        /// ÃÜÔ¿IVector
+        /// å¯†é’¥IVector
         /// </summary>
         public const string AESIVector = "1543065415321000";
 
         /// <summary>
-        /// ·şÎñÆ÷±êÇ©
+        /// æœåŠ¡å™¨æ ‡ç­¾
         /// </summary>
        // public const string ServerTag = "test_zef";
 
         /// <summary>
-        /// ÓÎÏ··şÁ¬½Ó×é
+        /// æ¸¸æˆæœè¿æ¥ç»„
         /// </summary>
         //public static string[] WebSocketUrls =
         //{
-        //    "wss://centhadst.pub/sctricard/", // ¹Ù·ş
+        //    "wss://centhadst.pub/sctricard/", // å®˜æœ
         //    "wss://www.centhadst.pub/sctricard/", // AWS CDN
         //    "wss://cloudflare.centhadst.pub/sctricard/", // Cloudflare CDN
         //};
 
         /// <summary>
-        /// Õı·ş¶Ë¿Ú
+        /// æ­£æœç«¯å£
         /// </summary>
         //public const string WebSocketPort = "/8006/";
 
         /// <summary>
-        /// ²â·ş¶Ë¿Ú
+        /// æµ‹æœç«¯å£
         /// </summary>
         //public const string WebSocketTestPort = "/8056/"; //"/8066/";
 
         /// <summary>
-        /// ÓòÃû
+        /// åŸŸå
         /// </summary>
        // public const string Domain = "centhadst.pub";
 
         /// <summary>
-        /// SDK½Ó¿ÚÇ°×º
-        /// ¸ù¾İ²úÆ··¢²¼µÄÕËºÅÀ´ÌîĞ´: solitaire / slidey
+        /// SDKæ¥å£å‰ç¼€
+        /// æ ¹æ®äº§å“å‘å¸ƒçš„è´¦å·æ¥å¡«å†™: solitaire / slidey
         /// </summary>
         //public const string SDKApiPrefix = AppName;
 
@@ -79,17 +79,17 @@ namespace ProjectApp
        // public const string BuglyAppIDForiOS = "7c5289d3ae";
 
         /// <summary>
-        /// ÊÇ·ñÈõÁªÍø
+        /// æ˜¯å¦å¼±è”ç½‘
         /// </summary>
         //public const bool IsWeakNetwork = true;
 
         /// <summary>
-        /// ÊÇ·ñÀëÏßÓÎÏ·
+        /// æ˜¯å¦ç¦»çº¿æ¸¸æˆ
         /// </summary>
         //public const bool IsOfflineGame = true;
 
         /// <summary>
-        /// ×Ô¶¨ÒåSDK
+        /// è‡ªå®šä¹‰SDK
         /// </summary>
 
         //public static ISDK[] CustomSDK = null;
@@ -98,50 +98,50 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ÊÇ·ñÊ¹ÓÃUGameAndroid±àÒë(Ö»Ó°ÏìAndroid±àÒë£¬²»Ó°ÏìiOS±àÒë)
+        /// æ˜¯å¦ä½¿ç”¨UGameAndroidç¼–è¯‘(åªå½±å“Androidç¼–è¯‘ï¼Œä¸å½±å“iOSç¼–è¯‘)
         /// </summary>
         public const bool IsUseUGameAndroid = true;
 
         /// <summary>
-        /// ·şÎñÆ÷×ÊÔ´Â·¾¢
+        /// æœåŠ¡å™¨èµ„æºè·¯åŠ²
         /// </summary>
         public const string ServerAssestUrl = "";
         #endregion
 
-        #region ·½·¨
+        #region æ–¹æ³•
         /// <summary>
-        /// ÏîÄ¿Èë¿Ú
+        /// é¡¹ç›®å…¥å£
         /// </summary>
         public static void MainFunc()
         {
-            // ÉèÖÃ·Ö±æÂÊ
+            // è®¾ç½®åˆ†è¾¨ç‡
             //AppConst.StandardResolution = new Vector2Int(720, 1280);
         }
 
         /// <summary>
-        /// ³õÊ¼»¯Ç° ×Ô¶¨ÒåÏîÄ¿ÉèÖÃ
+        /// åˆå§‹åŒ–å‰ è‡ªå®šä¹‰é¡¹ç›®è®¾ç½®
         /// </summary>
         public static void InitFunc()
         {
-            // ²»Ê¹ÓÃÄÚÖÃÉèÖÃ
+            // ä¸ä½¿ç”¨å†…ç½®è®¾ç½®
             //AppConst.UseInternalSetting = false;
 
-            // ÉèÖÃ¶àÓïÑÔ
+            // è®¾ç½®å¤šè¯­è¨€
             //AppConst.IsMultiLanguage = true;
             //AppConst.DefaultLanguage = "en";
 
-            // ²»ĞèÒªÓÎÏ·ÔØÈë½çÃæ
+            // ä¸éœ€è¦æ¸¸æˆè½½å…¥ç•Œé¢
             //CommonConfig.LoadingUI = false;
-            // ²»ĞèÒªApp¸üĞÂÌáĞÑ
+            // ä¸éœ€è¦Appæ›´æ–°æé†’
             //AppConst.IsNeedPromptAppUpdate = false;
         }
 
         /// <summary>
-        /// Æô¶¯ÓÎÏ· ×Ô¶¨ÒåÏîÄ¿ÉèÖÃ
+        /// å¯åŠ¨æ¸¸æˆ è‡ªå®šä¹‰é¡¹ç›®è®¾ç½®
         /// </summary>
         public static void StartUpFunc()
         {
-            // ±ÈÈç²»ĞèÒªLoadingÑÓ³Ù
+            // æ¯”å¦‚ä¸éœ€è¦Loadingå»¶è¿Ÿ
             //AppConst.ShowLoadingSplashPageTime = 0;
             //AppConst.IsLoadingDelay = false;
             //AppConst.LoadingDelayTime = 0;
@@ -150,11 +150,11 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ¿ªÊ¼ÓÎÏ·Ç° ×Ô¶¨ÒåÏîÄ¿ÉèÖÃ
+        /// å¼€å§‹æ¸¸æˆå‰ è‡ªå®šä¹‰é¡¹ç›®è®¾ç½®
         /// </summary>
         public static void GameStartFunc()
         {
-            // ±ÈÈç²»ĞèÒªÖ÷¿ò¼ÜµÄmainCamera fguiCamera audioListener
+            // æ¯”å¦‚ä¸éœ€è¦ä¸»æ¡†æ¶çš„mainCamera fguiCamera audioListener
             //CameraMgr.Instance.mainCamera.enabled = false;
             //CameraMgr.Instance.fguiCamera.enabled = false;
             //AudioMgr.Instance.audioListener.enabled = false;
