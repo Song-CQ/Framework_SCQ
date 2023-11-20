@@ -147,21 +147,27 @@ namespace FutureEditor
             }
             if (wnd!=null)
             {
-                string val = string.Empty;
-                
-                foreach (var item in wnd.GetComponentsInChildren<Transform>())
-                {
-                    string item_name = item.name; 
-                    if (item_name.Trim().StartsWith("ui_"))
-                    {
-                        val += string.Format("private const string {0}_Key = \"{0}\";\n", item_name);
-                    }
-                }
-
-                uiClassStr.Replace("#region 控件常量\n#endregion", "#region 控件常量\n" + val+"#endregion");
+                string val = Fill_UGUICont(wnd);
+                uiClassStr.Replace("#region 控件常量\n#endregion", "#region 控件常量\n" + val + "#endregion");
             }
+            
             return uiClassStr;
 
+        }
+
+        public static string Fill_UGUICont(GameObject wnd) 
+        {
+            string val = string.Empty;
+
+            foreach (var item in wnd.GetComponentsInChildren<Transform>())
+            {
+                string item_name = item.name;
+                if (item_name.Trim().StartsWith("ui_"))
+                {
+                    val += string.Format("private const string {0}_Key = \"{0}\";\n", item_name);
+                }
+            } 
+            return val;
         }
 
         private static void CreadCtr(DirectoryInfo directoryInfo, string name, bool isHotFix = false)

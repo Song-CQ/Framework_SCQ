@@ -12,13 +12,8 @@ namespace FutureEditor
 {
     public class BuildAssetBundleWnd : EditorWindow
     {
-        [MenuItem("GameObject/[Window]/BuildAssetBundle", false, -100)]
-        private static void GoOpenFrameworkWin()
-        {
-            OpenWnd();
-        }
-
-        [MenuItem("Assets/[Window]/BuildAssetBundle", false, -100), MenuItem("Assets/[Window]", false, -100)]
+    
+        [MenuItem("Assets/[Window]/BuildAssetBundle", false, -100), MenuItem("GameObject/[Window]/BuildAssetBundle", false, -100)]
         private static void AssOpenFrameworkWin()
         {
             OpenWnd();
