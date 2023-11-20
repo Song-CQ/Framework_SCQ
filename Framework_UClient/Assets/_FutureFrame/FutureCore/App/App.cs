@@ -31,8 +31,8 @@ namespace FutureCore
     }
 
     /// <summary>
-    /// ȫ��Ӧ��
-    /// Ӧ�ò��߼�ע�뵽��ܲ�
+    /// app
+    /// 框架外层
     /// </summary>
     public static class App
     {

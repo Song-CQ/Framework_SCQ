@@ -177,8 +177,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\TextField.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\GearIcon.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\TextFormat.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenDeUnityExtended.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\CLR\Utils\Extensions.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenDeUnityExtended.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\DebugSocket.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Intepreter\ILIntepreter.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\MeshEditorEffects\Base\MeshEffectsBase.cs" />
@@ -223,9 +223,9 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Intepreter\OpCodes\OpCodeREnum.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\GearBase.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\CLRBinding\FieldBindingGenerator.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlElement.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\AsyncCreationHelper.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Event\EventBridge.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlElement.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Action\ControllerAction.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\SelectionShape.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GTree.cs" />
