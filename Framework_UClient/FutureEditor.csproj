@@ -69,6 +69,7 @@
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\LitJson\JsonMockWrapper.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\ExecuteInternalMono.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\SequencedChannel.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorUITool\UGUIWnd_EditorView.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Scripts\Examples\04_Inheritance\InheritanceAdapter.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\ConsoleProDebug.cs" />
     <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshFragmentization\MeshFragmentizationInspector.cs" />

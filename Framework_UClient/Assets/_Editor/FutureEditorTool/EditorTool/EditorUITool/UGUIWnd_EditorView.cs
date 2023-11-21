@@ -55,7 +55,7 @@ namespace FutureEditor
 
             if (!text.Contains("#region 控件常量"))
             {
-                Debug.LogError("无控件常量标志:");
+                Debug.LogError("无控件常量标志: #region 控件常量");
                 return;
             }
 
