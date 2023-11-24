@@ -40,7 +40,12 @@ namespace ProjectApp
             InitFguiSettings();
             InitFguiCommonPackages();       
         }
-      
+
+        public override void StartUp()
+        {
+          
+        }
+
         /// <summary>
         /// Fgui基础设置
         /// </summary>
@@ -240,6 +245,6 @@ namespace ProjectApp
             uiLayerWindowDict.Clear();
         }
 
-        
+       
     }
 }

@@ -4,17 +4,17 @@ using UnityEditor;
 
 public class SVNUtils
 {
-    // ¸ù¾İµçÄÔ¾ßÌåµÄÅÌ·ûÀ´¶¨Òå
+    // æ ¹æ®ç”µè„‘å…·ä½“çš„ç›˜ç¬¦æ¥å®šä¹‰
     private static List<string> drives = new List<string>() { "C:", "D:", "E:", "F:", "G:" };
     private static string svnPath = @"\Program Files\TortoiseSVN\bin\";
     private static string svnProc = @"TortoiseProc.exe";
     private static string svnProcPath = "";
-    // ĞèÒª¸üĞÂµÄÄ¿Â¼(´úÂë¡¢Ğ­Òé¡¢ÅäÖÃ¡¢UIµÈ),¸ù¾İ×Ô¼ºµÄÏîÄ¿Çé¿öÀ´ÅäÖÃºÃ
+    // éœ€è¦æ›´æ–°çš„ç›®å½•(ä»£ç ã€åè®®ã€é…ç½®ã€UIç­‰),æ ¹æ®è‡ªå·±çš„é¡¹ç›®æƒ…å†µæ¥é…ç½®å¥½
     private static string Path_SVNProject = "null";
 
 
-    [MenuItem("[FC Tool]/SVNTools/¸üĞÂAssets")]
-    public static void UpdateSVNProject()
+    [MenuItem("[FC Tool]/SVNTools/æ›´æ–°Assets")]
+    public static void UpdateSVNProject_Assets()
     {
         UpdateFromSVN(Path_SVNProject);
     }
@@ -28,10 +28,10 @@ public class SVNUtils
         System.Diagnostics.Process.Start(svnProcPath, updateCall);
     }
 
-    [MenuItem("[FC Tool]/SVNTools/Ìá½»Assets")]
-    public static void UpdateCommitProject()
+    [MenuItem("[FC Tool]/SVNTools/æäº¤Assets")]
+    public static void CommitProject_Assets()
     {
-        CommitToSVN(Path_SVNProject, "Ìá½»AssetsÄ¿Â¼_");
+        CommitToSVN(Path_SVNProject, "æäº¤Assetsç›®å½•_");
     }
 
 

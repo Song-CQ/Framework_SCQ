@@ -18,11 +18,16 @@ namespace FutureEditor
 
 
 
-        [MenuItem("[FC Project]/AutoRegister/自动注册项目", false, -3)]
+        [MenuItem("[FC Tool]/AutoRegister Tool/自动注册项目", false, 31)]
         public static void AutoRegisterAll()
+        {
+            AutoRegisterAll(null);
+        }
+        public static void AutoRegisterAll(Action cb)
         {
             if (EditorUtility.DisplayDialog("自动注册项目", "是否进行自动注册项目", "确认", "取消"))
             {
+                cb?.Invoke();   
                 Debug.Log("[ProjectAutoRegisterTool]自动注册项目开始");
                 Debug.Log("------------------------------------------自注册开始----------------------------------------------------------------");
                 RegisterAutoAssetInAllDirectory();
@@ -31,11 +36,16 @@ namespace FutureEditor
                 AssetDatabase.Refresh();
             }      
         }
-        [MenuItem("[FC Project]/AutoRegister/自动注册(热更)", false, -2)]
+        [MenuItem("[FC Tool]/AutoRegister Tool/自动注册(热更)", false, 32)]
         public static void AutoRegisterAll_HotFix()
+        {
+            AutoRegisterAll_HotFix(null);
+        }
+        public static void AutoRegisterAll_HotFix(Action cb)
         {
             if (EditorUtility.DisplayDialog("自动注册项目(热更)", "是否进行自动注册项目", "确认", "取消"))
             {
+                cb?.Invoke();
                 Debug.Log("[ProjectAutoRegisterTool]自动注册项目开始(热更)");
                 Debug.Log("------------------------------------------自注册开始----------------------------------------------------------------");
                 RegisterAutoAssetInAllDirectory_HotFix();

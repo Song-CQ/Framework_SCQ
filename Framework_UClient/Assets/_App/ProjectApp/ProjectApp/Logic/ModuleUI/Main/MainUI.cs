@@ -14,6 +14,8 @@ namespace ProjectApp
 {
     public class MainUI : BaseUI
     {
+        #region 控件常量
+        #endregion
         private MainUICtrl uiCtrl;
         private MainModel model;
 
@@ -26,7 +28,7 @@ namespace ProjectApp
         protected override void SetUIInfo(UIInfo uiInfo)
         {
             uiInfo.packageName = "Main";
-            uiInfo.assetName = "Main_Wnd";
+            uiInfo.assetName = "Main_Plane";
             uiInfo.layerType = UILayerType.Normal;
             uiInfo.isNeedOpenAnim = true;
             uiInfo.isNeedCloseAnim = true;

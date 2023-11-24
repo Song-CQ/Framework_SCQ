@@ -19,6 +19,9 @@ namespace FutureCore
 
         public abstract void Register();
         public abstract void Init();
+
+        public abstract void StartUp();
+
         public abstract void Dispose();
 
         public abstract void InitUILayer();

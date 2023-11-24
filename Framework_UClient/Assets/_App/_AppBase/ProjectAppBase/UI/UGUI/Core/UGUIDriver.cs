@@ -21,7 +21,7 @@ namespace ProjectApp
 {
     public class UGUIDriver : BaseUIDriver
     {
-        
+
         private Transform UIRoot;
         private Canvas canvas;
         private CanvasScaler canvasScaler;
@@ -36,20 +36,21 @@ namespace ProjectApp
             InitMaskPool();
         }
 
-        
+
 
         private void InitUIRoot()
         {
             canvas = new GameObject("UIRoot").AddComponent<Canvas>();
+            
             UIRoot = canvas.transform;
             UIRoot.gameObject.SetParent(AppObjConst.UIGo);
             UIRoot.localPosition = Vector3.zero;
             UIRoot.gameObject.layer = LayerMaskConst.UI;
-           
+
             canvasScaler = UIRoot.gameObject.AddComponent<CanvasScaler>();
             graphicRaycaster = UIRoot.gameObject.AddComponent<GraphicRaycaster>();
+            
 
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             canvasScaler.referenceResolution = AppConst.UIResolution;
 
@@ -57,23 +58,25 @@ namespace ProjectApp
 
         public override void InitUILayer()
         {
-           
             for (int i = 0; i < UILayerConst.AllUILayer.Length; i++)
             {
                 string name = UILayerConst.AllUILayer[i];//其实每个UIlayer都应该是个Canvas，但是先这样
                 RectTransform rtrf = new GameObject(name).AddComponent<RectTransform>();
+                Canvas _canvas = rtrf.gameObject.AddComponent<Canvas>();
+                rtrf.gameObject.AddComponent<GraphicRaycaster>();
                 rtrf.SetParent(UIRoot);
                 rtrf.gameObject.layer = LayerMaskConst.UI;
-                rtrf.pivot = new Vector2(0.5f,0.5f);
+                rtrf.pivot = new Vector2(0.5f, 0.5f);
                 rtrf.anchorMax = Vector2.one;
                 rtrf.anchorMin = Vector2.zero;
                 rtrf.sizeDelta = Vector2.zero;
 
-                rtrf.localPosition = new Vector3(0,0, i * 1);
+                rtrf.localPosition = new Vector3(0, 0, i * 1);
                 rtrf.localScale = Vector3.one;
                 Window window = new Window() {
                     layerType = (UILayerType)i,
-                    r_trf = rtrf
+                    r_trf = rtrf,
+                    canvas = _canvas
                 };
 
                 uiLayerWindowDict[window.layerType] = window;
@@ -82,9 +85,9 @@ namespace ProjectApp
 
         private void InitMaskPool()
         {
-            UIMgr.Instance.ui_GObjectsPool.SetCallBack_onNew(UIConst.UGUI_Mask,(obj) => {
+            UIMgr.Instance.ui_GObjectsPool.SetCallBack_onNew(UIConst.UGUI_Mask, (obj) => {
                 obj.gameObject.AddComponent<UIEventListener>();
-            
+
             });
         }
 
@@ -93,7 +96,15 @@ namespace ProjectApp
             //todo 加载通用资源
         }
 
+        
+        public override void StartUp()
+        {
+            //设置数据,在startUp流程调用，避免 CameraMgr还未初始化
+            canvas.worldCamera = CameraMgr.Instance.uiCamera;
+            canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            canvas.planeDistance = 10;
 
+        }
         private class OpenUIProcess  
         {
             public object args;
@@ -218,6 +229,7 @@ namespace ProjectApp
         {
             public UILayerType layerType;
             public RectTransform r_trf;
+            public Canvas canvas;
 
             public Dictionary<string, UGUIEntity> childDic = new Dictionary<string, UGUIEntity>();
 

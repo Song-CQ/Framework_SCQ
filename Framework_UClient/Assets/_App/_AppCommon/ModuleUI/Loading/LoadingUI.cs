@@ -156,7 +156,7 @@ namespace ProjectApp
         protected override void SetUIInfo(UIInfo uiInfo)
         {
             uiInfo.packageName = "Common";
-            uiInfo.assetName = "Loading_Wnd";
+            uiInfo.assetName = "Loading_Plane";
             uiInfo.layerType = UILayerType.Loading;
 
         }

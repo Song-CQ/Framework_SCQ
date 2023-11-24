@@ -74,12 +74,20 @@ namespace FutureEditor
 
         #region Assets
         /// <summary>
-        /// 高亮选中路劲
+        /// 高亮选中路劲 Assets资源
         /// </summary>
         /// <param name="path"></param>
         public static void SelectObject_Assets(string path)
         {
             Object obj = AssetDatabase.LoadMainAssetAtPath(path);
+            SelectObject_Assets(obj);
+        }
+        /// <summary>
+        /// 高亮选中路劲
+        /// </summary>
+        /// <param name="path"></param>
+        public static void SelectObject_Assets(Object obj)
+        {            
             if (obj == null) return;
 
             EditorGUIUtility.PingObject(obj);

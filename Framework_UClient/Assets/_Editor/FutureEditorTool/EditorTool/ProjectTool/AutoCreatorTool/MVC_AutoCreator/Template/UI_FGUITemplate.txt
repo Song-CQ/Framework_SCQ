@@ -27,7 +27,7 @@ namespace #namespace#
         protected override void SetUIInfo(UIInfo uiInfo)
         {
             uiInfo.packageName = "G000_#ClassName#";
-            uiInfo.assetName = "G000_#ClassName#";
+            uiInfo.assetName = "G000_#AssetName#";
             uiInfo.layerType = UILayerType.Normal;
             uiInfo.isNeedOpenAnim = true;
             uiInfo.isNeedCloseAnim = true;

@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2533214320738820244}
   m_Layer: 5
-  m_Name: Loading_Wnd
+  m_Name: Loading_Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

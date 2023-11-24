@@ -5,6 +5,7 @@
 	功能：Nothing
 *****************************************************/
 
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,11 +13,18 @@ namespace FutureEditor
 {
     public static class EditorAutoRegisterTool_Editor
     {
-        [MenuItem("[FC Project]/AutoRegister/注册编辑器环境", false, -3)]
+        [MenuItem("[FC Tool]/AutoRegister Tool/注册编辑器环境", false, 30)]
         public static void AutoRegisterAll()
+        {
+            AutoRegisterAll(null);
+        }
+        public static void AutoRegisterAll(Action cb)
         {
             if (EditorUtility.DisplayDialog("注册编辑器环境", "是否注册编辑器环境", "确认", "取消"))
             {
+
+                cb?.Invoke();
+
                 Debug.Log("[EditorEnvironmentAutoRegisterTool]自动注册环境开始");
                 Debug.Log("------------------------------------------自注册开始----------------------------------------------------------------");
                 RegisterStriptTemplate.StartRegisterTemplate();
