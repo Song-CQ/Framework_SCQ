@@ -28,7 +28,7 @@ namespace ProjectApp
 
         public override void Register()
         {          
-            UIRegister_FGUI.AutoRegisterCommonBinder(); 
+            UIRegister_FGUI.AutoRegisterCommonBinder();
             UIRegister_FGUI.AutoRegisterCommonPackages(ref commonPackageList);          
             UIRegister_FGUI.AutoRegisterBinder();
         }

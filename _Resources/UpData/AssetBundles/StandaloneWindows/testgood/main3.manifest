@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 708287778
+CRC: 2606273124
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 45b92b6cf2cc7a27025d5708fc3bf5ee
+    Hash: 1553f516f731431db6c2d839db07b02a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 25b0de44755a2b3dd1af8bc0a7e5588f
+    Hash: 6ddd0004029880f175f763af021af894
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -23,6 +23,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/_AssetBundleRes/TestGood/Main3/sccard_launcher_bg.prefab
+- Assets/_Res/AssetBundleRes/TestGood/Main3/sccard_launcher_bg.prefab
 Dependencies:
-- E:/UnityPro/Framework_SCQ/Framework_UClient/AssetBundles/StandaloneWindows/testgood/main2
+- H:/UnityPro/Framework_SCQ/_Resources/UpData/AssetBundles/StandaloneWindows/testgood/main2

@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="Assets\Test\GameRoodMgr.cs" />
     <Compile Include="Assets\Test\LoadFromFileExample.cs" />
-    <Compile Include="Assets\Test\text.cs" />
     <Compile Include="Assets\Test\editor.cs" />
   </ItemGroup>
   <ItemGroup>

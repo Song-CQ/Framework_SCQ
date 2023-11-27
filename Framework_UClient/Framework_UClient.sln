@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectApp", "ProjectApp.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureFrame", "FutureFrame.csproj", "{8690BC45-7C33-6280-6C0D-F0AC44804CCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCore", "TestCore.csproj", "{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,10 @@ Global
 		{8690BC45-7C33-6280-6C0D-F0AC44804CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8690BC45-7C33-6280-6C0D-F0AC44804CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8690BC45-7C33-6280-6C0D-F0AC44804CCE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

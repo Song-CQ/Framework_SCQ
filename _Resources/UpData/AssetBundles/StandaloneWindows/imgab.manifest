@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2195198132
+CRC: 197386414
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 22316ef40db5a27701b7e7f37e9a0512
+    Hash: 012306e52520d9b7edff11de6ff047bb
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 46bbd9da48cff8d17f0c89eef78da528
+    Hash: 2d8df09e698f722ada1caa03d3413830
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -15,5 +15,5 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/_AssetBundleRes/ImgAB/IMG_20220220_155410.jpg
+- Assets/_Res/AssetBundleRes/ImgAB/IMG_20220220_155410.jpg
 Dependencies: []

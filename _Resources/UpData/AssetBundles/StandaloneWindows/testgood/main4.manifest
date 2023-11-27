@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4186458937
+CRC: 29756192
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5fe37a21f3142ae2471dd81b539b27c8
+    Hash: 74dae1bcb3a781a5c3ccb5a546109a09
   TypeTreeHash:
     serializedVersion: 2
-    Hash: cc27a7c2b7aeda57fe404097db2213c0
+    Hash: b30fce1a9ad74efb72be6c308c56e365
 HashAppended: 0
 ClassTypes:
 - Class: 21
@@ -17,6 +17,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/_AssetBundleRes/TestGood/main4/test_mat.mat
+- Assets/_Res/AssetBundleRes/TestGood/main4/test_mat.mat
 Dependencies:
-- E:/UnityPro/Framework_SCQ/Framework_UClient/AssetBundles/StandaloneWindows/testgood/main2
+- H:/UnityPro/Framework_SCQ/_Resources/UpData/AssetBundles/StandaloneWindows/testgood/main2
