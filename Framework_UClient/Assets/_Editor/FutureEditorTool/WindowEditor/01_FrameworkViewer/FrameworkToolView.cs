@@ -8,12 +8,12 @@ namespace FutureEditor
 {
     public class FrameworkToolView : EditorWindow
     {
-        [MenuItem("GameObject/[Open Tool Window]", false, -1000)]
+        [MenuItem("GameObject/[Open Framework View]", false, -1000)]
         private static void GoOpenFrameworkWin()
         {
             OpenFrameworkWin();
         }
-        [MenuItem("Assets/[Open Tool Window]", false, -1000)]
+        [MenuItem("Assets/[Open Framework View]", false, -1000)]
         private static void AssOpenFrameworkWin()
         {
             OpenFrameworkWin();

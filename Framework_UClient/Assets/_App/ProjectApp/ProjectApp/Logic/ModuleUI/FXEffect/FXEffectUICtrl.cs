@@ -6,6 +6,8 @@
     功能: FXEffectUI控制器
 *****************************************************/
 using FutureCore;
+using System;
+using UnityEngine;
 
 namespace ProjectApp
 {
@@ -43,6 +45,14 @@ namespace ProjectApp
                 ui.Close();
             }
             ui = null;
+        }
+
+        public void PlayEffect(Effect uiEffect, Vector2 obj)
+        {
+            if (ui!=null)
+            {
+                ui.PlayEffect(uiEffect,obj);
+            }
         }
         #endregion
 

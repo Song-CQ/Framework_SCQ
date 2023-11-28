@@ -157,7 +157,7 @@ namespace FutureCore
             }
             else
             {
-                gameObject = GameObject.Instantiate(ResMgr.Instance.GetLocalRes<GameObject>(prefabPath));
+                gameObject = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>(prefabPath));
             }
             if (m_onNew_CallBack.ContainsKey(prefabPath))
             {

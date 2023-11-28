@@ -63,6 +63,9 @@ namespace ProjectApp
                 string name = UILayerConst.AllUILayer[i];//其实每个UIlayer都应该是个Canvas，但是先这样
                 RectTransform rtrf = new GameObject(name).AddComponent<RectTransform>();
                 Canvas _canvas = rtrf.gameObject.AddComponent<Canvas>();
+                canvas.overrideSorting = true;
+                canvas.sortingLayerID = 1 << SortingLayer.GetLayerValueFromName("UI");
+                canvas.sortingOrder = i*10;
                 rtrf.gameObject.AddComponent<GraphicRaycaster>();
                 rtrf.SetParent(UIRoot);
                 rtrf.gameObject.layer = LayerMaskConst.UI;
@@ -103,7 +106,8 @@ namespace ProjectApp
             canvas.worldCamera = CameraMgr.Instance.uiCamera;
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.planeDistance = 10;
-
+            canvas.sortingLayerID = 1 << SortingLayer.GetLayerValueFromName("UI");
+            canvas.sortingOrder = 0;
         }
         private class OpenUIProcess  
         {
@@ -172,7 +176,11 @@ namespace ProjectApp
                     uiEntity.UIMask = mask.GetComponent<UIEventListener>();
                     mask.SetParent(uiEntity.Transform);
                     mask.SetSiblingIndex(0);
+                    mask.anchorMax = Vector2.one;
+                    mask.anchorMin = Vector2.zero;
                     mask.sizeDelta = Vector2.zero;
+                    mask.localPosition = Vector3.zero;
+                    mask.localScale = Vector2.one;
                 }
                 _ui.currUILayer = _ui.uiInfo.layerType;
                 
@@ -180,6 +188,7 @@ namespace ProjectApp
                 //加载出来后匹配当前层级的适配
                 uiEntity.Transform.sizeDelta = Vector2.zero;
                 uiEntity.Transform.localPosition = Vector3.zero;
+                uiEntity.Transform.localScale = Vector3.one;
             }
         }
 

@@ -16,8 +16,8 @@ namespace FutureEditor
     public static class UGUIWnd_EditorView
     {
 
-        [MenuItem("Assets/[EditorTool]/[UGUI Editor]/[更新选中界面组件常量]", priority = -50), 
-            MenuItem("GameObject/[EditorTool]/[UGUI Editor]/[更新选中界面组件常量]", priority = -50)]
+        [MenuItem("Assets/[FC EditorTool]/[UGUI Editor]/[更新选中界面组件常量]", priority = -50), 
+            MenuItem("GameObject/[FC EditorTool]/[UGUI Editor]/[更新选中界面组件常量]", priority = -50)]
         public static void AddUGUIEditorTool()
         {
             GameObject obj = Selection.activeGameObject;
@@ -27,8 +27,8 @@ namespace FutureEditor
             }
             UpdateComponents(obj);
         }
-        [MenuItem("Assets/[EditorTool]/[UGUI Editor]/[更新选中界面组件常量]", priority = -50, validate = true),
-            MenuItem("GameObject/[EditorTool]/[UGUI Editor]/[更新选中界面组件常量]", priority = -50, validate = true)]
+        [MenuItem("Assets/[FC EditorTool]/[UGUI Editor]/[更新选中界面组件常量]", priority = -50, validate = true),
+            MenuItem("GameObject/[FC EditorTool]/[UGUI Editor]/[更新选中界面组件常量]", priority = -50, validate = true)]
         public static bool Check()
         {
             GameObject obj = Selection.activeGameObject;

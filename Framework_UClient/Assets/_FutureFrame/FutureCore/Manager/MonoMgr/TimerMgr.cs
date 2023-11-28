@@ -8,6 +8,16 @@ namespace FutureCore
         
         public SimpleTimer SimpleTimer{ private set; get; }
         public PETimer Timer { private set; get; }
+        /// <summary>
+        /// 每帧执行的事件
+        /// </summary>
+        public static event Action UpData_Event_ToFrame;
+        /// <summary>
+        /// 每秒执行的事件
+        /// </summary>
+        public static event Action UpData_Event_ToSecond;
+        private float timeTemp_Second = 0;
+        
 
         private void InitTimeRood()
         {
@@ -41,6 +51,15 @@ namespace FutureCore
             }
             SimpleTimer.Update();
             Timer.Update();
+
+            UpData_Event_ToFrame?.Invoke();
+            timeTemp_Second += UnityEngine.Time.deltaTime;
+            if (timeTemp_Second >= 1)
+            {
+                timeTemp_Second = 0;
+                UpData_Event_ToSecond?.Invoke();
+            }
+
         }
         
         public override void Dispose()

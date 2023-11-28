@@ -21,7 +21,7 @@ namespace FutureCore
 
 
         #region SyncLoad
-        public T GetLocalRes<T>(string assetPath) where T : Object
+        public T LoadLocalRes<T>(string assetPath) where T : Object
         {
             T asset = Resources.Load<T>(assetPath);
             return asset;

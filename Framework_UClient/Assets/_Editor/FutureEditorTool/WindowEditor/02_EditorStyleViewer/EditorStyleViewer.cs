@@ -10,21 +10,21 @@ namespace FutureEditor
     {
         static EditorWindow window;
 
-        [MenuItem("Assets/[Window]/编辑器内置样式预览器", false, 99)]
+        [MenuItem("Assets/[FC Window]/编辑器内置样式预览器", false, -99)]
 
         static void OpenWindowAss()
         {
             OpenWindow();
         }
 
-        [MenuItem("GameObject/[Window]/编辑器内置样式预览器", false, -99)]
+        [MenuItem("GameObject/[FC Window]/编辑器内置样式预览器", false, -99)]
         private static void GoOpenWindowAss()
         {
             OpenWindow();
         }
 
 
-        [MenuItem("[FC Window]/Editor/编辑器内置样式预览器")]
+        [MenuItem("[FC Window]/编辑器内置样式预览器")]
         static void OpenWindow()
         {
             if (window == null)

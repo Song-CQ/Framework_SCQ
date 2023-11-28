@@ -13,7 +13,7 @@ namespace FutureEditor
     public class BuildAssetBundleWnd : EditorWindow
     {
 
-        [MenuItem("Assets/[Window]/BuildAssetBundle", false, -100), MenuItem("GameObject/[Window]/BuildAssetBundle", false, -100)]
+        [MenuItem("Assets/[FC Window]/打包AssetBundle窗口", false, -100), MenuItem("GameObject/[FC Window]/打包AssetBundle窗口", false, -100)]
         private static void AssOpenFrameworkWin()
         {
             OpenWnd();
@@ -123,7 +123,7 @@ namespace FutureEditor
 
             RestAbRoodData();
         }
-        private string SlideValKey = "BuildAssetBundleWndSlideVal";
+        //private string SlideValKey = "BuildAssetBundleWndSlideVal";
 
 
         private enum ShowType

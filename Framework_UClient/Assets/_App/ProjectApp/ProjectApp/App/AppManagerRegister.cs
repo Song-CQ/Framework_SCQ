@@ -2,16 +2,18 @@ using FutureCore;
 
 namespace ProjectApp
 {
+    /// <summary>
+    /// é¡¹ç›®ç®¡ç†å™¨æ³¨å†Œ
+    /// </summary>
     public static class AppManagerRegister
     {
         public static void Register()
         {
             GlobalMgr globalMgr = GlobalMgr.Instance;
             //// Mgr
-            //globalMgr.AddMgr(CameraMgr.Instance);
-            //// MonoMgr
-            //globalMgr.AddMgr(AudioMgr.Instance);
+            
             globalMgr.AddMgr(UIMgr.Instance);
+            globalMgr.AddMgr(UI_EffectManager.Instance);
         }
 
         public static void RegisterData()
@@ -35,6 +37,9 @@ namespace ProjectApp
         
         public static void StartUpAfterRegister()
         {
+            TimerMgr.UpData_Event_ToFrame += MainThreadLog.LoopLog;
+
+
         }
 
         private static void RegisterPermanentAssets()
@@ -62,7 +67,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ×¢²áUIºËĞÄÇı¶¯
+        /// æ³¨å†ŒUIæ ¸å¿ƒé©±åŠ¨
         /// </summary>
         public static void RegisterUIDriver()
         {

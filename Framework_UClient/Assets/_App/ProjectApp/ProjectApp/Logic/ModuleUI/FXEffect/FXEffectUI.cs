@@ -6,6 +6,7 @@
     功能: FXEffectUI界面
 *****************************************************/
 using FutureCore;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,16 +30,17 @@ namespace ProjectApp
         {
             uiInfo.packageName = "FXEffect";
             uiInfo.assetName = "FXEffect_Plane";
-            uiInfo.layerType = UILayerType.Normal;
-            uiInfo.isNeedOpenAnim = true;
-            uiInfo.isNeedCloseAnim = true;
-            uiInfo.isNeedUIMask = true;
+            uiInfo.layerType = UILayerType.Animation;
+            uiInfo.isNeedOpenAnim = false;
+            uiInfo.isNeedCloseAnim = false;
+            uiInfo.isNeedUIMask = false;
+            
         }
 
         #region 生命周期
         protected override void OnInit()
         {
-            //model = moduleMgr.GetModel(ModelConst.FXEffectModel) as FXEffectModel;
+            model = moduleMgr.GetModel(ModelConst.FXEffectModel) as FXEffectModel;
         }
 
         protected override void OnClose()
@@ -48,7 +50,16 @@ namespace ProjectApp
         protected override void OnBind()
         {
             u_Entity = uiEntity as UGUIEntity;
+            
+        }
 
+        public void PlayEffect(Effect uiEffect, Vector2 screenPot)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(u_Entity.Transform, screenPot, CameraMgr.Instance.uiCamera, out Vector2 LocalPoint);
+            uiEffect.entity.transform.SetParent(u_Entity.Transform);
+            uiEffect.entity.transform.localPosition = LocalPoint;
+            uiEffect.entity.transform.localScale = Vector3.one;
+            uiEffect.Play();
         }
 
         protected override void OnOpenBefore(object args)

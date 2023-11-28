@@ -10,7 +10,7 @@ namespace FutureCore
         private static string name = "TimerUtil";
         
         private static SimpleTimer _SimpleTimer;
-        private static PETimer _PETimer;
+        private static PETimer _PETimer;     
 
         public static SimpleTimer Simple
         {
