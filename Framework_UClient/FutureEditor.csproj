@@ -62,11 +62,14 @@
   <ItemGroup>
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\Curve\CurveMain.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\LoopList\LoopListMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\BuildProcessor.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Scripts\Examples\07_Coroutine\CoroutineAdapter.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\LitJson\Lexer.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phelper\QObjectListManager.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\VirtualList\VirtualListMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\BuildScript.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\LitJson\JsonMockWrapper.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\ExecuteInternalMono.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\SequencedChannel.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorUITool\UGUIWnd_EditorView.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Scripts\Examples\04_Inheritance\InheritanceAdapter.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\TurnPage\FairyBook.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QErrorComponent.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\Emoji\EmojiParser.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\AssetsMenuItem.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\RenderTexture\RenderImage.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\EmitNumbers\EmitComponent.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\ModalWaiting\ModalWaitingMain.cs" />
@@ -115,6 +119,7 @@
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetPeer.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\SyncListDrawer.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Unity_Logs_ViewerEditor\ReporterEditor.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\XAssetDemo\Script\AssetsInit.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Editor\ILRuntimeCLRBinding.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Editor\UIContentScalerEditor.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\Bag\BagMain.cs" />
@@ -143,6 +148,7 @@
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorCoroutineTool\EditorCoroutine.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Editor\UIPainterEditor.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ScriptableObjecTool\ScriptableObjectTool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\Settings.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\EmitNumbers\EmitNumbersMain.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Scripts\Examples\06_CLRBinding\CLRBindingDemo.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QLockComponent.cs" />
@@ -182,10 +188,12 @@
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\RenderTexture\RenderTextureMain.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QVisibilityComponent.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QRendererComponent.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\AssetManifestABDataSource.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\Basics\Window1.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Editor\UIPanelEditor.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\RegisterStriptTemplate.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Scripts\Examples\04_Inheritance\Inheritance.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\LaunchLocalServer.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoRegisterTool\EditorAutoRegisterTool.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Editor\ILRuntimeMenu.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetPeerCollection.cs" />
@@ -206,12 +214,14 @@
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NatPunchModule.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\QHierarchyInitializer.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\LitJson\JsonException.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\XAssetDemo\Script\AssetsUpdate.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Editor\PackagesWindow.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\TurnCard\Card.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolbar\ToolBarExtenderView.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\ILRuntimeMgr_AutoCreator\ILRuntimeMgr_AutoCreator.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Scripts\Examples\08_MonoBehaviour\Editor\MonoBehaviourAdapterEditor.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\Perspetive\PerspectiveMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\XAssetEditor\ManifestInspector.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\pbase\QBaseComponent.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phierarchy\QHierarchy.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetPacketPool.cs" />

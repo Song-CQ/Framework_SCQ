@@ -43,22 +43,22 @@ namespace ProjectApp
 
         private void InputMgr_ClickScreen(Vector2 obj)
         {
-            Effect uiEffect =  GetSimpleUIEffect("testSys");
+            Effect uiEffect =  GetSimpleUIEffect("ClickUIEffect", "UIEffect/ClickUIEffect");
 
             fXEffectUICtrl.PlayEffect(uiEffect,obj);
         }
 
-        private Effect GetSimpleUIEffect(string name)
+        private Effect GetSimpleUIEffect(string effectName,string effectPath)
         {
-            if (!uiEffectPool.ContainsKey(name))
+            if (!uiEffectPool.ContainsKey(effectPath))
             {
-                uiEffectPool[name] = new ObjectPool<Effect>(() => {
-                    EffectEntity effectEntity = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>(name)).GetComponent<EffectEntity>();
+                uiEffectPool[effectPath] = new ObjectPool<Effect>(() => {
+                    EffectEntity effectEntity = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>(effectPath)).GetComponent<EffectEntity>();
                     effectEntity.SetActive(false);
                     EffectData effectData = new EffectData();
                     effectData.stopType = StopType.ParticleSystemStopped_ToMain;
-                    effectData.effectName = name;
-                    effectData.effectPath = name;
+                    effectData.effectName = effectName;
+                    effectData.effectPath = effectPath;
                     Effect effect = new Effect(effectData, effectEntity);
                     effect.Event_Stop_Action += Effect_Event_Stop_Action;
                     return effect;
@@ -66,16 +66,16 @@ namespace ProjectApp
                 
             }
 
-            var poll = uiEffectPool[name];
+            var poll = uiEffectPool[effectPath];
             
             return poll.Get();
         }
 
         private void Effect_Event_Stop_Action(Effect effect)
         {
-            if (uiEffectPool.ContainsKey(effect.data.effectName))
+            if (uiEffectPool.ContainsKey(effect.data.effectPath))
             {
-                uiEffectPool[effect.data.effectName].Release(effect);
+                uiEffectPool[effect.data.effectPath].Release(effect);
             }
 
             effect.entity.transform.SetParent(UIEffectTrf);
