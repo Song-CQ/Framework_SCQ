@@ -9,12 +9,12 @@ namespace ProjectApp
         /// <summary>
         /// 应用代号
         /// </summary>
-        public const string AppName = "Framework";
+        public const string AppName = "Grimore";
 
         /// <summary>
         /// 项目描述
         /// </summary>
-        public const string AppDesc = "框架";
+        public const string AppDesc = "故事书";
 
         /// <summary>
         /// 包名
