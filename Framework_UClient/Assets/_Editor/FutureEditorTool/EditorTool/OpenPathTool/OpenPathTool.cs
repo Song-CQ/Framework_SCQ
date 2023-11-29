@@ -14,7 +14,7 @@ namespace FutureEditor
     {
 
         #region 打开编辑器的路劲
-        [MenuItem("[FC Tool]/Open Path/编辑器的目录", false,30)]
+        [MenuItem("[FC Tool]/Open Path/编辑器的目录", false,10)]
         public static void OpenEditorPath()
         {
             Application.OpenURL(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName+"/..");

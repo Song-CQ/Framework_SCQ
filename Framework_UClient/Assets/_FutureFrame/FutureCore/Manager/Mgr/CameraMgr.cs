@@ -44,24 +44,23 @@ namespace FutureCore
             EngineUtil.Destroy(AppObjConst.CameraGo);
         }
 
-      
+
         private void CreateMainCamera()
         {
             if (mainCamera) return;
-            string name = "MainCamera";
-           
-            GameObject mainRoot = new GameObject(name + "Root");
+         
+            GameObject mainRoot = new GameObject("[MainCameraRoot]");
             mainRoot.SetParent(AppObjConst.CameraGo);
             mainRoot.transform.position = CameraConst.MainCameraPos;
             mainCameraRoot = mainRoot.transform;
 
-            mainCameraGo = new GameObject(name);
+            mainCameraGo = new GameObject("Main_Camera");
             mainCameraGo.SetParent(mainRoot);
             mainCameraGo.transform.localPosition = Vector3.zero;
-            mainCameraGo.tag = name;
+            mainCameraGo.tag = "MainCamera";
             mainCameraGo.layer = LayerMaskConst.Default;
                        
-            mainCamera = CreateCamera(mainCameraGo,LayerMaskConst.Default);
+            mainCamera = CreateCamera(mainCameraGo,LayerMaskConst.Everything);
             mainCamera.clearFlags = CameraClearFlags.SolidColor;
             // 默认不使用后效
             mainCamera.forceIntoRenderTexture = false;
@@ -70,6 +69,11 @@ namespace FutureCore
 
         public void CreadUICamera()
         {
+            GameObject root = new GameObject("[UICameraRoot]");
+            uiCameraRoot = root.transform;
+            root.transform.position = CameraConst.UICameraPos;
+            root.SetParent(AppObjConst.CameraGo);
+
             switch (AppConst.UIDriver)
             {
                 case UIDriverEnem.UGUI:
@@ -82,16 +86,28 @@ namespace FutureCore
                     CreadUICamera_UGUI();
                     break;
             }
-
+            
+           
+            
         }
         
         private void CreadUICamera_UGUI()
         {
-            
+            if (uiCamera) return;
+            uiCamera = CreateCamera(new GameObject("UGUI_Camera"), LayerMaskConst.UI);          
+            uiCamera.depth = CameraConst.UICameraDepth;
+            uiCamera.orthographic = true;
+            uiCamera.orthographicSize = 10;
+
+           
+
+            uiCameraGo = uiCamera.gameObject;
+            uiCameraGo.SetParent(uiCameraRoot);
+            uiCamera.transform.localPosition = Vector3.zero;
+
         }
         private void CreadUICamera_FGUI()
         {
-
             if (uiCamera) return;
 
             StageCamera.DefaultCameraSize = Screen.height / 2 * AppConst.FGUIRatio;
@@ -100,18 +116,10 @@ namespace FutureCore
             StageCamera.CheckMainCamera();
             uiCamera = StageCamera.main;
             // 默认不使用后效
-            uiCamera.forceIntoRenderTexture = false;
-            
+            uiCamera.forceIntoRenderTexture = false;          
             uiCameraGo = uiCamera.gameObject;
-
-            GameObject root = new GameObject("FGUICameraRoot");
-            uiCameraRoot = root.transform;
-            root.transform.position = CameraConst.UICameraPos;
-            root.SetParent(AppObjConst.CameraGo);
-            uiCameraGo.SetParent(root);
-          
-
-           
+            uiCameraGo.SetParent(uiCameraRoot);
+            uiCamera.transform.localPosition = Vector3.zero;
         }
 
         public Camera CreateCamera(GameObject cameraGo, int cullingMask)
@@ -119,7 +127,7 @@ namespace FutureCore
             Camera cameraCom = cameraGo.AddComponent<Camera>();
             cameraCom.clearFlags = CameraClearFlags.Depth;
             cameraCom.backgroundColor = Color.black;
-            cameraCom.cullingMask = cullingMask;
+            cameraCom.cullingMask = 1<<cullingMask;
             cameraCom.nearClipPlane = -30f;
             cameraCom.farClipPlane = 30f;
             cameraCom.rect = new Rect(0, 0, 1f, 1f);
@@ -134,5 +142,7 @@ namespace FutureCore
             //cameraCom.allowDynamicResolution = true;
             return cameraCom;
         }
+
+       
     }
 }

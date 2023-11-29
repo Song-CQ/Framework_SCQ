@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2467943214
+CRC: 4243385558
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1e47a853b8695cccc2f0ef061332fc11
+    Hash: 1c0cfdbfc36b75b4b336f5832b2bbbfe
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 46bbd9da48cff8d17f0c89eef78da528
+    Hash: 2d8df09e698f722ada1caa03d3413830
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -15,5 +15,5 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/_AssetBundleRes/TestGood/Main1/play.jpg
+- Assets/_Res/AssetBundleRes/TestGood/Main1/play.jpg
 Dependencies: []

@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件: ModuleMgrRegister.cs
     作者: Clear
-    日期: 2023/5/22 18:8:58
+    日期: 2023/11/29 18:4:58
     类型: 自动创建
     功能: 模块数据注册
 *****************************************************/
@@ -14,6 +14,7 @@ namespace ProjectApp
         public static void AutoRegisterModel()
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
+            moduleMgr.AddModel(ModelConst.FXEffectModel,new FXEffectModel());
             moduleMgr.AddModel(ModelConst.GameModel,new GameModel());
             moduleMgr.AddModel(ModelConst.MainModel,new MainModel());
             moduleMgr.AddModel(ModelConst.TipsModel,new TipsModel());
@@ -23,6 +24,7 @@ namespace ProjectApp
         public static void AutoRegisterUIType()
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
+            moduleMgr.AddUIType(UIConst.FXEffectUI,typeof(FXEffectUI));
             moduleMgr.AddUIType(UIConst.GameUI,typeof(GameUI));
             moduleMgr.AddUIType(UIConst.MainUI,typeof(MainUI));
             moduleMgr.AddUIType(UIConst.TipsUI,typeof(TipsUI));
@@ -32,6 +34,7 @@ namespace ProjectApp
         public static void AutoRegisterCtrl()
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
+            moduleMgr.AddCtrl(CtrlConst.FXEffectCtrl,new FXEffectCtrl());
             moduleMgr.AddCtrl(CtrlConst.GameCtrl,new GameCtrl());
             moduleMgr.AddCtrl(CtrlConst.MainCtrl,new MainCtrl());
             moduleMgr.AddCtrl(CtrlConst.TipsCtrl,new TipsCtrl());
@@ -41,6 +44,7 @@ namespace ProjectApp
         public static void AutoRegisterUICtrl()
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
+            moduleMgr.AddUICtrl(UICtrlConst.FXEffectUICtrl,new FXEffectUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.GameUICtrl,new GameUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.MainUICtrl,new MainUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.TipsUICtrl,new TipsUICtrl());

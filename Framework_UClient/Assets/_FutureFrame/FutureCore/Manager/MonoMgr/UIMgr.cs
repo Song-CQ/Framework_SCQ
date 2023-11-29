@@ -73,8 +73,15 @@ namespace FutureCore
 
             ///驱动初始化
             uiDriver.Init();
-            
-           
+                       
+        }
+
+        public override void StartUp()
+        {
+            base.StartUp();
+
+            ///驱动启动
+            uiDriver.StartUp();
         }
 
         #region Process UI
@@ -177,9 +184,13 @@ namespace FutureCore
 
 
         #endregion
-       
+
         #region API
 
+        public Window GetWindow(UILayerType uILayerType)
+        {
+            return uiDriver.GetWindow(uILayerType);
+        }
 
         #endregion
 
@@ -198,8 +209,6 @@ namespace FutureCore
                 ui.OnUpdate();
             }
         }
-
-
 
         public override void Dispose()
         {

@@ -1,13 +1,9 @@
-Framework_UClient/Library/
-Framework_UClient/Temp/gradleOut/src/main/assets/bin/Data/Managed/System.IO.Compression.dll
-Framework_UClient/Temp/gradleOut/build/intermediates/res/merged/release/mipmap-anydpi-v26_app_icon.xml.flat
-Framework_UClient/Temp/
-_Tool/配置表/~$test.xlsx
-_Tool/配置表/~$test - 副本.xlsx
-_Tool/Unity-Picture-Wall-master/
 Framework_UClient/obj/
 Framework_UClient/.vs/
 Framework_UClient/Logs/
+Framework_UClient/Library/
+Framework_UClient/Temp/
+
+Framework_UClient/Assets/StreamingAssets/build_info
 Framework_UClient/Assets/AmplifyShaderEditor/
-Framework_UClient/Assets/Test/AmplifyShaderEditor/Examples/Built-In/Community Skybox Cubemap Extended/Meshes/LowPoly - FirTree A.FBX
 Framework_UClient/Assets/Test/

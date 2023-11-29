@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1578955568
+CRC: 536078227
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9460f5ea1c08aa1d3e05f8aa754ba698
+    Hash: 47dd2934faa5d6d68afa0c4335778f01
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 46bbd9da48cff8d17f0c89eef78da528
+    Hash: 2d8df09e698f722ada1caa03d3413830
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -15,6 +15,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/_AssetBundleRes/GameRood/GameRood1.jpg
-- Assets/_AssetBundleRes/GameRood/GameRood.jpg
+- Assets/_Res/AssetBundleRes/GameRood/GameRood.jpg
+- Assets/_Res/AssetBundleRes/GameRood/GameRood1.jpg
 Dependencies: []

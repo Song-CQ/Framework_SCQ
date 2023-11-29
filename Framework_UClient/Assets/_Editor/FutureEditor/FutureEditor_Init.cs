@@ -25,7 +25,7 @@ namespace FutureEditor
             ABConfig abConfig = AssetDatabase.LoadAssetAtPath<ABConfig>(abConfigPath);
             if (abConfig != null)
             {
-                PathConst.EditorAssetBundlesPath = abConfig.outputPath  + "/AssetBundles/StandaloneWindows";
+                PathConst.EditorAssetBundlesPath = abConfig.outputPath  + "/StandaloneWindows";
             }
 
         }

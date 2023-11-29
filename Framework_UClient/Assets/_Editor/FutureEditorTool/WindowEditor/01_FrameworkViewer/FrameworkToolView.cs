@@ -8,12 +8,12 @@ namespace FutureEditor
 {
     public class FrameworkToolView : EditorWindow
     {
-        [MenuItem("GameObject/[Open Tool Window]", false, -1000)]
+        [MenuItem("GameObject/[Open Framework View]", false, -1000)]
         private static void GoOpenFrameworkWin()
         {
             OpenFrameworkWin();
         }
-        [MenuItem("Assets/[Open Tool Window]", false, -1000)]
+        [MenuItem("Assets/[Open Framework View]", false, -1000)]
         private static void AssOpenFrameworkWin()
         {
             OpenFrameworkWin();
@@ -23,6 +23,8 @@ namespace FutureEditor
         {
             CreateWindow<FrameworkToolView>("Framework Tool");
         }
+        
+        
 
         private void OnEnable()
         {
@@ -67,8 +69,8 @@ namespace FutureEditor
                 case (int)ShowType.AutoRegisterTool:
                     RefreshUI_AutoRegisterTool();
                     break; 
-                case (int)ShowType.OpenWnidow:
-                    RefreshUI_OpenWnidow();
+                case (int)ShowType.OtherTool:
+                    RefreshUI_OtherTool();
                     break;
             }
         }
@@ -82,7 +84,7 @@ namespace FutureEditor
             GameTool,
             CreateTool,
             AutoRegisterTool,
-            OpenWnidow,
+            OtherTool,
         }
      
         #region UnityTool
@@ -238,33 +240,47 @@ namespace FutureEditor
             GUILayout.BeginArea(new Rect(10, 35, 200, 200));
             if (GUILayout.Button("注册编辑器环境", GUILayout.Height(40), GUILayout.Width(180)))
             {
-                EditorAutoRegisterTool_Editor.AutoRegisterAll();
-                Close();
+                EditorAutoRegisterTool_Editor.AutoRegisterAll(Close);
+               
             }          
             if (GUILayout.Button("自动注册项目数据", GUILayout.Height(40), GUILayout.Width(180)))
             {
-                ProjectAutoRegisterTool.AutoRegisterAll();
-                Close();
+                ProjectAutoRegisterTool.AutoRegisterAll(Close);
+               
             }
             if (GUILayout.Button("自动注册项目模块(热更)", GUILayout.Height(40), GUILayout.Width(180)))
             {
-                ProjectAutoRegisterTool.AutoRegisterAll_HotFix();
-                Close();
+                ProjectAutoRegisterTool.AutoRegisterAll_HotFix(Close);
+                
             }
             GUILayout.EndArea();
         }
 
         #endregion
 
-        #region OpenWnidowTool
-        private void RefreshUI_OpenWnidow()
+        #region OtherTool
+        private void RefreshUI_OtherTool()
         {
-            GUILayout.BeginArea(new Rect(10, 35, 200, 200));
-            if (GUILayout.Button("AssetBundle窗口", GUILayout.Height(40), GUILayout.Width(180)))
+            GUILayout.BeginArea(new Rect(10, 35, 200, 100));
+            GUILayout.Label("[AssetBundle Tool]");
+            if (GUILayout.Button("Open AssetBundles Window", GUILayout.Height(40), GUILayout.Width(180)))
             {
                 BuildAssetBundleWnd.OpenWnd();
                 Close();
             }   
+            GUILayout.EndArea();
+            GUILayout.BeginArea(new Rect(10, 135 , 200, 200));
+            GUILayout.Label("[SVN Tool]");
+            if (GUILayout.Button("更新Assets目录", GUILayout.Height(40), GUILayout.Width(180)))
+            {
+                Close();
+                SVNUtils.UpdateSVNProject_Assets();
+            }
+            if (GUILayout.Button("提交Assets目录", GUILayout.Height(40), GUILayout.Width(180)))
+            {
+                Close();
+                SVNUtils.CommitProject_Assets();
+            }
             GUILayout.EndArea();
         }
         #endregion

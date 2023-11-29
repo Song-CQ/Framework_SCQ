@@ -21,7 +21,10 @@ namespace FutureCore
         public ObjectPool()
         {
         }
-
+        public ObjectPool(Func<T> mFuncOnNew)
+        {
+            m_FuncOnNew = mFuncOnNew;
+        }
         public ObjectPool(Action<T> mActionOnGet, Action<T> mActionOnRelease)
         {
             m_ActionOnGet = mActionOnGet;

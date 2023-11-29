@@ -34,7 +34,7 @@ namespace FutureEditor
 
         private void OnEnable()
         {
-            minSize = new Vector2(280, 140);
+            minSize = new Vector2(280, 150);
             maxSize = minSize;
             name = string.Empty;
             tipsStr = string.Empty;
@@ -47,8 +47,8 @@ namespace FutureEditor
             
             EditorGUILayout.Space();
             EditorGUILayout.BeginVertical();
-            EditorGUILayout.LabelField("请输入要生成的模块名:");
-            GUILayout.Space(5);
+            EditorGUILayout.LabelField("请输入要生成的模块名:"); 
+            EditorGUILayout.LabelField("Tips：模块名不用带UI");
             EditorGUILayout.LabelField(tipsStr);
             GUILayout.Space(5);
             creadName = EditorGUILayout.TextField(creadName, GUILayout.Height(20));               

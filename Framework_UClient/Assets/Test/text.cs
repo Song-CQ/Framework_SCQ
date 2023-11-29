@@ -33,6 +33,15 @@ public class CreateAssetBundles
         }
       
         AssetDatabase.Refresh();
+
+        RectTransform fxRectTrans = null;
+
+        Vector2 fxLocalPos;
+        //RectTransformUtility.ScreenPointToLocalPointInRectangle(fxContainer, tapPos, fxRenderCamera, out fxLocalPos);
+
+
+        //fxRectTrans.anchoredPosition3D = fxLocalPos;
+
     }
 
 

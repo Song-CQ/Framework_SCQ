@@ -1,21 +1,23 @@
 /****************************************************
     文件: GameUI.cs
     作者: Clear
-    日期: 2022/2/7 11:44:43
+    日期: 2023/11/23 20:49:21
     类型: MVC_AutoCread
     功能: GameUI界面
 *****************************************************/
 using FutureCore;
-using FairyGUI;
 using UnityEngine;
-//using UI.G000_Game;
+using UnityEngine.UI;
 
 namespace ProjectApp
 {
     public class GameUI : BaseUI
     {
+        #region 控件常量
+        #endregion
         private GameUICtrl uiCtrl;
         private GameModel model;
+        private UGUIEntity u_Entity;
 
         public GameUI(GameUICtrl ctrl) : base(ctrl)
         {
@@ -25,9 +27,9 @@ namespace ProjectApp
 
         protected override void SetUIInfo(UIInfo uiInfo)
         {
-            uiInfo.packageName = "G000_Game";
-            uiInfo.assetName = "G000_Game";
-            uiInfo.layerType = UILayerType.None;
+            uiInfo.packageName = "Game";
+            uiInfo.assetName = "Game_Plane";
+            uiInfo.layerType = UILayerType.Normal;
             uiInfo.isNeedOpenAnim = true;
             uiInfo.isNeedCloseAnim = true;
             uiInfo.isNeedUIMask = true;
@@ -45,7 +47,8 @@ namespace ProjectApp
 
         protected override void OnBind()
         {
-            //ui = baseUI as UI.G000_Game.UI_Game;
+            u_Entity = uiEntity as UGUIEntity;
+
         }
 
         protected override void OnOpenBefore(object args)

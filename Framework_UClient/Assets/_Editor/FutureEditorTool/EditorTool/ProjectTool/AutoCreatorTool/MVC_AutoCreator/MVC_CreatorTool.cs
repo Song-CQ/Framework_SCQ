@@ -12,19 +12,20 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using FutureCore;
+using UnityEngine.UI;
 
 namespace FutureEditor
 {
     public static class MVC_CreadTool
     {
-        public static string outPath = Application.dataPath +"/../"+ UnityEditorPathConst.ModuleUIPath;
+        public static string outPath =  Application.dataPath +"/../"+ UnityEditorPathConst.ModuleUIPath;
 
         public static string commOutPath = Application.dataPath + "/../" + UnityEditorPathConst.CommonModuleUIPath;
 
         public static string hotFixOutPath = UnityEditorPathConst.ModuleUIPath_HotFix;
 
         public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template";
-        public static string uguiPrefabPath = Application.dataPath + @"\_Res\Resources\UGUI";
+        public static string uguiPrefabPath =  UnityEditorPathConst.ResUGUIPath;
 
 
         public static void OpenGUICread()
@@ -118,7 +119,7 @@ namespace FutureEditor
         {       
             string uiClassStr = File.ReadAllText(string.Format(@"{0}\{1}.txt", templatePath,templateName));
             uiClassStr = uiClassStr.Replace("#ClassName#",name).Replace(
-            "#CreateTime#",TimerUtil.GetLacalTimeYMD_HHMMSS());
+            "#CreateTime#",TimerUtil.GetLacalTimeYMD_HHMMSS()).Replace("#AssetName#", name+ "_Plane");
             string targetPath = directoryInfo.FullName + @"\" + name + "UI.cs";
             if (isHotFix)
             {
@@ -131,6 +132,7 @@ namespace FutureEditor
             if (AppConst.UIDriver == UIDriverEnem.UGUI)
             {
                 Fill_UGUICont(name, uiClassStr);
+                Cread_UGUIWnd_Prefab(name);
             }
             
 
@@ -138,12 +140,75 @@ namespace FutureEditor
             Debug.Log($"[MVC_AudioCread]{name}UI.cs生成完成".AddColor(ColorType.淡蓝));
         }
 
+        private static void Cread_UGUIWnd_Prefab(string name)
+        {
+            
+            if (!Directory.Exists(uguiPrefabPath + @"\" + name + "_UIPack"))
+            {
+                Directory.CreateDirectory(uguiPrefabPath + @"\" + name + "_UIPack");
+            }
+            string prefabPath = uguiPrefabPath + @"\" + name + "_UIPack" + @"\" + name + "_Plane.prefab";
+            if (!File.Exists(prefabPath))
+            {
+                GameObject wndPrefab  = new GameObject(name + "_Plane");
+                RectTransform rectTransform = wndPrefab.AddComponent<RectTransform>();
+
+                wndPrefab.layer = LayerMaskConst.UI;
+                rectTransform.pivot = new Vector2(0.5f,0.5f);
+                rectTransform.anchorMin = Vector2.zero;
+                rectTransform.anchorMax = Vector2.one;
+                rectTransform.sizeDelta = Vector2.zero;
+                rectTransform.anchoredPosition = Vector2.zero;
+                rectTransform.localScale = Vector2.one;
+
+                PrefabUtility.SaveAsPrefabAsset(wndPrefab, prefabPath,out bool success);
+             
+                GameObject.DestroyImmediate(wndPrefab);
+                if (success)
+                {
+                    Debug.Log("创建UI界面预制体成功");
+                }
+                else
+                {
+                    Debug.LogError("创建UI界面预制体失败");
+                }
+
+                GameObject UIRootGo = GameObject.Find("UIRoot");
+                if (!UIRootGo)
+                {
+
+                    UIRootGo = new GameObject("UIRoot");
+                    UIRootGo.AddComponent<RectTransform>();
+                  
+                    
+                    var canvas = UIRootGo.AddComponent<Canvas>();
+                    var UIRoot = UIRootGo.transform;
+
+                    UIRoot.localPosition = Vector3.zero;
+                    UIRoot.gameObject.layer = LayerMaskConst.UI;
+
+                    var canvasScaler = UIRoot.gameObject.AddComponent<CanvasScaler>();
+                   
+                    canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                    canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+                    canvasScaler.referenceResolution = AppConst.UIResolution;
+
+                }
+
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+                GameObject instance = PrefabUtility.InstantiatePrefab(prefab, UIRootGo.transform) as GameObject;              
+                instance.transform.localPosition = Vector3.zero;
+                UnityEditorTool.SelectObject_Assets(instance);
+            }
+
+        }
+
         private static string Fill_UGUICont(string name,string uiClassStr)
         {         
-            GameObject wnd = Resources.Load<GameObject>(string.Format("UGUI/{0}_UIPack/{0}_Wnd",name));
+            GameObject wnd = Resources.Load<GameObject>(string.Format("UGUI/{0}_UIPack/{0}_Plane", name));
             if (wnd == null)
             {
-                wnd = Resources.Load<GameObject>(string.Format("UGUI/Common_UIPack/{0}_Wnd", name));
+                wnd = Resources.Load<GameObject>(string.Format("UGUI/Common_UIPack/{0}_Plane", name));
             }
             if (wnd!=null)
             {
