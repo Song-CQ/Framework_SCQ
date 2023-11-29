@@ -59,12 +59,7 @@ namespace FutureEditor
         /// 存放ABConfig(打包Ab包设置)的路劲 
         /// </summary>
         public readonly static string ABConfigPatn_Assest = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ABConfigPath);
-
-
-        /// <summary>
-        /// 项目解决方案路劲
-        /// </summary>
-        public readonly static string Project_Sin_Path = $"{Application.dataPath}/../{ProjectApp.AppFacade.AppName}_UClient.sln";
+       
 
 
         /// <summary>
