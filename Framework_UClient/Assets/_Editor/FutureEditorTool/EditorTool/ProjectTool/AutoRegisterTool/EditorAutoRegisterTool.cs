@@ -28,12 +28,25 @@ namespace FutureEditor
                 Debug.Log("[EditorEnvironmentAutoRegisterTool]自动注册环境开始");
                 Debug.Log("------------------------------------------自注册开始----------------------------------------------------------------");
                 RegisterStriptTemplate.StartRegisterTemplate();
-
-
+                
 
                 Debug.Log("------------------------------------------自注册完毕----------------------------------------------------------------");
 
-                UnityEditorTool.StartRest("注册环境完成!\n需重启Unity编辑器");
+                
+                if (EditorUtility.DisplayDialog("修改项目文件夹", "是否要重新生成解决方案?", "确认", "取消"))
+                {
+                    EditorApplication.isPlaying = false;
+                    //删除解决方案
+                    UnityEditorTool.DeleteSin();
+                    //设置项目解决方案名字和项目文件夹名字
+                    UnityEditorTool.SetSinNameAndDirName();
+                }
+                else
+                {
+                    UnityEditorTool.StartRest("注册环境完成!\n需重启Unity编辑器");
+                }
+
+                
             }
         }
 

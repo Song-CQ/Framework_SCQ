@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using FutureCore;
+using System.IO;
 
 namespace FutureEditor
 {
@@ -126,7 +127,7 @@ namespace FutureEditor
             GUILayout.Label("Visual Studio Editor", GUILayout.Height(20));
             if (GUILayout.Button("删除VS解决方案", GUILayout.Height(40), GUILayout.Width(100)))
             {
-                DeleteSin();
+                UnityEditorTool.DeleteSin();
             }
             
             GUILayout.EndVertical();
@@ -160,19 +161,7 @@ namespace FutureEditor
 
         }
 
-        private void DeleteSin()
-        {
-            if (FutureCore.FileUtil.DeleteFileOrDirectory(UnityEditorPathConst.Project_Sin_Path))
-            {
-                EditorUtility.DisplayDialog("删除完成!", "请重新打开VS,生成解决方案!", "确定");
-            }
-            else
-            {
-                EditorUtility.DisplayDialog("删除失败!", "请确认是否解决方案和项目名一致或文件不存在!", "确定");
-            }
-
-
-        }
+        
         #endregion
 
         #region ExcelTool

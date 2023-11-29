@@ -51,6 +51,7 @@ namespace FutureEditor
             CreateProcess(m_BatPath, string.Format("\"{0}\" \"{1}\" ", m_UnityPath, m_AssetPath));
             Process.GetCurrentProcess().Kill();
         }
+        
 
         //创建cmd
         public static Process CreateProcess(string cmd, string args, string workingDir = "")
@@ -68,6 +69,54 @@ namespace FutureEditor
             }
             return System.Diagnostics.Process.Start(pStartInfo);
         }
+        /// <summary>
+        /// 删除解决方案
+        /// </summary>
+        /// <returns></returns>
+        public static bool DeleteSin()
+        {
+
+            string[] strings = Directory.GetFiles(Application.dataPath + "/../", "*.sln", SearchOption.TopDirectoryOnly);
+            if (strings.Length <= 0)
+            {
+                EditorUtility.DisplayDialog("删除失败!", "请确认是否解决方案和项目名一致或文件不存在!", "确定");
+                return false;
+            }
+            bool isError = false;
+            foreach (var path in strings)
+            {
+                string Project_Sin_Path = $"{Application.dataPath}/../{ProjectApp.AppFacade.AppName}_UClient.sln";
+                if (!FutureCore.FileUtil.DeleteFileOrDirectory(Project_Sin_Path))
+                {
+                    isError = true;
+                    LogUtil.LogError("删除解决方案失败：" + Project_Sin_Path);
+                }
+
+            }
+            if (!isError)
+            {
+                EditorUtility.DisplayDialog("删除完成!", "请重新打开VS,生成解决方案!", "确定");
+            }
+            return !isError;
+
+        }
+
+        /// <summary>
+        /// 设置项目解决方案名字和项目文件夹名字
+        /// </summary>
+        public static void SetSinNameAndDirName()
+        {
+            string m_UnityPath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            string m_AssetPath = Application.dataPath + "/..";
+            string m_BatPath = Path.GetFullPath(Application.dataPath + @"\..\..\_Tool\UnityTool\SetProjectName_设置项目名字.bat");
+
+            CreateProcess(m_BatPath, string.Format("\"{0}\" \"{1}\" \"{2}\"", m_UnityPath, m_AssetPath, ProjectApp.AppFacade.AppName));
+
+            
+            Process.GetCurrentProcess().Kill();
+
+        }
+
         #endregion
 
 
