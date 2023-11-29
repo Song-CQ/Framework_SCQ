@@ -39,11 +39,7 @@ namespace FutureCore
             entity.SetActive(true);
             StopType stopType = data.stopType;
 
-            if (entity.main_ParticleSystem != null)
-            {
-                entity.main_ParticleSystem.Play();        
-            }
-            else if(stopType == StopType.ParticleSystemStopped_ToMain)
+            if (entity.main_ParticleSystem != null&&stopType == StopType.ParticleSystemStopped_ToMain)
             {
                 stopType = StopType.Default;
             }
@@ -51,7 +47,14 @@ namespace FutureCore
             switch (stopType)
             {
                 case StopType.ParticleSystemStopped_ToMain:
-                    entity.Event_OnParticleSystemStopped += Stopped;
+                    if (entity.main_ParticleSystem != null)
+                    {
+                        ParticleSystem.MainModule mainModule = entity.main_ParticleSystem.main;
+                        mainModule.stopAction = ParticleSystemStopAction.Callback;
+
+                        entity.Event_OnParticleSystemStopped += Stopped;
+                    }
+                                       
                     break;
                 case StopType.Default:
                 default:
@@ -62,6 +65,11 @@ namespace FutureCore
                     break;
             }
 
+            if (entity.main_ParticleSystem != null)
+            {
+                entity.main_ParticleSystem.Play();
+                
+            }
 
 
 

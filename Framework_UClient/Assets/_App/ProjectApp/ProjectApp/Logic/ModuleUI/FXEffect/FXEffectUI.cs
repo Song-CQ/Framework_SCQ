@@ -8,6 +8,7 @@
 using FutureCore;
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace ProjectApp
@@ -59,6 +60,7 @@ namespace ProjectApp
             uiEffect.entity.transform.SetParent(u_Entity.Transform);
             uiEffect.entity.transform.localPosition = LocalPoint;
             uiEffect.entity.transform.localScale = Vector3.one;
+
             uiEffect.Play();
         }
 

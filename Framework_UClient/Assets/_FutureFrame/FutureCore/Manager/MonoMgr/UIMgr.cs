@@ -184,9 +184,13 @@ namespace FutureCore
 
 
         #endregion
-       
+
         #region API
 
+        public Window GetWindow(UILayerType uILayerType)
+        {
+            return uiDriver.GetWindow(uILayerType);
+        }
 
         #endregion
 
@@ -205,8 +209,6 @@ namespace FutureCore
                 ui.OnUpdate();
             }
         }
-
-
 
         public override void Dispose()
         {

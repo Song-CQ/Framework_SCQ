@@ -15,6 +15,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace ProjectApp
@@ -27,7 +28,7 @@ namespace ProjectApp
         private CanvasScaler canvasScaler;
         private GraphicRaycaster graphicRaycaster;
 
-        private Dictionary<UILayerType, Window> uiLayerWindowDict = new Dictionary<UILayerType, Window>();
+        private Dictionary<UILayerType, UGUI_Window> uiLayerWindowDict = new Dictionary<UILayerType, UGUI_Window>();
 
         public override void Init()
         {
@@ -60,13 +61,9 @@ namespace ProjectApp
         {
             for (int i = 0; i < UILayerConst.AllUILayer.Length; i++)
             {
-                string name = UILayerConst.AllUILayer[i];//其实每个UIlayer都应该是个Canvas，但是先这样
-                RectTransform rtrf = new GameObject(name).AddComponent<RectTransform>();
-                Canvas _canvas = rtrf.gameObject.AddComponent<Canvas>();
-                canvas.overrideSorting = true;
-                canvas.sortingLayerID = 1 << SortingLayer.GetLayerValueFromName("UI");
-                canvas.sortingOrder = i*10;
-                rtrf.gameObject.AddComponent<GraphicRaycaster>();
+                string name = UILayerConst.AllUILayer[i];//其实每个UIlayer都应该是个Canvas，但是先这样 
+                RectTransform rtrf = new GameObject(name).AddComponent<RectTransform>();               
+                       
                 rtrf.SetParent(UIRoot);
                 rtrf.gameObject.layer = LayerMaskConst.UI;
                 rtrf.pivot = new Vector2(0.5f, 0.5f);
@@ -76,10 +73,15 @@ namespace ProjectApp
 
                 rtrf.localPosition = new Vector3(0, 0, i * 1);
                 rtrf.localScale = Vector3.one;
-                Window window = new Window() {
+
+                SortingGroup _sortingGroup = rtrf.gameObject.AddComponent<SortingGroup>();
+                _sortingGroup.sortingLayerID = SortingLayer.NameToID("UI");
+                _sortingGroup.sortingOrder = i * 100;
+
+                UGUI_Window window = new UGUI_Window() {
                     layerType = (UILayerType)i,
                     r_trf = rtrf,
-                    canvas = _canvas
+                    sortingGroup = _sortingGroup
                 };
 
                 uiLayerWindowDict[window.layerType] = window;
@@ -106,8 +108,10 @@ namespace ProjectApp
             canvas.worldCamera = CameraMgr.Instance.uiCamera;
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.planeDistance = 10;
-            canvas.sortingLayerID = 1 << SortingLayer.GetLayerValueFromName("UI");
+            canvas.overrideSorting = true;
+            canvas.sortingLayerID = SortingLayer.NameToID("UI");
             canvas.sortingOrder = 0;
+
         }
         private class OpenUIProcess  
         {
@@ -205,6 +209,14 @@ namespace ProjectApp
             return uIInfo.packageName+"_UIPack/"+uIInfo.assetName;
         }
 
+        public override Window GetWindow(UILayerType uILayerType)
+        {
+            if (uiLayerWindowDict.ContainsKey(uILayerType))
+            {
+                return uiLayerWindowDict[uILayerType];
+            }
+            return null;
+        }
         public override void DestroyUI(BaseUI ui)
         {
             UGUIEntity entity = ui.uiEntity as UGUIEntity;
@@ -234,18 +246,19 @@ namespace ProjectApp
             uiLayerWindowDict = null;
         }
 
-        private class Window
+        public class UGUI_Window : Window
         {
             public UILayerType layerType;
             public RectTransform r_trf;
             public Canvas canvas;
+            public SortingGroup sortingGroup;
 
             public Dictionary<string, UGUIEntity> childDic = new Dictionary<string, UGUIEntity>();
 
             public void AddChild(UGUIEntity entity)
             {
                 entity.Transform.SetParent(r_trf);//更换了父节点后要设置 sizeDelta
-               
+                entity.SortingGroup.sortingOrder = sortingGroup.sortingOrder;
                 childDic[entity.Name] = entity;
             }
 
@@ -258,7 +271,7 @@ namespace ProjectApp
                 childDic.Remove(entity.Name);
             }
 
-            public void Dispose()
+            public override void Dispose()
             {
                 r_trf = null;
                 childDic.Clear();

@@ -13,7 +13,7 @@ using ProjectApp.UGUI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using UnityEngine.Rendering;
 
 namespace ProjectApp
 {
@@ -21,10 +21,11 @@ namespace ProjectApp
     {
         private Dictionary<string, Component> componentPool = new Dictionary<string, Component>();
         private Dictionary<string, GameObject> gameObjectPool = new Dictionary<string, GameObject>();
-       
+
 
         public GameObject UI { get; private set; }
         public RectTransform Transform { get; private set; }
+        public SortingGroup SortingGroup { get; private set; }
         public bool Visible { get; private set; }
 
         public UIEventListener UIMask;
@@ -36,7 +37,12 @@ namespace ProjectApp
         {
             UI = ui;
             Transform = ui.GetComponent<RectTransform>();
-           
+
+
+            SortingGroup = ui.GetComponent<SortingGroup>();
+            if (SortingGroup == null) SortingGroup = ui.gameObject.AddComponent<SortingGroup>();
+
+            SortingGroup.sortingLayerID = SortingLayer.NameToID("UI");
             Visible = true;
             Name = ui.name;
             ui.gameObject.SetActive(true);
@@ -49,7 +55,7 @@ namespace ProjectApp
         /// <param name="isAdd">是否要添加</param>
         /// <param name="isCance">是否缓存</param>
         /// <returns></returns>
-        public T GetComponent<T>(string namePath, bool isAdd = true ,bool isCance = true) where T : Component
+        public T GetComponent<T>(string namePath, bool isAdd = true, bool isCance = true) where T : Component
         {
             if (Transform == null) return null;
             Component _component = null;
@@ -59,7 +65,7 @@ namespace ProjectApp
                 if (trf)
                 {
                     _component = trf.GetComponent<T>();
-                    if (!_component&&isAdd)
+                    if (!_component && isAdd)
                     {
                         _component = trf.gameObject.AddComponent<T>();
                     }
@@ -70,12 +76,12 @@ namespace ProjectApp
                     componentPool.Add(namePath, _component);
                 }
             }
-            return _component as T; 
+            return _component as T;
         }
 
         public RectTransform GetTransform(string namePath, bool isCance = true)
         {
-            return GetComponent<RectTransform>(namePath, false,isCance);
+            return GetComponent<RectTransform>(namePath, false, isCance);
         }
 
         public GameObject GetGameObject(string namePath, bool isCance = true)
@@ -106,7 +112,7 @@ namespace ProjectApp
         public override void SetVisible(bool State)
         {
             if (UI == null) return;
-            if (State!=Visible)
+            if (State != Visible)
             {
                 UI.SetActive(State);
                 Visible = State;
@@ -117,13 +123,13 @@ namespace ProjectApp
         {
             if (UI == null) return;
 
-            Transform.localScale =new Vector2(UIMgrConst.OpenUIAnimEffectScale.x, UIMgrConst.OpenUIAnimEffectScale.y);
+            Transform.localScale = new Vector2(UIMgrConst.OpenUIAnimEffectScale.x, UIMgrConst.OpenUIAnimEffectScale.y);
             openUI_tweener = Transform.DOScale(VectorConst.One, UIMgrConst.UIAnimEffectTime).SetEase(Ease.InOutBack);
             onComplete += RestOpenUI_tweener;
             openUI_tweener.onComplete = new TweenCallback(onComplete);
 
-        } 
-        
+        }
+
         public override void CloseUIAnim(Action onComplete)
         {
             if (UI == null) return;
@@ -137,7 +143,7 @@ namespace ProjectApp
         private void RestOpenUI_tweener()
         {
             openUI_tweener = null;
-        } 
+        }
         private void RestColseUI_tweener()
         {
             openUI_tweener = null;
@@ -155,9 +161,10 @@ namespace ProjectApp
             UI = null;
             Transform = null;
             Visible = false;
+            SortingGroup = null;
             base.Dispose();
         }
 
     }
-    
+
 }

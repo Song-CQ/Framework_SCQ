@@ -47,6 +47,8 @@ namespace FutureEditor
         public DefaultAsset FGUIClassPath;
         [Header("存放FGUI的目录")]
         public DefaultAsset ResFGUIPath;
+        [Header("存放UGUI的目录")]
+        public DefaultAsset ResUGUIPath;
         [Header("存放ABConfig的目录")]
         public DefaultAsset ABConfigPath;
 

@@ -47,9 +47,13 @@ namespace FutureEditor
         public readonly static string FGUIClassPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoCreator/FGUI_Script";
 
         /// <summary>
-        /// 存放UI的目录
+        /// 存放FGUI的目录
         /// </summary>   
         public readonly static string ResFGUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ResFGUIPath);
+        /// <summary>
+        /// 存放UGUI预制体的目录
+        /// </summary>  
+        public readonly static string ResUGUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ResUGUIPath);
         
         /// <summary>
         /// 存放ABConfig(打包Ab包设置)的路劲 

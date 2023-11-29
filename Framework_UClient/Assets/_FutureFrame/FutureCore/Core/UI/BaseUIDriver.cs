@@ -26,6 +26,7 @@ namespace FutureCore
 
         public abstract void InitUILayer();
 
+        public abstract Window GetWindow(UILayerType uILayerType);
         public abstract void LoadUI(BaseUI baseUI, object args, Action<BaseUI, object> openUIProcess);
         public abstract void DestroyUI(BaseUI ui);
         public virtual void RegisterDefaultFont(string font)
@@ -35,4 +36,11 @@ namespace FutureCore
 
 
     }
+    public abstract class Window
+    {
+        public UILayerType layerType;
+        public abstract void Dispose();
+        
+    }
 }
+    

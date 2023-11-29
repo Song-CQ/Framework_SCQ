@@ -43,7 +43,7 @@ namespace ProjectApp
 
         private void InputMgr_ClickScreen(Vector2 obj)
         {
-            Effect uiEffect =  GetSimpleUIEffect("ClickUIEffect", "UIEffect/ClickUIEffect");
+            Effect uiEffect =  GetSimpleUIEffect("ClickUIEffect", "Prefabs/Effect/Common_UIEffect/ClickUIEffect");
 
             fXEffectUICtrl.PlayEffect(uiEffect,obj);
         }

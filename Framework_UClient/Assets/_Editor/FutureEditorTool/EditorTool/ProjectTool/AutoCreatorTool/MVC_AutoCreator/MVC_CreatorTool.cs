@@ -18,14 +18,14 @@ namespace FutureEditor
 {
     public static class MVC_CreadTool
     {
-        public static string outPath = Application.dataPath +"/../"+ UnityEditorPathConst.ModuleUIPath;
+        public static string outPath =  Application.dataPath +"/../"+ UnityEditorPathConst.ModuleUIPath;
 
         public static string commOutPath = Application.dataPath + "/../" + UnityEditorPathConst.CommonModuleUIPath;
 
         public static string hotFixOutPath = UnityEditorPathConst.ModuleUIPath_HotFix;
 
         public static string templatePath = Application.dataPath + @"\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template";
-        public static string uguiPrefabPath = Application.dataPath + @"\_Res\Resources\UGUI";
+        public static string uguiPrefabPath =  UnityEditorPathConst.ResUGUIPath;
 
 
         public static void OpenGUICread()
@@ -142,12 +142,12 @@ namespace FutureEditor
 
         private static void Cread_UGUIWnd_Prefab(string name)
         {
-
+            
             if (!Directory.Exists(uguiPrefabPath + @"\" + name + "_UIPack"))
             {
-                Directory.CreateDirectory(uguiPrefabPath+@"\"+ name + "_UIPack");
+                Directory.CreateDirectory(uguiPrefabPath + @"\" + name + "_UIPack");
             }
-            string prefabPath = (uguiPrefabPath + @"\" + name + "_UIPack" + @"\" + name + "_Plane").Replace(Application.dataPath,"Assets")+".prefab";
+            string prefabPath = uguiPrefabPath + @"\" + name + "_UIPack" + @"\" + name + "_Plane.prefab";
             if (!File.Exists(prefabPath))
             {
                 GameObject wndPrefab  = new GameObject(name + "_Plane");

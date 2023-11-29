@@ -13,10 +13,20 @@ using UnityEngine;
 
 namespace ProjectApp
 {
+
+    public class FGUI_Window : FutureCore.Window
+    {
+        public FairyGUI.Window window;
+        public override void Dispose()
+        {
+            
+        }
+    }
+
     public class FGUIDriver : BaseUIDriver
     {
         private Vector2 uiCenterPos;
-        private Dictionary<UILayerType, Window> uiLayerWindowDict = new Dictionary<UILayerType, Window>();
+        private Dictionary<UILayerType, FGUI_Window> uiLayerWindowDict = new Dictionary<UILayerType, FGUI_Window>();
         private List<string> commonPackageList = new List<string>();
 
         private Queue<GGraph> uiMaskCacheQueue = new Queue<GGraph>();
@@ -99,7 +109,7 @@ namespace ProjectApp
             for (int i = 0; i < UILayerConst.AllUILayer.Length; i++)
             {
                 string name = UILayerConst.AllUILayer[i];
-                Window uiLayerWindow = new Window();
+                FairyGUI.Window uiLayerWindow = new FairyGUI.Window();
                 uiLayerWindow.fairyBatching = false;
                 uiLayerWindow.name = name;
                 uiLayerWindow.displayObject.name = name;
@@ -107,7 +117,13 @@ namespace ProjectApp
                 uiLayerWindow.sortingOrder = i * 100;
                 uiLayerWindow.Show();
                 uiLayerWindow.fairyBatching = false;
-                uiLayerWindowDict.Add((UILayerType)i, uiLayerWindow);
+                FGUI_Window fGUI_Window = new FGUI_Window() 
+                {
+                      layerType = (UILayerType)i,
+                      window = uiLayerWindow
+                };
+
+                uiLayerWindowDict.Add((UILayerType)i, fGUI_Window);
             }
         }
         private void AddUIPackage(string packageName)
@@ -157,7 +173,7 @@ namespace ProjectApp
                 uiEntity.UI.AddChildAt(mask,0);
             }
             ui.currUILayer = ui.uiInfo.layerType;
-            uiLayerWindowDict[ui.currUILayer].AddChild(uiEntity.UI);
+            uiLayerWindowDict[ui.currUILayer].window.AddChild(uiEntity.UI);
 
         }
         public override void DestroyUI(BaseUI ui)
@@ -173,7 +189,7 @@ namespace ProjectApp
 
         private void DisposeUI(UILayerType layerType, FGUIEntity fGUIEntity)
         {
-            uiLayerWindowDict[layerType].RemoveChild(fGUIEntity.UI);
+            uiLayerWindowDict[layerType].window.RemoveChild(fGUIEntity.UI);
             fGUIEntity.Dispose();
         }
 
@@ -245,6 +261,15 @@ namespace ProjectApp
             uiLayerWindowDict.Clear();
         }
 
-       
+        public override FutureCore.Window GetWindow(UILayerType uILayerType)
+        {
+            if (uiLayerWindowDict.ContainsKey(uILayerType))
+            {
+                return uiLayerWindowDict[uILayerType];
+            }
+            return null;
+        }
+
+
     }
 }
