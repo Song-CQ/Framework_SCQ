@@ -129,7 +129,7 @@ namespace FutureEditor
             {
                 UnityEditorTool.DeleteSin();
             }
-            
+
             GUILayout.EndVertical();
             GUILayout.EndArea();
 

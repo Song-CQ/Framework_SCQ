@@ -37,16 +37,11 @@ namespace FutureEditor
                 {
                     EditorApplication.isPlaying = false;
                     //删除解决方案
-                    UnityEditorTool.DeleteSin();
-                    //设置项目解决方案名字和项目文件夹名字
-                    UnityEditorTool.SetSinNameAndDirName();
+                    UnityEditorTool.DeleteSin();                    
                 }
-                else
-                {
-                    UnityEditorTool.StartRest("注册环境完成!\n需重启Unity编辑器");
-                }
+                UnityEditorTool.StartRest("注册环境完成!\n需重启Unity编辑器");
 
-                
+
             }
         }
 
