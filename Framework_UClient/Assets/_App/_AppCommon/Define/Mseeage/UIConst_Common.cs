@@ -12,6 +12,6 @@ namespace ProjectApp
         public const string LoadUI = "LoadUI";
 
 
-        public const string UGUI_Mask = "UGUI_Common/UGUI_Mask";
+        public const string UGUI_Mask = "GUI/Local_UICommon/UGUI_Mask";
     }   
 }

@@ -99,7 +99,7 @@ namespace FutureCore
             else
             {
                 IsRes = true;
-
+                rootPath = "GUI/";
             }
 
             rootPath = rootPath + AppConst.UIDriver.ToString();
