@@ -1,4 +1,4 @@
-@echo off
+@echo on
 set unityPath=%1%
 set projectPath=%2%
 

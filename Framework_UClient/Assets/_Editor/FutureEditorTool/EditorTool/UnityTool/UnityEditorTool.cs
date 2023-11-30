@@ -59,7 +59,7 @@ namespace FutureEditor
             var pStartInfo = new System.Diagnostics.ProcessStartInfo(cmd);
             pStartInfo.Arguments = args;
             pStartInfo.CreateNoWindow = false;
-            pStartInfo.UseShellExecute = false;
+            pStartInfo.UseShellExecute = true;
             pStartInfo.RedirectStandardError = false;
             pStartInfo.RedirectStandardInput = false;
             pStartInfo.RedirectStandardOutput = false;
@@ -85,7 +85,7 @@ namespace FutureEditor
             bool isError = false;
             foreach (var path in strings)
             {
-                string Project_Sin_Path = $"{Application.dataPath}/../{ProjectApp.AppFacade.AppName}_UClient.sln";
+                string Project_Sin_Path = path;
                 if (!FutureCore.FileUtil.DeleteFileOrDirectory(Project_Sin_Path))
                 {
                     isError = true;
@@ -106,15 +106,56 @@ namespace FutureEditor
         /// </summary>
         public static void SetSinNameAndDirName()
         {
+            
             string m_UnityPath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
             string m_AssetPath = Application.dataPath + "/..";
             string m_BatPath = Path.GetFullPath(Application.dataPath + @"\..\..\_Tool\UnityTool\SetProjectName_设置项目名字.bat");
 
-            CreateProcess(m_BatPath, string.Format("\"{0}\" \"{1}\" \"{2}\"", m_UnityPath, m_AssetPath, ProjectApp.AppFacade.AppName));
-
+            string m_newpath = Path.GetFullPath(Application.dataPath + @"\..\..\" + ProjectApp.AppFacade.AppName+ "_UClient");
             
-            Process.GetCurrentProcess().Kill();
 
+            CreateProcess(m_BatPath, string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", m_UnityPath, m_AssetPath, ProjectApp.AppFacade.AppName, m_newpath));
+
+
+
+
+
+        }
+        /// <summary>
+        /// 关闭vs编辑器和Unity
+        /// </summary>
+        public static void CloseVSIDE_Untiy(System.Action vb)
+        {
+            try
+            {
+                string val = @"E:\SetUp\VS2022\Common7\IDE\devenv.exe";
+                Process[] processes = Process.GetProcesses();
+                System.Collections.Generic.List<Process> temp = new System.Collections.Generic.List<Process>();
+                foreach (var item in processes)
+                {
+                    ProcessModule module = item.MainModule;
+                    if (module.FileName.EndsWith(@"Common7\IDE\devenv.exe"))
+                    {
+                        
+                        temp.Add(item);
+                    }
+                }
+
+                vb?.Invoke();
+                foreach (var item in temp)
+                {
+                    //本来只想关闭vs 但是不知道为啥同时关闭了untiy 
+                    item.CloseMainWindow();
+                }
+                //本来只想关闭vs 但是不知道为啥同时关闭了untiy 
+                Process.GetCurrentProcess().Kill();
+            }
+            catch (System.Exception e)
+            {
+                UnityEngine.Debug.LogError("关闭VS失败:"+e);
+
+            }
+           
         }
 
         #endregion
