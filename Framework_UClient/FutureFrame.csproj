@@ -73,6 +73,7 @@
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\SceneSwitchMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Effect\Effect.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Common\GenericDispatcher.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\System\BaseSystem.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\InputMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\CtrlDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Helper\Vector3Helper.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Parser\AppInfoParser.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\UIEntity.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\SerializeUtil\SerializeUtil.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\System\ISystem.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPoolStatic.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\App\AppGlobal.cs" />
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Launcher\EngineLauncher.cs" />
