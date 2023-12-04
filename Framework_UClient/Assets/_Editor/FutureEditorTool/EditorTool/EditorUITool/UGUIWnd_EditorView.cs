@@ -43,11 +43,11 @@ namespace FutureEditor
         public static void UpdateComponents(GameObject obj)
         {
             
-            string name = obj.name.Replace("_Wnd","UI");
+            string name = obj.name.Replace("_Plane","UI");
             string[] files = Directory.GetFiles(UnityEditorPathConst.ModuleUIPath, name + ".cs", SearchOption.AllDirectories);
             if (files.Length!=1)
             {
-                Debug.LogError("界面名字重复:"+ name);
+                Debug.LogError("界面不存在或名字重复:"+ name);
                 return;
             }
             string path = files[0];

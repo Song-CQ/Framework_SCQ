@@ -15,7 +15,8 @@ namespace #namespace#
     {
         #region 控件常量
         #endregion
-        private #ClassName#UICtrl uiCtrl;
+        
+		private #ClassName#UICtrl uiCtrl;
         private #ClassName#Model model;
         private UGUIEntity u_Entity;
 

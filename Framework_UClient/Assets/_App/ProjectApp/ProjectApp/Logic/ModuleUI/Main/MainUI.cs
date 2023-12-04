@@ -1,4 +1,4 @@
-/****************************************************
+﻿/****************************************************
     文件:MainUI.cs
     作者:Clear
     日期:2022/1/29 23:8:15
@@ -8,6 +8,8 @@
 using FutureCore;
 using FairyGUI;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 //using UI.G000_Main;
 
 namespace ProjectApp
@@ -15,9 +17,12 @@ namespace ProjectApp
     public class MainUI : BaseUI
     {
         #region 控件常量
+        private const string ui_OnClick_Key = "ui_OnClick";
         #endregion
+        
         private MainUICtrl uiCtrl;
         private MainModel model;
+        private UGUIEntity u_Entity;
 
         public MainUI(MainUICtrl ctrl) : base(ctrl)
         {
@@ -47,11 +52,18 @@ namespace ProjectApp
 
         protected override void OnBind()
         {
-            //ui = baseUI as UI.G000_Main.UI_Main;
+            u_Entity = uiEntity as UGUIEntity;
         }
 
         protected override void OnOpenBefore(object args)
         {
+            u_Entity.GetComponent<Button>(ui_OnClick_Key).onClick.AddListener(OnClick);
+        }
+
+        private void OnClick()
+        {
+            Close();
+
         }
 
         protected override void OnOpen(object args)
