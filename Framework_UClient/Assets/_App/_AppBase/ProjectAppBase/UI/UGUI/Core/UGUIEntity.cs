@@ -55,7 +55,7 @@ namespace ProjectApp
         /// <param name="isAdd">是否要添加</param>
         /// <param name="isCance">是否缓存</param>
         /// <returns></returns>
-        public T GetComponent<T>(string namePath, bool isAdd = true, bool isCance = true) where T : Component
+        public T GetComponent<T>(string namePath, bool isAdd = false, bool isCance = false) where T : Component
         {
             if (Transform == null) return null;
             Component _component = null;
@@ -79,12 +79,12 @@ namespace ProjectApp
             return _component as T;
         }
 
-        public RectTransform GetTransform(string namePath, bool isCance = true)
+        public RectTransform GetTransform(string namePath, bool isCance = false)
         {
             return GetComponent<RectTransform>(namePath, false, isCance);
         }
 
-        public GameObject GetGameObject(string namePath, bool isCance = true)
+        public GameObject GetGameObject(string namePath, bool isCance = false)
         {
             if (Transform == null) return null;
             GameObject _go = null;

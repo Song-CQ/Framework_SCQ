@@ -25,6 +25,10 @@ namespace FutureEditor
         private static void OnWillCreateAsset(string path)
         { 
             path = path.Replace(".meta", "");
+            if (!Directory.Exists(path))
+            {
+                return;
+            }
             if (path.EndsWith(".cs"))
             {
                 string str = File.ReadAllText(path);

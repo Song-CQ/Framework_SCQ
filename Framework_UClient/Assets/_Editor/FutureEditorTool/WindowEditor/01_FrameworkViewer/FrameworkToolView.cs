@@ -138,6 +138,10 @@ namespace FutureEditor
             GUILayout.Label("  Open Path", GUI.skin.GetStyle("IN TitleText"), GUILayout.Height(20));
             GUILayout.BeginVertical(GUI.skin.GetStyle("FrameBox"));
 
+            if (GUILayout.Button("Open UnityInstallPath"))
+            {
+                Application.OpenURL(EditorApplication.applicationContentsPath);
+            }
             if (GUILayout.Button("Open AssetDataPath"))
             {
                 Application.OpenURL(Application.dataPath);

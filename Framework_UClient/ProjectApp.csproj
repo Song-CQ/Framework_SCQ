@@ -67,6 +67,7 @@
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\SceneConst.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\PreLoadIdConst.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\UIMgr\UIRegister_FGUI.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Game\System\GameSys.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_pp.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUICtrlAdapter.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainUI.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\pb_jiazai.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameModel.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Manager\GameManager.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\ModelConst_Common.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Cont\LoadingTrasitionConst.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_playagain.cs" />
@@ -1143,6 +1145,10 @@
     <ProjectReference Include="Plugins3rdLibrary.csproj">
       <Project>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</Project>
       <Name>Plugins3rdLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="TestCore.csproj">
+      <Project>{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}</Project>
+      <Name>TestCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

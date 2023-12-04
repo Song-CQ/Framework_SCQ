@@ -14,22 +14,30 @@ namespace FutureCore
         public bool IsInit => isInit;
 
         public bool IsRunning => isRunning;
-
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public virtual void Init()
         {
             isInit = true;
-        }    
-
+        }
+        /// <summary>
+        /// 启动
+        /// </summary>
         public virtual void Start()
         {
             isRunning = true;
         }
-
+        /// <summary>
+        /// 停止
+        /// </summary>
         public virtual void Shutdown()
         {
             isRunning = false;
         }
-
+        /// <summary>
+        /// 销毁
+        /// </summary>
         public virtual void Display()
         {
             isInit = false;
