@@ -92,6 +92,7 @@
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Define\Const\LauncherConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\App\App.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\VectorConst.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Core\UI\UIEventListener.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\GameObjectExtend.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\PathConst.cs" />
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Utility\Unity3dUtil\Unity3dUtil.cs" />
