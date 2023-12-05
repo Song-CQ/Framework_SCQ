@@ -169,7 +169,7 @@ namespace ProjectApp
 
         public void Init()
         {
-            Transform = new GameObject("PictureEntity").transform;
+            Transform = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>("Prefabs/GamePrefabs/PictureEntity")).transform;
             Roles = new List<IRole>();
         }
         public void Show(int index)

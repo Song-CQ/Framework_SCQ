@@ -59,7 +59,7 @@ namespace FutureCore
             mainCameraGo.transform.localPosition = Vector3.zero;
             mainCameraGo.tag = "MainCamera";
             mainCameraGo.layer = LayerMaskConst.Default;
-                       
+        
             mainCamera = CreateCamera(mainCameraGo,LayerMaskConst.Everything);
             mainCamera.clearFlags = CameraClearFlags.SolidColor;
             // 默认不使用后效
@@ -127,7 +127,14 @@ namespace FutureCore
             Camera cameraCom = cameraGo.AddComponent<Camera>();
             cameraCom.clearFlags = CameraClearFlags.Depth;
             cameraCom.backgroundColor = Color.black;
-            cameraCom.cullingMask = 1<<cullingMask;
+            if (cullingMask==-1)
+            {
+                cameraCom.cullingMask = -1;
+            }else
+            {
+                cameraCom.cullingMask = 1 << cullingMask;
+            }
+            
             cameraCom.nearClipPlane = -30f;
             cameraCom.farClipPlane = 30f;
             cameraCom.rect = new Rect(0, 0, 1f, 1f);
