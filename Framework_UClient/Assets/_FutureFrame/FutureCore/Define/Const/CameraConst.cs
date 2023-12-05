@@ -14,9 +14,9 @@ namespace FutureCore
     {
 
         public const int MainDepth = 0;
-        public const int MainCameraFarClipPlane = 60;
+        public static float MainCameraFarClipPlane = 60;
         public const int UICameraDepth = 10;
-        public const int UICameraFarClipPlane = 100;
+        public static float UICameraFarClipPlane = 100;
 
         public const int MainCameraPosValue = 0;
         public const int MainCameraZPos = 0;
@@ -24,6 +24,6 @@ namespace FutureCore
 
         public static Vector3 MainCameraPos = new Vector3(MainCameraPosValue, MainCameraPosValue, MainCameraZPos);
         public static Vector3 UICameraPos = new Vector3(UICameraPosValue, UICameraPosValue, MainCameraZPos);
-
+        
     }
 }

@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace FutureCore
 {
-    public sealed class CameraMgr :BaseMgr<CameraMgr>
+    public sealed class CameraMgr : BaseMgr<CameraMgr>
     {
 
         public Transform mainCameraRoot;
@@ -48,7 +48,7 @@ namespace FutureCore
         private void CreateMainCamera()
         {
             if (mainCamera) return;
-         
+
             GameObject mainRoot = new GameObject("[MainCameraRoot]");
             mainRoot.SetParent(AppObjConst.CameraGo);
             mainRoot.transform.position = CameraConst.MainCameraPos;
@@ -59,16 +59,18 @@ namespace FutureCore
             mainCameraGo.transform.localPosition = Vector3.zero;
             mainCameraGo.tag = "MainCamera";
             mainCameraGo.layer = LayerMaskConst.Default;
-        
-            mainCamera = CreateCamera(mainCameraGo,LayerMaskConst.Everything);
+
+
+            mainCamera = CreateCamera(mainCameraGo, LayerMaskConst.Everything);
+
             mainCamera.clearFlags = CameraClearFlags.SolidColor;
             // 默认不使用后效
             //mainCamera.forceIntoRenderTexture = false;
             mainCamera.nearClipPlane = 0.01f;
             mainCamera.farClipPlane = CameraConst.MainCameraFarClipPlane;
-        } 
 
-        
+        }
+
         public void CreadUICamera()
         {
             GameObject root = new GameObject("[UICameraRoot]");
@@ -88,15 +90,15 @@ namespace FutureCore
                     CreadUICamera_UGUI();
                     break;
             }
-            
-           
-            
+
+
+
         }
-        
+
         private void CreadUICamera_UGUI()
         {
             if (uiCamera) return;
-            uiCamera = CreateCamera(new GameObject("UGUI_Camera"), LayerMaskConst.UI);          
+            uiCamera = CreateCamera(new GameObject("UGUI_Camera"), LayerMaskConst.UI);
             uiCamera.depth = CameraConst.UICameraDepth;
             uiCamera.orthographic = true;
             uiCamera.orthographicSize = 10;
@@ -118,7 +120,7 @@ namespace FutureCore
             StageCamera.CheckMainCamera();
             uiCamera = StageCamera.main;
             // 默认不使用后效
-            uiCamera.forceIntoRenderTexture = false;          
+            uiCamera.forceIntoRenderTexture = false;
             uiCameraGo = uiCamera.gameObject;
             uiCameraGo.SetParent(uiCameraRoot);
             uiCamera.transform.localPosition = Vector3.zero;
@@ -145,7 +147,6 @@ namespace FutureCore
             return cameraCom;
         }
 
-        
-       
+
     }
 }

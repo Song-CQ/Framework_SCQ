@@ -15,8 +15,8 @@ namespace ProjectApp
     public class GameWorldMgr : BaseMgr<GameWorldMgr>
     {
         private GameSys _gameSys;
-
         private  GameWord gameWord;
+
 
         protected override void New()
         {
@@ -33,8 +33,10 @@ namespace ProjectApp
         public override void StartUp()
         {
             base.StartUp();
+
    
             gameWord.FillData(0);
+
         }
     }
 
@@ -55,13 +57,13 @@ namespace ProjectApp
         public void Init()
         {
             WordRood = new GameObject("WordRood").transform;
-            WordRood.transform.position = new Vector3(0,0,0);
+            WordRood.transform.position = new Vector3(0, 0, 0);
             AllPictureEntity = new GameObject("AllPictureEntity").transform;
             AllPictureEntity.transform.SetParent(WordRood.transform);
-            AllPictureEntity.transform.localPosition = new Vector3(-9.5f,3.2f,17);
+            AllPictureEntity.transform.localPosition = new Vector3(-9.5f, 3.2f, 17);
             EntityPool = new GameObject("EntityPool").transform;
             EntityPool.transform.SetParent(WordRood.transform);
-            EntityPool.transform.localPosition = new Vector3(200,0,0);
+            EntityPool.transform.localPosition = new Vector3(200, 0, 0);
 
             levelData = null;
             pictureEntity = new List<PictureEntity>();
@@ -70,10 +72,7 @@ namespace ProjectApp
                 entity.Init();
                 return entity;
             });
-
-
         }
-
 
         public void FillData(int levenId)
         {
@@ -97,6 +96,7 @@ namespace ProjectApp
                 picturePool.Release(item);
             }
             pictureEntity.Clear();
+
 
 
         }
