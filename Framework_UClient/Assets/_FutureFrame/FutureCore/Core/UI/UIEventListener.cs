@@ -5,11 +5,12 @@
     日期：2020/2/23 18:50
     功能：UI事件监听器：管理所有UGUI事件，提供事件参数类
     附加到需要交互的UI元素上，用于监听用户的操作，类似于EventTrigger
+    如果附加到3d物体上则需要添加碰撞器
 *****************************************************/
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace ProjectApp.UGUI
+namespace FutureCore
 {
     public class UIEventListener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IScrollHandler, IUpdateSelectedHandler, ISelectHandler, IDeselectHandler, IMoveHandler, ISubmitHandler, ICancelHandler
     {
