@@ -127,7 +127,7 @@ namespace FutureCore
             Camera cameraCom = cameraGo.AddComponent<Camera>();
             cameraCom.clearFlags = CameraClearFlags.Depth;
             cameraCom.backgroundColor = Color.black;
-            cameraCom.cullingMask = 1<<cullingMask;
+            cameraCom.cullingMask = cullingMask==-1? -1:1<<cullingMask;
             cameraCom.nearClipPlane = -30f;
             cameraCom.farClipPlane = 30f;
             cameraCom.rect = new Rect(0, 0, 1f, 1f);
