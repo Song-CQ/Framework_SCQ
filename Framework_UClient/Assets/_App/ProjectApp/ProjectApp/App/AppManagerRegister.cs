@@ -14,7 +14,7 @@ namespace ProjectApp
             
             globalMgr.AddMgr(UIMgr.Instance);
             globalMgr.AddMgr(UI_EffectManager.Instance);
-            globalMgr.AddMgr(GameManager.Instance);
+            globalMgr.AddMgr(GameWorldMgr.Instance);
         }
 
         public static void RegisterData()

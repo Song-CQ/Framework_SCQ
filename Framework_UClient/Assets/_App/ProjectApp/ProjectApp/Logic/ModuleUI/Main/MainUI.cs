@@ -36,7 +36,7 @@ namespace ProjectApp
             uiInfo.assetName = "Main_Plane";
             uiInfo.layerType = UILayerType.Normal;
             uiInfo.isNeedOpenAnim = true;
-            uiInfo.isNeedCloseAnim = true;
+            uiInfo.isNeedCloseAnim = false;
            
         }
 

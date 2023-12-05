@@ -3,7 +3,7 @@
     作者: Clear
     日期: 2023/12/4 14:59:5
     类型: 逻辑脚本
-    功能: 游戏管理器
+    功能: 游戏世界管理器
 *****************************************************/
 using FutureCore;
 using System;
@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class GameManager : BaseMgr<GameManager>
+    public class GameWorldMgr : BaseMgr<GameWorldMgr>
     {
         private GameSys _gameSys;
 
@@ -58,7 +58,7 @@ namespace ProjectApp
             WordRood.transform.position = new Vector3(0,0,0);
             AllPictureEntity = new GameObject("AllPictureEntity").transform;
             AllPictureEntity.transform.SetParent(WordRood.transform);
-            AllPictureEntity.transform.localPosition = Vector3.zero;
+            AllPictureEntity.transform.localPosition = new Vector3(-9.5f,3.2f,17);
             EntityPool = new GameObject("EntityPool").transform;
             EntityPool.transform.SetParent(WordRood.transform);
             EntityPool.transform.localPosition = new Vector3(200,0,0);
@@ -71,7 +71,7 @@ namespace ProjectApp
                 return entity;
             });
 
-            
+
         }
 
 

@@ -60,13 +60,15 @@ namespace FutureCore
             mainCameraGo.tag = "MainCamera";
             mainCameraGo.layer = LayerMaskConst.Default;
         
-            mainCamera = CreateCamera(mainCameraGo,LayerMaskConst.Everything);
+            mainCamera = CreateCamera(mainCameraGo,LayerMaskConst.Default);
             mainCamera.clearFlags = CameraClearFlags.SolidColor;
             // 默认不使用后效
-            mainCamera.forceIntoRenderTexture = false;
+            //mainCamera.forceIntoRenderTexture = false;
+            mainCamera.nearClipPlane = 0.01f;
+            mainCamera.farClipPlane = CameraConst.MainCameraFarClipPlane;
+        } 
 
-        }
-
+        
         public void CreadUICamera()
         {
             GameObject root = new GameObject("[UICameraRoot]");
@@ -98,8 +100,8 @@ namespace FutureCore
             uiCamera.depth = CameraConst.UICameraDepth;
             uiCamera.orthographic = true;
             uiCamera.orthographicSize = 10;
-
-           
+            uiCamera.nearClipPlane = 0f;
+            uiCamera.farClipPlane = CameraConst.UICameraFarClipPlane;
 
             uiCameraGo = uiCamera.gameObject;
             uiCameraGo.SetParent(uiCameraRoot);
@@ -128,12 +130,12 @@ namespace FutureCore
             cameraCom.clearFlags = CameraClearFlags.Depth;
             cameraCom.backgroundColor = Color.black;
             cameraCom.cullingMask = cullingMask == -1 ? -1 : 1 << cullingMask;
-            cameraCom.nearClipPlane = -30f;
+            cameraCom.nearClipPlane = 0f;
             cameraCom.farClipPlane = 30f;
             cameraCom.rect = new Rect(0, 0, 1f, 1f);
             cameraCom.depth = CameraConst.MainDepth;
             cameraCom.renderingPath = RenderingPath.UsePlayerSettings;
-            cameraCom.useOcclusionCulling = false;
+            cameraCom.useOcclusionCulling = true;
             cameraCom.allowHDR = false;
             cameraCom.allowMSAA = false;
             // 默认不使用后效
@@ -143,6 +145,7 @@ namespace FutureCore
             return cameraCom;
         }
 
+        
        
     }
 }

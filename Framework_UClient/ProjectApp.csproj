@@ -108,6 +108,7 @@
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\App\AppFacade.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUIAdapter.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Manager\GameWorldMgr.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameUI.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
@@ -129,7 +130,6 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\pb_jiazai.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameModel.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Manager\GameManager.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\ModelConst_Common.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Cont\LoadingTrasitionConst.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_playagain.cs" />

@@ -14,7 +14,9 @@ namespace FutureCore
     {
 
         public const int MainDepth = 0;
+        public const int MainCameraFarClipPlane = 60;
         public const int UICameraDepth = 10;
+        public const int UICameraFarClipPlane = 100;
 
         public const int MainCameraPosValue = 0;
         public const int MainCameraZPos = 0;
