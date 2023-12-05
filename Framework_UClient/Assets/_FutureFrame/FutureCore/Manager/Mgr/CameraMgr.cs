@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace FutureCore
 {
-    public sealed class CameraMgr :BaseMgr<CameraMgr>
+    public sealed class CameraMgr : BaseMgr<CameraMgr>
     {
 
         public Transform mainCameraRoot;
@@ -48,7 +48,7 @@ namespace FutureCore
         private void CreateMainCamera()
         {
             if (mainCamera) return;
-         
+
             GameObject mainRoot = new GameObject("[MainCameraRoot]");
             mainRoot.SetParent(AppObjConst.CameraGo);
             mainRoot.transform.position = CameraConst.MainCameraPos;
@@ -59,13 +59,15 @@ namespace FutureCore
             mainCameraGo.transform.localPosition = Vector3.zero;
             mainCameraGo.tag = "MainCamera";
             mainCameraGo.layer = LayerMaskConst.Default;
-                       
-            mainCamera = CreateCamera(mainCameraGo,LayerMaskConst.Everything);
+
+            mainCamera = CreateCamera(mainCameraGo, LayerMaskConst.Default);
             mainCamera.clearFlags = CameraClearFlags.SolidColor;
             // 默认不使用后效
-            mainCamera.forceIntoRenderTexture = false;
-
+            //mainCamera.forceIntoRenderTexture = false;
+            mainCamera.nearClipPlane = 0.01f;
+            mainCamera.farClipPlane = CameraConst.MainCameraFarClipPlane;
         }
+
 
         public void CreadUICamera()
         {
@@ -86,20 +88,20 @@ namespace FutureCore
                     CreadUICamera_UGUI();
                     break;
             }
-            
-           
-            
+
+
+
         }
-        
+
         private void CreadUICamera_UGUI()
         {
             if (uiCamera) return;
-            uiCamera = CreateCamera(new GameObject("UGUI_Camera"), LayerMaskConst.UI);          
+            uiCamera = CreateCamera(new GameObject("UGUI_Camera"), LayerMaskConst.UI);
             uiCamera.depth = CameraConst.UICameraDepth;
             uiCamera.orthographic = true;
             uiCamera.orthographicSize = 10;
-
-           
+            uiCamera.nearClipPlane = 0f;
+            uiCamera.farClipPlane = CameraConst.UICameraFarClipPlane;
 
             uiCameraGo = uiCamera.gameObject;
             uiCameraGo.SetParent(uiCameraRoot);
@@ -116,7 +118,7 @@ namespace FutureCore
             StageCamera.CheckMainCamera();
             uiCamera = StageCamera.main;
             // 默认不使用后效
-            uiCamera.forceIntoRenderTexture = false;          
+            uiCamera.forceIntoRenderTexture = false;
             uiCameraGo = uiCamera.gameObject;
             uiCameraGo.SetParent(uiCameraRoot);
             uiCamera.transform.localPosition = Vector3.zero;
@@ -127,13 +129,13 @@ namespace FutureCore
             Camera cameraCom = cameraGo.AddComponent<Camera>();
             cameraCom.clearFlags = CameraClearFlags.Depth;
             cameraCom.backgroundColor = Color.black;
-            cameraCom.cullingMask = cullingMask==-1? -1:1<<cullingMask;
-            cameraCom.nearClipPlane = -30f;
+            cameraCom.cullingMask = cullingMask == -1 ? -1 : 1 << cullingMask;
+            cameraCom.nearClipPlane = 0f;
             cameraCom.farClipPlane = 30f;
             cameraCom.rect = new Rect(0, 0, 1f, 1f);
             cameraCom.depth = CameraConst.MainDepth;
             cameraCom.renderingPath = RenderingPath.UsePlayerSettings;
-            cameraCom.useOcclusionCulling = false;
+            cameraCom.useOcclusionCulling = true;
             cameraCom.allowHDR = false;
             cameraCom.allowMSAA = false;
             // 默认不使用后效
@@ -143,6 +145,7 @@ namespace FutureCore
             return cameraCom;
         }
 
-       
+
+
     }
 }
