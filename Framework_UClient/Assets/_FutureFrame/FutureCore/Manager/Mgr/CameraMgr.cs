@@ -60,7 +60,7 @@ namespace FutureCore
             mainCameraGo.tag = "MainCamera";
             mainCameraGo.layer = LayerMaskConst.Default;
 
-            mainCamera = CreateCamera(mainCameraGo, LayerMaskConst.Default);
+            mainCamera = CreateCamera(mainCameraGo, LayerMaskConst.Everything);
             mainCamera.clearFlags = CameraClearFlags.SolidColor;
             // 默认不使用后效
             //mainCamera.forceIntoRenderTexture = false;
