@@ -18,6 +18,7 @@ namespace ProjectApp
         public static Transform EntityPool;
         public static Vector2 PictureRoodPot = Vector2.zero;
 
+        public GameObject PicturePlane;
         public LevelData levelData;
         /// <summary>
         /// 所有的角色画面
@@ -30,6 +31,12 @@ namespace ProjectApp
         {
             WordRood = new GameObject("WordRood").transform;
             WordRood.transform.position = new Vector3(0, 0, 0);
+
+            PicturePlane = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>("Prefabs/GamePrefabs/PicturePlane"));
+
+            PicturePlane.transform.SetParent(WordRood.transform);
+            PicturePlane.transform.localPosition = new Vector3(0f, 0f, 20f);
+
             AllPictureEntity = new GameObject("AllPictureEntity").transform;
             AllPictureEntity.transform.SetParent(WordRood.transform);
             AllPictureEntity.transform.localPosition = new Vector3(-9.5f, 3.2f, 17);
