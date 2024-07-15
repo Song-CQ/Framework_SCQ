@@ -17,6 +17,7 @@ namespace ProjectApp
         private GameSys _gameSys;
         private  GameWordEntity gameWord;
 
+        private GameStructure gameStructure;
 
         protected override void New()
         {
@@ -34,9 +35,40 @@ namespace ProjectApp
         {
             base.StartUp();
 
-   
-            gameWord.FillData(0);
+            LevelData levelData = new LevelData();
 
+            gameStructure = GetGameStructure();
+            gameStructure.FillData(levelData);
+            gameWord.FillStructure(gameStructure);
+
+        }
+
+        private GameStructure GetGameStructure()
+        {
+            GameStructure gameStructure = new GameStructure();
+
+
+            return gameStructure;
+        }
+
+
+
+        public bool CanRoleSetSceneEvent(IRole role, BaseSceneEvent sceneEvent)
+        {
+            if (gameStructure == null)
+            {
+                return false;
+            }
+            return gameStructure.CanRoleSetSceneEvent(role, sceneEvent);
+        }
+
+        public bool GetHaveSceneKeyToIndex(string sceneEventKey, int index)
+        {
+            if (gameStructure == null)
+            {
+                return false;
+            }
+            return gameStructure.GetHaveSceneKeyToIndex(sceneEventKey, index);
         }
     }
 
@@ -48,7 +80,84 @@ namespace ProjectApp
 
     }
 
-    
+    public class RoleData
+    {
+        public string key;
+
+        /// <summary>
+        /// 该角色经历过的场景
+        /// </summary>
+        public List<ISceneEvent> allSceneEvent;
+
+    }
+
+    public class GameStructure
+    {
+        /// <summary>
+        /// 画面
+        /// </summary>
+        public List<BasePicture> AllPictures = new List<BasePicture>();
+
+
+        public LevelData LevelData { get; private set; }
+
+        private Dictionary<string,RoleData> roleDatas = new Dictionary<string, RoleData>();
+
+        public void FillData(LevelData levelData)
+        {
+            AllPictures.Clear();
+
+            LevelData = levelData;
+
+        }
+
+        public void AddPicture(BasePicture _picture)
+        {
+            AllPictures.Add(_picture);
+        }
+
+        public RoleData GetRoleData(string roleKey)
+        {
+            if (roleDatas.ContainsKey(roleKey))
+            {
+                return roleDatas[roleKey];
+            }
+            return null;
+        }
+
+        public void Rest()
+        {
+            LevelData = null;
+
+            foreach (var _Pictures in AllPictures)
+            {
+                _Pictures.Rest();
+            }
+            AllPictures.Clear();
+
+        }
+
+       
+
+        public bool CanRoleSetSceneEvent(IRole role, BaseSceneEvent sceneEvent)
+        {
+
+
+            return false;
+        }
+
+        public bool GetHaveSceneKeyToIndex(string sceneEventKey, int index)
+        {
+           
+
+            if (true)
+            {
+
+            }
+            return false;
+        }
+    }
+
 
     
 }

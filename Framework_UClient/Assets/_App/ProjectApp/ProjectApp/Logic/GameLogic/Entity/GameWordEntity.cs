@@ -6,6 +6,7 @@
     功能: 游戏世界实体
 *****************************************************/
 using FutureCore;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,18 +18,15 @@ namespace ProjectApp
         public static Transform AllPictureEntity;
         public static Transform EntityPool;
         public static Vector2 PictureRoodPot = Vector2.zero;
+        private static ObjectPool<PictureEntity> picturePool;
 
         public GameObject PicturePlane;
-        public LevelData levelData;
-        /// <summary>
-        /// 所有的角色画面
-        /// </summary>
-        public List<PictureEntity> pictureEntityList;
+        private GameStructure gameStructure = null;
 
-        private ObjectPool<PictureEntity> picturePool;
 
         public void Init()
         {
+                       
             WordRood = new GameObject("WordRood").transform;
             WordRood.transform.position = new Vector3(0, 0, 0);
 
@@ -44,47 +42,62 @@ namespace ProjectApp
             EntityPool.transform.SetParent(WordRood.transform);
             EntityPool.transform.localPosition = new Vector3(200, 0, 0);
 
-            levelData = null;
-            pictureEntityList = new List<PictureEntity>();
-            picturePool = new ObjectPool<PictureEntity>(() => {
-                PictureEntity entity = new PictureEntity();
-                entity.Init();
-                return entity;
-            });
-        }
-
-        public void FillData(int levenId)
-        {
-            levelData = new LevelData();
-
-            for (int i = 0; i < levelData.allPictureSum; i++)
+            if (picturePool != null)
             {
-                var picture = picturePool.Get();
-                picture.Show(i);
-                pictureEntityList.Add(picture);
+                picturePool = new ObjectPool<PictureEntity>(() => {
+                    PictureEntity entity = new PictureEntity();
+                    entity.Init();
+                    return entity;
+                });
             }
 
-
         }
+
+       
+        public static void ReleasePictureEntity(PictureEntity entity)
+        {
+            picturePool.Release(entity);
+        }
+              
+
+        public void FillStructure(GameStructure _gameStructure)
+        {
+            gameStructure = _gameStructure;
+
+
+            for (int i = 0; i < gameStructure.LevelData.allPictureSum; i++)
+            {
+                var picture = picturePool.Get();
+                
+                picture.Show(i);
+                gameStructure.AddPicture(picture);          
+            }
+        }
+
+
 
         public void Rest()
         {
-            foreach (var item in pictureEntityList)
-            {
-                item.Rest();
-                picturePool.Release(item);
-            }
-            pictureEntityList.Clear();
-
+            gameStructure.Rest();
+            gameStructure = null;
 
 
         }
+        public void Dispose()
+        {
+            Rest();
+            GameObject.Destroy(WordRood);
+            WordRood = null;
+            PicturePlane = null;
+            AllPictureEntity = null;
+            EntityPool = null;
+            picturePool = null;
+        }
+
+
+
 
     }
 
 
-    public class wordData
-    {
-        
-    }
 }
