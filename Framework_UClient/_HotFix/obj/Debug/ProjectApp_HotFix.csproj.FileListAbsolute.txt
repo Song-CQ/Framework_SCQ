@@ -1,0 +1,7 @@
+H:\UnityPro\Framework_SCQ\Framework_UClient\_HotFix\obj\Debug\ProjectApp_HotFix.csproj.AssemblyReference.cache
+H:\UnityPro\Framework_SCQ\Framework_UClient\_HotFix\obj\Debug\ProjectApp_HotFix.csproj.CoreCompileInputs.cache
+H:\UnityPro\Framework_SCQ\Framework_UClient\_HotFix\obj\Debug\HotFix.dll
+H:\UnityPro\Framework_SCQ\Framework_UClient\_HotFix\obj\Debug\HotFix.pdb
+H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\StreamingAssets\HotFix\HotFix.dll
+H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\StreamingAssets\HotFix\HotFix.pdb
+H:\UnityPro\Framework_SCQ\Framework_UClient\_HotFix\obj\Debug\ProjectApp_HotFix.csproj.CopyComplete

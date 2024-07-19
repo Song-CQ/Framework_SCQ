@@ -127,8 +127,8 @@
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\HttpMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ResMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Enem\AppFutureEnem.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\GObjectsPool.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Enem\UIDriverEnem.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Data\Veriy\AssetBundleVerify.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Data\Veriy\HotFixVerify.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\DownloadMgr\DownloadTaskMgr.cs" />
@@ -164,7 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_FutureFrame\FutureFrame.asmdef" />
-    <None Include="Assets\_FutureFrame\FutureLib\LogUtil.dll" />
+    <None Include="Assets\_FutureFrame\FutureLib\LogUtil\LogUtil.dll" />
     <None Include="Assets\_FutureFrame\FutureLib\XLNet\XLNet.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -593,7 +593,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="LogUtil">
-      <HintPath>Assets\_FutureFrame\FutureLib\LogUtil.dll</HintPath>
+      <HintPath>Assets\_FutureFrame\FutureLib\LogUtil\LogUtil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="XLNet">

@@ -28,6 +28,9 @@ namespace FutureCore
         // 默认加载模式 是否同步加载模式
         public const bool IsSyncLoadMode_Default = false;
 
+        // 数据表 的类文件 使用 Dll
+        public const bool ExcelConfig_UseDll = true;
+
         /// <summary>
         /// 是否要资源热更模式
         /// </summary>
@@ -45,8 +48,9 @@ namespace FutureCore
         public const bool IsDevelopmentBuild = false;
         // 是否开发模式 (不拷贝资源)
         public static bool IsDevelopMode = true;
-        // 是否热更新代码模式
-        public static bool IsHotUpdateMode = false;
+
+        // 热更新代码模式（None）无热更代码
+        public static HotUpdateType HotUpdateType =  HotUpdateType.ILRuntime;
         // 是否开启调试引擎分析器
         public static bool IsEnabledEngineProfiler = false;
         // 是否开启调试应用分析器

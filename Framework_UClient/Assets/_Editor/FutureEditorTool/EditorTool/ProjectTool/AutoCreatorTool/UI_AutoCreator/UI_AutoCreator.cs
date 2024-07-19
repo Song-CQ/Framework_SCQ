@@ -28,16 +28,7 @@ namespace FutureEditor
             }
 
         }
-        public static void AutoRegister_HotFix()
-        {
-            if (AppConst.UIDriver == UIDriverEnem.FGUI)
-            {
-                Auto_UIMgr = string.Empty;
-                CopyFGUIStript(UnityEditorPathConst.FGUIClassPath_HotFix);
-                AutoRegisterFGUI(UnityEditorPathConst.FGUIClassPath_HotFix);
-                FinishRegisterFGUI_HotFix();
-            }
-        }
+       
 
         private static void CopyFGUIStript(string path)
         {
@@ -141,37 +132,7 @@ namespace ProjectApp
             FutureCore.FileUtil.WriteFile(targetPath, classStr);
             Debug.Log("[UI_AutoCread]注册FGUI包完成");
         }
-        private static void FinishRegisterFGUI_HotFix()
-        {
-
-            
-            string classStr = @"/****************************************************
-    文件: UIRegister_FGUI.cs
-    作者: Clear
-    日期: #CreateTime#
-    类型: 框架自动创建(请勿修改)
-    功能: FGUI包注册
-* ****************************************************/
-using System.Collections.Generic;
-namespace ProjectApp.HotFix
-{
-    public static partial class UIRegister_FGUI
-    {
-        public static void AutoRegisterBinder()
-        {
-//ReplaceBinder
-        }
-
-    }
-}";
-            classStr = classStr.Replace("#CreateTime#", TimerUtil.GetLacalTimeYMD_HHMMSS());
-            string replaceBinderConst = "//ReplaceBinder";
-            classStr = classStr.Replace(replaceBinderConst, Auto_UIMgr);
-
-            string targetPath = UnityEditorPathConst.AutoRegisterPath_HotFix + "/UIMgr/UIRegister_FGUI.cs";
-            FutureCore.FileUtil.WriteFile(targetPath, classStr);
-            Debug.Log("[UI_AutoCread]注册FGUI包完成(热更)");
-        }
+       
 
     }
 }

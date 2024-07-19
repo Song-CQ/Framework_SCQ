@@ -8,6 +8,8 @@ namespace FutureCore
 {
     public class GlobalMgr : Singleton<GlobalMgr>
     {
+        private bool isLog = true;
+
         private List<IMgr> allMgr = new List<IMgr>();
 
         public void StartUp()
@@ -21,9 +23,54 @@ namespace FutureCore
             {
                 mgr.StartUp();
             }
-            ModuleMgr.Instance.StartUpAllModule();
+   
             AppDispatcher.Instance.Dispatch(AppMsg.System_ManagerStartUpComplete);
             LogUtil.Log("[GlobalMgr]StartUp End");
+        }
+
+        /// <summary>
+        ///  检测是否有未StartUp的Imgr
+        /// </summary>
+        /// <param name="isOpen"> 如果未StartUp 是否将它启动</param>
+        /// <returns></returns>
+        public bool CheckStartUp(bool isOpen = true)
+        {
+            LogUtil.Log("[GlobalMgr]Check StartUp Start");
+            bool isface = false;
+            foreach (var item in allMgr)
+            {
+                if (!item.IsInit&&!isface)
+                {
+                    isface = true;
+                }
+                if (!item.IsStartUp && isOpen)
+                {
+                    item.Init();
+                    if (isLog)
+                    {
+                        LogUtil.Log("[GlobalMgr]" + item.GetType().Name + "---- Init".AddColor(UnityEngine.Color.yellow));
+                    }
+                    
+                }
+            }
+            foreach (var item in allMgr)
+            {
+                if (!item.IsStartUp && !isface)
+                {
+                    isface = true;
+                }
+                if (!item.IsStartUp && isOpen)
+                {
+                    item.StartUp();
+                    if (isLog)
+                    {
+                        LogUtil.Log("[GlobalMgr]" + item.GetType().Name + "---- StartUp".AddColor(UnityEngine.Color.yellow));
+                    }
+
+                }
+            }
+            LogUtil.Log("[GlobalMgr]Check StartUp End");
+            return isface;
         }
 
         public void AddMgr(IMgr mgr)

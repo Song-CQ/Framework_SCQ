@@ -16,6 +16,7 @@ namespace ProjectApp
         {
             SceneMgr sceneMgr = SceneMgr.Instance;
             sceneMgr.AddScene(new MainScene());
+            sceneMgr.AddScene(new GameScene());
         }
 
 

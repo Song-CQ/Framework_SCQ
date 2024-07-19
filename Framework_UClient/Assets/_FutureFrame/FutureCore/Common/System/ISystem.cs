@@ -17,6 +17,6 @@ namespace FutureCore
         public void Start();
         public void Shutdown();
 
-        public void Display();
+        public void Dispose();
     }
 }

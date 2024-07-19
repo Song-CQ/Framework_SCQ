@@ -835,7 +835,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="LogUtil">
-      <HintPath>Assets\_FutureFrame\FutureLib\LogUtil.dll</HintPath>
+      <HintPath>Assets\_FutureFrame\FutureLib\LogUtil\LogUtil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="XLNet">

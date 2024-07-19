@@ -38,7 +38,7 @@ namespace FutureCore
         /// <summary>
         /// 销毁
         /// </summary>
-        public virtual void Display()
+        public virtual void Dispose()
         {
             isInit = false;
             isRunning = false;

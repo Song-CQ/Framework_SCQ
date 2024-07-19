@@ -1,4 +1,6 @@
 using FutureCore;
+using System;
+using System.Reflection;
 
 namespace ProjectApp
 {
@@ -7,6 +9,10 @@ namespace ProjectApp
     /// </summary>
     public static class AppManagerRegister
     {
+        public static Action GameLogicRegister;
+        public static Action GameLogicRegisterData;
+
+
         public static void Register()
         {
             GlobalMgr globalMgr = GlobalMgr.Instance;
@@ -14,13 +20,13 @@ namespace ProjectApp
             
             globalMgr.AddMgr(UIMgr.Instance);
             globalMgr.AddMgr(UI_EffectManager.Instance);
-            globalMgr.AddMgr(GameWorldMgr.Instance);
+
+           
         }
 
         public static void RegisterData()
         {
-            //Module
-            RegisterModuleMgr();
+
             // ResMgr
             RegisterPermanentAssets();
             // AssetBundleMgr
@@ -35,7 +41,24 @@ namespace ProjectApp
 
         }
 
-        
+        public static void RegisterGameLogic()
+        {
+            //注册
+
+            Assembly appAssembly = Assembly.GetExecutingAssembly();
+            Type gameLogicRegisterClass = appAssembly.GetType("ProjectApp.GameLogic.GameLogicRegister");
+            if (gameLogicRegisterClass==null)
+            {
+                return;
+            }
+            MethodInfo Register = gameLogicRegisterClass.GetMethod("Register", BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Static);
+            MethodInfo RegisterData = gameLogicRegisterClass.GetMethod("RegisterData", BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Static);
+            GameLogicRegister = () =>{ Register.Invoke(null,null); } ;
+            GameLogicRegisterData = () =>{ RegisterData.Invoke(null,null); } ;
+        }
+
+
+
         public static void StartUpAfterRegister()
         {
             TimerMgr.UpData_Event_ToFrame += MainThreadLog.LoopLog;
@@ -105,18 +128,7 @@ namespace ProjectApp
             //wsNetMgr.RegisterC2SProtoLogIgnore(WSNetMsg.S2C_preferences);
         } 
         
-        private static void RegisterModuleMgr()
-        {
-            // ModuleMgr     
-            if (!AppConst.IsHotUpdateMode)
-            {
-                ModuleMgrRegister.AutoRegisterModel();
-                ModuleMgrRegister.AutoRegisterUIType();
-                ModuleMgrRegister.AutoRegisterCtrl();
-                ModuleMgrRegister.AutoRegisterUICtrl();
-            }
-            
-        }
+        
 
 
 

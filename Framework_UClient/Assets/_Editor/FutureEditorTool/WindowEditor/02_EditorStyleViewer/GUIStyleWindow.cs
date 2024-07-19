@@ -482,7 +482,7 @@ namespace FutureEditor
                         //GUIContent gUIContent = icons[i + j];
                         if (GUILayout.Button(icons[i + j], GUILayout.Width(25), GUILayout.Height(25)))
                         {
-                            Debug.Log(icons[i + j].name);
+                            Debug.Log("GUIContent icon = EditorGUIUtility.IconContent(texture.name, "+ icons[i + j].name + ")------" + icons[i + j].name);
                             UnityEngine.GUIUtility.systemCopyBuffer = icons[i + j].name;
                             
                         };

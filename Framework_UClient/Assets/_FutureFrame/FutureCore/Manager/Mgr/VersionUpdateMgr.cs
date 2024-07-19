@@ -25,7 +25,7 @@ namespace FutureCore
         private string HotFixPath_Server;
 
         private string serverDownload;
-       
+
 
         public override void Init()
         {
@@ -39,7 +39,7 @@ namespace FutureCore
         {
 
 #if UNITY_EDITOR
-           
+
             serverDownload = "https://raw.githubusercontent.com/Song-CQ/UnityRes/main";
 #elif UNITY_STANDALONE
 
@@ -65,7 +65,7 @@ namespace FutureCore
             //if (request == null)
             //{
             //    MainThreadLog.Log("文件不存在:" + path);
-                
+
             //}
             //else
             //{
@@ -88,14 +88,14 @@ namespace FutureCore
             ////};
             ////DownloadTaskMgr.Instance.DownloadAsync(downloadUnit);
             ////return;
-            
-      
+
+
             OnComplete = initAssets;
-            
+
             //本地文件检测
             App.SetLoadingSchedule(ProgressState.AssetsPrepare);
             CheckLocalFile();
-           
+
             //版本云端检测更新
             App.SetLoadingSchedule(ProgressState.VersionUpdate);
             CheckServerUpdate();
@@ -123,26 +123,35 @@ namespace FutureCore
 
         private void CheckLocalHotFixFile()
         {
-            if (!AppConst.IsHotUpdateMode)
+            if (AppConst.HotUpdateType == HotUpdateType.None)
             {
                 return;
             }
-            string filePath = PathConst.HotFixPath + "/HotFix.dll";
-            if (!File.Exists(filePath))
+
+            if (AppConst.HotUpdateType == HotUpdateType.ILRuntime)
             {
-                FileUtil.CreadFileLastDirectory(filePath);
-                File.Copy(PathConst.HotFixPath_StreamingAssets + "/HotFix.dll", filePath);
+                string filePath = PathConst.HotFixPath + "/HotFix.dll";
+                if (!File.Exists(filePath))
+                {
+                    FileUtil.CreadFileLastDirectory(filePath);
+                    File.Copy(PathConst.HotFixPath_StreamingAssets + "/HotFix.dll", filePath);
+                }
+                string verifyPath = PathConst.HotFixPath + "/version.json";
+                if (!File.Exists(verifyPath))
+                {
+                    FileUtil.CreadFileLastDirectory(filePath);
+                    File.Copy(PathConst.HotFixPath_StreamingAssets + "/version.json", verifyPath);
+                }
             }
-            string verifyPath = PathConst.HotFixPath + "/version.json";
-            if (!File.Exists(verifyPath))
+            else if (AppConst.HotUpdateType == HotUpdateType.XLua)
             {
-                FileUtil.CreadFileLastDirectory(filePath);
-                File.Copy(PathConst.HotFixPath_StreamingAssets + "/version.json", verifyPath);
+
             }
+
 
         }
 
-        
+
 
         private void CheckLocalAssetsFile()
         {
@@ -188,12 +197,12 @@ namespace FutureCore
 
         private bool isCheckHotFixVerify = false;
         private bool isCheckAssetBundleVerify = false;
-     
+
         /// <summary>
         /// 当前已经完成下载的文件数量
         /// </summary>
         private int doneloadCompleteSum;
-        
+
         /// <summary>
         /// 全部下载的大小
         /// </summary>
@@ -244,7 +253,7 @@ namespace FutureCore
             }
             //没有更新进入游戏
             else
-            { 
+            {
                 OnUpdateComplete(true);
             }
 
@@ -253,8 +262,8 @@ namespace FutureCore
 
 
         #region HotFix
-        
-     
+
+
         private void CheckServerHotFixVersion()
         {
             //检测
@@ -268,7 +277,7 @@ namespace FutureCore
             {
                 LogUtil.LogError("获取热更版本信息失败");
                 CheckHotFixCont++;
-                if (CheckHotFixCont<MaxCheckFixCont)
+                if (CheckHotFixCont < MaxCheckFixCont)
                 {
                     CheckServerHotFixVersion();
                 }
@@ -313,7 +322,7 @@ namespace FutureCore
                     allDownloadUnit.Add(downloadUnit);
                     allDoneloadSize += serverHotFixVerify.size;
                     allFileDownloadProgre.Add(downloadUnit, 0);
-                    
+
                 }
             }
 
@@ -325,7 +334,7 @@ namespace FutureCore
         private void CheckServerAssetBundleVersion()
         {
             //检测云端
-            string verifySeverPath = Path.Combine(ABPath_Server,"version.json");
+            string verifySeverPath = Path.Combine(ABPath_Server, "version.json");
             HttpMgr.Instance.Send(verifySeverPath, GetAssetBundleVersion);
         }
 
@@ -382,10 +391,10 @@ namespace FutureCore
                     {
                         SetAssetBundleDownladUnit(bundleMsg);
                     }
-                  
+
                 }
 
-               
+
             }
 
             isCheckAssetBundleVerify = true;
@@ -420,7 +429,7 @@ namespace FutureCore
         }
 
         #endregion
-       
+
         private void UpdateDownProgre(DownloadUnit downUnit, int curSize, int allSize)
         {
             if (allFileDownloadProgre.ContainsKey(downUnit))
@@ -441,14 +450,14 @@ namespace FutureCore
             {
                 IsUpdate = false;
                 MoveTempFileToOfficial();
-            }           
+            }
         }
 
-        private void DownError(DownloadUnit downUnit,string msg)
+        private void DownError(DownloadUnit downUnit, string msg)
         {
             LogUtil.LogError($"[VersionUpdateMgr]文件{downUnit.name}下载失败:{msg}");
         }
-        
+
         #endregion
 
         public void Update()
@@ -463,8 +472,8 @@ namespace FutureCore
                 val += item.Value;
             }
             float Progre = val * 1f / allDoneloadSize;
-            int ProgreVal = startPro + (int)(allProgre * Progre);       
-            GenericDispatcher.Instance.Dispatch<int, Action>(AppMsg.UI_SetLoadingValueUI,ProgreVal,null);
+            int ProgreVal = startPro + (int)(allProgre * Progre);
+            GenericDispatcher.Instance.Dispatch<int, Action>(AppMsg.UI_SetLoadingValueUI, ProgreVal, null);
         }
 
         /// <summary>
@@ -473,9 +482,9 @@ namespace FutureCore
         /// <returns></returns>
         private bool CheckVersionUpdateComplete()
         {
-            if (doneloadCompleteSum>= allDownloadUnit.Count)
+            if (doneloadCompleteSum >= allDownloadUnit.Count)
             {
-                          
+
                 return true;
             }
             return false;
@@ -503,7 +512,7 @@ namespace FutureCore
                     string path = string.Empty;
                     if (Path.GetFileName(item.name).Contains("HotFix"))
                     {
-                        path = Path.Combine(PathConst.HotFixPath,item.name);
+                        path = Path.Combine(PathConst.HotFixPath, item.name);
                     }
                     else
                     {
@@ -512,7 +521,7 @@ namespace FutureCore
                     LogUtil.Log($"[VersionUpdateMgr]开始移动文件{item.savePath}到{path}");
                     FileUtil.CreadFileLastDirectory(path);
                     if (File.Exists(path)) File.Delete(path);
-                    File.Move(item.savePath,path);           
+                    File.Move(item.savePath, path);
                 }
             }
 
@@ -534,7 +543,7 @@ namespace FutureCore
 
         }
 
-       
+
     }
 
 
