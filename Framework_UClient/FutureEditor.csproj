@@ -137,8 +137,8 @@
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Scripts\QObjectList.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\TreeView\TreeViewMain.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Scripts\Examples\07_Coroutine\CoroutineDemo.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QVerticesAndTrianglesCountComponent.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\ILRuntime\2.0.2\Demo\Scripts\Examples\11_ValueTypeBinding\QuaternionBinder.cs" />
+    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QVerticesAndTrianglesCountComponent.cs" />
     <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\Examples\TurnPage\TurnPageMain.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetManager.cs" />
     <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshBlow\MeshBlowInspector.cs" />
