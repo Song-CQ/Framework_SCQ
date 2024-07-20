@@ -27,10 +27,10 @@ namespace ProjectApp
         {
             base.Shutdown();
         }
-        
-        public override void Display()
+
+        public override void Dispose()
         {
-            base.Display();
+            base.Dispose();
         }
     }
 }

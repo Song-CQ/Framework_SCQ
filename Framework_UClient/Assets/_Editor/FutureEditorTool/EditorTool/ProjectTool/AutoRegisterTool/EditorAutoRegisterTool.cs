@@ -22,13 +22,13 @@ namespace FutureEditor
         {
             if (EditorUtility.DisplayDialog("注册编辑器环境", "是否注册编辑器环境", "确认", "取消"))
             {
-
+        
                 cb?.Invoke();
 
                 Debug.Log("[EditorEnvironmentAutoRegisterTool]自动注册环境开始");
                 Debug.Log("------------------------------------------自注册开始----------------------------------------------------------------");
                 RegisterStriptTemplate.StartRegisterTemplate();
-                
+                CopyUnityDllTo_Plugins();
 
                 Debug.Log("------------------------------------------自注册完毕----------------------------------------------------------------");
 
@@ -45,5 +45,18 @@ namespace FutureEditor
             }
         }
 
+        private static void CopyUnityDllTo_Plugins()
+        {
+            string pluginsUnitypath = UnityEditorPathConst.PluginsPath + "/Unity_DLL/";
+            string path = EditorApplication.applicationPath + @"/../Data/Managed/UnityEngine/";
+            string scriptAssembliesPath = Application.dataPath + @"/../Library/ScriptAssemblies/";
+
+            FutureCore.FileUtil.CopyFile(path+ "UnityEngine.dll", pluginsUnitypath + "UnityEngine.dll");
+            FutureCore.FileUtil.CopyFile(path+ "UnityEngine.CoreModule.dll", pluginsUnitypath + "UnityEngine.CoreModule.dll");
+            FutureCore.FileUtil.CopyFile(path+ "UnityEngine.UIModule.dll", pluginsUnitypath + "UnityEngine.UIModule.dll");
+
+            FutureCore.FileUtil.CopyFile(scriptAssembliesPath + "UnityEngine.UI.dll", pluginsUnitypath + "UnityEngine.UI.dll");
+            
+        }
     }
 }

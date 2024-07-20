@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -33,13 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="FutureFrame">
       <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\FutureFrame.dll</HintPath>
     </Reference>
@@ -51,11 +48,8 @@
       <HintPath>..\..\Framework_UClient\Library\ScriptAssemblies\ProjectApp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="UnityEngine">
-      <HintPath>E:\SetUp\UNITY\2022.3.4f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>E:\SetUp\UNITY\2022.3.4f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\_Plugins\Unity_DLL\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -64,48 +58,28 @@
   <ItemGroup>
     <Compile Include="MainStart\MainLaunch.cs" />
     <!-- Hotfix Class Start -->
-    <Compile Include= "HotFixClass\Logic\GameLogic\GameLogicRegister.cs" />
-    <Compile Include= "HotFixClass\Logic\GameLogic\System\GameSys.cs" />
-    <Compile Include= "HotFixClass\Logic\Manager\GameWorldMgr.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Game\GameCtrl.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Game\GameModel.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Game\GameUI.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Game\GameUICtrl.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Main\MainCtrl.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Main\MainModel.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Main\MainUI.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Main\MainUICtrl.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Tips\TipsCtrl.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Tips\TipsModel.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Tips\TipsUI.cs" />
-    <Compile Include= "HotFixClass\Logic\ModuleUI\Tips\TipsUICtrl.cs" />
-    <Compile Include= "HotFixClass\ModuleMgr\CtrlConst_AutoCread.cs" />
-    <Compile Include= "HotFixClass\ModuleMgr\ModelConst_AutoCread.cs" />
-    <Compile Include= "HotFixClass\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
-    <Compile Include= "HotFixClass\ModuleMgr\UIConst_AutoCread.cs" />
-    <Compile Include= "HotFixClass\ModuleMgr\UICtrlConst_AutoCread.cs" />
-    <Compile Include= "HotFixClass\ModuleMgr\UICtrlMsg_OpenClose_AutoCread.cs" />
-<!-- Hotfix Class End -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <Compile Include="HotFixClass\Logic\GameLogic\GameLogicRegister.cs" />
+    <Compile Include="HotFixClass\Logic\GameLogic\System\GameSys.cs" />
+    <Compile Include="HotFixClass\Logic\Manager\GameWorldMgr.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Game\GameCtrl.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Game\GameModel.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Game\GameUI.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Game\GameUICtrl.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Main\MainCtrl.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Main\MainModel.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Main\MainUI.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Main\MainUICtrl.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Tips\TipsCtrl.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Tips\TipsModel.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Tips\TipsUI.cs" />
+    <Compile Include="HotFixClass\Logic\ModuleUI\Tips\TipsUICtrl.cs" />
+    <Compile Include="HotFixClass\ModuleMgr\CtrlConst_AutoCread.cs" />
+    <Compile Include="HotFixClass\ModuleMgr\ModelConst_AutoCread.cs" />
+    <Compile Include="HotFixClass\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
+    <Compile Include="HotFixClass\ModuleMgr\UIConst_AutoCread.cs" />
+    <Compile Include="HotFixClass\ModuleMgr\UICtrlConst_AutoCread.cs" />
+    <Compile Include="HotFixClass\ModuleMgr\UICtrlMsg_OpenClose_AutoCread.cs" />
+    <!-- Hotfix Class End -->
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

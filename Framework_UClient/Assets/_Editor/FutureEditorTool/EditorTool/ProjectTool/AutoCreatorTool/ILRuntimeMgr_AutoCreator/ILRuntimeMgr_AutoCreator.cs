@@ -175,8 +175,8 @@ namespace ProjectApp
 
         }
 
-        private static string HotFix_Class_Temp_Path = UnityEditorPathConst.HotFix_Out + "/HotFixClass_Cache";
-        public static string HotFix_Class_Path = UnityEditorPathConst.HotFix_Out + "/HotFixClass";
+        private static string HotFix_Class_Temp_Path = UnityEditorPathConst.HotFix_OutPath + "/HotFixClass_Cache";
+        public static string HotFix_Class_Path = UnityEditorPathConst.HotFix_OutPath + "/HotFixClass";
 
         public static string HotFix_ModuleMgrPath = UnityEditorPathConst.AutoRegisterPath + "/ModuleMgr";
         public static string HotFix_LogicPath = Application.dataPath + "/_App/ProjectApp/ProjectApp/Logic";
@@ -185,16 +185,14 @@ namespace ProjectApp
         private static string replaceCompile_Include = @"    <Compile Include= ""[&&]"" />";
 
         private static StringBuilder svBuilder = new StringBuilder();
-        private static List<string> allClassVal = new List<string>();
 
-        public static async void AutoRegister_HotFix_ILRuntimeMgr(bool isDelLocalCS, Action cb)
+        public static void AutoRegister_HotFix_ILRuntimeMgr(bool isDelLocalCS,Action cb)
         {
             if (EditorUtility.DisplayDialog("启动ILRuntime热更流程", "是否启动ILRuntime热更流程", "确认", "取消"))
             {
                 cb?.Invoke();
                 Debug.Log("[启动ILRuntime热更]");
 
-                allClassVal.Clear();
                 Debug.Log("------------------------------------------ILRuntime热更流程----开始执行---------------------------------------------------------");
 
                 ClientToHotFixClass(isDelLocalCS);//将代码提取至缓存目录
@@ -225,18 +223,18 @@ namespace ProjectApp
         {
             Debug.Log("------------------------------------------ 注册 HotFix 代码 ----------------------------------------------------------------");
             FutureCore.FileUtil.DeleteFileOrDirectory(HotFix_Class_Path);
-            replaceHotFix_Class_Path = Path.GetFullPath(UnityEditorPathConst.HotFix_Out + "/");
+            replaceHotFix_Class_Path = Path.GetFullPath(UnityEditorPathConst.HotFix_OutPath + "/");
 
             svBuilder.Clear();
             string startStr = "<!-- Hotfix Class Start -->";
             string endStr = "<!-- Hotfix Class End -->";
             svBuilder.AppendLine(startStr);
 
-            FutureCore.FileUtil.CopyFolder(HotFix_Class_Temp_Path, UnityEditorPathConst.HotFix_Out, "HotFixClass", "*.cs", CopyFileCallback);
+            FutureCore.FileUtil.CopyFolder(HotFix_Class_Temp_Path, UnityEditorPathConst.HotFix_OutPath, "HotFixClass", "*.cs", CopyFileCallback);
 
             svBuilder.AppendLine(endStr);
 
-            string csprojPath = UnityEditorPathConst.HotFix_Out + "/ProjectApp_HotFix.csproj";
+            string csprojPath = UnityEditorPathConst.HotFix_OutPath + "/ProjectApp_HotFix.csproj";
 
             if (File.Exists(csprojPath))
             {
@@ -268,27 +266,6 @@ namespace ProjectApp
         public static async void CompileCodeToDll()
         {
 
-
-
-            if (allClassVal.Count==0)
-            {
-
-                string path = UnityEditorPathConst.HotFix_Out+"/HotFixClass";
-
-                DirectoryInfo directory = new DirectoryInfo(path);
-
-                var fieldInfos = directory.GetFiles("*.cs", SearchOption.AllDirectories);
-
-                foreach (var fieldInfo in fieldInfos)
-                {
-                    string classVal = fieldInfo.OpenText().ReadToEnd();
-                    allClassVal.Add(classVal);
-                }
-
-                
-            }
-
-
             Debug.Log("--------------------------- 编译 HotFix Dll ---------------------------");
             CreateAssembly();
             LogUtil.Log("------ 创建编译器实例成功 ------");
@@ -301,9 +278,35 @@ namespace ProjectApp
 
         private static void CompileAssembly()
         {
-             
+           List<string> allClassVal = new List<string>();
 
-            CompilerResults result = provider.CompileAssemblyFromSource(cp, allClassVal.ToArray());
+            string vajl = @"namespace ProjectApp
+{
+    public static class ILRuntimeMgr_Register
+    {
+        public static void RegisterProject()
+        {
+             string val = ""dasdasda"";
+//ReplaceBinder
+        }
+
+    }
+}";
+            
+
+            allClassVal.Add(vajl);
+
+            //CompilerResults result = provider.CompileAssemblyFromSource(cp, allClassVal.ToArray());
+
+            string path = UnityEditorPathConst.HotFix_OutPath + "/HotFixClass";
+
+            string[] files = Directory.GetFiles(path,"*.cs", SearchOption.AllDirectories);
+  
+
+            CompilerResults result = provider.CompileAssemblyFromFile(cp, files);
+
+
+
 
             Assembly assembly = null;
             if (result.Errors.Count > 0)
@@ -323,6 +326,8 @@ namespace ProjectApp
             else
             {
                 assembly = result.CompiledAssembly;
+
+                //assembly.GetCustomAttribute();
                 LogUtil.Log("------ 编译程序集成功 ------".AddColor(ColorType.Green));
             
                 if (cp.GenerateInMemory)
@@ -351,8 +356,6 @@ namespace ProjectApp
 
             svBuilder.AppendLine(val);
 
-            string classVal = File.ReadAllText(destFileName);
-            allClassVal.Add(classVal);
         }
 
         private static CSharpCodeProvider provider;
@@ -363,11 +366,18 @@ namespace ProjectApp
 
             //创建编译器实例。 
 
+            CodeDomProvider.CreateProvider("CSharp");
+
+
             provider = new CSharpCodeProvider();
 
+           
+            
             //设置编译参数。 
 
             cp = new CompilerParameters();
+
+            
 
             // 获取或设置一个值，该值指示是否生成可执行文件。
             cp.GenerateExecutable = false;
@@ -377,9 +387,9 @@ namespace ProjectApp
             //获取或设置一个值，该值指示是否在内存中生成输出
             cp.GenerateInMemory = true;
             //获取或设置输出程序集的名称。
-            cp.OutputAssembly = Application.streamingAssetsPath + @"HotFix\HotFix.dll";
+            cp.OutputAssembly = Application.streamingAssetsPath + @"\HotFix\HotFix.dll";
 
-            cp.WarningLevel = 3;
+            cp.WarningLevel = 2;
 
             // Set whether to treat all warnings as errors.获取或设置一个值，该值指示是否将警告视为错误。
 
@@ -393,15 +403,15 @@ namespace ProjectApp
             // The TempFileCollection stores the temporary files
             // generated during a build in the current directory,
             // and does not delete them after compilation.
-            if (true)
-            {
-                string path = Application.dataPath + "/../_HotFix_Temp";
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                cp.TempFiles = new TempFileCollection(path, true);
-            }
+            //if (creadTempFiles)
+            //{
+            //    string path = Application.dataPath + "/../_HotFix_Temp";
+            //    if (!Directory.Exists(path))
+            //    {
+            //        Directory.CreateDirectory(path);
+            //    }
+            //    cp.TempFiles = new TempFileCollection(path, true);
+            //}
            
 
 
@@ -411,10 +421,14 @@ namespace ProjectApp
             cp.ReferencedAssemblies.Add("System.Core.dll");
             cp.ReferencedAssemblies.Add("System.Data.dll");
 
+            //cp.ReferencedAssemblies.Add("netstandard.dll");
+
+
             
 
-            string unityDllPath = EditorApplication.applicationPath + @"/../Data/Managed/UnityEngine/";
-   
+            string unityDllPath = UnityEditorPathConst.PluginsPath + "/Unity_DLL/"; 
+
+
             string scriptAssembliesPath = Application.dataPath + @"/../Library/ScriptAssemblies/";
             string futureLibPath = Application.dataPath + @"/_FutureFrame/FutureLib/";
 

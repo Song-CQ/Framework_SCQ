@@ -14,7 +14,18 @@ namespace FutureEditor
     [InitializeOnLoad]
     public static class UnityEditorPathConst 
     {
-        
+
+        /// <summary>
+        /// 存放外部插件路径
+        /// </summary>
+        public readonly static string PluginsPath = Application.dataPath + @"/../../_Plugins";
+
+        /// <summary>
+        /// (热更)代码输出路径
+        /// </summary>
+        public readonly static string HotFix_OutPath= $"{Application.dataPath}/../_HotFix";
+
+
         /// <summary>
         /// CommModuleUI路劲
         /// </summary>      
@@ -33,10 +44,7 @@ namespace FutureEditor
         /// </summary>   
         public readonly static string FGUIClassPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.FGUIClassPath);
 
-        /// <summary>
-        /// (热更)代码输出路径
-        /// </summary>
-        public readonly static string HotFix_Out = $"{Application.dataPath}/../_HotFix";
+        
 
 
 

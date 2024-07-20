@@ -108,6 +108,15 @@ namespace FutureCore
             }
         }
 
+        public static void CopyFile(string source, string dest,bool overwrite =true)
+        {
+            if (!File.Exists(source))
+            {
+                LogUtil.LogError("源文件不存在"+ source);
+                return ;
+            }
+            File.Copy(source,dest,overwrite);
+        }
 
         public static void CopyFolder(string strFromPath, string strToPath,string searchPattern, Action<string, string> copyFileCallback = null)
         {

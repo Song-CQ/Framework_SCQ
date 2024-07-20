@@ -338,6 +338,7 @@ namespace FutureEditor
         private bool showFoldout3_ILRuntime = true;
 
         private bool isDelClient_ILRuntime = true;
+
         private void OnOtherToolView_ILRuntime()
         {
             string ModuleMgrPath = UnityEditorPathConst.AutoRegisterPath + "/ModuleMgr";
@@ -376,7 +377,9 @@ namespace FutureEditor
             {
                 GUILayout.Space(5);
                 EditorGUI.indentLevel++;
+                EditorGUI.indentLevel++;
                 isDelClient_ILRuntime = GUILayout.Toggle(isDelClient_ILRuntime, "被提取的热更代码 是否删除");
+                EditorGUI.indentLevel--;
                 EditorGUI.indentLevel--;
             }
             GUILayout.Space(5);
