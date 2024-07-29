@@ -60,6 +60,7 @@
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\CtrlConst_AutoCread.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Commons\RockerComponent.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\CtrlConst_Common.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A002_loading\A002_loadingBinder.cs" />
@@ -68,6 +69,9 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\UIMgr\UIRegister_FGUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_pp.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUICtrlAdapter.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainUI.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsUICtrl.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsCtrl.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UICtrlConst_Common.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectCtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\com_light.cs" />
@@ -76,18 +80,22 @@
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Commons\UIDragComponent.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\SimpleUIMgr\UIWindow.cs" />
     <Compile Include="Assets\_App\_AppCommon\Manager\UI_EffectManager.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameUICtrl.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectMain\MainLauncher.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUICtrl.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UICtrlMsg_OpenClose_Common.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainModel.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingCtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_balloon.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIEntity.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Register_AutoCreator\ILRuntimeMgr_Register.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Mseeage\CtrlMsg_Base.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIDriver.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsModel.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\G004_mainBinder.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\btn_add.cs" />
+    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlConst_AutoCread.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingModel.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Scene\GameScene.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectUI.cs" />
@@ -95,29 +103,40 @@
     <Compile Include="Assets\_App\_AppCommon\Manager\ILRuntimeMgr\Register\ILRuntimeMgr_Register_Common.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseCtrlAdapter.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_collect.cs" />
+    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModelConst_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_crazy.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Scene\MainScene.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\App\AppFacade.cs" />
+    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUIAdapter.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Manager\GameWorldMgr.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseSystemAdapter.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameUI.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\btn_minus.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseModelAdapter.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\UIMgr\UIRegister_FGUI_Common.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\ProjectApplication.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectModel.cs" />
+    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlMsg_OpenClose_AutoCread.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\FGUI\FGUIDriver.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainCtrl.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\GameLogicRegister.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_playnum.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_gift.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\System\GameSys.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\App\AppManagerRegister.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UIConst_Common.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\pb_jiazai.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameModel.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\ModelConst_Common.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Cont\LoadingTrasitionConst.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_playagain.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectUICtrl.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameCtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_cardplaytext.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_green_vid.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\FGUI\FGUIEntity.cs" />
@@ -130,17 +149,17 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_coin.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\AppRedirection.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\AppFacadeRedirection.cs" />
+    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UIConst_AutoCread.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\AppMain.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainUICtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_main.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_rolling.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\SimpleUIMgr\UIManager.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\SceneMgr\SceneMgrRegister.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModuleMgr_文件夹的热更占位文件.txt" />
     <None Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\VoClassLib.dll" />
     <None Include="Assets\_App\ProjectApp.asmdef" />
-    <None Include="Assets\_App\ProjectApp\ProjectApp\Logic\Logic_文件夹的热更占位文件.txt" />
     <None Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll" />
   </ItemGroup>
   <ItemGroup>
