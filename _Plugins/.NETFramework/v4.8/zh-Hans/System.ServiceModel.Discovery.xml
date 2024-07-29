@@ -1,0 +1,2095 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ServiceModel.Discovery</name>
+  </assembly>
+  <members>
+    <member name="T:System.ServiceModel.Discovery.AnnouncementClient">
+      <summary>由服务用于发送发现公告消息。 客户端可以使用发现机制，即，使用相应的 <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> 类来侦听公告消息并采取操作。 公告消息包含关于服务的信息，例如，服务的完全限定的协定名称、服务运行的任何范围，以及服务需要发送的任何自定义元数据。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.#ctor(System.ServiceModel.Discovery.AnnouncementEndpoint)">
+      <summary>用指定的 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> 初始化 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> 类的新实例。</summary>
+      <param name="announcementEndpoint">公告终结点。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.#ctor(System.String)">
+      <summary>使用指定的终结点配置创建 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> 类的新实例。</summary>
+      <param name="endpointConfigurationName">要使用的终结点配置的名称。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOffline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>使脱机公告消息 (Bye) 和指定的终结点发现元数据一起发送。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOfflineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>使脱机公告消息 (Bye) 和指定的终结点发现元数据一起异步发送。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOfflineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.Object)">
+      <summary>使脱机公告消息 (Bye) 与指定的终结点发现元数据和用户定义的状态一起异步发送。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+      <param name="userState">用户定义的状态数据。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOfflineCompleted">
+      <summary>在异步脱机公告 (Bye) 完成时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOfflineTaskAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>使脱机任务公告消息 (Bye) 和指定的终结点发现元数据一起异步发送。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+      <returns>将被异步发送的脱机任务公告消息。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>使联机公告消息 (Hello) 被发送。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnlineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>使联机公告 (Hello) 消息和指定的终结点发现元数据一起异步发送。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnlineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.Object)">
+      <summary>使联机公告 (Hello) 消息和指定的终结点发现元数据和用户定义的状态一起异步发送。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+      <param name="userState">用户定义的状态数据。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnlineCompleted">
+      <summary>在异步联机公告 (Hello) 完成时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnlineTaskAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>使联机任务公告 (Hello) 消息和指定的终结点发现元数据一起异步发送。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+      <returns>将被异步发送的联机任务公告消息。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.BeginAnnounceOffline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>使脱机公告 (Bye) 消息与指定的终结点发现元数据和用户定义的状态一起异步发送。 操作完成时调用指定的 <see cref="T:System.AsyncCallback" />。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+      <param name="callback">
+        <see cref="T:System.AsyncCallback" />。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.BeginAnnounceOnline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>使联机公告 (Hello) 消息和指定的终结点发现元数据和用户定义的状态一起异步发送。 操作完成时调用指定的 <see cref="T:System.AsyncCallback" />。</summary>
+      <param name="discoveryMetadata">终结点发现元数据。</param>
+      <param name="callback">
+        <see cref="T:System.AsyncCallback" />。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.ChannelFactory">
+      <summary>获取与 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> 关联的通道工厂。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.ChannelFactory" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.ClientCredentials">
+      <summary>获取与 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> 关联的客户端凭据。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Description.ClientCredentials" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.Close">
+      <summary>关闭 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.EndAnnounceOffline(System.IAsyncResult)">
+      <summary>等待挂起的异步脱机公告完成。</summary>
+      <param name="result">对挂起的异步操作的引用。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.EndAnnounceOnline(System.IAsyncResult)">
+      <summary>等待挂起的异步联机公告完成。</summary>
+      <param name="result">对挂起的异步操作的引用。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.Endpoint">
+      <summary>获取与 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 关联的 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.InnerChannel">
+      <summary>获取与 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> 关联的内部通道。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.IClientChannel" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.MessageSequenceGenerator">
+      <summary>获取或设置与 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> 关联的消息序列生成器。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.Open">
+      <summary>打开 <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#IDisposable#Dispose">
+      <summary>执行与释放或重置非托管资源相关的应用程序定义的任务。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Abort">
+      <summary>使通信对象立即从其当前状态转换到关闭状态。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#BeginClose(System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作以关闭通信对象。</summary>
+      <param name="callback">接收异步关闭操作完成通知的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">一个由应用程序指定的对象，它包含与异步关闭操作相关联的状态信息。</param>
+      <returns>引用异步关闭操作的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#BeginClose(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作以在指定超时时间内关闭通信对象。</summary>
+      <param name="timeout">
+        <see cref="T:System.TimeSpan" />，指定在超时前必须完成发送操作的时间。</param>
+      <param name="callback">接收异步关闭操作完成通知的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">一个由应用程序指定的对象，它包含与异步关闭操作相关联的状态信息。</param>
+      <returns>引用异步关闭操作的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作以打开通信对象。</summary>
+      <param name="callback">接收异步打开操作完成通知的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">一个由应用程序指定的对象，它包含与异步打开操作相关联的状态信息。</param>
+      <returns>引用异步打开操作的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作以在指定时间间隔内打开通信对象。</summary>
+      <param name="timeout">
+        <see cref="T:System.TimeSpan" />，指定在超时前必须完成发送操作的时间。</param>
+      <param name="callback">接收异步打开操作完成通知的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">一个由应用程序指定的对象，它包含与异步打开操作相关联的状态信息。</param>
+      <returns>引用异步打开操作的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Close">
+      <summary>使通信对象从其当前状态转换到关闭状态。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Close(System.TimeSpan)">
+      <summary>使通信对象在指定时间间隔内从当前状态转换到关闭状态。</summary>
+      <param name="timeout">
+        <see cref="T:System.TimeSpan" />，指定在超时前必须完成发送操作的时间。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Closed">
+      <summary>当通信对象完成从正在关闭状态转换到已关闭状态时发生。</summary>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Closing">
+      <summary>当通信对象首次进入正在关闭状态时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#EndClose(System.IAsyncResult)">
+      <summary>完成一个异步操作以关闭通信对象。</summary>
+      <param name="result">由对 <see cref="T:System.IAsyncResult" /> 方法的调用返回的 <see cref="Overload:System.ServiceModel.ICommunicationObject.BeginClose" />。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#EndOpen(System.IAsyncResult)">
+      <summary>完成一个异步操作以打开通信对象。</summary>
+      <param name="result">由对 <see cref="T:System.IAsyncResult" /> 方法的调用返回的 <see cref="Overload:System.ServiceModel.ICommunicationObject.BeginOpen" />。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Faulted">
+      <summary>当通信对象首次进入出错状态时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Open">
+      <summary>使通信对象从已创建状态转换到已打开状态。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Open(System.TimeSpan)">
+      <summary>使通信对象在指定时间间隔内从已创建状态转换到已打开状态。</summary>
+      <param name="timeout">
+        <see cref="T:System.TimeSpan" />，指定在超时前必须完成发送操作的时间。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Opened">
+      <summary>当通信对象完成从正在打开状态转换到已打开状态时发生。</summary>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Opening">
+      <summary>当通信对象首次进入正在打开状态时发生。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#State">
+      <summary>获取面向通信的对象的当前状态。</summary>
+      <returns>对象的 <see cref="T:System.ServiceModel.CommunicationState" /> 的值。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.AnnouncementEndpoint">
+      <summary>由服务用于发送公告消息的标准终结点。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementEndpoint.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementEndpoint.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+      <summary>使用指定的绑定和地址创建 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> 类的新实例。</summary>
+      <param name="binding">绑定。</param>
+      <param name="address">地址。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion)">
+      <summary>创建支持指定的 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> 的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 类的新实例。</summary>
+      <param name="discoveryVersion">要使用的发现版本。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+      <summary>使用指定的绑定和地址创建 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> 类的新实例，该实例支持指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</summary>
+      <param name="discoveryVersion">要使用的发现版本。</param>
+      <param name="binding">要使用的绑定。</param>
+      <param name="address">终结点的地址。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementEndpoint.DiscoveryVersion">
+      <summary>获取此公告终结点支持的发现版本。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementEndpoint.MaxAnnouncementDelay">
+      <summary>获取或设置最大公告延迟。</summary>
+      <returns>一个 <see cref="T:System.TimeSpan" /> 实例，其中包含最大公告延迟。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.AnnouncementEventArgs">
+      <summary>用于传递公告事件参数。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementEventArgs.EndpointDiscoveryMetadata">
+      <summary>获取服务从此 <see cref="T:System.ServiceModel.Discovery.AnnouncementEventArgs" /> 实例发送（作为服务公告消息的一部分）的服务元数据。</summary>
+      <returns>可发现的服务元数据。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementEventArgs.MessageSequence">
+      <summary>从此 <see cref="T:System.ServiceModel.Discovery.AnnouncementEventArgs" /> 实例中获取发现消息序列。</summary>
+      <returns>发现消息序列。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.AnnouncementService">
+      <summary>公告服务的自承载实现。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.#ctor(System.Int32)">
+      <summary>使用指定的重复消息历史记录长度初始化 <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> 类的新实例。</summary>
+      <param name="duplicateMessageHistoryLength">传输用来标识重复消息的消息哈希的最大数目。 默认值为 0。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementService.OfflineAnnouncementReceived">
+      <summary>接收脱机公告 (Bye) 消息时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.OnBeginOfflineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>开始处理传入的脱机公告 (Bye) 消息。</summary>
+      <param name="messageSequence">此消息在当前通知序列中的位置。</param>
+      <param name="endpointDiscoveryMetadata">一个对象，该对象提供终结点元数据，例如，范围、侦听 URI、协定名称和终结点地址。</param>
+      <param name="callback">将在完成异步操作时调用的方法。</param>
+      <param name="state">基础结构定义的状态数据。</param>
+      <returns>挂起的异步请求的状态。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.OnBeginOnlineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>开始处理传入的联机公告 (Hello) 消息。</summary>
+      <param name="messageSequence">此消息在当前通知序列中的位置。</param>
+      <param name="endpointDiscoveryMetadata">一个对象，该对象提供终结点元数据，例如，范围、侦听 URI、协定名称和终结点地址。</param>
+      <param name="callback">将在完成异步操作时调用的方法。</param>
+      <param name="state">基础结构定义的状态数据。</param>
+      <returns>挂起的异步请求的状态。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.OnEndOfflineAnnouncement(System.IAsyncResult)">
+      <summary>从 <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> 中继承以实现自定义公告侦听器服务的用户必须重写此方法，并在此处开始处理传入的脱机公告 (Bye) 消息。</summary>
+      <param name="result">由相应的 <see cref="M:System.ServiceModel.Discovery.AnnouncementService.OnBeginOnlineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)" /> 返回的异步结果。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.OnEndOnlineAnnouncement(System.IAsyncResult)">
+      <summary>从 <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> 中继承以实现自定义公告侦听器服务的用户必须重写此方法，并在此处开始处理传入的脱机公告 (Bye) 消息。</summary>
+      <param name="result">由相应的 <see cref="M:System.ServiceModel.Discovery.AnnouncementService.OnBeginOnlineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)" /> 返回的异步结果。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementService.OnlineAnnouncementReceived">
+      <summary>接收联机公告 (Hello) 时发生。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.AnnouncementChannelEndpointElementCollection">
+      <summary>表示 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" /> 配置元素的容器。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementChannelEndpointElementCollection.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementChannelEndpointElementCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointCollectionElement">
+      <summary>表示 <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement" /> 配置元素的容器。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointCollectionElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointCollectionElement" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement">
+      <summary>定义公告终结点的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>由派生类调用或重写时，创建并初始化 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> 类的新实例，该类使用当前发现协议版本的协定说明。</summary>
+      <param name="contractDescription">未使用。</param>
+      <returns>公告终结点。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.DiscoveryVersion">
+      <summary>获取或设置公告终结点支持的 WS-Discovery 规范的版本。</summary>
+      <returns>WS-Discovery 版本。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.EndpointType">
+      <summary>获取公告终结点的类型。</summary>
+      <returns>公告终结点的类型。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.InitializeFrom(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" />。</summary>
+      <param name="endpoint">要转换的服务终结点对象。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.MaxAnnouncementDelay">
+      <summary>获取或设置在发送公告消息之前服务所需等待的最大延迟。</summary>
+      <returns>最大延迟。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>由派生类调用或重写时，将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为公告终结点。</summary>
+      <param name="endpoint">应用了公告配置设置的服务终结点。</param>
+      <param name="serviceEndpointElement">未使用。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>由派生类调用或重写时，将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为公告终结点。</summary>
+      <param name="endpoint">应用了公告配置设置的服务终结点。</param>
+      <param name="serviceEndpointElement">未使用。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>由派生类调用或重写时，初始化并验证 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" /> 的指定实例。</summary>
+      <param name="channelEndpointElement">要初始化和验证的通道终结点元素。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>由派生类调用或重写时，初始化并验证 <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" /> 的指定实例。</summary>
+      <param name="serviceEndpointElement">要初始化和验证的服务终结点元素。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.Properties">
+      <summary>在派生类中调用或重写时，获取 <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement" /> 实例中包含的配置设置的集合。</summary>
+      <returns>配置设置的集合。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement">
+      <summary>表示由所搜索的工作流服务协定的名称标识的工作流元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement.#ctor(System.String,System.String)">
+      <summary>使用指定的协定类型名称和命名空间名称创建 <see cref="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement" /> 类的新实例。</summary>
+      <param name="name">工作流服务协定的类型名称。</param>
+      <param name="ns">工作流服务协定的命名空间名称。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement.Name">
+      <summary>获取或设置协定类型的名称。</summary>
+      <returns>一个字母数字名称。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement.Namespace">
+      <summary>获取或设置协定类型的命名空间。</summary>
+      <returns>一个字母数字名称。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElementCollection">
+      <summary>表示 <see cref="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement" /> 对象集合。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ContractTypeNameElementCollection.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElementCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement">
+      <summary>表示一个配置元素，该配置元素使客户端应用程序能够自动搜索可发现的工作流服务，并在运行时查找其地址。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.ApplyConfiguration(System.ServiceModel.Channels.BindingElement)">
+      <summary>将条件从指定的绑定元素添加到当前 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement" />。</summary>
+      <param name="bindingElement">一个元素，该元素为各种类型的通道生成用于处理传出和传入消息的通道工厂和通道侦听器。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.BindingElementType">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.DiscoveryClientBindingElement" /> 的类型。</summary>
+      <returns>一个类型对象。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement)">
+      <summary>将指定 <see cref="T:System.ServiceModel.Configuration.ServiceModelExtensionElement" /> 的内容复制到当前配置元素。</summary>
+      <param name="from">要复制的 <see cref="T:System.ServiceModel.Configuration.ServiceModelExtensionElement" />。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.DiscoveryEndpoint">
+      <summary>获取 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />，它使客户端应用程序能够自动搜索可发现的工作流服务，并在运行时查找其地址。</summary>
+      <returns>通道终结点。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.FindCriteria">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" />，它提供客户端应用程序用于搜索可发现工作流服务的一组条件。</summary>
+      <returns>一个查找条件元素。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement">
+      <summary>提供配置元素，该配置元素的设置使客户端应用程序能够自动搜索可发现的工作流服务，并在运行时查找其地址。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement.DiscoveryEndpoint">
+      <summary>获取 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />，它使客户端应用程序能够自动搜索可发现的工作流服务，并在运行时查找其地址。</summary>
+      <returns>通道终结点。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement.FindCriteria">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" />，它提供客户端应用程序用于搜索可发现工作流服务的一组条件。</summary>
+      <returns>一个查找条件元素。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointCollectionElement">
+      <summary>表示 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement" /> 配置元素的容器。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointCollectionElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointCollectionElement" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement">
+      <summary>定义发现终结点的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>由派生类调用或重写时，创建并初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> 类的新实例，该类使用默认发现协议版本和模式。</summary>
+      <param name="contractDescription">未实现。</param>
+      <returns>发现终结点。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.DiscoveryMode">
+      <summary>获取或设置发现终结点使用的发现模式。</summary>
+      <returns>发现模式。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.DiscoveryVersion">
+      <summary>获取或设置发现应使用的 WS-Discovery 规范的版本。</summary>
+      <returns>WS-Discovery 版本。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.EndpointType">
+      <summary>由派生类调用或重写时，获取发现终结点的类型。</summary>
+      <returns>终结点的类型。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.InitializeFrom(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>从给定的终结点中初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" />。</summary>
+      <param name="endpoint">要转换的服务终结点对象。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.MaxResponseDelay">
+      <summary>获取或设置服务在向客户端发送响应时可在 ProbeMatches 之间引入的最大延迟量。</summary>
+      <returns>最大响应延迟。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>由派生类调用或重写时，在指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> 上应用 ConfigurationProperties。</summary>
+      <param name="endpoint">应用了发现配置设置的服务终结点。</param>
+      <param name="serviceEndpointElement">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>由派生类调用或重写时，在指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> 上应用 ConfigurationProperties。</summary>
+      <param name="endpoint">应用了发现配置设置的服务终结点。</param>
+      <param name="serviceEndpointElement">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>由派生类调用或重写时，初始化并验证 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" /> 的指定实例。</summary>
+      <param name="channelEndpointElement">要初始化和验证的通道终结点元素。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>由派生类调用或重写时，初始化并验证 <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" /> 的指定实例。</summary>
+      <param name="serviceEndpointElement">要初始化和验证的服务终结点元素。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.Properties">
+      <summary>由派生类调用或重写时，获取 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement" /> 实例中包含的配置设置的集合。</summary>
+      <returns>配置设置的集合。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter">
+      <summary>提供将 WS-Discovery 协议版本更改为另一种类型的功能。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>返回一个值，该值指示是否可将给定 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象更改为此转换器的类型，以及是否使用指定的上下文和区域性信息。</summary>
+      <param name="context">可帮助将 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象转换为其他类型的类型说明符格式信息。</param>
+      <param name="sourceType">更改为此转换器的类型的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象。</param>
+      <returns>如果可将指定 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象更改为此转换器的类型，则为  <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>返回一个值，该值指示是否可将给定 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象更改为指定类型，以及是否使用指定的上下文和区域性信息。</summary>
+      <param name="context">可帮助将 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象转换为其他类型的类型说明符格式信息。</param>
+      <param name="destinationType">
+        <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象所更改为的类型。</param>
+      <returns>如果可将指定 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象更改为指定类型，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+      <summary>使用指定的上下文和区域性信息将给定 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象转换为此转换器的类型。</summary>
+      <param name="context">可帮助将 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象转换为其他类型的类型说明符格式信息。</param>
+      <param name="culture">用于类型转换的区域性信息。</param>
+      <param name="value">要更改的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象。</param>
+      <returns>一个已更改为此转换器的类型的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+      <summary>使用指定的上下文和区域性信息将给定 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 转换为指定类型。</summary>
+      <param name="context">可帮助将 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象转换为其他类型的类型说明符格式信息。</param>
+      <param name="culture">用于类型转换的区域性信息。</param>
+      <param name="value">要更改的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</param>
+      <param name="destinationType">
+        <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 对象所更改为的类型。</param>
+      <returns>一个已更改为指定类型的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DynamicEndpointCollectionElement">
+      <summary>表示一个工作流配置元素，该配置元素提供了终结点的集合，其中每个终结点都包含使应用程序能够充当可在运行时期间搜索、查找和使用工作流服务的客户端程序的信息。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DynamicEndpointCollectionElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.DynamicEndpointCollectionElement" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DynamicEndpointElement">
+      <summary>表示一个配置元素，该配置元素提供的信息使应用程序能够充当可在运行时期间搜索、查找和使用工作流服务的客户端程序。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DynamicEndpointElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.DynamicEndpointElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DynamicEndpointElement.DiscoveryClientSettings">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement" />，其中包含应用程序以客户端形式参与服务发现过程所需的设置。</summary>
+      <returns>一个元素，其中包含客户端应用程序所需的发现设置。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement">
+      <summary>一个用于控制终结点的发现功能的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.BehaviorType">
+      <summary>获取与 <see cref="T:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement" /> 关联的行为类型。</summary>
+      <returns>行为类型。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.ContractTypeNames">
+      <summary>获取与终结点关联的协定类型名称。</summary>
+      <returns>与终结点关联的协定类型名称。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.Enabled">
+      <summary>获取或设置一个值，该值指示此终结点的可发现性。</summary>
+      <returns>如果启用了此终结点的可发现性，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.Extensions">
+      <summary>获取与 <see cref="T:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement" /> 关联的扩展。</summary>
+      <returns>扩展。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.Scopes">
+      <summary>获取此终结点的范围的集合。</summary>
+      <returns>与此终结点关联的范围的集合。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement">
+      <summary>管理一个配置元素，该元素包含客户端应用程序用于在网络或 Internet 上搜索工作流服务的一组条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.ContractTypeNames">
+      <summary>获取配置元素的集合，这些元素包含工作流服务协定类型的名称。</summary>
+      <returns>一个元素集合。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.Duration">
+      <summary>获取或设置等待网络或 Internet 上的服务所发送答复的最长时间。</summary>
+      <returns>一个定义等待期限的 timespan 对象。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.Extensions">
+      <summary>获取 <see cref="T:System.ServiceModel.Configuration.XmlElementElementCollection" /> 对象，该对象为 <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" /> 提供扩展。</summary>
+      <returns>一个元素集合。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.MaxResults">
+      <summary>获取或设置等待网络或 Internet 上的服务所发送的要等待的最大答复数。</summary>
+      <returns>最大数量。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.ScopeMatchBy">
+      <summary>获取或设置一个 URI，该 URI 指定所搜索服务的名称和位置，以及 <see cref="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.Scopes" /> 集合与之匹配的服务的名称和位置。</summary>
+      <returns>服务应用程序的 URI。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.Scopes">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" /> 对象的集合，这些对象包含在查找操作过程中用于查找一个或多个特定服务的绝对 URI。</summary>
+      <returns>包含 URI 的元素的集合。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ScopeElement">
+      <summary>表示终结点的范围 URI。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ScopeElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.ScopeElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ScopeElement.Scope">
+      <summary>获取或设置范围 URI。</summary>
+      <returns>范围 URI。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ScopeElementCollection">
+      <summary>一个包含范围元素集合的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ScopeElementCollection.#ctor">
+      <summary>创建 <see cref="M:System.ServiceModel.Discovery.Configuration.ScopeElementCollection.#ctor" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement">
+      <summary>表示一个配置元素，该元素控制服务的可发现性。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement.AnnouncementEndpoints">
+      <summary>获取公告终结点的集合。</summary>
+      <returns>一个包含公告终结点的 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElementCollection" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement.BehaviorType">
+      <summary>获取行为的类型。</summary>
+      <returns>行为的类型。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointCollectionElement">
+      <summary>表示 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement" /> 配置元素的容器。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointCollectionElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointCollectionElement" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement">
+      <summary>定义 UDP 公告终结点的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>由派生类调用或重写时，创建并初始化 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> 类的新实例，该类使用当前发现协议版本和模式的协定说明。</summary>
+      <param name="contractDescription">未实现。</param>
+      <returns>UDP 公告终结点。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.EndpointType">
+      <summary>由派生类调用或重写时，获取 UDP 公告终结点的类型。</summary>
+      <returns>UDP 公告终结点的类型。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.InitializeFrom(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" />。</summary>
+      <param name="endpoint">要转换的服务终结点对象。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.MaxAnnouncementDelay">
+      <summary>获取或设置在发送公告消息之前服务所需等待的最大延迟。</summary>
+      <returns>最大延迟。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.MulticastAddress">
+      <summary>获取或设置 UDP 公告终结点元素的 <see cref="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.MulticastAddress" /> 属性。</summary>
+      <returns>URI 地址。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>由派生类调用或重写时，将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 UDP 公告终结点。</summary>
+      <param name="endpoint">应用了 UDP 公告配置设置的服务终结点。</param>
+      <param name="serviceEndpointElement">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>由派生类调用或重写时，将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 UDP 公告终结点。</summary>
+      <param name="endpoint">应用了 UDP 公告配置设置的服务终结点。</param>
+      <param name="serviceEndpointElement">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>由派生类调用或重写时，初始化并验证 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" /> 的指定实例。</summary>
+      <param name="channelEndpointElement">要初始化和验证的通道终结点元素。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>由派生类调用或重写时，初始化并验证 <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" /> 的指定实例。</summary>
+      <param name="serviceEndpointElement">要初始化和验证的服务终结点元素。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.Properties">
+      <summary>由派生类调用或重写时，获取 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement" /> 实例中包含的配置设置的集合。</summary>
+      <returns>配置设置的集合。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.TransportSettings">
+      <summary>获取 UDP 传输配置元素的绑定设置。</summary>
+      <returns>一个 UDP 配置元素。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointCollectionElement">
+      <summary>表示 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement" /> 配置元素的容器。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointCollectionElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointCollectionElement" /> 的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement">
+      <summary>定义 UDP 发现终结点的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>由派生类调用或重写时，创建并初始化 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> 类的新实例，该类使用当前发现协议版本和模式的协定说明。</summary>
+      <param name="contractDescription">未实现。</param>
+      <returns>一个 UDP 发现终结点。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.DiscoveryMode">
+      <summary>获取或设置发现终结点使用的发现模式。</summary>
+      <returns>发现模式。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.EndpointType">
+      <summary>由派生类调用或重写时，获取 UDP 发现终结点的类型。</summary>
+      <returns>发现终结点的类型。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.InitializeFrom(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" />。</summary>
+      <param name="endpoint">要转换的服务终结点对象。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.MaxResponseDelay">
+      <summary>获取或设置 <see cref="T:System.TimeSpan" /> 的最大值，在此时间跨度内，服务的用于响应探测操作的所有 ProbeMatches 都将发送出去。</summary>
+      <returns>最大延迟。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.MulticastAddress">
+      <summary>获取或设置 UDP 发现终结点元素的 <see cref="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.MulticastAddress" /> 属性。</summary>
+      <returns>IP 地址。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>由派生类调用或重写时，将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 UDP 发现终结点。</summary>
+      <param name="endpoint">应用了配置设置的服务终结点。</param>
+      <param name="serviceEndpointElement">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>由派生类调用或重写时，将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 UDP 发现终结点。</summary>
+      <param name="endpoint">应用了配置设置的服务终结点。</param>
+      <param name="serviceEndpointElement">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>由派生类调用或重写时，初始化并验证 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" /> 的指定实例。</summary>
+      <param name="channelEndpointElement">要初始化和验证的通道终结点元素。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>由派生类调用或重写时，初始化并验证 <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" /> 的指定实例。</summary>
+      <param name="serviceEndpointElement">要初始化和验证的服务终结点元素。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.Properties">
+      <summary>由派生类调用或重写时，获取 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement" /> 实例中包含的配置设置的集合。</summary>
+      <returns>配置设置的集合。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.TransportSettings">
+      <summary>获取 UDP 传输配置元素的绑定设置。</summary>
+      <returns>一个 UDP 配置元素。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement">
+      <summary>允许您设置 UDP 传输的设置。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.DuplicateMessageHistoryLength">
+      <summary>获取或设置 UDP 传输配置元素中 <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.DuplicateMessageHistoryLength" /> 属性的值。</summary>
+      <returns>传输用来标识重复消息的消息哈希的最大数目。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxBufferPoolSize">
+      <summary>获取或设置为从磁盘读取数据页和将数据页写入内存的进程分配的最大内存（以字节为单位）。</summary>
+      <returns>一个指示缓冲池大小的数字。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxMulticastRetransmitCount">
+      <summary>获取或设置 UDP 传输配置元素中 <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxMulticastRetransmitCount" /> 属性的值。</summary>
+      <returns>可重新传输多播消息的最大次数。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxPendingMessageCount">
+      <summary>获取或设置 UDP 传输配置元素中 <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxPendingMessageCount" /> 属性的值。</summary>
+      <returns>已接收但尚未从每个通道实例的输入队列中移除的消息的最大数目。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxReceivedMessageSize">
+      <summary>获取或设置 UDP 传输配置元素中 <see cref="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxReceivedMessageSize" /> 属性的值。</summary>
+      <returns>绑定可以处理的消息的最大大小（以字节为单位）。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxUnicastRetransmitCount">
+      <summary>获取或设置 UDP 传输配置元素中 <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxUnicastRetransmitCount" /> 属性的值。</summary>
+      <returns>可重新传输单播消息的最大次数。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MulticastInterfaceId">
+      <summary>获取或设置 UDP 传输配置元素中 <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.MulticastInterfaceId" /> 属性的值。</summary>
+      <returns>在多宿主计算机上发送和接收多播消息时所使用的网络适配器。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.SocketReceiveBufferSize">
+      <summary>获取或设置 UDP 传输配置元素中 <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.SocketReceiveBufferSize" /> 属性的值。</summary>
+      <returns>基础 WinSock 套接字上的接收缓冲区的大小。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.TimeToLive">
+      <summary>获取或设置 UDP 传输配置元素中 <see cref="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.TimeToLive" /> 属性的值。</summary>
+      <returns>多播数据包可以遍历的网络段跃点数。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryClient">
+      <summary>允许发现可用的服务。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.#ctor(System.ServiceModel.Discovery.DiscoveryEndpoint)">
+      <summary>使用指定的发现终结点创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" /> 类的新实例。</summary>
+      <param name="discoveryEndpoint">发送发现消息时要使用的发现终结点。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.#ctor(System.String)">
+      <summary>使用指定的终结点配置创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" /> 类的新实例。</summary>
+      <param name="endpointConfigurationName">要使用的终结点配置名称。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.CancelAsync(System.Object)">
+      <summary>取消一个挂起的异步操作。</summary>
+      <param name="userState">用户指定的状态对象，该对象将被传递到 <see cref="Overload:System.ServiceModel.Discovery.DiscoveryClient.FindAsync" /> 方法或 <see cref="Overload:System.ServiceModel.Discovery.DiscoveryClient.ResolveAsync" /> 方法之一。 它标识要取消的挂起的异步操作。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.ChannelFactory">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" /> 的通道工厂。</summary>
+      <returns>通道工厂。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.ClientCredentials">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" /> 的客户端凭据。</summary>
+      <returns>
+        <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" /> 的客户端凭据。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.Close">
+      <summary>关闭发现客户端。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.Endpoint">
+      <summary>获取用于发送发现消息的终结点。</summary>
+      <returns>用于发送发现消息的终结点。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.Find(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>发送一个请求以查找与指定条件匹配的服务。</summary>
+      <param name="criteria">有关查找服务的条件。</param>
+      <returns>匹配的服务终结点的可发现元数据。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.FindAsync(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>使用指定条件开始异步查找操作。</summary>
+      <param name="criteria">有关查找服务的条件。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.FindAsync(System.ServiceModel.Discovery.FindCriteria,System.Object)">
+      <summary>开始异步查找操作，并使用指定的条件和用户定义的状态对象。</summary>
+      <param name="criteria">有关查找服务的条件。</param>
+      <param name="userState">用于标识异步查找操作的用户指定对象。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.FindCompleted">
+      <summary>当整个查找操作完成时发生。</summary>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.FindProgressChanged">
+      <summary>每当客户端接收来自特定服务的响应时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.FindTaskAsync(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>使用指定标准开始异步查找任务操作。</summary>
+      <param name="criteria">有关查找服务的条件。</param>
+      <returns>异步查找任务操作。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.FindTaskAsync(System.ServiceModel.Discovery.FindCriteria,System.Threading.CancellationToken)">
+      <summary>使用指定的标准和取消令牌对象，开始异步查找任务操作。</summary>
+      <param name="criteria">有关查找服务的条件。</param>
+      <param name="cancellationToken">通知传播的取消标记。</param>
+      <returns>异步查找任务操作。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.InnerChannel">
+      <summary>获取用于发送发现消息的通道。</summary>
+      <returns>用于发送发现消息的通道。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.Open">
+      <summary>打开 <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" />。</summary>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.ProxyAvailable">
+      <summary>当从发现代理收到多播禁止消息作为对查找或解析操作的响应时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.Resolve(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>使用指定条件开始异步解析操作。</summary>
+      <param name="criteria">与服务终结点匹配的条件。</param>
+      <returns>指定地址处的服务终结点的可发现元数据；如果在指定地址处未找到服务终结点，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.ResolveAsync(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>使用指定条件开始异步解析操作。</summary>
+      <param name="criteria">与服务终结点匹配的条件。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.ResolveAsync(System.ServiceModel.Discovery.ResolveCriteria,System.Object)">
+      <summary>开始异步解析操作，并使用指定的条件和用户定义的状态对象。</summary>
+      <param name="criteria">与服务终结点匹配的条件。</param>
+      <param name="userState">用于标识异步解析操作的用户指定对象。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.ResolveCompleted">
+      <summary>在异步解析操作完成时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.ResolveTaskAsync(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>使用指定标准开始异步解析任务操作。</summary>
+      <param name="criteria">与服务终结点匹配的条件。</param>
+      <returns>异步解析任务操作。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.ResolveTaskAsync(System.ServiceModel.Discovery.ResolveCriteria,System.Threading.CancellationToken)">
+      <summary>使用指定的标准和取消令牌，开始异步解析任务操作。</summary>
+      <param name="criteria">与服务终结点匹配的条件。</param>
+      <param name="cancellationToken">通知传播的取消标记。</param>
+      <returns>异步解析任务操作。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#IDisposable#Dispose">
+      <summary>提供 <see cref="M:System.IDisposable.Dispose" /> 方法的实现。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Abort">
+      <summary>使通信对象立即从其当前状态转换到关闭状态。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginClose(System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作以关闭通信对象。</summary>
+      <param name="callback">接收异步关闭操作完成通知的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">一个由应用程序指定的对象，它包含与异步关闭操作相关联的状态信息。</param>
+      <returns>引用异步关闭操作的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginClose(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作以在指定超时内关闭通信对象。</summary>
+      <param name="timeout">
+        <see cref="T:System.TimeSpan" />，指定在超时前必须完成发送操作的时间。</param>
+      <param name="callback">接收异步关闭操作完成通知的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">一个由应用程序指定的对象，它包含与异步关闭操作相关联的状态信息。</param>
+      <returns>引用异步关闭操作的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作以打开通信对象。</summary>
+      <param name="callback">接收异步打开操作完成通知的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">一个由应用程序指定的对象，它包含与异步打开操作相关联的状态信息。</param>
+      <returns>引用异步打开操作的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作以在指定时间间隔内打开通信对象。</summary>
+      <param name="timeout">
+        <see cref="T:System.TimeSpan" />，指定在超时前必须完成发送操作的时间。</param>
+      <param name="callback">接收异步打开操作完成通知的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">一个由应用程序指定的对象，它包含与异步打开操作相关联的状态信息。</param>
+      <returns>引用异步打开操作的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Close">
+      <summary>使通信对象从其当前状态转换到关闭状态。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Close(System.TimeSpan)">
+      <summary>使通信对象在指定时间间隔内从当前状态转换到关闭状态。</summary>
+      <param name="timeout">
+        <see cref="T:System.TimeSpan" />，指定在超时前必须完成发送操作的时间。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Closed">
+      <summary>当通信对象完成从正在关闭状态转换到已关闭状态时发生。</summary>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Closing">
+      <summary>当通信对象首次进入正在关闭状态时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#EndClose(System.IAsyncResult)">
+      <summary>完成一个异步操作以关闭通信对象。</summary>
+      <param name="result">
+        <see cref="T:System.IAsyncResult" />，由对 <see cref="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#EndClose(System.IAsyncResult)" /> 方法的调用返回。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#EndOpen(System.IAsyncResult)">
+      <summary>完成一个异步操作以打开通信对象。</summary>
+      <param name="result">
+        <see cref="T:System.IAsyncResult" />，由对 <see cref="Overload:System.ServiceModel.ICommunicationObject.BeginOpen" /> 方法的调用返回。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Faulted">
+      <summary>当通信对象首次进入出错状态时发生。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Open">
+      <summary>使通信对象从已创建状态转换到已打开状态。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Open(System.TimeSpan)">
+      <summary>使通信对象在指定时间间隔内从已创建状态转换到已打开状态。</summary>
+      <param name="timeout">
+        <see cref="T:System.TimeSpan" />，指定在超时前必须完成发送操作的时间。</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Opened">
+      <summary>当通信对象完成从正在打开状态转换到已打开状态时发生。</summary>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Opening">
+      <summary>当通信对象首次进入正在打开状态时发生。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#State">
+      <summary>获取面向通信的对象的当前状态。</summary>
+      <returns>对象的 <see cref="T:System.ServiceModel.CommunicationState" /> 的值。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryClientBindingElement">
+      <summary>一个绑定元素，可以将此元素添加到 WCF 客户端应用程序以利用 Discovery 客户端通道。 Discovery 客户端通道允许 WCF 客户端应用程序访问可发现的服务，而不必事先知道相应的终结点地址。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.#ctor">
+      <summary>使用默认值初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryClientBindingElement" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.#ctor(System.ServiceModel.Discovery.DiscoveryEndpointProvider,System.ServiceModel.Discovery.FindCriteria)">
+      <summary>使用指定的终结点提供程序和服务查找条件初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryClientBindingElement" /> 类的新实例。</summary>
+      <param name="discoveryEndpointProvider">用于获取发现终结点的对象。</param>
+      <param name="findCriteria">一个对象，其中包含搜索服务提供程序所需的信息。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>初始化通道工厂，以便从绑定上下文生成指定类型的通道。</summary>
+      <param name="context">绑定上下文。</param>
+      <typeparam name="TChannel">要创建的通道工厂的类型。</typeparam>
+      <returns>从绑定上下文初始化的指定类型的通道工厂。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Discovery 客户端通道不支持生成通道侦听器。 可以重写此方法以初始化通道侦听器，以便接受绑定上下文中指定类型的通道。</summary>
+      <param name="context">绑定上下文。</param>
+      <typeparam name="TChannel">要创建的通道侦听器的类型。</typeparam>
+      <returns>从上下文初始化的指定类型的通道侦听器。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>返回一个值，该值指示当前绑定是否可以在客户端上生成通道工厂堆栈。</summary>
+      <param name="context">绑定上下文。</param>
+      <typeparam name="TChannel">要为其进行工厂测试的通道类型。</typeparam>
+      <returns>如果可以在客户端上生成指定的通道工厂堆栈，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>因为 Discovery 客户端通道不支持生成通道侦听器，所以此方法总是返回 <see langword="false" />。 可以对此方法进行扩展以返回一个值，用于指示绑定元素是否可以为特定类型的通道生成侦听器。</summary>
+      <param name="context">绑定上下文。</param>
+      <typeparam name="TChannel">侦听器接受的通道类型。</typeparam>
+      <returns>如果绑定元素可以生成指定类型的 <see cref="T:System.ServiceModel.Channels.IChannelListener`1" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.Clone">
+      <summary>创建绑定元素的副本。</summary>
+      <returns>绑定元素的副本。</returns>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.DiscoveryClientBindingElement.DiscoveryEndpointAddress">
+      <summary>静态临时地址，在解析实际服务地址之前用作占位符。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClientBindingElement.DiscoveryEndpointProvider">
+      <summary>获取发现终结点提供程序。</summary>
+      <returns>终结点提供程序。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClientBindingElement.FindCriteria">
+      <summary>获取或设置查找条件。</summary>
+      <returns>查找条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>返回请求类型的对象（如果绑定堆栈中存在）。</summary>
+      <param name="context">绑定上下文。</param>
+      <typeparam name="T">要检索的对象的类型。</typeparam>
+      <returns>指定类型的对象（如果存在）；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryEndpoint">
+      <summary>标准发现终结点。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+      <summary>使用指定的绑定和终结点地址创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> 类的新实例。</summary>
+      <param name="binding">绑定。</param>
+      <param name="endpointAddress">终结点地址。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Discovery.ServiceDiscoveryMode)">
+      <summary>使用指定的发现版本和模式初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> 类的新实例。</summary>
+      <param name="discoveryVersion">一个枚举值，表示 WS-Discovery 协议的一个版本。</param>
+      <param name="discoveryMode">一个枚举值，表示一种用于发送发现消息的模式。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Discovery.ServiceDiscoveryMode,System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+      <summary>使用指定的发现版本、模式、绑定和终结点地址初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> 类的新实例。</summary>
+      <param name="discoveryVersion">一个枚举值，表示 WS-Discovery 协议的一个版本。</param>
+      <param name="discoveryMode">一个枚举值，表示一种用于发送发现消息的模式。</param>
+      <param name="binding">绑定元素，这些元素指定客户端和服务之间的通信所用的协议、传输和消息编码器。</param>
+      <param name="endpointAddress">发现终结点的唯一地址。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryEndpoint.DiscoveryMode">
+      <summary>获取终结点的发现模式。</summary>
+      <returns>
+        <see cref="T:System.ServiceModel.Discovery.ServiceDiscoveryMode" /> 枚举值之一。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryEndpoint.DiscoveryVersion">
+      <summary>获取终结点的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</summary>
+      <returns>
+        <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 枚举值之一。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryEndpoint.MaxResponseDelay">
+      <summary>获取或设置 <see cref="T:System.TimeSpan" /> 的最大值，在此时间跨度内，服务的用于响应探测操作的所有 <see langword="ProbeMatches" /> 都将发送出去。</summary>
+      <returns>一个包含最大时间跨度的 <see cref="T:System.TimeSpan" /> 实例，在此时间跨度内，服务的用于响应探测操作的所有 <see langword="ProbeMatches" /> 都将发送出去。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryEndpointProvider">
+      <summary>提供发现终结点。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpointProvider.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpointProvider" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpointProvider.GetDiscoveryEndpoint">
+      <summary>获取发现终结点。</summary>
+      <returns>发现终结点。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryMessageSequence">
+      <summary>表示在 WS-Discovery 协议中定义的 AppSequence 标头。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.CanCompareTo(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>获取一个值，该值指示指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例与当前的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例是否相当。</summary>
+      <param name="other">要比较的发现消息序列。</param>
+      <returns>如果两个发现消息序列相当，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.CompareTo(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>将指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例与当前的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例相比较。</summary>
+      <param name="other">要比较的发现消息序列。</param>
+      <returns>如果两个发现消息序列相等，则为 0。如果 <paramref name="other" /> 的消息数大于当前发现序列的消息数，则为一个负数。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.Equals(System.Object)">
+      <summary>确定指定对象是否与当前的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例相等。</summary>
+      <param name="obj">要比较的对象。</param>
+      <returns>如果指定对象等于当前的发现消息序列，则为 true；否则为 false。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.Equals(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>确定指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例与当前的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例是否相当。</summary>
+      <param name="other">要比较的发现消息序列。</param>
+      <returns>如果两个发现消息序列相当，则为 <see langword="true" />；否则，为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.GetHashCode">
+      <summary>获取当前 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例的哈希代码。</summary>
+      <returns>哈希代码值。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryMessageSequence.InstanceId">
+      <summary>获取实例 ID。</summary>
+      <returns>实例 ID。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryMessageSequence.MessageNumber">
+      <summary>获取消息数。</summary>
+      <returns>消息数。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.op_Equality(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>确定 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 的两个指定实例是否相等。</summary>
+      <param name="messageSequence1">发现消息序列。</param>
+      <param name="messageSequence2">发现消息序列。</param>
+      <returns>如果两个发现消息序列实例相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.op_Inequality(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>确定 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 的两个指定实例是否不相等。</summary>
+      <param name="messageSequence1">发现消息序列。</param>
+      <param name="messageSequence2">发现消息序列。</param>
+      <returns>如果两个发现消息序列实例不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryMessageSequence.SequenceId">
+      <summary>获取序列 ID。</summary>
+      <returns>序列 ID。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.ToString">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例的字符串表示形式。</summary>
+      <returns>发现消息序列。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator">
+      <summary>可创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例的帮助器类。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator.#ctor(System.Int64,System.Uri)">
+      <summary>使用指定的实例 ID 和序列 ID 初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> 类的新实例。</summary>
+      <param name="instanceId">实例 ID。</param>
+      <param name="sequenceId">序列 ID。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator.Next">
+      <summary>创建下一个 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 对象。</summary>
+      <returns>下一个 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryOperationContextExtension">
+      <summary>操作上下文扩展，用于提供各种适用于发现运行时的配置项。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.DiscoveryMode">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.ServiceDiscoveryMode" />。</summary>
+      <returns>
+        <see cref="T:System.ServiceModel.Discovery.ServiceDiscoveryMode" /> 枚举值之一。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.DiscoveryVersion">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</summary>
+      <returns>发现版本。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.MaxResponseDelay">
+      <summary>获取可指定最大响应延迟的 <see cref="T:System.TimeSpan" />。</summary>
+      <returns>最大响应延迟。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.System#ServiceModel#IExtension{System#ServiceModel#OperationContext}#Attach(System.ServiceModel.OperationContext)">
+      <summary>
+        <see cref="M:System.ServiceModel.IExtension`1.Attach(`0)" /> 方法的实现。</summary>
+      <param name="owner">要将扩展附加到的操作上下文。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.System#ServiceModel#IExtension{System#ServiceModel#OperationContext}#Detach(System.ServiceModel.OperationContext)">
+      <summary>
+        <see cref="M:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.System#ServiceModel#IExtension{System#ServiceModel#OperationContext}#Detach(System.ServiceModel.OperationContext)" /> 方法的实现。</summary>
+      <param name="owner">要将扩展附加到的操作上下文。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryProxy">
+      <summary>用于实现发现代理的抽象基类。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryProxy" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.#ctor(System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryProxy" /> 初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> 类的新实例。</summary>
+      <param name="messageSequenceGenerator">消息序列生成器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.#ctor(System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator,System.Int32)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryProxy" /> 和重复消息历史记录长度初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> 类的新实例。</summary>
+      <param name="messageSequenceGenerator">消息序列生成器。</param>
+      <param name="duplicateMessageHistoryLength">传输用来标识重复消息的消息哈希的最大数目。 默认值为 0。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.BeginShouldRedirectFind(System.ServiceModel.Discovery.FindCriteria,System.AsyncCallback,System.Object)">
+      <summary>重写此方法以允许发现代理在接收多播查找请求时发出多播禁止消息。</summary>
+      <param name="resolveCriteria">用于描述要查找的服务的解析标准。</param>
+      <param name="callback">完成操作时要调用的回调委托。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>对挂起的异步操作的引用。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.BeginShouldRedirectResolve(System.ServiceModel.Discovery.ResolveCriteria,System.AsyncCallback,System.Object)">
+      <summary>重写此方法以允许发现代理在接收多播解析请求时发出多播禁止消息。</summary>
+      <param name="findCriteria">用于描述要查找的服务的查找标准。</param>
+      <param name="callback">完成操作时要调用的回调委托。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>对挂起的异步操作的引用。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.EndShouldRedirectFind(System.IAsyncResult,System.Collections.ObjectModel.Collection{System.ServiceModel.Discovery.EndpointDiscoveryMetadata}@)">
+      <summary>重写此方法以处理针对查找请求发送多播禁止消息的完成。</summary>
+      <param name="result">对已完成的异步操作的引用。</param>
+      <param name="redirectionEndpoints">描述重定向终结点的终结点发现元数据的集合。</param>
+      <returns>如果应重定向查找操作，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.EndShouldRedirectResolve(System.IAsyncResult,System.Collections.ObjectModel.Collection{System.ServiceModel.Discovery.EndpointDiscoveryMetadata}@)">
+      <summary>重写此方法以处理针对解析请求发送多播禁止消息的完成。</summary>
+      <param name="result">对已完成的异步操作的引用。</param>
+      <param name="redirectionEndpoints">描述重定向终结点的终结点发现元数据的集合。</param>
+      <returns>如果应重定向该解决操作，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnBeginFind(System.ServiceModel.Discovery.FindRequestContext,System.AsyncCallback,System.Object)">
+      <summary>重写此方法以处理查找操作。</summary>
+      <param name="findRequestContext">用于描述要发现的服务的查找请求上下文。</param>
+      <param name="callback">完成操作时要调用的回调委托。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>对挂起的异步操作的引用。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnBeginOfflineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>重写此方法以处理脱机公告消息。</summary>
+      <param name="messageSequence">发现消息序列。</param>
+      <param name="endpointDiscoveryMetadata">终结点发现元数据。</param>
+      <param name="callback">完成操作时要调用的回调委托。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>对挂起的异步操作的引用。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnBeginOnlineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>重写此方法以处理联机公告消息。</summary>
+      <param name="messageSequence">发现消息序列。</param>
+      <param name="endpointDiscoveryMetadata">终结点发现元数据。</param>
+      <param name="callback">完成操作时要调用的回调委托。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>对挂起的异步操作的引用。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnBeginResolve(System.ServiceModel.Discovery.ResolveCriteria,System.AsyncCallback,System.Object)">
+      <summary>重写此方法以处理解析操作。</summary>
+      <param name="resolveCriteria">用于描述要发现的服务的解析标准。</param>
+      <param name="callback">完成操作时要调用的回调委托。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>对挂起的异步操作的引用。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnEndFind(System.IAsyncResult)">
+      <summary>重写此方法以处理查找操作的完成。</summary>
+      <param name="result">对已完成的异步操作的引用。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnEndOfflineAnnouncement(System.IAsyncResult)">
+      <summary>重写此方法以处理脱机公告消息的完成。</summary>
+      <param name="result">对已完成的异步操作的引用。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnEndOnlineAnnouncement(System.IAsyncResult)">
+      <summary>重写此方法以处理联机公告消息的完成。</summary>
+      <param name="result">对已完成的异步操作的引用。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnEndResolve(System.IAsyncResult)">
+      <summary>重写此方法以处理解析操作的完成。</summary>
+      <param name="result">对已完成的异步操作的引用。</param>
+      <returns>用于解析服务的终结点发现元数据。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryService">
+      <summary>用于实现发现服务的抽象基类。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryService" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.#ctor(System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryService" /> 初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> 类的新实例。</summary>
+      <param name="discoveryMessageSequenceGenerator">发现消息序列生成器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.#ctor(System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator,System.Int32)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryService" /> 和重复消息历史记录长度初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> 类的新实例。</summary>
+      <param name="discoveryMessageSequenceGenerator">发现消息序列生成器。</param>
+      <param name="duplicateMessageHistoryLength">传输用来标识重复消息的消息哈希的最大数目。 默认值为 0。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.OnBeginFind(System.ServiceModel.Discovery.FindRequestContext,System.AsyncCallback,System.Object)">
+      <summary>重写此方法以处理查找操作。</summary>
+      <param name="findRequestContext">用于描述要发现的服务的查找请求上下文。</param>
+      <param name="callback">完成操作时要调用的回调委托。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>对挂起的异步操作的引用。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.OnBeginResolve(System.ServiceModel.Discovery.ResolveCriteria,System.AsyncCallback,System.Object)">
+      <summary>重写此方法以处理解析操作。</summary>
+      <param name="resolveCriteria">用于描述要发现的服务的查找请求上下文。</param>
+      <param name="callback">完成操作时要调用的回调委托。</param>
+      <param name="state">用户定义的状态数据。</param>
+      <returns>对挂起的异步操作的引用。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.OnEndFind(System.IAsyncResult)">
+      <summary>重写此方法以处理查找操作的完成。</summary>
+      <param name="result">对已完成的异步操作的引用。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.OnEndResolve(System.IAsyncResult)">
+      <summary>重写此方法以处理解析操作的完成。</summary>
+      <param name="result">对已完成的异步操作的引用。</param>
+      <returns>用于描述已解析服务的终结点发现元数据。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryServiceExtension">
+      <summary>抽象 WCF 扩展类，用于指定自定义发现服务或获取已发布的终结点。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryServiceExtension.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryServiceExtension" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService">
+      <summary>重写此方法以返回自定义 <see cref="T:System.ServiceModel.Discovery.DiscoveryService" /> 实现。</summary>
+      <returns>自定义发现服务实现。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryServiceExtension.PublishedEndpoints">
+      <summary>获取已发布终结点的只读集合。</summary>
+      <returns>已发布终结点的只读集合。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryServiceExtension.System#ServiceModel#IExtension{System#ServiceModel#ServiceHostBase}#Attach(System.ServiceModel.ServiceHostBase)">
+      <summary>将扩展附加在指定的服务主机。</summary>
+      <param name="owner">要将扩展附加到的服务主机。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryServiceExtension.System#ServiceModel#IExtension{System#ServiceModel#ServiceHostBase}#Detach(System.ServiceModel.ServiceHostBase)">
+      <summary>重载此方法以允许扩展与其服务主机分离。</summary>
+      <param name="owner">将与其分离的服务主机。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryVersion">
+      <summary>指定要使用的 WS-Discovery 协议的版本。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.AdhocAddress">
+      <summary>获取将临时发现消息发送到的地址。</summary>
+      <returns>发现地址。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryVersion.FromName(System.String)">
+      <summary>获取指定的发现版本。</summary>
+      <param name="name">请求的发现版本的名称。</param>
+      <returns>发现版本。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.MessageVersion">
+      <summary>获取消息版本。</summary>
+      <returns>消息版本。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.Name">
+      <summary>获取发现版本的名称。</summary>
+      <returns>发现版本的名称。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.Namespace">
+      <summary>获取发现版本的命名空间。</summary>
+      <returns>发现版本的命名空间。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryVersion.ToString">
+      <summary>创建 WS-Discovery 协议版本的字符串表示形式。</summary>
+      <returns>WS-Discovery 协议版本。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.WSDiscovery11">
+      <summary>获取 WS-Discovery 协议的 1.1 版。</summary>
+      <returns>WS-Discovery 协议的 1.1 版。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.WSDiscoveryApril2005">
+      <summary>获取 WS-Discovery 协议的 2005 年 4 月版。</summary>
+      <returns>WS-Discovery 协议的 2005 年 4 月版。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.WSDiscoveryCD1">
+      <summary>获取 WS-Discovery 协议的 Committee Draft 1 版。</summary>
+      <returns>WS-Discovery 协议的 Committee Draft 1 版。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DynamicEndpoint">
+      <summary>一个终结点，它使用 WS-Discovery 在运行时动态查找终结点地址。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DynamicEndpoint.#ctor(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Channels.Binding)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.DynamicEndpoint" /> 和 <see cref="T:System.ServiceModel.Description.ContractDescription" /> 初始化 <see cref="T:System.ServiceModel.Channels.Binding" /> 类的新实例。</summary>
+      <param name="contract">协定。</param>
+      <param name="binding">绑定。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DynamicEndpoint.DiscoveryEndpointProvider">
+      <summary>获取或设置提供发现终结点的对象。</summary>
+      <returns>发现终结点提供程序。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DynamicEndpoint.FindCriteria">
+      <summary>获取或设置用于搜索服务的 <see cref="T:System.ServiceModel.Discovery.FindCriteria" />。</summary>
+      <returns>查找条件。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.EndpointDiscoveryBehavior">
+      <summary>控制发现终结点返回的 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 的内容。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryBehavior" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.ContractTypeNames">
+      <summary>获取与终结点关联的协定类型名称。</summary>
+      <returns>与终结点关联的协定类型名称。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.Enabled">
+      <summary>获取或设置一个值，该值控制关联的终结点的发现功能。</summary>
+      <returns>如果启用终结点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.Extensions">
+      <summary>获取与终结点关联的扩展。</summary>
+      <returns>与终结点关联的扩展的集合。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.Scopes">
+      <summary>获取与终结点关联的范围。</summary>
+      <returns>范围的集合。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.System#ServiceModel#Description#IEndpointBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>未实现。</summary>
+      <param name="endpoint">未实现。</param>
+      <param name="bindingParameters">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.System#ServiceModel#Description#IEndpointBehavior#ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+      <summary>未实现。</summary>
+      <param name="endpoint">未实现。</param>
+      <param name="clientRuntime">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.System#ServiceModel#Description#IEndpointBehavior#ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>未实现。</summary>
+      <param name="endpoint">未实现。</param>
+      <param name="endpointDispatcher">未实现。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.System#ServiceModel#Description#IEndpointBehavior#Validate(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>未实现。</summary>
+      <param name="endpoint">未实现。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata">
+      <summary>包含可发现服务的元数据。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.Address">
+      <summary>获取或设置 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例描述的终结点的终结点地址。</summary>
+      <returns>
+        <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例描述的服务终结点的终结点地址。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.ContractTypeNames">
+      <summary>获取由 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 描述的服务实现的协定类型名称的集合。</summary>
+      <returns>协定类型名称的集合。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.Extensions">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例关联的扩展。</summary>
+      <returns>扩展集合。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.FromServiceEndpoint(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>从 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 创建新的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。</summary>
+      <param name="endpoint">服务终结点。</param>
+      <returns>新 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.FromServiceEndpoint(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>使用指定的服务终结点和终结点调度程序创建 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 类的新实例。</summary>
+      <param name="endpoint">终结点。</param>
+      <param name="endpointDispatcher">终结点调度程序。</param>
+      <returns>新 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.ListenUris">
+      <summary>获取此 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例描述的服务的侦听 URI。</summary>
+      <returns>侦听 URI 的集合。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.Scopes">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例关联的范围。</summary>
+      <returns>绝对 URI 的集合。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.Version">
+      <summary>获取或设置所发布的 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 的版本。</summary>
+      <returns>所发布的 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 的版本。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindCompletedEventArgs">
+      <summary>
+        <see cref="E:System.ServiceModel.Discovery.DiscoveryClient.FindCompleted" /> 事件的参数。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCompletedEventArgs.Result">
+      <summary>获取查找操作返回的 <see cref="T:System.ServiceModel.Discovery.FindResponse" />。</summary>
+      <returns>查找操作的结果。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindCriteria">
+      <summary>表示搜索服务时要使用的条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.#ctor(System.Type)">
+      <summary>使用指定的协定类型名称创建 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 类的新实例。</summary>
+      <param name="contractType">要搜索的协定类型的名称。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.ContractTypeNames">
+      <summary>获取要搜索的协定类型名称的集合。</summary>
+      <returns>要搜索的协定类型名称。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.CreateMetadataExchangeEndpointCriteria">
+      <summary>创建搜索服务时要使用的元数据交换终结点。</summary>
+      <returns>要用于查找服务的终结点条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.CreateMetadataExchangeEndpointCriteria(System.Collections.Generic.IEnumerable{System.Xml.XmlQualifiedName})">
+      <summary>创建一个对象，该对象包含从指定的 XML 限定名集合中派生的元数据交换终结点条件。</summary>
+      <param name="contractTypeNames">表示协定类型名称的枚举集合。</param>
+      <returns>要用于查找服务的终结点条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.CreateMetadataExchangeEndpointCriteria(System.Type)">
+      <summary>创建一个对象，该对象包含从指定的协定类型派生的元数据交换终结点条件。</summary>
+      <param name="contractType">服务协定的类型。</param>
+      <returns>要用于查找服务的终结点条件。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.Duration">
+      <summary>获取或设置用于指定查找操作超时时间的 <see cref="T:System.TimeSpan" />。</summary>
+      <returns>查找操作的超时时间。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.Extensions">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 实例中的扩展的集合。</summary>
+      <returns>XML 扩展。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.IsMatch(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>确定一组条件是否与指定的 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例描述的服务匹配。</summary>
+      <param name="endpointDiscoveryMetadata">用于描述相关服务的终结点发现元数据。</param>
+      <returns>如果此服务与该条匹配，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.MaxResults">
+      <summary>获取或设置查找操作要求的响应的最大数目。</summary>
+      <returns>查找操作要求的响应的最大数目。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.ScopeMatchBy">
+      <summary>获取或设置一个 URI，该 URI 指定如何匹配范围。</summary>
+      <returns>用于指定如何匹配范围的 URI。</returns>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByExact">
+      <summary>使用由 WS-Discovery 规范定义的区分大小写的比较 (http://schemas.xmlsoap.org/ws/2004/10/discovery/strcmp0)) 指定匹配的范围。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByLdap">
+      <summary>使用由 WS-Discovery 规范定义的 LDAP 方法 (http://schemas.xmlsoap.org/ws/2004/10/discovery/ldap)) 指定匹配的范围。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByNone">
+      <summary>根据 WS-Discovery 规范的定义指定忽略范围。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByPrefix">
+      <summary>使用由 WS-Discovery 规范定义的前缀方法 (http://schemas.xmlsoap.org/ws/2004/10/discovery/rfc2396)) 指定匹配的范围。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByUuid">
+      <summary>使用由 WS-Discovery 规范定义的 UUID 方法 (http://schemas.xmlsoap.org/ws/2004/10/discovery/uuid)) 指定匹配的范围。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.Scopes">
+      <summary>获取表示用于搜索服务的范围的绝对 URI 的集合。</summary>
+      <returns>用于搜索服务的绝对 URI 的集合。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindProgressChangedEventArgs">
+      <summary>
+        <see cref="E:System.ServiceModel.Discovery.DiscoveryClient.FindProgressChanged" /> 事件的参数。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindProgressChangedEventArgs.EndpointDiscoveryMetadata">
+      <summary>获取与当前正在运行的查找操作关联的 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例。</summary>
+      <returns>终结点发现元数据。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindProgressChangedEventArgs.MessageSequence">
+      <summary>获取与当前正在运行的查找操作关联的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例。</summary>
+      <returns>发现消息序列。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindRequestContext">
+      <summary>表示客户端发送的查找请求。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindRequestContext.#ctor(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>使用指定 <see cref="T:System.ServiceModel.Discovery.FindRequestContext" /> 初始化 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 类的新实例。</summary>
+      <param name="criteria">查找条件。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindRequestContext.AddMatchingEndpoint(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>启用发现服务，以便在接收到结果时将其发送回到客户端。</summary>
+      <param name="matchingEndpoint">要发送回客户端的终结点发现元数据。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindRequestContext.Criteria">
+      <summary>获取与客户端发送的 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 关联的 <see cref="T:System.ServiceModel.Discovery.FindRequestContext" />。</summary>
+      <returns>客户端发送的查找条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindRequestContext.OnAddMatchingEndpoint(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>在用户通过调用 <see cref="T:System.ServiceModel.Discovery.FindRequestContext" /> 将一个终结点添加到 <see cref="M:System.ServiceModel.Discovery.FindRequestContext.AddMatchingEndpoint(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)" /> 后被调用。</summary>
+      <param name="matchingEndpoint">要发送回客户端的终结点发现元数据。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindResponse">
+      <summary>表示来自查找请求的响应。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindResponse.Endpoints">
+      <summary>获取可发现服务中与查找请求匹配的 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 的集合。</summary>
+      <returns>终结点发现元数据的集合。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindResponse.GetMessageSequence(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>获取与指定 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 关联的 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />。</summary>
+      <param name="endpointDiscoveryMetadata">终结点发现元数据。</param>
+      <returns>发现消息序列。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ResolveCompletedEventArgs">
+      <summary>
+        <see cref="E:System.ServiceModel.Discovery.DiscoveryClient.ResolveCompleted" /> 事件的参数。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveCompletedEventArgs.Result">
+      <summary>获取解析操作返回的 <see cref="T:System.ServiceModel.Discovery.ResolveResponse" />。</summary>
+      <returns>解析操作的结果。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ResolveCriteria">
+      <summary>表示解析服务时要使用的条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ResolveCriteria.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ResolveCriteria.#ctor(System.ServiceModel.EndpointAddress)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 初始化 <see cref="T:System.ServiceModel.EndpointAddress" /> 类的新实例。</summary>
+      <param name="address">终结点地址。</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveCriteria.Address">
+      <summary>要解析的服务的终结点地址。</summary>
+      <returns>终结点地址。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveCriteria.Duration">
+      <summary>获取或设置用于指定一个时间跨度的 <see cref="T:System.TimeSpan" />，解析操作必须在此时间跨度内完成才不会超时。</summary>
+      <returns>一个 <see cref="T:System.TimeSpan" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveCriteria.Extensions">
+      <summary>获取 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 实例中的扩展的集合。</summary>
+      <returns>一个包含 XML 扩展的 <see cref="T:System.Collections.ObjectModel.Collection`1" /> 实例。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ResolveResponse">
+      <summary>表示来自解析请求的响应。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveResponse.EndpointDiscoveryMetadata">
+      <summary>获取与解析请求匹配的 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />。</summary>
+      <returns>终结点发现元数据。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveResponse.MessageSequence">
+      <summary>获取与 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 关联的 <see cref="T:System.ServiceModel.Discovery.ResolveResponse" />。</summary>
+      <returns>发现消息序列。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ServiceDiscoveryBehavior">
+      <summary>此类控制服务终结点的可发现性。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.ServiceDiscoveryBehavior" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.AnnouncementEndpoints">
+      <summary>获取公告终结点的集合。 使用此集合可指定用于发送公告消息的终结点。</summary>
+      <returns>一个 <see cref="T:System.Collections.ObjectModel.Collection`1" /> 实例，其中包含公告终结点的集合。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.System#ServiceModel#Description#IServiceBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+        <see cref="M:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)" /> 方法的实现。</summary>
+      <param name="serviceDescription">服务说明。</param>
+      <param name="serviceHostBase">服务的主机。</param>
+      <param name="endpoints">由服务公开的终结点。</param>
+      <param name="bindingParameters">要进行配置以支持服务行为的绑定参数。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.System#ServiceModel#Description#IServiceBehavior#ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>
+        <see cref="M:System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)" /> 方法的实现。</summary>
+      <param name="serviceDescription">服务说明。</param>
+      <param name="serviceHostBase">服务的主机。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.System#ServiceModel#Description#IServiceBehavior#Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>
+        <see cref="M:System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)" /> 方法的实现。</summary>
+      <param name="serviceDescription">服务说明。</param>
+      <param name="serviceHostBase">服务的主机。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ServiceDiscoveryMode">
+      <summary>指定要使用的发现模式。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.ServiceDiscoveryMode.Adhoc">
+      <summary>临时发现模式。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.ServiceDiscoveryMode.Managed">
+      <summary>托管发现模式。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint">
+      <summary>由服务用于通过 UDP 绑定发送公告消息的标准终结点。 此终结点从 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> 继承，同样具有固定协定并且支持两个发现版本。 此外，根据 WS-Discovery 规范（WS-Discovery 2005 年 4 月版或 WS-Discovery 1.1 版）中的规定，它还具有固定 UDP 绑定和默认地址值。 因此，对于最简单的情况，当您创建 <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> 并将其添加到服务中时，不必指定任何这些值。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion)">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> 类的新实例，并将其配置为使用指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</summary>
+      <param name="discoveryVersion">要使用的 WS-Discovery 协议的版本。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.String)">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> 类的新实例，并将其配置为使用指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 和多播地址。</summary>
+      <param name="discoveryVersion">要使用的 WS-Discovery 协议的版本。</param>
+      <param name="multicastAddress">要使用的多播地址。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.Uri)">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> 类的新实例，并将其配置为使用指定的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 和多播地址。</summary>
+      <param name="discoveryVersion">要使用的 WS-Discovery 协议的版本。</param>
+      <param name="multicastAddress">要使用的多播地址。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.String)">
+      <summary>使用指定的多播地址创建 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> 类的新实例。</summary>
+      <param name="multicastAddress">多播地址。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.Uri)">
+      <summary>使用指定的多播地址创建 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> 类的新实例。</summary>
+      <param name="multicastAddress">多播地址。</param>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.DefaultIPv4MulticastAddress">
+      <summary>针对 IPv4 的默认 UDP 多播地址。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.DefaultIPv6MulticastAddress">
+      <summary>针对 IPv6 的默认 UDP 多播地址。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.MulticastAddress">
+      <summary>获取或设置终结点的多播地址。</summary>
+      <returns>一个 <see cref="T:System.Uri" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.TransportSettings">
+      <summary>获取与 <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> 实例关联的 UDP 传输设置。</summary>
+      <returns>UDP 传输设置。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint">
+      <summary>通过 UDP 多播绑定为发现操作预配的标准终结点。 此终结点从 <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> 中继承，同样具有固定协定并且支持两个 WS-Discovery 协议版本。 此外，根据 WS-Discovery 规范（WS-Discovery 2005 年 4 月版或 WS-Discovery 1.1 版）中的规定，它还具有固定 UDP 绑定和默认地址。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> 创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 类的新实例。</summary>
+      <param name="discoveryVersion">要使用的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.String)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> 和多播地址创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 类的新实例。</summary>
+      <param name="discoveryVersion">要使用的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</param>
+      <param name="multicastAddress">针对 UDP 发现终结点的多播地址。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.Uri)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> 和多播地址创建 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> 类的新实例。</summary>
+      <param name="discoveryVersion">要使用的 <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />。</param>
+      <param name="multicastAddress">具有多播地址的 <see cref="T:System.Uri" />。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.String)">
+      <summary>使用指定的多播地址创建 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> 类的新实例。</summary>
+      <param name="multicastAddress">多播地址。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.Uri)">
+      <summary>使用指定的多播地址创建 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> 类的新实例。</summary>
+      <param name="multicastAddress">多播地址。</param>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.DefaultIPv4MulticastAddress">
+      <summary>针对 IPv4 的默认 UDP 多播地址。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.DefaultIPv6MulticastAddress">
+      <summary>针对 IPv6 的默认 UDP 多播地址。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.MulticastAddress">
+      <summary>获取或设置多播地址。</summary>
+      <returns>一个包含多播地址的 <see cref="T:System.Uri" /> 实例。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.TransportSettings">
+      <summary>获取与 <see cref="T:System.ServiceModel.Discovery.UdpTransportSettings" /> 关联的 <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> 实例。</summary>
+      <returns>终结点的 UDP 传输设置。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.UdpTransportSettings">
+      <summary>用于设置 UDP 传输设置。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.DuplicateMessageHistoryLength">
+      <summary>获取或设置一个值，该值指定传输用于标识重复消息的最大消息哈希数。</summary>
+      <returns>要使用的最大消息哈希数。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxBufferPoolSize">
+      <summary>获取或设置传输消息使用的任何缓冲池的最大字节大小。</summary>
+      <returns>最大缓冲池大小。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxMulticastRetransmitCount">
+      <summary>获取或设置一个值，该值指定应重新传输多播消息的最大次数（第一次发送除外）。</summary>
+      <returns>重新传输多播消息的最大次数。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxPendingMessageCount">
+      <summary>获取或设置一个值，该值指定已经接收但尚未从每个通道实例的输入队列中移除的消息的最大数量。</summary>
+      <returns>消息数。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxReceivedMessageSize">
+      <summary>获取或设置绑定可处理的消息的最大字节大小。</summary>
+      <returns>消息的最大大小。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxUnicastRetransmitCount">
+      <summary>获取或设置一个值，该值指定应重新传输单播消息的最大次数（第一次发送除外）。</summary>
+      <returns>重新传输单播消息的最大次数。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MulticastInterfaceId">
+      <summary>获取或设置一个值，该值唯一地标识在发送和接收多播消息时所使用的网络适配器。</summary>
+      <returns>网络适配器标识符。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.SocketReceiveBufferSize">
+      <summary>获取或设置基础 WinSock 套接字上的接收缓冲区的大小。</summary>
+      <returns>接收缓冲区的大小。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.TimeToLive">
+      <summary>获取或设置一个值，该值指定多播数据包可以遍历的网络段跃点数。</summary>
+      <returns>网络段跃点数。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11">
+      <summary>表示在 WS-Discovery 协议版本 1.1 中定义的 AppSequence 标头。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.FromDiscoveryMessageSequence(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>从指定的 <see cref="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11" /> 实例中初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 类的新实例。</summary>
+      <param name="discoveryMessageSequence">发现消息序列。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.GetSchema">
+      <summary>获取 WS-Discovery 协议版本 1.1 中定义的 AppSequence 标头的架构。</summary>
+      <returns>AppSequence 标头的架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>获取 WS-Discovery 协议版本 1.1 中定义的 AppSequence 标头的架构，如果指定的架构集中尚未包含此架构，则将其添加到该架构集中。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取发现消息序列。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.ToDiscoveryMessageSequence">
+      <summary>从当前的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例中初始化 <see cref="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11" /> 类的新实例。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11" /> 实例写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11">
+      <summary>包含基于 WS-Discovery 协议版本 1.1 的可发现服务的元数据。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.FromEndpointDiscoveryMetadata(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>用指定的 <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 类的新实例。</summary>
+      <param name="endpointDiscoveryMetadata">终结点发现元数据。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.GetSchema">
+      <summary>获取 WS-Discovery 协议版本 1.1 的终结点发现元数据的架构。</summary>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>获取 WS-Discovery 协议版本 1.1 的终结点发现元数据的架构，如果指定的架构集中尚不存在此架构，则将其添加到该架构集中。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取 <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" /> 实例。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.ToEndpointDiscoveryMetadata">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" />。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" /> 实例写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Version11.FindCriteria11">
+      <summary>表示在搜索使用 WS-Discovery 协议版本 1.1 的服务时要使用的条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.FromFindCriteria(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 新实例。</summary>
+      <param name="findCriteria">查找条件。</param>
+      <returns>新 <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.GetSchema">
+      <summary>获取查找条件架构。</summary>
+      <returns>查找条件架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>从指定的 <see cref="T:System.Xml.Schema.XmlSchemaSet" /> 中获取查找条件架构。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 <see cref="T:System.Xml.XmlQualifiedName" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取 <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" /> 实例。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.ToFindCriteria">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" />。</summary>
+      <returns>查找条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" /> 写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11">
+      <summary>表示在解析使用 WS-Discovery 协议版本 1.1 的服务时要使用的条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.FromResolveCriteria(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 新实例。</summary>
+      <param name="resolveCriteria">解析条件。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.GetSchema">
+      <summary>获取解析条件架构。</summary>
+      <returns>解析条件架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>从指定的 <see cref="T:System.Xml.Schema.XmlSchemaSet" /> 中获取查找条件架构。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 <see cref="T:System.Xml.XmlQualifiedName" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取 <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" /> 实例。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.ToResolveCriteria">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" />。</summary>
+      <returns>解析条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" /> 实例写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005">
+      <summary>表示在 WS-Discovery 协议 2005 年 4 月版本中定义的 AppSequence 标头。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.FromDiscoveryMessageSequence(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>从指定的 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005" /> 实例中初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 类的新实例。</summary>
+      <param name="discoveryMessageSequence">发现消息序列。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.GetSchema">
+      <summary>获取 WS-Discovery 协议 2005 年 4 月版本的 AppSequence 标头的架构。</summary>
+      <returns>AppSequence 标头的架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>获取 WS-Discovery 协议 2005 年 4 月版本的 AppSequence 标头的架构，如果指定的架构集中尚未包含此架构，则将其添加到该架构集中。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取发现消息序列。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.ToDiscoveryMessageSequence">
+      <summary>从 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005" /> 类的新实例。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005" /> 写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005">
+      <summary>包含基于 WS-Discovery 协议 2005 年 4 月版本的可发现服务的元数据。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.FromEndpointDiscoveryMetadata(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 的新实例。</summary>
+      <param name="endpointDiscoveryMetadata">终结点发现元数据。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.GetSchema">
+      <summary>获取 WS-Discovery 协议 2005 年 4 月版本的终结点发现元数据的架构。</summary>
+      <returns>一个 <see cref="T:System.Xml.Schema.XmlSchema" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>获取 WS-Discovery 协议 2005 年 4 月版本的终结点发现元数据的架构，如果指定的架构集中尚不存在此架构，则将其添加到该架构集中。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" /> 实例。</summary>
+      <param name="reader">要读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.ToEndpointDiscoveryMetadata">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" />。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.WriteXml(System.Xml.XmlWriter)">
+      <summary>将当前 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" /> 实例写入到 XML。</summary>
+      <param name="writer">XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005">
+      <summary>表示在搜索使用 WS-Discovery 协议 2005 年 4 月版本的服务时要使用的条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.FromFindCriteria(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 类的新实例。</summary>
+      <param name="findCriteria">查找条件。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.GetSchema">
+      <summary>获取 WS-Discovery 协议 2005 年 4 月版本的查找条件的架构。</summary>
+      <returns>架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>获取 WS-Discovery 协议 2005 年 4 月版本的查找条件的架构，如果指定的架构集中尚不存在此架构，则将其添加到该架构集中。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.ReadXml(System.Xml.XmlReader)">
+      <summary>从指定的 XML 读取器中读取 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" /> 实例。</summary>
+      <param name="reader">XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.ToFindCriteria">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" />。</summary>
+      <returns>查找条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.WriteXml(System.Xml.XmlWriter)">
+      <summary>将当前 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" /> 实例写入到 XML。</summary>
+      <param name="writer">XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005">
+      <summary>表示在解析使用 WS-Discovery 协议 2005 年 4 月版本的服务时要使用的条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.FromResolveCriteria(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 类的新实例。</summary>
+      <param name="resolveCriteria">解析条件。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.GetSchema">
+      <summary>获取 WS-Discovery 协议 2005 年 4 月版本中定义的解析条件的 XML 架构。</summary>
+      <returns>解析条件的 XML 架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>获取 WS-Discovery 协议 2005 年 4 月版本中定义的解析条件的 XML 架构，并将其添加到指定的 <see cref="T:System.Xml.Schema.XmlSchemaSet" /> 实例中。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" /> 实例。</summary>
+      <param name="reader">XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.ToResolveCriteria">
+      <summary>获取与当前 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" /> 实例。</summary>
+      <returns>解析条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.WriteXml(System.Xml.XmlWriter)">
+      <summary>将当前 <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" /> 实例写入到 XML。</summary>
+      <param name="writer">XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1">
+      <summary>表示在 WS-Discovery 协议 Committee Draft 1 版本中定义的 AppSequence 标头。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.FromDiscoveryMessageSequence(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>从指定的 <see cref="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1" /> 实例中初始化 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 类的新实例。</summary>
+      <param name="discoveryMessageSequence">发现消息序列。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.GetSchema">
+      <summary>获取 WS-Discovery 协议 Committee Draft 1 版本中定义的 AppSequence 标头的架构。</summary>
+      <returns>AppSequence 标头的架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>获取 WS-Discovery 协议 Committee Draft 1 版本中定义的 AppSequence 标头的架构，如果指定的架构集中尚未包含此架构，则将其添加到该架构集中。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取发现消息序列。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.ToDiscoveryMessageSequence">
+      <summary>从当前的 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例中初始化 <see cref="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1" /> 类的新实例。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1" /> 实例写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1">
+      <summary>包含基于 WS-Discovery 协议 Committee Draft 1 版本的可发现服务的元数据。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.FromEndpointDiscoveryMetadata(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 类的新实例。</summary>
+      <param name="endpointDiscoveryMetadata">终结点发现元数据。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.GetSchema">
+      <summary>获取 WS-Discovery 协议 Committee Draft 1 版本的终结点发现元数据的架构。</summary>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>获取 WS-Discovery 协议 Committee Draft 1 版本的终结点发现元数据的架构，如果指定的架构集中尚不存在此架构，则将其添加到该架构集中。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 XML 限定名。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取 <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" /> 实例。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.ToEndpointDiscoveryMetadata">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" />。</summary>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" /> 实例写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1">
+      <summary>表示在搜索使用 WS-Discovery 协议 Committee Draft 1 版本的服务时要使用的条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.FromFindCriteria(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 新实例。</summary>
+      <param name="findCriteria">查找条件。</param>
+      <returns>新 <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.GetSchema">
+      <summary>获取查找条件架构。</summary>
+      <returns>查找条件架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>从指定的 <see cref="T:System.Xml.Schema.XmlSchemaSet" /> 中获取查找条件架构。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 <see cref="T:System.Xml.XmlQualifiedName" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取 <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" /> 实例。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.ToFindCriteria">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" />。</summary>
+      <returns>查找条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" /> 写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1">
+      <summary>表示在解析使用 WS-Discovery 协议 Committee Draft 1 版本的服务时要使用的条件。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.FromResolveCriteria(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" /> 实例初始化 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 新实例。</summary>
+      <param name="resolveCriteria">解析条件。</param>
+      <returns>一个 <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" /> 实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.GetSchema">
+      <summary>获取解析条件架构。</summary>
+      <returns>解析条件架构。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>从指定的 <see cref="T:System.Xml.Schema.XmlSchemaSet" /> 中获取查找条件架构。</summary>
+      <param name="schemaSet">架构集。</param>
+      <returns>架构的 <see cref="T:System.Xml.XmlQualifiedName" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.ReadXml(System.Xml.XmlReader)">
+      <summary>从 XML 中读取 <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" /> 实例。</summary>
+      <param name="reader">要从中读取的 XML 读取器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.ToResolveCriteria">
+      <summary>获取与此 <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> 实例关联的 <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" />。</summary>
+      <returns>解析条件。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.WriteXml(System.Xml.XmlWriter)">
+      <summary>将 <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" /> 实例写入到 XML。</summary>
+      <param name="writer">要写入到的 XML 编写器。</param>
+    </member>
+  </members>
+</doc>

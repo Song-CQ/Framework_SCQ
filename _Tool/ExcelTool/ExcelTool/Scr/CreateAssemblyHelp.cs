@@ -458,6 +458,7 @@ namespace ExcelTool
             Assembly assembly = null;
             
             Console.WriteLine("开始编译程序集");
+
             CompilerResults result = provider.CompileAssemblyFromSource(cp, allClassVal.ToArray());
 
             if (result.Errors.Count > 0)

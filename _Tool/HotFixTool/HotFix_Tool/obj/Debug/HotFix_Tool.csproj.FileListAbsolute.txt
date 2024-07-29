@@ -1,0 +1,12 @@
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\obj\Debug\HotFix_Tool.csproj.AssemblyReference.cache
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\obj\Debug\HotFix_Tool.csproj.CoreCompileInputs.cache
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\bin\Debug\HotFix_Tool.exe
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\bin\Debug\HotFix_Tool.pdb
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\bin\Debug\LogUtil.dll
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\obj\Debug\HotFix_Tool.exe
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\obj\Debug\HotFix_Tool.pdb
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\Release\HotFix_Tool.exe
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\Release\HotFix_Tool.pdb
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\Release\HotFix_Tool.exe.config
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\obj\Debug\HotFix_Tool.csproj.SuggestedBindingRedirects.cache
+H:\UnityPro\Framework_SCQ\_Tool\HotFixTool\HotFix_Tool\obj\Debug\HotFix_Tool.csproj.CopyComplete

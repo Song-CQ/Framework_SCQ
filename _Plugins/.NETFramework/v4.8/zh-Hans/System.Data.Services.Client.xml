@@ -1,0 +1,1366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.Services.Client</name>
+  </assembly>
+  <members>
+    <member name="T:System.Data.Services.Client.ChangeOperationResponse">
+      <summary>
+        <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 类返回枚举操作响应后，调用 <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 后返回的结果。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.ChangeOperationResponse.Descriptor">
+      <summary>获取由更改操作修改的 <see cref="T:System.Data.Services.Client.EntityDescriptor" /> 或 <see cref="T:System.Data.Services.Client.LinkDescriptor" />。</summary>
+      <returns>更改操作修改的 <see cref="T:System.Data.Services.Client.EntityDescriptor" /> 或 <see cref="T:System.Data.Services.Client.LinkDescriptor" />。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceClientException">
+      <summary>表示执行 WCF Data Services 客户端应用程序过程中发生的错误。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceClientException.#ctor">
+      <summary>使用由系统提供的用于描述错误的消息初始化 <see cref="T:System.Data.Services.Client.DataServiceClientException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceClientException.#ctor(System.String)">
+      <summary>使用指定的描述错误的消息初始化 <see cref="T:System.Data.Services.Client.DataServiceClientException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceClientException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.Data.Services.Client.DataServiceClientException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+      <param name="innerException">导致当前异常的异常。 如果 <paramref name="innerException" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceClientException.#ctor(System.String,System.Exception,System.Int32)">
+      <summary>初始化 <see cref="T:System.Data.Services.Client.DataServiceClientException" /> 类的新实例。</summary>
+      <param name="message">包含错误消息的字符串值。</param>
+      <param name="innerException">其中包含内部异常的 <see langword="System.Exception" /> 对象。</param>
+      <param name="statusCode">包含状态代码的整数值。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceClientException.#ctor(System.String,System.Int32)">
+      <summary>初始化 <see cref="T:System.Data.Services.Client.DataServiceClientException" /> 类的新实例。</summary>
+      <param name="message">包含错误消息的字符串值。</param>
+      <param name="statusCode">包含状态代码的整数值。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceClientException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.Data.Services.Client.DataServiceClientException" /> 类的新实例。</summary>
+      <param name="info">承载序列化对象数据的对象。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceClientException.StatusCode">
+      <summary>获取在 <see cref="T:System.Data.Services.Client.DataServiceClientException" /> 后返回的 HTTP 错误状态代码。</summary>
+      <returns>表示异常的整数值。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceCollection`1">
+      <summary>表示一个动态实体集合，可在添加、移除项目或刷新列表时提供通知。</summary>
+      <typeparam name="T">一个实体类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.#ctor">
+      <summary>创建 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+      <summary>创建基于查询执行的 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 类的新实例。</summary>
+      <param name="items">
+        <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 或 LINQ 查询，可返回用于初始化集合的对象的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 集合。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode)">
+      <summary>创建基于查询执行并使用指定跟踪模式的 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 类的新实例。</summary>
+      <param name="items">
+        <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 或 LINQ 查询，可返回用于初始化集合的对象的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 集合。</param>
+      <param name="trackingMode">
+        <see cref="T:System.Data.Services.Client.TrackingMode" /> 值，用于指示是否自动跟踪对集合中各项所做的更改。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})">
+      <summary>创建基于查询执行并使用所提供更改方法委托的 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 类的新实例。</summary>
+      <param name="items">
+        <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 或 LINQ 查询，可返回用于初始化集合的对象的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 集合。</param>
+      <param name="trackingMode">
+        <see cref="T:System.Data.Services.Client.TrackingMode" /> 值，用于指示是否自动跟踪对集合中各项所做的更改。</param>
+      <param name="entitySetName">集合中的对象实体集。</param>
+      <param name="entityChangedCallback">一种委托，用于封装在实体更改时进行调用的方法。</param>
+      <param name="collectionChangedCallback">一种委托，用于封装在实体集合更改时进行调用的方法。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext)">
+      <summary>创建 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 类的新实例，该实例使用指定的 <see cref="T:System.Data.Services.Client.DataServiceContext" />。</summary>
+      <param name="context">
+        <see cref="T:System.Data.Services.Client.DataServiceContext" /> 用于跟踪对集合中对象所做的更改。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext,System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})">
+      <summary>创建基于查询执行、使用所提供的更改方法委托并使用所提供的 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 的 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 类的新实例。</summary>
+      <param name="context">
+        <see cref="T:System.Data.Services.Client.DataServiceContext" /> 用于跟踪集合中的项。</param>
+      <param name="items">
+        <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 或 LINQ 查询，可返回用于初始化集合的对象的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 集合。</param>
+      <param name="trackingMode">
+        <see cref="T:System.Data.Services.Client.TrackingMode" /> 值，用于指示是否自动跟踪对集合中各项所做的更改。</param>
+      <param name="entitySetName">集合中的对象实体集。</param>
+      <param name="entityChangedCallback">一种委托，用于封装在实体更改时进行调用的方法。</param>
+      <param name="collectionChangedCallback">一种委托，用于封装在实体集合更改时进行调用的方法。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})">
+      <summary>创建使用所提供更改方法委托并使用指定的 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 的 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 类的新实例。</summary>
+      <param name="context">
+        <see cref="T:System.Data.Services.Client.DataServiceContext" /> 用于跟踪集合中的项。</param>
+      <param name="entitySetName">集合中的对象实体集。</param>
+      <param name="entityChangedCallback">一种委托，用于封装在实体更改时进行调用的方法。</param>
+      <param name="collectionChangedCallback">一种委托，用于封装在实体集合更改时进行调用的方法。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.Clear(System.Boolean)">
+      <summary>移除集合中的所有项，并选择性地分离 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 中的所有项。</summary>
+      <param name="stopTracking">若为 <see langword="true" />，则从 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 中分离所有项。</param>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceCollection`1.Continuation">
+      <summary>获取用于返回下一分页结果集的延续对象。</summary>
+      <returns>
+        <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation`1" /> 对象，包含用于返回下一分页结果集的 URI。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.Detach">
+      <summary>禁止 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪集合中的所有项。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.InsertItem(System.Int32,`0)">
+      <summary>将指定项添加到集合的指定索引位置。</summary>
+      <param name="index">要添加项的索引位置。</param>
+      <param name="item">要添加的项。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.Load(`0)">
+      <summary>将单个实体对象加载到集合中。</summary>
+      <param name="item">要添加的实体对象。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceCollection`1.Load(System.Collections.Generic.IEnumerable{`0})">
+      <summary>将实体对象的集合加载到集合中。</summary>
+      <param name="items">要添加到 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 的实体对象的集合。</param>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceContext">
+      <summary>
+        <see cref="T:System.Data.Services.Client.DataServiceContext" /> 表示数据服务的运行时上下文。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.#ctor(System.Uri)">
+      <summary>使用指定的 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 初始化 <paramref name="serviceRoot" /> 类的新实例。</summary>
+      <param name="serviceRoot">绝对 URI，用于标识数据服务的根。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="serviceRoot" /> 为 null 时。</exception>
+      <exception cref="T:System.ArgumentException">如果 <paramref name="serviceRoot" /> 不是一个绝对 URI 
+
+或 - 
+如果 <paramref name="serviceRoot" /> 是一个不含查询或查询片段的格式正确的 URI。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.AddLink(System.Object,System.String,System.Object)">
+      <summary>将指定链接添加到 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 正在跟踪的一组对象。</summary>
+      <param name="source">新链接的源对象。</param>
+      <param name="sourceProperty">源对象上可返回相关对象的导航属性的名称。</param>
+      <param name="target">通过新链接与源对象相关联的对象。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="source" />、<paramref name="sourceProperty" /> 或 <paramref name="target" /> 为 null 时。</exception>
+      <exception cref="T:System.InvalidOperationException">如果链接已存在。  
+
+或 - 
+如果 <paramref name="source" /> 或 <paramref name="target" /> 对象处于 <see cref="F:System.Data.Services.Client.EntityStates.Detached" /> 或 <see cref="F:System.Data.Services.Client.EntityStates.Deleted" /> 状态。  
+
+或 - 
+如果 <paramref name="sourceProperty" /> 不是一个集合。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.AddObject(System.String,System.Object)">
+      <summary>将指定对象添加到 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 正在跟踪的一组对象中。</summary>
+      <param name="entitySetName">将要向其添加资源的实体集的名称。</param>
+      <param name="entity">将由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪的对象。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="entitySetName" /> 或 <paramref name="entity" /> 为 null 时。</exception>
+      <exception cref="T:System.ArgumentException">当 <paramref name="entitySetName" /> 为空时。  
+
+或 - 
+当 <paramref name="entity" /> 未定义键属性时。</exception>
+      <exception cref="T:System.InvalidOperationException">当该实体已由上下文跟踪时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.AddRelatedObject(System.Object,System.String,System.Object)">
+      <summary>将相关对象添加到上下文，然后创建相关链接，以便定义单个请求中两个对象间的关系。</summary>
+      <param name="source">由上下文跟踪的父对象。</param>
+      <param name="sourceProperty">导航属性的名称，可根据两个实体之间的关联关系返回相关对象。</param>
+      <param name="target">所添加的相关对象。</param>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.ApplyingChanges">
+      <summary>获取用于指示 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 是否当前正在将更改应用于所跟踪对象的值。</summary>
+      <returns>若当前应用更改，则返回 <see langword="true" />；否则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.AttachLink(System.Object,System.String,System.Object)">
+      <summary>通知 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 开始跟踪指定链接，该链接定义了实体对象之间的关系。</summary>
+      <param name="source">新链接中的源对象。</param>
+      <param name="sourceProperty">源对象上的属性名称，表示源对象和目标对象之间的链接。</param>
+      <param name="target">链接中的目标对象，已绑定到此调用中指定的源对象。 目标对象类型必须是源属性所标识的类型或子类型。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="source" />、<paramref name="sourceProperty" /> 或 <paramref name="target" /> 为 null 时。</exception>
+      <exception cref="T:System.InvalidOperationException">当两个实体之间已存在链接时。  
+
+或 - 
+当 <paramref name="source" /> 或 <paramref name="target" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 或 <see cref="F:System.Data.Services.Client.EntityStates.Deleted" /> 状态时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.AttachTo(System.String,System.Object)">
+      <summary>通知 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 开始跟踪指定资源，并在指定资源集中提供该资源的位置。</summary>
+      <param name="entitySetName">包含该资源的集的名称。</param>
+      <param name="entity">将由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪的资源。 在“未更改”状态下附加资源。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="entity" /> 或 <paramref name="entitySetName" /> 为 <see langword="null" /> 时。</exception>
+      <exception cref="T:System.ArgumentException">当 <paramref name="entitySetName" /> 为空字符串时。  
+
+或 - 
+当 <paramref name="entity" /> 未定义键属性时。</exception>
+      <exception cref="T:System.InvalidOperationException">当 <paramref name="entity" /> 已由上下文跟踪时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.AttachTo(System.String,System.Object,System.String)">
+      <summary>通知 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 开始跟踪指定资源，并在指定资源集中提供该资源的位置。</summary>
+      <param name="entitySetName">包含实体所附加到的实体集名称的字符串值。</param>
+      <param name="entity">要添加的实体。</param>
+      <param name="etag">一种 etag 值，表示上次从数据服务检索实体时该实体的状态。 可将此值视为不透明的字符串；未通过客户端库对其执行任何验证。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="entitySetName" /> 为 <see langword="null" /> 时。  
+
+或 - 
+当 <paramref name="entity" /> 为 <see langword="null" /> 时。</exception>
+      <exception cref="T:System.ArgumentException">当 <paramref name="entitySetName" /> 为空字符串时。  
+
+或 - 
+当所提供的对象不具有键属性时。</exception>
+      <exception cref="T:System.InvalidOperationException">当所提供的对象已由上下文跟踪时</exception>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.BaseUri">
+      <summary>获取标识目标数据服务的根的绝对 URI。</summary>
+      <returns>绝对 URI，用于标识 T 数据服务的根。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginExecute``1(System.Data.Services.Client.DataServiceQueryContinuation{``0},System.AsyncCallback,System.Object)">
+      <summary>通过将请求异步发送到数据服务，在分页查询结果中检索下一页数据。</summary>
+      <param name="continuation">
+        <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation`1" /> 对象，表示要从数据服务返回的下一页数据。</param>
+      <param name="callback">当结果可供客户端使用时将调用的委托。</param>
+      <param name="state">已传递到回调的用户定义的状态对象。</param>
+      <typeparam name="T">查询所返回的类型。</typeparam>
+      <returns>表示操作状态的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginExecute``1(System.Uri,System.AsyncCallback,System.Object)">
+      <summary>异步发送请求，因此在等待服务返回的结果时，此调用不会阻止处理。</summary>
+      <param name="requestUri">查询请求将发送到的 URI。 该 URI 可以是任何有效的数据服务 URI；它可以包含 <c>$</c> 查询参数。</param>
+      <param name="callback">当结果可供客户端使用时将调用的委托。</param>
+      <param name="state">已传递到回调的用户定义的状态对象。</param>
+      <typeparam name="TElement">查询所返回的类型。</typeparam>
+      <returns>用于跟踪异步操作状态的对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginExecuteBatch(System.AsyncCallback,System.Object,System.Data.Services.Client.DataServiceRequest[])">
+      <summary>将一组查询以批处理方式异步提交到数据服务。</summary>
+      <param name="callback">收到批处理请求响应时所调用的委托。</param>
+      <param name="state">用户定义的状态对象，用于将上下文数据传递给回调方法。</param>
+      <param name="queries">要包含在批处理请求中的查询请求数组。</param>
+      <returns>用于跟踪异步操作状态的 <see cref="T:System.IAsyncResult" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginGetReadStream(System.Object,System.Data.Services.Client.DataServiceRequestArgs,System.AsyncCallback,System.Object)">
+      <summary>异步获取数据流形式的指定实体的二进制属性数据以及指定的消息标头。</summary>
+      <param name="entity">具有要检索的二进制属性的实体。</param>
+      <param name="args">包含 HTTP 请求消息设置的 <see cref="T:System.Data.Services.Client.DataServiceRequestArgs" /> 类的实例。</param>
+      <param name="callback">当结果可供客户端使用时将调用的委托。</param>
+      <param name="state">已传递到回调的用户定义的状态对象。</param>
+      <returns>用于跟踪异步操作状态的 <see cref="T:System.IAsyncResult" /> 对象。</returns>
+      <exception cref="T:System.ArgumentNullException">向方法提供的任何参数都为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="entity" /> 不是由此 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 进行跟踪。  
+或 
+<paramref name="entity" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 状态。  
+
+或 - 
+<paramref name="entity" /> 不是媒体链接项，且不具有二进制属性。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginLoadProperty(System.Object,System.String,System.AsyncCallback,System.Object)">
+      <summary>从数据服务异步加载指定属性的值。</summary>
+      <param name="entity">包含要加载的属性的实体。</param>
+      <param name="propertyName">要加载的指定实体上的属性名称。</param>
+      <param name="callback">收到请求响应时所调用的委托。</param>
+      <param name="state">用户定义的状态对象，用于将上下文数据传递给回调方法。</param>
+      <returns>表示异步操作状态的 <see langword="IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginLoadProperty(System.Object,System.String,System.Data.Services.Client.DataServiceQueryContinuation,System.AsyncCallback,System.Object)">
+      <summary>通过使用所提供的查询延续对象，从数据服务异步加载下一页相关实体。</summary>
+      <param name="entity">包含要加载的属性的实体。</param>
+      <param name="propertyName">要加载的指定实体的属性名称。</param>
+      <param name="continuation">
+        <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation`1" /> 对象，表示要从数据服务返回的下一页相关实体数据。</param>
+      <param name="callback">当结果可供客户端使用时将调用的委托。</param>
+      <param name="state">已传递到回调的用户定义的状态对象。</param>
+      <returns>表示操作状态的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginLoadProperty(System.Object,System.String,System.Uri,System.AsyncCallback,System.Object)">
+      <summary>通过使用所提供的下一链接 URI，从数据服务异步加载相关实体页。</summary>
+      <param name="entity">包含要加载的属性的实体。</param>
+      <param name="propertyName">要加载的指定实体的属性名称。</param>
+      <param name="nextLinkUri">用于加载下一结果页的 URI。</param>
+      <param name="callback">当结果可供客户端使用时将调用的委托。</param>
+      <param name="state">已传递到回调的用户定义的状态对象。</param>
+      <returns>用于跟踪异步操作状态的 <see cref="T:System.IAsyncResult" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginSaveChanges(System.AsyncCallback,System.Object)">
+      <summary>以异步方式向数据服务提交自上次保存更改以来，由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 收集的挂起更改。</summary>
+      <param name="callback">完成操作时要调用的委托。</param>
+      <param name="state">用户定义的状态对象，用于将上下文数据传递给回调方法。</param>
+      <returns>表示异步操作状态的 <see langword="IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.BeginSaveChanges(System.Data.Services.Client.SaveChangesOptions,System.AsyncCallback,System.Object)">
+      <summary>以异步方式向数据服务提交自上次保存更改以来，由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 收集的挂起更改。</summary>
+      <param name="options">客户端保存挂起的更改集的方式选项。</param>
+      <param name="callback">完成操作时要调用的委托。</param>
+      <param name="state">用户定义的状态对象，用于将上下文数据传递给回调方法。</param>
+      <returns>表示异步操作状态的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.CancelRequest(System.IAsyncResult)">
+      <summary>尝试取消与所提供的 <see cref="T:System.IAsyncResult" /> 对象关联的操作。</summary>
+      <param name="asyncResult">要取消操作中的 <see cref="T:System.IAsyncResult" /> 对象。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.CreateQuery``1(System.String)">
+      <summary>针对指定泛型类型的数据创建数据服务查询。</summary>
+      <param name="entitySetName">解析为 URI 的字符串。</param>
+      <typeparam name="T">查询所返回的类型</typeparam>
+      <returns>表示数据服务查询的新 <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 实例。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.Credentials">
+      <summary>获取或设置每个查询（使用 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 对象创建）所使用的身份验证信息。</summary>
+      <returns>用于检索 Web 客户端身份验证凭据的基本身份验证接口。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.DataNamespace">
+      <summary>获取或设置 Atom 负载数据项（而非元数据项）的 XML 命名空间。</summary>
+      <returns>表示 ATOM 格式的负载数据项 XML 命名空间的字符串。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.DeleteLink(System.Object,System.String,System.Object)">
+      <summary>更改 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪的链接列表中要删除的链接的状态。</summary>
+      <param name="source">标记为要删除的链接中的源对象。</param>
+      <param name="sourceProperty">源对象上用于访问目标对象的导航属性的名称。</param>
+      <param name="target">链接中涉及的已绑定到源对象的目标对象。 目标对象类型必须是源属性所标识的类型或子类型。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="source" />、<paramref name="sourceProperty" /> 或 <paramref name="target" /> 为 null 时。</exception>
+      <exception cref="T:System.InvalidOperationException">当 <paramref name="source" /> 或 <paramref name="target" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Detached" /> 或 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 状态时。  
+
+或 - 
+当 <paramref name="sourceProperty" /> 不是一个集合时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.DeleteObject(System.Object)">
+      <summary>更改要在 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 中删除的指定对象的状态。</summary>
+      <param name="entity">将更改为已删除状态的被跟踪实体。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="entity" /> 为 <see langword="null" /> 时。</exception>
+      <exception cref="T:System.InvalidOperationException">当对象未由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.Detach(System.Object)">
+      <summary>从 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 所跟踪的实体列表中移除该实体。</summary>
+      <param name="entity">将从 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 中分离的被跟踪实体。</param>
+      <returns>如果分离了指定的实体，则返回 <see langword="true" />；否则返回 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="entity" /> 为 <see langword="null" /> 时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.DetachLink(System.Object,System.String,System.Object)">
+      <summary>从 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 所跟踪的链接列表中移除指定链接。</summary>
+      <param name="source">参与了标记为要删除的链接的源对象。</param>
+      <param name="sourceProperty">源对象上的属性名称，表示源和目标之间的链接中的源。</param>
+      <param name="target">链接中涉及的已绑定到源对象的目标对象。 目标对象类型必须是源属性所标识的类型或子类型。</param>
+      <returns>如果指定的实体已分离，则返回 true；否则返回 false。</returns>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="source" /> 或 <paramref name="sourceProperty" /> 为 <see langword="null" /> 时。</exception>
+      <exception cref="T:System.ArgumentException">当 <paramref name="sourceProperty" /> 为空字符串时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.EndExecute``1(System.IAsyncResult)">
+      <summary>调用以完成 <see cref="M:System.Data.Services.Client.DataServiceContext.BeginExecute``1(System.Uri,System.AsyncCallback,System.Object)" />。</summary>
+      <param name="asyncResult">
+        <see cref="T:System.IAsyncResult" /> 对象。</param>
+      <typeparam name="TElement">查询所返回的类型。</typeparam>
+      <returns>查询操作所返回的结果。</returns>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="asyncResult" /> 为 <see langword="null" /> 时。</exception>
+      <exception cref="T:System.ArgumentException">当 <paramref name="asyncResult" /> 不是源自此 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 实例时。  
+
+或 - 
+当以前调用过 <see cref="M:System.Data.Services.Client.DataServiceContext.EndExecute``1(System.IAsyncResult)" /> 方法时。</exception>
+      <exception cref="T:System.InvalidOperationException">在执行请求期间或在请求将响应消息的内容转换为对象期间引发错误时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.EndExecuteBatch(System.IAsyncResult)">
+      <summary>调用以完成 <see cref="M:System.Data.Services.Client.DataServiceContext.BeginExecuteBatch(System.AsyncCallback,System.Object,System.Data.Services.Client.DataServiceRequest[])" />。</summary>
+      <param name="asyncResult">表示异步操作状态的 <see cref="T:System.IAsyncResult" />。</param>
+      <returns>
+        <see langword="DataServiceResult" /> 对象，指示批处理操作结果。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.EndGetReadStream(System.IAsyncResult)">
+      <summary>进行调用以完成以流形式检索二进制属性的异步操作。</summary>
+      <param name="asyncResult">包含二进制数据流的 <see cref="M:System.Data.Services.Client.DataServiceContext.BeginGetReadStream(System.Object,System.Data.Services.Client.DataServiceRequestArgs,System.AsyncCallback,System.Object)" /> 操作的结果。</param>
+      <returns>包含响应流及其元数据的 <see cref="T:System.Data.Services.Client.DataServiceStreamResponse" /> 实例。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.EndLoadProperty(System.IAsyncResult)">
+      <summary>调用以完成 <see cref="M:System.Data.Services.Client.DataServiceContext.BeginLoadProperty(System.Object,System.String,System.AsyncCallback,System.Object)" /> 操作。</summary>
+      <param name="asyncResult">表示异步操作状态的 <see cref="T:System.IAsyncResult" />。</param>
+      <returns>对加载操作的响应。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.EndSaveChanges(System.IAsyncResult)">
+      <summary>调用以完成 <see cref="M:System.Data.Services.Client.DataServiceContext.BeginSaveChanges(System.AsyncCallback,System.Object)" /> 操作。</summary>
+      <param name="asyncResult">表示异步操作状态的 <see cref="T:System.IAsyncResult" />。</param>
+      <returns>
+        <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 对象，指示批处理操作结果。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.Entities">
+      <summary>获取当前由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪的所有资源的列表。</summary>
+      <returns>表示当前正由 <see cref="T:System.Data.Services.Client.EntityDescriptor" /> 跟踪的所有资源的 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 对象的列表。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.Execute``1(System.Data.Services.Client.DataServiceQueryContinuation{``0})">
+      <summary>通过将请求发送到数据服务，在分页查询结果中检索下一页数据。</summary>
+      <param name="continuation">
+        <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation`1" /> 对象，表示要从数据服务返回的下一页数据。</param>
+      <typeparam name="T">查询所返回的类型。</typeparam>
+      <returns>包含查询结果中下一页数据的响应。</returns>
+      <exception cref="T:System.InvalidOperationException">在执行请求期间或在请求将响应消息的内容转换为对象期间引发错误时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.Execute``1(System.Uri)">
+      <summary>通过将请求发送到数据服务来执行特定 URI。</summary>
+      <param name="requestUri">查询请求将发送到的 URI。 该 URI 可以是任何有效的数据服务 URI。 可以包含 $ 查询参数。</param>
+      <typeparam name="TElement">查询返回的类型。</typeparam>
+      <returns>查询操作的结果。</returns>
+      <exception cref="T:System.Net.WebException">当没有收到发往 <paramref name="requestUri" /> 的请求的响应时。</exception>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="requestUri" /> 为 <see langword="null" /> 时。</exception>
+      <exception cref="T:System.ArgumentException">当 <paramref name="requestUri" /> 不是数据服务的有效 URI 时。</exception>
+      <exception cref="T:System.InvalidOperationException">在执行请求期间或在请求将响应消息的内容转换为对象期间引发错误时。</exception>
+      <exception cref="T:System.Data.Services.Client.DataServiceQueryException">数据服务返回 HTTP 404 时：“找不到资源”错误。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.ExecuteBatch(System.Data.Services.Client.DataServiceRequest[])">
+      <summary>将一组查询以批处理方式提交到数据服务。</summary>
+      <param name="queries">组成查询的 <see cref="T:System.Data.Services.Client.DataServiceRequest" /> 对象的数组。</param>
+      <returns>批处理操作的响应。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.GetEntityDescriptor(System.Object)">
+      <summary>获取所提供实体对象的 <see cref="T:System.Data.Services.Client.EntityDescriptor" />。</summary>
+      <param name="entity">将为其返回实体描述符的对象。</param>
+      <returns>
+        <paramref name="entity" /> 的 <see cref="T:System.Data.Services.Client.EntityDescriptor" /> 实例；如果对象没有 <see cref="T:System.Data.Services.Client.EntityDescriptor" />，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.GetLinkDescriptor(System.Object,System.String,System.Object)">
+      <summary>获取特定链接的 <see cref="T:System.Data.Services.Client.LinkDescriptor" />，以便定义两个实体之间的关系。</summary>
+      <param name="source">链接中的源对象</param>
+      <param name="sourceProperty">
+        <paramref name="source" /> 对象上可返回相关对象的导航属性的名称。</param>
+      <param name="target">相关实体。</param>
+      <returns>指定关系的 <see cref="T:System.Data.Services.Client.LinkDescriptor" /> 实例；如果该关系没有 <see cref="T:System.Data.Services.Client.LinkDescriptor" />，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.GetMetadataUri">
+      <summary>获取 .edmx 元数据位置的 URI。</summary>
+      <returns>一种 URI，为数据服务（由传递到构造函数的基 URI 标识）标识 .edmx 格式的元数据说明的位置。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.GetReadStream(System.Object)">
+      <summary>获取数据流形式的指定实体的二进制属性数据。</summary>
+      <param name="entity">具有要检索的二进制属性的实体。</param>
+      <returns>表示响应的 <see cref="T:System.Data.Services.Client.DataServiceStreamResponse" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="entity" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="entity" /> 不是由此 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 进行跟踪。  
+
+或 - 
+<paramref name="entity" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 状态。  
+
+或 
+<paramref name="entity" /> 不是媒体链接项，且不具有二进制属性。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.GetReadStream(System.Object,System.Data.Services.Client.DataServiceRequestArgs)">
+      <summary>获取数据流形式的指定实体的二进制属性数据以及指定的消息标头。</summary>
+      <param name="entity">具有要检索的二进制属性的实体。</param>
+      <param name="args">包含 HTTP 请求消息设置的 <see cref="T:System.Data.Services.Client.DataServiceRequestArgs" /> 类的实例。</param>
+      <returns>表示响应的 <see cref="T:System.Data.Services.Client.DataServiceStreamResponse" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="entity" /> 为 <see langword="null" />。  
+或 
+ <paramref name="args" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="entity" /> 不是由此 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 进行跟踪。  
+或 
+<paramref name="entity" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 状态。  
+或 
+<paramref name="entity" /> 不是媒体链接项，且不具有二进制属性。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.GetReadStream(System.Object,System.String)">
+      <summary>获取数据流形式的指定实体的二进制属性数据以及指定的 Accept 消息标头。</summary>
+      <param name="entity">具有要检索的二进制属性的实体。</param>
+      <param name="acceptContentType">从数据服务中请求的数据的内容类型，此类型在 Accept 标头中指定。</param>
+      <returns>表示响应的 <see cref="T:System.Data.Services.Client.DataServiceStreamResponse" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="entity" /> 为 <see langword="null" />。  
+或 
+ <paramref name="acceptContentType" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="entity" /> 不是由此 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 进行跟踪。  
+
+或 - 
+<paramref name="entity" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 状态。  
+
+或 - 
+<paramref name="entity" /> 不是媒体链接项，且不具有二进制属性。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.GetReadStreamUri(System.Object)">
+      <summary>获取用于以数据流形式返回二进制属性数据的 URI。</summary>
+      <param name="entity">具有要检索的二进制属性的实体。</param>
+      <returns>二进制数据流的读取 URI。</returns>
+      <exception cref="T:System.ArgumentNullException">如果指定的实体为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="entity" /> 不是由此 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 进行跟踪。</exception>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.IgnoreMissingProperties">
+      <summary>获取从类型读取的属性或将其设置为是否必须映射到客户端类型的属性。</summary>
+      <returns>一个布尔值，用于指示是否必须将从类型读取的属性映射到客户端类型的属性。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.IgnoreResourceNotFoundException">
+      <summary>获取或设置当数据服务返回 404 错误（找不到资源）时是否引发异常。</summary>
+      <returns>若设置为 <see langword="true" />，则当数据服务返回“HTTP 404: 未找到资源”错误时，客户端库将返回一个空集，而不是引发 <see cref="T:System.Data.Services.Client.DataServiceQueryException" />。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.Links">
+      <summary>获取当前正由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 对象跟踪的所有关联或链接的集合。</summary>
+      <returns>表示当前正由 <see cref="T:System.Data.Services.Client.LinkDescriptor" /> 对象跟踪的所有关联或链接的 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 对象的集合。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.LoadProperty(System.Object,System.String)">
+      <summary>从数据服务加载指定属性的延迟内容。</summary>
+      <param name="entity">包含要加载的属性的实体。</param>
+      <param name="propertyName">要加载的指定实体的属性名称。</param>
+      <returns>对加载操作的响应。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.LoadProperty(System.Object,System.String,System.Data.Services.Client.DataServiceQueryContinuation)">
+      <summary>通过使用所提供的查询延续对象，从数据服务加载下一页相关实体。</summary>
+      <param name="entity">包含要加载的属性的实体。</param>
+      <param name="propertyName">要加载的指定实体的属性名称。</param>
+      <param name="continuation">
+        <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation`1" /> 对象，表示要从数据服务加载的下一页相关实体。</param>
+      <returns>包含下一页相关实体数据的响应。</returns>
+      <exception cref="T:System.InvalidOperationException">当 <paramref name="entity" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Detached" /> 或 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 状态时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.LoadProperty(System.Object,System.String,System.Uri)">
+      <summary>通过使用所提供的下一链接 URI 来加载相关实体页。</summary>
+      <param name="entity">包含要加载的属性的实体。</param>
+      <param name="propertyName">要加载的指定实体的属性名称。</param>
+      <param name="nextLinkUri">用于加载下一结果页的 URI。</param>
+      <returns>包含请求结果的 <see cref="T:System.Data.Services.Client.QueryOperationResponse`1" /> 实例。</returns>
+      <exception cref="T:System.InvalidOperationException">当 <paramref name="entity" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Detached" /> 或 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 状态时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.LoadProperty``1(System.Object,System.String,System.Data.Services.Client.DataServiceQueryContinuation{``0})">
+      <summary>通过使用所提供的通用查询延续对象，从数据服务加载下一页相关实体。</summary>
+      <param name="entity">包含要加载的属性的实体。</param>
+      <param name="propertyName">要加载的指定实体的属性名称。</param>
+      <param name="continuation">
+        <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation`1" /> 对象，表示要从数据服务加载的下一页相关实体。</param>
+      <typeparam name="T">要加载的集合的元素类型。</typeparam>
+      <returns>包含下一页相关实体数据的响应。</returns>
+      <exception cref="T:System.InvalidOperationException">当 <paramref name="entity" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Detached" /> 或 <see cref="F:System.Data.Services.Client.EntityStates.Added" /> 状态时。</exception>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.MergeOption">
+      <summary>获取或设置用于从数据服务中接收实体的同步选项。</summary>
+      <returns>
+        <see cref="T:System.Data.Services.Client.MergeOption" /> 枚举的成员之一。</returns>
+    </member>
+    <member name="E:System.Data.Services.Client.DataServiceContext.ReadingEntity">
+      <summary>在实体数据已完全读入实体对象之后发生。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.ResolveName">
+      <summary>获取或设置函数，以便在用户向数据服务发送实体时，重写客户端库所用的默认类型解析策略。</summary>
+      <returns>返回包含 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 名称的字符串。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.ResolveType">
+      <summary>获取或设置函数，以便在接收数据服务的实体时，重写客户端库所用的默认类型解析选项。</summary>
+      <returns>一种函数委托，用于确定重写函数，以便重写客户端库所用的默认类型解析选项。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.SaveChanges">
+      <summary>将 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 所跟踪的更改保存到存储。</summary>
+      <returns>
+        <see cref="T:System.Data.Services.Client.DataServiceResponse" />，包含状态、标头以及由 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 调用生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.SaveChanges(System.Data.Services.Client.SaveChangesOptions)">
+      <summary>将 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 所跟踪的更改保存到存储。</summary>
+      <param name="options">
+        <see cref="T:System.Data.Services.Client.MergeOption" /> 枚举的成员，用于指定具体化选项。</param>
+      <returns>
+        <see cref="T:System.Data.Services.Client.DataServiceResponse" />，包含状态、标头以及由 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 调用生成的错误。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.SaveChangesDefaultOptions">
+      <summary>获取或设置 <see cref="T:System.Data.Services.Client.SaveChangesOptions" /> 方法所用的 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 值。</summary>
+      <returns>用于保存更改操作的当前选项。</returns>
+    </member>
+    <member name="E:System.Data.Services.Client.DataServiceContext.SendingRequest">
+      <summary>在创建新 <see cref="T:System.Net.HttpWebRequest" /> 之后发生。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.SetLink(System.Object,System.String,System.Object)">
+      <summary>通知 <see cref="T:System.Data.Services.Client.DataServiceContext" />，说明指定的对象之间存在新链接，且该链接由 <paramref name="sourceProperty" /> 参数指定的属性表示。</summary>
+      <param name="source">新链接的源对象。</param>
+      <param name="sourceProperty">源对象上的属性，用于标识新链接的目标对象。</param>
+      <param name="target">新链接中涉及的子对象，可通过调用此方法进行初始化。 目标对象必须是 <paramref name="sourceProperty" /> 参数标识的类型的子类型。 如果 <paramref name="target" /> 设置为 null，则调用表示删除链接操作。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="source" />、<paramref name="sourceProperty" /> 或 <paramref name="target" /> 为 null 时。</exception>
+      <exception cref="T:System.InvalidOperationException">当指定链接已存在时。  
+
+或 - 
+当以 <paramref name="source" /> 或 <paramref name="target" /> 形式提供的对象处于 <see cref="F:System.Data.Services.Client.EntityStates.Detached" /> 或 <see cref="F:System.Data.Services.Client.EntityStates.Deleted" /> 状态时。  
+
+或 - 
+当 <paramref name="sourceProperty" /> 不是导航属性（定义对单个相关对象的引用）时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.SetSaveStream(System.Object,System.IO.Stream,System.Boolean,System.Data.Services.Client.DataServiceRequestArgs)">
+      <summary>使用请求消息中的指定设置，将新的数据流设置为实体的二进制属性。</summary>
+      <param name="entity">具有要为其分配数据流的二进制属性的实体。</param>
+      <param name="stream">从中读取二进制数据的 <see cref="T:System.IO.Stream" />。</param>
+      <param name="closeStream">决定 <see cref="T:System.Boolean" /> 方法完成时是否关闭数据流的 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 值。</param>
+      <param name="args">包含 HTTP 请求消息设置的 <see cref="T:System.Data.Services.Client.DataServiceRequestArgs" /> 类的实例。</param>
+      <exception cref="T:System.ArgumentNullException">向方法提供的任何参数都为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="entity" /> 不是由此 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 实例进行跟踪。  
+或 
+<paramref name="entity" /> 已应用 <see cref="T:System.Data.Services.Client.MediaEntryAttribute" />。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.SetSaveStream(System.Object,System.IO.Stream,System.Boolean,System.String,System.String)">
+      <summary>将新的数据流设置为实体的二进制属性。 指定的 Content-Type 和 Slug 标头包含在请求消息中。</summary>
+      <param name="entity">具有要为其分配数据流的二进制属性的实体。</param>
+      <param name="stream">从中读取二进制数据的 <see cref="T:System.IO.Stream" />。</param>
+      <param name="closeStream">决定 <see cref="T:System.Boolean" /> 方法完成时是否关闭数据流的 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 值。</param>
+      <param name="contentType">请求消息的 Content-Type 标头值。</param>
+      <param name="slug">请求消息的 Slug 标头值。</param>
+      <exception cref="T:System.ArgumentNullException">向方法提供的任何参数都为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="entity" /> 不是由此 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 实例进行跟踪。  
+
+或 - 
+<see langword="entity" /> 已应用 <see cref="T:System.Data.Services.Client.MediaEntryAttribute" />。</exception>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.Timeout">
+      <summary>获取或设置用于对数据服务的基础 HTTP 请求的超时选项（以秒为单位）。</summary>
+      <returns>一个整数，它指示服务请求超时之前的时间间隔。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.TryGetEntity``1(System.Uri,``0@)">
+      <summary>通过引用实体的 URI，测试由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪的实体的检索。</summary>
+      <param name="identity">要检索的被跟踪实体的 URI。</param>
+      <param name="entity">要检索的实体。</param>
+      <typeparam name="TEntity">实体的类型。</typeparam>
+      <returns>如果在 <paramref name="resourceUri" /> 中发现实体，则在输出参数 <paramref name="entity" /> 中返回该实体并返回 true。 如果未发现实体，则返回 false。</returns>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="identity" /> 为 <see langword="null" /> 时。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.TryGetUri(System.Object,System.Uri@)">
+      <summary>检索与指定实体关联的规范 URI（如果可用）。</summary>
+      <param name="entity">由 <paramref name="identity" /> 标识的实体。</param>
+      <param name="identity">实体的 URI。</param>
+      <returns>如果在输出参数中返回规范 URI，则返回 true。 如果指定实体不由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪或处于已添加状态，则没有可用的 URI，因此会返回 false。</returns>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="entity" /> 为 <see langword="null" /> 时。</exception>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.TypeScheme">
+      <summary>获取或设置 URI，以便指示服务所用的类型方案。</summary>
+      <returns>包含类型方案的 <see cref="T:System.Uri" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceContext.UpdateObject(System.Object)">
+      <summary>将 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 中的指定对象的状态更改为 <see cref="F:System.Data.Services.Client.EntityStates.Modified" />。</summary>
+      <param name="entity">将指定为 <see cref="F:System.Data.Services.Client.EntityStates.Modified" /> 状态的被跟踪实体。</param>
+      <exception cref="T:System.ArgumentNullException">当 <paramref name="entity" /> 为 <see langword="null" /> 时。</exception>
+      <exception cref="T:System.ArgumentException">当 <paramref name="entity" /> 处于 <see cref="F:System.Data.Services.Client.EntityStates.Detached" /> 状态时。</exception>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceContext.UsePostTunneling">
+      <summary>获取或设置一个布尔值，该值指示是否使用 POST 隧道。</summary>
+      <returns>指示是否使用 POST 隧道的布尔值。</returns>
+    </member>
+    <member name="E:System.Data.Services.Client.DataServiceContext.WritingEntity">
+      <summary>在实体已完全序列化为请求消息中的 XML 之后发生。</summary>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceQuery">
+      <summary>表示对 WCF Data Services 的单个查询请求的抽象类。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery.BeginExecute(System.AsyncCallback,System.Object)">
+      <summary>异步发送请求以执行数据服务查询。</summary>
+      <param name="callback">当结果可供客户端使用时将调用的委托。</param>
+      <param name="state">已传递到回调的用户定义的状态对象。</param>
+      <returns>用于跟踪异步操作状态的 <see cref="T:System.IAsyncResult" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery.EndExecute(System.IAsyncResult)">
+      <summary>调用后可完成执行数据服务查询的异步操作。</summary>
+      <param name="asyncResult">
+        <see cref="M:System.Data.Services.Client.DataServiceQuery.BeginExecute(System.AsyncCallback,System.Object)" /> 操作返回的结果，包含查询结果。</param>
+      <returns>包含查询操作结果的 <see cref="T:System.Collections.Generic.IEnumerable`1" />。</returns>
+      <exception cref="T:System.Data.Services.Client.DataServiceQueryException">数据服务返回 HTTP 404 时：“找不到资源”错误。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery.Execute">
+      <summary>执行对数据服务的查询。</summary>
+      <returns>包含查询操作结果的 <see cref="T:System.Collections.Generic.IEnumerable`1" />。</returns>
+      <exception cref="T:System.Data.Services.Client.DataServiceQueryException">数据服务返回 HTTP 404 时：“找不到资源”错误。</exception>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceQuery.Expression">
+      <summary>表示一个表达式，其中包含对数据服务的查询。</summary>
+      <returns>表示查询的 <see cref="T:System.Linq.Expressions.Expression" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceQuery.Provider">
+      <summary>表示查询提供程序实例。</summary>
+      <returns>表示数据源提供程序的 <see cref="T:System.Linq.IQueryProvider" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery.System#Collections#IEnumerable#GetEnumerator">
+      <summary>获取可用于循环访问查询返回的集合的 <see cref="T:System.Collections.IEnumerator" /> 对象。</summary>
+      <returns>针对查询结果的枚举器。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceQuery`1">
+      <summary>表示对数据服务的单个查询请求。</summary>
+      <typeparam name="TElement">查询所返回结果的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.AddQueryOption(System.String,System.Object)">
+      <summary>创建新的 <see cref="T:System.Data.Services.Client.DataServiceQuery`1" />，并在由返回的查询生成的 URI 中设置查询选项。</summary>
+      <param name="name">字符串值，其中包含要添加的查询字符串选项的名称。</param>
+      <param name="value">对象，其中包含查询字符串选项的值。</param>
+      <returns>一种新查询，可将所请求的查询选项追加到所提供查询的 URI</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.BeginExecute(System.AsyncCallback,System.Object)">
+      <summary>启动异步网络操作，以便执行此对象实例所表示的查询。</summary>
+      <param name="callback">完成操作时要调用的委托。</param>
+      <param name="state">用户定义的对象，用于在操作开始与 <paramref name="callback" /> 所定义的回调之间传输状态。</param>
+      <returns>表示异步操作状态的 <see cref="T:System.IAsyncResult" />。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceQuery`1.ElementType">
+      <summary>返回在模板中用来创建 <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 实例的对象类型。</summary>
+      <returns>创建查询时，返回表示模板中使用的类型的 <see cref="T:System.Type" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.EndExecute(System.IAsyncResult)">
+      <summary>结束对数据服务的异步查询请求。</summary>
+      <param name="asyncResult">挂起的异步查询请求。</param>
+      <returns>返回包含查询操作结果的 <see cref="T:System.Collections.Generic.IEnumerable`1" />。</returns>
+      <exception cref="T:System.Data.Services.Client.DataServiceQueryException">数据服务返回 HTTP 404 时：“找不到资源”错误。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.Execute">
+      <summary>执行查询，并以实现 <see langword="IEnumerable" /> 的集合的形式返回结果。</summary>
+      <returns>
+        <see cref="T:System.Collections.Generic.IEnumerable`1" />，其中 <paramref name="T" /> 表示查询结果的类型。</returns>
+      <exception cref="T:System.Data.Services.Client.DataServiceQueryException">数据服务返回 HTTP 404 时：“找不到资源”错误。</exception>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.Expand(System.String)">
+      <summary>使用扩展选项（在由返回的查询所生成的 URI 中设置）创建新的 <see cref="T:System.Data.Services.Client.DataServiceQuery`1" />。</summary>
+      <param name="path">一个字符串值，其中包含请求 URI。</param>
+      <returns>一个包含请求的 <see langword="$expand" /> 查询选项的新查询，这些查询选项已附加到所提供查询的 URI。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceQuery`1.Expression">
+      <summary>表示一个表达式，其中包含对数据服务的查询。</summary>
+      <returns>表示查询的 <see cref="T:System.Linq.Expressions.Expression" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.GetEnumerator">
+      <summary>执行查询并以集合的形式返回结果。</summary>
+      <returns>针对结果的类型化枚举器，其中 <paramref name="TEntity" /> 表示查询结果的类型。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.IncludeTotalCount">
+      <summary>请求将实体集中所有实体的计数与查询结果一起内联返回。</summary>
+      <returns>已设置内联计数选项的新 <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceQuery`1.Provider">
+      <summary>表示查询提供程序实例。</summary>
+      <returns>表示数据源提供程序的 <see cref="T:System.Linq.IQueryProvider" />。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceQuery`1.RequestUri">
+      <summary>获取查询的 URI。</summary>
+      <returns>请求的 URI。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary>执行查询并以集合的形式返回结果。</summary>
+      <returns>针对查询结果的枚举器。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQuery`1.ToString">
+      <summary>表示对数据服务的查询的 URI。</summary>
+      <returns>字符串形式的 URI，表示此 <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 实例对数据服务的查询。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceQueryContinuation">
+      <summary>封装返回已分页的 WCF Data Services 查询结果的下一页的 URI。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceQueryContinuation.NextLinkUri">
+      <summary>获取用于从已分页的查询结果返回数据的下一页的 URI。</summary>
+      <returns>返回数据的下一页的 URI。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQueryContinuation.ToString">
+      <summary>以字符串形式返回下一个链接 URI。</summary>
+      <returns>下一个链接 URI 的字符串表示形式。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceQueryContinuation`1">
+      <summary>封装返回已分页的 WCF Data Services 查询结果的下一页的 URI。</summary>
+      <typeparam name="T">延续令牌的类型。</typeparam>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceQueryException">
+      <summary>指示从数据服务加载属性值时出错的异常。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQueryException.#ctor">
+      <summary>使用由系统提供的用于描述错误的消息初始化 <see cref="T:System.Data.Services.Client.DataServiceQueryException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQueryException.#ctor(System.String)">
+      <summary>使用指定的描述错误的消息初始化 <see cref="T:System.Data.Services.Client.DataServiceQueryException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQueryException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.Data.Services.Client.DataServiceQueryException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+      <param name="innerException">导致当前异常的异常。 如果 <paramref name="innerException" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceQueryException.#ctor(System.String,System.Exception,System.Data.Services.Client.QueryOperationResponse)">
+      <summary>初始化 <see cref="T:System.Data.Services.Client.DataServiceQueryException" /> 类的新实例。</summary>
+      <param name="message">包含错误消息的字符串值。</param>
+      <param name="innerException">内部异常对象。</param>
+      <param name="response">
+        <see cref="T:System.Data.Services.Client.QueryOperationResponse" /> 对象。</param>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceQueryException.Response">
+      <summary>获取指示异常结果的 <see cref="T:System.Data.Services.Client.QueryOperationResponse" />。</summary>
+      <returns>获取指示异常结果的 <see cref="T:System.Data.Services.Client.QueryOperationResponse" /> 对象。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceRequest">
+      <summary>表示作为批处理提交到 WCF Data Services 的请求对象。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequest.ElementType">
+      <summary>获取作为批处理提交到数据服务的对象的类型。</summary>
+      <returns>类型对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequest.RequestUri">
+      <summary>获取提交到数据服务的请求对象的 URI。</summary>
+      <returns>请求对象的 URI。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceRequest.ToString">
+      <summary>表示对数据服务的查询的 URI。</summary>
+      <returns>请求的 URI，以 <see cref="T:System.String" /> 值形式表示。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceRequest`1">
+      <summary>表示作为批处理提交到数据服务的请求对象。</summary>
+      <typeparam name="TElement" />
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceRequest`1.#ctor(System.Uri)">
+      <summary>初始化 <see cref="T:System.Data.Services.Client.DataServiceRequest`1" /> 类的新实例。</summary>
+      <param name="requestUri">其中包含请求字符串的 URI 对象。</param>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequest`1.ElementType">
+      <summary>获取用于创建 <see cref="T:System.Data.Services.Client.DataServiceRequest`1" /> 实例的对象的类型。</summary>
+      <returns>一个 <see cref="T:System.Type" /> 值，该值指示所返回数据的类型。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequest`1.RequestUri">
+      <summary>获取包含请求字符串的 URI 对象。</summary>
+      <returns>一个 <see cref="T:System.Uri" /> 对象，其中包含请求字符串。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceRequestArgs">
+      <summary>表示包含在 WCF Data Services 的请求消息中的其他元数据。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceRequestArgs.#ctor">
+      <summary>创建 <see cref="T:System.Data.Services.Client.DataServiceRequestArgs" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequestArgs.AcceptContentType">
+      <summary>获取或设置请求消息的 Accept 标头。</summary>
+      <returns>Accept 标头的值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequestArgs.ContentType">
+      <summary>获取或设置请求消息的 Content-Type 标头。</summary>
+      <returns>Content-Type 标头的值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequestArgs.Headers">
+      <summary>获取请求消息的标头。</summary>
+      <returns>请求信息中的标头。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequestArgs.Slug">
+      <summary>获取或设置请求消息的 Slug 标头的值。</summary>
+      <returns>一个用作请求的 Slug 标头的值。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceRequestException">
+      <summary>表示在数据服务返回的响应代码小于 200 或大于 299 或者响应中的顶级元素为 <c>&lt;error&gt;</c> 时引发的错误。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceRequestException.#ctor">
+      <summary>使用由系统提供的用于描述错误的消息初始化 <see cref="T:System.Data.Services.Client.DataServiceRequestException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceRequestException.#ctor(System.String)">
+      <summary>使用指定的描述错误的消息初始化 <see cref="T:System.Data.Services.Client.DataServiceRequestException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceRequestException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.Data.Services.Client.DataServiceRequestException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+      <param name="innerException">导致当前异常的异常。 如果 <paramref name="innerException" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceRequestException.#ctor(System.String,System.Exception,System.Data.Services.Client.DataServiceResponse)">
+      <summary>初始化 <see cref="T:System.Data.Services.Client.DataServiceRequestException" /> 类的新实例。</summary>
+      <param name="message">错误消息文本。</param>
+      <param name="innerException">包含内部异常的异常对象。</param>
+      <param name="response">
+        <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 对象。</param>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceRequestException.Response">
+      <summary>获取作为 <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 对象的响应。</summary>
+      <returns>一个 <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 对象。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceResponse">
+      <summary>表示对作为调用 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 的结果发送到数据服务的操作的响应。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceResponse.BatchHeaders">
+      <summary>与批处理请求相关联的 HTTP 响应中的标头。</summary>
+      <returns>包含 HTTP 响应的名称值对的 <see cref="T:System.Collections.IDictionary" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceResponse.BatchStatusCode">
+      <summary>与批处理请求相关联的 HTTP 响应中的状态代码。</summary>
+      <returns>一个整数，基于中定义的状态代码超文本传输协议。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceResponse.GetEnumerator">
+      <summary>获取枚举器，支持对由 <see cref="T:System.Data.Services.Client.OperationResponse" /> 中的 <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 对象跟踪的操作的响应进行检索。</summary>
+      <returns>接收自服务的响应上的枚举器。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceResponse.IsBatchResponse">
+      <summary>获取指示响应是否包含多个结果的布尔值。</summary>
+      <returns>指示响应是否包含多个结果的布尔值。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceResponse.System#Collections#IEnumerable#GetEnumerator">
+      <summary>获取枚举器，支持对由 <see cref="T:System.Data.Services.Client.OperationResponse" /> 中的 <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 对象跟踪的操作的响应进行检索。</summary>
+      <returns>接收自服务的响应上的枚举器。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.DataServiceStreamResponse">
+      <summary>表示 WCF Data Services 中包含二进制数据作为流的响应。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceStreamResponse.ContentDisposition">
+      <summary>获取响应流的 <see langword="Content-Disposition" /> 标头字段。</summary>
+      <returns>
+        <see langword="Content-Disposition" /> 标头字段的内容。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceStreamResponse.ContentType">
+      <summary>获取响应流的内容类型。</summary>
+      <returns>响应流的内容类型。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.DataServiceStreamResponse.Dispose">
+      <summary>释放 <see cref="T:System.Data.Services.Client.DataServiceStreamResponse" /> 类的当前实例所使用的所有资源。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceStreamResponse.Headers">
+      <summary>获取响应中的标头集合。</summary>
+      <returns>响应消息中作为 <see cref="T:System.Collections.Generic.Dictionary`2" /> 对象的标头集合。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.DataServiceStreamResponse.Stream">
+      <summary>获取作为二进制流的数据服务中的二进制属性数据。</summary>
+      <returns>包含二进制属性数据的流。</returns>
+      <exception cref="T:System.ObjectDisposedException">当 <see cref="T:System.Data.Services.Client.DataServiceStreamResponse" /> 已被释放时。</exception>
+    </member>
+    <member name="T:System.Data.Services.Client.Descriptor">
+      <summary>从中派生 <see cref="T:System.Data.Services.Client.EntityDescriptor" /> 的抽象类。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.Descriptor.State">
+      <summary>当在派生类中重写时，在构造此实例时获取对象的状态。</summary>
+      <returns>对象的 <see cref="T:System.Data.Services.Client.EntityStates" /> 在构造此实例时返回。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.EntityChangedParams">
+      <summary>包装 <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" /> 委托的参数</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityChangedParams.Context">
+      <summary>与已更改的实体对象相关联的上下文。</summary>
+      <returns>跟踪已更改对象的上下文。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityChangedParams.Entity">
+      <summary>已更改的实体对象。</summary>
+      <returns>已更改的对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityChangedParams.PropertyName">
+      <summary>引用目标对象的实体对象上的属性的名称。</summary>
+      <returns>已更改的属性的名称。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityChangedParams.PropertyValue">
+      <summary>当前被实体对象上的已更改属性所引用的对象。</summary>
+      <returns>引用目标实体的当前值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityChangedParams.SourceEntitySet">
+      <summary>源对象的实体集。</summary>
+      <returns>实体集名称。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityChangedParams.TargetEntitySet">
+      <summary>目标实体对象所属的实体集</summary>
+      <returns>实体集名称。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.EntityCollectionChangedParams">
+      <summary>包装 <see cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged" /> 委托的参数。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityCollectionChangedParams.Action">
+      <summary>一个指示集合的更改方式的 <see cref="T:System.Collections.Specialized.NotifyCollectionChangedAction" /> 值。</summary>
+      <returns>一个指示集合的更改方式的值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityCollectionChangedParams.Collection">
+      <summary>已更改的 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" />。</summary>
+      <returns>已更改的集合引用。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityCollectionChangedParams.Context">
+      <summary>与已更改的 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 相关联的 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" />。</summary>
+      <returns>与已更改的集合相关联的上下文</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityCollectionChangedParams.PropertyName">
+      <summary>引用已更改集合的源对象上的导航属性。</summary>
+      <returns>导航属性名称。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityCollectionChangedParams.SourceEntity">
+      <summary>使用导航属性引用集合中的目标对象的源对象。</summary>
+      <returns>源对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityCollectionChangedParams.SourceEntitySet">
+      <summary>源对象的实体集。</summary>
+      <returns>实体集名称。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityCollectionChangedParams.TargetEntity">
+      <summary>已更改集合中的实体对象。</summary>
+      <returns>集合中的已更改实体对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityCollectionChangedParams.TargetEntitySet">
+      <summary>集合中对象的实体集名称。</summary>
+      <returns>实体集名称。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.EntityDescriptor">
+      <summary>由 <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 中返回的操作对实体进行的修改的说明。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.EditLink">
+      <summary>获取或设置用于修改实体的 URI。</summary>
+      <returns>实体资源的编辑链接 URI。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.EditStreamUri">
+      <summary>获取或设置用于修改实体二进制属性数据的 URI。</summary>
+      <returns>
+        <see cref="P:System.Data.Services.Client.EntityDescriptor.EditStreamUri" /> 属性包含特定媒体资源的编辑媒体链接 URI，该媒体资源与作为媒体链接入口的实体相关联。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.Entity">
+      <summary>获取包含更新数据的实体。</summary>
+      <returns>包含更新数据的对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.ETag">
+      <summary>获取 eTag 值，该值指示自上次调用 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 以来预期要更新的数据的状态。</summary>
+      <returns>用于指示数据状态的字符串值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.Identity">
+      <summary>获取或设置用作实体标识值的 URI。</summary>
+      <returns>
+        <see cref="P:System.Data.Services.Client.EntityDescriptor.Identity" /> 属性与在 Atom 响应中表示实体的 <see langword="identity" /> 的 <see langword="entry" /> 元素相对应。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.ParentForInsert">
+      <summary>获取与实体相关的父实体。</summary>
+      <returns>在关系链接中属于父实体的对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.ParentPropertyForInsert">
+      <summary>获取属于导航属性并链接到父实体的实体属性的名称。</summary>
+      <returns>父属性的名称。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.ReadStreamUri">
+      <summary>获取或设置用于访问实体二进制属性数据的 URI。</summary>
+      <returns>作为流访问二进制属性的 URI。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.SelfLink">
+      <summary>获取或设置用于返回实体资源的 URI。</summary>
+      <returns>用于返回实体的 URI。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.ServerTypeName">
+      <summary>获取或设置实体所映射到的数据源中的类型名称。</summary>
+      <returns>表示数据类型名称的字符串。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.EntityDescriptor.StreamETag">
+      <summary>获取与作为媒体链接入口的实体相关联的媒体资源的 eTag。</summary>
+      <returns>用于指示数据状态的字符串值。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.EntityStates">
+      <summary>表示标识由 <see cref="T:System.Data.Services.Client.DataServiceContext" /> 跟踪的实体的状态的枚举。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.EntityStates.Added">
+      <summary>自最后一次调用 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 后添加了实体。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.EntityStates.Deleted">
+      <summary>自最后一次调用 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 后删除了实体。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.EntityStates.Detached">
+      <summary>自最后一次调用 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 后分离了实体。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.EntityStates.Modified">
+      <summary>自最后一次调用 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 时修改了实体。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.EntityStates.Unchanged">
+      <summary>自最后一次调用 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 后未更改实体。</summary>
+    </member>
+    <member name="T:System.Data.Services.Client.LinkDescriptor">
+      <summary>提供由 <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 中返回的操作对实体进行的修改的说明。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.LinkDescriptor.Source">
+      <summary>
+        <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 所返回链接中的源实体。</summary>
+      <returns>
+        <see cref="T:System.Object" />。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.LinkDescriptor.SourceProperty">
+      <summary>
+        <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 所返回链接中源实体的标识符属性。</summary>
+      <returns>源实体中标识符属性的字符串标识符。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.LinkDescriptor.Target">
+      <summary>
+        <see cref="T:System.Data.Services.Client.DataServiceResponse" /> 所返回链接中的源实体。</summary>
+      <returns>
+        <see cref="T:System.Object" />。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.MediaEntryAttribute">
+      <summary>表示要将指定的类视为媒体链接项。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.MediaEntryAttribute.#ctor(System.String)">
+      <summary>创建 <see cref="T:System.Data.Services.Client.MediaEntryAttribute" /> 的一个新实例。</summary>
+      <param name="mediaMemberName">一个字符串值，该值标识容纳媒体数据的属性。</param>
+    </member>
+    <member name="P:System.Data.Services.Client.MediaEntryAttribute.MediaMemberName">
+      <summary>类上容纳媒体（通常为二进制数据）的属性的名称。</summary>
+      <returns>一个字符串值，该值标识容纳媒体数据的属性。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.MergeOption">
+      <summary>确定用于将实体发送至 WCF Data Services 或从后者接收实体的同步选项。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.MergeOption.AppendOnly">
+      <summary>仅追加新实体。 将不会修改现有实体或其原始值。 客户端更改在该合并中不会丢失。 这是默认行为。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.MergeOption.NoTracking">
+      <summary>对象始终从保留的存储进行加载。 数据源值会重写在对象上下文中对对象所做的任何属性更改。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.MergeOption.OverwriteChanges">
+      <summary>客户端上的所有值都会被数据服务中的当前值覆盖，无论其是否已在客户端上更改。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.MergeOption.PreserveChanges">
+      <summary>已在客户端上更改的当前值不会被修改，但任何未更改的值都会更新为数据服务中的当前值。 客户端更改在该合并中不会丢失。</summary>
+    </member>
+    <member name="T:System.Data.Services.Client.MimeTypePropertyAttribute">
+      <summary>批注已用 <see cref="T:System.Data.Services.Client.MediaEntryAttribute" /> 进行批注的类上的属性。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.MimeTypePropertyAttribute.#ctor(System.String,System.String)">
+      <summary>创建 <see langword="MimeTypePropertyAttribute" /> 的新实例。</summary>
+      <param name="dataPropertyName">一个字符串，其中包含新属性特性的名称。</param>
+      <param name="mimeTypePropertyName">包含新属性特性的 Mime 类型的字符串。</param>
+    </member>
+    <member name="P:System.Data.Services.Client.MimeTypePropertyAttribute.DataPropertyName">
+      <summary>获取 <see langword="MimeTypePropertyAttribute" /> 的名称。</summary>
+      <returns>一个字符串，其中包含属性特性的名称。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.MimeTypePropertyAttribute.MimeTypePropertyName">
+      <summary>获取 <see langword="MimeTypePropertyAttribute" /> 的 MIME 类型。</summary>
+      <returns>包含属性特性的 Mime 类型的字符串。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.OperationResponse">
+      <summary>表示单个查询的响应或者创建、更新或删除操作的抽象类。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.OperationResponse.Error">
+      <summary>获取操作引发的错误。</summary>
+      <returns>一个包含该错误的 <see cref="T:System.Exception" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.OperationResponse.Headers">
+      <summary>在派生类中重写时，包含与单个操作相关联的 HTTP 响应标头。</summary>
+      <returns>包含标头和值的名称值对的 <see cref="T:System.Collections.IDictionary" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.OperationResponse.StatusCode">
+      <summary>在派生类中重写时，获取或设置与单个操作相关联的 HTTP 响应代码。</summary>
+      <returns>包含响应代码的整数值。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.QueryOperationResponse">
+      <summary>表示对 <see cref="T:System.Data.Services.Client.DataServiceQuery" /> 的响应。</summary>
+    </member>
+    <member name="M:System.Data.Services.Client.QueryOperationResponse.GetContinuation">
+      <summary>获取 <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation" /> 对象，其中包含用于检索下一结果页的 URI。</summary>
+      <returns>一个对象，其中包含用于返回下一结果页的 URI。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.QueryOperationResponse.GetContinuation(System.Collections.IEnumerable)">
+      <summary>获取 <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation" /> 对象，其中包含用于检索指定集合中下一页相关实体的 URI。</summary>
+      <param name="collection">要加载的相关对象的集合。</param>
+      <returns>指向集合的下一页的延续对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.QueryOperationResponse.GetContinuation``1(System.Collections.Generic.IEnumerable{``0})">
+      <summary>获取 <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation`1" /> 对象，其中包含用于检索指定集合中下一页相关实体的 URI。</summary>
+      <param name="collection">要加载的相关对象的集合。</param>
+      <typeparam name="T">集合中的项类型。</typeparam>
+      <returns>指向集合的下一页的延续对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.QueryOperationResponse.GetEnumerator">
+      <summary>执行 <see cref="T:System.Data.Services.Client.DataServiceQuery" /> 并返回 <see cref="T:System.Data.Services.Client.QueryOperationResponse" /> 项。</summary>
+      <returns>
+        <see cref="T:System.Data.Services.Client.QueryOperationResponse" /> 项集合的枚举器。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.QueryOperationResponse.Query">
+      <summary>获取生成 <see cref="T:System.Data.Services.Client.DataServiceQuery" /> 项的 <see cref="T:System.Data.Services.Client.QueryOperationResponse" />。</summary>
+      <returns>
+        <see cref="T:System.Data.Services.Client.DataServiceQuery" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.QueryOperationResponse.TotalCount">
+      <summary>查询中的服务器结果集计数值（如果查询已请求了该值）。</summary>
+      <returns>返回值可以是零，也可以是正值，等于服务器上该集中的实体数。</returns>
+      <exception cref="T:System.InvalidOperationException">在响应流中找不到计数标记时引发。</exception>
+    </member>
+    <member name="T:System.Data.Services.Client.QueryOperationResponse`1">
+      <summary>表示对 <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 的响应。</summary>
+      <typeparam name="T" />
+    </member>
+    <member name="M:System.Data.Services.Client.QueryOperationResponse`1.GetContinuation">
+      <summary>获取 <see cref="T:System.Data.Services.Client.DataServiceQueryContinuation`1" /> 对象，其中包含用于检索下一结果页的 URI。</summary>
+      <returns>一个对象，其中包含用于返回下一结果页的 URI。</returns>
+    </member>
+    <member name="M:System.Data.Services.Client.QueryOperationResponse`1.GetEnumerator">
+      <summary>执行 <see cref="T:System.Data.Services.Client.DataServiceQuery`1" /> 并获取 <see cref="T:System.Data.Services.Client.QueryOperationResponse`1" /> 项。</summary>
+      <returns>
+        <see cref="T:System.Data.Services.Client.QueryOperationResponse`1" /> 项集合的枚举器。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.QueryOperationResponse`1.TotalCount">
+      <summary>查询中的服务器结果集计数值（如果查询已请求了该值）。</summary>
+      <returns>返回值可以是零，也可以是正值（等于服务器上该集中的实体数）。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.ReadingWritingEntityEventArgs">
+      <summary>向实体和表示 Atom 条目的 <see langword="XLinq" /> 对象授予访问权限。 <see cref="T:System.Data.Services.Client.ReadingWritingEntityEventArgs" /> 与 <see cref="E:System.Data.Services.Client.DataServiceContext.ReadingEntity" /> 和 <see cref="E:System.Data.Services.Client.DataServiceContext.WritingEntity" /> 事件配合使用。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.ReadingWritingEntityEventArgs.Data">
+      <summary>获取表示为 <see cref="T:System.Xml.Linq.XElement" /> 的 XML Atom 项或源数据。</summary>
+      <returns>
+        <see cref="T:System.Xml.Linq.XElement" />
+      </returns>
+    </member>
+    <member name="P:System.Data.Services.Client.ReadingWritingEntityEventArgs.Entity">
+      <summary>获取从 <see cref="P:System.Data.Services.Client.ReadingWritingEntityEventArgs.Data" /> 属性返回的数据的对象表示形式。</summary>
+      <returns>
+        <see cref="T:System.Object" /> 属性的 <see cref="P:System.Data.Services.Client.ReadingWritingEntityEventArgs.Data" /> 表示形式。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.SaveChangesOptions">
+      <summary>指示调用 <see cref="M:System.Data.Services.Client.DataServiceContext.SaveChanges" /> 时的更改选项。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.SaveChangesOptions.Batch">
+      <summary>所有挂起的更改都保存在单个批处理请求中。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.SaveChangesOptions.ContinueOnError">
+      <summary>挂起的更改使用多个请求保存在服务器中，发生错误后操作继续。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.SaveChangesOptions.None">
+      <summary>挂起的更改使用多个请求保存在服务器中，但在第一次失败后操作停止（默认）。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.SaveChangesOptions.ReplaceOnUpdate">
+      <summary>通过将数据源中实体的所有值替换为更新后的实体 (HTTP PUT) 的值，执行挂起的更新，而不是更新已更改的值 (HTTP MERGE)，该值为默认行为。</summary>
+    </member>
+    <member name="T:System.Data.Services.Client.SendingRequestEventArgs">
+      <summary>与 <see cref="E:System.Data.Services.Client.DataServiceContext.SendingRequest" /> 事件一起使用，以提供对客户端即将发送至目标数据服务的 <see cref="T:System.Net.HttpWebRequest" /> 实例的访问。</summary>
+    </member>
+    <member name="P:System.Data.Services.Client.SendingRequestEventArgs.Request">
+      <summary>获取或设置即将由客户端库发送至数据服务的 <see cref="T:System.Net.HttpWebRequest" /> 实例。</summary>
+      <returns>
+        <see cref="T:System.Net.HttpWebRequest" />。</returns>
+    </member>
+    <member name="P:System.Data.Services.Client.SendingRequestEventArgs.RequestHeaders">
+      <summary>获取与数据服务请求相关联的集合协议标头。</summary>
+      <returns>与请求相关联的协议标头的集合。</returns>
+    </member>
+    <member name="T:System.Data.Services.Client.TrackingMode">
+      <summary>确定是否要跟踪对 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 所做的更改。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.TrackingMode.AutoChangeTracking">
+      <summary>客户端自动跟踪对 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 中的项所做的更改。</summary>
+    </member>
+    <member name="F:System.Data.Services.Client.TrackingMode.None">
+      <summary>客户端不自动跟踪对 <see cref="T:System.Data.Services.Client.DataServiceCollection`1" /> 中的项所做的更改。</summary>
+    </member>
+    <member name="T:System.Data.Services.Common.DataServiceEntityAttribute">
+      <summary>将类标记为 WCF Data Services 中的实体类型。</summary>
+    </member>
+    <member name="M:System.Data.Services.Common.DataServiceEntityAttribute.#ctor">
+      <summary>创建 <see cref="T:System.Data.Services.Common.DataServiceEntityAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.Data.Services.Common.DataServiceKeyAttribute">
+      <summary>表示实体的键属性或属性。</summary>
+    </member>
+    <member name="M:System.Data.Services.Common.DataServiceKeyAttribute.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Data.Services.Common.DataServiceKeyAttribute" /> 类的新实例。</summary>
+      <param name="keyName">包含键属性名称的字符串。</param>
+    </member>
+    <member name="M:System.Data.Services.Common.DataServiceKeyAttribute.#ctor(System.String[])">
+      <summary>初始化 <see cref="T:System.Data.Services.Common.DataServiceKeyAttribute" /> 类的新实例。</summary>
+      <param name="keyNames">一个字符串值数组，其中包含关键属性名称。</param>
+    </member>
+    <member name="P:System.Data.Services.Common.DataServiceKeyAttribute.KeyNames">
+      <summary>获取键属性的名称。</summary>
+      <returns>其中包含关键属性名称的字符串值。</returns>
+    </member>
+    <member name="T:System.Data.Services.Common.DataServiceProtocolVersion">
+      <summary>表示数据服务可能支持的 Open Data Protocol (OData) 的版本。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.DataServiceProtocolVersion.V1">
+      <summary>OData 协议版本 1。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.DataServiceProtocolVersion.V2">
+      <summary>OData 协议版本 2。</summary>
+    </member>
+    <member name="T:System.Data.Services.Common.EntityPropertyMappingAttribute">
+      <summary>指定实体类型的属性与 WCF Data Services 返回的源中某项的元素之间自定义映射的特性。</summary>
+    </member>
+    <member name="M:System.Data.Services.Common.EntityPropertyMappingAttribute.#ctor(System.String,System.Data.Services.Common.SyndicationItemProperty,System.Data.Services.Common.SyndicationTextContentKind,System.Boolean)">
+      <summary>创建 <see cref="T:System.Data.Services.Common.EntityPropertyMappingAttribute" /> 的新实例。</summary>
+      <param name="sourcePath">映射到源项中指定属性的实体类型的属性名称（以字符串形式表示）。</param>
+      <param name="targetSyndicationItem">一个 <see cref="T:System.Data.Services.Common.SyndicationItemProperty" /> 值，该值表示属性所映射到的源中的元素。 如果 <see cref="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath" /> 不为 <see langword="null" />，则必须将此值设置为 <c>None</c>。</param>
+      <param name="targetTextContentKind">一个 <see cref="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetTextContentKind" /> 值，该值标识要在源中显示的内容的格式。</param>
+      <param name="keepInContent">布尔值，如果要映射的属性应同时出现在其映射到的位置和源的内容部分中，则为 <see langword="true" />。</param>
+    </member>
+    <member name="M:System.Data.Services.Common.EntityPropertyMappingAttribute.#ctor(System.String,System.String,System.String,System.String,System.Boolean)">
+      <summary>创建 <see cref="T:System.Data.Services.Common.EntityPropertyMappingAttribute" /> 的实例以将属性映射到自定义源元素。</summary>
+      <param name="sourcePath">映射到源中指定属性的实体类型的属性名称（以字符串形式表示）。</param>
+      <param name="targetPath">属性将映射到的结果源中的目标的名称（以字符串形式表示）。</param>
+      <param name="targetNamespacePrefix">此参数与 <paramref name="targetNamespaceUri" /> 一起指定 <paramref name="targetPath" /> 元素所在的命名空间。</param>
+      <param name="targetNamespaceUri">指定由 <c>targetName</c> 属性指定的元素的命名空间 URI（以字符串形式表示）。</param>
+      <param name="keepInContent">布尔值，如果要映射的属性应同时出现在其映射到的位置和源的内容部分中，则为 <see langword="true" />。</param>
+    </member>
+    <member name="P:System.Data.Services.Common.EntityPropertyMappingAttribute.KeepInContent">
+      <summary>获取一个布尔值，该值指示是否应在源的内容部分和映射位置都出现同一属性值。</summary>
+      <returns>一个 <see cref="T:System.Boolean" /> 值，如果该属性映射到源中的这两个位置，则该值为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Services.Common.EntityPropertyMappingAttribute.SourcePath">
+      <summary>获取将映射到源的指定元素的联合项的属性名称。</summary>
+      <returns>包含属性名称的字符串值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix">
+      <summary>获取一个字符串值，该值与 <see cref="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri" /> 一起指定 <see cref="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath" /> 元素所在的命名空间。</summary>
+      <returns>包含目标命名空间前缀的字符串值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri">
+      <summary>获取一个字符串值，该值指定由 <see cref="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath" /> 属性指定的元素的命名空间 URI。</summary>
+      <returns>包含命名空间 URI 的字符串。</returns>
+    </member>
+    <member name="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath">
+      <summary>获取属性将映射到的源中的自定义目标的名称。</summary>
+      <returns>带有目标 XML 元素或特性的字符串值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetSyndicationItem">
+      <summary>获取 <see cref="T:System.ServiceModel.Syndication.SyndicationItem" /> 类的属性。</summary>
+      <returns>
+        <see cref="T:System.ServiceModel.Syndication.SyndicationItem" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetTextContentKind">
+      <summary>获取由 <see cref="T:System.Data.Services.Common.EntityPropertyMappingAttribute" /> 映射的属性的内容类型。</summary>
+      <returns>一个标识源元素中的内容类型的字符串。</returns>
+    </member>
+    <member name="T:System.Data.Services.Common.EntitySetAttribute">
+      <summary>指示客户端数据服务类所属的实体集。</summary>
+    </member>
+    <member name="M:System.Data.Services.Common.EntitySetAttribute.#ctor(System.String)">
+      <summary>创建 <see cref="T:System.Data.Services.Common.EntitySetAttribute" /> 的新实例。</summary>
+      <param name="entitySet">类所属的实体集。</param>
+    </member>
+    <member name="P:System.Data.Services.Common.EntitySetAttribute.EntitySet">
+      <summary>获取类所属的实体集。</summary>
+      <returns>字符串值形式的实体集。</returns>
+    </member>
+    <member name="T:System.Data.Services.Common.HasStreamAttribute">
+      <summary>指示属于实体类型的类具有要进行流处理的默认二进制属性。</summary>
+    </member>
+    <member name="M:System.Data.Services.Common.HasStreamAttribute.#ctor">
+      <summary>创建 <see cref="T:System.Data.Services.Common.HasStreamAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.Data.Services.Common.SyndicationItemProperty">
+      <summary>用于标识联合项元素的枚举类型。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.AuthorEmail">
+      <summary>作者电子邮件元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.AuthorName">
+      <summary>作者名称元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.AuthorUri">
+      <summary>作者 URI 元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.ContributorEmail">
+      <summary>参与者电子邮件元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.ContributorName">
+      <summary>参与者名称元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.ContributorUri">
+      <summary>参与者 URI 元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.CustomProperty">
+      <summary>自定义属性元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.Published">
+      <summary>已发布资源元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.Rights">
+      <summary>版权保护资源元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.Summary">
+      <summary>摘要元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.Title">
+      <summary>标题元素。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationItemProperty.Updated">
+      <summary>已更新元素。</summary>
+    </member>
+    <member name="T:System.Data.Services.Common.SyndicationTextContentKind">
+      <summary>用于标识联合项的文本内容的枚举。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationTextContentKind.Html">
+      <summary>HTML 内容。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationTextContentKind.Plaintext">
+      <summary>纯文本内容。</summary>
+    </member>
+    <member name="F:System.Data.Services.Common.SyndicationTextContentKind.Xhtml">
+      <summary>XHTML 内容。</summary>
+    </member>
+  </members>
+</doc>

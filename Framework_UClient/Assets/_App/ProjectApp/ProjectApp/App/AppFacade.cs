@@ -109,14 +109,7 @@ namespace ProjectApp
         #endregion
 
         #region 方法
-        /// <summary>
-        /// 项目入口
-        /// </summary>
-        public static void MainFunc()
-        {
-            // 设置分辨率
-            //AppConst.StandardResolution = new Vector2Int(720, 1280);
-        }
+        
 
         /// <summary>
         /// 初始化前 自定义项目设置

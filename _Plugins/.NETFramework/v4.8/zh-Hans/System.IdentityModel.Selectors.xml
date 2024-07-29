@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.IdentityModel.Selectors</name>
+  </assembly>
+  <members>
+    <member name="T:System.IdentityModel.Selectors.CardSpaceException">
+      <summary>当 CardSpace 服务级别上发生了一个或多个异常时，将引发异常。 错误原因将记录在事件日志中。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.CardSpaceException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.IdentityModel.Selectors.CardSpaceException" /> 类的实例。</summary>
+      <param name="info">
+        <see cref="T:System.Runtime.Serialization.SerializationInfo" />，它保存了有关要引发的异常的序列化对象数据。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.CardSpaceException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对导致此异常的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Selectors.CardSpaceException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="innerException">表示当前异常的原因的 <see cref="T:System.Exception" />。</param>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.CardSpacePolicyElement">
+      <summary>该类供基础结构使用。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpacePolicyElement.#ctor(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.ObjectModel.Collection{System.Xml.XmlElement},System.Uri,System.Int32,System.Boolean)">
+      <summary>使用指定的策略目标和颁发者、策略参数、隐私声明位置以及隐私声明版本来初始化 <see cref="T:System.IdentityModel.Selectors.CardSpacePolicyElement" /> 类的新实例。</summary>
+      <param name="target">一个表示此策略的目标的 <see cref="T:System.Xml.XmlElement" />。  
+设置 <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Target" /> 属性。</param>
+      <param name="issuer">一个表示策略颁发者的 <see cref="T:System.Xml.XmlElement" />。 设置 <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Issuer" /> 属性。</param>
+      <param name="parameters">一个类型为 <see cref="T:System.Collections.ObjectModel.Collection`1" /> 的 <see cref="T:System.Xml.XmlElement" />，它表示此元素的参数。 设置 <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Parameters" /> 属性。</param>
+      <param name="privacyNoticeLink">隐私策略所在的 <see cref="T:System.Uri" />。 设置 <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.PolicyNoticeLink" /> 属性。</param>
+      <param name="privacyNoticeVersion">隐私信息的版本。 设置 <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.PolicyNoticeVersion" /> 属性。</param>
+      <param name="isManagedIssuer">如果颁发者为托管颁发者，则为 <see langword="true" />；否则为 <see langword="false" />。 设置 <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.IsManagedIssuer" /> 属性。</param>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.IsManagedIssuer">
+      <summary>获取或设置一个值，该值指示策略颁发者是否为托管颁发者。</summary>
+      <returns>如果颁发者为托管颁发者，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Issuer">
+      <summary>获取或设置策略颁发者。</summary>
+      <returns>一个表示策略颁发者的 <see cref="T:System.Xml.XmlElement" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Parameters">
+      <summary>获取表示此元素的参数的 XML 元素的集合。</summary>
+      <returns>一个类型为 <see cref="T:System.Collections.ObjectModel.Collection`1" /> 的 <see cref="T:System.Xml.XmlElement" />，它表示此元素的参数。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.PolicyNoticeLink">
+      <summary>获取或设置此策略的隐私信息的 URI。</summary>
+      <returns>隐私策略所在的 <see cref="T:System.Uri" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.PolicyNoticeVersion">
+      <summary>获取或设置隐私信息的版本。</summary>
+      <returns>隐私信息的版本。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Target">
+      <summary>获取或设置此策略的目标。</summary>
+      <returns>一个表示此策略的目标的 <see cref="T:System.Xml.XmlElement" />。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.CardSpaceSelector">
+      <summary>提供对托管代码中支持的所有 CardSpace 公共操作的访问权限。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceSelector.GetToken(System.IdentityModel.Selectors.CardSpacePolicyElement[],System.IdentityModel.Selectors.SecurityTokenSerializer)">
+      <summary>使用 CardSpace 系统以及指定的策略链和令牌序列化程序来生成安全令牌。</summary>
+      <param name="policyChain">
+        <see cref="T:System.IdentityModel.Selectors.CardSpacePolicyElement" /> 的数组，它描述了客户端需要使用最终令牌才能展开的联合安全链。</param>
+      <param name="tokenSerializer">一个 <see cref="T:System.IdentityModel.Selectors.SecurityTokenSerializer" />，它能够读取 <see langword="KeyInfo" /> 子句。</param>
+      <returns>表示所生成的安全令牌的 <see cref="T:System.IdentityModel.Tokens.GenericXmlSecurityToken" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="policyChain" /> 为 <see langword="null" />。  
+或 
+ <paramref name="policyChain" /> 的长度为零。  
+或 
+ <paramref name="tokenSerializer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceSelector.GetToken(System.Xml.XmlElement,System.Collections.Generic.IEnumerable{System.Xml.XmlElement},System.Xml.XmlElement,System.IdentityModel.Selectors.SecurityTokenSerializer)">
+      <summary>使用 CardSpace 系统以及指定的终结点、策略、令牌颁发者和令牌序列化程序生成安全令牌。</summary>
+      <param name="endpoint">一个 <see cref="T:System.Xml.XmlElement" />，它表示令牌接收方的、将出示令牌的终结点地址。</param>
+      <param name="policy">一个 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 类型的 <see cref="T:System.Xml.XmlElement" />，它包含策略片段，指定了接收方所请求的令牌类型和声明。</param>
+      <param name="requiredRemoteTokenIssuer">表示令牌颁发者的 <see cref="T:System.Xml.XmlElement" />。</param>
+      <param name="tokenSerializer">一个 <see cref="T:System.IdentityModel.Selectors.SecurityTokenSerializer" />，它能够读取 <see langword="KeyInfo" /> 子句。</param>
+      <returns>表示所生成的安全令牌的 <see cref="T:System.IdentityModel.Tokens.GenericXmlSecurityToken" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="endpoint" /> 为 <see langword="null" />。  
+或 
+ <paramref name="policy" /> 为 <see langword="null" />。  
+或 
+ <paramref name="tokenSerializer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceSelector.Import(System.String)">
+      <summary>显示 <paramref name="Import Card" /> 用户界面。</summary>
+      <param name="fileName">要导入的文件的名称。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="fileName" /> 为 <see langword="null" />。  
+或 
+ <paramref name="fileName" /> 为 <see cref="F:System.String.Empty" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceSelector.Manage">
+      <summary>显示允许用户创建、删除、重命名和修改卡的 CardSpace 管理用户界面。</summary>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.IdentityValidationException">
+      <summary>用于指示接收方证书无效的异常类。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.IdentityValidationException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.IdentityValidationException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.IdentityValidationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用指定的序列化信息和序列化上下文来初始化 <see cref="T:System.IdentityModel.Selectors.IdentityValidationException" /> 类的新实例。</summary>
+      <param name="info">
+        <see cref="T:System.Runtime.Serialization.SerializationInfo" />，它保存有关要引发的异常的序列化对象数据。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.IdentityValidationException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.IdentityValidationException" /> 类的新实例。</summary>
+      <param name="message">一个字符串，它包含对异常原因进行解释的错误消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.IdentityValidationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和导致引发此异常的原始异常来初始化 <see cref="T:System.IdentityModel.Selectors.IdentityValidationException" /> 类的新实例。</summary>
+      <param name="message">一个字符串，它包含对异常原因进行解释的错误消息。</param>
+      <param name="innerException">导致引发此异常的原始异常。</param>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.PolicyValidationException">
+      <summary>指示接收方所提供的策略无法验证的异常类。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.PolicyValidationException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.PolicyValidationException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.PolicyValidationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用指定的序列化信息和流上下文初始化 <see cref="T:System.IdentityModel.Selectors.PolicyValidationException" /> 类的实例。</summary>
+      <param name="info">保存有关所引发异常的序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.PolicyValidationException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.PolicyValidationException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.PolicyValidationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对导致此异常的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Selectors.PolicyValidationException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="innerException">导致当前异常的异常。</param>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.ServiceBusyException">
+      <summary>指示 CardSpace 服务正忙于处理其他请求的异常类。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceBusyException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.ServiceBusyException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceBusyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用指定的序列化信息和流上下文初始化 <see cref="T:System.IdentityModel.Selectors.ServiceBusyException" /> 类的实例。</summary>
+      <param name="info">保存有关所引发异常的序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceBusyException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.ServiceBusyException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceBusyException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对导致此异常的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Selectors.ServiceBusyException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="innerException">导致当前异常的异常。</param>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.ServiceNotStartedException">
+      <summary>当用户计算机上尚未启动 CardSpace 时引发的异常。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceNotStartedException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.ServiceNotStartedException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceNotStartedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.IdentityModel.Selectors.ServiceNotStartedException" /> 类的实例。</summary>
+      <param name="info">
+        <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象，它包含有关所引发异常的序列化对象数据。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceNotStartedException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.ServiceNotStartedException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceNotStartedException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对导致此异常的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Selectors.ServiceNotStartedException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="innerException">导致当前异常的异常。</param>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.StsCommunicationException">
+      <summary>在与安全令牌服务通信的过程中出现问题时引发的异常。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.StsCommunicationException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.StsCommunicationException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.StsCommunicationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.IdentityModel.Selectors.StsCommunicationException" /> 类的实例。</summary>
+      <param name="info">
+        <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象，它包含有关所引发异常的序列化对象数据。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.StsCommunicationException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.StsCommunicationException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.StsCommunicationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对导致此异常的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Selectors.StsCommunicationException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="innerException">导致当前异常的异常。</param>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException">
+      <summary>指示提供给系统的策略包含不受支持的选项。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用指定的序列化信息和流上下文初始化 <see cref="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException" /> 类的实例。</summary>
+      <param name="info">
+        <see cref="T:System.Runtime.Serialization.SerializationInfo" />，它保存有关要引发的异常的序列化对象数据。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException" /> 类的实例。</summary>
+      <param name="message">错误消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和导致引发此异常的原始异常来初始化 <see cref="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException" /> 类的实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+      <param name="innerException">导致引发此异常的原始异常。</param>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.UntrustedRecipientException">
+      <summary>在以下情况下引发的异常：对于正在请求令牌的实体，用户在查看其证书中的信息后，决定不信任该实体。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UntrustedRecipientException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.UntrustedRecipientException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UntrustedRecipientException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.IdentityModel.Selectors.UntrustedRecipientException" /> 类的实例。</summary>
+      <param name="info">
+        <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象，它包含有关要引发的异常的序列化对象数据。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UntrustedRecipientException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.UntrustedRecipientException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UntrustedRecipientException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对导致此异常的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Selectors.UntrustedRecipientException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="innerException">导致当前异常的异常。</param>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.UserCancellationException">
+      <summary>当用户在 <see cref="M:System.IdentityModel.Selectors.CardSpaceSelector.GetToken(System.IdentityModel.Selectors.CardSpacePolicyElement[],System.IdentityModel.Selectors.SecurityTokenSerializer)" /> 调用过程中取消操作时引发的异常。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UserCancellationException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Selectors.UserCancellationException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UserCancellationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.IdentityModel.Selectors.UserCancellationException" /> 类的实例。</summary>
+      <param name="info">
+        <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象，它包含有关要引发的异常的序列化对象数据。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UserCancellationException.#ctor(System.String)">
+      <summary>使用指定的错误消息初始化 <see cref="T:System.IdentityModel.Selectors.UserCancellationException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UserCancellationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对导致此异常的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Selectors.UserCancellationException" /> 类的实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="innerException">导致当前异常的异常。</param>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,676 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.Entity.Design</name>
+  </assembly>
+  <members>
+    <member name="T:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider">
+      <summary>在 ASP.NET 网站的 App_Code 目录下提取 .edmx 文件的模型和映射部分，然后将其作为资源嵌入由 ASP.NET 运行时动态编译的程序集中。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>基于 .edmx 文件的模型和映射部分生成 C# 或 Visual Basic 代码。</summary>
+      <param name="assemblyBuilder">用于生成程序集的容器。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>提供关于生成项目的 ASP.NET 编译器的说明。</summary>
+      <param name="results">从 ASP.NET 编译器返回的编译结果。</param>
+      <returns>生成虚拟路径时所需的行为。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.AspNet.EntityModelBuildProvider">
+      <summary>表示 ASP.NET 生成环境的 CSDL 生成提供程序。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityModelBuildProvider.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.AspNet.EntityModelBuildProvider" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityModelBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>为实体模型生成提供程序生成源代码，并将源代码添加到指定程序集生成器。</summary>
+      <param name="assemblyBuilder">引用生成提供程序所生成的源代码的程序集生成器。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityModelBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>返回一个值，该值指示生成实体模型生成提供程序时所需的操作。</summary>
+      <param name="results">生成提供程序的编译结果。</param>
+      <returns>
+        <see cref="F:System.Web.Compilation.BuildProviderResultFlags.ShutdownAppDomainOnChange" /> 值，该值指示将卸载并重新启动包含 <see cref="T:System.AppDomain" />。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.AspNet.MappingModelBuildProvider">
+      <summary>表示 ASP.NET 生成环境的 MSL 生成提供程序。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.MappingModelBuildProvider.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.AspNet.MappingModelBuildProvider" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.MappingModelBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>将 MSL 文件作为资源嵌入指定的程序集生成器。</summary>
+      <param name="assemblyBuilder">引用生成提供程序所生成的源代码的程序集生成器。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.MappingModelBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>返回一个值，该值指示生成存储模型生成提供程序时所需的操作。</summary>
+      <param name="results">生成提供程序的编译结果。</param>
+      <returns>
+        <see cref="F:System.Web.Compilation.BuildProviderResultFlags.ShutdownAppDomainOnChange" /> 值，该值指示将卸载并重新启动包含 <see cref="T:System.AppDomain" />。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.AspNet.StorageModelBuildProvider">
+      <summary>表示 ASP.NET 生成环境的 SSDL 生成提供程序。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.StorageModelBuildProvider.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.AspNet.StorageModelBuildProvider" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.StorageModelBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>将 SSDL 文件作为资源嵌入指定的程序集生成器。</summary>
+      <param name="assemblyBuilder">引用生成提供程序所生成的源代码的程序集生成器。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.StorageModelBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>返回一个值，该值指示生成存储模型生成提供程序时所需的操作。</summary>
+      <param name="results">生成提供程序的编译结果。</param>
+      <returns>
+        <see cref="F:System.Web.Compilation.BuildProviderResultFlags.ShutdownAppDomainOnChange" /> 值，该值指示将卸载并重新启动包含 <see cref="T:System.AppDomain" />。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.EdmToObjectNamespaceMap">
+      <summary>表示概念模型到代码命名空间的映射的集合。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.Add(System.String,System.String)">
+      <summary>添加对 <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" /> 的命名空间映射。</summary>
+      <param name="edmNamespace">模型命名空间名称。</param>
+      <param name="objectNamespace">代码命名空间名称。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.Clear">
+      <summary>从 <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" /> 中移除所有命名空间映射。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.Contains(System.String)">
+      <summary>获取一个值，该值指示 <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" /> 是否包含指定的模型命名空间名称。</summary>
+      <param name="edmNamespace">模型命名空间名称。</param>
+      <returns>如果找到模型命名空间名称，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EdmToObjectNamespaceMap.Count">
+      <summary>获取 <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" /> 中映射的数量。</summary>
+      <returns>映射的数量。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EdmToObjectNamespaceMap.EdmNamespaces">
+      <summary>获取 <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" /> 中的模型命名空间名称的列表。</summary>
+      <returns>模型命名空间名称的列表。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EdmToObjectNamespaceMap.Item(System.String)">
+      <summary>获取或设置指定模型命名空间名称的代码命名空间名称。</summary>
+      <param name="edmNamespace">模型命名空间名称。</param>
+      <returns>映射到指定模型命名空间名称的代码命名空间名称。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.Remove(System.String)">
+      <summary>移除指定的命名空间映射。</summary>
+      <param name="edmNamespace">要移除的模型命名空间映射。</param>
+      <returns>如果已成功移除命名空间映射，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.TryGetObjectNamespace(System.String,System.String@)">
+      <summary>获取一个值，该值指示是否检索到对象命名空间。</summary>
+      <param name="edmNamespace">模型命名空间名称。</param>
+      <param name="objectNamespace">代码命名空间名称。</param>
+      <returns>如果检索到对象命名空间，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityClassGenerator">
+      <summary>基于概念性架构定义语言 (CSDL) 文件生成对象上下文和实体类（对象层代码）。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.#ctor">
+      <summary>使用 <see cref="T:System.Data.Entity.Design.EntityClassGenerator" /> 语言选项初始化 <see cref="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.#ctor(System.Data.Entity.Design.LanguageOption)">
+      <summary>使用指定的 <see cref="T:System.Data.Entity.Design.EntityClassGenerator" /> 初始化 <see cref="T:System.Data.Entity.Design.LanguageOption" /> 类的新实例。</summary>
+      <param name="languageOption">用于指定所生成代码的语言的 <see cref="T:System.Data.Entity.Design.LanguageOption" /> 值。 默认语言为 C#。</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityClassGenerator.EdmToObjectNamespaceMap">
+      <summary>获取一个包含概念性架构定义语言 (CSDL) 到代码命名空间的映射的 <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" />。</summary>
+      <returns>CSDL 到代码命名空间的映射。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.GenerateCode(System.String,System.String)">
+      <summary>生成一个源代码文件，其中包含从指定的概念性架构定义语言 (CSDL) 文件生成的对象。</summary>
+      <param name="sourceEdmSchemaFilePath">CSDL 文件路径。</param>
+      <param name="targetFilePath">生成的源代码文件的路径。</param>
+      <returns>
+        <see cref="T:System.Collections.IList" /> 的 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />，它包含任何生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.GenerateCode(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary>使用概念性架构定义语言 (CSDL) 文件生成源代码。 架构文件路径的列表用于解析包含在 CSDL 文件中的任何引用。</summary>
+      <param name="sourceEdmSchemaFilePath">CSDL 文件路径。</param>
+      <param name="targetPath">生成的源代码文件的路径。</param>
+      <param name="additionalEdmSchemaFilePaths">架构文件路径的列表，可用于解析源架构（CSDL 文件）中的任何引用。 如果源架构没有任何依赖项，则传入空列表。</param>
+      <returns>
+        <see cref="T:System.Collections.IList" /> 对象的 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />，它包含任何生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter)">
+      <summary>使用 <see cref="T:System.Xml.XmlReader" /> 对象中包含的概念性架构定义语言 (CSDL) 文件生成源代码，然后将所生成代码输出到 <see cref="T:System.IO.TextWriter" />。</summary>
+      <param name="sourceEdmSchema">一个包含 CSDL 文件的 <see cref="T:System.Xml.XmlReader" />。</param>
+      <param name="target">源代码将写入的 <see cref="T:System.IO.TextWriter" />。</param>
+      <returns>
+        <see cref="T:System.Collections.IList" /> 的 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />，它包含任何生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter,System.Collections.Generic.IEnumerable{System.Xml.XmlReader})">
+      <summary>基于 <see cref="T:System.Xml.XmlReader" /> 对象中包含的概念性架构定义语言 (CSDL) 文件生成源代码，然后将所生成代码输出到 <see cref="T:System.IO.TextWriter" />。 <see cref="T:System.Collections.IList" /> 对象的 <see cref="T:System.Xml.XmlReader" /> 用于解析 CSDL 文件中包含的任何引用。</summary>
+      <param name="sourceEdmSchema">一个包含 CSDL 文件的 <see cref="T:System.Xml.XmlReader" />。</param>
+      <param name="target">要将所生成源代码输出到的 <see cref="T:System.IO.TextWriter" />。</param>
+      <param name="additionalEdmSchemas">
+        <see cref="T:System.Xml.XmlReader" /> 对象的列表，这些对象包含源架构（CSDL 文件）引用的架构。 如果源架构没有任何依赖项，则传入空的 <see cref="T:System.Collections.IList" /> 对象。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityClassGenerator.LanguageOption">
+      <summary>获取或设置指示所生成代码的语言的 <see cref="T:System.Data.Entity.Design.LanguageOption" /> 值。</summary>
+      <returns>
+        <see cref="T:System.Data.Entity.Design.LanguageOption" /> 值之一。 默认值为 <see cref="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode" />。</returns>
+    </member>
+    <member name="E:System.Data.Entity.Design.EntityClassGenerator.OnPropertyGenerated">
+      <summary>在属性更改时发生。</summary>
+    </member>
+    <member name="E:System.Data.Entity.Design.EntityClassGenerator.OnTypeGenerated">
+      <summary>当类型信息更改时发生。</summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityCodeGenerator">
+      <summary>基于概念性架构定义语言 (CSDL) 文件生成对象上下文和实体类（对象层代码）。 从 Entity Framework 版本 4 开始，特定模型的 ObjectContext 类包含类型为 <see cref="T:System.Data.Objects.ObjectSet`1" /> 的属性，这些属性表示该模型的实体集。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.#ctor(System.Data.Entity.Design.LanguageOption)">
+      <summary>使用指定的语言选项初始化 <see cref="T:System.Data.Entity.Design.EntityCodeGenerator" /> 类的新实例。</summary>
+      <param name="languageOption">生成的代码的语言。</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityCodeGenerator.EdmToObjectNamespaceMap">
+      <summary>获取一个包含概念性架构定义语言 (CSDL) 到代码命名空间的映射的 <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" />。</summary>
+      <returns>CSDL 到代码命名空间的映射。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.String,System.String)">
+      <summary>创建一个源代码文件，其中包含从指定的概念性架构定义语言 (CSDL) 文件生成的对象层代码。</summary>
+      <param name="sourceEdmSchemaFilePath">CSDL 文件的路径。</param>
+      <param name="targetPath">包含生成的对象层代码的文件的路径。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary>创建一个源代码文件，其中包含从指定的概念性架构定义语言 (CSDL) 文件生成的对象层代码。 架构文件路径的列表用于解析包含在 CSDL 文件中的任何引用。</summary>
+      <param name="sourceEdmSchemaFilePath">CSDL 文件的路径。</param>
+      <param name="targetPath">包含生成的对象层代码的文件的路径。</param>
+      <param name="additionalEdmSchemaFilePaths">架构文件路径的列表，可用于解析源架构（CSDL 文件）中的任何引用。 如果源架构没有任何依赖项，则传入空列表。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Version)">
+      <summary>创建一个源代码文件，其中包含从指定的概念性架构定义语言 (CSDL) 文件生成的对象层代码。 架构文件路径的列表用于解析包含在 CSDL 文件中的任何引用。 注意 targetEntityFrameworkVersion 参数使用内部 Entity Framework 版本数字如<see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 中的描述。</summary>
+      <param name="sourceEdmSchemaFilePath">CSDL 文件的路径。</param>
+      <param name="targetPath">包含生成的对象层代码的文件的路径。</param>
+      <param name="additionalEdmSchemaFilePaths">架构文件路径的列表，可用于解析源架构（CSDL 文件）中的任何引用。 如果源架构没有任何依赖项，则传入空列表。</param>
+      <param name="targetEntityFrameworkVersion">以内部 Entity Framework 版本为目标。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.String,System.String,System.Version)">
+      <summary>创建一个源代码文件，其中包含从指定的概念性架构定义语言 (CSDL) 文件生成的对象层代码。 注意 targetEntityFrameworkVersion 参数使用内部 Entity Framework 版本数字如<see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 中的描述。</summary>
+      <param name="sourceEdmSchemaFilePath">CSDL 文件的路径。</param>
+      <param name="targetPath">包含生成的对象层代码的文件的路径。</param>
+      <param name="targetEntityFrameworkVersion">以内部 Entity Framework 版本为目标。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter)">
+      <summary>使用 <see cref="T:System.Xml.XmlReader" /> 对象中指定的概念性架构定义语言 (CSDL) 生成对象层代码，然后将生成的代码输出到 <see cref="T:System.IO.TextWriter" />。</summary>
+      <param name="sourceEdmSchema">一个 <see cref="T:System.Xml.XmlReader" />，其中包含 CSDL。</param>
+      <param name="target">对象层代码将被写入到的 <see cref="T:System.IO.TextWriter" />。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter,System.Collections.Generic.IEnumerable{System.Xml.XmlReader})">
+      <summary>基于 <see cref="T:System.Xml.XmlReader" /> 对象中指定的概念性架构定义语言 (CSDL) 生成对象层代码，然后将生成的代码输出到 <see cref="T:System.IO.TextWriter" />。 <see cref="T:System.Xml.XmlReader" /> 对象的列表，用于解析 CSDL 中包含的任何引用。</summary>
+      <param name="sourceEdmSchema">一个 <see cref="T:System.Xml.XmlReader" />，其中包含 CSDL。</param>
+      <param name="target">用来输出生成对象层代码的 <see cref="T:System.IO.TextWriter" />。</param>
+      <param name="additionalEdmSchemas">
+        <see cref="T:System.Xml.XmlReader" /> 对象的列表，其中包含由源架构 (CSDL) 引用的架构。 如果源架构没有任何依赖项，则传入空列表。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter,System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Version)">
+      <summary>创建一个源代码文件，其中包含从指定的概念性架构定义语言 (CSDL) 文件生成的对象层代码。 注意 targetEntityFrameworkVersion 参数使用内部 Entity Framework 版本数字如<see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 中的描述。</summary>
+      <param name="sourceEdmSchema">包含 CSDL 的 XmlReader 文件。</param>
+      <param name="target">对象层代码将被写入到的 TextWriter。</param>
+      <param name="additionalEdmSchemas">XmlReader 对象的列表，其中包含由源架构 (CSDL) 引用的架构。 如果源架构没有任何依赖关系，则传入空的 IList 对象。</param>
+      <param name="targetEntityFrameworkVersion">以内部 Entity Framework 版本为目标。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter,System.Version)">
+      <summary>使用 XmlReader 对象中指定的概念性架构定义语言 (CSDL) 生成对象层代码，然后将生成的代码输出到 TextWriter。 注意 targetEntityFrameworkVersion 参数使用内部 Entity Framework 版本数字如<see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 中的描述。</summary>
+      <param name="sourceEdmSchema">包含 CSDL 的 XmlReader 文件。</param>
+      <param name="target">对象层代码将被写入到的 TextWriter。</param>
+      <param name="targetEntityFrameworkVersion">以内部 Entity Framework 版本为目标。</param>
+      <returns>一个 <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /> 对象列表，其中包含所有生成的错误。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityCodeGenerator.LanguageOption">
+      <summary>获取或设置指示所生成代码的语言的 <see cref="T:System.Data.Entity.Design.LanguageOption" /> 值。</summary>
+      <returns>
+        <see cref="T:System.Data.Entity.Design.LanguageOption" /> 值之一。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityFrameworkVersions">
+      <summary>提供有关 Entity Framework 的不同版本的信息。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityFrameworkVersions.GetSchemaXsd(System.Version,System.Data.Metadata.Edm.DataSpace)">
+      <summary>使用在 <paramref name="dataSpace" /> 参数中指定的默认模型名称，返回与指定的 Entity Framework 版本相对应的 XSD 的流。</summary>
+      <param name="entityFrameworkVersion">与 Entity Framework 的目标版本相对应的 <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 的属性。</param>
+      <param name="dataSpace">XSD 的所需 <see cref="T:System.Data.Metadata.Edm.DataSpace" />。</param>
+      <returns>与指定的 Entity Framework 版本和 <see cref="T:System.IO.Stream" /> 相对应的 XSD 的 <see cref="T:System.Data.Metadata.Edm.DataSpace" />。</returns>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityFrameworkVersions.Version1">
+      <summary>表示 Entity Framework 版本 1 的只读属性。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityFrameworkVersions.Version2">
+      <summary>表示 Entity Framework 版本 2 的只读属性。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityFrameworkVersions.Version3">
+      <summary>表示 Entity Framework 的版本 3 的只读属性。</summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityModelSchemaGenerator">
+      <summary>在 S 空间中的 EntityContainer 与 C 空间中的 EntityContainer 之间创建默认的 CCMapping。 映射将基于已声明的程度的类型生成。 因此继承不工作。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.#ctor(System.Data.Metadata.Edm.EntityContainer)">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.EntityModelSchemaGenerator" /> 类的新实例。</summary>
+      <param name="storeEntityContainer">从中创建概念和映射元数据的存储模型 EntityContainer。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.#ctor(System.Data.Metadata.Edm.EntityContainer,System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.EntityModelSchemaGenerator" /> 类的新实例。</summary>
+      <param name="storeEntityContainer">从中创建概念和映射元数据的存储模型 EntityContainer。</param>
+      <param name="namespaceName">概念模型命名空间的名称。 如果此值为 null，storeEntityContainer 将用作命名空间名称。</param>
+      <param name="modelEntityContainerName">在概念模型中声明的 EntityContainer 名称。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.#ctor(System.Data.Metadata.Edm.StoreItemCollection,System.String,System.String)">
+      <summary>构造 EntityModelGenerator</summary>
+      <param name="storeItemCollection">包含 EntityContainer 和其他生成模型元数据的项目的 StoreItemCollection。</param>
+      <param name="namespaceName">要提供命名空间的名称。 如果为 null，则 storeEntityContainer 将不被使用。</param>
+      <param name="modelEntityContainerName">给 Model EntityContainer 的名称。 如果为 null，则将使用 storeEntityContainer 中所引用类型的命名空间的修改版本。</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityModelSchemaGenerator.EdmItemCollection">
+      <summary>获取由 GenerateMetadata 方法创建的 EdmItemCollection 。</summary>
+      <returns>包含概念性架构定义语言 (CSDL) 的 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityModelSchemaGenerator.EntityContainer">
+      <summary>获取由 GenerateMetadata 方法创建的概念模型 EntityContainer。</summary>
+      <returns>包含概念模型 EntityContainer 的 <see cref="T:System.Data.Metadata.Edm.EntityContainer" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityModelSchemaGenerator.GenerateForeignKeyProperties">
+      <summary>获取或设置用于在概念模型中生成外键属性的标志。</summary>
+      <returns>如果此属性的值设置为 <see langword="true" />，则在概念模型中生成外键属性；否则不会在概念模型中生成外键属性。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.GenerateMetadata">
+      <summary>生成概念模型元数据信息，返回任何架构错误。</summary>
+      <returns>架构错误对象的集合。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.GenerateMetadata(System.Version)">
+      <summary>生成概念模型元数据信息，返回任何架构错误。</summary>
+      <param name="targetEntityFrameworkVersion">与 Entity Framework 的目标版本相对应的 EntityFrameworkVersions 的属性。</param>
+      <returns>架构错误对象的集合。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityModelSchemaGenerator.PluralizationService">
+      <summary>获取或设置 PluralizationService 值，该值指示生成模型时使用的服务。</summary>
+      <returns>指示生成模型时使用的服务的 <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.WriteModelSchema(System.String)">
+      <summary>将生成的概念性架构定义语言 (CSDL) 写入指定的文件。</summary>
+      <param name="outputFileName">输出文件的名称。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.WriteModelSchema(System.Xml.XmlWriter)">
+      <summary>将生成的概念性架构定义语言 (CSDL) 写入 XmlWriter 对象。</summary>
+      <param name="writer">将 CSDL 文件写入到其中的 XmlWriter。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.WriteStorageMapping(System.String)">
+      <summary>将生成的映射规范语言 (MSL) 写入指定的文件。</summary>
+      <param name="outputFileName">输出文件的名称。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.WriteStorageMapping(System.Xml.XmlWriter)">
+      <summary>将生成的映射规范语言 (MSL) 写入 XmlWriter 对象。</summary>
+      <param name="writer">将 MSL 文件写入到其中的 XmlWriter。</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityStoreSchemaFilterEffect">
+      <summary>指定是允许还是排除符合 <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry" /> 中指定模式的数据库对象。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterEffect.Allow">
+      <summary>允许符合指定模式的项。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterEffect.Exclude">
+      <summary>排除符合指定模式的项。</summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry">
+      <summary>表示单个筛选器项。 筛选器用于在生成期间允许或排除特定的数据库对象。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.#ctor(System.String,System.String,System.String)">
+      <summary>使用指定的目录、架构和名称筛选器初始化 <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry" /> 类的新实例。</summary>
+      <param name="catalog">用于选择相应目录的模式。</param>
+      <param name="schema">用于选择相应架构的模式，如果为 null 则不按架构来限制选择结果。</param>
+      <param name="name">用于选择相应名称的模式，如果为 null 则不按名称来限制选择结果。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.#ctor(System.String,System.String,System.String,System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes,System.Data.Entity.Design.EntityStoreSchemaFilterEffect)">
+      <summary>使用指定的目录、架构、名称、类型筛选器以及筛选器效果设置来初始化 <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry" /> 类的新实例。</summary>
+      <param name="catalog">用于选择相应目录的模式，如果为 null 则不按目录来限制选择结果。</param>
+      <param name="schema">用于选择相应架构的模式，如果为 null 则不按架构来限制选择结果。</param>
+      <param name="name">用于选择相应名称的模式，如果为 null 则不按名称来限制选择结果。</param>
+      <param name="types">此筛选器要应用到的对象类型。</param>
+      <param name="effect">一个 <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEffect" /> 值，指示是允许还是排除符合指定筛选器的项。</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Catalog">
+      <summary>获取将用于选择相应目录的模式。</summary>
+      <returns>数据库名称的格式设置为 Catalog.Schema.Name 的数据库名称的 Catalog 部分。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Effect">
+      <summary>获取此筛选器对结果的作用。</summary>
+      <returns>一个 <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEffect" /> 值，指示是允许还是排除符合指定筛选器的项。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Name">
+      <summary>获取将用于选择相应名称的模式。</summary>
+      <returns>数据库名称的格式设置为 Catalog.Schema.Name 的数据库名称的 Name 部分。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Schema">
+      <summary>获取将用于选择相应架构的模式。</summary>
+      <returns>数据库名称的格式设置为 Catalog.Schema.Name 的数据库名称的 Schema 部分。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Types">
+      <summary>获取此筛选器所应用到的对象类型。</summary>
+      <returns>一个 <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes" /> 值，指示筛选器要应用到的对象类型。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes">
+      <summary>指定架构筛选器要应用到的存储对象类型。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.All">
+      <summary>将筛选器应用于所有对象类型。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.Function">
+      <summary>将此筛选器应用于函数对象类型。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.None">
+      <summary>初始值。 这不是要应用的有效值。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.Table">
+      <summary>将筛选器应用于表对象类型。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.View">
+      <summary>将筛选器应用于视图对象类型。</summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityStoreSchemaGenerator">
+      <summary>负责加载数据库架构信息。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.#ctor(System.String,System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.EntityStoreSchemaGenerator" /> 类的新实例。</summary>
+      <param name="providerInvariantName">提供程序的固定名称。</param>
+      <param name="connectionString">用于打开数据库的连接。</param>
+      <param name="namespaceName">存储架构定义语言 (SSDL) 的命名空间名称。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.CreateStoreSchemaConnection(System.String,System.String)">
+      <summary>为存储架构创建创建使用提供程序元数据加载的 EntityConnection。</summary>
+      <param name="providerInvariantName">提供程序的固定名称。</param>
+      <param name="connectionString">提供程序连接的连接。</param>
+      <returns>一个可为提供程序查询 ConceptualSchemaDefinition 的 EntityConnection。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.CreateStoreSchemaConnection(System.String,System.String,System.Version)">
+      <summary>为存储架构创建创建使用提供程序元数据加载的 EntityConnection。 注意 targetEntityFrameworkVersion 参数使用内部 Entity Framework 版本数字如<see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 中的描述。</summary>
+      <param name="providerInvariantName">提供程序固定名称。</param>
+      <param name="connectionString">提供程序连接的连接。</param>
+      <param name="targetEntityFrameworkVersion">以内部 Entity Framework 版本为目标。</param>
+      <returns>一个可为提供程序查询 ConceptualSchemaDefinition 的 EntityConnection。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaGenerator.EntityContainer">
+      <summary>获取创建的实体模型 EntityContainer。</summary>
+      <returns>创建的实体容器存储模型 EntityContainer。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaGenerator.GenerateForeignKeyProperties">
+      <summary>获取或设置用于在存储模型中生成外键属性的标志。</summary>
+      <returns>如果在存储模型中生成外键，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.GenerateStoreMetadata">
+      <summary>生成存储元数据并返回所有架构错误。</summary>
+      <returns>架构错误对象的集合。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.GenerateStoreMetadata(System.Collections.Generic.IEnumerable{System.Data.Entity.Design.EntityStoreSchemaFilterEntry})">
+      <summary>生成存储元数据并返回所有架构错误。</summary>
+      <param name="filters">一个 EntityStoreSchemaFilterEntry，指定在生成期间允许或排除哪些数据库对象。</param>
+      <returns>架构错误对象的集合。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.GenerateStoreMetadata(System.Collections.Generic.IEnumerable{System.Data.Entity.Design.EntityStoreSchemaFilterEntry},System.Version)">
+      <summary>生成存储架构定义语言 (SSDL) 并返回所有架构错误。</summary>
+      <param name="filters">一个 EntityStoreSchemaFilterEntry，指定在生成期间允许或排除哪些数据库对象。</param>
+      <param name="targetEntityFrameworkVersion">与 Entity Framework 的目标版本相对应的 EntityFrameworkVersions 的属性。</param>
+      <returns>架构错误对象的集合。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaGenerator.StoreItemCollection">
+      <summary>获取已创建的 StoreItemCollection。</summary>
+      <returns>创建的 <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.WriteStoreSchema(System.String)">
+      <summary>将生成的存储架构定义语言 (SSDL) 写入文件。</summary>
+      <param name="outputFileName">输出文件的名称。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.WriteStoreSchema(System.Xml.XmlWriter)">
+      <summary>将生成的存储架构定义语言 (SSDL) 写入 XmlWriter 对象。</summary>
+      <param name="writer">将 SSDL 文件写入到其中的 XmlWriter。</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityViewGenerator">
+      <summary>在 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 范围内生成视图，并为缓存这些视图的类型创建一个源代码文件。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.#ctor">
+      <summary>使用 <see cref="T:System.Data.Entity.Design.EntityViewGenerator" /> 语言选项初始化 <see cref="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.#ctor(System.Data.Entity.Design.LanguageOption)">
+      <summary>使用指定的 <see cref="T:System.Data.Entity.Design.EntityViewGenerator" /> 初始化 <see cref="T:System.Data.Entity.Design.LanguageOption" /> 类的新实例。</summary>
+      <param name="languageOption">用于指定所生成代码的语言的 <see cref="T:System.Data.Entity.Design.LanguageOption" /> 值之一。 默认语言为 C#。</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.GenerateViews(System.Data.Mapping.StorageMappingItemCollection,System.IO.TextWriter)">
+      <summary>编译时，在 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 范围内生成视图。 将源代码文件发送到 <see cref="T:System.IO.TextWriter" /> 以使这些视图在运行时可用。</summary>
+      <param name="mappingCollection">从其中生成视图的 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</param>
+      <param name="outputWriter">所生成代码将发送至此的 <see cref="T:System.IO.TextWriter" />。</param>
+      <returns>一个包含所有生成的错误的列表。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.GenerateViews(System.Data.Mapping.StorageMappingItemCollection,System.IO.TextWriter,System.Version)">
+      <summary>编译时，在 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 范围内生成视图。 将源代码文件发送到 <see cref="T:System.IO.TextWriter" /> 以使这些视图在运行时可用。</summary>
+      <param name="mappingCollection">要验证的 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</param>
+      <param name="outputWriter">用来写入输出的 <see cref="T:System.IO.TextWriter" />。</param>
+      <param name="targetEntityFrameworkVersion">与 Entity Framework 的目标版本相对应的 <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 的属性。</param>
+      <returns>一个包含所有生成的错误的列表。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.GenerateViews(System.Data.Mapping.StorageMappingItemCollection,System.String)">
+      <summary>编译时，在 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 范围内生成视图。 将使视图在运行时可用的源代码文件写入指定位置。</summary>
+      <param name="mappingCollection">从其中生成视图的 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</param>
+      <param name="outputPath">用于指定源代码文件写入位置的 <see cref="T:System.String" />。</param>
+      <returns>一个包含所有生成的错误的列表。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityViewGenerator.LanguageOption">
+      <summary>获取或设置指示所生成代码的语言的 <see cref="T:System.Data.Entity.Design.LanguageOption" /> 值。</summary>
+      <returns>
+        <see cref="T:System.Data.Entity.Design.LanguageOption" /> 值之一。 默认值为 <see cref="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.Validate(System.Data.Mapping.StorageMappingItemCollection)">
+      <summary>验证 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</summary>
+      <param name="mappingCollection">要验证的 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</param>
+      <returns>一个包含所有生成的错误的列表。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.Validate(System.Data.Mapping.StorageMappingItemCollection,System.Version)">
+      <summary>验证 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</summary>
+      <param name="mappingCollection">要验证的 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</param>
+      <param name="targetEntityFrameworkVersion">与 Entity Framework 的目标版本相对应的 <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 的属性。</param>
+      <returns>一个包含所有验证错误的列表。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.LanguageOption">
+      <summary>指定生成的代码的语言。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode">
+      <summary>C# 代码。 这是默认设置。</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.LanguageOption.GenerateVBCode">
+      <summary>Visual Basic 代码。</summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.MetadataExtensionMethods">
+      <summary>表示元数据发布协议的方法。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataExtensionMethods.GetPrimitiveTypes(System.Data.Metadata.Edm.EdmItemCollection,System.Version)">
+      <summary>获取给定版本 Edm 的基元类型链接的列表</summary>
+      <param name="itemCollection">用于检索原始类型的列表的项目集合</param>
+      <param name="edmVersion">要使用的 edm 版本。</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.MetadataItemCollectionFactory">
+      <summary>表示一组用于创建元数据 <see cref="T:System.Data.Metadata.Edm.ItemCollection" /> 实例的方法。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateEdmItemCollection(System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>创建一个 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> 并加载元数据，该元数据包含在 <see cref="T:System.Collections.IEnumerable" /> 的 <see cref="T:System.Xml.XmlReader" /> 中。</summary>
+      <param name="readers">
+        <see cref="T:System.Collections.IEnumerable" />
+        <see cref="T:System.Xml.XmlReader" />的 ，它包含元数据文件。</param>
+      <param name="errors">一个 <see cref="T:System.Collections.IList" /><see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />的 。 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> 创建过程中生成的任何错误将添加到列表。</param>
+      <returns>包含指定元数据的 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateEdmItemCollection(System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Version,System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>创建一个 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> 并加载元数据，该元数据包含在 <see cref="T:System.Collections.IEnumerable" /> 的 <see cref="T:System.Xml.XmlReader" /> 中。</summary>
+      <param name="readers">
+        <see cref="T:System.Collections.IEnumerable" />
+        <see cref="T:System.Xml.XmlReader" />的 ，它包含元数据文件。</param>
+      <param name="targetEntityFrameworkVersion">与 Entity Framework 的目标版本相对应的 <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 的属性。</param>
+      <param name="errors">一个 <see cref="T:System.Collections.IList" /><see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />的 。 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> 创建过程中生成的任何错误将添加到列表。</param>
+      <returns>包含指定元数据的 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateStorageMappingItemCollection(System.Data.Metadata.Edm.EdmItemCollection,System.Data.Metadata.Edm.StoreItemCollection,System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>创建一个 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 并加载元数据，该元数据包含在指定的 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />、<see cref="T:System.Data.Metadata.Edm.StoreItemCollection" /> 以及 <see cref="T:System.Xml.XmlReader" /> 对象的集合中。</summary>
+      <param name="edmCollection">一个 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> 对象。</param>
+      <param name="storeCollection">
+        <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" /> 对象。</param>
+      <param name="readers">
+        <see cref="T:System.Collections.IEnumerable" /> 的 <see cref="T:System.Xml.XmlReader" />，它包含元数据文件。</param>
+      <param name="errors">一个 <see cref="T:System.Collections.IList" /><see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />的 。 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 创建过程中生成的所有错误都将添加到列表。</param>
+      <returns>包含指定元数据的 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateStorageMappingItemCollection(System.Data.Metadata.Edm.EdmItemCollection,System.Data.Metadata.Edm.StoreItemCollection,System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Version,System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>使用 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 对象中的映射信息及所指定 <see cref="T:System.Xml.XmlReader" /> 和 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> 对象中的元数据创建 <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />。</summary>
+      <param name="edmCollection">一个 <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> 对象。</param>
+      <param name="storeCollection">
+        <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" /> 对象。</param>
+      <param name="readers">
+        <see cref="T:System.Collections.IEnumerable" /> 的 <see cref="T:System.Xml.XmlReader" />，它包含元数据文件。</param>
+      <param name="targetEntityFrameworkVersion">与 Entity Framework 的目标版本相对应的 <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 的属性。</param>
+      <param name="errors">一个 <see cref="T:System.Collections.IList" /><see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />的 。 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 创建过程中生成的所有错误都将添加到列表。</param>
+      <returns>包含指定元数据的 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateStoreItemCollection(System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>构造 <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />，列表提供错误和警告。</summary>
+      <param name="readers">
+        <see cref="T:System.Xml.XmlReader" /> 对象集合，每个对象从一个存储模型文件读取。 存储模型文件使用存储架构定义语言 (SSDL) 进行编写。</param>
+      <param name="errors">加载 SSDL 元数据时遇到的错误的列表。</param>
+      <returns>提供错误和警告列表的 <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateStoreItemCollection(System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Version,System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>构造 <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />，列表提供错误和警告。</summary>
+      <param name="readers">
+        <see cref="T:System.Xml.XmlReader" /> 对象集合，每个对象从一个存储模型文件读取。 存储模型文件使用存储架构定义语言 (SSDL) 进行编写。</param>
+      <param name="targetEntityFrameworkVersion">与 Entity Framework 的目标版本相对应的 <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" /> 的属性。</param>
+      <param name="errors">加载 SSDL 元数据时遇到的错误的列表。</param>
+      <returns>提供错误和警告列表的 <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.PluralizationServices.ICustomPluralizationMapping">
+      <summary>表示单词的单复数形式的集合。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.ICustomPluralizationMapping.AddWord(System.String,System.String)">
+      <summary>将单词的单数和复数形式添加到 <see cref="T:System.Data.Entity.Design.PluralizationServices.ICustomPluralizationMapping" /> 对象。</summary>
+      <param name="singular">添加到 <see cref="T:System.Data.Entity.Design.PluralizationServices.ICustomPluralizationMapping" /> 对象的单词的单数形式。</param>
+      <param name="plural">添加到 <see cref="T:System.Data.Entity.Design.PluralizationServices.ICustomPluralizationMapping" /> 对象的单词的复数形式。</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.PluralizationServices.PluralizationService">
+      <summary>提供用于构造单词的单复数形式的方法。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.CreateService(System.Globalization.CultureInfo)">
+      <summary>创建一个 <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" />，它应用与指定的 <see cref="T:System.Globalization.CultureInfo" /> 相对应的语言规则。</summary>
+      <param name="culture">与单词的单复数形式所应用的语言规则相对应的 <see cref="T:System.Globalization.CultureInfo" />。</param>
+      <returns>新创建的 <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PluralizationServices.PluralizationService.Culture">
+      <summary>获取或设置 <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" /> 区域性。</summary>
+      <returns>一个指定单复数形式要应用的语言规则的对象。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.IsPlural(System.String)">
+      <summary>确定指定的单词是否为复数形式。</summary>
+      <param name="word">要分析的值。</param>
+      <returns>如果单词为复数形式，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.IsSingular(System.String)">
+      <summary>确定指定的单词是否为单数形式。</summary>
+      <param name="word">要分析的值。</param>
+      <returns>如果单词为单数形式，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.Pluralize(System.String)">
+      <summary>返回指定单词的复数形式</summary>
+      <param name="word">要改为复数形式的单词。</param>
+      <returns>输入参数的复数形式。</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.Singularize(System.String)">
+      <summary>返回指定单词的单数形式。</summary>
+      <param name="word">要改为单数形式的单词。</param>
+      <returns>输入参数的单数形式。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.PropertyGeneratedEventArgs">
+      <summary>为 <see cref="E:System.Data.Entity.Design.EntityClassGenerator.OnPropertyGenerated" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PropertyGeneratedEventArgs.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.PropertyGeneratedEventArgs" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PropertyGeneratedEventArgs.#ctor(System.Data.Metadata.Edm.MetadataItem,System.String,System.CodeDom.CodeTypeReference)">
+      <summary>使用指定的属性源、支持字段名称和返回类型初始化 <see cref="T:System.Data.Entity.Design.PropertyGeneratedEventArgs" /> 类的新实例。</summary>
+      <param name="propertySource">作为属性的源的 <see cref="T:System.Data.Metadata.Edm.MetadataItem" /> 对象。</param>
+      <param name="backingFieldName">支持该属性的字段的名称。</param>
+      <param name="returnType">属性的基类型。</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.AdditionalAttributes">
+      <summary>获取将添加到属性中的特性 <see langword="List(CodeAttributeDeclaration)" />。</summary>
+      <returns>一个包含属性 (Attribute) 的集合，这些属性 (Attribute) 将添加到该属性 (Property)。 如果不添加任何属性 (Attribute)，该集合将为空。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.AdditionalGetStatements">
+      <summary>获取一个 <see langword="List(CodeStatement)" />，其中包含将添加到该属性的 get 语句。</summary>
+      <returns>一个包含 get 语句的集合，这些语句将添加到该属性。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.AdditionalSetStatements">
+      <summary>获取一个 <see langword="List(CodeStatement)" />，其中包含将添加到该属性的 set 语句。</summary>
+      <returns>一个包含 set 语句的集合，这些语句将添加到该属性。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.BackingFieldName">
+      <summary>获取支持该属性的字段的名称。</summary>
+      <returns>支持该属性的字段的名称。 对于导航属性，该名称可以为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.PropertySource">
+      <summary>获取作为属性的源的 <see cref="T:System.Data.Metadata.Edm.MetadataItem" /> 对象。</summary>
+      <returns>作为属性的源的 <see cref="T:System.Data.Metadata.Edm.MetadataItem" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.ReturnType">
+      <summary>获取或设置属性的类型。</summary>
+      <returns>属性的类型。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.PropertyGeneratedEventHandler">
+      <summary>表示用来处理 <see cref="E:System.Data.Entity.Design.EntityClassGenerator.OnPropertyGenerated" /> 事件的方法。</summary>
+      <param name="sender">事件源。</param>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.TypeGeneratedEventArgs">
+      <summary>为 <see cref="E:System.Data.Entity.Design.EntityClassGenerator.OnTypeGenerated" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.TypeGeneratedEventArgs.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Entity.Design.TypeGeneratedEventArgs" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.TypeGeneratedEventArgs.#ctor(System.Data.Metadata.Edm.GlobalItem,System.CodeDom.CodeTypeReference)">
+      <summary>使用指定源和基类型初始化 <see cref="T:System.Data.Entity.Design.TypeGeneratedEventArgs" /> 类的新实例。</summary>
+      <param name="typeSource">类型的源。</param>
+      <param name="baseType">基类型。</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.AdditionalAttributes">
+      <summary>获取包含将添加到类型中的特性的 <see langword="List(CodeAttributeDeclaration)" />。</summary>
+      <returns>一个包含属性的集合，这些属性将添加到该类型。 如果没有属性将添加到类型，该集合将为空。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.AdditionalInterfaces">
+      <summary>获取包含将添加到类型中的接口的 <see langword="List(Type)" />。</summary>
+      <returns>一个包含接口的集合，这些接口将添加到该类型。 如果不添加任何接口，该集合将为空。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.AdditionalMembers">
+      <summary>获取包含将添加到类型中的成员的 <see langword="List(CodeTypeMember)" />。</summary>
+      <returns>一个包含成员的集合，这些成员将添加到该类型。 如果不添加任何成员，该集合将为空。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.BaseType">
+      <summary>获取或设置基类型。</summary>
+      <returns>基类型。 根据 <see cref="T:System.Data.Objects.DataClasses.EntityObject" /> 属性值，默认为 <see cref="T:System.Data.Objects.DataClasses.ComplexObject" />、<see cref="T:System.Data.Objects.ObjectContext" /> 或 <see cref="P:System.Data.Entity.Design.TypeGeneratedEventArgs.TypeSource" />。</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.TypeSource">
+      <summary>获取作为类型的源的 <see cref="T:System.Data.Metadata.Edm.GlobalItem" /> 对象。</summary>
+      <returns>作为类型的源的 <see cref="T:System.Data.Metadata.Edm.GlobalItem" /> 对象。</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.TypeGeneratedEventHandler">
+      <summary>表示用来处理 <see cref="E:System.Data.Entity.Design.EntityClassGenerator.OnTypeGenerated" /> 事件的方法。</summary>
+      <param name="sender">事件源。</param>
+      <param name="e">事件的数据。</param>
+    </member>
+  </members>
+</doc>

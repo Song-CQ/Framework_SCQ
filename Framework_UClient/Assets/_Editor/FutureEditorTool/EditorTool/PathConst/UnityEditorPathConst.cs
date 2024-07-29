@@ -21,9 +21,9 @@ namespace FutureEditor
         public readonly static string PluginsPath = Application.dataPath + @"/../../_Plugins";
 
         /// <summary>
-        /// (热更)代码输出路径
+        /// 临时文件夹 _Temporary
         /// </summary>
-        public readonly static string HotFix_OutPath= $"{Application.dataPath}/../_HotFix";
+        public readonly static string TemporaryPath = $"{Application.dataPath}/../_Temporary";
 
 
         /// <summary>

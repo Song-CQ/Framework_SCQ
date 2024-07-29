@@ -129,7 +129,7 @@ namespace ProjectApp
             //string replaceCommonPackageConst = "//ReplaceCommonPackage";
             //classStr = classStr.Replace(replaceCommonPackageConst, uiCommonPackageInfo);
             string targetPath = UnityEditorPathConst.AutoRegisterPath + "/UIMgr/UIRegister_FGUI.cs";
-            FutureCore.FileUtil.WriteFile(targetPath, classStr);
+            FutureCore.FileUtil.WriteAllText(targetPath, classStr,true);
             Debug.Log("[UI_AutoCread]注册FGUI包完成");
         }
        

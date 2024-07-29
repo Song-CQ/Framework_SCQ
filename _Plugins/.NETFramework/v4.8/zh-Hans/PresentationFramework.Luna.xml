@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>PresentationFramework.Luna</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Windows.Themes.BulletChrome">
+      <summary>创建 Windows Presentation Foundation (WPF) <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 元素的特定于主题的外观。 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 定义 <see cref="T:System.Windows.Controls.CheckBox" /> 和 <see cref="T:System.Windows.Controls.RadioButton" /> 元素的外观。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.BulletChrome.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Windows.Themes.BulletChrome" /> 类的新实例。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.Background">
+      <summary>获取或设置用于填充 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 背景的画笔。</summary>
+      <returns>用于填充 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 背景的画笔。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.BackgroundProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.BulletChrome.Background" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.BorderBrush">
+      <summary>获取或设置用于绘制 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 的外边框的画笔。</summary>
+      <returns>用于绘制 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 的外边框的画笔。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.BorderBrushProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.BulletChrome.BorderBrush" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.BorderThickness">
+      <summary>获取或设置用于绘制 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 的外边框的粗细。</summary>
+      <returns>用于绘制 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 的外边框的粗细。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.BorderThicknessProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.BulletChrome.BorderThickness" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.IsChecked">
+      <summary>获取或设置一个值，该值指示是否选中 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />。</summary>
+      <returns>如果选中 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />，则为 <see langword="true" />；如果未选中 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />，则为 <see langword="false" />；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.IsCheckedProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.BulletChrome.IsChecked" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.IsRound">
+      <summary>获取或设置一个值，该值指示 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 是否具有圆角。</summary>
+      <returns>如果 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 具有圆角，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.IsRoundProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.BulletChrome.IsRound" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.RenderMouseOver">
+      <summary>获取或设置一个值，该值指示 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 上面是否好像具有鼠标。</summary>
+      <returns>如果 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 上面好像具有鼠标，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.RenderMouseOverProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.BulletChrome.RenderMouseOver" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.RenderPressed">
+      <summary>获取或设置一个值，该值指示 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 看上去是否处于按下状态。</summary>
+      <returns>如果 <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> 看上去处于按下状态，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.RenderPressedProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.BulletChrome.RenderPressed" /> 依赖项属性。</summary>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.ButtonChrome">
+      <summary>为 .NET Framework <see cref="T:System.Windows.Controls.Button" /> 元素创建主题特定外观。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ButtonChrome.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Windows.Themes.ButtonChrome" /> 类的新实例。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ButtonChrome.BorderBrush">
+      <summary>获取或设置用于绘制 <see cref="T:System.Windows.Controls.Button" /> 的外边框的画笔。</summary>
+      <returns>用于绘制 <see cref="T:System.Windows.Controls.Button" /> 的外边框的画笔。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ButtonChrome.BorderBrushProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ButtonChrome.BorderBrush" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ButtonChrome.Fill">
+      <summary>获取或设置用于绘制 <see cref="T:System.Windows.Controls.Button" /> 的内部颜色的画笔。</summary>
+      <returns>画笔。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ButtonChrome.FillProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ButtonChrome.Fill" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ButtonChrome.RenderDefaulted">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Windows.Controls.Button" /> 是否具有窗体上默认按钮的外观。</summary>
+      <returns>如果 <see cref="T:System.Windows.Controls.Button" /> 具有默认按钮的外观，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ButtonChrome.RenderDefaultedProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ButtonChrome.RenderDefaulted" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ButtonChrome.RenderMouseOver">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Windows.Controls.Button" /> 上面是否好像具有鼠标。</summary>
+      <returns>如果 <see cref="T:System.Windows.Controls.Button" /> 上面好像具有鼠标，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ButtonChrome.RenderMouseOverProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ButtonChrome.RenderMouseOver" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ButtonChrome.RenderPressed">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Windows.Controls.Button" /> 看上去是否处于按下状态。</summary>
+      <returns>如果 <see cref="T:System.Windows.Controls.Button" /> 看上去处于按下状态，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ButtonChrome.RenderPressedProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ButtonChrome.RenderPressed" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ButtonChrome.ThemeColor">
+      <summary>获取或设置主题颜色。</summary>
+      <returns>枚举中的一个值。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ButtonChrome.ThemeColorProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ButtonChrome.ThemeColor" /> 依赖项属性。</summary>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.DataGridHeaderBorder">
+      <summary>为 .NET Framework 4.5 <see cref="T:System.Windows.Controls.DataGrid" />中的标题创建主题特定外观。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.DataGridHeaderBorder.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Windows.Themes.DataGridHeaderBorder" /> 类的新实例。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.IsClickable">
+      <summary>获取或设置一个值，该值指示标题是否可单击。</summary>
+      <returns>如果标题可单击，则为 <see langword="true" />；否则为 <see langword="false" />。 已注册的默认值为 <see langword="true" />。 有关可以影响值的因素的更多信息，请参见 <see cref="T:System.Windows.DependencyProperty" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.IsClickableProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.IsClickable" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.IsHovered">
+      <summary>获取或设置一个值，该值指示是否将标题显示为鼠标指向状态。</summary>
+      <returns>如果将标题显示为鼠标指向状态，则为 <see langword="true" />；否则为 <see langword="false" />。 已注册的默认值为 <see langword="false" />。 有关可以影响值的因素的更多信息，请参见 <see cref="T:System.Windows.DependencyProperty" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.IsHoveredProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.IsHovered" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.IsPressed">
+      <summary>获取或设置一个值，该值指示是否将标题显示为按下状态。</summary>
+      <returns>如果将标题显示为按下状态，则为 <see langword="true" />；否则为 <see langword="false" />。 已注册的默认值为 <see langword="false" />。 有关可以影响值的因素的更多信息，请参见 <see cref="T:System.Windows.DependencyProperty" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.IsPressedProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.IsPressed" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.IsSelected">
+      <summary>获取或设置一个值，该值指示是否将标题显示为选中状态。</summary>
+      <returns>如果将标题显示为选中状态，则为 <see langword="true" />；否则为 <see langword="false" />。 已注册的默认值为 <see langword="false" />。 有关可以影响值的因素的更多信息，请参见 <see cref="T:System.Windows.DependencyProperty" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.IsSelectedProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.IsSelected" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.Orientation">
+      <summary>获取或设置标题是作为列标题在垂直方向上呈现，还是作为行标题在水平方向上呈现。</summary>
+      <returns>一个枚举值，指示标题的呈现方向。 已注册的默认值为 <see cref="F:System.Windows.Controls.Orientation.Vertical" />。 有关可以影响值的因素的更多信息，请参见 <see cref="T:System.Windows.DependencyProperty" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.OrientationProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.Orientation" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.SeparatorBrush">
+      <summary>获取或设置用于绘制标题之间的分隔线的画笔。</summary>
+      <returns>用于绘制标题之间的分隔线的画笔。 已注册的默认值为 <see langword="null" />。 有关可以影响值的因素的更多信息，请参见 <see cref="T:System.Windows.DependencyProperty" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.SeparatorBrushProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.SeparatorBrush" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.SeparatorVisibility">
+      <summary>获取或设置一个值，该值指示标题之间的分隔线是否可见。</summary>
+      <returns>一个枚举值，指示 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.SeparatorBrush" /> 是否可见。 已注册的默认值为 <see cref="F:System.Windows.Visibility.Visible" />。 有关可以影响值的因素的更多信息，请参见 <see cref="T:System.Windows.DependencyProperty" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.SeparatorVisibilityProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.SeparatorVisibility" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.SortDirection">
+      <summary>获取或设置标题的排序方向。</summary>
+      <returns>一个枚举值，指示列的排序方向。 已注册的默认值为 <see langword="null" />。 有关可以影响值的因素的更多信息，请参见 <see cref="T:System.Windows.DependencyProperty" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.SortDirectionProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.SortDirection" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.DataGridHeaderBorder.ThemeColor">
+      <summary>获取或设置标题的主题颜色。</summary>
+      <returns>表示 Microsoft 主题的可能的颜色变量。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.DataGridHeaderBorder.ThemeColorProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.DataGridHeaderBorder.ThemeColor" /> 依赖项属性。</summary>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.PlatformCulture">
+      <summary>提供由 .NET Framework 系统主题使用的区域性特定信息。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.PlatformCulture.FlowDirection">
+      <summary>获取一个值，该值指定主文本前进方向是应从左到右、从右到左还是从上到下。</summary>
+      <returns>枚举值之一。</returns>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.ProgressBarBrushConverter">
+      <summary>创建用于绘制 <see cref="T:System.Windows.Media.Brush" /> 的 <see cref="T:System.Windows.Controls.ProgressBar" />。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ProgressBarBrushConverter.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Windows.Themes.ProgressBarBrushConverter" /> 类的新实例。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ProgressBarBrushConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>创建用于 <see cref="T:System.Windows.Media.DrawingBrush" /> 的 <see cref="T:System.Windows.Controls.ProgressBar" />。</summary>
+      <param name="values">ForegroundBrush、IsIndeterminate、Indicator Width、Indicator Height、Track Width 
+用于 <see cref="T:System.Windows.Controls.ProgressBar" /> 的 <see cref="P:System.Windows.Controls.Control.Foreground" /> 的 <see cref="T:System.Windows.Media.Brush" />、用于指示 <see cref="P:System.Windows.Controls.ProgressBar.IsIndeterminate" /> 是否为 <see langword="true" /> 布尔值、用于定义指示器 <see cref="P:System.Windows.FrameworkElement.Width" /> 的 <see cref="T:System.Double" />、用于定义指示器 <see cref="P:System.Windows.FrameworkElement.Height" /> 的 <see cref="T:System.Double" /> 和用于定义 <see cref="T:System.Windows.Controls.Primitives.Track" /> 宽度的 <see cref="T:System.Double" />。</param>
+      <param name="targetType">未使用此参数。</param>
+      <param name="parameter">未使用此参数。</param>
+      <param name="culture">未使用此参数。</param>
+      <returns>
+        <see cref="T:System.Windows.Media.DrawingBrush" /> 的 <see cref="T:System.Windows.Controls.ProgressBar" />。</returns>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ProgressBarBrushConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+      <summary>未实现。</summary>
+      <param name="value">未使用此参数。</param>
+      <param name="targetTypes">未使用此参数。</param>
+      <param name="parameter">未使用此参数。</param>
+      <param name="culture">未使用此参数。</param>
+      <returns>
+        <see langword="null" />。</returns>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.ScrollChrome">
+      <summary>为 .NET Framework <see cref="T:System.Windows.Controls.Primitives.ScrollBar" /> 元素创建主题特定外观。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ScrollChrome.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Windows.Themes.ScrollChrome" /> 类的新实例。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ScrollChrome.GetScrollGlyph(System.Windows.DependencyObject)">
+      <summary>获取指定对象的 <see cref="T:Microsoft.Windows.Themes.ScrollGlyph" />。</summary>
+      <param name="element">
+        <see cref="T:Microsoft.Windows.Themes.ScrollGlyph" /> 所附加到的依赖项对象。</param>
+      <returns>枚举值之一。</returns>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ScrollChrome.HasOuterBorder">
+      <summary>获取或设置一个值，该值指示是否以白色的外边框呈现 <see cref="T:System.Windows.Controls.Primitives.ScrollBar" />。</summary>
+      <returns>如果以白色的外边框呈现 <see cref="T:System.Windows.Controls.Primitives.ScrollBar" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollChrome.HasOuterBorderProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ScrollChrome.HasOuterBorder" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ScrollChrome.Padding">
+      <summary>获取或设置描述 <see cref="T:System.Windows.Controls.Primitives.ScrollBar" /> 及其子元素之间的空间量的值。</summary>
+      <returns>一个 <see cref="T:System.Windows.Thickness" /> 值，用来描述 <see cref="T:System.Windows.Controls.Primitives.ScrollBar" /> 与其子元素之间的空间量。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollChrome.PaddingProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ScrollChrome.Padding" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ScrollChrome.RenderMouseOver">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Windows.Controls.Primitives.ScrollBar" /> 上面是否好像具有鼠标。</summary>
+      <returns>如果 <see cref="T:System.Windows.Controls.Primitives.ScrollBar" /> 上面好像具有鼠标，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollChrome.RenderMouseOverProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ScrollChrome.RenderMouseOver" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ScrollChrome.RenderPressed">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Windows.Controls.Primitives.ScrollBar" /> 看上去是否处于按下状态。</summary>
+      <returns>如果 <see cref="T:System.Windows.Controls.Primitives.ScrollBar" /> 看上去处于按下状态，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollChrome.RenderPressedProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ScrollChrome.RenderPressed" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ScrollChrome.ScrollGlyph">
+      <summary>获取或设置 <see cref="T:Microsoft.Windows.Themes.ScrollGlyph" /> 的 <see cref="T:Microsoft.Windows.Themes.ScrollChrome" /> 的颜色。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollChrome.ScrollGlyphProperty">
+      <summary>标识 <see cref="T:Microsoft.Windows.Themes.ScrollGlyph" /> 附加属性。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ScrollChrome.SetScrollGlyph(System.Windows.DependencyObject,Microsoft.Windows.Themes.ScrollGlyph)">
+      <summary>设置指定对象的 <see cref="T:Microsoft.Windows.Themes.ScrollGlyph" />。</summary>
+      <param name="element">
+        <see cref="T:Microsoft.Windows.Themes.ScrollGlyph" /> 所附加到的依赖项对象。</param>
+      <param name="value">枚举值之一。</param>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ScrollChrome.ThemeColor">
+      <summary>获取或设置主题的颜色。</summary>
+      <returns>枚举中的一个值。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollChrome.ThemeColorProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.ScrollChrome.ThemeColor" /> 依赖项属性。</summary>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.ScrollGlyph">
+      <summary>描述用来表示 <see cref="T:System.Windows.Controls.Primitives.Thumb" /> 的标志符号。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollGlyph.DownArrow">
+      <summary>向下箭头标志符号。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollGlyph.HorizontalGripper">
+      <summary>水平手柄标志符号。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollGlyph.LeftArrow">
+      <summary>向左箭头标志符号。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollGlyph.None">
+      <summary>未使用标志符号。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollGlyph.RightArrow">
+      <summary>向右箭头标志符号。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollGlyph.UpArrow">
+      <summary>向上箭头标志符号。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ScrollGlyph.VerticalGripper">
+      <summary>垂直手柄标志符号。</summary>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.SystemDropShadowChrome">
+      <summary>创建投影效果的特定于主题的外观。</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.SystemDropShadowChrome.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Windows.Themes.SystemDropShadowChrome" /> 类的新实例。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.SystemDropShadowChrome.Color">
+      <summary>获取或设置阴影所用的颜色。</summary>
+      <returns>颜色。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.SystemDropShadowChrome.ColorProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.SystemDropShadowChrome.Color" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.SystemDropShadowChrome.CornerRadius">
+      <summary>获取或设置矩形的角半径。</summary>
+      <returns>矩形的角半径。</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.SystemDropShadowChrome.CornerRadiusProperty">
+      <summary>标识 <see cref="P:Microsoft.Windows.Themes.SystemDropShadowChrome.CornerRadius" /> 依赖项属性。</summary>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.ThemeColor">
+      <summary>表示 Microsoft 主题的可能的颜色变量。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ThemeColor.Homestead">
+      <summary>由 Luna 主题使用；本地化的颜色名称是“橄榄色”。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ThemeColor.Metallic">
+      <summary>由 Luna 主题使用；本地化的颜色名称是“银色”。</summary>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ThemeColor.NormalColor">
+      <summary>由 Luna、Aero 和 Classic 主题使用；本地化的颜色名称是“蓝色”。</summary>
+    </member>
+  </members>
+</doc>

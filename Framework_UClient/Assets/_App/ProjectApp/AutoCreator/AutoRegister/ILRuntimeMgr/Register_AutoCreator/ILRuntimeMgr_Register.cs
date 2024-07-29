@@ -19,9 +19,11 @@ namespace ProjectApp
             appDomain.RegisterCrossBindingAdaptor(new BaseModelAdapter());
             appDomain.RegisterCrossBindingAdaptor(new BaseUICtrlAdapter());
             appDomain.RegisterCrossBindingAdaptor(new BaseUIAdapter());
-            appDomain.RegisterCrossBindingAdaptor(new BaseSystemAdapter());
 
         }
+
+
+        
 
     }
 }

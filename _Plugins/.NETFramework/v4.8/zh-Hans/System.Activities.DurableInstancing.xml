@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Activities.DurableInstancing</name>
+  </assembly>
+  <members>
+    <member name="T:System.Activities.DurableInstancing.InstanceCompletionAction">
+      <summary>包含一些选项，这些选项指定持久性提供程序在实例完成之后是应将实例的状态信息保留在持久性存储中，还是应将该信息删除。</summary>
+    </member>
+    <member name="F:System.Activities.DurableInstancing.InstanceCompletionAction.DeleteAll">
+      <summary>指定在工作流实例完成之后必须从持久性存储中删除工作流实例的数据和元数据。</summary>
+    </member>
+    <member name="F:System.Activities.DurableInstancing.InstanceCompletionAction.DeleteNothing">
+      <summary>指定必须将工作流实例的数据和元数据保留在持久性数据库中，即使在工作流实例完成之后也是如此。</summary>
+    </member>
+    <member name="T:System.Activities.DurableInstancing.InstanceEncodingOption">
+      <summary>包含一些选项，这些选项指定持久性提供程序是否应在将实例状态信息保存到持久性存储之前使用 GZip 算法对该状态信息进行编码。</summary>
+    </member>
+    <member name="F:System.Activities.DurableInstancing.InstanceEncodingOption.GZip">
+      <summary>指定使用 GZip 算法对实例数据进行压缩。</summary>
+    </member>
+    <member name="F:System.Activities.DurableInstancing.InstanceEncodingOption.None">
+      <summary>指定不对实例数据进行压缩。</summary>
+    </member>
+    <member name="T:System.Activities.DurableInstancing.InstanceLockedExceptionAction">
+      <summary>包含一些选项，这些选项指定，如果 SQL 持久性提供程序在尝试锁定实例时收到异常，它应采取什么操作。</summary>
+    </member>
+    <member name="F:System.Activities.DurableInstancing.InstanceLockedExceptionAction.AggressiveRetry">
+      <summary>指定持久性提供程序使用连续尝试之间指数规律增大的延迟重新尝试锁定实例。 持久性提供程序在序列结尾（重试预定义的次数后）将 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 传递给调用方。</summary>
+    </member>
+    <member name="F:System.Activities.DurableInstancing.InstanceLockedExceptionAction.BasicRetry">
+      <summary>指定持久性提供程序将使用线性重试间隔重新尝试锁定实例。 持久性提供程序在序列结尾（重试预定义的次数后）将 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 传递给调用方。</summary>
+    </member>
+    <member name="F:System.Activities.DurableInstancing.InstanceLockedExceptionAction.NoRetry">
+      <summary>指定持久性提供程序在实例已由另一个宿主锁定的情况下不重新尝试锁定该实例。</summary>
+    </member>
+    <member name="T:System.Activities.DurableInstancing.SqlWorkflowInstanceStore">
+      <summary>派生自持久性功能的抽象 <see cref="T:System.Runtime.DurableInstancing.InstanceStore" /> 类，并提供实现以允许将实例状态信息保存到 SQL Server 2005 或 SQL Server 2008 数据库，或从该数据库中加载实例状态信息。</summary>
+    </member>
+    <member name="M:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.DurableInstancing.SqlWorkflowInstanceStore" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.#ctor(System.String)">
+      <summary>使用 <see cref="T:System.Activities.DurableInstancing.SqlWorkflowInstanceStore" /> 参数初始化 <paramref name="connectionString" /> 类的新实例。</summary>
+      <param name="connectionString">持久性数据库的连接字符串。</param>
+    </member>
+    <member name="P:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.ConnectionString">
+      <summary>获取或设置一个带参数的连接字符串，这些参数用于连接到基础持久性数据库。</summary>
+      <returns>连接字符串。</returns>
+    </member>
+    <member name="P:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.EnqueueRunCommands">
+      <summary>获取或设置一个值，该值指示运行命令是否已排入队列。 SQL 工作流实例存储在内部使用此属性，并且此属性不应在应用程序中使用。</summary>
+      <returns>
+        <see langword="true" /> 如果运行命令已排入队列;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.HostLockRenewalPeriod">
+      <summary>指定时间段，宿主必须在该时间段内续订其在工作流服务实例上的锁。</summary>
+      <returns>时间段。</returns>
+    </member>
+    <member name="P:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.InstanceCompletionAction">
+      <summary>指定要在工作流实例完成后采取的操作。 可能的值为“DeleteNothing”和“DeleteAll”。 默认值为“DeleteAll”。 如果该属性设置为“DeleteNothing”，则持久性提供程序将在工作流实例完成后将所有实例数据和元数据保留在持久性数据库中。 如果该属性设置为“DeleteAll”，则持久性提供程序将在工作流实例完成后删除所有实例数据和元数据。</summary>
+      <returns>要在工作流完成后采取的操作。</returns>
+    </member>
+    <member name="P:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.InstanceEncodingOption">
+      <summary>指定一个值，该值指示是否必须对实例数据进行压缩。</summary>
+      <returns>可能的值为"None"和"GZip"。 默认值为“None”。</returns>
+    </member>
+    <member name="P:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.InstanceLockedExceptionAction">
+      <summary>指定要在持久性提供程序捕获 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 时采取的操作。</summary>
+      <returns>要在持久性提供程序捕获 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 时采取的操作。</returns>
+    </member>
+    <member name="P:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.MaxConnectionRetries">
+      <summary>获取或设置最大 SQL 连接重试次数。  默认值为 4。</summary>
+      <returns>一个表示最大 SQL 连接重试次数的整数。</returns>
+    </member>
+    <member name="M:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.Promote(System.String,System.Collections.Generic.IEnumerable{System.Xml.Linq.XName},System.Collections.Generic.IEnumerable{System.Xml.Linq.XName})">
+      <summary>将指定的属性与工作流实例相关联，以便能够基于这些属性的特定值查询实例。 可在外部查询中使用的这些属性可以是简单类型（例如：Int64、字符串等）或串行化的二进制类型（字节 []）。 二进制属性通常用于存储跟踪数据。</summary>
+      <param name="name">提升本身的名称。</param>
+      <param name="promoteAsVariant">必须以变体形式提升的属性。</param>
+      <param name="promoteAsBinary">必须以二进制流形式提升的属性。</param>
+    </member>
+    <member name="P:System.Activities.DurableInstancing.SqlWorkflowInstanceStore.RunnableInstancesDetectionPeriod">
+      <summary>指定时间段，在该时间段后，SQL 工作流实例存储区将运行一个检测任务，来检测上一检测周期后持久性数据库中的任何可运行或可激活的工作流实例。</summary>
+      <returns>返回 <see cref="T:System.TimeSpan" />。</returns>
+    </member>
+  </members>
+</doc>

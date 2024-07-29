@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Activities.Build</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Activities.Build.Debugger.DebugBuildExtension">
+      <summary>工作流生成扩展的调试器支持。</summary>
+    </member>
+    <member name="M:Microsoft.Activities.Build.Debugger.DebugBuildExtension.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Activities.Build.Debugger.DebugBuildExtension" /> 类的新实例。</summary>
+    </member>
+    <member name="M:Microsoft.Activities.Build.Debugger.DebugBuildExtension.Execute(Microsoft.Build.Tasks.Xaml.ClassData,Microsoft.Build.Tasks.Xaml.XamlBuildTypeGenerationExtensionContext)">
+      <summary>指示调试符号是否带有特定的校验和。</summary>
+      <param name="classData">类数据要添加 checksum。</param>
+      <param name="buildContext">生成上下文</param>
+      <returns>如果使用指定的检查和更新的调试标志，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:Microsoft.Activities.Build.Expressions.ExpressionsBuildExtension">
+      <summary>指定有关表达示生成引伸的信息。</summary>
+    </member>
+    <member name="M:Microsoft.Activities.Build.Expressions.ExpressionsBuildExtension.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Activities.Build.Expressions.ExpressionsBuildExtension" /> 类的新实例。</summary>
+    </member>
+    <member name="M:Microsoft.Activities.Build.Expressions.ExpressionsBuildExtension.Execute(Microsoft.Build.Tasks.Xaml.XamlBuildTypeInspectionExtensionContext)">
+      <summary>指示表达式生成扩展是否带有特定的上下文执行。</summary>
+      <param name="buildContext">生成扩展的上下文。</param>
+      <returns>如果使用指定的上下文的表达式生成扩展，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:Microsoft.Activities.Build.Validation.DeferredValidationTask">
+      <summary>表示延迟验证的一个任务。</summary>
+    </member>
+    <member name="M:Microsoft.Activities.Build.Validation.DeferredValidationTask.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Activities.Build.Validation.DeferredValidationTask" /> 类的新实例。</summary>
+    </member>
+    <member name="P:Microsoft.Activities.Build.Validation.DeferredValidationTask.DeferredValidationErrorsFilePath">
+      <summary>获取或设置需要推迟的验证的位置。</summary>
+      <returns>验证要延迟的位置。</returns>
+    </member>
+    <member name="M:Microsoft.Activities.Build.Validation.DeferredValidationTask.Execute">
+      <summary>执行 <see cref="T:Microsoft.Activities.Build.Validation.DeferredValidationTask" />。</summary>
+      <returns>验证的结果。</returns>
+    </member>
+    <member name="T:Microsoft.Activities.Build.Validation.ReportDeferredValidationErrorsTask">
+      <summary>表示报告所有推迟的验证错误的任务。</summary>
+    </member>
+    <member name="M:Microsoft.Activities.Build.Validation.ReportDeferredValidationErrorsTask.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Activities.Build.Validation.ReportDeferredValidationErrorsTask" /> 类的新实例。</summary>
+    </member>
+    <member name="P:Microsoft.Activities.Build.Validation.ReportDeferredValidationErrorsTask.DeferredValidationErrorsFilePath">
+      <summary>获取或设置推迟的验证错误所处的位置。</summary>
+      <returns>隔离延迟验证错误的位置。</returns>
+    </member>
+    <member name="M:Microsoft.Activities.Build.Validation.ReportDeferredValidationErrorsTask.Execute">
+      <summary>执行 <see cref="T:Microsoft.Activities.Build.Validation.ReportDeferredValidationErrorsTask" />。</summary>
+      <returns>执行的结果。</returns>
+    </member>
+    <member name="T:Microsoft.Activities.Build.WorkflowBuildMessageTask">
+      <summary>指定有关工作流生成消息任务的信息。</summary>
+    </member>
+    <member name="M:Microsoft.Activities.Build.WorkflowBuildMessageTask.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Activities.Build.WorkflowBuildMessageTask" /> 类的新实例。</summary>
+    </member>
+    <member name="M:Microsoft.Activities.Build.WorkflowBuildMessageTask.Execute">
+      <summary>指示工作流是否生成消息任务执行。</summary>
+      <returns>如果工作流修造消息任务执行，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:Microsoft.Activities.Build.WorkflowBuildMessageTask.MessageType">
+      <summary>获取或设置消息类型。</summary>
+      <returns>消息类型。</returns>
+    </member>
+    <member name="P:Microsoft.Activities.Build.WorkflowBuildMessageTask.ResourceName">
+      <summary>获取或设置资源名称。</summary>
+      <returns>资源名称。</returns>
+    </member>
+  </members>
+</doc>

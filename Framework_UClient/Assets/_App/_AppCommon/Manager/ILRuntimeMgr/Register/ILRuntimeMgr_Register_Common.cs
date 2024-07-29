@@ -7,30 +7,44 @@
 *****************************************************/
 using UnityEngine;
 using ILRuntime.Runtime.Enviorment;
-
+using System;
 
 namespace ProjectApp
 {
     public static partial class  ILRuntimeMgr_Register
     {
 
-        public static void RegisterAll(AppDomain appDomain)
+        public static void RegisterAll(ILRuntime.Runtime.Enviorment.AppDomain appDomain)
         {
+            RegisterFunctionDelegate(appDomain);
             RegisterCommon(appDomain);
             RegisterProject(appDomain);
         }
 
-        private static void RegisterCommon(AppDomain appDomain)
+        private static void RegisterCommon(ILRuntime.Runtime.Enviorment.AppDomain appDomain)
         {
             
-
-            //appDomain.RegisterCrossBindingAdaptor(new BaseMgrAdapter());
 
             //appDomain.RegisterValueTypeBinder(typeof(Vector3), new Vector3Binder());
             //appDomain.RegisterValueTypeBinder(typeof(Quaternion), new QuaternionBinder());
             //appDomain.RegisterValueTypeBinder(typeof(Vector2), new Vector2Binder());
 
         }
+
+        public static void RegisterFunctionDelegate(ILRuntime.Runtime.Enviorment.AppDomain appDomain)
+        {
+            
+            appDomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction>((act) =>
+            {
+                return new UnityEngine.Events.UnityAction(() =>
+                {
+                    ((Action)act)();
+                });
+            });
+
+        }
+
+
 
     }
 }

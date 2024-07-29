@@ -1,0 +1,2198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.SqlXml</name>
+  </assembly>
+  <members>
+    <member name="T:System.Xml.Xsl.Runtime.AncestorDocOrderIterator">
+      <summary>根据 <see cref="N:System.Xml.XPath" /> 上级轴规则循环访问所有上级节点，并以文档顺序返回这些节点（没有重复项）。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AncestorDocOrderIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Boolean)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.AncestorDocOrderIterator" />。</summary>
+      <param name="context">从其开始遍历上级的节点。</param>
+      <param name="filter">使您能够基于名称来筛选节点。</param>
+      <param name="orSelf">如果希望 <paramref name="context" /> 节点作为迭代的一部分返回，而不被筛除，则为 <see langword="true" />。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.AncestorDocOrderIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AncestorDocOrderIterator.MoveNext">
+      <summary>按文档顺序将迭代器定位到下一个上级节点。</summary>
+      <returns>如果迭代器已按文档顺序设置为下一个上级节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.AncestorIterator">
+      <summary>根据 <see cref="N:System.Xml.XPath" /> 上级轴规则循环访问所有上级节点，并以相反的文档顺序返回这些节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AncestorIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Boolean)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.AncestorIterator" />。</summary>
+      <param name="context">从其开始遍历上级的节点。</param>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，通过该实例可以基于名称来筛选节点。 有关详情，请参阅<see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />。</param>
+      <param name="orSelf">如果希望 <paramref name="context" /> 节点作为迭代的一部分返回，而不被筛除，则为 <see langword="true" />。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.AncestorIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AncestorIterator.MoveNext">
+      <summary>将迭代器定位到下一个上级节点。</summary>
+      <returns>如果存在下一个上级节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.AttributeContentIterator">
+      <summary>循环访问所有特性和子内容节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AttributeContentIterator.Create(System.Xml.XPath.XPathNavigator)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.AttributeContentIterator" />。</summary>
+      <param name="context">从其开始遍历特性和子内容节点的节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.AttributeContentIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AttributeContentIterator.MoveNext">
+      <summary>将迭代器定位到下一个特性或子内容节点。</summary>
+      <returns>如果存在下一个特性或子内容节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.AttributeIterator">
+      <summary>循环访问所有特性。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AttributeIterator.Create(System.Xml.XPath.XPathNavigator)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.AttributeIterator" />。</summary>
+      <param name="context">从其开始遍历特性节点的节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.AttributeIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AttributeIterator.MoveNext">
+      <summary>将迭代器定位到下一个特性节点。</summary>
+      <returns>如果存在下一个特性节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.ContentIterator">
+      <summary>循环访问当前节点的所有子内容节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ContentIterator.Create(System.Xml.XPath.XPathNavigator)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.ContentIterator" />。</summary>
+      <param name="context">从其开始遍历子内容节点的节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.ContentIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ContentIterator.MoveNext">
+      <summary>将迭代器定位到下一个子内容节点。</summary>
+      <returns>如果存在下一个子内容节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.ContentMergeIterator">
+      <summary>循环访问子内容节点或后续同级节点。 按文档顺序维护节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ContentMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.ContentMergeIterator" />。 按文档顺序合并多组内容节点并移除重复项。</summary>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，该实例允许您基于名称来筛选节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.ContentMergeIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ContentMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>将迭代器定位到下一个内容或同级节点。</summary>
+      <param name="input">输入节点。</param>
+      <returns>如果没有更多内容或同级节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />。 如果必须先获取下一个输入节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />。 如果在循环访问节点时，<see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" /> 属性已设置为下一个节点，则返回 <see cref="P:System.Xml.Xsl.Runtime.ContentMergeIterator.Current" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DecimalAggregator">
+      <summary>对一个 <see langword="Decimal" /> 值序列计算聚合。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Average(System.Decimal)">
+      <summary>
+        <see langword="Decimal" /> 值的平均值。</summary>
+      <param name="value">
+        <see langword="Decimal" /> 值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.AverageResult">
+      <summary>获取 <see langword="Decimal" /> 值序列的平均值。</summary>
+      <returns>
+        <see langword="Decimal" /> 值序列的平均值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Create">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.DecimalAggregator" />。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.IsEmpty">
+      <summary>获取一个值，该值指示 <see cref="T:System.Xml.Xsl.Runtime.DecimalAggregator" /> 是否包含结果。</summary>
+      <returns>如果 <see cref="T:System.Xml.Xsl.Runtime.DecimalAggregator" /> 包含结果，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Maximum(System.Decimal)">
+      <summary>如果 <paramref name="value" /> 参数大于现有结果，则将 <paramref name="value" /> 参数赋给现有结果。</summary>
+      <param name="value">
+        <see langword="Decimal" /> 值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.MaximumResult">
+      <summary>获取 <see langword="Decimal" /> 值序列中的最大值。</summary>
+      <returns>
+        <see langword="Decimal" /> 值序列中的最大值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Minimum(System.Decimal)">
+      <summary>如果 <paramref name="value" /> 参数小于现有结果，则将 <paramref name="value" /> 参数赋给现有结果。</summary>
+      <param name="value">
+        <see langword="Decimal" /> 值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.MinimumResult">
+      <summary>获取 <see langword="Decimal" /> 值序列中的最小值。</summary>
+      <returns>
+        <see langword="Decimal" /> 值序列中的最小值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Sum(System.Decimal)">
+      <summary>向现有结果添加 <see langword="Decimal" /> 值。</summary>
+      <param name="value">
+        <see langword="Decimal" /> 值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.SumResult">
+      <summary>获取 <see langword="Decimal" /> 值序列之和。</summary>
+      <returns>
+        <see langword="Decimal" /> 值序列之和。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DescendantIterator">
+      <summary>根据 <see cref="N:System.Xml.XPath" /> 子代轴规则循环访问所有子代节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DescendantIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Boolean)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.DescendantIterator" />。</summary>
+      <param name="input">
+        <see cref="T:System.Xml.XPath.XPathNavigator" />，标识从其开始遍历子代的节点。</param>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，通过该实例可以基于名称来筛选节点。 有关详情，请参阅<see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />。</param>
+      <param name="orSelf">
+        <see cref="T:System.Boolean" />，指示是作为迭代的一部分返回当前节点还是筛除当前节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DescendantIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DescendantIterator.MoveNext">
+      <summary>将迭代器定位到下一个子代节点。</summary>
+      <returns>如果存在下一个子代节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DescendantMergeIterator">
+      <summary>根据 XPath 子代轴规则循环访问所有子代内容节点。 通过不对上一个节点的子树中包含的节点进行查询来消除重复项。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DescendantMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Boolean)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.DescendantMergeIterator" />。 以文档顺序合并多组子代节点并移除重复项。</summary>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，该实例允许您基于名称来筛选节点。 有关详情，请参阅<see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />。</param>
+      <param name="orSelf">
+        <see cref="T:System.Boolean" />，指示是作为迭代的一部分返回当前节点还是筛除当前节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DescendantMergeIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DescendantMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>将此迭代器定位到下一个子代节点。</summary>
+      <param name="input">标识输入节点的 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>如果没有更多子代节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />。 如果需要先获取下一个输入节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />。 如果在循环访问节点时，<see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" /> 属性已设置为下一个节点，则返回 <see cref="P:System.Xml.Xsl.Runtime.DescendantMergeIterator.Current" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DifferenceIterator">
+      <summary>表示将迭代器定位到两组节点间不同节点中的下一个节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DifferenceIterator.Create(System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.DifferenceIterator" /> 类的新实例。</summary>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 对象。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DifferenceIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DifferenceIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>将此迭代器定位到并集中的下一个节点。</summary>
+      <param name="nestedNavigator">标识当前节点的 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.SetIteratorResult" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DodSequenceMerge">
+      <summary>将若干个 doc-order-distinct 序列合并到一个 doc-order-distinct 序列中。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DodSequenceMerge.AddSequence(System.Collections.Generic.IList{System.Xml.XPath.XPathNavigator})">
+      <summary>将新序列添加到要合并的序列列表中。</summary>
+      <param name="sequence">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DodSequenceMerge.Create(System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>初始化此 <see cref="T:System.Xml.Xsl.Runtime.DodSequenceMerge" /> 实例。</summary>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例，它提供了用于支持 XSLT 处理器的方法和属性。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DodSequenceMerge.MergeSequences">
+      <summary>返回完全合并的序列。</summary>
+      <returns>完全合并的序列。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DoubleAggregator">
+      <summary>对一个 <see langword="double" /> 值序列计算聚合。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Average(System.Double)">
+      <summary>返回 <see langword="double" /> 值序列的平均值。</summary>
+      <param name="value">一个 <see langword="double" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.AverageResult">
+      <summary>对一个 <see langword="double" /> 值序列计算平均值。</summary>
+      <returns>平均值结果。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Create">
+      <summary>初始化 <see langword="double" /> 值的序列。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.IsEmpty">
+      <summary>确定 <see langword="double" /> 值序列是否为空。</summary>
+      <returns>如果结果为空，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Maximum(System.Double)">
+      <summary>如果 <paramref name="value" /> 参数大于现有结果，则将 <paramref name="value" /> 参数赋给现有结果。</summary>
+      <param name="value">一个 <see langword="double" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.MaximumResult">
+      <summary>返回 <see langword="double" /> 值序列的最大值。</summary>
+      <returns>最大值结果。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Minimum(System.Double)">
+      <summary>如果 <paramref name="value" /> 参数小于现有结果，则将 <paramref name="value" /> 参数赋给现有结果。</summary>
+      <param name="value">一个 <see langword="double" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.MinimumResult">
+      <summary>返回 <see langword="double" /> 值序列的最小值。</summary>
+      <returns>最小值结果。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Sum(System.Double)">
+      <summary>向现有结果添加 <see langword="Double" /> 值。</summary>
+      <param name="value">一个 <see langword="double" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.SumResult">
+      <summary>返回 <see langword="double" /> 值序列之和。</summary>
+      <returns>所有结果之和。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.ElementContentIterator">
+      <summary>循环访问具有匹配名称的所有子元素。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ElementContentIterator.Create(System.Xml.XPath.XPathNavigator,System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.ElementContentIterator" />。</summary>
+      <param name="context">从其开始遍历子元素的节点。</param>
+      <param name="localName">本地名称。</param>
+      <param name="ns">命名空间。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.ElementContentIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ElementContentIterator.MoveNext">
+      <summary>将迭代器定位到具有匹配名称的下一个子元素。</summary>
+      <returns>如果迭代器已设置为具有匹配名称的下一个子元素，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.FollowingSiblingIterator">
+      <summary>循环访问所有后续同级内容节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.FollowingSiblingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.FollowingSiblingIterator" />。</summary>
+      <param name="context">从其开始遍历子内容节点的节点。</param>
+      <param name="filter">使您能够基于名称来筛选节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.FollowingSiblingIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.FollowingSiblingIterator.MoveNext">
+      <summary>将迭代器定位到下一个同级内容节点。</summary>
+      <returns>如果存在下一个同级内容节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator">
+      <summary>按同级节点的排列顺序循环访问子节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator" />。</summary>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，通过该实例可以基于名称来筛选节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>将此迭代器定位到下一个内容或同级节点。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>如果没有更多内容或同级节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />。 如果需要先获取下一个输入节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />。 如果在循环访问节点时，<see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" /> 属性已设置为下一个节点，则返回 <see cref="P:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator.Current" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.IdIterator">
+      <summary>标记化一个字符串，该字符串包含 IDREF 值并取消引用这些值以获取 ID 元素的列表。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.IdIterator.Create(System.Xml.XPath.XPathNavigator,System.String)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.IdIterator" />。</summary>
+      <param name="context">包含上下文的 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <param name="value">要包含迭代器值的字符串。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.IdIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.IdIterator.MoveNext">
+      <summary>将迭代器定位到下一个 ID 元素。</summary>
+      <returns>如果存在下一个节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.Int32Aggregator">
+      <summary>对一个 Int32 值序列计算聚合。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Average(System.Int32)">
+      <summary>查找 Int32 值序列的平均值。</summary>
+      <param name="value">一个 <see langword="Int32" /> 类型的值，该值标识要计算平均值的一组项（如表中的某列）。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.AverageResult">
+      <summary>返回 Int32 值序列的平均值。</summary>
+      <returns>一个 <see langword="Int32" /> 值，该值包含 <see langword="Int32" /> 值序列的平均值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Create">
+      <summary>初始化 <see langword="Int32" /> 值的序列。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.IsEmpty">
+      <summary>返回一个布尔值，该值指示该序列是否为空。</summary>
+      <returns>如果该序列为空，则返回 <see langword="true" />；否则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Maximum(System.Int32)">
+      <summary>如果 <paramref name="value" /> 参数大于现有结果，则将 <paramref name="value" /> 参数赋给现有结果。</summary>
+      <param name="value">一个 <see langword="Int32" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.MaximumResult">
+      <summary>返回 <see langword="Int32" /> 值序列中的最大值。</summary>
+      <returns>一个 <see langword="Int32" /> 值，该值包含 <see langword="Int32" /> 值序列中的最大值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Minimum(System.Int32)">
+      <summary>如果 <paramref name="value" /> 参数小于现有结果，则将 <paramref name="value" /> 参数赋给现有结果。</summary>
+      <param name="value">一个 <see langword="Int32" /> 类型的值</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.MinimumResult">
+      <summary>返回 Int32 值序列中的最小值。</summary>
+      <returns>一个 <see langword="Int32" /> 值，该值包含 <see langword="Int32" /> 值序列中的最小值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Sum(System.Int32)">
+      <summary>向现有结果添加 <see langword="Int32" /> 值。</summary>
+      <param name="value">一个 <see langword="Int32" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.SumResult">
+      <summary>返回 Int32 值序列之和。</summary>
+      <returns>一个 <see langword="Int32" /> 值，该值包含 <see langword="Int32" /> 值序列之和。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.Int64Aggregator">
+      <summary>对一个 <see langword="Int64" /> 值序列计算聚合。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Average(System.Int64)">
+      <summary>查找 <see langword="Int64" /> 值序列的平均值。</summary>
+      <param name="value">一个 <see langword="Int64" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.AverageResult">
+      <summary>返回一个 <see langword="Int64" /> 值，该值包含 <see langword="Int64" /> 值序列的平均值。</summary>
+      <returns>一个 <see langword="Int64" /> 值，该值包含 <see langword="Int64" /> 值序列的平均值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Create">
+      <summary>初始化 <see langword="Int64" /> 值的序列。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.IsEmpty">
+      <summary>返回一个布尔值，该值指示 <see langword="Int64" /> 值序列是否为空。</summary>
+      <returns>如果 <see langword="true" /> 值序列为空，则返回 <see langword="Int64" />；否则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Maximum(System.Int64)">
+      <summary>如果 <paramref name="value" /> 参数大于现有结果，则将 <paramref name="value" /> 参数赋给现有结果。</summary>
+      <param name="value">一个 <see langword="Int64" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.MaximumResult">
+      <summary>获取最大的 <see langword="Int64" /> 值。</summary>
+      <returns>最大的 <see langword="Int64" /> 值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Minimum(System.Int64)">
+      <summary>如果 <paramref name="value" /> 参数小于现有结果，则将 <paramref name="value" /> 参数赋给现有结果。</summary>
+      <param name="value">一个 <see langword="Int64" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.MinimumResult">
+      <summary>获取最小的 <see langword="Int64" /> 值。</summary>
+      <returns>最小的 <see langword="Int64" /> 值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Sum(System.Int64)">
+      <summary>向现有结果添加 <see langword="Int64" /> 值。</summary>
+      <param name="value">一个 <see langword="Int64" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.SumResult">
+      <summary>返回一个 <see langword="Int64" /> 值，该值包含 <see langword="Int64" /> 值序列之和。</summary>
+      <returns>一个 <see langword="Int64" /> 值，该值包含 <see langword="Int64" /> 值序列之和。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.IntersectIterator">
+      <summary>表示将迭代器定位到两组节点间交集中的下一个节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.IntersectIterator.Create(System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.IntersectIterator" /> 类的新实例。</summary>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 对象。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.IntersectIterator.Current">
+      <summary>获取或设置当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.IntersectIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>将此迭代器定位到并集中的下一个节点。</summary>
+      <param name="nestedNavigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.SetIteratorResult" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.IteratorResult">
+      <summary>迭代器（使用包容来控制嵌套的迭代器）返回此枚举中的一个值。</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode">
+      <summary>迭代完成；没有更多节点。</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode">
+      <summary>必须从包含的迭代器获取下一个节点才能继续迭代。</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes">
+      <summary>迭代完成；没有更多节点</summary>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.NamespaceIterator">
+      <summary>循环访问所有命名空间节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NamespaceIterator.Create(System.Xml.XPath.XPathNavigator)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.NamespaceIterator" />。</summary>
+      <param name="context">用于标识 <see cref="T:System.Xml.XPath.XPathNavigator" /> 的 <see cref="T:System.Xml.Xsl.XsltContext" />。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.NamespaceIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NamespaceIterator.MoveNext">
+      <summary>将迭代器定位到下一个命名空间节点。</summary>
+      <returns>如果存在下一个命名空间节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.NodeKindContentIterator">
+      <summary>循环访问具有匹配节点类型的所有子内容节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NodeKindContentIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNodeType)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.NodeKindContentIterator" />。</summary>
+      <param name="context">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <param name="nodeType">
+        <see cref="T:System.Xml.XPath.XPathNodeType" /> 对象。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.NodeKindContentIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NodeKindContentIterator.MoveNext">
+      <summary>将迭代器定位到具有匹配节点类型的下一个子内容节点。</summary>
+      <returns>如果存在具有匹配节点类型的下一个子内容节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.NodeRangeIterator">
+      <summary>如果起始节点与结束节点是同一节点，则循环访问单一实例节点。 如果起始节点在结束节点之后或者在另一个文档中，则遍历到文档末尾。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NodeRangeIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Xml.XPath.XPathNavigator)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.NodeRangeIterator" />。</summary>
+      <param name="start">迭代开始处的节点。</param>
+      <param name="filter">确定是否筛除节点的测试表达式。</param>
+      <param name="end">迭代结束处的节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.NodeRangeIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NodeRangeIterator.MoveNext">
+      <summary>将迭代器定位到下一个节点。</summary>
+      <returns>如果存在下一个节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.ParentIterator">
+      <summary>根据 <see cref="N:System.Xml.XPath" />（父轴规则）循环访问匹配父节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ParentIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.ParentIterator" />。</summary>
+      <param name="context">从其开始遍历节点的节点。</param>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，通过该实例可以基于名称来筛选节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.ParentIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ParentIterator.MoveNext">
+      <summary>将迭代器定位到下一个匹配父节点。</summary>
+      <returns>如果存在下一个匹配父节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.PrecedingIterator">
+      <summary>按文档顺序循环访问所有内容类型的节点，这些节点位于起始节点之前。 以相反的文档顺序返回这些节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.PrecedingIterator" />。 <see cref="T:System.Xml.Xsl.Runtime.PrecedingIterator" /> 不包含重复项。</summary>
+      <param name="context">从其开始遍历节点的节点。</param>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，通过该实例可以基于名称来筛选节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.PrecedingIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingIterator.MoveNext">
+      <summary>按相反的文档顺序将迭代器定位到下一个前面的节点。</summary>
+      <returns>如果存在下一个前面的节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator">
+      <summary>按文档顺序循环访问所有前面的同级内容节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator" />。</summary>
+      <param name="context">从其开始遍历节点的节点。</param>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，通过该实例可以基于名称来筛选节点。 有关详情，请参阅<see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator.MoveNext">
+      <summary>将迭代器定位到下一个前面的同级节点。</summary>
+      <returns>如果存在下一个前面的同级节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.PrecedingSiblingIterator">
+      <summary>根据 <see cref="N:System.Xml.XPath" /> 前面的同级轴规则循环访问所有前面的同级节点，并以相反的文档顺序返回这些节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingSiblingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.PrecedingSiblingIterator" />。</summary>
+      <param name="context">从其开始遍历节点的节点。</param>
+      <param name="filter">使您能够基于名称来筛选节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.PrecedingSiblingIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingSiblingIterator.MoveNext">
+      <summary>以相反的文档顺序将迭代器定位到下一个前面的同级节点。</summary>
+      <returns>如果存在下一个前面的同级节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.SetIteratorResult">
+      <summary>通过 <see langword="Union" />、<see langword="Intersection" /> 或 <see langword="Difference" />（它们使用包容来控制两个嵌套的迭代器）为元素组合设置迭代器。 这将从 <see cref="M:System.Xml.Xsl.Runtime.IdIterator.MoveNext" /> 返回一个枚举值。</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.HaveCurrentNode">
+      <summary>此迭代器的 <see cref="P:System.Xml.XPath.XPathNodeIterator.Current" /> 属性设置为迭代中的下一个节点。</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.InitRightIterator">
+      <summary>初始化右侧嵌套的迭代器。</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.NeedLeftNode">
+      <summary>需要从左侧嵌套的迭代器获取下一个节点。</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.NeedRightNode">
+      <summary>需要从右侧嵌套的迭代器获取下一个节点。</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.NoMoreNodes">
+      <summary>迭代完成；没有更多节点。</summary>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.StringConcat">
+      <summary>在预先不知道字符串数目的情况下串联字符串。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.StringConcat.Clear">
+      <summary>清除结果字符串。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.StringConcat.Concat(System.String)">
+      <summary>将一个新字符串连接到结果。</summary>
+      <param name="value">一个要连接到结果的 <see langword="string" /> 值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.StringConcat.Delimiter">
+      <summary>获取或设置分隔串联字符串的字符串。</summary>
+      <returns>字符串分隔符。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.StringConcat.GetResult">
+      <summary>获取结果字符串。</summary>
+      <returns>一个包含结果的 <see langword="string" /> 值。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.UnionIterator">
+      <summary>管理已按文档顺序排列且不含重复项的两组节点，并按文档顺序返回这两组的并集（不含重复项）。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.UnionIterator.Create(System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.UnionIterator" /> 类。</summary>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 对象。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.UnionIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.UnionIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>将此迭代器定位到并集中的下一个节点。</summary>
+      <param name="nestedNavigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.SetIteratorResult" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlCollation">
+      <summary>构造一个使用指定的区域性和比较选项的排序规则。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlCollation.Equals(System.Object)">
+      <summary>如果此 XML 扩展函数与另一个 XML 扩展函数具有相同的值，则返回 <see langword="true" />。</summary>
+      <param name="obj">用于确定是否相等的 <see cref="T:System.Object" />。</param>
+      <returns>如果此 XML 扩展函数与另一个 XML 扩展函数具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlCollation.GetHashCode">
+      <summary>返回对象的哈希代码。</summary>
+      <returns>对象的哈希代码。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlILIndex">
+      <summary>在输入文档中管理按键值编制索引的节点。 此类用作按 <c>xsl:key</c> 指令编制索引的节点的缓存并允许快速访问这些节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILIndex.Add(System.String,System.Xml.XPath.XPathNavigator)">
+      <summary>添加按指定键值编制索引的节点。</summary>
+      <param name="key">指定的键。</param>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 的一个实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILIndex.Lookup(System.String)">
+      <summary>查找按指定键值编制索引的节点序列。</summary>
+      <param name="key">指定的键。</param>
+      <returns>按指定键值编制索引的节点序列。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlILStorageConverter">
+      <summary>表示内部类提供静态帮助器方法，这些方法从 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 获取值转换器以便在同一逻辑 XML 类型的若干个物理公共语言运行时 (CLR) 表示形式间实现转换。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.BooleanToAtomicValue(System.Boolean,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将布尔值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="Boolean" /> 值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="Boolean" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.BytesToAtomicValue(System.Byte[],System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将字节数组转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="Byte" /> 数组。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="Byte" /> 数组的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.DateTimeToAtomicValue(System.DateTime,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将 <see langword="DateTime" /> 值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="DateTime" /> 类型的值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="DateTime" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.DecimalToAtomicValue(System.Decimal,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将十进制值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="Decimal" /> 类型的值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="Decimal" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.DoubleToAtomicValue(System.Double,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将 <see langword="Double" /> 值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="Double" /> 类型的值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="Double" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.Int32ToAtomicValue(System.Int32,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将 <see langword="Int32" /> 值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="Int32" /> 类型的值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="Int32" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.Int64ToAtomicValue(System.Int64,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将 <see langword="Int64" /> 值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="Int64" /> 类型的值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="Int64" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.ItemsToNavigators(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>将 <see cref="T:System.Xml.XPath.XPathItem" /> 对象的列表或序列转换为 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象或值的序列。</summary>
+      <param name="listItems">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类型的泛型列表。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.NavigatorsToItems(System.Collections.Generic.IList{System.Xml.XPath.XPathNavigator})">
+      <summary>将 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象或值的序列转换为 <see cref="T:System.Xml.XPath.XPathItem" /> 对象的列表或序列。</summary>
+      <param name="listNavigators">一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 实例的序列。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类型的泛型列表。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.SingleToAtomicValue(System.Single,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将 <see langword="Single" /> 值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="Single" /> 类型的值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="Single" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.StringToAtomicValue(System.String,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将字符串值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see langword="String" /> 类型的值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="String" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.TimeSpanToAtomicValue(System.TimeSpan,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将 <see cref="T:System.TimeSpan" /> 值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see cref="T:System.TimeSpan" /> 类型的值。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="TimeSpan" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.XmlQualifiedNameToAtomicValue(System.Xml.XmlQualifiedName,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>将 <see cref="T:System.Xml.XmlQualifiedName" /> 值转换为 <see cref="T:System.Xml.Schema.XmlAtomicValue" />。</summary>
+      <param name="value">要转换的 <see cref="T:System.Xml.XmlQualifiedName" /> 类的实例。</param>
+      <param name="index">一个 <see langword="Int32" /> 类型的值，该值提供要转换的项的索引。</param>
+      <param name="runtime">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> 类的实例。</param>
+      <returns>
+        <see langword="XmlQualifiedName" /> 值的 <see cref="T:System.Xml.Schema.XmlAtomicValue" /> 对象。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter">
+      <summary>
+        <see langword="XmlNavigatorFilter" /> 对 <see cref="T:System.Xml.XPath.XPathNavigator" /> 提供了灵活的筛选抽象。 调用方不知道将发生的筛选类型；它们只调用 <see cref="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToContent(System.Xml.XPath.XPathNavigator)" /> 或 <see cref="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToFollowingSibling(System.Xml.XPath.XPathNavigator)" />。 筛选器实现对 <see cref="T:System.Xml.XPath.XPathNavigator" /> 调用相应的操作以跳过已筛除的节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.#ctor">
+      <summary>对 <see cref="T:System.Xml.XPath.XPathNavigator" /> 提供了灵活的筛选抽象。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.IsFiltered(System.Xml.XPath.XPathNavigator)">
+      <summary>如果导航器的当前节点与筛选条件匹配，则返回 <see langword="true" />。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>如果当前节点与该条件匹配，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToContent(System.Xml.XPath.XPathNavigator)">
+      <summary>将导航器重定位到第一个匹配的内容节点或特性，同时跳过已筛除的节点。 如果不存在任何匹配节点，则导航器不移动，方法返回 False。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>如果导航器重定位到具有匹配名称的子元素，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToFollowing(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNavigator)">
+      <summary>将导航器重定位到下一个匹配的内容节点或特性，同时跳过已筛除的节点。 如果不存在任何匹配节点，则导航器不移动，方法返回 False。</summary>
+      <param name="navigator">一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例，该实例标识导航可在其中移动的范围开始处。</param>
+      <param name="navigatorEnd">一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例，该实例标识导航可在其中移动的范围结尾处。</param>
+      <returns>如果导航器重定位到具有匹配名称的下一个元素，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToFollowingSibling(System.Xml.XPath.XPathNavigator)">
+      <summary>将导航器重定位到同级匹配的内容节点或子代，同时跳过已筛除的节点。 如果不存在任何匹配节点，则导航器不移动，方法返回 False。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>如果导航器重定位到具有匹配名称的下一个元素同级，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToNextContent(System.Xml.XPath.XPathNavigator)">
+      <summary>将导航器重定位到下一个匹配的内容节点或特性，同时跳过已筛除的节点。 如果不存在任何匹配节点，则导航器不移动，方法返回 False。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>如果导航器重定位到具有匹配名称的下一个元素子级，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToPreviousSibling(System.Xml.XPath.XPathNavigator)">
+      <summary>将导航器重定位到上一个匹配的同级节点，同时跳过已筛除的节点。 如果不存在任何匹配节点，则导航器不移动，方法返回 False。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>如果导航器重定位到具有匹配名称的上一个元素同级，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryContext">
+      <summary>查询的上下文包括影响查询操作的所有用户提供的信息。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryContext.DefaultDataSource">
+      <summary>如果未在查询中显式选择任何数据源，则默认情况下将返回查询的文档。</summary>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryContext.DefaultNameTable">
+      <summary>返回默认数据源使用的名称表；如果没有任何默认数据源，则返回 Null。</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlNameTable" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.GetDataSource(System.String,System.String)">
+      <summary>从用户提供的 <c>T:System.Xml.XmlResolver</c> 获取由 <paramref name="uriRelative" /> 和 <paramref name="uriBase" /> 指定的数据源。</summary>
+      <param name="uriRelative">一个 <see langword="string" /> 类型的值。</param>
+      <param name="uriBase">一个 <see langword="string" /> 类型的值。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.GetLateBoundObject(System.String)">
+      <summary>返回映射到指定命名空间的扩展对象；如果未映射任何对象，则返回 Null。</summary>
+      <param name="namespaceUri">一个 <see langword="string" /> 类型的值。</param>
+      <returns>一个扩展对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.GetParameter(System.String,System.String)">
+      <summary>从外部自变量列表中获取一个命名参数。</summary>
+      <param name="localName">一个 <see langword="string" /> 类型的值。</param>
+      <param name="namespaceUri">一个 <see langword="string" /> 类型的值。</param>
+      <returns>如果未提供任何参数列表或没有该名称的参数，则返回 <see langword="null" />；否则返回外部参数列表中的一个命名参数。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.InvokeXsltLateBoundFunction(System.String,System.String,System.Collections.Generic.IList{System.Xml.XPath.XPathItem}[])">
+      <summary>从外部自变量列表中获取一个后期绑定的扩展对象。</summary>
+      <param name="name">一个 <see langword="string" /> 类型的值。</param>
+      <param name="namespaceUri">一个 <see langword="string" /> 类型的值。</param>
+      <param name="args">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类型的泛型列表。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.LateBoundFunctionExists(System.String,System.String)">
+      <summary>如果 <paramref name="namespaceUri" /> 标识的后期绑定的对象包含与 <paramref name="name" /> 匹配的方法，则返回 True。</summary>
+      <param name="name">一个 <see langword="string" /> 类型的值。</param>
+      <param name="namespaceUri">一个 <see langword="string" /> 类型的值。</param>
+      <returns>如果后期绑定的对象与名称匹配，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.OnXsltMessageEncountered(System.String)">
+      <summary>引发 <see cref="E:System.Xml.Xsl.XsltArgumentList.XsltMessageEncountered" /> 事件。</summary>
+      <param name="message">一个 <see langword="string" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryContext.QueryNameTable">
+      <summary>获取 <see cref="T:System.Xml.XmlNameTable" /> 实例。</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlNameTable" /> 的一个实例。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence">
+      <summary>XML 项的序列，可动态扩展并允许随机访问项。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.#ctor">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.#ctor(System.Int32)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 类的新实例。</summary>
+      <param name="capacity">一个 <see langword="Int32" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.#ctor(System.Xml.XPath.XPathItem)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 类的新实例。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.AddClone(System.Xml.XPath.XPathItem)">
+      <summary>将某项添加到序列中。 如果该项是导航器，则此方法会先克隆该项再将它添加到序列中。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryItemSequence)">
+      <summary>清除并重用 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 对象（如果可用）。 如果 <paramref name="seq" /> 参数为 null，则创建一个新的 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />。</summary>
+      <param name="seq">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 类的实例。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryItemSequence,System.Xml.XPath.XPathItem)">
+      <summary>清除并重用 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 对象（如果可用）。 如果 <paramref name="seq" /> 参数为 null，则创建一个新的 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />。 然后，此方法会将新项添加到已重用序列或新序列中。</summary>
+      <param name="seq">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 类的实例。</param>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" /> 类的实例。</returns>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.XmlQueryItemSequence.Empty">
+      <summary>返回正确初始化的空 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />。</summary>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence">
+      <summary>XML 节点的序列，可动态扩展并允许随机访问项。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor(System.Collections.Generic.IList{System.Xml.XPath.XPathNavigator})">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的新实例。</summary>
+      <param name="list">一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 实例的序列。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor(System.Int32)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的新实例。</summary>
+      <param name="capacity">一个 <see langword="Int32" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor(System.Xml.XPath.XPathNavigator)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的新实例。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor(System.Xml.XPath.XPathNavigator[],System.Int32)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的新实例。</summary>
+      <param name="array">一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例数组。</param>
+      <param name="size">一个 <see langword="int" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.AddClone(System.Xml.XPath.XPathNavigator)">
+      <summary>克隆导航器然后向序列添加节点。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryNodeSequence)">
+      <summary>清除并重用指定的 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />（如果可用）。 如果 <paramref name="seq" /> 参数为 <see langword="null" />，则创建一个新的 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />。</summary>
+      <param name="seq">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的实例。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryNodeSequence,System.Xml.XPath.XPathNavigator)">
+      <summary>清除并重用指定的 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />（如果可用）。 如果 <paramref name="seq" /> 参数为 <see langword="null" />，则创建一个新的 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 并将 <paramref name="navigator" /> 添加到序列中。</summary>
+      <param name="seq">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的实例。</param>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.DocOrderDistinct(System.Collections.Generic.IComparer{System.Xml.XPath.XPathNavigator})">
+      <summary>返回一个序列，该序列包含此缓存中的所有非重复节点（按文档顺序排序）。</summary>
+      <param name="comparer">一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 实例的序列。</param>
+      <returns>一个 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> 类实例的序列。</returns>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.Empty">
+      <summary>获取一个正确初始化的空 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.IsDocOrderDistinct">
+      <summary>如果此属性为 true，则此缓存中的节点将按文档顺序排列并且不含重复项。</summary>
+      <returns>如果节点不重复，则返回 <see langword="true" />；否则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{System#Xml#XPath#XPathItem}#Add(System.Xml.XPath.XPathItem)">
+      <summary>引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="value">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{System#Xml#XPath#XPathItem}#Clear">
+      <summary>引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{System#Xml#XPath#XPathItem}#Contains(System.Xml.XPath.XPathItem)">
+      <summary>如果指定的值在序列中，则返回 true。</summary>
+      <param name="value">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>如果此值在序列中，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{System#Xml#XPath#XPathItem}#CopyTo(System.Xml.XPath.XPathItem[],System.Int32)">
+      <summary>将此序列的内容复制到指定目标数组中从指定索引处开始的位置。</summary>
+      <param name="array">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 实例的数组。</param>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{System#Xml#XPath#XPathItem}#IsReadOnly">
+      <summary>指定无法通过 <see cref="T:System.Collections.Generic.ICollection`1" /> 接口添加、移除或修改项。</summary>
+      <returns>如果该集合为只读，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{System#Xml#XPath#XPathItem}#Remove(System.Xml.XPath.XPathItem)">
+      <summary>引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="value">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>如果删除该项，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IEnumerable{System#Xml#XPath#XPathItem}#GetEnumerator">
+      <summary>返回 <see cref="T:System.Xml.XPath.XPathItem" /> 实现的 <see cref="T:System.Collections.Generic.IEnumerator`1" />。</summary>
+      <returns>IEnumerator&lt;XPathItem&gt; 实现。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IList{System#Xml#XPath#XPathItem}#IndexOf(System.Xml.XPath.XPathItem)">
+      <summary>返回序列中指定值的索引。</summary>
+      <param name="value">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>序列中指定值的索引。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IList{System#Xml#XPath#XPathItem}#Insert(System.Int32,System.Xml.XPath.XPathItem)">
+      <summary>引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <param name="value">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IList{System#Xml#XPath#XPathItem}#Item(System.Int32)">
+      <summary>返回位于指定索引处的项。</summary>
+      <param name="index">一个 <see langword="Int32" /> 类型的值。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IList{System#Xml#XPath#XPathItem}#RemoveAt(System.Int32)">
+      <summary>引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryOutput">
+      <summary>表示一个 <see cref="T:System.Xml.XmlWriter" />，它提供输出 XSLT 转换的结果所需的其他功能。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.Close">
+      <summary>此方法作为空方法来实现，它不执行任何操作。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.EndCopy(System.Xml.XPath.XPathNavigator)">
+      <summary>结束导航器当前节点的浅表复制。 只应对元素节点和文档节点调用此方法。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.EndTree">
+      <summary>写入树的结尾。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.Flush">
+      <summary>此方法作为空方法来实现，它不执行任何操作。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.LookupPrefix(System.String)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="ns">包含命名空间名称的字符串。</param>
+      <returns>一个包含前缀的字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.StartCopy(System.Xml.XPath.XPathNavigator)">
+      <summary>开始将导航器的当前节点向输出进行浅表复制。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>如果应调用 <see langword="true" /> 完成复制操作，则为 <see langword="EndCopy" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.StartElementContentUnchecked">
+      <summary>在已枚举某个元素的特性之后、未枚举任何子级之前调用。 已假定格式正确，因此无需执行额外检查。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.StartTree(System.Xml.XPath.XPathNodeType)">
+      <summary>开始新树的构造。</summary>
+      <param name="rootType">
+        <see cref="T:System.Xml.XPath.XPathNodeType" /> 对象。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteBase64(System.Byte[],System.Int32,System.Int32)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="buffer">包含要写入的数据的 <see cref="T:System.Byte" /> 缓冲区对象。</param>
+      <param name="index">包含起始索引的 <see cref="T:System.Int32" />。</param>
+      <param name="count">包含计数字节的 <see cref="T:System.Int32" />。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteCData(System.String)">
+      <summary>不执行任何操作的空实现。</summary>
+      <param name="text">包含要写入的数据的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteCharEntity(System.Char)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="ch">包含要写入的字符的 <see cref="T:System.Char" />。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteChars(System.Char[],System.Int32,System.Int32)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="buffer">包含要写入的数据的 <see cref="T:System.Char" /> 缓冲区数组。</param>
+      <param name="index">包含起始索引的 <see cref="T:System.Int32" />。</param>
+      <param name="count">包含要写入的字符计数的 <see cref="T:System.Int32" />。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteComment(System.String)">
+      <summary>写入注释。 此方法不验证格式是否良好。 此方法调用的其他方法执行必要的检查。</summary>
+      <param name="text">包含要写入的注释的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteCommentString(System.String)">
+      <summary>缓存注释的字符串。</summary>
+      <param name="text">包含要写入的注释的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteDocType(System.String,System.String,System.String,System.String)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。 切勿调用。</summary>
+      <param name="name">包含文档名称的字符串。</param>
+      <param name="pubid">包含发布 ID 的字符串。</param>
+      <param name="sysid">包含系统 ID 的字符串。</param>
+      <param name="subset">包含子集名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndAttribute">
+      <summary>检查特性的格式是否良好并写入特性的结尾。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndAttributeUnchecked">
+      <summary>写入特性的结尾。 已假定格式正确，因此无需执行额外检查。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndComment">
+      <summary>检查注释的格式是否良好并写入注释的结尾。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndDocument">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndElement">
+      <summary>检查元素的格式是否良好并写入元素的结尾。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndElementUnchecked(System.String)">
+      <summary>将本地名称写入元素的结尾。 已假定格式正确，因此无需执行额外检查。</summary>
+      <param name="localName">包含元素的本地名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndElementUnchecked(System.String,System.String,System.String)">
+      <summary>将前缀、本地名称和命名空间写入元素的结尾。 不执行任何检查。</summary>
+      <param name="prefix">包含元素前缀的字符串。</param>
+      <param name="localName">包含元素的本地名称的字符串。</param>
+      <param name="ns">包含命名空间名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndNamespace">
+      <summary>检查命名空间的格式是否良好并写入命名空间。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndProcessingInstruction">
+      <summary>检查处理指令的格式是否良好并写入处理指令。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndRoot">
+      <summary>写入树根的结尾并重置状态。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEntityRef(System.String)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="name">包含实体名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteFullEndElement">
+      <summary>检查元素的格式是否良好，然后再写入元素的结尾。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteItem(System.Xml.XPath.XPathItem)">
+      <summary>向输出写入项。  如果当前正在构造一个 Xml 树，则始终复制该项。 在顶级，该项的标识将保留，除非它是原子值。</summary>
+      <param name="item">要写入的 <see cref="T:System.Xml.XPath.XPathItem" /> 对象。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteNamespaceDeclaration(System.String,System.String)">
+      <summary>检查命名空间声明的格式是否良好并写入命名空间声明。</summary>
+      <param name="prefix">包含命名空间前缀的字符串。</param>
+      <param name="ns">包含命名空间名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteNamespaceDeclarationUnchecked(System.String,System.String)">
+      <summary>将新的命名空间声明 <c>- xmlns:prefix="ns"</c> - 添加到范围内声明集。 此方法不执行任何额外检查。</summary>
+      <param name="prefix">包含命名空间前缀的字符串。</param>
+      <param name="ns">包含命名空间名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteNamespaceString(System.String)">
+      <summary>缓存命名空间的文本。</summary>
+      <param name="text">包含完全限定命名空间的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteProcessingInstruction(System.String,System.String)">
+      <summary>写入处理指令。 此方法不检查格式是否良好；所调用的方法可根据需要进行检查。</summary>
+      <param name="target">包含指令目标的字符串。</param>
+      <param name="text">包含指令文本的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteProcessingInstructionString(System.String)">
+      <summary>缓存处理指令的文本。</summary>
+      <param name="text">包含指令的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteRaw(System.Char[],System.Int32,System.Int32)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="buffer">要写入的 <see cref="T:System.Char" /> 缓冲区数组。</param>
+      <param name="index">包含起始索引的 <see cref="T:System.Int32" />。</param>
+      <param name="count">包含要写入的计数字符的 <see cref="T:System.Int32" />。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteRaw(System.String)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="data">包含原始数据的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteRawUnchecked(System.String)">
+      <summary>写入文本块而不转义特殊字符。</summary>
+      <param name="text">包含要写入的文本的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttribute(System.String,System.String,System.String)">
+      <summary>检查特性的格式是否良好，然后再写入特性的开头。</summary>
+      <param name="prefix">包含特性前缀的字符串。</param>
+      <param name="localName">包含特性的本地名称的字符串。</param>
+      <param name="ns">包含特性的命名空间的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeComputed(System.String,System.Int32)">
+      <summary>写入一个特性，其名称根据 <c>prefix:localName</c> 标记名和一组前缀映射计算得出。</summary>
+      <param name="tagName">包含标记名的字符串。</param>
+      <param name="prefixMappingsIndex">包含前缀映射索引的 <see cref="T:System.Int32" />。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeComputed(System.String,System.String)">
+      <summary>写入一个特性，其名称根据“prefix:localName”标记名和一组前缀映射计算得出。</summary>
+      <param name="tagName">包含特性标记名的字符串。</param>
+      <param name="ns">包含特性的命名空间的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeComputed(System.Xml.XmlQualifiedName)">
+      <summary>写入一个特性，其名称根据 <c>prefix:localName</c> 标记名和一组前缀映射计算得出。</summary>
+      <param name="name">包含特性名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeComputed(System.Xml.XPath.XPathNavigator)">
+      <summary>写入一个特性，其名称根据 <c>prefix:localName</c> 标记名和一组前缀映射计算得出。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeLocalName(System.String)">
+      <summary>将空前缀、命名空间和空架构类型写入特性的开头。</summary>
+      <param name="localName">包含本地名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeUnchecked(System.String)">
+      <summary>将本地名称写入特性的开头。</summary>
+      <param name="localName">包含特性的本地名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeUnchecked(System.String,System.String,System.String)">
+      <summary>将前缀、本地名称和命名空间写入特性的开头，不检查格式是否良好。</summary>
+      <param name="prefix">包含命名空间前缀的字符串。</param>
+      <param name="localName">包含特性的本地名称的字符串。</param>
+      <param name="ns">包含命名空间的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartComment">
+      <summary>检查注释开头的格式是否良好并写入注释的开头。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartDocument">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartDocument(System.Boolean)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="standalone">一个布尔值，指示是否写入带有版本号的 XML 声明，该声明将显示在文档开头。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElement(System.String,System.String,System.String)">
+      <summary>在经过检查以确保格式良好后写入开始元素。</summary>
+      <param name="prefix">包含命名空间前缀的字符串。</param>
+      <param name="localName">包含元素的本地名称的字符串。</param>
+      <param name="ns">包含命名空间名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementComputed(System.String,System.Int32)">
+      <summary>写入一个元素，其名称根据 <c>prefix:localName</c> 标记名和一组前缀映射计算得出。</summary>
+      <param name="tagName">包含标记名的字符串。</param>
+      <param name="prefixMappingsIndex">包含索引的 <see cref="T:System.Int32" />。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementComputed(System.String,System.String)">
+      <summary>写入一个元素，其名称根据 <c>prefix:localName</c> 标记名和一组前缀映射计算得出。</summary>
+      <param name="tagName">包含标记名的字符串。</param>
+      <param name="ns">包含命名空间名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementComputed(System.Xml.XmlQualifiedName)">
+      <summary>写入一个元素，其名称根据 <c>prefix:localName</c> 标记名和一组前缀映射计算得出。</summary>
+      <param name="name">包含名称的 <see cref="T:System.Xml.XmlQualifiedName" />。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementComputed(System.Xml.XPath.XPathNavigator)">
+      <summary>写入一个元素，其名称根据 <c>prefix:localName</c> 标记名和一组前缀映射计算得出。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementLocalName(System.String)">
+      <summary>写入具有空前缀和命名空间的本地名称。</summary>
+      <param name="localName">包含本地名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementUnchecked(System.String)">
+      <summary>编写元素的开头。 已假定格式正确，因此无需执行额外检查。</summary>
+      <param name="localName">包含开始元素的本地名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementUnchecked(System.String,System.String,System.String)">
+      <summary>写入一个元素，其名称根据 <c>prefix:localName</c> 标记名和一组前缀映射计算得出。</summary>
+      <param name="prefix">包含命名空间前缀的字符串。</param>
+      <param name="localName">包含开始元素的本地名称的字符串。</param>
+      <param name="ns">包含命名空间名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartNamespace(System.String)">
+      <summary>检查格式是否良好并写入命名空间的开头。</summary>
+      <param name="prefix">包含命名空间前缀的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartProcessingInstruction(System.String)">
+      <summary>检查注释的格式是否良好并写入处理指令的开头。</summary>
+      <param name="target">包含处理指令目标的名称的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartRoot">
+      <summary>检查树根的格式是否良好并写入树根。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteState">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <returns>一个 <see cref="T:System.Xml.WriteState" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteString(System.String)">
+      <summary>检查字符串的格式是否良好并写入文本。</summary>
+      <param name="text">包含要写入的文本的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStringUnchecked(System.String)">
+      <summary>写入文本。 已假定格式良好，因此无需执行任何检查。</summary>
+      <param name="text">包含要写入的文本的字符串。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteSurrogateCharEntity(System.Char,System.Char)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="lowChar">低位字符的 <see cref="T:System.Char" />。</param>
+      <param name="highChar">高位字符的 <see cref="T:System.Char" />。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteWhitespace(System.String)">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <param name="ws">包含要写入的空格的字符串。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryOutput.XmlLang">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <returns>一个包含语言标识符的字符串。</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryOutput.XmlSpace">
+      <summary>引发 <see cref="T:System.NotSupportedException" />。</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlSpace" /> 对象。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.XsltCopyOf(System.Xml.XPath.XPathNavigator)">
+      <summary>根据以下 XSLT 规则按值向输出复制节点：从不保留标识；如果该项为 RTF，则复制时保留序列化提示；如果该项为根节点，则复制根的子级。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryRuntime">
+      <summary>提供用于支持 XSLT 处理器的方法和属性。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.AddNewIndex(System.Xml.XPath.XPathNavigator,System.Int32,System.Xml.Xsl.Runtime.XmlILIndex)">
+      <summary>将对指定的上下文文档新生成的索引添加到现有索引集合中。</summary>
+      <param name="context">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <param name="indexId">一个 <see langword="int" /> 类型的值。</param>
+      <param name="index">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlILIndex" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ChangeTypeXsltArgument(System.Int32,System.Object,System.Type)">
+      <summary>使用 V1 XSLT 规则将一个值从 <paramref name="value" /> 参数的 CLR 类型转换为 CLR <paramref name="destinationType" />。 将任何结果树片断值转换为节点。</summary>
+      <param name="indexType">一个 <see langword="Int32" /> 类型的值。</param>
+      <param name="value">一个 <see langword="object" /> 类型的值。</param>
+      <param name="destinationType">一个 <see langword="Type" /> 类型的值。</param>
+      <returns>一个 <see langword="object" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ChangeTypeXsltResult(System.Int32,System.Object)">
+      <summary>根据 XML 类型的转换规则，从 <paramref name="value" /> 参数的 CLR 类型转换为默认 CLR 类型，中间语言生成使用这种默认类型表示 XML 类型。</summary>
+      <param name="indexType">一个 <see langword="int" /> 类型的值。</param>
+      <param name="value">一个 <see langword="object" /> 类型的值。</param>
+      <returns>一个 <see langword="object" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ComparePosition(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNavigator)">
+      <summary>比较两个导航器的相对位置。</summary>
+      <param name="navigatorThis">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <param name="navigatorThat">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>如果 <paramref name="navigatorThis" /> 位于 <paramref name="navigatorThat" /> 之前，则为 -1；如果 <paramref name="navigatorThis" /> 位于 <paramref name="navigatorThat" /> 之后，则为 1；如果两个导航器位于同一节点，则为 0。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.CreateCollation(System.String)">
+      <summary>从字符串创建排序规则。</summary>
+      <param name="collation">一个 <see langword="string" /> 类型的值。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DebugGetGlobalNames">
+      <summary>返回一个数组，该数组包含此查询中使用的所有全局变量和参数的名称。</summary>
+      <returns>
+        <see langword="string" /> 值的数组。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DebugGetGlobalValue(System.String)">
+      <summary>获取具有指定名称的全局值的值。</summary>
+      <param name="name">一个 <see langword="string" /> 类型的值。</param>
+      <returns>一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列，如果不存在具有指定名称的全局值，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DebugGetXsltValue(System.Collections.IList)">
+      <summary>将序列转换为其相应的 XSLT 类型。</summary>
+      <param name="seq">
+        <see cref="T:System.Collections.IList" /> 类的实例。</param>
+      <returns>一个 <see langword="object" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DebugSetGlobalValue(System.String,System.Object)">
+      <summary>设置具有指定名称的全局值的值。</summary>
+      <param name="name">一个 <see langword="string" /> 类型的值。</param>
+      <param name="value">一个 <see langword="object" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DocOrderDistinct(System.Collections.Generic.IList{System.Xml.XPath.XPathNavigator})">
+      <summary>从指定的序列获取已排序的非重复节点。</summary>
+      <param name="seq">一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 实例的序列。</param>
+      <returns>
+        <see cref="T:System.Collections.IList" /> 对象的 <see cref="T:System.Xml.XPath.XPathNavigator" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.EarlyBoundFunctionExists(System.String,System.String)">
+      <summary>确定指定的早期绑定对象是否包含具有指定名称的方法。</summary>
+      <param name="name">要查找的方法名称。</param>
+      <param name="namespaceUri">标识早期绑定对象。</param>
+      <returns>如果 <paramref name="namespaceUri" /> 标识的早期绑定对象包含与 <paramref name="name" /> 匹配的方法，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.EndRtfConstruction(System.Xml.Xsl.Runtime.XmlQueryOutput@)">
+      <summary>完成构造 RTF。</summary>
+      <param name="output">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" /> 类的实例。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.EndSequenceConstruction(System.Xml.Xsl.Runtime.XmlQueryOutput@)">
+      <summary>完成构造嵌套的项序列。</summary>
+      <param name="output">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" /> 类的实例。</param>
+      <returns>一个 <see cref="T:System.Xml.XPath.XPathItem" /> 类实例的序列。</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryRuntime.ExternalContext">
+      <summary>返回管理外部用户上下文信息的对象，如数据源、参数、扩展对象等。</summary>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryContext" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.FindIndex(System.Xml.XPath.XPathNavigator,System.Int32,System.Xml.Xsl.Runtime.XmlILIndex@)">
+      <summary>如果已对指定文档创建了具有指定 ID 的索引，则返回该索引，并返回 <see langword="true" />。 否则，创建一个新的空索引并返回 <see langword="false" />。</summary>
+      <param name="context">上下文文档。</param>
+      <param name="indexId">要查找的索引 ID。</param>
+      <param name="index">返回的索引。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlILIndex" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GenerateId(System.Xml.XPath.XPathNavigator)">
+      <summary>生成指定节点的唯一字符串标识符。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>一个 <see langword="string" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetAtomizedName(System.Int32)">
+      <summary>获取名称数组中指定索引处的原子化名称。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <returns>一个 <see langword="string" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetCollation(System.Int32)">
+      <summary>获取静态创建的排序规则。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetEarlyBoundObject(System.Int32)">
+      <summary>获取指定的早期绑定扩展对象。 如果此对象尚不存在，则使用相应的 <see cref="T:System.Reflection.ConstructorInfo" /> 创建一个实例。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <returns>一个 <see langword="object" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetGlobalValue(System.Int32)">
+      <summary>返回绑定到指定的全局变量的值。 如果尚未计算该值，则计算它并将它存储在全局变量中。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <returns>绑定到指定的全局变量的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetNameFilter(System.Int32)">
+      <summary>获取筛选器数组中指定索引处的名称筛选器。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetTypeFilter(System.Xml.XPath.XPathNodeType)">
+      <summary>获取筛选指定类型节点的筛选器。</summary>
+      <param name="nodeType">
+        <see cref="T:System.Xml.XPath.XPathNodeType" /> 类的实例。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.IsGlobalComputed(System.Int32)">
+      <summary>如果已计算指定的全局值，则返回 True。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <returns>如果已计算该值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.IsQNameEqual(System.Xml.XPath.XPathNavigator,System.Int32,System.Int32)">
+      <summary>确定指定 <see cref="P:System.Xml.XPath.XPathNavigator.LocalName" /> 的 <see cref="P:System.Xml.XPath.XPathNavigator.NamespaceURI" /> 和 <see cref="T:System.Xml.XPath.XPathNavigator" /> 属性是否与参数中指定的名称相等。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <param name="indexLocalName">一个 <see langword="int" /> 类型的值。</param>
+      <param name="indexNamespaceUri">一个 <see langword="int" /> 类型的值。</param>
+      <returns>如果名称相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.IsQNameEqual(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNavigator)">
+      <summary>比较两个 <see cref="P:System.Xml.XPath.XPathNavigator.LocalName" /> 实例的 <see cref="P:System.Xml.XPath.XPathNavigator.NamespaceURI" /> 属性和 <see cref="T:System.Xml.XPath.XPathNavigator" /> 属性，检查二者是否相等。</summary>
+      <param name="n1">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <param name="n2">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</param>
+      <returns>如果名称相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.MatchesXmlType(System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.Int32)">
+      <summary>如果指定序列中每个项的类型与指定索引所标识的 XML 类型匹配，则返回 <see langword="true" />。</summary>
+      <param name="seq">
+        <see cref="T:System.Collections.Generic.IList`1" /> 对象的 <see cref="T:System.Xml.XPath.XPathItem" />。</param>
+      <param name="indexType">索引。</param>
+      <returns>如果 <paramref name="seq" /> 的类型是 <paramref name="indexType" /> 的子类型，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.MatchesXmlType(System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.Xml.Schema.XmlTypeCode)">
+      <summary>确定指定序列的类型是否为指定的单一实例类型的子类型。</summary>
+      <param name="seq">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <param name="code">单一实例类型。</param>
+      <returns>如果 <paramref name="seq" /> 的类型是 <paramref name="code" /> 所指定类型的子类型，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.MatchesXmlType(System.Xml.XPath.XPathItem,System.Int32)">
+      <summary>如果指定的 <see cref="T:System.Xml.XPath.XPathItem" /> 对象的类型与指定的 XML 类型匹配，则返回 <see langword="true" />。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <param name="indexType">XML 类型的数组中的索引。</param>
+      <returns>如果指定的 <see cref="T:System.Xml.XPath.XPathItem" /> 的类型与指定的 XML 类型匹配，则返回 <see langword="true" />；否则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.MatchesXmlType(System.Xml.XPath.XPathItem,System.Xml.Schema.XmlTypeCode)">
+      <summary>如果 <see cref="T:System.Xml.XPath.XPathItem" /> 对象的类型是由指定的 <see cref="T:System.Xml.Schema.XmlTypeCode" /> 标识的类型的子类型，则返回 <see langword="true" />。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <param name="code">
+        <see cref="T:System.Xml.Schema.XmlTypeCode" /> 类的实例。</param>
+      <returns>如果 <see cref="T:System.Xml.XPath.XPathItem" /> 对象的类型是由指定的 <see cref="T:System.Xml.Schema.XmlTypeCode" /> 标识的类型的子类型，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryRuntime.NameTable">
+      <summary>返回用于原子化查询使用的所有名称的名称表。</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlNameTable" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.OnCurrentNodeChanged(System.Xml.XPath.XPathNavigator)">
+      <summary>用于在 Visual Studio 中进行调试。 在当前节点发生更改后调用。</summary>
+      <param name="currentNode">标识节点的 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>一个指示更改状态的整数。 仅供内部测试使用。</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryRuntime.Output">
+      <summary>获取输出编写器对象。</summary>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ParseTagName(System.String,System.Int32)">
+      <summary>分析指定的标记名并解析得到的前缀。 如果无法解析该前缀，将引发错误。</summary>
+      <param name="tagName">标记名称。</param>
+      <param name="indexPrefixMappings">索引。</param>
+      <returns>
+        <see cref="T:System.Xml.XmlQualifiedName" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ParseTagName(System.String,System.String)">
+      <summary>分析指定的标记名称。 返回一个 <see cref="T:System.Xml.XmlQualifiedName" />，它包括已分析的本地名称和指定的命名空间。</summary>
+      <param name="tagName">标记名称。</param>
+      <param name="ns">命名空间。</param>
+      <returns>
+        <see cref="T:System.Xml.XmlQualifiedName" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.SendMessage(System.String)">
+      <summary>将查询执行信息报告给事件处理程序。</summary>
+      <param name="message">一个 <see langword="string" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.SetGlobalValue(System.Int32,System.Object)">
+      <summary>返回绑定到指定的全局变量或参数的值。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <param name="value">一个 <see langword="object" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.StartRtfConstruction(System.String,System.Xml.Xsl.Runtime.XmlQueryOutput@)">
+      <summary>开始构造 RTF 并返回一个将用于构造此 RTF 的新 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" /> 对象。</summary>
+      <param name="baseUri">一个 <see langword="string" /> 类型的值。</param>
+      <param name="output">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.StartSequenceConstruction(System.Xml.Xsl.Runtime.XmlQueryOutput@)">
+      <summary>开始构造嵌套的项序列。 返回一个将用于构造此新序列的新 <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" />。</summary>
+      <param name="output">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.TextRtfConstruction(System.String,System.String)">
+      <summary>根据指定的文本构造一个新的 <see cref="T:System.Xml.XPath.XPathNavigator" />。</summary>
+      <param name="text">一个 <see langword="string" /> 类型的值。</param>
+      <param name="baseUri">一个 <see langword="string" /> 类型的值。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ThrowException(System.String)">
+      <summary>引发具有指定消息文本的 XML 异常。</summary>
+      <param name="text">一个 <see langword="string" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryRuntime.XsltFunctions">
+      <summary>返回管理状态的对象。 实现各种 XSLT 函数需要的状态对象。</summary>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XsltLibrary" /> 类的实例。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1">
+      <summary>XML 值的序列，可动态扩展并允许随机访问项。</summary>
+      <typeparam name="T">此 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 的类型。</typeparam>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.#ctor">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.#ctor(`0)">
+      <summary>构造一个单一实例 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />，该实例只有一个元素 <paramref name="value" />。</summary>
+      <param name="value">此 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 中的唯一值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.#ctor(`0[],System.Int32)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 类的新实例。</summary>
+      <param name="array">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 实例的数组。</param>
+      <param name="size">数组大小。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.#ctor(System.Int32)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 类的新实例。</summary>
+      <param name="capacity">此集合的大小。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Add(`0)">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="value">添加到集合的对象。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Clear">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Contains(`0)">
+      <summary>如果指定的值在序列中，则返回 <see langword="true" />。</summary>
+      <param name="value">要在 <see cref="T:System.Collections.Generic.ICollection`1" /> 中查找的值。</param>
+      <returns>如果指定的值在序列中，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.CopyTo(`0[],System.Int32)">
+      <summary>将此序列的内容复制到指定数组中从指定索引处开始的位置。</summary>
+      <param name="array">要向其中复制 <see cref="T:System.Collections.Generic.ICollection`1" /> 的内容的数组。</param>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Count">
+      <summary>返回序列中的项数。</summary>
+      <returns>一个 <see langword="int" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQuerySequence{`0})">
+      <summary>清除并重用指定的 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />（如果可用）。 如果 <paramref name="seq" /> 参数为 <see langword="null" />，则创建一个新的 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />。</summary>
+      <param name="seq">要重用的 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 实例。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQuerySequence{`0},`0)">
+      <summary>清除并重用指定的 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />（如果可用）。 如果 <paramref name="seq" /> 参数为 <see langword="null" />，则创建一个新的 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 并将 <paramref name="item" /> 添加到集合中。</summary>
+      <param name="seq">要重用的 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 实例。</param>
+      <param name="item">要添加的项。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 类的实例。</returns>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Empty">
+      <summary>创建 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 的新实例。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.GetEnumerator">
+      <summary>返回 <see cref="T:System.Collections.Generic.IEnumerator`1" />。</summary>
+      <returns>
+        <see cref="T:System.Collections.Generic.IEnumerator`1" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.IndexOf(`0)">
+      <summary>返回序列中指定值的索引。</summary>
+      <param name="value">要为其获取索引的值。</param>
+      <returns>索引。</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Item(System.Int32)">
+      <summary>返回位于指定索引处的项。</summary>
+      <param name="index">一个 <see langword="int" /> 类型的值。</param>
+      <returns>指定索引处的项。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.OnItemsChanged">
+      <summary>当已添加或移除缓存中的一个或多个项时调用。 也可以从 <see cref="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.SortByKeys(System.Array)" /> 方法调用此方法。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.SortByKeys(System.Array)">
+      <summary>使用指定数组中包含的键对缓存中的项进行排序。</summary>
+      <param name="keys">一个 <see langword="array" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="value">序列值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#ICollection{T}#Clear">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#ICollection{T}#IsReadOnly">
+      <summary>如果 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 为只读，则此属性返回 <see langword="true" />。</summary>
+      <returns>如果 <see langword="true" /> 是只读的，则为 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#ICollection{T}#Remove(`0)">
+      <summary>从集合中移除指定的项。</summary>
+      <param name="value">要移除的项。</param>
+      <returns>如果移除了该项，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#IList{T}#Insert(System.Int32,`0)">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="index">序列索引。</param>
+      <param name="value">序列值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#IList{T}#RemoveAt(System.Int32)">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="index">序列索引。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+      <summary>将此序列的内容复制到指定目标数组中从指定索引处开始的位置。</summary>
+      <param name="array">指定的数组。</param>
+      <param name="index">指定的索引。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#ICollection#IsSynchronized">
+      <summary>返回 <see langword="false" />。 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 不是线程安全的。</summary>
+      <returns>
+        <see langword="false" />
+      </returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#ICollection#SyncRoot">
+      <summary>返回 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 类的此实例。 此实例可用于同步访问。</summary>
+      <returns>此 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary>返回一个可用于循环访问查询序列集合的枚举数。</summary>
+      <returns>一个可用于循环访问查询序列集合的枚举数。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Add(System.Object)">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="value">序列值。</param>
+      <returns>所添加的项的索引。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Clear">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Contains(System.Object)">
+      <summary>如果指定的值在序列中，则返回 <see langword="true" />。</summary>
+      <param name="value">指定的值。</param>
+      <returns>如果指定的值在序列中，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#IndexOf(System.Object)">
+      <summary>返回序列中指定值的索引。</summary>
+      <param name="value">指定的值。</param>
+      <returns>序列中指定值的索引。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Insert(System.Int32,System.Object)">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="index">指定的索引。</param>
+      <param name="value">指定的值。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#IsFixedSize">
+      <summary>返回 <see langword="true" /> 以指示不能添加、移除或修改项。</summary>
+      <returns>始终返回 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#IsReadOnly">
+      <summary>获取一个值，该值指示 <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 是否为只读。 总是为 <see langword="true" />。</summary>
+      <returns>始终返回<see langword="true" />以指示<see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />是只读的。</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Item(System.Int32)">
+      <summary>返回位于指定索引处的项。</summary>
+      <param name="index">指定的索引。</param>
+      <returns>指定索引处的项。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Remove(System.Object)">
+      <summary>未实现。 引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="value">指定的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#RemoveAt(System.Int32)">
+      <summary>在所有情况下都会引发 <see cref="T:System.NotSupportedException" /> 异常。</summary>
+      <param name="index">指定的索引。</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator">
+      <summary>累积排序关键字列表并将它们存储在数组中。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddDateTimeSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.DateTime)">
+      <summary>创建一个新的 <see cref="T:System.DateTime" /> 排序关键字并将其追加到当前运行的排序关键字中。</summary>
+      <param name="collation">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</param>
+      <param name="value">一个 <see langword="DateTime" /> 值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddDecimalSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.Decimal)">
+      <summary>创建一个新的 <see cref="T:System.Decimal" /> 排序关键字并将其追加到当前运行的排序关键字中。</summary>
+      <param name="collation">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</param>
+      <param name="value">一个 <see langword="decimal" /> 值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddDoubleSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.Double)">
+      <summary>创建一个新的 <see cref="T:System.Double" /> 排序关键字并将其追加到当前运行的排序关键字中。</summary>
+      <param name="collation">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</param>
+      <param name="value">一个 <see langword="double" /> 值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddEmptySortKey(System.Xml.Xsl.Runtime.XmlCollation)">
+      <summary>创建一个新的空排序关键字并将其追加到当前运行的排序关键字中。</summary>
+      <param name="collation">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddIntegerSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.Int64)">
+      <summary>创建一个新的 <see cref="T:System.Int64" /> 排序关键字并将其追加到当前运行的排序关键字中。</summary>
+      <param name="collation">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</param>
+      <param name="value">一个 <see langword="Int64" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddIntSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.Int32)">
+      <summary>创建一个新的 <see cref="T:System.Int32" /> 排序关键字并将其追加到当前运行的排序关键字中。</summary>
+      <param name="collation">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</param>
+      <param name="value">一个 <see langword="Int32" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddStringSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.String)">
+      <summary>创建一个新的 <see cref="T:System.String" /> 排序关键字并将其追加到当前运行的排序关键字中。</summary>
+      <param name="collation">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" /> 类的实例。</param>
+      <param name="value">一个 <see langword="string" /> 类型的值。</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.Create">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator" />。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.FinishSortKeys">
+      <summary>完成创建排序关键字的当前运行并开始一个新运行。</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.Keys">
+      <summary>获取由内部 <see cref="T:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator" /> 类构造的排序关键字数组。</summary>
+      <returns>排序关键字数组。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathFollowingIterator">
+      <summary>根据 XPath 后续轴规则循环访问所有后续节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathFollowingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XPathFollowingIterator" />。 <see cref="T:System.Xml.Xsl.Runtime.XPathFollowingIterator" /> 不包含重复项。</summary>
+      <param name="input">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <param name="filter">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 对象。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathFollowingIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathFollowingIterator.MoveNext">
+      <summary>将迭代器定位到下一个后续节点。</summary>
+      <returns>如果迭代器已设置为下一个后续节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator">
+      <summary>根据 XPath 后续轴规则循环访问所有后续节点。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator" />。</summary>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，该实例允许您基于名称来筛选节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>将迭代器移至下一个后续节点。</summary>
+      <param name="input">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>如果没有更多后续节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />。 如果必须先获取下一个输入节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />。 如果在循环访问节点时，<see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" /> 属性已设置为下一个节点，则返回 <see cref="P:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator.Current" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator">
+      <summary>根据 XPath 前面的轴规则循环访问所有前面的节点，并以文档顺序返回这些节点（没有重复项）。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator" />。</summary>
+      <param name="input">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <param name="filter">
+        <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 对象。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator.MoveNext">
+      <summary>将迭代器定位到下一个前面的节点。</summary>
+      <returns>如果迭代器已设置为下一个前面的节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathPrecedingIterator">
+      <summary>根据 XPath 前面的轴规则循环访问所有前面的节点，并以相反的文档顺序返回这些节点（没有重复项）。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XPathPrecedingIterator" />。</summary>
+      <param name="context">从其开始遍历上级的节点。</param>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，通过该实例可以基于名称来筛选节点。 有关详情，请参阅<see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathPrecedingIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingIterator.MoveNext">
+      <summary>按相反的文档顺序将迭代器定位到下一个前面的节点。</summary>
+      <returns>如果迭代器已设置为下一个前面的节点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator">
+      <summary>根据 XPath 前面的轴规则循环访问所有前面的节点，不同的是，始终以文档顺序返回节点。 按文档顺序合并多组前面的节点并移除重复项。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>初始化 <see cref="T:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator" />。</summary>
+      <param name="filter">一个 <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" /> 类的实例，通过该实例可以基于名称来筛选节点。</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator.Current">
+      <summary>返回当前结果导航器。</summary>
+      <returns>当前结果导航器。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>按文档顺序将此迭代器定位到下一个前面的节点。</summary>
+      <param name="input">输入节点。</param>
+      <returns>如果没有更多前面的节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />。 如果必须先获取下一个输入节点，则返回 <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />。 如果在循环访问节点时，<see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" /> 属性已设置为下一个节点，则返回 <see cref="P:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator.Current" />。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XsltConvert">
+      <summary>包含 XSLT 使用的转换例程。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.EnsureNodeSet(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>请确保指定的对象序列不是结果树片段，并且它可转换为节点集。</summary>
+      <param name="listItems">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <returns>一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 实例的序列。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToBoolean(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>将指定的值转换为布尔值。</summary>
+      <param name="listItems">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <returns>一个 <see langword="bool" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToBoolean(System.Xml.XPath.XPathItem)">
+      <summary>将指定的值转换为布尔值。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>一个 <see langword="bool" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDateTime(System.String)">
+      <summary>将指定的值转换为 <see langword="DateTime" /> 值。</summary>
+      <param name="value">一个 <see langword="string" /> 值。</param>
+      <returns>一个 <see langword="DateTime" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDecimal(System.Double)">
+      <summary>将指定的值转换为 <see langword="decimal" />。</summary>
+      <param name="value">一个 <see langword="double" /> 类型的值。</param>
+      <returns>一个 <see langword="decimal" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>将指定的值转换为 <see langword="double" />。</summary>
+      <param name="listItems">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <returns>一个 <see langword="double" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Decimal)">
+      <summary>将指定的值转换为 <see langword="double" />。</summary>
+      <param name="value">一个 <see langword="decimal" /> 类型的值。</param>
+      <returns>一个 <see langword="double" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Int32)">
+      <summary>将指定的值转换为 <see langword="double" />。</summary>
+      <param name="value">一个 <see langword="int" /> 类型的值。</param>
+      <returns>一个 <see langword="double" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Int64)">
+      <summary>将指定的值转换为 <see langword="double" />。</summary>
+      <param name="value">一个 <see langword="Int64" /> 类型的值。</param>
+      <returns>一个 <see langword="double" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.String)">
+      <summary>将指定的值转换为 <see langword="double" />。</summary>
+      <param name="value">一个 <see langword="string" /> 类型的值。</param>
+      <returns>一个 <see langword="double" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Xml.XPath.XPathItem)">
+      <summary>将指定的值转换为 <see langword="double" />。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>一个 <see langword="double" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToInt(System.Double)">
+      <summary>将指定的值转换为 <see langword="int" />。</summary>
+      <param name="value">一个 <see langword="double" /> 类型的值。</param>
+      <returns>一个 <see langword="int" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToLong(System.Double)">
+      <summary>将指定的值转换为 <see langword="long" />。</summary>
+      <param name="value">一个 <see langword="double" /> 类型的值。</param>
+      <returns>一个 <see langword="long" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToNode(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>将指定的值转换为节点。</summary>
+      <param name="listItems">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToNode(System.Xml.XPath.XPathItem)">
+      <summary>将指定的值转换为节点。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToNodeSet(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>将项转换为节点序列。</summary>
+      <param name="listItems">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <returns>一个 <see cref="T:System.Xml.XPath.XPathNavigator" /> 实例的序列。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToNodeSet(System.Xml.XPath.XPathItem)">
+      <summary>将指定的值转换为节点。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>
+        <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> 类的实例。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToString(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>将项转换为字符串。</summary>
+      <param name="listItems">一个 <see cref="T:System.Xml.XPath.XPathItem" /> 实例的序列。</param>
+      <returns>一个 <see langword="string" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToString(System.DateTime)">
+      <summary>将指定的值转换为字符串。</summary>
+      <param name="value">一个 <see langword="DateTime" /> 类型的值。</param>
+      <returns>一个 <see langword="string" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToString(System.Double)">
+      <summary>将指定的值转换为字符串。</summary>
+      <param name="value">一个 <see langword="double" /> 类型的值。</param>
+      <returns>一个 <see langword="string" /> 类型的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToString(System.Xml.XPath.XPathItem)">
+      <summary>将指定的值转换为字符串。</summary>
+      <param name="item">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 类的实例。</param>
+      <returns>一个 <see langword="string" /> 类型的值。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XsltFunctions">
+      <summary>XSLT 和 XPath 函数。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.BaseUri(System.Xml.XPath.XPathNavigator)">
+      <summary>返回通过 <paramref name="navigator" /> 参数传入的节点的节点基 URI 的值。 按照 W3C 规范实现 <see langword="baseUri" /> XPath 函数。</summary>
+      <param name="navigator">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 实例，它包含要由 URI 标识的节点。</param>
+      <returns>
+        <see cref="T:System.String" /> 形式的基 URI。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Contains(System.String,System.String)">
+      <summary>按照 W3C 规范实现 <see langword="contains" /> XPath 函数。</summary>
+      <param name="s1">要在其中查找 <paramref name="s2" /> 的字符串。</param>
+      <param name="s2">要在 s1 中查找的字符串。</param>
+      <returns>如果第一个参数字符串包含第二个参数字符串，则返回 <see langword="true" />；否则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.EXslObjectType(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>实现 exsl:object-type。</summary>
+      <param name="value">要确定其类型的 <see cref="T:System.Xml.XPath.XPathItem" />。</param>
+      <returns>
+        <see cref="T:System.String" /> 形式的对象类型。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Lang(System.String,System.Xml.XPath.XPathNavigator)">
+      <summary>按照 W3C XPath 规范实现 <see langword="lang" /> 函数。</summary>
+      <param name="value">指定的字符串。</param>
+      <param name="context">包含上下文的 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>
+        <see cref="T:System.Boolean" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSFormatDateTime(System.String,System.String,System.String,System.Boolean)">
+      <summary>实现 <see langword="ms:format-date" /> 和 <see langword="ms-format-time" />Microsoft XPath 扩展函数。</summary>
+      <param name="dateTime">包含日期/时间数据的字符串。</param>
+      <param name="format">包含格式的字符串。</param>
+      <param name="lang">包含语言的字符串。</param>
+      <param name="isDate">指示日期/时间是否包含日期的布尔值。</param>
+      <returns>包含格式化的日期和时间的字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSLocalName(System.String)">
+      <summary>实现 <see langword="ms:local-name" />Microsoft XPath 扩展函数。</summary>
+      <param name="name">名称。</param>
+      <returns>
+        <see cref="T:System.String" /> 形式的名称。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSNamespaceUri(System.String,System.Xml.XPath.XPathNavigator)">
+      <summary>实现 <see langword="ms:namespace-uri" />Microsoft XPath 扩展函数。</summary>
+      <param name="name">名称。</param>
+      <param name="currentNode">
+        <see cref="T:System.Xml.XPath.XPathNavigator" /> 实例。</param>
+      <returns>
+        <see cref="T:System.String" /> 形式的命名空间 URI。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSNumber(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>实现 <see langword="ms:number" />Microsoft XPath 扩展函数。</summary>
+      <param name="value">
+        <see cref="T:System.Xml.XPath.XPathItem" /> 的 <see cref="T:System.Collections.Generic.List`1" />。</param>
+      <returns>
+        <see cref="T:System.Double" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSStringCompare(System.String,System.String,System.String,System.String)">
+      <summary>实现 <see langword="ms:string-compare" />Microsoft XPath 扩展函数。</summary>
+      <param name="s1">要比较的第一个字符串。</param>
+      <param name="s2">要比较的第二个字符串。</param>
+      <param name="lang">语言。 Optional</param>
+      <param name="options">指定比较是否区分大小写。</param>
+      <returns>如果 <paramref name="s1" /> &lt; <paramref name="s2" />，则此方法返回 -1。 如果 <paramref name="s1" /> == <paramref name="s2" />，则此方法返回 0。 如果 <paramref name="s1" /> &gt; <paramref name="s2" />，则此方法返回 1。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSUtc(System.String)">
+      <summary>实现 <see langword="ms:utc" />Microsoft XPath 扩展函数。</summary>
+      <param name="dateTime">包含日期/时间数据的字符串。</param>
+      <returns>一个包含日期/时间信息的字符串。 如果字符串无法解释为与日期/时间有关的有效 XSD 格式，则返回空字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.NormalizeSpace(System.String)">
+      <summary>从指定的字符串中删除前导和尾随空格并返回结果。 实现 W3C XPath 标准中的 <see langword="normalize-space" /> 函数。</summary>
+      <param name="value">指定的字符串。</param>
+      <returns>一个规范化的字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.OuterXml(System.Xml.XPath.XPathNavigator)">
+      <summary>对 <see cref="T:System.Xml.XPath.XPathNavigator" /> 参数标识的节点及其所有子节点，获取表示它们的开始标记及结束标记的标记。</summary>
+      <param name="navigator">标识节点的 <see cref="T:System.Xml.XPath.XPathNavigator" />。</param>
+      <returns>一个字符串，其中包含由 <paramref name="navigator" /> 参数标识的节点及其所有子节点的开始标记及结束标记。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Round(System.Double)">
+      <summary>使用 XPath 舍入规则舍入值。 向正无穷大方向舍入。 介于 -0.5 和 -0.0 之间的值将舍入到 -0.0（负零）。</summary>
+      <param name="value">要舍入的 <see cref="T:System.Double" /> 数值。</param>
+      <returns>
+        <see cref="T:System.Double" /> 形式的舍入数值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.StartsWith(System.String,System.String)">
+      <summary>按照 W3C 规范实现 <see langword="starts-with" /> XPath 函数。</summary>
+      <param name="s1">一个字符串，该字符串的开头将与 <paramref name="s2" /> 进行比较。</param>
+      <param name="s2">要与 <paramref name="s1" /> 的开头进行比较的字符串。</param>
+      <returns>如果第一个参数字符串以第二个参数字符串开头，则返回 <see langword="true" />；否则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Substring(System.String,System.Double)">
+      <summary>按照 W3C 规范实现 <see langword="substring" /> XPath 函数。</summary>
+      <param name="value">从中检索子字符串的字符串。</param>
+      <param name="startIndex">子字符串在 <paramref name="value" /> 中的起始字符位置。</param>
+      <returns>第一个参数中从第二个参数所指定的位置开始的子字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Substring(System.String,System.Double,System.Double)">
+      <summary>按照 W3C 规范实现 <see langword="substring" /> XPath 函数。</summary>
+      <param name="value">从中检索子字符串的字符串。</param>
+      <param name="startIndex">子字符串在 <paramref name="value" /> 中的起始字符位置。</param>
+      <param name="length">子字符串中的字符数。</param>
+      <returns>第一个参数中从第二个参数所指定的位置开始、具有第三个参数所指定的长度的子字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.SubstringAfter(System.String,System.String)">
+      <summary>按照 W3C 规范实现 <see langword="substring-after" /> XPath 函数。</summary>
+      <param name="s1">要在其中查找 s2 的字符串。</param>
+      <param name="s2">要在 <paramref name="s1" /> 中查找的字符串。</param>
+      <returns>S1 中在 s2 后出现的字符，如果 s1 不包含 s2，则为空字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.SubstringBefore(System.String,System.String)">
+      <summary>按照 W3C 规范实现 <see langword="substring-before" /> XPath 函数。</summary>
+      <param name="s1">要在其中查找 s2 的字符串。</param>
+      <param name="s2">要在 <paramref name="s1" /> 中查找的字符串。</param>
+      <returns>S1 中在 s2 前出现的字符，如果 s1 不包含 s2，则为空字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.SystemProperty(System.Xml.XmlQualifiedName)">
+      <summary>按照 W3C 规范实现 <see langword="system-property" /> XSLT 函数。</summary>
+      <param name="name">系统属性的名称。</param>
+      <returns>
+        <paramref name="name" /> 指定的系统属性的值。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Translate(System.String,System.String,System.String)">
+      <summary>按照 W3C 规范实现 <see langword="translate" /> XPath 函数。</summary>
+      <param name="arg">原始字符串。</param>
+      <param name="mapString">
+        <paramref name="arg" /> 中应替换为 <paramref name="transString" /> 的子字符串。</param>
+      <param name="transString">替换 <paramref name="mapString" /> 的字符串。</param>
+      <returns>
+        <see cref="T:System.String" /> 形式的已转换的值。</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XsltLibrary">
+      <summary>实现不同的 <see langword="XPath" /> 和 <see langword="XSLT" /> 函数。</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.CheckScriptNamespace(System.String)">
+      <summary>检查扩展和脚本命名空间是否冲突。</summary>
+      <param name="nsUri">命名空间 URI。</param>
+      <returns>一个仅用于内部基础结构的整数。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.ElementAvailable(System.Xml.XmlQualifiedName)">
+      <summary>将自变量计算为作为 XML 限定名称的字符串。 此方法实现由 W3C XSL 转换 (XSLT) 指定的 <c>element-available</c> 函数。</summary>
+      <param name="name">XML 限定名称。</param>
+      <returns>如果展开名称是指令的名称，则为 <see langword="true" />。 如果 <see langword="expanded name" /> 具有的命名空间 URI 等于 XSLT 命名空间 URI，则它引用由 XSLT 定义的元素。 否则，该展开名称引用扩展元素。 如果 <see langword="expanded name" /> 的命名空间 URI 为空，则 element-available 函数将返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.EqualityOperator(System.Double,System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>确定 <see cref="T:System.Xml.XPath.XPathItem" /> 类型的集合是否相等。</summary>
+      <param name="opCode">要执行的操作。</param>
+      <param name="left">
+        <see cref="T:System.Collections.Generic.IList`1" />类型<see cref="T:System.Xml.XPath.XPathItem" />。</param>
+      <param name="right">
+        <see cref="T:System.Collections.Generic.IList`1" />类型<see cref="T:System.Xml.XPath.XPathItem" />。</param>
+      <returns>如果集合相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.FormatMessage(System.String,System.Collections.Generic.IList{System.String})">
+      <summary>设置异常消息的格式，该消息由 <paramref name="res" /> 形参提供的格式字符串和 <paramref name="args" /> 形参包含的实参组成。</summary>
+      <param name="res">包含消息资源的字符串。</param>
+      <param name="args">表示方法的自变量的字符串列表。</param>
+      <returns>包含格式化的异常消息的字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.FormatNumberDynamic(System.Double,System.String,System.Xml.XmlQualifiedName,System.String)">
+      <summary>实现 format-number() XSLT 函数。 有关详细信息，请参阅 W3C 建议中的数字格式设置一节。</summary>
+      <param name="value">要格式化的值。</param>
+      <param name="formatPicture">格式图片。</param>
+      <param name="decimalFormatName">格式名。</param>
+      <param name="errorMessageName">错误消息名称。</param>
+      <returns>指示数字格式的字符串。 有关详细信息，请参阅 W3C 建议中的数字格式设置一节。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.FormatNumberStatic(System.Double,System.Double)">
+      <summary>实现 format-number() XSLT 函数。 有关详细信息，请参阅 W3C 建议中的数字格式设置一节。</summary>
+      <param name="value">要格式化的值。</param>
+      <param name="decimalFormatterIndex">格式化程序索引。</param>
+      <returns>一个指示格式的字符串。 有关详细信息，请参阅 W3C 建议中的数字格式设置一节。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.FunctionAvailable(System.Xml.XmlQualifiedName)">
+      <summary>实现 function-available() XSLT 函数。</summary>
+      <param name="name">
+        <see cref="T:System.Xml.XmlQualifiedName" /> 名称对象。</param>
+      <returns>如果由 <paramref name="name" /> 标识的函数可用，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.IsSameNodeSort(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNavigator)">
+      <summary>确定两个节点是否具有相同节点类型和相同展开名称（如果该节点类型的节点具有展开名称）。</summary>
+      <param name="nav1">要比较的 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <param name="nav2">要比较的 <see cref="T:System.Xml.XPath.XPathNavigator" /> 对象。</param>
+      <returns>一个布尔值，如果两个节点具有相同节点类型和相同展开名称（如果该节点类型的节点具有展开名称），则该布尔值为 <see langword="true" />。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.LangToLcid(System.String,System.Boolean)">
+      <summary>将语言标识符（在 <see langword="xml:lang" /> 特性中指定）转换为区域性标识符 (LCID)。</summary>
+      <param name="lang">指示语言的字符串。</param>
+      <param name="forwardCompatibility">如果语言是向前兼容的，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>一个包含区域性标识符的字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.NumberFormat(System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.String,System.Double,System.String,System.String,System.Double)">
+      <summary>获取指示数字格式的字符串。</summary>
+      <param name="value">字符串的 <see cref="T:System.Collections.Generic.IList`1" />，这些字符串表示方法的实参。</param>
+      <param name="formatString">格式字符串。</param>
+      <param name="lang">语言。</param>
+      <param name="letterValue">字母值。</param>
+      <param name="groupingSeparator">分组分隔符。</param>
+      <param name="groupingSize">分组大小。</param>
+      <returns>指示数字格式的字符串。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.RegisterDecimalFormat(System.Xml.XmlQualifiedName,System.String,System.String,System.String)">
+      <summary>用给定的展开名称注册 decimal-format。 有关详细信息，请参阅 W3C 建议中的数字格式设置一节。</summary>
+      <param name="name">包含名称的 <see cref="T:System.Xml.XmlQualifiedName" /> 对象。</param>
+      <param name="infinitySymbol">包含无限大符号的字符串。</param>
+      <param name="nanSymbol">包含 NaN 符号的字符串。</param>
+      <param name="characters">包含要设置格式的字符的字符串。</param>
+      <returns>在当前实现中，返回值始终为 0。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.RegisterDecimalFormatter(System.String,System.String,System.String,System.String)">
+      <summary>注册十进制格式化程序对象并返回指派给它的唯一索引。 十进制格式化程序对象由 format-number() XSLT 函数使用。 有关详细信息，请参阅 W3C 建议中的数字格式设置一节。</summary>
+      <param name="formatPicture">包含格式图片的字符串。</param>
+      <param name="infinitySymbol">包含无限大符号的字符串。</param>
+      <param name="nanSymbol">包含 NaN 符号的字符串。</param>
+      <param name="characters">包含要设置格式的字符的字符串。</param>
+      <returns>指派给十进制格式化程序对象的唯一索引。</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.RelationalOperator(System.Double,System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>根据传递的 <paramref name="left" /> 计算 <paramref name="right" /> 表达式是大于等于还是小于等于 <paramref name="opCode" /> 表达式。</summary>
+      <param name="opCode">指定如何计算两个表达式： 
+如果操作码等于 2，则计算 XPath 表达式“左侧 &lt; 右侧”。  
+如果操作码等于 3，则计算 XPath 表达式“左侧 &lt;= 右侧”。  
+如果操作码等于 4，则计算 XPath 表达式“左侧 &gt; 右侧”。  
+如果操作码等于 5，则计算 XPath 表达式“左侧 &gt;= 右侧”</param>
+      <param name="left">要计算的表达式。</param>
+      <param name="right">要计算的表达式。</param>
+      <returns>一个布尔值，如果左侧表达式大于或等于右侧表达式，则为 True。</returns>
+    </member>
+  </members>
+</doc>

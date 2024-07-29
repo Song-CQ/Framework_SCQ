@@ -339,6 +339,10 @@ namespace FutureEditor
 
         private bool isDelClient_ILRuntime = true;
 
+        private bool isCread_BatFile = false;
+
+        private ILRuntimeMgr_AutoCreator.CompileCodePlan compileCodePlan = ILRuntimeMgr_AutoCreator.CompileCodePlan.MsBuild;
+
         private void OnOtherToolView_ILRuntime()
         {
             string ModuleMgrPath = UnityEditorPathConst.AutoRegisterPath + "/ModuleMgr";
@@ -376,18 +380,30 @@ namespace FutureEditor
             if (showFoldout_ILRuntime)
             {
                 GUILayout.Space(5);
-                EditorGUI.indentLevel++;
+              
                 EditorGUI.indentLevel++;
                 isDelClient_ILRuntime = GUILayout.Toggle(isDelClient_ILRuntime, "被提取的热更代码 是否删除");
+                GUILayout.Space(2);
+
+                GUILayout.BeginHorizontal();
+                compileCodePlan = (ILRuntimeMgr_AutoCreator.CompileCodePlan)EditorGUILayout.EnumPopup("编译Dll的方案:",compileCodePlan, GUILayout.Width(300));
+
+                if (compileCodePlan == ILRuntimeMgr_AutoCreator.CompileCodePlan.MsBuild|| compileCodePlan == ILRuntimeMgr_AutoCreator.CompileCodePlan.CompileAssembly_HotfixTool)
+                {
+                    GUILayout.Space(5);
+                    isCread_BatFile = GUILayout.Toggle(isCread_BatFile, "是否重新创建.bat文件");
+                }
+               
+                GUILayout.EndHorizontal();
                 EditorGUI.indentLevel--;
-                EditorGUI.indentLevel--;
+         
             }
             GUILayout.Space(5);
 
 
             if (GUILayout.Button("启动ILRuntime热更流程", GUILayout.Height(40), GUILayout.Width(180)))
             {
-                ILRuntimeMgr_AutoCreator.AutoRegister_HotFix_ILRuntimeMgr(isDelClient_ILRuntime, Close);
+                ILRuntimeMgr_AutoCreator.AutoRegister_HotFix_ILRuntimeMgr(isDelClient_ILRuntime, isCread_BatFile, compileCodePlan,Close);
 
             }
 
@@ -431,7 +447,7 @@ namespace FutureEditor
 
                 if (GUILayout.Button("[Compile Code To Dll] - 编译Dll", GUILayout.Height(40), GUILayout.Width(200)))
                 {
-                    ILRuntimeMgr_AutoCreator.CompileCodeToDll();
+                    ILRuntimeMgr_AutoCreator.CompileCodeToDll(isCread_BatFile, compileCodePlan);
                 }
                 GUILayout.EndHorizontal();
 

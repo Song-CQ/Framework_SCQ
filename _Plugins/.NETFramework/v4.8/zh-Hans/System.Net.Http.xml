@@ -1,0 +1,2555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Net.Http</name>
+  </assembly>
+  <members>
+    <member name="T:System.Net.Http.ByteArrayContent">
+      <summary>提供基于字节数组的 HTTP 内容。</summary>
+    </member>
+    <member name="M:System.Net.Http.ByteArrayContent.#ctor(System.Byte[])">
+      <summary>初始化 <see cref="T:System.Net.Http.ByteArrayContent" /> 类的新实例。</summary>
+      <param name="content">用于初始化 <see cref="T:System.Net.Http.ByteArrayContent" /> 的内容。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="content" /> 参数为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Net.Http.ByteArrayContent.#ctor(System.Byte[],System.Int32,System.Int32)">
+      <summary>初始化 <see cref="T:System.Net.Http.ByteArrayContent" /> 类的新实例。</summary>
+      <param name="content">用于初始化 <see cref="T:System.Net.Http.ByteArrayContent" /> 的内容。</param>
+      <param name="offset">
+        <paramref name="content" /> 参数中用于初始化 <see cref="T:System.Net.Http.ByteArrayContent" /> 的偏移量（以字节为单位）。</param>
+      <param name="count">
+        <paramref name="content" /> 中从用于初始化 <see cref="T:System.Net.Http.ByteArrayContent" /> 的 <paramref name="offset" /> 参数开始的字节数。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="content" /> 参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="offset" /> 参数小于零。  
+或 
+<paramref name="offset" /> 参数大于 <paramref name="content" />  参数指定的内容的长度。  
+或 
+<paramref name="count" /> 参数小于零。  
+或 
+<paramref name="count" /> 参数大于由 <paramref name="content" /> 参数减去 <paramref name="offset" /> 参数所指定的内容长度。</exception>
+    </member>
+    <member name="M:System.Net.Http.ByteArrayContent.CreateContentReadStreamAsync">
+      <summary>异步创建 HTTP 内容流，用于读取哪一个对象的后备存储是 <see cref="T:System.Net.Http.ByteArrayContent" /> 的内存。</summary>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.ByteArrayContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>作为一个异步操作，将构造函数中提供的字节数组序列化并写入一个 HTTP 内容流。</summary>
+      <param name="stream">目标流。</param>
+      <param name="context">有关传输的信息，例如通道绑定令牌。 此参数可以为 <see langword="null" />。</param>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.ByteArrayContent.TryComputeLength(System.Int64@)">
+      <summary>确定字节数组的长度是否有效（以字节为单位）。</summary>
+      <param name="length">字节数组的长度（以字节为单位）。</param>
+      <returns>如果 <paramref name="length" /> 是有效长度，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.ClientCertificateOption">
+      <summary>指定提供客户端证书的方式。</summary>
+    </member>
+    <member name="F:System.Net.Http.ClientCertificateOption.Automatic">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClientHandler" /> 将尝试自动提供所有可用的客户端证书。</summary>
+    </member>
+    <member name="F:System.Net.Http.ClientCertificateOption.Manual">
+      <summary>该应用程序向 <see cref="T:System.Net.Http.WebRequestHandler" /> 手动提供客户端证书。 此值是默认值。</summary>
+    </member>
+    <member name="T:System.Net.Http.DelegatingHandler">
+      <summary>将 HTTP 响应消息的处理委托给另一处理程序（称为“内部处理程序”）的 HTTP 处理程序的类型。</summary>
+    </member>
+    <member name="M:System.Net.Http.DelegatingHandler.#ctor">
+      <summary>创建 <see cref="T:System.Net.Http.DelegatingHandler" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.DelegatingHandler.#ctor(System.Net.Http.HttpMessageHandler)">
+      <summary>创建特定内部处理程序的 <see cref="T:System.Net.Http.DelegatingHandler" /> 类的新实例。</summary>
+      <param name="innerHandler">负责处理 HTTP 响应消息的内部处理程序。</param>
+    </member>
+    <member name="M:System.Net.Http.DelegatingHandler.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.DelegatingHandler" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="P:System.Net.Http.DelegatingHandler.InnerHandler">
+      <summary>获取或设置处理 HTTP 响应消息的内部处理程序。</summary>
+      <returns>HTTP 响应消息的内部处理程序。</returns>
+    </member>
+    <member name="M:System.Net.Http.DelegatingHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>异步发送 HTTP 请求到要发送到服务器的内部处理程序。</summary>
+      <param name="request">要发送到服务器的 HTTP 请求消息。</param>
+      <param name="cancellationToken">用于取消操作的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.Net.Http.FormUrlEncodedContent">
+      <summary>使用 application/x-www-form-urlencoded MIME 类型编码的名称/值元组的容器。</summary>
+    </member>
+    <member name="M:System.Net.Http.FormUrlEncodedContent.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+      <summary>使用指定的名称/值对集合初始化 <see cref="T:System.Net.Http.FormUrlEncodedContent" /> 类的新实例。</summary>
+      <param name="nameValueCollection">名称/值对的集合。</param>
+    </member>
+    <member name="T:System.Net.Http.Headers.AuthenticationHeaderValue">
+      <summary>表示 Authorization、ProxyAuthorization、WWW-Authneticate 和 Proxy-Authenticate 标头值中的验证信息。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.AuthenticationHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 类的新实例。</summary>
+      <param name="scheme">用于身份验证的方案。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.AuthenticationHeaderValue.#ctor(System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 类的新实例。</summary>
+      <param name="scheme">用于身份验证的方案。</param>
+      <param name="parameter">包含请求资源的用户代理的身份验证消息的凭证。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.AuthenticationHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.AuthenticationHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.AuthenticationHeaderValue.Parameter">
+      <summary>获取包含所请求资源的用户代理的身份验证信息的凭据。</summary>
+      <returns>包含身份验证信息的凭据。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.AuthenticationHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 实例。</summary>
+      <param name="input">表示身份验证标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的身份验证标头值信息。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.AuthenticationHeaderValue.Scheme">
+      <summary>获取用于身份验证的方案。</summary>
+      <returns>用于身份验证的方案。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.AuthenticationHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.AuthenticationHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.AuthenticationHeaderValue.TryParse(System.String,System.Net.Http.Headers.AuthenticationHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.CacheControlHeaderValue">
+      <summary>表示 Cache-Control 标头的值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.CacheControlHeaderValue.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.CacheControlHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.Extensions">
+      <summary>Cache-extension 标记，每个标记都有一个可选分配值。</summary>
+      <returns>Cache-extension 标记集合，每个标记都有一个可选分配值。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CacheControlHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.MaxAge">
+      <summary>HTTP 客户端愿意接受响应的最长时间（秒）。</summary>
+      <returns>时间值（以秒计）。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.MaxStale">
+      <summary>是否一个 HTTP 客户端愿意接受一个已超出其过期时间的响应。</summary>
+      <returns>如果 HTTP 客户端愿意接受一个已超出其过期时间的响应，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.MaxStaleLimit">
+      <summary>HTTP 客户端愿意接受已超出其过期时间的响应的最大时间值（以秒为单位）。</summary>
+      <returns>时间值（以秒计）。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.MinFresh">
+      <summary>HTTP 客户端愿意接受响应的新鲜度时长（以秒为单位）。</summary>
+      <returns>时间值（以秒计）。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.MustRevalidate">
+      <summary>当缓存条目变得陈旧时，源服务器是否需要对任何后续使用的缓存条目进行重新验证。</summary>
+      <returns>如果缓存条目变得陈旧时，源服务器需要对任何后续使用的缓存条目进行重新验证，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.NoCache">
+      <summary>HTTP 客户端是否愿意接受缓存的响应。</summary>
+      <returns>如果 HTTP 客户端愿意接受缓存的响应，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.NoCacheHeaders">
+      <summary>HTTP 响应上一个缓存控制标头字段中“no-cache”指令内的字段名的集合。</summary>
+      <returns>字段名的集合。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.NoStore">
+      <summary>缓存是否不得存储 HTTP 请求消息或任何响应的任何部分。</summary>
+      <returns>如果缓存不得存储 HTTP 请求消息或任何响应的任何部分，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.NoTransform">
+      <summary>缓存或代理是否不能更改实体正文的任何方面。</summary>
+      <returns>如果缓存或代理不能更改实体正文的任何方面，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.OnlyIfCached">
+      <summary>缓存是否应使用与该 HTTP 请求的其他约束一致的已缓存条目进行响应或使用 504（网关超时）状态进行响应。</summary>
+      <returns>如果缓存应使用与该 HTTP 请求的其他约束一致的已缓存条目进行响应或使用 504（网关超时）状态进行响应，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CacheControlHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 实例。</summary>
+      <param name="input">表示缓存控制标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的缓存控制标头值信息。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.Private">
+      <summary>是否全部或部分 HTTP 响应消息用于单个用户，且不能由共享缓存进行缓存。</summary>
+      <returns>如果全部或部分 HTTP 响应消息用于单个用户，且不能由共享缓存进行缓存，则为 <see langword="true" />，反之则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.PrivateHeaders">
+      <summary>“private”指令中的集合字段名，其位于 HTTP 响应的缓存控制标头字段中。</summary>
+      <returns>字段名的集合。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.ProxyRevalidate">
+      <summary>当缓存条目针对于共享用户代理缓存变得陈旧时，源服务器是否需要对任何后续使用的缓存条目进行重新验证。</summary>
+      <returns>当缓存条目针对于共享用户代理缓存变得陈旧时，如果源服务器需要对任何后续使用的条目进行重新验证，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.Public">
+      <summary>是否一个 HTTP 响应可由任何缓存进行缓存，即使该响应通常为不可缓存或只能在非共享缓存中缓存。</summary>
+      <returns>如果 HTTP 响应可由任何缓存进行缓存，即使该响应通常为不可缓存或只能在非共享缓存中缓存也是如此，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CacheControlHeaderValue.SharedMaxAge">
+      <summary>HTTP 响应中共享的最长使用期限（以秒为单位），该响应为一个共享缓存重写缓存控制标头或 Expires 标头中的 "max-age" 指令。</summary>
+      <returns>时间值（以秒计）。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CacheControlHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CacheControlHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CacheControlHeaderValue.TryParse(System.String,System.Net.Http.Headers.CacheControlHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.ContentDispositionHeaderValue">
+      <summary>表示 Content-Disposition 标头的值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentDispositionHeaderValue.#ctor(System.Net.Http.Headers.ContentDispositionHeaderValue)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 类的新实例。</summary>
+      <param name="source">
+        <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" />。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentDispositionHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 类的新实例。</summary>
+      <param name="dispositionType">包含 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 的字符串。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.CreationDate">
+      <summary>创建文件的日期。</summary>
+      <returns>文件创建日期。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.DispositionType">
+      <summary>内容正文部分的处置类型。</summary>
+      <returns>处置类型。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentDispositionHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.FileName">
+      <summary>有关如果实体被分离并存储在单独的文件中时，如何构建用于存储要使用的消息有效载荷的文件名的建议。</summary>
+      <returns>建议的文件名。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.FileNameStar">
+      <summary>一条建议，提议在实体被分离并存储在单独文件中时如何构建文件名来存储要使用的消息有效负载。</summary>
+      <returns>建议的表单文件名*。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentDispositionHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.ModificationDate">
+      <summary>上次修改文件的日期。</summary>
+      <returns>文件修改日期。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.Name">
+      <summary>内容正文部分的名称。</summary>
+      <returns>内容正文部分的名称。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.Parameters">
+      <summary>一组包含 Content-disposition 标头的参数。</summary>
+      <returns>参数的集合。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 实例。</summary>
+      <param name="input">表示内容处置标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 为无效内容处置标头值信息。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.ReadDate">
+      <summary>上次读取文件的日期。</summary>
+      <returns>上次读取日期。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentDispositionHeaderValue.Size">
+      <summary>文件的近似大小（以字节为单位）。</summary>
+      <returns>以字节为单位的近似大小。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentDispositionHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentDispositionHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentDispositionHeaderValue.TryParse(System.String,System.Net.Http.Headers.ContentDispositionHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.ContentRangeHeaderValue">
+      <summary>表示 Content-Range 标头的值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.#ctor(System.Int64)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 类的新实例。</summary>
+      <param name="length">范围的开始点或结束点（以字节为单位）。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.#ctor(System.Int64,System.Int64)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 类的新实例。</summary>
+      <param name="from">开始发送数据的位置，以字节为单位。</param>
+      <param name="to">停止发送数据的位置，以字节为单位。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.#ctor(System.Int64,System.Int64,System.Int64)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 类的新实例。</summary>
+      <param name="from">开始发送数据的位置，以字节为单位。</param>
+      <param name="to">停止发送数据的位置，以字节为单位。</param>
+      <param name="length">范围的开始点或结束点（以字节为单位）。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.Equals(System.Object)">
+      <summary>确定指定的对象是否等于当前的 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" />等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentRangeHeaderValue.From">
+      <summary>获取开始发送数据的位置。</summary>
+      <returns>开始发送数据的位置，以字节为单位。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.GetHashCode">
+      <summary>作为 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentRangeHeaderValue.HasLength">
+      <summary>获取 Content-Range 标头是否具有指定的长度。</summary>
+      <returns>
+        <see langword="true" />如果 Content-Range 具有指定的长度，否则<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentRangeHeaderValue.HasRange">
+      <summary>获取 Content-Range 是否具有指定的范围。</summary>
+      <returns>
+        <see langword="true" />如果 Content-Range 具有指定的范围，否则<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentRangeHeaderValue.Length">
+      <summary>获取完整实体正文的长度。</summary>
+      <returns>完整的实体正文的长度。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 实例。</summary>
+      <param name="input">字符串表示内容范围标头值信息。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 为 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的内容范围标头值信息。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentRangeHeaderValue.To">
+      <summary>获取停止发送数据的位置。</summary>
+      <returns>停止发送数据的位置。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ContentRangeHeaderValue.TryParse(System.String,System.Net.Http.Headers.ContentRangeHeaderValue@)">
+      <summary>确定字符串是否是有效的 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" />为有效 <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ContentRangeHeaderValue.Unit">
+      <summary>使用大小单位。</summary>
+      <returns>包含范围单元的 <see cref="T:System.String" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.EntityTagHeaderValue">
+      <summary>表示实体标记标头值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.EntityTagHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 类的新实例。</summary>
+      <param name="tag">包含 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 的字符串。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.EntityTagHeaderValue.#ctor(System.String,System.Boolean)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 类的新实例。</summary>
+      <param name="tag">包含 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 的字符串。</param>
+      <param name="isWeak">一个指示此实体标记标头是否为弱验证程序的值。 如果实体标记标头为弱验证程序，则应将 <paramref name="isWeak" /> 设置为 <see langword="true" />。 如果实体标记标头为强验证程序，则应将 <paramref name="isWeak" /> 设置为 <see langword="false" />。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.EntityTagHeaderValue.Any">
+      <summary>获取实体标记标头值。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.EntityTagHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.EntityTagHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.EntityTagHeaderValue.IsWeak">
+      <summary>获取判断结果，即该实体标记是否以漏洞指示器开头。</summary>
+      <returns>如果该实体标记以漏洞指示器开头，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.EntityTagHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 实例。</summary>
+      <param name="input">表示实体标记标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的实体标记标头值信息。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.EntityTagHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.EntityTagHeaderValue.Tag">
+      <summary>获取不透明的带引号的字符串。</summary>
+      <returns>不透明的带引号的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.EntityTagHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.EntityTagHeaderValue.TryParse(System.String,System.Net.Http.Headers.EntityTagHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.HttpContentHeaders">
+      <summary>表示 RFC 2616 中定义的“内容标头”的集合。</summary>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.Allow">
+      <summary>获取 HTTP 响应上的 <see langword="Allow" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Allow" /> 标头的值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.ContentDisposition">
+      <summary>获取 HTTP 响应上的 <see langword="Content-Disposition" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Content-Disposition" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.ContentEncoding">
+      <summary>获取 HTTP 响应上的 <see langword="Content-Encoding" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Content-Encoding" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.ContentLanguage">
+      <summary>获取 HTTP 响应上的 <see langword="Content-Language" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Content-Language" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.ContentLength">
+      <summary>获取或设置 HTTP 响应上的 <see langword="Content-Length" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Content-Length" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.ContentLocation">
+      <summary>获取或设置 HTTP 响应上的 <see langword="Content-Location" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Content-Location" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.ContentMD5">
+      <summary>获取或设置 HTTP 响应上的 <see langword="Content-MD5" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Content-MD5" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.ContentRange">
+      <summary>获取或设置 HTTP 响应上的 <see langword="Content-Range" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Content-Range" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.ContentType">
+      <summary>获取或设置 HTTP 响应上的 <see langword="Content-Type" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Content-Type" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.Expires">
+      <summary>获取或设置 HTTP 响应上的 <see langword="Expires" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Expires" /> 内容标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpContentHeaders.LastModified">
+      <summary>获取或设置 HTTP 响应上的 <see langword="Last-Modified" /> 内容标头值。</summary>
+      <returns>HTTP 响应上的 <see langword="Last-Modified" /> 内容标头值。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.HttpHeaders">
+      <summary>RFC 2616 中定义标头及其值的集合。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.Add(System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary>添加指定的标头及其值到 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合中。</summary>
+      <param name="name">要添加到集合中的标头。</param>
+      <param name="values">要向集合中添加的标头值的列表。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.Add(System.String,System.String)">
+      <summary>添加指定的标头及其值到 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合中。</summary>
+      <param name="name">要添加到集合中的标头。</param>
+      <param name="value">标头的内容。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.Clear">
+      <summary>从 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合中移除所有标头。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.Contains(System.String)">
+      <summary>在 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合中存在特定标头时返回。</summary>
+      <param name="name">特定标头。</param>
+      <returns>如果集合中存在特定标头，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.GetEnumerator">
+      <summary>返回可循环访问 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 实例的枚举器。</summary>
+      <returns>用于 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 的枚举数。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.GetValues(System.String)">
+      <summary>返回存储于 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合中的指定标头的所有标头值。</summary>
+      <param name="name">要为其返回值的指定标头。</param>
+      <returns>标头字符串数组。</returns>
+      <exception cref="T:System.InvalidOperationException">找不到标头。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.Remove(System.String)">
+      <summary>从 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合中移除指定的标头。</summary>
+      <param name="name">要从集合中移除的标头名称。</param>
+      <returns>返回 <see cref="T:System.Boolean" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.System#Collections#IEnumerable#GetEnumerator">
+      <summary>获取可循环访问 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 的枚举器。</summary>
+      <returns>可循环访问 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 的一个 <see cref="T:System.Collections.IEnumerator" /> 的实现的实例。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.TryAddWithoutValidation(System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary>返回一个值，该值指示指定的标头及其值是否添加到 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合，而无需验证提供的信息。</summary>
+      <param name="name">要添加到集合中的标头。</param>
+      <param name="values">标头的值。</param>
+      <returns>如果指定的标头 <paramref name="name" /> 和 <paramref name="values" /> 可能被添加到集合，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.TryAddWithoutValidation(System.String,System.String)">
+      <summary>返回一个值，该值指示指定的标头及其值是否添加到了 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合，而无需验证提供的信息。</summary>
+      <param name="name">要添加到集合中的标头。</param>
+      <param name="value">标头的内容。</param>
+      <returns>如果指定的标头 <paramref name="name" /> 和 <paramref name="value" /> 可能被添加到集合，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaders.TryGetValues(System.String,System.Collections.Generic.IEnumerable{System.String}@)">
+      <summary>如果指定的标头和指定的值存储在 <see cref="T:System.Net.Http.Headers.HttpHeaders" /> 集合中，则返回。</summary>
+      <param name="name">指定的标头。</param>
+      <param name="values">指定的标头值。</param>
+      <returns>如果指定的标头 <paramref name="name" /> 和 <see langword="values" /> 存储在集合中，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.HttpHeaderValueCollection`1">
+      <summary>表示标头值的集合。</summary>
+      <typeparam name="T">标头集合类型。</typeparam>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.Add(`0)">
+      <summary>将某项添加到 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 中。</summary>
+      <param name="item">要添加到标头集合的项。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.Clear">
+      <summary>从 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 中移除所有项。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.Contains(`0)">
+      <summary>确定 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 是否包含一个项。</summary>
+      <param name="item">要查找的标头集合的项。</param>
+      <returns>如果该条目包含在 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 实例中，则为 <see langword="true" />；否则为 <see langword="false" /></returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.CopyTo(`0[],System.Int32)">
+      <summary>从目标数组的指定索引处开始将整个 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 复制到兼容的一维 <see cref="T:System.Array" />。</summary>
+      <param name="array">一维 <see cref="T:System.Array" />，它是从 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 复制的元素的目标。 <see cref="T:System.Array" /> 必须具有从零开始的索引。</param>
+      <param name="arrayIndex">
+        <paramref name="array" /> 中从零开始的索引，从此处开始复制。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpHeaderValueCollection`1.Count">
+      <summary>获取 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 中的标头数。</summary>
+      <returns>集合中的标头数</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.GetEnumerator">
+      <summary>返回循环访问 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 的枚举数。</summary>
+      <returns>用于 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 实例的枚举数。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpHeaderValueCollection`1.IsReadOnly">
+      <summary>获取一个值，该值指示 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 实例是否为只读。</summary>
+      <returns>如果 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 实例为只读，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.ParseAdd(System.String)">
+      <summary>分析项并将其添加到 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />。</summary>
+      <param name="input">要添加的项。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.Remove(`0)">
+      <summary>从 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 中删除指定的项。</summary>
+      <param name="item">要移除的项。</param>
+      <returns>如果已删除 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 实例中的 <paramref name="item" />，则为 <see langword="true" />；否则为 <see langword="false" /></returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary>返回循环访问 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 的枚举数。</summary>
+      <returns>用于 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 实例的枚举数。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 对象的字符串。 的名称。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.HttpHeaderValueCollection`1.TryParseAdd(System.String)">
+      <summary>确定是否可以解析输入并将其添加到 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />。</summary>
+      <param name="input">要验证的条目。</param>
+      <returns>如果 <paramref name="input" /> 可以解析并添加到 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" /> 实例，则为 <see langword="true" />；否则为 <see langword="false" /></returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.HttpRequestHeaders">
+      <summary>表示 RFC 2616 中定义的“请求标头”的集合。</summary>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Accept">
+      <summary>获取 HTTP 请求的 <see langword="Accept" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Accept" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.AcceptCharset">
+      <summary>获取 HTTP 请求的 <see langword="Accept-Charset" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Accept-Charset" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.AcceptEncoding">
+      <summary>获取 HTTP 请求的 <see langword="Accept-Encoding" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Accept-Encoding" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.AcceptLanguage">
+      <summary>获取 HTTP 请求的 <see langword="Accept-Language" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Accept-Language" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Authorization">
+      <summary>获取或设置 HTTP 请求的 <see langword="Authorization" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Authorization" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.CacheControl">
+      <summary>获取或设置 HTTP 请求的 <see langword="Cache-Control" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Cache-Control" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Connection">
+      <summary>获取 HTTP 请求的 <see langword="Connection" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Connection" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.ConnectionClose">
+      <summary>获取或设置一个值，该值表明 HTTP 请求的 <see langword="Connection" /> 标头是否含有 Close。</summary>
+      <returns>如果 <see langword="Connection" /> 标头含有 Close，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Date">
+      <summary>获取或设置 HTTP 请求的 <see langword="Date" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Date" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Expect">
+      <summary>获取 HTTP 请求的 <see langword="Expect" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Expect" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.ExpectContinue">
+      <summary>获取或设置一个值，该值指示 HTTP 请求的 <see langword="Expect" /> 标头是否含有 Continue。</summary>
+      <returns>如果 <see langword="Expect" /> 标头含有 Continue 则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.From">
+      <summary>获取或设置 HTTP 请求的 <see langword="From" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="From" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Host">
+      <summary>获取或设置 HTTP 请求的 <see langword="Host" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Host" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.IfMatch">
+      <summary>获取 HTTP 请求的 <see langword="If-Match" /> 标头值。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />。  
+HTTP 请求的 <see langword="If-Match" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.IfModifiedSince">
+      <summary>获取或设置 HTTP 请求的 <see langword="If-Modified-Since" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="If-Modified-Since" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.IfNoneMatch">
+      <summary>获取 HTTP 请求的 <see langword="If-None-Match" /> 标头值。</summary>
+      <returns>获取 HTTP 请求的 <see langword="If-None-Match" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.IfRange">
+      <summary>获取或设置 HTTP 请求的 <see langword="If-Range" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="If-Range" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.IfUnmodifiedSince">
+      <summary>获取或设置 HTTP 请求的 <see langword="If-Unmodified-Since" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="If-Unmodified-Since" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.MaxForwards">
+      <summary>获取或设置 HTTP 请求的 <see langword="Max-Forwards" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Max-Forwards" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Pragma">
+      <summary>获取 HTTP 请求的 <see langword="Pragma" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Pragma" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.ProxyAuthorization">
+      <summary>获取或设置 HTTP 请求的 <see langword="Proxy-Authorization" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Proxy-Authorization" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Range">
+      <summary>获取或设置 HTTP 请求的 <see langword="Range" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Range" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Referrer">
+      <summary>获取或设置 HTTP 请求的 <see langword="Referer" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Referer" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.TE">
+      <summary>获取 HTTP 请求的 <see langword="TE" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="TE" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Trailer">
+      <summary>获取 HTTP 请求的 <see langword="Trailer" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Trailer" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.TransferEncoding">
+      <summary>获取 HTTP 请求的 <see langword="Transfer-Encoding" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Transfer-Encoding" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.TransferEncodingChunked">
+      <summary>获取或设置一个值，该值表明 HTTP 请求的 <see langword="Transfer-Encoding" /> 标头是否含有 chunked。</summary>
+      <returns>如果 <see langword="Transfer-Encoding" /> 标头含有 chunked，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Upgrade">
+      <summary>获取 HTTP 请求的 <see langword="Upgrade" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Upgrade" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.UserAgent">
+      <summary>获取 HTTP 请求的 <see langword="User-Agent" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="User-Agent" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Via">
+      <summary>获取 HTTP 请求的 <see langword="Via" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Via" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpRequestHeaders.Warning">
+      <summary>获取 HTTP 请求的 <see langword="Warning" /> 标头值。</summary>
+      <returns>HTTP 请求的 <see langword="Warning" /> 标头值。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.HttpResponseHeaders">
+      <summary>表示 RFC 2616 中定义的“响应标头”的集合。</summary>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.AcceptRanges">
+      <summary>获取 HTTP 响应的 <see langword="Accept-Ranges" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Accept-Ranges" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Age">
+      <summary>获取或设置 HTTP 响应的 <see langword="Age" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Age" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.CacheControl">
+      <summary>获取或设置 HTTP 响应的 <see langword="Cache-Control" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Cache-Control" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Connection">
+      <summary>获取 HTTP 响应的 <see langword="Connection" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Connection" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.ConnectionClose">
+      <summary>获取或设置一个值，该值表明 HTTP 响应的 <see langword="Connection" /> 标头是否含有 Close。</summary>
+      <returns>如果 <see langword="Connection" /> 标头含有 Close，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Date">
+      <summary>获取或设置 HTTP 响应的 <see langword="Date" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Date" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.ETag">
+      <summary>获取或设置 HTTP 响应的 <see langword="ETag" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="ETag" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Location">
+      <summary>获取或设置 HTTP 响应的 <see langword="Location" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Location" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Pragma">
+      <summary>获取 HTTP 响应的 <see langword="Pragma" /> 标头值。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />。  
+HTTP 响应的 <see langword="Pragma" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.ProxyAuthenticate">
+      <summary>获取 HTTP 响应的 <see langword="Proxy-Authenticate" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Proxy-Authenticate" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.RetryAfter">
+      <summary>获取或设置 HTTP 响应的 <see langword="Retry-After" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Retry-After" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Server">
+      <summary>获取 HTTP 响应的 <see langword="Server" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Server" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Trailer">
+      <summary>获取 HTTP 响应的 <see langword="Trailer" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Trailer" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.TransferEncoding">
+      <summary>获取 HTTP 响应的 <see langword="Transfer-Encoding" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Transfer-Encoding" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.TransferEncodingChunked">
+      <summary>获取或设置一个值，该值指示 HTTP 响应的 <see langword="Transfer-Encoding" /> 标头是否含有 chunked。</summary>
+      <returns>如果 <see langword="Transfer-Encoding" /> 标头含有 chunked，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Upgrade">
+      <summary>获取 HTTP 响应的 <see langword="Upgrade" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Upgrade" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Vary">
+      <summary>获取 HTTP 响应的 <see langword="Vary" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Vary" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Via">
+      <summary>获取 HTTP 响应的 <see langword="Via" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Via" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.Warning">
+      <summary>获取 HTTP 响应的 <see langword="Warning" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="Warning" /> 标头值。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.HttpResponseHeaders.WwwAuthenticate">
+      <summary>获取 HTTP 响应的 <see langword="WWW-Authenticate" /> 标头值。</summary>
+      <returns>HTTP 响应的 <see langword="WWW-Authenticate" /> 标头值。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.MediaTypeHeaderValue">
+      <summary>表示使用 Content-Type 标头的在 RFC 2616 中定义的媒体类型。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeHeaderValue.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 类的新实例。</summary>
+      <param name="source">用于初始化新实例的 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 对象。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 类的新实例。</summary>
+      <param name="mediaType">一个以用于初始化新实例的字符串的形式表示的源。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.MediaTypeHeaderValue.CharSet">
+      <summary>获取或设置字符集。</summary>
+      <returns>字符集。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.MediaTypeHeaderValue.MediaType">
+      <summary>获取或设置媒体类型标头值。</summary>
+      <returns>媒体类型标头值参数。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.MediaTypeHeaderValue.Parameters">
+      <summary>获取或设置媒体类型标头值参数。</summary>
+      <returns>媒体类型标头值参数。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 实例。</summary>
+      <param name="input">表示媒体类型标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 为无效媒体类型标头值信息。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeHeaderValue.TryParse(System.String,System.Net.Http.Headers.MediaTypeHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue">
+      <summary>表示在 Content-Type 标头中使用的具有额外质量因素的媒体类型。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 类的新实例。</summary>
+      <param name="mediaType">一个 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" />，它表示要用于初始化新实例的字符串。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.#ctor(System.String,System.Double)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 类的新实例。</summary>
+      <param name="mediaType">一个 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" />，它表示要用于初始化新实例的字符串。</param>
+      <param name="quality">与标头值关联的质量。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 实例。</summary>
+      <param name="input">一个字符串，它表示具有质量标头值信息的媒体类型。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 不是具有质量标头值信息的有效媒体类型。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Quality">
+      <summary>获取或设置 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 的质量值。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 对象的质量值。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.TryParse(System.String,System.Net.Http.Headers.MediaTypeWithQualityHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.MediaTypeWithQualityHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.NameValueHeaderValue">
+      <summary>表示用于各种标头的在 RFC 2616 中定义的名称/值对。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.#ctor(System.Net.Http.Headers.NameValueHeaderValue)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 类的新实例。</summary>
+      <param name="source">用于初始化新实例的 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 对象。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 类的新实例。</summary>
+      <param name="name">标头名称。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.#ctor(System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 类的新实例。</summary>
+      <param name="name">标头名称。</param>
+      <param name="value">标头值。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.NameValueHeaderValue.Name">
+      <summary>获取标头名称。</summary>
+      <returns>标头名称。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 实例。</summary>
+      <param name="input">表示名称值标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 为无效名称值标头值信息。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueHeaderValue.TryParse(System.String,System.Net.Http.Headers.NameValueHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.NameValueHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.NameValueHeaderValue.Value">
+      <summary>获取标头值。</summary>
+      <returns>标头值。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue">
+      <summary>表示用于各种标头的在 RFC 2616 中定义的具有参数的名称/值对。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.#ctor(System.Net.Http.Headers.NameValueWithParametersHeaderValue)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 类的新实例。</summary>
+      <param name="source">用于初始化新实例的 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 对象。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 类的新实例。</summary>
+      <param name="name">标头名称。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.#ctor(System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 类的新实例。</summary>
+      <param name="name">标头名称。</param>
+      <param name="value">标头值。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.NameValueWithParametersHeaderValue.Parameters">
+      <summary>从 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 对象获取参数。</summary>
+      <returns>一个包含参数的集合。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 实例。</summary>
+      <param name="input">一个代表名称值的字符串，该值带有参数标头值信息。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 不是有效的含参数标头值信息的名称值。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.NameValueWithParametersHeaderValue.TryParse(System.String,System.Net.Http.Headers.NameValueWithParametersHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.NameValueWithParametersHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.ProductHeaderValue">
+      <summary>表示 User-Agent 标头中的产品标记值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 类的新实例。</summary>
+      <param name="name">产品名称。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductHeaderValue.#ctor(System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 类的新实例。</summary>
+      <param name="name">产品名称值。</param>
+      <param name="version">产品版本值。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ProductHeaderValue.Name">
+      <summary>获取产品令牌名称。</summary>
+      <returns>产品令牌名称。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 实例。</summary>
+      <param name="input">表示产品标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 实例。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductHeaderValue.TryParse(System.String,System.Net.Http.Headers.ProductHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.ProductHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ProductHeaderValue.Version">
+      <summary>获取产品令牌的版本。</summary>
+      <returns>产品令牌的版本。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.ProductInfoHeaderValue">
+      <summary>表示可以是 User-Agent 标头中的产品或注释的值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.#ctor(System.Net.Http.Headers.ProductHeaderValue)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 类的新实例。</summary>
+      <param name="product">用于初始化新实例的 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 对象。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 类的新实例。</summary>
+      <param name="comment">一个注释值。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.#ctor(System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 类的新实例。</summary>
+      <param name="productName">产品名称值。</param>
+      <param name="productVersion">产品版本值。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.ProductInfoHeaderValue.Comment">
+      <summary>获取 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 对象的注释。</summary>
+      <returns>此 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 的注释值。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 实例。</summary>
+      <param name="input">表示产品信息标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的产品信息标头值信息。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.ProductInfoHeaderValue.Product">
+      <summary>获取 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 对象的产品。</summary>
+      <returns>此 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 的产品值。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ProductInfoHeaderValue.TryParse(System.String,System.Net.Http.Headers.ProductInfoHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.ProductInfoHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.RangeConditionHeaderValue">
+      <summary>表示可以是日期/时间或实体标记值 If-Range 标题值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.#ctor(System.DateTimeOffset)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 类的新实例。</summary>
+      <param name="date">用于初始化新实例的数据值。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.#ctor(System.Net.Http.Headers.EntityTagHeaderValue)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 类的新实例。</summary>
+      <param name="entityTag">用于初始化新实例的 <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" /> 对象。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 类的新实例。</summary>
+      <param name="entityTag">一个实体标记，它以用于初始化新实例的字符串的形式表示。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.RangeConditionHeaderValue.Date">
+      <summary>获取日期 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 对象中的日期。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 对象中的日期。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.RangeConditionHeaderValue.EntityTag">
+      <summary>从 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 对象获取实体标记。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 对象的实体标记。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 实例。</summary>
+      <param name="input">表示范围条件标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 不是有效的范围条件标头值信息。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeConditionHeaderValue.TryParse(System.String,System.Net.Http.Headers.RangeConditionHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.RangeHeaderValue">
+      <summary>表示 Range 标头值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeHeaderValue.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeHeaderValue.#ctor(System.Nullable{System.Int64},System.Nullable{System.Int64})">
+      <summary>使用字节范围初始化 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 类的新实例。</summary>
+      <param name="from">开始发送数据的位置。</param>
+      <param name="to">停止发送数据的位置。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="from" /> 大于 <paramref name="to" />  
+或 
+ <paramref name="from" /> 或 <paramref name="to" /> 小于 0。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 实例。</summary>
+      <param name="input">表示范围标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的范围标头值信息。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.RangeHeaderValue.Ranges">
+      <summary>获取从 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 对象指定的范围。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 对象中的范围。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeHeaderValue.TryParse(System.String,System.Net.Http.Headers.RangeHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.RangeHeaderValue.Unit">
+      <summary>获取 <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 对象的单位。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.RangeHeaderValue" /> 对象的单位。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.RangeItemHeaderValue">
+      <summary>表示 Range 标头值中的字节范围。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeItemHeaderValue.#ctor(System.Nullable{System.Int64},System.Nullable{System.Int64})">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.RangeItemHeaderValue" /> 类的新实例。</summary>
+      <param name="from">开始发送数据的位置。</param>
+      <param name="to">停止发送数据的位置。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="from" /> 大于 <paramref name="to" />  
+或 
+ <paramref name="from" /> 或 <paramref name="to" /> 小于 0。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeItemHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.RangeItemHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.RangeItemHeaderValue.From">
+      <summary>获取开始发送数据的位置。</summary>
+      <returns>开始发送数据的位置。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeItemHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.RangeItemHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeItemHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.RangeItemHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.RangeItemHeaderValue.To">
+      <summary>获取停止发送数据的位置。</summary>
+      <returns>停止发送数据的位置。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RangeItemHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.RangeItemHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.RetryConditionHeaderValue">
+      <summary>表示 Retry-After 标头值，它可以是日期/时间或时间跨度值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.RetryConditionHeaderValue.#ctor(System.DateTimeOffset)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 类的新实例。</summary>
+      <param name="date">用于初始化新实例的日期和时间偏移量。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.RetryConditionHeaderValue.#ctor(System.TimeSpan)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 类的新实例。</summary>
+      <param name="delta">用于初始化新实例的增量（以秒为单位）。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.RetryConditionHeaderValue.Date">
+      <summary>获取 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 对象中的日期和时间偏移量。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 对象中的日期和时间偏移量。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.RetryConditionHeaderValue.Delta">
+      <summary>从 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 对象获取增量（以秒为单位）。</summary>
+      <returns>来自 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 对象的增量（以秒为单位）。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RetryConditionHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RetryConditionHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RetryConditionHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 实例。</summary>
+      <param name="input">表示重试条件标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的重试条件标头值信息。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.RetryConditionHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RetryConditionHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.RetryConditionHeaderValue.TryParse(System.String,System.Net.Http.Headers.RetryConditionHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.StringWithQualityHeaderValue">
+      <summary>表示具有可选质量的字符串标头值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.StringWithQualityHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 类的新实例。</summary>
+      <param name="value">用于初始化新实例的字符串。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.StringWithQualityHeaderValue.#ctor(System.String,System.Double)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 类的新实例。</summary>
+      <param name="value">用于初始化新实例的字符串。</param>
+      <param name="quality">用于初始化新实例的质量因子。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.StringWithQualityHeaderValue.Equals(System.Object)">
+      <summary>确定指定的对象是否等于当前 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.StringWithQualityHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.StringWithQualityHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 实例。</summary>
+      <param name="input">表示质量标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 不是具有质量标头值信息的有效字符串。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.StringWithQualityHeaderValue.Quality">
+      <summary>获取 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 对象的质量因子。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 对象的质量因子。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.StringWithQualityHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.StringWithQualityHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.StringWithQualityHeaderValue.TryParse(System.String,System.Net.Http.Headers.StringWithQualityHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.StringWithQualityHeaderValue.Value">
+      <summary>获取 <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 对象中的字符串值。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.StringWithQualityHeaderValue" /> 对象中的字符串值。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.TransferCodingHeaderValue">
+      <summary>表示 Acept-Ecoding 标头值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingHeaderValue.#ctor(System.Net.Http.Headers.TransferCodingHeaderValue)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 类的新实例。</summary>
+      <param name="source">用于初始化新实例的 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 对象。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 类的新实例。</summary>
+      <param name="value">用于初始化新实例的字符串。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingHeaderValue.Equals(System.Object)">
+      <summary>确定指定的对象是否等于当前 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.TransferCodingHeaderValue.Parameters">
+      <summary>获取传输编码参数。</summary>
+      <returns>传输编码参数。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 实例。</summary>
+      <param name="input">表示传输编码标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的传输编码标头值信息。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingHeaderValue.TryParse(System.String,System.Net.Http.Headers.TransferCodingHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.TransferCodingHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.TransferCodingHeaderValue.Value">
+      <summary>获取传输编码值。</summary>
+      <returns>传输编码值。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue">
+      <summary>表示具有可选额外质量因素的 Accept-Encoding 标头值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 类的新实例。</summary>
+      <param name="value">用于初始化新实例的字符串。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue.#ctor(System.String,System.Double)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 类的新实例。</summary>
+      <param name="value">用于初始化新实例的字符串。</param>
+      <param name="quality">质量因素的一个值。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 实例。</summary>
+      <param name="input">表示传输编码值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 不是具有质量标头值信息的有效传输编码。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue.Quality">
+      <summary>获取 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 中的质量因子。</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 中的质量因子。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue.TryParse(System.String,System.Net.Http.Headers.TransferCodingWithQualityHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.TransferCodingWithQualityHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.ViaHeaderValue">
+      <summary>表示 Via 标头的值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.#ctor(System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 类的新实例。</summary>
+      <param name="protocolVersion">接受协议的协议版本。</param>
+      <param name="receivedBy">接收请求或响应的主机和端口。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.#ctor(System.String,System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 类的新实例。</summary>
+      <param name="protocolVersion">接受协议的协议版本。</param>
+      <param name="receivedBy">接收请求或响应的主机和端口。</param>
+      <param name="protocolName">接受协议的协议名称。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.#ctor(System.String,System.String,System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 类的新实例。</summary>
+      <param name="protocolVersion">接受协议的协议版本。</param>
+      <param name="receivedBy">接收请求或响应的主机和端口。</param>
+      <param name="protocolName">接受协议的协议名称。</param>
+      <param name="comment">用于标识收件人代理软件或网关软件的注释字段。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.ViaHeaderValue.Comment">
+      <summary>获取用于标识收件人代理软件或网关软件的注释字段。</summary>
+      <returns>用于标识收件人代理软件或网关软件的注释字段。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 实例。</summary>
+      <param name="input">表示 via 标头值信息的字符串。</param>
+      <returns>一个 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的 via 标头值信息。</exception>
+    </member>
+    <member name="P:System.Net.Http.Headers.ViaHeaderValue.ProtocolName">
+      <summary>获取接收的协议的名称。</summary>
+      <returns>协议名称。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ViaHeaderValue.ProtocolVersion">
+      <summary>获取接收的协议的版本。</summary>
+      <returns>协议版本。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.ViaHeaderValue.ReceivedBy">
+      <summary>获取接收请求或响应的主机和端口。</summary>
+      <returns>接收请求或响应的主机和端口。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>当前实例的副本。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.ViaHeaderValue.TryParse(System.String,System.Net.Http.Headers.ViaHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.ViaHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.Headers.WarningHeaderValue">
+      <summary>表示 Warning 标头使用的警告值。</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.WarningHeaderValue.#ctor(System.Int32,System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 类的新实例。</summary>
+      <param name="code">特定的警告代码。</param>
+      <param name="agent">附加警告的主机。</param>
+      <param name="text">包含警告文本的引用字符串。</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.WarningHeaderValue.#ctor(System.Int32,System.String,System.String,System.DateTimeOffset)">
+      <summary>初始化 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 类的新实例。</summary>
+      <param name="code">特定的警告代码。</param>
+      <param name="agent">附加警告的主机。</param>
+      <param name="text">包含警告文本的引用字符串。</param>
+      <param name="date">警告的日期/时间戳。</param>
+    </member>
+    <member name="P:System.Net.Http.Headers.WarningHeaderValue.Agent">
+      <summary>获取附加警告的主机。</summary>
+      <returns>附加警告的主机。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.WarningHeaderValue.Code">
+      <summary>获取特定的警告代码。</summary>
+      <returns>特定的警告代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.WarningHeaderValue.Date">
+      <summary>获取警告的日期/时间戳。</summary>
+      <returns>警告的日期/时间戳。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.WarningHeaderValue.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等于当前的 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 对象。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的 <see cref="T:System.Object" /> 等于当前的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.WarningHeaderValue.GetHashCode">
+      <summary>充当 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 对象的哈希函数。</summary>
+      <returns>当前对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.WarningHeaderValue.Parse(System.String)">
+      <summary>将字符串转换为 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 实例。</summary>
+      <param name="input">表示身份验证标头值信息的字符串。</param>
+      <returns>返回 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 实例。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="input" /> 是一个 <see langword="null" /> 引用。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="input" /> 是无效的身份验证标头值信息。</exception>
+    </member>
+    <member name="M:System.Net.Http.Headers.WarningHeaderValue.System#ICloneable#Clone">
+      <summary>创建作为当前 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 实例副本的新对象。</summary>
+      <returns>返回当前实例的副本。</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.WarningHeaderValue.Text">
+      <summary>获取包含警告文本的引用字符串。</summary>
+      <returns>包含警告文本的引用字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.WarningHeaderValue.ToString">
+      <summary>返回表示当前 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.WarningHeaderValue.TryParse(System.String,System.Net.Http.Headers.WarningHeaderValue@)">
+      <summary>确定一个字符串是否为有效的 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 信息。</summary>
+      <param name="input">要验证的字符串。</param>
+      <param name="parsedValue">字符串的 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 版本。</param>
+      <returns>如果 <paramref name="input" /> 为有效 <see cref="T:System.Net.Http.Headers.WarningHeaderValue" /> 信息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.HttpClient">
+      <summary>提供基本类，用于发送 HTTP 请求和接收来自通过 URI 确认的资源的 HTTP 响应。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.HttpClient" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.#ctor(System.Net.Http.HttpMessageHandler)">
+      <summary>用特定的处理程序初始化 <see cref="T:System.Net.Http.HttpClient" /> 类的新实例。</summary>
+      <param name="handler">要用于发送请求的 HTTP 处理程序堆栈。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="handler" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.#ctor(System.Net.Http.HttpMessageHandler,System.Boolean)">
+      <summary>用特定的处理程序初始化 <see cref="T:System.Net.Http.HttpClient" /> 类的新实例。</summary>
+      <param name="handler">负责处理 HTTP 响应消息的 <see cref="T:System.Net.Http.HttpMessageHandler" />。</param>
+      <param name="disposeHandler">如果内部处理程序应由 HttpClient.Dispose 处置，则为 <see langword="true" />，如果希望重新使用内部处理程序，则为 <see langword="false" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="handler" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Net.Http.HttpClient.BaseAddress">
+      <summary>获取或设置发送请求时使用的 Internet 资源的统一资源标识符 (URI) 的基址。</summary>
+      <returns>发送请求时使用的 Internet 资源的统一资源标识符 (URI) 的基址。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.CancelPendingRequests">
+      <summary>取消该实例所有挂起的请求。</summary>
+    </member>
+    <member name="P:System.Net.Http.HttpClient.DefaultRequestHeaders">
+      <summary>获取与每个请求一起发送的标题。</summary>
+      <returns>应与每一个请求一起发送的标题。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.DeleteAsync(System.String)">
+      <summary>以异步操作将 DELETE 请求发送给指定 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">请求消息已由 <see cref="T:System.Net.Http.HttpClient" /> 实例发送。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.DeleteAsync(System.String,System.Threading.CancellationToken)">
+      <summary>用以异步操作的取消标记发送 DELETE 请求到指定的 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">请求消息已由 <see cref="T:System.Net.Http.HttpClient" /> 实例发送。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.DeleteAsync(System.Uri)">
+      <summary>以异步操作将 DELETE 请求发送给指定 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">请求消息已由 <see cref="T:System.Net.Http.HttpClient" /> 实例发送。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.DeleteAsync(System.Uri,System.Threading.CancellationToken)">
+      <summary>用以异步操作的取消标记发送 DELETE 请求到指定的 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">请求消息已由 <see cref="T:System.Net.Http.HttpClient" /> 实例发送。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpClient" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetAsync(System.String)">
+      <summary>以异步操作将 GET 请求发送给指定 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetAsync(System.String,System.Net.Http.HttpCompletionOption)">
+      <summary>用以异步操作的 HTTP 完成选项发送 GET 请求到指定的 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="completionOption">指示操作应视为已完成的时间的 HTTP 完成选项值。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetAsync(System.String,System.Net.Http.HttpCompletionOption,System.Threading.CancellationToken)">
+      <summary>用以异步操作的 HTTP 完成选项和取消标记发送 GET 请求到指定的 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="completionOption">指示操作应视为已完成的时间的 HTTP 完成选项值。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetAsync(System.String,System.Threading.CancellationToken)">
+      <summary>用以异步操作的取消标记发送 GET 请求到指定的 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetAsync(System.Uri)">
+      <summary>以异步操作将 GET 请求发送给指定 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetAsync(System.Uri,System.Net.Http.HttpCompletionOption)">
+      <summary>用以异步操作的 HTTP 完成选项发送 GET 请求到指定的 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="completionOption">指示操作应视为已完成的时间的 HTTP 完成选项值。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetAsync(System.Uri,System.Net.Http.HttpCompletionOption,System.Threading.CancellationToken)">
+      <summary>用以异步操作的 HTTP 完成选项和取消标记发送 GET 请求到指定的 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="completionOption">指示操作应视为已完成的时间的 HTTP 完成选项值。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetAsync(System.Uri,System.Threading.CancellationToken)">
+      <summary>用以异步操作的取消标记发送 GET 请求到指定的 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetByteArrayAsync(System.String)">
+      <summary>将 GET 请求发送到指定 URI 并在异步操作中以字节数组的形式返回响应正文。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetByteArrayAsync(System.Uri)">
+      <summary>将 GET 请求发送到指定 URI 并在异步操作中以字节数组的形式返回响应正文。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetStreamAsync(System.String)">
+      <summary>将 GET 请求发送到指定 URI 并在异步操作中以流的形式返回响应正文。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetStreamAsync(System.Uri)">
+      <summary>将 GET 请求发送到指定 URI 并在异步操作中以流的形式返回响应正文。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetStringAsync(System.String)">
+      <summary>将 GET 请求发送到指定 URI 并在异步操作中以字符串的形式返回响应正文。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.GetStringAsync(System.Uri)">
+      <summary>将 GET 请求发送到指定 URI 并在异步操作中以字符串的形式返回响应正文。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="P:System.Net.Http.HttpClient.MaxResponseContentBufferSize">
+      <summary>获取或设置读取响应内容时要缓冲的最大字节数。</summary>
+      <returns>当读取响应内容时缓冲区的最大字节数。 此属性的默认值为 2 GB。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">指定大小小于或等于零。</exception>
+      <exception cref="T:System.InvalidOperationException">已在当前实例上启动了一个操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">已释放当前实例。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.PostAsync(System.String,System.Net.Http.HttpContent)">
+      <summary>以异步操作将 POST 请求发送给指定 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="content">发送到服务器的 HTTP 请求内容。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.PostAsync(System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>用以异步操作的取消标记发送 POST 请求。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="content">发送到服务器的 HTTP 请求内容。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.PostAsync(System.Uri,System.Net.Http.HttpContent)">
+      <summary>以异步操作将 POST 请求发送给指定 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="content">发送到服务器的 HTTP 请求内容。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.PostAsync(System.Uri,System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>用以异步操作的取消标记发送 POST 请求。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="content">发送到服务器的 HTTP 请求内容。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.PutAsync(System.String,System.Net.Http.HttpContent)">
+      <summary>以异步操作将 PUT 请求发送给指定 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="content">发送到服务器的 HTTP 请求内容。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.PutAsync(System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>用以异步操作的取消标记发送 PUT 请求。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="content">发送到服务器的 HTTP 请求内容。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.PutAsync(System.Uri,System.Net.Http.HttpContent)">
+      <summary>以异步操作将 PUT 请求发送给指定 URI。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="content">发送到服务器的 HTTP 请求内容。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.PutAsync(System.Uri,System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>用以异步操作的取消标记发送 PUT 请求。</summary>
+      <param name="requestUri">请求发送到的 URI。</param>
+      <param name="content">发送到服务器的 HTTP 请求内容。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.SendAsync(System.Net.Http.HttpRequestMessage)">
+      <summary>以异步操作发送 HTTP 请求。</summary>
+      <param name="request">要发送的 HTTP 请求消息。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">请求消息已由 <see cref="T:System.Net.Http.HttpClient" /> 实例发送。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.SendAsync(System.Net.Http.HttpRequestMessage,System.Net.Http.HttpCompletionOption)">
+      <summary>以异步操作发送 HTTP 请求。</summary>
+      <param name="request">要发送的 HTTP 请求消息。</param>
+      <param name="completionOption">操作应完成时（在响应可利用或在读取整个响应内容之后）。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">请求消息已由 <see cref="T:System.Net.Http.HttpClient" /> 实例发送。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.SendAsync(System.Net.Http.HttpRequestMessage,System.Net.Http.HttpCompletionOption,System.Threading.CancellationToken)">
+      <summary>以异步操作发送 HTTP 请求。</summary>
+      <param name="request">要发送的 HTTP 请求消息。</param>
+      <param name="completionOption">操作应完成时（在响应可利用或在读取整个响应内容之后）。</param>
+      <param name="cancellationToken">取消操作的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">请求消息已由 <see cref="T:System.Net.Http.HttpClient" /> 实例发送。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="M:System.Net.Http.HttpClient.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>以异步操作发送 HTTP 请求。</summary>
+      <param name="request">要发送的 HTTP 请求消息。</param>
+      <param name="cancellationToken">取消操作的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">请求消息已由 <see cref="T:System.Net.Http.HttpClient" /> 实例发送。</exception>
+      <exception cref="T:System.Net.Http.HttpRequestException">由于基础问题（如网络连接性、DNS 失败、服务器证书验证或超时），请求失败。</exception>
+    </member>
+    <member name="P:System.Net.Http.HttpClient.Timeout">
+      <summary>获取或设置请求超时前等待的时间跨度。</summary>
+      <returns>请求超时前等待的时间跨度。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">指定的超时值小于或等于零，而不是 <see cref="F:System.Threading.Timeout.InfiniteTimeSpan" />。</exception>
+      <exception cref="T:System.InvalidOperationException">已在当前实例上启动了一个操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">已释放当前实例。</exception>
+    </member>
+    <member name="T:System.Net.Http.HttpClientHandler">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" /> 使用的默认消息处理程序。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpClientHandler.#ctor">
+      <summary>创建 <see cref="T:System.Net.Http.HttpClientHandler" /> 类的实例。</summary>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.AllowAutoRedirect">
+      <summary>获取或设置一个值，该值指示处理程序是否应跟随重定向响应。</summary>
+      <returns>
+        <see langword="true" /> 如果处理程序应跟随重定向响应;否则为<see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.AutomaticDecompression">
+      <summary>获取或设置处理程序用于自动解压缩 HTTP 内容响应的解压缩方法类型。</summary>
+      <returns>处理程序使用的自动解压缩方法。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.CheckCertificateRevocationList">
+      <summary>获取或设置一个值，该值指示是否根据证书颁发机构吊销列表检查证书。</summary>
+      <returns>如果检查证书吊销列表，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.PlatformNotSupportedException">仅限 .NET Framework 4.7.1：不实现此属性。</exception>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.ClientCertificateOptions">
+      <summary>获取或设置一个值，该值指示是否从证书存储自动挑选证书，或者是否允许调用方通过特定的客户端证书。</summary>
+      <returns>与此处理程序关联的安全证书集合。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.ClientCertificates">
+      <summary>获取与对服务器的请求相关联的安全证书集合。</summary>
+      <returns>执行证书时，向服务器提供 X509CertificateCollection 基于客户端身份验证。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.CookieContainer">
+      <summary>获取或设置用于通过处理程序存储服务器 Cookie 的 Cookie 容器。</summary>
+      <returns>用于通过处理程序存储服务器 Cookie 的 Cookie 容器。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.Credentials">
+      <summary>获取或设置此处理程序使用的身份验证信息。</summary>
+      <returns>与该处理程序关联的身份验证凭据。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.DangerousAcceptAnyServerCertificateValidator">
+      <summary>获取始终返回 <see langword="true" /> 的缓存委托。</summary>
+      <returns>始终返回 <see langword="true" /> 的缓存委托。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.DefaultProxyCredentials">
+      <summary>使用默认（系统）代理时，获取或设置要提交到默认代理服务器进行身份验证的凭据。 只有在 <see cref="P:System.Net.Http.HttpClientHandler.UseProxy" /> 设置为 <see langword="true" /> 且 <see cref="P:System.Net.Http.HttpClientHandler.Proxy" /> 设置为 <see langword="null" /> 时才使用默认代理。</summary>
+      <returns>默认代理服务器对请求进行身份验证所需的凭据。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpClientHandler.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpClientHandler" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.MaxAutomaticRedirections">
+      <summary>获取或设置处理程序遵循的重定向的最大数目。</summary>
+      <returns>处理程序遵循的重定向响应的最大数目。 默认值为 50。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.MaxConnectionsPerServer">
+      <summary>获取或设置使用 <see cref="T:System.Net.Http.HttpClient" /> 对象发出请求时允许的最大并发连接数（每个服务器终结点）。 请注意，该限制针对每个服务器终结点，例如，值为 256 表示允许 256 个到 http://www.adatum.com/ 的并发连接，以及另外 256 个到 http://www.adventure-works.com/ 的并发连接。</summary>
+      <returns>（每个服务器终结点） 的并发连接允许的最大数目<see cref="T:System.Net.Http.HttpClient" />对象。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.MaxRequestContentBufferSize">
+      <summary>获取或设置处理程序使用的最大请求内容缓冲区大小。</summary>
+      <returns>最大请求内容缓冲区大小（以字节为单位）。 默认值为 2 GB。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.MaxResponseHeadersLength">
+      <summary>获取或设置响应标头的最大长度，以千字节（1024 字节）为单位。 例如，如果该值为 64，那么允许的最大响应标头长度为 65536 字节。</summary>
+      <returns>最大长度，以千字节 （1024 字节为单位），响应标头。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.PreAuthenticate">
+      <summary>获取或设置一个值，该值指示处理程序是否随请求发送授权标头。</summary>
+      <returns>
+        <see langword="true" /> 表示处理程序在发生身份验证之后随请求一起发送 HTTP 授权标头；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.Properties">
+      <summary>获取 <see cref="T:System.Net.Http.HttpClient" /> 的自定义属性的可写字典（即地图）。 初始字典为空；可以为自定义处理程序和特殊处理插入和查询键值对。</summary>
+      <returns>自定义属性的可写字典。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.Proxy">
+      <summary>获取或设置处理程序使用的代理信息。</summary>
+      <returns>处理程序使用的代理信息。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpClientHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>基于作为不会阻止的操作在 <see cref="T:System.Net.Http.HttpRequestMessage" /> 中提供的信息创建 <see cref="T:System.Net.Http.HttpResponseMessage" /> 的实例。</summary>
+      <param name="request">HTTP 请求消息。</param>
+      <param name="cancellationToken">用于取消操作的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.ServerCertificateCustomValidationCallback">
+      <summary>获取或设置用于验证服务器证书的回调方法。</summary>
+      <returns>用于验证服务器证书的回调方法。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.SslProtocols">
+      <summary>获取或设置 HttpClientHandler 对象管理的 <see cref="T:System.Net.Http.HttpClient" /> 对象所用的 TLS/SSL 协议。</summary>
+      <returns>
+        <see cref="T:System.Security.Authentication.SslProtocols" /> 枚举中定义的值之一。</returns>
+      <exception cref="T:System.PlatformNotSupportedException">仅限 .NET Framework 4.7.1：不实现此属性。</exception>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.SupportsAutomaticDecompression">
+      <summary>获取一个值，该值指示处理程序是否支持自动响应内容解压缩。</summary>
+      <returns>如果该处理程序支持自动响应内容解压缩，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.SupportsProxy">
+      <summary>获取一个值，该值指示处理程序是否支持代理设置。</summary>
+      <returns>如果处理程序支持代理设置，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.SupportsRedirectConfiguration">
+      <summary>获取一个值，该值表示处理程序是否支持 <see cref="P:System.Net.Http.HttpClientHandler.AllowAutoRedirect" /> 和 <see cref="P:System.Net.Http.HttpClientHandler.MaxAutomaticRedirections" /> 属性的配置设置。</summary>
+      <returns>如果处理程序支持 <see cref="P:System.Net.Http.HttpClientHandler.AllowAutoRedirect" /> 和 <see cref="P:System.Net.Http.HttpClientHandler.MaxAutomaticRedirections" /> 属性的配置设置，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.UseCookies">
+      <summary>获取或设置一个值，该值指示处理程序是否使用 <see cref="P:System.Net.Http.HttpClientHandler.CookieContainer" /> 属性来存储服务器 Cookie 并在发送请求时使用这些 Cookie。</summary>
+      <returns>如果处理程序支持使用 <see cref="P:System.Net.Http.HttpClientHandler.CookieContainer" /> 属性来存储服务器 Cookie 并在发送请求时使用这些 Cookie，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.UseDefaultCredentials">
+      <summary>获取或设置一个值，该值控制处理程序是否随请求一起发送默认凭据。</summary>
+      <returns>如果使用默认凭据，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpClientHandler.UseProxy">
+      <summary>获取或设置一个值，该值表示处理程序是否对请求使用代理。</summary>
+      <returns>如果处理程序应对请求使用代理，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.HttpCompletionOption">
+      <summary>指示 <see cref="T:System.Net.Http.HttpClient" /> 操作是在响应可利用时立即视为已完成，还是在读取包含上下文的整个答案信息之后才视为已完成。</summary>
+    </member>
+    <member name="F:System.Net.Http.HttpCompletionOption.ResponseContentRead">
+      <summary>操作应在阅读包括该内容的整个响应之后完成。</summary>
+    </member>
+    <member name="F:System.Net.Http.HttpCompletionOption.ResponseHeadersRead">
+      <summary>响应一可用且标题可读时即应完成的操作。 尚未读取的内容。</summary>
+    </member>
+    <member name="T:System.Net.Http.HttpContent">
+      <summary>表示 HTTP 实体正文和内容标头的基类。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.HttpContent" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.CopyToAsync(System.IO.Stream)">
+      <summary>将 HTTP 内容序列化为字节流，并将其复制到作为 <paramref name="stream" /> 参数提供的流对象。</summary>
+      <param name="stream">目标流。</param>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.CopyToAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>将 HTTP 内容序列化为字节流，并将其复制到作为 <paramref name="stream" /> 参数提供的流对象。</summary>
+      <param name="stream">目标流。</param>
+      <param name="context">有关传输的信息（例如信道绑定令牌）。 此参数可以为 <see langword="null" />。</param>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.CreateContentReadStreamAsync">
+      <summary>采用异步操作将 HTTP 内容序列化到内存流。</summary>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.Dispose">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpContent" /> 使用的非托管资源和托管资源。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpContent" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="P:System.Net.Http.HttpContent.Headers">
+      <summary>获取 RFC 2616 中定义的 HTTP 内容标头。</summary>
+      <returns>RFC 2616 中定义的内容标头。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.LoadIntoBufferAsync">
+      <summary>以异步操作方式将 HTTP 内容序列化到内存缓冲区。</summary>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.LoadIntoBufferAsync(System.Int64)">
+      <summary>以异步操作方式将 HTTP 内容序列化到内存缓冲区。</summary>
+      <param name="maxBufferSize">要使用的缓冲区最大大小。（以字节为单位）。</param>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.ReadAsByteArrayAsync">
+      <summary>将 HTTP 内容序列化到字节数组，此为异步操作。</summary>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.ReadAsStreamAsync">
+      <summary>将 HTTP 内容序列化并返回将内容表示为异步操作的流。</summary>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.ReadAsStringAsync">
+      <summary>将 HTTP 内容序列化到字符串，此为异步操作。</summary>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>将 HTTP 内容序列化到流，此为异步操作。</summary>
+      <param name="stream">目标流。</param>
+      <param name="context">有关传输的信息（例如信道绑定令牌）。 此参数可以为 <see langword="null" />。</param>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpContent.TryComputeLength(System.Int64@)">
+      <summary>确定 HTTP 内容是否具有有效的长度（以字节为单位）。</summary>
+      <param name="length">HTTP 内容的长度（以字节为单位）。</param>
+      <returns>如果 <paramref name="length" /> 是有效长度，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.HttpMessageHandler">
+      <summary>HTTP 消息处理程序的基类。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageHandler.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.HttpMessageHandler" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageHandler.Dispose">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpMessageHandler" /> 使用的非托管资源和托管资源。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageHandler.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpMessageHandler" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>以异步操作发送 HTTP 请求。</summary>
+      <param name="request">要发送的 HTTP 请求消息。</param>
+      <param name="cancellationToken">取消操作的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.Net.Http.HttpMessageInvoker">
+      <summary>一个特殊类，它允许应用程序对 HTTP 处理程序链调用 <see cref="M:System.Net.Http.HttpMessageInvoker.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)" /> 方法。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageInvoker.#ctor(System.Net.Http.HttpMessageHandler)">
+      <summary>使用指定的 <see cref="T:System.Net.Http.HttpMessageHandler" /> 初始化 <see cref="T:System.Net.Http.HttpMessageInvoker" /> 类的实例。</summary>
+      <param name="handler">负责处理 HTTP 响应消息的 <see cref="T:System.Net.Http.HttpMessageHandler" />。</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageInvoker.#ctor(System.Net.Http.HttpMessageHandler,System.Boolean)">
+      <summary>使用指定的 <see cref="T:System.Net.Http.HttpMessageHandler" /> 初始化 <see cref="T:System.Net.Http.HttpMessageInvoker" /> 类的实例。</summary>
+      <param name="handler">负责处理 HTTP 响应消息的 <see cref="T:System.Net.Http.HttpMessageHandler" />。</param>
+      <param name="disposeHandler">如果内部处理程序应由 Dispose() 处置，则为 <see langword="true" />，如果希望重新使用内部处理程序,则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageInvoker.Dispose">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpMessageInvoker" /> 使用的非托管资源和托管资源。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageInvoker.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpMessageInvoker" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageInvoker.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>以异步操作发送 HTTP 请求。</summary>
+      <param name="request">要发送的 HTTP 请求消息。</param>
+      <param name="cancellationToken">取消操作的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.Net.Http.HttpMethod">
+      <summary>一个帮助器类，它用于检索并比较标准 HTTP 方法并且用于创建新的 HTTP 方法。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMethod.#ctor(System.String)">
+      <summary>使用指定的 HTTP 方法初始化 <see cref="T:System.Net.Http.HttpMethod" /> 类的新实例。</summary>
+      <param name="method">HTTP 方法。</param>
+    </member>
+    <member name="P:System.Net.Http.HttpMethod.Delete">
+      <summary>表示一个 HTTP DELETE 协议方法。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.HttpMethod" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpMethod.Equals(System.Net.Http.HttpMethod)">
+      <summary>确定指定的 <see cref="T:System.Net.Http.HttpMethod" /> 是否等同于当前的 <see cref="T:System.Object" />。</summary>
+      <param name="other">要与当前对象进行比较的 HTTP 方法。</param>
+      <returns>如果指定的对象是等于当前对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpMethod.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等同于当前的 <see cref="T:System.Object" />。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果指定的对象是等于当前对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpMethod.Get">
+      <summary>表示一个 HTTP GET 协议方法。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.HttpMethod" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpMethod.GetHashCode">
+      <summary>作为此类型的哈希函数。</summary>
+      <returns>当前 <see cref="T:System.Object" /> 的哈希代码。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpMethod.Head">
+      <summary>表示一个 HTTP HEAD 协议方法。 除了服务器在响应中只返回消息头不返回消息体以外，HEAD 方法和 GET 是一样的。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.HttpMethod" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpMethod.Method">
+      <summary>HTTP 方法。</summary>
+      <returns>表示为 <see cref="T:System.String" /> 的 HTTP 方法。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpMethod.op_Equality(System.Net.Http.HttpMethod,System.Net.Http.HttpMethod)">
+      <summary>用于比较两个 <see cref="T:System.Net.Http.HttpMethod" /> 对象的相等运算符。</summary>
+      <param name="left">相等运算符左侧的 <see cref="T:System.Net.Http.HttpMethod" />。</param>
+      <param name="right">相等运算符右侧的 <see cref="T:System.Net.Http.HttpMethod" />。</param>
+      <returns>如果指定的 <paramref name="left" /> 和 <paramref name="right" /> 参数相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpMethod.op_Inequality(System.Net.Http.HttpMethod,System.Net.Http.HttpMethod)">
+      <summary>用于比较两个 <see cref="T:System.Net.Http.HttpMethod" /> 对象的不相等运算符。</summary>
+      <param name="left">不相等运算符左侧的 <see cref="T:System.Net.Http.HttpMethod" />。</param>
+      <param name="right">不相等运算符右侧的 <see cref="T:System.Net.Http.HttpMethod" />。</param>
+      <returns>如果指定的 <paramref name="left" /> 和 <paramref name="right" /> 参数不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpMethod.Options">
+      <summary>表示一个 HTTP OPTIONS 协议方法。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.HttpMethod" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpMethod.Post">
+      <summary>表示一个 HTTP POST 协议方法，该方法用于将新实体作为补充发送到某个 URI。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.HttpMethod" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpMethod.Put">
+      <summary>表示一个 HTTP PUT 协议方法，该方法用于替换 URI 标识的实体。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.HttpMethod" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpMethod.ToString">
+      <summary>返回表示当前对象的字符串。</summary>
+      <returns>表示当前对象的字符串。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpMethod.Trace">
+      <summary>表示一个 HTTP TRACE 协议方法。</summary>
+      <returns>返回 <see cref="T:System.Net.Http.HttpMethod" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.HttpRequestException">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" /> 和 <see cref="T:System.Net.Http.HttpMessageHandler" /> 所引发的异常的基类。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestException.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.HttpRequestException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestException.#ctor(System.String)">
+      <summary>使用特定的描述当前异常的消息初始化 <see cref="T:System.Net.Http.HttpRequestException" /> 类的新实例。</summary>
+      <param name="message">描述当前异常的消息。</param>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestException.#ctor(System.String,System.Exception)">
+      <summary>使用特定的描述当前异常和内部异常的消息初始化 <see cref="T:System.Net.Http.HttpRequestException" /> 类的新实例。</summary>
+      <param name="message">描述当前异常的消息。</param>
+      <param name="inner">内部异常。</param>
+    </member>
+    <member name="T:System.Net.Http.HttpRequestMessage">
+      <summary>表示一条 HTTP 请求消息。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestMessage.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.HttpRequestMessage" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestMessage.#ctor(System.Net.Http.HttpMethod,System.String)">
+      <summary>初始化 HTTP 方法和请求 <see cref="T:System.Net.Http.HttpRequestMessage" /> 的 <see cref="T:System.Uri" /> 类的新实例。</summary>
+      <param name="method">HTTP 方法。</param>
+      <param name="requestUri">表示请求 <see cref="T:System.Uri" /> 的字符串。</param>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestMessage.#ctor(System.Net.Http.HttpMethod,System.Uri)">
+      <summary>初始化 HTTP 方法和请求 <see cref="T:System.Net.Http.HttpRequestMessage" /> 的 <see cref="T:System.Uri" /> 类的新实例。</summary>
+      <param name="method">HTTP 方法。</param>
+      <param name="requestUri">要请求的 <see cref="T:System.Uri" />。</param>
+    </member>
+    <member name="P:System.Net.Http.HttpRequestMessage.Content">
+      <summary>获取或设置 HTTP 消息的内容。</summary>
+      <returns>消息的内容</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestMessage.Dispose">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpRequestMessage" /> 使用的非托管资源和托管资源。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestMessage.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpRequestMessage" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="P:System.Net.Http.HttpRequestMessage.Headers">
+      <summary>获取 HTTP 请求标头的集合。</summary>
+      <returns>HTTP 请求标头的集合。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpRequestMessage.Method">
+      <summary>获取或设置 HTTP 请求消息使用的 HTTP 方法。</summary>
+      <returns>请求消息使用的 HTTP 方法。 默认为 GET 方法。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpRequestMessage.Properties">
+      <summary>获取 HTTP 请求的属性集。</summary>
+      <returns>返回 <see cref="T:System.Collections.Generic.IDictionary`2" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpRequestMessage.RequestUri">
+      <summary>获取或设置用于 HTTP 请求的 <see cref="T:System.Uri" />。</summary>
+      <returns>用于 HTTP 请求的 <see cref="T:System.Uri" />。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestMessage.ToString">
+      <summary>返回表示当前对象的字符串。</summary>
+      <returns>当前对象的字符串表示形式。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpRequestMessage.Version">
+      <summary>获取或设置 HTTP 消息版本。</summary>
+      <returns>HTTP 消息版本。 默认值为 2.0。</returns>
+    </member>
+    <member name="T:System.Net.Http.HttpResponseMessage">
+      <summary>表示包括状态代码和数据的 HTTP 响应消息。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpResponseMessage.#ctor">
+      <summary>初始化 <see cref="T:System.Net.Http.HttpResponseMessage" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpResponseMessage.#ctor(System.Net.HttpStatusCode)">
+      <summary>初始化指定的 <see cref="T:System.Net.Http.HttpResponseMessage" /> 的 <see cref="P:System.Net.Http.HttpResponseMessage.StatusCode" /> 类的新实例。</summary>
+      <param name="statusCode">HTTP 响应的状态代码。</param>
+    </member>
+    <member name="P:System.Net.Http.HttpResponseMessage.Content">
+      <summary>获取或设置 HTTP 响应消息的内容。</summary>
+      <returns>HTTP 响应消息的内容。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpResponseMessage.Dispose">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpResponseMessage" /> 使用的非托管资源。</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpResponseMessage.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.HttpResponseMessage" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode">
+      <summary>如果 HTTP 响应的 <see cref="P:System.Net.Http.HttpResponseMessage.IsSuccessStatusCode" /> 属性是 <see langword="false" />，则引发异常。</summary>
+      <returns>如果调用成功，HTTP 则响应消息。</returns>
+      <exception cref="T:System.Net.Http.HttpRequestException">HTTP 响应失败。</exception>
+    </member>
+    <member name="P:System.Net.Http.HttpResponseMessage.Headers">
+      <summary>获取 HTTP 响应标头的集合。</summary>
+      <returns>HTTP 响应标头的集合。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpResponseMessage.IsSuccessStatusCode">
+      <summary>获取一个值，该值指示 HTTP 响应是否成功。</summary>
+      <returns>
+        <see langword="true" /> 如果<see cref="P:System.Net.Http.HttpResponseMessage.StatusCode" />已在范围内 200-299; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpResponseMessage.ReasonPhrase">
+      <summary>获取或设置通常由服务器发出的原因短语（与状态代码一起发出）。</summary>
+      <returns>服务器发送的原因短语。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpResponseMessage.RequestMessage">
+      <summary>获取或设置导致此响应消息的请求消息。</summary>
+      <returns>导致此响应消息的请求消息。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpResponseMessage.StatusCode">
+      <summary>获取或设置 HTTP 响应的状态代码。</summary>
+      <returns>HTTP 响应的状态代码。</returns>
+    </member>
+    <member name="M:System.Net.Http.HttpResponseMessage.ToString">
+      <summary>返回表示当前对象的字符串。</summary>
+      <returns>当前对象的字符串表示形式。</returns>
+    </member>
+    <member name="P:System.Net.Http.HttpResponseMessage.Version">
+      <summary>获取或设置 HTTP 消息版本。</summary>
+      <returns>HTTP 消息版本。 默认值为 1.1。</returns>
+    </member>
+    <member name="T:System.Net.Http.MessageProcessingHandler">
+      <summary>仅对请求和/或响应消息进行一些小型处理的处理程序的基类。</summary>
+    </member>
+    <member name="M:System.Net.Http.MessageProcessingHandler.#ctor">
+      <summary>创建 <see cref="T:System.Net.Http.MessageProcessingHandler" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.MessageProcessingHandler.#ctor(System.Net.Http.HttpMessageHandler)">
+      <summary>创建特定内部处理程序的 <see cref="T:System.Net.Http.MessageProcessingHandler" /> 类的实例。</summary>
+      <param name="innerHandler">负责处理 HTTP 响应消息的内部处理程序。</param>
+    </member>
+    <member name="M:System.Net.Http.MessageProcessingHandler.ProcessRequest(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>处理每个发送到服务器的请求。</summary>
+      <param name="request">要处理的 HTTP 请求消息。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>已处理的 HTTP 请求消息。</returns>
+    </member>
+    <member name="M:System.Net.Http.MessageProcessingHandler.ProcessResponse(System.Net.Http.HttpResponseMessage,System.Threading.CancellationToken)">
+      <summary>处理来自服务器的每个响应。</summary>
+      <param name="response">要处理的 HTTP 响应消息。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>已处理的 HTTP 响应消息。</returns>
+    </member>
+    <member name="M:System.Net.Http.MessageProcessingHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>异步发送 HTTP 请求到要发送到服务器的内部处理程序。</summary>
+      <param name="request">要发送到服务器的 HTTP 请求消息。</param>
+      <param name="cancellationToken">可由其他对象或线程用以接收取消通知的取消标记。</param>
+      <returns>表示异步操作的任务对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.Net.Http.MultipartContent">
+      <summary>提供 <see cref="T:System.Net.Http.HttpContent" /> 对象的集合，其可通过使用多部分/* 内容类型规范序列化。</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.#ctor">
+      <summary>创建 <see cref="T:System.Net.Http.MultipartContent" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.#ctor(System.String)">
+      <summary>创建 <see cref="T:System.Net.Http.MultipartContent" /> 类的新实例。</summary>
+      <param name="subtype">多部分内容的子类型。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="subtype" /> 为 <see langword="null" /> 或者只包含空格字符。</exception>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.#ctor(System.String,System.String)">
+      <summary>创建 <see cref="T:System.Net.Http.MultipartContent" /> 类的新实例。</summary>
+      <param name="subtype">多部分内容的子类型。</param>
+      <param name="boundary">多部分内容的边界字符串。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="subtype" /> 是 <see langword="null" /> 或空字符串。  
+<paramref name="boundary" /> 为 <see langword="null" /> 或者只包含空格字符。  
+
+或 - 
+<paramref name="boundary" /> 以空格字符结尾。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="boundary" /> 的长度大于 70。</exception>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.Add(System.Net.Http.HttpContent)">
+      <summary>添加多部分 HTTP 内容到 <see cref="T:System.Net.Http.HttpContent" /> 对象的集合，其可通过使用多部分/* 内容类型规范获取序列化。</summary>
+      <param name="content">要添加到集合中的 HTTP 内容。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="content" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.MultipartContent" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.GetEnumerator">
+      <summary>返回循环访问 <see cref="T:System.Net.Http.HttpContent" /> 对象集合的枚举器，该对象集合使用多部分/* 内容类型规范进行序列化。</summary>
+      <returns>一个可用于循环访问集合的对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>以异步操作方式，将多部分 HTTP 内容序列化到流。</summary>
+      <param name="stream">目标流。</param>
+      <param name="context">有关传输的信息（例如信道绑定令牌）。 此参数可以为 <see langword="null" />。</param>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.System#Collections#IEnumerable#GetEnumerator">
+      <summary>
+        <see cref="M:System.Net.Http.MultipartContent.GetEnumerator" /> 方法的显式实现。</summary>
+      <returns>一个可用于循环访问集合的对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartContent.TryComputeLength(System.Int64@)">
+      <summary>确定 HTTP 多部分内容的长度是否有效（以字节为单位）。</summary>
+      <param name="length">HTTP 内容的长度（以字节为单位）。</param>
+      <returns>如果 <paramref name="length" /> 是有效长度，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.MultipartFormDataContent">
+      <summary>为使用 multipart/form-data MIME 类型进行编码的内容提供容器。</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataContent.#ctor">
+      <summary>创建 <see cref="T:System.Net.Http.MultipartFormDataContent" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataContent.#ctor(System.String)">
+      <summary>创建 <see cref="T:System.Net.Http.MultipartFormDataContent" /> 类的新实例。</summary>
+      <param name="boundary">多部分窗体数据内容的边界字符串。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="boundary" /> 为 <see langword="null" /> 或者只包含空格字符。  
+或 
+<paramref name="boundary" /> 以空格字符结尾。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="boundary" /> 的长度大于 70。</exception>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataContent.Add(System.Net.Http.HttpContent)">
+      <summary>向序列化为多部/窗体数据 MIME 类型的 <see cref="T:System.Net.Http.HttpContent" /> 对象集合添加 HTTP 内容。</summary>
+      <param name="content">要添加到集合中的 HTTP 内容。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="content" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataContent.Add(System.Net.Http.HttpContent,System.String)">
+      <summary>向序列化为多部/窗体数据 MIME 类型的 <see cref="T:System.Net.Http.HttpContent" /> 对象集合添加 HTTP 内容。</summary>
+      <param name="content">要添加到集合中的 HTTP 内容。</param>
+      <param name="name">要添加的 HTTP 内容的名称。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="name" /> 为 <see langword="null" /> 或者只包含空格字符。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="content" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataContent.Add(System.Net.Http.HttpContent,System.String,System.String)">
+      <summary>向序列化为多部/窗体数据 MIME 类型的 <see cref="T:System.Net.Http.HttpContent" /> 对象集合添加 HTTP 内容。</summary>
+      <param name="content">要添加到集合中的 HTTP 内容。</param>
+      <param name="name">要添加的 HTTP 内容的名称。</param>
+      <param name="fileName">要添加到集合中的 HTTP 内容的文件名。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="name" /> 为 <see langword="null" /> 或者只包含空格字符。  
+或 
+<paramref name="fileName" /> 为 <see langword="null" /> 或者只包含空格字符。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="content" /> 是 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.Net.Http.StreamContent">
+      <summary>提供基于流的 HTTP 内容。</summary>
+    </member>
+    <member name="M:System.Net.Http.StreamContent.#ctor(System.IO.Stream)">
+      <summary>创建 <see cref="T:System.Net.Http.StreamContent" /> 类的新实例。</summary>
+      <param name="content">用于初始化 <see cref="T:System.Net.Http.StreamContent" /> 的内容。</param>
+    </member>
+    <member name="M:System.Net.Http.StreamContent.#ctor(System.IO.Stream,System.Int32)">
+      <summary>创建 <see cref="T:System.Net.Http.StreamContent" /> 类的新实例。</summary>
+      <param name="content">用于初始化 <see cref="T:System.Net.Http.StreamContent" /> 的内容。</param>
+      <param name="bufferSize">
+        <see cref="T:System.Net.Http.StreamContent" /> 的缓冲区的大小（以字节为单位）。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="content" /> 是 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="bufferSize" /> 小于或等于零。</exception>
+    </member>
+    <member name="M:System.Net.Http.StreamContent.CreateContentReadStreamAsync">
+      <summary>作为一个异步操作，将 HTTP 流内容写入内存流。</summary>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.StreamContent.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Net.Http.StreamContent" /> 使用的非托管资源，并可根据需要释放托管资源。</summary>
+      <param name="disposing">如果释放托管资源和非托管资源，则为 <see langword="true" />；如果仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Net.Http.StreamContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>将 HTTP 内容序列化到流，此为异步操作。</summary>
+      <param name="stream">目标流。</param>
+      <param name="context">有关传输的信息（例如信道绑定令牌）。 此参数可以为 <see langword="null" />。</param>
+      <returns>表示异步操作的任务对象。</returns>
+    </member>
+    <member name="M:System.Net.Http.StreamContent.TryComputeLength(System.Int64@)">
+      <summary>确定流内容是否具有有效的长度（以字节为单位）。</summary>
+      <param name="length">用字节表示的流内容长度。</param>
+      <returns>如果 <paramref name="length" /> 是有效长度，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Net.Http.StringContent">
+      <summary>提供基于字符串的 HTTP 内容。</summary>
+    </member>
+    <member name="M:System.Net.Http.StringContent.#ctor(System.String)">
+      <summary>创建 <see cref="T:System.Net.Http.StringContent" /> 类的新实例。</summary>
+      <param name="content">用于初始化 <see cref="T:System.Net.Http.StringContent" /> 的内容。</param>
+    </member>
+    <member name="M:System.Net.Http.StringContent.#ctor(System.String,System.Text.Encoding)">
+      <summary>创建 <see cref="T:System.Net.Http.StringContent" /> 类的新实例。</summary>
+      <param name="content">用于初始化 <see cref="T:System.Net.Http.StringContent" /> 的内容。</param>
+      <param name="encoding">用于内容的编码。</param>
+    </member>
+    <member name="M:System.Net.Http.StringContent.#ctor(System.String,System.Text.Encoding,System.String)">
+      <summary>创建 <see cref="T:System.Net.Http.StringContent" /> 类的新实例。</summary>
+      <param name="content">用于初始化 <see cref="T:System.Net.Http.StringContent" /> 的内容。</param>
+      <param name="encoding">用于内容的编码。</param>
+      <param name="mediaType">要用于该内容的媒体。</param>
+    </member>
+  </members>
+</doc>

@@ -8,7 +8,7 @@ namespace FutureEditor
     public static class ConfigBatTool
     {
  
-        private static string ToolDir = Path.GetFullPath(Application.dataPath + @"\..\..\_Tool\");
+        public static string ToolDir = Path.GetFullPath(Application.dataPath + @"\..\..\_Tool\");
         
         [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 Dll")]
         public static void SyncConfig2Dll()

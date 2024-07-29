@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>WindowsFormsIntegration</name>
+  </assembly>
+  <members>
+    <member name="T:System.Windows.Automation.Peers.WindowsFormsHostAutomationPeer">
+      <summary>向 UI 自动化公开 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 类型。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Peers.WindowsFormsHostAutomationPeer.#ctor(System.Windows.Forms.Integration.WindowsFormsHost)">
+      <summary>初始化 <see cref="T:System.Windows.Automation.Peers.WindowsFormsHostAutomationPeer" /> 类的新实例。</summary>
+      <param name="owner">与此 <see cref="T:System.Windows.Automation.Peers.WindowsFormsHostAutomationPeer" /> 关联的 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" />。</param>
+    </member>
+    <member name="T:System.Windows.Forms.Integration.ChildChangedEventArgs">
+      <summary>为 <see cref="E:System.Windows.Forms.Integration.WindowsFormsHost.ChildChanged" /> 和 <see cref="E:System.Windows.Forms.Integration.ElementHost.ChildChanged" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ChildChangedEventArgs.#ctor(System.Object)">
+      <summary>初始化 <see cref="T:System.Windows.Forms.Integration.ChildChangedEventArgs" /> 类的新实例。</summary>
+      <param name="previousChild">
+        <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.Child" /> 属性在赋新值之前的值。</param>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ChildChangedEventArgs.PreviousChild">
+      <summary>获取 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.Child" /> 属性在赋新值之前的值。</summary>
+      <returns>
+        <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.Child" /> 属性在赋新值之前的值。</returns>
+    </member>
+    <member name="T:System.Windows.Forms.Integration.ElementHost">
+      <summary>可用于托管 Windows Presentation Foundation (WPF) 元素的 Windows 窗体控件。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Forms.Integration.ElementHost" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.AutoSize">
+      <summary>获取或设置一个值，该值指示是否自动调整控件的大小以显示其完整内容。</summary>
+      <returns>如果控件调整其大小以充分适合其内容，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.BackColorTransparent">
+      <summary>获取或设置指示所承载的元素是否具有透明背景的值。</summary>
+      <returns>如果承载的元素具有透明背景，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.BindingContextChanged">
+      <summary>当 <see cref="T:System.Windows.Forms.BindingContext" /> 属性的值更改时发生。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.CanEnableIme">
+      <summary>获取一个值，该值指示是否可以将 <see cref="P:System.Windows.Forms.Control.ImeMode" /> 属性设置为活动值以支持 IME。</summary>
+      <returns>如果 <see cref="T:System.Windows.Forms.Integration.ElementHost" /> 具有 <see cref="P:System.Windows.Forms.Integration.ElementHost.Child" /> 元素，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.Child">
+      <summary>获取或设置由 <see cref="T:System.Windows.UIElement" /> 控件承载的 <see cref="T:System.Windows.Forms.Integration.ElementHost" />。</summary>
+      <returns>所承载的 Windows Presentation Foundation (WPF) 元素。</returns>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.ChildChanged">
+      <summary>在设置 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.Child" /> 属性时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.Click">
+      <summary>在单击控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.ClientSizeChanged">
+      <summary>当 <see cref="P:System.Windows.Forms.Control.ClientSize" /> 属性的值更改时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.ControlAdded">
+      <summary>在将新控件添加到 <see cref="T:System.Windows.Forms.Control.ControlCollection" /> 时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.ControlRemoved">
+      <summary>在从 <see cref="T:System.Windows.Forms.Control.ControlCollection" /> 移除控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.CursorChanged">
+      <summary>当 <see cref="P:System.Windows.Forms.Control.Cursor" /> 属性的值更改时发生。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.DefaultSize">
+      <summary>获取控件的默认大小。</summary>
+      <returns>控件的默认 <see cref="T:System.Drawing.Size" />。</returns>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.Dispose(System.Boolean)">
+      <summary>立即释放 <see cref="T:System.Windows.Forms.Integration.ElementHost" /> 控件使用的所有系统资源。</summary>
+      <param name="disposing">若要释放托管资源和非托管资源，则为 <see langword="true" />；若仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.DoubleClick">
+      <summary>在双击控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.DragDrop">
+      <summary>拖放操作完成时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.DragEnter">
+      <summary>在将对象拖入控件的边界时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.DragLeave">
+      <summary>将对象拖出控件的边界时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.DragOver">
+      <summary>在将对象拖到控件的边界上发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(System.Windows.Window)">
+      <summary>使 <see cref="T:System.Windows.Window" /> 在从 Windows 窗体中以无模式方式打开时能正确地接收键盘消息。</summary>
+      <param name="window">要以无模式方式打开的 Windows Presentation Foundation (WPF) 窗口。</param>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.Enter">
+      <summary>进入控件时发生。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.Focused">
+      <summary>获取一个值，该值指示控件是否具有输入焦点。</summary>
+      <returns>如果控件有焦点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.FontChanged">
+      <summary>在 <see cref="P:System.Windows.Forms.Control.Font" /> 属性值更改时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.ForeColorChanged">
+      <summary>在 <see cref="P:System.Windows.Forms.Control.ForeColor" /> 属性值更改时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.GetPreferredSize(System.Drawing.Size)">
+      <summary>重写基类实现 <see cref="M:System.Windows.Forms.Control.GetPreferredSize(System.Drawing.Size)" />，以便为承载的 Windows Presentation Foundation (WPF) 元素提供正确的布局行为。</summary>
+      <param name="proposedSize">WPF 元素的自定义大小的区域。</param>
+      <returns>在由 <paramref name="proposedSize" /> 指定约束的情况下，<see cref="T:System.Drawing.Size" /> 控件计算出的 <see cref="T:System.Windows.Forms.Integration.ElementHost" />。</returns>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.GiveFeedback">
+      <summary>在执行拖动操作期间发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.GotFocus">
+      <summary>在控件接收焦点时发生。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.HostContainer">
+      <summary>获取承载的 Windows Presentation Foundation (WPF) 元素的父容器。</summary>
+      <returns>父容器。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.ImeModeBase">
+      <summary>获取或设置控件的 IME 模式。</summary>
+      <returns>控件的 IME 模式。</returns>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.Invalidated">
+      <summary>控件的显示要求重新绘制时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.IsInputChar(System.Char)">
+      <summary>确保所有的 WM_CHAR 键消息都转发至承载的元素。</summary>
+      <param name="charCode">要转发的字符。</param>
+      <returns>在所有情况下均为 <see langword="true" />。</returns>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.KeyDown">
+      <summary>在控件有焦点的情况下按下键时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.KeyPress">
+      <summary>在控件有焦点的情况下按下键时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.KeyUp">
+      <summary>在控件有焦点的情况下释放键时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.Layout">
+      <summary>在控件应重新定位其子控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.Leave">
+      <summary>在输入焦点离开控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.LostFocus">
+      <summary>在控件失去焦点时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseCaptureChanged">
+      <summary>当控件失去或获得鼠标捕获时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseClick">
+      <summary>用鼠标单击控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseDoubleClick">
+      <summary>用鼠标双击控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseDown">
+      <summary>当鼠标指针位于控件上并按下鼠标键时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseEnter">
+      <summary>在鼠标指针进入控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseHover">
+      <summary>在鼠标指针停放在控件上时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseLeave">
+      <summary>在鼠标指针离开控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseMove">
+      <summary>在鼠标指针移到控件上时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseUp">
+      <summary>在鼠标指针在控件上并释放鼠标键时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.MouseWheel">
+      <summary>在控件有焦点且鼠标轮移动时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnEnabledChanged(System.EventArgs)">
+      <summary>引发 <see cref="E:System.Windows.Forms.Control.EnabledChanged" /> 事件。</summary>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnGotFocus(System.EventArgs)">
+      <summary>引发 <see cref="E:System.Windows.Forms.Integration.ElementHost.GotFocus" /> 事件。</summary>
+      <param name="e">包含事件数据的 <see cref="T:System.EventArgs" />。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnHandleCreated(System.EventArgs)">
+      <summary>引发 <see cref="E:System.Windows.Forms.Control.HandleCreated" /> 事件。</summary>
+      <param name="e">包含事件数据的 <see cref="T:System.EventArgs" />。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnLeave(System.EventArgs)">
+      <summary>引发 <see cref="E:System.Windows.Forms.Control.Leave" /> 事件。</summary>
+      <param name="e">包含事件数据的 <see cref="T:System.EventArgs" />。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnPaint(System.Windows.Forms.PaintEventArgs)">
+      <summary>引发 <see cref="E:System.Windows.Forms.Control.Paint" /> 事件。</summary>
+      <param name="e">包含事件数据的 <see cref="T:System.Windows.Forms.PaintEventArgs" />。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+      <summary>绘制控件的背景。</summary>
+      <param name="pevent">一个 <see cref="T:System.Windows.Forms.PaintEventArgs" />，其中包含有关要绘制的控件的信息。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnPrint(System.Windows.Forms.PaintEventArgs)">
+      <summary>使用提供的 <see cref="T:System.Drawing.Graphics" /> 对象呈现控件。</summary>
+      <param name="e">包含事件数据的 <see cref="T:System.Windows.Forms.PaintEventArgs" />。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnPropertyChanged(System.String,System.Object)">
+      <summary>通知 <see cref="P:System.Windows.Forms.Integration.ElementHost.PropertyMap" /> 属性已更改。</summary>
+      <param name="propertyName">已发生更改且需要转换的属性的名称。</param>
+      <param name="value">属性的新值。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.OnVisibleChanged(System.EventArgs)">
+      <summary>引发 <see cref="E:System.Windows.Forms.Control.VisibleChanged" /> 事件。</summary>
+      <param name="e">包含事件数据的 <see cref="T:System.EventArgs" />。</param>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.PaddingChanged">
+      <summary>在控件空白区更改时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.Paint">
+      <summary>在重绘 <see cref="T:System.Windows.Forms.Integration.ElementHost" /> 控件时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.PreviewKeyDown">
+      <summary>在焦点位于此控件上的情况下，当有按键动作时发生（在 <see cref="E:System.Windows.Forms.Control.KeyDown" /> 事件之前发生）。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+      <summary>处理命令键，确保承载的元素在进行正常的 Windows 窗体处理之前有机会处理命令。</summary>
+      <param name="msg">通过引用传递的 <see cref="T:System.Windows.Forms.Message" />，表示要处理的窗口消息。</param>
+      <param name="keyData">
+        <see cref="T:System.Windows.Forms.Keys" /> 值之一，表示要处理的键。</param>
+      <returns>如果该字符是 Windows Presentation Foundation (WPF) 快捷键，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.ProcessMnemonic(System.Char)">
+      <summary>处理助记键字符，从而确保承载的元素在进行正常的 Windows 窗体处理之前有机会处理助记键。</summary>
+      <param name="charCode">要处理的字符。</param>
+      <returns>如果该字符是 Windows Presentation Foundation (WPF) 快捷键，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.ElementHost.PropertyMap">
+      <summary>获取属性映射，属性映射决定了设置 <see cref="T:System.Windows.Forms.Integration.ElementHost" /> 控件的属性会对承载的 Windows Presentation Foundation (WPF) 元素产生何种影响。</summary>
+      <returns>一个 <see cref="T:System.Windows.Forms.Integration.PropertyMap" />，它将 <see cref="T:System.Windows.Forms.Integration.ElementHost" /> 映射到所承载 WPF 元素的属性。</returns>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.QueryContinueDrag">
+      <summary>在拖放操作期间发生，并且允许拖动源确定是否应取消拖放操作。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.Resize">
+      <summary>在调整控件大小时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.RightToLeftChanged">
+      <summary>在 <see cref="P:System.Windows.Forms.Control.RightToLeft" /> 属性值更改时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.ScaleCore(System.Single,System.Single)">
+      <summary>缩放父容器和承载的 Windows 窗体控件。</summary>
+      <param name="dx">X 轴的刻度因子。</param>
+      <param name="dy">Y 轴的刻度因子。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.Select(System.Boolean,System.Boolean)">
+      <summary>激活承载的元素。</summary>
+      <param name="directed">如果指定要选择的控件的方向，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="forward">如果为 <see langword="true" /> 则在 Tab 键顺序中前移；如果为 <see langword="false" /> 则在 Tab 键顺序中后移。</param>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.SizeChanged">
+      <summary>在 <see cref="P:System.Windows.Forms.Control.Size" /> 属性值更改时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.ElementHost.TextChanged">
+      <summary>在 <see cref="P:System.Windows.Forms.Control.Text" /> 属性值更改时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.ElementHost.WndProc(System.Windows.Forms.Message@)">
+      <summary>处理 Windows 消息。</summary>
+      <param name="m">要处理的消息。</param>
+    </member>
+    <member name="T:System.Windows.Forms.Integration.IntegrationExceptionEventArgs">
+      <summary>提供 <see cref="T:System.EventArgs" /> 类的基类，这些类支持有选择地引发异常。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.IntegrationExceptionEventArgs.#ctor(System.Boolean,System.Exception)">
+      <summary>初始化 <see cref="T:System.Windows.Forms.Integration.IntegrationExceptionEventArgs" /> 类的新实例。</summary>
+      <param name="throwException">如果要引发 <paramref name="exception" /> 指定的 <see cref="T:System.Exception" />，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="exception">要引发的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.IntegrationExceptionEventArgs.Exception">
+      <summary>获取与此 <see cref="T:System.Exception" /> 关联的 <see cref="T:System.Windows.Forms.Integration.IntegrationExceptionEventArgs" />。</summary>
+      <returns>与此 <see cref="T:System.Exception" /> 关联的 <see cref="T:System.Windows.Forms.Integration.IntegrationExceptionEventArgs" />。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.IntegrationExceptionEventArgs.ThrowException">
+      <summary>获取或设置一个值，该值指示是否引发由 <see cref="T:System.Exception" /> 属性指定的 <see cref="P:System.Windows.Forms.Integration.IntegrationExceptionEventArgs.Exception" />。</summary>
+      <returns>如果要引发 <see cref="P:System.Windows.Forms.Integration.IntegrationExceptionEventArgs.Exception" />，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Windows.Forms.Integration.LayoutExceptionEventArgs">
+      <summary>为 <see cref="E:System.Windows.Forms.Integration.WindowsFormsHost.LayoutError" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.LayoutExceptionEventArgs.#ctor(System.Exception)">
+      <summary>初始化 <see cref="T:System.Windows.Forms.Integration.LayoutExceptionEventArgs" /> 类的新实例。</summary>
+      <param name="exception">要引发的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.Windows.Forms.Integration.PropertyMap">
+      <summary>提供一种方式，用于转换 Windows 窗体控件和 Windows Presentation Foundation (WPF) 元素之间的属性值。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Forms.Integration.PropertyMap" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.#ctor(System.Object)">
+      <summary>使用给定源对象初始化 <see cref="T:System.Windows.Forms.Integration.PropertyMap" /> 类的新实例。</summary>
+      <param name="source">具有要转换的属性的对象。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.Add(System.String,System.Windows.Forms.Integration.PropertyTranslator)">
+      <summary>将给定属性的 <see cref="T:System.Windows.Forms.Integration.PropertyTranslator" /> 委托添加到 <see cref="T:System.Windows.Forms.Integration.PropertyMap" /> 中。</summary>
+      <param name="propertyName">要映射的属性的名称。</param>
+      <param name="translator">在 <paramref name="propertyName" /> 更改时调用的 <see cref="T:System.Windows.Forms.Integration.PropertyTranslator" /> 委托。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="propertyName" /> 已有一个映射。</exception>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.Apply(System.String)">
+      <summary>根据源对象的当前属性值，为指定属性运行属性转换器。</summary>
+      <param name="propertyName">要转换的属性的名称。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="propertyName" /> 给定的属性不存在于 <see cref="P:System.Windows.Forms.Integration.PropertyMap.SourceObject" /> 上。</exception>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.ApplyAll">
+      <summary>根据源对象的当前属性值，为每个映射的属性运行属性转换器。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.Clear">
+      <summary>移除所有属性映射。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.Contains(System.String)">
+      <summary>获取一个值，该值指示是否映射给定属性。</summary>
+      <param name="propertyName">要搜索的属性的名称。</param>
+      <returns>如果 <paramref name="propertyName" /> 存在于属性映射中，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.PropertyMap.DefaultTranslators">
+      <summary>获取默认定义的属性映射集合。</summary>
+      <returns>一个将属性名称映射到对应的 <see cref="T:System.Windows.Forms.Integration.PropertyTranslator" /> 委托的 <see cref="T:System.Collections.Generic.Dictionary`2" />。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.PropertyMap.Item(System.String)">
+      <summary>获取或设置给定属性的 <see cref="T:System.Windows.Forms.Integration.PropertyTranslator" /> 委托。</summary>
+      <param name="propertyName">要映射的属性的名称。</param>
+      <returns>
+        <see cref="T:System.Windows.Forms.Integration.PropertyTranslator" /> 委托对应于 <paramref name="propertyName" /> 指定的属性。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="propertyName" /> 为 <see langword="null" /> 或为一个空字符串；指定的 <see cref="T:System.Windows.Forms.Integration.PropertyTranslator" /> 委托为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="propertyName" /> 给定的属性不存在于 <see cref="P:System.Windows.Forms.Integration.PropertyMap.SourceObject" /> 上。</exception>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.PropertyMap.Keys">
+      <summary>获取一个 <see cref="T:System.Collections.ICollection" /> 对象，它包含 <see cref="T:System.Windows.Forms.Integration.PropertyMap" /> 集合中的属性名。</summary>
+      <returns>包含 <see cref="T:System.Windows.Forms.Integration.PropertyMap" /> 集合中属性名的 <see cref="T:System.Collections.ICollection" /> 对象。</returns>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.PropertyMap.PropertyMappingError">
+      <summary>在属性转换器引发异常时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.Remove(System.String)">
+      <summary>从映射中删除给定的属性。</summary>
+      <param name="propertyName">要删除的属性的名称。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="propertyName" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.Reset(System.String)">
+      <summary>还原给定属性的默认属性映射。</summary>
+      <param name="propertyName">要还原的属性的名称。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="propertyName" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMap.ResetAll">
+      <summary>还原默认属性映射。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.PropertyMap.SourceObject">
+      <summary>获取具有要转换的属性的对象。</summary>
+      <returns>具有要转换的属性的对象。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.PropertyMap.Values">
+      <summary>获取包含 <see cref="T:System.Windows.Forms.Integration.PropertyMap" /> 集合中的属性转换器的 <see cref="T:System.Collections.ICollection" />。</summary>
+      <returns>包含 <see cref="T:System.Windows.Forms.Integration.PropertyMap" /> 集合中的属性转换器的 <see cref="T:System.Collections.ICollection" />。</returns>
+    </member>
+    <member name="T:System.Windows.Forms.Integration.PropertyMappingExceptionEventArgs">
+      <summary>为 <see cref="E:System.Windows.Forms.Integration.PropertyMap.PropertyMappingError" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.PropertyMappingExceptionEventArgs.#ctor(System.Exception,System.String,System.Object)">
+      <summary>初始化 <see cref="T:System.Windows.Forms.Integration.PropertyMappingExceptionEventArgs" /> 类的新实例。</summary>
+      <param name="exception">要引发的 <see cref="T:System.Exception" />。</param>
+      <param name="propertyName">与属性映射错误关联的属性名称。</param>
+      <param name="propertyValue">与属性映射错误关联的属性值。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 <see langword="null" />；<paramref name="propertyName" /> 为 <see langword="null" /> 或引用了空字符串。</exception>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.PropertyMappingExceptionEventArgs.PropertyName">
+      <summary>获取与属性映射错误关联的属性名称。</summary>
+      <returns>一个字符串，表示与属性映射错误关联的属性名称。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.PropertyMappingExceptionEventArgs.PropertyValue">
+      <summary>获取与属性映射错误关联的属性值。</summary>
+      <returns>一个对象，表示与属性映射错误关联的属性值。</returns>
+    </member>
+    <member name="T:System.Windows.Forms.Integration.PropertyTranslator">
+      <summary>为宿主控件的映射属性提供转换功能。</summary>
+      <param name="host">正在映射其属性的宿主控件。 宿主控件为 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 或 <see cref="T:System.Windows.Forms.Integration.ElementHost" />。</param>
+      <param name="propertyName">要转换的属性的名称。</param>
+      <param name="value">属性的新值。</param>
+    </member>
+    <member name="T:System.Windows.Forms.Integration.WindowsFormsHost">
+      <summary>一个元素，它允许在 WPF 页上托管 Windows 窗体控件。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.ArrangeOverride(System.Windows.Size)">
+      <summary>在派生类中实现时，定位子元素并确定由 <see cref="T:System.Windows.FrameworkElement" /> 派生的类的大小。</summary>
+      <param name="finalSize">父级中应使用此元素排列自身及其子元素的最终区域。</param>
+      <returns>使用的实际大小。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.Background">
+      <summary>以环境属性的形式获取或设置托管控件的背景。</summary>
+      <returns>设置为背景色的 <see cref="T:System.Windows.Media.Brush" />。</returns>
+    </member>
+    <member name="F:System.Windows.Forms.Integration.WindowsFormsHost.BackgroundProperty">
+      <summary>标识 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.Background" /> 依赖项属性。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.BuildWindowCore(System.Runtime.InteropServices.HandleRef)">
+      <summary>重写 <see cref="M:System.Windows.Interop.HwndHost.BuildWindowCore(System.Runtime.InteropServices.HandleRef)" /> 的基类实现以生成托管的 Windows 窗体控件。</summary>
+      <param name="hwndParent">父窗口的句柄 (HWND)。</param>
+      <returns>此对象的窗口句柄。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.Child">
+      <summary>获取或设置由 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 元素承载的子控件。</summary>
+      <returns>托管的 Windows 窗体控件。</returns>
+      <exception cref="T:System.ArgumentException">尝试将顶级窗体指定为要承载的控件。</exception>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.WindowsFormsHost.ChildChanged">
+      <summary>在设置 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.Child" /> 属性时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.DestroyWindowCore(System.Runtime.InteropServices.HandleRef)">
+      <summary>重写 <see cref="M:System.Windows.Interop.HwndHost.DestroyWindowCore(System.Runtime.InteropServices.HandleRef)" /> 以删除包含此对象的窗口。</summary>
+      <param name="hwnd">一个窗口句柄。 未使用此参数。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 占用的非托管资源，还可以另外再释放托管资源。</summary>
+      <param name="disposing">若要释放托管资源和非托管资源，则为 <see langword="true" />；若仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.EnableWindowsFormsInterop">
+      <summary>使 <see cref="T:System.Windows.Forms.Form" /> 在从 WPF 中以无模式方式打开时能正确运行。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.FontFamily">
+      <summary>获取或设置托管控件的字体系列。</summary>
+      <returns>托管控件中使用的字体系列。</returns>
+    </member>
+    <member name="F:System.Windows.Forms.Integration.WindowsFormsHost.FontFamilyProperty">
+      <summary>标识 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.FontFamily" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.FontSize">
+      <summary>获取或设置托管控件的字号。</summary>
+      <returns>托管控件中使用的字号。</returns>
+    </member>
+    <member name="F:System.Windows.Forms.Integration.WindowsFormsHost.FontSizeProperty">
+      <summary>标识 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.FontSize" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.FontStyle">
+      <summary>获取或设置托管控件的字形。</summary>
+      <returns>托管控件中使用的字形。</returns>
+    </member>
+    <member name="F:System.Windows.Forms.Integration.WindowsFormsHost.FontStyleProperty">
+      <summary>标识 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.FontStyle" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.FontWeight">
+      <summary>获取或设置托管控件的字体粗细。</summary>
+      <returns>托管控件中使用的字体粗细。</returns>
+    </member>
+    <member name="F:System.Windows.Forms.Integration.WindowsFormsHost.FontWeightProperty">
+      <summary>标识 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.FontWeight" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.Foreground">
+      <summary>获取或设置托管控件的前景色。</summary>
+      <returns>用于设置托管控件前景色的 <see cref="T:System.Windows.Media.Brush" />。</returns>
+    </member>
+    <member name="F:System.Windows.Forms.Integration.WindowsFormsHost.ForegroundProperty">
+      <summary>标识 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.Foreground" /> 依赖项属性。</summary>
+    </member>
+    <member name="E:System.Windows.Forms.Integration.WindowsFormsHost.LayoutError">
+      <summary>在遇到布局错误（如进行 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 不支持的扭曲或旋转）时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.MeasureOverride(System.Windows.Size)">
+      <summary>重写 <see cref="M:System.Windows.Interop.HwndHost.MeasureOverride(System.Windows.Size)" /> 的基类实现以度量 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 对象的大小并将正确的大小返回给布局引擎。</summary>
+      <param name="constraint">
+        <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 对象的可用大小。</param>
+      <returns>所需的 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 对象大小。</returns>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.OnCreateAutomationPeer">
+      <summary>为 <see cref="T:System.Windows.Automation.Peers.WindowsFormsHostAutomationPeer" /> 元素创建 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" />。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.Peers.WindowsFormsHostAutomationPeer" /> 元素的 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" />。</returns>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.OnPropertyChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+      <summary>强制转换映射属性。</summary>
+      <param name="e">标识已更改的属性以及提供此属性的原值和新值的参数。</param>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.Padding">
+      <summary>指定托管的 Windows 窗体控件内所需填充的大小。</summary>
+      <returns>一个<see cref="T:System.Windows.Thickness" />控制结构，它表示托管 Windows 窗体的空白。</returns>
+    </member>
+    <member name="F:System.Windows.Forms.Integration.WindowsFormsHost.PaddingProperty">
+      <summary>标识 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.Padding" /> 依赖项属性。</summary>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.PropertyMap">
+      <summary>获取属性映射，该属性映射决定了设置 <see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" /> 元素的属性会对托管的 Windows 窗体控件产生何种影响。</summary>
+      <returns>一个<see cref="T:System.Windows.Forms.Integration.PropertyMap" />，它映射<see cref="T:System.Windows.Forms.Integration.WindowsFormsHost" />上托管的 Windows 窗体控件的属性的属性。</returns>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.ScaleChild(System.Windows.Vector)">
+      <summary>缩放托管的 Windows 窗体控件并跟踪比例因子。</summary>
+      <param name="newScale">新的缩放比例。</param>
+      <returns>一个 <see cref="T:System.Windows.Vector" />，表示应用于托管的 Windows 窗体控件的比例因子。</returns>
+    </member>
+    <member name="P:System.Windows.Forms.Integration.WindowsFormsHost.TabIndex">
+      <summary>获取或设置托管控件的选项卡索引。</summary>
+      <returns>用于选项卡导航和焦点的选项卡索引。</returns>
+    </member>
+    <member name="F:System.Windows.Forms.Integration.WindowsFormsHost.TabIndexProperty">
+      <summary>标识 <see cref="P:System.Windows.Forms.Integration.WindowsFormsHost.TabIndex" /> 依赖项属性。</summary>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.TabInto(System.Windows.Input.TraversalRequest)">
+      <summary>将焦点从 WPF 转移到托管的 Windows 窗体控件。</summary>
+      <param name="request">一个指定焦点行为的 <see cref="T:System.Windows.Input.TraversalRequest" />。</param>
+      <returns>如果控件已激活，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Forms.Integration.WindowsFormsHost.WndProc(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr,System.Boolean@)">
+      <summary>在派生类中实现时，访问承载的子窗口的窗口进程。</summary>
+      <param name="hwnd">所承载窗口的窗口句柄。</param>
+      <param name="msg">引发操作的消息。</param>
+      <param name="wParam">可能与处理消息有关的信息。 它通常用于存储小段信息，如标志。</param>
+      <param name="lParam">可能与处理消息有关的信息。 它通常用于引用对象。</param>
+      <param name="handled">是否应将所得事件标记为已处理。</param>
+      <returns>子窗口的窗口句柄。</returns>
+    </member>
+  </members>
+</doc>

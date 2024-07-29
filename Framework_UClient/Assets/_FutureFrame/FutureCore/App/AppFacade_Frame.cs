@@ -57,6 +57,18 @@ namespace FutureCore
         /// </summary>
         public static string Domain;
 
+
+        /// <summary>
+        /// 项目入口
+        /// </summary>
+        public static void MainFunc()
+        {
+            // 设置分辨率
+            //AppConst.StandardResolution = new Vector2Int(720, 1280);
+        }
+
+
+
         /// <summary>
         /// SDK接口前缀
         /// 根据产品发布的账号来填写: solitaire / slidey
@@ -112,5 +124,6 @@ namespace FutureCore
         /// 服务器资源路劲
         /// </summary>
         public static string ServerAssestUrl;
+
     }
 }

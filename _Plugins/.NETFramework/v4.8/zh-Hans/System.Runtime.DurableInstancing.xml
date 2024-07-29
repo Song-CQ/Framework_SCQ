@@ -1,0 +1,1183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Runtime.DurableInstancing</name>
+  </assembly>
+  <members>
+    <member name="T:System.Runtime.DurableInstancing.InstanceCollisionException">
+      <summary>在永久性提供程序期望某个实例处于未初始化状态，但该实例并不处于未初始化状态时，永久性提供程序会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCollisionException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCollisionException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCollisionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCollisionException" /> 类的新实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCollisionException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCollisionException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCollisionException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCollisionException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCollisionException.#ctor(System.Xml.Linq.XName,System.Guid)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）和执行此命令所针对的目标实例的 ID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCollisionException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCollisionException.#ctor(System.Xml.Linq.XName,System.Guid,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID 和内部异常信息来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCollisionException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCollisionException.#ctor(System.Xml.Linq.XName,System.Guid,System.String,System.Exception)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、解释当前异常的原因的错误消息和内部异常信息来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCollisionException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceCompleteException">
+      <summary>在永久性提供程序期望找到处于已初始化状态的实例，但找到处于已完成状态的实例时，永久性提供程序会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCompleteException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCompleteException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCompleteException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCompleteException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCompleteException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCompleteException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCompleteException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCompleteException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCompleteException.#ctor(System.Xml.Linq.XName,System.Guid)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）和执行此命令所针对的目标实例的 ID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCompleteException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCompleteException.#ctor(System.Xml.Linq.XName,System.Guid,System.Exception)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID 和内部异常信息来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCompleteException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceCompleteException.#ctor(System.Xml.Linq.XName,System.Guid,System.String,System.Exception)">
+      <summary>使用此命令的 Xname（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、解释此异常的原因的错误消息和引发当前异常的异常来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceCompleteException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceHandle">
+      <summary>表示指向 <see cref="T:System.Runtime.DurableInstancing.InstanceView" /> 对象的句柄。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceHandle.Free">
+      <summary>释放实例句柄。</summary>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceHandle.IsValid">
+      <summary>返回一个值，该值指示实例句柄是否有效。</summary>
+      <returns>如果此句柄有效，则为 <see langword="true" />；如果此句柄无效，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceHandleConflictException">
+      <summary>在永久性提供程序尝试通过将实例句柄绑定到实例锁定来获取对某个实例的写入访问权限，但已存在具有该实例写入访问权限的实例句柄时，永久性提供程序会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceHandleConflictException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceHandleConflictException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceHandleConflictException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceHandleConflictException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceHandleConflictException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceHandleConflictException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceHandleConflictException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceHandleConflictException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceHandleConflictException.#ctor(System.Xml.Linq.XName,System.Guid)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）和执行此命令所针对的目标实例的 ID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceHandleConflictException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceHandleConflictException.#ctor(System.Xml.Linq.XName,System.Guid,System.Exception)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID 和内部异常信息来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceHandleConflictException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceHandleConflictException.#ctor(System.Xml.Linq.XName,System.Guid,System.String,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、解释当前异常的原因的错误消息和内部异常信息，来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceHandleConflictException" /> 类的实例</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceKey">
+      <summary>表示一个实例键，并包含与此实例键关联的标识符和元数据。 实例键可用作实例的非唯一别名。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKey.#ctor(System.Guid)">
+      <summary>使用与传递的实例键关联的 GUID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKey" /> 类的实例。</summary>
+      <param name="value">与此实例键关联的 GUID。 不得是 Guid.Empty。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKey.#ctor(System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue})">
+      <summary>使用与此实例键关联的 GUID 和元数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKey" /> 类的实例。</summary>
+      <param name="value">与此实例键关联的 GUID。 不得是 Guid.Empty。</param>
+      <param name="metadata">包含与实例键或 null 关联的元数据的字典。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKey.Equals(System.Object)">
+      <summary>将与当前对象（存储在 <see cref="P:System.Runtime.DurableInstancing.InstanceKey.Value" /> 属性中）关联的 GUID 和与 <see cref="T:System.Runtime.DurableInstancing.InstanceKey" /> 对象关联的 GUID 进行比较。</summary>
+      <param name="obj">一个需要与当前对象进行比较的 <see cref="T:System.Runtime.DurableInstancing.InstanceKey" /> 对象。  不能为 null。</param>
+      <returns>如果对象相同，则为 <see langword="true" />；否则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKey.GetHashCode">
+      <summary>为当前 <see cref="T:System.Runtime.DurableInstancing.InstanceKey" /> 对象的 GUID（存储在 Value 属性中）返回一个唯一的哈希代码。</summary>
+      <returns>唯一的哈希代码。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKey.InvalidKey">
+      <summary>返回一个无效的 <see cref="T:System.Runtime.DurableInstancing.InstanceKey" /> 对象。 无效的 <see cref="T:System.Runtime.DurableInstancing.InstanceKey" /> 对象的 <see cref="P:System.Runtime.DurableInstancing.InstanceKey.Value" /> 属性具有 Guid.Empty 值，<see cref="P:System.Runtime.DurableInstancing.InstanceKey.IsValid" /> 属性具有 <see langword="false" /> 值。</summary>
+      <returns>一个无效的实例键。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKey.IsValid">
+      <summary>获取一个指示此实例键是否有效的值。</summary>
+      <returns>如果实例键有效，为 <see langword="true" />；否则为 <see langword="false" />。  当且仅当实例键的 GUID（存储在 Value 属性中）不是 Guid.Empty 时，此实例键才有效。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKey.Metadata">
+      <summary>获取包含与实例键关联的元数据的字典。</summary>
+      <returns>包含与实例键关联的元数据的字典。 此字典为只读字典。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKey.Value">
+      <summary>获取与当前实例键关联的 GUID 值。</summary>
+      <returns>与当前实例键关联的 GUID 值。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceKeyCollisionException">
+      <summary>在永久性提供程序期望找到处于非关联状态的实例键，但找到处于不同状态的实例键时，永久性提供程序会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCollisionException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCollisionException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCollisionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCollisionException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCollisionException.#ctor(System.String)">
+      <summary>使用作为参数传递的错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCollisionException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCollisionException.#ctor(System.String,System.Exception)">
+      <summary>使用作为参数传递的错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCollisionException" /> 类的新实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCollisionException.#ctor(System.Xml.Linq.XName,System.Guid,System.Runtime.DurableInstancing.InstanceKey,System.Guid)">
+      <summary>使用作为参数传递的该命令的名称、执行此命令所针对的实例的 ID、实例键信息以及当前与实例键关联的实例 ID，初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCollisionException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的实例的 ID。 此命令失败，原因是实例键已与其 ID 由 <paramref name="conflictingInstanceId" /> 参数表示的另一个实例关联。</param>
+      <param name="instanceKey">实例键信息。</param>
+      <param name="conflictingInstanceId">当前与此实例键关联的实例的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCollisionException.#ctor(System.Xml.Linq.XName,System.Guid,System.Runtime.DurableInstancing.InstanceKey,System.Guid,System.Exception)">
+      <summary>使用作为参数传递的该命令的名称、执行此命令所针对的实例的 ID、实例键信息、当前与实例键关联的实例 ID 和内部异常信息，初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCollisionException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的实例的 ID。 此命令失败，原因是实例键已与其 ID 由 <paramref name="conflictingInstanceId" /> 参数表示的另一个实例关联。</param>
+      <param name="instanceKey">实例键信息。</param>
+      <param name="conflictingInstanceId">当前与此实例键关联的实例的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCollisionException.#ctor(System.Xml.Linq.XName,System.Guid,System.Runtime.DurableInstancing.InstanceKey,System.Guid,System.String,System.Exception)">
+      <summary>使用作为参数传递的该命令的名称、执行此命令所针对的实例的 ID、实例键信息、当前与实例键关联的实例 ID、描述此异常的错误消息和内部异常信息，初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCollisionException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的实例的 ID。 此命令失败，原因是实例键已与其 ID 由 conflictingInstanceId 参数表示的另一个实例关联。</param>
+      <param name="instanceKey">实例键信息。</param>
+      <param name="conflictingInstanceId">当前与此实例键关联的实例的 ID。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKeyCollisionException.ConflictingInstanceId">
+      <summary>获取当前与此实例键关联的实例的 ID。 永久性提供程序期望找到处于非关联状态的实例键，但此键与此实例 ID 关联。</summary>
+      <returns>实例 ID。 如果冲突实例 ID 未知，则返回 Guid.Empty。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCollisionException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用有关异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</summary>
+      <param name="info">有关引发的异常的序列化对象数据。</param>
+      <param name="context">有关源或目标的上下文信息。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKeyCollisionException.InstanceKey">
+      <summary>包含有关该实例键的信息。</summary>
+      <returns>实例键信息或<see langword="null" />如果冲突实例键未知，则。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceKeyCompleteException">
+      <summary>在永久性提供程序期望找到处于关联状态的实例键，但找到处于已完成状态的实例键时，永久性提供程序会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCompleteException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCompleteException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCompleteException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCompleteException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCompleteException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCompleteException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCompleteException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCompleteException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCompleteException.#ctor(System.Xml.Linq.XName,System.Guid,System.Runtime.DurableInstancing.InstanceKey,System.String,System.Exception)">
+      <summary>使用作为参数传递的此命令的名称、执行此命令所针对的目标实例的 ID、实例键信息、解释此异常的原因的错误消息和内部异常（引发当前异常的异常）来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCompleteException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的实例的 ID。</param>
+      <param name="instanceKey">有关该实例键的信息。</param>
+      <param name="message">用于解释异常原因的错误消息。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCompleteException.#ctor(System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceKey)">
+      <summary>使用此命令的名称和实例键信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCompleteException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceKey">有关该实例键的信息。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCompleteException.#ctor(System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceKey,System.Exception)">
+      <summary>使用此命令的名称、实例键信息和内部异常（引发当前异常的异常）初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyCompleteException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceKey">有关该实例键的信息。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyCompleteException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用有关异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</summary>
+      <param name="info">有关引发的异常的序列化对象数据。</param>
+      <param name="context">有关源或目标的上下文信息。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKeyCompleteException.InstanceKey">
+      <summary>包含有关该实例键的信息。</summary>
+      <returns>实例键信息或<see langword="null" />如果实例键未知，则。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceKeyNotReadyException">
+      <summary>在永久性提供程序期望找到处于关联状态的实例键，但找到处于非关联状态的实例键时，永久性提供程序会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyNotReadyException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyNotReadyException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyNotReadyException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyNotReadyException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.#ctor(System.Xml.Linq.XName,System.Guid,System.Runtime.DurableInstancing.InstanceKey,System.String,System.Exception)">
+      <summary>使用此命令的名称、执行此命令所针对的目标实例的 ID、实例键信息、解释此异常的原因的错误消息和内部异常（引发当前异常的异常）来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyNotReadyException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的实例的 ID。</param>
+      <param name="instanceKey">有关该实例键的信息。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.#ctor(System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceKey)">
+      <summary>使用此命令的名称和实例键信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyNotReadyException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceKey">有关该实例键的信息。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.#ctor(System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceKey,System.Exception)">
+      <summary>使用作为参数传递的此命令的名称、实例键信息和内部异常（引发当前异常的异常）初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyNotReadyException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceKey">有关该实例键的信息。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用有关异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</summary>
+      <param name="info">有关引发的异常的序列化对象数据。</param>
+      <param name="context">有关源或目标的上下文信息。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKeyNotReadyException.InstanceKey">
+      <summary>包含有关该实例键的信息。</summary>
+      <returns>实例键，或<see langword="null" />如果实例键未知，则。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceKeyState">
+      <summary>包含实例键的有效状态的列表。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceKeyState.Associated">
+      <summary>与未完成的实例关联的实例键。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceKeyState.Completed">
+      <summary>此实例键与不再处于活动状态的实例关联。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceKeyState.Unknown">
+      <summary>此实例键与任何实例均不关联。</summary>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceKeyView">
+      <summary>提供显示实例键信息的视图。</summary>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKeyView.InstanceKey">
+      <summary>获取实例键 (GUID) 的值。</summary>
+      <returns>实例键的值。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKeyView.InstanceKeyMetadata">
+      <summary>获取作为“XNames”的字典的实例键的元数据和对应的“InstanceValue”对象。</summary>
+      <returns>实例键的元数据。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKeyView.InstanceKeyMetadataConsistency">
+      <summary>获取实例键的元数据的一致性（无、不确定或部分）。</summary>
+      <returns>元数据的一致性。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceKeyView.InstanceKeyState">
+      <summary>获取实例键的状态（非关联、关联或已完成）。</summary>
+      <returns>实例键的状态。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceLockedException">
+      <summary>如果由于某个实例已被另一个所有者锁定，因此当永久性提供程序无法获取对该实例的锁定就会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.String)">
+      <summary>通过使用作为参数传递的错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.String,System.Exception)">
+      <summary>使用作为参数传递的错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的新实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.Xml.Linq.XName,System.Guid)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）和执行此命令所针对的目标实例的 ID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.Xml.Linq.XName,System.Guid,System.Exception)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID 和内部异常信息来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.Xml.Linq.XName,System.Guid,System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object})">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、当前具有对此实例的锁定的所有者的 ID 和该所有者的可序列化的元数据信息来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="instanceOwnerId">当前具有对此实例的锁定的所有者的 ID。</param>
+      <param name="serializableInstanceOwnerMetadata">有关实例所有者（具有对此实例的锁定）的可序列化的元数据信息。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.Xml.Linq.XName,System.Guid,System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object},System.Exception)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、当前具有对此实例的锁定的所有者的 ID、有关此所有者的可序列化的元数据信息和引发当前异常的异常初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="instanceOwnerId">当前具有对此实例的锁定的所有者的 ID。</param>
+      <param name="serializableInstanceOwnerMetadata">有关实例所有者（具有对此实例的锁定）的可序列化的元数据信息。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.Xml.Linq.XName,System.Guid,System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object},System.String,System.Exception)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、当前具有对此实例的锁定的所有者的 ID、有关此所有者的可序列化的元数据信息、解释此异常的原因的错误消息和引发当前异常的异常初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="instanceOwnerId">当前具有对此实例的锁定的所有者的 ID。</param>
+      <param name="serializableInstanceOwnerMetadata">有关实例所有者（具有对此实例的锁定）的可序列化的元数据信息。</param>
+      <param name="message">解释异常原因的错误消息。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.#ctor(System.Xml.Linq.XName,System.Guid,System.String,System.Exception)">
+      <summary>使用作为参数传递的此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、解释此异常的原因的错误消息和引发当前异常的异常初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockedException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="message">解释异常原因的错误消息。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockedException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用有关异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</summary>
+      <param name="info">有关引发的异常的序列化对象数据。</param>
+      <param name="context">一个对象，其中包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceLockedException.InstanceOwnerId">
+      <summary>获取与当前实例所有者（具有对此实例的锁定）关联的 GUID。</summary>
+      <returns>与当前实例所有者关联的 GUID。  如果当前实例所有者未知，则返回 Guid.Empty。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceLockedException.SerializableInstanceOwnerMetadata">
+      <summary>获取有关当前实例所有者（当前具有对此实例的锁定）的可序列化的元数据信息。  如果获得这些信息，这些信息由可序列化的实例所有者元数据的子集组成。  元数据可以包含信息，如当前拥有锁定的实例所有者的位置。</summary>
+      <returns>有关当前实例所有者（当前具有对此实例的锁定）的可序列化的元数据信息。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceLockLostException">
+      <summary>如果由于对此实例的锁定与执行此命令所针对的实例句柄关联的锁定不匹配而导致永久性提供程序无法执行此命令，则此永久性提供程序会引发此异常。 所有者或版本不匹配。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockLostException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockLostException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockLostException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockLostException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockLostException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockLostException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockLostException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockLostException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockLostException.#ctor(System.Xml.Linq.XName,System.Guid)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）和执行此命令所针对的目标实例的 ID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockLostException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockLostException.#ctor(System.Xml.Linq.XName,System.Guid,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID 和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockLostException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockLostException.#ctor(System.Xml.Linq.XName,System.Guid,System.String,System.Exception)">
+      <summary>使用此命令的 Xname（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、解释此异常的原因的错误消息和引发当前异常的异常来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockLostException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceLockQueryResult">
+      <summary>包含由实例的 ID 字典表示的查询结果集和当前拥有对每个实例的锁定的实例所有者。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockQueryResult.#ctor">
+      <summary>使用任何空的查询结果集初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockQueryResult" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockQueryResult.#ctor(System.Collections.Generic.IDictionary{System.Guid,System.Guid})">
+      <summary>使用实例 ID 和实例所有者 ID 的字典初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockQueryResult" /> 类的实例，并设置 <see cref="P:System.Runtime.DurableInstancing.InstanceLockQueryResult.InstanceOwnerIds" /> 属性。</summary>
+      <param name="instanceOwnerIds">一个表示查询结果集的字典。 此字典具有实例 ID 作为键，具有拥有对此实例的锁定的实例所有者的 ID 作为值。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceLockQueryResult.#ctor(System.Guid,System.Guid)">
+      <summary>使用包含由实例 ID 和实例所有者 ID 表示的单个查询结果的字典来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceLockQueryResult" /> 类的实例，并设置 <see cref="P:System.Runtime.DurableInstancing.InstanceLockQueryResult.InstanceOwnerIds" /> 属性。</summary>
+      <param name="instanceId">实例的 ID。</param>
+      <param name="instanceOwnerId">实例所有者的 ID，该所有者拥有对由 <paramref name="instanceId" /> 参数表示的实例的锁定。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceLockQueryResult.InstanceOwnerIds">
+      <summary>获取一个包含查询结果集的字典。 此查询结果集是由一个字典表示的，该字典具有实例 ID 作为键，具有拥有对此实例的锁定的实例所有者的 ID 作为值。</summary>
+      <returns>包含实例 ID 和实例所有者 ID 的字典。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceNotReadyException">
+      <summary>在永久性提供程序期望找到处于已初始化状态的实例但找到处于未初始化状态的实例时，永久性提供程序会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceNotReadyException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceNotReadyException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceNotReadyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceNotReadyException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceNotReadyException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceNotReadyException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceNotReadyException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceNotReadyException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceNotReadyException.#ctor(System.Xml.Linq.XName,System.Guid)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）和执行此命令所针对的目标实例的 ID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceNotReadyException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceNotReadyException.#ctor(System.Xml.Linq.XName,System.Guid,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID 和内部异常信息来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceNotReadyException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceNotReadyException.#ctor(System.Xml.Linq.XName,System.Guid,System.String,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、解释此异常的原因的错误消息和引发当前异常的异常初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceNotReadyException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceOwner">
+      <summary>表示实例存储区中的一个实例的所有者。 实例所有者是在实例存储区中具有实例的交互参与者。</summary>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceOwner.InstanceOwnerId">
+      <summary>获取实例所有者 ID 作为 GUID。</summary>
+      <returns>实例所有者的 ID。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceOwnerException">
+      <summary>在绑定到实例句柄的实例所有者变成无效时，永久性提供程序会引发此异常。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerException" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerException.#ctor(System.Xml.Linq.XName,System.Guid)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）和实例所有者的 ID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceOwnerId">实例所有者的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerException.#ctor(System.Xml.Linq.XName,System.Guid,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）、实例所有者的 ID 和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceOwnerId">实例所有者的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerException.#ctor(System.Xml.Linq.XName,System.Guid,System.String,System.Exception)">
+      <summary>使用此命令的 Xname（命名空间和名称的组合）、实例所有者的 ID、描述此异常的错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceOwnerId">实例所有者的 ID。</param>
+      <param name="message">描述此异常的错误消息。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用有关异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</summary>
+      <param name="info">有关引发的异常的序列化对象数据。</param>
+      <param name="context">有关源或目标的上下文信息。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceOwnerException.InstanceOwnerId">
+      <summary>获取实例所有者的 ID。</summary>
+      <returns>实例所有者的 ID。  如果实例所有者未知，则返回 Guid.Empty。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceOwnerQueryResult">
+      <summary>包含一个查询结果集，由与从永久性存储区检索到的一个或多个实例所有者关联的元数据组成。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerQueryResult.#ctor">
+      <summary>使用一个空的查询结果集初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerQueryResult" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerQueryResult.#ctor(System.Collections.Generic.IDictionary{System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}})">
+      <summary>使用作为参数传递的字典（包含与实例所有者关联的 GUID）和包含与这些实例所有者关联的元数据的字典来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerQueryResult" /> 类的实例。</summary>
+      <param name="instanceOwners">一个字典，其中包含表示查询结果集的实例所有者的 GUID 和元数据。 元数据本身包含在包含元数据属性的名称和值的其他字典中。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceOwnerQueryResult.#ctor(System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue})">
+      <summary>使用作为参数传递的单个查询结果（包含实例所有者的 GUID）和与此实例存储区中的此实例所有者关联的元数据来初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerQueryResult" /> 类的实例。</summary>
+      <param name="instanceOwnerId">与实例所有者关联的 GUID。</param>
+      <param name="metadata">与字典中实例所有者关联的元数据（包含属性名称及其值）。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceOwnerQueryResult.InstanceOwners">
+      <summary>获取查询结果集，该结果集由在字典（包含所有者的 GUID 作为键，包含存储在另一个属性名称和值字典中的元数据作为值）中存储的一个或多个实例所有者关联的元数据组成。</summary>
+      <returns>与实例所有者关联的元数据。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstancePersistenceCommand">
+      <summary>所有与永久性相关的命令的基类。 可根据其名称识别命令。 通常，也可根据其派生类型识别命令。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommand.#ctor(System.Xml.Linq.XName)">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+      <param name="name">此命令的 XName（命名空间和名称的组合）。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceCommand.AutomaticallyAcquiringLock">
+      <summary>指示此命令是否可尝试获取对此实例的锁定。</summary>
+      <returns>如果此命令获取对此实例的锁定，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceCommand.IsTransactionEnlistmentOptional">
+      <summary>返回一个值，指示永久性提供程序是否可以在执行此命令时选择不在环境事务 (Transaction.Currnet) 中登记。</summary>
+      <returns>如果对于此命令而言，在事务中登记是可选的，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceCommand.Name">
+      <summary>获取永久性命令的名称。</summary>
+      <returns>一个 XName（命名空间和名称的组合）。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommand.Validate(System.Runtime.DurableInstancing.InstanceView)">
+      <summary>验证此命令。</summary>
+      <param name="view">一个表示实例句柄当前状态的 <see cref="T:System.Runtime.DurableInstancing.InstanceView" /> 对象。</param>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstancePersistenceCommandException">
+      <summary>如果在处理永久性命令时出现错误，永久性提供程序会引发此异常。 如果此错误会扩展到实例句柄的将来使用中，则永久性提供程序还可能会释放执行此命令所针对的实例句柄。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化数据初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">导致当前异常的内部异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.Xml.Linq.XName)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.Xml.Linq.XName,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.Xml.Linq.XName,System.Guid)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）和执行此命令所针对的目标实例的 ID 初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.Xml.Linq.XName,System.Guid,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID 和内部异常信息来初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommand" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.Xml.Linq.XName,System.Guid,System.String,System.Exception)">
+      <summary>使用此命令的 Xname（命名空间和名称的组合）、执行此命令所针对的目标实例的 ID、解释此异常的原因的错误消息和引发当前异常的异常来初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommandException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="instanceId">执行此命令所针对的目标实例的 ID。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.#ctor(System.Xml.Linq.XName,System.String,System.Exception)">
+      <summary>使用此命令的 XName（命名空间和名称的组合）、解释此异常的原因的错误消息和引发当前异常的异常来初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommandException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="message">异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceCommandException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用有关 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 的信息设置 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommandException" /> 对象。</summary>
+      <param name="info">有关引发的异常的序列化对象数据。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceCommandException.InstanceId">
+      <summary>获取执行此命令所针对的实例的 ID。</summary>
+      <returns>实例的 ID。 如果实例未知或此命令不涉及特定的实例，则返回 Guid.Empty。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstancePersistenceContext">
+      <summary>表示在执行永久性命令时的执行状态信息。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.AssociatedInstanceKey(System.Guid)">
+      <summary>指示永久性提供程序已经成功将某个键与实例存储中的当前实例关联。 该键的标识符将指定为参数。</summary>
+      <param name="key">已关联的键的实例键标识符。 不得是 Guid.Empty。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock(System.Int64,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>开始异步操作以将实例上的现有锁绑定到当前实例句柄。 现有锁的版本将作为参数传递。</summary>
+      <param name="instanceVersion">对实例所持有的锁的版本，或为零（如果永久性提供程序不实现锁版本管理）。</param>
+      <param name="timeout">异步操作的超时时间。</param>
+      <param name="callback">操作完成时将要调用的方法。</param>
+      <param name="state">与异步操作关联的状态信息。</param>
+      <returns>异步操作的状态。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginExecute(System.Runtime.DurableInstancing.InstancePersistenceCommand,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>开始异步执行永久性命令。</summary>
+      <param name="command">要执行的永久性命令。</param>
+      <param name="timeout">此操作的超时值。</param>
+      <param name="callback">该委托接收请求操作完成的异步接收的通知。</param>
+      <param name="state">状态信息。</param>
+      <returns>异步操作的状态。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.BindAcquiredLock(System.Int64)">
+      <summary>将对某个实例新获取的锁绑定到当前实例句柄。 获取的锁的版本将作为参数传递。</summary>
+      <param name="instanceVersion">对该实例所获取的锁的版本，或为零（如果永久性提供程序不实现锁版本管理）。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.BindEvent(System.Runtime.DurableInstancing.InstancePersistenceEvent)">
+      <summary>将 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 绑定到实例句柄。</summary>
+      <param name="persistenceEvent">一个包含有关事件的信息的 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.BindInstance(System.Guid)">
+      <summary>绑定一个实例，其标识符指定为当前实例句柄的参数。</summary>
+      <param name="instanceId">一个实例标识符。 不得是 Guid.Empty。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.BindInstanceOwner(System.Guid,System.Guid)">
+      <summary>将一个实例所有者绑定到当前实例句柄。</summary>
+      <param name="instanceOwnerId">实例所有者的标识符。</param>
+      <param name="lockToken">实例所有者的锁定标记。 永久性提供程序可以选择对实例所有者标识符和该所有者的锁定标记使用相同的值。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.BindReclaimedLock(System.Int64,System.TimeSpan)">
+      <summary>将某个实例上的现有锁绑定到当前实例句柄。 现有锁的版本将作为参数传递。</summary>
+      <param name="instanceVersion">对实例所持有的锁的版本，或为零（如果永久性提供程序不实现锁版本管理）。</param>
+      <param name="timeout">此操作的超时值。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.CompletedInstance">
+      <summary>指示永久性提供程序已经成功将实例存储中的当前实例标记为完成。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.CompletedInstanceKey(System.Guid)">
+      <summary>指示永久性提供程序已经成功将外部存储中的键标记为完成。 该键的标识符将指定为参数。</summary>
+      <param name="key">已完成的键的实例键标识符。 不得是 Guid.Empty。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.CreateBindReclaimedLockException(System.Int64)">
+      <summary>创建可能从 TryCommand 引发的异常的实例，以触发 BindReclaimedLock 行为。</summary>
+      <param name="instanceVersion">对实例所持有的锁的版本，或为零（如果永久性提供程序不实现锁版本管理）。</param>
+      <returns>一个异常。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.EndBindReclaimedLock(System.IAsyncResult)">
+      <summary>结束由 <see cref="M:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock(System.Int64,System.TimeSpan,System.AsyncCallback,System.Object)" /> 方法开始的异步操作。</summary>
+      <param name="result">异步操作的结果。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.EndExecute(System.IAsyncResult)">
+      <summary>结束异步操作。</summary>
+      <param name="result">异步操作的状态。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.Execute(System.Runtime.DurableInstancing.InstancePersistenceCommand,System.TimeSpan)">
+      <summary>执行永久性命令。</summary>
+      <param name="command">要执行的永久性命令。</param>
+      <param name="timeout">此操作的超时值。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceHandle">
+      <summary>获取当前实例句柄。</summary>
+      <returns>当前实例句柄。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceVersion">
+      <summary>获取与当前实例句柄对于当前实例所持有的锁的版本。</summary>
+      <returns>如果句柄没有绑定到某个锁，实例锁的版本将绑定到当前实例句柄，则为-1。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceView">
+      <summary>获取表示当前实例的内存中状态的实例视图对象。 此视图会在命令做出更新的同时反映这些更新。</summary>
+      <returns>实例视图对象。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.LoadedInstance(System.Runtime.DurableInstancing.InstanceState,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue},System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue},System.Collections.Generic.IDictionary{System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}},System.Collections.Generic.IDictionary{System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}})">
+      <summary>指示永久性提供程序已经从实例存储中成功检索到当前实例。</summary>
+      <param name="state">实例状态信息。</param>
+      <param name="instanceData">作为 <see cref="T:System.Xml.Linq.XName" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的字典的实例数据。</param>
+      <param name="instanceMetadata">作为 <see cref="T:System.Xml.Linq.XName" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的集合的实例元数据。</param>
+      <param name="associatedInstanceKeyMetadata">作为实例标识符和实例键元数据的字典的关联实例键元数据，它是 <see cref="T:System.Xml.Linq.XName" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的字典。</param>
+      <param name="completedInstanceKeyMetadata">作为实例标识符和实例键元数据的字典的已完成实例元数据，它是 <see cref="T:System.Xml.Linq.XName" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的字典。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceContext.LockToken">
+      <summary>获取绑定到当前实例句柄的实例所有者的锁定标记。</summary>
+      <returns>锁定标记绑定到当前实例句柄，或<see cref="F:System.Guid.Empty" />如果句柄没有绑定到实例所有者。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.PersistedInstance(System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue})">
+      <summary>指示永久性提供程序已经成功将一组实例数据保存到实例存储。 如果尚未初始化实例，则此操作具有初始化的效果。</summary>
+      <param name="data">作为 <see cref="T:System.Xml.Linq.XName" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的字典的实例数据。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.QueriedInstanceStore(System.Runtime.DurableInstancing.InstanceStoreQueryResult)">
+      <summary>向 <see cref="T:System.Runtime.DurableInstancing.InstanceStoreQueryResult" /> 中的 <see cref="T:System.Runtime.DurableInstancing.InstanceStoreQueryResult" /> 对象列表中添加作为参数传递的 <see cref="T:System.Runtime.DurableInstancing.InstanceView" />。</summary>
+      <param name="queryResult">对实例存储的查询的结果。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceKeyMetadata(System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue},System.Boolean)">
+      <summary>指示永久性提供程序已经成功从实例存储读取与当前实例关联的键的一些实例键元数据。</summary>
+      <param name="key">已读取其元数据的键的实例键标识符。 不得是 Guid.Empty。</param>
+      <param name="metadata">作为 <see cref="T:System.Xml.Linq.XName" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的字典的元数据。</param>
+      <param name="complete">如果该元数据代表与该实例键关联的所有元数据，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceMetadata(System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue},System.Boolean)">
+      <summary>指示永久性提供程序已经成功从实例存储读取当前实例的一些实例元数据。</summary>
+      <param name="metadata">作为 <see cref="T:System.Xml.Linq.XName" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的字典的元数据。</param>
+      <param name="complete">如果该元数据代表与该实例关联的所有元数据，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceOwnerMetadata(System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue},System.Boolean)">
+      <summary>使用参数中传递的数据设置实例所有者元数据。</summary>
+      <param name="metadata">
+        <see cref="T:System.Xml.Linq.XName" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的字典。</param>
+      <param name="complete">用于指定将一致性设置为 <see cref="F:System.Runtime.DurableInstancing.InstanceValueConsistency.InDoubt" /> 还是 <see cref="F:System.Runtime.DurableInstancing.InstanceValueConsistency.Partial" /> 的值。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.SetCancellationHandler(System.Action{System.Runtime.DurableInstancing.InstancePersistenceContext})">
+      <summary>设置要在请求取消某个操作时调用的取消处理程序。</summary>
+      <param name="cancellationHandler">对要调用的函数的引用。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.UnassociatedInstanceKey(System.Guid)">
+      <summary>指示永久性提供程序已经成功将某个键与实例存储中的当前实例解除关联。 该键的标识符将指定为参数。</summary>
+      <param name="key">解除关联的键的实例键标识符。 不得是 Guid.Empty。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceContext.UserContext">
+      <summary>获取附加到当前实例句柄的用户上下文信息。</summary>
+      <returns>用户上下文信息。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceKeyMetadataValue(System.Guid,System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue)">
+      <summary>指示永久性提供程序已经成功将与当前实例关联的实例键的元数据值写入实例存储</summary>
+      <param name="key">键的实例键标识符。 不得是 Guid.Empty。</param>
+      <param name="name">元数据属性的名称。</param>
+      <param name="value">元数据属性的值。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceMetadataValue(System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue)">
+      <summary>指示永久性提供程序已经成功将当前实例的元数据值写入外部实例存储。</summary>
+      <param name="name">元数据属性的名称。</param>
+      <param name="value">元数据属性的值。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceOwnerMetadataValue(System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue)">
+      <summary>指示永久性提供程序已经成功将当前实例所有者的元数据值写入实例存储。</summary>
+      <param name="name">元数据属性的名称。</param>
+      <param name="value">元数据属性的值。</param>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstancePersistenceEvent">
+      <summary>表示某个实例存储区引发的用于通知主机有关情况的事件。 示例：<see cref="T:System.Activities.DurableInstancing.HasRunnableWorkflowEvent" /> 和 <see cref="T:System.Activities.DurableInstancing.HasActivatableWorkflowEvent" />。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceEvent.Equals(System.Object)">
+      <summary>确定当前的 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象和已转换为 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 的传递对象是否相同。</summary>
+      <param name="obj">要与当前对象进行比较的对象。</param>
+      <returns>如果对象相同，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceEvent.Equals(System.Runtime.DurableInstancing.InstancePersistenceEvent)">
+      <summary>确定当前的 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象和已传递的 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象是否相同。</summary>
+      <param name="persistenceEvent">要与当前对象进行比较的对象。</param>
+      <returns>如果对象相同，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceEvent.GetHashCode">
+      <summary>返回 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 实例的哈希代码。</summary>
+      <returns>此实例的哈希代码。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceEvent.Name">
+      <summary>返回永久性事件的 XName（命名空间和名称的组合）。</summary>
+      <returns>永久性事件的 XName</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceEvent.op_Equality(System.Runtime.DurableInstancing.InstancePersistenceEvent,System.Runtime.DurableInstancing.InstancePersistenceEvent)">
+      <summary>返回一个值，该值指示指定的 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象是否相同。</summary>
+      <param name="left">要比较的第一个 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象。</param>
+      <param name="right">要比较的第二个 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象。</param>
+      <returns>如果两个对象相同，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceEvent.op_Inequality(System.Runtime.DurableInstancing.InstancePersistenceEvent,System.Runtime.DurableInstancing.InstancePersistenceEvent)">
+      <summary>返回一个值，该值指示指定的 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象是否不相同。</summary>
+      <param name="left">要比较的第一个 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象。</param>
+      <param name="right">要比较的第二个 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象。</param>
+      <returns>如果两个对象相同，则为 <see langword="true" />；否则为 <see langword="False" />。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstancePersistenceEvent`1">
+      <summary>表示某个实例存储区引发的用于通知主机有关更改的事件。 这是一个泛型类。  从此类派生的类，如 <see cref="T:System.Activities.DurableInstancing.HasRunnableWorkflowEvent" /> 和 <see cref="T:System.Activities.DurableInstancing.HasActivatableWorkflowEvent" />。</summary>
+      <typeparam name="T">事件的类型。</typeparam>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceEvent`1.#ctor(System.Xml.Linq.XName)">
+      <summary>使用 XName 参数初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent`1" /> 类的实例。</summary>
+      <param name="name">此事件的 XName（命名空间和名称的组合）。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceEvent`1.Value">
+      <summary>返回实际事件对象的实例（例如：<see cref="T:System.Activities.DurableInstancing.HasRunnableWorkflowEvent" />）。</summary>
+      <returns>事件对象。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstancePersistenceException">
+      <summary>所有与永久性相关的异常类的基类。 <see cref="T:System.Runtime.DurableInstancing.InstanceOwnerException" /> 和 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceCommandException" /> 是此类的派生类。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceException" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化信息和上下文信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceException" /> 类的实例。</summary>
+      <param name="info">有关当前异常的信息。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.#ctor(System.String)">
+      <summary>使用错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceException" /> 类的实例。</summary>
+      <param name="message">描述当前异常的错误消息。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.#ctor(System.String,System.Exception)">
+      <summary>使用错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceException" /> 类的实例。</summary>
+      <param name="message">当前异常的原因。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.#ctor(System.Xml.Linq.XName)">
+      <summary>使用命令的名称初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.#ctor(System.Xml.Linq.XName,System.Exception)">
+      <summary>使用此命令的名称和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.#ctor(System.Xml.Linq.XName,System.String)">
+      <summary>使用此命令的名称和错误消息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="message">描述此异常的错误消息。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.#ctor(System.Xml.Linq.XName,System.String,System.Exception)">
+      <summary>使用此命令的名称、错误消息和内部异常信息初始化 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceException" /> 类的实例。</summary>
+      <param name="commandName">此命令的 XName（命名空间和名称的组合）。</param>
+      <param name="message">描述此异常的错误消息。</param>
+      <param name="innerException">引发当前异常的异常。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstancePersistenceException.CommandName">
+      <summary>获取命令的名称。</summary>
+      <returns>该命令的名称或<see langword="null" />如果不知道该命令。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstancePersistenceException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用关于异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</summary>
+      <param name="info">有关引发的异常的序列化对象数据。</param>
+      <param name="context">有关源或目标的上下文信息</param>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceState">
+      <summary>此枚举包含一个实例状态的列表。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceState.Completed">
+      <summary>指示此实例处于已完成状态。 将来，无法再次保留已完成的实例。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceState.Initialized">
+      <summary>指示此实例已初始化。 初始化的实例是至少保留了一次并可在将来再次进行保留的实例。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceState.Uninitialized">
+      <summary>指示此实例未初始化。 未初始化的实例是指从未保留的实例。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceState.Unknown">
+      <summary>指示此实例处于未知状态。</summary>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceStore">
+      <summary>表示一个实例存储区。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceStore" /> 类的实例。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.BeginExecute(System.Runtime.DurableInstancing.InstanceHandle,System.Runtime.DurableInstancing.InstancePersistenceCommand,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>异步执行永久性命令，如 <see cref="T:System.Activities.DurableInstancing.LoadWorkflowCommand" /> 和 <see cref="T:System.Activities.DurableInstancing.SaveWorkflowCommand" />。</summary>
+      <param name="handle">一个实例句柄。</param>
+      <param name="command">要执行的命令。</param>
+      <param name="timeout">命令执行的超时值。</param>
+      <param name="callback">可接收异步操作完成通知的异步回调接收委托。</param>
+      <param name="state">状态信息。</param>
+      <returns>异步操作的状态。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.BeginTryCommand(System.Runtime.DurableInstancing.InstancePersistenceContext,System.Runtime.DurableInstancing.InstancePersistenceCommand,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>永久性提供程序可实现此方法，这可确定是否可执行特定的永久性命令。 如果可以执行此命令，请异步执行此命令。</summary>
+      <param name="context">实例上下文。</param>
+      <param name="command">要执行的永久性命令。</param>
+      <param name="timeout">命令执行的超时值。</param>
+      <param name="callback">可接收异步操作完成通知的异步回调接收委托。</param>
+      <param name="state">状态信息。</param>
+      <returns>异步操作的状态。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents(System.Runtime.DurableInstancing.InstanceHandle,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>开始一个异步操作，以侦听特定实例句柄的实例存储区引发的任何事件。</summary>
+      <param name="handle">一个实例句柄。</param>
+      <param name="timeout">在操作超时之后的期间。</param>
+      <param name="callback">要在完成异步操作之后调用的方法。</param>
+      <param name="state">一个包含与异步操作关联的状态信息的对象。</param>
+      <returns>返回一个 <see cref="T:System.IAsyncResult" /> 对象。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle">
+      <summary>创建实例句柄。</summary>
+      <returns>实例句柄。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle(System.Guid)">
+      <summary>创建实例句柄。  如果设置了 DefaultInstanceOwner，此值将作为新句柄的实例所有者自动被绑定。  作为参数传递的实例标识符会作为新句柄的实例自动进行绑定。</summary>
+      <param name="instanceId">一个实例标识符。 不得是 Guid.Empty。</param>
+      <returns>实例句柄。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle(System.Runtime.DurableInstancing.InstanceOwner)">
+      <summary>创建实例句柄。 如果作为参数传递的实例所有者不为 null，则此值会作为新的句柄实例所有者自动进行绑定。  （否则，即使设置了 DefaultInstanceOwner，也不会绑定任何实例所有者。）</summary>
+      <param name="owner">一个实例的所有者。</param>
+      <returns>实例句柄。 null 值指示新的句柄不应该自动绑定到实例所有者。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle(System.Runtime.DurableInstancing.InstanceOwner,System.Guid)">
+      <summary>创建实例句柄。 如果作为参数传递的实例所有者不为 null，则此值会作为新的句柄实例所有者自动进行绑定。  （否则，即使设置了 DefaultInstanceOwner，也不会绑定任何实例所有者。）作为参数传递的实例标识符会作为新句柄的实例自动进行绑定。</summary>
+      <param name="owner">一个 InstanceOwner 对象，表示一个实例的所有者。 将 null 值作为此参数的值传递，指示新的句柄不应该自动绑定到实例所有者。</param>
+      <param name="instanceId">一个实例标识符。 不得是 Guid.Empty。</param>
+      <returns>实例句柄。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceStore.DefaultInstanceOwner">
+      <summary>获取或设置默认实例的所有者。</summary>
+      <returns>默认实例所有者。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.EndExecute(System.IAsyncResult)">
+      <summary>结束异步操作。</summary>
+      <param name="result">操作的结果。</param>
+      <returns>一个 InstanceView 对象，表示成功完成此命令后此实例的已知状态。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.EndTryCommand(System.IAsyncResult)">
+      <summary>结束异步操作。</summary>
+      <param name="result">操作的结果。</param>
+      <returns>如果永久性提供程序实现不支持传递到 BeginTryCommand 方法的命令，则它应返回 false。 否则，它应该返回 true 或引发一个异常。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.EndWaitForEvents(System.IAsyncResult)">
+      <summary>结束由 <see cref="M:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents(System.Runtime.DurableInstancing.InstanceHandle,System.TimeSpan,System.AsyncCallback,System.Object)" /> 方法启动的异步操作。</summary>
+      <param name="result">一个通过 Begin 方法移交到客户端的 IAsyncResult 对象。</param>
+      <returns>返回 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象的列表。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.Execute(System.Runtime.DurableInstancing.InstanceHandle,System.Runtime.DurableInstancing.InstancePersistenceCommand,System.TimeSpan)">
+      <summary>异步执行永久性命令。 永久性命令的示例：<see cref="T:System.Activities.DurableInstancing.LoadWorkflowCommand" /> 和 <see cref="T:System.Activities.DurableInstancing.SaveWorkflowCommand" />。</summary>
+      <param name="handle">一个实例句柄。</param>
+      <param name="command">要执行的命令。</param>
+      <param name="timeout">此操作的超时值。</param>
+      <returns>一个 InstanceView 对象，表示成功完成此命令后此实例的已知状态。  如果在事务下调用了 Execute，则此状态可以包含未提交的数据。 一旦成功提交此事务，InstanceView 对象中的数据就被认为是已提交</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.GetEvents(System.Runtime.DurableInstancing.InstanceOwner)">
+      <summary>获取已绑定到 <see cref="T:System.Runtime.DurableInstancing.InstanceOwner" /> 对象的所有已终止事件。</summary>
+      <param name="owner">一个 <see cref="T:System.Runtime.DurableInstancing.InstanceOwner" /> 对象，表示实例的所有者。</param>
+      <returns>返回一个 <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象数组。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.GetInstanceOwners">
+      <summary>获取已绑定到有效实例句柄或没有进行垃圾回收的每个 InstanceOwner 对象。</summary>
+      <returns>实例的所有者。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.OnFreeInstanceHandle(System.Runtime.DurableInstancing.InstanceHandle,System.Object)">
+      <summary>在释放实例句柄时调用。</summary>
+      <param name="instanceHandle">已释放的实例句柄。</param>
+      <param name="userContext">从 OnNewInstanceHandle 返回的永久性提供程序的用户上下文信息，或者，如果未替代 OnNewInstanceHandle，则为 null。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.OnNewInstanceHandle(System.Runtime.DurableInstancing.InstanceHandle)">
+      <summary>在创建新实例句柄时调用。</summary>
+      <param name="instanceHandle">一个实例句柄。</param>
+      <returns>一个对象。  在使用此句柄执行命令和释放此句柄时，此用户上下文对象将可用于永久性提供程序。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.ResetEvent(System.Runtime.DurableInstancing.InstancePersistenceEvent,System.Runtime.DurableInstancing.InstanceOwner)">
+      <summary>重置已终止事件，并从由实例所有者维护的已终止事件的列表中移除该事件。</summary>
+      <param name="persistenceEvent">以前终止的和要重置的永久性事件。</param>
+      <param name="owner">与永久性事件关联的实例所有者。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.SignalEvent(System.Runtime.DurableInstancing.InstancePersistenceEvent,System.Runtime.DurableInstancing.InstanceOwner)">
+      <summary>实例存储区可调用此方法来使事件终止。 为此永久性事件订阅的工作流主机可接收这些信号，并可采取适当的措施。</summary>
+      <param name="persistenceEvent">要发出信号的永久性事件。</param>
+      <param name="owner">实例所有者。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.TryCommand(System.Runtime.DurableInstancing.InstancePersistenceContext,System.Runtime.DurableInstancing.InstancePersistenceCommand,System.TimeSpan)">
+      <summary>永久性提供程序可实现此方法，这可确定是否可执行特定的永久性命令和是否可异步执行此命令。</summary>
+      <param name="context">实例上下文。</param>
+      <param name="command">要执行的命令。</param>
+      <param name="timeout">此操作的超时值。</param>
+      <returns>如果永久性提供程序实现不支持作为参数传递的命令，则它应返回 <see langword="false" />；否则，它应返回 <see langword="true" /> 或引发一个异常。</returns>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStore.WaitForEvents(System.Runtime.DurableInstancing.InstanceHandle,System.TimeSpan)">
+      <summary>工作流主机通常会调用此方法来等待事件终止。</summary>
+      <param name="handle">绑定到此事件的实例句柄。</param>
+      <param name="timeout">在等待操作超时之后的时间跨度。</param>
+      <returns>
+        <see cref="T:System.Runtime.DurableInstancing.InstancePersistenceEvent" /> 对象的列表。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceStoreQueryResult">
+      <summary>支持用于从实例存储区提供数据的可扩展机制。 这些数据包括有关实例、实例所有者和实例键的数据，而不是绑定到正在使用中的实例句柄的那些数据。  例如，永久性提供程序可以通过将从 <see cref="T:System.Runtime.DurableInstancing.InstanceStoreQueryResult" /> 派生的类的实例传递到 <see cref="M:System.Runtime.DurableInstancing.InstancePersistenceContext.QueriedInstanceStore(System.Runtime.DurableInstancing.InstanceStoreQueryResult)" /> 方法，为存储区中的所有实例所有者提供所有者元数据。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceStoreQueryResult.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceStoreQueryResult" /> 类的实例。</summary>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceValue">
+      <summary>存储有关实例数据和元数据的信息。</summary>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceValue.#ctor(System.Object)">
+      <summary>通过使用作为参数传递的值对象初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 类的实例。</summary>
+      <param name="value">值对象。</param>
+    </member>
+    <member name="M:System.Runtime.DurableInstancing.InstanceValue.#ctor(System.Object,System.Runtime.DurableInstancing.InstanceValueOptions)">
+      <summary>使用作为参数传递的值对象和这些值的选项初始化 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 类的实例。</summary>
+      <param name="value">值对象。</param>
+      <param name="options">值对象的选项。 有关详情，请参阅<see cref="T:System.Runtime.DurableInstancing.InstanceValueOptions" />。</param>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceValue.DeletedValue">
+      <summary>获取以前删除的值。</summary>
+      <returns>以前已删除的值。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceValue.IsDeletedValue">
+      <summary>获取一个值，该值指示该对象是否表示一个删除的值。</summary>
+      <returns>如果该对象表示一个删除的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceValue.Options">
+      <summary>为实例值获取选项。</summary>
+      <returns>用于实例值的选项。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceValue.Value">
+      <summary>获取作为对象的实例值。</summary>
+      <returns>实例的值。</returns>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceValueConsistency">
+      <summary>描述指定的字典中包含的实例值的一致性保证。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceValueConsistency.InDoubt">
+      <summary>指示实例值的一致性不确定。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceValueConsistency.None">
+      <summary>指示不存在一致性保证。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceValueConsistency.Partial">
+      <summary>指示实例值存在部分一致性。</summary>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceValueOptions">
+      <summary>包含实例值的选项，用于指示实例值是只写、可选还是没有实例值。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceValueOptions.None">
+      <summary>指示没有实例值。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceValueOptions.Optional">
+      <summary>指示主机可以在不知道实例值的情况下正常工作。</summary>
+    </member>
+    <member name="F:System.Runtime.DurableInstancing.InstanceValueOptions.WriteOnly">
+      <summary>指示此实例值为只写。 实例值可用于管理目的。</summary>
+    </member>
+    <member name="T:System.Runtime.DurableInstancing.InstanceView">
+      <summary>表示一个实例视图。 例如，<see cref="M:System.Runtime.DurableInstancing.InstanceStore.Execute(System.Runtime.DurableInstancing.InstanceHandle,System.Runtime.DurableInstancing.InstancePersistenceCommand,System.TimeSpan)" /> 方法实现可返回一个 <see cref="T:System.Runtime.DurableInstancing.InstanceView" /> 对象，该对象提供显示永久性存储区中的实例数据的视图。</summary>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceData">
+      <summary>获取实例数据作为名称和值的字典。</summary>
+      <returns>实例数据。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceDataConsistency">
+      <summary>获取 InstanceData 属性的一致性状态。</summary>
+      <returns>实例数据的一致性（无、不确定和部分）。 InstanceValueConsistency.None 指示 InstanceData 属性保存了一个已完全填充并锁定的实例数据集。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceId">
+      <summary>获取实例标识符 (ID) 作为 GUID。</summary>
+      <returns>实例的 ID，或 Guid.Empty（如果关联的实例句柄没有绑定到实例）。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceKeys">
+      <summary>获取实例键作为实例键标识符和关联 <see cref="T:System.Runtime.DurableInstancing.InstanceKeyView" /> 对象的字典。</summary>
+      <returns>一个实例键标识符及其关联实例键视图对象的字典。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceKeysConsistency">
+      <summary>获取 InstanceKeys 属性的一致性状态。</summary>
+      <returns>实例键的一致性值。 <see cref="F:System.Runtime.DurableInstancing.InstanceValueConsistency.None" /> 指示 InstanceKeys 属性保存的实例键的完全填充并锁定集 (尽管不需要每一个键的元数据)。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceMetadata">
+      <summary>获取实例的元数据作为名称和 <see cref="T:System.Runtime.DurableInstancing.InstanceValue" /> 对象的字典。</summary>
+      <returns>实例的元数据。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceMetadataConsistency">
+      <summary>获取 InstanceMetadata 属性的一致性状态。</summary>
+      <returns>实例元数据的一致性。 InstanceValueConsistency.None 指示 InstanceMetadata 属性保留了一个已完全填充并锁定的实例元数据集。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceOwner">
+      <summary>获取实例所有者。</summary>
+      <returns>实例的所有者或<see langword="null" />如果关联的实例句柄没有绑定到实例所有者。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceOwnerMetadata">
+      <summary>获取实例所有者的元数据作为名称和值的字典。</summary>
+      <returns>一个包含实例所有者的元数据的字典。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceOwnerMetadataConsistency">
+      <summary>获取 InstanceOwnerMetadata 属性的一致性状态。</summary>
+      <returns>实例所有者元数据的一致性。  如果关联的实例句柄没有绑定到实例所有者，则返回 null。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceState">
+      <summary>获取实例的状态（未知、未初始化、初始化或已完成）。</summary>
+      <returns>实例的状态。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.InstanceStoreQueryResults">
+      <summary>获取 <see cref="T:System.Runtime.DurableInstancing.InstanceStoreQueryResult" /> 对象的集合。 每次针对此关联的实例句柄执行命令时，此集合会被自动重置为空。</summary>
+      <returns>
+        <see cref="T:System.Runtime.DurableInstancing.InstanceStoreQueryResult" /> 对象的集合。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.IsBoundToInstance">
+      <summary>返回一个值，该值指示该关联实例句柄是否绑定到某个实例。</summary>
+      <returns>
+        <see langword="true" /> 如果关联的实例处理，绑定到实例;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.IsBoundToInstanceOwner">
+      <summary>返回一个值，该值指示该关联实例句柄是否绑定到某个实例所有者。</summary>
+      <returns>
+        <see langword="true" /> 如果关联的实例处理，绑定到实例所有者;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Runtime.DurableInstancing.InstanceView.IsBoundToLock">
+      <summary>返回一个值，该值指示该关联实例句柄是否绑定到某个实例锁定。</summary>
+      <returns>
+        <see langword="true" /> 如果关联的实例处理，绑定到某个实例锁定;否则为<see langword="false" />。</returns>
+    </member>
+  </members>
+</doc>

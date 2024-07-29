@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.IO.Compression</name>
+  </assembly>
+  <members>
+    <member name="M:System.IO.Compression.ZipArchive.#ctor(System.IO.Stream)">
+      <summary>
+              从指定的流初始化 <see cref="T:System.IO.Compression.ZipArchive" /> 类的新实例。
+            </summary>
+      <param name="stream">
+                即包含待读取的存档的流。
+              </param>
+      <exception cref="T:System.ArgumentException">
+                  该流已关闭或不支持读取。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="stream" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.IO.InvalidDataException">
+                  流的内容不是 zip 存档格式。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchive.#ctor(System.IO.Stream,System.IO.Compression.ZipArchiveMode)">
+      <summary>
+              从指定的流并使用指定的模式初始化 <see cref="T:System.IO.Compression.ZipArchive" /> 类的新实例。
+            </summary>
+      <param name="stream">
+                输入流或输出流。
+              </param>
+      <param name="mode">
+                指示 zip 存档是否用于读取、创建或更新项的一个枚举值。
+              </param>
+      <exception cref="T:System.ArgumentException">
+                  流已关闭，或流的功能与模式不相匹配。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="stream" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  <paramref name="mode" /> 为无效值。
+                </exception>
+      <exception cref="T:System.IO.InvalidDataException">
+                  流的内容无法被解释为 zip 存档。
+                
+                  - 或 -
+                
+                  <paramref name="mode" /> 是 <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />，但存档中缺少项，或者项已损坏且无法读取。
+                
+                  - 或 -
+                
+                  <paramref name="mode" /> 是 <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />，但项太大，无法装入内存。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchive.#ctor(System.IO.Stream,System.IO.Compression.ZipArchiveMode,System.Boolean)">
+      <summary>
+              对于指定的模式，初始化指定流上的 <see cref="T:System.IO.Compression.ZipArchive" /> 类的新实例，并选择性地使流保持打开状态。
+            </summary>
+      <param name="stream">
+                输入流或输出流。
+              </param>
+      <param name="mode">
+                指示 zip 存档是否用于读取、创建或更新项的一个枚举值。
+              </param>
+      <param name="leaveOpen">
+                如果在释放 <see cref="T:System.IO.Compression.ZipArchive" /> 对象后保持流处于打开状态，则为 <see langword="true" />；否则为 <see langword="false" />。
+              </param>
+      <exception cref="T:System.ArgumentException">
+                  流已关闭，或流的功能与模式不相匹配。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="stream" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  <paramref name="mode" /> 为无效值。
+                </exception>
+      <exception cref="T:System.IO.InvalidDataException">
+                  流的内容无法被解释为 zip 存档。
+                
+                  - 或 -
+                
+                  <paramref name="mode" /> 是 <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />，但存档中缺少项，或者项已损坏且无法读取。
+                
+                  - 或 -
+                
+                  <paramref name="mode" /> 是 <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />，但项太大，无法装入内存。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchive.#ctor(System.IO.Stream,System.IO.Compression.ZipArchiveMode,System.Boolean,System.Text.Encoding)">
+      <summary>
+              对于指定的模式，初始化指定流上的 <see cref="T:System.IO.Compression.ZipArchive" /> 类的新实例，使用项名的指定编码，并选择性地使流保持打开状态。
+            </summary>
+      <param name="stream">
+                输入流或输出流。
+              </param>
+      <param name="mode">
+                指示 zip 存档是否用于读取、创建或更新项的一个枚举值。
+              </param>
+      <param name="leaveOpen">
+                如果在释放 <see cref="T:System.IO.Compression.ZipArchive" /> 对象后保持流处于打开状态，则为 <see langword="true" />；否则为 <see langword="false" />。
+              </param>
+      <param name="entryNameEncoding">
+                在存档中读取或写入项名时使用的编码。
+                 仅当需要针对具有不支持项名的 UTF-8 编码的 zip 归档工具和库的互操作性进行编码时，为此参数指定一个值。
+              </param>
+      <exception cref="T:System.ArgumentException">
+                  流已关闭，或流的功能与模式不相匹配。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="stream" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  <paramref name="mode" /> 为无效值。
+                </exception>
+      <exception cref="T:System.IO.InvalidDataException">
+                  流的内容无法被解释为 zip 存档。
+                
+                  - 或 -
+                
+                  <paramref name="mode" /> 是 <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />，但存档中缺少项，或者项已损坏且无法读取。
+                
+                  - 或 -
+                
+                  <paramref name="mode" /> 是 <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />，但项太大，无法装入内存。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchive.CreateEntry(System.String)">
+      <summary>
+              创建在 zip 存档中有指定路径和项名的空项。
+            </summary>
+      <param name="entryName">
+                相对于存档的根的路径指定了要创建项的名称。
+              </param>
+      <returns>
+              在 zip 存档中的空项。
+            </returns>
+      <exception cref="T:System.ArgumentException">
+                  <paramref name="entryName" /> 为 <see cref="F:System.String.Empty" />。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="entryName" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.NotSupportedException">
+                  在 zip 存档不支持写入。
+                </exception>
+      <exception cref="T:System.ObjectDisposedException">
+                  在 zip 存档已被释放。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchive.CreateEntry(System.String,System.IO.Compression.CompressionLevel)">
+      <summary>
+              创建在 zip 存档中有指定项名和压缩级别的空项。
+            </summary>
+      <param name="entryName">
+                相对于存档的根的路径指定了要创建项的名称。
+              </param>
+      <param name="compressionLevel">
+                指示创建项时是否强调速度或压缩有效性的枚举值之一。
+              </param>
+      <returns>
+              在 zip 存档中的空项。
+            </returns>
+      <exception cref="T:System.ArgumentException">
+                  <paramref name="entryName" /> 为 <see cref="F:System.String.Empty" />。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="entryName" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.NotSupportedException">
+                  在 zip 存档不支持写入。
+                </exception>
+      <exception cref="T:System.ObjectDisposedException">
+                  在 zip 存档已被释放。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchive.Dispose">
+      <summary>
+              释放 <see cref="T:System.IO.Compression.ZipArchive" /> 类的当前实例使用的资源。
+            </summary>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchive.Dispose(System.Boolean)">
+      <summary>
+              由调用 <see cref="M:System.IO.Compression.ZipArchive.Dispose" /> 和 <see cref="M:System.Object.Finalize" /> 方法以释放非托管的资源的当前实例所使用的 <see cref="T:System.IO.Compression.ZipArchive" /> 类，根据需要完成编写存档并释放托管的资源。
+            </summary>
+      <param name="disposing">
+                <see langword="true" /> 若要完成编写存档并释放非托管及托管资源; <see langword="false" /> 仅释放非托管的资源。
+              </param>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchive.GetEntry(System.String)">
+      <summary>
+              在 zip 存档中检索指定项的包装。
+            </summary>
+      <param name="entryName">
+                识别要检索的项、相对于存档的根的路径。
+              </param>
+      <returns>
+              存档; 中指定的项的包装 <see langword="null" /> 如果存档中，该条目不存在。
+            </returns>
+      <exception cref="T:System.ArgumentException">
+                  <paramref name="entryName" /> 为 <see cref="F:System.String.Empty" />。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="entryName" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.NotSupportedException">
+                  在 zip 存档不支持读取。
+                </exception>
+      <exception cref="T:System.ObjectDisposedException">
+                  在 zip 存档已被释放。
+                </exception>
+      <exception cref="T:System.IO.InvalidDataException">
+                  在 zip 存档已损坏且不能检索其条目。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchiveEntry.Delete">
+      <summary>
+              删除 zip 存档中的项。
+            </summary>
+      <exception cref="T:System.IO.IOException">
+                  该条目已被打开以进行读取或写入。
+                </exception>
+      <exception cref="T:System.NotSupportedException">
+                  此项的 zip 存档已以模式以外打开 <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />。
+                </exception>
+      <exception cref="T:System.ObjectDisposedException">
+                  在 zip 存档中的为此条目已被释放。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchiveEntry.Open">
+      <summary>
+              打开 zip 存档中的项。
+            </summary>
+      <returns>
+              表示项的内容的流。
+            </returns>
+      <exception cref="T:System.IO.IOException">
+                  此条目已经是为了写入而当前打开的。
+                
+                  - 或 -
+                
+                  该条目已从存档中删除。
+                
+                  - 或 -
+                
+                  为此条目的存档方式打开的 <see cref="F:System.IO.Compression.ZipArchiveMode.Create" /> 模式，并且此项已被写入到。
+                </exception>
+      <exception cref="T:System.IO.InvalidDataException">
+                  该项，则可以从存档缺失或已损坏或无法读取。
+                
+                  - 或 -
+                
+                  已经通过使用一种不受支持的压缩方法压缩该条目。
+                </exception>
+      <exception cref="T:System.ObjectDisposedException">
+                  在 zip 存档中的为此条目已被释放。
+                </exception>
+    </member>
+    <member name="M:System.IO.Compression.ZipArchiveEntry.ToString">
+      <summary>
+              检索 zip 存档中项的相对路径。
+            </summary>
+      <returns>
+              该条目，即的值的相对路径存储在 <see cref="P:System.IO.Compression.ZipArchiveEntry.FullName" /> 属性。
+            </returns>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchive.Entries">
+      <summary>
+              获取 zip 存档中当前存在的项的集合。
+            </summary>
+      <returns>
+              在 zip 存档中当前存在的项的集合。
+            </returns>
+      <exception cref="T:System.NotSupportedException">
+                  在 zip 存档不支持读取。
+                </exception>
+      <exception cref="T:System.ObjectDisposedException">
+                  在 zip 存档已被释放。
+                </exception>
+      <exception cref="T:System.IO.InvalidDataException">
+                  在 zip 存档已损坏且不能检索其条目。
+                </exception>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchive.Mode">
+      <summary>
+              获取描述 zip 存档可在项上执行的操作类型的一个值。
+            </summary>
+      <returns>
+              描述 zip 存档可在项上执行的操作类型（读取、创建或更新）的一个枚举值。
+            </returns>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchiveEntry.Archive">
+      <summary>
+              获取该项所属的 zip 存档。
+            </summary>
+      <returns>
+              该项所属的 zip 存档或 <see langword="null" /> 如果该条目已被删除。
+            </returns>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchiveEntry.CompressedLength">
+      <summary>
+              获取在 zip 存档中的项的压缩大小。
+            </summary>
+      <returns>
+              在 zip 存档中的项的压缩大小。
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+                  由于该条目已被修改，该属性的值不可用。
+                </exception>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchiveEntry.ExternalAttributes">
+      <summary>
+              
+		  操作系统和应用程序的特定文件属性。
+            </summary>
+      <returns>
+              编写此输入时由应用程序编写的外部属性。
+               这同时依赖于主机操作系统和应用程序。
+            </returns>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchiveEntry.FullName">
+      <summary>
+              获取 zip 存档中的项的相对路径。
+            </summary>
+      <returns>
+              在 zip 存档中的项的相对路径。
+            </returns>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchiveEntry.LastWriteTime">
+      <summary>
+              获取或设置最近一次更改 zip 存档中的项的时间。
+            </summary>
+      <returns>
+              最近一次更改 zip 存档中的项的时间。
+            </returns>
+      <exception cref="T:System.NotSupportedException">
+                  将此属性设置的尝试失败，因为在 zip 存档中的项处于 <see cref="F:System.IO.Compression.ZipArchiveMode.Read" /> 模式。
+                </exception>
+      <exception cref="T:System.IO.IOException">
+                  存档模式设置为 <see cref="F:System.IO.Compression.ZipArchiveMode.Create" />。
+                
+                  - 或 -
+                
+                  存档模式设置为 <see cref="F:System.IO.Compression.ZipArchiveMode.Update" /> 和打开条目。
+                </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  尝试将此属性设置为一个值，为任何一个早于 1980 年 1 月 1 日 0:00:00 （午夜） 或更高版本比 2107 12 月 31 日 23:59:58 （之前午夜的一秒）。
+                </exception>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchiveEntry.Length">
+      <summary>
+              获取 zip 存档中的项的未压缩大小。
+            </summary>
+      <returns>
+              在 zip 存档中的项的未压缩大小。
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+                  由于该条目已被修改，该属性的值不可用。
+                </exception>
+    </member>
+    <member name="P:System.IO.Compression.ZipArchiveEntry.Name">
+      <summary>
+              获取在 zip 存档中的项的文件名。
+            </summary>
+      <returns>
+              在 zip 存档中的项的文件名。
+            </returns>
+    </member>
+    <member name="T:System.IO.Compression.ZipArchive">
+      <summary>
+              表示 Zip 存档格式中的一个压缩文件包。
+            </summary>
+    </member>
+    <member name="T:System.IO.Compression.ZipArchiveEntry">
+      <summary>
+              表示 zip 档案中的压缩文件。
+            </summary>
+    </member>
+    <member name="T:System.IO.Compression.ZipArchiveMode">
+      <summary>
+              指定用来与 zip 存档条目进行交互的值。
+            </summary>
+    </member>
+    <member name="F:System.IO.Compression.ZipArchiveMode.Read">
+      <summary>
+              只允许读取存档项。
+            </summary>
+    </member>
+    <member name="F:System.IO.Compression.ZipArchiveMode.Create">
+      <summary>
+              只允许创建新的存档项。
+            </summary>
+    </member>
+    <member name="F:System.IO.Compression.ZipArchiveMode.Update">
+      <summary>
+              允许对存档项执行读取和写入操作。
+            </summary>
+    </member>
+  </members>
+</doc>

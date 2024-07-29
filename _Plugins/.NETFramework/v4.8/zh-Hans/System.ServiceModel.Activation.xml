@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ServiceModel.Activation</name>
+  </assembly>
+  <members>
+    <member name="T:System.ServiceModel.Activation.HostedTransportConfiguration">
+      <summary>为 Windows 进程激活服务 (WAS) 中承载的传输实现提供特定于传输的配置。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.HostedTransportConfiguration.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Activation.HostedTransportConfiguration" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.HostedTransportConfiguration.GetBaseAddresses(System.String)">
+      <summary>当在派生类中被重写时，检索主机的基址。</summary>
+      <param name="virtualPath">服务的虚拟路径。</param>
+      <returns>包含主机基址的 <see cref="T:System.Uri" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Activation.ServiceActivationBuildProviderAttribute">
+      <summary>指定哪个生成提供程序用于服务器 XAML (.xamlx) 文档。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceActivationBuildProviderAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Activation.ServiceActivationBuildProviderAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Activation.ServiceBuildProvider">
+      <summary>定义一组用于在 ASP.NET 生成环境中生成源代码的属性和方法。 此类是 <see cref="T:System.Web.Compilation.BuildProvider" /> 的 Windows Communication Foundation (WCF) 实现。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceBuildProvider.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Activation.ServiceBuildProvider" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Activation.ServiceBuildProvider.CodeCompilerType">
+      <summary>表示生成提供程序为自定义文件类型生成源代码所使用的编译器类型。</summary>
+      <returns>一种只读编译器类型，表示代码生成器、代码编译器和用于为虚拟路径生成源代码的编译器设置。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>为生成提供程序的虚拟路径生成源代码，并将源代码添加到指定程序集生成器。</summary>
+      <param name="assemblyBuilder">引用生成提供程序所生成的源代码的程序集生成器。</param>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceBuildProvider.GetCustomString(System.CodeDom.Compiler.CompilerResults)">
+      <summary>生成要在编译后的程序集中保留的字符串。</summary>
+      <param name="results">生成提供程序的虚拟路径的编译结果。</param>
+      <returns>一个要在生成环境中保留的字符串。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>返回一个值，该值指示生成虚拟路径时所需的操作。</summary>
+      <param name="results">生成提供程序的虚拟路径的编译结果。</param>
+      <returns>在 ASP.NET 生成环境中生成虚拟路径后所需的操作。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Activation.ServiceBuildProvider.VirtualPathDependencies">
+      <summary>表示在生成提供程序生成代码之前必须生成的虚拟路径的集合。</summary>
+      <returns>此生成提供程序的实例所依赖的虚拟路径。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Activation.ServiceHostFactory">
+      <summary>在托管宿主环境中提供 <see cref="T:System.ServiceModel.ServiceHost" /> 的实例的工厂，在此环境中为响应传入消息而动态创建宿主实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceHostFactory.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Activation.ServiceHostFactory" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(System.String,System.Uri[])">
+      <summary>创建具有特定基址的 <see cref="T:System.ServiceModel.ServiceHost" />，并使用指定数据对其进行初始化。</summary>
+      <param name="constructorString">传递给 <see cref="T:System.ServiceModel.ServiceHostBase" /> 实例的由该工厂构建的初始化数据。</param>
+      <param name="baseAddresses">类型为 <see cref="T:System.Array" /> 且包含所承载服务的基址的 <see cref="T:System.Uri" />。</param>
+      <returns>具有特定基址的 <see cref="T:System.ServiceModel.ServiceHost" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="baseAddress" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">未提供宿主上下文，或者 <paramref name="constructorString" /> 为 <see langword="null" /> 或为空。</exception>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(System.Type,System.Uri[])">
+      <summary>为具有特定基址的指定类型的服务创建 <see cref="T:System.ServiceModel.ServiceHost" />。</summary>
+      <param name="serviceType">指定要承载的服务的类型。</param>
+      <param name="baseAddresses">类型为 <see cref="T:System.Array" /> 且包含所承载服务的基址的 <see cref="T:System.Uri" />。</param>
+      <returns>使用特定基址指定的该类型服务的 <see cref="T:System.ServiceModel.ServiceHost" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Activation.ServiceRoute">
+      <summary>允许为支持无扩展基址的 WCF 服务创建 HTTP 路由。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.ServiceRoute.#ctor(System.String,System.ServiceModel.Activation.ServiceHostFactoryBase,System.Type)">
+      <summary>使用指定的路由前缀、服务主机工厂和服务类型初始化 <see cref="T:System.ServiceModel.Activation.ServiceRoute" /> 类的新实例。</summary>
+      <param name="routePrefix">路由前缀。</param>
+      <param name="serviceHostFactory">
+        <see cref="T:System.ServiceModel.Activation.ServiceHostFactory" /> 类的实例。</param>
+      <param name="serviceType">服务类型。</param>
+    </member>
+    <member name="T:System.ServiceModel.Activities.Activation.WorkflowServiceHostFactory">
+      <summary>一个工厂，在可动态创建主机实例以响应传入消息的托管宿主环境中提供 <see cref="T:System.ServiceModel.Activities.WorkflowServiceHost" /> 的实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Activation.WorkflowServiceHostFactory.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Activities.Activation.WorkflowServiceHostFactory" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Activation.WorkflowServiceHostFactory.CreateServiceHost(System.String,System.Uri[])">
+      <summary>创建一台新的服务主机。</summary>
+      <param name="constructorString">定义工作流服务或服务类型的 XAML 文件的名称。</param>
+      <param name="baseAddresses">一个可用作其他地址引用点的地址的列表。</param>
+      <returns>一个服务主机基实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Activation.WorkflowServiceHostFactory.CreateWorkflowServiceHost(System.Activities.Activity,System.Uri[])">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Activities.WorkflowServiceHost" /> 和基址创建 <see cref="T:System.Activities.Activity" /> 类的新实例。</summary>
+      <param name="activity">工作流定义。</param>
+      <param name="baseAddresses">一个可用作其他地址引用点的地址的列表。</param>
+      <returns>一个工作流服务主机实例。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Activation.WorkflowServiceHostFactory.CreateWorkflowServiceHost(System.ServiceModel.Activities.WorkflowService,System.Uri[])">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Activities.WorkflowServiceHost" /> 和基址创建 <see cref="T:System.ServiceModel.Activities.WorkflowService" /> 类的新实例。</summary>
+      <param name="service">成为主机的工作流服务。</param>
+      <param name="baseAddresses">一个可用作其他地址引用点的地址的列表。</param>
+      <returns>一个工作流服务主机实例。</returns>
+    </member>
+    <member name="T:System.ServiceModel.ServiceHostingEnvironment">
+      <summary>提供有关正在运行 Windows Communication Foundation (WCF) 服务的当前宿主环境的信息。</summary>
+    </member>
+    <member name="P:System.ServiceModel.ServiceHostingEnvironment.AspNetCompatibilityEnabled">
+      <summary>获取一个值，该值指示此服务是否在 ASP.NET HTTP 应用程序管道的上下文中运行。</summary>
+      <returns>如果为当前 AppDomain 启用了 ASP.NET 兼容性，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.ServiceHostingEnvironment.EnsureInitialized">
+      <summary>在服务尚未初始化的情况下，初始化服务。</summary>
+    </member>
+    <member name="M:System.ServiceModel.ServiceHostingEnvironment.EnsureServiceAvailable(System.String)">
+      <summary>确保在所提供的虚拟路径上激活服务。</summary>
+      <param name="virtualPath">服务的虚拟路径。</param>
+      <exception cref="T:System.ServiceModel.EndpointNotFoundException">无法找到给定虚拟路径上的某个服务。</exception>
+      <exception cref="T:System.ServiceModel.ServiceActivationException">无法成功激活该服务。</exception>
+      <exception cref="T:System.InvalidOperationException">服务不在宿主环境中运行。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="virtualPath" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="virtualPath" /> 是一个绝对 URI 或无效路径。</exception>
+    </member>
+    <member name="P:System.ServiceModel.ServiceHostingEnvironment.MultipleSiteBindingsEnabled">
+      <summary>获取或设置一个值，该值指定是否为服务主机启用多个站点绑定。</summary>
+      <returns>如果启用多个站点绑定，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+  </members>
+</doc>

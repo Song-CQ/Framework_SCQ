@@ -1,0 +1,3330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.WorkflowServices</name>
+  </assembly>
+  <members>
+    <member name="E:System.Workflow.Activities.ReceiveActivity.OperationValidation">
+      <summary>
+              在接收到操作的消息并且需要验证时发生。
+            </summary>
+    </member>
+    <member name="E:System.Workflow.Activities.SendActivity.AfterResponse">
+      <summary>
+              在接收到来自服务的响应后发生。
+            </summary>
+    </member>
+    <member name="E:System.Workflow.Activities.SendActivity.BeforeSend">
+      <summary>
+              在 <see cref="T:System.Workflow.Activities.SendActivity" /> 活动将消息发送到服务之前发生。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.ContextToken.RootContextName">
+      <summary>
+              一个表示根上下文的常量字符串。
+               此字符串的值为“(RootContext)”。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.OperationParameterInfo.AttributesProperty">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 属性的 <see cref="P:System.Workflow.Activities.OperationParameterInfo.Attributes" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.OperationParameterInfo.NameProperty">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 属性的 <see cref="P:System.Workflow.Activities.OperationParameterInfo.Name" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.OperationParameterInfo.ParameterTypeProperty">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 属性的 <see cref="P:System.Workflow.Activities.OperationParameterInfo.ParameterType" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.OperationParameterInfo.PositionProperty">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 属性的 <see cref="P:System.Workflow.Activities.OperationParameterInfo.Position" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.ReceiveActivity.FaultMessageProperty">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 属性的 <see cref="P:System.Workflow.Activities.ReceiveActivity.FaultMessage" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.ReceiveActivity.OperationValidationEvent">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 事件的 <see cref="E:System.Workflow.Activities.ReceiveActivity.OperationValidation" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.ReceiveActivity.WorkflowServiceAttributesProperty">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 属性的 <see cref="P:System.Workflow.Activities.ReceiveActivity.ServiceOperationInfo" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.SendActivity.AfterResponseEvent">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 事件的 <see cref="E:System.Workflow.Activities.SendActivity.AfterResponse" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.SendActivity.BeforeSendEvent">
+      <summary>
+              表示针对 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 事件的 <see cref="E:System.Workflow.Activities.SendActivity.BeforeSend" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.SendActivity.CustomAddressProperty">
+      <summary>
+              表示 <see cref="T:System.Workflow.ComponentModel.DependencyProperty" /> 属性的 <see cref="P:System.Workflow.Activities.SendActivity.CustomAddress" />。
+            </summary>
+    </member>
+    <member name="F:System.Workflow.Activities.SendActivity.ReturnValuePropertyName">
+      <summary>
+              属性的名称，该属性用作由与 <see langword="SendActivity" /> 活动通信的服务发送的返回值。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.WorkflowServiceHostFactory.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Activation.WorkflowServiceHostFactory" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.WorkflowServiceHostFactory.CreateServiceHost(System.String,System.Uri[])">
+      <summary>
+              从字符串创建 <see cref="T:System.ServiceModel.WorkflowServiceHost" />，该字符串包含工作流标记文件的文件名或工作流服务类型的类型名和指定的服务基址。
+            </summary>
+      <param name="constructorString">
+                定义工作流服务的工作流标记文件的文件名或工作流服务类型的类型名。
+              </param>
+      <param name="baseAddresses">
+                <see cref="T:System.Uri" /> 类型的数组，包含承载服务的基址。
+              </param>
+      <returns>
+              与工作流服务关联的 <see cref="T:System.ServiceModel.ServiceHostBase" /> 对象。
+               默认实现返回一个具有指定基址的 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 对象。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint" /> 类的实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.AddService(System.Object)">
+      <summary>
+              将指定服务添加到由工作流运行时实例支持的运行时服务的列表。
+            </summary>
+      <param name="service">
+                必须添加到运行时服务列表的服务对象。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.GetService(System.Type)">
+      <summary>
+              从服务对象列表获取指定服务类型的服务对象。
+            </summary>
+      <param name="serviceType">
+                必须从对象列表检索其对象的服务的类型。
+              </param>
+      <returns>
+              指定的服务类型的服务对象。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.GetService``1">
+      <summary>
+              获取与指定为模板参数的服务类型相对应的服务对象。
+            </summary>
+      <typeparam name="T">
+                要获取的服务的类型。
+              </typeparam>
+      <returns>
+              与服务类型对应的服务对象。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.OnGetInstanceId(System.Object[],System.ServiceModel.OperationContext)">
+      <summary>
+              基于输入和作为参数传递的操作上下文获取实例标识符。
+            </summary>
+      <param name="inputs">
+                输入对象。
+              </param>
+      <param name="operationContext">
+                操作上下文信息。
+              </param>
+      <returns>
+              实例标识符。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.OnResolveBookmark(System.Object[],System.ServiceModel.OperationContext,System.ServiceModel.Activities.WorkflowHostingResponseContext,System.Object@)">
+      <summary>
+              解析书签。
+            </summary>
+      <param name="inputs">
+                输入对象。
+              </param>
+      <param name="operationContext">
+                操作上下文信息。
+              </param>
+      <param name="responseContext">
+                响应上下文信息。
+              </param>
+      <param name="value">
+                值对象。
+              </param>
+      <returns>
+              一个书签。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.RemoveService(System.Object)">
+      <summary>
+              从由工作流运行时实例支持的运行时服务的列表中移除指定服务。
+            </summary>
+      <param name="service">
+                必须从受支持的运行时服务列表中删除服务对象。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.ExtendedWorkflowRuntimeServiceElementCollection.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.ExtendedWorkflowRuntimeServiceElementCollection" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.ExtendedWorkflowRuntimeServiceElementCollection.Remove(System.String)">
+      <summary>
+              从此集合中移除具有指定键的配置元素。
+            </summary>
+      <param name="key">
+                要移除的配置元素的键。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.ExtendedWorkflowRuntimeServiceElementCollection.Remove(System.Workflow.Runtime.Configuration.WorkflowRuntimeServiceElement)">
+      <summary>
+              从集合中移除特定配置元素的第一个匹配项。
+            </summary>
+      <param name="serviceSettings">
+                要移除的服务配置元素。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.PersistenceProviderElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.PersistenceProviderElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.PersistenceProviderElement.CreateBehavior">
+      <summary>
+              根据此配置元素的设置创建自定义行为。
+            </summary>
+      <returns>
+              一个基于此配置元素的设置的自定义行为。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.PersistenceProviderElement.IsModified">
+      <summary>
+              指示此配置元素自上次保存或加载后是否已被修改。
+            </summary>
+      <returns>
+              如果该元素已被修改，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.PersistenceProviderElement.OnDeserializeUnrecognizedAttribute(System.String,System.String)">
+      <summary>
+              指示是否在反序列化过程中遇到未知的属性。
+            </summary>
+      <param name="name">
+                无法识别的属性的名称。
+              </param>
+      <param name="value">
+                无法识别的属性的值。
+              </param>
+      <returns>
+              <see langword="true" /> 如果反序列化; 时遇到未知的属性否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.PersistenceProviderElement.PostDeserialize">
+      <summary>
+              反序列化后调用。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.PersistenceProviderElement.SerializeElement(System.Xml.XmlWriter,System.Boolean)">
+      <summary>
+              将此配置元素的内容写入配置文件。
+            </summary>
+      <param name="writer">
+                用于写入配置文件的 <see cref="T:System.Xml.XmlWriter" />。
+              </param>
+      <param name="serializeCollectionKey">
+                如果只序列化集合键属性，则为 <see langword="true" />；否则为 <see langword="false" />。
+              </param>
+      <returns>
+              如果实际序列化所有数据，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.PersistenceProviderElement.Unmerge(System.Configuration.ConfigurationElement,System.Configuration.ConfigurationElement,System.Configuration.ConfigurationSaveMode)">
+      <summary>
+              修改此配置元素对象以移除所有不应该保存的值。
+            </summary>
+      <param name="sourceElement">
+                当前级别上包含属性的合并视图的 <see cref="T:System.Configuration.ConfigurationElement" />。
+              </param>
+      <param name="parentElement">
+                父级 <see cref="T:System.Configuration.ConfigurationElement" /> 或 <see langword="null" />（如果为顶层）。
+              </param>
+      <param name="saveMode">
+                用于确定要包括哪些属性值的 <see cref="T:System.Configuration.ConfigurationSaveMode" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WorkflowRuntimeElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WorkflowRuntimeElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WorkflowRuntimeElement.CreateBehavior">
+      <summary>
+              根据此配置元素的设置创建自定义行为。
+            </summary>
+      <returns>
+              一个基于此配置元素的设置的自定义行为。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableOperationAttribute.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Description.DurableOperationAttribute" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableOperationAttribute.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              未在 <see cref="T:System.ServiceModel.Description.DurableOperationAttribute" /> 中实现。
+            </summary>
+      <param name="operationDescription">
+                未实现。
+              </param>
+      <param name="bindingParameters">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableOperationAttribute.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
+      <summary>
+              未在 <see cref="T:System.ServiceModel.Description.DurableOperationAttribute" /> 中实现。
+            </summary>
+      <param name="operationDescription">
+                未实现。
+              </param>
+      <param name="clientOperation">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableOperationAttribute.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
+      <summary>
+              实现操作的服务端行为。
+            </summary>
+      <param name="operationDescription">
+                为支持 <see cref="T:System.ServiceModel.Description.DurableOperationAttribute" /> 属性而修改的操作说明。
+              </param>
+      <param name="dispatchOperation">
+                用于插入此操作的自定义服务修改的扩展点。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableOperationAttribute.Validate(System.ServiceModel.Description.OperationDescription)">
+      <summary>
+              未在 <see cref="T:System.ServiceModel.Description.DurableOperationAttribute" /> 中实现。
+            </summary>
+      <param name="operationDescription">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableServiceAttribute.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Description.DurableServiceAttribute" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableServiceAttribute.AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              未在 <see cref="T:System.ServiceModel.Description.DurableServiceAttribute" /> 中实现。
+            </summary>
+      <param name="serviceDescription">
+                未实现。
+              </param>
+      <param name="serviceHostBase">
+                未实现。
+              </param>
+      <param name="endpoints">
+                未实现。
+              </param>
+      <param name="bindingParameters">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableServiceAttribute.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>
+              自定义服务运行时以支持持久性服务行为属性，例如，为服务指定 <see cref="T:System.ServiceModel.Persistence.PersistenceProvider" />。
+            </summary>
+      <param name="serviceDescription">
+                服务说明。
+              </param>
+      <param name="serviceHostBase">
+                服务主机。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.DurableServiceAttribute.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>
+              验证是否正确设置对服务执行的所有持久性操作。
+            </summary>
+      <param name="serviceDescription">
+                服务说明。
+              </param>
+      <param name="serviceHostBase">
+                服务主机。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.PersistenceProviderBehavior.#ctor(System.ServiceModel.Persistence.PersistenceProviderFactory)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Description.PersistenceProviderBehavior" /> 类的新实例。
+            </summary>
+      <param name="providerFactory">
+                与行为对象关联的 <see cref="T:System.ServiceModel.Persistence.PersistenceProviderFactory" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.PersistenceProviderBehavior.#ctor(System.ServiceModel.Persistence.PersistenceProviderFactory,System.TimeSpan)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Description.PersistenceProviderBehavior" /> 类的新实例。
+            </summary>
+      <param name="providerFactory">
+                与行为对象关联的 <see cref="T:System.ServiceModel.Persistence.PersistenceProviderFactory" />。
+              </param>
+      <param name="persistenceOperationTimeout">
+                超时时间，在此时间后，将中止使用此对象配置的永久性提供程序执行的永久性操作。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.PersistenceProviderBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              未在 <see cref="T:System.ServiceModel.Description.PersistenceProviderBehavior" /> 中实现。
+            </summary>
+      <param name="serviceDescription">
+                未实现。
+              </param>
+      <param name="serviceHostBase">
+                未实现。
+              </param>
+      <param name="endpoints">
+                未实现。
+              </param>
+      <param name="bindingParameters">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.PersistenceProviderBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>
+              未在 <see cref="T:System.ServiceModel.Description.PersistenceProviderBehavior" /> 中实现。
+            </summary>
+      <param name="serviceDescription">
+                未实现。
+              </param>
+      <param name="serviceHostBase">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.PersistenceProviderBehavior.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>
+              未在 <see cref="T:System.ServiceModel.Description.PersistenceProviderBehavior" /> 中实现。
+            </summary>
+      <param name="serviceDescription">
+                未实现。
+              </param>
+      <param name="serviceHostBase">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WorkflowRuntimeBehavior.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Description.WorkflowRuntimeBehavior" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Description.WorkflowRuntimeBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              未在 <see cref="T:System.ServiceModel.Description.WorkflowRuntimeBehavior" /> 中实现。
+            </summary>
+      <param name="serviceDescription">
+                未实现。
+              </param>
+      <param name="serviceHostBase">
+                未实现。
+              </param>
+      <param name="endpoints">
+                未实现。
+              </param>
+      <param name="bindingParameters">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WorkflowRuntimeBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>
+              将工作流服务配置为支持工作流运行时行为。
+            </summary>
+      <param name="serviceDescription">
+                服务说明。
+              </param>
+      <param name="serviceHostBase">
+                服务主机。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WorkflowRuntimeBehavior.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>
+              验证是否已将用于工作流服务的计划服务添加到 <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> 对象并且在调用 <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> 之前未启动 <see cref="Overload:System.ServiceModel.Channels.CommunicationObject.Open" /> 对象。
+            </summary>
+      <param name="serviceDescription">
+                服务说明。
+              </param>
+      <param name="serviceHostBase">
+                服务主机。
+              </param>
+      <exception cref="T:System.InvalidOperationException">
+                  注册了错误的 <see cref="T:System.Workflow.Runtime.Hosting.WorkflowSchedulerService" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.DurableOperationContext.AbortInstance">
+      <summary>
+              操作完成后从内存中清除当前持久性服务实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.DurableOperationContext.CompleteInstance">
+      <summary>
+              操作完成后将持久性服务实例从内存中卸载并将其从永久性存储区中删除。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceLockException" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.#ctor(System.Guid)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceLockException" /> 类的新实例。
+            </summary>
+      <param name="id">
+                异常实例的唯一标识符。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.#ctor(System.Guid,System.Exception)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceLockException" /> 类的新实例。
+            </summary>
+      <param name="id">
+                异常实例的唯一标识符。
+              </param>
+      <param name="innerException">
+                导致当前异常的 <see cref="T:System.Exception" /> 实例。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.#ctor(System.Guid,System.String)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceLockException" /> 类的新实例。
+            </summary>
+      <param name="id">
+                异常实例的唯一标识符。
+              </param>
+      <param name="message">
+                描述当前异常的消息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.#ctor(System.Guid,System.String,System.Exception)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceLockException" /> 类的新实例。
+            </summary>
+      <param name="id">
+                异常实例的唯一标识符。
+              </param>
+      <param name="message">
+                描述当前异常的消息。
+              </param>
+      <param name="innerException">
+                导致当前异常的 <see cref="T:System.Exception" /> 实例。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceLockException" /> 类的新实例。
+            </summary>
+      <param name="info">
+                <see cref="T:System.Runtime.Serialization.SerializationInfo" />，它保存关于所引发异常的序列化对象数据。
+              </param>
+      <param name="context">
+                <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.#ctor(System.String)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceLockException" /> 类的新实例。
+            </summary>
+      <param name="message">
+                描述当前异常的消息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.#ctor(System.String,System.Exception)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceLockException" /> 类的新实例。
+            </summary>
+      <param name="message">
+                描述当前异常的消息。
+              </param>
+      <param name="innerException">
+                导致当前异常的 <see cref="T:System.Exception" /> 实例。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceLockException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              使用关于异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。
+            </summary>
+      <param name="info">
+                <see cref="T:System.Runtime.Serialization.SerializationInfo" />，它保存关于所引发异常的序列化对象数据。
+              </param>
+      <param name="context">
+                <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.#ctor(System.Guid)">
+      <summary>
+              新实例初始化 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" /> 类使用指定的标识符。
+            </summary>
+      <param name="id">
+                与此实例关联的唯一标识符。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.#ctor(System.Guid,System.Exception)">
+      <summary>
+              新实例初始化 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" /> 类使用指定的标识符和内部异常。
+            </summary>
+      <param name="id">
+                与此实例关联的唯一标识符。
+              </param>
+      <param name="innerException">
+                导致 <see cref="T:System.Exception" /> 的 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.#ctor(System.Guid,System.String)">
+      <summary>
+              新实例初始化 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" /> 类使用指定的标识符和消息。
+            </summary>
+      <param name="id">
+                与此实例关联的唯一标识符。
+              </param>
+      <param name="message">
+                解释异常原因的错误消息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.#ctor(System.Guid,System.String,System.Exception)">
+      <summary>
+              新实例初始化 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" /> 类使用指定的标识符、 消息和内部异常。
+            </summary>
+      <param name="id">
+                与此实例关联的唯一标识符。
+              </param>
+      <param name="message">
+                解释异常原因的错误消息。
+              </param>
+      <param name="innerException">
+                导致 <see cref="T:System.Exception" /> 的 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              新实例初始化 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" /> 用序列化数据的类。
+            </summary>
+      <param name="info">
+                <see cref="T:System.Runtime.Serialization.SerializationInfo" />，它保存关于所引发异常的序列化对象数据。
+              </param>
+      <param name="context">
+                <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.#ctor(System.String)">
+      <summary>
+              使用指定的消息初始化 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" /> 类的新实例。
+            </summary>
+      <param name="message">
+                解释异常原因的错误消息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.#ctor(System.String,System.Exception)">
+      <summary>
+              使用指定的消息和内部异常初始化 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" /> 类的新实例。
+            </summary>
+      <param name="message">
+                解释异常原因的错误消息。
+              </param>
+      <param name="innerException">
+                导致 <see cref="T:System.Exception" /> 的 <see cref="T:System.ServiceModel.Persistence.InstanceNotFoundException" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.InstanceNotFoundException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              使用有关异常的信息（包括异常 <see cref="T:System.Runtime.Serialization.SerializationInfo" />）设置 <see cref="P:System.ServiceModel.Persistence.InstanceNotFoundException.InstanceId" />。
+            </summary>
+      <param name="info">
+                <see cref="T:System.Runtime.Serialization.SerializationInfo" />，它保存关于所引发异常的序列化对象数据。
+              </param>
+      <param name="context">
+                <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.#ctor(System.Guid)">
+      <summary>
+              在派生类中实现时，创建 <see cref="T:System.ServiceModel.Persistence.LockingPersistenceProvider" /> 类的新实例，使用指定标识值进行配置。
+            </summary>
+      <param name="id">
+                要与此永久性提供程序实例关联的唯一标识符。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              开始一个异步操作，以在持久性存储区中使用参数创建实例状态信息。
+               此方法不会在保存状态信息后对实例进行解锁。
+            </summary>
+      <param name="instance">
+                其状态信息保存到持久性存储区中的实例。
+              </param>
+      <param name="timeout">
+                时间间隔，操作必须在此时间间隔内完成而不超时。
+              </param>
+      <param name="callback">
+                在操作完成时接收通知的委托。
+              </param>
+      <param name="state">
+                与异步操作关联的状态信息。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate(System.Object,System.TimeSpan,System.Boolean,System.AsyncCallback,System.Object)">
+      <summary>
+              开始一个异步操作，以在持久性存储区中使用参数创建实例状态信息。
+               此方法如果保存实例状态后解除对该实例的值 <paramref name="unlockInstance" /> 参数是 <see langword="true" />。
+            </summary>
+      <param name="instance">
+                其状态信息保存到持久性存储区中的实例。
+              </param>
+      <param name="timeout">
+                时间间隔，操作必须在此时间间隔内完成而不超时。
+              </param>
+      <param name="unlockInstance">
+                <see langword="true" /> 如果该实例必须在持久性存储区; 解锁否则为 <see langword="false" />。
+              </param>
+      <param name="callback">
+                在操作完成时接收通知的委托。
+              </param>
+      <param name="state">
+                与异步操作关联的状态信息。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              开始一个异步操作，以使用参数基于持久性存储区中的状态信息加载实例。
+               此方法不锁定实例。
+            </summary>
+      <param name="timeout">
+                时间间隔，操作必须在此时间间隔内完成而不超时。
+              </param>
+      <param name="callback">
+                在操作完成时接收通知的委托。
+              </param>
+      <param name="state">
+                与异步操作关联的状态信息。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad(System.TimeSpan,System.Boolean,System.AsyncCallback,System.Object)">
+      <summary>
+              开始一个异步操作，以使用参数基于持久性存储区中的状态信息加载实例。
+               此方法如果在加载实例状态后锁定实例的值 <paramref name="lockInstance" /> 参数是 <see langword="true" />。
+            </summary>
+      <param name="timeout">
+                时间间隔，必须在超时前在此时间间隔内完成操作。
+              </param>
+      <param name="lockInstance">
+                <see langword="true" /> 如果必须锁定实例，则否则为 <see langword="false" />。
+              </param>
+      <param name="callback">
+                在操作完成时接收通知的委托。
+              </param>
+      <param name="state">
+                与异步操作关联的状态信息。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged(System.TimeSpan,System.Object,System.AsyncCallback,System.Object)">
+      <summary>
+              在派生类中实现时，表示“LoadIfChanged”阶段开始。
+               将状态数据从持久性存储区加载到永久性提供程序中，并且持久性存储区中的状态数据已更改时，将进入“LoadIfChanged”阶段。
+               此方法调用不会在持久性存储区中锁定实例。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此操作。
+              </param>
+      <param name="instanceToken">
+                通过前一个返回的令牌 <see langword="Create" /> 或 <see langword="Update" /> 调用方具有表示的当前状态的方法。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged(System.TimeSpan,System.Object,System.Boolean,System.AsyncCallback,System.Object)">
+      <summary>
+              在派生类中实现时，表示“LoadIfChanged”阶段开始。
+               将状态数据从持久性存储区加载到永久性提供程序中，并且持久性存储区中的状态数据已更改时，将进入“LoadIfChanged”阶段。
+               此方法调用可让您指定是否需要在持久性存储区中锁定实例。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此操作。
+              </param>
+      <param name="instanceToken">
+                通过前一个返回的令牌 <see langword="Create" /> 或 <see langword="Update" /> 调用方具有表示的当前状态的方法。
+              </param>
+      <param name="lockInstance">
+                <see langword="true" /> 如果在持久性存储区; 中锁定实例否则为 <see langword="false" />。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUnlock(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              开始一个异步操作，以在持久性存储区中对实例进行解锁。
+            </summary>
+      <param name="timeout">
+                时间间隔，必须在超时前在此时间间隔内完成操作。
+              </param>
+      <param name="callback">
+                在操作完成时接收通知的委托。
+              </param>
+      <param name="state">
+                与异步操作关联的状态信息。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              开始一个异步操作，以在持久性存储区中使用传递的参数更新实例状态信息。
+               此操作不会在实例存储区中对实例进行解锁。
+            </summary>
+      <param name="instance">
+                其状态信息在持久性存储区中得到更新的实例。
+              </param>
+      <param name="timeout">
+                时间间隔，操作必须在此时间间隔内完成而不超时。
+              </param>
+      <param name="callback">
+                在操作完成时接收通知的委托。
+              </param>
+      <param name="state">
+                有关异步操作的状态信息。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate(System.Object,System.TimeSpan,System.Boolean,System.AsyncCallback,System.Object)">
+      <summary>
+              开始一个异步操作，以在持久性存储区中使用传递的参数更新实例状态信息。
+               如果此操作会锁定的实例在持久性存储区中的值 <paramref name="unlockInstance" /> 参数是 <see langword="true" />。
+            </summary>
+      <param name="instance">
+                其状态信息在持久性存储区中得到更新的实例。
+              </param>
+      <param name="timeout">
+                时间间隔，操作必须在此时间间隔内完成而不超时。
+              </param>
+      <param name="unlockInstance">
+                <see langword="true" /> 如果必须锁定实例，在持久性存储区; 中更新实例状态后否则为 <see langword="false" />。
+              </param>
+      <param name="callback">
+                在操作完成时接收通知的委托。
+              </param>
+      <param name="state">
+                有关异步操作的状态信息。
+              </param>
+      <returns>
+              异步操作的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.Create(System.Object,System.TimeSpan)">
+      <summary>
+              使用传入方法中的参数在持久性存储区中创建实例状态信息。
+               此方法不会在保存实例状态后在持久性存储区中对实例进行解锁。
+            </summary>
+      <param name="instance">
+                其状态信息必须保存到持久性存储区中的实例对象。
+              </param>
+      <param name="timeout">
+                时间间隔，必须在超时前在此时间间隔内完成操作。
+              </param>
+      <returns>
+              状态信息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.Create(System.Object,System.TimeSpan,System.Boolean)">
+      <summary>
+              此方法使用传入方法中的参数在持久性存储区中创建实例状态信息。
+               该方法的实例进行解锁的实例存储中如果的值 <paramref name="unlockInstance" /> 参数是 <see langword="true" />。
+            </summary>
+      <param name="instance">
+                其状态信息保存到持久性存储区中的实例对象。
+              </param>
+      <param name="timeout">
+                时间间隔，必须在超时前在此时间间隔内完成操作。
+              </param>
+      <param name="unlockInstance">
+                <see langword="true" /> 如果该实例必须在持久性存储区; 解锁否则为 <see langword="false" />。
+              </param>
+      <returns>
+              状态信息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.EndUnlock(System.IAsyncResult)">
+      <summary>
+              结束异步操作，以在持久性存储区中对实例进行解锁。
+            </summary>
+      <param name="result">
+                解锁操作所返回的结果。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.Load(System.TimeSpan)">
+      <summary>
+              从持久性存储区中加载服务状态信息而不锁定实例。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <returns>
+              服务状态信息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.Load(System.TimeSpan,System.Boolean)">
+      <summary>
+              在锁定实例后从持久性存储区中加载状态信息。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此操作。
+              </param>
+      <param name="lockInstance">
+                <see langword="true" /> 如果应锁定实例，则否则为 <see langword="false" />。
+              </param>
+      <returns>
+              状态信息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Boolean,System.Object@)">
+      <summary>
+              在实例状态信息自上次被调用方加载后已发生更改的情况下从持久性存储区中加载此状态信息。
+               此方法还可让调用方指定是否在持久性存储区中锁定实例。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此操作。
+              </param>
+      <param name="instanceToken">
+                先前的 Create 或 Update 方法调用所返回的标记，表示调用方具有的当前状态。
+              </param>
+      <param name="lockInstance">
+                <see langword="true" /> 如果实例应在此操作; 末尾持久性存储区中锁定否则为 <see langword="false" />。
+              </param>
+      <param name="instance">
+                实例状态信息。
+              </param>
+      <returns>
+              <see langword="true" /> 如果实例应在此操作; 末尾持久性存储区中锁定否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Object@)">
+      <summary>
+              在实例状态信息自上次被调用方加载后已发生更改的情况下从持久性存储区中加载此状态信息。
+               此方法不会在持久性存储区中锁定实例。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此操作。
+              </param>
+      <param name="instanceToken">
+                通过对前一个返回的令牌 <see langword="Create" /> 或 <see langword="Update" /> 方法调用，表示调用方具有的当前状态。
+              </param>
+      <param name="instance">
+                实际的实例状态信息。
+              </param>
+      <returns>
+              <see langword="true" /> 如果实例应在此操作; 末尾持久性存储区中锁定否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.Unlock(System.TimeSpan)">
+      <summary>
+              对其 ID 在持久性存储区中构造 <see cref="T:System.ServiceModel.Persistence.LockingPersistenceProvider" /> 对象时已指定的实例进行解锁。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此操作。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.Update(System.Object,System.TimeSpan)">
+      <summary>
+              在派生类中实现时，更新持久性存储区中的实例状态信息。
+               此方法不会在更新持久性存储区中的实例状态信息后对实例进行解锁。
+            </summary>
+      <param name="instance">
+                实例状态信息。
+              </param>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此操作。
+              </param>
+      <returns>
+              实例状态信息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.LockingPersistenceProvider.Update(System.Object,System.TimeSpan,System.Boolean)">
+      <summary>
+              在派生类中实现时，更新持久性存储区中的实例状态信息。
+               此方法不会在更新持久性存储区中的实例状态信息后对实例进行解锁。
+            </summary>
+      <param name="instance">
+                实例状态信息。
+              </param>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此操作。
+              </param>
+      <param name="unlockInstance">
+                <see langword="true" /> 如果实例进行解锁后更新实例状态信息;否则为 <see langword="false" />。
+              </param>
+      <returns>
+              实例状态信息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceException.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.PersistenceException" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.PersistenceException" /> 类的新实例。
+            </summary>
+      <param name="info">
+                <see cref="T:System.Runtime.Serialization.SerializationInfo" />，它保存关于所引发异常的序列化对象数据。
+              </param>
+      <param name="context">
+                <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceException.#ctor(System.String)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.PersistenceException" /> 类的新实例。
+            </summary>
+      <param name="message">
+                解释异常原因的错误消息。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceException.#ctor(System.String,System.Exception)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.PersistenceException" /> 类的新实例。
+            </summary>
+      <param name="message">
+                解释异常原因的错误消息。
+              </param>
+      <param name="innerException">
+                导致 <see cref="T:System.Exception" /> 的 <see cref="T:System.ServiceModel.Persistence.PersistenceException" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.#ctor(System.Guid)">
+      <summary>
+              在派生类中实现时，初始化 <see cref="T:System.ServiceModel.Persistence.PersistenceProvider" /> 类的新实例。
+            </summary>
+      <param name="id">
+                要保存的服务状态数据的唯一标识符。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.BeginCreate(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              在派生类中实现时，表示“创建”阶段开始。
+               第一次在持久性存储区中创建服务实例记录时将进入“创建”阶段。
+            </summary>
+      <param name="instance">
+                实际的实例状态。
+              </param>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.BeginCreate(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)" /> 异步方法调用的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.BeginDelete(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              在派生类中实现时，表示“删除”阶段开始。
+               将服务状态数据从持久性存储区中永久删除时将进入“删除”阶段。
+            </summary>
+      <param name="instance">
+                实际的实例状态。
+              </param>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.BeginDelete(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)" /> 异步方法调用的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.BeginLoad(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              在派生类中实现时，表示“加载”阶段开始。
+               将状态数据从持久性存储区加载到永久性提供程序中时将进入“加载”阶段。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.BeginLoad(System.TimeSpan,System.AsyncCallback,System.Object)" /> 异步方法调用的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.BeginLoadIfChanged(System.TimeSpan,System.Object,System.AsyncCallback,System.Object)">
+      <summary>
+              在派生类中实现时，表示“LoadIfChanged”阶段开始。
+               将状态数据从持久性存储区加载到永久性提供程序中，并且持久性存储区中的状态数据已更改时，将进入“LoadIfChanged”阶段。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <param name="instanceToken">
+                先前的 <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.Create(System.Object,System.TimeSpan)" /> 或 <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.Update(System.Object,System.TimeSpan)" /> 返回的标记，表示调用方具有的当前状态。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.BeginLoadIfChanged(System.TimeSpan,System.Object,System.AsyncCallback,System.Object)" /> 异步方法调用的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.BeginUpdate(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              在派生类中实现时，表示“更新”阶段开始。
+               在持久性存储区中更新服务状态数据时将进入“更新”阶段。
+            </summary>
+      <param name="instance">
+                实际的实例状态。
+              </param>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.BeginUpdate(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)" /> 异步方法调用的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.Create(System.Object,System.TimeSpan)">
+      <summary>
+              在派生类中实现时，在持久性存储区中创建服务状态记录。
+            </summary>
+      <param name="instance">
+                实际的实例状态。
+              </param>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <returns>
+              与刚保存的状态相对应的实例标记。
+               可以将其传递给 <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Object@)" />，以确定持久性存储区中的状态是否与调用 Create 时的状态不同。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.Delete(System.Object,System.TimeSpan)">
+      <summary>
+              在派生类中实现时，从持久性存储区中永久删除服务状态信息。
+            </summary>
+      <param name="instance">
+                实际的实例状态。
+              </param>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.EndCreate(System.IAsyncResult)">
+      <summary>
+              在派生类中实现时，表示“创建”阶段结束。
+               第一次在持久性存储区中创建服务状态记录时将进入“创建”阶段。
+            </summary>
+      <param name="result">
+                对操作结果的引用。
+              </param>
+      <returns>
+              与刚保存的状态相对应的实例标记。
+               可以将其传递给 <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Object@)" />，以确定持久性存储区中的状态是否与调用 Create 时的状态不同。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.EndDelete(System.IAsyncResult)">
+      <summary>
+              在派生类中实现时，表示“删除”阶段结束。
+               将状态数据从持久性存储区中永久删除时将进入“删除”阶段。
+            </summary>
+      <param name="result">
+                对操作结果的引用。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.EndLoad(System.IAsyncResult)">
+      <summary>
+              在派生类中实现时，表示“加载”阶段结束。
+               将状态数据从持久性存储区加载到永久性提供程序中时将进入“加载”阶段。
+            </summary>
+      <param name="result">
+                对操作结果的引用。
+              </param>
+      <returns>
+              服务状态信息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.EndLoadIfChanged(System.IAsyncResult,System.Object@)">
+      <summary>
+              在派生类中实现时，表示“LoadIfChanged”阶段结束。
+               将状态数据从持久性存储区加载到永久性提供程序中，并且持久性存储区中的状态数据已更改时，将进入“LoadIfChanged”阶段。
+            </summary>
+      <param name="result">
+                对操作结果的引用。
+              </param>
+      <param name="instance">
+                实际的实例状态。
+              </param>
+      <returns>
+              <see langword="true" /> 如果该实例 <see langword="out" /> 参数具有的最新副本设置从持久性存储区; <see langword="false" /> 如果本地缓存的状态已经是最新。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.EndUpdate(System.IAsyncResult)">
+      <summary>
+              表示“更新”阶段结束。
+               在持久性存储区中更新服务状态记录时将进入“更新”阶段。
+            </summary>
+      <param name="result">
+                对操作结果的引用。
+              </param>
+      <returns>
+              与刚保存的状态相对应的实例标记。
+               可以将其传递给 <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Object@)" />，以确定持久性存储区中的状态是否与调用 Create 时的状态不同。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.Load(System.TimeSpan)">
+      <summary>
+              在派生类中实现时，从持久性存储区中加载服务状态信息。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <returns>
+              已加载的实例状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Object@)">
+      <summary>
+              在派生类中实现时，如果服务状态信息数据发生了更改，则从持久性存储区中加载服务状态信息。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <param name="instanceToken">
+                先前的 <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.Create(System.Object,System.TimeSpan)" /> 或 <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.Update(System.Object,System.TimeSpan)" /> 返回的标记，表示调用方具有的当前状态。
+              </param>
+      <param name="instance">
+                实际的实例状态。
+              </param>
+      <returns>
+              <see langword="true" /> 如果 <paramref name="instance" /><see langword="out" /> 参数具有的最新副本设置从持久性存储区; <see langword="false" /> 如果本地缓存的状态已经是最新。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProvider.Update(System.Object,System.TimeSpan)">
+      <summary>
+              在派生类中实现时，在持久性存储区中更新服务状态记录。
+            </summary>
+      <param name="instance">
+                实际的实例状态。
+              </param>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <returns>
+              与刚保存的状态相对应的实例标记。
+               可以将其传递给 <see cref="M:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Object@)" />，以确定持久性存储区中的状态是否与调用 Create 时的状态不同。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProviderFactory.#ctor">
+      <summary>
+              在派生类中实现时，初始化 <see cref="T:System.ServiceModel.Persistence.PersistenceProvider" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.PersistenceProviderFactory.CreateProvider(System.Guid)">
+      <summary>
+              在派生类中实现时，初始化新 <see cref="T:System.ServiceModel.Persistence.PersistenceProvider" /> 实例。
+            </summary>
+      <param name="id">
+                要创建的永久性提供程序的唯一标识符。
+              </param>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Persistence.PersistenceProvider" /> 对象。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor(System.Collections.Specialized.NameValueCollection)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.SqlPersistenceProviderFactory" /> 类的新实例，使用指定的参数集合进行配置。
+            </summary>
+      <param name="parameters">
+                由新的永久性提供程序工厂所使用的参数集合。
+                 有效参数包括 <see langword="lockTimeout" />、<see langword="connectionStringName" /> 和 <see langword="serializeAsText" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor(System.String)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.SqlPersistenceProviderFactory" /> 类的新实例，使用指定的连接字符串进行配置。
+            </summary>
+      <param name="connectionString">
+                新的永久性提供程序实例的连接参数。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor(System.String,System.Boolean)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.SqlPersistenceProviderFactory" /> 类的新实例，使用指定的连接字符串和 <see langword="serializeAsText" /> 参数进行配置。
+            </summary>
+      <param name="connectionString">
+                新的永久性提供程序实例的连接参数。
+              </param>
+      <param name="serializeAsText">
+                指定是否将数据序列化为文本而不是二进制数据。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor(System.String,System.Boolean,System.TimeSpan)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Persistence.SqlPersistenceProviderFactory" /> 类的新实例，使用指定的连接字符串、<see langword="serializeAsText" /> 和 <see langword="lockTimeout" /> 参数进行配置。
+            </summary>
+      <param name="connectionString">
+                新的永久性提供程序工厂实例的连接参数。
+              </param>
+      <param name="serializeAsText">
+                指定是否将数据序列化为文本而不是二进制数据。
+              </param>
+      <param name="lockTimeout">
+                锁定所有权的超时。
+                 锁定的实例将在此时间段后自动解锁。
+                 超时值为 <see langword="TimeSpan.Zero" /> 指定，不使用锁定。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.CreateProvider(System.Guid)">
+      <summary>
+              初始化一个新 <see cref="T:System.ServiceModel.Persistence.LockingPersistenceProvider" /> 实例，该实例使用 SQL 数据库作为其持久性存储区。
+            </summary>
+      <param name="id">
+                要创建的永久性提供程序的唯一标识符。
+              </param>
+      <returns>
+              一个新创建的 <see cref="T:System.ServiceModel.Persistence.PersistenceProvider" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnAbort">
+      <summary>
+              表示“中止”阶段。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              表示“关闭”阶段开始。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              <see cref="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)" /> 异步方法调用的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>
+              表示“打开”阶段开始。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+      <param name="callback">
+                操作完成时将要调用的方法。
+              </param>
+      <param name="state">
+                一个用户提供的对象，该对象用于将此特定异步操作与其他操作区别开来。
+              </param>
+      <returns>
+              <see cref="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)" /> 异步方法调用的状态。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnClose(System.TimeSpan)">
+      <summary>
+              表示“关闭”阶段。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnEndClose(System.IAsyncResult)">
+      <summary>
+              表示“关闭”阶段结束。
+            </summary>
+      <param name="result">
+                对操作结果的引用。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnEndOpen(System.IAsyncResult)">
+      <summary>
+              表示“打开”阶段结束。
+            </summary>
+      <param name="result">
+                对操作结果的引用。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnOpen(System.TimeSpan)">
+      <summary>
+              表示“打开”阶段。
+            </summary>
+      <param name="timeout">
+                时间段，永久性提供程序在该时间段后将中止此尝试。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.#ctor(System.IO.Stream,System.IO.Stream,System.Uri[])">
+      <summary>
+              使用包含工作流定义的字节流、包含工作流规则定义的字节流和指定的服务基址初始化 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 类的新实例。
+            </summary>
+      <param name="workflowDefinition">
+                包含工作流定义的 <see cref="T:System.IO.Stream" />。
+              </param>
+      <param name="ruleDefinition">
+                包含工作流规则定义的 <see cref="T:System.IO.Stream" />。
+              </param>
+      <param name="baseAddress">
+                <see cref="T:System.Uri" /> 类型的数组，包含承载服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.#ctor(System.IO.Stream,System.IO.Stream,System.Workflow.ComponentModel.Compiler.ITypeProvider,System.Uri[])">
+      <summary>
+              使用包含工作流定义的字节流、包含工作流规则定义的字节流、自定义活动类型的类型提供程序和指定的服务基址初始化 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 类的新实例。
+            </summary>
+      <param name="workflowDefinition">
+                包含工作流定义的 <see cref="T:System.IO.Stream" />。
+              </param>
+      <param name="ruleDefinition">
+                包含工作流规则定义的 <see cref="T:System.IO.Stream" />。
+              </param>
+      <param name="typeProvider">
+                实现 <see cref="T:System.Workflow.ComponentModel.Compiler.ITypeProvider" /> 接口的类型提供程序。
+              </param>
+      <param name="baseAddress">
+                <see cref="T:System.Uri" /> 类型的数组，包含承载服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.#ctor(System.IO.Stream,System.Uri[])">
+      <summary>
+              使用包含工作流定义的字节流和指定的服务基址初始化 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 类的新实例。
+            </summary>
+      <param name="workflowDefinition">
+                包含工作流定义的 <see cref="T:System.IO.Stream" />。
+              </param>
+      <param name="baseAddress">
+                <see cref="T:System.Uri" /> 类型的数组，包含承载服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.#ctor(System.String,System.String,System.Uri[])">
+      <summary>
+              使用工作流定义的路径、工作流规则定义的路径和指定的服务基址初始化 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 类的新实例。
+            </summary>
+      <param name="workflowDefinitionPath">
+                一个包含工作流定义文件的路径的字符串。
+              </param>
+      <param name="ruleDefinitionPath">
+                一个包含工作流规则定义文件的路径的字符串。
+              </param>
+      <param name="baseAddress">
+                <see cref="T:System.Uri" /> 类型的数组，包含承载服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.#ctor(System.String,System.String,System.Workflow.ComponentModel.Compiler.ITypeProvider,System.Uri[])">
+      <summary>
+              使用工作流定义的路径、工作流规则定义的路径、自定义活动类型的类型提供程序和指定的服务基址初始化 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 类的新实例。
+            </summary>
+      <param name="workflowDefinitionPath">
+                一个包含工作流定义文件的路径的字符串。
+              </param>
+      <param name="ruleDefinitionPath">
+                一个包含工作流规则定义文件的路径的字符串。
+              </param>
+      <param name="typeProvider">
+                实现 <see cref="T:System.Workflow.ComponentModel.Compiler.ITypeProvider" /> 接口的类型提供程序。
+              </param>
+      <param name="baseAddress">
+                <see cref="T:System.Uri" /> 类型的数组，包含承载服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.#ctor(System.String,System.Uri[])">
+      <summary>
+              使用工作流定义的路径和指定的服务基址初始化 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 类的新实例。
+            </summary>
+      <param name="workflowDefinitionPath">
+                一个包含工作流定义文件的路径的字符串。
+              </param>
+      <param name="baseAddress">
+                <see cref="T:System.Uri" /> 类型的数组，包含承载服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.#ctor(System.Type,System.Uri[])">
+      <summary>
+              使用工作流类型和指定的服务基址初始化 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 类的新实例。
+            </summary>
+      <param name="workflowType">
+                工作流实例的 <see cref="T:System.Type" />。
+              </param>
+      <param name="baseAddress">
+                <see cref="T:System.Uri" /> 类型的数组，包含承载服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.AddServiceEndpoint(System.Type,System.ServiceModel.Channels.Binding,System.String)">
+      <summary>
+              使用指定的协定、绑定和终结点地址为工作流服务添加服务终结点。
+            </summary>
+      <param name="implementedContract">
+                所添加终结点的协定的 <see cref="T:System.Type" />。
+              </param>
+      <param name="binding">
+                所添加终结点的 <see cref="T:System.ServiceModel.Channels.Binding" />。
+              </param>
+      <param name="address">
+                所添加终结点的地址。
+              </param>
+      <returns>
+              添加到工作流服务的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="implementedContract" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="address" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.InvalidOperationException">
+                  没有为 <see cref="T:System.ServiceModel.ServiceContractAttribute" /> 指定 <paramref name="implementedContract" />。
+                </exception>
+      <exception cref="T:System.InvalidOperationException">
+                  工作流服务不实现 <paramref name="implementedContract" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.AddServiceEndpoint(System.Type,System.ServiceModel.Channels.Binding,System.String,System.Uri)">
+      <summary>
+              使用指定的协定、绑定和终结点地址以及服务在其上侦听的 URI 将服务终结点添加到工作流服务中。
+            </summary>
+      <param name="implementedContract">
+                所添加终结点的协定的 <see cref="T:System.Type" />。
+              </param>
+      <param name="binding">
+                所添加终结点的 <see cref="T:System.ServiceModel.Channels.Binding" />。
+              </param>
+      <param name="address">
+                服务的终结点地址。
+              </param>
+      <param name="listenUri">
+                服务终结点可在其上侦听的 <see cref="T:System.Uri" />。
+              </param>
+      <returns>
+              添加到工作流服务的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="implementedContract" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="address" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.InvalidOperationException">
+                  工作流服务不实现 <paramref name="implementedContract" />。
+                </exception>
+      <exception cref="T:System.InvalidOperationException">
+                  没有为 <see cref="T:System.ServiceModel.ServiceContractAttribute" /> 指定 <paramref name="implementedContract" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.AddServiceEndpoint(System.Type,System.ServiceModel.Channels.Binding,System.Uri)">
+      <summary>
+              使用指定的约定、绑定和包含终结点地址的 URI 将服务终结点添加到工作流服务中。
+            </summary>
+      <param name="implementedContract">
+                所添加终结点的协定的 <see cref="T:System.Type" />。
+              </param>
+      <param name="binding">
+                所添加终结点的 <see cref="T:System.ServiceModel.Channels.Binding" />。
+              </param>
+      <param name="address">
+                包含所添加终结点地址的 <see cref="T:System.Uri" />。
+              </param>
+      <returns>
+              添加到工作流服务的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="implementedContract" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="address" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.InvalidOperationException">
+                  没有为 <see cref="T:System.ServiceModel.ServiceContractAttribute" /> 指定 <paramref name="implementedContract" />。
+                </exception>
+      <exception cref="T:System.InvalidOperationException">
+                  工作流服务不实现 <paramref name="implementedContract" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.AddServiceEndpoint(System.Type,System.ServiceModel.Channels.Binding,System.Uri,System.Uri)">
+      <summary>
+              使用指定的协定、绑定、包含终结点地址的 URI 以及服务在其上侦听的 URI 将服务终结点添加到工作流服务中。
+            </summary>
+      <param name="implementedContract">
+                所添加终结点的协定的 <see cref="T:System.Type" />。
+              </param>
+      <param name="binding">
+                所添加终结点的 <see cref="T:System.ServiceModel.Channels.Binding" />。
+              </param>
+      <param name="address">
+                包含所添加终结点地址的 <see cref="T:System.Uri" />。
+              </param>
+      <param name="listenUri">
+                服务终结点可在其上侦听的 <see cref="T:System.Uri" />。
+              </param>
+      <returns>
+              添加到工作流服务的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="implementedContract" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="address" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.InvalidOperationException">
+                  工作流服务不实现 <paramref name="implementedContract" />。
+                </exception>
+      <exception cref="T:System.InvalidOperationException">
+                  没有为 <see cref="T:System.ServiceModel.ServiceContractAttribute" /> 指定 <paramref name="implementedContract" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.CreateDescription(System.Collections.Generic.IDictionary{System.String,System.ServiceModel.Description.ContractDescription}@)">
+      <summary>
+              创建工作流服务的说明。
+            </summary>
+      <param name="implementedContracts">
+                当此方法返回时，<see cref="T:System.Collections.Generic.IDictionary`2" /> 对象将包含已实现的承载服务的键控协定。
+              </param>
+      <returns>
+              工作流服务的 <see cref="T:System.ServiceModel.Description.ServiceDescription" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.WorkflowServiceHost.OnClosing">
+      <summary>
+              在 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 进入关闭状态前调用此方法。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.ChannelToken.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.ChannelToken" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.ContextToken.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.ContextToken" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.ContextToken.#ctor(System.String)">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.ContextToken" /> 类的新实例。
+            </summary>
+      <param name="name">
+                新实例的名称。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfo.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.OperationInfo" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfo.Clone">
+      <summary>
+              创建对象的一个副本。
+            </summary>
+      <returns>
+              <see cref="T:System.Workflow.Activities.OperationInfo" /> 对象的副本。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfo.Equals(System.Object)">
+      <summary>
+              确定两个对象实例是否相等。
+            </summary>
+      <param name="obj">
+                将与当前 <see cref="T:System.Workflow.Activities.OperationInfo" /> 进行比较的对象。
+              </param>
+      <returns>
+              为 <see langword="true" /> 则指示当前 <see cref="T:System.Workflow.Activities.OperationInfo" /> 与 <paramref name="obj" /> 相等；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfo.GetHashCode">
+      <summary>
+              返回当前 <see cref="T:System.Workflow.Activities.OperationInfo" /> 的哈希代码。
+            </summary>
+      <returns>
+              此实例的哈希代码。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfo.ToString">
+      <summary>
+              提供表示此实例的字符串。
+            </summary>
+      <returns>
+              一个表示此实例的字符串。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.#ctor">
+      <summary>
+              在派生类中实现时，初始化 <see cref="T:System.Workflow.Activities.OperationInfoBase" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.Clone">
+      <summary>
+              在派生类中实现时，创建 <see cref="T:System.Workflow.Activities.OperationInfoBase" /> 实例的深层副本。
+            </summary>
+      <returns>
+              <see cref="T:System.Workflow.Activities.OperationInfoBase" /> 对象的副本。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.Equals(System.Object)">
+      <summary>
+              确定指定的 <see cref="T:System.object" /> 是否等于当前实例。
+            </summary>
+      <param name="obj">
+                要与当前实例进行比较的对象。
+              </param>
+      <returns>
+              如果 <see langword="True" /> 相等，则为 <paramref name="obj" />；否则为 <see langword="False" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.GetContractFullName(System.IServiceProvider)">
+      <summary>
+              返回实现此操作的协定的全名。
+            </summary>
+      <param name="provider">
+                与此操作关联的服务提供程序。
+              </param>
+      <returns>
+              一个字符串，表示实现此操作的协定的全名。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.GetContractType(System.IServiceProvider)">
+      <summary>
+              返回与此操作关联的协定的类型。
+            </summary>
+      <param name="provider">
+                与此操作关联的服务提供程序。
+              </param>
+      <returns>
+              一个 <see cref="T:System.Type" /> 对象，表示与此操作关联的协定类型。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.GetHashCode">
+      <summary>
+              生成一个与对象的值相对应的数字以支持使用哈希表。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Int32" />，表示对象的哈希代码值。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.GetIsOneWay(System.IServiceProvider)">
+      <summary>
+              如果此操作是单向操作，则为 <see langword="true" />；如果是双向操作，则为 <see langword="false" />。
+            </summary>
+      <param name="provider">
+                与此操作关联的服务提供程序。
+              </param>
+      <returns>
+              如果此操作是单向操作，则为 <see langword="true" />；如果是双向操作，则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.GetMethodInfo(System.IServiceProvider)">
+      <summary>
+              获取与操作关联的 <see cref="T:System.Reflection.MethodInfo" />。
+            </summary>
+      <param name="provider">
+                与此操作关联的服务提供程序。
+              </param>
+      <returns>
+              一个包含有关操作的详细信息的 <see cref="T:System.Reflection.MethodInfo" /> 对象。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationInfoBase.GetParameters(System.IServiceProvider)">
+      <summary>
+              获取与操作关联的参数的集合。
+            </summary>
+      <param name="provider">
+                与此操作关联的服务提供程序。
+              </param>
+      <returns>
+              一个 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 对象，包含有关操作的参数的详细信息。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfo.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfo.#ctor(System.String)">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 类的新实例。
+            </summary>
+      <param name="parameterName">
+                表示参数名称。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfo.Clone">
+      <summary>
+              创建 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 实例的浅表副本。
+            </summary>
+      <returns>
+              该对象的副本。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfo.Equals(System.Object)">
+      <summary>
+              确定两个 <see cref="T:System.Object" /> 实例是否相等。
+            </summary>
+      <param name="obj">
+                要与当前对象进行比较的 <see cref="T:System.Object" />。
+              </param>
+      <returns>
+              如果 <see langword="true" /> 相等，则为 <paramref name="obj" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfo.GetHashCode">
+      <summary>
+              生成一个与对象的值相对应的数字以支持使用哈希表。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Int32" />，表示对象的哈希代码值。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.#ctor(System.Workflow.Activities.OperationInfoBase)">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 类的新实例。
+            </summary>
+      <param name="owner">
+                使用此集合为它所表示的服务操作定义参数信息的 <see cref="T:System.Workflow.Activities.OperationInfoBase" />。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.Add(System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              将 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 添加到 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 的结尾处。
+            </summary>
+      <param name="item">
+                要添加的 <see cref="T:System.Workflow.Activities.OperationParameterInfo" />。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.Clear">
+      <summary>
+              从 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 中移除所有元素。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.Contains(System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              确定某元素是否在 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 中。
+            </summary>
+      <param name="item">
+                要搜索的项。
+              </param>
+      <returns>
+              如果在 <see langword="true" /> 中找到 <paramref name="item" />，则为 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.GetEnumerator">
+      <summary>
+              返回可循环访问 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 的枚举器。
+            </summary>
+      <returns>
+              一个可循环访问 <see cref="T:System.Collections.IEnumerator" /> 的 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 对象。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.IndexOf(System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              返回 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 中第一次出现的 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 对象的从零开始的索引。
+            </summary>
+      <param name="item">
+                要在 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 中定位的 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" />。
+              </param>
+      <returns>
+              一个 <see cref="T:System.Int32" />，表示 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 中第一次出现的 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 对象的索引（从零开始）。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.Insert(System.Int32,System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              在 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 中的指定索引处插入一个 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" />。
+            </summary>
+      <param name="index">
+                应插入 <paramref name="item" /> 的从零开始的索引。
+              </param>
+      <param name="item">
+                要插入的 <see cref="T:System.Workflow.Activities.OperationParameterInfo" />。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.Remove(System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              从 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 中移除第一次出现的特定 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" />。
+            </summary>
+      <param name="item">
+                要移除的 <see cref="T:System.Workflow.Activities.OperationParameterInfo" />。
+              </param>
+      <returns>
+              如果成功移除了该项，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.RemoveAt(System.Int32)">
+      <summary>
+              移除 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 的指定索引处的元素。
+            </summary>
+      <param name="index">
+                要移除的 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 的从零开始的索引。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#ICollection{System#Workflow#Activities#OperationParameterInfo}#Add(System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              将某项添加到 <see cref="T:System.Collections.Generic.ICollection`1" /> 中。
+            </summary>
+      <param name="item">
+                要添加到 <see cref="T:System.Collections.Generic.ICollection`1" /> 的对象。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#ICollection{System#Workflow#Activities#OperationParameterInfo}#Clear">
+      <summary>
+              从 <see cref="T:System.Collections.Generic.ICollection`1" /> 中移除所有项。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#ICollection{System#Workflow#Activities#OperationParameterInfo}#Contains(System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              确定 <see cref="T:System.Collections.Generic.ICollection`1" /> 是否包含特定值。
+            </summary>
+      <param name="item">
+                要在 <see cref="T:System.Collections.Generic.ICollection`1" /> 中定位的对象。
+              </param>
+      <returns>
+              如果在 <see langword="true" /> 中找到 <paramref name="item" />，则为 <see cref="T:System.Collections.Generic.ICollection`1" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#ICollection{System#Workflow#Activities#OperationParameterInfo}#CopyTo(System.Workflow.Activities.OperationParameterInfo[],System.Int32)">
+      <summary>
+              从特定数组索引处开始，将 <see cref="T:System.Collections.Generic.ICollection`1" /> 的元素复制到一个数组中。
+            </summary>
+      <param name="array">
+                一维数组，用作从 <see cref="T:System.Collections.Generic.ICollection`1" /> 复制的元素的目标位置。
+                 该数组的索引必须从零开始。
+              </param>
+      <param name="arrayIndex">
+                <paramref name="array" /> 中从零开始的索引，从此处开始复制。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#ICollection{System#Workflow#Activities#OperationParameterInfo}#Remove(System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              从 <see cref="T:System.Collections.Generic.ICollection`1" /> 中移除特定对象的第一个匹配项。
+            </summary>
+      <param name="item">
+                要从 <see cref="T:System.Collections.Generic.ICollection`1" /> 中删除的对象。
+              </param>
+      <returns>
+              如果从 <see langword="true" /> 中成功移除 <paramref name="item" />，则为 <see cref="T:System.Collections.Generic.ICollection`1" />；否则为 <see langword="false" />。
+               如果在原始 <see langword="false" /> 中没有找到 <paramref name="item" />，该方法也会返回 <see cref="T:System.Collections.Generic.ICollection`1" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#IEnumerable{System#Workflow#Activities#OperationParameterInfo}#GetEnumerator">
+      <summary>
+              返回一个循环访问集合的枚举器。
+            </summary>
+      <returns>
+              一个可用于循环访问集合的 <see cref="T:System.Collections.Generic.IEnumerator`1" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#IList{System#Workflow#Activities#OperationParameterInfo}#IndexOf(System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              确定 <see cref="T:System.Collections.Generic.IList`1" /> 中特定项的索引。
+            </summary>
+      <param name="item">
+                要在 <see cref="T:System.Collections.Generic.IList`1" /> 中定位的对象。
+              </param>
+      <returns>
+              如果在列表中找到，则为 <paramref name="item" /> 的索引；否则为 -1。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#IList{System#Workflow#Activities#OperationParameterInfo}#Insert(System.Int32,System.Workflow.Activities.OperationParameterInfo)">
+      <summary>
+              在 <see cref="T:System.Collections.Generic.IList`1" /> 中的指定索引处插入一个项。
+            </summary>
+      <param name="index">
+                应插入 <paramref name="item" /> 的从零开始的索引。
+              </param>
+      <param name="item">
+                要插入到 <see cref="T:System.Collections.Generic.IList`1" /> 中的对象。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#IList{System#Workflow#Activities#OperationParameterInfo}#RemoveAt(System.Int32)">
+      <summary>
+              移除位于指定索引处的 <see cref="T:System.Collections.Generic.IList`1" /> 项。
+            </summary>
+      <param name="index">
+                要移除的项的从零开始的索引。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+      <summary>
+              从特定数组索引处开始，将 <see cref="T:System.Collections.ICollection" /> 的元素复制到一个数组中。
+            </summary>
+      <param name="array">
+                一维数组，用作从 <see cref="T:System.Collections.ICollection" /> 复制的元素的目标位置。
+                 该数组的索引必须从零开始。
+              </param>
+      <param name="index">
+                <paramref name="array" /> 中从零开始的索引，从此处开始复制。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IEnumerable#GetEnumerator">
+      <summary>
+              返回循环访问集合的枚举数。
+            </summary>
+      <returns>
+              一个可用于循环访问集合的 <see cref="T:System.Collections.IEnumerator" /> 对象。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#Add(System.Object)">
+      <summary>
+              将某项添加到 <see cref="T:System.Collections.IList" /> 中。
+            </summary>
+      <param name="value">
+                要添加到 <see cref="T:System.Collections.IList" /> 的对象。
+              </param>
+      <returns>
+              插入了新元素的位置，-1 指示该项未插入到集合中。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#Clear">
+      <summary>
+              从 <see cref="T:System.Collections.IList" /> 中移除所有项。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#Contains(System.Object)">
+      <summary>
+              确定 <see cref="T:System.Collections.IList" /> 是否包含特定值。
+            </summary>
+      <param name="value">
+                要在 <see cref="T:System.Collections.IList" /> 中定位的对象。
+              </param>
+      <returns>
+              如果在 <see cref="T:System.Collections.IList" /> 中找到该对象，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#IndexOf(System.Object)">
+      <summary>
+              确定 <see cref="T:System.Collections.IList" /> 中特定项的索引。
+            </summary>
+      <param name="value">
+                要在 <see cref="T:System.Collections.IList" /> 中定位的对象。
+              </param>
+      <returns>
+              如果在列表中找到，则为 <paramref name="value" /> 的索引；否则为 -1。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#Insert(System.Int32,System.Object)">
+      <summary>
+              在 <see cref="T:System.Collections.IList" /> 中的指定索引处插入一个项。
+            </summary>
+      <param name="index">
+                应插入 <paramref name="value" /> 的从零开始的索引。
+              </param>
+      <param name="value">
+                要插入到 <see cref="T:System.Collections.IList" /> 中的对象。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#Remove(System.Object)">
+      <summary>
+              从 <see cref="T:System.Collections.IList" /> 中移除特定对象的第一个匹配项。
+            </summary>
+      <param name="value">
+                要从 <see cref="T:System.Collections.IList" /> 中删除的对象。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.OperationValidationEventArgs.#ctor(System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Claims.ClaimSet})">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.OperationValidationEventArgs" /> 类的新实例。
+            </summary>
+      <param name="claimSets">
+                <see cref="T:System.IdentityModel.Claims.ClaimSet" /> 对象的集合，这些对象包含已添加到操作的授权上下文的声明。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.#ctor(System.String)">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 类的新实例，同时初始化其 <see cref="P:System.Workflow.ComponentModel.Activity.Name" /> 属性。
+            </summary>
+      <param name="name">
+                要分配给活动实例的名称。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.GetContext(System.Workflow.ComponentModel.Activity,System.String,System.String)">
+      <summary>
+              静态方法，在给定活动实例和上下文令牌的情况下返回上下文信息。
+            </summary>
+      <param name="activity">
+                为其请求上下文信息的活动实例。
+              </param>
+      <param name="contextName">
+                活动使用的上下文令牌的名称。
+              </param>
+      <param name="ownerActivityName">
+                所属活动的名称。
+              </param>
+      <returns>
+              一个基于字典的集合，包含 <see cref="T:System.Xml.XmlQualifiedName" /> 键及其关联的 <see cref="T:System.String" /> 值。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.GetContext(System.Workflow.ComponentModel.Activity,System.Workflow.Activities.ContextToken)">
+      <summary>
+              静态方法，在给定活动实例和上下文令牌的情况下返回上下文信息。
+            </summary>
+      <param name="activity">
+                为其请求上下文信息的活动实例。
+              </param>
+      <param name="contextToken">
+                活动使用的上下文令牌。
+              </param>
+      <returns>
+              一个基于字典的集合，包含 <see cref="T:System.Xml.XmlQualifiedName" /> 键及其关联的 <see cref="T:System.String" /> 值。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.GetRootContext(System.Workflow.ComponentModel.Activity)">
+      <summary>
+              静态方法，返回与给定活动实例关联的根上下文的上下文信息。
+               上下文信息用来在主机应用程序与工作流服务之间进行通信。
+            </summary>
+      <param name="activity">
+                子活动实例。
+              </param>
+      <returns>
+              一个基于字典的集合，包含 <see cref="T:System.Xml.XmlQualifiedName" /> 键及其关联的 <see cref="T:System.String" /> 值，这些值表示根上下文的上下文信息。
+               禁止自定义实例创建逻辑，在根上下文中接收触发创建新实例的消息。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.GetWorkflowServiceAttributes(System.Object)">
+      <summary>
+              返回由 <see cref="T:System.Workflow.Activities.WorkflowServiceAttributes" /> 活动实现的服务的 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 属性。
+               这些属性包括多项，如 <see cref="P:System.Workflow.Activities.WorkflowServiceAttributes.AddressFilterMode" />、<see cref="P:System.Workflow.Activities.WorkflowServiceAttributes.ConfigurationName" />、<see cref="P:System.Workflow.Activities.WorkflowServiceAttributes.IncludeExceptionDetailInFaults" /> 和是否在从 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 活动返回的任何错误中包括异常详细信息。
+            </summary>
+      <param name="dependencyObject">
+                要从中检索服务属性的对象。
+              </param>
+      <returns>
+              一个 <see cref="T:System.Object" />，表示包含服务属性数据的 <see cref="T:System.Workflow.Activities.WorkflowServiceAttributes" /> 对象。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.SetWorkflowServiceAttributes(System.Object,System.Object)">
+      <summary>
+              设置由 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 活动实现的服务的属性。
+               这些属性包括多项，如 <see cref="P:System.Workflow.Activities.WorkflowServiceAttributes.AddressFilterMode" />、<see cref="P:System.Workflow.Activities.WorkflowServiceAttributes.ConfigurationName" /> 和是否在从 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 活动返回的任何错误中包括异常详细信息。
+            </summary>
+      <param name="dependencyObject">
+                要向其应用服务属性的对象。
+              </param>
+      <param name="value">
+                包含要应用的服务属性数据的 <see cref="T:System.Workflow.Activities.WorkflowServiceAttributes" /> 对象。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.System#Workflow#Activities#IEventActivity#Subscribe(System.Workflow.ComponentModel.ActivityExecutionContext,System.Workflow.ComponentModel.IActivityEventListener{System.Workflow.ComponentModel.QueueEventArgs})">
+      <summary>
+              创建 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 活动对事件的订阅。
+            </summary>
+      <param name="parentContext">
+                表示 <see cref="T:System.Workflow.ComponentModel.ActivityExecutionContext" /> 活动的执行环境的 <see cref="T:System.Workflow.Activities.ReceiveActivity" />。
+              </param>
+      <param name="parentEventHandler">
+                处理事件的 <see cref="T:System.EventHandler" />。
+                 此事件处理程序为父活动所有。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.System#Workflow#Activities#IEventActivity#Unsubscribe(System.Workflow.ComponentModel.ActivityExecutionContext,System.Workflow.ComponentModel.IActivityEventListener{System.Workflow.ComponentModel.QueueEventArgs})">
+      <summary>
+              取消 <see cref="T:System.Workflow.ComponentModel.Activity" /> 对事件的订阅。
+            </summary>
+      <param name="parentContext">
+                表示 <see cref="T:System.Workflow.ComponentModel.ActivityExecutionContext" /> 活动的执行环境的 <see cref="T:System.Workflow.Activities.WebServiceInputActivity" />。
+              </param>
+      <param name="parentEventHandler">
+                处理事件的 <see cref="T:System.EventHandler" />。
+                 此事件处理程序为父活动所有。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.ReceiveActivity.System#Workflow#ComponentModel#IActivityEventListener{System#Workflow#ComponentModel#QueueEventArgs}#OnEvent(System.Object,System.Workflow.ComponentModel.QueueEventArgs)">
+      <summary>
+              定义发生订阅事件时的处理过程。
+            </summary>
+      <param name="sender">
+                引发事件的对象。
+              </param>
+      <param name="e">
+                先前键入的事件参数。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.SendActivity.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.SendActivity" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.SendActivity.#ctor(System.String)">
+      <summary>
+              使用指定的 <see cref="T:System.Workflow.Activities.SendActivity" /> 属性初始化 <see langword="name" /> 类的新实例。
+            </summary>
+      <param name="name">
+                初始化活动时分配给 <see cref="P:System.Workflow.ComponentModel.Activity.Name" /> 的值。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.SendActivity.GetContext(System.Workflow.ComponentModel.Activity,System.String,System.String,System.Type)">
+      <summary>
+              一个静态方法，在给定活动实例、该活动使用的终结点名称、所有者活动名称和表示协定类型的 <see cref="T:System.Type" /> 对象的情况下返回上下文信息。
+            </summary>
+      <param name="activity">
+                需要其上下文信息的活动。
+              </param>
+      <param name="endpointName">
+                用于与服务关联的终结点的名称。
+              </param>
+      <param name="ownerActivityName">
+                所属活动的名称。
+              </param>
+      <param name="contractType">
+                服务实现的协定的 <see cref="T:System.Type" />。
+              </param>
+      <returns>
+              一个基于字典的集合，包含 <see cref="T:System.Xml.XmlQualifiedName" /> 键及其关联的 <see cref="T:System.String" /> 值。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.SendActivity.GetContext(System.Workflow.ComponentModel.Activity,System.Workflow.Activities.ChannelToken,System.Type)">
+      <summary>
+              获取或设置发送操作的上下文信息。
+            </summary>
+      <param name="activity">
+                需要其上下文信息的活动。
+              </param>
+      <param name="endpoint">
+                用于与服务关联的终结点信息。
+              </param>
+      <param name="contractType">
+                服务实现的协定的 <see cref="T:System.Type" />。
+              </param>
+      <returns>
+              一个基于字典的集合，包含 <see cref="T:System.Xml.XmlQualifiedName" /> 键及其关联的 <see cref="T:System.String" /> 值。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.SendActivity.SetContext(System.Workflow.ComponentModel.Activity,System.String,System.String,System.Type,System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+              一个静态方法，它在给定活动实例、该活动使用的终结点名称、所有者活动的名称、表示协定类型的 <see cref="T:System.Workflow.Activities.SendActivity" /> 对象和上下文信息本身的情况下设置 <see cref="T:System.Type" /> 活动的上下文信息。
+            </summary>
+      <param name="activity">
+                要与上下文信息关联的活动实例。
+              </param>
+      <param name="endpointName">
+                用于与服务关联的终结点的名称。
+              </param>
+      <param name="ownerActivityName">
+                所属活动的名称
+              </param>
+      <param name="contractType">
+                服务实现的协定的 <see cref="T:System.Type" />。
+              </param>
+      <param name="context">
+                要设置的上下文信息。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.SendActivity.SetContext(System.Workflow.ComponentModel.Activity,System.Workflow.Activities.ChannelToken,System.Type,System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+              一个静态方法，它在给定活动实例、该活动使用的终结点、表示协定类型的 <see cref="T:System.Workflow.Activities.SendActivity" /> 对象和上下文信息本身的情况下设置 <see cref="T:System.Type" /> 活动的上下文信息。
+            </summary>
+      <param name="activity">
+                要与上下文信息关联的活动实例。
+              </param>
+      <param name="endpoint">
+                用于与服务关联的终结点。
+              </param>
+      <param name="contractType">
+                服务实现的协定的 <see cref="T:System.Type" />。
+              </param>
+      <param name="context">
+                要设置的上下文信息。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.SendActivityEventArgs.#ctor(System.Workflow.Activities.SendActivity)">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.SendActivityEventArgs" /> 类的新实例。
+            </summary>
+      <param name="sendActivity">
+                引发了与此 <see cref="T:System.Workflow.Activities.SendActivityEventArgs" /> 关联的事件的 T:System.Workflow.Activities.SendActivity。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.TypedOperationInfo.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.TypedOperationInfo" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.TypedOperationInfo.#ctor(System.Type,System.String)">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.TypedOperationInfo" /> 类的新实例。
+            </summary>
+      <param name="contractType">
+                关联的协定接口的类型。
+              </param>
+      <param name="operationName">
+                关联的服务操作的方法名称。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Activities.TypedOperationInfo.Clone">
+      <summary>
+              创建当前对象的副本。
+            </summary>
+      <returns>
+              该对象的副本。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.TypedOperationInfo.Equals(System.Object)">
+      <summary>
+              确定两个 <see cref="T:System.Workflow.Activities.TypedOperationInfo" /> 实例是否相等。
+            </summary>
+      <param name="obj">
+                要与当前的 <see cref="T:System.Object" /> 进行比较的 <see cref="T:System.Workflow.Activities.TypedOperationInfo" />。
+              </param>
+      <returns>
+              如果实例相等，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.TypedOperationInfo.GetHashCode">
+      <summary>
+              生成一个与对象的值相对应的数字以支持使用哈希表。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Int32" />，表示对象的哈希代码值。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.TypedOperationInfo.ToString">
+      <summary>
+              返回一个表示当前 <see cref="T:System.String" /> 对象的 <see cref="T:System.Workflow.Activities.TypedOperationInfo" />。
+            </summary>
+      <returns>
+              一个表示当前的 <see cref="T:System.String" /> 对象的 <see cref="T:System.Workflow.Activities.TypedOperationInfo" />。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Activities.WorkflowServiceAttributes.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.WorkflowServiceAttributes" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.WorkflowServiceAttributesDynamicPropertyValidator.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Activities.WorkflowServiceAttributesDynamicPropertyValidator" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Activities.WorkflowServiceAttributesDynamicPropertyValidator.Validate(System.Workflow.ComponentModel.Compiler.ValidationManager,System.Object)">
+      <summary>
+              验证 <see cref="F:System.Workflow.Activities.ReceiveActivity.WorkflowServiceAttributesProperty" /> 属性并返回 <see cref="T:System.Workflow.ComponentModel.Compiler.ValidationError" /> 对象的集合。
+            </summary>
+      <param name="manager">
+                与验证链接的验证管理器。
+              </param>
+      <param name="obj">
+                要验证的参数。
+              </param>
+      <returns>
+              一个表示验证结果的 <see cref="T:System.Workflow.ComponentModel.Compiler.ValidationError" /> 对象的集合。
+            </returns>
+    </member>
+    <member name="M:System.Workflow.Runtime.Hosting.ChannelManagerService.#ctor">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Runtime.Hosting.ChannelManagerService" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.Workflow.Runtime.Hosting.ChannelManagerService.#ctor(System.Collections.Generic.IList{System.ServiceModel.Description.ServiceEndpoint})">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Runtime.Hosting.ChannelManagerService" /> 类的新实例。
+            </summary>
+      <param name="endpoints">
+                服务终结点的集合。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Runtime.Hosting.ChannelManagerService.#ctor(System.Collections.Specialized.NameValueCollection)">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Runtime.Hosting.ChannelManagerService" /> 类的新实例。
+            </summary>
+      <param name="parameters">
+                服务的配置参数。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Runtime.Hosting.ChannelManagerService.#ctor(System.ServiceModel.Channels.ChannelPoolSettings)">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Runtime.Hosting.ChannelManagerService" /> 类的新实例。
+            </summary>
+      <param name="settings">
+                此服务所管理的通道池配额设置。
+              </param>
+    </member>
+    <member name="M:System.Workflow.Runtime.Hosting.ChannelManagerService.#ctor(System.ServiceModel.Channels.ChannelPoolSettings,System.Collections.Generic.IList{System.ServiceModel.Description.ServiceEndpoint})">
+      <summary>
+              初始化 <see cref="T:System.Workflow.Runtime.Hosting.ChannelManagerService" /> 类的新实例。
+            </summary>
+      <param name="settings">
+                此服务所管理的通道池配额设置。
+              </param>
+      <param name="endpoints">
+                服务终结点的集合。
+              </param>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.PersistenceProviderElement.BehaviorType">
+      <summary>
+              获取行为的类型。
+            </summary>
+      <returns>
+              行为类型。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.PersistenceProviderElement.PersistenceOperationTimeout">
+      <summary>
+              获取或设置用于持久性操作的超时值。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.TimeSpan" />，指定用于持久性操作的超时值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.PersistenceProviderElement.PersistenceProviderArguments">
+      <summary>
+              获取此附加特性 <see cref="T:System.ServiceModel.Configuration.PersistenceProviderElement" />。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Collections.Specialized.NameValueCollection" /> 对象，其中包含此 <see cref="T:System.ServiceModel.Configuration.PersistenceProviderElement" /> 的其他属性。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.PersistenceProviderElement.Type">
+      <summary>
+              获取或设置服务要使用的永久性提供程序的类型。
+            </summary>
+      <returns>
+              服务使用的永久性提供程序的类型。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WorkflowRuntimeElement.BehaviorType">
+      <summary>
+              获取此行为元素的类型。
+            </summary>
+      <returns>
+              行为的类型。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WorkflowRuntimeElement.CachedInstanceExpiration">
+      <summary>
+              获取或设置一个值，该值指定缓存实例过期的时间。
+            </summary>
+      <returns>
+              缓存的实例过期时间。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WorkflowRuntimeElement.CommonParameters">
+      <summary>
+              获取服务使用的公用参数的集合。
+            </summary>
+      <returns>
+              一个 <see langword="NameValueConfigurationCollection" />，其中包含由服务使用的公用参数。
+               默认值为 <see langword="null" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WorkflowRuntimeElement.EnablePerformanceCounters">
+      <summary>
+              获取或设置一个值，该值指示是否启用性能计数器。
+            </summary>
+      <returns>
+              如果启用性能计数器，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WorkflowRuntimeElement.Name">
+      <summary>
+              获取或设置工作流运行时引擎的名称。
+            </summary>
+      <returns>
+              一个包含工作流运行时引擎的名称的字符串。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WorkflowRuntimeElement.Properties">
+      <summary>
+              获取一个 <see cref="T:System.Configuration.ConfigurationPropertyCollection" /> 实例，该实例包含一个 <see cref="T:System.Configuration.ConfigurationProperty" /> 对象集合，这些对象可以是此配置元素的属性或 <see cref="T:System.Configuration.ConfigurationElement" /> 对象。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Configuration.ConfigurationPropertyCollection" /> 实例，该实例包含一个 <see cref="T:System.Configuration.ConfigurationProperty" /> 对象集合，这些对象可以是此配置元素的属性或 <see cref="T:System.Configuration.ConfigurationElement" /> 对象。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WorkflowRuntimeElement.Services">
+      <summary>
+              获取要添加到 <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> 引擎的服务集合。
+            </summary>
+      <returns>
+              将添加到服务的集合 <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> 引擎。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WorkflowRuntimeElement.ValidateOnCreate">
+      <summary>
+              获取或设置一个值，该值指示是否在创建工作流实例时发生验证。
+            </summary>
+      <returns>
+              如果在创建时发生验证，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.DurableOperationAttribute.CanCreateInstance">
+      <summary>
+              获取或设置一个值，该值指示如果在此操作中接收到激活消息，是否创建一个新服务实例。
+               调度程序会将无附加实例 ID 的消息视为激活消息。
+            </summary>
+      <returns>
+              如果可以创建新服务实例，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.DurableOperationAttribute.CompletesInstance">
+      <summary>
+              获取或设置一个值，该值指示操作执行完毕后是否将服务实例从内存中卸载并从永久性存储区中删除。
+            </summary>
+      <returns>
+              如果操作执行完毕后将从内存中卸载实例，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.DurableServiceAttribute.SaveStateInOperationTransaction">
+      <summary>
+              获取或设置一个值，该值指示是否使用在其下运行操作的同一事务将服务实例状态保留到 <see cref="T:System.ServiceModel.Persistence.PersistenceProvider" />。
+            </summary>
+      <returns>
+              如果使用同一事务保留服务实例状态，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.DurableServiceAttribute.UnknownExceptionAction">
+      <summary>
+              获取或设置与持久性服务关联的 <see cref="T:System.ServiceModel.Description.UnknownExceptionAction" /> 枚举值。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Description.UnknownExceptionAction" /> 枚举值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.PersistenceProviderBehavior.PersistenceOperationTimeout">
+      <summary>
+              超时时间，在此时间后，将中止使用此对象配置的永久性提供程序执行的永久性操作。
+            </summary>
+      <returns>
+              超时时间。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.PersistenceProviderBehavior.PersistenceProviderFactory">
+      <summary>
+              与行为对象关联的 <see cref="T:System.ServiceModel.Persistence.PersistenceProviderFactory" />。
+            </summary>
+      <returns>
+              提供程序工厂。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WorkflowRuntimeBehavior.CachedInstanceExpiration">
+      <summary>
+              获取或设置一个值，该值指示工作流实例在内存中保持空闲状态多长时间后，才将其从内存中强制移除。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.TimeSpan" /> 对象，指示工作流实例在内存中保持空闲状态多长时间后，才将其从内存中强制移除。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WorkflowRuntimeBehavior.WorkflowRuntime">
+      <summary>
+              获取与 <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> 实例关联的 <see cref="T:System.ServiceModel.WorkflowServiceHost" />。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> 对象。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Dispatcher.DurableOperationContext.InstanceId">
+      <summary>
+              获取此服务实例的服务 ID。
+            </summary>
+      <returns>
+              一个包含服务 ID 的 <see cref="T:System.Guid" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Persistence.InstanceLockException.InstanceId">
+      <summary>
+              异常实例的唯一标识符。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Guid" />，包含异常实例的唯一标识符。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Persistence.InstanceNotFoundException.InstanceId">
+      <summary>
+              获取与此实例关联的唯一标识符。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Guid" />，包含异常实例的唯一标识符。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Persistence.PersistenceProvider.Id">
+      <summary>
+              表示与此实例关联的 <see cref="T:System.Guid" />。
+            </summary>
+      <returns>
+              与此实例关联的 GUID。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.ConnectionString">
+      <summary>
+              获取使用此工厂创建的持久性提供程序实例的连接参数。
+            </summary>
+      <returns>
+              使用此工厂创建的持久性提供程序实例的连接参数。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.DefaultCloseTimeout">
+      <summary>
+              获取使用此工厂创建的永久性提供程序关闭时所用的默认超时值。
+            </summary>
+      <returns>
+              默认超时值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.DefaultOpenTimeout">
+      <summary>
+              获取永久性提供程序打开时所用的默认超时值。
+            </summary>
+      <returns>
+              默认超时值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.LockTimeout">
+      <summary>
+              由此实例创建的永久性提供程序实例所使用的锁定所有权的超时。
+               锁定的实例将在此时间段后自动解锁。
+            </summary>
+      <returns>
+              锁定所有权的超时值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Persistence.SqlPersistenceProviderFactory.SerializeAsText">
+      <summary>
+              指定使用此工厂创建的永久性提供程序中数据是否序列化为文本而不是二进制数据。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果服务信息序列化为文本;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ChannelToken.EndpointName">
+      <summary>
+              获取或设置用于与服务通信的自定义地址。
+            </summary>
+      <returns>
+              一个字符串，表示与服务进行通信时使用的自定义地址。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ChannelToken.Name">
+      <summary>
+              此 <see cref="T:System.Workflow.Activities.ChannelToken" /> 实例的名称。
+            </summary>
+      <returns>
+              一个表示此实例的名称的字符串。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ChannelToken.OwnerActivityName">
+      <summary>
+              与此实例关联的 <see cref="T:System.Workflow.ComponentModel.Activity" /> 的名称。
+            </summary>
+      <returns>
+              一个字符串，表示与此实例关联的活动的名称。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ContextToken.Name">
+      <summary>
+              获取或设置此实例的名称。
+            </summary>
+      <returns>
+              一个表示此实例的名称的字符串。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ContextToken.OwnerActivityName">
+      <summary>
+              获取或设置与此上下文令牌关联的 <see cref="T:System.Workflow.ComponentModel.Activity" /> 的名称。
+            </summary>
+      <returns>
+              一个字符串，表示与此上下文令牌关联的活动的名称。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationInfo.ContractName">
+      <summary>
+              获取或设置定义此操作的协定的全名。
+            </summary>
+      <returns>
+              一个字符串，表示定义该操作的约定的全名。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationInfo.HasProtectionLevel">
+      <summary>
+              获取有关操作是否具有已定义的 <see cref="T:System.Net.Security.ProtectionLevel" /> 的信息。
+            </summary>
+      <returns>
+              一个布尔值，指示操作是否具有与其关联的 <see cref="T:System.Net.Security.ProtectionLevel" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationInfo.IsOneWay">
+      <summary>
+              获取或设置有关操作的信息以指定服务和客户端之间的通信为单向通信。
+            </summary>
+      <returns>
+              如果操作支持单向通信，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationInfo.Parameters">
+      <summary>
+              获取 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 对象的集合，表示操作所使用的参数定义。
+            </summary>
+      <returns>
+              <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 对象的集合，表示在由客户端调用时该操作所使用的参数定义。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationInfo.ProtectionLevel">
+      <summary>
+              获取或设置操作的 <see cref="T:System.Net.Security.ProtectionLevel" />。
+            </summary>
+      <returns>
+              操作使用的 <see cref="T:System.Net.Security.ProtectionLevel" /> 对象。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationInfoBase.Name">
+      <summary>
+              在派生类中实现时，获取或设置与此实例关联的名称。
+            </summary>
+      <returns>
+              一个表示对象名称的字符串。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationInfoBase.PrincipalPermissionName">
+      <summary>
+              获取或设置与操作的安全上下文关联的用户名。
+            </summary>
+      <returns>
+              一个字符串，表示与操作的安全上下文关联的用户名。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationInfoBase.PrincipalPermissionRole">
+      <summary>
+              获取或设置用户角色 (例如 <see langword="Administrator" />) 与该操作的安全上下文相关联。
+            </summary>
+      <returns>
+              一个字符串，表示与操作的安全上下文关联的用户角色。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.Attributes">
+      <summary>
+              获取或设置关联操作参数的属性。
+            </summary>
+      <returns>
+              关联的操作参数的 <see cref="T:System.Reflection.ParameterAttributes" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.IsIn">
+      <summary>
+              如果关联的操作参数是 In 参数，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </summary>
+      <returns>
+              如果关联的操作参数是 In 参数，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.IsLcid">
+      <summary>
+              如果关联的操作参数是区域设置标识符，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </summary>
+      <returns>
+              如果关联的操作参数是区域设置标识符，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.IsOptional">
+      <summary>
+              如果关联的操作参数是可选参数，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </summary>
+      <returns>
+              如果关联的操作参数是可选参数，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.IsOut">
+      <summary>
+              如果关联的操作参数是 Out 参数，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </summary>
+      <returns>
+              如果关联的操作参数是 Out 参数，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.IsRetval">
+      <summary>
+              如果关联的操作参数是操作的返回值，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </summary>
+      <returns>
+              如果关联的操作参数是操作的返回值，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.Name">
+      <summary>
+              获取或设置关联操作参数的名称。
+            </summary>
+      <returns>
+              一个字符串，表示关联的操作参数的名称。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.ParameterType">
+      <summary>
+              获取或设置关联操作参数的类型。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Type" /> 对象，表示关联的操作参数的类型。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfo.Position">
+      <summary>
+              获取或设置关联操作参数的签名位置。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Int32" />，表示关联的操作参数的签名位置。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.Count">
+      <summary>
+              获取 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 中包含的元素数。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Int32" />，表示 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 中包含的元素数目。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.Item(System.Int32)">
+      <summary>
+              获取或设置指定索引处的元素。
+                在 C# 中，此属性是 <see cref="T:System.Workflow.Activities.OperationParameterInfoCollection" /> 类的索引器。
+            </summary>
+      <param name="index">
+                所请求元素的数组索引。
+              </param>
+      <returns>
+              一个 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 对象，表示位于指定索引处的元素。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.Item(System.String)">
+      <summary>
+              获取或设置具有指定键的元素。
+            </summary>
+      <param name="key">
+                所请求元素的键值。
+              </param>
+      <returns>
+              一个 <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 对象，表示具有指定键的元素。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#ICollection{System#Workflow#Activities#OperationParameterInfo}#Count">
+      <summary>
+              获取 <see cref="T:System.Collections.Generic.ICollection`1" /> 中包含的元素数。
+            </summary>
+      <returns>
+              <see cref="T:System.Collections.Generic.ICollection`1" /> 中包含的元素数。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#ICollection{System#Workflow#Activities#OperationParameterInfo}#IsReadOnly">
+      <summary>
+              获取一个值，该值指示 <see cref="T:System.Collections.Generic.ICollection`1" /> 是否为只读。
+            </summary>
+      <returns>
+              如果 <see langword="true" /> 是只读的，则为 <see cref="T:System.Collections.Generic.ICollection`1" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#Generic#IList{System#Workflow#Activities#OperationParameterInfo}#Item(System.Int32)">
+      <summary>
+              获取或设置指定索引处的元素。
+            </summary>
+      <param name="index">
+                要获取或设置的元素的从零开始的索引。
+              </param>
+      <returns>
+              指定索引处的元素。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#ICollection#IsSynchronized">
+      <summary>
+              获取一个值，该值指示是否同步对 <see cref="T:System.Collections.ICollection" /> 的访问（线程安全）。
+            </summary>
+      <returns>
+              如果对 <see langword="true" /> 的访问是同步的（线程安全），则为 <see cref="T:System.Collections.ICollection" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#ICollection#SyncRoot">
+      <summary>
+              获取可用于同步对 <see cref="T:System.Collections.ICollection" /> 的访问的对象。
+            </summary>
+      <returns>
+              可用于同步对 <see cref="T:System.Collections.ICollection" /> 的访问的对象。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#IsFixedSize">
+      <summary>
+              获取一个值，该值指示 <see cref="T:System.Collections.IList" /> 是否具有固定大小。
+            </summary>
+      <returns>
+              如果 <see langword="true" /> 具有固定大小，则为 <see cref="T:System.Collections.IList" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#IsReadOnly">
+      <summary>
+              获取一个值，该值指示 <see cref="T:System.Collections.IList" /> 是否为只读。
+            </summary>
+      <returns>
+              如果 <see langword="true" /> 是只读的，则为 <see cref="T:System.Collections.IList" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationParameterInfoCollection.System#Collections#IList#Item(System.Int32)">
+      <summary>
+              获取或设置指定索引处的元素。
+            </summary>
+      <param name="index">
+                要获取或设置的元素的从零开始的索引。
+              </param>
+      <returns>
+              指定索引处的元素。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationValidationEventArgs.ClaimSets">
+      <summary>
+              <see cref="T:System.IdentityModel.Claims.ClaimSet" /> 对象的集合，这些对象包含已添加到操作的授权上下文的声明。
+            </summary>
+      <returns>
+              <see cref="T:System.IdentityModel.Claims.ClaimSet" /> 对象的集合，这些对象包含已添加到操作的授权上下文的声明。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.OperationValidationEventArgs.IsValid">
+      <summary>
+              如果操作有效，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </summary>
+      <returns>
+              如果操作有效，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ReceiveActivity.CanCreateInstance">
+      <summary>
+              获取或设置操作是否将导致创建新的工作流服务实例。
+            </summary>
+      <returns>
+              如果创建新的工作流实例，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ReceiveActivity.Context">
+      <summary>
+              获取此活动的上下文信息。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Collections.Generic.IDictionary`2" /> 对象，它包含此活动的上下文信息。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ReceiveActivity.ContextToken">
+      <summary>
+              表示一个可用于指定上下文的令牌，应当使用该令牌来关联 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 活动和该活动与之通信的客户端之间的交换。
+            </summary>
+      <returns>
+              可用于关联的 <see cref="T:System.Workflow.Activities.ContextToken" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ReceiveActivity.FaultMessage">
+      <summary>
+              接收活动完成执行时返回的异常。
+            </summary>
+      <returns>
+              一个包含错误消息文本和详细信息的 <see cref="T:System.ServiceModel.FaultException" /> 对象。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ReceiveActivity.ParameterBindings">
+      <summary>
+              获取服务的形参表中可绑定参数的集合。
+            </summary>
+      <returns>
+              要绑定到的参数的 <see cref="T:System.Workflow.ComponentModel.WorkflowParameterBindingCollection" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ReceiveActivity.ServiceOperationInfo">
+      <summary>
+              定义 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 活动实现的协定和服务操作。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Workflow.Activities.OperationInfoBase" /> 对象，其中包含协定名称、协定类型、操作名称（可能与方法名称截然不同）、操作是否为单向操作以及包括有关操作的参数在内的方法信息。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.ReceiveActivity.System#Workflow#Activities#IEventActivity#QueueName">
+      <summary>
+              获取该活动正在等待其数据到达的 <see cref="T:System.Workflow.Runtime.WorkflowQueue" /> 的名称。
+            </summary>
+      <returns>
+              该活动正在等待其数据到达的 <see cref="T:System.Workflow.Runtime.WorkflowQueue" /> 的名称。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.SendActivity.ChannelToken">
+      <summary>
+              <see cref="T:System.Workflow.Activities.ChannelToken" /> 在建立其自身与客户端通道之间的关联时所使用的 <see cref="T:System.Workflow.Activities.SendActivity" />。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Workflow.Activities.ChannelToken" />，定义 <see cref="T:System.Workflow.Activities.SendActivity" /> 用于与服务通信的客户端通道。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.SendActivity.Context">
+      <summary>
+              返回一个字典，该字典包含用于客户端与服务（将与客户端通信）之间的通信的上下文，包括关联标识之类的内容。
+            </summary>
+      <returns>
+              一个基于字典的集合，包含 <see cref="T:System.Xml.XmlQualifiedName" /> 键及其关联的 <see cref="T:System.String" /> 值。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.SendActivity.CustomAddress">
+      <summary>
+              获取或设置用于与服务通信的自定义地址。
+            </summary>
+      <returns>
+              字符串值，其值为服务正在侦听的地址。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.SendActivity.ParameterBindings">
+      <summary>
+              获取 Windows Communication Foundation (WCF) 服务的形参表中可绑定参数的集合。
+            </summary>
+      <returns>
+              要绑定到的参数的 <see cref="T:System.Workflow.ComponentModel.WorkflowParameterBindingCollection" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.SendActivity.ServiceOperationInfo">
+      <summary>
+              定义 <see langword="SendActivity" /> 活动与其通信的服务的协定和操作。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Workflow.Activities.TypedOperationInfo" /> 对象，其中包含协定名称、协定类型、操作名称（可能与实际方法名称截然不同）、操作是否为单向操作以及包括有关操作的参数在内的方法信息。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.SendActivityEventArgs.SendActivity">
+      <summary>
+              获取引发了与此 <see cref="T:System.Workflow.Activities.SendActivity" /> 关联的事件的 <see cref="T:System.Workflow.Activities.SendActivityEventArgs" />。
+            </summary>
+      <returns>
+              引发了与此 <see cref="T:System.Workflow.Activities.SendActivity" /> 关联的事件的 <see cref="T:System.Workflow.Activities.SendActivityEventArgs" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.TypedOperationInfo.ContractType">
+      <summary>
+              关联的协定接口的类型。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Type" /> 对象，表示关联的协定接口的类型。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.AddressFilterMode">
+      <summary>
+              获取或设置调度程序用于将传入消息路由到正确终结点的 <see cref="T:System.ServiceModel.AddressFilterMode" /> 枚举。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.AddressFilterMode" /> 枚举值，调度程序使用该值将传入消息路由到正确终结点。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.ConfigurationName">
+      <summary>
+              获取或设置用于在应用程序配置文件中定位服务元素的值。
+            </summary>
+      <returns>
+              要在配置文件中查找的值。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.IgnoreExtensionDataObject">
+      <summary>
+              获取或设置一个值，该值指定是否将未知序列化数据发送到网络上。
+            </summary>
+      <returns>
+              如果永不发送未知序列化数据，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.IncludeExceptionDetailInFaults">
+      <summary>
+              获取或设置一个值，该值指定是否要将常规未处理执行异常转换为 <see cref="T:System.ServiceModel.FaultException" /> 类型的 <see cref="T:System.ServiceModel.ExceptionDetail" /> 并将其作为错误消息发送。
+               仅在开发阶段将其设置为 <see langword="true" /> 以便对服务进行故障排除。
+            </summary>
+      <returns>
+              如果未经处理的异常将作为 SOAP 错误返回，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.MaxItemsInObjectGraph">
+      <summary>
+              获取或设置序列化对象中允许的最大项数。
+            </summary>
+      <returns>
+              对象中允许的最大项数。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.Name">
+      <summary>
+              获取或设置 Web 服务描述语言 (WSDL) 中服务元素中的名称属性值。
+            </summary>
+      <returns>
+              Name 属性的值。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.Namespace">
+      <summary>
+              获取或设置 Web 服务描述语言 (WSDL) 中服务的目标命名空间值。
+            </summary>
+      <returns>
+              Namespace 属性的值。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.UseSynchronizationContext">
+      <summary>
+              获取或设置一个值，该值指定是否使用当前同步上下文来选择执行的线程。
+            </summary>
+      <returns>
+              如果对服务的所有调用都必须在 <see langword="true" /> 指定的线程上运行，则为 <see cref="T:System.Threading.SynchronizationContext" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.Workflow.Activities.WorkflowServiceAttributes.ValidateMustUnderstand">
+      <summary>
+              获取或设置一个值，该值指定是由系统还是由应用程序强制执行 SOAP <see langword="MustUnderstand" /> 标头处理。
+            </summary>
+      <returns>
+              如果由系统执行 SOAP 标头 <see langword="true" /> 处理，则为 <see langword="MustUnderstand" />，否则为 <see langword="false" />，这表示由应用程序执行此处理。
+            </returns>
+    </member>
+    <member name="T:System.ServiceModel.Activation.WorkflowServiceHostFactory">
+      <summary>
+              在托管宿主环境中提供 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 的实例的工厂，在此环境中为响应传入消息而动态创建宿主实例。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint">
+      <summary>
+              <see cref="T:System.Activities.DurableInstancing.SqlWorkflowInstanceStore" /> 添加默认控制终结点使用此类，如果 &lt;<see langword="workflowInstanceControl" />&gt; 中的子元素 &lt;<see langword="sqlWorkflowInstanceStoreBehavior" />&gt; 元素未显式指定。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.ExtendedWorkflowRuntimeServiceElementCollection">
+      <summary>
+              表示配置元素的集合，这些配置元素表示要添加到工作流运行时引擎中的扩展服务。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.PersistenceProviderElement">
+      <summary>
+              表示一个持久性服务配置元素，该元素指定要使用的永久性提供程序实现的类型以及用于持久性操作的超时值。
+               出现在此元素中的其他属性将传入到指定永久性提供程序的构造函数。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WorkflowRuntimeElement">
+      <summary>
+              表示一个配置元素，该配置元素为 <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> 的实例指定用于承载基于工作流的 Windows Communication Foundation (WCF) 服务。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.DurableOperationAttribute">
+      <summary>
+              指定持久性服务方法的本地执行行为。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.DurableServiceAttribute">
+      <summary>
+              指定持久性服务协定实现的内部执行行为。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.PersistenceProviderBehavior">
+      <summary>
+              定义与 <see cref="T:System.ServiceModel.Persistence.PersistenceProviderFactory" /> 关联的 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 的行为。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.UnknownExceptionAction">
+      <summary>
+              指定持久性服务将如何处理未知异常。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Description.UnknownExceptionAction.TerminateInstance">
+      <summary>
+              服务将关闭所有通道并将其状态信息从其持久性存储区中移除。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Description.UnknownExceptionAction.AbortInstance">
+      <summary>
+              服务将突然停止，并将现有的状态信息保留在其持久性存储区中。
+               在引发未知异常的操作期间对实例状态所进行的任何更改都将会丢失。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.WorkflowRuntimeBehavior">
+      <summary>
+              定义与 <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> 关联的 <see cref="T:System.ServiceModel.WorkflowServiceHost" /> 的行为。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Dispatcher.DurableOperationContext">
+      <summary>
+              提供一组静态方法以获取对相关信息和功能的访问。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Persistence.InstanceLockException">
+      <summary>
+              此异常供从 <see cref="T:System.ServiceModel.Persistence.LockingPersistenceProvider" /> 继承的类在由于实例状态锁定而无法执行操作时使用。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Persistence.InstanceNotFoundException">
+      <summary>
+              在下列情况下引发的异常︰ 已被标记为完成时，持久性服务实例上执行的操作或永久性提供程序创建的 <see cref="T:System.ServiceModel.Persistence.SqlPersistenceProviderFactory" /> 尝试锁定、 解除锁定或以其他方式处理数据库中找不到的状态数据。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Persistence.LockingPersistenceProvider">
+      <summary>
+              从中派生所有实现锁定的持久性服务永久性提供程序的抽象基类。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Persistence.PersistenceException">
+      <summary>
+              当遇到一般性连接错误时，<see cref="T:System.ServiceModel.Persistence.SqlPersistenceProviderFactory" /> 将引发此异常。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Persistence.PersistenceProvider">
+      <summary>
+              从中派生所有持久性服务永久性提供程序的抽象基类。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Persistence.PersistenceProviderFactory">
+      <summary>
+              所有持久性服务永久性提供程序必须从中继承的抽象类。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Persistence.SqlPersistenceProviderFactory">
+      <summary>
+              系统提供的 <see cref="T:System.ServiceModel.Persistence.PersistenceProviderFactory" /> 实现，用于创建一个 <see cref="T:System.ServiceModel.Persistence.LockingPersistenceProvider" /> 实例，该实例使用 SQL 数据库存储持久性服务状态数据。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.WorkflowServiceHost">
+      <summary>
+              为基于工作流的服务提供主机。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.ChannelToken">
+      <summary>
+              供 <see cref="T:System.Workflow.Activities.SendActivity" /> 用于建立其自身与客户端通道之间的关联。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.ContextToken">
+      <summary>
+              表示一个可用于指定上下文的令牌，应当使用该令牌来关联 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 活动和该活动与之通信的客户端之间的交换。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.OperationInfo">
+      <summary>
+              表示工作流服务中定义的协定操作的信息。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.OperationInfoBase">
+      <summary>
+              用于存储有关工作流服务中所定义协定操作的信息的基类。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.OperationParameterInfo">
+      <summary>
+              包含有关操作参数的信息。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.OperationParameterInfoCollection">
+      <summary>
+              <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> 对象的集合。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.OperationValidationEventArgs">
+      <summary>
+              为 <see cref="E:System.Workflow.Activities.ReceiveActivity.OperationValidation" /> 事件提供数据。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.ReceiveActivity">
+      <summary>
+              实现由 Windows Communication Foundation (WCF) 服务协定定义的操作的服务活动。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.SendActivity">
+      <summary>
+              客户端活动，用于模拟 Windows Communication Foundation (WCF) 服务操作的同步调用。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.SendActivityEventArgs">
+      <summary>
+              提供有关 <see cref="E:System.Workflow.Activities.SendActivity.BeforeSend" /> 和 <see cref="E:System.Workflow.Activities.SendActivity.AfterResponse" /> 事件的信息。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.TypedOperationInfo">
+      <summary>
+              一个继承自 <see cref="T:System.Workflow.Activities.OperationInfo" /> 的 <see cref="T:System.Workflow.Activities.OperationInfoBase" /> 对象，用于 <see cref="T:System.Workflow.Activities.SendActivity" /> 和 <see cref="T:System.Workflow.Activities.ReceiveActivity" /> 活动的服务操作信息。
+               请注意，此操作信息必须基于 CLR 类型。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.WorkflowServiceAttributes">
+      <summary>
+              为所修饰的工作流服务生成服务行为。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Activities.WorkflowServiceAttributesDynamicPropertyValidator">
+      <summary>
+              由 <see cref="F:System.Workflow.Activities.ReceiveActivity.WorkflowServiceAttributesProperty" /> 使用的属性验证程序。
+            </summary>
+    </member>
+    <member name="T:System.Workflow.Runtime.Hosting.ChannelManagerService">
+      <summary>
+              提供构造客户端通道、缓存通道和通道工厂的功能。
+            </summary>
+    </member>
+  </members>
+</doc>

@@ -104,10 +104,12 @@ namespace FutureCore
             }
 #endif
 
-            
+
 
 #if UNITY_EDITOR
-            this_AppDomain.LoadAssembly(dll_ms,pdb_ms,new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+
+            //this_AppDomain.LoadAssembly(dll_ms);
+            this_AppDomain.LoadAssembly(dll_ms, pdb_ms, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
 #else
             this_AppDomain.LoadAssembly(dll_ms);
 #endif

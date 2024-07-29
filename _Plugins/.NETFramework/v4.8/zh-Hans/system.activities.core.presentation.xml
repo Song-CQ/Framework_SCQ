@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Activities.Core.Presentation</name>
+  </assembly>
+  <members>
+    <member name="T:System.Activities.Core.Presentation.ConnectionPointType">
+      <summary>指定连接点的类型。</summary>
+    </member>
+    <member name="F:System.Activities.Core.Presentation.ConnectionPointType.Default">
+      <summary>默认连接点。</summary>
+    </member>
+    <member name="F:System.Activities.Core.Presentation.ConnectionPointType.Incoming">
+      <summary>传入连接点。</summary>
+    </member>
+    <member name="F:System.Activities.Core.Presentation.ConnectionPointType.Outgoing">
+      <summary>传出连接点。</summary>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.DesignerMetadata">
+      <summary>包含设计器的元数据。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.DesignerMetadata.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.Core.Presentation.DesignerMetadata" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.DesignerMetadata.Register">
+      <summary>注册运行时元数据。</summary>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory`1">
+      <summary>创建一些新的 <see cref="T:System.Activities.Statements.ForEach`1" /> 活动，其中每个活动均有一个主体。</summary>
+      <typeparam name="T">在 <see cref="P:System.Activities.Statements.ForEach`1.Values" /> 活动的 <see cref="T:System.Activities.Statements.ForEach`1" /> 集合中提供的值的类型。</typeparam>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory`1.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory`1" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory`1.Create(System.Windows.DependencyObject)">
+      <summary>创建一个新的 <see cref="T:System.Activities.Statements.ForEach`1" /> 活动，该活动有一个主体。</summary>
+      <param name="target">工作流 UI 元素，该元素是新活动的可视容器。</param>
+      <returns>一个新的 <see cref="T:System.Activities.Statements.ForEach`1" /> 活动，该活动有一个主体。</returns>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.Factories.ParallelForEachWithBodyFactory`1">
+      <summary>创建一些新的 <see cref="T:System.Activities.Statements.ParallelForEach`1" /> 活动，其中每个活动均有一个主体。</summary>
+      <typeparam name="T">在 <see cref="P:System.Activities.Statements.ParallelForEach`1.Values" /> 活动的 <see cref="T:System.Activities.Statements.ParallelForEach`1" /> 集合中提供的值的类型。</typeparam>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Factories.ParallelForEachWithBodyFactory`1.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.Core.Presentation.Factories.ParallelForEachWithBodyFactory`1" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Factories.ParallelForEachWithBodyFactory`1.Create(System.Windows.DependencyObject)">
+      <summary>创建一个新的 <see cref="T:System.Activities.Statements.ParallelForEach`1" /> 活动，该活动有一个主体。</summary>
+      <param name="target">工作流 UI 元素，该元素是新活动的可视容器。</param>
+      <returns>一个新的 <see cref="T:System.Activities.Statements.ParallelForEach`1" /> 活动，该活动有一个主体。</returns>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.Factories.PickWithTwoBranchesFactory">
+      <summary>创建一些新的 <see cref="T:System.Activities.Statements.Pick" /> 活动，其中每个活动均包含两个分支。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Factories.PickWithTwoBranchesFactory.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.Core.Presentation.Factories.PickWithTwoBranchesFactory" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Factories.PickWithTwoBranchesFactory.Create(System.Windows.DependencyObject)">
+      <summary>创建一个新的 <see cref="T:System.Activities.Statements.Pick" /> 活动，该活动包含两个分支。</summary>
+      <param name="target">工作流 UI 元素，该元素是新活动的可视容器。 忽略此参数。</param>
+      <returns>一个新的 <see cref="T:System.Activities.Statements.Pick" /> 活动，该活动包含两个分支。</returns>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.Factories.StateMachineWithInitialStateFactory">
+      <summary>创建包含初始状态的状态机活动。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Factories.StateMachineWithInitialStateFactory.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.Core.Presentation.Factories.StateMachineWithInitialStateFactory" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Factories.StateMachineWithInitialStateFactory.Create(System.Windows.DependencyObject)">
+      <summary>创建包含初始状态的状态机活动。</summary>
+      <param name="target">工作流 UI 元素，该元素是新活动的可视容器。 忽略此参数。</param>
+      <returns>返回 <see cref="T:System.Activities.Activity" />。</returns>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.FinalState">
+      <summary>最终状态是终止状态机实例的状态，并且不能有转换集合。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.FinalState.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.Core.Presentation.FinalState" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.FlowchartDesignerCommands">
+      <summary>由 Visual Studio 用于引发流程图设计器命令。</summary>
+    </member>
+    <member name="F:System.Activities.Core.Presentation.FlowchartDesignerCommands.ConnectNodesCommand">
+      <summary>指定在流程图设计器中用于链接流程图节点的命令。</summary>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.GenericTypeArgumentConverter">
+      <summary>允许检索泛型类型的类型参数。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.GenericTypeArgumentConverter.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.Core.Presentation.GenericTypeArgumentConverter" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.GenericTypeArgumentConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>返回位于指定泛型类型的指定参数位置处的类型参数。</summary>
+      <param name="value">绑定源中要从中获取类型参数的泛型类型。</param>
+      <param name="targetType">绑定目标属性的类型。</param>
+      <param name="parameter">要获取的类型参数的从零开始的位置。 此位置对应于自变量出现在泛型类型的类型参数列表中的顺序位置。</param>
+      <param name="culture">区域性信息。</param>
+      <returns>类型参数。</returns>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.GenericTypeArgumentConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>未实现。</summary>
+      <param name="value">未实现。</param>
+      <param name="targetType">未实现。</param>
+      <param name="parameter">未实现。</param>
+      <param name="culture">未实现。</param>
+      <returns>引发 <see cref="T:System.NotSupportedException" />。</returns>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.LocationChangedEventArgs">
+      <summary>包含 LocationChanged 事件的自变量。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.LocationChangedEventArgs.#ctor(System.Windows.Point)">
+      <summary>初始化 <see cref="T:System.Activities.Core.Presentation.LocationChangedEventArgs" /> 类的新实例。</summary>
+      <param name="newLocation">新位置。</param>
+    </member>
+    <member name="P:System.Activities.Core.Presentation.LocationChangedEventArgs.NewLocation">
+      <summary>获取新位置。</summary>
+      <returns>
+        <see cref="T:System.Windows.Point" /> 的一个实例，其中包含新位置。</returns>
+    </member>
+    <member name="T:System.Activities.Core.Presentation.Themes.DesignerStylesDictionary">
+      <summary>提供设计器样式词典。</summary>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Themes.DesignerStylesDictionary.InitializeComponent">
+      <summary>从特定资源位置处的 XAML 文件初始化当前词典实例。</summary>
+    </member>
+    <member name="P:System.Activities.Core.Presentation.Themes.DesignerStylesDictionary.SequenceStyle">
+      <summary>获取此 <see cref="T:System.Activities.Core.Presentation.Themes.DesignerStylesDictionary" /> 实例中存储的序列样式。 如果此序列样式未密封，还会对其进行密封。</summary>
+      <returns>此 <see cref="T:System.Activities.Core.Presentation.Themes.DesignerStylesDictionary" /> 实例中存储的序列样式。</returns>
+    </member>
+    <member name="M:System.Activities.Core.Presentation.Themes.DesignerStylesDictionary.System#Windows#Markup#IComponentConnector#Connect(System.Int32,System.Object)">
+      <summary>将事件和名称附加到已编译的内容。</summary>
+      <param name="connectionId">连接 ID。</param>
+      <param name="target">目标。</param>
+    </member>
+    <member name="T:System.Activities.Presentation.DynamicArgumentDesignerOptions">
+      <summary>提供动态参数设计器的选项。</summary>
+    </member>
+    <member name="M:System.Activities.Presentation.DynamicArgumentDesignerOptions.#ctor">
+      <summary>初始化 <see cref="T:System.Activities.Presentation.DynamicArgumentDesignerOptions" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Activities.Presentation.DynamicArgumentDesignerOptions.ArgumentPrefix">
+      <summary>获取或设置默认参数前缀。</summary>
+      <returns>默认参数前缀。</returns>
+    </member>
+    <member name="P:System.Activities.Presentation.DynamicArgumentDesignerOptions.Title">
+      <summary>获取或设置动态参数设计器的标题。</summary>
+      <returns>动态参数设计器的标题。</returns>
+    </member>
+    <member name="T:System.Activities.Presentation.DynamicArgumentDialog">
+      <summary>表示动态自变量元素的对话框。</summary>
+    </member>
+    <member name="M:System.Activities.Presentation.DynamicArgumentDialog.ShowDialog(System.Activities.Presentation.Model.ModelItem,System.Activities.Presentation.Model.ModelItem,System.Activities.Presentation.EditingContext,System.Windows.DependencyObject,System.Activities.Presentation.DynamicArgumentDesignerOptions)">
+      <summary>显示带有“确定”和“取消”按钮的动态自变量对话框，并在对话框关闭之后返回。</summary>
+      <param name="activity">与动态自变量对话框关联的活动。</param>
+      <param name="data">与动态自变量对话框关联的数据。</param>
+      <param name="context">与动态自变量对话框关联的编辑上下文。</param>
+      <param name="owner">动态自变量对话框的所有者。</param>
+      <param name="options">动态自变量设计器的选项，其中包含自变量前缀和设计器标题。 包含设计器作为其内容的动态自变量对话框。</param>
+      <returns>如果用户接受了对话框，则为 <see langword="true" />；如果用户取消了对话框，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Activities.Presentation.Factories.ReceiveAndSendReplyFactory">
+      <summary>创建 <see cref="T:System.ServiceModel.Activities.Receive" /> 和 <see cref="T:System.ServiceModel.Activities.SendReply" /> 活动对的已配置实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Presentation.Factories.ReceiveAndSendReplyFactory.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Activities.Presentation.Factories.ReceiveAndSendReplyFactory" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Presentation.Factories.ReceiveAndSendReplyFactory.Create(System.Windows.DependencyObject)">
+      <summary>创建一个新 <see cref="T:System.Activities.Statements.Sequence" /> 活动，该活动由 <see cref="T:System.ServiceModel.Activities.Receive" /> 和 <see cref="T:System.ServiceModel.Activities.SendReply" /> 对组成。</summary>
+      <param name="target">工作流 UI 元素，该元素是新活动的可视容器。</param>
+      <returns>一个新 <see cref="T:System.Activities.Statements.Sequence" /> 活动，该活动由 <see cref="T:System.ServiceModel.Activities.Receive" /> 和 <see cref="T:System.ServiceModel.Activities.SendReply" /> 对组成。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Activities.Presentation.Factories.SendAndReceiveReplyFactory">
+      <summary>创建 <see cref="T:System.ServiceModel.Activities.Send" /> 和 <see cref="T:System.ServiceModel.Activities.ReceiveReply" /> 活动对的已配置实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Presentation.Factories.SendAndReceiveReplyFactory.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Activities.Presentation.Factories.SendAndReceiveReplyFactory" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Presentation.Factories.SendAndReceiveReplyFactory.Create(System.Windows.DependencyObject)">
+      <summary>创建一个新 <see cref="T:System.Activities.Statements.Sequence" /> 活动，该活动由 <see cref="T:System.ServiceModel.Activities.Send" /> 和 <see cref="T:System.ServiceModel.Activities.ReceiveReply" /> 对组成。</summary>
+      <param name="target">工作流 UI 元素，该元素是新活动的可视容器。</param>
+      <returns>一个新 <see cref="T:System.Activities.Statements.Sequence" /> 活动，该活动由 <see cref="T:System.ServiceModel.Activities.Send" /> 和 <see cref="T:System.ServiceModel.Activities.ReceiveReply" /> 对组成。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Activities.Presentation.ServiceContractImporter">
+      <summary>表示一个服务合约导入程序。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Activities.Presentation.ServiceContractImporter.ContractTypeViewStateKey">
+      <summary>指定协定类型视图状态密钥。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Presentation.ServiceContractImporter.GenerateActivityTemplates(System.Type)">
+      <summary>用指定的协定类型生成服务性活动模板。</summary>
+      <param name="contractType">服务协定类型。</param>
+      <returns>服务活动模板的集合。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Presentation.ServiceContractImporter.SaveActivityTemplate(System.Activities.Presentation.Toolbox.ActivityTemplateFactoryBuilder)">
+      <summary>保存服务协定中的活动模板。</summary>
+      <param name="activityTemplate">要保存的活动模板。</param>
+      <returns>活动模板。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Activities.Presentation.ServiceContractImporter.SelectContractType(System.Reflection.AssemblyName,System.Collections.Generic.IList{System.Reflection.AssemblyName},System.Activities.Presentation.EditingContext)">
+      <summary>从引用的程序集列表中检索具有指定的本地程序集名称的协定类型。</summary>
+      <param name="localAssemblyName">本地程序集名称。</param>
+      <param name="referencedAssemblies">引用的程序集。</param>
+      <param name="editingContext">编辑上下文。</param>
+      <returns>服务协定类型。</returns>
+    </member>
+    <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+      <summary>为 XAML 标记编译器和开发人员工具提供基础结构支持。</summary>
+    </member>
+    <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.#ctor">
+      <summary>初始化 <see cref="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper" /> 类的新实例。</summary>
+    </member>
+  </members>
+</doc>

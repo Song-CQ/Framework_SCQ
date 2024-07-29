@@ -21,7 +21,6 @@ namespace ProjectApp
             globalMgr.AddMgr(UIMgr.Instance);
             globalMgr.AddMgr(UI_EffectManager.Instance);
 
-           
         }
 
         public static void RegisterData()

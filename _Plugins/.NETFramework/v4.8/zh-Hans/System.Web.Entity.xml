@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Entity</name>
+  </assembly>
+  <members>
+    <member name="T:System.Web.UI.WebControls.EntityDataSource">
+      <summary>表示 ASP.NET 应用程序中数据绑定控件的实体数据模型 (EDM)。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.#ctor">
+      <summary>初始化 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.#ctor(System.Data.EntityClient.EntityConnection)">
+      <summary>使用提供的连接初始化 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 类的新实例。</summary>
+      <param name="connection">实体数据模型 (EDM) 的 <see cref="T:System.Data.EntityClient.EntityConnection" />。</param>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.AutoGenerateOrderByClause">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件是否根据 <see cref="P:System.Web.UI.WebControls.EntityDataSource.OrderByParameters" /> 集合中的值动态创建 ORDER BY 子句。</summary>
+      <returns>如果 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件创建 ORDER BY 子句，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">当 <see cref="P:System.Web.UI.WebControls.EntityDataSource.AutoGenerateOrderByClause" /> 属性设置为 <see langword="true" />，同时 <see cref="P:System.Web.UI.WebControls.EntityDataSource.OrderBy" /> 属性设置为非 null。</exception>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.AutoGenerateWhereClause">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件是否基于 <see cref="P:System.Web.UI.WebControls.EntityDataSource.WhereParameters" /> 集合中定义的值来动态创建 WHERE 子句。</summary>
+      <returns>如果 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件创建 WHERE 子句，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">当 <see cref="P:System.Web.UI.WebControls.EntityDataSource.AutoGenerateWhereClause" /> 属性设置为 <see langword="true" />，同时 <see cref="P:System.Web.UI.WebControls.EntityDataSource.Where" /> 属性设置为非 null。</exception>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.AutoPage">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件是否支持在运行时在数据的各部分之间导航。</summary>
+      <returns>如果用户可以对数据进行分页，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.AutoSort">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件是否支持在运行时对数据进行排序。</summary>
+      <returns>如果用户可以对数据进行排序，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.CommandParameters">
+      <summary>获取查询的参数集合。</summary>
+      <returns>一个包含传递给查询命令的参数的 <see cref="T:System.Web.UI.WebControls.ParameterCollection" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.CommandText">
+      <summary>获取或设置定义查询的 Entity SQL 命令。</summary>
+      <returns>Entity SQL 查询的 <see langword="string" /> 值。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.ConnectionString">
+      <summary>获取或设置用于执行查询的连接字符串。</summary>
+      <returns>查询的连接字符串。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.ContextCreated">
+      <summary>在 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 创建完用于处理实体数据对象的 <see cref="T:System.Data.Objects.ObjectContext" /> 之后发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.ContextCreating">
+      <summary>当 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 创建用于处理实体数据对象的 <see cref="T:System.Data.Objects.ObjectContext" /> 时发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.ContextDisposing">
+      <summary>在释放 <see cref="T:System.Data.Objects.ObjectContext" /> 之前发生。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.ContextType">
+      <summary>获取或设置 <see cref="T:System.Data.Objects.ObjectContext" /> 控件使用的类型化 <see cref="T:System.Web.UI.WebControls.EntityDataSource" />。</summary>
+      <returns>从 <see cref="T:System.Data.Objects.ObjectContext" /> 派生的对象。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.ContextTypeName">
+      <summary>获取或设置 <see cref="T:System.Data.Objects.ObjectContext" /> 控件使用的类型化 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 的完全限定名。</summary>
+      <returns>一个 <see cref="T:System.String" />，它是此类型的完全限定名。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.CreateView">
+      <summary>创建与此控件相关联的 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 的新实例。</summary>
+      <returns>充当数据绑定控件的接口的对象。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.DefaultContainerName">
+      <summary>获取或设置默认容器名称。</summary>
+      <returns>作为默认容器名称的 <see cref="T:System.String" />。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Deleted">
+      <summary>在从数据源中删除对象之后发生。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.DeleteParameters">
+      <summary>获取在删除操作过程中使用的参数的集合。</summary>
+      <returns>在删除操作过程中使用的参数。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Deleting">
+      <summary>在从数据源中删除对象之前发生。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EnableDelete">
+      <summary>获取或设置一个值，该值指示是否可以通过 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件删除对象。</summary>
+      <returns>如果启用了自动删除操作，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EnableFlattening">
+      <summary>获取或设置一个值，该值指示是否关闭包装创建。</summary>
+      <returns>
+        <see langword="true" /> 如果将平展属性;，否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EnableInsert">
+      <summary>获取或设置一个值，该值指示是否可以通过 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件添加对象。</summary>
+      <returns>如果启用了自动插入操作，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EnableUpdate">
+      <summary>获取或设置一个值，该值指示是否可以通过 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件修改对象。</summary>
+      <returns>如果启用了自动更新操作，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EntitySetName">
+      <summary>获取或设置 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件使用的实体集的名称。</summary>
+      <returns>实体集名称。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EntityTypeFilter">
+      <summary>获取或设置将查询结果限定为特定派生类型的表达式。</summary>
+      <returns>筛选器表达式。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.GetView(System.String)">
+      <summary>获取与数据源控件关联的命名的数据源视图。</summary>
+      <param name="viewName">要检索的视图的名称。 由于 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件只支持一个视图，因此忽略 <paramref name="viewName" />。</param>
+      <returns>与 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 控件关联的 <see cref="T:System.Web.UI.WebControls.EntityDataSource" />。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.GetViewNames">
+      <summary>获取名称的集合，这些名称表示与 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件关联的视图对象的列表。</summary>
+      <returns>一个 <see cref="T:System.Collections.ICollection" />，其中包含与 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件关联的视图的名称。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.GroupBy">
+      <summary>获取或设置指定如何对查询结果分组的 Entity SQL 表达式。</summary>
+      <returns>GROUP BY 子句。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.Include">
+      <summary>获取或设置指定要包含在查询结果中的相关对象的表达式。</summary>
+      <returns>要在查询结果中返回的以逗号分隔的查询路径列表。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Inserted">
+      <summary>在数据源中创建新对象之后发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Inserting">
+      <summary>在将新对象保留到数据源之前发生。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.InsertParameters">
+      <summary>获取在插入操作过程中使用的参数的集合。</summary>
+      <returns>在插入操作过程中使用的参数。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.LoadControlState(System.Object)">
+      <summary>加载 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件中需要保留的属性的状态。</summary>
+      <param name="savedState">包含状态信息的 <see cref="T:System.Object" />。</param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.OnInit(System.EventArgs)">
+      <summary>将 <see cref="E:System.Web.UI.Page.LoadComplete" /> 事件处理程序添加到包含 <see cref="T:System.Web.UI.Page" /> 控件的 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件中。</summary>
+      <param name="e">包含事件数据的 <see cref="T:System.EventArgs" /> 对象。</param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.OnUnload(System.EventArgs)">
+      <summary>引发 <see cref="E:System.Web.UI.Control.Unload" /> 事件。</summary>
+      <param name="e">包含事件数据的 <see cref="T:System.EventArgs" /> 对象。</param>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.OrderBy">
+      <summary>获取或设置指定如何对查询结果进行排序的 Entity SQL 表达式。</summary>
+      <returns>ORDER BY 子句。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.OrderByParameters">
+      <summary>获取用于创建 ORDER BY 子句的参数的集合。</summary>
+      <returns>用于创建 ORDER BY 子句的参数。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.QueryCreated">
+      <summary>出现在 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 创建配置 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件过程中指定的 Entity SQL 之后。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.SaveControlState">
+      <summary>保存 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件中需要保留的属性的状态。</summary>
+      <returns>包含状态信息的 <see cref="T:System.Object" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.Select">
+      <summary>获取或设置投影，该投影定义要包括在查询结果中的属性。</summary>
+      <returns>用于创建 ORDER BY 子句的参数。</returns>
+      <exception cref="T:System.InvalidOperationException">当 <see cref="P:System.Web.UI.WebControls.EntityDataSource.Select" /> 属性指定了查询投影且 <see cref="P:System.Web.UI.WebControls.EntityDataSource.EnableUpdate" />、<see cref="P:System.Web.UI.WebControls.EntityDataSource.EnableDelete" /> 或 <see cref="P:System.Web.UI.WebControls.EntityDataSource.EnableInsert" /> 的值为 <see langword="true" /> 时。</exception>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Selected">
+      <summary>在执行查询之后发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Selecting">
+      <summary>在构建并执行查询之前发生。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.SelectParameters">
+      <summary>获取用于创建投影的参数的集合。</summary>
+      <returns>用于创建投影的参数。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.StoreOriginalValuesInViewState">
+      <summary>获取或设置一个值，该值指示数据源中的数据是否存储在视图状态中，以确保数据在更新或删除之前不会由其他进程更改。</summary>
+      <returns>如果将值存储在视图状态中，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.System#Web#DynamicData#IDynamicDataSource#Exception">
+      <summary>在分部方法中验证失败或引发异常时发生。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.System#Web#UI#WebControls#IQueryableDataSource#RaiseViewChanged">
+      <summary>通知数据绑定控件，告知其参数对象已更改，并且数据绑定控件需要刷新。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.TrackViewState">
+      <summary>导致跟踪服务器控件的视图状态的更改，以便这些更改可以存储到服务器控件的 <see cref="T:System.Web.UI.StateBag" /> 对象中。 通过 <see cref="P:System.Web.UI.Control.ViewState" /> 属性可访问此对象。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Updated">
+      <summary>在将对象更改保留到数据源之后发生。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.UpdateParameters">
+      <summary>获取在更新操作过程中使用的参数的集合。</summary>
+      <returns>在更新操作过程中使用的参数。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Updating">
+      <summary>在将对象更改保留到数据源之前发生。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.Where">
+      <summary>获取或设置指定如何筛选查询结果的 Entity SQL 表达式。</summary>
+      <returns>WHERE 子句。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.WhereParameters">
+      <summary>获取用于创建 WHERE 子句的参数的集合。</summary>
+      <returns>用于创建 WHERE 子句的参数。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs">
+      <summary>为 <see cref="E:System.Web.UI.WebControls.EntityDataSource.Inserted" />、<see cref="E:System.Web.UI.WebControls.EntityDataSource.Updated" /> 和 <see cref="E:System.Web.UI.WebControls.EntityDataSource.Deleted" /> 事件提供数据。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs.Context">
+      <summary>获取由数据源使用的 <see cref="T:System.Data.Objects.ObjectContext" />。</summary>
+      <returns>由数据源使用的上下文。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs.Entity">
+      <summary>获取添加、修改或更新的对象。</summary>
+      <returns>作为实体的 <see cref="T:System.Object" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs.Exception">
+      <summary>获取在插入、更新或删除操作过程中引发的异常。</summary>
+      <returns>如果出现错误，则为异常，否则为某个 <see langword="null" /> 引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs.ExceptionHandled">
+      <summary>获取或设置一个值，该值指示异常是否已得到处理而不该再次引发。</summary>
+      <returns>如果异常已得到处理，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs">
+      <summary>为 <see cref="E:System.Web.UI.WebControls.EntityDataSource.Inserting" />、<see cref="E:System.Web.UI.WebControls.EntityDataSource.Updating" /> 和 <see cref="E:System.Web.UI.WebControls.EntityDataSource.Deleting" /> 事件提供数据。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs.Context">
+      <summary>获取由数据源使用的 <see cref="T:System.Data.Objects.ObjectContext" />。</summary>
+      <returns>数据源使用的对象上下文。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs.Entity">
+      <summary>获取正在添加、修改或更新的对象。</summary>
+      <returns>作为实体的 <see cref="T:System.Object" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs.Exception">
+      <summary>获取在执行插入、更新或删除操作之前验证数据时引发的异常。</summary>
+      <returns>如果出现错误，则为异常，否则为 <see langword="null" /> 引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs.ExceptionHandled">
+      <summary>获取或设置一个值，该值指示异常是否已得到处理而不该再次引发。</summary>
+      <returns>如果异常已得到处理，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceContextCreatedEventArgs">
+      <summary>为 <see cref="E:System.Web.UI.WebControls.EntityDataSource.ContextCreated" /> 事件提供数据。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceContextCreatedEventArgs.Context">
+      <summary>获取由数据源使用的 <see cref="T:System.Data.Objects.ObjectContext" />。</summary>
+      <returns>数据源使用的对象上下文。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceContextCreatingEventArgs">
+      <summary>为 <see cref="E:System.Web.UI.WebControls.EntityDataSource.ContextCreating" /> 事件提供数据。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceContextCreatingEventArgs.Context">
+      <summary>获取数据源使用的 <see cref="T:System.Data.Objects.ObjectContext" />。</summary>
+      <returns>数据源使用的对象上下文。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceContextDisposingEventArgs">
+      <summary>为 <see cref="E:System.Web.UI.WebControls.EntityDataSource.ContextDisposing" /> 事件提供数据。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceContextDisposingEventArgs.Context">
+      <summary>获取由数据源使用的 <see cref="T:System.Data.Objects.ObjectContext" />。</summary>
+      <returns>数据源使用的对象上下文。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs">
+      <summary>为 <see cref="E:System.Web.UI.WebControls.EntityDataSource.Selected" /> 事件提供数据。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.Context">
+      <summary>获取由数据源使用的 <see cref="T:System.Data.Objects.ObjectContext" />。</summary>
+      <returns>由数据源使用的上下文。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.Exception">
+      <summary>获取在查询过程中引发的异常。</summary>
+      <returns>如果出现错误，则为异常，否则为某个 <see langword="null" /> 引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.ExceptionHandled">
+      <summary>获取或设置一个值，该值指示异常是否已得到处理而不该再次引发。</summary>
+      <returns>如果异常已得到处理，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.Results">
+      <summary>获取由查询返回的对象。</summary>
+      <returns>查询所返回的类型。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.SelectArguments">
+      <summary>获取用于确定数据返回方式的值。</summary>
+      <returns>包含用于确定数据返回方式的值的对象。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.TotalRowCount">
+      <summary>获取由查询返回的对象总数。</summary>
+      <returns>返回的对象总数。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceSelectingEventArgs">
+      <summary>为 <see cref="E:System.Web.UI.WebControls.EntityDataSource.Selecting" /> 事件提供数据。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectingEventArgs.DataSource">
+      <summary>获取引发 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 事件的 <see cref="E:System.Web.UI.WebControls.EntityDataSource.Selecting" /> 实例。</summary>
+      <returns>引发 <see cref="E:System.Web.UI.WebControls.EntityDataSource.Selecting" /> 事件的数据源。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectingEventArgs.SelectArguments">
+      <summary>获取用于确定数据返回方式的值。</summary>
+      <returns>包含用于确定数据返回方式的值的对象。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceValidationException">
+      <summary>表示验证动态数据源的属性时发生的错误。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceValidationException.#ctor">
+      <summary>使用系统提供用以描述错误的消息创建 <see cref="T:System.Web.UI.WebControls.EntityDataSourceValidationException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceValidationException.#ctor(System.String)">
+      <summary>使用指定的错误描述消息创建 <see cref="T:System.Web.UI.WebControls.EntityDataSourceValidationException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceValidationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定错误消息和对作为此异常原因的内部异常的引用来创建 <see cref="T:System.Web.UI.WebControls.EntityDataSourceValidationException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+      <param name="innerException">导致当前异常的异常。 如果 <paramref name="innerException" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceValidationException.System#Web#DynamicData#IDynamicValidatorException#InnerExceptions">
+      <summary>获取在对新数据字段或编辑的数据字段进行验证时发生的异常。</summary>
+      <returns>一个集合，其中包含发生的所有异常。</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceView">
+      <summary>支持 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件并为数据绑定控件提供一个接口，以便对实体数据执行查询和其他操作。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.#ctor(System.Web.UI.WebControls.EntityDataSource,System.String)">
+      <summary>初始化 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 类的新实例，将指定的 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件设置为当前视图的所有者。</summary>
+      <param name="owner">与 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 对象关联的数据源控件。</param>
+      <param name="viewName">数据源视图的唯一名称（在拥有它的数据源控件的范围内）。</param>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanDelete">
+      <summary>获取一个值，该值指示与当前 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 控件关联的 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 对象是否支持删除操作。</summary>
+      <returns>如果支持该操作，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanInsert">
+      <summary>获取一个值，该值指示与当前 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 控件关联的 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 对象是否支持插入操作。</summary>
+      <returns>如果支持该操作，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanPage">
+      <summary>获取一个值，该值指示与当前 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件相关联的 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 对象是否支持对检索数据进行分页。</summary>
+      <returns>如果支持该操作，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanRetrieveTotalRowCount">
+      <summary>获取一个值，该值指示与当前 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件相关联的<see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 对象除支持检索数据外，是否还支持检索数据行的总数。</summary>
+      <returns>如果支持该操作，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanSort">
+      <summary>获取一个值，该值指示与当前 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件相关联的 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 对象是否支持对检索数据的排序视图。</summary>
+      <returns>如果支持该操作，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanUpdate">
+      <summary>获取一个值，该值指示与当前 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 控件关联的 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 对象是否支持更新操作。</summary>
+      <returns>如果支持该操作，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.ContextCreated">
+      <summary>在 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 完成创建用于将数据绑定到控件的 <see cref="T:System.Data.Objects.ObjectContext" /> 时发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.ContextCreating">
+      <summary>在 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 创建数据绑定中使用的 <see cref="T:System.Data.Objects.ObjectContext" /> 时发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.ContextDisposing">
+      <summary>在释放 <see cref="T:System.Data.Objects.ObjectContext" /> 之前发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Deleted">
+      <summary>在从数据源中删除对象之后发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Deleting">
+      <summary>在从数据源中删除对象之前发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Exception">
+      <summary>在分部方法中验证失败或引发异常时发生。</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.ExecuteDelete(System.Collections.IDictionary,System.Collections.IDictionary)">
+      <summary>执行删除操作。</summary>
+      <param name="keys">要删除的实体的键。</param>
+      <param name="oldValues">要删除的实体的值。</param>
+      <returns>删除的行数；否则，如果操作失败或行数未知，则为 -1。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.ExecuteInsert(System.Collections.IDictionary)">
+      <summary>执行插入操作。</summary>
+      <param name="values">要插入的实体的值。</param>
+      <returns>插入的行数；否则，如果操作失败或行数未知，则为 -1。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.ExecuteSelect(System.Web.UI.DataSourceSelectArguments)">
+      <summary>执行选择操作。</summary>
+      <param name="arguments">选择操作自变量。</param>
+      <returns>选择操作的结果。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.ExecuteUpdate(System.Collections.IDictionary,System.Collections.IDictionary,System.Collections.IDictionary)">
+      <summary>执行更新操作。</summary>
+      <param name="keys">要更新的实体的键。</param>
+      <param name="values">要更新的实体的新值。</param>
+      <param name="oldValues">要更新的实体的旧值。</param>
+      <returns>更新的行数；否则，如果操作失败或行数未知，则为 -1。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.GetViewSchema">
+      <summary>返回表示 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 的表。</summary>
+      <returns>一个包含 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 的属性的表。</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Inserted">
+      <summary>在数据源中创建新对象之后发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Inserting">
+      <summary>在将新对象保留到数据源之前发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.QueryCreated">
+      <summary>出现在 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 创建配置 <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> 控件过程中指定的 Entity SQL 查询后。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Selected">
+      <summary>在执行查询之后发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Selecting">
+      <summary>在构建并执行查询之前发生。</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.System#Web#UI#IStateManager#IsTrackingViewState">
+      <summary>获取一个值，该值指示 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 对象是否正将更改保存到其视图状态。</summary>
+      <returns>如果数据源视图被标记为保存其状态，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.System#Web#UI#IStateManager#LoadViewState(System.Object)">
+      <summary>还原数据源视图的以前保存的视图状态。</summary>
+      <param name="savedState">要还原的 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 控件状态。</param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.System#Web#UI#IStateManager#SaveViewState">
+      <summary>保存自页回发到服务器后 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 控件的视图状态更改。</summary>
+      <returns>包含对 <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> 控件的视图状态所做更改的对象；如果没有与对象关联的视图状态，则为 <see langword="null" />（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.System#Web#UI#IStateManager#TrackViewState">
+      <summary>跟踪视图状态更改。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Updated">
+      <summary>在将对象更改保留到数据源之后发生。</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Updating">
+      <summary>在将对象更改保留到数据源之前发生。</summary>
+    </member>
+  </members>
+</doc>

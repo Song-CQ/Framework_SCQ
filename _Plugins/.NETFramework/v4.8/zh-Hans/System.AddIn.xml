@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.AddIn</name>
+  </assembly>
+  <members>
+    <member name="T:System.AddIn.AddInAttribute">
+      <summary>将对象标识为外接程序。</summary>
+    </member>
+    <member name="M:System.AddIn.AddInAttribute.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.AddIn.AddInAttribute" /> 类的新实例。</summary>
+      <param name="name">外接程序的名称。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="name" /> 是一个长度为零的字符串。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="name" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.AddIn.AddInAttribute.Description">
+      <summary>获取或设置外接程序的说明。</summary>
+      <returns>外接程序的最新说明。</returns>
+    </member>
+    <member name="P:System.AddIn.AddInAttribute.Name">
+      <summary>获取外接程序的名称。</summary>
+      <returns>外接程序的名称。</returns>
+    </member>
+    <member name="P:System.AddIn.AddInAttribute.Publisher">
+      <summary>获取或设置外接程序的发行者。</summary>
+      <returns>外接程序的发行者。</returns>
+    </member>
+    <member name="P:System.AddIn.AddInAttribute.Version">
+      <summary>获取或设置外接程序的软件版本。</summary>
+      <returns>外接程序的软件版本。</returns>
+    </member>
+    <member name="T:System.AddIn.Hosting.AddInController">
+      <summary>提供用于执行各种任务的外接程序的访问权限。</summary>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInController.AddInEnvironment">
+      <summary>获取一个 <see cref="T:System.AddIn.Hosting.AddInEnvironment" /> 对象。</summary>
+      <returns>一个对象，可用于激活与原始外接程序在同一环境中的其他外接程序。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInController.AppDomain">
+      <summary>获取包含外接程序的应用程序域。</summary>
+      <returns>外接程序的应用程序域。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInController.GetAddInController(System.Object)">
+      <summary>获取外接程序的控制器。</summary>
+      <param name="addIn">外接程序的宿主视图。</param>
+      <returns>外接程序的控制器。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInController.Shutdown">
+      <summary>禁用外接程序。</summary>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInController.Token">
+      <summary>获取表示外接程序的标记。</summary>
+      <returns>一个表示外接程序的对象。</returns>
+    </member>
+    <member name="T:System.AddIn.Hosting.AddInEnvironment">
+      <summary>提供外接程序的应用程序域和进程的访问权限。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInEnvironment.#ctor(System.AppDomain)">
+      <summary>初始化 <see cref="T:System.AddIn.Hosting.AddInEnvironment" /> 类的新实例。</summary>
+      <param name="appDomain">包含外接程序的应用程序域。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="appDomain" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Security.SecurityException">需要完全信任权限。 调用链中的调用方没有足够权限。</exception>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInEnvironment.Process">
+      <summary>获取 <see cref="T:System.AddIn.Hosting.AddInProcess" /> 对象，该对象表示在其中运行外接程序的进程。</summary>
+      <returns>在其中运行外接程序的进程。</returns>
+    </member>
+    <member name="T:System.AddIn.Hosting.AddInProcess">
+      <summary>提供一个外部进程，用于通过宿主应用程序在进程外运行外接程序。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInProcess.#ctor">
+      <summary>初始化 <see cref="T:System.AddIn.Hosting.AddInProcess" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInProcess.#ctor(System.AddIn.Hosting.Platform)">
+      <summary>初始化 <see cref="T:System.AddIn.Hosting.AddInProcess" /> 类的新实例，并指定运行外接程序的进程的每字位数。</summary>
+      <param name="platform">一个值，该值指定运行外接程序的进程的每字位数。</param>
+      <exception cref="T:System.InvalidOperationException">缺少可执行文件（AddInProcess.exe 或 AddInProcess32.exe）路径的注册表项。  
+或 
+可执行文件丢失。</exception>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInProcess.IsCurrentProcess">
+      <summary>获取一个值，指示当前 <see cref="T:System.AddIn.Hosting.AddInProcess" /> 对象是否表示主机应用程序进程。</summary>
+      <returns>如果 <see cref="T:System.AddIn.Hosting.AddInProcess" /> 对象对应于当前进程，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInProcess.KeepAlive">
+      <summary>获取或设置一个值，该值指示是否使外部进程保持活动状态。</summary>
+      <returns>如果此外部进程应保持活动状态，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInProcess.Platform">
+      <summary>获取运行进程外外接程序的进程的每字位数。</summary>
+      <returns>运行外接程序的进程的每字位数。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInProcess.ProcessId">
+      <summary>获取外部进程的进程 ID。</summary>
+      <returns>外部进程的进程 ID；如果尚未启动外部进程，则返回 -1。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInProcess.Shutdown">
+      <summary>强制关闭外部进程。</summary>
+      <returns>如果已成功关闭原本在运行的外部进程，则为 <see langword="true" />；如果没有与 <see cref="T:System.AddIn.Hosting.AddInProcess" /> 关联的活动进程，则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">外接程序正运行在宿主应用程序的进程内。 启动和停止进程仅对于外部进程允许，而非主机进程。</exception>
+    </member>
+    <member name="E:System.AddIn.Hosting.AddInProcess.ShuttingDown">
+      <summary>当由 <see cref="T:System.AddIn.Hosting.AddInProcess" /> 对象所表示的进程即将关闭时发生。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInProcess.Start">
+      <summary>启动外部进程。</summary>
+      <returns>如果成功启动该进程，则为 <see langword="true" />；如果该进程已正在运行，则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">外接程序正运行在宿主应用程序的进程内。 启动和停止进程仅对于外部进程允许，而非主机进程。</exception>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInProcess.StartupTimeout">
+      <summary>获取或设置允许进程启动所用的秒数。</summary>
+      <returns>允许进程启动所用的秒数。</returns>
+      <exception cref="T:System.InvalidOperationException">该进程已在运行。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">赋给的值小于 0（零）。</exception>
+    </member>
+    <member name="T:System.AddIn.Hosting.AddInSecurityLevel">
+      <summary>指定授予外接程序所加载到的应用程序域的信任级别。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSecurityLevel.FullTrust">
+      <summary>对可读取和写入本地文件系统、创建网络连接以及从注册表中读取的外接程序使用完全信任安全级别。 通过应用 <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /> 字段，此安全级别向外接程序代码访问安全性 (CAS) 授予完全访问权限。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSecurityLevel.Host">
+      <summary>使用宿主安全级别为外接程序提供当前授予承载代码的权限。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSecurityLevel.Internet">
+      <summary>对具有低信任级别的外接程序使用 Internet 安全级别。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSecurityLevel.Intranet">
+      <summary>对位于公司 Intranet 上的外接程序使用 Intranet 安全级别。 这些外接程序可以具有较高信任级别，因为服务器和信息都在公司的防火墙内。</summary>
+    </member>
+    <member name="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException">
+      <summary>管线目录结构中缺少段目录时引发的异常。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException.#ctor">
+      <summary>初始化 <see cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException" /> 类的新实例。</summary>
+      <param name="info">承载序列化对象数据的对象。</param>
+      <param name="context">有关源或目标对象数据的上下文信息。</param>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException.#ctor(System.String)">
+      <summary>用指定的消息初始化 <see cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException" /> 类的新实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException" /> 类的新实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="innerException">导致当前异常的异常。 如果 <paramref name="innerException" /> 参数不是 null 引用，则在处理内部异常的 catch 块中引发当前异常。</param>
+    </member>
+    <member name="T:System.AddIn.Hosting.AddInSegmentType">
+      <summary>指定管线段的类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSegmentType.AddIn">
+      <summary>指定外接程序段。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSegmentType.AddInSideAdapter">
+      <summary>指定外接程序端适配器段。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSegmentType.AddInView">
+      <summary>指定外接程序视图段。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSegmentType.Contract">
+      <summary>指定协定段。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSegmentType.HostSideAdapter">
+      <summary>指定宿主端适配器段。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.AddInSegmentType.HostViewOfAddIn">
+      <summary>指定外接程序段的宿主视图。</summary>
+    </member>
+    <member name="T:System.AddIn.Hosting.AddInStore">
+      <summary>提供方法以存储和查找有关可用外接程序及管线段的信息。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.FindAddIn(System.Type,System.String,System.String,System.String)">
+      <summary>查找特定的外接程序。</summary>
+      <param name="hostViewOfAddIn">用于定义外接程序宿主视图的类型。</param>
+      <param name="pipelineRootFolderPath">管线目录结构的根目录的路径。</param>
+      <param name="addInFilePath">要查找的外接程序的路径和文件名。</param>
+      <param name="addInTypeName">外接程序的类型名称。</param>
+      <returns>标记的集合，仅包含表示已找到的外接程序的标记。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="pipelineRootFolderPath" />、<paramref name="addInFilePath" /> 或 <paramref name="addInTypeName" /> 的长度为 0。  
+
+或 - 
+外接程序不在 <paramref name="addInfilePath" /> 中。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.Security.SecurityException">调用方没有 <paramref name="pipelineRootFolderPath" /> 的读取访问权限。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.FindAddIns(System.Type,System.AddIn.Hosting.PipelineStoreLocation)">
+      <summary>在由 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 枚举值指定的位置查找外接程序的指定宿主视图的所有外接程序。</summary>
+      <param name="hostViewOfAddIn">用于定义外接程序宿主视图的类型。</param>
+      <param name="location">宿主应用程序的基目录。</param>
+      <returns>表示已找到的外接程序的标记的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="location" /> 不是有效的 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 值。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.FindAddIns(System.Type,System.AddIn.Hosting.PipelineStoreLocation,System.String[])">
+      <summary>在由 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 值指定的位置和可选外接程序文件夹中查找外接程序的指定宿主视图的所有外接程序。</summary>
+      <param name="hostViewOfAddIn">用于定义外接程序宿主视图的类型。</param>
+      <param name="location">枚举值之一。  
+目前，此枚举中仅有的值是由用于设置主机应用程序域的 <see cref="P:System.AppDomainSetup.ApplicationBase" /> 属性所指定的目录。</param>
+      <param name="addInFolderPaths">（可选）。 包含一个或多个外接程序子目录的目录的路径。因为此参数接受字符串数组，所以可以指定多个路径。  
+如果外接程序位于管线目录结构中 AddIns 文件夹内，则不需要此参数。</param>
+      <returns>表示已找到的外接程序的标记的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="location" /> 不是有效的 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 值。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.FindAddIns(System.Type,System.String,System.String[])">
+      <summary>从指定根目录中查找外接程序的指定宿主视图的所有外接程序。</summary>
+      <param name="hostViewOfAddIn">用于定义外接程序宿主视图的类型。</param>
+      <param name="pipelineRootFolderPath">管线目录结构的根目录的路径。</param>
+      <param name="addInFolderPaths">（可选）。 包含一个或多个外接程序子目录的目录的路径。因为此参数接受字符串数组，所以可以指定多个路径。  
+如果外接程序位于管线目录结构中 AddIns 文件夹内，则不需要此参数。</param>
+      <returns>表示已找到的外接程序的标记的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.Rebuild(System.AddIn.Hosting.PipelineStoreLocation)">
+      <summary>重新生成管线段缓存并包括由 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 值指定的位置上的新段。</summary>
+      <param name="location">枚举值之一。  
+目前，此枚举中仅有的值是由用于设置主机应用程序域的 <see cref="P:System.AppDomainSetup.ApplicationBase" /> 属性所指定的目录。</param>
+      <returns>一个由在计算管线段时描述警告的字符串组成的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException">管线目录结构中缺少段目录。</exception>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="location" /> 不是有效的 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 值。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.Rebuild(System.String)">
+      <summary>重新生成管线段缓存并包括指定根目录中的新段。</summary>
+      <param name="pipelineRootFolderPath">管线目录结构的根目录的路径。</param>
+      <returns>一个由在计算管线段时描述警告的字符串组成的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException">管线目录结构中缺少段目录。</exception>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.RebuildAddIns(System.String)">
+      <summary>重新生成外接程序缓存并包括指定根目录中的新外接程序。</summary>
+      <param name="addInsFolderPath">包含一个或多个外接程序子目录的目录的路径。</param>
+      <returns>一个由在计算管线段时描述警告的字符串组成的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException">管线目录结构中缺少段目录。</exception>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="addInsFolderPath" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Security.SecurityException">调用方没有 <paramref name="addInsFolderPath" /> 所指定地点的读写访问权限。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.Update(System.AddIn.Hosting.PipelineStoreLocation)">
+      <summary>用 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 值指定的位置上的新段来更新管线段缓存。</summary>
+      <param name="location">枚举值之一。  
+目前，此枚举中仅有的值是由用于设置主机应用程序域的 <see cref="P:System.AppDomainSetup.ApplicationBase" /> 属性所指定的目录。</param>
+      <returns>一个由在计算管线段时描述警告的字符串组成的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException">管线目录结构中缺少段目录。</exception>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="location" /> 不是有效的 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 值。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.Update(System.String)">
+      <summary>用指定根目录中的新段更新管线段缓存。</summary>
+      <param name="pipelineRootFolderPath">管线目录结构的根目录的路径。</param>
+      <returns>一个由在计算管线段时描述警告的字符串组成的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException">管线目录结构中缺少段目录。</exception>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInStore.UpdateAddIns(System.String)">
+      <summary>更新外接程序缓存并包括指定位置处的新外接程序。</summary>
+      <param name="addInsFolderPath">包含一个或多个外接程序子目录的目录的路径。</param>
+      <returns>一个由在计算管线段时描述警告的字符串组成的集合。</returns>
+      <exception cref="T:System.AddIn.Hosting.AddInSegmentDirectoryNotFoundException">管线目录结构中缺少段目录。</exception>
+      <exception cref="T:System.AddIn.Hosting.InvalidPipelineStoreException">存在管线目录结构访问冲突。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="addInsFolderPath" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Security.SecurityException">调用方没有 <paramref name="addInsFolderPath" /> 所指定地点的读写访问权限。</exception>
+    </member>
+    <member name="T:System.AddIn.Hosting.AddInToken">
+      <summary>表示可激活的外接程序。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.Activate``1(System.AddIn.Hosting.AddInEnvironment)">
+      <summary>在另一个外接程序的环境中激活一个外接程序。</summary>
+      <param name="environment">包含原始外接程序的应用程序域和进程。</param>
+      <typeparam name="T">表示外接程序的宿主视图的接口或抽象基类型。</typeparam>
+      <returns>外接程序的宿主视图。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.Activate``1(System.AddIn.Hosting.AddInProcess,System.AddIn.Hosting.AddInSecurityLevel)">
+      <summary>在外部进程中（且在新应用程序域内）激活具有指定信任级别的外接程序。</summary>
+      <param name="process">在其中激活外接程序的外部进程。</param>
+      <param name="level">用于指定信任级别的枚举值之一。</param>
+      <typeparam name="T">表示外接程序的宿主视图的接口或抽象基类型。</typeparam>
+      <returns>外接程序的宿主视图。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.Activate``1(System.AddIn.Hosting.AddInProcess,System.Security.PermissionSet)">
+      <summary>在外部进程中（且在新应用程序域内）激活具有指定权限集的外接程序。</summary>
+      <param name="process">在其中激活外接程序的外部进程。</param>
+      <param name="permissionSet">授予外接程序的必需权限集。</param>
+      <typeparam name="T">表示外接程序的宿主视图的接口或抽象基类型。</typeparam>
+      <returns>外接程序的宿主视图。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.Activate``1(System.AddIn.Hosting.AddInSecurityLevel)">
+      <summary>在新应用程序域中激活具有指定信任级别的外接程序。</summary>
+      <param name="trustLevel">用于指定信任级别的枚举值之一。</param>
+      <typeparam name="T">表示外接程序的宿主视图的接口或抽象基类型。</typeparam>
+      <returns>外接程序的宿主视图。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.Activate``1(System.AddIn.Hosting.AddInSecurityLevel,System.String)">
+      <summary>在具有指定名称和信任级别的新应用程序域中激活外接程序。</summary>
+      <param name="trustLevel">用于指定信任级别的枚举值之一。</param>
+      <param name="appDomainName">要分配给新应用程序域的友好名称。</param>
+      <typeparam name="T">表示外接程序的宿主视图的接口或抽象基类型。</typeparam>
+      <returns>外接程序的宿主视图。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.Activate``1(System.AppDomain)">
+      <summary>在现有应用程序域中激活外接程序。</summary>
+      <param name="target">应在其中激活外接程序的应用程序域。</param>
+      <typeparam name="T">表示外接程序的宿主视图的接口或抽象基类型。</typeparam>
+      <returns>外接程序的宿主视图。</returns>
+      <exception cref="T:System.Security.SecurityException">需要完全信任权限。 调用链中的调用方没有足够权限。</exception>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.Activate``1(System.Security.PermissionSet)">
+      <summary>在新应用程序域中激活具有指定权限集的外接程序。</summary>
+      <param name="permissions">授予外接程序的权限。</param>
+      <typeparam name="T">表示外接程序的宿主视图的接口或抽象基类型。</typeparam>
+      <returns>外接程序的宿主视图。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="permissions" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInToken.AddInFullName">
+      <summary>获取外接程序的命名空间和类型。</summary>
+      <returns>由命名空间完全限定的外接程序的类型。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInToken.AssemblyName">
+      <summary>获取包含外接程序的程序集的名称。</summary>
+      <returns>程序集的名称。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInToken.Description">
+      <summary>获取外接程序的说明。</summary>
+      <returns>外接程序的说明；如果 <see cref="T:System.AddIn.AddInAttribute" /> 特性中未指定该说明，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInToken.EnableDirectConnect">
+      <summary>获取或设置一个值，该值指示在条件允许时外接程序是否应直接连接到它们的宿主。</summary>
+      <returns>如果外接程序应该直接连接到宿主，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.Equals(System.Object)">
+      <summary>确定指定的对象是否等于当前实例。</summary>
+      <param name="obj">要与当前实例进行比较的对象。</param>
+      <returns>如果指定的对象与当前实例相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.GetEnumerator">
+      <summary>返回一个与此标记关联的管线段的限定数据枚举数。</summary>
+      <returns>一个枚举数，可用于循环访问与当前标记关联的管线段的限定数据。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.GetHashCode">
+      <summary>作为标记的哈希函数。</summary>
+      <returns>当前标记的哈希代码。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInToken.Name">
+      <summary>获取外接程序的名称。</summary>
+      <returns>外接程序的名称。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInToken.Publisher">
+      <summary>获取外接程序的发布者。</summary>
+      <returns>外接程序的发行者；如果 <see cref="T:System.AddIn.AddInAttribute" /> 特性中未指定发行者，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInToken.QualificationData">
+      <summary>获取与当前标记关联的各个管线段的相关数据的字典。</summary>
+      <returns>一个字典，其键为管线段，其值为一系列名称/值对的字典，这些名称/值对表示每个段的限定数据。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.System#Collections#IEnumerable#GetEnumerator">
+      <summary>返回一个与此标记关联的管线段的限定数据枚举数。</summary>
+      <returns>一个枚举数，可用于循环访问与当前标记关联的管线段的限定数据。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.AddInToken.ToString">
+      <summary>返回一个表示标记的字符串。</summary>
+      <returns>一个表示标记的字符串。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.AddInToken.Version">
+      <summary>获取 <see cref="T:System.AddIn.AddInAttribute" /> 特性中指定的外接程序版本。</summary>
+      <returns>外接程序的版本；如果 <see cref="T:System.AddIn.AddInAttribute" /> 特性中未指定版本号，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="T:System.AddIn.Hosting.InvalidPipelineStoreException">
+      <summary>在未找到目录以及用户无权访问管线根路径或外接程序路径的情况下引发的异常。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.InvalidPipelineStoreException.#ctor">
+      <summary>初始化 <see cref="T:System.AddIn.Hosting.InvalidPipelineStoreException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.InvalidPipelineStoreException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化和流的上下文信息初始化 <see cref="T:System.AddIn.Hosting.InvalidPipelineStoreException" /> 类的新实例。</summary>
+      <param name="info">序列化的对象数据。</param>
+      <param name="context">有关源或目标对象数据的上下文信息。</param>
+    </member>
+    <member name="M:System.AddIn.Hosting.InvalidPipelineStoreException.#ctor(System.String)">
+      <summary>使用指定的消息初始化 <see cref="T:System.AddIn.Hosting.InvalidPipelineStoreException" /> 类的新实例。</summary>
+      <param name="message">错误说明。</param>
+    </member>
+    <member name="M:System.AddIn.Hosting.InvalidPipelineStoreException.#ctor(System.String,System.Exception)">
+      <summary>使用指定消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.AddIn.Hosting.InvalidPipelineStoreException" /> 类的新实例。</summary>
+      <param name="message">错误说明。</param>
+      <param name="innerException">导致当前异常的异常。 如果 <paramref name="innerException" /> 参数不是 null 引用，则在处理内部异常的 catch 块中引发当前异常。</param>
+    </member>
+    <member name="T:System.AddIn.Hosting.PipelineStoreLocation">
+      <summary>指定管线存储区的替代位置，而不是目录路径。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.PipelineStoreLocation.ApplicationBase">
+      <summary>由 <see cref="P:System.AppDomainSetup.ApplicationBase" /> 属性指定的用于设置应用程序域宿主的位置。</summary>
+    </member>
+    <member name="T:System.AddIn.Hosting.Platform">
+      <summary>指定进程外的外接程序在其中运行的进程的每字位数。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.Platform.AnyCpu">
+      <summary>使用与操作系统相同的每字位数将外接程序加载到外部进程中。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.Platform.ARM">
+      <summary>要加载到 ARM 处理器上 32 位进程中的外接程序。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.Platform.Host">
+      <summary>使用与主机进程相同的每字位数将外接程序加载到外部进程中。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.Platform.X64">
+      <summary>要加载到 64 位外部进程中的外接程序。</summary>
+    </member>
+    <member name="F:System.AddIn.Hosting.Platform.X86">
+      <summary>要加载到 32 位外部进程中的外接程序。</summary>
+    </member>
+    <member name="T:System.AddIn.Hosting.QualificationDataItem">
+      <summary>表示管线段的开发人员提供给宿主使用的信息。</summary>
+    </member>
+    <member name="M:System.AddIn.Hosting.QualificationDataItem.Equals(System.Object)">
+      <summary>确定指定的对象是否等于当前的限定数据项。</summary>
+      <param name="obj">要比较的对象。</param>
+      <returns>如果 <paramref name="obj" /> 等于当前实例，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.QualificationDataItem.GetHashCode">
+      <summary>获取此限定数据项的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.QualificationDataItem.Name">
+      <summary>获取限定数据项的名称。</summary>
+      <returns>限定数据项的名称。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.QualificationDataItem.op_Equality(System.AddIn.Hosting.QualificationDataItem,System.AddIn.Hosting.QualificationDataItem)">
+      <summary>确定两个 <see cref="T:System.AddIn.Hosting.QualificationDataItem" /> 结构是否相等。</summary>
+      <param name="item1">要比较的第一个 <see cref="T:System.AddIn.Hosting.QualificationDataItem" />。</param>
+      <param name="item2">要比较的第二个 <see cref="T:System.AddIn.Hosting.QualificationDataItem" />。</param>
+      <returns>如果 <paramref name="item1" /> 和 <paramref name="item2" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Hosting.QualificationDataItem.op_Inequality(System.AddIn.Hosting.QualificationDataItem,System.AddIn.Hosting.QualificationDataItem)">
+      <summary>确定两个 <see cref="T:System.AddIn.Hosting.QualificationDataItem" /> 结构是否不同。</summary>
+      <param name="item1">要比较的第一个 <see cref="T:System.AddIn.Hosting.QualificationDataItem" />。</param>
+      <param name="item2">要比较的第二个 <see cref="T:System.AddIn.Hosting.QualificationDataItem" />。</param>
+      <returns>如果 <paramref name="item1" /> 和 <paramref name="item2" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.QualificationDataItem.Segment">
+      <summary>获取一个值，该值标识限定数据项所应用到的管线段。</summary>
+      <returns>数据项所应用到的管线段的类型。</returns>
+    </member>
+    <member name="P:System.AddIn.Hosting.QualificationDataItem.Value">
+      <summary>获取限定数据项的值。</summary>
+      <returns>项的值。</returns>
+    </member>
+    <member name="T:System.AddIn.Pipeline.AddInAdapterAttribute">
+      <summary>将对象标识为管线的外接程序端适配器段。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.AddInAdapterAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.AddIn.Pipeline.AddInAdapterAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.AddIn.Pipeline.AddInBaseAttribute">
+      <summary>将对象标识为管线的外接程序视图段。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.AddInBaseAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.AddIn.Pipeline.AddInBaseAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.AddIn.Pipeline.AddInBaseAttribute.ActivatableAs">
+      <summary>获取或设置单个外接程序端适配器可用于构造管线的一个或多个外接程序基类型。</summary>
+      <returns>一个外接程序基类型数组。</returns>
+    </member>
+    <member name="T:System.AddIn.Pipeline.CollectionAdapters">
+      <summary>能够实现在外接程序与其宿主应用程序之间传递集合。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.CollectionAdapters.ToIList``1(System.AddIn.Contract.IListContract{``0})">
+      <summary>将指定的 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合转换为 <see cref="T:System.Collections.Generic.IList`1" /> 集合。</summary>
+      <param name="collection">管线另一端中的集合。</param>
+      <typeparam name="T">列表中所含对象的类型。 <paramref name="T" /> 必须可序列化。</typeparam>
+      <returns>已转换的集合。</returns>
+    </member>
+    <member name="M:System.AddIn.Pipeline.CollectionAdapters.ToIList``2(System.AddIn.Contract.IListContract{``0},System.Converter{``0,``1},System.Converter{``1,``0})">
+      <summary>通过使用转换器适配器将指定的 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合转换为 <see cref="T:System.Collections.Generic.IList`1" /> 集合。</summary>
+      <param name="collection">传递到管线另一端的集合。</param>
+      <param name="contractViewAdapter">一个将数据从协定中定义的类型改编为视图中的预期类型的转换器。</param>
+      <param name="viewContractAdapter">一个将数据从视图中定义的类型改编为协定预期的类型的转换器。</param>
+      <typeparam name="TContract">定义用于跨隔离边界传递 <paramref name="TView" /> 类型对象的协定的类型。</typeparam>
+      <typeparam name="TView">定义列表中各个对象的视图的类型。</typeparam>
+      <returns>已转换的集合。</returns>
+    </member>
+    <member name="M:System.AddIn.Pipeline.CollectionAdapters.ToIListContract``1(System.Collections.Generic.IList{``0})">
+      <summary>将指定的 <see cref="T:System.Collections.Generic.IList`1" /> 集合转换为 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合。</summary>
+      <param name="collection">要转换的集合。</param>
+      <typeparam name="T">列表中所含对象的类型。 <paramref name="T" /> 必须可序列化。</typeparam>
+      <returns>已转换的集合。</returns>
+    </member>
+    <member name="M:System.AddIn.Pipeline.CollectionAdapters.ToIListContract``2(System.Collections.Generic.IList{``0},System.Converter{``0,``1},System.Converter{``1,``0})">
+      <summary>通过使用转换器适配器将指定的 <see cref="T:System.Collections.Generic.IList`1" /> 集合转换为 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合。</summary>
+      <param name="collection">要转换的集合。</param>
+      <param name="viewContractAdapter">一个将数据从视图中定义的类型改编为协定预期的类型的转换器。</param>
+      <param name="contractViewAdapter">一个将数据从协定中定义的类型改编为视图中的预期类型的转换器。</param>
+      <typeparam name="TView">定义列表中各个对象的视图的类型。</typeparam>
+      <typeparam name="TContract">定义用于跨隔离边界传递 <paramref name="TView" /> 类型对象的协定的类型。</typeparam>
+      <returns>已转换的集合。</returns>
+    </member>
+    <member name="T:System.AddIn.Pipeline.ContractAdapter">
+      <summary>提供用于共享和重新适应外接程序的方法。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractAdapter.ContractToViewAdapter``1(System.AddIn.Pipeline.ContractHandle,System.AddIn.Hosting.PipelineStoreLocation)">
+      <summary>如果在一个由 <see cref="T:System.AddIn.Hosting.PipelineStoreLocation" /> 枚举中的值指定的位置找到了适合的宿主端适配器，则获取外接程序的宿主视图。</summary>
+      <param name="contract">要共享的外接程序所使用的协定句柄。</param>
+      <param name="location">宿主的应用程序基。</param>
+      <typeparam name="TView">用于定义外接程序宿主视图的类型。</typeparam>
+      <returns>所共享的外接程序的宿主视图。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="location" /> 无效。</exception>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractAdapter.ContractToViewAdapter``1(System.AddIn.Pipeline.ContractHandle,System.String)">
+      <summary>如果在通过路径指定的位置找到了适合的宿主端适配器，则获取外接程序的宿主视图。</summary>
+      <param name="contract">要共享的外接程序所使用的协定句柄。</param>
+      <param name="pipelineRoot">到外接程序存储区的路径。</param>
+      <typeparam name="TView">用于定义外接程序宿主视图的类型。</typeparam>
+      <returns>所共享的外接程序的宿主视图。</returns>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractAdapter.ViewToContractAdapter(System.Object)">
+      <summary>获取提供的外接程序宿主视图的协定句柄。</summary>
+      <param name="view">由系统从当前应用程序域中激活的外接程序的宿主视图。</param>
+      <returns>协定的句柄。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="view" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.AddIn.Pipeline.ContractBase">
+      <summary>提供 <see cref="T:System.AddIn.Contract.IContract" /> 成员的默认实现。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.#ctor">
+      <summary>初始化 <see cref="T:System.AddIn.Pipeline.ContractBase" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.AcquireLifetimeToken">
+      <summary>获取一个生存期标记。</summary>
+      <returns>标识标记的随机数。</returns>
+      <exception cref="T:System.InvalidOperationException">所有以前已获得的令牌都已吊销。  没有更多的标记可用。</exception>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.GetRemoteHashCode">
+      <summary>获取当前 <see cref="T:System.AddIn.Pipeline.ContractBase" /> 对象的哈希代码。</summary>
+      <returns>当前 <see cref="T:System.AddIn.Pipeline.ContractBase" /> 对象的哈希代码。</returns>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.OnFinalRevoke">
+      <summary>当在外接程序端适配器中被重写时，释放该适配器占用的本机资源。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.QueryContract(System.String)">
+      <summary>如果当前对象实现协定，则反射该协定的实例并返回 <see langword="this" /> 指针。</summary>
+      <param name="contractIdentifier">协定的全名（包括其程序集名称）。</param>
+      <returns>指向 <see cref="T:System.AddIn.Contract.IContract" /> 接口的 <see langword="this" /> 指针；如果未实现该协定，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="contractIdentifier" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.RemoteEquals(System.AddIn.Contract.IContract)">
+      <summary>比较一个对象是否与远程对象相等。</summary>
+      <param name="contract">要测试是否与远程对象等同的对象。</param>
+      <returns>如果该对象与远程对象等同，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.RemoteToString">
+      <summary>获取一个标识远程对象的字符串。</summary>
+      <returns>一个标识远程对象的字符串。</returns>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.Renewal(System.Runtime.Remoting.Lifetime.ILease)">
+      <summary>请求发起客户端续订指定对象的租约。</summary>
+      <param name="lease">远程处理生存期服务所使用的生存期租约对象。</param>
+      <returns>已续订的租约。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="lease" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractBase.RevokeLifetimeToken(System.Int32)">
+      <summary>从未处理的生存期标记列表中移除指定的标记。</summary>
+      <param name="token">标记数。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="token" /> 未在未处理的生存期标记列表中被找到。</exception>
+    </member>
+    <member name="T:System.AddIn.Pipeline.ContractHandle">
+      <summary>提供控制外接程序生存期的方法。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractHandle.#ctor(System.AddIn.Contract.IContract)">
+      <summary>初始化 <see cref="T:System.AddIn.Pipeline.ContractHandle" /> 类的新实例。</summary>
+      <param name="contract">要在管线中使用的协定。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="contract" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractHandle.AppDomainOwner(System.AppDomain)">
+      <summary>创建应用程序域时获取外接程序端适配器的实例。</summary>
+      <param name="domain">要检查的应用程序域。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.IContract" /> 对象，表示应用程序域的所有者。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="domain" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.AddIn.Pipeline.ContractHandle.Contract">
+      <summary>获取管线使用的协定。</summary>
+      <returns>派生自 <see cref="T:System.AddIn.Contract.IContract" /> 的协定。</returns>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractHandle.ContractOwnsAppDomain(System.AddIn.Contract.IContract,System.AppDomain)">
+      <summary>确定指定的协定是否拥有应用程序域。</summary>
+      <param name="contract">要检查的协定。</param>
+      <param name="domain">要检查的应用程序域。</param>
+      <returns>如果协定拥有应用程序域，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="contract" /> 或 <paramref name="domain" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractHandle.Dispose">
+      <summary>无论输入什么内容，均对协定调用生存期标记。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractHandle.Dispose(System.Boolean)">
+      <summary>对协定调用生存期标记（无论输入什么内容）并可以选择释放托管资源。</summary>
+      <param name="disposing">若要释放托管资源和非托管资源，则为 <see langword="true" />；若仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Pipeline.ContractHandle.Finalize">
+      <summary>释放与 <see cref="T:System.AddIn.Pipeline.ContractHandle" /> 实例关联的资源。</summary>
+    </member>
+    <member name="T:System.AddIn.Pipeline.HostAdapterAttribute">
+      <summary>将对象标识为管线的宿主端适配器段。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.HostAdapterAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.AddIn.Pipeline.HostAdapterAttribute" /> 类的新实例。</summary>
+    </member>
+  </members>
+</doc>

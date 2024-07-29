@@ -1,0 +1,2700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.IO.Log</name>
+  </assembly>
+  <members>
+    <member name="T:System.IO.Log.FileRecordSequence">
+      <summary>在文件上实现 <see cref="T:System.IO.Log.IRecordSequence" />。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.#ctor(System.String)">
+      <summary>使用指定的文件初始化 <see cref="T:System.IO.Log.FileRecordSequence" /> 类的新实例。</summary>
+      <param name="path">此 <see cref="T:System.IO.Log.FileRecordSequence" /> 实例将封装的文件的相对路径或绝对路径。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 指定的文件无效。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">找不到 <paramref name="path" /> 指定的文件。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.#ctor(System.String,System.IO.FileAccess)">
+      <summary>使用指定的文件和访问模式初始化 <see cref="T:System.IO.Log.FileRecordSequence" /> 类的新实例。</summary>
+      <param name="path">此 <see cref="T:System.IO.Log.FileRecordSequence" /> 实例将封装的文件的相对路径或绝对路径。</param>
+      <param name="access">一个有效的 <see cref="T:System.IO.FileAccess" /> 值，用于控制用户对日志文件的访问类型。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 指定的文件无效。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">找不到 <paramref name="path" /> 指定的文件。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.#ctor(System.String,System.IO.FileAccess,System.Int32)">
+      <summary>使用指定的文件、访问模式和文件大小初始化 <see cref="T:System.IO.Log.FileRecordSequence" /> 类的新实例。</summary>
+      <param name="path">此 <see cref="T:System.IO.Log.FileRecordSequence" /> 实例将封装的文件的相对路径或绝对路径。</param>
+      <param name="access">一个有效的 <see cref="T:System.IO.FileAccess" /> 值，用于控制用户对日志文件的访问类型。</param>
+      <param name="size">要打开的日志文件的大小。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个参数超出有效范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 指定的文件无效。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">找不到 <paramref name="path" /> 指定的文件。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.AdvanceBaseSequenceNumber(System.IO.Log.SequenceNumber)">
+      <summary>前移日志的基序列号。 不能继承此方法。</summary>
+      <param name="newBaseSequenceNumber">记录序列的新的基序列号。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="newBaseSequenceNumber" /> 无效。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="newBaseSequenceNumber" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">修改序列时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)">
+      <summary>将日志记录写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)">
+      <summary>使用序列中先前保留的空间将日志记录写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)">
+      <summary>将日志记录写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)">
+      <summary>使用序列中先前保留的空间将日志记录写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="P:System.IO.Log.FileRecordSequence.BaseSequenceNumber">
+      <summary>获取当前 <see cref="T:System.IO.Log.FileRecordSequence" /> 中第一条有效记录的序列号。</summary>
+      <returns>与 <see cref="T:System.IO.Log.FileRecordSequence" /> 中的有效记录对应的最低序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)">
+      <summary>开始异步追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>使用序列中先前保留的空间开始异步追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)">
+      <summary>开始异步追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>使用序列中先前保留的空间开始异步追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginFlush(System.IO.Log.SequenceNumber,System.AsyncCallback,System.Object)">
+      <summary>使用序列中先前保留的空间开始异步刷新操作。 不能继承此方法。</summary>
+      <param name="sequenceNumber">必须写入的最新记录的序列号。 如果 <see cref="T:System.IO.Log.SequenceNumber" /> 无效，则必须写入所有记录。</param>
+      <param name="callback">可选的异步回调，在刷新完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步刷新请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，表示可能仍处于挂起状态的异步刷新操作。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。  
+ <paramref name="sequenceNumber" /> 对此序列无效。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="sequenceNumber" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">刷新数据时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)">
+      <summary>开始异步保留和追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的当前异步操作。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)">
+      <summary>开始异步保留和追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的当前异步操作。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginWriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>使用序列中先前保留的空间开始异步重新开始区域写入操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservation">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <param name="callback">可选的异步回调，在重新开始区域写入完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步重新开始区域写入请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步重新开始区域写入操作。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。  
+
+或 - 
+活动日志新存档或现有存档的尾数据或基数据无效。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。  
+
+或 - 
+<paramref name="newBaseSeqNum" /> 对此序列无效。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.BeginWriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>使用序列中先前保留的空间开始异步重新开始区域写入操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservation">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <param name="callback">可选的异步回调，在重新开始区域写入完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步重新开始区域写入请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步重新开始区域写入操作。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。  
+
+或 - 
+活动日志新存档或现有存档的尾数据或基数据无效。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。  
+
+或 - 
+<paramref name="newBaseSeqNum" /> 对此序列无效。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.CreateReservationCollection">
+      <summary>创建一个新的 <see cref="T:System.IO.Log.ReservationCollection" />。 不能继承此方法。</summary>
+      <returns>新创建的 <see cref="T:System.IO.Log.ReservationCollection" />。</returns>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.Dispose">
+      <summary>立即释放对象使用的非托管资源。</summary>
+      <exception cref="T:System.IO.IOException">刷新数据时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.EndAppend(System.IAsyncResult)">
+      <summary>结束异步追加操作。 不能继承此方法。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 无效。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此异步操作调用了 <see langword="End" />。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.EndFlush(System.IAsyncResult)">
+      <summary>结束异步刷新操作。 不能继承此方法。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 无效。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此异步操作调用了 <see langword="End" />。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.EndReserveAndAppend(System.IAsyncResult)">
+      <summary>结束异步保留和追加操作。 不能继承此方法。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 无效。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此异步操作调用了 <see langword="End" />。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.EndWriteRestartArea(System.IAsyncResult)">
+      <summary>结束异步重新开始区域写入操作。 不能继承此方法。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>写入的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 无效。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此异步操作调用了 <see langword="End" />。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.Flush">
+      <summary>确保所有追加的记录都已写入。 不能继承此方法。</summary>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.IO.IOException">刷新数据时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.Flush(System.IO.Log.SequenceNumber)">
+      <summary>确保所有追加的记录都已写入。 不能继承此方法。</summary>
+      <param name="sequenceNumber">必须写入的最新记录的序列号。 如果此 <see cref="T:System.IO.Log.SequenceNumber" /> 无效，则必须写入所有记录。</param>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="sequenceNumber" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="sequenceNumber" /> 对此序列无效。</exception>
+      <exception cref="T:System.IO.IOException">刷新数据时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="P:System.IO.Log.FileRecordSequence.LastSequenceNumber">
+      <summary>获取比追加的最新记录大的序列号。</summary>
+      <returns>比追加的最新记录大的序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.FileRecordSequence.MaximumRecordLength">
+      <summary>获取可以追加到此序列或者从此序列中读取的最大记录的大小（以字节为单位）。</summary>
+      <returns>可以追加到此序列或者从此序列中读取的最大记录的大小（以字节为单位）。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.ReadLogRecords(System.IO.Log.SequenceNumber,System.IO.Log.LogRecordEnumeratorType)">
+      <summary>返回序列中记录的可枚举集合。 不能继承此方法。</summary>
+      <param name="start">读取操作开始处的第一条记录的序列号。</param>
+      <param name="logRecordEnum">一个有效的 <see cref="T:System.IO.Log.LogRecordEnumeratorType" /> 值，该值指定从 <see cref="T:System.IO.Log.LogRecordSequence" /> 中读取记录的方式（即，向前或向后）。</param>
+      <returns>序列中记录的可枚举集合。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只写访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">记录序列已损坏。  
+或 
+记录是使用不兼容的记录序列版本写入的。</exception>
+      <exception cref="T:System.InvalidOperationException">枚举已经终止。  
+
+或 - 
+枚举尚未开始。 必须调用 <see cref="M:System.Collections.IEnumerator.MoveNext" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.ReadRestartAreas">
+      <summary>返回序列中重新开始区域的可枚举集合。 不能继承此方法。</summary>
+      <returns>序列中重新开始区域的可枚举集合。</returns>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只写访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">记录序列已损坏。  
+
+或 - 
+记录是使用不兼容的记录序列版本写入的。</exception>
+      <exception cref="T:System.InvalidOperationException">枚举已经终止。  
+或 
+枚举尚未开始。 必须调用 <see cref="M:System.Collections.IEnumerator.MoveNext" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.ReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])">
+      <summary>自动生成一个预留，并向序列中追加一条记录。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含要在其中生成预留的集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.ReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])">
+      <summary>自动生成一个预留，并向序列中追加一条记录。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="P:System.IO.Log.FileRecordSequence.ReservedBytes">
+      <summary>获取已保留的字节总数。</summary>
+      <returns>此记录序列中做出的所有预留的总大小。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.FileRecordSequence.RestartSequenceNumber">
+      <summary>获取最近写入的重新开始区域的序列号。</summary>
+      <returns>最近写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.FileRecordSequence.RetryAppend">
+      <summary>获取或设置一个值，指示在日志已满时是否自动重试追加操作。</summary>
+      <returns>如果在日志已满时自动重试追加操作，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="E:System.IO.Log.FileRecordSequence.TailPinned">
+      <summary>当记录序列确定必须前移尾数据时发生。 不能继承此方法。</summary>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte})">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber)">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。  
+
+或 - 
+活动日志新存档或现有存档的尾数据或基数据无效。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="newBaseSeqNum" /> 对此序列无效。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。  
+或 
+活动日志新存档或现有存档的尾数据或基数据无效。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。  
+
+或 - 
+<paramref name="newBaseSeqNum" /> 对此序列无效。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}})">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber)">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。  
+或 
+活动日志新存档或现有存档的尾数据或基数据无效。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="newBaseSeqNum" /> 对此序列无效。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.FileRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.FileRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。  
+或 
+活动日志新存档或现有存档的尾数据或基数据无效。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reservations" /> 不是由此记录序列创建的。  
+或 
+ <paramref name="newBaseSeqNum" /> 对此序列无效。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="T:System.IO.Log.FileRegion">
+      <summary>表示要存档的文件区域。 此类不能被继承。</summary>
+    </member>
+    <member name="P:System.IO.Log.FileRegion.FileLength">
+      <summary>获取文件的长度（以字节为单位）。</summary>
+      <returns>文件的长度（以字节为单位）。</returns>
+    </member>
+    <member name="M:System.IO.Log.FileRegion.GetStream">
+      <summary>返回可用于读取待存档数据的流。</summary>
+      <returns>包含待存档数据的流。</returns>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">该操作不受支持。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="P:System.IO.Log.FileRegion.Offset">
+      <summary>获取数据开始处的文件偏移量。</summary>
+      <returns>数据开始处的文件偏移量。</returns>
+    </member>
+    <member name="P:System.IO.Log.FileRegion.Path">
+      <summary>获取包含此区域的文件的完全限定位置。</summary>
+      <returns>包含此区域的文件的完全限定位置。</returns>
+    </member>
+    <member name="T:System.IO.Log.IRecordSequence">
+      <summary>提供一系列记录的泛型接口。</summary>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber(System.IO.Log.SequenceNumber)">
+      <summary>前移日志的基序列号。</summary>
+      <param name="newBaseSequenceNumber">记录序列的新的基序列号。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="newBaseSequenceNumber" /> 无效。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="newBaseSequenceNumber" /> 没有在日志中激活。</exception>
+      <exception cref="T:System.IO.IOException">修改序列时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)">
+      <summary>在派生类中重写时，向 <see cref="T:System.IO.Log.IRecordSequence" /> 写入一条日志记录。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)">
+      <summary>在派生类中重写时，将使用序列中先前保留的空间向 <see cref="T:System.IO.Log.IRecordSequence" /> 中追加一条日志记录。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)">
+      <summary>在派生类中重写时，向 <see cref="T:System.IO.Log.IRecordSequence" /> 中追加一条日志记录。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)">
+      <summary>在派生类中重写时，将使用序列中先前保留的空间向 <see cref="T:System.IO.Log.IRecordSequence" /> 中追加一条日志记录。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="P:System.IO.Log.IRecordSequence.BaseSequenceNumber">
+      <summary>在派生类中重写时，获取当前 <see cref="T:System.IO.Log.IRecordSequence" /> 中第一条有效记录的序列号。</summary>
+      <returns>与 <see cref="T:System.IO.Log.IRecordSequence" /> 中的有效记录对应的最低序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，开始异步追加操作。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，将使用序列中先前保留的空间来开始异步追加操作。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，将使用序列中先前保留的空间来开始异步追加操作。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，将使用序列中先前保留的空间来开始异步追加操作。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousUndoRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginFlush(System.IO.Log.SequenceNumber,System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，将使用序列中先前保留的空间来开始异步刷新操作。</summary>
+      <param name="sequenceNumber">必须写入的最新记录的序列号。 如果此 <see cref="T:System.IO.Log.SequenceNumber" /> 无效，则必须写入所有记录。</param>
+      <param name="callback">可选的异步回调，在刷新完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步刷新请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，表示可能仍处于挂起状态的异步刷新操作。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">刷新数据时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，开始异步保留和追加操作。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的当前异步操作。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录或生成预留。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，开始异步保留和追加操作。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的当前异步操作。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录或生成预留。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginWriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，将使用序列中先前保留的空间来开始异步重新开始区域写入操作。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSequenceNumber">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservation">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <param name="callback">可选的异步回调，在重新开始区域写入完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步重新开始区域写入请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步重新开始区域写入操作。</returns>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.BeginWriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>在派生类中重写时，将使用序列中先前保留的空间来开始异步重新开始区域写入操作。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSequenceNumber">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservation">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <param name="callback">可选的异步回调，在重新开始区域写入完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步重新开始区域写入请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步重新开始区域写入操作。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.CreateReservationCollection">
+      <summary>在派生的类中重写时，创建一个新的 <see cref="T:System.IO.Log.ReservationCollection" />。</summary>
+      <returns>新创建的 <see cref="T:System.IO.Log.ReservationCollection" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.EndAppend(System.IAsyncResult)">
+      <summary>在派生类中重写时，结束异步追加操作。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.EndFlush(System.IAsyncResult)">
+      <summary>在派生类中重写时，结束异步刷新操作。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.EndReserveAndAppend(System.IAsyncResult)">
+      <summary>在派生类中重写时，结束异步保留和追加操作。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.EndWriteRestartArea(System.IAsyncResult)">
+      <summary>在派生类中重写时，结束异步重新开始区域写入操作。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>写入的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.Flush">
+      <summary>在派生类中重写时，确保所有追加的记录都已写入。</summary>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.IO.IOException">刷新数据时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.Flush(System.IO.Log.SequenceNumber)">
+      <summary>在派生类中重写时，确保其序列号不高于指定序列号的所有记录都已持久写入。</summary>
+      <param name="sequenceNumber">必须写入的最新记录的序列号。 如果此 <see cref="T:System.IO.Log.SequenceNumber" /> 无效，则必须写入所有记录。</param>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">刷新数据时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="P:System.IO.Log.IRecordSequence.LastSequenceNumber">
+      <summary>在派生类中重写时，获取比追加的最新记录大的序列号。</summary>
+      <returns>比追加的最新记录大的序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.IRecordSequence.MaximumRecordLength">
+      <summary>在派生类中重写时，获取可以追加到此序列或者从此序列中读取的最大记录的大小（以字节为单位）。</summary>
+      <returns>可以追加到此序列或者从此序列中读取的最大记录的大小（以字节为单位）。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.ReadLogRecords(System.IO.Log.SequenceNumber,System.IO.Log.LogRecordEnumeratorType)">
+      <summary>在派生类中重写时，返回序列中记录的可枚举集合。</summary>
+      <param name="start">读取操作开始处的第一条记录的序列号。</param>
+      <param name="logRecordEnum">一个有效的 <see cref="T:System.IO.Log.LogRecordEnumeratorType" /> 值，该值指定从 <see cref="T:System.IO.Log.LogRecordSequence" /> 中读取记录的方式（即，向前或向后）。</param>
+      <returns>序列中记录的可枚举集合。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">读取记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.ReadRestartAreas">
+      <summary>在派生类中重写时，返回序列中重新开始区域的可枚举集合。</summary>
+      <returns>序列中重新开始区域的可枚举集合。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">读取记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.ReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])">
+      <summary>在派生类中重写时，自动生成一个预留，并向序列中追加一条记录。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含要在其中生成预留的集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录或生成预留。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.ReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])">
+      <summary>在派生类中重写时，自动生成一个预留，并向序列中追加一条记录。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录或生成预留。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="P:System.IO.Log.IRecordSequence.ReservedBytes">
+      <summary>在派生类中重写时，获取已保留的总字节数。</summary>
+      <returns>此记录序列中做出的所有预留的总大小。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.IRecordSequence.RestartSequenceNumber">
+      <summary>在派生类中重写时，获取最近写入的重新开始区域的序列号。</summary>
+      <returns>最近写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.IRecordSequence.RetryAppend">
+      <summary>获取或设置一个值，该值指示如果日志已满，是否自动重试追加操作。</summary>
+      <returns>如果在日志已满时自动重试追加操作，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="E:System.IO.Log.IRecordSequence.TailPinned">
+      <summary>当记录序列确定必须前移尾数据时发生。</summary>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte})">
+      <summary>在派生类中重写时，向 <see cref="T:System.IO.Log.IRecordSequence" /> 中写入一个重新开始区域。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber)">
+      <summary>在派生类中重写时，向 <see cref="T:System.IO.Log.IRecordSequence" /> 中写入一个重新开始区域，并更新基序列号。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSequenceNumber">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)">
+      <summary>在派生类中重写时，利用预留向 <see cref="T:System.IO.Log.IRecordSequence" /> 中写入一个重新开始区域，并更新基序列号。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSequenceNumber">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservation">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}})">
+      <summary>在派生类中重写时，向 <see cref="T:System.IO.Log.IRecordSequence" /> 中写入一个重新开始区域。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber)">
+      <summary>在派生类中重写时，向 <see cref="T:System.IO.Log.IRecordSequence" /> 中写入一个重新开始区域，并更新基序列号。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSequenceNumber">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)">
+      <summary>在派生类中重写时，利用预留向 <see cref="T:System.IO.Log.IRecordSequence" /> 中写入一个重新开始区域，并更新基序列号。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSequenceNumber">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservation">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="T:System.IO.Log.LogArchiveSnapshot">
+      <summary>表示 <see cref="T:System.IO.Log.LogStore" /> 实例的快照，该快照可以用于生成存档。</summary>
+    </member>
+    <member name="P:System.IO.Log.LogArchiveSnapshot.ArchiveRegions">
+      <summary>获取 <see cref="T:System.IO.Log.FileRegion" /> 实例的可枚举集合，集合中包含实际存档数据。</summary>
+      <returns>
+        <see cref="T:System.IO.Log.FileRegion" /> 实例的可枚举集合，集合中包含实际存档数据。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogArchiveSnapshot.ArchiveTail">
+      <summary>获取拍摄快照时 <see cref="T:System.IO.Log.LogStore" /> 存档尾数据的序列号。</summary>
+      <returns>拍摄快照时 <see cref="T:System.IO.Log.LogStore" /> 存档尾数据的序列号。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogArchiveSnapshot.BaseSequenceNumber">
+      <summary>获取拍摄快照时 <see cref="T:System.IO.Log.LogStore" /> 的基数据序列号。</summary>
+      <returns>拍摄快照时 <see cref="T:System.IO.Log.LogStore" /> 的基数据序列号。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogArchiveSnapshot.LastSequenceNumber">
+      <summary>获取拍摄快照时 <see cref="T:System.IO.Log.LogStore" /> 的最后一个序列号。</summary>
+      <returns>拍摄快照时 <see cref="T:System.IO.Log.LogStore" /> 的最后一个序列号。</returns>
+    </member>
+    <member name="T:System.IO.Log.LogExtent">
+      <summary>表示包含日志数据的磁盘范围。</summary>
+    </member>
+    <member name="P:System.IO.Log.LogExtent.Path">
+      <summary>获取此 <see cref="T:System.IO.Log.LogExtent" /> 实例的完全限定路径。</summary>
+      <returns>此 <see cref="T:System.IO.Log.LogExtent" /> 实例的完全限定路径。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogExtent.Size">
+      <summary>获取此 <see cref="T:System.IO.Log.LogExtent" /> 实例的大小（以字节为单位）。</summary>
+      <returns>此 <see cref="T:System.IO.Log.LogExtent" /> 实例的大小（以字节为单位）。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogExtent.State">
+      <summary>获取此 <see cref="T:System.IO.Log.LogExtent" /> 实例的状态。</summary>
+      <returns>此 <see cref="T:System.IO.Log.LogExtent" /> 实例的状态。</returns>
+    </member>
+    <member name="T:System.IO.Log.LogExtentCollection">
+      <summary>表示与 <see cref="T:System.IO.Log.LogExtent" /> 关联的 <see cref="T:System.IO.Log.LogStore" /> 对象的集合。</summary>
+    </member>
+    <member name="M:System.IO.Log.LogExtentCollection.Add(System.String)">
+      <summary>将一个 <see cref="T:System.IO.Log.LogExtent" /> 实例添加到集合中。</summary>
+      <param name="path">要添加的日志范围的路径。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 指定的日志存储区文件名无效。</exception>
+      <exception cref="T:System.InvalidOperationException">必须为第一个范围指定大小。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+无法创建 <paramref name="path" /> 指定的文件，因为该文件或目录已存在。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。  
+或 
+存储磁盘或介质已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogExtentCollection.Add(System.String,System.Int64)">
+      <summary>使用指定大小创建新的 <see cref="T:System.IO.Log.LogExtent" />，并将其添加到集合中。</summary>
+      <param name="path">日志范围的路径。</param>
+      <param name="size">日志范围的大小。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 或 <paramref name="size" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="archiveTail" /> 不在有效范围内。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 指定的日志存储区文件名无效。  
+ <paramref name="size" /> 小于存储区中其他范围的大小。</exception>
+      <exception cref="T:System.InvalidOperationException">必须为第一个范围指定大小。  
+或 
+不能使用重复的范围名称。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+无法创建 <paramref name="path" /> 指定的文件，因为该文件或目录已存在。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。  
+或 
+存储磁盘或介质已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogExtentCollection.Count">
+      <summary>获取集合中的日志范围数。</summary>
+      <returns>集合中的日志范围数。</returns>
+      <exception cref="T:System.ObjectDisposedException">日志存储区已释放。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogExtentCollection.FreeCount">
+      <summary>获取集合中的可用 <see cref="T:System.IO.Log.LogExtent" /> 实例数，即，不包含任何数据的 <see cref="T:System.IO.Log.LogExtent" /> 实例数。</summary>
+      <returns>集合中的可用 <see cref="T:System.IO.Log.LogExtent" /> 实例数。</returns>
+      <exception cref="T:System.ObjectDisposedException">日志存储区已释放。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogExtentCollection.GetEnumerator">
+      <summary>获取此集合中 <see cref="T:System.IO.Log.LogExtent" /> 实例的枚举数。 不能继承此方法。</summary>
+      <returns>此集合中 <see cref="T:System.IO.Log.LogExtent" /> 实例的枚举数。</returns>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.InvalidOperationException">操作由于以下原因之一而无效： 
+
+枚举已经终止。  
+
+集合已修改。  
+
+枚举尚未开始。 必须调用 <see cref="M:System.Collections.IEnumerator.MoveNext" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogExtentCollection.Remove(System.IO.Log.LogExtent,System.Boolean)">
+      <summary>从集合中移除指定的 <see cref="T:System.IO.Log.LogExtent" /> 实例。</summary>
+      <param name="extent">要移除的 <see cref="T:System.IO.Log.LogExtent" /> 实例。</param>
+      <param name="force">如果应立即移除范围，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="extent" /> 或 <paramref name="force" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">在集合中找不到 <paramref name="extent" />。</exception>
+      <exception cref="T:System.InvalidOperationException">无法移除 <paramref name="extent" />。 它仍然是活动区域的一部分，或者拒绝访问。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+ 无法删除 <paramref name="extent" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogExtentCollection.Remove(System.String,System.Boolean)">
+      <summary>从集合中移除具有指定路径的 <see cref="T:System.IO.Log.LogExtent" /> 实例。</summary>
+      <param name="path">要移除的 <see cref="T:System.IO.Log.LogExtent" /> 实例的路径。</param>
+      <param name="force">如果应立即移除范围，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 或 <paramref name="force" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">在集合中找不到 <paramref name="path" /> 指定的范围。</exception>
+      <exception cref="T:System.InvalidOperationException">无法移除 <paramref name="path" /> 指定的范围。 它仍然是活动区域的一部分，或者拒绝访问。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+无法删除 <paramref name="path" /> 指定的范围。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogExtentCollection.System#Collections#IEnumerable#GetEnumerator">
+      <summary>获取此集合中 <see cref="T:System.IO.Log.LogExtent" /> 实例的枚举数。 不能继承此方法。</summary>
+      <returns>此集合中 <see cref="T:System.IO.Log.LogExtent" /> 实例的枚举数。</returns>
+    </member>
+    <member name="T:System.IO.Log.LogExtentState">
+      <summary>描述 <see cref="T:System.IO.Log.LogExtent" /> 实例的当前状态。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogExtentState.Active">
+      <summary>正使用 <see cref="T:System.IO.Log.LogExtent" /> 实例作为 <see cref="T:System.IO.Log.LogStore" /> 的存储区。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogExtentState.ActivePendingDelete">
+      <summary>
+        <see cref="T:System.IO.Log.LogExtent" /> 实例已标记为要删除，但仍然包含一些活动数据。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogExtentState.Inactive">
+      <summary>
+        <see cref="T:System.IO.Log.LogExtent" /> 实例已经分配给 <see cref="T:System.IO.Log.LogStore" />，但不包含任何活动数据。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogExtentState.Initializing">
+      <summary>
+        <see cref="T:System.IO.Log.LogExtent" /> 实例尚未分配给 <see cref="T:System.IO.Log.LogStore" />。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogExtentState.PendingArchive">
+      <summary>
+        <see cref="T:System.IO.Log.LogExtent" /> 实例不包含任何活动数据，但包含尚未存档的数据。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogExtentState.PendingArchiveAndDelete">
+      <summary>
+        <see cref="T:System.IO.Log.LogExtent" /> 实例已标记为要删除，但仍然包含尚未存档的数据。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogExtentState.Unknown">
+      <summary>
+        <see cref="T:System.IO.Log.LogExtent" /> 实例的状态未知。</summary>
+    </member>
+    <member name="T:System.IO.Log.LogPolicy">
+      <summary>表示与 <see cref="T:System.IO.Log.LogStore" /> 相关联的策略。</summary>
+    </member>
+    <member name="P:System.IO.Log.LogPolicy.AutoGrow">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.IO.Log.LogStore" /> 是否能够自动增长。</summary>
+      <returns>如果 <see cref="T:System.IO.Log.LogStore" /> 能够自动增加其大小，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogPolicy.AutoShrinkPercentage">
+      <summary>获取或设置 <see cref="T:System.IO.Log.LogStore" /> 可收缩的可用空间百分比。</summary>
+      <returns>
+        <see cref="T:System.IO.Log.LogStore" /> 可收缩的可用空间百分比。</returns>
+    </member>
+    <member name="M:System.IO.Log.LogPolicy.Commit">
+      <summary>将此策略设置为 <see cref="T:System.IO.Log.LogStore" /> 的当前策略。</summary>
+      <exception cref="T:System.InvalidOperationException">安装在日志上的策略集是无效的。  
+或 
+日志的某个策略阻止完成此操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">在当前平台上不支持设置此策略。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.PathTooLongException">新范围前缀无效或太长。 必须提供有效的前缀。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogPolicy.GrowthRate">
+      <summary>获取或设置 <see cref="T:System.IO.Log.LogStore" /> 的自动增长率。</summary>
+      <returns>
+        <see cref="T:System.IO.Log.LogStore" /> 的自动增长率。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogPolicy.MaximumExtentCount">
+      <summary>获取或设置 <see cref="T:System.IO.Log.LogExtent" /> 最多能够包含的 <see cref="T:System.IO.Log.LogStore" /> 实例数。</summary>
+      <returns>
+        <see cref="T:System.IO.Log.LogExtent" /> 最多能够包含的 <see cref="T:System.IO.Log.LogStore" /> 实例数。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogPolicy.MinimumExtentCount">
+      <summary>获取或设置 <see cref="T:System.IO.Log.LogExtent" /> 最少能够包含的 <see cref="T:System.IO.Log.LogStore" /> 实例数。</summary>
+      <returns>一个整数，它指定 <see cref="T:System.IO.Log.LogExtent" /> 最少能够包含的 <see cref="T:System.IO.Log.LogStore" /> 实例数。 CLFS 要求最小范围数为 2 个范围，因此，此值最小应为 2。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogPolicy.NewExtentPrefix">
+      <summary>获取或设置用于自动创建的范围的前缀字符串。</summary>
+      <returns>用于自动创建的范围的前缀字符串。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogPolicy.NextExtentSuffix">
+      <summary>获取或设置新范围的后缀数。</summary>
+      <returns>新范围的后缀数。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogPolicy.PinnedTailThreshold">
+      <summary>获取或设置 <see cref="E:System.IO.Log.LogRecordSequence.TailPinned" /> 事件前调日志基数所要求的空间量。</summary>
+      <returns>
+        <see cref="E:System.IO.Log.LogRecordSequence.TailPinned" /> 事件前调日志基数所要求的空间量。</returns>
+    </member>
+    <member name="M:System.IO.Log.LogPolicy.Refresh">
+      <summary>读取 <see cref="T:System.IO.Log.LogStore" /> 的当前策略，放弃已做的所有更改。</summary>
+      <exception cref="T:System.InvalidOperationException">安装在日志上的策略集是无效的。  
+或 
+日志的某个策略阻止完成此操作。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">在当前平台上不支持设置此策略。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="T:System.IO.Log.LogRecord">
+      <summary>表示已追加到序列的日志记录。</summary>
+    </member>
+    <member name="M:System.IO.Log.LogRecord.#ctor">
+      <summary>初始化 <see cref="T:System.IO.Log.LogRecord" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.IO.Log.LogRecord.Data">
+      <summary>在派生类中重写时，获取包含记录数据的流。</summary>
+      <returns>包含记录数据的流。</returns>
+      <exception cref="T:System.ObjectDisposedException">
+        <see cref="T:System.IO.Log.LogRecord" /> 已释放。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecord.Dispose">
+      <summary>释放由 <see cref="T:System.IO.Log.LogRecord" /> 使用的所有资源。</summary>
+    </member>
+    <member name="P:System.IO.Log.LogRecord.Previous">
+      <summary>在派生类中重写时，获取上一记录的序列号。</summary>
+      <returns>上一记录的序列号。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogRecord.SequenceNumber">
+      <summary>在派生类中重写时，获取此记录的序列号。</summary>
+      <returns>此记录的序列号。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogRecord.User">
+      <summary>在派生类中重写时，获取下一记录的序列号。</summary>
+      <returns>用户指定的链中下一记录的序列号。</returns>
+    </member>
+    <member name="T:System.IO.Log.LogRecordEnumeratorType">
+      <summary>指定从 <see cref="T:System.IO.Log.LogRecordSequence" /> 中读取记录的方式。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogRecordEnumeratorType.Next">
+      <summary>记录应按照它们追加到序列中的顺序读取。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogRecordEnumeratorType.Previous">
+      <summary>记录应按照日志记录的“前一个”序列号指定的顺序读取。</summary>
+    </member>
+    <member name="F:System.IO.Log.LogRecordEnumeratorType.User">
+      <summary>记录应按照日志记录的“用户”序列号指定的顺序读取。</summary>
+    </member>
+    <member name="T:System.IO.Log.LogRecordSequence">
+      <summary>表示存储在 <see cref="T:System.IO.Log.LogStore" /> 中的记录序列。</summary>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.#ctor(System.IO.Log.LogStore)">
+      <summary>使用指定的日志存储区初始化 <see cref="T:System.IO.Log.LogRecordSequence" /> 类的新实例。</summary>
+      <param name="logStore">此记录序列应使用的 <see cref="T:System.IO.Log.LogStore" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="logStore" /> 无效。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.#ctor(System.IO.Log.LogStore,System.Int32,System.Int32)">
+      <summary>使用指定的日志存储区、每个记录的缓冲区大小以及缓冲区数量来初始化 <see cref="T:System.IO.Log.LogRecordSequence" /> 类的新实例。</summary>
+      <param name="logStore">此记录序列应使用的 <see cref="T:System.IO.Log.LogStore" />。</param>
+      <param name="bufferSize">所需的缓冲区大小（以字节为单位）。 缓冲区大小确定了可追加或读取的记录的最大大小。</param>
+      <param name="bufferCount">所需的缓冲区数量。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="logStore" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="bufferSize" /> 为负数或零。  
+或 
+ <paramref name="bufferCount" /> 为负数或零。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.#ctor(System.String,System.IO.FileMode)">
+      <summary>使用指定的日志存储区路径和访问模式初始化 <see cref="T:System.IO.Log.LogRecordSequence" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">用于确定如何打开或创建存储区的 <see cref="T:System.IO.FileMode" /> 值之一。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 为空字符串 ("")。  
+或 
+ <paramref name="path" /> 仅包含空白。  
+或 
+ <paramref name="path" /> 包含一个或多个无效字符。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="mode" /> 包含无效值。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.NotSupportedException">不支持此操作。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogRecordSequence" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或使用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess)">
+      <summary>使用指定的日志存储区路径以及访问和共享模式来初始化 <see cref="T:System.IO.Log.LogRecordSequence" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">用于确定如何打开或创建存储区的 <see cref="T:System.IO.FileMode" /> 值之一。</param>
+      <param name="access">用于确定 <see cref="T:System.IO.FileAccess" /> 可以如何访问文件的 <see cref="T:System.IO.Log.LogStore" /> 值之一。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 为空字符串 ("")。  
+或 
+ <paramref name="path" /> 仅包含空白。  
+或 
+ <paramref name="path" /> 包含一个或多个无效字符。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="mode" /> 包含无效值。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.NotSupportedException">不支持此操作。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogRecordSequence" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或使用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)">
+      <summary>使用指定的日志存储区路径和访问模式初始化 <see cref="T:System.IO.Log.LogRecordSequence" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">用于确定如何打开或创建存储区的 <see cref="T:System.IO.FileMode" /> 值之一。</param>
+      <param name="access">用于确定 <see cref="T:System.IO.FileAccess" /> 可以如何访问文件的 <see cref="T:System.IO.Log.LogStore" /> 值之一。</param>
+      <param name="share">用于确定日志存储区将如何在进程之间共享的 <see cref="T:System.IO.FileShare" /> 值之一。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 为空字符串 ("")。  
+或 
+ <paramref name="path" /> 仅包含空白。  
+或 
+ <paramref name="path" /> 包含一个或多个无效字符。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="mode" /> 包含无效值。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.NotSupportedException">不支持此操作。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogRecordSequence" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或使用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Int32,System.Int32)">
+      <summary>使用指定的日志存储区路径、文件权限、访问和共享模式以及记录的缓冲区大小和计数来初始化 <see cref="T:System.IO.Log.LogRecordSequence" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">用于确定如何打开或创建存储区的 <see cref="T:System.IO.FileMode" /> 值之一。</param>
+      <param name="access">用于确定 <see cref="T:System.IO.FileAccess" /> 可以如何访问文件的 <see cref="T:System.IO.Log.LogStore" /> 值之一。</param>
+      <param name="share">用于确定日志存储区将如何在进程之间共享的 <see cref="T:System.IO.FileShare" /> 值之一。</param>
+      <param name="bufferSize">所需的缓冲区大小（以字节为单位）。 缓冲区大小确定了可追加或读取的记录的最大大小。</param>
+      <param name="bufferCount">所需的缓冲区数量。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 为空字符串 ("")。  
+或 
+ <paramref name="path" /> 仅包含空白。  
+或 
+ <paramref name="path" /> 包含一个或多个无效字符。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="mode" /> 包含无效值。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.NotSupportedException">不支持此操作。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogRecordSequence" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或使用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Int32,System.Int32,System.Security.AccessControl.FileSecurity)">
+      <summary>初始化 <see cref="T:System.IO.Log.LogRecordSequence" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">一个有效的 <see cref="T:System.IO.FileMode" /> 值，用于确定如何打开或创建存储区。</param>
+      <param name="access">一个有效的 <see cref="T:System.IO.FileAccess" /> 值，用于确定如何访问日志存储区。</param>
+      <param name="share">一个有效的 <see cref="T:System.IO.FileShare" /> 值，用于确定日志存储区将如何在进程之间共享。</param>
+      <param name="bufferSize">所需的缓冲区大小（以字节为单位）。 缓冲区大小确定了可追加或读取的记录的最大大小。</param>
+      <param name="bufferCount">所需的缓冲区数量。</param>
+      <param name="fileSecurity">一个有效的 <see cref="T:System.Security.AccessControl.FileSecurity" /> 值，指定在必须创建存储区的情况下，要为新创建的存储区设置的安全性。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 指定的文件无效。  
+或 
+指定的日志存储区文件名无效。  
+或 
+ <paramref name="mode" /> 的值为 <see cref="F:System.IO.FileMode.CreateNew" />，在没有写访问权限的情况下无法使用它。  
+或 
+ <paramref name="mode" /> 的值为 <see cref="F:System.IO.FileMode.OpenOrCreate" />，在没有写访问权限的情况下无法使用它。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">一个或多个自变量超出范围。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">找不到 <paramref name="path" /> 指定的文件。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+无法访问 <paramref name="path" /> 指定的文件，因为另一个进程正在使用该文件。  
+或 
+无法创建 <paramref name="path" /> 指定的文件，因为该文件或目录已存在。  
+或 
+日志句柄无法绑定到线程池。  
+或 
+指定的日志文件格式或版本无效。</exception>
+      <exception cref="T:System.NotSupportedException">不支持此操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogRecordSequence" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或使用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.AdvanceBaseSequenceNumber(System.IO.Log.SequenceNumber)">
+      <summary>前移日志的基序列号。 不能继承此方法。</summary>
+      <param name="newBaseSequenceNumber">为日志指定新的基 <see cref="T:System.IO.Log.SequenceNumber" />。 这必须介于日志的当前基序列号和最后一个序列号之间（包括这两个序列号）。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="newBaseSequenceNumber" /> 对此序列无效。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">活动日志新存档或现有存档的尾数据或基数据无效。  
+或 
+ <paramref name="newBaseSequenceNumber" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.InvalidOperationException">指定的日志没有任何范围。 必须创建一个或多个范围，然后才能使用记录序列。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)">
+      <summary>将日志记录写入 <see cref="T:System.IO.Log.LogRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)">
+      <summary>使用序列中先前保留的空间向 <see cref="T:System.IO.Log.IRecordSequence" /> 中追加日志记录。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)">
+      <summary>向 <see cref="T:System.IO.Log.IRecordSequence" /> 中追加日志记录。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="userRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)">
+      <summary>使用序列中先前保留的空间向 <see cref="T:System.IO.Log.IRecordSequence" /> 中追加日志记录。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="userRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogRecordSequence.BaseSequenceNumber">
+      <summary>获取当前 <see cref="T:System.IO.Log.LogRecordSequence" /> 中第一条有效记录的序列号。</summary>
+      <returns>与 <see cref="T:System.IO.Log.LogRecordSequence" /> 中的有效记录对应的最低序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)">
+      <summary>开始异步追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="nextUndoRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="nextUndoRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>开始异步追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)">
+      <summary>开始异步追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="userRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>开始异步追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="userRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此记录的预留。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步追加。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginFlush(System.IO.Log.SequenceNumber,System.AsyncCallback,System.Object)">
+      <summary>使用序列中先前保留的空间开始异步刷新操作。 不能继承此方法。</summary>
+      <param name="sequenceNumber">必须写入的最新记录的序列号。 如果此 <see cref="T:System.IO.Log.SequenceNumber" /> 无效，则必须写入所有记录。</param>
+      <param name="callback">可选的异步回调，在刷新完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步刷新请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，表示可能仍处于挂起状态的异步刷新操作。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="sequenceNumber" /> 对此序列无效。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="sequenceNumber" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.InvalidOperationException">指定的日志没有任何范围。 必须创建一个或多个范围，然后才能使用记录序列。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)">
+      <summary>开始异步保留和追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的当前异步操作。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)">
+      <summary>开始异步保留和追加操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="userRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <param name="callback">可选的异步回调，在追加完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步追加请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的当前异步操作。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录或生成预留。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginWriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>使用序列中先前保留的空间开始异步重新开始区域写入操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservation">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <param name="callback">可选的异步回调，在重新开始区域写入完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步重新开始区域写入请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步重新开始区域写入操作。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="newBaseSeqNum" /> 对此序列无效。  
+或 
+指定的日志枚举开始序列号无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservation" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">活动日志新存档或现有存档的尾数据或基数据无效。  
+或 
+ <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.BeginWriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)">
+      <summary>使用序列中先前保留的空间开始异步重新开始区域写入操作。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservationCollection">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <param name="callback">可选的异步回调，在重新开始区域写入完成时调用。</param>
+      <param name="state">用户提供的对象，用于将此特定异步重新开始区域写入请求与其他请求区别开来。</param>
+      <returns>一个 <see cref="T:System.IAsyncResult" />，它表示可能仍处于挂起状态的异步重新开始区域写入操作。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="newBaseSeqNum" /> 对此序列无效。  
+或 
+指定的日志枚举开始序列号无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservationCollection" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">活动日志新存档或现有存档的尾数据或基数据无效。  
+或 
+ <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.CreateReservationCollection">
+      <summary>创建一个新的 <see cref="T:System.IO.Log.ReservationCollection" />。 不能继承此方法。</summary>
+      <returns>新创建的 <see cref="T:System.IO.Log.ReservationCollection" />。</returns>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.Dispose">
+      <summary>释放组件使用的资源。</summary>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.EndAppend(System.IAsyncResult)">
+      <summary>结束异步追加操作。 不能继承此方法。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 无效。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此异步操作调用了 <see langword="End" />。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.EndFlush(System.IAsyncResult)">
+      <summary>结束异步刷新操作。 不能继承此方法。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 无效。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此异步操作调用了 <see langword="End" />。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.EndReserveAndAppend(System.IAsyncResult)">
+      <summary>结束异步保留和追加操作。 不能继承此方法。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 无效。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此异步操作调用了 <see langword="End" />。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.EndWriteRestartArea(System.IAsyncResult)">
+      <summary>结束异步重新开始区域写入操作。 不能继承此方法。</summary>
+      <param name="result">对未完成的异步 I/O 请求的引用。</param>
+      <returns>写入的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 无效。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">活动日志新存档或现有存档的尾数据或基数据无效。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此异步操作调用了 <see langword="End" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.Flush">
+      <summary>确保所有追加的记录都已写入。 不能继承此方法。</summary>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.IO.IOException">刷新数据时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.NotSupportedException">不支持此操作。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.InvalidOperationException">指定的日志没有任何范围。 必须创建一个或多个范围，然后才能使用记录序列。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.Flush(System.IO.Log.SequenceNumber)">
+      <summary>确保序列号不高于指定序列号的所有追加记录都已持久写入。 不能继承此方法。</summary>
+      <param name="sequenceNumber">必须写入的最新记录的序列号。 如果此 <see cref="T:System.IO.Log.SequenceNumber" /> 无效，则必须写入所有记录。</param>
+      <returns>写入的最新记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="sequenceNumber" /> 对此序列无效。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="sequenceNumber" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。</exception>
+      <exception cref="T:System.InvalidOperationException">指定的日志没有任何范围。 必须创建一个或多个范围，然后才能使用记录序列。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogRecordSequence.LastSequenceNumber">
+      <summary>获取比追加的最后一条记录大的序列号</summary>
+      <returns>比追加的最新记录大的序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogRecordSequence.LogStore">
+      <summary>获取包含此记录序列数据的 <see cref="T:System.IO.Log.LogStore" />。 不能继承此方法。</summary>
+      <returns>包含此记录序列数据的 <see cref="T:System.IO.Log.LogStore" />。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogRecordSequence.MaximumRecordLength">
+      <summary>获取可添加到此记录序列中的记录的最大大小。</summary>
+      <returns>可添加到此记录序列中的记录的最大大小。</returns>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.ReadLogRecords(System.IO.Log.SequenceNumber,System.IO.Log.LogRecordEnumeratorType)">
+      <summary>返回序列中记录的可枚举集合。 不能继承此方法。</summary>
+      <param name="start">读取操作开始处的第一条记录的序列号。</param>
+      <param name="logRecordEnum">一个有效的 <see cref="T:System.IO.Log.LogRecordEnumeratorType" /> 值，该值指定从 <see cref="T:System.IO.Log.LogRecordSequence" /> 中读取记录的方式（即，向前或向后）。</param>
+      <returns>序列中记录的可枚举集合。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="start" /> 对此序列无效。  
+或 
+ <paramref name="logRecordEnum" /> 无效。  
+或 
+在集合中找不到指定的元素。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="start" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。  
+
+或 - 
+用于写入日志记录的缓冲区大小大于用于读取日志记录的缓冲区大小。  
+
+或 
+记录序列已损坏。  
+或 
+指定的日志文件格式或版本无效。  
+或 
+记录是使用不兼容的记录序列版本写入的。</exception>
+      <exception cref="T:System.InvalidOperationException">操作无效，原因是枚举尚未开始。 必须调用 <see cref="M:System.Collections.IEnumerator.MoveNext" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.ReadRestartAreas">
+      <summary>返回序列中重新开始区域的可枚举集合。 不能继承此方法。</summary>
+      <returns>序列中重新开始区域的可枚举集合。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="start" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。  
+
+或 - 
+用于写入日志记录的缓冲区大小大于用于读取日志记录的缓冲区大小。  
+
+或 
+记录序列已损坏。  
+或 
+指定的日志文件格式或版本无效。  
+或 
+记录是使用不兼容的记录序列版本写入的。</exception>
+      <exception cref="T:System.InvalidOperationException">操作无效，原因是枚举尚未开始。 必须调用 <see cref="M:System.Collections.IEnumerator.MoveNext" />。  
+
+或 - 
+枚举已经终止。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.ReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])">
+      <summary>自动生成一个预留，并向序列中追加一条记录。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="nextUndoRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含要在其中生成预留的集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="nextUndoRecord" /> 或 <paramref name="previousRecord" /> 对此序列无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservations" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="nextUndoRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.ReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])">
+      <summary>自动生成一个预留，并向序列中追加一条记录。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="userRecord">用户指定顺序中下一条记录的序列号。</param>
+      <param name="previousRecord">“上一个”顺序中下一条记录的序列号。</param>
+      <param name="recordAppendOptions">
+        <see cref="T:System.IO.Log.RecordAppendOptions" /> 的一个有效值，用于指定应如何写入数据。</param>
+      <param name="reservationCollection">要在其中生成预留的预留集合。</param>
+      <param name="reservations">要生成的预留（以字节为单位）。</param>
+      <returns>追加的日志记录的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">追加记录时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新记录或生成预留。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="userRecord" /> 或 <paramref name="previousRecord" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.NotSupportedException">由于记录序列是通过只读访问权限打开的，因此无法执行该操作。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.ReservationNotFoundException">在 <paramref name="data" /> 中找不到足以容纳 <paramref name="reservations" /> 的预留。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogRecordSequence.ReservedBytes">
+      <summary>获取已保留的字节总数。</summary>
+      <returns>此记录序列中做出的所有预留的总大小。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogRecordSequence.RestartSequenceNumber">
+      <summary>获取最接近日志末尾的重新开始区域的序列号。</summary>
+      <returns>最接近日志末尾的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogRecordSequence.RetryAppend">
+      <summary>获取或设置一个值，指示在日志已满时是否自动重试追加操作。</summary>
+      <returns>如果在日志已满时自动重试追加操作，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.SetLastRecord(System.IO.Log.SequenceNumber)">
+      <summary>设置 <see cref="T:System.IO.Log.LogRecordSequence" /> 中的最后一条记录。</summary>
+      <param name="sequenceNumber">
+        <see cref="T:System.IO.Log.LogRecordSequence" /> 中的最后一个新序列号。  
+它指的应该是日志中的当前有效记录。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="sequenceNumber" /> 对此序列无效。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">活动日志新存档或现有存档的尾数据或基数据无效。  
+或 
+ <paramref name="sequenceNumber" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+已到达日志的末尾。  
+或 
+指定的日志文件格式或版本无效。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+    </member>
+    <member name="E:System.IO.Log.LogRecordSequence.TailPinned">
+      <summary>发信号通知需要移动序列的尾数据。</summary>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte})">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.LogRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的数组段。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber)">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.LogRecordSequence" /> 并更新基序列号。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)">
+      <summary>使用预留将重新开始区域写入 <see cref="T:System.IO.Log.LogRecordSequence" /> 并更新基序列号。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservations">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}})">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.LogRecordSequence" />。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber)">
+      <summary>将重新开始区域写入 <see cref="T:System.IO.Log.LogRecordSequence" /> 并更新基序列号。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">一个或多个自变量无效。</exception>
+      <exception cref="T:System.IO.IOException">写入重新开始区域时，发生了 I/O 错误。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列无法获得足够的可用空间来容纳新的重新开始区域。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)">
+      <summary>使用预留将重新开始区域写入 <see cref="T:System.IO.Log.LogRecordSequence" /> 并更新基序列号。 不能继承此方法。</summary>
+      <param name="data">将连接在一起并以记录形式追加的字节数组段的列表。</param>
+      <param name="newBaseSeqNum">新的基序列号。 指定的序列号必须大于或等于当前基序列号。</param>
+      <param name="reservationCollection">一个 <see cref="T:System.IO.Log.ReservationCollection" />，它包含应当用于此重新开始区域的预留。</param>
+      <returns>写入的重新开始区域的序列号。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="newBaseSeqNum" /> 对此序列无效。  
+或 
+指定的日志枚举开始序列号无效。  
+或 
+ 无法追加 <paramref name="data" />，原因是它比最大记录大小要大。  
+或 
+ <paramref name="reservationCollection" /> 不是由此记录序列创建的。</exception>
+      <exception cref="T:System.ArgumentNullException">一个或多个参数为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">活动日志新存档或现有存档的尾数据或基数据无效。  
+或 
+ <paramref name="newBaseSeqNum" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.IO.IOException">由于出现意外的 I/O 异常，因此无法执行该请求。  
+或 
+由于出现 I/O 设备错误，因此无法执行该请求。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志序列的访问。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="T:System.IO.Log.LogStore">
+      <summary>表示日志结构化的存储区。</summary>
+    </member>
+    <member name="M:System.IO.Log.LogStore.#ctor(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+      <summary>为指定的句柄初始化 <see cref="T:System.IO.Log.LogStore" /> 类的新实例。</summary>
+      <param name="handle">当前 <see cref="T:System.IO.Log.LogStore" /> 对象包装的日志文件的文件句柄。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="handle" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.IO.IOException">日志句柄无法绑定到线程池。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogStore.#ctor(System.String,System.IO.FileMode)">
+      <summary>使用指定的路径和模式初始化 <see cref="T:System.IO.Log.LogStore" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">用于确定如何打开或创建存储区的 <see cref="T:System.IO.FileMode" /> 值之一。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 为空字符串 ("")。  
+或 
+ <paramref name="path" /> 仅包含空白。  
+或 
+ <paramref name="path" /> 包含一个或多个无效字符。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="mode" /> 包含无效值。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogStore" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或者改用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogStore.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess)">
+      <summary>使用指定的路径、模式和访问权限初始化 <see cref="T:System.IO.Log.LogStore" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">用于确定如何打开或创建存储区的 <see cref="T:System.IO.FileMode" /> 值之一。</param>
+      <param name="access">用于确定 <see cref="T:System.IO.FileAccess" /> 可以如何访问文件的 <see cref="T:System.IO.Log.LogStore" /> 值之一。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 为空字符串 ("")。  
+或 
+ <paramref name="path" /> 仅包含空白。  
+或 
+ <paramref name="path" /> 包含一个或多个无效字符。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="mode" /> 包含无效值。  
+
+或 - 
+<paramref name="access" /> 包含无效值。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogStore" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或者改用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogStore.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)">
+      <summary>初始化 <see cref="T:System.IO.Log.LogStore" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">用于确定如何打开或创建存储区的 <see cref="T:System.IO.FileMode" /> 值之一。</param>
+      <param name="access">用于确定 <see cref="T:System.IO.FileAccess" /> 可以如何访问文件的 <see cref="T:System.IO.Log.LogStore" /> 值之一。</param>
+      <param name="share">用于确定日志存储区将如何在进程之间共享的 <see cref="T:System.IO.FileShare" /> 值之一。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 为空字符串 ("")。  
+或 
+ <paramref name="path" /> 仅包含空白。  
+或 
+ <paramref name="path" /> 包含一个或多个无效字符。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="mode" /> 包含无效值。  
+
+或 - 
+<paramref name="access" /> 包含无效值。  
+
+或 
+ <paramref name="share" /> 包含无效值。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogStore" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或者改用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogStore.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Security.AccessControl.FileSecurity)">
+      <summary>初始化 <see cref="T:System.IO.Log.LogStore" /> 类的新实例。</summary>
+      <param name="path">要打开的日志存储区的基文件的相对或绝对路径。</param>
+      <param name="mode">用于确定如何打开或创建存储区的 <see cref="T:System.IO.FileMode" /> 值之一。</param>
+      <param name="access">用于确定 <see cref="T:System.IO.FileAccess" /> 可以如何访问文件的 <see cref="T:System.IO.Log.LogStore" /> 值之一。</param>
+      <param name="share">用于确定日志存储区将如何在进程之间共享的 <see cref="T:System.IO.FileShare" /> 值之一。</param>
+      <param name="fileSecurity">
+        <see cref="T:System.Security.AccessControl.FileSecurity" /> 值之一，指定在必须创建存储区的情况下，要为新创建的存储区设置的安全性。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 指定的日志存储区文件名无效。  
+或 
+ <paramref name="Mode" /> 为 <see langword="CreateNew" />，在没有写访问权限的情况下无法使用它。  
+或 
+ <paramref name="Mode" /> 为 <see langword="OpenOrCreate" />，在没有写访问权限的情况下无法使用它。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="mode" /> 包含无效值。  
+
+或 - 
+<paramref name="access" /> 包含无效值。  
+
+或 
+ <paramref name="share" /> 包含无效值。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。  
+无法访问 <paramref name="path" /> 指定的文件，因为另一个进程正在使用该文件。  
+或 
+无法创建 <paramref name="path" /> 指定的文件，因为该文件或目录已存在。  
+或 
+日志句柄无法绑定到线程池。  
+或 
+指定的日志文件格式或版本无效。</exception>
+      <exception cref="T:System.PlatformNotSupportedException">无法使用 <see cref="T:System.IO.Log.LogStore" />，因为没有安装所需的公用日志文件系统 (CLFS) 组件。 如果可行，请为您的平台安装 CLFS 组件，或者改用 <see cref="T:System.IO.Log.FileRecordSequence" /> 类。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogStore.Archivable">
+      <summary>获取指示是否可对 <see cref="T:System.IO.Log.LogStore" /> 实例进行存档的值。</summary>
+      <returns>如果此 <see langword="true" /> 实例可以存档，则为 <see cref="T:System.IO.Log.LogStore" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogStore.BaseSequenceNumber">
+      <summary>获取与此 <see cref="T:System.IO.Log.LogStore" /> 实例中有效记录对应的最低序列号。</summary>
+      <returns>与此 <see cref="T:System.IO.Log.LogStore" /> 实例中有效记录对应的最低序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogStore.CreateLogArchiveSnapshot">
+      <summary>拍摄日志存储区状态的快照，以制作备份。</summary>
+      <returns>一个包含制作存档所需状态的 <see cref="T:System.IO.Log.LogArchiveSnapshot" /> 对象。</returns>
+      <exception cref="T:System.NotSupportedException">日志存储区不可存档。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.IO.IOException">创建存档快照时发生 I/O 错误。</exception>
+      <exception cref="T:System.ArgumentException">自变量无效。</exception>
+      <exception cref="T:System.InvalidOperationException">执行了无效的操作。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogStore.CreateLogArchiveSnapshot(System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber)">
+      <summary>拍摄指定序列号之间的日志存储区状态的快照，以制作备份。</summary>
+      <param name="first">要存档的范围中的起始序列号。</param>
+      <param name="last">要存档的范围中的结束序列号。</param>
+      <returns>一个包含制作存档所需状态的 <see cref="T:System.IO.Log.LogArchiveSnapshot" /> 对象。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="first" /> 或 <paramref name="last" /> 不在此序列的基序列号和最新序列号之间。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="first" /> 大于 <paramref name="last" />。</exception>
+      <exception cref="T:System.InvalidOperationException">执行了无效的操作。</exception>
+      <exception cref="T:System.IO.IOException">创建存档快照时发生 I/O 错误。</exception>
+      <exception cref="T:System.NotSupportedException">日志存储区不可存档。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogStore.Delete(System.String)">
+      <summary>移除日志存储区。</summary>
+      <param name="path">要移除的日志存储区的基文件的相对或绝对路径。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="path" /> 为空字符串 ("")。  
+或 
+ <paramref name="path" /> 仅包含空白。  
+或 
+ <paramref name="path" /> 包含一个或多个无效字符。</exception>
+      <exception cref="T:System.IO.FileNotFoundException">无法找到该文件。</exception>
+      <exception cref="T:System.IO.IOException">打开日志存储区时发生了 I/O 错误。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.LogStore.Dispose">
+      <summary>释放由 <see cref="T:System.IO.Log.LogStore" /> 使用的所有资源。</summary>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogStore.Extents">
+      <summary>获取一个日志范围集合，这些日志范围包含此日志存储区的数据。</summary>
+      <returns>一个包含日志范围集合的 <see cref="T:System.IO.Log.LogExtentCollection" /> 实例，该集合中封装了此日志存储区的数据。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogStore.FreeBytes">
+      <summary>获取日志存储区中的可用字节数。</summary>
+      <returns>日志存储区中的可用字节数。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogStore.Handle">
+      <summary>获取当前 <see cref="T:System.IO.Log.LogStore" /> 实例封装的日志文件的操作系统文件句柄。</summary>
+      <returns>当前 <see cref="T:System.IO.Log.LogStore" /> 实例封装的日志文件的操作系统文件句柄。</returns>
+    </member>
+    <member name="P:System.IO.Log.LogStore.LastSequenceNumber">
+      <summary>在派生类中被重写时，获取要追加到日志存储区中的下一条记录的序列号。</summary>
+      <returns>要追加到日志存储区中的下一条记录的序列号。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogStore.Length">
+      <summary>获取日志存储区的大小（以字节为单位）。</summary>
+      <returns>日志存储区的大小（以字节为单位）。</returns>
+      <exception cref="T:System.ObjectDisposedException">该属性是在序列已释放之后访问的。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogStore.Policy">
+      <summary>获取与此日志存储区关联的策略。</summary>
+      <returns>一个 <see cref="T:System.IO.Log.LogPolicy" /> 实例，表示与此日志存储区关联的策略。</returns>
+    </member>
+    <member name="M:System.IO.Log.LogStore.SetArchiveTail(System.IO.Log.SequenceNumber)">
+      <summary>设置存档尾数据的序列号。</summary>
+      <param name="archiveTail">存档尾数据的序列号。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="archiveTail" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="archiveTail" /> 对此序列无效。</exception>
+      <exception cref="T:System.InvalidOperationException">执行了无效的操作。</exception>
+      <exception cref="T:System.IO.IOException">创建存档快照时发生 I/O 错误。</exception>
+      <exception cref="T:System.NotSupportedException">日志存储区不可存档。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="P:System.IO.Log.LogStore.StreamCount">
+      <summary>获取此日志存储区中日志流的数量。</summary>
+      <returns>此日志存储区中日志流的数量。</returns>
+    </member>
+    <member name="T:System.IO.Log.PolicyUnit">
+      <summary>表示日志存储策略的大小度量。</summary>
+    </member>
+    <member name="M:System.IO.Log.PolicyUnit.#ctor(System.Int64,System.IO.Log.PolicyUnitType)">
+      <summary>用指定的值和类型初始化 <see cref="T:System.IO.Log.PolicyUnit" /> 结构的新实例。</summary>
+      <param name="value">
+        <see cref="T:System.IO.Log.PolicyUnit" /> 的大小。</param>
+      <param name="type">
+        <see cref="T:System.IO.Log.PolicyUnitType" /> 值之一。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="value" /> 或 <paramref name="type" /> 不是有效的值。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+    </member>
+    <member name="M:System.IO.Log.PolicyUnit.Equals(System.Object)">
+      <summary>指示此实例与指定对象是否相等。</summary>
+      <param name="obj">要检查的指定对象。</param>
+      <returns>如果此实例和指定对象相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.PolicyUnit.Extents(System.Int64)">
+      <summary>根据指定的数字创建 <see cref="T:System.IO.Log.PolicyUnit" /> 类型的 <see cref="F:System.IO.Log.PolicyUnitType.Extents" />。</summary>
+      <param name="value">一个表示容器数量的数字。</param>
+      <returns>根据指定的数字创建的 <see cref="T:System.IO.Log.PolicyUnit" /> 类型的 <see cref="F:System.IO.Log.PolicyUnitType.Extents" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.PolicyUnit.GetHashCode">
+      <summary>为此对象提供一个唯一的哈希代码。</summary>
+      <returns>一个整数，它是哈希代码值。</returns>
+    </member>
+    <member name="M:System.IO.Log.PolicyUnit.op_Equality(System.IO.Log.PolicyUnit,System.IO.Log.PolicyUnit)">
+      <summary>比较两个 <see cref="T:System.IO.Log.PolicyUnit" /> 实例以确定它们是否相等。</summary>
+      <param name="left">运算符左边的 <see cref="T:System.IO.Log.PolicyUnit" />。</param>
+      <param name="right">运算符右边的 <see cref="T:System.IO.Log.PolicyUnit" />。</param>
+      <returns>如果两个 <see cref="T:System.IO.Log.PolicyUnit" /> 实例相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.PolicyUnit.op_Inequality(System.IO.Log.PolicyUnit,System.IO.Log.PolicyUnit)">
+      <summary>对两个 <see cref="T:System.IO.Log.PolicyUnit" /> 实例进行比较，以确定它们是否不相等。</summary>
+      <param name="left">运算符左边的 <see cref="T:System.IO.Log.PolicyUnit" />。</param>
+      <param name="right">运算符右边的 <see cref="T:System.IO.Log.PolicyUnit" />。</param>
+      <returns>如果两个 <see cref="T:System.IO.Log.PolicyUnit" /> 实例不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.PolicyUnit.Percentage(System.Int64)">
+      <summary>根据指定的数字创建 <see cref="T:System.IO.Log.PolicyUnit" /> 类型的 <see cref="F:System.IO.Log.PolicyUnitType.Percentage" />。</summary>
+      <param name="value">一个表示百分比的数字。</param>
+      <returns>根据指定的数字创建的 <see cref="T:System.IO.Log.PolicyUnit" /> 类型的 <see cref="F:System.IO.Log.PolicyUnitType.Percentage" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.PolicyUnit.ToString">
+      <summary>返回此对象的字符串表示形式。</summary>
+      <returns>表示此对象的字符串。</returns>
+    </member>
+    <member name="P:System.IO.Log.PolicyUnit.Type">
+      <summary>获取 <see cref="T:System.IO.Log.PolicyUnit" /> 的单位类型。</summary>
+      <returns>
+        <see cref="T:System.IO.Log.PolicyUnitType" /> 值之一。 默认值为 <see cref="F:System.IO.Log.PolicyUnitType.Extents" />。</returns>
+    </member>
+    <member name="P:System.IO.Log.PolicyUnit.Value">
+      <summary>获取 <see cref="T:System.IO.Log.PolicyUnit" /> 的值。</summary>
+      <returns>
+        <see cref="T:System.IO.Log.PolicyUnit" /> 的值。</returns>
+    </member>
+    <member name="T:System.IO.Log.PolicyUnitType">
+      <summary>指定 <see cref="T:System.IO.Log.PolicyUnit" /> 实例的度量单位。</summary>
+    </member>
+    <member name="F:System.IO.Log.PolicyUnitType.Extents">
+      <summary>以容器作为度量单位。</summary>
+    </member>
+    <member name="F:System.IO.Log.PolicyUnitType.Percentage">
+      <summary>以 <see cref="T:System.IO.Log.LogStore" /> 大小的百分比作为度量单位。</summary>
+    </member>
+    <member name="T:System.IO.Log.RecordAppendOptions">
+      <summary>指定如何追加记录。</summary>
+    </member>
+    <member name="F:System.IO.Log.RecordAppendOptions.ForceAppend">
+      <summary>追加此记录后，记录序列应开始刷新内部缓冲区的过程。 这并不表示在追加操作完成之前应持久写入该记录。 若要获得该行为，请指定 <see cref="F:System.IO.Log.RecordAppendOptions.ForceFlush" /> 标志。</summary>
+    </member>
+    <member name="F:System.IO.Log.RecordAppendOptions.ForceFlush">
+      <summary>追加此记录后，记录序列应刷新所有内部缓冲区。 在追加操作完成时，已持久写入指定的记录。</summary>
+    </member>
+    <member name="F:System.IO.Log.RecordAppendOptions.None">
+      <summary>被动地写入数据。</summary>
+    </member>
+    <member name="T:System.IO.Log.ReservationCollection">
+      <summary>管理在记录序列中生成的空间预留的集合。</summary>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.#ctor">
+      <summary>初始化 <see cref="T:System.IO.Log.ReservationCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.Add(System.Int64)">
+      <summary>分配预留并将其添加到集合中。 不能继承此方法。</summary>
+      <param name="size">请求的预留的大小（以字节为单位）。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="archiveTail" /> 不在此序列的基序列号和最后一个序列号之间。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="size" /> 无效或超过最大预留大小。</exception>
+      <exception cref="T:System.IO.IOException">创建存档快照时发生 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.Clear">
+      <summary>释放集合中的所有预留。 不能继承此方法。</summary>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="size" /> 无效或超过最大预留大小。</exception>
+      <exception cref="T:System.IO.IOException">创建存档快照时发生 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.Contains(System.Int64)">
+      <summary>确定是否已生成指定大小的预留。 不能继承此方法。</summary>
+      <param name="size">要在集合中查找的大小。</param>
+      <returns>如果已生成至少一个指定大小的预留，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.CopyTo(System.Int64[],System.Int32)">
+      <summary>从目标数组的指定索引处开始，将整个集合复制到一维数组。 不能继承此方法。</summary>
+      <param name="array">作为复制目标的数组。</param>
+      <param name="arrayIndex">数组中开始复制的位置的索引（从零开始）。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 或 <paramref name="arrayIndex" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="arrayIndex" /> 小于零，或者大于或等于 <paramref name="array" /> 的长度。</exception>
+      <exception cref="T:System.ArgumentException">指定的数组中没有足够的空间来复制数据。  
+或 
+ <paramref name="array" /> 不是一维数组，它是请求的操作支持的唯一类型。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="P:System.IO.Log.ReservationCollection.Count">
+      <summary>获取此集合中的预留数。</summary>
+      <returns>集合中的预留数。</returns>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.Finalize">
+      <summary>允许 <see cref="T:System.IO.Log.ReservationCollection" /> 在垃圾收集器销毁资源之前将这些资源释放。</summary>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.FreeReservation(System.Int64)">
+      <summary>在派生类中重写时，释放指定大小的预留。</summary>
+      <param name="size">要释放的预留的大小。</param>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.GetBestMatchingReservation(System.Int64)">
+      <summary>在派生类中重写时，获取给定大小的最佳匹配预留。</summary>
+      <param name="size">必须匹配的预留的大小。</param>
+      <returns>集合中大于或等于指定大小的预留；或者，如果此类预留不存在，则为 -1。</returns>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.GetEnumerator">
+      <summary>返回可循环访问 <see cref="T:System.IO.Log.ReservationCollection" /> 的枚举器。 不能继承此方法。</summary>
+      <returns>一个可循环访问 <see cref="T:System.IO.Log.ReservationCollection" /> 的枚举数。</returns>
+      <exception cref="T:System.InvalidOperationException">操作由于以下原因之一而无效： 
+
+枚举已经终止。  
+
+集合已修改。  
+
+枚举尚未开始。 必须调用 <see cref="M:System.Collections.IEnumerator.MoveNext" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="P:System.IO.Log.ReservationCollection.IsReadOnly">
+      <summary>获取一个值，指示集合是否为只读集合。</summary>
+      <returns>此属性始终返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.MakeReservation(System.Int64)">
+      <summary>在派生类中重写时，分配指定大小的预留。</summary>
+      <param name="size">要分配的预留的大小。</param>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.Remove(System.Int64)">
+      <summary>释放指定大小的预留（如果已生成）。 不能继承此方法。</summary>
+      <param name="item">要释放的预留的大小。</param>
+      <returns>如果已找到并移除指定大小的预留，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentException">在指定的预留集合中找不到足以容纳提供的记录的预留。</exception>
+      <exception cref="T:System.IO.IOException">创建存档快照时发生 I/O 错误。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.IO.Log.SequenceFullException">记录序列已满。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.ReservationFreed(System.Int64)">
+      <summary>在派生类中重写时，指示已释放了预留。</summary>
+      <param name="size">已释放的预留的大小。</param>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.ReservationMade(System.Int64)">
+      <summary>在派生类中重写时，指示已生成了预留。</summary>
+      <param name="size">已生成的预留的大小。</param>
+    </member>
+    <member name="M:System.IO.Log.ReservationCollection.System#Collections#IEnumerable#GetEnumerator">
+      <summary>返回可循环访问 <see cref="T:System.IO.Log.ReservationCollection" /> 的枚举器。 不能继承此方法。</summary>
+      <returns>一个可循环访问 <see cref="T:System.IO.Log.ReservationCollection" /> 的枚举数。</returns>
+      <exception cref="T:System.InvalidOperationException">操作由于以下原因之一而无效： 
+
+枚举已经终止。  
+
+集合已修改。  
+
+枚举尚未开始。 必须调用 <see cref="M:System.Collections.IEnumerator.MoveNext" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">该方法是在序列已释放之后调用的。</exception>
+      <exception cref="T:System.OutOfMemoryException">没有足够的内存来继续执行该程序。</exception>
+      <exception cref="T:System.UnauthorizedAccessException">操作系统拒绝了对指定的日志存储区的访问。</exception>
+    </member>
+    <member name="T:System.IO.Log.ReservationNotFoundException">
+      <summary>表示没有找到 <see cref="T:System.IO.Log.LogRecordSequence" /> 中的特定空间预留时引发的异常。</summary>
+    </member>
+    <member name="M:System.IO.Log.ReservationNotFoundException.#ctor">
+      <summary>初始化 <see cref="T:System.IO.Log.ReservationNotFoundException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IO.Log.ReservationNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.IO.Log.ReservationNotFoundException" /> 类的新实例。</summary>
+      <param name="info">包含有关所引发异常的序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IO.Log.ReservationNotFoundException.#ctor(System.String)">
+      <summary>用指定的错误消息初始化 <see cref="T:System.IO.Log.ReservationNotFoundException" /> 类的新实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IO.Log.ReservationNotFoundException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IO.Log.ReservationNotFoundException" /> 类的新实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="inner">导致当前异常的异常。</param>
+    </member>
+    <member name="T:System.IO.Log.SequenceFullException">
+      <summary>表示日志记录序列已满时引发的异常。</summary>
+    </member>
+    <member name="M:System.IO.Log.SequenceFullException.#ctor">
+      <summary>初始化 <see cref="T:System.IO.Log.SequenceFullException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IO.Log.SequenceFullException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.IO.Log.SequenceFullException" /> 类的新实例。</summary>
+      <param name="info">包含有关所引发异常的序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IO.Log.SequenceFullException.#ctor(System.String)">
+      <summary>用指定的错误消息初始化 <see cref="T:System.IO.Log.SequenceFullException" /> 类的新实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IO.Log.SequenceFullException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IO.Log.SequenceFullException" /> 类的新实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="inner">导致当前异常的异常。</param>
+    </member>
+    <member name="T:System.IO.Log.SequenceNumber">
+      <summary>表示记录序列中分配给日志记录的序列号。</summary>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.#ctor(System.Byte[])">
+      <summary>初始化 <see cref="T:System.IO.Log.SequenceNumber" /> 类的新实例。</summary>
+      <param name="sequenceNumber">构成序列号的字节。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="sequenceNumber" /> 的长度错误，或者不表示有效的序列号。</exception>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.CompareTo(System.IO.Log.SequenceNumber)">
+      <summary>将此序列号与指定的对象进行比较。</summary>
+      <param name="other">计算结果为当前序列号的对象。</param>
+      <returns>一个 32 位有符号整数，指示两个比较数之间的词法关系。  
+  “值” 
+  条件 
+  小于零 
+  此实例小于 <paramref name="other" />。  
+
+  零 
+  此实例等于 <paramref name="other" />。  
+
+  大于零 
+  此实例大于 <paramref name="other" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.Equals(System.IO.Log.SequenceNumber)">
+      <summary>指示此实例与指定序列号是否相等。</summary>
+      <param name="other">要比较的另一个 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <returns>如果 <see langword="true" /> 和该实例表示相同的值，则为 <paramref name="other" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.Equals(System.Object)">
+      <summary>指示此实例与指定对象是否相等。</summary>
+      <param name="other">要比较的另一个对象。</param>
+      <returns>如果 <see langword="true" /> 和该实例具有相同的类型并表示相同的值，则为 <paramref name="other" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.GetBytes">
+      <summary>将当前序列号全部或部分编码为字节数组。</summary>
+      <returns>包含全部或部分当前序列号的字节数组。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>32 位有符号整数哈希代码。</returns>
+    </member>
+    <member name="P:System.IO.Log.SequenceNumber.Invalid">
+      <summary>获取用于表示无效序列号默认值的序列号。</summary>
+      <returns>一个<see cref="T:System.IO.Log.SequenceNumber" />初始化为 UInt64。<see cref="F:System.UInt64.MaxValue" /> 可用作表示无效的序列号的默认值。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.op_Equality(System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber)">
+      <summary>比较两个 <see cref="T:System.IO.Log.SequenceNumber" /> 实例以确定它们是否相等。</summary>
+      <param name="c1">运算符左边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <param name="c2">运算符右边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <returns>如果两个 <see cref="T:System.IO.Log.SequenceNumber" /> 实例相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.op_GreaterThan(System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber)">
+      <summary>对两个 <see cref="T:System.IO.Log.SequenceNumber" /> 实例执行逻辑比较，以确定第一个实例是否大于第二个实例。</summary>
+      <param name="c1">运算符左边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <param name="c2">运算符右边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <returns>如果第一个实例大于第二个实例，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.op_GreaterThanOrEqual(System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber)">
+      <summary>对两个 <see cref="T:System.IO.Log.SequenceNumber" /> 实例执行逻辑比较，以确定第一个实例是否大于或等于第二个实例。</summary>
+      <param name="c1">运算符左边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <param name="c2">运算符右边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <returns>如果第一个实例大于或等于第二个实例，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.op_Inequality(System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber)">
+      <summary>对两个 <see cref="T:System.IO.Log.SequenceNumber" /> 实例进行比较，以确定它们是否不相等。</summary>
+      <param name="c1">运算符左边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <param name="c2">运算符右边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <returns>如果两个 <see langword="true" /> 实例不相等，则为 <see cref="T:System.IO.Log.SequenceNumber" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.op_LessThan(System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber)">
+      <summary>对两个 <see cref="T:System.IO.Log.SequenceNumber" /> 参数执行逻辑比较，以确定第一个参数是否小于第二个参数。</summary>
+      <param name="c1">运算符左边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <param name="c2">运算符右边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <returns>如果第一个实例小于第二个实例，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IO.Log.SequenceNumber.op_LessThanOrEqual(System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber)">
+      <summary>对两个 <see cref="T:System.IO.Log.SequenceNumber" /> 参数执行逻辑比较，以确定第一个参数是否小于或等于第二个参数。</summary>
+      <param name="c1">运算符左边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <param name="c2">运算符右边的 <see cref="T:System.IO.Log.SequenceNumber" />。</param>
+      <returns>如果第一个实例小于或等于第二个实例，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.IO.Log.TailPinnedEventArgs">
+      <summary>为 <see cref="E:System.IO.Log.IRecordSequence.TailPinned" /> 事件提供数据。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.IO.Log.TailPinnedEventArgs.#ctor(System.IO.Log.SequenceNumber)">
+      <summary>初始化 <see cref="T:System.IO.Log.TailPinnedEventArgs" /> 类的新实例。</summary>
+      <param name="sequenceNumber">目标序列号。</param>
+    </member>
+    <member name="P:System.IO.Log.TailPinnedEventArgs.TargetSequenceNumber">
+      <summary>获取尾部应移过的序列号。</summary>
+      <returns>尾部应移过的序列号。</returns>
+    </member>
+  </members>
+</doc>

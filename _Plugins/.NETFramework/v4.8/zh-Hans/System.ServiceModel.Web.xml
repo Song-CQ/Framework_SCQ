@@ -1,0 +1,3718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ServiceModel.Web</name>
+  </assembly>
+  <members>
+    <member name="F:System.ServiceModel.Channels.WebBodyFormatMessageProperty.Name">
+      <summary>
+              返回属性名称。
+            </summary>
+      <returns>
+              返回：“WebBodyFormatMessageProperty”。
+            </returns>
+    </member>
+    <member name="F:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.HttpOperationNamePropertyName">
+      <summary>
+              请求消息的消息属性的名称，该属性为请求提供选定操作的名称。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.HttpOperationSelectorUriMatchedPropertyName">
+      <summary>
+              一个以密钥形式存储值的字符串，用于指示对服务操作的调用是否与 URI 匹配而不与 HTTP 方法匹配。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.WebScriptServiceHostFactory.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Activation.WebScriptServiceHostFactory" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.WebScriptServiceHostFactory.CreateServiceHost(System.Type,System.Uri[])">
+      <summary>
+              为具有特定基址的指定类型的服务创建 <see cref="T:System.ServiceModel.ServiceHost" /> 的派生类，在某些情况下可使用该服务来自动启用 ASP.NET AJAX 终结点。
+            </summary>
+      <param name="serviceType">
+                要承载的服务的类型。
+              </param>
+      <param name="baseAddresses">
+                类型为 <see cref="T:System.Array" /> 且包含所承载服务的基址的 <see cref="T:System.Uri" />。
+              </param>
+      <returns>
+              使用指定基址指定的该类型服务的 <see cref="T:System.ServiceModel.ServiceHost" />。
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+                  另一个服务使用相同的基址，或另一个终结点正在使用与此工厂试图创建的 ASP.NET AJAX 终结点相同的地址。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Activation.WebServiceHostFactory.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Activation.WebServiceHostFactory" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Activation.WebServiceHostFactory.CreateServiceHost(System.Type,System.Uri[])">
+      <summary>
+              使用指定基址创建指定的 <see cref="T:System.ServiceModel.Web.WebServiceHost" /> 派生类的实例。
+            </summary>
+      <param name="serviceType">
+                要创建的服务主机的类型。
+              </param>
+      <param name="baseAddresses">
+                该服务的基址的数组。
+              </param>
+      <returns>
+              <see cref="T:System.ServiceModel.ServiceHost" /> 派生类的实例。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.JavascriptCallbackResponseMessageProperty.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Channels.JavascriptCallbackResponseMessageProperty" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Channels.StreamBodyWriter.#ctor(System.Boolean)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Channels.StreamBodyWriter" /> 类的新实例。
+            </summary>
+      <param name="isBuffered">
+                <see langword="true" /> 如果缓冲了发送流;，否则为 <see langword="false" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Channels.StreamBodyWriter.OnCreateBufferedCopy(System.Int32)">
+      <summary>
+              重写此方法以创建流的缓冲副本。
+            </summary>
+      <param name="maxBufferSize">
+                最大缓冲区大小。
+              </param>
+      <returns>
+              正文编写器。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.StreamBodyWriter.OnWriteBodyContents(System.IO.Stream)">
+      <summary>
+              重写此方法以处理编写消息正文内容的操作。
+            </summary>
+      <param name="stream">
+                要写入的流。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Channels.StreamBodyWriter.OnWriteBodyContents(System.Xml.XmlDictionaryWriter)">
+      <summary>
+              重写此方法以处理编写消息正文内容的操作。
+            </summary>
+      <param name="writer">
+                要写入到的编写器。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebBodyFormatMessageProperty.#ctor(System.ServiceModel.Channels.WebContentFormat)">
+      <summary>
+              使用指定的格式初始化 <see cref="T:System.ServiceModel.Channels.WebBodyFormatMessageProperty" /> 类的新实例。
+            </summary>
+      <param name="format">
+                消息正文的 <see cref="T:System.ServiceModel.Channels.WebContentFormat" />。
+              </param>
+      <exception cref="T:System.ArgumentException">
+                  格式不能设置为构造函数中的 <see cref="F:System.ServiceModel.Channels.WebContentFormat.Default" /> 值。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebBodyFormatMessageProperty.CreateCopy">
+      <summary>
+              返回当前属性的当前实例。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Channels.IMessageProperty" /> 接口的一个实例，它是当前 <see cref="T:System.ServiceModel.Channels.WebBodyFormatMessageProperty" /> 的副本。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebBodyFormatMessageProperty.ToString">
+      <summary>
+              返回构造时使用的属性名称和编码格式。
+            </summary>
+      <returns>
+              返回“WebBodyFormatMessageProperty: EncodingFormat={0}”，其中 {0} 是 <see langword="WebContentFormat.ToString()" />，指定使用的编码格式。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebContentTypeMapper.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Channels.WebContentTypeMapper" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebContentTypeMapper.GetMessageFormatForContentType(System.String)">
+      <summary>
+              在派生类中重写时，返回用于指定内容类型的消息格式。
+            </summary>
+      <param name="contentType">
+                用于指示要解释的数据为 MIME 类型的内容类型。
+              </param>
+      <returns>
+              <see cref="T:System.ServiceModel.Channels.WebContentFormat" />，指定将消息内容类型映射到的格式。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Channels.WebMessageEncodingBindingElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.#ctor(System.Text.Encoding)">
+      <summary>
+              使用指定的编写字符编码初始化 <see cref="T:System.ServiceModel.Channels.WebMessageEncodingBindingElement" /> 类的新实例。
+            </summary>
+      <param name="writeEncoding">
+                用于在消息中写入字符的 <see cref="T:System.Text.Encoding" />。
+              </param>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="writeEncoding" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentException">
+                  不支持 <paramref name="writeEncoding" /> 消息文本编码。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>
+              在客户端上生成通道工厂堆栈，该通道工厂堆栈可为指定上下文创建指定类型的通道。
+            </summary>
+      <param name="context">
+                通道的 <see cref="T:System.ServiceModel.Channels.BindingContext" />。
+              </param>
+      <typeparam name="TChannel">
+                通道工厂生成的通道类型。
+              </typeparam>
+      <returns>
+              指定上下文的 <see cref="T:System.ServiceModel.Channels.IChannelFactory`1" /> 类型的 <paramref name="TChannel" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>
+              在客户端生成通道侦听器堆栈，该通道侦听器堆栈接受针对指定上下文的具有指定类型的通道。
+            </summary>
+      <param name="context">
+                侦听器的 <see cref="T:System.ServiceModel.Channels.BindingContext" />。
+              </param>
+      <typeparam name="TChannel">
+                通道侦听器接受的通道类型。
+              </typeparam>
+      <returns>
+              指定上下文的 <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 类型的 <paramref name="TChannel" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>
+              返回一个值，该值指示当前绑定是否可以为指定的通道类型和上下文生成侦听器。
+            </summary>
+      <param name="context">
+                侦听器的 <see cref="T:System.ServiceModel.Channels.BindingContext" />。
+              </param>
+      <typeparam name="TChannel">
+                通道侦听器接受的通道类型。
+              </typeparam>
+      <returns>
+              如果可以在服务上生成指定的通道侦听器堆栈，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.Clone">
+      <summary>
+              创建一个从当前对象初始化的新 <see cref="T:System.ServiceModel.Channels.WebMessageEncodingBindingElement" /> 对象。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Channels.WebMessageEncodingBindingElement" /> 对象，其属性值等于当前元素的属性值。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.CreateMessageEncoderFactory">
+      <summary>
+              创建可以生成消息编码器的消息编码器工厂，所生成的消息编码器可以编写 JavaScript 对象表示法 (JSON) 与 XML 消息。
+            </summary>
+      <returns>
+              对 JSON、XML 或“原始”二进制消息进行编码的 <see cref="T:System.ServiceModel.Channels.MessageEncoderFactory" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>
+              如果存在，从通道堆栈的适当层返回所请求类型的对象，如果不存在，则为 <see langword="null" />。
+            </summary>
+      <param name="context">
+                当前绑定元素的 <see cref="T:System.ServiceModel.Channels.BindingContext" />。
+              </param>
+      <typeparam name="T">
+                方法正在查询的类型化对象。
+              </typeparam>
+      <returns>
+              如果存在，则为所请求的类型化对象 <paramref name="T" />，如果不存在，则为 <see langword="null" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="context" /> 设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.System#ServiceModel#Description#IWsdlExportExtension#ExportContract(System.ServiceModel.Description.WsdlExporter,System.ServiceModel.Description.WsdlContractConversionContext)">
+      <summary>
+              从包含在绑定元素中的编码策略中生成 WSDL 协定信息。
+            </summary>
+      <param name="exporter">
+                可导出协定信息的 <see cref="T:System.ServiceModel.Description.WsdlExporter" />。
+              </param>
+      <param name="context">
+                一个 <see cref="T:System.ServiceModel.Description.WsdlContractConversionContext" /> 对象，该对象提供从导出的 WSDL 元素到协定说明的映射。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Channels.WebMessageEncodingBindingElement.System#ServiceModel#Description#IWsdlExportExtension#ExportEndpoint(System.ServiceModel.Description.WsdlExporter,System.ServiceModel.Description.WsdlEndpointConversionContext)">
+      <summary>
+              从包含在绑定元素中的编码策略中生成 WSDL 协定信息。
+            </summary>
+      <param name="exporter">
+                可导出协定信息的 <see cref="T:System.ServiceModel.Description.WsdlExporter" />。
+              </param>
+      <param name="context">
+                一个 <see cref="T:System.ServiceModel.Description.WsdlContractConversionContext" /> 对象，该对象提供从导出的 WSDL 元素到终结点说明的映射。
+              </param>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="context" /> 为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpBindingCollectionElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WebHttpBindingCollectionElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpBindingCollectionElement.GetDefault">
+      <summary>
+              获取所使用的默认绑定。
+            </summary>
+      <returns>
+              一个表示默认绑定的 <see cref="T:System.ServiceModel.Channels.Binding" /> 对象。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpBindingElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WebHttpBindingElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpBindingElement.#ctor(System.String)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WebHttpBindingElement" /> 类的新实例并指定该元素的名称。
+            </summary>
+      <param name="name">
+                用于此绑定配置元素的名称。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpBindingElement.InitializeFrom(System.ServiceModel.Channels.Binding)">
+      <summary>
+              根据指定绑定的属性值初始化此绑定配置元素的内容。
+            </summary>
+      <param name="binding">
+                用于初始化此配置元素的 <see cref="T:System.ServiceModel.Channels.Binding" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpBindingElement.OnApplyConfiguration(System.ServiceModel.Channels.Binding)">
+      <summary>
+              根据此绑定配置元素的内容初始化指定绑定的属性值。
+            </summary>
+      <param name="binding">
+                根据此绑定配置元素的内容初始化的 <see cref="T:System.ServiceModel.Channels.Binding" />。
+              </param>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="binding" /> 为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentException">
+                  此绑定元素的类型与 <paramref name="binding" /> 指定的类型不同。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WebHttpElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpEndpointCollectionElement.#ctor">
+      <summary>
+              创建 <see cref="T:System.ServiceModel.Configuration.WebHttpEndpointCollectionElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpEndpointElement.#ctor">
+      <summary>
+              创建 <see cref="T:System.ServiceModel.Configuration.WebHttpEndpointElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>
+              使用指定的协定说明创建类型为 <see cref="T:System.ServiceModel.Description.WebHttpEndpoint" /> 的新终结点。
+            </summary>
+      <param name="contractDescription">
+                类型为 <see cref="T:System.ServiceModel.Description.ContractDescription" /> 的对象，该对象指定终结点与外界通信的内容，其中包括针对交换的消息所进行的各种操作的签名、这些消息的数据类型、操作的位置，以及用于支持与服务成功通信的特定协议和序列化格式。
+              </param>
+      <returns>
+              服务终结点。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>
+              将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 <see cref="T:System.ServiceModel.Description.WebHttpEndpoint" />。
+            </summary>
+      <param name="endpoint">
+                应用了 Web HTTP 配置设置的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+              </param>
+      <param name="serviceEndpointElement">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>
+              将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 <see cref="T:System.ServiceModel.Description.WebHttpEndpoint" />。
+            </summary>
+      <param name="endpoint">
+                应用了 Web HTTP 配置设置的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+              </param>
+      <param name="serviceEndpointElement">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>
+              初始化并验证指定通道终结点元素的格式，并将其配置为包括 Web HTTP 内容。
+            </summary>
+      <param name="channelEndpointElement">
+                要初始化和验证的通道终结点元素。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>
+              初始化并验证指定服务终结点元素的格式，并将其配置为包括 Web HTTP 内容。
+            </summary>
+      <param name="serviceEndpointElement">
+                要初始化和验证的服务终结点元素。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebHttpSecurityElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WebHttpSecurityElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebMessageEncodingElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WebMessageEncodingElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebMessageEncodingElement.ApplyConfiguration(System.ServiceModel.Channels.BindingElement)">
+      <summary>
+              将指定绑定元素的内容应用到此绑定配置节。
+            </summary>
+      <param name="bindingElement">
+                要应用的 <see cref="T:System.ServiceModel.Channels.BindingElement" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebMessageEncodingElement.CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement)">
+      <summary>
+              将指定配置节的内容复制到此元素。
+            </summary>
+      <param name="from">
+                要复制的 <see cref="T:System.ServiceModel.Configuration.ServiceModelExtensionElement" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebScriptEnablingElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WebScriptEnablingElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebScriptEndpointCollectionElement.#ctor">
+      <summary>
+              创建 <see cref="T:System.ServiceModel.Configuration.WebScriptEndpointCollectionElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebScriptEndpointElement.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Configuration.WebScriptEndpointElement" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebScriptEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 初始化新的 <see cref="T:System.ServiceModel.Description.ContractDescription" />。
+            </summary>
+      <param name="contractDescription">
+                一个对象，其属性定义包括以下各项在内的终结点特征
+              
+                    针对交换的消息所进行的各种操作的签名
+                  
+                    这些消息的数据类型、操作的位置
+                  
+                    用于支持与服务成功通信的特定协议和序列化格式
+                  </param>
+      <returns>
+              Web 脚本终结点。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebScriptEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>
+              将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" />。
+            </summary>
+      <param name="endpoint">
+                要转换的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+              </param>
+      <param name="serviceEndpointElement">
+                未使用。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebScriptEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>
+              将指定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> 转换为 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" />。
+            </summary>
+      <param name="endpoint">
+                要转换的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+              </param>
+      <param name="serviceEndpointElement">
+                未使用。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebScriptEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>
+              初始化并验证指定 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" /> 的格式，并将其配置为包括 Web HTTP 绑定内容。
+            </summary>
+      <param name="channelEndpointElement">
+                要初始化的 <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.WebScriptEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>
+              初始化并验证指定 <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" /> 的格式，并将其配置为包括 Web HTTP 绑定内容。
+            </summary>
+      <param name="serviceEndpointElement">
+                要初始化的 <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.JsonFaultDetail.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Description.JsonFaultDetail" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Description.WebHttpBehavior" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IEndpointBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)" /> 方法可将运行时处的数据传递给绑定以支持自定义行为。
+            </summary>
+      <param name="endpoint">
+                终结点。
+              </param>
+      <param name="bindingParameters">
+                支持修改绑定的绑定参数。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.AddClientErrorInspector(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+      <summary>
+              将客户端错误检查器添加到指定的服务终结点。
+            </summary>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <param name="clientRuntime">
+                客户端运行时。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.AddServerErrorHandlers(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>
+              重写此方法，以更改服务上发生的错误的处理方式。
+            </summary>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <param name="endpointDispatcher">
+                终结点调度程序。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IEndpointBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)" /> 方法可支持对终结点上的客户端进行修改或扩展。
+            </summary>
+      <param name="endpoint">
+                公开协定的终结点。
+              </param>
+      <param name="clientRuntime">
+                要应用自定义行为的客户端。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)" /> 方法可支持对终结点上的客户端进行修改或扩展。
+            </summary>
+      <param name="endpoint">
+                公开协定的终结点。
+              </param>
+      <param name="endpointDispatcher">
+                要应用行为的终结点调度程序。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.GetOperationSelector(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              创建一个新的 <see cref="T:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector" /> 对象。
+            </summary>
+      <param name="endpoint">
+                公开协定的终结点。
+              </param>
+      <returns>
+              包含指定终结点的操作选择器的 <see cref="T:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector" /> 的实例。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.GetQueryStringConverter(System.ServiceModel.Description.OperationDescription)">
+      <summary>
+              获取查询字符串转换器。
+            </summary>
+      <param name="operationDescription">
+                服务操作。
+              </param>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Dispatcher.QueryStringConverter" /> 实例。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.GetReplyClientFormatter(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              获取指定终结点和服务操作的客户端上的答复格式化程序。
+            </summary>
+      <param name="operationDescription">
+                服务操作。
+              </param>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <returns>
+              一个对指定操作和终结点的客户端上的答复格式化程序的 <see cref="T:System.ServiceModel.Dispatcher.IClientMessageFormatter" /> 引用。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.GetReplyDispatchFormatter(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              获取指定终结点和服务操作的服务上的答复格式化程序。
+            </summary>
+      <param name="operationDescription">
+                服务操作。
+              </param>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <returns>
+              一个对指定操作和终结点的服务上的答复格式化程序的 <see cref="T:System.ServiceModel.Dispatcher.IDispatchMessageFormatter" /> 引用。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.GetRequestClientFormatter(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              获取指定服务操作和终结点的客户端上的请求格式化程序。
+            </summary>
+      <param name="operationDescription">
+                服务操作。
+              </param>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <returns>
+              一个对指定操作和终结点的客户端上的请求格式化程序的 <see cref="T:System.ServiceModel.Dispatcher.IClientMessageFormatter" /> 引用。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.GetRequestDispatchFormatter(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              获取给定服务操作和服务终结点的服务上的请求格式化程序。
+            </summary>
+      <param name="operationDescription">
+                服务操作。
+              </param>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <returns>
+              一个对指定操作和终结点的服务上的请求格式化程序的 <see cref="T:System.ServiceModel.Dispatcher.IDispatchMessageFormatter" /> 引用。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              确认终结点符合 Web 编程模型的需求。
+            </summary>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpBehavior.ValidateBinding(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              确保绑定在与 WCF Web 编程模型一起使用时有效。
+            </summary>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpEndpoint.#ctor(System.ServiceModel.Description.ContractDescription)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Description.WebHttpEndpoint" /> 初始化 <see cref="T:System.ServiceModel.Description.ContractDescription" /> 类的新实例。
+            </summary>
+      <param name="contract">
+                协定说明。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebHttpEndpoint.#ctor(System.ServiceModel.Description.ContractDescription,System.ServiceModel.EndpointAddress)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Description.WebHttpEndpoint" /> 和 <see cref="T:System.ServiceModel.Description.ContractDescription" /> 初始化 <see cref="T:System.ServiceModel.EndpointAddress" /> 类的新实例。
+            </summary>
+      <param name="contract">
+                协定说明。
+              </param>
+      <param name="address">
+                终结点地址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebScriptEnablingBehavior.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Description.WebScriptEnablingBehavior" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebScriptEnablingBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+      <summary>
+              将行为应用于终结点上的客户端。
+            </summary>
+      <param name="endpoint">
+                公开了协定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+              </param>
+      <param name="clientRuntime">
+                对其应用自定义行为的 <see cref="T:System.ServiceModel.Dispatcher.ClientRuntime" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebScriptEnablingBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>
+              将行为应用于服务终结点。
+            </summary>
+      <param name="endpoint">
+                公开了协定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+              </param>
+      <param name="endpointDispatcher">
+                对其应用自定义行为的 <see cref="T:System.ServiceModel.Dispatcher.EndpointDispatcher" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              确认该终结点满足使它能够用作 ASP.NET AJAX 终结点的要求。
+            </summary>
+      <param name="endpoint">
+                公开了协定的 <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />。
+              </param>
+      <exception cref="T:System.InvalidOperationException">
+                  该终结点不符合作为 ASP.NET AJAX 终结点的需求之一。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebScriptEndpoint.#ctor(System.ServiceModel.Description.ContractDescription)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 初始化 <see cref="T:System.ServiceModel.Description.ContractDescription" /> 类的新实例。
+            </summary>
+      <param name="contract">
+                协定说明。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Description.WebScriptEndpoint.#ctor(System.ServiceModel.Description.ContractDescription,System.ServiceModel.EndpointAddress)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 和 <see cref="T:System.ServiceModel.Description.ContractDescription" /> 初始化 <see cref="T:System.ServiceModel.EndpointAddress" /> 类的新实例。
+            </summary>
+      <param name="contract">
+                协定说明。
+              </param>
+      <param name="address">
+                终结点地址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.JsonQueryStringConverter.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Dispatcher.JsonQueryStringConverter" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.JsonQueryStringConverter.CanConvert(System.Type)">
+      <summary>
+              获取一个值，该值指示指定的公共语言运行库 (CLR) 类型是否为可序列化与反序列化的已知类型。
+            </summary>
+      <param name="type">
+                要验证的 <see cref="T:System.Type" />。
+              </param>
+      <returns>
+              如果可以序列化该类型，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="type" /> 为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.JsonQueryStringConverter.ConvertStringToValue(System.String,System.Type)">
+      <summary>
+              将 JavaScript 对象表示法 (JSON) 查询字符串参数反序列化为指定的公共语言运行时 (CLR) 类型。
+            </summary>
+      <param name="parameter">
+                参数值的 JSON 形式。
+              </param>
+      <param name="parameterType">
+                要将参数反序列化的目标 <see cref="T:System.Type" />。
+              </param>
+      <returns>
+              CLR 类型的一个实例，参数值已转换为该类型。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.JsonQueryStringConverter.ConvertValueToString(System.Object,System.Type)">
+      <summary>
+              将公共语言运行时 (CLR) 参数类型序列化为 JavaScript 对象表示法 (JSON) 表示形式。
+            </summary>
+      <param name="parameter">
+                要转换的参数值。
+              </param>
+      <param name="parameterType">
+                要序列化的参数的 <see cref="T:System.Type" />。
+              </param>
+      <returns>
+              JSON 查询字符串参数序列化的 CLR 类型。
+              <see langword="null" /> 如果参数返回 <see langword="null" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.QueryStringConverter.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Dispatcher.QueryStringConverter" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.QueryStringConverter.CanConvert(System.Type)">
+      <summary>
+              确定能否在指定类型和字符串表示形式之间进行转换。
+            </summary>
+      <param name="type">
+                要转换的 <see cref="T:System.Type" />。
+              </param>
+      <returns>
+              一个用于指定能否转换类型的值。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.QueryStringConverter.ConvertStringToValue(System.String,System.Type)">
+      <summary>
+              将查询字符串参数转换为指定类型。
+            </summary>
+      <param name="parameter">
+                参数和值的字符串形式。
+              </param>
+      <param name="parameterType">
+                参数转换的目标 <see cref="T:System.Type" />。
+              </param>
+      <returns>
+              已转换的参数。
+            </returns>
+      <exception cref="T:System.FormatException">
+                  提供的字符串的格式不正确。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.QueryStringConverter.ConvertValueToString(System.Object,System.Type)">
+      <summary>
+              将参数转换为查询字符串表示形式。
+            </summary>
+      <param name="parameter">
+                要转换的参数。
+              </param>
+      <param name="parameterType">
+                要转换的参数的 <see cref="T:System.Type" />。
+              </param>
+      <returns>
+              参数名称和值。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector" /> 的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.#ctor(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              使用指定的终结点初始化 <see cref="T:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector" /> 的一个新实例。
+            </summary>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.GetUriTemplate(System.String)">
+      <summary>
+              获取与指定的操作名称关联的 <see cref="T:System.UriTemplate" />。
+            </summary>
+      <param name="operationName">
+                操作。
+              </param>
+      <returns>
+              用于指定操作的 <see cref="T:System.UriTemplate" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.SelectOperation(System.ServiceModel.Channels.Message@)">
+      <summary>
+              选择要调用的服务操作。
+            </summary>
+      <param name="message">
+                发送以调用服务操作的 <see cref="T:System.ServiceModel.Channels.Message" /> 对象。
+              </param>
+      <returns>
+              要调用的服务操作的名称。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.SelectOperation(System.ServiceModel.Channels.Message@,System.Boolean@)">
+      <summary>
+              选择要调用的服务操作。
+            </summary>
+      <param name="message">
+                发送以调用服务操作的 <see cref="T:System.ServiceModel.Channels.Message" /> 对象。
+              </param>
+      <param name="uriMatched">
+                一个用于指定 URI 是否与特定服务操作匹配的值。
+              </param>
+      <returns>
+              要调用的服务操作的名称。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.AspNetCacheProfileAttribute.#ctor(System.String)">
+      <summary>
+              使用指定的缓存配置文件名称初始化 <see cref="T:System.ServiceModel.Web.AspNetCacheProfileAttribute" /> 类的新实例。
+            </summary>
+      <param name="cacheProfileName">
+                缓存配置文件名称。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.AspNetCacheProfileAttribute.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              <see cref="M:System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)" /> 的实现。
+               由 WCF 基础结构使用，不适合开发人员使用。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+      <param name="bindingParameters">
+                绑定参数。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.AspNetCacheProfileAttribute.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
+      <summary>
+              <see cref="M:System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)" /> 方法的实现。
+               由 WCF 基础结构使用，不适合开发人员使用。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+      <param name="clientOperation">
+                客户端操作。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.AspNetCacheProfileAttribute.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
+      <summary>
+              <see cref="M:System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)" /> 方法的实现。
+               由 WCF 基础结构使用，不适合开发人员使用。
+            </summary>
+      <param name="operationDescription">
+                正在检查的操作。
+              </param>
+      <param name="dispatchOperation">
+                公开 <paramref name="operationDescription" /> 所描述的操作的自定义属性的运行时对象。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.AspNetCacheProfileAttribute.Validate(System.ServiceModel.Description.OperationDescription)">
+      <summary>
+              <see cref="M:System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription)" /> 方法的实现。
+               由 WCF 基础结构使用，不适合开发人员使用。
+            </summary>
+      <param name="operationDescription">
+                未实现。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalRetrieve(System.DateTime)">
+      <summary>
+              对某个资源进行条件接收请求时调用。
+            </summary>
+      <param name="lastModified">
+                上次修改该资源的时间。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalRetrieve(System.Guid)">
+      <summary>
+              对某个资源进行条件接收请求时调用。
+            </summary>
+      <param name="entityTag">
+                一个实体标记。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalRetrieve(System.Int32)">
+      <summary>
+              对某个资源进行条件接收请求时调用。
+            </summary>
+      <param name="entityTag">
+                一个实体标记。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalRetrieve(System.Int64)">
+      <summary>
+              对某个资源进行条件接收请求时调用。
+            </summary>
+      <param name="entityTag">
+                实体标记。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalRetrieve(System.String)">
+      <summary>
+              对某个资源进行条件接收请求时调用。
+            </summary>
+      <param name="entityTag">
+                实体标记。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalUpdate(System.Guid)">
+      <summary>
+              对某个资源进行条件接收请求时调用。
+            </summary>
+      <param name="entityTag">
+                实体标记。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalUpdate(System.Int32)">
+      <summary>
+              对某个资源进行条件更新请求时调用。
+            </summary>
+      <param name="entityTag">
+                实体标记。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalUpdate(System.Int64)">
+      <summary>
+              对某个资源进行条件更新请求时调用。
+            </summary>
+      <param name="entityTag">
+                实体标记。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.CheckConditionalUpdate(System.String)">
+      <summary>
+              对某个资源进行条件更新请求时调用。
+            </summary>
+      <param name="entityTag">
+                实体标记。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.IncomingWebRequestContext.GetAcceptHeaderElements">
+      <summary>
+              获取一套 <see langword="Accept" /> 标头元素。
+            </summary>
+      <returns>
+              一套 <see langword="Accept" /> 标头元素。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.JavascriptCallbackBehaviorAttribute.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.JavascriptCallbackBehaviorAttribute" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Web.JavascriptCallbackBehaviorAttribute.AddBindingParameters(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              <see cref="M:System.ServiceModel.Description.IContractBehavior.AddBindingParameters(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)" /> 方法的实现。
+            </summary>
+      <param name="contractDescription">
+                协定说明。
+              </param>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <param name="bindingParameters">
+                实现该行为所需的绑定参数。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.JavascriptCallbackBehaviorAttribute.ApplyClientBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+      <summary>
+              <see cref="M:System.ServiceModel.Description.IContractBehavior.ApplyClientBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)" /> 方法的实现。
+            </summary>
+      <param name="contractDescription">
+                协定说明。
+              </param>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <param name="clientRuntime">
+                客户端运行时。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.JavascriptCallbackBehaviorAttribute.ApplyDispatchBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.DispatchRuntime)">
+      <summary>
+              <see cref="M:System.ServiceModel.Description.IContractBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.DispatchRuntime)" /> 方法的实现。
+            </summary>
+      <param name="contractDescription">
+                协定说明。
+              </param>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+      <param name="dispatchRuntime">
+                调度运行时。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.JavascriptCallbackBehaviorAttribute.Validate(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              <see cref="M:System.ServiceModel.Description.IContractBehavior.Validate(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint)" /> 方法的实现。
+            </summary>
+      <param name="contractDescription">
+                协定说明。
+              </param>
+      <param name="endpoint">
+                服务终结点。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.OutgoingWebResponseContext.SetETag(System.Guid)">
+      <summary>
+              设置指定的 ETag。
+            </summary>
+      <param name="entityTag">
+                要设置的 ETag。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.OutgoingWebResponseContext.SetETag(System.Int32)">
+      <summary>
+              设置指定的 ETag。
+            </summary>
+      <param name="entityTag">
+                要设置的 ETag。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.OutgoingWebResponseContext.SetETag(System.Int64)">
+      <summary>
+              设置指定的 ETag。
+            </summary>
+      <param name="entityTag">
+                要设置的 ETag。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.OutgoingWebResponseContext.SetETag(System.String)">
+      <summary>
+              设置指定的 ETag。
+            </summary>
+      <param name="entityTag">
+                要设置的 ETag。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.OutgoingWebResponseContext.SetStatusAsCreated(System.Uri)">
+      <summary>
+              将传出 Web 响应的 HTTP 状态代码设置为 <see cref="F:System.Net.HttpStatusCode.Created" />，并将位置标头设置为提供的 URI。
+            </summary>
+      <param name="locationUri">
+                所请求资源的 <see cref="T:System.Uri" /> 实例。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.OutgoingWebResponseContext.SetStatusAsNotFound">
+      <summary>
+              将传出 Web 响应的 HTTP 状态代码设置为 <see cref="F:System.Net.HttpStatusCode.NotFound" />。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Web.OutgoingWebResponseContext.SetStatusAsNotFound(System.String)">
+      <summary>
+              使用指定的说明将传出 Web 响应的 HTTP 状态代码设置为 <see cref="F:System.Net.HttpStatusCode.NotFound" />。
+            </summary>
+      <param name="description">
+                状态说明。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Channels.Binding)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 类的新实例。
+            </summary>
+      <param name="binding">
+                要在创建通道时使用的绑定。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Channels.Binding,System.Uri)">
+      <summary>
+              使用指定的绑定和 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 初始化 <see cref="T:System.Uri" /> 类的新实例。
+            </summary>
+      <param name="binding">
+                要使用的绑定。
+              </param>
+      <param name="remoteAddress">
+                调用的 Web 服务的 URI。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 类的新实例。
+            </summary>
+      <param name="endpoint">
+                要在创建通道时使用的终结点。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.String)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 类的新实例。
+            </summary>
+      <param name="endpointConfigurationName">
+                配置通道时所使用的应用程序配置文件中的名称。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.String,System.Uri)">
+      <summary>
+              使用指定的终结点配置和 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 初始化 <see cref="T:System.Uri" /> 类的新实例。
+            </summary>
+      <param name="endpointConfigurationName">
+                配置通道时所使用的应用程序配置文件中的名称。
+              </param>
+      <param name="remoteAddress">
+                调用的 Web 服务的 URI。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.Type)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 类的新实例。
+            </summary>
+      <param name="channelType">
+                要使用的通道类型。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.Uri)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 初始化 <see cref="T:System.Uri" /> 类的新实例。
+            </summary>
+      <param name="remoteAddress">
+                调用的 Web 服务的 URI。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebChannelFactory`1.OnOpening">
+      <summary>
+              此方法在打开 <see cref="T:System.ServiceModel.Web.WebChannelFactory`1" /> 时调用。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebFaultException.#ctor(System.Net.HttpStatusCode)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Web.WebFaultException" /> 初始化 <see cref="T:System.Net.HttpStatusCode" /> 类的新实例。
+            </summary>
+      <param name="statusCode">
+                要返回给调用方的 HTTP 状态代码。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebFaultException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Web.WebFaultException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 初始化 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的新实例。
+            </summary>
+      <param name="info">
+                序列化信息。
+              </param>
+      <param name="context">
+                流上下文。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebFaultException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              <see cref="M:System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" /> 方法的实现，在将对象序列化为流时可调用此方法。
+            </summary>
+      <param name="info">
+                序列化时向其添加对象数据的序列化信息。
+              </param>
+      <param name="context">
+                序列化对象的目标。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebFaultException`1.#ctor(`0,System.Net.HttpStatusCode)">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebFaultException`1" /> 类的新实例，并使用指定的异常详细信息和 <see cref="M:System.ServiceModel.Web.WebFaultException.#ctor(System.Net.HttpStatusCode)" /> 返回给调用方。
+            </summary>
+      <param name="detail">
+                错误。
+              </param>
+      <param name="statusCode">
+                要在响应消息上设置的 HTTP 状态代码。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebFaultException`1.#ctor(`0,System.Net.HttpStatusCode,System.Collections.Generic.IEnumerable{System.Type})">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebFaultException`1" /> 类的新实例，并使用指定的异常详细信息和 <see cref="P:System.ServiceModel.Web.WebFaultException`1.StatusCode" /> 返回给调用方。
+            </summary>
+      <param name="detail">
+                错误。
+              </param>
+      <param name="statusCode">
+                要在响应消息上设置的 HTTP 状态代码。
+              </param>
+      <param name="knownTypes">
+                用于序列化和反序列化的已知类型的集合。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebFaultException`1.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Web.WebFaultException`1" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 初始化 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的新实例
+            </summary>
+      <param name="info">
+                序列化信息。
+              </param>
+      <param name="context">
+                流上下文。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebFaultException`1.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+              <see cref="M:System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" /> 方法的实现，在将对象序列化为流时可调用此方法。
+            </summary>
+      <param name="info">
+                序列化时向其添加对象数据的序列化信息。
+              </param>
+      <param name="context">
+                序列化对象的目标。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebGetAttribute.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebGetAttribute" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebGetAttribute.System#ServiceModel#Description#IOperationBehavior#AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)" /> 方法。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+      <param name="bindingParameters">
+                一个绑定参数集合。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebGetAttribute.System#ServiceModel#Description#IOperationBehavior#ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)" /> 方法。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+      <param name="clientOperation">
+                客户端操作。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebGetAttribute.System#ServiceModel#Description#IOperationBehavior#ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)" /> 方法。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+      <param name="dispatchOperation">
+                要调度到的操作。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebGetAttribute.System#ServiceModel#Description#IOperationBehavior#Validate(System.ServiceModel.Description.OperationDescription)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription)" /> 方法。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebInvokeAttribute.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebGetAttribute" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebInvokeAttribute.System#ServiceModel#Description#IOperationBehavior#AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)" /> 方法。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+      <param name="bindingParameters">
+                一个绑定参数集合。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebInvokeAttribute.System#ServiceModel#Description#IOperationBehavior#ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)" /> 方法。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+      <param name="clientOperation">
+                客户端操作。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebInvokeAttribute.System#ServiceModel#Description#IOperationBehavior#ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)" /> 方法。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+      <param name="dispatchOperation">
+                要调度到的操作。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebInvokeAttribute.System#ServiceModel#Description#IOperationBehavior#Validate(System.ServiceModel.Description.OperationDescription)">
+      <summary>
+              实现 <see cref="M:System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription)" /> 方法。
+            </summary>
+      <param name="operationDescription">
+                操作说明。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.#ctor(System.ServiceModel.OperationContext)">
+      <summary>
+              使用指定的 <see cref="T:System.ServiceModel.Web.WebOperationContext" /> 实例初始化 <see cref="T:System.ServiceModel.OperationContext" /> 类的新实例。
+            </summary>
+      <param name="operationContext">
+                操作上下文。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.Attach(System.ServiceModel.OperationContext)">
+      <summary>
+              将当前的 <see cref="T:System.ServiceModel.Web.WebOperationContext" /> 实例附加到指定的 <see cref="T:System.ServiceModel.OperationContext" /> 实例。
+            </summary>
+      <param name="owner">
+                要附加到的 <see cref="T:System.ServiceModel.OperationContext" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateAtom10Response(System.ServiceModel.Syndication.ServiceDocument)">
+      <summary>
+              使用指定内容创建按照 Atom 1.0 规范设置格式的消息。
+            </summary>
+      <param name="document">
+                要写入到消息的内容。
+              </param>
+      <returns>
+              Atom 1.0 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateAtom10Response(System.ServiceModel.Syndication.SyndicationFeed)">
+      <summary>
+              使用指定内容创建按照 Atom 1.0 规范设置格式的消息。
+            </summary>
+      <param name="feed">
+                要写入到消息的内容。
+              </param>
+      <returns>
+              Atom 1.0 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateAtom10Response(System.ServiceModel.Syndication.SyndicationItem)">
+      <summary>
+              使用指定内容创建按照 Atom 1.0 规范设置格式的消息。
+            </summary>
+      <param name="item">
+                要写入到消息的内容。
+              </param>
+      <returns>
+              Atom 1.0 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateJsonResponse``1(``0)">
+      <summary>
+              创建 JSON 格式的消息。
+            </summary>
+      <param name="instance">
+                要写入到消息的对象。
+              </param>
+      <typeparam name="T">
+                要写入到消息的对象的类型。
+              </typeparam>
+      <returns>
+              JSON 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateJsonResponse``1(``0,System.Runtime.Serialization.Json.DataContractJsonSerializer)">
+      <summary>
+              创建 JSON 格式的消息。
+            </summary>
+      <param name="instance">
+                要写入到消息的对象。
+              </param>
+      <param name="serializer">
+                要使用的序列化程序。
+              </param>
+      <typeparam name="T">
+                要写入到消息的对象的类型。
+              </typeparam>
+      <returns>
+              JSON 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateStreamResponse(System.Action{System.IO.Stream},System.String)">
+      <summary>
+              创建流格式的消息。
+            </summary>
+      <param name="streamWriter">
+                包含要写入到流的数据的流编写器。
+              </param>
+      <param name="contentType">
+                消息的内容类型。
+              </param>
+      <returns>
+              流格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateStreamResponse(System.IO.Stream,System.String)">
+      <summary>
+              创建流格式的消息。
+            </summary>
+      <param name="stream">
+                包含要写入到流的数据的流。
+              </param>
+      <param name="contentType">
+                消息的内容类型。
+              </param>
+      <returns>
+              流格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateStreamResponse(System.ServiceModel.Channels.StreamBodyWriter,System.String)">
+      <summary>
+              创建流格式的消息。
+            </summary>
+      <param name="bodyWriter">
+                包含要写入到消息的数据的流正文编写器。
+              </param>
+      <param name="contentType">
+                消息的内容类型
+              </param>
+      <returns>
+              流格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateTextResponse(System.Action{System.IO.TextWriter},System.String)">
+      <summary>
+              创建文本格式的消息
+            </summary>
+      <param name="textWriter">
+                写入文本数据的委托。
+              </param>
+      <param name="contentType">
+                消息的内容类型。
+              </param>
+      <returns>
+              文本格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateTextResponse(System.Action{System.IO.TextWriter},System.String,System.Text.Encoding)">
+      <summary>
+              创建文本格式的消息
+            </summary>
+      <param name="textWriter">
+                写入文本数据的委托。
+              </param>
+      <param name="contentType">
+                消息的内容类型。
+              </param>
+      <param name="encoding">
+                要使用的编码。
+              </param>
+      <returns>
+              文本格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateTextResponse(System.String)">
+      <summary>
+              创建文本格式的响应消息。
+            </summary>
+      <param name="text">
+                要写入到消息的文本。
+              </param>
+      <returns>
+              文本格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateTextResponse(System.String,System.String)">
+      <summary>
+              创建文本格式的消息。
+            </summary>
+      <param name="text">
+                要写入到消息的文本。
+              </param>
+      <param name="contentType">
+                消息的内容类型。
+              </param>
+      <returns>
+              文本格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateTextResponse(System.String,System.String,System.Text.Encoding)">
+      <summary>
+              创建文本格式的消息。
+            </summary>
+      <param name="text">
+                要写入到消息的文本。
+              </param>
+      <param name="contentType">
+                消息的内容类型。
+              </param>
+      <param name="encoding">
+                要使用的编码。
+              </param>
+      <returns>
+              文本格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateXmlResponse(System.Xml.Linq.XDocument)">
+      <summary>
+              创建 XML 格式的消息。
+            </summary>
+      <param name="document">
+                要写入到消息的数据。
+              </param>
+      <returns>
+              XML 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateXmlResponse(System.Xml.Linq.XElement)">
+      <summary>
+              创建 XML 格式的消息。
+            </summary>
+      <param name="element">
+                要写入到消息的数据。
+              </param>
+      <returns>
+              XML 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateXmlResponse``1(``0)">
+      <summary>
+              创建 XML 格式的消息。
+            </summary>
+      <param name="instance">
+                要写入到消息的对象。
+              </param>
+      <typeparam name="T">
+                要写入到消息的对象的类型。
+              </typeparam>
+      <returns>
+              XML 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateXmlResponse``1(``0,System.Runtime.Serialization.XmlObjectSerializer)">
+      <summary>
+              创建 XML 格式的消息。
+            </summary>
+      <param name="instance">
+                要写入到消息的对象。
+              </param>
+      <param name="serializer">
+                要使用的序列化程序。
+              </param>
+      <typeparam name="T">
+                要写入到消息的对象的类型。
+              </typeparam>
+      <returns>
+              XML 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.CreateXmlResponse``1(``0,System.Xml.Serialization.XmlSerializer)">
+      <summary>
+              创建 XML 格式的消息。
+            </summary>
+      <param name="instance">
+                要写入到消息的对象。
+              </param>
+      <param name="serializer">
+                要使用的序列化程序。
+              </param>
+      <typeparam name="T">
+                要写入到消息的对象的类型。
+              </typeparam>
+      <returns>
+              XML 格式的消息。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.Detach(System.ServiceModel.OperationContext)">
+      <summary>
+              将当前的 <see cref="T:System.ServiceModel.Web.WebOperationContext" /> 实例与指定的 <see cref="T:System.ServiceModel.OperationContext" /> 实例分离。
+            </summary>
+      <param name="owner">
+                要与其分离的 <see cref="T:System.ServiceModel.OperationContext" />。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebOperationContext.GetUriTemplate(System.String)">
+      <summary>
+              获取与指定的操作关联的 URI 模板。
+            </summary>
+      <param name="operationName">
+                操作。
+              </param>
+      <returns>
+              URI 模板。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebServiceHost.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.Web.WebServiceHost" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebServiceHost.#ctor(System.Object,System.Uri[])">
+      <summary>
+              使用指定的单一服务器实例和基址初始化 <see cref="T:System.ServiceModel.Web.WebServiceHost" /> 类的新实例。
+            </summary>
+      <param name="singletonInstance">
+                要用作单一实例的服务实例。
+              </param>
+      <param name="baseAddresses">
+                服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebServiceHost.#ctor(System.Type,System.Uri[])">
+      <summary>
+              使用指定的服务类型和基址初始化 <see cref="T:System.ServiceModel.Web.WebServiceHost" /> 类的新实例。
+            </summary>
+      <param name="serviceType">
+                服务类型。
+              </param>
+      <param name="baseAddresses">
+                服务的基址。
+              </param>
+    </member>
+    <member name="M:System.ServiceModel.Web.WebServiceHost.OnOpening">
+      <summary>
+              当 <see cref="T:System.ServiceModel.Web.WebServiceHost" /> 实例打开时调用。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpBinding.#ctor">
+      <summary>
+              初始化 <see cref="T:System.ServiceModel.WebHttpBinding" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpBinding.#ctor(System.ServiceModel.WebHttpSecurityMode)">
+      <summary>
+              使用显式指定的绑定所使用的安全类型初始化 <see cref="T:System.ServiceModel.WebHttpBinding" /> 类的新实例。
+            </summary>
+      <param name="securityMode">
+                <see cref="T:System.ServiceModel.WebHttpSecurityMode" /> 的值，指定用于配置服务终结点以接收 HTTP 请求的安全类型。
+              </param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  指定的 <paramref name="securityMode" /> 不是有效的 <see cref="T:System.ServiceModel.WebHttpSecurityMode" />。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpBinding.#ctor(System.String)">
+      <summary>
+              使用由配置名称指定的绑定初始化 <see cref="T:System.ServiceModel.WebHttpBinding" /> 类的新实例。
+            </summary>
+      <param name="configurationName">
+                <see cref="T:System.ServiceModel.Configuration.WebHttpBindingElement" /> 的绑定配置名称。
+              </param>
+      <exception cref="T:System.Configuration.ConfigurationErrorsException">
+                  找不到名为 <paramref name="configurationName" /> 的绑定元素。
+                </exception>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpBinding.BuildChannelFactory``1(System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>
+              在客户端上生成通道工厂堆栈，此通道工厂堆栈创建具有指定类型的通道并满足绑定参数集合所指定的功能。
+            </summary>
+      <param name="parameters">
+                <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />，为生成的通道工厂指定要求。
+              </param>
+      <typeparam name="TChannel">
+                通道工厂生成的通道类型。
+              </typeparam>
+      <returns>
+              <see cref="T:System.ServiceModel.Channels.IChannelFactory`1" /> TChannel 满足集合所指定的功能类型。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpBinding.CreateBindingElements">
+      <summary>
+              返回一个包含在当前绑定中的已排序的绑定元素集合。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Channels.BindingElementCollection" />，包含绑定的 <see cref="T:System.ServiceModel.Channels.BindingElement" /> 对象。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpBinding.ShouldSerializeReaderQuotas">
+      <summary>
+              确定是否应对读取器配额进行序列化。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果应序列化读取器配额;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpBinding.ShouldSerializeSecurity">
+      <summary>
+              确定是否应对安全设置进行序列化。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果应序列化安全设置;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpBinding.ShouldSerializeWriteEncoding">
+      <summary>
+              确定是否应对用于序列化的编码进行序列化。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果应对编码进行序列化;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpSecurity.#ctor">
+      <summary>
+              创建 <see cref="T:System.ServiceModel.WebHttpSecurity" /> 类的新实例。
+            </summary>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpSecurity.ShouldSerializeMode">
+      <summary>
+              指定 <see cref="P:System.ServiceModel.WebHttpSecurity.Mode" /> 属性是否已更改，不再是默认值并应对其进行序列化。
+               它用于进行 XAML 集成。
+            </summary>
+      <returns>
+              如果应当序列化 <see cref="P:System.ServiceModel.WebHttpSecurity.Mode" /> 属性值，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="M:System.ServiceModel.WebHttpSecurity.ShouldSerializeTransport">
+      <summary>
+              返回一个值，该值指示 Transport 属性是否已更改，不再是默认值且应对其进行序列化。
+               WCF 使用此项进行 XAML 集成。
+            </summary>
+      <returns>
+              如果应当序列化 <see cref="P:System.ServiceModel.WebHttpSecurity.Transport" /> 属性值，则为 <see langword="true" />；否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.JavascriptCallbackResponseMessageProperty.CallbackFunctionName">
+      <summary>
+              获取或设置用于 JSONP 的回调函数的名称。
+            </summary>
+      <returns>
+              回调函数的名称。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.JavascriptCallbackResponseMessageProperty.Name">
+      <summary>
+              获取用于将 JavaScript 回调消息属性添加到使用 JSONP 的服务操作响应的消息属性名称。
+            </summary>
+      <returns>
+              消息属性名称。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.JavascriptCallbackResponseMessageProperty.StatusCode">
+      <summary>
+              获取或设置 HTTP 状态代码。
+            </summary>
+      <returns>
+              HTTP 状态代码。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.WebBodyFormatMessageProperty.Format">
+      <summary>
+              获取用于消息正文的格式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Channels.WebContentFormat" />，指定用于消息正文的格式。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.WebMessageEncodingBindingElement.ContentTypeMapper">
+      <summary>
+              获取或设置传入消息内容类型映射到格式的方式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Channels.WebContentTypeMapper" /> 指示传入消息内容类型的格式。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.WebMessageEncodingBindingElement.CrossDomainScriptAccessEnabled">
+      <summary>
+              获取或设置一个值，该值确定是否启用跨域脚本访问。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用跨域脚本访问为;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.WebMessageEncodingBindingElement.MaxReadPoolSize">
+      <summary>
+              获取或设置一个值，该值指定无需分配新的读取器便可处理传入消息的最大读取器数，该数值将分配到池中。
+            </summary>
+      <returns>
+              用于处理传入消息的最大读取器数。
+               默认值为 64 个各个类型的读取器。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  值小于或等于零。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Channels.WebMessageEncodingBindingElement.MaxWritePoolSize">
+      <summary>
+              获取或设置一个值，该值指定无需分配新的编写器便可处理传出消息的最大编写器数，该数值将分配到池中。
+            </summary>
+      <returns>
+              用于对传出消息进行处理的最大编写器数。
+               默认值为 16 个各种类型的编写器。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  值小于或等于零。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Channels.WebMessageEncodingBindingElement.MessageVersion">
+      <summary>
+              获取或设置消息版本，该消息版本指示绑定元素不使用 SOAP 或 WS-Addressing。
+            </summary>
+      <returns>
+              <see cref="P:System.ServiceModel.Channels.MessageVersion.None" />
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentException">
+                  设置的值不是 <see langword="null" />，也不是 <see cref="P:System.ServiceModel.Channels.MessageVersion.None" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Channels.WebMessageEncodingBindingElement.ReaderQuotas">
+      <summary>
+              获取可由用此绑定配置的终结点处理的 SOAP 消息的复杂性约束。
+            </summary>
+      <returns>
+              为交换的 SOAP 消息指定复杂性约束的 <see cref="T:System.Xml.XmlDictionaryReaderQuotas" />。
+               下面的备注部分中提供了这些约束的默认值。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Channels.WebMessageEncodingBindingElement.WriteEncoding">
+      <summary>
+              获取或设置用于编写消息文本的字符编码。
+            </summary>
+      <returns>
+              <see cref="T:System.Text.Encoding" />，指示用于编写消息文本的字符编码。
+               默认值为 <see cref="T:System.Text.UTF8Encoding" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.AllowCookies">
+      <summary>
+              获取或设置一个值，该值指示客户端是否接受 Cookie 并根据今后的请求传播 Cookie。
+            </summary>
+      <returns>
+              如果接受 Cookie，则为 <see langword="true" />；否则为 <see langword="false" />。
+               默认值为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.BindingElementType">
+      <summary>
+              获取此配置元素表示的绑定的 <see cref="T:System.Type" />。
+            </summary>
+      <returns>
+              绑定类型。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.BypassProxyOnLocal">
+      <summary>
+              获取或设置一个值，该值指示是否对本地地址不使用代理服务器。
+            </summary>
+      <returns>
+              如果对本地地址不使用代理服务器，则为 <see langword="true" />；否则为 <see langword="false" />。
+               默认值为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.ContentTypeMapper">
+      <summary>
+              获取或设置传入消息内容类型映射到格式的方式。
+            </summary>
+      <returns>
+              一个指向映射器的字符串，该映射器指示传入消息的内容类型的格式。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.CrossDomainScriptAccessEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否允许跨域脚本。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果允许跨域脚本;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.HostNameComparisonMode">
+      <summary>
+              获取或设置一个值，该值指示在对 URI 进行匹配时，是否使用主机名来访问服务。
+            </summary>
+      <returns>
+              一个 <see cref="P:System.ServiceModel.Configuration.WSDualHttpBindingElement.HostNameComparisonMode" /> 值，该值指示在对 URI 进行匹配时，是否使用主机名来访问服务。
+               默认值为 <see cref="F:System.ServiceModel.HostNameComparisonMode.StrongWildcard" />，表示忽略匹配项中的主机名。
+            </returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+                  所设置的值不是有效的 <see cref="P:System.ServiceModel.Configuration.WSDualHttpBindingElement.HostNameComparisonMode" /> 值。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.MaxBufferPoolSize">
+      <summary>
+              获取或设置在分配的缓冲区管理器，用于管理由使用此绑定的终结点所需的缓冲区的字节数的最大内存量。
+            </summary>
+      <returns>
+              配置了此绑定的终结点所使用的缓冲池的最大大小（以字节为单位）。
+               默认值为 65,536 字节。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.MaxBufferSize">
+      <summary>
+              获取或设置以字节为单位，分配为从通道接收消息的消息缓冲区管理器使用的最大内存量。
+            </summary>
+      <returns>
+              可供消息缓冲区管理器使用的最大内存量（以字节为单位）。
+               默认值为 524,288 (0x80000) 字节。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  设置的值小于或等于零。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.MaxReceivedMessageSize">
+      <summary>
+              获取或设置最大大小，以字节为单位，可以由绑定处理的消息。
+            </summary>
+      <returns>
+              绑定可处理的最大消息大小（以字节为单位）。
+               默认值为 65,536 字节。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  值小于零。
+                </exception>
+      <exception cref="T:System.ServiceModel.QuotaExceededException">
+                  消息超出分配的最大大小。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.Properties">
+      <summary>
+              获取一个 <see cref="T:System.Configuration.ConfigurationPropertyCollection" /> 实例，该实例包含一个 <see cref="T:System.Configuration.ConfigurationProperty" /> 对象集合，这些对象可以是此配置元素的属性或 <see cref="T:System.Configuration.ConfigurationElement" /> 对象。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.Configuration.ConfigurationPropertyCollection" /> 实例，该实例包含一个 <see cref="T:System.Configuration.ConfigurationProperty" /> 对象集合，这些对象可以是此配置元素的属性或 <see cref="T:System.Configuration.ConfigurationElement" /> 对象。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.ProxyAddress">
+      <summary>
+              获取或设置 HTTP 代理的 URI 地址。
+            </summary>
+      <returns>
+              一个充当 HTTP 代理地址的 <see cref="T:System.Uri" />。
+               默认值为 <see langword="null" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.ReaderQuotas">
+      <summary>
+              获取或设置包含 SOAP 消息的复杂性约束的配置元素，这些消息可由使用此绑定配置的终结点进行处理。
+            </summary>
+      <returns>
+              指定复杂性约束的 <see cref="T:System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  <see cref="T:System.Xml.XmlDictionaryReaderQuotas" /> 的配额值是只读的。
+                </exception>
+      <exception cref="T:System.ArgumentException">
+                  设置的配额必须为正数。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.Security">
+      <summary>
+              获取包含用于此绑定的安全设置的配置元素。
+            </summary>
+      <returns>
+              与此绑定一起使用的 <see cref="T:System.ServiceModel.Configuration.WebHttpSecurityElement" />。
+               默认值为 <see cref="F:System.ServiceModel.WebHttpSecurityMode.None" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.TransferMode">
+      <summary>
+              获取或设置一个值，该值指示使用此绑定配置的服务是使用消息传输的流处理模式、缓冲模式还是同时使用这两种模式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.TransferMode" /> 值，指示使用此绑定配置的服务是使用消息传输的流处理模式、缓冲模式还是同时使用这两种模式。
+               默认值为 <see cref="F:System.ServiceModel.TransferMode.Buffered" />。
+            </returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+                  所设置的值不是有效的 <see cref="T:System.ServiceModel.TransferMode" /> 值。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.UseDefaultWebProxy">
+      <summary>
+              获取或设置一个值，该值指示是否应使用系统的自动配置 HTTP 代理（如果可用）。
+            </summary>
+      <returns>
+              如果应使用系统的自动配置 HTTP 代理（如果可用），则为 <see langword="true" />；否则为 <see langword="false" />。
+               默认值为 <see langword="true" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpBindingElement.WriteEncoding">
+      <summary>
+              获取或设置用于消息文本的字符编码。
+            </summary>
+      <returns>
+              用于指示所使用的字符编码的 <see cref="T:System.Text.Encoding" />。
+               默认值为 <see cref="T:System.Text.UTF8Encoding" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpElement.AutomaticFormatSelectionEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否可自动选择消息格式。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果可自动选择消息格式;，否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpElement.BehaviorType">
+      <summary>
+              获取此配置元素启用的行为的类型。
+            </summary>
+      <returns>
+              使用此配置元素启用的行为的 <see cref="T:System.Type" />：<see cref="T:System.ServiceModel.Description.WebHttpBehavior" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpElement.DefaultBodyStyle">
+      <summary>
+              获取和设置默认消息正文样式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageBodyStyle" /> 枚举中定义的值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpElement.DefaultOutgoingResponseFormat">
+      <summary>
+              获取或设置默认传出响应格式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 枚举中定义的值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpElement.FaultExceptionEnabled">
+      <summary>
+              获取或设置用于指定在发生内部服务器错误（HTTP 状态代码：500）时是否生成 FaultException 的标志。
+            </summary>
+      <returns>
+              返回 <see langword="true" /> 如果启用该标志; 否则，返回 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpElement.HelpEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否启用帮助。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用了帮助;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.AutomaticFormatSelectionEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否启用自动格式设置选择。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用了自动格式设置;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.ContentTypeMapper">
+      <summary>
+              获取或设置 Web 服务操作所发送数据的 MIME 内容的类型。
+            </summary>
+      <returns>
+              一个字符串，其中包含 MIME 内容的名称。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.CrossDomainScriptAccessEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否启用了允许将代码注入其他用户所查看网页的条件。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用了访问;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.DefaultOutgoingResponseFormat">
+      <summary>
+              获取或设置从 Web 服务操作发出的响应的默认格式。
+            </summary>
+      <returns>
+              一个格式对象。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.EndpointType">
+      <summary>
+              获取 <see cref="T:System.ServiceModel.Description.WebHttpEndpoint" /> 的类型。
+            </summary>
+      <returns>
+              一个类型对象。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.FaultExceptionEnabled">
+      <summary>
+              获取或设置用于指定在发生内部服务器错误（HTTP 状态代码：500）时是否生成 FaultException 的标志。
+            </summary>
+      <returns>
+              返回 <see langword="true" /> 如果启用该标志; 否则，返回 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.HelpEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否启用了帮助。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用了帮助;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.HostNameComparisonMode">
+      <summary>
+              获取或设置 Web 服务宿主名称和 URI 匹配规则，该规则是在绑定元素中配置的，并在调度传入消息时由诸如 HTTP、TCP 和命名管道等传输使用。
+            </summary>
+      <returns>
+              一个枚举的比较模式。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.MaxBufferPoolSize">
+      <summary>
+              获取或设置可为缓冲区管理器分配的最大内存量，该管理器管理使用此绑定的终结点所需的缓冲区。
+            </summary>
+      <returns>
+              数字的 64 位表示形式。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.MaxBufferSize">
+      <summary>
+              获取或设置要使用的最大缓冲区大小。
+            </summary>
+      <returns>
+              一个表示缓冲区大小的数字。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.MaxReceivedMessageSize">
+      <summary>
+              获取或设置 Web 服务可接收的最大消息数。
+            </summary>
+      <returns>
+              一个表示最大数量的 64 位数字。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.Properties">
+      <summary>
+              获取或设置与当前 <see cref="T:System.Configuration.ConfigurationProperty" /> 关联的 <see cref="T:System.ServiceModel.Configuration.WebHttpEndpointElement" /> 对象的集合。
+            </summary>
+      <returns>
+              一个配置属性的集合。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.ReaderQuotas">
+      <summary>
+              获取 <see cref="T:System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement" /> 对象，其中包含对 XML 字典读取器读取的 XML 字符串的长度和复杂性的约束。
+            </summary>
+      <returns>
+              一个对象，其中包含 XML 字典读取器配额。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.Security">
+      <summary>
+              获取一个元素，该元素可配置包含接收 HTTP 请求的终结点的 Web 服务的安全性。
+            </summary>
+      <returns>
+              一个 Web 服务安全性元素。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.TransferMode">
+      <summary>
+              获取或设置在终结点之间跨网络传输数据的 WCF 方法。
+            </summary>
+      <returns>
+              传输模式的枚举。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpEndpointElement.WriteEncoding">
+      <summary>
+              获取或设置要编码的字符串。
+            </summary>
+      <returns>
+              编码的文本。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpSecurityElement.Mode">
+      <summary>
+              获取一个为基本 HTTP 服务指定安全模式的 XML 元素。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.WebHttpSecurityMode" /> 的值，该值指示终结点是使用传输级安全设置，还是不使用安全设置。
+               默认值为 <see cref="F:System.ServiceModel.WebHttpSecurityMode.None" />。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  该值不是有效的 <see cref="T:System.ServiceModel.WebHttpSecurityMode" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebHttpSecurityElement.Transport">
+      <summary>
+              获取一个 XML 元素，该元素指示配置为接收 HTTP 请求的服务终结点的传输级安全设置。
+            </summary>
+      <returns>
+              一个指定传输级安全设置的 <see cref="T:System.ServiceModel.Configuration.WebHttpSecurityElement" />。
+               默认值设置为 <see cref="P:System.ServiceModel.HttpTransportSecurity.ClientCredentialType" /> 的 <see cref="F:System.ServiceModel.HttpClientCredentialType.None" />，<see cref="P:System.ServiceModel.HttpTransportSecurity.ProxyCredentialType" /> 的 <see cref="F:System.ServiceModel.HttpProxyCredentialType.None" /> 和 <see cref="P:System.ServiceModel.HttpTransportSecurity.Realm" /> = ""。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebMessageEncodingElement.BindingElementType">
+      <summary>
+              获取此配置元素所启用的绑定元素的类型。
+            </summary>
+      <returns>
+              此配置元素启用的绑定元素的类型：<see cref="T:System.ServiceModel.Channels.WebMessageEncodingBindingElement" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebMessageEncodingElement.MaxReadPoolSize">
+      <summary>
+              获取或设置一个值，该值指定无需分配新读取器便可同时读取的最大消息数。
+            </summary>
+      <returns>
+              无需分配新的读取器便可同时读取的最大消息数。
+               默认值为 64。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebMessageEncodingElement.MaxWritePoolSize">
+      <summary>
+              获取或设置一个值，该值指定无需分配新编写器便可同时发送的最大消息数。
+            </summary>
+      <returns>
+              无需分配新的编写器便可同时发送的最大消息数。
+               默认值为 16。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebMessageEncodingElement.ReaderQuotas">
+      <summary>
+              获取或设置可由配置了此绑定的终结点处理的 SOAP 消息的复杂性约束。
+            </summary>
+      <returns>
+              指定复杂性约束的 <see cref="T:System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebMessageEncodingElement.WebContentTypeMapperType">
+      <summary>
+              获取或设置 <see cref="T:System.ServiceModel.Channels.WebContentTypeMapper" /> 的类型名称，该映射器指定传入消息的内容类型要映射到的格式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Channels.WebContentTypeMapper" /> 的类型名称。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebMessageEncodingElement.WriteEncoding">
+      <summary>
+              获取或设置要用于在绑定上发出消息的字符集编码。
+            </summary>
+      <returns>
+              一个有效的 <see cref="T:System.Text.Encoding" /> 值，该值指定要用于在绑定上发出消息的字符集编码。
+               默认值为 <see cref="T:System.Text.UTF8Encoding" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEnablingElement.BehaviorType">
+      <summary>
+              获取此配置元素启用的行为的类型。
+            </summary>
+      <returns>
+              使用此配置元素启用的行为的 <see cref="T:System.Type" />：<see cref="T:System.ServiceModel.Description.WebScriptEnablingBehavior" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.ContentTypeMapper">
+      <summary>
+              获取或设置行为和元数据组的名称，这些行为和元数据生成由当前 <see cref="T:System.ServiceModel.Configuration.WebScriptEndpointElement" /> 配置的 Web 文档。
+            </summary>
+      <returns>
+              内容类型的名称。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.CrossDomainScriptAccessEnabled">
+      <summary>
+              获取或设置一个值，该值指示不同的主机计算机是否能够访问相互的脚本。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用跨域脚本访问为;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.EndpointType">
+      <summary>
+              获取 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 的类型。
+            </summary>
+      <returns>
+              Web 脚本终结点对象。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.HostNameComparisonMode">
+      <summary>
+              指定将传入的消息调度到 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 时应该如何在 URI 比较中使用主机名。
+            </summary>
+      <returns>
+              一个枚举的比较模式说明。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.MaxBufferPoolSize">
+      <summary>
+              获取或设置最大大小，以字节为单位使用消息传输的任何缓冲池。
+            </summary>
+      <returns>
+              最大缓冲池大小。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.MaxBufferSize">
+      <summary>
+              获取或设置最大大小，以字节为单位，用来接收消息的缓冲区。
+            </summary>
+      <returns>
+              最大缓冲区大小。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.MaxReceivedMessageSize">
+      <summary>
+              获取或设置 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 所收到消息的最大字节大小。
+            </summary>
+      <returns>
+              最大字节大小。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.Properties">
+      <summary>
+              获取附加到当前 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 的所有属性。
+            </summary>
+      <returns>
+              终结点元素属性的集合。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.ReaderQuotas">
+      <summary>
+              获取一个配置元素，该元素定义 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 对象可处理的消息复杂性的约束。
+            </summary>
+      <returns>
+              一个配置元素，该元素定义 Xml 字典读取器配额。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.Security">
+      <summary>
+              获取一个 HTTP Web 安全绑定元素。
+            </summary>
+      <returns>
+              一个 Web 脚本终结点配置元素。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.TransferMode">
+      <summary>
+              获取或设置传输 WCF 消息所采用的方式。
+            </summary>
+      <returns>
+              一个对象，其中包含指定 WCF 消息传输模式的字符串。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.WebScriptEndpointElement.WriteEncoding">
+      <summary>
+              获取或设置用于对文本消息中的字符进行格式设置的编码。
+            </summary>
+      <returns>
+              字符编码。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.JsonFaultDetail.ExceptionDetail">
+      <summary>
+              获取或设置 <see cref="T:System.ServiceModel.ExceptionDetail" /> 对象，该对象表示在服务协定中指定的 SOAP 错误。
+            </summary>
+      <returns>
+              在服务协定中指定的 SOAP 错误。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.JsonFaultDetail.ExceptionType">
+      <summary>
+              获取或设置异常的类型。
+            </summary>
+      <returns>
+              异常的类型。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.JsonFaultDetail.Message">
+      <summary>
+              获取或设置异常消息。
+            </summary>
+      <returns>
+              异常消息。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.JsonFaultDetail.StackTrace">
+      <summary>
+              获取或设置此异常的堆栈跟踪信息。
+            </summary>
+      <returns>
+              此异常的堆栈跟踪信息。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpBehavior.AutomaticFormatSelectionEnabled">
+      <summary>
+              获取或设置一个值，该值确定是否启用自动格式选择。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用自动格式选择。否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpBehavior.DefaultBodyStyle">
+      <summary>
+              获取和设置默认消息正文样式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageBodyStyle" /> 枚举中定义的值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpBehavior.DefaultOutgoingRequestFormat">
+      <summary>
+              获取或设置默认传出请求格式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 枚举中定义的值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpBehavior.DefaultOutgoingResponseFormat">
+      <summary>
+              获取或设置默认传出响应格式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 枚举中定义的值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpBehavior.FaultExceptionEnabled">
+      <summary>
+              获取或设置用于指定在发生内部服务器错误（HTTP 状态代码：500）时是否生成 FaultException 的标志。
+            </summary>
+      <returns>
+              返回 <see langword="true" /> 如果启用该标志; 否则，返回 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpBehavior.HelpEnabled">
+      <summary>
+              获取或设置一个值，该值确定是否启用了 WCF 帮助页。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果 WCF帮助页，则启用; 否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpBehavior.JavascriptCallbackParameterName">
+      <summary>
+              获取或设置 JavaScript 回调参数名称。
+            </summary>
+      <returns>
+              JavaScript 回调参数名称。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpEndpoint.AutomaticFormatSelectionEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否启用自动格式选择。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用自动格式选择，否则 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpEndpoint.DefaultOutgoingResponseFormat">
+      <summary>
+              获取或设置默认传出响应格式。
+            </summary>
+      <returns>
+              终结点的默认响应格式。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpEndpoint.FaultExceptionEnabled">
+      <summary>
+              获取或设置用于指定在发生内部服务器错误（HTTP 状态代码：500）时是否生成 FaultException 的标志。
+            </summary>
+      <returns>
+              返回 <see langword="true" /> 如果启用该标志; 否则，返回 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpEndpoint.HelpEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否为终结点启用了 HTTP 帮助页。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用了 HTTP 帮助页;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebHttpEndpoint.WebEndpointType">
+      <summary>
+              获取终结点的 <see cref="T:System.Type" />。
+            </summary>
+      <returns>
+              终结点的类型。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebScriptEnablingBehavior.AutomaticFormatSelectionEnabled">
+      <summary>
+              获取或设置一个值，该值确定是否启用自动格式选择。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用自动格式选择。否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebScriptEnablingBehavior.DefaultBodyStyle">
+      <summary>
+              获取或设置默认消息正文样式。
+            </summary>
+      <returns>
+              <see cref="F:System.ServiceModel.Web.WebMessageBodyStyle.WrappedRequest" /> 值。
+               此默认值是唯一有效的值。
+            </returns>
+      <exception cref="T:System.NotSupportedException">
+                  不支持设置的正文样式。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebScriptEnablingBehavior.DefaultOutgoingRequestFormat">
+      <summary>
+              获取或设置默认的传出请求消息格式。
+            </summary>
+      <returns>
+              由传出请求消息使用的 <see cref="T:System.ServiceModel.Web.WebMessageFormat" />。
+               默认值为 <see cref="F:System.ServiceModel.Web.WebMessageFormat.Json" />。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  设置的消息格式不是 <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 的有效值。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebScriptEnablingBehavior.DefaultOutgoingResponseFormat">
+      <summary>
+              获取和设置默认的传出响应消息格式。
+            </summary>
+      <returns>
+              由传出响应消息使用的 <see cref="T:System.ServiceModel.Web.WebMessageFormat" />。
+               默认值为 <see cref="F:System.ServiceModel.Web.WebMessageFormat.Json" />。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  设置的消息格式不是 <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 的有效值。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebScriptEnablingBehavior.FaultExceptionEnabled">
+      <summary>
+              获取或设置用于指定在发生内部服务器错误（HTTP 状态代码：500）时是否生成 FaultException 的标志。
+            </summary>
+      <returns>
+              返回 <see langword="true" /> 如果启用该标志; 否则，返回 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebScriptEnablingBehavior.HelpEnabled">
+      <summary>
+              获取或设置一个值，该值确定是否启用了 WCF REST 帮助页。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果 WCF REST 帮助页，则启用; 否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebScriptEndpoint.WebEndpointType">
+      <summary>
+              获取终结点的 <see cref="T:System.Type" />。
+            </summary>
+      <returns>
+              终结点的类型。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.ContentTypeMapper">
+      <summary>
+              获取或设置与 <see cref="T:System.ServiceModel.Channels.WebContentTypeMapper" /> 关联的 <see cref="T:System.ServiceModel.Description.WebServiceEndpoint" />。
+            </summary>
+      <returns>
+              Web 内容类型映射器。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.CrossDomainScriptAccessEnabled">
+      <summary>
+              获取或设置一个值，该值指示是否为 <see cref="T:System.ServiceModel.Description.WebServiceEndpoint" /> 启用了跨域脚本访问。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果启用跨域脚本访问为，否则 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.HostNameComparisonMode">
+      <summary>
+              获取或设置一个值，该值指示在对 URI 进行匹配时，是否使用主机名来访问服务。
+            </summary>
+      <returns>
+              一个值，该值指示在对 URI 进行匹配时，是否使用主机名来访问服务。
+               默认值为 <see cref="F:System.ServiceModel.HostNameComparisonMode.StrongWildcard" />，表示忽略匹配项中的主机名。
+            </returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+                  所设置的值不是有效的 <see cref="P:System.ServiceModel.Configuration.WSDualHttpBindingElement.HostNameComparisonMode" /> 值。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.MaxBufferPoolSize">
+      <summary>
+              获取或设置可为缓冲区管理器分配的最大内存量，该管理器管理使用此绑定的终结点所需的缓冲区。
+            </summary>
+      <returns>
+              配置了此绑定的终结点所使用的缓冲池的最大大小（以字节为单位）。
+               默认值为 65,536 字节。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.MaxBufferSize">
+      <summary>
+              获取或设置为从通道接收消息的消息缓冲区管理器分配并供其使用的最大内存量。
+            </summary>
+      <returns>
+              可供消息缓冲区管理器使用的最大内存量（以字节为单位）。
+               默认值为 524,288 (0x80000) 字节。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  设置的值小于或等于零。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.MaxReceivedMessageSize">
+      <summary>
+              获取或设置绑定可处理的消息的最大大小。
+            </summary>
+      <returns>
+              绑定可处理的最大消息大小（以字节为单位）。
+               默认值为 65,536 字节。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  值小于零。
+                </exception>
+      <exception cref="T:System.ServiceModel.QuotaExceededException">
+                  消息超出分配的最大大小。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.ReaderQuotas">
+      <summary>
+              获取或设置可由配置了此绑定的终结点处理的 SOAP 消息的复杂性约束。
+            </summary>
+      <returns>
+              复杂性约束。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  <see cref="T:System.Xml.XmlDictionaryReaderQuotas" /> 的配额值是只读的。
+                </exception>
+      <exception cref="T:System.ArgumentException">
+                  设置的配额必须为正数。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.Security">
+      <summary>
+              获取与此绑定一起使用的安全设置。
+            </summary>
+      <returns>
+              与此绑定一起使用的 <see cref="T:System.ServiceModel.WebHttpSecurity" />。
+               默认值为 <see cref="F:System.ServiceModel.WebHttpSecurityMode.None" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.TransferMode">
+      <summary>
+              获取或设置一个值，该值指示使用此绑定配置的服务是使用消息传输的流处理模式、缓冲模式还是同时使用这两种模式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.TransferMode" /> 值，指示使用此绑定配置的服务是使用消息传输的流处理模式、缓冲模式还是同时使用这两种模式。
+               默认值为 <see cref="F:System.ServiceModel.TransferMode.Buffered" />。
+            </returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+                  所设置的值不是有效的 <see cref="T:System.ServiceModel.TransferMode" /> 值。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.WebEndpointType">
+      <summary>
+              获取 Web 服务终结点的类型。
+            </summary>
+      <returns>
+              Web 服务终结点的类型。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Description.WebServiceEndpoint.WriteEncoding">
+      <summary>
+              获取或设置用于消息文本的字符编码。
+            </summary>
+      <returns>
+              所使用的字符编码。
+               默认值为 <see cref="T:System.Text.UTF8Encoding" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.Web.AspNetCacheProfileAttribute.CacheProfileName">
+      <summary>
+              获取缓存配置文件的名称。
+            </summary>
+      <returns>
+              缓存配置文件的名称。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.Accept">
+      <summary>
+              获取传入 Web 请求的 <see langword="Accept" /> 标头值。
+            </summary>
+      <returns>
+              传入 Web 请求的 <see langword="Accept" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.ContentLength">
+      <summary>
+              获取传入 Web 请求的 <see langword="ContentLength" /> 标头值。
+            </summary>
+      <returns>
+              传入 Web 请求的 <see langword="ContentLength" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.ContentType">
+      <summary>
+              获取传入 Web 请求的 <see langword="ContentType" /> 标头值。
+            </summary>
+      <returns>
+              传入 Web 请求的 <see langword="ContentType" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.Headers">
+      <summary>
+              获取传入 Web 请求的标头。
+            </summary>
+      <returns>
+              一个包含传入 Web 请求标头的 <see cref="T:System.Net.WebHeaderCollection" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.IfMatch">
+      <summary>
+              获取包含在请求中的项的集合 <see langword="If-Match" /> 标头。
+            </summary>
+      <returns>
+              在请求中包含的项集合 <see langword="If-Match" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.IfModifiedSince">
+      <summary>
+              获取请求的值 <see langword="If-Modified-Since" /> 标头。
+            </summary>
+      <returns>
+              请求的 <see langword="If-Modified-Since" /> 标头值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.IfNoneMatch">
+      <summary>
+              获取该请求中包含的值 <see langword="If-None-Match" /> 标头。
+            </summary>
+      <returns>
+              该请求中包含的值 <see langword="If-None-Match" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.IfUnmodifiedSince">
+      <summary>
+              获取请求的值 <see langword="If-Unmatched-Since" /> 标头。
+            </summary>
+      <returns>
+              请求的 <see langword="If-Unmatched-Since" /> 标头...
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.Method">
+      <summary>
+              获取传入 Web 请求的 HTTP 方法。
+            </summary>
+      <returns>
+              传入 Web 请求的 HTTP 方法。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.UriTemplateMatch">
+      <summary>
+              获取和设置在调度传入 Web 请求过程中创建的 <see cref="T:System.UriTemplateMatch" /> 实例。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.UriTemplateMatch" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebRequestContext.UserAgent">
+      <summary>
+              获取传入 Web 请求的 <see langword="UserAgent" /> 标头值。
+            </summary>
+      <returns>
+              传入 Web 请求的 <see langword="UserAgent" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebResponseContext.ContentLength">
+      <summary>
+              获取传入 Web 响应的内容长度标头。
+            </summary>
+      <returns>
+              传入 Web 响应的内容长度。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebResponseContext.ContentType">
+      <summary>
+              获取传入 Web 响应的内容类型标头。
+            </summary>
+      <returns>
+              传入 Web 响应的内容类型标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebResponseContext.ETag">
+      <summary>
+              获取传入 Web 响应的 etag 标头。
+            </summary>
+      <returns>
+              传入 Web 响应的 etag 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebResponseContext.Headers">
+      <summary>
+              获取传入 Web 响应的标头。
+            </summary>
+      <returns>
+              一个包含传入 Web 响应标头的 <see cref="T:System.Net.WebHeaderCollection" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebResponseContext.Location">
+      <summary>
+              获取传入 Web 响应的位置标头。
+            </summary>
+      <returns>
+              传入 Web 响应的位置标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebResponseContext.StatusCode">
+      <summary>
+              获取传入 Web 响应的状态代码。
+            </summary>
+      <returns>
+              一个包含传入 Web 响应的状态代码的 <see cref="T:System.Net.HttpStatusCode" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.IncomingWebResponseContext.StatusDescription">
+      <summary>
+              获取传入 Web 响应的状态说明。
+            </summary>
+      <returns>
+              传入 Web 响应的状态说明。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.JavascriptCallbackBehaviorAttribute.UrlParameterName">
+      <summary>
+              获取或设置用于跨域脚本访问的 URL 查询字符串参数名称。
+            </summary>
+      <returns>
+              URL 查询字符串参数名称。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.Accept">
+      <summary>
+              获取和设置传出 Web 请求的 <see langword="Accept" /> 标头值。
+            </summary>
+      <returns>
+              传出 Web 请求的 <see langword="Accept" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.ContentLength">
+      <summary>
+              获取和设置传出 Web 请求的内容长度标头值。
+            </summary>
+      <returns>
+              传出 Web 请求的内容长度标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.ContentType">
+      <summary>
+              获取和设置传出 Web 请求的类型标头值。
+            </summary>
+      <returns>
+              传出 Web 请求的内容类型标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.Headers">
+      <summary>
+              获取传出 Web 请求的标头。
+            </summary>
+      <returns>
+              一个包含传出 Web 请求标头的 <see cref="T:System.Net.WebHeaderCollection" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.IfMatch">
+      <summary>
+              获取和设置传出 Web 请求的 <see langword="IfMatch" /> 标头值。
+            </summary>
+      <returns>
+              传出 Web 请求的 <see langword="IfMatch" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.IfModifiedSince">
+      <summary>
+              获取和设置传出 Web 请求的 <see langword="IfModifiedSince" /> 标头值。
+            </summary>
+      <returns>
+              传出 Web 请求的 <see langword="IfModifiedSince" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.IfNoneMatch">
+      <summary>
+              获取和设置传出 Web 请求的 <see langword="IfNoneMatch" /> 标头值。
+            </summary>
+      <returns>
+              传出 Web 请求的 <see langword="IfNoneMatch" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.IfUnmodifiedSince">
+      <summary>
+              获取和设置传出 Web 请求的 <see langword="IfUnmodifiedSince" /> 标头值。
+            </summary>
+      <returns>
+              传出 Web 请求的 <see langword="IfUnmodifiedSince" /> 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.Method">
+      <summary>
+              获取传出 Web 请求的 HTTP 方法。
+            </summary>
+      <returns>
+              传出 Web 请求的 HTTP 方法。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.SuppressEntityBody">
+      <summary>
+              获取一个值，该值指示 Windows Communication Foundation (WCF) 是否省略通常写入响应实体正文的数据并强制返回一个空响应。
+            </summary>
+      <returns>
+              如果为 <see langword="true" />，则 WCF 省略通常写入响应实体正文的任何数据并强制返回一个空响应。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebRequestContext.UserAgent">
+      <summary>
+              从传出 Web 请求获取用户代理标头值。
+            </summary>
+      <returns>
+              传出 Web 请求的用户代理标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.BindingWriteEncoding">
+      <summary>
+              获取在绑定上设置的编码。
+            </summary>
+      <returns>
+              编码。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.ContentLength">
+      <summary>
+              获取和设置传出 Web 响应的内容长度标头。
+            </summary>
+      <returns>
+              传出 Web 响应的内容长度标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.ContentType">
+      <summary>
+              获取和设置传出 Web 响应的内容类型标头。
+            </summary>
+      <returns>
+              传出 Web 响应的内容类型标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.ETag">
+      <summary>
+              获取和设置传出 Web 响应的 etag 标头。
+            </summary>
+      <returns>
+              传出 Web 响应的 etag 标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.Format">
+      <summary>
+              获取或设置 Web 消息格式。
+            </summary>
+      <returns>
+              Web 消息格式。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.Headers">
+      <summary>
+              获取传出 Web 响应的标头。
+            </summary>
+      <returns>
+              一个包含传出 Web 响应标头的 <see cref="T:System.Net.WebHeaderCollection" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.LastModified">
+      <summary>
+              获取和设置传出 Web 响应的上次修改标头。
+            </summary>
+      <returns>
+              一个包含所请求资源上次修改时间的 <see cref="T:System.DateTime" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.Location">
+      <summary>
+              获取和设置传出 Web 响应的位置标头。
+            </summary>
+      <returns>
+              传出 Web 响应的位置标头。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.StatusCode">
+      <summary>
+              获取和设置传出 Web 响应的状态代码。
+            </summary>
+      <returns>
+              一个包含传出 Web 响应状态代码的 <see cref="T:System.Net.HttpStatusCode" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.StatusDescription">
+      <summary>
+              获取和设置传出 Web 响应的状态说明。
+            </summary>
+      <returns>
+              传出 Web 响应的状态说明。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.OutgoingWebResponseContext.SuppressEntityBody">
+      <summary>
+              获取和设置一个值，该值指示 Windows Communication Foundation (WCF) 是否省略通常写入响应的实体正文的数据并强制返回一个空响应。
+            </summary>
+      <returns>
+              如果为 <see langword="true" />，则 WCF 省略通常写入响应实体正文的任何数据并强制返回一个空响应。
+               默认值为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebFaultException.StatusCode">
+      <summary>
+              获取与错误相关的 <see cref="T:System.Net.HttpStatusCode" />。
+            </summary>
+      <returns>
+              与错误关联的 HTTP 状态代码。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebFaultException`1.StatusCode">
+      <summary>
+              获取与错误相关的 <see cref="T:System.Net.HttpStatusCode" />。
+            </summary>
+      <returns>
+              与错误关联的 HTTP 状态代码。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebGetAttribute.BodyStyle">
+      <summary>
+              获取和设置传入与传出服务操作的消息的正文样式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageBodyStyle" /> 枚举值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebGetAttribute.IsBodyStyleSetExplicitly">
+      <summary>
+              获取 <see cref="P:System.ServiceModel.Web.WebGetAttribute.IsBodyStyleSetExplicitly" /> 属性。
+            </summary>
+      <returns>
+              一个指定是否已设置 <see cref="P:System.ServiceModel.Web.WebGetAttribute.BodyStyle" /> 属性的值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebGetAttribute.IsRequestFormatSetExplicitly">
+      <summary>
+              获取 <see cref="P:System.ServiceModel.Web.WebGetAttribute.IsRequestFormatSetExplicitly" /> 属性。
+            </summary>
+      <returns>
+              一个指定是否已设置 <see cref="P:System.ServiceModel.Web.WebGetAttribute.RequestFormat" /> 属性的值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebGetAttribute.IsResponseFormatSetExplicitly">
+      <summary>
+              获取 <see cref="P:System.ServiceModel.Web.WebGetAttribute.IsResponseFormatSetExplicitly" /> 属性。
+            </summary>
+      <returns>
+              一个指定是否已设置 <see cref="P:System.ServiceModel.Web.WebGetAttribute.ResponseFormat" /> 属性的值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebGetAttribute.RequestFormat">
+      <summary>
+              获取和设置 <see cref="P:System.ServiceModel.Web.WebGetAttribute.RequestFormat" /> 属性。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 枚举值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebGetAttribute.ResponseFormat">
+      <summary>
+              获取和设置 <see cref="P:System.ServiceModel.Web.WebGetAttribute.ResponseFormat" /> 属性。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 枚举值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebGetAttribute.UriTemplate">
+      <summary>
+              获取和设置用于服务操作的统一资源标识符 (URI) 模板。
+            </summary>
+      <returns>
+              用于服务操作的 URI 模板。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebInvokeAttribute.BodyStyle">
+      <summary>
+              获取和设置传入与传出服务操作的消息的正文样式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageBodyStyle" /> 枚举值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebInvokeAttribute.IsBodyStyleSetExplicitly">
+      <summary>
+              获取 <see cref="P:System.ServiceModel.Web.WebInvokeAttribute.IsBodyStyleSetExplicitly" /> 属性。
+            </summary>
+      <returns>
+              一个指定是否已明确设置 <see cref="P:System.ServiceModel.Web.WebGetAttribute.BodyStyle" /> 属性的值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebInvokeAttribute.IsRequestFormatSetExplicitly">
+      <summary>
+              获取 <see cref="P:System.ServiceModel.Web.WebInvokeAttribute.IsRequestFormatSetExplicitly" /> 属性。
+            </summary>
+      <returns>
+              一个指定是否已设置 <see cref="P:System.ServiceModel.Web.WebGetAttribute.RequestFormat" /> 属性的值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebInvokeAttribute.IsResponseFormatSetExplicitly">
+      <summary>
+              获取 <see cref="P:System.ServiceModel.Web.WebInvokeAttribute.IsResponseFormatSetExplicitly" /> 属性。
+            </summary>
+      <returns>
+              一个指定是否已设置 <see cref="P:System.ServiceModel.Web.WebGetAttribute.ResponseFormat" /> 属性的值。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebInvokeAttribute.Method">
+      <summary>
+              获取和设置服务操作响应的协议（如 HTTP）方法。
+            </summary>
+      <returns>
+              与操作关联的协议方法。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebInvokeAttribute.RequestFormat">
+      <summary>
+              获取和设置 <see cref="P:System.ServiceModel.Web.WebInvokeAttribute.RequestFormat" /> 属性。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 枚举值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebInvokeAttribute.ResponseFormat">
+      <summary>
+              获取和设置 <see cref="P:System.ServiceModel.Web.WebInvokeAttribute.ResponseFormat" /> 属性。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.Web.WebMessageFormat" /> 枚举值之一。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebInvokeAttribute.UriTemplate">
+      <summary>
+              用于服务操作的统一资源标识符 (URI) 模板。
+            </summary>
+      <returns>
+              用于服务操作的 URI 模板。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebOperationContext.Current">
+      <summary>
+              获取当前 Web 操作的上下文。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Web.WebOperationContext" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebOperationContext.IncomingRequest">
+      <summary>
+              获取正在接收的请求的 Web 请求上下文。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Web.IncomingWebRequestContext" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebOperationContext.IncomingResponse">
+      <summary>
+              获取正在接收的响应的 Web 响应上下文。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Web.IncomingWebResponseContext" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebOperationContext.OutgoingRequest">
+      <summary>
+              获取正在发送的请求的 Web 请求上下文。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Web.OutgoingWebRequestContext" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.Web.WebOperationContext.OutgoingResponse">
+      <summary>
+              获取正在发送的响应的 Web 响应上下文。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.Web.OutgoingWebResponseContext" /> 实例。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.AllowCookies">
+      <summary>
+              获取或设置一个值，该值指示客户端是否接受 Cookie 并根据今后的请求传播 Cookie。
+            </summary>
+      <returns>
+              如果接受 Cookie，则为 <see langword="true" />；否则为 <see langword="false" />。
+               默认值为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.BypassProxyOnLocal">
+      <summary>
+              获取或设置一个值，该值指示是否对本地地址不使用代理服务器。
+            </summary>
+      <returns>
+              如果对本地地址不使用代理服务器，则为 <see langword="true" />；否则为 <see langword="false" />。
+               默认值为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.ContentTypeMapper">
+      <summary>
+              获取或设置内容类型映射器。
+            </summary>
+      <returns>
+              内容类型映射器。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.CrossDomainScriptAccessEnabled">
+      <summary>
+              获取或设置一个值，该值确定是否启用跨域脚本访问。
+            </summary>
+      <returns>
+              <see langword="true" /> 如果跨域启用了脚本;否则为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.EnvelopeVersion">
+      <summary>
+              获取信封版本，用于通过此绑定配置为可接收 HTTP 请求的终结点。
+            </summary>
+      <returns>
+              具有 <see cref="T:System.ServiceModel.EnvelopeVersion" /> 属性的 <see cref="P:System.ServiceModel.EnvelopeVersion.None" />，用于通过此绑定配置为可接收 HTTP 请求的终结点。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.HostNameComparisonMode">
+      <summary>
+              获取或设置一个值，该值指示在对 URI 进行匹配时，是否使用主机名来访问服务。
+            </summary>
+      <returns>
+              一个 <see cref="P:System.ServiceModel.Configuration.WSDualHttpBindingElement.HostNameComparisonMode" /> 值，该值指示在对 URI 进行匹配时，是否使用主机名来访问服务。
+               默认值为 <see cref="F:System.ServiceModel.HostNameComparisonMode.StrongWildcard" />，表示忽略匹配项中的主机名。
+            </returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+                  所设置的值不是有效的 <see cref="P:System.ServiceModel.Configuration.WSDualHttpBindingElement.HostNameComparisonMode" /> 值。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.MaxBufferPoolSize">
+      <summary>
+              获取或设置最大分配，以字节为单位，用于管理由使用此绑定的终结点所需的缓冲区的缓冲区管理器的内存量。
+            </summary>
+      <returns>
+              配置了此绑定的终结点所使用的缓冲池的最大大小（以字节为单位）。
+               默认值为 65,536 字节。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.MaxBufferSize">
+      <summary>
+              获取或设置以字节为单位，分配为从通道接收消息的消息缓冲区管理器使用的最大内存量。
+            </summary>
+      <returns>
+              可供消息缓冲区管理器使用的最大内存量（以字节为单位）。
+               默认值为 524,288 (0x80000) 字节。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  设置的值小于或等于零。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.MaxReceivedMessageSize">
+      <summary>
+              获取或设置最大大小，以字节为单位，可以由绑定处理的消息。
+            </summary>
+      <returns>
+              绑定可处理的最大消息大小（以字节为单位）。
+               默认值为 65,536 字节。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  值小于零。
+                </exception>
+      <exception cref="T:System.ServiceModel.QuotaExceededException">
+                  消息超出分配的最大大小。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.ProxyAddress">
+      <summary>
+              获取或设置 HTTP 代理的 URI 地址。
+            </summary>
+      <returns>
+              一个充当 HTTP 代理地址的 <see cref="T:System.Uri" />。
+               默认值为 <see langword="null" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.ReaderQuotas">
+      <summary>
+              获取或设置可由配置了此绑定的终结点处理的 SOAP 消息的复杂性约束。
+            </summary>
+      <returns>
+              指定复杂性约束的 <see cref="T:System.Xml.XmlDictionaryReaderQuotas" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  <see cref="T:System.Xml.XmlDictionaryReaderQuotas" /> 的配额值是只读的。
+                </exception>
+      <exception cref="T:System.ArgumentException">
+                  设置的配额必须为正数。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.Scheme">
+      <summary>
+              获取用此绑定配置的通道和侦听器的 URI 传输方案。
+            </summary>
+      <returns>
+              如果将 <see cref="P:System.ServiceModel.WebHttpBinding.Security" /> 设置为 <see cref="F:System.ServiceModel.WebHttpSecurityMode.Transport" />，则为“https”；如果设置为 <see cref="F:System.ServiceModel.WebHttpSecurityMode.None" />，则为“http”。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.Security">
+      <summary>
+              获取与此绑定一起使用的安全设置。
+            </summary>
+      <returns>
+              与此绑定一起使用的 <see cref="T:System.ServiceModel.WebHttpSecurity" />。
+               默认值为 <see cref="F:System.ServiceModel.WebHttpSecurityMode.None" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously">
+      <summary>
+              获取一个值，该值指示是同步处理传入请求还是异步处理传入请求。
+            </summary>
+      <returns>
+              如果同步处理传入请求，则为 <see langword="true" />；如果异步处理传入请求，则为 <see langword="false" />。
+               默认值为 <see langword="false" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.TransferMode">
+      <summary>
+              获取或设置一个值，该值指示使用此绑定配置的服务是使用消息传输的流处理模式、缓冲模式还是同时使用这两种模式。
+            </summary>
+      <returns>
+              <see cref="T:System.ServiceModel.TransferMode" /> 值，指示使用此绑定配置的服务是使用消息传输的流处理模式、缓冲模式还是同时使用这两种模式。
+               默认值为 <see cref="F:System.ServiceModel.TransferMode.Buffered" />。
+            </returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+                  所设置的值不是有效的 <see cref="T:System.ServiceModel.TransferMode" /> 值。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.UseDefaultWebProxy">
+      <summary>
+              获取或设置一个值，该值指示是否应使用系统的自动配置 HTTP 代理（如果可用）。
+            </summary>
+      <returns>
+              如果应使用系统的自动配置 HTTP 代理（如果可用），则为 <see langword="true" />；否则为 <see langword="false" />。
+               默认值为 <see langword="true" />。
+            </returns>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpBinding.WriteEncoding">
+      <summary>
+              获取或设置用于消息文本的字符编码。
+            </summary>
+      <returns>
+              用于指示所使用的字符编码的 <see cref="T:System.Text.Encoding" />。
+               默认值为 <see cref="T:System.Text.UTF8Encoding" />。
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+                  该值设置为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpSecurity.Mode">
+      <summary>
+              获取或设置使用 <see cref="T:System.ServiceModel.WebHttpBinding" /> 配置为接收 HTTP 请求的终结点所使用的安全模式。
+            </summary>
+      <returns>
+              一个 <see cref="T:System.ServiceModel.WebHttpSecurityMode" /> 的值，它指示终结点是使用传输级安全，还是使用非安全。
+               默认值为 <see cref="F:System.ServiceModel.WebHttpSecurityMode.None" />。
+            </returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+                  该值不是有效的 <see cref="T:System.ServiceModel.WebHttpSecurityMode" />。
+                </exception>
+    </member>
+    <member name="P:System.ServiceModel.WebHttpSecurity.Transport">
+      <summary>
+              获取一个包含此绑定的传输级安全性设置的对象。
+            </summary>
+      <returns>
+              此绑定的 <see cref="T:System.ServiceModel.HttpTransportSecurity" />。
+            
+              默认值设置为 <see cref="P:System.ServiceModel.HttpTransportSecurity.ClientCredentialType" /> 的 <see cref="F:System.ServiceModel.HttpClientCredentialType.None" />，<see cref="P:System.ServiceModel.HttpTransportSecurity.ProxyCredentialType" /> 的 <see cref="F:System.ServiceModel.HttpProxyCredentialType.None" /> 和 <see cref="P:System.ServiceModel.HttpTransportSecurity.Realm" /> = ""。
+            </returns>
+    </member>
+    <member name="T:System.ServiceModel.Activation.WebScriptServiceHostFactory">
+      <summary>
+              在可动态激活服务的主机实例以响应传入消息的托管宿主环境下，能够向该服务中自动添加 ASP.NET AJAX 终结点而无需进行配置。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Activation.WebServiceHostFactory">
+      <summary>
+              一个工厂，在可动态创建主机实例以响应传入消息的托管宿主环境中提供 <see cref="T:System.ServiceModel.Web.WebServiceHost" /> 的实例。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Channels.JavascriptCallbackResponseMessageProperty">
+      <summary>
+              允许在使用 JSON Padding (JSONP) 的服务操作响应中使用 JavaScript 回调。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Channels.StreamBodyWriter">
+      <summary>
+              一个抽象基类，用于创建可用于以流形式编写消息正文的自定义 <see cref="T:System.ServiceModel.Channels.BodyWriter" /> 类。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Channels.WebBodyFormatMessageProperty">
+      <summary>
+              针对复合 Web 消息编码器，存储和检索传入和传出消息的消息编码格式。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Channels.WebContentFormat">
+      <summary>
+              指定可将传入消息的内容类型映射到的消息格式。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Channels.WebContentFormat.Default">
+      <summary>
+              无法确定要映射到的格式。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Channels.WebContentFormat.Xml">
+      <summary>
+              映射到 XML 格式。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Channels.WebContentFormat.Json">
+      <summary>
+              映射到 JSON 格式。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Channels.WebContentFormat.Raw">
+      <summary>
+              映射到“原始”二进制格式。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Channels.WebContentTypeMapper">
+      <summary>
+              指定将传入消息内容类型映射到的格式。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Channels.WebMessageEncodingBindingElement">
+      <summary>
+              在 Windows Communication Foundation (WCF) 绑定中使用纯文本 XML 与 JavaScript 对象表示法 (JSON) 消息编码以及“原始”二进制内容时，能够对其进行读写。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebHttpBindingCollectionElement">
+      <summary>
+              表示一个配置元素，该元素包含的子元素可指定有关使用 <see cref="T:System.ServiceModel.WebHttpBinding" /> 绑定的设置。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebHttpBindingElement">
+      <summary>
+              一个用于为响应 HTTP 请求（而不是 SOAP 消息）的 Windows Communication Foundation (WCF) Web 服务配置终结点的绑定元素。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebHttpElement">
+      <summary>
+              通过配置对终结点启用 <see cref="T:System.ServiceModel.Description.WebHttpBehavior" />。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebHttpEndpointCollectionElement">
+      <summary>
+              表示 <see cref="T:System.ServiceModel.Description.WebHttpEndpoint" /> 对象集合。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebHttpEndpointElement">
+      <summary>
+              表示 Web 服务应用程序的 WCF 配置元素。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebHttpSecurityElement">
+      <summary>
+              一个 XML 元素，该元素可配置包含接收 HTTP 请求的终结点的服务的安全性。
+               此类不能被继承。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebMessageEncodingElement">
+      <summary>
+              表示配置元素，该元素指定用于非 SOAP 消息的字符编码。
+               此类不能被继承。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebScriptEnablingElement">
+      <summary>
+              通过配置对终结点启用 <see cref="T:System.ServiceModel.Description.WebScriptEnablingBehavior" />。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebScriptEndpointCollectionElement">
+      <summary>
+              表示 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" /> 对象集合。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.WebScriptEndpointElement">
+      <summary>
+              表示一个自定义配置元素，该元素在配置文件中定义 <see cref="T:System.ServiceModel.Description.WebScriptEndpoint" />。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.JsonFaultDetail">
+      <summary>
+              表示在要用于 JSON 的服务协定中指定的 SOAP 错误。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.WebHttpBehavior">
+      <summary>
+              启用 Windows Communication Foundation (WCF) 服务的 Web 编程模型。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.WebHttpEndpoint">
+      <summary>
+              带有自动添加 <see cref="T:System.ServiceModel.WebHttpBinding" /> 行为的固定 <see cref="T:System.ServiceModel.Description.WebHttpBehavior" /> 绑定的标准终结点。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.WebScriptEnablingBehavior">
+      <summary>
+              为启用 Windows Communication Foundation (WCF) 终结点的行为提供支持，以便接收来自基于浏览器的 ASP.NET AJAX 客户端的 HTTP 请求。
+               此类不能被继承。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.WebScriptEndpoint">
+      <summary>
+              带有自动添加 <see cref="T:System.ServiceModel.WebHttpBinding" /> 行为的固定 <see cref="T:System.ServiceModel.Description.WebScriptEnablingBehavior" /> 绑定的标准终结点。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Description.WebServiceEndpoint">
+      <summary>
+              带有固定 <see cref="T:System.ServiceModel.WebHttpBinding" /> 绑定的标准终结点。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Dispatcher.JsonQueryStringConverter">
+      <summary>
+              此类用于在参数值和 JavaScript 对象表示法 (JSON) 之间进行转换。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Dispatcher.QueryStringConverter">
+      <summary>
+              此类可将查询字符串形式的参数转换为适当类型的对象，
+               它还可以将参数从对象转换为其查询字符串表示形式。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector">
+      <summary>
+              支持 Web 编程模型的操作选择器。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.AspNetCacheProfileAttribute">
+      <summary>
+              当应用于服务操作时，指示配置文件中的 ASP.NET 输出缓存配置文件，WCF 应使用此配置文件在 ASP .NET 输出缓存中缓存来自操作的响应。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.IncomingWebRequestContext">
+      <summary>
+              提供以编程方式访问传入 Web 请求上下文的能力。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.IncomingWebResponseContext">
+      <summary>
+              提供以编程方式访问传入 Web 响应上下文的能力。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.JavascriptCallbackBehaviorAttribute">
+      <summary>
+              一个协定行为，可以使用此行为将 URL 查询字符串参数名称设置为不同于默认的“callback”的某个名称。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.OutgoingWebRequestContext">
+      <summary>
+              提供以编程方式访问传出 Web 请求上下文的能力。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.OutgoingWebResponseContext">
+      <summary>
+              提供以编程方式访问传出 Web 响应上下文的能力。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebChannelFactory`1">
+      <summary>
+              一个用于在客户端访问 Windows Communication Foundation (WCF) Web 服务的类。
+            </summary>
+      <typeparam name="TChannel">
+                要创建的通道类型。
+              </typeparam>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebFaultException">
+      <summary>
+              表示会具有相关的 HTTP 状态代码的错误。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebFaultException`1">
+      <summary>
+              表示会具有相关的 HTTP 状态代码的错误。
+            </summary>
+      <typeparam name="T">
+                可序列化错误详细信息类型。
+              </typeparam>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebGetAttribute">
+      <summary>
+              表示一个属性，指示服务操作在逻辑上是检索操作，可以调用 WCF REST 编程模型。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebInvokeAttribute">
+      <summary>
+              表示一个属性，指示服务操作在逻辑上是调用操作，可以调用 WCF REST 编程模型。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebMessageBodyStyle">
+      <summary>
+              一个指定是否包装参数和返回值的枚举。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Web.WebMessageBodyStyle.Bare">
+      <summary>
+              不包装请求和响应。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Web.WebMessageBodyStyle.Wrapped">
+      <summary>
+              包装请求和响应。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Web.WebMessageBodyStyle.WrappedRequest">
+      <summary>
+              包装请求，但不包装响应。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Web.WebMessageBodyStyle.WrappedResponse">
+      <summary>
+              包装响应，但不包装请求。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebMessageFormat">
+      <summary>
+              一个指定 Web 消息格式的枚举。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Web.WebMessageFormat.Xml">
+      <summary>
+              XML 格式。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.Web.WebMessageFormat.Json">
+      <summary>
+              JavaScript 对象表示法 (JSON) 格式。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebOperationContext">
+      <summary>
+              一个使您可以轻松访问 Web 请求和响应上下文属性的帮助器类。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.Web.WebServiceHost">
+      <summary>
+              一个 <see cref="T:System.ServiceModel.ServiceHost" /> 派生类，它是对 Windows Communication Foundation (WCF) REST 编程模型的补充。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.WebHttpBinding">
+      <summary>
+              一个绑定，可用于为通过 HTTP 请求（而不是 SOAP 消息）公开的 Windows Communication Foundation (WCF) Web 服务配置终结点。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.WebHttpSecurity">
+      <summary>
+              指定可用于配置为接收 HTTP 请求的服务终结点的安全类型。
+            </summary>
+    </member>
+    <member name="T:System.ServiceModel.WebHttpSecurityMode">
+      <summary>
+              定义可用于将服务终结点配置为接收 HTTP 请求的安全模式。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.WebHttpSecurityMode.None">
+      <summary>
+              指示 HTTP 请求未使用任何安全性。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.WebHttpSecurityMode.Transport">
+      <summary>
+              指示 HTTP 请求使用传输级安全性。
+            </summary>
+    </member>
+    <member name="F:System.ServiceModel.WebHttpSecurityMode.TransportCredentialOnly">
+      <summary>
+              指示仅提供基于 HTTP 的客户端身份验证。
+            </summary>
+    </member>
+  </members>
+</doc>

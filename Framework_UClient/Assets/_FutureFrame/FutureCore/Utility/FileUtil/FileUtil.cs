@@ -16,15 +16,7 @@ namespace FutureCore
 {
     public static class FileUtil 
     {
-        public static void WriteFile(string targetPath, string classStr)
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(targetPath);
-            if (!directoryInfo.Parent.Exists)
-            {
-                Directory.CreateDirectory(directoryInfo.Parent.FullName);
-            }
-            File.WriteAllText(targetPath, classStr, new UTF8Encoding(false));
-        }
+        
 
         public static bool DeleteFileOrDirectory(string path)
         {  
@@ -49,7 +41,7 @@ namespace FutureCore
         /// <param name="NewName">复制的 新文件夹是否要取新名字（不填为原文件夹名字）</param>
         /// <param name="searchPattern"> 设置要复制文件类型 (*为所有 （.cs|.txt）为.cs和.txt) </param>
         /// <param name="copyFileCallback">复制一个文件成功回调 (sourceFileName,destFileName) </param>
-        public static void CopyFolder(string strFromPath, string strToPath,string NewName = "",string searchPattern = "*",Action<string,string> copyFileCallback = null)
+        public static void CopyFolder(string strFromPath, string strToPath,string NewName,string searchPattern = "*",Action<string,string> copyFileCallback = null)
         {
             //如果源文件夹不存在，则返回
             if (!Directory.Exists(strFromPath))
@@ -87,12 +79,18 @@ namespace FutureCore
                 //取得拷贝的文件名，只取文件名，地址截掉。
                 //string strFileName = strFiles[i].Substring(strFiles[i].LastIndexOf("\\") + 1, strFiles[i].Length - strFiles[i].LastIndexOf("\\") - 1);
 
-              
-
                 string strFileName = strToPath + "/" + strFolderName + "/" + Path.GetFileName(strFiles[i]);
-                //开始拷贝文件,true表示覆盖同名文件
-                File.Copy(strFiles[i],strFileName, true);
-                copyFileCallback?.Invoke(strFiles[i], strFileName);
+                if (copyFileCallback == null)
+                {
+                    //开始拷贝文件,true表示覆盖同名文件
+                    File.Copy(strFiles[i], strFileName, true);
+                }
+                else
+                {
+                    copyFileCallback.Invoke(strFiles[i], strFileName);
+                }
+                
+               
             }
             //创建DirectoryInfo实例
             DirectoryInfo dirInfo = new DirectoryInfo(strFromPath);
@@ -127,7 +125,10 @@ namespace FutureCore
         {
             CopyFolder(strFromPath, strToPath, "", "*", copyFileCallback);
         }
-        
+        public static void CopyFolder(string strFromPath, string strToPath)
+        {
+            CopyFolder(strFromPath, strToPath, "", "*", null);
+        }
 
         /// <summary>
         /// 创建该文件上级目录
@@ -167,7 +168,7 @@ namespace FutureCore
                 
             } 
 
-            File.WriteAllText(filePath,allStr);
+            File.WriteAllText(filePath,allStr, new UTF8Encoding(false));
         }
 
         /// <summary>

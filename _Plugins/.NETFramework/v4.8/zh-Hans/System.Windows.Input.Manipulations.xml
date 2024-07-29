@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Windows.Input.Manipulations</name>
+  </assembly>
+  <members>
+    <member name="T:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D">
+      <summary>描述惯性处理器的预期延伸行为。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D.DesiredDeceleration">
+      <summary>获取或设置预期的延伸减速度（以坐标单位/平方毫秒为单位）。</summary>
+      <returns>预期的延伸减速度（以坐标单位/平方毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D.DesiredExpansionX">
+      <summary>获取或设置以坐标单位表示的沿 X 轴的预期延伸。</summary>
+      <returns>以坐标单位表示的沿 X 轴的预期延伸。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D.DesiredExpansionY">
+      <summary>获取或设置以坐标单位表示的沿 Y 轴的预期延伸。</summary>
+      <returns>以坐标单位表示的沿 Y 轴的预期延伸。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D.InitialRadius">
+      <summary>获取或设置以坐标单位表示的初始平均半径。</summary>
+      <returns>以坐标单位表示的初始平均半径。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D.InitialVelocityX">
+      <summary>获取或设置沿 X 轴方向的初始延伸速度（以坐标单位/毫秒为单位）。</summary>
+      <returns>沿 X 轴方向的初始延伸速度（以坐标单位/毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaExpansionBehavior2D.InitialVelocityY">
+      <summary>获取或设置沿 Y 轴方向的初始延伸速度（以坐标单位/毫秒为单位）。</summary>
+      <returns>沿 Y 轴方向的初始延伸速度（以坐标单位/毫秒为单位）。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.InertiaParameters2D">
+      <summary>派生所有惯性参数类的基类。</summary>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.InertiaProcessor2D">
+      <summary>实现操作的位置、方向和平均半径的推断。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.InertiaProcessor2D.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Input.Manipulations.InertiaProcessor2D" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.InertiaProcessor2D.Complete(System.Int64)">
+      <summary>通过使用指定时间戳完成最终外推并引发 <see cref="E:System.Windows.Input.Manipulations.InertiaProcessor2D.Completed" /> 事件。</summary>
+      <param name="timestamp">用于完成外推的时间戳（以 100 纳秒为单位的时钟周期）。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">时间戳参数小于初始或上一个时间戳。</exception>
+    </member>
+    <member name="E:System.Windows.Input.Manipulations.InertiaProcessor2D.Completed">
+      <summary>在推断完成后发生。</summary>
+    </member>
+    <member name="E:System.Windows.Input.Manipulations.InertiaProcessor2D.Delta">
+      <summary>在推断原点发生了更改后或者在发生了转换、缩放或旋转后发生。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaProcessor2D.ExpansionBehavior">
+      <summary>获取或设置惯性处理器的延伸行为。</summary>
+      <returns>惯性处理器的延伸行为。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginX">
+      <summary>获取或设置以坐标单位表示的初始原点的 X 坐标。</summary>
+      <returns>以坐标单位表示的初始原点的 X 坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginY">
+      <summary>获取或设置以坐标单位表示的初始原点的 Y 坐标。</summary>
+      <returns>以坐标单位表示的初始原点的 Y 坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaProcessor2D.IsRunning">
+      <summary>获取当前是否在发生惯性。</summary>
+      <returns>一个布尔值，该值指示当前是否在发生惯性。</returns>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.InertiaProcessor2D.Process(System.Int64)">
+      <summary>推断操作的位置、方向和指定时间的平均半径。</summary>
+      <param name="timestamp">用于执行外推的时间戳（以 100 纳秒刻度为单位）。</param>
+      <returns>操作的位置、方向和指定时间的平均半径。 如果外推正在进行，则为 <see langword="true" />；如果外推已完成，则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">时间戳参数小于初始或上一个时间戳。</exception>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaProcessor2D.RotationBehavior">
+      <summary>获取或设置惯性处理器的旋转行为。</summary>
+      <returns>惯性处理器的旋转行为。</returns>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.InertiaProcessor2D.SetParameters(System.Windows.Input.Manipulations.InertiaParameters2D)">
+      <summary>在延时处理器上设置参数。</summary>
+      <param name="parameters">要设置的参数。</param>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaProcessor2D.TranslationBehavior">
+      <summary>获取或设置惯性处理器的转换行为。</summary>
+      <returns>惯性处理器的转换行为。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.InertiaRotationBehavior2D">
+      <summary>描述惯性处理器的预期旋转行为。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.InertiaRotationBehavior2D.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Input.Manipulations.InertiaRotationBehavior2D" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaRotationBehavior2D.DesiredDeceleration">
+      <summary>获取或设置预期的角度减速度（以弧度/平方毫秒为单位）。</summary>
+      <returns>预期的角度减速度（以弧度/平方毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaRotationBehavior2D.DesiredRotation">
+      <summary>获取或设置预期的旋转（以弧度为单位）。</summary>
+      <returns>预期的旋转（以弧度为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaRotationBehavior2D.InitialVelocity">
+      <summary>获取或设置初始旋转速度（以弧度/毫秒为单位）。</summary>
+      <returns>初始旋转速度（以弧度/毫秒为单位）。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.InertiaTranslationBehavior2D">
+      <summary>描述惯性处理器的预期转换行为。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.InertiaTranslationBehavior2D.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Input.Manipulations.InertiaTranslationBehavior2D" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaTranslationBehavior2D.DesiredDeceleration">
+      <summary>获取或设置预期的减速度（以坐标单位/平方毫秒为单位）。</summary>
+      <returns>预期的减速度（以坐标单位/平方毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaTranslationBehavior2D.DesiredDisplacement">
+      <summary>获取或设置对象沿速度向量移动所需的以坐标单位表示的绝对距离。</summary>
+      <returns>对象沿速度向量移动所需的以坐标单位表示的绝对距离。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaTranslationBehavior2D.InitialVelocityX">
+      <summary>获取或设置沿 X 轴方向的初始速度（以坐标单位/毫秒为单位）。</summary>
+      <returns>沿 X 轴方向的初始速度（以坐标单位/毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.InertiaTranslationBehavior2D.InitialVelocityY">
+      <summary>获取或设置沿 Y 轴方向的初始速度（以坐标单位/毫秒为单位）。</summary>
+      <returns>沿 Y 轴方向的初始速度（以坐标单位/毫秒为单位）。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.Manipulation2DCompletedEventArgs">
+      <summary>表示用 ManipulationProcessor2D.Completed 事件或 InertiaProcessor2D.Completed 事件发送的数据。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DCompletedEventArgs.OriginX">
+      <summary>获取操作的复合位置的新 X 坐标。</summary>
+      <returns>操作的复合位置的新 X 坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DCompletedEventArgs.OriginY">
+      <summary>获取操作的复合位置的新 Y 坐标。</summary>
+      <returns>操作的复合位置的新 Y 坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DCompletedEventArgs.Total">
+      <summary>获取自操作开始以来更改的总量。</summary>
+      <returns>自操作开始以来更改的总量。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DCompletedEventArgs.Velocities">
+      <summary>获取操作的当前速度。</summary>
+      <returns>操作的当前速度。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.Manipulation2DDeltaEventArgs">
+      <summary>表示用 <see cref="E:System.Windows.Input.Manipulations.ManipulationProcessor2D.Delta" /> 事件或 <see cref="E:System.Windows.Input.Manipulations.InertiaProcessor2D.Delta" /> 事件发送的数据。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DDeltaEventArgs.Cumulative">
+      <summary>获取自操作开始以来更改的总量。</summary>
+      <returns>自操作开始以来更改的总量。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DDeltaEventArgs.Delta">
+      <summary>获取自上一个事件以来更改的量。</summary>
+      <returns>自上一个事件以来更改的量。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DDeltaEventArgs.OriginX">
+      <summary>获取操作的复合位置的新 X 坐标。</summary>
+      <returns>操作的复合位置的新 X 坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DDeltaEventArgs.OriginY">
+      <summary>获取操作的复合位置的新 Y 坐标。</summary>
+      <returns>操作的复合位置的新 Y 坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DDeltaEventArgs.Velocities">
+      <summary>获取操作的当前速度。</summary>
+      <returns>操作的当前速度。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.Manipulation2DStartedEventArgs">
+      <summary>表示用 <see cref="E:System.Windows.Input.Manipulations.ManipulationProcessor2D.Started" /> 事件发送的数据。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DStartedEventArgs.OriginX">
+      <summary>获取原点的 X 坐标。</summary>
+      <returns>原点的 X 坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulation2DStartedEventArgs.OriginY">
+      <summary>获取原点的 Y 坐标。</summary>
+      <returns>原点的 Y 坐标。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.ManipulationDelta2D">
+      <summary>表示二维操作的结果。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationDelta2D.ExpansionX">
+      <summary>获取以坐标单位表示的沿 X 轴的延伸量。</summary>
+      <returns>以坐标单位表示的沿 X 轴的延伸量。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationDelta2D.ExpansionY">
+      <summary>获取以坐标单位表示的沿 Y 轴的延伸量。</summary>
+      <returns>以坐标单位表示的沿 Y 轴的延伸量。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationDelta2D.Rotation">
+      <summary>获取以弧度表示的旋转量。</summary>
+      <returns>以弧度表示的旋转量。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationDelta2D.ScaleX">
+      <summary>获取沿 X 轴缩放的系数。</summary>
+      <returns>x 轴的缩放比例。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationDelta2D.ScaleY">
+      <summary>获取沿 Y 轴的缩放比例系数。</summary>
+      <returns>y 轴的缩放比例。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationDelta2D.TranslationX">
+      <summary>获取以坐标单位表示的沿 X 轴的转换。</summary>
+      <returns>以坐标单位表示的沿 X 轴的转换。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationDelta2D.TranslationY">
+      <summary>获取以坐标单位表示的沿 Y 轴的转换。</summary>
+      <returns>以坐标单位表示的沿 Y 轴的转换。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.ManipulationParameters2D">
+      <summary>派生所有操作参数类的基类。</summary>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.ManipulationPivot2D">
+      <summary>表示操作处理器为单一操控程序旋转所使用的轴信息。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.ManipulationPivot2D.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Input.Manipulations.ManipulationPivot2D" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationPivot2D.Radius">
+      <summary>获取或设置从轴点到可操作区域的边缘之间的距离。</summary>
+      <returns>从轴点到可操作区域的边缘之间的距离。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationPivot2D.X">
+      <summary>获取或设置轴的 X 位置。</summary>
+      <returns>轴的 X 位置。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationPivot2D.Y">
+      <summary>获取或设置轴的 Y 位置。</summary>
+      <returns>轴的 Y 位置。</returns>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.ManipulationProcessor2D">
+      <summary>为在共享坐标空间中进行二维 (2-D) 转换而实现多输入、单一输出的复合器。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.ManipulationProcessor2D.#ctor(System.Windows.Input.Manipulations.Manipulations2D)">
+      <summary>创建一个新的 <see cref="T:System.Windows.Input.Manipulations.ManipulationProcessor2D" /> 对象。</summary>
+      <param name="supportedManipulations">受支持的操作的初始集合。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="supportedManipulations" /> 参数不是 <see cref="T:System.Windows.Input.Manipulations.Manipulations2D" /> 枚举值的有效组合。</exception>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.ManipulationProcessor2D.#ctor(System.Windows.Input.Manipulations.Manipulations2D,System.Windows.Input.Manipulations.ManipulationPivot2D)">
+      <summary>创建一个新的 <see cref="T:System.Windows.Input.Manipulations.ManipulationProcessor2D" /> 对象。</summary>
+      <param name="supportedManipulations">受支持的操作的初始集合。</param>
+      <param name="pivot">单一操控程序旋转的轴信息。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="supportedManipulations" /> 参数不是 <see cref="T:System.Windows.Input.Manipulations.Manipulations2D" /> 枚举值的有效组合。</exception>
+    </member>
+    <member name="E:System.Windows.Input.Manipulations.ManipulationProcessor2D.Completed">
+      <summary>在操作完成后发生。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.ManipulationProcessor2D.CompleteManipulation(System.Int64)">
+      <summary>强制完成当前的操作，并引发 <see cref="E:System.Windows.Input.Manipulations.ManipulationProcessor2D.Completed" /> 事件。</summary>
+      <param name="timestamp">用于完成操作的时间戳，以 100 毫微秒刻度为单位。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">时间戳小于当前的操作的上一个时间戳。</exception>
+    </member>
+    <member name="E:System.Windows.Input.Manipulations.ManipulationProcessor2D.Delta">
+      <summary>在操作原点发生了更改后或者在发生了转换、缩放或旋转后发生。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationProcessor2D.MinimumScaleRotateRadius">
+      <summary>获取或设置操控程序参与缩放和旋转所必需的最小半径，以坐标单位表示。</summary>
+      <returns>操控程序参与缩放和旋转所必需的最小半径，以坐标单位表示。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationProcessor2D.Pivot">
+      <summary>获取或设置操作处理器的轴信息。</summary>
+      <returns>操作处理器的轴信息。</returns>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.ManipulationProcessor2D.ProcessManipulators(System.Int64,System.Collections.Generic.IEnumerable{System.Windows.Input.Manipulations.Manipulator2D})">
+      <summary>在单一批操作中处理指定的操控程序。</summary>
+      <param name="timestamp">批的时间戳，以 100 毫微秒刻度为单位。</param>
+      <param name="manipulators">当前位于作用域中的操作的集合。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">时间戳小于当前的操作的上一个时间戳。</exception>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.ManipulationProcessor2D.SetParameters(System.Windows.Input.Manipulations.ManipulationParameters2D)">
+      <summary>对操作处理器设置参数。</summary>
+      <param name="parameters">要设置的参数。</param>
+    </member>
+    <member name="E:System.Windows.Input.Manipulations.ManipulationProcessor2D.Started">
+      <summary>在开始新操作后发生。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationProcessor2D.SupportedManipulations">
+      <summary>获取或设置受支持的操作的当前集合。</summary>
+      <returns>受支持的操作的当前集合。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">该属性尝试设置并非有效 <see cref="T:System.Windows.Input.Manipulations.Manipulations2D" /> 枚举值组合的值。</exception>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.Manipulations2D">
+      <summary>表示可能的仿射二维 (2-D) 操作。</summary>
+    </member>
+    <member name="F:System.Windows.Input.Manipulations.Manipulations2D.All">
+      <summary>所有可用操作。</summary>
+    </member>
+    <member name="F:System.Windows.Input.Manipulations.Manipulations2D.None">
+      <summary>无任何操作。</summary>
+    </member>
+    <member name="F:System.Windows.Input.Manipulations.Manipulations2D.Rotate">
+      <summary>旋转。</summary>
+    </member>
+    <member name="F:System.Windows.Input.Manipulations.Manipulations2D.Scale">
+      <summary>在两个方向上的缩放比例。</summary>
+    </member>
+    <member name="F:System.Windows.Input.Manipulations.Manipulations2D.Translate">
+      <summary>在 X 和/或 Y 轴上的转换。</summary>
+    </member>
+    <member name="F:System.Windows.Input.Manipulations.Manipulations2D.TranslateX">
+      <summary>在 X 轴上的转换。</summary>
+    </member>
+    <member name="F:System.Windows.Input.Manipulations.Manipulations2D.TranslateY">
+      <summary>在 Y 轴上的转换。</summary>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.ManipulationVelocities2D">
+      <summary>表示操作处理器和惯性处理器所计算的一组速度。</summary>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationVelocities2D.AngularVelocity">
+      <summary>获取角速度（以弧度/毫秒为单位）。</summary>
+      <returns>角速度（以弧度/毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationVelocities2D.ExpansionVelocityX">
+      <summary>获取沿 X 轴方向的延伸速度（以坐标单位/毫秒为单位）。</summary>
+      <returns>沿 X 轴方向的延伸速度（以坐标单位/毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationVelocities2D.ExpansionVelocityY">
+      <summary>获取沿 Y 轴方向的延伸速度（以坐标单位/毫秒为单位）。</summary>
+      <returns>沿 Y 轴方向的延伸速度（以坐标单位/毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationVelocities2D.LinearVelocityX">
+      <summary>获取沿 X 轴方向的速度（以坐标单位/毫秒为单位）。</summary>
+      <returns>沿 X 轴方向的速度（以坐标单位/毫秒为单位）。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.ManipulationVelocities2D.LinearVelocityY">
+      <summary>获取沿 Y 轴方向的速度（以坐标单位/毫秒为单位）。</summary>
+      <returns>沿 Y 轴方向的速度（以坐标单位/毫秒为单位）。</returns>
+    </member>
+    <member name="F:System.Windows.Input.Manipulations.ManipulationVelocities2D.Zero">
+      <summary>获取一个 <see cref="T:System.Windows.Input.Manipulations.ManipulationVelocities2D" />，其所有速度均设置为零。</summary>
+    </member>
+    <member name="T:System.Windows.Input.Manipulations.Manipulator2D">
+      <summary>表示某一时刻的二维操控程序。</summary>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.Manipulator2D.#ctor(System.Int32,System.Single,System.Single)">
+      <summary>使用指定的属性创建新的 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象。</summary>
+      <param name="id">此操控程序的唯一 ID。</param>
+      <param name="x">操控程序的 X 坐标。</param>
+      <param name="y">操控程序的 Y 坐标。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="x" />-坐标或 <paramref name="y" />-坐标都是 <see langword="float.NaN" />、<see langword="float.PositiveInfinity" /> 或 <see langword="float.NegativeInfinity" />。 这些值都无效。</exception>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.Manipulator2D.Equals(System.Object)">
+      <summary>确定此 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象是否具有与指定 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象相同的值。</summary>
+      <param name="obj">要与此对象比较的 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象。</param>
+      <returns>如果两个 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象具有相同的类型并表示相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.Manipulator2D.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>此实例的哈希代码。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulator2D.Id">
+      <summary>获取或设置此 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象的唯一 ID。</summary>
+      <returns>此 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象的唯一 ID。</returns>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.Manipulator2D.op_Equality(System.Windows.Input.Manipulations.Manipulator2D,System.Windows.Input.Manipulations.Manipulator2D)">
+      <summary>确定两个指定的 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象是否具有相同的值。</summary>
+      <param name="manipulator1">要比较的第一个 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象。</param>
+      <param name="manipulator2">要比较的第二个 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象。</param>
+      <returns>如果这两个 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Input.Manipulations.Manipulator2D.op_Inequality(System.Windows.Input.Manipulations.Manipulator2D,System.Windows.Input.Manipulations.Manipulator2D)">
+      <summary>确定两个指定的 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象是否具有不同的值。</summary>
+      <param name="manipulator1">要比较的第一个 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象。</param>
+      <param name="manipulator2">要比较的第二个 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象。</param>
+      <returns>如果这两个 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象具有不同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulator2D.X">
+      <summary>获取或设置此 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象的 X 坐标。</summary>
+      <returns>此 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象的 X 坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Input.Manipulations.Manipulator2D.Y">
+      <summary>获取或设置此 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象的 Y 坐标。</summary>
+      <returns>此 <see cref="T:System.Windows.Input.Manipulations.Manipulator2D" /> 对象的 Y 坐标。</returns>
+    </member>
+  </members>
+</doc>

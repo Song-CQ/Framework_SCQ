@@ -1,0 +1,3030 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Numerics</name>
+  </assembly>
+  <members>
+    <member name="T:System.Numerics.BigInteger">
+      <summary>表示任意大的带符号整数。</summary>
+    </member>
+    <member name="M:System.Numerics.BigInteger.#ctor(System.Byte[])">
+      <summary>使用字节数组中的值初始化 <see cref="T:System.Numerics.BigInteger" /> 结构的新实例。</summary>
+      <param name="value">顺序为 little-endian 的字节值的数组。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.#ctor(System.Decimal)">
+      <summary>使用 <see cref="T:System.Numerics.BigInteger" /> 值初始化 <see cref="T:System.Decimal" /> 结构的新实例。</summary>
+      <param name="value">十进制数。</param>
+    </member>
+    <member name="M:System.Numerics.BigInteger.#ctor(System.Double)">
+      <summary>使用双精度浮点值初始化 <see cref="T:System.Numerics.BigInteger" /> 结构的新实例。</summary>
+      <param name="value">一个双精度浮点值。</param>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 为 <see cref="F:System.Double.NaN" />、<see cref="F:System.Double.NegativeInfinity" /> 或 <see cref="F:System.Double.PositiveInfinity" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.#ctor(System.Int32)">
+      <summary>使用 32 位带符号整数值初始化 <see cref="T:System.Numerics.BigInteger" /> 结构的新实例。</summary>
+      <param name="value">32 位带符号整数。</param>
+    </member>
+    <member name="M:System.Numerics.BigInteger.#ctor(System.Int64)">
+      <summary>使用 64 位带符号整数值初始化 <see cref="T:System.Numerics.BigInteger" /> 结构的新实例。</summary>
+      <param name="value">64 位带符号整数。</param>
+    </member>
+    <member name="M:System.Numerics.BigInteger.#ctor(System.Single)">
+      <summary>使用单精度浮点值初始化 <see cref="T:System.Numerics.BigInteger" /> 结构的新实例。</summary>
+      <param name="value">单精度浮点值。</param>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 为 <see cref="F:System.Single.NaN" />、<see cref="F:System.Single.NegativeInfinity" /> 或 <see cref="F:System.Single.PositiveInfinity" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.#ctor(System.UInt32)">
+      <summary>使用 32 位无符号整数值初始化 <see cref="T:System.Numerics.BigInteger" /> 结构的新实例。</summary>
+      <param name="value">32 位无符号整数值。</param>
+    </member>
+    <member name="M:System.Numerics.BigInteger.#ctor(System.UInt64)">
+      <summary>使用 64 位无符号整数值初始化 <see cref="T:System.Numerics.BigInteger" /> 结构的新实例。</summary>
+      <param name="value">64 位无符号整数。</param>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Abs(System.Numerics.BigInteger)">
+      <summary>获取 <see cref="T:System.Numerics.BigInteger" /> 对象的绝对值。</summary>
+      <param name="value">数字。</param>
+      <returns>
+        <paramref name="value" /> 的绝对值。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Add(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>将两个 <see cref="T:System.Numerics.BigInteger" /> 值相加，并返回结果。</summary>
+      <param name="left">要相加的第一个值。</param>
+      <param name="right">要相加的第二个值。</param>
+      <returns>
+        <paramref name="left" /> 与 <paramref name="right" /> 的和。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Compare(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>比较两个 <see cref="T:System.Numerics.BigInteger" /> 值，并返回一个整数，该整数指示第一个值是小于、等于还是大于第二个值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>一个有符号整数，指示 <paramref name="left" /> 和 <paramref name="right" /> 的相对值，如下表所示。  
+  值 
+  条件 
+  小于零 
+ <paramref name="left" /> 小于 <paramref name="right" />。  
+
+  零 
+ <paramref name="left" /> 等于 <paramref name="right" />。  
+
+  大于零 
+ <paramref name="left" /> 大于 <paramref name="right" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.CompareTo(System.Int64)">
+      <summary>将此实例与 64 位带符号整数进行比较，并返回一个整数，该整数指示此实例的值是小于、等于还是大于 64 位带符号整数的值。</summary>
+      <param name="other">要比较的 64 位带符号整数。</param>
+      <returns>一个带符号整数值，指示此实例与 <paramref name="other" /> 的关系，如下表所示。  
+  返回值 
+  描述 
+  小于零 
+  当前实例小于 <paramref name="other" />。  
+
+  零 
+  当前实例等于 <paramref name="other" />。  
+
+  大于零 
+  当前实例大于 <paramref name="other" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.CompareTo(System.Numerics.BigInteger)">
+      <summary>将此实例与另一个 <see cref="T:System.Numerics.BigInteger" /> 进行比较，并返回一个整数，该整数指示此实例的值是小于、等于还是大于指定对象的值。</summary>
+      <param name="other">要比较的对象。</param>
+      <returns>一个带符号整数值，指示此实例与 <paramref name="other" /> 的关系，如下表所示。  
+  返回值 
+  描述 
+  小于零 
+  当前实例小于 <paramref name="other" />。  
+
+  零 
+  当前实例等于 <paramref name="other" />。  
+
+  大于零 
+  当前实例大于 <paramref name="other" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.CompareTo(System.Object)">
+      <summary>将此实例与指定对象进行比较，并返回一个整数，该整数指示此实例的值是小于、等于还是大于指定对象的值。</summary>
+      <param name="obj">要比较的对象。</param>
+      <returns>一个带符号整数，指示当前实例与 <paramref name="obj" /> 参数的关系，如下表所示。  
+  返回值 
+  描述 
+  小于零 
+  当前实例小于 <paramref name="obj" />。  
+
+  零 
+  当前实例等于 <paramref name="obj" />。  
+
+  大于零 
+  当前实例大于 <paramref name="obj" />，或者 <paramref name="obj" /> 参数为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="obj" /> 不是 <see cref="T:System.Numerics.BigInteger" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.CompareTo(System.UInt64)">
+      <summary>将此实例与 64 位无符号整数进行比较，并返回一个整数，该整数指示此实例的值是小于、等于还是大于 64 位无符号整数的值。</summary>
+      <param name="other">要比较的 64 位无符号整数。</param>
+      <returns>一个带符号整数，指示此实例和 <paramref name="other" /> 的相对值，如下表所示。  
+  返回值 
+  描述 
+  小于零 
+  当前实例小于 <paramref name="other" />。  
+
+  零 
+  当前实例等于 <paramref name="other" />。  
+
+  大于零 
+  当前实例大于 <paramref name="other" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Divide(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>用另一个值除 <see cref="T:System.Numerics.BigInteger" /> 值并返回结果。</summary>
+      <param name="dividend">要作为被除数的值。</param>
+      <param name="divisor">要作为除数的值。</param>
+      <returns>相除后的商。</returns>
+      <exception cref="T:System.DivideByZeroException">
+        <paramref name="divisor" /> 是 0（零）。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.DivRem(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger@)">
+      <summary>用另一个值除一个 <see cref="T:System.Numerics.BigInteger" /> 值，返回结果，并在输出参数中返回余数。</summary>
+      <param name="dividend">要作为被除数的值。</param>
+      <param name="divisor">要作为除数的值。</param>
+      <param name="remainder">当此方法返回时，包含一个表示相除余数的 <see cref="T:System.Numerics.BigInteger" /> 值。 此参数未经初始化即被传递。</param>
+      <returns>相除后的商。</returns>
+      <exception cref="T:System.DivideByZeroException">
+        <paramref name="divisor" /> 是 0（零）。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Equals(System.Int64)">
+      <summary>返回一个值，该值指示当前实例与 64 位带符号整数是否具有相同的值。</summary>
+      <param name="other">要比较的 64 位带符号整数值。</param>
+      <returns>如果 64 位带符号整数与当前实例具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Equals(System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示当前实例与指定的 <see cref="T:System.Numerics.BigInteger" /> 对象是否具有相同的值。</summary>
+      <param name="other">要比较的对象。</param>
+      <returns>如果此 <see cref="T:System.Numerics.BigInteger" /> 对象与 <paramref name="other" /> 具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Equals(System.Object)">
+      <summary>返回一个值，该值指示当前实例与指定的对象是否具有相同的值。</summary>
+      <param name="obj">要比较的对象。</param>
+      <returns>如果 <paramref name="obj" /> 参数是 <see cref="T:System.Numerics.BigInteger" /> 对象，并且其值等于当前 <see cref="T:System.Numerics.BigInteger" /> 实例的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Equals(System.UInt64)">
+      <summary>返回一个值，该值指示当前实例与 64 位无符号整数是否具有相同的值。</summary>
+      <param name="other">要比较的 64 位无符号整数。</param>
+      <returns>如果当前实例与 64 位无符号整数具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.GetHashCode">
+      <summary>返回当前 <see cref="T:System.Numerics.BigInteger" /> 对象的哈希代码。</summary>
+      <returns>32 位有符号整数哈希代码。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.GreatestCommonDivisor(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>查找两个 <see cref="T:System.Numerics.BigInteger" /> 值的最大公约数。</summary>
+      <param name="left">第一个值。</param>
+      <param name="right">第二个值。</param>
+      <returns>
+        <paramref name="left" /> 和 <paramref name="right" /> 的最大公约数。</returns>
+    </member>
+    <member name="P:System.Numerics.BigInteger.IsEven">
+      <summary>指示当前 <see cref="T:System.Numerics.BigInteger" /> 对象的值是否是偶数。</summary>
+      <returns>如果 <see cref="T:System.Numerics.BigInteger" /> 对象的值是偶数，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Numerics.BigInteger.IsOne">
+      <summary>指示当前 <see cref="T:System.Numerics.BigInteger" /> 对象的值是否是 <see cref="P:System.Numerics.BigInteger.One" />。</summary>
+      <returns>如果 <see cref="T:System.Numerics.BigInteger" /> 对象的值是 <see cref="P:System.Numerics.BigInteger.One" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Numerics.BigInteger.IsPowerOfTwo">
+      <summary>指示当前 <see cref="T:System.Numerics.BigInteger" /> 对象的值是否是 2 的幂。</summary>
+      <returns>如果 <see cref="T:System.Numerics.BigInteger" /> 对象的值是 2 的幂，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Numerics.BigInteger.IsZero">
+      <summary>指示当前 <see cref="T:System.Numerics.BigInteger" /> 对象的值是否是 <see cref="P:System.Numerics.BigInteger.Zero" />。</summary>
+      <returns>如果 <see cref="T:System.Numerics.BigInteger" /> 对象的值是 <see cref="P:System.Numerics.BigInteger.Zero" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Log(System.Numerics.BigInteger)">
+      <summary>返回指定数字的自然对数（底为 <see langword="e" />）。</summary>
+      <param name="value">要查找其对数的数字。</param>
+      <returns>
+        <paramref name="value" /> 的自然对数（底为 <see langword="e" />），如“备注”部分中的表所示。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="value" /> 的自然对数超出了 <see cref="T:System.Double" /> 数据类型的范围。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Log(System.Numerics.BigInteger,System.Double)">
+      <summary>返回指定数字在使用指定底时的对数。</summary>
+      <param name="value">要查找其对数的数字。</param>
+      <param name="baseValue">对数的底。</param>
+      <returns>
+        <paramref name="baseValue" /> 的以 <paramref name="value" /> 为底的对数，如“备注”部分中的表所示。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="value" /> 的对数超出了 <see cref="T:System.Double" /> 数据类型的范围。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Log10(System.Numerics.BigInteger)">
+      <summary>返回指定数字以 10 为底的对数。</summary>
+      <param name="value">要查找其对数的数字。</param>
+      <returns>
+        <paramref name="value" /> 的以 10 为底的对数，如“备注”部分中的表所示。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="value" /> 的以 10 为底的对数超出了 <see cref="T:System.Double" /> 数据类型的范围。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Max(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回两个 <see cref="T:System.Numerics.BigInteger" /> 值中的较大者。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>
+        <paramref name="left" /> 或 <paramref name="right" /> 参数中较大的一个。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Min(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回两个 <see cref="T:System.Numerics.BigInteger" /> 值中的较小者。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>
+        <paramref name="left" /> 或 <paramref name="right" /> 参数中较小的一个。</returns>
+    </member>
+    <member name="P:System.Numerics.BigInteger.MinusOne">
+      <summary>获取一个表示数字负一 (-1) 的值。</summary>
+      <returns>其值为负一 (-1) 的整数。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.ModPow(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>对以某个数为底、以另一个数为指数的幂执行模数除法。</summary>
+      <param name="value">要计算 <paramref name="exponent" /> 次幂的数字。</param>
+      <param name="exponent">对 <paramref name="value" /> 进行幂运算的指数。</param>
+      <param name="modulus">
+        <paramref name="value" /> 的 <paramref name="exponent" /> 次幂要除以的数值。</param>
+      <returns>将 <paramref name="value" />exponent 除以 <paramref name="modulus" /> 后的余数。</returns>
+      <exception cref="T:System.DivideByZeroException">
+        <paramref name="modulus" /> 为零。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="exponent" /> 为负数。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Multiply(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回两个 <see cref="T:System.Numerics.BigInteger" /> 值的乘积。</summary>
+      <param name="left">要相乘的第一个数。</param>
+      <param name="right">要相乘的第二个数。</param>
+      <returns>
+        <paramref name="left" /> 与 <paramref name="right" /> 参数的乘积。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Negate(System.Numerics.BigInteger)">
+      <summary>对指定的 <see cref="T:System.Numerics.BigInteger" /> 值求反。</summary>
+      <param name="value">要求反的值。</param>
+      <returns>
+        <paramref name="value" /> 参数乘以负一 (-1) 的结果。</returns>
+    </member>
+    <member name="P:System.Numerics.BigInteger.One">
+      <summary>获取一个表示数字一 (1) 的值。</summary>
+      <returns>其值为一 (1) 的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Addition(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>将两个指定的 <see cref="T:System.Numerics.BigInteger" /> 对象的值相加。</summary>
+      <param name="left">要相加的第一个值。</param>
+      <param name="right">要相加的第二个值。</param>
+      <returns>
+        <paramref name="left" /> 与 <paramref name="right" /> 的和。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_BitwiseAnd(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>对两个 <see cref="T:System.Numerics.BigInteger" /> 值执行按位 <see langword="And" /> 运算。</summary>
+      <param name="left">第一个值。</param>
+      <param name="right">第二个值。</param>
+      <returns>按位 <see langword="And" /> 运算的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_BitwiseOr(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>对两个 <see cref="T:System.Numerics.BigInteger" /> 值执行按位 <see langword="Or" /> 运算。</summary>
+      <param name="left">第一个值。</param>
+      <param name="right">第二个值。</param>
+      <returns>按位 <see langword="Or" /> 运算的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Decrement(System.Numerics.BigInteger)">
+      <summary>将 <see cref="T:System.Numerics.BigInteger" /> 值减 1。</summary>
+      <param name="value">要递减的值。</param>
+      <returns>
+        <paramref name="value" /> 参数减 1 后的值。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Division(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>通过使用整除，将指定的 <see cref="T:System.Numerics.BigInteger" /> 值除以另一个指定的 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="dividend">要作为被除数的值。</param>
+      <param name="divisor">要作为除数的值。</param>
+      <returns>相除的整数结果。</returns>
+      <exception cref="T:System.DivideByZeroException">
+        <paramref name="divisor" /> 是 0（零）。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Equality(System.Int64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示带符号长整数值与 <see cref="T:System.Numerics.BigInteger" /> 值是否相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 与 <paramref name="right" /> 参数具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Equality(System.Numerics.BigInteger,System.Int64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值与带符号长整数值是否相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 与 <paramref name="right" /> 参数具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Equality(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示两个 <see cref="T:System.Numerics.BigInteger" /> 对象的值是否相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 与 <paramref name="right" /> 参数具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Equality(System.Numerics.BigInteger,System.UInt64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值与无符号长整数值是否相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 与 <paramref name="right" /> 参数具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Equality(System.UInt64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示无符号长整数值与 <see cref="T:System.Numerics.BigInteger" /> 值是否相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 与 <paramref name="right" /> 参数具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_ExclusiveOr(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>对两个 <see cref="T:System.Numerics.BigInteger" /> 值执行按位异 <see langword="Or" /> (<see langword="XOr" />) 运算。</summary>
+      <param name="left">第一个值。</param>
+      <param name="right">第二个值。</param>
+      <returns>按位 <see langword="Or" /> 运算的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Decimal)~System.Numerics.BigInteger">
+      <summary>定义从 <see cref="T:System.Decimal" /> 对象到 <see cref="T:System.Numerics.BigInteger" /> 值的显式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Double)~System.Numerics.BigInteger">
+      <summary>定义从 <see cref="T:System.Double" /> 值到 <see cref="T:System.Numerics.BigInteger" /> 值的显式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 为 <see cref="F:System.Double.NaN" />、<see cref="F:System.Double.PositiveInfinity" /> 或 <see cref="F:System.Double.NegativeInfinity" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.Byte">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到无符号字节值的显式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Byte" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.Byte.MinValue" /> 或大于 <see cref="F:System.Byte.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.Decimal">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 <see cref="T:System.Decimal" /> 值的显式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Decimal" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.Decimal.MinValue" /> 或大于 <see cref="F:System.Decimal.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.Double">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 <see cref="T:System.Double" /> 值的显式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Double" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.Int16">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 16 位带符号整数值的显式转换。</summary>
+      <param name="value">要转换为 16 位带符号整数的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.Int16.MinValue" /> 或大于 <see cref="F:System.Int16.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.Int32">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 32 位带符号整数值的显式转换。</summary>
+      <param name="value">要转换为 32 位带符号整数的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.Int32.MinValue" /> 或大于 <see cref="F:System.Int32.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.Int64">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 64 位带符号整数值的显式转换。</summary>
+      <param name="value">要转换为 64 位带符号整数的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.Int64.MinValue" /> 或大于 <see cref="F:System.Int64.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.SByte">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 8 位带符号值的显式转换。  
+此 API 不兼容 CLS。 符合的替代方法是 <see cref="T:System.Int16" />。</summary>
+      <param name="value">要转换为 8 位带符号值的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.SByte.MinValue" /> 或大于 <see cref="F:System.SByte.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.Single">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到单精度浮点值的显式转换。</summary>
+      <param name="value">要转换为单精度浮点值的值。</param>
+      <returns>一个对象，包含 <paramref name="value" /> 参数的尽可能精确的表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.UInt16">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 16 位无符号整数值的显式转换。  
+此 API 不兼容 CLS。 符合的替代方法是 <see cref="T:System.Int32" />。</summary>
+      <param name="value">要转换为 16 位无符号整数的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.UInt16.MinValue" /> 或大于 <see cref="F:System.UInt16.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.UInt32">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 32 位无符号整数值的显式转换。  
+此 API 不兼容 CLS。 符合的替代方法是 <see cref="T:System.Int64" />。</summary>
+      <param name="value">要转换为 32 位无符号整数的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.UInt32.MinValue" /> 或大于 <see cref="F:System.UInt32.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Numerics.BigInteger)~System.UInt64">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 对象到 64 位无符号整数值的显式转换。  
+此 API 不兼容 CLS。 符合的替代方法是 <see cref="T:System.Double" />。</summary>
+      <param name="value">要转换为 64 位无符号整数的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 小于 <see cref="F:System.UInt64.MinValue" /> 或大于 <see cref="F:System.UInt64.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Explicit(System.Single)~System.Numerics.BigInteger">
+      <summary>定义从 <see cref="T:System.Single" /> 值到 <see cref="T:System.Numerics.BigInteger" /> 值的显式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+      <exception cref="T:System.OverflowException">
+        <paramref name="value" /> 为 <see cref="F:System.Single.NaN" />、<see cref="F:System.Single.PositiveInfinity" /> 或 <see cref="F:System.Single.NegativeInfinity" />。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThan(System.Int64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位带符号整数是否大于 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThan(System.Numerics.BigInteger,System.Int64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 是否大于 64 位带符号整数值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThan(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否大于另一个 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThan(System.Numerics.BigInteger,System.UInt64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否大于 64 位无符号整数。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThan(System.UInt64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否大于 64 位无符号整数。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThanOrEqual(System.Int64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位带符号整数是否大于等于 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThanOrEqual(System.Numerics.BigInteger,System.Int64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否大于等于 64 位带符号整数值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThanOrEqual(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否大于等于另一个 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThanOrEqual(System.Numerics.BigInteger,System.UInt64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否大于等于 64 位无符号整数值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_GreaterThanOrEqual(System.UInt64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位无符号整数是否大于等于 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <see langword="true" /> 大于 <paramref name="left" />，则为 <paramref name="right" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Implicit(System.Byte)~System.Numerics.BigInteger">
+      <summary>定义从无符号字节到 <see cref="T:System.Numerics.BigInteger" /> 值的隐式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Implicit(System.Int16)~System.Numerics.BigInteger">
+      <summary>定义从 16 位带符号整数到 <see cref="T:System.Numerics.BigInteger" /> 值的隐式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Implicit(System.Int32)~System.Numerics.BigInteger">
+      <summary>定义从 32 位带符号整数到 <see cref="T:System.Numerics.BigInteger" /> 值的隐式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Implicit(System.Int64)~System.Numerics.BigInteger">
+      <summary>定义从 64 位带符号整数到 <see cref="T:System.Numerics.BigInteger" /> 值的隐式转换。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Implicit(System.SByte)~System.Numerics.BigInteger">
+      <summary>定义从 8 位带符号整数到 <see cref="T:System.Numerics.BigInteger" /> 值的隐式转换。  
+此 API 不兼容 CLS。 符合的替代方法是 <see cref="M:System.Numerics.BigInteger.#ctor(System.Int32)" />。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Implicit(System.UInt16)~System.Numerics.BigInteger">
+      <summary>定义从 16 位无符号整数到 <see cref="T:System.Numerics.BigInteger" /> 值的隐式转换。  
+此 API 不兼容 CLS。 符合的替代方法是 <see cref="M:System.Numerics.BigInteger.op_Implicit(System.Int32)~System.Numerics.BigInteger" />。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Implicit(System.UInt32)~System.Numerics.BigInteger">
+      <summary>定义从 32 位无符号整数到 <see cref="T:System.Numerics.BigInteger" /> 值的隐式转换。  
+此 API 不兼容 CLS。 符合的替代方法是 <see cref="M:System.Numerics.BigInteger.op_Implicit(System.Int64)~System.Numerics.BigInteger" />。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Implicit(System.UInt64)~System.Numerics.BigInteger">
+      <summary>定义从 64 位无符号整数到 <see cref="T:System.Numerics.BigInteger" /> 值的隐式转换。  
+此 API 不兼容 CLS。 符合的替代方法是 <see cref="T:System.Double" />。</summary>
+      <param name="value">要转换为 <see cref="T:System.Numerics.BigInteger" /> 的值。</param>
+      <returns>包含 <paramref name="value" /> 参数值的对象。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Increment(System.Numerics.BigInteger)">
+      <summary>将 <see cref="T:System.Numerics.BigInteger" /> 值加 1。</summary>
+      <param name="value">要递增的值。</param>
+      <returns>
+        <paramref name="value" /> 参数加 1 后的值。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Inequality(System.Int64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位带符号整数与 <see cref="T:System.Numerics.BigInteger" /> 值是否不相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Inequality(System.Numerics.BigInteger,System.Int64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值与 64 位带符号整数是否不相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Inequality(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示两个 <see cref="T:System.Numerics.BigInteger" /> 对象是否具有不同的值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Inequality(System.Numerics.BigInteger,System.UInt64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值与 64 位无符号整数是否不相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Inequality(System.UInt64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位无符号整数与 <see cref="T:System.Numerics.BigInteger" /> 值是否不相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LeftShift(System.Numerics.BigInteger,System.Int32)">
+      <summary>将 <see cref="T:System.Numerics.BigInteger" /> 值向左移动指定的位数。</summary>
+      <param name="value">要移动其位的值。</param>
+      <param name="shift">将 <paramref name="value" /> 向左移动的位数。</param>
+      <returns>一个已向左移动指定位数的值。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThan(System.Int64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位带符号整数是否小于 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThan(System.Numerics.BigInteger,System.Int64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否小于 64 位带符号整数。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThan(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否小于另一个 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThan(System.Numerics.BigInteger,System.UInt64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否小于 64 位无符号整数。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThan(System.UInt64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位无符号整数是否小于 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThanOrEqual(System.Int64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位带符号整数是否小于等于 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于等于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThanOrEqual(System.Numerics.BigInteger,System.Int64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否小于等于 64 位带符号整数。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于等于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThanOrEqual(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否小于等于另一个 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于等于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThanOrEqual(System.Numerics.BigInteger,System.UInt64)">
+      <summary>返回一个值，该值指示 <see cref="T:System.Numerics.BigInteger" /> 值是否小于等于 64 位无符号整数。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于等于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_LessThanOrEqual(System.UInt64,System.Numerics.BigInteger)">
+      <summary>返回一个值，该值指示 64 位无符号整数是否小于等于 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 小于等于 <paramref name="right" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Modulus(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>返回两个指定 <see cref="T:System.Numerics.BigInteger" /> 值相除所得的余数。</summary>
+      <param name="dividend">要作为被除数的值。</param>
+      <param name="divisor">要作为除数的值。</param>
+      <returns>相除所得的余数。</returns>
+      <exception cref="T:System.DivideByZeroException">
+        <paramref name="divisor" /> 是 0（零）。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Multiply(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>两个指定的 <see cref="T:System.Numerics.BigInteger" /> 值相乘。</summary>
+      <param name="left">要相乘的第一个值。</param>
+      <param name="right">要相乘的第二个值。</param>
+      <returns>
+        <paramref name="left" /> 与 <paramref name="right" /> 的乘积。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_OnesComplement(System.Numerics.BigInteger)">
+      <summary>返回 <see cref="T:System.Numerics.BigInteger" /> 值的按位二进制反码。</summary>
+      <param name="value">一个整数值。</param>
+      <returns>
+        <paramref name="value" /> 的按位二进制反码。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_RightShift(System.Numerics.BigInteger,System.Int32)">
+      <summary>将 <see cref="T:System.Numerics.BigInteger" /> 值向右移动指定的位数。</summary>
+      <param name="value">要移动其位的值。</param>
+      <param name="shift">将 <paramref name="value" /> 向右移动的位数。</param>
+      <returns>一个已向右移动指定位数的值。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_Subtraction(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>从另一个 <see cref="T:System.Numerics.BigInteger" /> 值中减去 <see cref="T:System.Numerics.BigInteger" /> 值。</summary>
+      <param name="left">要从中减去的值（被减数）。</param>
+      <param name="right">要减去的值（减数）。</param>
+      <returns>
+        <paramref name="right" /> 减 <paramref name="left" /> 所得的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_UnaryNegation(System.Numerics.BigInteger)">
+      <summary>对指定的 BigInteger 值求反。</summary>
+      <param name="value">要求反的值。</param>
+      <returns>
+        <paramref name="value" /> 参数乘以负一 (-1) 的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.op_UnaryPlus(System.Numerics.BigInteger)">
+      <summary>返回 <see cref="T:System.Numerics.BigInteger" /> 操作数的值。 （操作数的符号不变。）</summary>
+      <param name="value">一个整数值。</param>
+      <returns>
+        <paramref name="value" /> 操作数的值。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Parse(System.String)">
+      <summary>将数字的字符串表示形式转换为它的等效 <see cref="T:System.Numerics.BigInteger" /> 表示形式。</summary>
+      <param name="value">包含要转换的数字的字符串。</param>
+      <returns>一个值，等于 <paramref name="value" /> 参数中指定的数字。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="value" /> 的格式不正确。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Parse(System.String,System.Globalization.NumberStyles)">
+      <summary>将指定样式的数字的字符串表示形式转换为它的等效 <see cref="T:System.Numerics.BigInteger" />。</summary>
+      <param name="value">包含要转换的数字的字符串。</param>
+      <param name="style">枚举值的按位组合，这些枚举值指定 <paramref name="value" /> 所允许的格式。</param>
+      <returns>一个值，等于 <paramref name="value" /> 参数中指定的数字。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="style" /> 不是 <see cref="T:System.Globalization.NumberStyles" /> 值。  
+
+或 - 
+<paramref name="style" /> 包括 <see cref="F:System.Globalization.NumberStyles.AllowHexSpecifier" /> 或 <see cref="F:System.Globalization.NumberStyles.HexNumber" /> 标志以及另一个值。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="value" /> 不符合由 <see cref="T:System.Globalization.NumberStyles" /> 指定的输入模式。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Parse(System.String,System.Globalization.NumberStyles,System.IFormatProvider)">
+      <summary>将指定样式和区域性特定格式的数字的字符串表示形式转换为它的等效 <see cref="T:System.Numerics.BigInteger" />。</summary>
+      <param name="value">包含要转换的数字的字符串。</param>
+      <param name="style">枚举值的按位组合，这些枚举值指定 <paramref name="value" /> 所允许的格式。</param>
+      <param name="provider">一个对象，提供有关 <paramref name="value" /> 的区域性特定格式设置信息。</param>
+      <returns>一个值，等于 <paramref name="value" /> 参数中指定的数字。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="style" /> 不是 <see cref="T:System.Globalization.NumberStyles" /> 值。  
+
+或 - 
+<paramref name="style" /> 包括 <see cref="F:System.Globalization.NumberStyles.AllowHexSpecifier" /> 或 <see cref="F:System.Globalization.NumberStyles.HexNumber" /> 标志以及另一个值。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="value" /> 不符合由 <paramref name="style" /> 指定的输入模式。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Parse(System.String,System.IFormatProvider)">
+      <summary>将指定的区域性特定格式的数字字符串表示形式转换为它的等效 <see cref="T:System.Numerics.BigInteger" />。</summary>
+      <param name="value">包含要转换的数字的字符串。</param>
+      <param name="provider">一个对象，提供有关 <paramref name="value" /> 的区域性特定格式设置信息。</param>
+      <returns>一个值，等于 <paramref name="value" /> 参数中指定的数字。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="value" /> 的格式不正确。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Pow(System.Numerics.BigInteger,System.Int32)">
+      <summary>求以 <see cref="T:System.Numerics.BigInteger" /> 值为底、以指定的值为指数的幂。</summary>
+      <param name="value">要计算 <paramref name="exponent" /> 次幂的数字。</param>
+      <param name="exponent">对 <paramref name="value" /> 进行幂运算的指数。</param>
+      <returns>
+        <paramref name="value" /> 的 <paramref name="exponent" /> 次幂的计算结果。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="exponent" /> 为负数。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Remainder(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>对两个 <see cref="T:System.Numerics.BigInteger" /> 值执行整除并返回余数。</summary>
+      <param name="dividend">要作为被除数的值。</param>
+      <param name="divisor">要作为除数的值。</param>
+      <returns>将 <paramref name="dividend" /> 除以 <paramref name="divisor" /> 后的余数。</returns>
+      <exception cref="T:System.DivideByZeroException">
+        <paramref name="divisor" /> 是 0（零）。</exception>
+    </member>
+    <member name="P:System.Numerics.BigInteger.Sign">
+      <summary>获取一个数字，该数字指示当前 <see cref="T:System.Numerics.BigInteger" /> 对象的符号（负、正或零）。</summary>
+      <returns>一个指示 <see cref="T:System.Numerics.BigInteger" /> 对象的符号的数字，如下表所示。  
+  数字 
+  描述 
+  -1 
+  此对象的值为负。  
+
+  0 
+  此对象的值为 0（零）。  
+
+  1 
+  此对象的值为正。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.Subtract(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+      <summary>从另一个值中减去一个 <see cref="T:System.Numerics.BigInteger" /> 值并返回结果。</summary>
+      <param name="left">要从中减去的值（被减数）。</param>
+      <param name="right">要减去的值（减数）。</param>
+      <returns>
+        <paramref name="right" /> 减 <paramref name="left" /> 所得的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.ToByteArray">
+      <summary>将 <see cref="T:System.Numerics.BigInteger" /> 值转换为字节数组。</summary>
+      <returns>转换为字节数组的当前 <see cref="T:System.Numerics.BigInteger" /> 对象的值。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.ToString">
+      <summary>将当前 <see cref="T:System.Numerics.BigInteger" /> 对象的数值转换为其等效字符串表示形式。</summary>
+      <returns>当前 <see cref="T:System.Numerics.BigInteger" /> 值的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.ToString(System.IFormatProvider)">
+      <summary>使用指定的区域性特定格式设置信息将当前 <see cref="T:System.Numerics.BigInteger" /> 对象的数值转换为它的等效字符串表示形式。</summary>
+      <param name="provider">一个提供区域性特定的格式设置信息的对象。</param>
+      <returns>当前 <see cref="T:System.Numerics.BigInteger" /> 值的字符串表示形式，该值使用 <paramref name="provider" /> 参数指定的格式。</returns>
+    </member>
+    <member name="M:System.Numerics.BigInteger.ToString(System.String)">
+      <summary>使用指定的格式将当前 <see cref="T:System.Numerics.BigInteger" /> 对象的数值转换为它的等效字符串表示形式。</summary>
+      <param name="format">标准或自定义的数值格式字符串。</param>
+      <returns>当前 <see cref="T:System.Numerics.BigInteger" /> 值的字符串表示形式，该值使用 <paramref name="format" /> 参数指定的格式。</returns>
+      <exception cref="T:System.FormatException">
+        <paramref name="format" /> 不是有效的格式字符串。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.ToString(System.String,System.IFormatProvider)">
+      <summary>使用指定的格式和区域性特定格式信息将当前 <see cref="T:System.Numerics.BigInteger" /> 对象的数值转换为它的等效字符串表示形式。</summary>
+      <param name="format">标准或自定义的数值格式字符串。</param>
+      <param name="provider">一个提供区域性特定的格式设置信息的对象。</param>
+      <returns>由 <paramref name="format" /> 和 <paramref name="provider" /> 参数指定的当前 <see cref="T:System.Numerics.BigInteger" /> 值的字符串表示形式。</returns>
+      <exception cref="T:System.FormatException">
+        <paramref name="format" /> 不是有效的格式字符串。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.TryParse(System.String,System.Globalization.NumberStyles,System.IFormatProvider,System.Numerics.BigInteger@)">
+      <summary>尝试将指定样式和区域性特定格式的数字的字符串表示形式转换为其 <see cref="T:System.Numerics.BigInteger" /> 等效项，并返回一个指示转换是否成功的值。</summary>
+      <param name="value">数字的字符串表示形式。 该字符串使用由 <paramref name="style" /> 指定的样式来进行解释。</param>
+      <param name="style">枚举值的按位组合，用于指示可出现在 <paramref name="value" /> 中的样式元素。 要指定的一个典型值为 <see cref="F:System.Globalization.NumberStyles.Integer" />。</param>
+      <param name="provider">一个对象，提供有关 <paramref name="value" /> 的区域性特定格式设置信息。</param>
+      <param name="result">当此方法返回时，包含与 <paramref name="value" /> 中所包含的数字等效的 <see cref="T:System.Numerics.BigInteger" />；如果转换失败，则包含 <see cref="P:System.Numerics.BigInteger.Zero" />。 如果 <paramref name="value" /> 参数为 <see langword="null" /> 或其格式不符合 <paramref name="style" />，则转换失败。 此参数未经初始化即被传递。</param>
+      <returns>如果 <see langword="true" /> 参数成功转换，则为 <paramref name="value" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="style" /> 不是 <see cref="T:System.Globalization.NumberStyles" /> 值。  
+
+或 - 
+<paramref name="style" /> 包括 <see cref="F:System.Globalization.NumberStyles.AllowHexSpecifier" /> 或 <see cref="F:System.Globalization.NumberStyles.HexNumber" /> 标志以及另一个值。</exception>
+    </member>
+    <member name="M:System.Numerics.BigInteger.TryParse(System.String,System.Numerics.BigInteger@)">
+      <summary>尝试将数字的字符串表示形式转换为它的等效 <see cref="T:System.Numerics.BigInteger" />，并返回一个指示转换是否成功的值。</summary>
+      <param name="value">数字的字符串表示形式。</param>
+      <param name="result">当此方法返回时，包含与 <paramref name="value" /> 中所包含的数字等效的 <see cref="T:System.Numerics.BigInteger" />；如果转换失败，则包含零 (0)。 如果 <paramref name="value" /> 参数为 <see langword="null" />，或者其格式不正确，则转换失败。 此参数未经初始化即被传递。</param>
+      <returns>如果 <see langword="true" /> 成功转换，则为 <paramref name="value" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Numerics.BigInteger.Zero">
+      <summary>获取一个表示数字 0（零）的值。</summary>
+      <returns>其值为 0（零）的整数。</returns>
+    </member>
+    <member name="T:System.Numerics.Complex">
+      <summary>表示一个复数。</summary>
+    </member>
+    <member name="M:System.Numerics.Complex.#ctor(System.Double,System.Double)">
+      <summary>使用指定的实数值和虚数值初始化 <see cref="T:System.Numerics.Complex" /> 结构的新实例。</summary>
+      <param name="real">复数的实部。</param>
+      <param name="imaginary">复数的虚部。</param>
+    </member>
+    <member name="M:System.Numerics.Complex.Abs(System.Numerics.Complex)">
+      <summary>获取复数的绝对值（或量值）。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的绝对值。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Acos(System.Numerics.Complex)">
+      <summary>返回表示指定复数的反余弦值的角度。</summary>
+      <param name="value">表示余弦的复数。</param>
+      <returns>以弧度为单位的角度，它表示 <paramref name="value" /> 的反余弦。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Add(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>将两个复数相加，并返回结果。</summary>
+      <param name="left">要相加的第一个复数。</param>
+      <param name="right">要相加的第二个复数。</param>
+      <returns>
+        <paramref name="left" /> 与 <paramref name="right" /> 的和。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Asin(System.Numerics.Complex)">
+      <summary>返回表示指定复数的反正弦值的角度。</summary>
+      <param name="value">一个复数。</param>
+      <returns>表示 <paramref name="value" /> 的反正弦值的角度。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Atan(System.Numerics.Complex)">
+      <summary>返回表示指定复数的反正切的角度。</summary>
+      <param name="value">一个复数。</param>
+      <returns>表示 <paramref name="value" /> 的反正切值的角度。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Conjugate(System.Numerics.Complex)">
+      <summary>计算复数的共轭，并返回结果。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的共轭。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Cos(System.Numerics.Complex)">
+      <summary>返回指定复数的余弦值。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的余弦值。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Cosh(System.Numerics.Complex)">
+      <summary>返回指定复数的双曲余弦值。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的双曲余弦值。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Divide(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>用一个复数除另一个复数并返回结果。</summary>
+      <param name="dividend">要作为被除数的复数。</param>
+      <param name="divisor">要作为除数的复数。</param>
+      <returns>相除后的商。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Equals(System.Numerics.Complex)">
+      <summary>返回一个值，该值指示当前实例与指定的复数是否具有相同的值。</summary>
+      <param name="value">要比较的复数。</param>
+      <returns>如果此复数与 <paramref name="value" /> 具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Equals(System.Object)">
+      <summary>返回一个值，该值指示当前实例与指定的对象是否具有相同的值。</summary>
+      <param name="obj">要比较的对象。</param>
+      <returns>如果 <paramref name="obj" /> 参数是一个 <see cref="T:System.Numerics.Complex" /> 对象或是一个能够隐式转换为 <see cref="T:System.Numerics.Complex" /> 对象的类型，并且其值等于当前 <see cref="T:System.Numerics.Complex" /> 对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Exp(System.Numerics.Complex)">
+      <summary>返回 <see langword="e" /> 的由一个复数指定的次幂。</summary>
+      <param name="value">指定幂的复数。</param>
+      <returns>数字 <see langword="e" /> 的 <paramref name="value" /> 次幂。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.FromPolarCoordinates(System.Double,System.Double)">
+      <summary>从点的极坐标创建复数。</summary>
+      <param name="magnitude">量值，它是从原点（x 轴与 y 轴的交点）到数字的距离。</param>
+      <param name="phase">相位，它是直线相对于水平轴的角度，以弧度为单位。</param>
+      <returns>一个复数。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.GetHashCode">
+      <summary>返回当前 <see cref="T:System.Numerics.Complex" /> 对象的哈希代码。</summary>
+      <returns>32 位有符号整数哈希代码。</returns>
+    </member>
+    <member name="P:System.Numerics.Complex.Imaginary">
+      <summary>获取当前 <see cref="T:System.Numerics.Complex" /> 对象的虚部。</summary>
+      <returns>复数的虚部。</returns>
+    </member>
+    <member name="F:System.Numerics.Complex.ImaginaryOne">
+      <summary>返回新的 <see cref="T:System.Numerics.Complex" /> 实例，其实数等于零，虚数等于一。</summary>
+    </member>
+    <member name="M:System.Numerics.Complex.Log(System.Numerics.Complex)">
+      <summary>返回指定复数的自然对数（底为 <see langword="e" />）。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的自然对数（底为 <see langword="e" />）。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Log(System.Numerics.Complex,System.Double)">
+      <summary>返回指定复数在使用指定底时的对数。</summary>
+      <param name="value">一个复数。</param>
+      <param name="baseValue">对数的底。</param>
+      <returns>
+        <paramref name="value" /> 的对数（底为 <paramref name="baseValue" />）。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Log10(System.Numerics.Complex)">
+      <summary>返回指定复数以 10 为底的对数。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的以 10 为底的对数。</returns>
+    </member>
+    <member name="P:System.Numerics.Complex.Magnitude">
+      <summary>获取复数的量值（或绝对值）。</summary>
+      <returns>当前实例的量值。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Multiply(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>返回两个复数的乘积。</summary>
+      <param name="left">要相乘的第一个复数。</param>
+      <param name="right">要相乘的第二个复数。</param>
+      <returns>
+        <paramref name="left" /> 与 <paramref name="right" /> 参数的乘积。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Negate(System.Numerics.Complex)">
+      <summary>返回指定复数的加法逆元。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 参数的 <see cref="P:System.Numerics.Complex.Real" /> 和 <see cref="P:System.Numerics.Complex.Imaginary" /> 部分乘以 -1 的结果。</returns>
+    </member>
+    <member name="F:System.Numerics.Complex.One">
+      <summary>返回新的 <see cref="T:System.Numerics.Complex" /> 实例，其实数等于一，虚数等于零。</summary>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Addition(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>将两个复数相加。</summary>
+      <param name="left">要相加的第一个值。</param>
+      <param name="right">要相加的第二个值。</param>
+      <returns>
+        <paramref name="left" /> 与 <paramref name="right" /> 的和。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Division(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>用一个指定复数除另一个指定复数。</summary>
+      <param name="left">要作为被除数的值。</param>
+      <param name="right">要作为除数的值。</param>
+      <returns>
+        <paramref name="left" /> 除以 <paramref name="right" /> 的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Equality(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>返回一个值，该值指示两个复数是否相等。</summary>
+      <param name="left">要比较的第一个复数。</param>
+      <param name="right">要比较的第二个复数。</param>
+      <returns>如果 <paramref name="left" /> 与 <paramref name="right" /> 参数具有相同的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Explicit(System.Decimal)~System.Numerics.Complex">
+      <summary>定义从 <see cref="T:System.Decimal" /> 值到复数的显式转换。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个复数，其实部等于 <paramref name="value" />，虚部等于零。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Explicit(System.Numerics.BigInteger)~System.Numerics.Complex">
+      <summary>定义从 <see cref="T:System.Numerics.BigInteger" /> 值到复数的显式转换。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个复数，其实部等于 <paramref name="value" />，虚部等于零。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.Byte)~System.Numerics.Complex">
+      <summary>定义从无符号字节到复数的隐式转换。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.Double)~System.Numerics.Complex">
+      <summary>定义从双精度浮点数到复数的隐式转换。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.Int16)~System.Numerics.Complex">
+      <summary>定义从 16 位带符号整数到复数的隐式转换。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.Int32)~System.Numerics.Complex">
+      <summary>定义从 32 位带符号整数到复数的隐式转换。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.Int64)~System.Numerics.Complex">
+      <summary>定义从 64 位带符号整数到复数的隐式转换。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.SByte)~System.Numerics.Complex">
+      <summary>定义从带符号字节到复数的隐式转换。   
+此 API 不兼容 CLS。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.Single)~System.Numerics.Complex">
+      <summary>定义从单精度浮点数到复数的隐式转换。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.UInt16)~System.Numerics.Complex">
+      <summary>定义从 16 位无符号整数到复数的隐式转换。   
+此 API 不兼容 CLS。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.UInt32)~System.Numerics.Complex">
+      <summary>定义从 32 位无符号整数到复数的隐式转换。   
+此 API 不兼容 CLS。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Implicit(System.UInt64)~System.Numerics.Complex">
+      <summary>定义从 64 位无符号整数到复数的隐式转换。   
+此 API 不兼容 CLS。</summary>
+      <param name="value">要转换为复数的值。</param>
+      <returns>一个对象，其中使用 <paramref name="value" /> 参数的值作为其实部，并使用零作为其虚部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Inequality(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>返回一个值，该值指示两个复数是否不相等。</summary>
+      <param name="left">要比较的第一个值。</param>
+      <param name="right">要比较的第二个值。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Multiply(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>将两个指定复数相乘。</summary>
+      <param name="left">要相乘的第一个值。</param>
+      <param name="right">要相乘的第二个值。</param>
+      <returns>
+        <paramref name="left" /> 与 <paramref name="right" /> 的乘积。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_Subtraction(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>从一个复数中减去另一个复数。</summary>
+      <param name="left">要从中减去的值（被减数）。</param>
+      <param name="right">要减去的值（减数）。</param>
+      <returns>
+        <paramref name="right" /> 减 <paramref name="left" /> 所得的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.op_UnaryNegation(System.Numerics.Complex)">
+      <summary>返回指定复数的加法逆元。</summary>
+      <param name="value">要求反的值。</param>
+      <returns>
+        <paramref name="value" /> 参数的 <see cref="P:System.Numerics.Complex.Real" /> 和 <see cref="P:System.Numerics.Complex.Imaginary" /> 部分乘以 -1 的结果。</returns>
+    </member>
+    <member name="P:System.Numerics.Complex.Phase">
+      <summary>获取复数的相位。</summary>
+      <returns>复数的相位（以弧度为单位）。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Pow(System.Numerics.Complex,System.Double)">
+      <summary>返回指定复数的由双精度浮点数指定的次幂。</summary>
+      <param name="value">要对其求幂的复数。</param>
+      <param name="power">指定幂的双精度浮点数。</param>
+      <returns>复数 <paramref name="value" /> 的 <paramref name="power" /> 次幂。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Pow(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>返回指定复数的由复数指定的次幂。</summary>
+      <param name="value">要对其求幂的复数。</param>
+      <param name="power">指定幂的复数。</param>
+      <returns>复数 <paramref name="value" /> 的 <paramref name="power" /> 次幂。</returns>
+    </member>
+    <member name="P:System.Numerics.Complex.Real">
+      <summary>获取当前 <see cref="T:System.Numerics.Complex" /> 对象的实部。</summary>
+      <returns>复数的实部。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Reciprocal(System.Numerics.Complex)">
+      <summary>返回复数的乘法倒数。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的倒数。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Sin(System.Numerics.Complex)">
+      <summary>返回指定复数的正弦值。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的正弦值。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Sinh(System.Numerics.Complex)">
+      <summary>返回指定复数的双曲正弦值。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的双曲正弦值。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Sqrt(System.Numerics.Complex)">
+      <summary>返回指定复数的平方根。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的平方根。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Subtract(System.Numerics.Complex,System.Numerics.Complex)">
+      <summary>从一个复数中减去另一个复数并返回结果。</summary>
+      <param name="left">要从中减去的值（被减数）。</param>
+      <param name="right">要减去的值（减数）。</param>
+      <returns>
+        <paramref name="right" /> 减 <paramref name="left" /> 所得的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Tan(System.Numerics.Complex)">
+      <summary>返回指定复数的正切值。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的正切值。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.Tanh(System.Numerics.Complex)">
+      <summary>返回指定复数的双曲正切值。</summary>
+      <param name="value">一个复数。</param>
+      <returns>
+        <paramref name="value" /> 的双曲正切值。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.ToString">
+      <summary>将当前复数的值转换为其采用笛卡尔形式的等效字符串表示形式。</summary>
+      <returns>当前实例的采用笛卡尔形式的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.ToString(System.IFormatProvider)">
+      <summary>使用指定的区域性特定格式设置信息，将当前复数的值转换为其采用笛卡尔形式的等效字符串表示形式。</summary>
+      <param name="provider">一个提供区域性特定的格式设置信息的对象。</param>
+      <returns>由 <paramref name="provider" /> 指定的当前实例的采用笛卡尔形式的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Complex.ToString(System.String)">
+      <summary>通过对当前复数的实部和虚部使用指定格式，将它的值转换为其采用笛卡尔形式的等效字符串表示形式。</summary>
+      <param name="format">标准或自定义的数值格式字符串。</param>
+      <returns>当前实例的采用笛卡尔形式的字符串表示形式。</returns>
+      <exception cref="T:System.FormatException">
+        <paramref name="format" /> 不是有效的格式字符串。</exception>
+    </member>
+    <member name="M:System.Numerics.Complex.ToString(System.String,System.IFormatProvider)">
+      <summary>通过对当前复数的实部和虚部使用指定格式和区域性特定格式信息，将它的值转换为其采用笛卡尔形式的等效字符串表示形式。</summary>
+      <param name="format">标准或自定义的数值格式字符串。</param>
+      <param name="provider">一个提供区域性特定的格式设置信息的对象。</param>
+      <returns>由 <paramref name="format" /> 和 <paramref name="provider" /> 指定的当前实例的采用笛卡尔形式的字符串表示形式。</returns>
+      <exception cref="T:System.FormatException">
+        <paramref name="format" /> 不是有效的格式字符串。</exception>
+    </member>
+    <member name="F:System.Numerics.Complex.Zero">
+      <summary>返回新的 <see cref="T:System.Numerics.Complex" /> 实例，其实数和虚数都等于零。</summary>
+    </member>
+    <member name="T:System.Numerics.Matrix3x2">
+      <summary>表示 3x2 矩阵。</summary>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+      <summary>从指定分量创建 3x2 矩阵。</summary>
+      <param name="m11">要分配给第一行中的第一个元素的值。</param>
+      <param name="m12">要分配给第一行中的第二个元素的值。</param>
+      <param name="m21">要分配给第二行中的第一个元素的值。</param>
+      <param name="m22">要分配给第二行中的第二个元素的值。</param>
+      <param name="m31">要分配给第三行中的第一个元素的值。</param>
+      <param name="m32">要分配给第三行中的第二个元素的值。</param>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Add(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2)">
+      <summary>将一个矩阵中的每个元素与第二个矩阵中的对应元素相加。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>包含 <paramref name="value1" /> 和 <paramref name="value2" /> 的总和值的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateRotation(System.Single)">
+      <summary>使用给定的旋转（以弧度表示）创建旋转矩阵。</summary>
+      <param name="radians">以弧度表示的旋转量。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateRotation(System.Single,System.Numerics.Vector2)">
+      <summary>使用指定旋转（以弧度表示）和中心点创建旋转矩阵。</summary>
+      <param name="radians">以弧度表示的旋转量。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateScale(System.Numerics.Vector2)">
+      <summary>从指定向量比例创建缩放矩阵。</summary>
+      <param name="scales">要使用的比例。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateScale(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>使用相对于指定中心点的偏移量从指定向量比例创建缩放矩阵。</summary>
+      <param name="scales">要使用的比例。</param>
+      <param name="centerPoint">中心偏移量。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateScale(System.Single)">
+      <summary>创建使用给定比例统一缩放的缩放矩阵。</summary>
+      <param name="scale">要使用的统一比例。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateScale(System.Single,System.Numerics.Vector2)">
+      <summary>使用相对于指定中心的偏移量，创建通过指定比例统一缩放的缩放矩阵。</summary>
+      <param name="scale">要使用的统一比例。</param>
+      <param name="centerPoint">中心偏移量。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateScale(System.Single,System.Single)">
+      <summary>从指定 X 和 Y 分量创建缩放矩阵。</summary>
+      <param name="xScale">作为 X 轴上的缩放量的值。</param>
+      <param name="yScale">作为 Y 轴上的缩放量的值。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateScale(System.Single,System.Single,System.Numerics.Vector2)">
+      <summary>创建按给定中心点偏移的缩放矩阵。</summary>
+      <param name="xScale">作为 X 轴上的缩放量的值。</param>
+      <param name="yScale">作为 Y 轴上的缩放量的值。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateSkew(System.Single,System.Single)">
+      <summary>从指定角度（以弧度表示）创建斜矩阵。</summary>
+      <param name="radiansX">X 角度（以弧度表示）。</param>
+      <param name="radiansY">Y 角度（以弧度表示）。</param>
+      <returns>斜矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateSkew(System.Single,System.Single,System.Numerics.Vector2)">
+      <summary>从指定角度（以弧度表示）和中心点创建斜矩阵。</summary>
+      <param name="radiansX">X 角度（以弧度表示）。</param>
+      <param name="radiansY">Y 角度（以弧度表示）。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>斜矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateTranslation(System.Numerics.Vector2)">
+      <summary>从指定二维向量创建平移矩阵。</summary>
+      <param name="position">平移矩阵。</param>
+      <returns>平移矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.CreateTranslation(System.Single,System.Single)">
+      <summary>从指定 X 和 Y 分量创建平移矩阵。</summary>
+      <param name="xPosition">X 位置。</param>
+      <param name="yPosition">Y 位置。</param>
+      <returns>平移矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Equals(System.Numerics.Matrix3x2)">
+      <summary>返回一个值，该值指示此实例是否与另一个 3x2 矩阵相等。</summary>
+      <param name="other">另一个矩阵。</param>
+      <returns>如果两个矩阵相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Equals(System.Object)">
+      <summary>返回一个值，该值指示此实例是否与指定对象相等。</summary>
+      <param name="obj">要与当前实例进行比较的对象。</param>
+      <returns>如果当前实例与 <paramref name="obj" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。 如果 <paramref name="obj" /> 为 <see langword="null" />，则此方法返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.GetDeterminant">
+      <summary>计算此矩阵的行列式。</summary>
+      <returns>行列式。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="P:System.Numerics.Matrix3x2.Identity">
+      <summary>获取乘法单位矩阵。</summary>
+      <returns>乘法单位矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Invert(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2@)">
+      <summary>对指定矩阵求逆。 返回值指示操作是否成功。</summary>
+      <param name="matrix">要求逆的矩阵。</param>
+      <param name="result">此方法返回时，如果操作成功，则包含逆矩阵。</param>
+      <returns>如果 <paramref name="matrix" /> 成功转换，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Numerics.Matrix3x2.IsIdentity">
+      <summary>指示当前矩阵是否为单位矩阵。</summary>
+      <returns>如果当前矩阵为单位矩阵，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Lerp(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2,System.Single)">
+      <summary>基于指定第二个矩阵的权重的值，从一个矩阵向第二个矩阵执行线性内插。</summary>
+      <param name="matrix1">第一个矩阵。</param>
+      <param name="matrix2">第二个矩阵。</param>
+      <param name="amount">
+        <paramref name="matrix2" /> 的相对权重。</param>
+      <returns>内插的矩阵。</returns>
+    </member>
+    <member name="F:System.Numerics.Matrix3x2.M11">
+      <summary>第一行的第一个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix3x2.M12">
+      <summary>第一行的第二个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix3x2.M21">
+      <summary>第二行的第一个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix3x2.M22">
+      <summary>第二行的第二个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix3x2.M31">
+      <summary>第三行的第一个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix3x2.M32">
+      <summary>第三行的第二个元素。</summary>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Multiply(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2)">
+      <summary>返回将两个矩阵相乘得到的矩阵。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>乘积矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Multiply(System.Numerics.Matrix3x2,System.Single)">
+      <summary>返回按标量系数缩放指定矩阵的所有元素后得到的矩阵。</summary>
+      <param name="value1">要缩放的矩阵。</param>
+      <param name="value2">要使用的缩放值。</param>
+      <returns>缩放后的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Negate(System.Numerics.Matrix3x2)">
+      <summary>通过将其所有值乘以 -1，对指定矩阵求反。</summary>
+      <param name="value">要求反的矩阵。</param>
+      <returns>求反后的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.op_Addition(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2)">
+      <summary>将一个矩阵中的每个元素与第二个矩阵中的对应元素相加。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>包含总和值的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.op_Equality(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2)">
+      <summary>返回一个值，该值指示指定矩阵是否相等。</summary>
+      <param name="value1">要比较的第一个矩阵。</param>
+      <param name="value2">要比较的第二个矩阵。</param>
+      <returns>如果 <paramref name="value1" /> 和 <paramref name="value2" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.op_Inequality(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2)">
+      <summary>返回一个值，该值指示指定矩阵是否不相等。</summary>
+      <param name="value1">要比较的第一个矩阵。</param>
+      <param name="value2">要比较的第二个矩阵。</param>
+      <returns>如果 <paramref name="value1" /> 和 <paramref name="value2" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.op_Multiply(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2)">
+      <summary>返回将两个矩阵相乘得到的矩阵。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>乘积矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.op_Multiply(System.Numerics.Matrix3x2,System.Single)">
+      <summary>返回按标量系数缩放指定矩阵的所有元素后得到的矩阵。</summary>
+      <param name="value1">要缩放的矩阵。</param>
+      <param name="value2">要使用的缩放值。</param>
+      <returns>缩放后的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.op_Subtraction(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2)">
+      <summary>从第一个矩阵中的每个元素中减去第二个矩阵中的对应元素。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>包含从 <paramref name="value1" /> 中的每个元素中减去 <paramref name="value2" /> 中的对应元素得到的值的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.op_UnaryNegation(System.Numerics.Matrix3x2)">
+      <summary>通过将其所有值乘以 -1，对指定矩阵求反。</summary>
+      <param name="value">要求反的矩阵。</param>
+      <returns>求反后的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.Subtract(System.Numerics.Matrix3x2,System.Numerics.Matrix3x2)">
+      <summary>从第一个矩阵中的每个元素中减去第二个矩阵中的对应元素。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>包含从 <paramref name="value1" /> 中的每个元素中减去 <paramref name="value2" /> 中的对应元素得到的值的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix3x2.ToString">
+      <summary>返回表示此矩阵的字符串。</summary>
+      <returns>此矩阵的字符串表示形式。</returns>
+    </member>
+    <member name="P:System.Numerics.Matrix3x2.Translation">
+      <summary>获取或设置此矩阵的平移分量。</summary>
+      <returns>当前实例的平移分量。</returns>
+    </member>
+    <member name="T:System.Numerics.Matrix4x4">
+      <summary>表示 4x4 矩阵。</summary>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.#ctor(System.Numerics.Matrix3x2)">
+      <summary>从指定的 <see cref="T:System.Numerics.Matrix3x2" /> 对象创建 <see cref="T:System.Numerics.Matrix4x4" /> 对象。</summary>
+      <param name="value">3x2 矩阵。</param>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+      <summary>从指定分量创建 4x4 矩阵。</summary>
+      <param name="m11">要分配给第一行中的第一个元素的值。</param>
+      <param name="m12">要分配给第一行中的第二个元素的值。</param>
+      <param name="m13">要分配给第一行中的第三个元素的值。</param>
+      <param name="m14">要分配给第一行中的第四个元素的值。</param>
+      <param name="m21">要分配给第二行中的第一个元素的值。</param>
+      <param name="m22">要分配给第二行中的第二个元素的值。</param>
+      <param name="m23">要分配给第二行中的第四个元素的值。</param>
+      <param name="m24">要分配给第二行中的第四个元素的值。</param>
+      <param name="m31">要分配给第三行中的第一个元素的值。</param>
+      <param name="m32">要分配给第三行中的第二个元素的值。</param>
+      <param name="m33">要分配给第三行中的第三个元素的值。</param>
+      <param name="m34">要分配给第三行中的第四个元素的值。</param>
+      <param name="m41">要分配给第四行中的第一个元素的值。</param>
+      <param name="m42">要分配给第四行中的第二个元素的值。</param>
+      <param name="m43">要分配给第四行中的第三个元素的值。</param>
+      <param name="m44">要分配给第四行中的第四个元素的值。</param>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Add(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4)">
+      <summary>将一个矩阵中的每个元素与第二个矩阵中的对应元素相加。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>包含 <paramref name="value1" /> 和 <paramref name="value2" /> 的总和值的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateBillboard(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>创建围绕指定对象位置旋转的球状宣传位置。</summary>
+      <param name="objectPosition">宣传位置将围绕其旋转的对象的位置。</param>
+      <param name="cameraPosition">照相机的位置。</param>
+      <param name="cameraUpVector">照相机的向上向量。</param>
+      <param name="cameraForwardVector">照相机的向前向量。</param>
+      <returns>创建的宣传位置。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateConstrainedBillboard(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>创建围绕指定轴旋转的圆柱宣传位置。</summary>
+      <param name="objectPosition">宣传位置将围绕其旋转的对象的位置。</param>
+      <param name="cameraPosition">照相机的位置。</param>
+      <param name="rotateAxis">要宣传位置要围绕其旋转的轴。</param>
+      <param name="cameraForwardVector">照相机的向前向量。</param>
+      <param name="objectForwardVector">对象的向前向量。</param>
+      <returns>宣传位置矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateFromAxisAngle(System.Numerics.Vector3,System.Single)">
+      <summary>创建围绕任意向量旋转的矩阵。</summary>
+      <param name="axis">要围绕其旋转的轴。</param>
+      <param name="angle">要围绕 <paramref name="axis" /> 旋转的角度（以弧度表示）。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateFromQuaternion(System.Numerics.Quaternion)">
+      <summary>从指定四元数旋转值创建旋转矩阵。</summary>
+      <param name="quaternion">源四元数。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateFromYawPitchRoll(System.Single,System.Single,System.Single)">
+      <summary>从指定的绕 Y 轴旋转、绕 X 轴旋转和绕 Z 轴旋转创建旋转矩阵。</summary>
+      <param name="yaw">围绕 Y 轴的旋转角度（以弧度表示）。</param>
+      <param name="pitch">围绕 X 轴的旋转角度（以弧度表示）。</param>
+      <param name="roll">围绕 Z 轴的旋转角度（以弧度表示）。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateLookAt(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>创建视图矩阵。</summary>
+      <param name="cameraPosition">照相机的位置。</param>
+      <param name="cameraTarget">照相机指向的目标。</param>
+      <param name="cameraUpVector">相对于照相机视角为“向上”的方向。</param>
+      <returns>视图矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateOrthographic(System.Single,System.Single,System.Single,System.Single)">
+      <summary>从给定视图体维度创建正交透视矩阵。</summary>
+      <param name="width">视图体的宽度。</param>
+      <param name="height">视图体的高度。</param>
+      <param name="zNearPlane">视图体的最小 Z 值。</param>
+      <param name="zFarPlane">视图体的最大 Z 值。</param>
+      <returns>正交投影矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateOrthographicOffCenter(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+      <summary>创建自定义正交投影矩阵。</summary>
+      <param name="left">视图体的最小 X 值。</param>
+      <param name="right">视图体的最大 X 值。</param>
+      <param name="bottom">视图体的最小 Y 值。</param>
+      <param name="top">视图体的最大 Y 值。</param>
+      <param name="zNearPlane">视图体的最小 Z 值。</param>
+      <param name="zFarPlane">视图体的最大 Z 值。</param>
+      <returns>正交投影矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreatePerspective(System.Single,System.Single,System.Single,System.Single)">
+      <summary>从给定视图体维度创建透视投影矩阵。</summary>
+      <param name="width">视图体在近视图平面上的宽度。</param>
+      <param name="height">视图体在近视图平面上的高度。</param>
+      <param name="nearPlaneDistance">与近视图平面之间的距离。</param>
+      <param name="farPlaneDistance">与远视图平面之间的距离。</param>
+      <returns>透视投影矩阵。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="nearPlaneDistance" /> 小于或等于零。  
+
+或 - 
+<paramref name="farPlaneDistance" /> 小于或等于零。  
+
+或 - 
+<paramref name="nearPlaneDistance" /> 大于或等于 <paramref name="farPlaneDistance" />。</exception>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreatePerspectiveFieldOfView(System.Single,System.Single,System.Single,System.Single)">
+      <summary>基于视野、纵横比以及近和远视图平面距离创建透视投影矩阵。</summary>
+      <param name="fieldOfView">y 方向上的视野（以弧度表示）。</param>
+      <param name="aspectRatio">纵横比，定义为视图空间宽度除以高度。</param>
+      <param name="nearPlaneDistance">与近视图平面之间的距离。</param>
+      <param name="farPlaneDistance">与远视图平面之间的距离。</param>
+      <returns>透视投影矩阵。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="fieldOfView" /> 小于或等于零。  
+
+或 - 
+<paramref name="fieldOfView" /> 大于或等于 <see cref="F:System.Math.PI" />。  
+
+ <paramref name="nearPlaneDistance" /> 小于或等于零。  
+
+或 - 
+<paramref name="farPlaneDistance" /> 小于或等于零。  
+
+或 - 
+<paramref name="nearPlaneDistance" /> 大于或等于 <paramref name="farPlaneDistance" />。</exception>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreatePerspectiveOffCenter(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+      <summary>创建自定义透视投影矩阵。</summary>
+      <param name="left">视图体在近视图平面上的最小 x 值。</param>
+      <param name="right">视图体在近视图平面上的最大 x 值。</param>
+      <param name="bottom">视图体在近视图平面上的最小 y 值。</param>
+      <param name="top">视图体在近视图平面上的最大 y 值。</param>
+      <param name="nearPlaneDistance">与近视图平面之间的距离。</param>
+      <param name="farPlaneDistance">与远视图平面之间的距离。</param>
+      <returns>透视投影矩阵。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="nearPlaneDistance" /> 小于或等于零。  
+
+或 - 
+<paramref name="farPlaneDistance" /> 小于或等于零。  
+
+或 - 
+<paramref name="nearPlaneDistance" /> 大于或等于 <paramref name="farPlaneDistance" />。</exception>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateReflection(System.Numerics.Plane)">
+      <summary>创建围绕指定平面反射坐标系统的矩阵。</summary>
+      <param name="value">围绕其创建反射的平面。</param>
+      <returns>表示反射的新矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateRotationX(System.Single)">
+      <summary>创建用于围绕 X 轴旋转的矩阵。</summary>
+      <param name="radians">要围绕 X 轴旋转的量（以弧度表示）。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateRotationX(System.Single,System.Numerics.Vector3)">
+      <summary>创建用于从中心点围绕 X 轴旋转的矩阵。</summary>
+      <param name="radians">要围绕 X 轴旋转的量（以弧度表示）。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateRotationY(System.Single)">
+      <summary>创建用于围绕 Y 轴旋转的矩阵。</summary>
+      <param name="radians">要围绕 Y 轴旋转的量（以弧度表示）。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateRotationY(System.Single,System.Numerics.Vector3)">
+      <summary>要从中心点围绕 Y 轴旋转的量（以弧度表示）。</summary>
+      <param name="radians">要围绕 Y 轴旋转的量（以弧度表示）。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateRotationZ(System.Single)">
+      <summary>创建用于围绕 Z 轴旋转的矩阵。</summary>
+      <param name="radians">要围绕 Z 轴旋转的量（以弧度表示）。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateRotationZ(System.Single,System.Numerics.Vector3)">
+      <summary>创建用于从中心点围绕 Z 轴旋转的矩阵。</summary>
+      <param name="radians">要围绕 Z 轴旋转的量（以弧度表示）。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>旋转矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateScale(System.Numerics.Vector3)">
+      <summary>从指定向量比例创建缩放矩阵。</summary>
+      <param name="scales">要使用的比例。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateScale(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>创建具有中心点的缩放矩阵。</summary>
+      <param name="scales">包含每个轴上要缩放的量的向量。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateScale(System.Single)">
+      <summary>创建在每个轴上均匀缩放的统一缩放矩阵。</summary>
+      <param name="scale">统一缩放因子。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateScale(System.Single,System.Numerics.Vector3)">
+      <summary>创建具有中心点并且在每个轴上均匀缩放的统一缩放矩阵。</summary>
+      <param name="scale">统一缩放因子。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateScale(System.Single,System.Single,System.Single)">
+      <summary>从指定 X、Y 和 Z 分量创建缩放矩阵。</summary>
+      <param name="xScale">作为 X 轴上的缩放量的值。</param>
+      <param name="yScale">作为 Y 轴上的缩放量的值。</param>
+      <param name="zScale">作为 Z 轴上的缩放量的值。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateScale(System.Single,System.Single,System.Single,System.Numerics.Vector3)">
+      <summary>创建按给定中心点偏移的缩放矩阵。</summary>
+      <param name="xScale">作为 X 轴上的缩放量的值。</param>
+      <param name="yScale">作为 Y 轴上的缩放量的值。</param>
+      <param name="zScale">作为 Z 轴上的缩放量的值。</param>
+      <param name="centerPoint">中心点。</param>
+      <returns>缩放矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateShadow(System.Numerics.Vector3,System.Numerics.Plane)">
+      <summary>创建将几何图形平展到指定平面中（如同从指定光源进行投影）的矩阵。</summary>
+      <param name="lightDirection">用于投影的光所来自的方向。</param>
+      <param name="plane">新矩阵应将几何图形平展到其中以便进行投影的平面。</param>
+      <returns>可以用于从指定方向将几何图形平展到指定平面上的新矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateTranslation(System.Numerics.Vector3)">
+      <summary>从指定三维向量创建平移矩阵。</summary>
+      <param name="position">要在每个轴上平移的量。</param>
+      <returns>平移矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateTranslation(System.Single,System.Single,System.Single)">
+      <summary>从指定 X、Y 和 Z 分量创建平移矩阵。</summary>
+      <param name="xPosition">要在 X 轴上平移的量。</param>
+      <param name="yPosition">要在 Y 轴上平移的量。</param>
+      <param name="zPosition">要在 Z 轴上平移的量。</param>
+      <returns>平移矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.CreateWorld(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>使用指定参数创建世界矩阵。</summary>
+      <param name="position">对象的位置。</param>
+      <param name="forward">对象的向前方向。</param>
+      <param name="up">对象的向上方向。 其值通常为 <c>[0, 1, 0]</c>。</param>
+      <returns>世界矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Decompose(System.Numerics.Matrix4x4,System.Numerics.Vector3@,System.Numerics.Quaternion@,System.Numerics.Vector3@)">
+      <summary>尝试从给定缩放、旋转或平移矩阵中提取缩放、平移和旋转分量。 返回值指示操作是否成功。</summary>
+      <param name="matrix">源矩阵。</param>
+      <param name="scale">此方法返回时，如果操作成功，则包含变换矩阵的缩放分量。</param>
+      <param name="rotation">此方法返回时，如果操作成功，则包含变换矩阵的旋转分量。</param>
+      <param name="translation">此方法返回时，如果操作成功，则包含变换矩阵的平移分量。</param>
+      <returns>如果 <paramref name="matrix" /> 成功分解，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Equals(System.Numerics.Matrix4x4)">
+      <summary>返回一个值，该值指示此实例是否与另一个 4x4 矩阵相等。</summary>
+      <param name="other">另一个矩阵。</param>
+      <returns>如果两个矩阵相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Equals(System.Object)">
+      <summary>返回一个值，该值指示此实例是否与指定对象相等。</summary>
+      <param name="obj">要与当前实例进行比较的对象。</param>
+      <returns>如果当前实例与 <paramref name="obj" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。 如果 <paramref name="obj" /> 为 <see langword="null" />，则此方法返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.GetDeterminant">
+      <summary>计算当前 4x4 矩阵的行列式。</summary>
+      <returns>行列式。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="P:System.Numerics.Matrix4x4.Identity">
+      <summary>获取乘法单位矩阵。</summary>
+      <returns>获取乘法单位矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Invert(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4@)">
+      <summary>对指定矩阵求逆。 返回值指示操作是否成功。</summary>
+      <param name="matrix">要求逆的矩阵。</param>
+      <param name="result">此方法返回时，如果操作成功，则包含逆矩阵。</param>
+      <returns>如果 <paramref name="matrix" /> 成功转换，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Numerics.Matrix4x4.IsIdentity">
+      <summary>指示当前矩阵是否为单位矩阵。</summary>
+      <returns>如果当前矩阵为单位矩阵，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Lerp(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4,System.Single)">
+      <summary>基于指定第二个矩阵的权重的值，从一个矩阵向第二个矩阵执行线性内插。</summary>
+      <param name="matrix1">第一个矩阵。</param>
+      <param name="matrix2">第二个矩阵。</param>
+      <param name="amount">
+        <paramref name="matrix2" /> 的相对权重。</param>
+      <returns>内插的矩阵。</returns>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M11">
+      <summary>第一行的第一个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M12">
+      <summary>第一行的第二个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M13">
+      <summary>第一行的第三个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M14">
+      <summary>第一行的第四个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M21">
+      <summary>第二行的第一个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M22">
+      <summary>第二行的第二个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M23">
+      <summary>第二行的第三个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M24">
+      <summary>第二行的第四个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M31">
+      <summary>第三行的第一个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M32">
+      <summary>第三行的第二个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M33">
+      <summary>第三行的第三个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M34">
+      <summary>第三行的第四个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M41">
+      <summary>第四行的第一个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M42">
+      <summary>第四行的第二个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M43">
+      <summary>第四行的第三个元素。</summary>
+    </member>
+    <member name="F:System.Numerics.Matrix4x4.M44">
+      <summary>第四行的第四个元素。</summary>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Multiply(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4)">
+      <summary>返回将两个矩阵相乘得到的矩阵。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>乘积矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Multiply(System.Numerics.Matrix4x4,System.Single)">
+      <summary>返回按标量系数缩放指定矩阵的所有元素后得到的矩阵。</summary>
+      <param name="value1">要缩放的矩阵。</param>
+      <param name="value2">要使用的缩放值。</param>
+      <returns>缩放后的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Negate(System.Numerics.Matrix4x4)">
+      <summary>通过将其所有值乘以 -1，对指定矩阵求反。</summary>
+      <param name="value">要求反的矩阵。</param>
+      <returns>求反后的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.op_Addition(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4)">
+      <summary>将一个矩阵中的每个元素与第二个矩阵中的对应元素相加。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>包含总和值的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.op_Equality(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4)">
+      <summary>返回一个值，该值指示指定矩阵是否相等。</summary>
+      <param name="value1">要比较的第一个矩阵。</param>
+      <param name="value2">要比较的第二个矩阵。</param>
+      <returns>如果 <paramref name="value1" /> 和 <paramref name="value2" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.op_Inequality(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4)">
+      <summary>返回一个值，该值指示指定矩阵是否不相等。</summary>
+      <param name="value1">要比较的第一个矩阵。</param>
+      <param name="value2">要比较的第二个矩阵。</param>
+      <returns>如果 <paramref name="value1" /> 和 <paramref name="value2" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.op_Multiply(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4)">
+      <summary>返回将两个矩阵相乘得到的矩阵。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>乘积矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.op_Multiply(System.Numerics.Matrix4x4,System.Single)">
+      <summary>返回按标量系数缩放指定矩阵的所有元素后得到的矩阵。</summary>
+      <param name="value1">要缩放的矩阵。</param>
+      <param name="value2">要使用的缩放值。</param>
+      <returns>缩放后的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.op_Subtraction(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4)">
+      <summary>从第一个矩阵中的每个元素中减去第二个矩阵中的对应元素。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>包含从 <paramref name="value1" /> 中的每个元素中减去 <paramref name="value2" /> 中的对应元素得到的值的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.op_UnaryNegation(System.Numerics.Matrix4x4)">
+      <summary>通过将其所有值乘以 -1，对指定矩阵求反。</summary>
+      <param name="value">要求反的矩阵。</param>
+      <returns>求反后的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Subtract(System.Numerics.Matrix4x4,System.Numerics.Matrix4x4)">
+      <summary>从第一个矩阵中的每个元素中减去第二个矩阵中的对应元素。</summary>
+      <param name="value1">第一个矩阵。</param>
+      <param name="value2">第二个矩阵。</param>
+      <returns>包含从 <paramref name="value1" /> 中的每个元素中减去 <paramref name="value2" /> 中的对应元素得到的值的矩阵。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.ToString">
+      <summary>返回表示此矩阵的字符串。</summary>
+      <returns>此矩阵的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Transform(System.Numerics.Matrix4x4,System.Numerics.Quaternion)">
+      <summary>通过应用指定四元数旋转来转换指定矩阵。</summary>
+      <param name="value">要转换的矩阵。</param>
+      <param name="rotation">要应用的旋转。</param>
+      <returns>转换后的矩阵。</returns>
+    </member>
+    <member name="P:System.Numerics.Matrix4x4.Translation">
+      <summary>获取或设置此矩阵的平移分量。</summary>
+      <returns>当前实例的平移分量。</returns>
+    </member>
+    <member name="M:System.Numerics.Matrix4x4.Transpose(System.Numerics.Matrix4x4)">
+      <summary>转置矩阵的行和列。</summary>
+      <param name="matrix">要转置的矩阵。</param>
+      <returns>转置矩阵。</returns>
+    </member>
+    <member name="T:System.Numerics.Plane">
+      <summary>表示三维空间中的一个平面。</summary>
+    </member>
+    <member name="M:System.Numerics.Plane.#ctor(System.Numerics.Vector3,System.Single)">
+      <summary>从指定法线以及从原点沿法线的距离创建一个 <see cref="T:System.Numerics.Plane" /> 对象。</summary>
+      <param name="normal">平面的法向量。</param>
+      <param name="d">平面从原点沿其法向量的距离。</param>
+    </member>
+    <member name="M:System.Numerics.Plane.#ctor(System.Numerics.Vector4)">
+      <summary>从指定的四维向量创建一个 <see cref="T:System.Numerics.Plane" /> 对象。</summary>
+      <param name="value">一个向量，其前三个元素描述法向量，其 <see cref="F:System.Numerics.Vector4.W" /> 定义从原点沿该法线的距离。</param>
+    </member>
+    <member name="M:System.Numerics.Plane.#ctor(System.Single,System.Single,System.Single,System.Single)">
+      <summary>从其法线的 X、Y 和 Z 分量以及距该法线上距原点的距离创建一个 <see cref="T:System.Numerics.Plane" /> 对象。</summary>
+      <param name="x">法线的 X 分量。</param>
+      <param name="y">法线的 Y 分量。</param>
+      <param name="z">法线的 Z 分量。</param>
+      <param name="d">平面从原点沿其法线的距离。</param>
+    </member>
+    <member name="M:System.Numerics.Plane.CreateFromVertices(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>创建一个 <see cref="T:System.Numerics.Plane" /> 对象，其中包含三个指定的点。</summary>
+      <param name="point1">定义平面的第一个点。</param>
+      <param name="point2">定义平面的第二个点。</param>
+      <param name="point3">定义平面的第三个点。</param>
+      <returns>包含三个点的平面。</returns>
+    </member>
+    <member name="F:System.Numerics.Plane.D">
+      <summary>平面从原点沿其法线的距离。</summary>
+    </member>
+    <member name="M:System.Numerics.Plane.Dot(System.Numerics.Plane,System.Numerics.Vector4)">
+      <summary>计算平面和四维向量的点积。</summary>
+      <param name="plane">平面。</param>
+      <param name="value">四维向量。</param>
+      <returns>点积。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.DotCoordinate(System.Numerics.Plane,System.Numerics.Vector3)">
+      <summary>返回指定的三维向量和此平面的法向量以及该平面的距离 (<see cref="F:System.Numerics.Plane.D" />) 值的点积。</summary>
+      <param name="plane">平面。</param>
+      <param name="value">三维向量。</param>
+      <returns>点积。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.DotNormal(System.Numerics.Plane,System.Numerics.Vector3)">
+      <summary>返回指定的三维向量以及此平面的 <see cref="F:System.Numerics.Plane.Normal" /> 向量的点积。</summary>
+      <param name="plane">平面。</param>
+      <param name="value">三维向量。</param>
+      <returns>点积。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.Equals(System.Numerics.Plane)">
+      <summary>返回一个值，该值指示此实例是否与另一个平面对象相等。</summary>
+      <param name="other">另一个平面。</param>
+      <returns>如果两个平面相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.Equals(System.Object)">
+      <summary>返回一个值，该值指示此实例是否与指定对象相等。</summary>
+      <param name="obj">要与当前实例进行比较的对象。</param>
+      <returns>如果当前实例与 <paramref name="obj" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。 如果 <paramref name="obj" /> 为 <see langword="null" />，则此方法返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="F:System.Numerics.Plane.Normal">
+      <summary>平面的法向量。</summary>
+    </member>
+    <member name="M:System.Numerics.Plane.Normalize(System.Numerics.Plane)">
+      <summary>创建一个新的 <see cref="T:System.Numerics.Plane" /> 对象，其法向量是源平面的规范化的法向量。</summary>
+      <param name="value">源平面。</param>
+      <returns>规范化的平面。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.op_Equality(System.Numerics.Plane,System.Numerics.Plane)">
+      <summary>返回一个值，该值指示两个平面是否相等。</summary>
+      <param name="value1">要比较的第一个平面。</param>
+      <param name="value2">要比较的第二个平面。</param>
+      <returns>如果 <paramref name="value1" /> 和 <paramref name="value2" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.op_Inequality(System.Numerics.Plane,System.Numerics.Plane)">
+      <summary>返回一个值，该值指示两个平面是否不相等。</summary>
+      <param name="value1">要比较的第一个平面。</param>
+      <param name="value2">要比较的第二个平面。</param>
+      <returns>如果 <paramref name="value1" /> 和 <paramref name="value2" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.ToString">
+      <summary>返回此平面对象的字符串表示形式。</summary>
+      <returns>表示此 <see cref="T:System.Numerics.Plane" /> 对象的字符串。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.Transform(System.Numerics.Plane,System.Numerics.Matrix4x4)">
+      <summary>通过 4x4 矩阵转换规范化的平面。</summary>
+      <param name="plane">要转换的规范化平面。</param>
+      <param name="matrix">要应用于 <paramref name="plane" /> 的转换矩阵。</param>
+      <returns>已转换的平面。</returns>
+    </member>
+    <member name="M:System.Numerics.Plane.Transform(System.Numerics.Plane,System.Numerics.Quaternion)">
+      <summary>通过四元数旋转转换规范化平面。</summary>
+      <param name="plane">要转换的规范化平面。</param>
+      <param name="rotation">要应用于平面的四元数旋转。</param>
+      <returns>应用四元数旋转得到的新平面。</returns>
+    </member>
+    <member name="T:System.Numerics.Quaternion">
+      <summary>表示一个用于对三维物理旋转进行编码的向量。</summary>
+    </member>
+    <member name="M:System.Numerics.Quaternion.#ctor(System.Numerics.Vector3,System.Single)">
+      <summary>从指定向量和旋转部分创建四元数。</summary>
+      <param name="vectorPart">四元数的向量部分。</param>
+      <param name="scalarPart">四元数的旋转部分。</param>
+    </member>
+    <member name="M:System.Numerics.Quaternion.#ctor(System.Single,System.Single,System.Single,System.Single)">
+      <summary>从指定分量构造四元数。</summary>
+      <param name="x">要分配给四元数的 X 分量的值。</param>
+      <param name="y">要分配给四元数的 Y 分量的值。</param>
+      <param name="z">要分配给四元数的 Z 分量的值。</param>
+      <param name="w">要分配给四元数的 W 分量的值。</param>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Add(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>将一个四元数中的每个元素与第二个四元数中的对应元素相加。</summary>
+      <param name="value1">第一个四元数。</param>
+      <param name="value2">第二个四元数。</param>
+      <returns>包含 <paramref name="value1" /> 和 <paramref name="value2" /> 的总和值的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Concatenate(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>连接两个四元数。</summary>
+      <param name="value1">序列中的第一个四元数旋转。</param>
+      <param name="value2">序列中的第二个四元数旋转。</param>
+      <returns>一个新四元数，表示 <paramref name="value1" /> 旋转后跟 <paramref name="value2" /> 旋转的连接。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Conjugate(System.Numerics.Quaternion)">
+      <summary>返回指定四元数的共轭。</summary>
+      <param name="value">四元数。</param>
+      <returns>作为 <see langword="value" /> 的共轭的新四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.CreateFromAxisAngle(System.Numerics.Vector3,System.Single)">
+      <summary>从一个单位向量以及围绕该向量旋转的角度创建四元数。</summary>
+      <param name="axis">要围绕其旋转的单位向量。</param>
+      <param name="angle">用于围绕向量旋转的角度（以弧度表示）。</param>
+      <returns>新创建的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.CreateFromRotationMatrix(System.Numerics.Matrix4x4)">
+      <summary>从指定旋转矩阵创建四元数。</summary>
+      <param name="matrix">旋转矩阵。</param>
+      <returns>新创建的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.CreateFromYawPitchRoll(System.Single,System.Single,System.Single)">
+      <summary>从给定的绕 Y 轴旋转、绕 X 轴旋转和绕 Z 轴旋转创建新四元数。</summary>
+      <param name="yaw">绕 Y 轴旋转的角度（以弧度表示）。</param>
+      <param name="pitch">绕 X 轴旋转的角度（以弧度表示）。</param>
+      <param name="roll">绕 Z 轴旋转的角度（以弧度表示）。</param>
+      <returns>生成的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Divide(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>将一个四元数除以第二个四元数。</summary>
+      <param name="value1">被除数。</param>
+      <param name="value2">除数。</param>
+      <returns>将 <paramref name="value1" /> 除以 <paramref name="value2" /> 得到的结果四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Dot(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>计算两个四元数的点积。</summary>
+      <param name="quaternion1">第一个四元数。</param>
+      <param name="quaternion2">第二个四元数。</param>
+      <returns>点积。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Equals(System.Numerics.Quaternion)">
+      <summary>返回一个值，该值指示此实例是否与另一个四元数相等。</summary>
+      <param name="other">另一个四元数。</param>
+      <returns>如果两个四元数相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Equals(System.Object)">
+      <summary>返回一个值，该值指示此实例是否与指定对象相等。</summary>
+      <param name="obj">要与当前实例进行比较的对象。</param>
+      <returns>如果当前实例与 <paramref name="obj" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。 如果 <paramref name="obj" /> 为 <see langword="null" />，则此方法返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="P:System.Numerics.Quaternion.Identity">
+      <summary>获取一个表示无旋转的四元数。</summary>
+      <returns>其值是一个四元数<c>（0，0，0，1）</c>。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Inverse(System.Numerics.Quaternion)">
+      <summary>返回四元数的逆。</summary>
+      <param name="value">四元数。</param>
+      <returns>求逆后的四元数。</returns>
+    </member>
+    <member name="P:System.Numerics.Quaternion.IsIdentity">
+      <summary>获取一个指示当前实例是否为 Identity 四元数的值。</summary>
+      <returns>如果当前实例是 Identity 四元数，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Length">
+      <summary>计算四元数的长度。</summary>
+      <returns>四元数的计算长度。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.LengthSquared">
+      <summary>计算四元数的长度平方值。</summary>
+      <returns>四元数的长度平方值。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Lerp(System.Numerics.Quaternion,System.Numerics.Quaternion,System.Single)">
+      <summary>基于指定第二个四元数的权重的值在两个四元数之间执行线性内插。</summary>
+      <param name="quaternion1">第一个四元数。</param>
+      <param name="quaternion2">第二个四元数。</param>
+      <param name="amount">
+        <paramref name="quaternion2" /> 在内插中的相对权重。</param>
+      <returns>内插的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Multiply(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>返回将两个四元数相乘得到的四元数。</summary>
+      <param name="value1">第一个四元数。</param>
+      <param name="value2">第二个四元数。</param>
+      <returns>乘积四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Multiply(System.Numerics.Quaternion,System.Single)">
+      <summary>返回按标量系数缩放指定四元数的所有分量后得到的四元数。</summary>
+      <param name="value1">源四元数。</param>
+      <param name="value2">标量值。</param>
+      <returns>缩放的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Negate(System.Numerics.Quaternion)">
+      <summary>反转四元数的每个分量的符号。</summary>
+      <param name="value">要求反的四元数。</param>
+      <returns>求反后的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Normalize(System.Numerics.Quaternion)">
+      <summary>将指定 <see cref="T:System.Numerics.Quaternion" /> 的每个分量除以其长度。</summary>
+      <param name="value">要规范化的四元数。</param>
+      <returns>规范化的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.op_Addition(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>将一个四元数中的每个元素与第二个四元数中的对应元素相加。</summary>
+      <param name="value1">第一个四元数。</param>
+      <param name="value2">第二个四元数。</param>
+      <returns>包含 <paramref name="value1" /> 和 <paramref name="value2" /> 的总和值的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.op_Division(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>将一个四元数除以第二个四元数。</summary>
+      <param name="value1">被除数。</param>
+      <param name="value2">除数。</param>
+      <returns>将 <paramref name="value1" /> 除以 <paramref name="value2" /> 得到的结果四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.op_Equality(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>返回一个值，该值指示两个四元数是否相等。</summary>
+      <param name="value1">要比较的第一个四元数。</param>
+      <param name="value2">要比较的第二个四元数。</param>
+      <returns>如果两个四元数相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.op_Inequality(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>返回一个值，该值指示两个四元数是否不相等。</summary>
+      <param name="value1">要比较的第一个四元数。</param>
+      <param name="value2">要比较的第二个四元数。</param>
+      <returns>如果 <paramref name="value1" /> 和 <paramref name="value2" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.op_Multiply(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>返回将两个四元数相乘得到的四元数。</summary>
+      <param name="value1">第一个四元数。</param>
+      <param name="value2">第二个四元数。</param>
+      <returns>乘积四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.op_Multiply(System.Numerics.Quaternion,System.Single)">
+      <summary>返回按标量系数缩放指定四元数的所有分量后得到的四元数。</summary>
+      <param name="value1">源四元数。</param>
+      <param name="value2">标量值。</param>
+      <returns>缩放的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.op_Subtraction(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>从第一个四元数中的每个元素中减去第二个四元数中的对应元素。</summary>
+      <param name="value1">第一个四元数。</param>
+      <param name="value2">第二个四元数。</param>
+      <returns>包含从 <paramref name="value1" /> 中的每个元素中减去 <paramref name="value2" /> 中的对应元素得到的值的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.op_UnaryNegation(System.Numerics.Quaternion)">
+      <summary>反转四元数的每个分量的符号。</summary>
+      <param name="value">要求反的四元数。</param>
+      <returns>求反后的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Slerp(System.Numerics.Quaternion,System.Numerics.Quaternion,System.Single)">
+      <summary>使用球状线性内插，在两个四元数之间进行内插。</summary>
+      <param name="quaternion1">第一个四元数。</param>
+      <param name="quaternion2">第二个四元数。</param>
+      <param name="amount">第二个四元数在内插中的相对权重。</param>
+      <returns>内插的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.Subtract(System.Numerics.Quaternion,System.Numerics.Quaternion)">
+      <summary>从第一个四元数中的每个元素中减去第二个四元数中的对应元素。</summary>
+      <param name="value1">第一个四元数。</param>
+      <param name="value2">第二个四元数。</param>
+      <returns>包含从 <paramref name="value1" /> 中的每个元素中减去 <paramref name="value2" /> 中的对应元素得到的值的四元数。</returns>
+    </member>
+    <member name="M:System.Numerics.Quaternion.ToString">
+      <summary>返回表示此四元数的字符串。</summary>
+      <returns>此四元数的字符串表示形式。</returns>
+    </member>
+    <member name="F:System.Numerics.Quaternion.W">
+      <summary>四元数的旋转分量。</summary>
+    </member>
+    <member name="F:System.Numerics.Quaternion.X">
+      <summary>四元数向量分量的 X 值。</summary>
+    </member>
+    <member name="F:System.Numerics.Quaternion.Y">
+      <summary>四元数向量分量的 Y 值。</summary>
+    </member>
+    <member name="F:System.Numerics.Quaternion.Z">
+      <summary>四元数向量分量的 Z 值。</summary>
+    </member>
+    <member name="T:System.Numerics.Vector2">
+      <summary>表示一个具有两个单精度浮点值的向量。</summary>
+    </member>
+    <member name="M:System.Numerics.Vector2.#ctor(System.Single)">
+      <summary>创建一个其两个元素具有相同值的新 <see cref="T:System.Numerics.Vector2" /> 对象。</summary>
+      <param name="value">要分配给两个元素的值。</param>
+    </member>
+    <member name="M:System.Numerics.Vector2.#ctor(System.Single,System.Single)">
+      <summary>创建一个其元素具有指定值的向量。</summary>
+      <param name="x">要分配给 <see cref="F:System.Numerics.Vector2.X" /> 字段的值。</param>
+      <param name="y">要分配给 <see cref="F:System.Numerics.Vector2.Y" /> 字段的值。</param>
+    </member>
+    <member name="M:System.Numerics.Vector2.Abs(System.Numerics.Vector2)">
+      <summary>返回一个向量，其元素是指定向量的每个元素的绝对值。</summary>
+      <param name="value">一个向量。</param>
+      <returns>绝对值向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Add(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>将两个向量相加。</summary>
+      <param name="left">要相加的第一个向量。</param>
+      <param name="right">要相加的第二个向量。</param>
+      <returns>总和向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Clamp(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>将向量限制在最小值与最大值之间。</summary>
+      <param name="value1">要限制的向量。</param>
+      <param name="min">最小值。</param>
+      <param name="max">最大值。</param>
+      <returns>限制后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.CopyTo(System.Single[])">
+      <summary>将向量的元素复制到指定数组中。</summary>
+      <param name="array">目标数组。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">当前实例中的元素数目大于数组中的。</exception>
+      <exception cref="T:System.RankException">
+        <paramref name="array" /> 是多维的。</exception>
+    </member>
+    <member name="M:System.Numerics.Vector2.CopyTo(System.Single[],System.Int32)">
+      <summary>从指定的索引位置开始，将向量的元素复制到指定的数组中。</summary>
+      <param name="array">目标数组。</param>
+      <param name="index">用于复制向量的第一个元素的索引。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">当前实例中的元素数目大于数组中的。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+
+或 - 
+<paramref name="index" /> 大于或等于数组长度。</exception>
+      <exception cref="T:System.RankException">
+        <paramref name="array" /> 是多维的。</exception>
+    </member>
+    <member name="M:System.Numerics.Vector2.Distance(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>计算两个给定点之间的欧几里得距离。</summary>
+      <param name="value1">第一个点。</param>
+      <param name="value2">第二个点。</param>
+      <returns>距离。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.DistanceSquared(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回两个指定点之间的欧几里得距离平方值。</summary>
+      <param name="value1">第一个点。</param>
+      <param name="value2">第二个点。</param>
+      <returns>距离平方值。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Divide(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>将第一个向量除以第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>从除法得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Divide(System.Numerics.Vector2,System.Single)">
+      <summary>将指定向量除以指定标量值。</summary>
+      <param name="left">向量。</param>
+      <param name="divisor">标量值。</param>
+      <returns>从除法得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Dot(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回两个向量的点积。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <returns>点积。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Equals(System.Numerics.Vector2)">
+      <summary>返回一个值，该值指示此实例是否与另一个向量相等。</summary>
+      <param name="other">另一个向量。</param>
+      <returns>如果两个向量相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Equals(System.Object)">
+      <summary>返回一个值，该值指示此实例是否与指定对象相等。</summary>
+      <param name="obj">要与当前实例进行比较的对象。</param>
+      <returns>如果当前实例与 <paramref name="obj" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。 如果 <paramref name="obj" /> 为 <see langword="null" />，则此方法返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Length">
+      <summary>返回向量的长度。</summary>
+      <returns>向量的长度。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.LengthSquared">
+      <summary>返回向量长度平方值。</summary>
+      <returns>向量长度平方值。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Lerp(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)">
+      <summary>基于给定权重在两个向量之间执行线性内插。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <param name="amount">一个介于 0 与 1 之间的值，指示 <paramref name="value2" /> 的权重。</param>
+      <returns>内插的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Max(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回一个向量，其元素是两个指定向量中每对元素的较大值。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <returns>最大化的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Min(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回一个向量，其元素是两个指定向量中每对元素的较小值。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <returns>最小化的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Multiply(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回一个新向量，其值是两个指定向量中的每对元素的乘积。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>元素方面的乘积向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Multiply(System.Numerics.Vector2,System.Single)">
+      <summary>将向量乘以指定标量。</summary>
+      <param name="left">要相乘的向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Multiply(System.Single,System.Numerics.Vector2)">
+      <summary>将标量值乘以指定向量。</summary>
+      <param name="left">缩放后的值。</param>
+      <param name="right">向量。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Negate(System.Numerics.Vector2)">
+      <summary>对指定向量求反。</summary>
+      <param name="value">要求反的向量。</param>
+      <returns>求反后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Normalize(System.Numerics.Vector2)">
+      <summary>返回一个向量，其方向与指定向量相同，但长度为一。</summary>
+      <param name="value">要规范化的向量。</param>
+      <returns>规范化的向量。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector2.One">
+      <summary>获取一个其 2 个元素等于 1 的向量。</summary>
+      <returns>一个向量，其两个元素是等于 1 (即，它返回向量<c>(1，1)</c>。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Addition(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>将两个向量相加。</summary>
+      <param name="left">要相加的第一个向量。</param>
+      <param name="right">要相加的第二个向量。</param>
+      <returns>总和向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Division(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>将第一个向量除以第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>将 <paramref name="left" /> 除以 <paramref name="right" /> 得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Division(System.Numerics.Vector2,System.Single)">
+      <summary>将指定向量除以指定标量值。</summary>
+      <param name="value1">向量。</param>
+      <param name="value2">标量值。</param>
+      <returns>除法的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Equality(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回一个值，该值指示两个指定向量中的每对元素是否相等。</summary>
+      <param name="left">要比较的第一个向量。</param>
+      <param name="right">要比较的第二个向量。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Inequality(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回一个值，该值指示两个指定向量是否不相等。</summary>
+      <param name="left">要比较的第一个向量。</param>
+      <param name="right">要比较的第二个向量。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Multiply(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回一个新向量，其值是两个指定向量中的每对元素的乘积。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>元素方面的乘积向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Multiply(System.Numerics.Vector2,System.Single)">
+      <summary>将指定向量乘以指定标量值。</summary>
+      <param name="left">向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Multiply(System.Single,System.Numerics.Vector2)">
+      <summary>将标量值乘以指定向量。</summary>
+      <param name="left">向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_Subtraction(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>从第一个向量中减去第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>从 <paramref name="left" /> 中减去 <paramref name="right" /> 得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.op_UnaryNegation(System.Numerics.Vector2)">
+      <summary>对指定向量求反。</summary>
+      <param name="value">要求反的向量。</param>
+      <returns>求反后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Reflect(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>返回向量对具有指定法线的表面的反射。</summary>
+      <param name="vector">源向量。</param>
+      <param name="normal">反射的表面的法线。</param>
+      <returns>反射的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.SquareRoot(System.Numerics.Vector2)">
+      <summary>返回一个向量，其元素是指定向量的每个元素的平方根。</summary>
+      <param name="value">一个向量。</param>
+      <returns>平方根向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Subtract(System.Numerics.Vector2,System.Numerics.Vector2)">
+      <summary>从第一个向量中减去第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>差向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.ToString">
+      <summary>使用默认格式设置返回当前实例的字符串表示形式。</summary>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.ToString(System.String)">
+      <summary>通过使用指定格式字符串设置各个元素的格式，来返回当前实例的字符串表示形式。</summary>
+      <param name="format">一个标准或自定义数字格式字符串，用于定义各个元素的格式。</param>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.ToString(System.String,System.IFormatProvider)">
+      <summary>通过使用指定格式字符串设置各个元素的格式并使用指定格式提供程序定义特定于区域性的格式设置，来返回当前实例的字符串表示形式。</summary>
+      <param name="format">一个标准或自定义数字格式字符串，用于定义各个元素的格式。</param>
+      <param name="formatProvider">一个提供特定于区域性的格式设置信息的格式提供程序。</param>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Transform(System.Numerics.Vector2,System.Numerics.Matrix3x2)">
+      <summary>通过指定 3 x 2 矩阵转换向量。</summary>
+      <param name="position">要转换的向量。</param>
+      <param name="matrix">转换矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Transform(System.Numerics.Vector2,System.Numerics.Matrix4x4)">
+      <summary>通过指定 4 x 4 矩阵转换向量。</summary>
+      <param name="position">要转换的向量。</param>
+      <param name="matrix">转换矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.Transform(System.Numerics.Vector2,System.Numerics.Quaternion)">
+      <summary>通过指定的四元数旋转值转换向量。</summary>
+      <param name="value">要旋转的向量。</param>
+      <param name="rotation">要应用的旋转。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.TransformNormal(System.Numerics.Vector2,System.Numerics.Matrix3x2)">
+      <summary>通过给定的 3 x 2 矩阵转换向量法线。</summary>
+      <param name="normal">源向量。</param>
+      <param name="matrix">矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector2.TransformNormal(System.Numerics.Vector2,System.Numerics.Matrix4x4)">
+      <summary>通过给定的 4 x 4 矩阵转换向量法线。</summary>
+      <param name="normal">源向量。</param>
+      <param name="matrix">矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector2.UnitX">
+      <summary>获取向量 (1,0)。</summary>
+      <returns>向量<c>(1，0)</c>。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector2.UnitY">
+      <summary>获取向量 (0,1)。</summary>
+      <returns>向量<c>(0，1)</c>。</returns>
+    </member>
+    <member name="F:System.Numerics.Vector2.X">
+      <summary>向量的 X 分量。</summary>
+    </member>
+    <member name="F:System.Numerics.Vector2.Y">
+      <summary>向量的 Y 分量。</summary>
+    </member>
+    <member name="P:System.Numerics.Vector2.Zero">
+      <summary>返回一个其 2 个元素等于 0 的向量。</summary>
+      <returns>一个向量，其两个元素是等于零 (也就是说，它返回向量<c>(0，0)</c>。</returns>
+    </member>
+    <member name="T:System.Numerics.Vector3">
+      <summary>表示一个具有三个单精度浮点值的向量。</summary>
+    </member>
+    <member name="M:System.Numerics.Vector3.#ctor(System.Numerics.Vector2,System.Single)">
+      <summary>从指定的 <see cref="T:System.Numerics.Vector2" /> 对象和指定值创建新的 <see cref="T:System.Numerics.Vector3" /> 对象。</summary>
+      <param name="value">具有两个元素的向量。</param>
+      <param name="z">要分配给 <see cref="F:System.Numerics.Vector3.Z" /> 字段的其他值。</param>
+    </member>
+    <member name="M:System.Numerics.Vector3.#ctor(System.Single)">
+      <summary>创建一个其三个元素具有相同值的新 <see cref="T:System.Numerics.Vector3" /> 对象。</summary>
+      <param name="value">要分配给所有三个元素的值。</param>
+    </member>
+    <member name="M:System.Numerics.Vector3.#ctor(System.Single,System.Single,System.Single)">
+      <summary>创建一个其元素具有指定值的向量。</summary>
+      <param name="x">要分配给 <see cref="F:System.Numerics.Vector3.X" /> 字段的值。</param>
+      <param name="y">要分配给 <see cref="F:System.Numerics.Vector3.Y" /> 字段的值。</param>
+      <param name="z">要分配给 <see cref="F:System.Numerics.Vector3.Z" /> 字段的值。</param>
+    </member>
+    <member name="M:System.Numerics.Vector3.Abs(System.Numerics.Vector3)">
+      <summary>返回一个向量，其元素是指定向量的每个元素的绝对值。</summary>
+      <param name="value">一个向量。</param>
+      <returns>绝对值向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Add(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>将两个向量相加。</summary>
+      <param name="left">要相加的第一个向量。</param>
+      <param name="right">要相加的第二个向量。</param>
+      <returns>总和向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Clamp(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>将向量限制在最小值与最大值之间。</summary>
+      <param name="value1">要限制的向量。</param>
+      <param name="min">最小值。</param>
+      <param name="max">最大值。</param>
+      <returns>限制后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.CopyTo(System.Single[])">
+      <summary>将向量的元素复制到指定数组中。</summary>
+      <param name="array">目标数组。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">当前实例中的元素数目大于数组中的。</exception>
+      <exception cref="T:System.RankException">
+        <paramref name="array" /> 是多维的。</exception>
+    </member>
+    <member name="M:System.Numerics.Vector3.CopyTo(System.Single[],System.Int32)">
+      <summary>从指定的索引位置开始，将向量的元素复制到指定的数组中。</summary>
+      <param name="array">目标数组。</param>
+      <param name="index">用于复制向量的第一个元素的索引。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">当前实例中的元素数目大于数组中的。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+
+或 - 
+<paramref name="index" /> 大于或等于数组长度。</exception>
+      <exception cref="T:System.RankException">
+        <paramref name="array" /> 是多维的。</exception>
+    </member>
+    <member name="M:System.Numerics.Vector3.Cross(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>计算两个向量的叉积。</summary>
+      <param name="vector1">第一个向量。</param>
+      <param name="vector2">第二个向量。</param>
+      <returns>叉积。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Distance(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>计算两个给定点之间的欧几里得距离。</summary>
+      <param name="value1">第一个点。</param>
+      <param name="value2">第二个点。</param>
+      <returns>距离。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.DistanceSquared(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回两个指定点之间的欧几里得距离平方值。</summary>
+      <param name="value1">第一个点。</param>
+      <param name="value2">第二个点。</param>
+      <returns>距离平方值。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Divide(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>将第一个向量除以第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>从除法得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Divide(System.Numerics.Vector3,System.Single)">
+      <summary>将指定向量除以指定标量值。</summary>
+      <param name="left">向量。</param>
+      <param name="divisor">标量值。</param>
+      <returns>从除法得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Dot(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回两个向量的点积。</summary>
+      <param name="vector1">第一个向量。</param>
+      <param name="vector2">第二个向量。</param>
+      <returns>点积。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Equals(System.Numerics.Vector3)">
+      <summary>返回一个值，该值指示此实例是否与另一个向量相等。</summary>
+      <param name="other">另一个向量。</param>
+      <returns>如果两个向量相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Equals(System.Object)">
+      <summary>返回一个值，该值指示此实例是否与指定对象相等。</summary>
+      <param name="obj">要与当前实例进行比较的对象。</param>
+      <returns>如果当前实例与 <paramref name="obj" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。 如果 <paramref name="obj" /> 为 <see langword="null" />，则此方法返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Length">
+      <summary>返回此向量对象的长度。</summary>
+      <returns>向量的长度。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.LengthSquared">
+      <summary>返回向量长度平方值。</summary>
+      <returns>向量长度平方值。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Lerp(System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+      <summary>基于给定权重在两个向量之间执行线性内插。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <param name="amount">一个介于 0 与 1 之间的值，指示 <paramref name="value2" /> 的权重。</param>
+      <returns>内插的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Max(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回一个向量，其元素是两个指定向量中每对元素的较大值。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <returns>最大化的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Min(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回一个向量，其元素是两个指定向量中每对元素的较小值。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <returns>最小化的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Multiply(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回一个新向量，其值是两个指定向量中的每对元素的乘积。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>元素方面的乘积向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Multiply(System.Numerics.Vector3,System.Single)">
+      <summary>将向量乘以指定标量。</summary>
+      <param name="left">要相乘的向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Multiply(System.Single,System.Numerics.Vector3)">
+      <summary>将标量值乘以指定向量。</summary>
+      <param name="left">缩放后的值。</param>
+      <param name="right">向量。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Negate(System.Numerics.Vector3)">
+      <summary>对指定向量求反。</summary>
+      <param name="value">要求反的向量。</param>
+      <returns>求反后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Normalize(System.Numerics.Vector3)">
+      <summary>返回一个向量，其方向与指定向量相同，但长度为一。</summary>
+      <param name="value">要规范化的向量。</param>
+      <returns>规范化的向量。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector3.One">
+      <summary>获取一个其 3 个元素等于 1 的向量。</summary>
+      <returns>其三个元素等于 1 的向量 (也就是说，它返回向量<c>(1,1,1)</c>。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Addition(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>将两个向量相加。</summary>
+      <param name="left">要相加的第一个向量。</param>
+      <param name="right">要相加的第二个向量。</param>
+      <returns>总和向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Division(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>将第一个向量除以第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>将 <paramref name="left" /> 除以 <paramref name="right" /> 得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Division(System.Numerics.Vector3,System.Single)">
+      <summary>将指定向量除以指定标量值。</summary>
+      <param name="value1">向量。</param>
+      <param name="value2">标量值。</param>
+      <returns>除法的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Equality(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回一个值，该值指示两个指定向量中的每对元素是否相等。</summary>
+      <param name="left">要比较的第一个向量。</param>
+      <param name="right">要比较的第二个向量。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Inequality(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回一个值，该值指示两个指定向量是否不相等。</summary>
+      <param name="left">要比较的第一个向量。</param>
+      <param name="right">要比较的第二个向量。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Multiply(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回一个新向量，其值是两个指定向量中的每对元素的乘积。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>元素方面的乘积向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Multiply(System.Numerics.Vector3,System.Single)">
+      <summary>将指定向量乘以指定标量值。</summary>
+      <param name="left">向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Multiply(System.Single,System.Numerics.Vector3)">
+      <summary>将标量值乘以指定向量。</summary>
+      <param name="left">向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_Subtraction(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>从第一个向量中减去第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>从 <paramref name="left" /> 中减去 <paramref name="right" /> 得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.op_UnaryNegation(System.Numerics.Vector3)">
+      <summary>对指定向量求反。</summary>
+      <param name="value">要求反的向量。</param>
+      <returns>求反后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Reflect(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>返回向量对具有指定法线的表面的反射。</summary>
+      <param name="vector">源向量。</param>
+      <param name="normal">反射的表面的法线。</param>
+      <returns>反射的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.SquareRoot(System.Numerics.Vector3)">
+      <summary>返回一个向量，其元素是指定向量的每个元素的平方根。</summary>
+      <param name="value">一个向量。</param>
+      <returns>平方根向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Subtract(System.Numerics.Vector3,System.Numerics.Vector3)">
+      <summary>从第一个向量中减去第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>差向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.ToString">
+      <summary>使用默认格式设置返回当前实例的字符串表示形式。</summary>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.ToString(System.String)">
+      <summary>通过使用指定格式字符串设置各个元素的格式，来返回当前实例的字符串表示形式。</summary>
+      <param name="format">一个标准或自定义数字格式字符串，用于定义各个元素的格式。</param>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.ToString(System.String,System.IFormatProvider)">
+      <summary>通过使用指定格式字符串设置各个元素的格式并使用指定格式提供程序定义特定于区域性的格式设置，来返回当前实例的字符串表示形式。</summary>
+      <param name="format">一个标准或自定义数字格式字符串，用于定义各个元素的格式。</param>
+      <param name="formatProvider">一个提供特定于区域性的格式设置信息的格式提供程序。</param>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Transform(System.Numerics.Vector3,System.Numerics.Matrix4x4)">
+      <summary>通过指定 4 x 4 矩阵转换向量。</summary>
+      <param name="position">要转换的向量。</param>
+      <param name="matrix">转换矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.Transform(System.Numerics.Vector3,System.Numerics.Quaternion)">
+      <summary>通过指定的四元数旋转值转换向量。</summary>
+      <param name="value">要旋转的向量。</param>
+      <param name="rotation">要应用的旋转。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector3.TransformNormal(System.Numerics.Vector3,System.Numerics.Matrix4x4)">
+      <summary>通过给定的 4 x 4 矩阵转换向量法线。</summary>
+      <param name="normal">源向量。</param>
+      <param name="matrix">矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector3.UnitX">
+      <summary>获取向量 (1,0,0)。</summary>
+      <returns>向量<c>(1,0,0)</c>。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector3.UnitY">
+      <summary>获取向量 (0,1,0)。</summary>
+      <returns>向量<c>(0,1,0)</c>。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector3.UnitZ">
+      <summary>获取向量 (0,0,1)。</summary>
+      <returns>向量<c>(0,0,1)</c>。</returns>
+    </member>
+    <member name="F:System.Numerics.Vector3.X">
+      <summary>向量的 X 分量。</summary>
+    </member>
+    <member name="F:System.Numerics.Vector3.Y">
+      <summary>向量的 Y 分量。</summary>
+    </member>
+    <member name="F:System.Numerics.Vector3.Z">
+      <summary>向量的 Z 分量。</summary>
+    </member>
+    <member name="P:System.Numerics.Vector3.Zero">
+      <summary>获取一个其 3 个元素等于 0 的向量。</summary>
+      <returns>其三个元素等于零的向量 (也就是说，它返回向量<c>(0,0,0)</c>。</returns>
+    </member>
+    <member name="T:System.Numerics.Vector4">
+      <summary>表示一个具有四个单精度浮点值的向量。</summary>
+    </member>
+    <member name="M:System.Numerics.Vector4.#ctor(System.Numerics.Vector2,System.Single,System.Single)">
+      <summary>从指定的 <see cref="T:System.Numerics.Vector2" /> 对象以及 Z 和 W 分量创建新的 <see cref="T:System.Numerics.Vector4" /> 对象。</summary>
+      <param name="value">要用于 X 和 Y 分量的向量。</param>
+      <param name="z">Z 分量。</param>
+      <param name="w">W 分量。</param>
+    </member>
+    <member name="M:System.Numerics.Vector4.#ctor(System.Numerics.Vector3,System.Single)">
+      <summary>从指定的 <see cref="T:System.Numerics.Vector3" /> 对象以及 W 分量构造新的 <see cref="T:System.Numerics.Vector4" /> 对象。</summary>
+      <param name="value">要用于 X、Y 和 Z 分量的向量。</param>
+      <param name="w">W 分量。</param>
+    </member>
+    <member name="M:System.Numerics.Vector4.#ctor(System.Single)">
+      <summary>创建一个其四个元素具有相同值的新 <see cref="T:System.Numerics.Vector4" /> 对象。</summary>
+      <param name="value">要分配给所有四个元素的值。</param>
+    </member>
+    <member name="M:System.Numerics.Vector4.#ctor(System.Single,System.Single,System.Single,System.Single)">
+      <summary>创建一个其元素具有指定值的向量。</summary>
+      <param name="x">要分配给 <see cref="F:System.Numerics.Vector4.X" /> 字段的值。</param>
+      <param name="y">要分配给 <see cref="F:System.Numerics.Vector4.Y" /> 字段的值。</param>
+      <param name="z">要分配给 <see cref="F:System.Numerics.Vector4.Z" /> 字段的值。</param>
+      <param name="w">要分配给 <see cref="F:System.Numerics.Vector4.W" /> 字段的值。</param>
+    </member>
+    <member name="M:System.Numerics.Vector4.Abs(System.Numerics.Vector4)">
+      <summary>返回一个向量，其元素是指定向量的每个元素的绝对值。</summary>
+      <param name="value">一个向量。</param>
+      <returns>绝对值向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Add(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>将两个向量相加。</summary>
+      <param name="left">要相加的第一个向量。</param>
+      <param name="right">要相加的第二个向量。</param>
+      <returns>总和向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Clamp(System.Numerics.Vector4,System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>将向量限制在最小值与最大值之间。</summary>
+      <param name="value1">要限制的向量。</param>
+      <param name="min">最小值。</param>
+      <param name="max">最大值。</param>
+      <returns>限制后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.CopyTo(System.Single[])">
+      <summary>将向量的元素复制到指定数组中。</summary>
+      <param name="array">目标数组。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">当前实例中的元素数目大于数组中的。</exception>
+      <exception cref="T:System.RankException">
+        <paramref name="array" /> 是多维的。</exception>
+    </member>
+    <member name="M:System.Numerics.Vector4.CopyTo(System.Single[],System.Int32)">
+      <summary>从指定的索引位置开始，将向量的元素复制到指定的数组中。</summary>
+      <param name="array">目标数组。</param>
+      <param name="index">用于复制向量的第一个元素的索引。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">当前实例中的元素数目大于数组中的。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 大于或等于数组长度。</exception>
+      <exception cref="T:System.RankException">
+        <paramref name="array" /> 是多维的。</exception>
+    </member>
+    <member name="M:System.Numerics.Vector4.Distance(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>计算两个给定点之间的欧几里得距离。</summary>
+      <param name="value1">第一个点。</param>
+      <param name="value2">第二个点。</param>
+      <returns>距离。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.DistanceSquared(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>返回两个指定点之间的欧几里得距离平方值。</summary>
+      <param name="value1">第一个点。</param>
+      <param name="value2">第二个点。</param>
+      <returns>距离平方值。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Divide(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>将第一个向量除以第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>从除法得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Divide(System.Numerics.Vector4,System.Single)">
+      <summary>将指定向量除以指定标量值。</summary>
+      <param name="left">向量。</param>
+      <param name="divisor">标量值。</param>
+      <returns>从除法得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Dot(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>返回两个向量的点积。</summary>
+      <param name="vector1">第一个向量。</param>
+      <param name="vector2">第二个向量。</param>
+      <returns>点积。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Equals(System.Numerics.Vector4)">
+      <summary>返回一个值，该值指示此实例是否与另一个向量相等。</summary>
+      <param name="other">另一个向量。</param>
+      <returns>如果两个向量相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Equals(System.Object)">
+      <summary>返回一个值，该值指示此实例是否与指定对象相等。</summary>
+      <param name="obj">要与当前实例进行比较的对象。</param>
+      <returns>如果当前实例与 <paramref name="obj" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。 如果 <paramref name="obj" /> 为 <see langword="null" />，则此方法返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.GetHashCode">
+      <summary>返回此实例的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Length">
+      <summary>返回此向量对象的长度。</summary>
+      <returns>向量的长度。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.LengthSquared">
+      <summary>返回向量长度平方值。</summary>
+      <returns>向量长度平方值。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Lerp(System.Numerics.Vector4,System.Numerics.Vector4,System.Single)">
+      <summary>基于给定权重在两个向量之间执行线性内插。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <param name="amount">一个介于 0 与 1 之间的值，指示 <paramref name="value2" /> 的权重。</param>
+      <returns>内插的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Max(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>返回一个向量，其元素是两个指定向量中每对元素的较大值。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <returns>最大化的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Min(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>返回一个向量，其元素是两个指定向量中每对元素的较小值。</summary>
+      <param name="value1">第一个向量。</param>
+      <param name="value2">第二个向量。</param>
+      <returns>最小化的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Multiply(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>返回一个新向量，其值是两个指定向量中的每对元素的乘积。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>元素方面的乘积向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Multiply(System.Numerics.Vector4,System.Single)">
+      <summary>将向量乘以指定标量。</summary>
+      <param name="left">要相乘的向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Multiply(System.Single,System.Numerics.Vector4)">
+      <summary>将标量值乘以指定向量。</summary>
+      <param name="left">缩放后的值。</param>
+      <param name="right">向量。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Negate(System.Numerics.Vector4)">
+      <summary>对指定向量求反。</summary>
+      <param name="value">要求反的向量。</param>
+      <returns>求反后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Normalize(System.Numerics.Vector4)">
+      <summary>返回一个向量，其方向与指定向量相同，但长度为一。</summary>
+      <param name="vector">要规范化的向量。</param>
+      <returns>规范化的向量。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector4.One">
+      <summary>获取一个其 4 个元素等于 1 的向量。</summary>
+      <returns>返回 <see cref="T:System.Numerics.Vector4" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Addition(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>将两个向量相加。</summary>
+      <param name="left">要相加的第一个向量。</param>
+      <param name="right">要相加的第二个向量。</param>
+      <returns>总和向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Division(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>将第一个向量除以第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>将 <paramref name="left" /> 除以 <paramref name="right" /> 得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Division(System.Numerics.Vector4,System.Single)">
+      <summary>将指定向量除以指定标量值。</summary>
+      <param name="value1">向量。</param>
+      <param name="value2">标量值。</param>
+      <returns>除法的结果。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Equality(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>返回一个值，该值指示两个指定向量中的每对元素是否相等。</summary>
+      <param name="left">要比较的第一个向量。</param>
+      <param name="right">要比较的第二个向量。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Inequality(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>返回一个值，该值指示两个指定向量是否不相等。</summary>
+      <param name="left">要比较的第一个向量。</param>
+      <param name="right">要比较的第二个向量。</param>
+      <returns>如果 <paramref name="left" /> 和 <paramref name="right" /> 不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Multiply(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>返回一个新向量，其值是两个指定向量中的每对元素的乘积。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>元素方面的乘积向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Multiply(System.Numerics.Vector4,System.Single)">
+      <summary>将指定向量乘以指定标量值。</summary>
+      <param name="left">向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Multiply(System.Single,System.Numerics.Vector4)">
+      <summary>将标量值乘以指定向量。</summary>
+      <param name="left">向量。</param>
+      <param name="right">标量值。</param>
+      <returns>缩放后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_Subtraction(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>从第一个向量中减去第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>从 <paramref name="left" /> 中减去 <paramref name="right" /> 得到的结果向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.op_UnaryNegation(System.Numerics.Vector4)">
+      <summary>对指定向量求反。</summary>
+      <param name="value">要求反的向量。</param>
+      <returns>求反后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.SquareRoot(System.Numerics.Vector4)">
+      <summary>返回一个向量，其元素是指定向量的每个元素的平方根。</summary>
+      <param name="value">一个向量。</param>
+      <returns>平方根向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Subtract(System.Numerics.Vector4,System.Numerics.Vector4)">
+      <summary>从第一个向量中减去第二个向量。</summary>
+      <param name="left">第一个向量。</param>
+      <param name="right">第二个向量。</param>
+      <returns>差向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.ToString">
+      <summary>使用默认格式设置返回当前实例的字符串表示形式。</summary>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.ToString(System.String)">
+      <summary>通过使用指定格式字符串设置各个元素的格式，来返回当前实例的字符串表示形式。</summary>
+      <param name="format">一个标准或自定义数字格式字符串，用于定义各个元素的格式。</param>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.ToString(System.String,System.IFormatProvider)">
+      <summary>通过使用指定格式字符串设置各个元素的格式并使用指定格式提供程序定义特定于区域性的格式设置，来返回当前实例的字符串表示形式。</summary>
+      <param name="format">一个标准或自定义数字格式字符串，用于定义各个元素的格式。</param>
+      <param name="formatProvider">一个提供特定于区域性的格式设置信息的格式提供程序。</param>
+      <returns>当前实例的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Transform(System.Numerics.Vector2,System.Numerics.Matrix4x4)">
+      <summary>通过指定的 4x4 矩阵转换二维向量。</summary>
+      <param name="position">要转换的向量。</param>
+      <param name="matrix">转换矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Transform(System.Numerics.Vector2,System.Numerics.Quaternion)">
+      <summary>通过指定的四元数旋转值转换二维向量。</summary>
+      <param name="value">要旋转的向量。</param>
+      <param name="rotation">要应用的旋转。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Transform(System.Numerics.Vector3,System.Numerics.Matrix4x4)">
+      <summary>通过指定的 4x4 矩阵转换三维向量。</summary>
+      <param name="position">要转换的向量。</param>
+      <param name="matrix">转换矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Transform(System.Numerics.Vector3,System.Numerics.Quaternion)">
+      <summary>通过指定的四元数旋转值转换三维向量。</summary>
+      <param name="value">要旋转的向量。</param>
+      <param name="rotation">要应用的旋转。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Transform(System.Numerics.Vector4,System.Numerics.Matrix4x4)">
+      <summary>通过指定的 4x4 矩阵转换四维向量。</summary>
+      <param name="vector">要转换的向量。</param>
+      <param name="matrix">转换矩阵。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="M:System.Numerics.Vector4.Transform(System.Numerics.Vector4,System.Numerics.Quaternion)">
+      <summary>通过指定的四元数旋转值转换四维向量。</summary>
+      <param name="value">要旋转的向量。</param>
+      <param name="rotation">要应用的旋转。</param>
+      <returns>转换后的向量。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector4.UnitW">
+      <summary>获取向量 (0,0,0,1)。</summary>
+      <returns>向量<c>(0,0,0,1)</c>。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector4.UnitX">
+      <summary>获取向量 (1,0,0,0)。</summary>
+      <returns>向量<c>(1,0,0,0)</c>。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector4.UnitY">
+      <summary>获取向量 (0,1,0,0)。</summary>
+      <returns>向量<c>(0,1,0,0)</c>。</returns>
+    </member>
+    <member name="P:System.Numerics.Vector4.UnitZ">
+      <summary>获取向量 (0,0,1,0)。</summary>
+      <returns>向量<c>(0,0,1,0)</c>。</returns>
+    </member>
+    <member name="F:System.Numerics.Vector4.W">
+      <summary>向量的 W 分量。</summary>
+    </member>
+    <member name="F:System.Numerics.Vector4.X">
+      <summary>向量的 X 分量。</summary>
+    </member>
+    <member name="F:System.Numerics.Vector4.Y">
+      <summary>向量的 Y 分量。</summary>
+    </member>
+    <member name="F:System.Numerics.Vector4.Z">
+      <summary>向量的 Z 分量。</summary>
+    </member>
+    <member name="P:System.Numerics.Vector4.Zero">
+      <summary>获取一个其 4 个元素等于 0 的向量。</summary>
+      <returns>一个向量，其四个元素是等于零 (也就是说，它返回向量<c>(0,0,0,0)</c>。</returns>
+    </member>
+  </members>
+</doc>
