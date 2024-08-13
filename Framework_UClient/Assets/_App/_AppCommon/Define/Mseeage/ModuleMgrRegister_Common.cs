@@ -22,6 +22,10 @@ namespace ProjectApp
             moduleMgr.AddCtrl(CtrlConst.LoadCtrl, new LoadCtrl());      
             moduleMgr.AddUICtrl(UICtrlConst.LoadUICtrl, new LoadingUICtrl());
 
+            moduleMgr.AddModel(ModelConst.FXEffectModel, new FXEffectModel());
+            moduleMgr.AddUIType(UIConst.FXEffectUI, typeof(FXEffectUI));
+            moduleMgr.AddCtrl(CtrlConst.FXEffectCtrl, new FXEffectCtrl());
+            moduleMgr.AddUICtrl(UICtrlConst.FXEffectUICtrl, new FXEffectUICtrl());
 
         }
 

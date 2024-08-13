@@ -36,39 +36,18 @@ namespace FutureEditor
                 AssetDatabase.Refresh();
             }      
         }
-        [MenuItem("[FC Tool]/AutoRegister Tool/自动注册(热更)", false, 32)]
-        public static void AutoRegisterAll_HotFix()
-        {
-            AutoRegisterAll_HotFix(null);
-        }
-        public static void AutoRegisterAll_HotFix(Action cb)
-        {
-            if (EditorUtility.DisplayDialog("自动注册项目(热更)", "是否进行自动注册项目", "确认", "取消"))
-            {
-                cb?.Invoke();
-                Debug.Log("[ProjectAutoRegisterTool]自动注册项目开始(热更)");
-                Debug.Log("------------------------------------------自注册开始----------------------------------------------------------------");
-                RegisterAutoAssetInAllDirectory_HotFix();
-                Debug.Log("------------------------------------------自注册完毕----------------------------------------------------------------");
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-            }      
-        }
+
+        
 
 
         private static void RegisterAutoAssetInAllDirectory()
         {
             UI_AutoCreator.AutoRegister();
             ModuleMgr_AutoCreator.AutoRegister();
-        }  
-        private static void RegisterAutoAssetInAllDirectory_HotFix()
-        {
-            ILRuntimeMgr_AutoCreator.CreateAdapter();
-            ILRuntimeMgr_AutoCreator.CreateVersionData();
-            UI_AutoCreator.AutoRegister_HotFix();
-            ModuleMgr_AutoCreator.AutoRegister_HotFix();
-            
-        }  
+        }
+
+
+        
         
         
 

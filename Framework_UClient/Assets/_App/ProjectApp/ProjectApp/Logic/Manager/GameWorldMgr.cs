@@ -105,9 +105,15 @@ namespace ProjectApp
 
         public void FillData(LevelData levelData)
         {
+
             AllPictures.Clear();
 
             LevelData = levelData;
+
+            WordRood = new GameObject("WordRood").transform;
+            WordRood.transform.position = new Vector3(0, 0, 0);
+            
+
 
         }
 

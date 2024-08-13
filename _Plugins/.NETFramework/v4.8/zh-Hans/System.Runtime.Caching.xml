@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Runtime.Caching</name>
+  </assembly>
+  <members>
+    <member name="T:System.Runtime.Caching.CacheEntryChangeMonitor">
+      <summary>提供表示 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 类型的基类，可通过实现此类型来监视对缓存项的更改。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheEntryChangeMonitor.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.CacheEntryChangeMonitor" /> 类的新实例。 从派生类中的构造函数调用此构造函数以初始化基类。</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryChangeMonitor.CacheKeys">
+      <summary>获取要监视其是否发生更改的缓存键集合。</summary>
+      <returns>缓存键的集合。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryChangeMonitor.LastModified">
+      <summary>获取一个值，该值指示所监视缓存项的最近更改时间（用 UTC 时间表示）。</summary>
+      <returns>运行时间。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryChangeMonitor.RegionName">
+      <summary>获取缓存中的某个区域的名称。</summary>
+      <returns>缓存中的某个区域的名称。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryRemovedArguments">
+      <summary>提供有关已从缓存中移除的缓存项的信息。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheEntryRemovedArguments.#ctor(System.Runtime.Caching.ObjectCache,System.Runtime.Caching.CacheEntryRemovedReason,System.Runtime.Caching.CacheItem)">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.CacheEntryRemovedArguments" /> 类的新实例。</summary>
+      <param name="source">已从中移除 <paramref name="cacheItem" /> 的 <see cref="T:System.Runtime.Caching.ObjectCache" /> 实例。</param>
+      <param name="reason">用于指示移除 <paramref name="cacheItem" /> 的原因的枚举值之一。</param>
+      <param name="cacheItem">已移除的缓存项的实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 <see langword="null" />。  
+或 
+ <paramref name="cacheItem" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryRemovedArguments.CacheItem">
+      <summary>获取已从缓存中移除的缓存项的实例。</summary>
+      <returns>
+        <see cref="T:System.Runtime.Caching.CacheItem" /> 类的一个从缓存中移除的实例。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryRemovedArguments.RemovedReason">
+      <summary>获取一个值，该值指示移除某个缓存项的原因。</summary>
+      <returns>用于指示移除该项的原因的枚举值之一。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryRemovedArguments.Source">
+      <summary>获取对源 <see cref="T:System.Runtime.Caching.ObjectCache" /> 实例的引用，该实例最初包含已移除的缓存项。</summary>
+      <returns>对最初包含已移除缓存项的缓存的引用。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryRemovedCallback">
+      <summary>定义对某个方法的引用，在从缓存中移除某个缓存项后将调用该方法。</summary>
+      <param name="arguments">有关已从缓存中移除的缓存项的信息。</param>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryRemovedReason">
+      <summary>指定已移除或将要移除某个缓存项的原因。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.CacheSpecificEviction">
+      <summary>某个缓存项由于特定缓存实现定义的原因而被逐出。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.ChangeMonitorChanged">
+      <summary>某个缓存项由于相关依赖项（如一个文件或其他缓存项）触发了其逐出操作而被移除。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.Evicted">
+      <summary>某个缓存项由于释放缓存中的内存的原因而被移除。 当某个缓存实例将超出特定于缓存的内存限制或某个进程或缓存实例将超出整个计算机范围的内存限制时，会发生这种情况。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.Expired">
+      <summary>某个缓存项由于已过期而被移除。 过期可基于绝对过期时间或可调过期时间。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.Removed">
+      <summary>通过使用 <see cref="M:System.Runtime.Caching.ObjectCache.Remove(System.String,System.String)" /> 或 <see cref="M:System.Runtime.Caching.ObjectCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)" /> 方法移除了某个缓存项。</summary>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryUpdateArguments">
+      <summary>提供有关将从缓存中移除的缓存项的信息。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheEntryUpdateArguments.#ctor(System.Runtime.Caching.ObjectCache,System.Runtime.Caching.CacheEntryRemovedReason,System.String,System.String)">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.CacheEntryUpdateArguments" /> 类的新实例。</summary>
+      <param name="source">将从中移除由 <paramref name="key" /> 引用的缓存项的 <see cref="T:System.Runtime.Caching.ObjectCache" /> 实例。</param>
+      <param name="reason">用于指示要移除该缓存项的原因的枚举值之一。</param>
+      <param name="key">将要移除的缓存项的键。</param>
+      <param name="regionName">要从中移除该缓存项的缓存区域的名称。 此参数可选。 如果未定义缓存区域，则 <paramref name="regionName" /> 必须为 <see langword="null" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.Key">
+      <summary>获取将要移除的缓存项的唯一标识符。</summary>
+      <returns>该缓存项的唯一标识符。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.RegionName">
+      <summary>获取包含某个缓存项的缓存区域的名称。</summary>
+      <returns>缓存中的某个区域的名称。 如果未使用区域，则此值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.RemovedReason">
+      <summary>获取将从缓存中移除某个缓存项的原因。</summary>
+      <returns>用于描述要移除某个缓存项的原因的枚举值之一。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.Source">
+      <summary>获取对 <see cref="T:System.Runtime.Caching.ObjectCache" /> 实例的引用，该实例包含一个将要移除的缓存项。</summary>
+      <returns>对该缓存实例的引用。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.UpdatedCacheItem">
+      <summary>获取或设置用于更新缓存对象的 <see cref="T:System.Runtime.Caching.CacheItem" /> 项的值。</summary>
+      <returns>要在缓存对象中更新的缓存项。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.UpdatedCacheItemPolicy">
+      <summary>获取或设置已更新的 <see cref="T:System.Runtime.Caching.CacheItem" /> 项的缓存逐出或过期策略。</summary>
+      <returns>已更新的缓存项的缓存逐出或过期策略。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryUpdateCallback">
+      <summary>定义对某个方法的引用，在即将从缓存中移除某个缓存项时将调用该方法。</summary>
+      <param name="arguments">有关即将从缓存中移除的项的信息。</param>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheItem">
+      <summary>表示缓存中的单个缓存项。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheItem.#ctor(System.String)">
+      <summary>使用指定的缓存项键初始化新的 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例。</summary>
+      <param name="key">
+        <see cref="T:System.Runtime.Caching.CacheItem" /> 项的唯一标识符。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheItem.#ctor(System.String,System.Object)">
+      <summary>使用缓存项的指定键和值初始化新的 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例。</summary>
+      <param name="key">
+        <see cref="T:System.Runtime.Caching.CacheItem" /> 项的唯一标识符。</param>
+      <param name="value">
+        <see cref="T:System.Runtime.Caching.CacheItem" /> 项的数据。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheItem.#ctor(System.String,System.Object,System.String)">
+      <summary>使用缓存项的指定键、值和区域初始化新的 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例。</summary>
+      <param name="key">
+        <see cref="T:System.Runtime.Caching.CacheItem" /> 项的唯一标识符。</param>
+      <param name="value">
+        <see cref="T:System.Runtime.Caching.CacheItem" /> 项的数据。</param>
+      <param name="regionName">缓存中将包含 <see cref="T:System.Runtime.Caching.CacheItem" /> 项的区域的名称。</param>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItem.Key">
+      <summary>获取或设置 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例的唯一标识符。</summary>
+      <returns>
+        <see cref="T:System.Runtime.Caching.CacheItem" /> 实例的标识符。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItem.RegionName">
+      <summary>获取或设置缓存中将包含 <see cref="T:System.Runtime.Caching.CacheItem" /> 项的区域的名称。</summary>
+      <returns>缓存中的某个区域的名称。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItem.Value">
+      <summary>获取或设置 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例的数据。</summary>
+      <returns>
+        <see cref="T:System.Runtime.Caching.CacheItem" /> 实例的数据。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheItemPolicy">
+      <summary>表示指定缓存项的一组逐出和过期详细信息。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheItemPolicy.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.AbsoluteExpiration">
+      <summary>获取或设置一个值，该值指示是否应在指定的时间点逐出缓存项。</summary>
+      <returns>中的逐出某个缓存项的时间点。 默认值为 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" />，这意味着该项未过期。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.ChangeMonitors">
+      <summary>获取与某个缓存项关联的 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 对象的集合。</summary>
+      <returns>更改监视器的集合。 默认值为空集合。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.Priority">
+      <summary>获取或设置用于确定是否逐出某个缓存项的优先级别设置。</summary>
+      <returns>用于指示逐出的优先级别的枚举值之一。 默认的优先级别值为 <see cref="F:System.Runtime.Caching.CacheItemPriority.Default" />，这表示无优先级别。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.RemovedCallback">
+      <summary>获取或设置对 <see cref="T:System.Runtime.Caching.CacheEntryRemovedCallback" /> 委托的引用，在从缓存中移除某个项后将调用该委托。</summary>
+      <returns>对由缓存实现调用的委托的引用。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration">
+      <summary>获取或设置一个值，该值指示如果某个缓存项在给定时段内未被访问，是否应被逐出。</summary>
+      <returns>一个时段，必须在此时段内访问某个缓存项，否则将从内存中逐出该缓存项。 默认值为 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />，这意味着该项的过期不应该基于时间跨度。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback">
+      <summary>获取或设置对 <see cref="T:System.Runtime.Caching.CacheEntryUpdateCallback" /> 委托的引用，在从缓存中移除某个缓存项之前将调用该委托。</summary>
+      <returns>对由缓存实现调用的委托的引用。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheItemPriority">
+      <summary>指定用于确定是否逐出某个缓存项的优先级别设置。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheItemPriority.Default">
+      <summary>指示移除缓存项没有优先级。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheItemPriority.NotRemovable">
+      <summary>指示绝不应从缓存中移除某个缓存项。</summary>
+    </member>
+    <member name="T:System.Runtime.Caching.ChangeMonitor">
+      <summary>为用于监视缓存项所依赖数据的状态更改的派生自定义类型提供基类。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 类的新实例。 从派生类中的构造函数调用此构造函数以初始化基类。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.Dispose">
+      <summary>释放由 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 类的当前实例占用的所有资源。</summary>
+      <exception cref="T:System.InvalidOperationException">在调用 <see cref="M:System.Runtime.Caching.ChangeMonitor.Dispose" /> 基方法的派生更改监视器类中，初始化未完成。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.Dispose(System.Boolean)">
+      <summary>释放所有托管资源和非托管资源，以及对 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 实例的任何引用。 此重载必须由派生的更改监视器类实现。</summary>
+      <param name="disposing">若要释放托管资源和非托管资源，以及对 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 实例的任何引用，则为 <see langword="true" />；若要仅释放非托管资源，则为 <see langword="false" />。 传递 <see langword="false" /> 时，<see cref="M:System.Runtime.Caching.ChangeMonitor.Dispose(System.Boolean)" /> 方法由 <see langword="finalizer" /> 线程调用，所有外部托管引用由于已经作为垃圾回收，因此可能不再有效。</param>
+    </member>
+    <member name="P:System.Runtime.Caching.ChangeMonitor.HasChanged">
+      <summary>获取一个值，该值指示由 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 类监视的状态已发生更改。</summary>
+      <returns>如果由 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 实例监视的状态已发生更改，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.InitializationComplete">
+      <summary>从派生类的构造函数进行调用以指示初始化已完成。</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.ChangeMonitor.IsDisposed">
+      <summary>获取一个值，该值指示释放 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 类的派生实例。</summary>
+      <returns>如果释放该实例，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.NotifyOnChanged(System.Runtime.Caching.OnChangedCallback)">
+      <summary>由缓存实施者调用来注册回调，并在某个依赖项已更改时通过 <see cref="T:System.Runtime.Caching.ObjectCache" /> 委托通知 <see cref="T:System.Runtime.Caching.OnChangedCallback" /> 实例。</summary>
+      <param name="onChangedCallback">对在某个依赖项更改时要调用的方法的引用。</param>
+      <exception cref="T:System.InvalidOperationException">已调用回调方法。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="onChangedCallback" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.OnChanged(System.Object)">
+      <summary>由派生类调用以在某个依赖项发生更改时引发事件。</summary>
+      <param name="state">更改事件的数据。 此值可为 <see langword="null" />。</param>
+    </member>
+    <member name="P:System.Runtime.Caching.ChangeMonitor.UniqueId">
+      <summary>获取一个表示 <see cref="T:System.Runtime.Caching.ChangeMonitor" /> 类实例的值。</summary>
+      <returns>某个更改监视器实例的标识符。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Configuration.CachingSectionGroup">
+      <summary>定义 .NET Framework 缓存的配置部分。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.CachingSectionGroup.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.Configuration.CachingSectionGroup" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.CachingSectionGroup.MemoryCaches">
+      <summary>获取 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" /> 对象的集合。</summary>
+      <returns>缓存节对象的集合。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Configuration.MemoryCacheElement">
+      <summary>定义一个用于配置基于 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类的缓存的元素。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheElement.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" /> 类的新实例。</summary>
+      <param name="name">某个特定缓存配置的唯一名称。</param>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheElement.CacheMemoryLimitMegabytes">
+      <summary>获取或设置 <see cref="T:System.Runtime.Caching.MemoryCache" /> 对象的实例可增长到的最大内存大小（以兆字节为单位）。</summary>
+      <returns>最大内存量（以兆字节为单位）。 默认值为零，指示 <see cref="T:System.Runtime.Caching.MemoryCache" /> 实例会基于计算机上安装的内存量来管理自己的内存。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheElement.Name">
+      <summary>获取或设置某个特定缓存配置的名称。</summary>
+      <returns>某个缓存配置的名称。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheElement.PhysicalMemoryLimitPercentage">
+      <summary>获取或设置缓存可使用的服务器内存的百分比。</summary>
+      <returns>缓存可使用的物理内存的百分比（用一个介于 1 到 100 之间的整数值表示）。 默认值为零，指示 <see cref="T:System.Runtime.Caching.MemoryCache" /> 实例会基于计算机上安装的内存量来管理自己的内存。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheElement.PollingInterval">
+      <summary>获取或设置一个值，该值指示缓存实现将当前内存负载与为缓存实例设置的绝对内存和内存百分比限制进行比较所采用的时间间隔。</summary>
+      <returns>缓存实现将当前内存负载与为缓存实例设置的绝对内存和内存百分比限制进行比较所采用的时间间隔。 默认值为 2 分钟。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Configuration.MemoryCacheSection">
+      <summary>为基于 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类的缓存定义配置节。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSection.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSection" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheSection.NamedCaches">
+      <summary>获取命名的 <see cref="T:System.Runtime.Caching.MemoryCache" /> 实例的配置设置的集合。</summary>
+      <returns>每个命名缓存的设置的集合。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection">
+      <summary>表示 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" /> 元素的集合。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.Add(System.Runtime.Caching.Configuration.MemoryCacheElement)">
+      <summary>把指定的缓存配置元素添加到 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" /> 集合。</summary>
+      <param name="cache">要添加的内存缓存配置元素。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.Clear">
+      <summary>从 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" /> 集合中清除所有的元素。</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.CollectionType">
+      <summary>获取配置集合的类型。</summary>
+      <returns>集合的类型。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.IndexOf(System.Runtime.Caching.Configuration.MemoryCacheElement)">
+      <summary>获取在 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" /> 集合中的所指定缓存配置元素的索引。</summary>
+      <param name="cache">要为其获取索引的缓存配置元素。</param>
+      <returns>内存缓存配置元素的索引。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.Item(System.Int32)">
+      <summary>获取具有指定索引的 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" /> 项。</summary>
+      <param name="index">集合中项的从零开始的索引。</param>
+      <returns>指定索引处的元素。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.Item(System.String)">
+      <summary>获取具有指定键的 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" /> 项。</summary>
+      <param name="key">该项的唯一标识符。</param>
+      <returns>由该键指定的项。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.Remove(System.Runtime.Caching.Configuration.MemoryCacheElement)">
+      <summary>删除 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" /> 类中指定的缓存配置元素。</summary>
+      <param name="cache">要删除的内存缓存配置元素。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.RemoveAt(System.Int32)">
+      <summary>删除 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" /> 类中指定位置的缓存配置元素。</summary>
+      <param name="index">要在其上移除内存缓存配置元素的基于零的索引。</param>
+    </member>
+    <member name="T:System.Runtime.Caching.DefaultCacheCapabilities">
+      <summary>表示缓存实现提供的一组功能。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.AbsoluteExpirations">
+      <summary>利用缓存实现，可自动在特定的日期和时间移除缓存项。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.CacheEntryChangeMonitors">
+      <summary>利用缓存实现，可创建用于监视项的更改监视器。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.CacheEntryRemovedCallback">
+      <summary>缓存实现可以发出通知，指示已从缓存中移除某个项。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.CacheEntryUpdateCallback">
+      <summary>缓存实现可以发出通知，指示将要从缓存中移除某个项。 此设置还指示，可以利用缓存实现自动将要移除的项替换为新的缓存项。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.CacheRegions">
+      <summary>利用缓存实现，不但可以将其存储区划分为多个缓存区域，而且可以将缓存项插入到这些区域中，以及从这些区域中检索缓存项。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.InMemoryProvider">
+      <summary>缓存实现中至少会有一部分在内存中运行。 分布式缓存不会设置此标志，而内存中的缓存（如 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类）会这样做。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.None">
+      <summary>缓存实现不提供 <see cref="T:System.Runtime.Caching.DefaultCacheCapabilities" /> 枚举中描述的任何功能。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.OutOfProcessProvider">
+      <summary>缓存实现在进程外运行。 分布式缓存会设置此标志，而内存中的缓存（如 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类）不会这样做。</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.SlidingExpirations">
+      <summary>利用缓存实现，可自动移除在指定时间跨度内未被访问的缓存项。</summary>
+    </member>
+    <member name="T:System.Runtime.Caching.FileChangeMonitor">
+      <summary>表示用于监视对文件的更改的对象。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.FileChangeMonitor.#ctor">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.FileChangeMonitor" /> 类的新实例。 从派生类中的构造函数调用此构造函数以初始化基类。</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.FileChangeMonitor.FilePaths">
+      <summary>获取一个集合，该集合包含要监视其是否发生更改的文件路径。</summary>
+      <returns>文件路径的集合。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.FileChangeMonitor.LastModified">
+      <summary>获取一个值，该值指示所监视文件的上次更改时间。</summary>
+      <returns>如果监视多个文件，则为最近修改的文件的上次修改时间；否则为所监视文件的上次更改时间。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.HostFileChangeMonitor">
+      <summary>监视目录和文件路径，并向缓存通知被监视项的更改情况。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.HostFileChangeMonitor.#ctor(System.Collections.Generic.IList{System.String})">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.HostFileChangeMonitor" /> 类的新实例。</summary>
+      <param name="filePaths">包含要监视的一个或多个目录路径或文件路径的列表。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="filePaths" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="filePaths" /> 包含零项。  
+
+或 - 
+<paramref name="filePaths" /> 列表中的路径为 <see langword="null" /> 或空字符串。</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.HostFileChangeMonitor.FilePaths">
+      <summary>获取已传递给 <see cref="M:System.Runtime.Caching.HostFileChangeMonitor.#ctor(System.Collections.Generic.IList{System.String})" /> 构造函数的目录和文件路径的集合。</summary>
+      <returns>目录和文件路径的集合。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.HostFileChangeMonitor.LastModified">
+      <summary>获取一个只读值，该值指示所监视文件或路径的上次写入时间。</summary>
+      <returns>所监视文件或路径的上次写入时间。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.HostFileChangeMonitor.UniqueId">
+      <summary>获取基于被监视的目录和文件路径集的 <see cref="T:System.Runtime.Caching.HostFileChangeMonitor" /> 实例的标识符。</summary>
+      <returns>更改监视器的标识符。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Hosting.IApplicationIdentifier">
+      <summary>定义应用程序域的标识符，缓存实现可使用这些应用程序域与主机环境进行交互。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IApplicationIdentifier.GetApplicationId">
+      <summary>获取某个应用程序域的标识符。</summary>
+      <returns>当前应用程序域的唯一标识符。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem">
+      <summary>定义向缓存实现公开自定义 <see cref="T:System.Runtime.Caching.FileChangeMonitor" /> 对象的方式。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring(System.String,System.Runtime.Caching.OnChangedCallback,System.Object@,System.DateTimeOffset@,System.Int64@)">
+      <summary>向主机环境注册一个要监视的文件路径。</summary>
+      <param name="filePath">要监视更改的目录或文件的完全限定物理路径。</param>
+      <param name="onChangedCallback">对实现 <see cref="T:System.Runtime.Caching.OnChangedCallback" /> 委托的方法的引用。 当监视的文件或目录发生更改时，<see cref="T:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem" /> 接口的主机环境实现通过调用 <see cref="T:System.Runtime.Caching.OnChangedCallback" /> 类引发一个事件。</param>
+      <param name="state">主机环境提供的状态。 缓存实现和自定义更改监视应该将状态值视为不透明。 但是必须存储状态，以便在缓存实现调用 <see cref="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring(System.String,System.Object)" /> 方法时可以将状态发送给主机环境。</param>
+      <param name="lastWriteTime">此方法返回时，包含上一次对 <paramref name="filePath" /> 进行写入操作的日期和时间。 此参数未经初始化即被传递。 从主机环境返回此参数。</param>
+      <param name="fileSize">此方法返回时，包含所监视的 <paramref name="filePath" /> 的总大小。 此参数未经初始化即被传递。 从主机环境返回此参数。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring(System.String,System.Object)">
+      <summary>结束更改监视。</summary>
+      <param name="filePath">要停止监视的文件或文件夹的路径。 此路径应与之前在对 <see cref="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring(System.String,System.Runtime.Caching.OnChangedCallback,System.Object@,System.DateTimeOffset@,System.Int64@)" /> 方法的调用中传递的文件路径值相匹配。</param>
+      <param name="state">在之前调用 <see cref="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring(System.String,System.Runtime.Caching.OnChangedCallback,System.Object@,System.DateTimeOffset@,System.Int64@)" /> 方法期间，最初由主机环境提供的状态信息。</param>
+    </member>
+    <member name="T:System.Runtime.Caching.Hosting.IMemoryCacheManager">
+      <summary>定义一个接口，缓存使用该接口向主机环境告知缓存内存使用量。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IMemoryCacheManager.ReleaseCache(System.Runtime.Caching.MemoryCache)">
+      <summary>从主机环境中移除对某个缓存的所有引用。</summary>
+      <param name="cache">对该缓存的引用。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IMemoryCacheManager.UpdateCacheSize(System.Int64,System.Runtime.Caching.MemoryCache)">
+      <summary>报告当前缓存的大小。</summary>
+      <param name="size">缓存使用的内存大小（以字节为单位）。</param>
+      <param name="cache">对该缓存的引用。</param>
+    </member>
+    <member name="T:System.Runtime.Caching.MemoryCache">
+      <summary>表示实现内存中缓存的类型。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.#ctor(System.String,System.Collections.Specialized.NameValueCollection)">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类的新实例。</summary>
+      <param name="name">用于查找配置信息的名称。  
+ 请注意<c></c>，不要求每个名称都存在配置信息。  
+如果存在匹配的配置项，则使用该配置信息来配置 <see cref="T:System.Runtime.Caching.MemoryCache" /> 实例。 如果不存在匹配的配置项，则可以通过 <see cref="P:System.Runtime.Caching.MemoryCache.Name" /> 属性访问名称，因为指定的名称与 <see cref="T:System.Runtime.Caching.MemoryCache" /> 实例相关联。 有关内存缓存配置的信息，请参见 <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" />。</param>
+      <param name="config">用于配置缓存的配置信息的名称/值对集合。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="name" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">未能分析 <paramref name="config" /> 参数中的名称或值。</exception>
+      <exception cref="T:System.Configuration.ConfigurationException">
+        <paramref name="config" /> 集合中的值无效。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.#ctor(System.String,System.Collections.Specialized.NameValueCollection,System.Boolean)">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类的新实例。</summary>
+      <param name="name">用于查找配置信息的名称。</param>
+      <param name="config">用于配置缓存的配置信息的名称/值对集合。</param>
+      <param name="ignoreConfigSection">指示是否应忽略配置部分。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Add(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>将缓存项作为 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例插入到缓存中，并添加有关如何逐出该项的详细信息。</summary>
+      <param name="item">要添加的对象。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <returns>如果插入成功，则为 true；如果缓存中已存在具有与项相同的键，则为 false。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>使用指定的 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例以及有关如何逐出该项的详细信息将某个缓存项添加到缓存中。</summary>
+      <param name="item">要添加的对象。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <returns>如果存在具有相同键的缓存项，则为现有的缓存项；否则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <see cref="P:System.Runtime.Caching.CacheItem.Value" /> 属性为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 对象的局对和可调过期值都设置为除 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 和 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> 字段的默认值以外的值。 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类不能基于绝对过期和可调过期的组合设置过期策略。 只有使用 <see cref="T:System.Runtime.Caching.MemoryCache" /> 实例，才能显式设定一个过期设置。 另一过期设置必须设置为 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 字段或 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> 字段。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为一个小于 <see cref="F:System.TimeSpan.Zero" /> 的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为大于一年的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> 属性不是 <see cref="T:System.Runtime.Caching.CacheItemPriority" /> 枚举的值。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>通过使用指定的键、值和绝对过期值，将某个缓存项添加到缓存中。</summary>
+      <param name="key">要添加的缓存项的唯一标识符。</param>
+      <param name="value">该缓存项的数据。</param>
+      <param name="absoluteExpiration">缓存项的固定的过期日期和时间。</param>
+      <param name="regionName">缓存中的一个可向其添加缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>如果存在具有相同键的缓存项，则为现有的缓存项；否则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 不是 <see langword="null" />。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 对象的局对和可调过期值都设置为除 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 和 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> 字段的默认值以外的值。 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类不能基于绝对过期和可调过期的组合设置过期策略。 只有使用 <see cref="T:System.Runtime.Caching.MemoryCache" /> 实例，才能显式设定一个过期设置。 另一过期设置必须设置为 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 或 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /></exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为一个小于 <see cref="F:System.TimeSpan.Zero" /> 的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为大于一年的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> 属性不是 <see cref="T:System.Runtime.Caching.CacheItemPriority" /> 枚举的值。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>通过使用指定的键、值和有关如何逐出缓存项的指定详细信息，将某个缓存项插入缓存中。</summary>
+      <param name="key">要添加或获取的缓存项的唯一标识符。</param>
+      <param name="value">该缓存项的数据。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <param name="regionName">缓存中的一个可向其添加缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为 <see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>如果已存在匹配的缓存项，则为该缓存项；否则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 对象的绝对和可调过期值设置为除 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 和 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> 的默认值以外的值。 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类不能基于绝对和可调过期的组合设置过期策略。 使用 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类时，只能显式设定一个过期设置。 另一设置必须设置为 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 或 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />。  
+
+或 - 
+已经为 <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 指定了删除回调和更新回调。 <see cref="T:System.Runtime.Caching.MemoryCache" /> 仅支持每个缓存项使用一种类型的回调。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为一个小于 <see cref="F:System.TimeSpan.Zero" /> 的值。  
+
+或 - 
+已将 <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 设置为大于一年的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> 属性不是 <see cref="T:System.Runtime.Caching.CacheItemPriority" /> 枚举的值。</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.CacheMemoryLimit">
+      <summary>获取计算机上缓存可使用的内存量（以字节为单位）。</summary>
+      <returns>内存量（以字节为单位）。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Contains(System.String,System.String)">
+      <summary>确定缓存中是否存在某个缓存项。</summary>
+      <param name="key">要搜索的缓存项的唯一标识符。</param>
+      <param name="regionName">缓存中的一个添加了缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>如果缓存中包含其键与 <paramref name="key" /> 匹配的缓存项，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <summary>创建一个 <see cref="T:System.Runtime.Caching.CacheEntryChangeMonitor" /> 对象，该对象可触发事件以响应对指定缓存项的更改。</summary>
+      <param name="keys">
+        <see cref="T:System.Runtime.Caching.CacheEntryChangeMonitor" /> 对象的唯一缓存项键的枚举。</param>
+      <param name="regionName">缓存中的一个可向其添加缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>用于监视缓存中的项的更改监视器。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="keys" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="keys" /> 集合中有一项是 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.Default">
+      <summary>获取对默认 <see cref="T:System.Runtime.Caching.MemoryCache" /> 实例的引用。</summary>
+      <returns>缓存的默认实例。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.DefaultCacheCapabilities">
+      <summary>获取缓存提供的功能的说明。</summary>
+      <returns>标志的按位组合，这些标志指示缓存实现的默认功能。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Dispose">
+      <summary>释放由 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类的当前实例占用的所有资源。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Get(System.String,System.String)">
+      <summary>从缓存中返回一个项。</summary>
+      <param name="key">要获取的缓存项的唯一标识符。</param>
+      <param name="regionName">缓存中的一个添加了缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>如果该项存在，则为对 <paramref name="key" /> 标识的缓存项的引用；否则为 <see langword="null" />。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetCacheItem(System.String,System.String)">
+      <summary>从缓存中返回 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例形式的指定项。</summary>
+      <param name="key">要获取的缓存项的唯一标识符。</param>
+      <param name="regionName">缓存中的一个添加了缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>如果该项存在，则为对 <paramref name="key" /> 标识的缓存项的引用；否则为 <see langword="null" />。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetCount(System.String)">
+      <summary>返回缓存中的缓存项总数。</summary>
+      <param name="regionName">缓存中的一个添加了缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>缓存中的项数。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetEnumerator">
+      <summary>创建一个枚举器，它可用于循环访问缓存项的集合。</summary>
+      <returns>可提供对缓存中的项的访问的枚举器对象。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetLastSize(System.String)">
+      <summary>获取已命名区域的大小。</summary>
+      <param name="regionName">区域的名称。</param>
+      <returns>已命名区域的大小。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <summary>返回与指定的键对应的一组缓存项。</summary>
+      <param name="keys">要返回的缓存项的一组唯一标识符。</param>
+      <param name="regionName">缓存中的一个添加了缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>与指定的键对应的一组缓存项。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="keys" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">集合中的单个键为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.Item(System.String)">
+      <summary>通过使用 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类的实例的默认索引器属性，获取或设置缓存中的值。</summary>
+      <param name="key">要获取或设置的缓存值的唯一标识符。</param>
+      <returns>如果该项存在，则为指定键的缓存实例中的值；否则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> 为 <see langword="null" />。  
+
+或 - 
+插入的值为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.Name">
+      <summary>获取缓存的名称。</summary>
+      <returns>缓存的名称。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.PhysicalMemoryLimit">
+      <summary>获取缓存可使用的物理内存的百分比。</summary>
+      <returns>缓存可使用的物理内存的百分比。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.PollingInterval">
+      <summary>获取在缓存更新其内存统计信息之前需等待的最大时间量。</summary>
+      <returns>在更新内存统计信息之前需等待的最大时间量。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Remove(System.String,System.Runtime.Caching.CacheEntryRemovedReason,System.String)">
+      <summary>使用原因从缓存中删除缓存项。</summary>
+      <param name="key">要移除的缓存项的唯一标识符。</param>
+      <param name="reason">删除项的原因。</param>
+      <param name="regionName">缓存中的一个添加了缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>如果在缓存中找到该项，则为已移除的缓存项；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Remove(System.String,System.String)">
+      <summary>从缓存中移除某个缓存项。</summary>
+      <param name="key">要移除的缓存项的唯一标识符。</param>
+      <param name="regionName">缓存中的一个添加了缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <returns>如果在缓存中找到该项，则为已移除的缓存项；否则为 <see langword="null" />。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>使用 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例将某个缓存项插入缓存中，以便为该缓存项提供键和值。</summary>
+      <param name="item">表示要插入的缓存项的对象。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="item" /> 为 <see langword="null" />。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItem.Key" /> 属性为 <see langword="null" />。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItem.Value" /> 属性为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">为高速缓存项传递了无效的参数组合。 如果缓存项的策略对象上设置了以下过期详细信息，将发生这种情况： 
+
+如果 <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 对象的绝对和可调过期值都设置为除 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 和 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> 字段的默认值以外的值。 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类不能基于绝对过期和可调过期设置过期策略。 使用 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类时，只能显式设定一个过期设置。 其他设置必须设置为 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 或 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> 属性。  
+
+如果为 <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 对象同时指定了删除回调和更新回调。 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类仅支持每个缓存项使用一种类型的回调。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为一个小于 <see cref="F:System.TimeSpan.Zero" /> 的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为大于一年的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> 不是 <see cref="T:System.Runtime.Caching.CacheItemPriority" /> 枚举的值。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>使用键和值将某个缓存项插入缓存中，并指定基于时间的过期详细信息。</summary>
+      <param name="key">要插入的缓存项的唯一标识符。</param>
+      <param name="value">该缓存项的数据。</param>
+      <param name="absoluteExpiration">缓存项的固定的过期日期和时间。</param>
+      <param name="regionName">缓存中的一个可向其添加缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> 为 <see langword="null" />。  
+
+或 - 
+<paramref name="Value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">为高速缓存项传递了无效的参数组合。 如果缓存项的策略对象上设置了以下过期详细信息，将发生这种情况： 
+如果 <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 对象上的绝对和可调过期值都设置为除 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 和 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> 的默认值以外的值。 发生这种情况是因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类不支持基于绝对和可调过期的过期项。 使用 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类时，只能显式设定一个过期设置。 另一设置必须设置为 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 或 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />。  
+
+如果在 <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 对象上同时指定了删除回调和更新回调。 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类仅支持每个缓存项使用一种类型的回调。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为一个小于 <see cref="F:System.TimeSpan.Zero" /> 的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为大于一年的值。  
+
+或 - 
+
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> 属性不是 <see cref="T:System.Runtime.Caching.CacheItemPriority" /> 枚举的值。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>通过使用键、值和逐出设置，将某个缓存项插入缓存中。</summary>
+      <param name="key">要插入的缓存项的唯一标识符。</param>
+      <param name="value">该缓存项的数据。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <param name="regionName">缓存中的一个可向其添加缓存项的命名区域。 不要为该参数传递值。 默认情况下，此参数为<see langword="null" />，因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类未实现区域。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> 为 <see langword="null" />。  
+
+或 - 
+<paramref name="value" /> 为 <see langword="null" />  
+
+或 - 
+已传递给 <see cref="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback" /> 属性中的帮助程序方法的回调引用为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">高速缓存项存在无效的参数组合。 如果缓存项的策略对象上设置了以下过期详细信息，将发生这种情况： 
+如果 <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 对象上的绝对和可调过期值都设置为除 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 和 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> 的默认值以外的值。 这是因为 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类不支持基于绝对和可调过期的过期项。 使用 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类时，只能显式设定一个过期设置。 另一设置必须设置为 <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> 或 <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />。  
+
+如果在 <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> 类上同时指定了删除回调和更新回调。 <see cref="T:System.Runtime.Caching.MemoryCache" /> 类仅支持每个缓存项使用一种类型的回调。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为一个小于 <see cref="F:System.TimeSpan.Zero" /> 的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> 属性设置为大于一年的值。  
+
+或 - 
+<see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> 属性不是 <see cref="T:System.Runtime.Caching.CacheItemPriority" /> 枚举的值。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="regionName" /> 不是 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.System#Collections#IEnumerable#GetEnumerator">
+      <summary>为在泛型集合上进行迭代提供支持。</summary>
+      <returns>可提供对缓存中的项的访问的枚举器对象。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Trim(System.Int32)">
+      <summary>从缓存对象中移除指定百分比的缓存项。</summary>
+      <param name="percent">要移除的缓存项总数的百分比。</param>
+      <returns>从缓存中移除的项数。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.ObjectCache">
+      <summary>表示一个对象缓存并提供用于访问该对象缓存的基方法和属性。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.#ctor">
+      <summary>从派生类中的构造函数进行调用以便初始化 <see cref="T:System.Runtime.Caching.ObjectCache" /> 类。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Add(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>在派生类中重写时，尝试以 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例的形式将缓存项插入缓存中，并添加有关应如何逐出该项的详细信息。</summary>
+      <param name="item">要添加的对象。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <returns>如果插入成功，则为 <see langword="true" />；如果缓存中已存在具有与 <paramref name="item" /> 相同的键的项，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Add(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>在派生类中重写时，向缓存中插入缓存项，而不会覆盖任何现有的缓存项。</summary>
+      <param name="key">该缓存项的唯一标识符。</param>
+      <param name="value">要插入的对象。</param>
+      <param name="absoluteExpiration">缓存项的固定的过期日期和时间。 调用 <see cref="Overload:System.Runtime.Caching.ObjectCache.Add" /> 方法时，此参数是必需的。</param>
+      <param name="regionName">可选。 缓存中的一个可用来添加缓存项的命名区域（如果实现了区域）。 由于未在 .NET Framework 4 中实现区域，因此默认值为 <see langword="null" />。</param>
+      <returns>如果插入成功，则为 <see langword="true" />；如果缓存中已存在具有与 <paramref name="key" /> 相同的键的项，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Add(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>在派生类中重写时，向缓存中插入缓存项，同时指定有关如何逐出该项的信息。</summary>
+      <param name="key">该缓存项的唯一标识符。</param>
+      <param name="value">要插入的对象。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <param name="regionName">可选。 缓存中的一个可用来添加缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>如果尝试插入成功，则为 <see langword="true" />；如果缓存中已存在具有与 <paramref name="key" /> 相同的键的项，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>在派生类中重写时，向缓存中插入指定的 <see cref="T:System.Runtime.Caching.CacheItem" /> 对象，同时指定有关如何逐出该项的信息。</summary>
+      <param name="value">要插入的对象。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <returns>如果存在具有相同键的缓存项，则为指定的缓存项；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>在派生类中重写时，通过使用键、表示缓存项的对象、绝对过期值和要添加缓存的可选区域，向缓存中插入缓存项。</summary>
+      <param name="key">该缓存项的唯一标识符。</param>
+      <param name="value">要插入的对象。</param>
+      <param name="absoluteExpiration">缓存项的固定的过期日期和时间。</param>
+      <param name="regionName">可选。 缓存中的一个可用来添加缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>如果存在具有相同键的缓存项，则为指定缓存项的值；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>在派生类中重写时，向缓存中插入缓存项，并指定该缓存项的键和值以及有关如何逐出该项的信息。</summary>
+      <param name="key">该缓存项的唯一标识符。</param>
+      <param name="value">要插入的对象。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <param name="regionName">可选。 缓存中的一个可用来添加缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>如果存在具有相同键的缓存项，则为指定缓存项的值；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Contains(System.String,System.String)">
+      <summary>在派生类中重写时，检查缓存中是否已存在该缓存项。</summary>
+      <param name="key">该缓存项的唯一标识符。</param>
+      <param name="regionName">可选。 缓存中包含该缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>如果缓存中包含具有与 <paramref name="key" /> 相同的键值的缓存项，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <summary>在派生类中重写时，创建一个 <see cref="T:System.Runtime.Caching.CacheEntryChangeMonitor" /> 对象，该对象可触发事件以响应对指定缓存项的更改。</summary>
+      <param name="keys">要监视的缓存项的唯一标识符。</param>
+      <param name="regionName">可选。 缓存中包含 <paramref name="keys" /> 参数中的缓存键的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>用于监视缓存中的缓存项的更改监视器。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.ObjectCache.DefaultCacheCapabilities">
+      <summary>在派生类中重写时，获取缓存实现所提供的功能的说明。</summary>
+      <returns>标志的按位组合，这些标志指示缓存实现的默认功能。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Get(System.String,System.String)">
+      <summary>在派生类中重写时，以对象的形式获取缓存中的指定缓存项。</summary>
+      <param name="key">要获取的缓存项的唯一标识符。</param>
+      <param name="regionName">可选。 缓存中添加了缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>由 <paramref name="key" /> 标识的缓存项。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetCacheItem(System.String,System.String)">
+      <summary>在派生类中重写时，以 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例的形式获取缓存中的指定缓存项。</summary>
+      <param name="key">要获取的缓存项的唯一标识符。</param>
+      <param name="regionName">可选。 缓存中添加了缓存项的命名区域（如果实现了区域）。 由于未在 .NET Framework 4 中实现区域，因此默认值为 <see langword="null" />。</param>
+      <returns>由 <paramref name="key" /> 标识的缓存项。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetCount(System.String)">
+      <summary>在派生类中重写时，获取缓存中的缓存项总数。</summary>
+      <param name="regionName">可选。 缓存中应计算其缓存项数的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>缓存中的缓存项数。 如果 <paramref name="regionName" /> 不为 <see langword="null" />，则计数指示指定的缓存区域中的项数。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetEnumerator">
+      <summary>在派生类中重写时，创建可用于循环访问缓存项的集合的枚举器。</summary>
+      <returns>可提供对缓存中的缓存项进行访问的枚举器对象。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <summary>在派生类中重写时，获取与指定键对应的一组缓存项。</summary>
+      <param name="keys">要获取的缓存项的唯一标识符集合。</param>
+      <param name="regionName">可选。 缓存中添加了一个或多个缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>一个表示缓存项的键/值对字典。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetValues(System.String,System.String[])">
+      <summary>获取与指定的键对应的一组缓存项。</summary>
+      <param name="regionName">可选。 缓存中添加了一个或多个缓存项的命名区域（如果实现了区域）。 由于未在 .NET Framework 4 中实现区域，因此默认值为 <see langword="null" />。</param>
+      <param name="keys">要获取的缓存项的唯一标识符集合。</param>
+      <returns>一个表示缓存项的键/值对字典。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.ObjectCache.Host">
+      <summary>获取或设置对托管宿主环境的引用，该环境可用于 <see cref="T:System.Runtime.Caching.ObjectCache" /> 实现并且可为 <see cref="T:System.Runtime.Caching.ObjectCache" /> 实现提供宿主特定服务。</summary>
+      <returns>对缓存识别托管宿主环境的引用。</returns>
+      <exception cref="T:System.ArgumentNullException">为属性分配的值为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">已尝试多次设置该属性值。</exception>
+    </member>
+    <member name="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration">
+      <summary>获取一个值，该值指示某个缓存项没有绝对过期。</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.ObjectCache.Item(System.String)">
+      <summary>获取或设置 <see cref="T:System.Runtime.Caching.ObjectCache" /> 类的默认索引器。</summary>
+      <param name="key">缓存中的缓存项的唯一标识符。</param>
+      <returns>用作该缓存实例的索引器的键。</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.ObjectCache.Name">
+      <summary>获取某个特定 <see cref="T:System.Runtime.Caching.ObjectCache" /> 实例的名称。</summary>
+      <returns>某个特定缓存实例的名称。</returns>
+    </member>
+    <member name="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration">
+      <summary>指示某个缓存项没有可调过期时间。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Remove(System.String,System.String)">
+      <summary>在派生类中重写时，从缓存中移除缓存项。</summary>
+      <param name="key">该缓存项的唯一标识符。</param>
+      <param name="regionName">可选。 缓存中添加了缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+      <returns>一个对象，表示由该键指定的已移除缓存项的值；如果找不到指定的项，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>在派生类中重写时，以 <see cref="T:System.Runtime.Caching.CacheItem" /> 实例的形式向缓存中插入缓存项，同时指定有关如何逐出该项的信息。</summary>
+      <param name="item">要添加的缓存项。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>在派生类中重写时，向缓存中插入缓存项，同时指定基于时间的过期详细信息。</summary>
+      <param name="key">该缓存项的唯一标识符。</param>
+      <param name="value">要插入的对象。</param>
+      <param name="absoluteExpiration">缓存项的固定的过期日期和时间。</param>
+      <param name="regionName">可选。 缓存中的一个可用来添加缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>在派生类中重写时，向缓存中插入缓存项。</summary>
+      <param name="key">该缓存项的唯一标识符。</param>
+      <param name="value">要插入的对象。</param>
+      <param name="policy">一个包含该缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期更多的逐出选项。</param>
+      <param name="regionName">可选。 缓存中的一个可用来添加缓存项的命名区域（如果实现了区域）。 可选参数的默认值为 <see langword="null" />。</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String@System#Object}}#GetEnumerator">
+      <summary>支持对强类型集合迭代。</summary>
+      <returns>可提供对缓存中的缓存项进行访问的枚举器对象。</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.System#Collections#IEnumerable#GetEnumerator">
+      <summary>支持对泛型集合进行迭代。</summary>
+      <returns>可提供对缓存中的项的访问的枚举器对象。</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.OnChangedCallback">
+      <summary>定义对某个方法的引用，该方法用于处理对被监视项的更改。</summary>
+      <param name="state">已更改的依赖对象的状态。</param>
+    </member>
+    <member name="T:System.Runtime.Caching.SqlChangeMonitor">
+      <summary>提供对 SQL Server 数据库的更改监视。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.SqlChangeMonitor.#ctor(System.Data.SqlClient.SqlDependency)">
+      <summary>初始化 <see cref="T:System.Runtime.Caching.SqlChangeMonitor" /> 类的新实例。</summary>
+      <param name="dependency">一个表示 ADO.NET <see cref="T:System.Data.SqlClient.SqlDependency" /> 对象的对象。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dependency" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.SqlChangeMonitor.UniqueId">
+      <summary>获取 <see cref="T:System.Runtime.Caching.SqlChangeMonitor" /> 实例的标识符。</summary>
+      <returns>更改监视器的标识符。</returns>
+    </member>
+  </members>
+</doc>

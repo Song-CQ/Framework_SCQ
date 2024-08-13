@@ -1,0 +1,1554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Threading.Tasks.Dataflow</name>
+  </assembly>
+  <members>
+    <member name="T:System.Threading.Tasks.Dataflow.ActionBlock`1">
+      <summary>提供数据流块，其调用为每个接收的数据提供的 <see cref="T:System.Action`1" /> 委托。</summary>
+      <typeparam name="TInput">此 <see cref="T:System.Threading.Tasks.Dataflow.ActionBlock`1" /> 操作的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.#ctor(System.Action{`0})">
+      <summary>用指定的操作初始化 <see cref="T:System.Threading.Tasks.Dataflow.ActionBlock`1" /> 类的新实例。</summary>
+      <param name="action">使用接收的每个数据元素调用的操作。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="action" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.#ctor(System.Action{`0},System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions)">
+      <summary>初始化指定操作和配置选项的 <see cref="T:System.Threading.Tasks.Dataflow.ActionBlock`1" /> 类的新实例。</summary>
+      <param name="action">使用接收的每个数据元素调用的操作。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.ActionBlock`1" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="action" /> 为 null。 - 或 - <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.#ctor(System.Func{`0,System.Threading.Tasks.Task})">
+      <summary>用指定的操作初始化 <see cref="T:System.Threading.Tasks.Dataflow.ActionBlock`1" /> 类的新实例。</summary>
+      <param name="action">使用接收的每个数据元素调用的操作。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="action" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.#ctor(System.Func{`0,System.Threading.Tasks.Task},System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions)">
+      <summary>初始化指定操作和配置选项的 <see cref="T:System.Threading.Tasks.Dataflow.ActionBlock`1" /> 类的新实例。</summary>
+      <param name="action">使用接收的每个数据元素调用的操作。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.ActionBlock`1" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="action" /> 为 null。 - 或 - <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.Complete">
+      <summary>通知其不应该接收活生成任何更多的消息且不应使用任何更多的延迟消息的数据流块。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.ActionBlock`1.Completion">
+      <summary>获取表示数据流块的异步操作和实现的 <see cref="T:System.Threading.Tasks.Task" /> 对象。</summary>
+      <returns>已完成任务。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.ActionBlock`1.InputCount">
+      <summary>获取等待被此代码块处理的输入项的数目。</summary>
+      <returns>等待被此代码块处理的输入项的数目。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.Post(`0)">
+      <summary>将项目发送到目标数据流块。</summary>
+      <returns>输入项数。</returns>
+      <param name="item">提供给目标的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致数据流块在出错的状态下完成。</summary>
+      <param name="exception">导致出错的异常。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)">
+      <summary>提供信息至数据流块，并提供使用或延迟信息的机会。</summary>
+      <returns>所提供消息的状态。如果消息为该目标接受，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" />，将返回，并且源不应再使用提供的消息，因为其现在归目标所有。如果消息因该目标延迟，则将以通知的形式返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed" />，该通知是目标稍后可能会尝试使用或保留消息的通知；同时，源仍拥有消息并将其提供给其他块。如果目标应已推迟消息，但是 <paramref name="source" /> 为 null，<see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" /> 则将返回。如果尝试了接受此则消息但由于将消息交付给另一目标或放弃该消息的源而错过该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable" />。如果目标选择不接受消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果源选择不接受该消息并将从不从此源接受另一则消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently" />。</returns>
+      <param name="messageHeader">提供的消息的标题。</param>
+      <param name="messageValue">要提供的消息值。</param>
+      <param name="source">提供消息的数据流块。这可能为 null。</param>
+      <param name="consumeToAccept">为使用此消息，true 指示目标于返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" /> 前在进行对 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" /> 调用间同步调用 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 不是有效的。如果使用非 null <paramref name="source" /> 提供，则<paramref name="consumeToAccept" /> 可能仅为 true</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ActionBlock`1.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.BatchBlock`1">
+      <summary>提供将输入批处理到数组中的数据流。</summary>
+      <typeparam name="T">指定数据的类型将放置于多个批。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.#ctor(System.Int32)">
+      <summary>初始化指定批次大小的新 <see cref="T:System.Threading.Tasks.Dataflow.BatchBlock`1" />。</summary>
+      <param name="batchSize">分组为批的项数。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="batchSize" /> 必须是正数。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.#ctor(System.Int32,System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions)">
+      <summary>用指定的批大小、定义选项和块选项初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.BatchBlock`1" />。</summary>
+      <param name="batchSize">分组为批的项数。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.BatchBlock`1" />的选项。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="batchSize" /> 必须是正数。 - 或 - 如果已设置非默认值，则 <paramref name="batchSize" /> 必定小于 <see cref="P:System.Threading.Tasks.Dataflow.DataflowBlockOptions.BoundedCapacity" /> 选项的值。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchBlock`1.BatchSize">
+      <summary>获取此 <see cref="T:System.Threading.Tasks.Dataflow.BatchBlock`1" /> 生成的批的大小。</summary>
+      <returns>批次大小。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchBlock`1.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{`0[]},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchBlock`1.OutputCount">
+      <summary>获取可从此块中接收的输出项的数量。</summary>
+      <returns>输出项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0[]},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 messageValue传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0[]})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0[]})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)">
+      <summary>向 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 提供消息，向目标提供使用和延迟消息的机会。</summary>
+      <returns>所提供消息的状态。如果消息为该目标接受，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" />，将返回，并且源不应再使用提供的消息，因为其现在归目标所有。如果消息因该目标延迟，则将以通知的形式返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed" />，该通知是目标稍后可能会尝试使用或保留消息的通知；同时，源仍拥有消息并将其提供给其他块。如果目标应已推迟消息，但是 <paramref name="source" /> 为 null，<see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" /> 则将返回。如果尝试了接受此则消息但由于将消息交付给另一目标或放弃该消息的源而错过该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable" />。如果目标选择不接受消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果源选择不接受该消息并将从不从此源接受另一则消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently" />。</returns>
+      <param name="messageHeader">表示要提供的消息的标头的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="messageValue">要提供的消息值。</param>
+      <param name="source">提供消息的 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" />。这可能为 null。</param>
+      <param name="consumeToAccept">为使用此消息，设置为 true，以指示目标于返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" /> 前在进行对 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" /> 调用间同步调用 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" />。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 不是有效的。如果使用非 null <paramref name="source" /> 提供，则<paramref name="consumeToAccept" /> 可能仅为 true</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.TriggerBatch">
+      <summary>触发 <see cref="T:System.Threading.Tasks.Dataflow.BatchBlock`1" /> 以启动批处理操作，即使当前排队或推迟项的数量小于 <see cref="P:System.Threading.Tasks.Dataflow.BatchBlock`1.BatchSize" />。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.TryReceive(System.Predicate{`0[]},`0[]@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchBlock`1.TryReceiveAll(System.Collections.Generic.IList{`0[]}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2">
+      <summary>提供批处理指定数目输入的数据流块，这些输入为提供给目标的潜在不同的类型。</summary>
+      <typeparam name="T1">指定由块的第一个目标接受的数据类型。</typeparam>
+      <typeparam name="T2">指定由块的第二个目标接受的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.#ctor(System.Int32)">
+      <summary>初始化指定配置的新 <see cref="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2" />。</summary>
+      <param name="batchSize">分组为批的项数。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="batchSize" /> 必须是正数。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.#ctor(System.Int32,System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions)">
+      <summary>初始化指定配置的新 <see cref="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2" />。</summary>
+      <param name="batchSize">分组为批的项数。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2" />的选项。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="batchSize" /> 必须是正数。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.BatchSize">
+      <summary>获取此 <see cref="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2" /> 生成的批的大小。</summary>
+      <returns>批次大小。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1}}},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.OutputCount">
+      <summary>获取可从此块中接收的输出项的数量。</summary>
+      <returns>输出项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1}}},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 messageValue传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1}}})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1}}})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.Target1">
+      <summary>获取可用于提供第一种类型的消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.Target2">
+      <summary>获取可用于提供第二种类型的消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.TryReceive(System.Predicate{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1}}},System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1}}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2.TryReceiveAll(System.Collections.Generic.IList{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1}}}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3">
+      <summary>提供批处理指定数目输入的数据流块，这些输入为提供给目标的潜在不同的类型。</summary>
+      <typeparam name="T1">指定由块的第一个目标接受的数据类型。</typeparam>
+      <typeparam name="T2">指定由块的第二个目标接受的数据类型。</typeparam>
+      <typeparam name="T3">指定由块的第三个目标接受的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.#ctor(System.Int32)">
+      <summary>初始化指定配置的新 <see cref="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3" />。</summary>
+      <param name="batchSize">分组为批的项数。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="batchSize" /> 必须是正数。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.#ctor(System.Int32,System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions)">
+      <summary>初始化指定配置的新 <see cref="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3" />。</summary>
+      <param name="batchSize">分组为批的项数。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`2" />的选项。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="batchSize" /> 必须是正数。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.BatchSize">
+      <summary>获取生成此 <see cref="T:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3" /> 的批大小。</summary>
+      <returns>批次大小。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1},System.Collections.Generic.IList{`2}}},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">如果源应在成功传播单一消息后取消链接，则为 true；甚至在单一消息传播后仍将保持连接的 false。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.OutputCount">
+      <summary>获取可从此块中接收的输出项的数量。</summary>
+      <returns>输出项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1},System.Collections.Generic.IList{`2}}},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 messageValue传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1},System.Collections.Generic.IList{`2}}})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1},System.Collections.Generic.IList{`2}}})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.Target1">
+      <summary>获取可用于提供第一种类型的消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.Target2">
+      <summary>获取可用于提供第二种类型的消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.Target3">
+      <summary>获取可用于提供第三种类型消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.TryReceive(System.Predicate{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1},System.Collections.Generic.IList{`2}}},System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1},System.Collections.Generic.IList{`2}}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项目均通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BatchedJoinBlock`3.TryReceiveAll(System.Collections.Generic.IList{System.Tuple{System.Collections.Generic.IList{`0},System.Collections.Generic.IList{`1},System.Collections.Generic.IList{`2}}}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.BroadcastBlock`1">
+      <summary>提供缓冲区，用于一次存储最多一个元素，在每个消息抵达时覆盖每个消息。  信息传播至所有的链接目标，这样可以使用克隆信息。</summary>
+      <typeparam name="T">指定由数据流块缓冲的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.#ctor(System.Func{`0,`0})">
+      <summary>用指定的克隆函数初始化 <see cref="T:System.Threading.Tasks.Dataflow.BroadcastBlock`1" />。</summary>
+      <param name="cloningFunction">用以在提供给其他块时克隆数据的函数。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.#ctor(System.Func{`0,`0},System.Threading.Tasks.Dataflow.DataflowBlockOptions)">
+      <summary>用指定的克隆函数和 <see cref="T:System.Threading.Tasks.Dataflow.DataflowBlockOptions" /> 初始化 <see cref="T:System.Threading.Tasks.Dataflow.BroadcastBlock`1" />。</summary>
+      <param name="cloningFunction">用以在提供给其他块时克隆数据的函数。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.BroadcastBlock`1" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BroadcastBlock`1.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.System#Threading#Tasks#Dataflow#IReceivableSourceBlock{TOutput}#TryReceiveAll(System.Collections.Generic.IList{`0}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 <paramref name="messageValue" /> 传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)">
+      <summary>向 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 提供消息，向目标提供使用和延迟消息的机会。</summary>
+      <returns>所提供消息的状态。如果消息为该目标接受，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" />，将返回，并且源不应再使用提供的消息，因为其现在归目标所有。如果消息因该目标延迟，则将以通知的形式返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed" />，该通知是目标稍后可能会尝试使用或保留消息的通知；同时，源仍拥有消息并将其提供给其他块。如果目标应已推迟消息，但是 <paramref name="source" /> 为 null，<see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" /> 则将返回。如果尝试了接受此则消息但由于将消息交付给另一目标或放弃该消息的源而错过该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable" />。如果目标选择不接受消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果源选择不接受该消息并将从不从此源接受另一则消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently" />。</returns>
+      <param name="messageHeader">表示要提供的消息的标头的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="messageValue">要提供的消息值。</param>
+      <param name="source">提供消息的 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" />。这可能为 null。</param>
+      <param name="consumeToAccept">为使用此消息，设置为 true，以指示目标于返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" /> 前在进行对 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" /> 调用间同步调用 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" />。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 不是有效的。如果使用非 null <paramref name="source" /> 提供，则<paramref name="consumeToAccept" /> 可能仅为 true</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BroadcastBlock`1.TryReceive(System.Predicate{`0},`0@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.BufferBlock`1">
+      <summary>提供用于存储数据的缓冲区。</summary>
+      <typeparam name="T">指定由数据流块缓冲的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.#ctor">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.BufferBlock`1" />。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.#ctor(System.Threading.Tasks.Dataflow.DataflowBlockOptions)">
+      <summary>用指定的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowBlockOptions" /> 初始化一个新的 <see cref="T:System.Threading.Tasks.Dataflow.BufferBlock`1" />。</summary>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.BufferBlock`1" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BufferBlock`1.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.BufferBlock`1.Count">
+      <summary>获取存储在缓冲区中项的数目。</summary>
+      <returns>项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 <paramref name="messageValue" /> 传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)">
+      <summary>向 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 提供消息，向目标提供使用和延迟消息的机会。</summary>
+      <returns>所提供消息的状态。如果消息为该目标接受，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" />，将返回，并且源不应再使用提供的消息，因为其现在归目标所有。如果消息因该目标延迟，则将以通知的形式返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed" />，该通知是目标稍后可能会尝试使用或保留消息的通知；同时，源仍拥有消息并将其提供给其他块。如果目标应已推迟消息，但是 <paramref name="source" /> 为 null，<see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" /> 则将返回。如果尝试了接受此则消息但由于将消息交付给另一目标或放弃该消息的源而错过该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable" />。如果目标选择不接受消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果源选择不接受该消息并将从不从此源接受另一则消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently" />。</returns>
+      <param name="messageHeader">表示要提供的消息的标头的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="messageValue">要提供的消息值。</param>
+      <param name="source">提供消息的 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" />。这可能为 null。</param>
+      <param name="consumeToAccept">为使用此消息，设置为 true，以指示目标于返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" /> 前在进行对 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" /> 调用间同步调用 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" />。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 不是有效的。如果使用非 null <paramref name="source" /> 提供，则<paramref name="consumeToAccept" /> 可能仅为 true</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.TryReceive(System.Predicate{`0},`0@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.BufferBlock`1.TryReceiveAll(System.Collections.Generic.IList{`0}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.DataflowBlock">
+      <summary>提供一组用于处理数据流块的静态方法（在 Visual Basic 中为共享方法）。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.AsObservable``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0})">
+      <summary>在 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 创建新的 <see cref="T:System.IObservable`1" /> 抽象。</summary>
+      <returns>使观察者可以订阅源的 <see cref="T:System.IObservable`1" />。</returns>
+      <param name="source">要包装的源。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.AsObserver``1(System.Threading.Tasks.Dataflow.ITargetBlock{``0})">
+      <summary>在 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 创建新的 <see cref="T:System.IObserver`1" /> 抽象。</summary>
+      <returns>包装目标块的观察者。</returns>
+      <param name="target">要包装的目标。</param>
+      <typeparam name="TInput">指定由目标块接受的输入类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Choose``2(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Action{``0},System.Threading.Tasks.Dataflow.ISourceBlock{``1},System.Action{``1})">
+      <summary>监视两种数据流源, 调用出来程序以使无论哪一种源都可首先获得数据。</summary>
+      <returns>一个表示异步选择的 <see cref="T:System.Threading.Tasks.Task`1" />。 如果在选择完成之前完成这两个源，则将取消结果任务。 如果源的其中之一具有可利用数据并成功传播到选定内容时，则结果任务将在处理程序完成时完成；如果该处理程序引发异常，则该任务将在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下结束并将包含未经处理的异常。 否则，此任务将以其 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 设置至 0 或 1 来分别表示第一或第二源结束。 此方法将只使用来自两个数据源中的一个元素（不会同时使用两个）。</returns>
+      <param name="source1">第一个源。</param>
+      <param name="action1">在第一个源的数据上执行的处理程序。</param>
+      <param name="source2">第二个源。</param>
+      <param name="action2">在第二个源的数据上执行的处理程序。</param>
+      <typeparam name="T1">指定第一个源中所包含的数据的类型。</typeparam>
+      <typeparam name="T2">指定第二个源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source1" /> 为 null。 - 或 - <paramref name="action1" /> 为 null。 - 或 - <paramref name="source2" /> 为 null。 - 或 - <paramref name="action2" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Choose``2(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Action{``0},System.Threading.Tasks.Dataflow.ISourceBlock{``1},System.Action{``1},System.Threading.Tasks.Dataflow.DataflowBlockOptions)">
+      <summary>监视两种数据流源, 调用出来程序以使无论哪一种源都可首先获得数据。</summary>
+      <returns>一个表示异步选择的 <see cref="T:System.Threading.Tasks.Task`1" />。 如果在选择完成之前完成数据源，或者如果在选择完成之前作为 <see cref="T:System.Threading.CancellationToken" /> 提供作为 <paramref name="dataflowBlockOptions" /> 一部分提供，则取消结果任务。 如果源的其中之一具有可利用数据并成功传播到选定内容时，则结果任务将在处理程序完成时完成；如果该处理程序引发异常，则该任务将在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下结束并将包含未经处理的异常。 否则，此任务将以其 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 设置至 0 或 1 来分别表示第一或第二源结束。 此方法将只使用来自两个数据源中的一个元素（不会同时使用两个）。 如果在接收元素后请求取消，则该取消请求将被忽略并且相关的处理程序将被允许执行。</returns>
+      <param name="source1">第一个源。</param>
+      <param name="action1">在第一个源的数据上执行的处理程序。</param>
+      <param name="source2">第二个源。</param>
+      <param name="action2">在第二个源的数据上执行的处理程序。</param>
+      <param name="dataflowBlockOptions">用来配置此选择的选项。</param>
+      <typeparam name="T1">指定第一个源中所包含的数据的类型。</typeparam>
+      <typeparam name="T2">指定第二个源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source1" /> 为 null。 - 或 - <paramref name="action1" /> 为 null。 - 或 - <paramref name="source2" /> 为 null。 - 或 - <paramref name="action2" /> 为 null。 - 或 - <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Choose``3(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Action{``0},System.Threading.Tasks.Dataflow.ISourceBlock{``1},System.Action{``1},System.Threading.Tasks.Dataflow.ISourceBlock{``2},System.Action{``2})">
+      <summary>监视三种数据流源，调用提供处理程序以使无论哪一种源都可以首先获得数据。</summary>
+      <returns>一个表示异步选择的 <see cref="T:System.Threading.Tasks.Task`1" />。 如果在选择完成之前完成所有源，则将取消结果任务。 如果源的其中之一具有可利用数据并成功传播到选定内容时，则结果任务将在处理程序完成时完成；如果该处理程序引发异常，则该任务将在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下结束并将包含未经处理的异常。 否则，此任务将以 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 设置至源的 0-based 索引结束。 此方法将只使用来自某个数据源的元素（不会超过一种）。</returns>
+      <param name="source1">第一个源。</param>
+      <param name="action1">在第一个源的数据上执行的处理程序。</param>
+      <param name="source2">第二个源。</param>
+      <param name="action2">在第二个源的数据上执行的处理程序。</param>
+      <param name="source3">第三个源。</param>
+      <param name="action3">在第三方源的数据上执行的处理程序。</param>
+      <typeparam name="T1">指定第一个源中所包含的数据的类型。</typeparam>
+      <typeparam name="T2">指定第二个源中所包含的数据的类型。</typeparam>
+      <typeparam name="T3">指定第三源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source1" /> 为 null。 - 或 - <paramref name="action1" /> 为 null。 - 或 - <paramref name="source2" /> 为 null。 - 或 - <paramref name="action2" /> 为 null。 - 或 - <paramref name="source3" /> 为 null。 - 或 - <paramref name="action3" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Choose``3(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Action{``0},System.Threading.Tasks.Dataflow.ISourceBlock{``1},System.Action{``1},System.Threading.Tasks.Dataflow.ISourceBlock{``2},System.Action{``2},System.Threading.Tasks.Dataflow.DataflowBlockOptions)">
+      <summary>监视三种数据流源，调用提供处理程序以使无论哪一种源都可以首先获得数据。</summary>
+      <returns>一个表示异步选择的 <see cref="T:System.Threading.Tasks.Task`1" />。 如果在选择完成之前完成所有数据源，或者如果在选择完成之前作为 <see cref="T:System.Threading.CancellationToken" /> 提供作为 <paramref name="dataflowBlockOptions" /> 一部分提供，则取消结果任务。 如果源的其中之一具有可利用数据并成功传播到选定内容时，则结果任务将在处理程序完成时完成；如果该处理程序引发异常，则该任务将在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下结束并将包含未经处理的异常。 否则，此任务将以 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 设置至源的 0-based 索引结束。 此方法将只使用来自某个数据源的元素（不会超过一种）。 如果在接收元素后请求取消，则该取消请求将被忽略并且相关的处理程序将被允许执行。</returns>
+      <param name="source1">第一个源。</param>
+      <param name="action1">在第一个源的数据上执行的处理程序。</param>
+      <param name="source2">第二个源。</param>
+      <param name="action2">在第二个源的数据上执行的处理程序。</param>
+      <param name="source3">第三个源。</param>
+      <param name="action3">在第三方源的数据上执行的处理程序。</param>
+      <param name="dataflowBlockOptions">用来配置此选择的选项。</param>
+      <typeparam name="T1">指定第一个源中所包含的数据的类型。</typeparam>
+      <typeparam name="T2">指定第二个源中所包含的数据的类型。</typeparam>
+      <typeparam name="T3">指定第三源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source1" /> 为 null。 - 或 - <paramref name="action1" /> 为 null。 - 或 - <paramref name="source2" /> 为 null。 - 或 - <paramref name="action2" /> 为 null。 - 或 - <paramref name="source3" /> 为 null。 - 或 - <paramref name="action3" /> 为 null。 - 或 - <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Encapsulate``2(System.Threading.Tasks.Dataflow.ITargetBlock{``0},System.Threading.Tasks.Dataflow.ISourceBlock{``1})">
+      <summary>将目标和源封装入单一的传播程序。</summary>
+      <returns>封装的目标和源。</returns>
+      <param name="target">要封装的目标。</param>
+      <param name="source">要封装的源。</param>
+      <typeparam name="TInput">指定由目标块接受的应输入的输入类型。</typeparam>
+      <typeparam name="TOutput">指定由源产生的输出的类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.LinkTo``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Threading.Tasks.Dataflow.ITargetBlock{``0})">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 <see cref="T:System.IDisposable" />。</returns>
+      <param name="source">链接的源。</param>
+      <param name="target">该源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。 - 或 - <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.LinkTo``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Threading.Tasks.Dataflow.ITargetBlock{``0},System.Predicate{``0})">
+      <summary>用指定的筛选器链接 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 至指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 <see cref="T:System.IDisposable" />。</returns>
+      <param name="source">链接的源。</param>
+      <param name="target">该源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="predicate">在从源传播到目标的过程中消息必须有序通过筛选器。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。 - 或 - <paramref name="target" /> 为 null。 - 或 - <paramref name="predicate" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.LinkTo``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Threading.Tasks.Dataflow.ITargetBlock{``0},System.Threading.Tasks.Dataflow.DataflowLinkOptions,System.Predicate{``0})">
+      <summary>用指定的筛选器链接 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 至指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 <see cref="T:System.IDisposable" />。</returns>
+      <param name="source">链接的源。</param>
+      <param name="target">该源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">一个枚举值指定如何计算数据流块之间的链接。</param>
+      <param name="predicate">在从源传播到目标的过程中消息必须有序通过筛选器。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 是 null（在 Visual Basic 中为 Nothing）。 - 或 - <paramref name="target" /> 是 null（在 Visual Basic 中为 Nothing）。 - 或 - <paramref name="linkOptions" /> 是 null（在 Visual Basic 中为 Nothing）。 - 或 - <paramref name="predicate" /> 是 null（在 Visual Basic 中为 Nothing）。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.NullTarget``1">
+      <summary>获取目标块，此目标块能同步接收为其提供的所有信息并放置它们。</summary>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 接受并后续放置所有提供的信息。</returns>
+      <typeparam name="TInput">该块可以接受消息的类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.OutputAvailableAsync``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0})">
+      <summary>提供可异步监视可利用的输出的源的 <see cref="T:System.Threading.Tasks.Task`1" /> 。</summary>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Task`1" /> 通知多个输出是否可用和何时可用。 如果在任务完成时，它的 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 是 true，更多输出在源处是可用的 (尽管源的另一个使用者可能检索数据)。  如果它返回 false，则会因为在提供输入之前完成的源而导致更多输出不可用。</returns>
+      <param name="source">对监视的源。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.OutputAvailableAsync``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Threading.CancellationToken)">
+      <summary>提供可异步监视可利用的输出的源的 <see cref="T:System.Threading.Tasks.Task`1" /> 。</summary>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Task`1" /> 通知多个输出是否可用和何时可用。 如果在任务完成时，它的 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 是 true，更多输出在源处是可用的 (尽管源的另一个使用者可能检索数据)。 如果它返回 false，则会因为在提供输入之前完成的源而导致更多输出不可用。 如果它返回 false，则会因为在提供输入之前完成的源而导致更多输出不可用。</returns>
+      <param name="source">对监视的源。</param>
+      <param name="cancellationToken">用于取消异步操作的取消标记。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Post``1(System.Threading.Tasks.Dataflow.ITargetBlock{``0},``0)">
+      <summary>将项发送到 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 中。</summary>
+      <returns>如果项已由目标锁接受，则为 true；否则为 false。</returns>
+      <param name="target">目标块。</param>
+      <param name="item">提供给目标的项。</param>
+      <typeparam name="TInput">指定由目标块接受的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Receive``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0})">
+      <summary>同步接受源中的项。</summary>
+      <returns>接收的项。</returns>
+      <param name="source">要从中进行接收的源。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">不能从源中接收项。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Receive``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Threading.CancellationToken)">
+      <summary>同步接受源中的项。</summary>
+      <returns>接收的项。</returns>
+      <param name="source">要从中进行接收的源。</param>
+      <param name="cancellationToken">可用于取消接收操作的 <see cref="T:System.Threading.CancellationToken" />。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">不能从源中接收项。</exception>
+      <exception cref="T:System.OperationCanceledException">在从源接收项目之前被取消的操作。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Receive``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.TimeSpan)">
+      <summary>同步接受源中的项。</summary>
+      <returns>接收的项。</returns>
+      <param name="source">要从中进行接收的源。</param>
+      <param name="timeout">一个 <see cref="T:System.TimeSpan" />，表示等待的毫秒数；或者一个 TimeSpan，表示 -1 毫秒（无限期等待）。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="timeout" /> 是一个非 -1 毫秒的负数，而 -1 表示无限期超时 - 或 - <paramref name="timeout" /> 大于 <see cref="F:System.Int32.MaxValue" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">不能从源中接收项。</exception>
+      <exception cref="T:System.TimeoutException">在从源接收到项之前的指定的超时过期。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.Receive``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.TimeSpan,System.Threading.CancellationToken)">
+      <summary>同步接受源中的项。</summary>
+      <returns>接收的项。</returns>
+      <param name="source">要从中进行接收的源。</param>
+      <param name="timeout">表示等待的毫秒数的 <see cref="T:System.TimeSpan" />，或表示 -1 毫秒（无限期等待）的 TimeSpan。</param>
+      <param name="cancellationToken">可用于取消接收操作的 <see cref="T:System.Threading.CancellationToken" />。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="timeout" /> 是一个非 -1 毫秒的负数，而 -1 表示无限期超时 - 或 - <paramref name="timeout" /> 大于 <see cref="F:System.Int32.MaxValue" />。</exception>
+      <exception cref="T:System.InvalidOperationException">不能从源中接收项。</exception>
+      <exception cref="T:System.TimeoutException">在从源接收到项之前的指定的超时过期。</exception>
+      <exception cref="T:System.OperationCanceledException">在从源接收项目之前被取消的操作。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.ReceiveAsync``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0})">
+      <summary>异步接收来自指定源的值。</summary>
+      <returns>一个表示异步接收操作的 <see cref="T:System.Threading.Tasks.Task`1" />。 当从源成功检索出项时，则返回项的任务将完成，并且其 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 将返回接收的项。 如果因为源为空且已完成而无法检索项，则将取消返回项。</returns>
+      <param name="source">从中进行异步接收的源。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.ReceiveAsync``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.Threading.CancellationToken)">
+      <summary>异步接收来自指定源的值。</summary>
+      <returns>一个表示异步接收操作的 <see cref="T:System.Threading.Tasks.Task`1" />。 当从源成功检索出项时，则返回项的任务将完成，并且其 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 将返回接收的项。 如果因为请求取消或源为空且已完成而无法检索项，则将取消返回项。</returns>
+      <param name="source">从中进行异步接收的源。</param>
+      <param name="cancellationToken">可用于取消接收操作的 <see cref="T:System.Threading.CancellationToken" />。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.ReceiveAsync``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.TimeSpan)">
+      <summary>异步接收来自指定源的值。</summary>
+      <returns>一个表示异步接收操作的 <see cref="T:System.Threading.Tasks.Task`1" />。 当从源成功检索出项时，则返回项的任务将完成，并且其 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 将返回接收的项。 如果因为超时过期或源为空且已完成而无法检索项，则将取消返回项。</returns>
+      <param name="source">从中进行异步接收的源。</param>
+      <param name="timeout">表示等待的毫秒数的 <see cref="T:System.TimeSpan" />，或表示 -1 毫秒（无限期等待）的 TimeSpan。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="timeout" /> 是一个非 -1 毫秒的负数，而 -1 表示无限期超时 - 或 - <paramref name="timeout" /> 大于 <see cref="F:System.Int32.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.ReceiveAsync``1(System.Threading.Tasks.Dataflow.ISourceBlock{``0},System.TimeSpan,System.Threading.CancellationToken)">
+      <summary>异步接收来自指定源的值。</summary>
+      <returns>一个表示异步接收操作的 <see cref="T:System.Threading.Tasks.Task`1" />。 当从源成功检索出项时，则返回项的任务将完成，并且其 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 将返回接收的项。 如果因为超时过期，请求取消或源为空且已完成而无法检索项，则将取消返回项。</returns>
+      <param name="source">从中进行异步接收的源。</param>
+      <param name="timeout">表示等待的毫秒数的 <see cref="T:System.TimeSpan" />，或表示 -1 毫秒（无限期等待）的 TimeSpan。</param>
+      <param name="cancellationToken">可用于取消接收操作的 <see cref="T:System.Threading.CancellationToken" />。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="source" /> 为 null。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="timeout" /> 是一个非 -1 毫秒的负数，而 -1 表示无限期超时 - 或 - <paramref name="timeout" /> 大于 <see cref="F:System.Int32.MaxValue" />。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.SendAsync``1(System.Threading.Tasks.Dataflow.ITargetBlock{``0},``0)">
+      <summary>为目标消息块异步提供消息，允许延期。</summary>
+      <returns>一个表示异步发送的 <see cref="T:System.Threading.Tasks.Task`1" />。 如果目标在调用 <see cref="M:System.Threading.Tasks.Dataflow.DataflowBlock.SendAsync``1(System.Threading.Tasks.Dataflow.ITargetBlock{``0},``0)" /> 时接受并使用提供的元素，在调用返回时<see cref="T:System.Threading.Tasks.Task`1" /> 将被完成，并且它的 <see cref="P:System.Threading.Tasks.Task`1.Result" /> 属性将返回 true。 如果目标在调用过程中拒绝提供的元素，则在调用返回时 <see cref="T:System.Threading.Tasks.Task`1" /> 将被完成，并且它的<see cref="P:System.Threading.Tasks.Task`1.Result" /> 属性将返回 false。 如果目标将提供的要素推迟，则该要素将被缓存，直到目标使用它或将其释放。此时任务宣告完成，<see cref="P:System.Threading.Tasks.Task`1.Result" /> 表明消息是否被使用。 如果目标从不尝试使用或释放消息，则返回的任务将无法完成。</returns>
+      <param name="target">要发送数据的目标。</param>
+      <param name="item">提供给目标的项。</param>
+      <typeparam name="TInput">指定发送到目标的数据类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.SendAsync``1(System.Threading.Tasks.Dataflow.ITargetBlock{``0},``0,System.Threading.CancellationToken)">
+      <summary>为目标消息块异步提供消息，允许延期。</summary>
+      <returns>一个表示异步发送的 <see cref="T:System.Threading.Tasks.Task`1" />。如果目标在调用 SendAsync 时接受并使用提供的元素，在调用返回时 <see cref="T:System.Threading.Tasks.Task`1" /> 将被完成，并返回它的结果属性将返回 true。如果目标在调用过程中拒绝提供的元素， 则在调用返回时 <see cref="T:System.Threading.Tasks.Task`1" /> 将被完成，并且其 属性将返回 false 。如果目标将提供的要素推迟，则该要素将被缓存，直到目标使用它或将其释放。此时任务宣告完成，结果表明消息是否被使用。如果目标永远不会尝试使用或发布消息，返回的任务将永远不会完成。如果在目标成功使用已发送的数据之前取消请求，则返回的任务将在“已取消”状态下完成，并且数据不再对目标可用。</returns>
+      <param name="target">要发送数据的目标。</param>
+      <param name="item">提供给目标的项。</param>
+      <param name="cancellationToken">用于请求取消发送操作的取消标记。</param>
+      <typeparam name="TInput">指定发送到目标的数据类型。</typeparam>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 是 null（在 Visual Basic 中为 Nothing）。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlock.TryReceive``1(System.Threading.Tasks.Dataflow.IReceivableSourceBlock{``0},``0@)">
+      <summary>尝试从 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 中同步接收一个项目。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="source">要从中进行接收的源。</param>
+      <param name="item">从源中检索到的项。</param>
+      <typeparam name="TOutput">指定源中所包含的数据的类型。</typeparam>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.DataflowBlockOptions">
+      <summary>提供选项，用于配置数据流块执行的过程。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowBlockOptions.#ctor">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowBlockOptions" />。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowBlockOptions.BoundedCapacity">
+      <summary>获取或设置可由块缓存的最大消息数量。</summary>
+      <returns>最大消息数。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowBlockOptions.CancellationToken">
+      <summary>获取或设置监视取消请求的 <see cref="T:System.Threading.CancellationToken" />。</summary>
+      <returns>令牌。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowBlockOptions.MaxMessagesPerTask">
+      <summary>获取或设置每任务可处理的最大消息数量。</summary>
+      <returns>最大消息数。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowBlockOptions.NameFormat">
+      <summary>获取或设置查询块的名称时要使用的格式字符串。</summary>
+      <returns>当用名称查询一个程序块时使用的格式字符串。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowBlockOptions.TaskScheduler">
+      <summary>获取或设置要用于该安排任务进度的 <see cref="T:System.Threading.Tasks.TaskScheduler" />。</summary>
+      <returns>任务计划程序。</returns>
+    </member>
+    <member name="F:System.Threading.Tasks.Dataflow.DataflowBlockOptions.Unbounded">
+      <summary>用于向提供上限的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowBlockOptions" /> 成员指定无限制的数目的常数。 此字段为常数。</summary>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions">
+      <summary>提供用于配置数据流块之间链接的选项。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowLinkOptions.#ctor">
+      <summary>初始化 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" />。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowLinkOptions.Append">
+      <summary>获取或设置链接是否应追加至链接的源列表，或是否应附加它。</summary>
+      <returns>返回 <see cref="T:System.Boolean" />。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowLinkOptions.MaxMessages">
+      <summary>获取或设置可跨链接使用的最大消息数量。</summary>
+      <returns>返回 <see cref="T:System.Int32" />。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowLinkOptions.PropagateCompletion">
+      <summary>获取或设置链接目标是否会自动将编译和容错通知传播给它。</summary>
+      <returns>返回 <see cref="T:System.Boolean" />。</returns>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader">
+      <summary>提供数据属性容器，用于在数据流块之间传递。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowMessageHeader.#ctor(System.Int64)">
+      <summary>初始化指定特性的新 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="id">该消息的 ID。 在原始源块内必须唯一。 它不需要全局唯一。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowMessageHeader.Equals(System.Object)">
+      <summary>检查装箱的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例按 ID 相等。</summary>
+      <returns>如果实例相等，则为 true；否则为 false。</returns>
+      <param name="obj">一个装箱的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowMessageHeader.Equals(System.Threading.Tasks.Dataflow.DataflowMessageHeader)">
+      <summary>检查未装箱的两个 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例按 ID 相等。</summary>
+      <returns>如果实例相等，则为 true；否则为 false。</returns>
+      <param name="other">另一个 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 事例。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowMessageHeader.GetHashCode">
+      <summary>生成 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例的哈希代码。</summary>
+      <returns>哈希代码。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowMessageHeader.Id">
+      <summary>获取源中的消息 ID 。</summary>
+      <returns>在 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例中包含的 ID。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.DataflowMessageHeader.IsValid">
+      <summary>获取消息的有效性。</summary>
+      <returns>如果消息的 ID 与 0 不同，则为 true。 false，如果消息 Id 为 0。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowMessageHeader.op_Equality(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.DataflowMessageHeader)">
+      <summary>检查 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例按 ID 相等。</summary>
+      <returns>如果实例相等，则为 true；否则为 false。</returns>
+      <param name="left">一个 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="right">一个 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.DataflowMessageHeader.op_Inequality(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.DataflowMessageHeader)">
+      <summary>检查 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例未按 ID 相等。</summary>
+      <returns>如果实例不相等，则为 true；否则为 false。</returns>
+      <param name="left">一个 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="right">一个 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.DataflowMessageStatus">
+      <summary>表示在数据流块间传递时 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />的状态。</summary>
+    </member>
+    <member name="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted">
+      <summary>指示 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 接受了消息。 一旦目标已接受消息，它将全部归目标所有。</summary>
+    </member>
+    <member name="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined">
+      <summary>指示 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 拒绝了消息。 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 仍然拥有该消息。</summary>
+    </member>
+    <member name="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed">
+      <summary>指示 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 因稍后的潜在能耗推迟了消息。 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 仍然拥有该消息。</summary>
+    </member>
+    <member name="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable">
+      <summary>指示 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 试图接收来自 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 的消息，但该消息不再可用。</summary>
+    </member>
+    <member name="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently">
+      <summary>指示 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 拒绝了消息。 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 仍然拥有该消息。  此外，<see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 将拒绝源发送的所有将来消息。</summary>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions">
+      <summary>提供选项，用于配置数据流块执行的处理，这些块通过调用用户提供的委托处理每个信息。 具备诸如数据流块 <see cref="T:System.Threading.Tasks.Dataflow.ActionBlock`1" /> 和 <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" />。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions.#ctor">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions" />。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions.MaxDegreeOfParallelism">
+      <summary>获取块可能同时处理的最大消息数目。</summary>
+      <returns>最大消息数。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions.SingleProducerConstrained">
+      <summary>获取是否一次使用数据流块将代码受限于某个制造者。</summary>
+      <returns>返回 <see cref="T:System.Boolean" />。</returns>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions">
+      <summary>提供选项，用于配置数据流块执行的处理，这些块有多个消息。 具备诸如数据流块 <see cref="T:System.Threading.Tasks.Dataflow.JoinBlock`2" /> 和 <see cref="T:System.Threading.Tasks.Dataflow.BatchBlock`1" />。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions.#ctor">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions" />。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions.Greedy">
+      <summary>获取或设置用于确定是否任意使用提供的消息的 Boolean 值。</summary>
+      <returns>贪婪使用所提供的消息，则为 true；否则为 false。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions.MaxNumberOfGroups">
+      <summary>获取或设置块产生的最大组数。</summary>
+      <returns>最大用户数。</returns>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.IDataflowBlock">
+      <summary>表示数据流块。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.IDataflowBlock.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.IDataflowBlock.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.IDataflowBlock.Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.IPropagatorBlock`2">
+      <summary>表示数据流块，其为数据和数据源的目标。</summary>
+      <typeparam name="TInput">指定 <see cref="T:System.Threading.Tasks.Dataflow.IPropagatorBlock`2" /> 接受的数据类型。</typeparam>
+      <typeparam name="TOutput">指定 <see cref="T:System.Threading.Tasks.Dataflow.IPropagatorBlock`2" /> 提供的数据类型。</typeparam>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1">
+      <summary>表示数据流块，其支持接收消息，无需链接。</summary>
+      <typeparam name="TOutput">指定 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 提供的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1.TryReceive(System.Predicate{`0},`0@)">
+      <summary>尝试从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1.TryReceiveAll(System.Collections.Generic.IList{`0}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.ISourceBlock`1">
+      <summary>表示数据流块，其为数据源。</summary>
+      <typeparam name="TOutput">指定 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 <paramref name="messageValue" /> 传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.ITargetBlock`1">
+      <summary>表示数据流块，其为数据目标。</summary>
+      <typeparam name="TInput">指定 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 接受的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)">
+      <summary>向 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 提供消息，向目标提供使用和延迟消息的机会。</summary>
+      <returns>所提供消息的状态。如果消息为该目标接受，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" />，将返回，并且源不应再使用提供的消息，因为其现在归目标所有。如果消息因该目标延迟，则将以通知的形式返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed" />，该通知是目标稍后可能会尝试使用或保留消息的通知；同时，源仍拥有消息并将其提供给其他块。如果目标应已推迟消息，但是 <paramref name="source" /> 为 null，<see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" /> 则将返回。如果尝试了接受此则消息但由于将消息交付给另一目标或放弃该消息的源而错过该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable" />。如果目标选择不接受消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果源选择不接受该消息并将从不从此源接受另一则消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently" />。</returns>
+      <param name="messageHeader">表示要提供的消息的标头的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="messageValue">要提供的消息值。</param>
+      <param name="source">提供消息的 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" />。这可能为 null。</param>
+      <param name="consumeToAccept">为使用此消息，设置为 true，以指示目标于返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" /> 前在进行对 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" /> 调用间同步调用 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" />。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 不是有效的。如果使用非 null <paramref name="source" /> 提供，则<paramref name="consumeToAccept" /> 可能仅为 true</exception>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.JoinBlock`2">
+      <summary>提供数据流块，其连接多个数据流源，源并非必须同类，等待一个项目对每个类型抵达，这在他们都最为组成每个类型的项目的元组释放时进行。</summary>
+      <typeparam name="T1">指定由块的第一个目标接受的数据类型。</typeparam>
+      <typeparam name="T2">指定由块的第二个目标接受的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.#ctor">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.JoinBlock`2" />。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.#ctor(System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions)">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.JoinBlock`2" />。</summary>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.JoinBlock`2" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`2.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{`0,`1}},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`2.OutputCount">
+      <summary>获取可从此块中接收的输出项的数量。</summary>
+      <returns>输出项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{`0,`1}},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 <paramref name="messageValue" /> 传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{`0,`1}})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{`0,`1}})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`2.Target1">
+      <summary>获取可用于提供第一种类型的消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`2.Target2">
+      <summary>获取可用于提供第二种类型的消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.TryReceive(System.Predicate{System.Tuple{`0,`1}},System.Tuple{`0,`1}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`2.TryReceiveAll(System.Collections.Generic.IList{System.Tuple{`0,`1}}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.JoinBlock`3">
+      <summary>提供数据流块，其连接多个数据流源，源并非必须同类，等待一个项目对每个类型抵达，这在他们都最为包含每个类型的项目的元组释放时进行。</summary>
+      <typeparam name="T1">指定由块的第一个目标接受的数据类型。</typeparam>
+      <typeparam name="T2">指定由块的第二个目标接受的数据类型。</typeparam>
+      <typeparam name="T3">指定由块的第三个目标接受的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.#ctor">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.JoinBlock`3" />。</summary>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.#ctor(System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions)">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.JoinBlock`3" />。</summary>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.JoinBlock`2" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`3.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{`0,`1,`2}},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`3.OutputCount">
+      <summary>获取可从此块中接收的输出项的数量。</summary>
+      <returns>输出项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{`0,`1,`2}},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 <paramref name="messageValue" /> 传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{`0,`1,`2}})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{System.Tuple{`0,`1,`2}})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`3.Target1">
+      <summary>获取可用于提供第一种类型的消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`3.Target2">
+      <summary>获取可用于提供第二种类型的消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.JoinBlock`3.Target3">
+      <summary>获取可用于提供第三种类型消息的目标。</summary>
+      <returns>目标。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.TryReceive(System.Predicate{System.Tuple{`0,`1,`2}},System.Tuple{`0,`1,`2}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.JoinBlock`3.TryReceiveAll(System.Collections.Generic.IList{System.Tuple{`0,`1,`2}}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.TransformBlock`2">
+      <summary>提供数据流块，其调用为每个接收的数据提供的 <see cref="T:System.Func`2" /> 委托。</summary>
+      <typeparam name="TInput">指定通过此 <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" /> 接收和操作的数据类型。</typeparam>
+      <typeparam name="TOutput">指定此 <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" /> 生成的数据输出类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.#ctor(System.Func{`0,System.Threading.Tasks.Task{`1}})">
+      <summary>用指定的 <see cref="T:System.Func`2" /> 初始化一个新的 <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" />。</summary>
+      <param name="transform">使用接收的各个数据元素调用的函数。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="transform" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.#ctor(System.Func{`0,System.Threading.Tasks.Task{`1}},System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions)">
+      <summary>初始化指定的 <see cref="T:System.Func`2" /> 和 <see cref="T:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions" /> 的新  <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" />。</summary>
+      <param name="transform">使用接收的各个数据元素调用的函数。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="transform" /> 为 null。 - 或 - <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.#ctor(System.Func{`0,`1})">
+      <summary>用指定的 <see cref="T:System.Func`2" /> 初始化一个新的 <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" />。</summary>
+      <param name="transform">使用接收的各个数据元素调用的函数。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="transform" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.#ctor(System.Func{`0,`1},System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions)">
+      <summary>初始化指定的 <see cref="T:System.Func`2" /> 和 <see cref="T:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions" /> 的新  <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" />。</summary>
+      <param name="transform">使用接收的各个数据元素调用的函数。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.TransformBlock`2" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="transform" /> 为 null。 - 或 - <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.TransformBlock`2.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.TransformBlock`2.InputCount">
+      <summary>获取等待被此代码块处理的输入项的数目。</summary>
+      <returns>输入项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{`1},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.TransformBlock`2.OutputCount">
+      <summary>获取可从此块中接收的输出项的数量。</summary>
+      <returns>输出项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`1},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 <paramref name="messageValue" /> 传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.TransformBlock`2.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`1})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`1})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)">
+      <summary>向 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 提供消息，向目标提供使用和延迟消息的机会。</summary>
+      <returns>所提供消息的状态。如果消息为该目标接受，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" />，将返回，并且源不应再使用提供的消息，因为其现在归目标所有。如果消息因该目标延迟，则将以通知的形式返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed" />，该通知是目标稍后可能会尝试使用或保留消息的通知；同时，源仍拥有消息并将其提供给其他块。如果目标被推迟，但源为 null，则返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果尝试了接受此则消息但由于将消息交付给另一目标或放弃该消息的源而错过该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable" />。如果目标选择不接受消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果源选择不接受该消息并将从不从此源接受另一则消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently" />。</returns>
+      <param name="messageHeader">表示要提供的消息的标头的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="messageValue">要提供的消息值。</param>
+      <param name="source">提供消息的 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" />。这可能为 null。</param>
+      <param name="consumeToAccept">为使用此消息，目标必须于返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" /> 前在进行对 <see cref="M:System.Threading.Tasks.Dataflow.TransformBlock`2.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" /> 调用间同步调用 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" />，则为 true。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 不是有效的。如果使用非 null <paramref name="source" /> 提供，则<paramref name="consumeToAccept" /> 可能仅为 true</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.TryReceive(System.Predicate{`1},`1@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformBlock`2.TryReceiveAll(System.Collections.Generic.IList{`1}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2">
+      <summary>提供数据流块，其调用为每个接收的数据提供的 <see cref="T:System.Func`2" /> 委托。</summary>
+      <typeparam name="TInput">指定通过此 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" /> 接收和操作的数据类型。</typeparam>
+      <typeparam name="TOutput">指定此 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" /> 生成的数据输出类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.#ctor(System.Func{`0,System.Collections.Generic.IEnumerable{`1}})">
+      <summary>使用指定的函数初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" />。</summary>
+      <param name="transform">使用接收的各个数据元素调用的函数。 返回的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 中的所有数据都以此 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" /> 中输出的形式可用。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="transform" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.#ctor(System.Func{`0,System.Collections.Generic.IEnumerable{`1}},System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions)">
+      <summary>初始化指定函数和 <see cref="T:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions" /> 的新 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" />。</summary>
+      <param name="transform">使用接收的各个数据元素调用的函数。 返回到 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 中的所有数据都以此 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" /> 中输出的形式可用。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="transform" /> 为 null。 - 或 - <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.#ctor(System.Func{`0,System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{`1}}})">
+      <summary>使用指定的函数初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" />。</summary>
+      <param name="transform">使用接收的各个数据元素调用的函数。 异步返回到 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 中的所有数据都以此 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" /> 中输出的形式可用。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="transform" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.#ctor(System.Func{`0,System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{`1}}},System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions)">
+      <summary>初始化指定函数和 <see cref="T:System.Threading.Tasks.Dataflow.ExecutionDataflowBlockOptions" /> 的新 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" />。</summary>
+      <param name="transform">使用接收的各个数据元素调用的函数。 异步返回到 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 中的所有数据都以此 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" /> 中输出的形式可用。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.TransformManyBlock`2" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="transform" /> 为 null。 - 或 - <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.TransformManyBlock`2.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.TransformManyBlock`2.InputCount">
+      <summary>获取等待被此代码块处理的输入项的数目。</summary>
+      <returns>输入项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{`1},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.TransformManyBlock`2.OutputCount">
+      <summary>获取可从此块中接收的输出项的数量。</summary>
+      <returns>输出项数。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`1},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 <paramref name="messageValue" /> 传递的值通过 OfferMessage <see cref="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`1})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`1})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)">
+      <summary>向 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 提供消息，向目标提供使用和延迟消息的机会。</summary>
+      <returns>所提供消息的状态。如果目标接受该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" />，并且源不应再使用提供的消息，因为它现在归目标所有。如果消息因该目标延迟，则将以通知的形式返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed" />，该通知是目标稍后可能会尝试使用或保留消息的通知；同时，源仍拥有消息并将其提供给其他块。如果目标被推迟，但源为 null，则返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果尝试了接受此则消息但由于将消息交付给另一目标或放弃该消息的源而错过该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable" />。如果目标选择不接受消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果源选择不接受该消息并将从不从此源接受另一则消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently" />。</returns>
+      <param name="messageHeader">表示要提供的消息的标头的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="messageValue">要提供的消息值。</param>
+      <param name="source">提供消息的 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" />。这可能为 null。</param>
+      <param name="consumeToAccept">为使用此消息，目标必须于返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" /> 前在进行对 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用间同步调用 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" />，则为 true。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 不是有效的。如果使用非 null <paramref name="source" /> 提供，则<paramref name="consumeToAccept" /> 可能仅为 true</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.TryReceive(System.Predicate{`1},`1@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.TransformManyBlock`2.TryReceiveAll(System.Collections.Generic.IList{`1}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="T:System.Threading.Tasks.Dataflow.WriteOnceBlock`1">
+      <summary>在数据流块网络中为接受和存储最多一个元素提供缓冲区。</summary>
+      <typeparam name="T">指定由数据流块缓冲的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.#ctor(System.Func{`0,`0})">
+      <summary>初始化新的 <see cref="T:System.Threading.Tasks.Dataflow.WriteOnceBlock`1" />。</summary>
+      <param name="cloningFunction">用以在提供给其他块时克隆数据的函数。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.#ctor(System.Func{`0,`0},System.Threading.Tasks.Dataflow.DataflowBlockOptions)">
+      <summary>用指定的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowBlockOptions" /> 初始化一个新的 <see cref="T:System.Threading.Tasks.Dataflow.WriteOnceBlock`1" />。</summary>
+      <param name="cloningFunction">用以在提供给其他块时克隆数据的函数。</param>
+      <param name="dataflowBlockOptions">用来配置此 <see cref="T:System.Threading.Tasks.Dataflow.WriteOnceBlock`1" />的选项。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dataflowBlockOptions" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.Complete">
+      <summary>通知 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" />，告知其不应该生成任何更多的消息也不应使用任何更多的延迟消息。</summary>
+    </member>
+    <member name="P:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.Completion">
+      <summary>获取 <see cref="T:System.Threading.Tasks.Task" />，其表示数据流块的操作和完成。</summary>
+      <returns>任务。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.LinkTo(System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Threading.Tasks.Dataflow.DataflowLinkOptions)">
+      <summary>将 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 链接到指定的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</summary>
+      <returns>根据调用 Dispose 将取消与目标中源的链接的 IDisposable。</returns>
+      <param name="target">此源连接到的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="linkOptions">配置链接的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowLinkOptions" /> 实例。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为空在（Visual Basic 中无任何内容）或 <paramref name="linkOptions" /> 为空（Visual Basic 中无任何内容）。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.System#Threading#Tasks#Dataflow#IDataflowBlock#Fault(System.Exception)">
+      <summary>导致 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 在 <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" /> 状态下完成。</summary>
+      <param name="exception">导致出错的 <see cref="T:System.Exception" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.System#Threading#Tasks#Dataflow#IReceivableSourceBlock{TOutput}#TryReceiveAll(System.Collections.Generic.IList{`0}@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收所有可用项。</summary>
+      <returns>如果可以接收一个或多个项目，则为 true；否则为 false。</returns>
+      <param name="items">从源中接收的项。</param>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以接受并使用以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>所使用的消息的值。与之前保留和通过的 <paramref name="messageHeader" /> 到 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" /> 相比，这可能与一不同的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例更对应。使用的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 必须使用返回的值而不是 <paramref name="messageValue" /> 传递的值通过 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" />。如果请求的消息不可用，返回值将为 null。</returns>
+      <param name="messageHeader">要使用的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">占用消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <param name="messageConsumed">如果已成功使用该消息，则为 true；否则，为 false。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReleaseReservation(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以发布由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 发布的以前已保留的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <param name="messageHeader">要发布的已保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">发布之前保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="target" />未保留消息。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.System#Threading#Tasks#Dataflow#ISourceBlock{TOutput}#ReserveMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0})">
+      <summary>由链接的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 调用，以保留以前由此 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" /> 提供的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</summary>
+      <returns>如果已成功保留该消息，则为 true；否则，为 false。</returns>
+      <param name="messageHeader">要保留的消息的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" />。</param>
+      <param name="target">保留消息的 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="messageHeader" /> 无效。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="target" /> 为 null。</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.System#Threading#Tasks#Dataflow#ITargetBlock{TInput}#OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)">
+      <summary>向 <see cref="T:System.Threading.Tasks.Dataflow.ITargetBlock`1" /> 提供消息，向目标提供使用和延迟消息的机会。</summary>
+      <returns>所提供消息的状态。如果消息为该目标接受，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" />，将返回，并且源不应再使用提供的消息，因为其现在归目标所有。如果消息因该目标延迟，则将以通知的形式返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Postponed" />，该通知是目标稍后可能会尝试使用或保留消息的通知；同时，源仍拥有消息并将其提供给其他块。如果目标应已推迟消息，但是 <paramref name="source" /> 为 null，<see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" /> 则将返回。如果尝试了接受此则消息但由于将消息交付给另一目标或放弃该消息的源而错过该消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.NotAvailable" />。如果目标选择不接受消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Declined" />。如果源选择不接受该消息并将从不从此源接受另一则消息，则将返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.DecliningPermanently" />。</returns>
+      <param name="messageHeader">表示要提供的消息的标头的 <see cref="T:System.Threading.Tasks.Dataflow.DataflowMessageHeader" /> 实例。</param>
+      <param name="messageValue">要提供的消息值。</param>
+      <param name="source">提供消息的 <see cref="T:System.Threading.Tasks.Dataflow.ISourceBlock`1" />。这可能为 null。</param>
+      <param name="consumeToAccept">为使用此消息，设置为 true，以指示目标于返回 <see cref="F:System.Threading.Tasks.Dataflow.DataflowMessageStatus.Accepted" /> 前在进行对 <see cref="M:System.Threading.Tasks.Dataflow.ITargetBlock`1.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,`0,System.Threading.Tasks.Dataflow.ISourceBlock{`0},System.Boolean)" /> 调用间同步调用 <see cref="M:System.Threading.Tasks.Dataflow.ISourceBlock`1.ConsumeMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader,System.Threading.Tasks.Dataflow.ITargetBlock{`0},System.Boolean@)" />。</param>
+      <exception cref="T:System.ArgumentException"><paramref name="messageHeader" /> 不是有效的。如果使用非 null <paramref name="source" /> 提供，则<paramref name="consumeToAccept" /> 可能仅为 true</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.ToString">
+      <summary>返回一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</summary>
+      <returns>一个字符串，该字符串表示此 <see cref="T:System.Threading.Tasks.Dataflow.IDataflowBlock" /> 实例的格式化名称。</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.Dataflow.WriteOnceBlock`1.TryReceive(System.Predicate{`0},`0@)">
+      <summary>从 <see cref="T:System.Threading.Tasks.Dataflow.IReceivableSourceBlock`1" /> 中尝试同步接收可用输出项。</summary>
+      <returns>如果可以接收项，则为 true，否则为 false。</returns>
+      <param name="filter">为使值得到检索，必须成功传递值的谓词。 <paramref name="filter" /> 可能是 null ，在此情况下，所有项均将通过。</param>
+      <param name="item">从源中检索到的项。</param>
+    </member>
+  </members>
+</doc>

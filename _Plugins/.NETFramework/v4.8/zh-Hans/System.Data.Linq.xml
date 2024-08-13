@@ -1,0 +1,2486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.Linq</name>
+  </assembly>
+  <members>
+    <member name="T:System.Data.Linq.Binary">
+      <summary>表示不可变的二进制数据块。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Binary.#ctor(System.Byte[])">
+      <summary>初始化 <see cref="T:System.Data.Linq.Binary" /> 类的新实例。</summary>
+      <param name="value">表示二进制数据的字节。</param>
+    </member>
+    <member name="M:System.Data.Linq.Binary.Equals(System.Data.Linq.Binary)">
+      <summary>确定两个二进制对象是否相等。</summary>
+      <param name="other">正在和当前对象进行比较的 <see cref="T:System.Object" />。</param>
+      <returns>如果两个二进制对象相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Binary.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Object" /> 是否等同于当前的 <see cref="T:System.Object" />。</summary>
+      <param name="obj">要与当前的 <see cref="T:System.Object" /> 进行比较的 <see cref="T:System.Object" />。</param>
+      <returns>如果两个二进制对象相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Binary.GetHashCode">
+      <summary>用作特定类型的哈希函数。</summary>
+      <returns>当前二进制对象的哈希代码。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Binary.Length">
+      <summary>获取二进制对象的长度。</summary>
+      <returns>一个表示长度的整数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Binary.op_Equality(System.Data.Linq.Binary,System.Data.Linq.Binary)">
+      <summary>描述两个二进制对象之间的相等关系。</summary>
+      <param name="binary1">第一个二进制对象。</param>
+      <param name="binary2">第二个二进制对象。</param>
+      <returns>如果两个二进制对象相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Binary.op_Implicit(System.Byte[])~System.Data.Linq.Binary">
+      <summary>允许用某种编程语言将字节数组隐式地强制转换为 <see cref="T:System.Data.Linq.Binary" /> 类型。</summary>
+      <param name="value">要转换为 <see cref="T:System.Data.Linq.Binary" /> 类型的实例的字节数组。</param>
+      <returns>包含强制转换后的值的 <see cref="T:System.Data.Linq.Binary" /> 类。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Binary.op_Inequality(System.Data.Linq.Binary,System.Data.Linq.Binary)">
+      <summary>描述两个二进制对象之间的不等关系。</summary>
+      <param name="binary1">第一个二进制对象。</param>
+      <param name="binary2">第二个二进制对象。</param>
+      <returns>如果两个二进制对象不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Binary.ToArray">
+      <summary>返回表示当前二进制对象的字节数组。</summary>
+      <returns>一个字节数组，其中包含当前二进制对象的值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Binary.ToString">
+      <summary>返回表示当前二进制对象的 <see cref="T:System.String" />。</summary>
+      <returns>表示当前二进制对象的 <see cref="T:System.String" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.ChangeAction">
+      <summary>描述在将更改提交到数据库时实体将具有的更改的类型。</summary>
+    </member>
+    <member name="F:System.Data.Linq.ChangeAction.Delete">
+      <summary>将删除该实体。</summary>
+    </member>
+    <member name="F:System.Data.Linq.ChangeAction.Insert">
+      <summary>将插入该实体。</summary>
+    </member>
+    <member name="F:System.Data.Linq.ChangeAction.None">
+      <summary>将不会提交该实体。</summary>
+    </member>
+    <member name="F:System.Data.Linq.ChangeAction.Update">
+      <summary>将更新该实体。</summary>
+    </member>
+    <member name="T:System.Data.Linq.ChangeConflictCollection">
+      <summary>返回在并发冲突中涉及的对象集合。</summary>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.Clear">
+      <summary>从集合中移除所有冲突。</summary>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.Contains(System.Data.Linq.ObjectChangeConflict)">
+      <summary>指定给定冲突是否为集合的成员。</summary>
+      <param name="item">指定的冲突。</param>
+      <returns>如果指定的冲突是集合的成员，则返回 <see langword="true" />；否则，返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.CopyTo(System.Data.Linq.ObjectChangeConflict[],System.Int32)">
+      <summary>有关此成员的说明，请参阅 <see cref="M:System.Collections.ICollection.CopyTo(System.Array,System.Int32)" />。</summary>
+      <param name="array">要复制到的数组。</param>
+      <param name="arrayIndex">从其开始复制的数组索引。</param>
+    </member>
+    <member name="P:System.Data.Linq.ChangeConflictCollection.Count">
+      <summary>返回集合中的冲突数。</summary>
+      <returns>整数</returns>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.GetEnumerator">
+      <summary>返回集合的枚举器。</summary>
+      <returns>集合的枚举数。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ChangeConflictCollection.Item(System.Int32)">
+      <summary>返回发生冲突的项。</summary>
+      <param name="index">发生冲突的集合中的项的索引。</param>
+      <returns>一个表示发生冲突的项的 <see cref="T:System.Data.Linq.ObjectChangeConflict" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.Remove(System.Data.Linq.ObjectChangeConflict)">
+      <summary>指定是否从集合中移除指定冲突。</summary>
+      <param name="item">要移除的冲突。</param>
+      <returns>如果从集合中删除了 <see cref="T:System.Data.Linq.ObjectChangeConflict" />，则返回 <see langword="true" />；否则，返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.ResolveAll(System.Data.Linq.RefreshMode)">
+      <summary>通过使用指定策略解析集合中的所有冲突。</summary>
+      <param name="mode">
+        <see cref="T:System.Data.Linq.RefreshMode" /> 中可用的选项之一。</param>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.ResolveAll(System.Data.Linq.RefreshMode,System.Boolean)">
+      <summary>通过使用指定策略解析集合中的所有冲突。</summary>
+      <param name="mode">用于解决冲突的策略。</param>
+      <param name="autoResolveDeletes">如果为 true，则自动解析由数据库中不再存在的已修改对象产生的冲突。</param>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.System#Collections#Generic#ICollection{System#Data#Linq#ObjectChangeConflict}#Add(System.Data.Linq.ObjectChangeConflict)">
+      <summary>有关此成员的说明，请参阅 <see cref="M:System.Collections.Generic.ICollection`1.Add(`0)" />。</summary>
+      <param name="item">要添加的项。</param>
+    </member>
+    <member name="P:System.Data.Linq.ChangeConflictCollection.System#Collections#Generic#ICollection{System#Data#Linq#ObjectChangeConflict}#IsReadOnly">
+      <summary>有关此成员的说明，请参见 <see cref="P:System.Collections.Generic.ICollection`1.IsReadOnly" />。</summary>
+      <returns>
+        <see langword="true" /> 如果集合是只读的。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+      <summary>将集合复制到数组。</summary>
+      <param name="array">数组的名称。</param>
+      <param name="index">数组的索引。</param>
+    </member>
+    <member name="P:System.Data.Linq.ChangeConflictCollection.System#Collections#ICollection#IsSynchronized">
+      <summary>有关此成员的说明，请参阅 <see cref="P:System.Collections.ICollection.IsSynchronized" />。</summary>
+      <returns>如果对集合的访问是同步的（线程安全），则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ChangeConflictCollection.System#Collections#ICollection#SyncRoot">
+      <summary>有关此成员的说明，请参见 <see cref="P:System.Collections.ICollection.IsSynchronized" />。</summary>
+      <returns>可用于同步集合访问的对象。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictCollection.System#Collections#IEnumerable#GetEnumerator">
+      <summary>有关此成员的说明，请参见 <see cref="M:System.Collections.IEnumerable.GetEnumerator" />。</summary>
+      <returns>用于循环访问集合的枚举器。</returns>
+    </member>
+    <member name="T:System.Data.Linq.ChangeConflictException">
+      <summary>当由于客户端上次读取数据库值后这些值已被更新而导致更新失败时引发。</summary>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictException.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.ChangeConflictException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictException.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Data.Linq.ChangeConflictException" /> 类的新实例，并指定用于说明异常的消息。</summary>
+      <param name="message">当引发异常时要公开的消息。</param>
+    </member>
+    <member name="M:System.Data.Linq.ChangeConflictException.#ctor(System.String,System.Exception)">
+      <summary>初始化 <see cref="T:System.Data.Linq.ChangeConflictException" /> 类的新实例，指定用于说明异常的消息以及导致此异常的异常。</summary>
+      <param name="message">当引发异常时要公开的消息。</param>
+      <param name="innerException">指定 <see cref="T:System.Data.Linq.ChangeConflictException" /> 是其结果的异常。</param>
+    </member>
+    <member name="T:System.Data.Linq.ChangeSet">
+      <summary>提供保存更改的容器。</summary>
+    </member>
+    <member name="P:System.Data.Linq.ChangeSet.Deletes">
+      <summary>获取已从 <see cref="T:System.Data.Linq.ChangeSet" /> 中删除的实体列表。</summary>
+      <returns>删除实体的 <see cref="T:System.Collections.IList" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ChangeSet.Inserts">
+      <summary>获取已插入到 <see cref="T:System.Data.Linq.ChangeSet" /> 中的实体列表。</summary>
+      <returns>插入实体的 <see cref="T:System.Collections.IList" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ChangeSet.ToString">
+      <summary>返回表示当前 <see cref="T:System.Data.Linq.ChangeSet" /> 的字符串。</summary>
+      <returns>表示当前 <see cref="T:System.Data.Linq.ChangeSet" /> 的字符串。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ChangeSet.Updates">
+      <summary>获取已在 <see cref="T:System.Data.Linq.ChangeSet" /> 中更新的实体列表。</summary>
+      <returns>更新实体的 <see cref="T:System.Collections.IList" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.CompiledQuery">
+      <summary>用于编译查询，并对查询进行缓存以供重复使用。</summary>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``10(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg8">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``11(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg8">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg9">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``12(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10,``11}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg8">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg9">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg10">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``13(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10,``11,``12}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg8">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg9">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg10">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg11">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``14(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10,``11,``12,``13}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg8">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg9">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg10">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg11">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg12">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``15(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10,``11,``12,``13,``14}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg8">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg9">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg10">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg11">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg12">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg13">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``16(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10,``11,``12,``13,``14,``15}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg8">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg9">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg10">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg11">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg12">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg13">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg14">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``17(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10,``11,``12,``13,``14,``15,``16}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg8">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg9">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg10">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg11">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg12">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg13">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg14">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg15">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``3(System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``4(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``5(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``6(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``7(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``8(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="M:System.Data.Linq.CompiledQuery.Compile``9(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8}})">
+      <summary>编译查询。</summary>
+      <param name="query">要编译的查询表达式。</param>
+      <typeparam name="TArg0">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg1">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg2">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg3">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg4">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg5">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg6">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TArg7">表示在执行由 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 方法返回的委托时必须传入的参数的类型。</typeparam>
+      <typeparam name="TResult">在执行由 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 方法返回的委托时返回的 <see cref="M:System.Data.Linq.CompiledQuery.Compile``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})" /> 中的 <see langword="T" /> 的类型。</typeparam>
+      <returns>一个表示已编译查询的泛型委托。</returns>
+    </member>
+    <member name="P:System.Data.Linq.CompiledQuery.Expression">
+      <summary>将查询返回为 lambda 表达式。</summary>
+      <returns>表示查询的 lambda 表达式。</returns>
+    </member>
+    <member name="T:System.Data.Linq.ConflictMode">
+      <summary>指定应何时报告并发冲突。</summary>
+    </member>
+    <member name="F:System.Data.Linq.ConflictMode.ContinueOnConflict">
+      <summary>指定应尝试对数据库的所有更新，并且应在该过程结束时累积和返回并发冲突。</summary>
+    </member>
+    <member name="F:System.Data.Linq.ConflictMode.FailOnFirstConflict">
+      <summary>指定当检测到第一个并发冲突错误时，应立即停止对更新数据库的尝试。</summary>
+    </member>
+    <member name="T:System.Data.Linq.DataContext">
+      <summary>表示 LINQ to SQL 框架的主入口点。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.#ctor(System.Data.IDbConnection)">
+      <summary>通过引用由 .NET Framework 使用的连接来初始化 <see cref="T:System.Data.Linq.DataContext" /> 类的新实例。</summary>
+      <param name="connection">由 .NET Framework 使用的连接。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.#ctor(System.Data.IDbConnection,System.Data.Linq.Mapping.MappingSource)">
+      <summary>通过引用连接和映射源初始化 <see cref="T:System.Data.Linq.DataContext" /> 类的新实例。</summary>
+      <param name="connection">由 .NET Framework 使用的连接。</param>
+      <param name="mapping">映射源。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.#ctor(System.String)">
+      <summary>通过引用文件源来初始化 <see cref="T:System.Data.Linq.DataContext" /> 类的新实例。</summary>
+      <param name="fileOrServerOrConnection">此参数可以是下列项之一：SQL Server Express 数据库所在的文件的名称。
+数据库所在的服务器的名称。 在此情况下，提供程序对用户使用默认数据库。  
+一个完整的连接字符串。 LINQ to SQL 仅将字符串传递给提供程序，而不进行修改。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.#ctor(System.String,System.Data.Linq.Mapping.MappingSource)">
+      <summary>通过引用文件源和映射源初始化 <see cref="T:System.Data.Linq.DataContext" /> 类的新实例。</summary>
+      <param name="fileOrServerOrConnection">此参数可以是下列项之一： 
+SQL Server Express 数据库所在的文件的名称。  
+数据库所在的服务器的名称。 在此情况下，提供程序对用户使用默认数据库。  
+一个完整的连接字符串。 LINQ to SQL 仅将字符串传递给提供程序，而不进行修改。</param>
+      <param name="mapping">映射源。</param>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.ChangeConflicts">
+      <summary>获取调用 <see cref="M:System.Data.Linq.DataContext.SubmitChanges" /> 时导致并发冲突的对象的集合。</summary>
+      <returns>导致并发冲突的对象的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.CommandTimeout">
+      <summary>获取或设置一个值，该值增大查询的超时期限，如果不增大则会在默认超时期限间出现超时。</summary>
+      <returns>一个整数值，该值增大查询的超时期限，如果不增大则会在默认超时期限间出现超时。</returns>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.Connection">
+      <summary>获取由框架使用的连接。</summary>
+      <returns>由框架使用的连接。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.CreateDatabase">
+      <summary>在服务器上创建数据库。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.CreateMethodCallQuery``1(System.Object,System.Reflection.MethodInfo,System.Object[])">
+      <summary>执行与指定 .NET 方法关联的表值数据库函数。</summary>
+      <param name="instance">方法调用的实例（当前对象）。</param>
+      <param name="methodInfo">标识与数据库方法对应的 .NET 方法的 <see cref="T:System.Reflection.MethodInfo" />。</param>
+      <param name="parameters">要传递给命令的参数数组。</param>
+      <typeparam name="TResult">返回的集合中的元素的类型。</typeparam>
+      <returns>由数据库查询返回的最终值的集合。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.DatabaseExists">
+      <summary>确定是否可以打开关联数据库。</summary>
+      <returns>如果可以打开指定的数据库，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.DeferredLoadingEnabled">
+      <summary>获取或设置一个值，该值指示延迟加载是一对多还是一对一的关系。</summary>
+      <returns>如果启用延迟加载，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.DeleteDatabase">
+      <summary>删除关联数据库。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.Dispose">
+      <summary>释放 <see cref="T:System.Data.Linq.DataContext" /> 类的当前实例所使用的所有资源。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.Dispose(System.Boolean)">
+      <summary>释放 <see cref="T:System.Data.Linq.DataContext" /> 类使用的非托管资源，还可以选择释放托管资源。</summary>
+      <param name="disposing">若要释放托管资源和非托管资源，则为 <see langword="true" />；若仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.ExecuteCommand(System.String,System.Object[])">
+      <summary>直接对数据库执行 SQL 命令。</summary>
+      <param name="command">要执行的 SQL 命令。</param>
+      <param name="parameters">要传递给命令的参数数组。 注意以下行为： 
+如果数组中的对象的数目小于命令字符串中已标识的最大数，则会引发异常。  
+如果数组包含未在命令字符串中引用的对象，则不会引发异常。  
+如果任一参数为 null，则该参数会转换为 <see langword="DBNull.Value" />。</param>
+      <returns>执行的命令修改的行数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.ExecuteDynamicDelete(System.Object)">
+      <summary>在删除重写方法中执行，以向 LINQ to SQL 重新委托生成和执行删除操作的动态 SQL 的任务。</summary>
+      <param name="entity">要删除的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.ExecuteDynamicInsert(System.Object)">
+      <summary>在插入重写方法中执行，以向 LINQ to SQL 重新委托生成和执行插入操作的动态 SQL 的任务。</summary>
+      <param name="entity">要插入的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.ExecuteDynamicUpdate(System.Object)">
+      <summary>在更新重写方法中执行，以向 LINQ to SQL 重新委托生成和执行更新操作的动态 SQL 的任务。</summary>
+      <param name="entity">要更新的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.ExecuteMethodCall(System.Object,System.Reflection.MethodInfo,System.Object[])">
+      <summary>执行与指定 .NET 方法关联的数据库存储过程或标量函数。</summary>
+      <param name="instance">方法调用的实例（当前对象）。</param>
+      <param name="methodInfo">标识与数据库方法对应的 .NET 方法。</param>
+      <param name="parameters">要传递给命令的参数数组。</param>
+      <returns>执行指定方法的结果（返回值和输出参数）。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.ExecuteQuery(System.Type,System.String,System.Object[])">
+      <summary>直接对数据库执行 SQL 查询。</summary>
+      <param name="elementType">要返回的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 的类型。  
+使查询结果中的列与对象中的字段或属性相匹配的算法如下所示： 
+如果字段或属性映射到特定列名称，则结果集中应包含该列名称。  
+如果未映射字段或属性，则结果集中应包含其名称与该字段或属性相同的列。  
+通过先查找区分大小写的匹配来执行比较。 如果未找到匹配项，则会继续搜索不区分大小写的匹配项。  
+如果同时满足下列所有条件，则该查询应当返回（除延迟加载的对象外的）对象的所有跟踪的字段和属性： 
+ T 是由 <see cref="T:System.Data.Linq.DataContext" /> 显式跟踪的实体。  
+ <see cref="P:System.Data.Linq.DataContext.ObjectTrackingEnabled" /> 为 <see langword="true" />。  
+实体具有主键。  
+否则会引发异常。</param>
+      <param name="query">要执行的 SQL 查询。</param>
+      <param name="parameters">要传递给命令的参数数组。 注意以下行为： 
+如果数组中的对象的数目小于命令字符串中已标识的最大数，则会引发异常。  
+如果数组包含未在命令字符串中引用的对象，则不会引发异常。  
+如果某参数为 <see langword="null" />，则该参数会转换为 <see langword="DBNull.Value" />。</param>
+      <returns>由查询返回的对象的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 集合。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.ExecuteQuery``1(System.String,System.Object[])">
+      <summary>直接对数据库执行 SQL 查询并返回对象。</summary>
+      <param name="query">要执行的 SQL 查询。</param>
+      <param name="parameters">要传递给命令的参数数组。 注意以下行为： 
+如果数组中的对象的数目小于命令字符串中已标识的最大数，则会引发异常。  
+如果数组包含未在命令字符串中引用的对象，则不会引发异常。  
+如果某参数为 null，则该参数会转换为 <see langword="DBNull.Value" />。</param>
+      <typeparam name="TResult">返回的集合中的元素的类型。</typeparam>
+      <returns>由查询返回的对象的集合。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.GetChangeSet">
+      <summary>获取由 <see cref="T:System.Data.Linq.DataContext" />跟踪的被修改对象。</summary>
+      <returns>该对象集返回为三个只读的集合。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.GetCommand(System.Linq.IQueryable)">
+      <summary>获取有关由 LINQ to SQL 生成的 SQL 命令的信息。</summary>
+      <param name="query">要检索其 SQL 命令信息的查询。</param>
+      <returns>请求的命令信息对象。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.GetTable(System.Type)">
+      <summary>返回特定类型的对象的集合，其中类型由 <paramref name="type" /> 参数定义。</summary>
+      <param name="type">要返回的对象的类型。</param>
+      <returns>由 <paramref name="type" /> 参数定义的对象的集合。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.GetTable``1">
+      <summary>返回特定类型的对象的集合，其中类型由 <paramref name="TEntity" /> 参数定义。</summary>
+      <typeparam name="TEntity">要返回的对象的类型。</typeparam>
+      <returns>由 <paramref name="TEntity" /> 参数定义的对象的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.LoadOptions">
+      <summary>获取或设置与此 <see cref="T:System.Data.Linq.DataContext" /> 关联的 <see cref="T:System.Data.Linq.DataLoadOptions" />。</summary>
+      <returns>相关数据的预提取加载选项。</returns>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.Log">
+      <summary>获取或设置要写入 SQL 查询或命令的目标。</summary>
+      <returns>要用于编写命令的 <see cref="T:System.IO.TextReader" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.Mapping">
+      <summary>获取映射所基于的 <see cref="T:System.Data.Linq.Mapping.MetaModel" />。</summary>
+      <returns>在数据库和域对象之间的映射。</returns>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.ObjectTrackingEnabled">
+      <summary>获取或设置一个值，该值指示是否启用对象跟踪。</summary>
+      <returns>如果启用跟踪对象，则为 <see langword="true" />；否则为<see langword="false" /> 。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.Refresh(System.Data.Linq.RefreshMode,System.Collections.IEnumerable)">
+      <summary>按照指定模式刷新实体对象的集合。</summary>
+      <param name="mode">一个指定如何处理开放式并发冲突的值。</param>
+      <param name="entities">要刷新的实体的集合。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.Refresh(System.Data.Linq.RefreshMode,System.Object)">
+      <summary>按照指定模式刷新实体对象。</summary>
+      <param name="mode">一个指定如何处理开放式并发冲突的值。</param>
+      <param name="entity">要刷新的对象。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.Refresh(System.Data.Linq.RefreshMode,System.Object[])">
+      <summary>按照指定模式刷新实体对象的数组。</summary>
+      <param name="mode">一个指定如何处理开放式并发冲突的值。</param>
+      <param name="entities">要刷新的实体对象的数组。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.SubmitChanges">
+      <summary>计算要插入、更新或删除的已修改对象的集，并执行相应命令以实现对数据库的更改。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.SubmitChanges(System.Data.Linq.ConflictMode)">
+      <summary>将对检索到的对象所做的更改发送到基础数据库，并指定提交失败时要采取的操作。</summary>
+      <param name="failureMode">提交失败时要采取的操作。 有效参数包括： 
+ <see cref="F:System.Data.Linq.ConflictMode.FailOnFirstConflict" /><see cref="F:System.Data.Linq.ConflictMode.ContinueOnConflict" /></param>
+    </member>
+    <member name="P:System.Data.Linq.DataContext.Transaction">
+      <summary>获取或设置要用于访问数据库的 .NET Framework 的本地事务。</summary>
+      <returns>执行查询和命令时由 <see cref="T:System.Data.Linq.DataContext" /> 使用的事务对象。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.Translate(System.Data.Common.DbDataReader)">
+      <summary>将现有 <see cref="T:System.Data.Common.DbDataReader" /> 转换为对象。</summary>
+      <param name="reader">要转换的 <see cref="T:System.Data.IDataReader" />。</param>
+      <returns>由转换返回的对象的列表。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.Translate(System.Type,System.Data.Common.DbDataReader)">
+      <summary>将现有 <see cref="T:System.Data.Common.DbDataReader" /> 转换为对象。</summary>
+      <param name="elementType">要返回的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 的类型。  
+使查询结果中的列与对象中的字段和属性相匹配的算法如下所示： 
+如果字段或属性映射到特定列名称，则结果集中应包含该列名称。  
+如果未映射字段或属性，则结果集中应包含其名称与该字段或属性相同的列。  
+通过先查找区分大小写的匹配来执行比较。 如果未找到匹配项，则会继续搜索不区分大小写的匹配项。  
+如果同时满足下列所有条件，则该查询应当返回（除延迟加载的对象外的）对象的所有跟踪的字段和属性： 
+ T 是由 <see cref="T:System.Data.Linq.DataContext" /> 显式跟踪的实体。  
+ <see cref="P:System.Data.Linq.DataContext.ObjectTrackingEnabled" /> 为 <see langword="true" />。  
+实体具有主键。  
+否则会引发异常。</param>
+      <param name="reader">要转换的 <see cref="T:System.Data.IDataReader" />。</param>
+      <returns>由转换返回的对象的列表。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DataContext.Translate``1(System.Data.Common.DbDataReader)">
+      <summary>将现有 <see cref="T:System.Data.Common.DbDataReader" /> 转换为对象。</summary>
+      <param name="reader">要转换的 <see cref="T:System.Data.IDataReader" />。</param>
+      <typeparam name="TResult">要返回的 <see cref="T:System.Collections.Generic.IEnumerable`1" /> 的类型。</typeparam>
+      <returns>由转换返回的对象的集合。</returns>
+    </member>
+    <member name="T:System.Data.Linq.DataLoadOptions">
+      <summary>提供相关数据的即时加载和筛选。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DataLoadOptions.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.DataLoadOptions" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DataLoadOptions.AssociateWith(System.Linq.Expressions.LambdaExpression)">
+      <summary>筛选针对特定关系检索的对象。</summary>
+      <param name="expression">标识要对特定一对多字段或属性使用的查询。 请注意以下事项： 
+如果该表达式不是以表示一对多关系的字段或属性开头，则会引发异常。  
+如果无效运算符出现在表达式中，则会引发异常。 有效运算符包括： 
+Where 
+OrderBy 
+ThenBy 
+OrderByDescending 
+ThenByDescending 
+Take</param>
+    </member>
+    <member name="M:System.Data.Linq.DataLoadOptions.AssociateWith``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+      <summary>筛选针对特定关系检索的对象。</summary>
+      <param name="expression">标识要对特定一对多字段或属性使用的查询。 请注意以下事项： 
+如果该表达式不是以表示一对多关系的字段或属性开头，则会引发异常。  
+如果无效运算符出现在表达式中，则会引发异常。 有效运算符包括： 
+Where 
+OrderBy 
+ThenBy 
+OrderByDescending 
+ThenByDescending 
+Take</param>
+      <typeparam name="T">要查询的类型。  
+如果未映射该类型，则会引发异常。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.DataLoadOptions.LoadWith(System.Linq.Expressions.LambdaExpression)">
+      <summary>通过使用 lambda 表达式检索与主目标相关的指定数据。</summary>
+      <param name="expression">标识相关内容的 lambda 表达式。</param>
+    </member>
+    <member name="M:System.Data.Linq.DataLoadOptions.LoadWith``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+      <summary>指定在为 T 类型的对象提交查询时要检索的子对象。</summary>
+      <param name="expression">标识要检索的字段或属性。  
+如果该表达式不标识表示一对一关系或一对多关系的字段或属性，则会引发异常。</param>
+      <typeparam name="T">要查询的类型。  
+如果未映射此类型，则会引发异常。</typeparam>
+    </member>
+    <member name="T:System.Data.Linq.DBConvert">
+      <summary>在内部使用以将一种类型转换为其他类型。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DBConvert.ChangeType(System.Object,System.Type)">
+      <summary>将指定的值更改为指定类型。</summary>
+      <param name="value">要转换的对象。</param>
+      <param name="type">对象要转换为的类型。</param>
+      <returns>一个包含指定类型的转换值的对象。</returns>
+    </member>
+    <member name="M:System.Data.Linq.DBConvert.ChangeType``1(System.Object)">
+      <summary>将指定的值更改为当前类型。</summary>
+      <param name="value">要转换的对象。</param>
+      <typeparam name="T">要更改为的类型。</typeparam>
+      <returns>一个包含转换值的指定类型的对象。</returns>
+    </member>
+    <member name="T:System.Data.Linq.DuplicateKeyException">
+      <summary>当尝试使用正在使用的键将对象添加到标识缓存时引发。</summary>
+    </member>
+    <member name="M:System.Data.Linq.DuplicateKeyException.#ctor(System.Object)">
+      <summary>初始化 <see cref="T:System.Data.Linq.DuplicateKeyException" /> 类的新实例。</summary>
+      <param name="duplicate">导致引发异常的重复键。</param>
+    </member>
+    <member name="M:System.Data.Linq.DuplicateKeyException.#ctor(System.Object,System.String)">
+      <summary>通过引用重复键并提供错误消息来初始化 <see cref="T:System.Data.Linq.DuplicateKeyException" /> 类的新实例。</summary>
+      <param name="duplicate">导致引发异常的重复键。</param>
+      <param name="message">当引发异常时要显示的消息。</param>
+    </member>
+    <member name="M:System.Data.Linq.DuplicateKeyException.#ctor(System.Object,System.String,System.Exception)">
+      <summary>通过引用重复键、提供错误消息并指定导致引发此异常的异常来初始化 <see cref="T:System.Data.Linq.DuplicateKeyException" /> 类的新实例。</summary>
+      <param name="duplicate">导致引发异常的重复键。</param>
+      <param name="message">当引发异常时要显示的消息。</param>
+      <param name="innerException">导致引发 <see cref="T:System.Data.Linq.DuplicateKeyException" /> 异常的上一个异常。</param>
+    </member>
+    <member name="P:System.Data.Linq.DuplicateKeyException.Object">
+      <summary>获取导致异常的对象。</summary>
+      <returns>导致异常的对象。</returns>
+    </member>
+    <member name="T:System.Data.Linq.EntityRef`1">
+      <summary>为 LINQ to SQL 应用程序中的一对多关系的单一实例方提供延迟加载和关系维护。</summary>
+      <typeparam name="TEntity">目标实体的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.EntityRef`1.#ctor(`0)">
+      <summary>通过指定目标实体初始化 <see cref="T:System.Data.Linq.EntityRef`1" /> 类的新实例。</summary>
+      <param name="entity">目标实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.EntityRef`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+      <summary>通过指定源初始化 <see cref="T:System.Data.Linq.EntityRef`1" /> 类的新实例。</summary>
+      <param name="source">引用源。</param>
+    </member>
+    <member name="M:System.Data.Linq.EntityRef`1.#ctor(System.Data.Linq.EntityRef{`0})">
+      <summary>通过引用目标实体初始化 <see cref="T:System.Data.Linq.EntityRef`1" /> 类的新实例。</summary>
+      <param name="entityRef">目标实体。</param>
+    </member>
+    <member name="P:System.Data.Linq.EntityRef`1.Entity">
+      <summary>获取或设置目标实体。</summary>
+      <returns>目标实体。</returns>
+    </member>
+    <member name="P:System.Data.Linq.EntityRef`1.HasLoadedOrAssignedValue">
+      <summary>获取一个值，该值指示是否已加载或分配目标。</summary>
+      <returns>如果已加载或分配目标，则为 <see langword="True" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.EntitySet`1">
+      <summary>为 LINQ to SQL 应用程序中的一对多和一对一关系中的集合提供延迟加载和关系维护。</summary>
+      <typeparam name="TEntity">目标实体的数据类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.EntitySet`1" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.#ctor(System.Action{`0},System.Action{`0})">
+      <summary>在为添加和移除操作提供处理程序的同时，初始化 <see cref="T:System.Data.Linq.EntitySet`1" /> 类的新实例。</summary>
+      <param name="onAdd">
+        <see cref="M:System.Data.Linq.EntitySet`1.Add(`0)" /> 的委托。</param>
+      <param name="onRemove">
+        <see cref="M:System.Data.Linq.EntitySet`1.Remove(`0)" /> 的委托。</param>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.Add(`0)">
+      <summary>添加实体。</summary>
+      <param name="entity">要添加的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+      <summary>添加实体的集合。</summary>
+      <param name="collection">要添加的集合。</param>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.Assign(System.Collections.Generic.IEnumerable{`0})">
+      <summary>将 <see cref="T:System.Data.Linq.EntitySet`1" /> 集合分配给其他 <see cref="T:System.Data.Linq.EntitySet`1" /> 集合。</summary>
+      <param name="entitySource">要分配的集合。</param>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.Clear">
+      <summary>移除所有项。</summary>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.Contains(`0)">
+      <summary>指定 <see cref="T:System.Data.Linq.EntitySet`1" /> 是否包含特定实体。</summary>
+      <param name="entity">实体。</param>
+      <returns>如果 <see cref="T:System.Data.Linq.EntitySet`1" /> 包含该实体，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.CopyTo(`0[],System.Int32)">
+      <summary>将 <see cref="T:System.Data.Linq.EntitySet`1" /> 复制到数组。</summary>
+      <param name="array">要复制到的数组。</param>
+      <param name="arrayIndex">数组中的起始索引。</param>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.Count">
+      <summary>获取 <see cref="T:System.Data.Linq.EntitySet`1" /> 集合中的实体数。</summary>
+      <returns>一个表示实体数的整数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.GetEnumerator">
+      <summary>返回循环访问集合的枚举数。</summary>
+      <returns>
+        <see cref="T:System.Collections.Generic.IEnumerator`1" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.GetNewBindingList">
+      <summary>创建用于绑定到数据源的新列表。</summary>
+      <returns>用于绑定到数据源的新 <see cref="T:System.ComponentModel.IBindingList" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.HasLoadedOrAssignedValues">
+      <summary>指定 <see cref="T:System.Data.Linq.EntitySet`1" /> 是否已加载或分配某值。</summary>
+      <returns>
+        <see langword="true" /> 如果<see cref="T:System.Data.Linq.EntitySet`1" />已加载或分配一个值; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.IndexOf(`0)">
+      <summary>返回实体的索引。</summary>
+      <param name="entity">要返回其索引的实体。</param>
+      <returns>一个表示索引的整数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.Insert(System.Int32,`0)">
+      <summary>在索引位置处插入实体。</summary>
+      <param name="index">表示要插入实体的位置的索引。</param>
+      <param name="entity">要插入的实体。</param>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.IsDeferred">
+      <summary>指定此 <see cref="T:System.Data.Linq.EntitySet`1" /> 是否具有尚未执行的延迟查询。</summary>
+      <returns>
+        <see langword="true" /> 如果尚未执行延迟的查询;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.Item(System.Int32)">
+      <summary>获取或设置指定索引处的元素。</summary>
+      <param name="index">元素的索引。</param>
+      <returns>一个表示项的 <see cref="T:System.Data.Linq.EntitySet`1" />。</returns>
+    </member>
+    <member name="E:System.Data.Linq.EntitySet`1.ListChanged">
+      <summary>当列表的内容发生更改时发生。</summary>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.Load">
+      <summary>加载 <see cref="T:System.Data.Linq.EntitySet`1" />。</summary>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.Remove(`0)">
+      <summary>移除实体。</summary>
+      <param name="entity">要移除的实体。</param>
+      <returns>如果已成功移除该实体，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.RemoveAt(System.Int32)">
+      <summary>移除指定索引处的实体。</summary>
+      <param name="index">要移除的实体的索引。</param>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.SetSource(System.Collections.Generic.IEnumerable{`0})">
+      <summary>设置 <see cref="T:System.Data.Linq.EntitySet`1" /> 的源。</summary>
+      <param name="entitySource">
+        <see cref="T:System.Data.Linq.EntitySet`1" /> 的源。</param>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.System#Collections#Generic#ICollection{TEntity}#IsReadOnly">
+      <summary>有关此成员的说明，请参阅 <see cref="P:System.Collections.Generic.ICollection`1.IsReadOnly" />。</summary>
+      <returns>如果该集合为只读，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+      <summary>有关此成员的说明，请参见 <see cref="M:System.Collections.ICollection.CopyTo(System.Array,System.Int32)" />。</summary>
+      <param name="array">集合的元素将复制到其中的数组。</param>
+      <param name="index">数组索引，从此处开始复制。</param>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.System#Collections#ICollection#IsSynchronized">
+      <summary>有关此成员的说明，请参见 <see cref="P:System.Collections.ICollection.IsSynchronized" />。</summary>
+      <returns>如果对集合的访问是同步的（线程安全），则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.System#Collections#ICollection#SyncRoot">
+      <summary>有关此成员的说明，请参见 <see cref="P:System.Collections.ICollection.SyncRoot" />。</summary>
+      <returns>可用于同步集合访问的对象。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary>有关此成员的说明，请参阅 <see cref="M:System.Collections.IEnumerable.GetEnumerator" />。</summary>
+      <returns>可用于循环访问集合的 <see cref="T:System.Collections.IEnumerator" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.System#Collections#IList#Add(System.Object)">
+      <summary>有关此成员的说明，请参见 <see cref="M:System.Collections.IList.Add(System.Object)" />。</summary>
+      <param name="value">要添加到列表中的对象。</param>
+      <returns>新元素的插入位置。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.System#Collections#IList#Contains(System.Object)">
+      <summary>有关此成员的说明，请参见 <see cref="M:System.Collections.IList.Contains(System.Object)" />。</summary>
+      <param name="value">要在列表中查找的对象。</param>
+      <returns>如果在 <see cref="T:System.Collections.IList" /> 中找到了 <see cref="T:System.Object" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.System#Collections#IList#IndexOf(System.Object)">
+      <summary>有关此成员的说明，请参阅 <see cref="M:System.Collections.IList.IndexOf(System.Object)" />。</summary>
+      <param name="value">要在列表中查找的对象。</param>
+      <returns>如果在列表中找到，则为 <paramref name="value" /> 的索引；否则为 -1。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.System#Collections#IList#Insert(System.Int32,System.Object)">
+      <summary>有关此成员的说明，请参见 <see cref="M:System.Collections.IList.Insert(System.Int32,System.Object)" />。</summary>
+      <param name="index">列表中的对象的索引。</param>
+      <param name="value">要插入到列表中的对象。</param>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.System#Collections#IList#IsFixedSize">
+      <summary>有关此成员的说明，请参见 <see cref="P:System.Collections.IList.IsFixedSize" />。</summary>
+      <returns>如果该集合具有固定大小，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.System#Collections#IList#IsReadOnly">
+      <summary>有关此成员的说明，请参见 <see cref="P:System.Collections.IList.IsReadOnly" />。</summary>
+      <returns>如果该集合为只读，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.System#Collections#IList#Item(System.Int32)">
+      <summary>有关此成员的说明，请参见 <see cref="P:System.Collections.IList.Item(System.Int32)" />。</summary>
+      <param name="index">要设置或获取元素的索引。</param>
+      <returns>指定索引处的元素。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.System#Collections#IList#Remove(System.Object)">
+      <summary>有关此成员的说明，请参见 <see cref="M:System.Collections.IList.Remove(System.Object)" />。</summary>
+      <param name="value">要从列表中移除的对象。</param>
+    </member>
+    <member name="P:System.Data.Linq.EntitySet`1.System#ComponentModel#IListSource#ContainsListCollection">
+      <summary>有关此成员的说明，请参见 <see cref="P:System.ComponentModel.IListSource.ContainsListCollection" />。</summary>
+      <returns>如果集合是 <see cref="T:System.Collections.IList" /> 对象集合，则为 <see langword="true" />；否则，为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.EntitySet`1.System#ComponentModel#IListSource#GetList">
+      <summary>有关此成员的说明，请参见 <see cref="M:System.ComponentModel.IListSource.GetList" />。</summary>
+      <returns>对象中可以绑定到数据源的 <see cref="T:System.Collections.IList" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException">
+      <summary>表示在已经加载实体的情况下尝试更改外键时发生的错误。</summary>
+    </member>
+    <member name="M:System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException.#ctor">
+      <summary>使用由系统提供的用于描述错误的消息初始化 <see cref="T:System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException.#ctor(System.String)">
+      <summary>使用指定的描述错误的消息初始化 <see cref="T:System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+    </member>
+    <member name="M:System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+      <param name="innerException">导致当前异常的异常。 如果 <paramref name="innerException" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="T:System.Data.Linq.IExecuteResult">
+      <summary>提供对执行查询的返回值或结果的访问。</summary>
+    </member>
+    <member name="M:System.Data.Linq.IExecuteResult.GetParameterValue(System.Int32)">
+      <summary>提供对第 n 个输出参数的访问。</summary>
+      <param name="parameterIndex">要检索的参数的索引。</param>
+      <returns>一个包含指定参数的值的对象。</returns>
+    </member>
+    <member name="P:System.Data.Linq.IExecuteResult.ReturnValue">
+      <summary>获取执行的查询的返回值或结果。</summary>
+      <returns>执行的查询的值或结果。</returns>
+    </member>
+    <member name="T:System.Data.Linq.IFunctionResult">
+      <summary>提供对函数的返回值的访问。</summary>
+    </member>
+    <member name="P:System.Data.Linq.IFunctionResult.ReturnValue">
+      <summary>获取函数的返回值。</summary>
+      <returns>由函数返回的值。</returns>
+    </member>
+    <member name="T:System.Data.Linq.IMultipleResults">
+      <summary>表示映射函数或对可变返回序列的查询的结果。</summary>
+    </member>
+    <member name="M:System.Data.Linq.IMultipleResults.GetResult``1">
+      <summary>检索作为指定类型的序列的下一个结果。</summary>
+      <typeparam name="TElement">要返回的序列的类型。</typeparam>
+      <returns>用于循环访问结果的枚举。</returns>
+    </member>
+    <member name="T:System.Data.Linq.ISingleResult`1">
+      <summary>表示具有单个返回序列的映射函数的结果。</summary>
+      <typeparam name="T">返回序列中的元素的类型。</typeparam>
+    </member>
+    <member name="T:System.Data.Linq.ITable">
+      <summary>用于弱类型查询方案。</summary>
+    </member>
+    <member name="M:System.Data.Linq.ITable.Attach(System.Object)">
+      <summary>以未修改状态将实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要附加的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable.Attach(System.Object,System.Boolean)">
+      <summary>以修改或未修改状态将集合的所有实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">实体的集合。</param>
+      <param name="asModified">如果为 <see langword="true" />，则以修改状态附加这些实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable.Attach(System.Object,System.Object)">
+      <summary>通过指定实体及其原始状态，以修改或未修改状态将实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要附加的实体。</param>
+      <param name="original">与包含原始值的数据成员具有相同实体类型的实例。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable.AttachAll(System.Collections.IEnumerable)">
+      <summary>以修改或未修改状态将集合的所有实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">实体的集合。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable.AttachAll(System.Collections.IEnumerable,System.Boolean)">
+      <summary>以修改或未修改状态将集合的所有实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">实体的集合。</param>
+      <param name="asModified">如果为 <see langword="true" />，则以修改状态附加这些实体。</param>
+    </member>
+    <member name="P:System.Data.Linq.ITable.Context">
+      <summary>获取已用于检索此 <see cref="T:System.Data.Linq.ITable" /> 的 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <returns>用于检索 <see cref="T:System.Data.Linq.DataContext" /> 的 <see cref="T:System.Data.Linq.ITable" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ITable.DeleteAllOnSubmit(System.Collections.IEnumerable)">
+      <summary>将集合中的所有实体置为 <see langword="pending delete" /> 状态。</summary>
+      <param name="entities">从其移除所有项的集合。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable.DeleteOnSubmit(System.Object)">
+      <summary>将此表中的实体置为 <see langword="pending delete" /> 状态。</summary>
+      <param name="entity">要移除的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable.GetModifiedMembers(System.Object)">
+      <summary>返回包含当前值和原始值的已修改成员的数组。</summary>
+      <param name="entity">从其获取数组的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable.GetOriginalEntityState(System.Object)">
+      <summary>检索原始值。</summary>
+      <param name="entity">要检索其原始值的实体。</param>
+      <returns>原始实体的副本。 如果未跟踪传入的实体，则该值为 null。 必须先附加由客户端发送回的已断开连接的实体，然后 <see cref="T:System.Data.Linq.DataContext" /> 才能开始跟踪实体的状态。 新附加的实体的“原始状态”是根据客户端提供的值设立的。 数据上下文不跟踪已断开连接的实体的状态。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ITable.InsertAllOnSubmit(System.Collections.IEnumerable)">
+      <summary>以 <see langword="pending insert" /> 状态将集合中的所有实体添加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">要添加的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable.InsertOnSubmit(System.Object)">
+      <summary>将处于 <see langword="pending insert" /> 状态的实体添加到此表。</summary>
+      <param name="entity">要添加的实体。</param>
+    </member>
+    <member name="P:System.Data.Linq.ITable.IsReadOnly">
+      <summary>指示此 <see cref="T:System.Data.Linq.ITable" /> 实例中包含的实体的类型是否具有主键。</summary>
+      <returns>如果实体类型不具有主键，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.ITable`1">
+      <summary>表示基础数据库中的特定类型的表。</summary>
+      <typeparam name="TEntity">表中数据的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.ITable`1.Attach(`0)">
+      <summary>重写时，如果执行开放式并发检查需要原始值，请将已断开连接或“已拆离”的实体附加到新的 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要添加的对象。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable`1.DeleteOnSubmit(`0)">
+      <summary>重写时，将此表中的实体置为 <see langword="pending delete" /> 状态。</summary>
+      <param name="entity">要删除的对象。</param>
+    </member>
+    <member name="M:System.Data.Linq.ITable`1.InsertOnSubmit(`0)">
+      <summary>重写时，将 <see langword="pending insert" /> 状态的实体添加到此 <see cref="T:System.Data.Linq.ITable`1" />。</summary>
+      <param name="entity">要插入的对象。</param>
+    </member>
+    <member name="T:System.Data.Linq.Link`1">
+      <summary>用于启用单个属性（类似于 <see cref="T:System.Data.Linq.EntityRef`1" />）的延迟加载。</summary>
+      <typeparam name="T">延迟源中的元素的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.Link`1.#ctor(`0)">
+      <summary>通过引用属性的值初始化 <see cref="T:System.Data.Linq.Link`1" /> 结构的新实例。</summary>
+      <param name="value">属性的值。</param>
+    </member>
+    <member name="M:System.Data.Linq.Link`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+      <summary>通过引用源初始化 <see cref="T:System.Data.Linq.Link`1" /> 结构的新实例。</summary>
+      <param name="source">源集合。</param>
+    </member>
+    <member name="M:System.Data.Linq.Link`1.#ctor(System.Data.Linq.Link{`0})">
+      <summary>通过从其他 <see cref="T:System.Data.Linq.Link`1" /> 实例复制内部状态来初始化 <see cref="T:System.Data.Linq.Link`1" /> 结构的新实例。</summary>
+      <param name="link">从其复制的 <see cref="T:System.Data.Linq.Link`1" /> 实例。</param>
+    </member>
+    <member name="P:System.Data.Linq.Link`1.HasLoadedOrAssignedValue">
+      <summary>指定 <see cref="T:System.Data.Linq.Link`1" /> 是否已加载或分配某值。</summary>
+      <returns>
+        <see langword="true" /> 如果<see cref="T:System.Data.Linq.Link`1" />已加载或分配一个值; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Link`1.HasValue">
+      <summary>获取指示源是否包含值的值。</summary>
+      <returns>
+        <see langword="true" /> 如果源具有已分配或加载值 （包括 null）;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Link`1.Value">
+      <summary>获取或设置分配给 <see cref="T:System.Data.Linq.Link`1" /> 或由其加载的值。</summary>
+      <returns>此延迟属性的值。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.AssociationAttribute">
+      <summary>指定表示数据库关联（如外键关系）的属性。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.AssociationAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.AssociationAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.AssociationAttribute.DeleteOnNull">
+      <summary>当指定其外键成员均不可以为 null 的一对一关联时，如果该关联设置为 null，则删除对象。</summary>
+      <returns>设置为 <see langword="True" /> 可删除对象。 默认值为 <see langword="False" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.AssociationAttribute.DeleteRule">
+      <summary>获取或设置关联的删除行为。</summary>
+      <returns>一个表示规则的字符串。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.AssociationAttribute.IsForeignKey">
+      <summary>获取或设置在表示数据库关系的关联中作为外键的成员。</summary>
+      <returns>默认值 = <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.AssociationAttribute.IsUnique">
+      <summary>获取或设置外键上唯一约束的指示。</summary>
+      <returns>默认值 = <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.AssociationAttribute.OtherKey">
+      <summary>获取或设置在关联的另一端上作为键值的、目标实体类的一个或多个成员。</summary>
+      <returns>默认值为相关类的 ID。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.AssociationAttribute.ThisKey">
+      <summary>获取或设置表示关联的此端上的键值的此实体类成员。</summary>
+      <returns>默认值为包含类的 ID。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.AttributeMappingSource">
+      <summary>使用上下文中的属性创建映射模型的映射源。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.AttributeMappingSource.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.AttributeMappingSource" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.AutoSync">
+      <summary>指示运行时如何在执行插入或更新操作后检索值。</summary>
+    </member>
+    <member name="F:System.Data.Linq.Mapping.AutoSync.Always">
+      <summary>总是返回值。</summary>
+    </member>
+    <member name="F:System.Data.Linq.Mapping.AutoSync.Default">
+      <summary>自动选择值。</summary>
+    </member>
+    <member name="F:System.Data.Linq.Mapping.AutoSync.Never">
+      <summary>从不返回值。</summary>
+    </member>
+    <member name="F:System.Data.Linq.Mapping.AutoSync.OnInsert">
+      <summary>仅在执行插入操作后返回值。</summary>
+    </member>
+    <member name="F:System.Data.Linq.Mapping.AutoSync.OnUpdate">
+      <summary>仅在执行更新操作后返回值。</summary>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.ColumnAttribute">
+      <summary>将类与数据库表中的列相关联。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.ColumnAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.ColumnAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.AutoSync">
+      <summary>获取或设置 <see cref="T:System.Data.Linq.Mapping.AutoSync" /> 枚举。</summary>
+      <returns>
+        <see cref="T:System.Data.Linq.Mapping.AutoSync" /> 值。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.CanBeNull">
+      <summary>获取或设置一个值，该值指示列是否可包含 null 值。</summary>
+      <returns>默认值 = <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.DbType">
+      <summary>获取或设置数据库列的类型。</summary>
+      <returns>字符串值，该值指定 TRANSACT-SQL 表声明中定义的列的确切文本。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.Expression">
+      <summary>获取或设置一个值，该值指示列是否为数据库中的计算列。</summary>
+      <returns>默认值 = 空。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.IsDbGenerated">
+      <summary>获取或设置一个值，该值指示列是否包含数据库自动生成的值。</summary>
+      <returns>默认值 = <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.IsDiscriminator">
+      <summary>获取或设置一个值，该值指示列是否包含 LINQ to SQL 继承层次结构的鉴别器值。</summary>
+      <returns>默认值 = <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.IsPrimaryKey">
+      <summary>获取或设置一个值，该值指示该类成员是否表示作为表的整个主键或部分主键的列。</summary>
+      <returns>默认值 = <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.IsVersion">
+      <summary>获取或设置一个值，该值指示成员的列类型是否为数据库时间戳或版本号。</summary>
+      <returns>默认值 = <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ColumnAttribute.UpdateCheck">
+      <summary>获取或设置一个值，该值指示 LINQ to SQL 如何进行开放式并发冲突的检测。</summary>
+      <returns>默认值 = <see cref="F:System.Data.Linq.Mapping.UpdateCheck.Always" />，除非<see cref="P:System.Data.Linq.Mapping.ColumnAttribute.IsVersion" />是<see langword="true" />成员。  
+其他值都<see cref="F:System.Data.Linq.Mapping.UpdateCheck.Never" />和<see cref="F:System.Data.Linq.Mapping.UpdateCheck.WhenChanged" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.DataAttribute">
+      <summary>提供成员以描述列中数据的属性。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.DataAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.DataAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.DataAttribute.Name">
+      <summary>获取或设置列名称。</summary>
+      <returns>名称。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.DataAttribute.Storage">
+      <summary>获取或设置私有存储字段以保存列中的值。</summary>
+      <returns>存储字段的名称。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.DatabaseAttribute">
+      <summary>指定表示数据库的类的特定属性。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.DatabaseAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.DatabaseAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.DatabaseAttribute.Name">
+      <summary>获取或设置数据库的名称。</summary>
+      <returns>名称。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.FunctionAttribute">
+      <summary>将方法与数据库中的存储过程或用户定义的函数相关联。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.FunctionAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.FunctionAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.FunctionAttribute.IsComposable">
+      <summary>获取或设置一个值，该值指示将方法映射到函数还是映射到存储过程。</summary>
+      <returns>如果映射到函数，则为 <see langword="true" />；如果映射到存储过程，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.FunctionAttribute.Name">
+      <summary>获取或设置函数的名称。</summary>
+      <returns>函数或存储过程的名称。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.InheritanceMappingAttribute">
+      <summary>映射 LINQ to SQL 应用程序中的继承层次结构。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.InheritanceMappingAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.InheritanceMappingAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.InheritanceMappingAttribute.Code">
+      <summary>获取或设置映射的继承层次结构中的鉴别器代码值。</summary>
+      <returns>必须由用户指定。 没有默认值。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.InheritanceMappingAttribute.IsDefault">
+      <summary>获取或设置一个值，该值指示当鉴别器值与指定值不匹配时是否实例化此类型的对象。</summary>
+      <returns>默认值 = <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.InheritanceMappingAttribute.Type">
+      <summary>获取或设置层次结构中类的类型。</summary>
+      <returns>必须由用户指定。 没有默认值。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MappingSource">
+      <summary>表示映射信息的源。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MappingSource.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MappingSource" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MappingSource.CreateModel(System.Type)">
+      <summary>创建新的映射模型。</summary>
+      <param name="dataContextType">映射要基于的 <see cref="T:System.Data.Linq.DataContext" /> 的类型。</param>
+      <returns>为匹配当前的映射架构而创建的元模型。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MappingSource.GetModel(System.Type)">
+      <summary>返回映射模型。</summary>
+      <param name="dataContextType">要返回的模型的 <see cref="T:System.Data.Linq.DataContext" /> 的类型。</param>
+      <returns>与此映射源关联的映射模型。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaAccessor">
+      <summary>表示成员的访问器。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaAccessor" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor.GetBoxedValue(System.Object)">
+      <summary>指定对其设置值或从其获取值的一个对象。</summary>
+      <param name="instance">从其获取值或对其设置值的实例。</param>
+      <returns>此实例的已装箱值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor.HasAssignedValue(System.Object)">
+      <summary>指定该实例是否包含已分配的值。</summary>
+      <param name="instance">要查看的实例。</param>
+      <returns>如果该实例当前具有已分配的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor.HasLoadedValue(System.Object)">
+      <summary>指定该实例是否包含从延迟的源加载的值。</summary>
+      <param name="instance">要查看的实例。</param>
+      <returns>如果该实例当前具有从延迟源加载的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor.HasValue(System.Object)">
+      <summary>指定该实例是否包含已加载或分配的值。</summary>
+      <param name="instance">要查看的实例。</param>
+      <returns>如果该实例当前具有已加载或已分配的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor.SetBoxedValue(System.Object@,System.Object)">
+      <summary>将值设置为对象。</summary>
+      <param name="instance">要将值设置到其中的实例。</param>
+      <param name="value">要设置的值。</param>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAccessor.Type">
+      <summary>获取此访问器访问的成员的类型。</summary>
+      <returns>成员的类型。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaAccessor`2">
+      <summary>
+        <see cref="T:System.Data.Linq.Mapping.MetaAccessor" /> 类的一个强类型版本。</summary>
+      <typeparam name="TEntity">源的类型。</typeparam>
+      <typeparam name="TMember">该源的成员的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor`2.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaAccessor`2" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor`2.GetBoxedValue(System.Object)">
+      <summary>指定对其设置值或从其获取值的一个对象。</summary>
+      <param name="instance">从其获取值或对其设置值的实例。</param>
+      <returns>此实例的已装箱值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor`2.GetValue(`0)">
+      <summary>指定强类型值。</summary>
+      <param name="instance">要从其获取值的实例。</param>
+      <returns>此实例的值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor`2.SetBoxedValue(System.Object@,System.Object)">
+      <summary>指定对其设置装箱值的实例。</summary>
+      <param name="instance">要将装箱值设置到其中的实例。</param>
+      <param name="value">要设置的值。</param>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAccessor`2.SetValue(`0@,`1)">
+      <summary>指定对其设置强类型值的实例。</summary>
+      <param name="instance">要将值设置到其中的实例。</param>
+      <param name="value">要设置的强类型值。</param>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAccessor`2.Type">
+      <summary>获取此访问器访问的成员的类型。</summary>
+      <returns>成员类型。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaAssociation">
+      <summary>表示两个实体类型之间的关联关系。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaAssociation.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaAssociation" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.DeleteOnNull">
+      <summary>在派生类中重写时，获取一个值，该值指示在关联设置为 <see langword="null" /> 时是否应删除该对象。</summary>
+      <returns>
+        <see langword="true" /> 当关联设置为时已删除对象<see langword="null" />; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.DeleteRule">
+      <summary>在派生类中重写时，获取删除子级时的行为。</summary>
+      <returns>返回表示规则的字符串；或者如果没有指定删除时的操作，则返回 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.IsForeignKey">
+      <summary>在派生类中重写时，获取一个值，该值指示另一种类型是否为此类型的父级类型。</summary>
+      <returns>
+        <see langword="true" /> 是另一种类型是此类型; 的父级否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.IsMany">
+      <summary>在派生类中重写时，获取一个值，该值指示关联是否表示一对多关系。</summary>
+      <returns>
+        <see langword="true" /> 如果关联表示一个一对多的关系;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.IsNullable">
+      <summary>在派生类中重写时，获取一个值，该值指示关联是否为 <see langword="null" />。</summary>
+      <returns>
+        <see langword="true" /> 如果可以关联<see langword="null" />; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.IsUnique">
+      <summary>在派生类中重写时，获取一个值，该值指示关联是否唯一。</summary>
+      <returns>
+        <see langword="true" /> 如果关联是唯一的;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.OtherKey">
+      <summary>在派生类中重写时，获取表示关联的另一端上的值的成员列表。</summary>
+      <returns>表示关联另一端上的值的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.OtherKeyIsPrimaryKey">
+      <summary>在派生类中重写时，获取一个值，该值指示 <see cref="P:System.Data.Linq.Mapping.MetaAssociation.OtherKey" /> 是否形成其他类型的标识。</summary>
+      <returns>
+        <see langword="true" /> 如果<see cref="P:System.Data.Linq.Mapping.MetaAssociation.OtherKey" />构成另一种类型的标识 （主键）; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.OtherMember">
+      <summary>在派生类中重写时，获取表示反向关联的此关联的另一端上的成员。</summary>
+      <returns>表示反向关联此关联的另一端成员。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.OtherType">
+      <summary>在派生类中重写时，获取关联的另一端上的类型。</summary>
+      <returns>关联的类型的另一端。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.ThisKey">
+      <summary>在派生类中重写时，获取表示关联的此端上的值的成员列表。</summary>
+      <returns>表示关联的此端上的值的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.ThisKeyIsPrimaryKey">
+      <summary>在派生类中重写时，获取一个值，该值指示 <see cref="P:System.Data.Linq.Mapping.MetaAssociation.ThisKey" /> 是否形成此类型的标识。</summary>
+      <returns>
+        <see langword="true" /> 如果<see cref="P:System.Data.Linq.Mapping.MetaAssociation.ThisKey" />窗体关联的标识 （主键）; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaAssociation.ThisMember">
+      <summary>在派生类中重写后，获取表示关联的此端上的成员。</summary>
+      <returns>表示关联的此端上成员。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaDataMember">
+      <summary>表示域对象的字段或属性与数据库表的列之间的映射。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaDataMember.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaDataMember" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.Association">
+      <summary>当在派生类中重写时，获取与此成员对应的 <see cref="T:System.Data.Linq.Mapping.MetaAssociation" />。</summary>
+      <returns>如果存在对应的 <see cref="T:System.Data.Linq.Mapping.MetaAssociation" />，则为该 System.Data.Linq.Mapping.MetaAssociation；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.AutoSync">
+      <summary>在派生类中重写时，获取此成员的读回行为以进行插入和更新操作。</summary>
+      <returns>一个枚举值，该值指示读回行为对于插入和更新操作。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.CanBeNull">
+      <summary>在派生类中重写时，获取一个值，该值指示是否可以为此成员的值分配 <see langword="null" /> 值。</summary>
+      <returns>如果可以为此成员赋予 <see langword="true" /> 值，则为 <see langword="null" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.DbType">
+      <summary>在派生类中重写时，获取相应数据库列的类型。</summary>
+      <returns>以字符串表示的数据库列的类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.DeclaringType">
+      <summary>在派生类中重写时，获取包含此数据成员的 <see cref="T:System.Data.Linq.Mapping.MetaType" />。</summary>
+      <returns>包含当前成员的元类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.DeferredSourceAccessor">
+      <summary>在派生类中重写时，获取用于获取并设置此成员的延迟源的访问器。</summary>
+      <returns>用于访问此成员的延迟源的访问器。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.DeferredValueAccessor">
+      <summary>在派生类中重写时，获取用于获取并设置此成员的延迟值的访问器（而不会导致提取）。</summary>
+      <returns>用于访问此成员的延迟值的访问器。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.Expression">
+      <summary>在派生类中重写时，获取定义计算列的表达式。</summary>
+      <returns>以字符串表示的计算列表达式。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.IsAssociation">
+      <summary>在派生类中重写时，获取一个值，该值指示此成员是否定义关联关系。</summary>
+      <returns>如果此成员定义了关联关系，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.IsDbGenerated">
+      <summary>在派生类中重写时，获取一个值，该值指示此成员是否由数据库自动生成。</summary>
+      <returns>
+        <see langword="true" /> 如果此成员自动生成的数据库;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaDataMember.IsDeclaredBy(System.Data.Linq.Mapping.MetaType)">
+      <summary>在派生类中重写时，指定是否按指定类型声明此成员。</summary>
+      <param name="type">要检查的类型。</param>
+      <returns>如果此成员是由指定类型声明的，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.IsDeferred">
+      <summary>在派生类中重写时，获取一个值，该值指示默认行为是否在延迟的基础上加载此成员。</summary>
+      <returns>
+        <see langword="true" /> 如果此成员是延迟加载默认设置。否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.IsDiscriminator">
+      <summary>在派生类中重写时，获取一个值，该值指示此成员是否表示继承鉴别器。</summary>
+      <returns>如果此成员表示继承鉴别器，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.IsPersistent">
+      <summary>在派生类中重写时，获取一个值，该值指示此成员是否映射到列（或约束）。</summary>
+      <returns>如果此成员映射到列（或约束），则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.IsPrimaryKey">
+      <summary>在派生类中重写时，获取一个值，该值指示此成员是否属于该类型的标识。</summary>
+      <returns>如果此成员是类型标识的一部分，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.IsVersion">
+      <summary>在派生类中重写时，获取一个值，该值指示此成员是表示行版本还是时间戳。</summary>
+      <returns>如果此成员表示行版本或时间戳，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.LoadMethod">
+      <summary>在派生类中重写时，获取用于执行加载操作的 <see cref="T:System.Data.Linq.DataContext" /> 方法。</summary>
+      <returns>类似于 <see cref="T:System.Reflection.MethodInfo" /> 的加载方法。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.MappedName">
+      <summary>在派生类中重写时，获取数据库中列（或约束）的名称。</summary>
+      <returns>字符串形式的列（或约束）的名称。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.Member">
+      <summary>在派生类中重写时，获取基础 <see cref="T:System.Reflection.MemberInfo" />。</summary>
+      <returns>成员属性和元数据信息。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.MemberAccessor">
+      <summary>在派生类中重写时，获取用于获取或设置此成员的值的访问器。</summary>
+      <returns>访问器。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.Name">
+      <summary>在派生类中重写时，获取该成员的名称，该成员名称与 <see cref="T:System.Reflection.MemberInfo" /> 名称相同。</summary>
+      <returns>相同的名称作为<see cref="T:System.Reflection.MemberInfo" />名称。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.Ordinal">
+      <summary>在派生类中重写时，在查询结果的默认布局中获取此成员的序号位置。</summary>
+      <returns>序号位置。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.StorageAccessor">
+      <summary>在派生类中重写时，获取用于获取或设置此成员的存储值的访问器。</summary>
+      <returns>用于访问此成员的存储值的访问器。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.StorageMember">
+      <summary>在派生类中重写时，获取存储此成员的数据的成员。</summary>
+      <returns>存储成员。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.Type">
+      <summary>在派生类中重写时，获取此成员的类型。</summary>
+      <returns>当前成员的类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaDataMember.UpdateCheck">
+      <summary>在派生类中重写时，获取此成员的开放式并发检查策略。</summary>
+      <returns>一个枚举值，该值指示乐观并发检查策略的此成员。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaFunction">
+      <summary>表示在上下文方法和数据库函数之间的映射。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaFunction.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaFunction" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.HasMultipleResults">
+      <summary>获取一个值，指示存储过程是否具有多个结果类型。</summary>
+      <returns>如果存储过程具有多个结果类型，则为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.IsComposable">
+      <summary>获取一个值，该值指示是否可在查询内编写函数。</summary>
+      <returns>如果可在查询内编写函数，则为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.MappedName">
+      <summary>获取数据库函数或过程的名称。</summary>
+      <returns>一个字符串，表示数据库函数或过程的名称。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.Method">
+      <summary>获取基础上下文方法。</summary>
+      <returns>对应于基础上下文方法的 <see cref="T:System.Reflection.MethodInfo" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.Model">
+      <summary>获取包含此函数的 <see cref="T:System.Data.Linq.Mapping.MetaModel" />。</summary>
+      <returns>包含此函数的 <see cref="T:System.Data.Linq.Mapping.MetaModel" /> 对象。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.Name">
+      <summary>获取方法的名称。</summary>
+      <returns>表示方法名称的 <see langword="string" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.Parameters">
+      <summary>获取函数参数的枚举。</summary>
+      <returns>参数的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.ResultRowTypes">
+      <summary>获取可能的结果行类型的枚举。</summary>
+      <returns>可能的类型的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaFunction.ReturnParameter">
+      <summary>获取返回参数。</summary>
+      <returns>对应于返回参数的 <see cref="T:System.Data.Linq.Mapping.MetaParameter" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaModel">
+      <summary>一个表示数据库和域对象之间的映射的抽象。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaModel.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaModel" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaModel.ContextType">
+      <summary>在派生类中重写时，获取此模型描述的 <see cref="T:System.Data.Linq.DataContext" /> 类型。</summary>
+      <returns>数据上下文类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaModel.DatabaseName">
+      <summary>在派生类中重写时，获取数据库的名称。</summary>
+      <returns>用字符串表示的数据库名。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaModel.GetFunction(System.Reflection.MethodInfo)">
+      <summary>在派生类中重写时，获取与数据库函数对应的 <see cref="T:System.Data.Linq.Mapping.MetaFunction" />。</summary>
+      <param name="method">对 <see cref="T:System.Data.Linq.DataContext" /> 或表示数据库函数的从属类定义的方法。</param>
+      <returns>与数据库函数相对应的元函数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaModel.GetFunctions">
+      <summary>在派生类中重写时，获取所有函数的枚举。</summary>
+      <returns>一个可用于循环访问所有函数的枚举。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaModel.GetMetaType(System.Type)">
+      <summary>在派生类中重写时，发现指定 <see cref="T:System.Type" /> 的 <see cref="T:System.Data.Linq.Mapping.MetaType" />。</summary>
+      <param name="type">为其查找 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 的类型。</param>
+      <returns>一个与指定的类型相对应的元数据类型。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaModel.GetTable(System.Type)">
+      <summary>在派生类中重写时，获取与指定的 <see cref="T:System.Type" /> 关联的 <see cref="T:System.Data.Linq.Mapping.MetaTable" />。</summary>
+      <param name="rowType">公共语言运行时 (CLR) 行类型。</param>
+      <returns>一个与指定的行类型关联的元表。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaModel.GetTables">
+      <summary>在派生类中重写时，获取所有表的枚举。</summary>
+      <returns>一个可用于循环访问表的枚举器。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaModel.MappingSource">
+      <summary>在派生类中重写时，获取源自此模型的映射源。</summary>
+      <returns>原始的映射源。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaModel.ProviderType">
+      <summary>在派生类中重写时，获取或设置提供程序的类别。</summary>
+      <returns>提供程序类型。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaParameter">
+      <summary>表示方法参数和数据库函数参数之间的映射。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaParameter.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaParameter" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaParameter.DbType">
+      <summary>获取参数的数据库类型。</summary>
+      <returns>字符串形式的参数的数据库类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaParameter.MappedName">
+      <summary>获取数据库函数中的参数名。</summary>
+      <returns>字符串形式的名称。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaParameter.Name">
+      <summary>获取参数的名称。</summary>
+      <returns>字符串形式的参数名。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaParameter.Parameter">
+      <summary>获取基础方法参数。</summary>
+      <returns>基础方法参数。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaParameter.ParameterType">
+      <summary>获取参数的公共语言运行时 (CLR) 类型。</summary>
+      <returns>类型。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaTable">
+      <summary>表示数据库表或视图的抽象。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaTable.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaTable" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaTable.DeleteMethod">
+      <summary>获取用于执行删除操作的 <see cref="T:System.Data.Linq.DataContext" /> 方法。</summary>
+      <returns>
+        <see cref="T:System.Reflection.MethodInfo" />，它对应于用于删除操作的方法。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaTable.InsertMethod">
+      <summary>获取用于执行插入操作的 <see cref="T:System.Data.Linq.DataContext" /> 方法。</summary>
+      <returns>
+        <see cref="T:System.Reflection.MethodInfo" />，它对应于用于插入操作的方法。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaTable.Model">
+      <summary>获取包含此 <see cref="T:System.Data.Linq.Mapping.MetaModel" /> 的 <see cref="T:System.Data.Linq.Mapping.MetaTable" />。</summary>
+      <returns>包含此 MetaTable 的 <see cref="T:System.Data.Linq.Mapping.MetaModel" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaTable.RowType">
+      <summary>获取描述表行类型的 <see cref="T:System.Data.Linq.Mapping.MetaType" />。</summary>
+      <returns>表中的行的类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaTable.TableName">
+      <summary>获取由数据库定义的表的名称。</summary>
+      <returns>表示表名称的 <see langword="string" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaTable.UpdateMethod">
+      <summary>获取用于执行更新操作的 <see cref="T:System.Data.Linq.DataContext" /> 方法。</summary>
+      <returns>
+        <see cref="T:System.Reflection.MethodInfo" />，它对应于用于更新操作的方法。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.MetaType">
+      <summary>表示域对象类型到数据库表列的映射。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaType.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.Associations">
+      <summary>在派生类中重写时，获取所有关联的枚举。</summary>
+      <returns>关联的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.CanInstantiate">
+      <summary>在派生类中重写时，获取是否可以将基础类型实例化为查询的结果。</summary>
+      <returns>如果基础类型可以实例化为查询结果，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.DataMembers">
+      <summary>在派生类中重写时，获取所有数据成员（字段和属性）的枚举。</summary>
+      <returns>数据成员的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.DBGeneratedIdentityMember">
+      <summary>在派生类中重写时，获取表示自动生成的标识列的成员。</summary>
+      <returns>表示自动生成的标识列的成员；如果没有自动生成的标识列，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.DerivedTypes">
+      <summary>在派生类中重写时，获取继承层次结构中直接派生类型的枚举。</summary>
+      <returns>元类型的枚举。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.Discriminator">
+      <summary>在派生类中重写时，获取表示继承鉴别器列的成员。</summary>
+      <returns>表示继承鉴别器列的成员；如果不存在继承鉴别器列，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaType.GetDataMember(System.Reflection.MemberInfo)">
+      <summary>在派生类中重写时，获取与指定成员关联的 <see cref="T:System.Data.Linq.Mapping.MetaDataMember" />。</summary>
+      <param name="member">为其查找关联的 <see cref="T:System.Data.Linq.Mapping.MetaDataMember" /> 的成员。</param>
+      <returns>如果存在与指定的成员关联的 <see cref="T:System.Data.Linq.Mapping.MetaDataMember" />，则为该 System.Data.Linq.Mapping.MetaDataMember；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaType.GetInheritanceType(System.Type)">
+      <summary>在派生类中重写时，获取继承子类型的 <see cref="T:System.Data.Linq.Mapping.MetaType" />。</summary>
+      <param name="type">子类型。</param>
+      <returns>继承子类型的 <see cref="T:System.Data.Linq.Mapping.MetaType" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.MetaType.GetTypeForInheritanceCode(System.Object)">
+      <summary>在派生类中重写时，获取与指定的继承代码关联的元类型。</summary>
+      <param name="code">继承代码。</param>
+      <returns>与指定的继承代码关联的元类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.HasAnyLoadMethod">
+      <summary>在派生类中重写时，获取一个值，该值指示当前 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 或其任何基类型是否具有 OnLoaded 方法。</summary>
+      <returns>
+        <see langword="true" /> 如果元类型或任何基元类型具有OnLoaded方法; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.HasAnyValidateMethod">
+      <summary>在派生类中重写时，获取一个值，该值指示 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 或其任何基类型是否具有 OnValidate 方法。</summary>
+      <returns>
+        <see langword="true" /> 如果元类型或任何基元类型具有OnValidate方法; 否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.HasInheritance">
+      <summary>在派生类中重写时，获取一个值，该值指示该类型是否是已映射继承层次结构的一部分。</summary>
+      <returns>如果该类型是已映射继承层次结构的一部分，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.HasInheritanceCode">
+      <summary>在派生类中重写时，获取一个值，该值指示此类型是否定义继承代码。</summary>
+      <returns>如果此类型定义继承代码，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.HasUpdateCheck">
+      <summary>在派生类中重写时，获取一个值，该值指示该类型是否具有任何可能需要进行开放式并发冲突测试的持久性成员。</summary>
+      <returns>如果该类型包含具有 <see cref="T:System.Data.Linq.Mapping.UpdateCheck" /> 以外的 <see cref="F:System.Data.Linq.Mapping.UpdateCheck.Never" /> 策略的任何持久性成员，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.IdentityMembers">
+      <summary>在派生类中重写时，获取所有数据成员（定义该类型的唯一标识）的枚举。</summary>
+      <returns>成员的枚举，这些成员定义类型的唯一标识。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.InheritanceBase">
+      <summary>在派生类中重写时，获取继承层次结构中的基元类型。</summary>
+      <returns>当前继承层次结构的基元类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.InheritanceCode">
+      <summary>在派生类中重写时，获取一个值，该值指示此类型是否定义继承代码。</summary>
+      <returns>如果此类型定义继承代码，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.InheritanceDefault">
+      <summary>在派生类中重写时，获取一个值，该值指示此类型是否用作继承层次结构的默认值。</summary>
+      <returns>继承映射中默认类型的元数据。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.InheritanceRoot">
+      <summary>在派生类中重写时，获取继承层次结构的根类型。</summary>
+      <returns>根类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.InheritanceTypes">
+      <summary>在派生类中重写时，获取由继承层次结构定义的所有类型的集合。</summary>
+      <returns>当前继承层次结构中元类型的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.IsEntity">
+      <summary>在派生类中重写时，获取一个值，该值指示 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 是否为实体类型。</summary>
+      <returns>如果 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 是实体类型，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.IsInheritanceDefault">
+      <summary>在派生类中重写时，获取一个值，该值指示此类型是否用作继承层次结构的默认值。</summary>
+      <returns>如果将此类型用作继承层次结构的默认值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.Model">
+      <summary>在派生类中重写时，获取包含此 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 的 <see cref="T:System.Data.Linq.Mapping.MetaModel" />。</summary>
+      <returns>包含元模型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.Name">
+      <summary>在派生类中重写时，获取 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 的名称。</summary>
+      <returns>当前元类型的名称。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.OnLoadedMethod">
+      <summary>在派生类中重写时，获取有关此元类型包含的 OnLoaded 方法的信息。</summary>
+      <returns>说明OnLoaded此元类型的方法。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.OnValidateMethod">
+      <summary>在派生类中重写时，获取有关此元类型包含的 OnValidate 方法的信息。</summary>
+      <returns>说明OnValidate此元类型的方法。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.PersistentDataMembers">
+      <summary>在派生类中重写时，获取所有持久数据成员的集合。</summary>
+      <returns>当前类型中所有元数据成员的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.Table">
+      <summary>在派生类中重写时，获取使用此 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 进行行定义的 <see cref="T:System.Data.Linq.Mapping.MetaTable" />。</summary>
+      <returns>一个使用当前元类型定义行的元表。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.Type">
+      <summary>在派生类中重写时，获取基础公共语言运行时 (CLR) 类型。</summary>
+      <returns>关联的 CLR 类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.MetaType.VersionMember">
+      <summary>在派生类中重写时，获取此 <see cref="T:System.Data.Linq.Mapping.MetaType" /> 的行版本或时间戳列。</summary>
+      <returns>表示此元类型的行版本或时间戳列的元数据成员；如果不存在这样的元数据成员，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.ParameterAttribute">
+      <summary>为存储过程方法参数启用映射详细信息规范。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.ParameterAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.ParameterAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ParameterAttribute.DbType">
+      <summary>获取或设置提供程序特定的数据库的参数类型。</summary>
+      <returns>字符串形式的类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ParameterAttribute.Name">
+      <summary>获取或设置参数的名称。</summary>
+      <returns>字符串形式的名称。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.ProviderAttribute">
+      <summary>指定要使用的数据库提供程序。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.ProviderAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.ProviderAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.ProviderAttribute.#ctor(System.Type)">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.ProviderAttribute" /> 类的新实例。</summary>
+      <param name="type">用于构造 <see cref="T:System.Data.Linq.Mapping.ProviderAttribute" /> 的提供程序类型。</param>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ProviderAttribute.Type">
+      <summary>获取用于构造 <see cref="T:System.Data.Linq.Mapping.ProviderAttribute" /> 的提供程序的类型。</summary>
+      <returns>提供程序的类型。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.ResultTypeAttribute">
+      <summary>用于为具有不同结果类型的函数指定每种类型的结果。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.ResultTypeAttribute.#ctor(System.Type)">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.ResultTypeAttribute" /> 类的新实例。</summary>
+      <param name="type">具有不同结果类型的函数所返回的结果的类型。</param>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.ResultTypeAttribute.Type">
+      <summary>为具有不同结果类型的函数获取有效的或预期的类型映射。</summary>
+      <returns>结果的类型 (<see cref="T:System.Type" />)。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.TableAttribute">
+      <summary>将某个类指定为与数据库表相关联的实体类。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.TableAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.Mapping.TableAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Data.Linq.Mapping.TableAttribute.Name">
+      <summary>获取或设置表或视图的名称。</summary>
+      <returns>默认情况下，此值与类名称相同。</returns>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.UpdateCheck">
+      <summary>指定何时测试对象是否有并发冲突。</summary>
+    </member>
+    <member name="F:System.Data.Linq.Mapping.UpdateCheck.Always">
+      <summary>始终进行检查。 此为默认值，除非对某个成员而言 <see cref="P:System.Data.Linq.Mapping.ColumnAttribute.IsVersion" /> 为 <see langword="true" />。</summary>
+    </member>
+    <member name="F:System.Data.Linq.Mapping.UpdateCheck.Never">
+      <summary>从不检查。</summary>
+    </member>
+    <member name="F:System.Data.Linq.Mapping.UpdateCheck.WhenChanged">
+      <summary>仅在已更改对象后检查。</summary>
+    </member>
+    <member name="T:System.Data.Linq.Mapping.XmlMappingSource">
+      <summary>表示使用外部 XML 映射文件创建模型的映射源。</summary>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.XmlMappingSource.FromReader(System.Xml.XmlReader)">
+      <summary>从 XML 读取器创建映射源。</summary>
+      <param name="reader">XML 读取器。</param>
+      <returns>类型为 <see cref="T:System.Data.Linq.Mapping.XmlMappingSource" /> 的新 XML 映射源。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.XmlMappingSource.FromStream(System.IO.Stream)">
+      <summary>从流中的 XML 创建映射源。</summary>
+      <param name="stream">XML 流。</param>
+      <returns>类型为 <see cref="T:System.Data.Linq.Mapping.XmlMappingSource" /> 的新 XML 映射源。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.XmlMappingSource.FromUrl(System.String)">
+      <summary>从加载自 URL 的 XML 创建映射源。</summary>
+      <param name="url">指向 XML 的 URL。</param>
+      <returns>类型为 <see cref="T:System.Data.Linq.Mapping.XmlMappingSource" /> 的新 XML 映射源。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Mapping.XmlMappingSource.FromXml(System.String)">
+      <summary>从 XML 字符串创建映射源。</summary>
+      <param name="xml">包含 XML 的字符串。</param>
+      <returns>类型为 <see cref="T:System.Data.Linq.Mapping.XmlMappingSource" /> 的新 XML 映射源。</returns>
+    </member>
+    <member name="T:System.Data.Linq.MemberChangeConflict">
+      <summary>表示以下情况：由于自客户端上次读取成员值后这些值已被更新，因此尝试的更新失败。</summary>
+    </member>
+    <member name="P:System.Data.Linq.MemberChangeConflict.CurrentValue">
+      <summary>获取发生冲突的成员的当前值。</summary>
+      <returns>发生冲突的对象。</returns>
+    </member>
+    <member name="P:System.Data.Linq.MemberChangeConflict.DatabaseValue">
+      <summary>获取发生冲突的成员的数据库值。</summary>
+      <returns>发生冲突的对象的值。</returns>
+    </member>
+    <member name="P:System.Data.Linq.MemberChangeConflict.IsModified">
+      <summary>获取一个值，该值指示自上次读取或刷新数据库后，是否已更改成员数据。</summary>
+      <returns>如果成员数据已更改，则为 <see langword="True" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.MemberChangeConflict.IsResolved">
+      <summary>获取一个值，该值指示是否已解决冲突。</summary>
+      <returns>如果冲突已解决，则为 <see langword="True" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.MemberChangeConflict.Member">
+      <summary>获取有关发生冲突的成员的元数据信息。</summary>
+      <returns>有关发生冲突的成员的信息。</returns>
+    </member>
+    <member name="P:System.Data.Linq.MemberChangeConflict.OriginalValue">
+      <summary>获取发生冲突的成员的原始值。</summary>
+      <returns>发生冲突的成员的原始值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.MemberChangeConflict.Resolve(System.Data.Linq.RefreshMode)">
+      <summary>使用 <see cref="T:System.Data.Linq.RefreshMode" /> 参数可自动指定要设置为发生冲突的成员的当前值的值。</summary>
+      <param name="refreshMode">请参阅 <see cref="T:System.Data.Linq.RefreshMode" />。</param>
+    </member>
+    <member name="M:System.Data.Linq.MemberChangeConflict.Resolve(System.Object)">
+      <summary>指定要设置为发生冲突的成员的当前值的值。</summary>
+      <param name="value">要设置为当前值的值。</param>
+    </member>
+    <member name="T:System.Data.Linq.ModifiedMemberInfo">
+      <summary>具有已在 LINQ to SQL 应用程序中修改的成员的值。</summary>
+    </member>
+    <member name="P:System.Data.Linq.ModifiedMemberInfo.CurrentValue">
+      <summary>获取已修改成员的当前值。</summary>
+      <returns>成员的值。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ModifiedMemberInfo.Member">
+      <summary>获取已修改成员的成员信息。</summary>
+      <returns>有关发生冲突的成员的信息。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ModifiedMemberInfo.OriginalValue">
+      <summary>获取已修改成员的原始值。</summary>
+      <returns>已修改成员的原始值。</returns>
+    </member>
+    <member name="T:System.Data.Linq.ObjectChangeConflict">
+      <summary>表示对一个或多个开放式并发冲突的更新尝试。</summary>
+    </member>
+    <member name="P:System.Data.Linq.ObjectChangeConflict.IsDeleted">
+      <summary>获取指示是否已从数据库中删除发生冲突的对象的值。</summary>
+      <returns>如果该对象已被删除，则为 <see langword="True" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ObjectChangeConflict.IsResolved">
+      <summary>获取指示是否已解决此对象的冲突的值。</summary>
+      <returns>如果冲突已解决，则为 <see langword="True" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ObjectChangeConflict.MemberConflicts">
+      <summary>获取导致更新失败的所有成员冲突的集合。</summary>
+      <returns>成员冲突的集合。</returns>
+    </member>
+    <member name="P:System.Data.Linq.ObjectChangeConflict.Object">
+      <summary>获取发生冲突的对象。</summary>
+      <returns>发生冲突的对象。</returns>
+    </member>
+    <member name="M:System.Data.Linq.ObjectChangeConflict.Resolve">
+      <summary>通过保留当前值并重置基线原始值以匹配较新数据库值来解决成员冲突。</summary>
+    </member>
+    <member name="M:System.Data.Linq.ObjectChangeConflict.Resolve(System.Data.Linq.RefreshMode)">
+      <summary>使用指定的 <see cref="T:System.Data.Linq.RefreshMode" /> 来解决成员冲突。</summary>
+      <param name="refreshMode">
+        <see cref="T:System.Data.Linq.RefreshMode" /> 的相应选择。</param>
+    </member>
+    <member name="M:System.Data.Linq.ObjectChangeConflict.Resolve(System.Data.Linq.RefreshMode,System.Boolean)">
+      <summary>解决保留当前值且表示基线原始值的成员冲突。</summary>
+      <param name="refreshMode">
+        <see cref="T:System.Data.Linq.RefreshMode" /> 的相应选择。</param>
+      <param name="autoResolveDeletes">如果为 <see langword="true" />，则自动解决由数据库中不再存在的已修改对象产生的冲突。</param>
+    </member>
+    <member name="T:System.Data.Linq.RefreshMode">
+      <summary>定义 <see cref="Overload:System.Data.Linq.DataContext.Refresh" /> 方法如何处理开放式并发冲突。</summary>
+    </member>
+    <member name="F:System.Data.Linq.RefreshMode.KeepChanges">
+      <summary>强制 <see cref="Overload:System.Data.Linq.DataContext.Refresh" /> 方法保留已更改的当前值，但将其他值更新为数据库值。</summary>
+    </member>
+    <member name="F:System.Data.Linq.RefreshMode.KeepCurrentValues">
+      <summary>强制 <see cref="Overload:System.Data.Linq.DataContext.Refresh" /> 方法使用从数据库检索的值替换原始值。 不会修改当前值。</summary>
+    </member>
+    <member name="F:System.Data.Linq.RefreshMode.OverwriteCurrentValues">
+      <summary>强制 <see cref="Overload:System.Data.Linq.DataContext.Refresh" /> 方法使用数据库中的值重写所有当前值。</summary>
+    </member>
+    <member name="T:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1">
+      <summary>定义用于动态具体化对象的方法。</summary>
+      <typeparam name="TDataReader">数据读取器的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1" /> 类的新实例。</summary>
+    </member>
+    <member name="F:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.Arguments">
+      <summary>捕获快速具体化器的内部状态。</summary>
+    </member>
+    <member name="F:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.BufferReader">
+      <summary>表示以只进方式读取数据行的读取器。</summary>
+    </member>
+    <member name="P:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.CanDeferLoad">
+      <summary>当在派生类中重写时，获取一个指示是否已启用延迟加载的值。</summary>
+      <returns>如果启用延迟加载，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.Convert``1(System.Collections.IEnumerable)">
+      <summary>更改指定序列中的每个元素的类型。</summary>
+      <param name="source">包含要转换的元素的序列。</param>
+      <typeparam name="TOutput">元素要转换为的类型。</typeparam>
+      <returns>包含已转换类型的元素的序列。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.CreateGroup``2(``0,System.Collections.Generic.IEnumerable{``1})">
+      <summary>从指定键和值集合创建组。</summary>
+      <param name="key">组键。</param>
+      <param name="items">组值。</param>
+      <typeparam name="TKey">组键的类型。</typeparam>
+      <typeparam name="TElement">组中值的类型。</typeparam>
+      <returns>包含指定键和指定值集合的组。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.CreateOrderedEnumerable``1(System.Collections.Generic.IEnumerable{``0})">
+      <summary>从指定值集合创建有序序列。</summary>
+      <param name="items">要放置于有序序列中的值。</param>
+      <typeparam name="TElement">有序序列中的值类型。</typeparam>
+      <returns>包含指定值的有序序列。</returns>
+    </member>
+    <member name="F:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.DataReader">
+      <summary>表示数据读取器。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.ErrorAssignmentToNull(System.Type)">
+      <summary>返回一个异常，指示试图将 <see langword="null" /> 值分配给不可以为 null 的值类型。</summary>
+      <param name="type">试图将 <see langword="null" /> 值分配给的类型。</param>
+      <returns>一个异常，指示试图将 <see langword="null" /> 值分配给不可以为 null 的值类型。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.ExecuteSubQuery(System.Int32,System.Object[])">
+      <summary>当在派生类中重写时，执行查询。</summary>
+      <param name="iSubQuery">查询的索引。</param>
+      <param name="args">查询的参数。</param>
+      <returns>执行查询的结果。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.GetLinkSource``1(System.Int32,System.Int32,System.Object[])">
+      <summary>当在派生类中重写时，创建新的延迟源。</summary>
+      <param name="globalLink">链接的索引。</param>
+      <param name="localFactory">工厂的索引。</param>
+      <param name="keyValues">延迟源的键值。</param>
+      <typeparam name="T">结果元素的类型。</typeparam>
+      <returns>可枚举的延迟源。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.GetNestedLinkSource``1(System.Int32,System.Int32,System.Object)">
+      <summary>当在派生类中重写时，创建新的延迟源。</summary>
+      <param name="globalLink">链接的索引。</param>
+      <param name="localFactory">工厂的索引。</param>
+      <param name="instance">延迟源的实例。</param>
+      <typeparam name="T">结果元素的类型。</typeparam>
+      <returns>可枚举的延迟源。</returns>
+    </member>
+    <member name="F:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.Globals">
+      <summary>捕获快速具体化器的内部状态。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.InsertLookup(System.Int32,System.Object)">
+      <summary>当在派生类中重写时，将某个值插入到数据结构中。</summary>
+      <param name="globalMetaType">
+        <see cref="T:System.Data.Linq.Mapping.MetaType" /> 的索引。</param>
+      <param name="instance">要插入到数据结构中的对象。</param>
+      <returns>已插入到数据结构中的值。</returns>
+    </member>
+    <member name="F:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.Locals">
+      <summary>捕获快速具体化器的内部状态。</summary>
+    </member>
+    <member name="F:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.Ordinals">
+      <summary>表示数据读取器的列序号。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.Read">
+      <summary>当在派生类中重写时，将读取器前移至下一条记录。</summary>
+      <returns>如果存在更多行，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Implementation.ObjectMaterializer`1.SendEntityMaterialized(System.Int32,System.Object)">
+      <summary>当在派生类中重写时，调用由 <see cref="P:System.Data.Linq.Mapping.MetaType.OnLoadedMethod" /> 表示的方法。</summary>
+      <param name="globalMetaType">
+        <see cref="T:System.Data.Linq.Mapping.MetaType" /> 的索引。</param>
+      <param name="instance">要传递给调用的方法的参数。</param>
+    </member>
+    <member name="T:System.Data.Linq.SqlClient.Sql2000Provider">
+      <summary>包含连接到 SQL Server 2000 并与之通信的功能。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Sql2000Provider.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.SqlClient.Sql2000Provider" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.Data.Linq.SqlClient.Sql2005Provider">
+      <summary>包含连接到 SQL Server 2005 并与之通信的功能。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Sql2005Provider.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.SqlClient.Sql2005Provider" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.Data.Linq.SqlClient.Sql2008Provider">
+      <summary>包含连接到 SQL Server 2008 并与之通信的功能。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.Sql2008Provider.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.SqlClient.Sql2008Provider" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.Data.Linq.SqlClient.SqlHelpers">
+      <summary>为匹配字符串模式的操作提供帮助程序方法。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlHelpers.GetStringContainsPattern(System.String,System.Char)">
+      <summary>创建一个搜索模式字符串，其中，指定文本可包含其前后的其他文本。</summary>
+      <param name="text">要插入到搜索模式字符串中的字符串。</param>
+      <param name="escape">用于转义通配符的字符。</param>
+      <returns>一个搜索模式字符串，其中包含指定字符串及其前后的“%”字符。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlHelpers.GetStringEndsWithPattern(System.String,System.Char)">
+      <summary>创建一个搜索模式字符串，其中，指定文本可包含其前面的其他文本，但不能包含其后面的其他文本。</summary>
+      <param name="text">要插入到搜索模式字符串中的字符串。</param>
+      <param name="escape">用于转义通配符的字符。</param>
+      <returns>一个搜索模式字符串，其中包含“%”字符及其后面的指定字符串。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlHelpers.GetStringStartsWithPattern(System.String,System.Char)">
+      <summary>创建一个搜索模式字符串，其中，指定文本可包含其后面的其他文本，但不能包含其前面的其他文本。</summary>
+      <param name="text">要插入到搜索模式字符串中的字符串。</param>
+      <param name="escape">用于转义通配符的字符。</param>
+      <returns>一个搜索模式字符串，它包含指定字符串及其后面的“%”字符。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlHelpers.TranslateVBLikePattern(System.String,System.Char)">
+      <summary>将 Visual Basic <see langword="Like" /> 运算符的搜索模式转换为 SQL Server <see langword="LIKE" /> 运算符的搜索模式。</summary>
+      <param name="pattern">要转换为 SQL Server <see langword="LIKE" /> 搜索模式的 Visual Basic <see langword="Like" /> 搜索模式。</param>
+      <param name="escape">用于转义特殊 SQL 字符或转义字符本身的字符。</param>
+      <returns>与指定的 Visual Basic <see langword="Like" /> 搜索模式相对应的 SQL Server <see langword="LIKE" /> 运算符的搜索模式。</returns>
+    </member>
+    <member name="T:System.Data.Linq.SqlClient.SqlMethods">
+      <summary>提供与 SQL Server 函数对应的方法。 <see cref="T:System.Data.Linq.SqlClient.SqlMethods" /> 类中的方法仅在 LINQ to SQL 查询中受支持。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffDay(System.DateTime,System.DateTime)">
+      <summary>对两个不可以为 null 的日期之间的日期边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的日期边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffDay(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可以为 null 的日期之间的日期边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的日期边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffDay(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可以为 null 的日期之间的日期边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的日期边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffDay(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可以为 null 的日期之间的日期边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的日期边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffHour(System.DateTime,System.DateTime)">
+      <summary>对两个不可以为 null 的日期之间的小时边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的小时边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffHour(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可以为 null 的日期之间的小时边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的小时边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffHour(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可以为 null 的日期之间的小时边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的小时边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffHour(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可以为 null 的日期之间的小时边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的小时边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMicrosecond(System.DateTime,System.DateTime)">
+      <summary>对两个不可为 null 的日期之间的微秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的微秒边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMicrosecond(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可为 null 的日期之间的微秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的微秒边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMicrosecond(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可为 null 的日期之间的微秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的微秒边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMicrosecond(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可为 null 的日期之间的微秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的微秒边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMillisecond(System.DateTime,System.DateTime)">
+      <summary>对两个不可以为 null 的日期之间的毫秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的毫秒边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMillisecond(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可以为 null 的日期之间的毫秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的毫秒边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMillisecond(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可以为 null 的日期之间的毫秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的毫秒边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMillisecond(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可以为 null 的日期之间的毫秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的毫秒边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMinute(System.DateTime,System.DateTime)">
+      <summary>对两个不可以为 null 的日期之间的分钟边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的分钟边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMinute(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可以为 null 的日期之间的分钟边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的分钟边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMinute(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可以为 null 的日期之间的分钟边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的分钟边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMinute(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可以为 null 的日期之间的分钟边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的分钟边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMonth(System.DateTime,System.DateTime)">
+      <summary>对两个不可以为 null 的日期之间的月份边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的月份边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMonth(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可以为 null 的日期之间的月份边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的月份边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMonth(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可以为 null 的日期之间的月份边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的月份边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffMonth(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可以为 null 的日期之间的月份边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的月份边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffNanosecond(System.DateTime,System.DateTime)">
+      <summary>对两个不可为 null 的日期之间的毫微秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的毫微秒边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffNanosecond(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可为 null 的日期之间的毫微秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的毫微秒边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffNanosecond(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可为 null 的日期之间的毫微秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的毫微秒边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffNanosecond(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可为 null 的日期之间的毫微秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的毫微秒边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffSecond(System.DateTime,System.DateTime)">
+      <summary>对两个不可以为 null 的日期之间的秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的秒边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffSecond(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可以为 null 的日期之间的秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的秒边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffSecond(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可以为 null 的日期之间的秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的秒边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffSecond(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可以为 null 的日期之间的秒边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的秒边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffYear(System.DateTime,System.DateTime)">
+      <summary>对两个不可以为 null 的日期之间的年份边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的年份边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffYear(System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>对两个不可以为 null 的日期之间的年份边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>两个指定日期之间的年份边界数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffYear(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+      <summary>对两个可以为 null 的日期之间的年份边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的年份边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.DateDiffYear(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+      <summary>对两个可以为 null 的日期之间的年份边界进行计数。</summary>
+      <param name="startDate">时间段的起始日期。</param>
+      <param name="endDate">时间段的结束日期。</param>
+      <returns>当两个参数都不为 <see langword="null" /> 时，返回两个指定日期之间的年份边界数。 当一个参数为或两个参数都为 <see langword="null" /> 时，返回 <see langword="null" /> 值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.Like(System.String,System.String)">
+      <summary>确定特定字符串是否与指定模式相匹配。 目前只有 LINQ to SQL 查询支持此方法。</summary>
+      <param name="matchExpression">要搜索其匹配项的字符串。</param>
+      <param name="pattern">与 <paramref name="matchExpression" /> 匹配的模式（可能包括通配符）。</param>
+      <returns>如果 <paramref name="matchExpression" /> 与模式匹配，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlMethods.Like(System.String,System.String,System.Char)">
+      <summary>确定特定字符串是否与指定模式相匹配。 目前只有 LINQ to SQL 查询支持此方法。</summary>
+      <param name="matchExpression">要搜索其匹配项的字符串。</param>
+      <param name="pattern">与 <paramref name="matchExpression" /> 匹配的模式（可能包括通配符）。</param>
+      <param name="escapeCharacter">放置在通配符前面的字符，以指示应将其解释为常规字符而非通配符。</param>
+      <returns>如果 <paramref name="matchExpression" /> 与模式匹配，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Data.Linq.SqlClient.SqlProvider">
+      <summary>包含连接到 SQL Server 并与之通信的功能。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlProvider.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Linq.SqlClient.SqlProvider" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlProvider.Dispose">
+      <summary>释放托管引用，并关闭由 <see cref="T:System.Data.Linq.SqlClient.SqlProvider" /> 打开的连接。</summary>
+    </member>
+    <member name="M:System.Data.Linq.SqlClient.SqlProvider.Dispose(System.Boolean)">
+      <summary>可选择释放托管引用，并关闭由 <see cref="T:System.Data.Linq.SqlClient.SqlProvider" /> 打开的连接。</summary>
+      <param name="disposing">如果释放托管引用并关闭连接，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="T:System.Data.Linq.Table`1">
+      <summary>表示基础数据库中的特定类型的表。</summary>
+      <typeparam name="TEntity">表中数据的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.Attach(`0)">
+      <summary>如果执行开放式并发检查时需要原始值，请将已断开连接或“已拆离”的实体附加到新的 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要附加的实体的原始值。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.Attach(`0,`0)">
+      <summary>通过指定实体及其原始状态，以修改或未修改状态将实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要附加的实体。</param>
+      <param name="original">与包含原始值的数据成员具有相同实体类型的实例。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.Attach(`0,System.Boolean)">
+      <summary>以修改或未修改状态将实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要附加的实体。</param>
+      <param name="asModified">如果以修改状态附加实体，则为 <see langword="true" />；如果以未修改状态附加实体，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.AttachAll``1(System.Collections.Generic.IEnumerable{``0})">
+      <summary>以修改或未修改状态将集合的所有实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">实体的集合。</param>
+      <typeparam name="TSubEntity">要附加的实体的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.AttachAll``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+      <summary>以修改或未修改状态将集合的所有实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">实体的集合。</param>
+      <param name="asModified">如果对象拥有时间戳或 RowVersion 成员，则为 <see langword="true" />；如果执行开放式并发检查时需要使用原始值，则为 <see langword="false" />。</param>
+      <typeparam name="TSubEntity">要附加的实体的类型。</typeparam>
+    </member>
+    <member name="P:System.Data.Linq.Table`1.Context">
+      <summary>获取已用于检索此 <see cref="T:System.Data.Linq.Table`1" /> 的 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <returns>已用于检索表的数据上下文。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.DeleteAllOnSubmit``1(System.Collections.Generic.IEnumerable{``0})">
+      <summary>将集合中的所有实体置为 <see langword="pending delete" /> 状态。</summary>
+      <param name="entities">要删除的实体。</param>
+      <typeparam name="TSubEntity">要删除的元素的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.DeleteOnSubmit(`0)">
+      <summary>将此表中的实体置为 <see langword="pending delete" /> 状态。</summary>
+      <param name="entity">要删除的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.GetEnumerator">
+      <summary>获取能够循环访问集合的枚举器。</summary>
+      <returns>用于循环访问集合的枚举数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.GetModifiedMembers(`0)">
+      <summary>返回包含当前值和原始值的已修改成员的数组。</summary>
+      <param name="entity">从其获取数组的实体。</param>
+      <returns>包含当前值和原始值的已修改成员的数组。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.GetNewBindingList">
+      <summary>创建用于绑定到数据源的新列表。</summary>
+      <returns>用于绑定到数据源的新 <see cref="T:System.ComponentModel.IBindingList" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.GetOriginalEntityState(`0)">
+      <summary>返回包含实体原始状态的 <see cref="T:System.Data.Linq.Table`1" /> 实例。</summary>
+      <param name="entity">要返回其原始状态的实体。</param>
+      <returns>一个 <see cref="T:System.Data.Linq.Table`1" /> 实例，其中包含实体的原始状态。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.InsertAllOnSubmit``1(System.Collections.Generic.IEnumerable{``0})">
+      <summary>以 <see langword="pending insert" /> 状态将集合中的所有实体添加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">要添加的实体。</param>
+      <typeparam name="TSubEntity">要插入的元素的类型。</typeparam>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.InsertOnSubmit(`0)">
+      <summary>将处于 <see langword="pending insert" /> 状态的实体添加到此 <see cref="T:System.Data.Linq.Table`1" />。</summary>
+      <param name="entity">要添加的实体。</param>
+    </member>
+    <member name="P:System.Data.Linq.Table`1.IsReadOnly">
+      <summary>获取一个值，该值指示包含在此 <see cref="T:System.Data.Linq.Table`1" /> 实例中的实体类型是否具有主键。</summary>
+      <returns>如果实体类型不具有主键，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Collections#Generic#IEnumerable{TEntity}#GetEnumerator">
+      <summary>返回一个循环访问集合的枚举器。</summary>
+      <returns>用于循环访问集合的枚举数。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary>返回一个循环访问集合的枚举器。</summary>
+      <returns>用于循环访问集合的枚举数。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Table`1.System#ComponentModel#IListSource#ContainsListCollection">
+      <summary>获取一个值，该值指示集合是否为 <see cref="T:System.Collections.IList" /> 对象的集合。</summary>
+      <returns>如果集合是 <see cref="T:System.Collections.IList" /> 对象集合，则为 <see langword="true" />；否则，为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#ComponentModel#IListSource#GetList">
+      <summary>从不实现 <see cref="T:System.Collections.IList" /> 本身的对象返回可以绑定到数据源的 <see cref="T:System.Collections.IList" />。</summary>
+      <returns>可以绑定到数据源的 <see cref="T:System.Collections.IList" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#Attach(System.Object)">
+      <summary>以未修改状态将实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要附加的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#Attach(System.Object,System.Boolean)">
+      <summary>以修改或未修改状态将集合的所有实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要附加的实体。</param>
+      <param name="asModified">如果以修改状态附加实体，则为 <see langword="true" />；如果以未修改状态附加实体，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#Attach(System.Object,System.Object)">
+      <summary>通过指定实体及其原始状态，以修改或未修改状态将实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entity">要附加的实体。</param>
+      <param name="original">与包含原始值的数据成员具有相同实体类型的实例。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#AttachAll(System.Collections.IEnumerable)">
+      <summary>以修改或未修改状态将集合的所有实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">要附加的实体集合。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#AttachAll(System.Collections.IEnumerable,System.Boolean)">
+      <summary>以修改或未修改状态将集合的所有实体附加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">要附加的实体集合。</param>
+      <param name="asModified">如果以修改状态附加实体，则为 <see langword="true" />；如果以未修改状态附加实体，则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#DeleteAllOnSubmit(System.Collections.IEnumerable)">
+      <summary>将集合中的所有实体置为 <see langword="pending delete" /> 状态。</summary>
+      <param name="entities">要移除的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#DeleteOnSubmit(System.Object)">
+      <summary>将此表中的实体置为 <see langword="pending delete" /> 状态。</summary>
+      <param name="entity">要移除的实体。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#GetModifiedMembers(System.Object)">
+      <summary>返回包含当前值和原始值的已修改成员的数组。</summary>
+      <param name="entity">要从其获取已修改成员的实体。</param>
+      <returns>已修改成员的数组。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#GetOriginalEntityState(System.Object)">
+      <summary>检索给定实体的原始值。</summary>
+      <param name="entity">要访问其原始状态的实体。</param>
+      <returns>原始实体的副本。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#InsertAllOnSubmit(System.Collections.IEnumerable)">
+      <summary>以 <see langword="pending insert" /> 状态将集合中的所有实体添加到 <see cref="T:System.Data.Linq.DataContext" />。</summary>
+      <param name="entities">要添加的实体集合。</param>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Data#Linq#ITable#InsertOnSubmit(System.Object)">
+      <summary>将处于 <see langword="pending insert" /> 状态的实体添加到此表。</summary>
+      <param name="entity">要添加的实体。</param>
+    </member>
+    <member name="P:System.Data.Linq.Table`1.System#Linq#IQueryable#ElementType">
+      <summary>获取在执行与此对象相关联的表达式树时返回的元素类型。</summary>
+      <returns>在执行与对象的此实例关联的表达式目录树时返回的元素的类型。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Table`1.System#Linq#IQueryable#Expression">
+      <summary>获取与 <see cref="T:System.Linq.IQueryable" /> 的此实例相关联的表达式树。</summary>
+      <returns>与 <see cref="T:System.Linq.Expressions.Expression" /> 的此实例关联的 <see cref="T:System.Linq.IQueryable" />。</returns>
+    </member>
+    <member name="P:System.Data.Linq.Table`1.System#Linq#IQueryable#Provider">
+      <summary>获取与此数据源相关联的查询提供程序。</summary>
+      <returns>与此数据源关联的 <see cref="T:System.Linq.IQueryProvider" />。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Linq#IQueryProvider#CreateQuery(System.Linq.Expressions.Expression)">
+      <summary>构造一个 <see cref="T:System.Linq.IQueryable" /> 对象，该对象可计算指定表达式树所表示的查询。</summary>
+      <param name="expression">从其开始执行计算的查询表达式。</param>
+      <returns>一个 <see cref="T:System.Linq.IQueryable" />，它可计算指定表达式树所表示的查询。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Linq#IQueryProvider#CreateQuery``1(System.Linq.Expressions.Expression)">
+      <summary>构造一个 <see cref="T:System.Linq.IQueryable`1" /> 对象，该对象可计算指定表达式树所表示的查询。</summary>
+      <param name="expression">从其开始执行计算的查询表达式。</param>
+      <typeparam name="TResult">表中数据的类型。</typeparam>
+      <returns>一个 <see cref="T:System.Linq.IQueryable`1" />，它可计算指定表达式树所表示的查询。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Linq#IQueryProvider#Execute(System.Linq.Expressions.Expression)">
+      <summary>执行指定表达式树所表示的查询。</summary>
+      <param name="expression">要执行的查询表达式。</param>
+      <returns>执行指定查询所生成的值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.System#Linq#IQueryProvider#Execute``1(System.Linq.Expressions.Expression)">
+      <summary>执行指定表达式树所表示的强类型查询。</summary>
+      <param name="expression">要执行的查询表达式。</param>
+      <typeparam name="TResult">表中数据的类型。</typeparam>
+      <returns>执行指定查询所生成的值。</returns>
+    </member>
+    <member name="M:System.Data.Linq.Table`1.ToString">
+      <summary>返回表示表的字符串。</summary>
+      <returns>表的字符串表示形式。</returns>
+    </member>
+  </members>
+</doc>

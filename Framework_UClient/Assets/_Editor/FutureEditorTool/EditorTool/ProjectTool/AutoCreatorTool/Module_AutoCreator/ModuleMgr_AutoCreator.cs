@@ -132,32 +132,7 @@ namespace #namespace#
             Debug.Log("[ModuleMgr_AutoCread]模块自动注册完成");
         }
 
-        public static void AutoRegister_HotFix()
-        {
-            string[] DirectoriePath = Directory.GetDirectories(ModuleUIPath);
-          
-            List<string> nameLst = new List<string>();
-            foreach (string path in DirectoriePath)
-            {
-                nameLst.Add(path.Replace(ModuleUIPath + @"\", string.Empty));
-            }
-
-            string ModuleMgrPath = UnityEditorPathConst.AutoRegisterPath_HotFix + "/ModuleMgr";
-            if (!Directory.Exists(ModuleMgrPath))
-            {
-                Directory.CreateDirectory(ModuleMgrPath);
-            }
-
-            Debug.Log("[ModuleMgr_AutoCread]开始自动模块注册(热更)");
-            CreadUIConst(nameLst, ModuleMgrPath,true);
-            CreadCtrlConst(nameLst, ModuleMgrPath, true);
-            CreadUICtrlConst(nameLst, ModuleMgrPath, true);
-            CreadModelConst(nameLst, ModuleMgrPath, true);
-            CreadModuleMgrRegister(nameLst, ModuleMgrPath, true);
-            CreadUICtrlMsgConst(nameLst, ModuleMgrPath, true);
-            Debug.Log("[ModuleMgr_AutoCread]模块自动注册完成(热更)");
-
-        }
+      
 
         private static void CreadModelConst(List<string> nameLst,string AutoCreadPath, bool isHotFix = false)
         {

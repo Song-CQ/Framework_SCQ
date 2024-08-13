@@ -63,6 +63,8 @@ namespace ProjectApp
             AppManagerRegister.Register();
             BaseManagerRegister.RegisterData();
             AppManagerRegister.RegisterData();
+            AppManagerRegister.RegisterGameLogic();
+
 
             App.AppFacadeStartUp();
             GlobalMgr.Instance.StartUp();

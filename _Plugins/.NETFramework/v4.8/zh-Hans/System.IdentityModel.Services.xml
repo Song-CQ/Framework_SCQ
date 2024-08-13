@@ -1,0 +1,2304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.IdentityModel.Services</name>
+  </assembly>
+  <members>
+    <member name="T:System.IdentityModel.Services.ApplicationType">
+      <summary>指定应用程序类型。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.ApplicationType.AspNetWebApplication">
+      <summary>一个 ASP.NET Web 应用程序。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.ApplicationType.WcfServiceApplication">
+      <summary>Windows Communication Foundation 应用程序。</summary>
+    </member>
+    <member name="T:System.IdentityModel.Services.AsynchronousOperationException">
+      <summary>异步操作发生错误时引发的异常。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.AsynchronousOperationException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.AsynchronousOperationException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.AsynchronousOperationException.#ctor(System.Exception)">
+      <summary>使用指定错误信息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Services.AsynchronousOperationException" /> 类的新实例。</summary>
+      <param name="innerException">导致当前异常的 <see cref="T:System.Exception" />。 如果 <paramref name="innerException" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.AsynchronousOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.IdentityModel.Services.AsynchronousOperationException" /> 类的新实例。</summary>
+      <param name="info">保留序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.AsynchronousOperationException.#ctor(System.String)">
+      <summary>用指定的错误消息初始化 <see cref="T:System.IdentityModel.Services.AsynchronousOperationException" /> 类的新实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.AsynchronousOperationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Services.AsynchronousOperationException" /> 类的新实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+      <param name="innerException">导致当前异常的 <see cref="T:System.Exception" />。 如果 <paramref name="innerException" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="T:System.IdentityModel.Services.AttributeRequestMessage">
+      <summary>表示 WS-Federation 属性请求消息。 当接收的消息中 wa 参数是“wattr1.0”时，则创建此消息。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.AttributeRequestMessage.#ctor(System.Uri)">
+      <summary>初始化使用指定的基本 URL 的 <see cref="T:System.IdentityModel.Services.AttributeRequestMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">此消息应用的基 URL。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.AttributeRequestMessage.Attribute">
+      <summary>获取或设置消息的 wattr 参数。</summary>
+      <returns>一个包含 wattr 参数值的字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.AttributeRequestMessage.AttributePtr">
+      <summary>获取或设置消息的 wattrptr 参数。</summary>
+      <returns>一个包含 wattrptr 参数值的字符串。</returns>
+      <exception cref="T:System.ArgumentException">设置无效 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.AttributeRequestMessage.Reply">
+      <summary>获取或设置消息的 wreply 参数。</summary>
+      <returns>一个包含 wreply 参数值的字符串。 应发送答复的 URL。</returns>
+      <exception cref="T:System.ArgumentException">设置无效 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.AttributeRequestMessage.Result">
+      <summary>获取或设置消息的 wresult 参数。</summary>
+      <returns>一个包含 wresult 参数值的字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.AttributeRequestMessage.ResultPtr">
+      <summary>获取或设置消息的 wresultptr 参数。</summary>
+      <returns>一个包含 wresultptr 参数值的字符串。</returns>
+      <exception cref="T:System.ArgumentException">设置无效 URI 值的尝试发生。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.AttributeRequestMessage.Validate">
+      <summary>框架未执行验证。 这样的用户应该在外部无效。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.AttributeRequestMessage.Write(System.IO.TextWriter)">
+      <summary>以查询字符串形式将消息写入指定的文本写入器。</summary>
+      <param name="writer">要将消息写入到的编写器。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="writer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.AuthorizationFailedEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.AuthorizationFailed" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.AuthorizationFailedEventArgs.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.AuthorizationFailedEventArgs" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.AuthorizationFailedEventArgs.RedirectToIdentityProvider">
+      <summary>获取或设置指示运行时 (<see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" />) 是否应重定向至标识提供程序的值。</summary>
+      <returns>如果重新导向，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.ChunkedCookieHandler">
+      <summary>表示 cookie 处理程序，其将 cookie 数据写入，从而 cookie 不会超出设定大小。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ChunkedCookieHandler.#ctor">
+      <summary>初始化使用默认区块大小的 <see cref="T:System.IdentityModel.Services.ChunkedCookieHandler" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ChunkedCookieHandler.#ctor(System.Int32)">
+      <summary>初始化使用指定区块大小的 <see cref="T:System.IdentityModel.Services.ChunkedCookieHandler" /> 类的新实例。</summary>
+      <param name="chunkSize">将用于编写 cookie 的块大小。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="chunkSize" />" 小于 1000 的极小块的大小 (<see cref="F:System.IdentityModel.Services.ChunkedCookieHandler.MinimumChunkSize" />)。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.ChunkedCookieHandler.ChunkSize">
+      <summary>获取当前实例使用的区块的大小。</summary>
+      <returns>区块的大小，以字节为单位。</returns>
+    </member>
+    <member name="F:System.IdentityModel.Services.ChunkedCookieHandler.DefaultChunkSize">
+      <summary>2000 个字符的默认的块大小。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.ChunkedCookieHandler.MinimumChunkSize">
+      <summary>1000 个字符的最小的块大小。</summary>
+    </member>
+    <member name="T:System.IdentityModel.Services.ChunkedCookieHandlerElement">
+      <summary>表示 <see langword="&lt;chunkedCookieHandler&gt;" /> 配置元素。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ChunkedCookieHandlerElement.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.ChunkedCookieHandlerElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.ChunkedCookieHandlerElement.ChunkSize">
+      <summary>获取或设置处理程序的区块大小。</summary>
+      <returns>区块的大小，以字节为单位。 默认值为 <see cref="F:System.IdentityModel.Services.ChunkedCookieHandler.DefaultChunkSize" />。 设置的值不要小于 <see cref="F:System.IdentityModel.Services.ChunkedCookieHandler.MinimumChunkSize" /> 定义的最小块区值。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.ClaimsAuthorizationModule">
+      <summary>表示 HTTP 模块，其执行基于声明的授权。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsAuthorizationModule.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.ClaimsAuthorizationModule" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsAuthorizationModule.Authorize">
+      <summary>返回指示请求(主体)是否获得当前请求特权的值。</summary>
+      <returns>如果授权主体，则为 <see langword="true" />；否则为 <see langword="false" />。 如果声明身份验证管理器不与此模块关联，则默认值是 <see langword="true" />。</returns>
+      <exception cref="T:System.UnauthorizedAccessException">与请求相关联的 <see cref="T:System.Security.Claims.ClaimsPrincipal" /> 未被授权。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.ClaimsAuthorizationModule.ClaimsAuthorizationManager">
+      <summary>获取或设置此模块使用的当前声明授权管理器实例。</summary>
+      <returns>声明身份验证管理器实例或 <see langword="null" />，如果没有声明身份验证管理器与此模块相关联。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsAuthorizationModule.Dispose">
+      <summary>处置由模块使用的资源（内存除外）。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsAuthorizationModule.InitializeModule(System.Web.HttpApplication)">
+      <summary>初始化模块并为其从 ASP.NET 应用程序对象处理事件做好准备。</summary>
+      <param name="context">包含该模块的应用对程序对象。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsAuthorizationModule.InitializePropertiesFromConfiguration">
+      <summary>初始化基于在配置文件中的定义的模块属性。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsAuthorizationModule.OnAuthorizeRequest(System.Object,System.EventArgs)">
+      <summary>处理 HTTP 管道 <see cref="E:System.Web.HttpApplication.AuthorizeRequest" /> 事件。</summary>
+      <param name="sender">事件源。</param>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="T:System.IdentityModel.Services.ClaimsPrincipalPermission">
+      <summary>表示使用 <see cref="T:System.Security.Claims.ClaimsAuthorizationManager" /> 实施的权限，以确定对资源的访问是否应授予活动原则。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.#ctor(System.String,System.String)">
+      <summary>创建 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" /> 类的新实例。</summary>
+      <param name="resource">主体应该被授权的资源。</param>
+      <param name="action">应为其授权当前主体的操作。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="resource" /> 为 <see langword="null" /> 或空字符串。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="action" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.CheckAccess(System.String,System.String)">
+      <summary>检查是否授权当前主体在指定资源上执行指定操作。</summary>
+      <param name="resource">主体应该被授权的资源。</param>
+      <param name="action">应为其授权当前主体的操作。</param>
+      <exception cref="T:System.InvalidOperationException">当前主体无法从 <see cref="T:System.Security.Claims.ClaimsPrincipal" /> 进行分配。  
+
+或 - 
+没有配置的 <see cref="T:System.Security.Claims.ClaimsAuthorizationManager" />。</exception>
+      <exception cref="T:System.Security.SecurityException">授权检查已失败。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.Copy">
+      <summary>返回当前 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" /> 实例的副本。</summary>
+      <returns>一个从当前实例中复制的 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.Demand">
+      <summary>检查当前主体是否获得与当前实例关联的资源操作对的授权。</summary>
+      <exception cref="T:System.InvalidOperationException">当前主体无法从 <see cref="T:System.Security.Claims.ClaimsPrincipal" /> 进行分配。  
+
+或 - 
+没有配置的 <see cref="T:System.Security.Claims.ClaimsAuthorizationManager" />。</exception>
+      <exception cref="T:System.Security.SecurityException">授权检查已失败。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.FromXml(System.Security.SecurityElement)">
+      <summary>通过指定的 XML 内码重新构建当前权限及其状态。</summary>
+      <param name="element">用于重新构造权限的 XML 编码。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="element" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">该编码中包含未识别的元素或特性或不正确形成的 XML。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.Intersect(System.Security.IPermission)">
+      <summary>返回一个权限，该权限是当前权限与指定权限的交集。</summary>
+      <param name="target">要与当前权限相交的该权限。 必须为 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" /> 的实例。</param>
+      <returns>一个新的 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" />，表示当前权限与指定权限的交集；或为 <see langword="null" />（如果 <paramref name="target" /> 为 <paramref name="null" />，或者不是 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" /> 的一个实例）。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.IsSubsetOf(System.Security.IPermission)">
+      <summary>返回一个值，该值指示当前权限是否为指定权限的一个子集。</summary>
+      <param name="target">对其子集关系测试的权限。 必须为 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" /> 的实例。</param>
+      <returns>如果当前权限是指定权限的子集，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.IsUnrestricted">
+      <summary>返回一个值，指示权限是否不受限。</summary>
+      <returns>如果权限不受限，则为 <see langword="true" />；否则为 <see langword="false" />。 始终返回 <see langword="true" />，指示权限不受限。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.ToXml">
+      <summary>返回当前权限及其状态的 XML 编码形式。</summary>
+      <returns>当前权限及其状态的 XML 编码形式。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermission.Union(System.Security.IPermission)">
+      <summary>返回一个新权限，该权限是当前权限与指定权限的并集。 具有当前实例和目标实例中存在的所有资源操作对的 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" /> 对象。</summary>
+      <param name="target">将与当前权限合并的该权限。 该对象的类型必须是 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" />。</param>
+      <returns>一个新的 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" />，表示当前权限与指定权限的联合；或为 <see langword="null" />（如果 <paramref name="target" /> 为 <paramref name="null" />，或者不是 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" /> 的一个实例）。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute">
+      <summary>表示安全属性，其用于声明性分配访问检查，依据是当前应用程序上下文中的 <see cref="T:System.Security.Claims.ClaimsAuthorizationManager" /> 实例提供的逻辑。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.#ctor(System.Security.Permissions.SecurityAction)">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute" /> 类的新实例。</summary>
+      <param name="action">指定可在使用声明安全性时执行的安全操作的值之一。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission">
+      <summary>创建基于当前实例 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" /> 类的新实例。</summary>
+      <returns>具有与此实例关联的操作和资源的 <see cref="T:System.IdentityModel.Services.ClaimsPrincipalPermission" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Operation">
+      <summary>获取或设置其中应对当前主体授予对指定资源的权限的操作。</summary>
+      <returns>应为其授权当前主体的操作。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Resource">
+      <summary>获取或设置其上应对主体授予权限以执行指定操作的资源。</summary>
+      <returns>当前主体应该被授权的资源。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.Configuration.FederationConfiguration">
+      <summary>公开包含控制 WS-Federation 身份验证模块的联合设置的属性（<see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" />）和在 Web 应用程序的“会话身份验证模块”（<see cref="T:System.IdentityModel.Services.SessionAuthenticationModule" />）。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfiguration.#ctor">
+      <summary>通过加载设置初始化 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 选件类的新实例从配置文件的 <see langword="system.identityModel.services" /> 部分。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfiguration.#ctor(System.Boolean)">
+      <summary>通过有选择地加载来自配置文件的 <see langword="system.identityModel.services" /> 部分的设置来初始化 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 类的新的实例。</summary>
+      <param name="loadConfig">初始化的<see langword="true" /> 与配置文件加载的设置；初始化的 <see langword="false" /> 设置为默认值。</param>
+      <exception cref="T:System.InvalidOperationException">此 <see langword="system.identityModel" /> 配置节未在配置文件中定义。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfiguration.#ctor(System.String)">
+      <summary>从指定的名称 &lt;federationConfiguration&gt; 元素初始化 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 类的新实例。</summary>
+      <param name="federationConfigurationName">从中加载配置的 <see langword="&lt;federationConfiguration&gt;" /> 元素的名称。</param>
+      <exception cref="T:System.InvalidOperationException">在配置文件中没有 <see langword="system.identityModel.services" /> 节定义。  
+或 
+在配置文件中没有 <see langword="system.identityModel" /> 节定义。  
+或 
+该名称与 <see langword="&lt;federationConfiguration&gt;" /> 类中的 <see langword="system.identityModel.services" /> 没有指定元素名称。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfiguration.CookieHandler">
+      <summary>获取或设置将由会话身份验证模块 (<see cref="T:System.IdentityModel.Services.SessionAuthenticationModule" />) 使用的 Cookie 处理程序。</summary>
+      <returns>由会话身份验证模块（SAM）使用的 Cookie 处理程序。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfiguration.CustomElement">
+      <summary>获取或设置此配置中存在的自定义 XML 元素（如有）。</summary>
+      <returns>自定义 XML 元素。</returns>
+    </member>
+    <member name="F:System.IdentityModel.Services.Configuration.FederationConfiguration.DefaultFederationConfigurationName">
+      <summary>定义应加载设置的 &lt;federationConfiguration&gt; 元素的默认名称。 因为默认元素是未命名的，这是一个空字符串。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfiguration.IdentityConfiguration">
+      <summary>获取或设置与此实例关联的 <see cref="T:System.IdentityModel.Configuration.IdentityConfiguration" /> 对象。</summary>
+      <returns>此标识配置对象与该实例相关联。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfiguration.Initialize">
+      <summary>初始化当前实例。</summary>
+      <exception cref="T:System.InvalidOperationException">当前实例已初始化（<see cref="P:System.IdentityModel.Services.Configuration.FederationConfiguration.IsInitialized" /> 属性是 <see langword="true" />。）</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfiguration.IsInitialized">
+      <summary>获取或设置一个值，该值指示是否已调用 <see cref="M:System.IdentityModel.Services.Configuration.FederationConfiguration.Initialize" /> 方法。</summary>
+      <returns>如果配置对象已配置，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfiguration.LoadConfiguration(System.IdentityModel.Services.Configuration.FederationConfigurationElement)">
+      <summary>为来自配置文件的当前实例加载属性。 此方法由从配置设置中初始化新创建的 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 构造函数调用。</summary>
+      <param name="element">要从中加载设置的 <see langword="&lt;federationConfiguration&gt;" /> 元素。 可以为 <see langword="null" /> 加载默认值。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfiguration.Name">
+      <summary>获取与此实例关联的名称。</summary>
+      <returns>与此联合配置实例关联的名称。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfiguration.ServiceCertificate">
+      <summary>获取或设置用于对 WS-Federation 协议消息进行签名的 X.509 证书。</summary>
+      <returns>用于签名 WS-Federation 协议消息的 X.509 证书。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfiguration.WsFederationConfiguration">
+      <summary>获取或设置 WS-Federation 身份验证模块 (<see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" />) 的配置设置。</summary>
+      <returns>设置 WS-Federation 身份验证模块的配置设置。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.Configuration.FederationConfigurationCreatedEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.FederatedAuthentication.FederationConfigurationCreated" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfigurationCreatedEventArgs.#ctor(System.IdentityModel.Services.Configuration.FederationConfiguration)">
+      <summary>使用指定的联合配置对象初始化 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfigurationCreatedEventArgs" /> 类的新实例。</summary>
+      <param name="config">联合配置对象。 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 对象包含在 Web 应用程序中的 WS-Federation 身份验证模块 (<see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" />) 和会话身份验证模块 (<see cref="T:System.IdentityModel.Services.SessionAuthenticationModule" />) 的可配置的属性。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfigurationCreatedEventArgs.FederationConfiguration">
+      <summary>获取或设置通过配置文件初始化的联合配置对象。</summary>
+      <returns>从配置初始化的联邦配置对象。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.Configuration.FederationConfigurationElement">
+      <summary>表示配置文件中的 <see langword="&lt;federationConfiguration&gt;" /> 元素。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfigurationElement.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfigurationElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfigurationElement.CookieHandler">
+      <summary>获取或设置子 <see langword="&lt;cookieHandler&gt;" /> 元素。</summary>
+      <returns>子 <see langword="&lt;cookieHandler&gt;" /> 元素。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfigurationElement.CustomElement">
+      <summary>获取或设置一般子配置元素，如果有一个存在。</summary>
+      <returns>自定义配置元素。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfigurationElement.IdentityConfigurationName">
+      <summary>获取或设置 <see langword="identityConfigurationName" /> 特性。</summary>
+      <returns>要与 <see langword="&lt;identityConfiguration&gt;" /> 元素相关的 <see langword="&lt;federationConfiguration&gt;" /> 部分的名称。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfigurationElement.IsConfigured">
+      <summary>获取指示此元素是否已配置了非默认值的值。</summary>
+      <returns>如果该元素已配置了非默认的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfigurationElement.Name">
+      <summary>获取或设置 <see langword="name" /> 特性。</summary>
+      <returns>此联合配置元素的名称。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfigurationElement.ServiceCertificate">
+      <summary>获取或设置子 <see langword="&lt;serviceCertificate&gt;" /> 元素。</summary>
+      <returns>子 <see langword="&lt;serviceCertificate&gt;" /> 元素。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.FederationConfigurationElement.WsFederation">
+      <summary>获取或设置子 <see langword="&lt;wsFederation&gt;" /> 元素。</summary>
+      <returns>子 <see langword="&lt;wsFederation&gt;" /> 元素。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.Configuration.FederationConfigurationElementCollection">
+      <summary>包含所有 <see langword="&lt;federationConfiguration&gt;" /> 元素的集合，这些元素在配置文件中指定。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfigurationElementCollection.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfigurationElementCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.FederationConfigurationElementCollection.GetElement(System.String)">
+      <summary>检索具有指定名称的 <see langword="&lt;federationConfiguration&gt;" /> 元素。</summary>
+      <param name="name">要检索的 <see langword="&lt;federationConfiguration&gt;" /> 元素的名称。</param>
+      <returns>具有指定名称的 <see langword="&lt;federationConfiguration&gt;" /> 元素。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="name" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">未找到具有指定名称的元素。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection">
+      <summary>表示配置文件中的 <see langword="&lt;system.identityModel.services&gt;" /> 部分。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection.Current">
+      <summary>从配置文件中获取对 <see langword="&lt;system.identityModel.services&gt;" /> 节的引用。</summary>
+      <returns>配置文件的 <see langword="&lt;system.identityModel.services&gt;" /> 部分。 如果配置文件不包含 <see langword="null" /> 的部分，则为 <see langword="&lt;system.identityModel.services&gt;" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection.DefaultFederationConfigurationElement">
+      <summary>获取配置文件中的未命名 <see langword="&lt;federationConfiguration&gt;" /> 元素。</summary>
+      <returns>配置文件中的未命名 <see langword="&lt;federationConfiguration&gt;" /> 元素。 如果配置文件不包含 <see langword="null" /> 的部分，则为 <see langword="&lt;system.identityModel.services&gt;" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection.FederationConfigurationElements">
+      <summary>获取配置在此 <see langword="&lt;federationConfiguration&gt;" /> 部分中的 <see langword="&lt;system.identityModel.services&gt;" />元素的集合。</summary>
+      <returns>一个包含所有 <see langword="&lt;federationConfiguration&gt;" /> 元素的集合，这些元素在 <see langword="&lt;system.identityModel.services&gt;" /> 部分进行配置。</returns>
+    </member>
+    <member name="F:System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection.SectionName">
+      <summary>定义配置节的名称的常量；“system.identityModel.services”。</summary>
+    </member>
+    <member name="T:System.IdentityModel.Services.Configuration.WsFederationConfiguration">
+      <summary>包含 WS-Federation 身份验证模块需要的所有配置设置 (<see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" />)。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.WsFederationConfiguration.#ctor(System.IdentityModel.Services.Configuration.WSFederationElement)">
+      <summary>从指定的 <see langword="&lt;wsFederation&gt;" /> 元素来初始化 <see cref="T:System.IdentityModel.Services.Configuration.WsFederationConfiguration" /> 类的新实例。</summary>
+      <param name="federationElement">要从新实例初始化的 <see langword="&lt;wsFederation&gt;" /> 元素。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.WsFederationConfiguration.#ctor(System.String,System.String)">
+      <summary>使用指定的颁发者和领域来初始化 <see cref="T:System.IdentityModel.Services.Configuration.WsFederationConfiguration" /> 类的新实例。</summary>
+      <param name="issuer">包含 WS-Federation 身份验证模块 (WSFAM) 使用的颁发者 URI 的字符串。</param>
+      <param name="realm">包含 WSFAM 使用的请求领域的 URI 的字符串。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="issuer" /> 为 <see langword="null" />。  
+
+或 - 
+<paramref name="realm" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.AuthenticationType">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wauth 参数的值。</summary>
+      <returns>一个认证类型的 URI。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.CustomAttributes">
+      <summary>获取配置文件中包含在 <see langword="&lt;wsFederation&gt;" /> 元素指定的任何多余的特性的字典。</summary>
+      <returns>包含额外特性的词典。</returns>
+    </member>
+    <member name="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultFreshness">
+      <summary>包含 <see cref="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.Freshness" /> 属性的默认值的常数为零。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultMaxArrayLength">
+      <summary>设置默认属性由 <see cref="P:System.Xml.XmlDictionaryReaderQuotas.MaxArrayLength" /> 引用 XML 目录读取器配额的对象的 <see cref="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.XmlDictionaryReaderQuotas" /> 属性的常数。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultMaxStringContentLength">
+      <summary>设置默认属性由 <see cref="P:System.Xml.XmlDictionaryReaderQuotas.MaxStringContentLength" /> 引用 XML 目录读取器配额的对象的 <see cref="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.XmlDictionaryReaderQuotas" /> 属性的常数。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultPassiveRedirectEnabled">
+      <summary>包含 <see cref="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.PassiveRedirectEnabled" /> 属性的默认值的常数为 <see langword="true" />，已启用被动重定向。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultPersistentCookiesOnPassiveRedirects">
+      <summary>包含 <see cref="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.PersistentCookiesOnPassiveRedirects" /> 属性的默认值的常数为 <see langword="false" />，已启用 cookie。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultRequireHttps">
+      <summary>包含 <see cref="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.RequireHttps" /> 属性的默认值的常数为 <see langword="true" />，重定向需要 HTTP。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.Freshness">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wfresh 参数的值。</summary>
+      <returns>身份验证请求所需的最大生存期（以分钟为单位）。 默认值为 <see cref="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultFreshness" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.HomeRealm">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 whr 参数的值。</summary>
+      <returns>主页依赖身份提供程序的地址。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.Issuer">
+      <summary>获取或设置标识安全标记的预期颁发者的 URI。</summary>
+      <returns>确认安全标记服务 (STS) 的 URI。 不能为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.PassiveRedirectEnabled">
+      <summary>获取或设置指定是否启用模块以启动 WS-Federation 协议重定向的值。</summary>
+      <returns>如果启用重定向，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see cref="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultPassiveRedirectEnabled" />，重定向启用。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.PersistentCookiesOnPassiveRedirects">
+      <summary>获取或设置指定是否对成功的身份验证颁发一致的会话 Cookie 的值。</summary>
+      <returns>如果发出持久性会话验证 Cookie，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see cref="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultPersistentCookiesOnPassiveRedirects" />，cookies 不启用。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.Policy">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wp 参数的值。</summary>
+      <returns>标识使用策略的 URL。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.Realm">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wtrealm 参数的值。</summary>
+      <returns>标识安全标志服务 (STS)的该依赖方 (RP) 的 URI。 不能为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.Reply">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wreply 参数的值。</summary>
+      <returns>标识依赖方 (RP) 应用程序的地址的 URL 要接受来自安全标志服务 (STS) 的回复。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.Request">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wreq 参数的值。</summary>
+      <returns>令牌颁发请求以 <see langword="&lt;wst:RequestSecurityToken&gt;" /> 元素表示。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.RequestPtr">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wreqptr 参数的值。</summary>
+      <returns>一个指定令牌颁发请求位置的 URI，表示为一个 <see langword="&lt;wst:RequestSecurityToken&gt;" /> 元素。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.RequireHttps">
+      <summary>获取或设置指定与安全令牌服务 (STS) 的通信是否必须使用 HTTPS 协议的值。</summary>
+      <returns>如果必须使用 HTTP 对具有 STS 的通信进行保护，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为<see cref="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultRequireHttps" />，要求 HTTPS。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.Resource">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wres 参数的值。</summary>
+      <returns>标识访问的资源、依赖方 (RP)和对安全标志服务 (STS) 的 URI。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.SignInQueryString">
+      <summary>获取或设置包含要在 WS 联合身份验证登录请求（“wsignin1.0”）中发送的额外参数的查询字符串。</summary>
+      <returns>包含采用以下格式的更多的消息参数的 URL 片段： <c>"？ param1 = value1&amp;param2 = value2&amp;paramN = valueN"</c>。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.SignOutQueryString">
+      <summary>获取或设置包含在被动注销期间将在 WS 联合身份验证注销请求（“wsignout1.0”）中发送的额外参数的查询字符串。</summary>
+      <returns>包含采用以下格式的更多的消息参数的 URL 片段： <c>"？ param1 = value1&amp;param2 = value2&amp;paramN = valueN"</c>。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.SignOutReply">
+      <summary>获取或设置在 WS 联合身份验证注销请求（“wsignout1.0”）期间使用的 wreply 参数的值。</summary>
+      <returns>通过 ws-discovery 协议被动注销过程中，该客户端应由安全标记服务 (STS) 的重定向到 URL。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WsFederationConfiguration.XmlDictionaryReaderQuotas">
+      <summary>获取或设置此实例使用的 XML 字典读取器的可配置配额值。</summary>
+      <returns>包含可配置配额值的对象。 默认对象具有 <see cref="P:System.Xml.XmlDictionaryReaderQuotas.MaxArrayLength" /> 属性设置为 <see cref="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultMaxArrayLength" /> 和 <see cref="P:System.Xml.XmlDictionaryReaderQuotas.MaxStringContentLength" /> 属性设置为 <see cref="F:System.IdentityModel.Services.Configuration.WsFederationConfiguration.DefaultMaxStringContentLength" />。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.Configuration.WSFederationElement">
+      <summary>表示配置文件中的 <see langword="&lt;wsFederation&gt;" /> 元素。 此类不能被继承。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Configuration.WSFederationElement.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.Configuration.WSFederationElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.AuthenticationType">
+      <summary>获取或设置 <see langword="authenticationType" /> 特性。</summary>
+      <returns>包含表示 WS-Federation 登陆请求 wauth 类型的 URL 的字符串。 默认值为一个空字符串。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.CustomAttributes">
+      <summary>获取或设置包含任何自定义特性的字典。</summary>
+      <returns>包含自定义特性的字典，由属性名称的键控。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.Freshness">
+      <summary>获取或设置 <see langword="freshness" /> 特性。</summary>
+      <returns>必需的新鲜度。 设置 WS-Federation 登录请求 wfresh 参数。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.HomeRealm">
+      <summary>获取或设置 <see langword="homeRealm" /> 特性。</summary>
+      <returns>包含标识提供程序的主领域 URI 的字符串。 默认值为一个空字符串。 设置 WS-Federation 登录请求 whr 参数。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.IsConfigured">
+      <summary>获取指示此元素是否已配置了非默认值的值。</summary>
+      <returns>如果该元素已配置了非默认的值，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.Issuer">
+      <summary>获取或设置 <see langword="issuer" /> 特性。</summary>
+      <returns>一个字符串，该字符串包含令牌颁发者的 URL。 默认值为一个空字符串。 必需。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.PassiveRedirectEnabled">
+      <summary>获取或设置 <see langword="passiveRedirectEnabled" /> 特性。</summary>
+      <returns>使 ws-discovery 联邦身份验证模块的<see langword="true" />（WSFAM）将自动重定向未经授权的请求到 STS；否则<see langword="false" />。 默认值为 <see langword="true" />，未经授权的自动重定向请求。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.PersistentCookiesOnPassiveRedirects">
+      <summary>获取或设置 <see langword="persistentCookiesOnPassiveRedirects" /> 特性。</summary>
+      <returns>发行永久性 cookie，<see langword="true" /> 当 WS-Federation 身份验证模块（WSFAM）中启动的 WS-Federation 被动协议重定向；否则<see langword="false" />。 默认值为 <see langword="false" />，不发出cookies。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.Policy">
+      <summary>获取或设置 <see langword="policy" /> 特性。</summary>
+      <returns>一个字符串，该字符串包含相关策略的 URL。 默认值为一个空字符串。 设置 WS-Federation 登录请求 wp 参数。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.Realm">
+      <summary>获取或设置 <see langword="realm" /> 特性。</summary>
+      <returns>一个包含请求的 URL 领域的字符串。 默认值为一个空字符串。 设置 WS-Federation 登录请求 wtrealm 参数。 必需。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.Reply">
+      <summary>获取或设置 <see langword="reply" /> 特性。</summary>
+      <returns>一个字符串，包含要答复的地址的 URL。 默认值为一个空字符串。 设置 WS-Federation 登录请求中的 wreply 参数。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.Request">
+      <summary>获取或设置 <see langword="request" /> 特性。</summary>
+      <returns>一个字符串，其中包含令牌颁发请求。 默认值为一个空字符串。 设置 WS-Federation 登录请求 wreq 参数。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.RequestPtr">
+      <summary>获取或设置 <see langword="requestPtr" /> 特性。</summary>
+      <returns>一个指定令牌颁发请求位置的 URI。 默认值为一个空字符串。 设置 WS-Federation 登录请求 wreqptr 参数。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.RequireHttps">
+      <summary>获取或设置 <see langword="requireHttps" /> 特性。</summary>
+      <returns>
+        <see langword="true" /> 以指定 WS 联邦身份验证模块（WSFAM）只能重新定向到 STS 的安全 URL；否则<see langword="false" />。 默认值为 <see langword="true" />， WSFAM 只重定向到 STS 的安全 URL。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.Resource">
+      <summary>获取或设置 <see langword="resource" /> 特性。</summary>
+      <returns>包含 WS-Federation 资源值 URI 的字符串。 默认值为一个空字符串。 设置请求 WS-Federation 登录请求 wres 参数。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.SignInQueryString">
+      <summary>获取或设置 <see langword="signInQueryString" /> 特性。</summary>
+      <returns>任何应用程序为 WS 联合身份验证定义的参数登录请求 URL。 默认值为一个空字符串。 为了包括在登录请求 URL 中定义查询参数的应用程序提供扩展性点。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.SignOutQueryString">
+      <summary>获取或设置 <see langword="signOutQueryString" /> 特性。</summary>
+      <returns>任何应用程序为 WS 联合身份验证定义的参数注销请求 URL。 默认值为一个空字符串。 为了包括在注销请求 URL 中定义查询参数的应用程序提供扩展性点。 可选。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.Configuration.WSFederationElement.SignOutReply">
+      <summary>获取或设置 <see langword="signOutReply" /> 特性。</summary>
+      <returns>包含要返回到如下注销的 URL 的字符串。设置 WS 联合身份验证注销请求中的 wreply 参数。 可选。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.CookieHandler">
+      <summary>提供用于读取、编写和删除会话 Cookie 的抽象基类在 HTTP 客服端上。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.#ctor">
+      <summary>从派生类中的构造函数中调用，用于初始化 <see cref="T:System.IdentityModel.Services.CookieHandler" /> 类。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Delete">
+      <summary>读取与当前请求相关的 cookie，该请求具有默认名称、域和路径。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Delete(System.String)">
+      <summary>删除与指定请求相关的 cookie，该请求具有当前名称和默认的域和路径。</summary>
+      <param name="name">Cookie 的名称。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="name" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Delete(System.String,System.String,System.String,System.Web.HttpContext)">
+      <summary>删除与指定请求相关的 cookie，该请求具有指定名称、路径和域。</summary>
+      <param name="name">Cookie 的名称。</param>
+      <param name="path">Cookie的路径。</param>
+      <param name="domain">Cookie 域</param>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" /></param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="name" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Delete(System.String,System.Web.HttpContext)">
+      <summary>删除与指定请求相关的 cookie，该请求具有指定名称和默认的域和路径。</summary>
+      <param name="name">Cookie 的名称。</param>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="name" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Delete(System.Web.HttpContext)">
+      <summary>读取与当前请求相关的 cookie，该请求具有默认名称、域和路径。</summary>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.DeleteCore(System.String,System.String,System.String,System.Web.HttpContext)">
+      <summary>当在派生类中重写时，删除与指定请求（具有指定名称、域和路径）关联的 cookie。</summary>
+      <param name="name">Cookie 的名称</param>
+      <param name="path">Cookie的路径</param>
+      <param name="domain">Cookie 域</param>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandler.Domain">
+      <summary>获取或设置用于 Cookie 的域。</summary>
+      <returns>用于 cookie 的字段。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandler.HideFromClientScript">
+      <summary>获取或设置一个值，该值指示是否应该从客户端脚本隐藏 Cookie。</summary>
+      <returns>如果应隐藏客户脚本的 cookie，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.MatchCookiePath(System.Uri,System.Uri)">
+      <summary>如果目标域在 Cookie 域中，且目标路径在 Cookie 路径中，则对 Cookie 路径中的大小写进行匹配。</summary>
+      <param name="baseUri">请求的基 URL。</param>
+      <param name="targetUri">要匹配的 URI。</param>
+      <returns>返回 <see cref="T:System.String" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandler.Name">
+      <summary>获取或设置处理程序编写的 Cookie 的基名称。</summary>
+      <returns>使用 Cookie 的基名称。 默认值为 FedAuth。</returns>
+      <exception cref="T:System.ArgumentException">发生设置 <see langword="null" /> 或空值的尝试。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandler.Path">
+      <summary>获取或设置处理程序编写的 Cookie 的虚拟路径。</summary>
+      <returns>虚拟路径。 默认为 ASP.NET 应用程序的根。</returns>
+      <exception cref="T:System.ArgumentException">发生设置 <see langword="null" /> 或空值的尝试。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime">
+      <summary>永久会话的生存期。 如果为零，将始终使用瞬变会话。</summary>
+      <returns>会话生存期。 默认值为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">指定的值小于零。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Read">
+      <summary>读取与当前请求相关的 cookie，该请求具有默认名称。</summary>
+      <returns>如果未到为 cookie，则为 cookie 值或 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Read(System.String)">
+      <summary>读取与当前请求相关的 cookie，该请求具有指定名称。</summary>
+      <param name="name">要读取的 Cookie 的名称。</param>
+      <returns>如果未到为 cookie，则为 cookie 值或 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="name" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Read(System.String,System.Web.HttpContext)">
+      <summary>读取与指定请求相关的 cookie，该请求具有指定名称和默认的域和路径。</summary>
+      <param name="name">要读取的 Cookie 的名称。</param>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+      <returns>如果未到为 cookie，则为 cookie 值或 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="name" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Read(System.Web.HttpContext)">
+      <summary>读取与当前请求相关的 cookie，该请求具有默认名称、域和路径。</summary>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+      <returns>如果未到为 cookie，则为 cookie 值或 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.ReadCore(System.String,System.Web.HttpContext)">
+      <summary>当在派生类中重写时，将读取与具有指定名称和指定请求关联的 cookie。</summary>
+      <param name="name">Cookie 的名称</param>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+      <returns>如果未到为 cookie，则为 cookie 值或 <see langword="null" /></returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandler.RequireSsl">
+      <summary>获取或设置一个值，该值指定是否应只用 SSL 验证 Cookie。</summary>
+      <returns>如果只应针对 SSL 连接使用 cookie，则为 <see langword="true" /> ；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Write(System.Byte[],System.Boolean,System.DateTime)">
+      <summary>写入当前请求（具有指定值、持久性和过期时间）关联的 cookie，。</summary>
+      <param name="value">Cookie 值。</param>
+      <param name="isPersistent">如果 Cookie 是持久的，则为 <see langword="true" />；如果 Cookie 仅是会话，则为 <see langword="false" />,即，仅在客户端上的浏览器关闭前有效。</param>
+      <param name="tokenExpirationTime">基础标识的过期时间。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Write(System.Byte[],System.String,System.DateTime)">
+      <summary>写入当前请求（具有指定名称、值和过期时间）关联的 cookie，。</summary>
+      <param name="value">Cookie 值。</param>
+      <param name="name">Cookie 的名称。</param>
+      <param name="expirationTime">Cookie 的过期时段，或会话（仅会话）Cookie 的 <see cref="F:System.DateTime.MinValue" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" /> 或空。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="name" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Write(System.Byte[],System.String,System.DateTime,System.Web.HttpContext)">
+      <summary>写入指定请求（具有指定名称、值和过期时间）关联的 cookie，。</summary>
+      <param name="value">Cookie 值。</param>
+      <param name="name">Cookie 的名称。</param>
+      <param name="expirationTime">Cookie 的过期时段，或会话（仅会话）Cookie 的 <see cref="F:System.DateTime.MinValue" />。</param>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" /> 或空。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="name" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.Write(System.Byte[],System.String,System.String,System.String,System.DateTime,System.Boolean,System.Boolean,System.Web.HttpContext)">
+      <summary>写入指定请求（具有指定名称、值、域、路径、过期时间和可见性）关联的 cookie，。</summary>
+      <param name="value">Cookie 值。</param>
+      <param name="name">Cookie 的名称。</param>
+      <param name="path">Cookie的路径</param>
+      <param name="domain">Cookie 域</param>
+      <param name="expirationTime">Cookie 的过期时段，或会话（仅会话）Cookie 的 <see cref="F:System.DateTime.MinValue" />。</param>
+      <param name="requiresSsl">如果只应针对 SSL 连接使用 cookie，则为 <see langword="true" /> ；否则为 <see langword="false" />。</param>
+      <param name="hideFromClientScript">如果应隐藏客户脚本的 cookie，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" /> 或空。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="name" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandler.WriteCore(System.Byte[],System.String,System.String,System.String,System.DateTime,System.Boolean,System.Boolean,System.Web.HttpContext)">
+      <summary>当在派生类中重写时，写入与指定请求（具有指定名称、值、域、路径、过期时间、持久性和可见性）关联的 cookie。</summary>
+      <param name="value">Cookie 值。</param>
+      <param name="name">Cookie 的名称。</param>
+      <param name="path">Cookie的路径</param>
+      <param name="domain">Cookie 域</param>
+      <param name="expirationTime">Cookie 的过期时段，或会话（仅会话）Cookie 的 <see cref="F:System.DateTime.MinValue" />。</param>
+      <param name="secure">如果只应针对 SSL 连接使用 cookie，则为 <see langword="true" /> ；否则为 <see langword="false" />。</param>
+      <param name="httpOnly">如果应隐藏客户脚本的 cookie，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="context">该请求的 <see cref="T:System.Web.HttpContext" />。</param>
+    </member>
+    <member name="T:System.IdentityModel.Services.CookieHandlerElement">
+      <summary>表示 <see langword="&lt;cookieHandler&gt;" /> 配置元素。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandlerElement.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.CookieHandlerElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.ChunkedCookieHandler">
+      <summary>获取或设置分块 Cookie 处理程序。</summary>
+      <returns>为 chunked cookie 处理程序提供另外配置的 <see cref="T:System.IdentityModel.Services.ChunkedCookieHandlerElement" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.CustomCookieHandler">
+      <summary>获取或设置自定义 Cookie 处理程序类型。 当配置自定义 cookie 处理程序时必须设置此属性。</summary>
+      <returns>定义自定义 cookie 处理程序类型的 <see cref="T:System.IdentityModel.Configuration.CustomTypeElement" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.Domain">
+      <summary>获取或设置处理程序编写的 Cookie 的域值。</summary>
+      <returns>域值。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.CookieHandlerElement.GetConfiguredCookieHandler">
+      <summary>基于配置属性获取新的 Cookie 处理程序。</summary>
+      <returns>Cookie 处理程序。 这是 <see cref="T:System.IdentityModel.Services.CookieHandler" /> 或 <see cref="T:System.IdentityModel.Services.ChunkedCookieHandler" /> 实例（根据由当前实例的属性配置的处理程序种类）。</returns>
+      <exception cref="T:System.Configuration.ConfigurationException">Cookie 处理程序不能从当前实例的属性中创建。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.HideFromScript">
+      <summary>获取或设置指定是否应设置此处理程序编写的 Cookie 的 <see langword="httpOnly" /> 属性的值。</summary>
+      <returns>如果应设置 <see langword="true" /> 属性，则为 <see langword="httpOnly" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.Mode">
+      <summary>获取或设置 Cookie 处理程序流模式。</summary>
+      <returns>有效的 <see cref="T:System.IdentityModel.Services.CookieHandlerMode" /> 值，指示要配置的 cookie 处理程序的种类。 默认值是 <see cref="F:System.IdentityModel.Services.CookieHandlerMode.Default" />，指示一个 chunked cookie 处理程序。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.Name">
+      <summary>获取或设置处理程序编写的任何 Cookie 的基名称。</summary>
+      <returns>Cookie 的基名称。 默认值为 FedAuth。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.Path">
+      <summary>获取或设置处理程序编写的 Cookie 的路径值。</summary>
+      <returns>包含路径的字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.PersistentSessionLifetime">
+      <summary>获取或设置处理程序颁发的 Cookie 的生命周期。</summary>
+      <returns>一个表示 cookie 生存期的 <see cref="T:System.TimeSpan" />。 默认值为 0 天 ("0.0:0:0")。 值必须是 0 ("0.0:0:0") 和 365 ("365.0:0:0") 天之间的值。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.CookieHandlerElement.RequireSsl">
+      <summary>获取或设置一个值，该值指定是否应只用 SSL 验证 Cookie。</summary>
+      <returns>如果只应针对 SSL 连接使用 cookie，则为 <see langword="true" /> ；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.CookieHandlerMode">
+      <summary>指定支持的 cookie 处理程序模式。  
+定义<see cref="P:System.IdentityModel.Services.CookieHandlerElement.Mode" /> 的可能值属性。 此属性将定义 <see cref="T:System.IdentityModel.Services.CookieHandlerElement" /> 对象配置的 cookie 处理程序。 有关更多信息，请参见 <see cref="T:System.IdentityModel.Services.CookieHandlerElement" /> 类。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.CookieHandlerMode.Chunked">
+      <summary>指定从 <see cref="T:System.IdentityModel.Services.ChunkedCookieHandler" /> 类的实例或从中派生的分块 cookie 管理器。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.CookieHandlerMode.Custom">
+      <summary>指定从 <see cref="T:System.IdentityModel.Services.CookieHandler" /> 类派生的自定义 cookie 管理器。</summary>
+    </member>
+    <member name="F:System.IdentityModel.Services.CookieHandlerMode.Default">
+      <summary>指定使用 cookie 处理程序的默认类型。 对于 <see cref="T:System.IdentityModel.Services.CookieHandlerElement" /> 类，默认的是组块信息处理程序。</summary>
+    </member>
+    <member name="T:System.IdentityModel.Services.ErrorEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.SessionAuthenticationModule.SignOutError" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ErrorEventArgs.#ctor(System.Boolean,System.Exception)">
+      <summary>使用指定的取消状态和异常初始化 <see cref="T:System.IdentityModel.Services.ErrorEventArgs" /> 类的新实例。</summary>
+      <param name="cancel">初始取消状态。 设置 <see cref="P:System.ComponentModel.CancelEventArgs.Cancel" /> 属性。</param>
+      <param name="exception">发生的异常。 设置 <see cref="P:System.IdentityModel.Services.ErrorEventArgs.Exception" /> 属性。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.ErrorEventArgs.#ctor(System.Exception)">
+      <summary>使用指定的异常初始化 <see cref="T:System.IdentityModel.Services.ErrorEventArgs" /> 类的新实例。</summary>
+      <param name="exception">发生的异常。 设置 <see cref="P:System.IdentityModel.Services.ErrorEventArgs.Exception" /> 属性。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="exception" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.ErrorEventArgs.Exception">
+      <summary>获取所发生的异常。</summary>
+      <returns>发生的异常。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.FederatedAuthentication">
+      <summary>提供对 Web 应用程序中联合身份验证相关的所有 HTTP 模块状态的访问权限。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.FederatedAuthentication.ClaimsAuthorizationModule">
+      <summary>获取此 Web 应用程序使用的声明授权模块。</summary>
+      <returns>声明身份验证模块。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration">
+      <summary>获取 HTTP 模块在该 Web 应用程序使用的单独 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 实例。</summary>
+      <returns>联合配置实例。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.IdentityModel.Services.Configuration.FederationConfigurationCreatedEventArgs.FederationConfiguration" /> 属性将由 <see cref="E:System.IdentityModel.Services.FederatedAuthentication.FederationConfigurationCreated" /> 事件的事件处理程序设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="E:System.IdentityModel.Services.FederatedAuthentication.FederationConfigurationCreated">
+      <summary>当 <see cref="P:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration" /> 属性由在 web 应用中的一个 HTTP 模块第一次访问时发生。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedAuthentication.GetHttpModule``1">
+      <summary>获取 Web 应用程序所使用的指定类型的 HTTP 模块。</summary>
+      <typeparam name="T">模块的类型。</typeparam>
+      <returns>指定类型的 HTTP 模块或者如果指定类型不能被找到则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.FederatedAuthentication.SessionAuthenticationModule">
+      <summary>获取应用程序所用的会话身份验证模块 (SAM)。</summary>
+      <returns>会话身份验证模块</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.FederatedAuthentication.WSFederationAuthenticationModule">
+      <summary>获取 Web 应用程序所用的验证模块 (WSFAM)。</summary>
+      <returns>WS-Federation 身份验证模块。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException">
+      <summary>指示登录会话应停止，且当前请求是未经授权的。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException" /> 类的新实例。</summary>
+      <param name="info">包含有关所引发异常的序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException.#ctor(System.String)">
+      <summary>用指定的错误消息初始化 <see cref="T:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException" /> 类的新实例。</summary>
+      <param name="message">描述错误的消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Services.FederatedAuthenticationSessionEndingException" /> 类的新实例。</summary>
+      <param name="message">描述错误的消息。</param>
+      <param name="inner">作为当前异常原因的异常，如果没有指定内部异常，则为 <see langword="null" />。</param>
+    </member>
+    <member name="T:System.IdentityModel.Services.FederatedPassiveSecurityTokenServiceOperations">
+      <summary>公共类封装操作通常由 Federated Passive Security Token Service 执行。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedPassiveSecurityTokenServiceOperations.ProcessRequest(System.Web.HttpRequest,System.Security.Claims.ClaimsPrincipal,System.IdentityModel.SecurityTokenService,System.Web.HttpResponse)">
+      <summary>处理传入 WS-Federation Passive Protocol 请求。</summary>
+      <param name="request">传入的 HTTP 请求。</param>
+      <param name="principal">与此请求关联的主题。</param>
+      <param name="sts">要用于发布标记的安全标记服务 (STS)。</param>
+      <param name="response">输出的 HTTP 响应。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。  
+或 
+ <paramref name="principal" /> 为 <see langword="null" />。  
+或 
+ <paramref name="sts" /> 为 <see langword="null" />。  
+或 
+ <paramref name="response" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedPassiveSecurityTokenServiceOperations.ProcessRequest(System.Web.HttpRequest,System.Security.Claims.ClaimsPrincipal,System.IdentityModel.SecurityTokenService,System.Web.HttpResponse,System.IdentityModel.Services.WSFederationSerializer)">
+      <summary>通过使用指定的 WS-Federation 序列化程序处理传入 WS-Federation Passive Protocol 请求。</summary>
+      <param name="request">传入的 HTTP 请求。</param>
+      <param name="principal">与此请求关联的主题。</param>
+      <param name="sts">要用于发布标记的安全标记服务 (STS)。</param>
+      <param name="response">输出的 HTTP 响应。</param>
+      <param name="federationSerializer">用于处理 WS-Federation Passive Protocol 消息的序列化程序。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。  
+或 
+ <paramref name="principal" /> 为 <see langword="null" />。  
+或 
+ <paramref name="sts" /> 为 <see langword="null" />。  
+或 
+ <paramref name="response" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedPassiveSecurityTokenServiceOperations.ProcessSignInRequest(System.IdentityModel.Services.SignInRequestMessage,System.Security.Claims.ClaimsPrincipal,System.IdentityModel.SecurityTokenService)">
+      <summary>处理传入 WS-Federation Passive Protocol SignIn 请求。</summary>
+      <param name="requestMessage">传入登录请求消息。</param>
+      <param name="principal">与请求关联的主题。</param>
+      <param name="sts">要用于发布标记的安全标记服务 (STS)。</param>
+      <returns>来自处理请求的登录响应消息。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestMessage" /> 为 <see langword="null" />。  
+或 
+ <paramref name="principal" /> 为 <see langword="null" />。  
+或 
+ <paramref name="sts" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedPassiveSecurityTokenServiceOperations.ProcessSignInRequest(System.IdentityModel.Services.SignInRequestMessage,System.Security.Claims.ClaimsPrincipal,System.IdentityModel.SecurityTokenService,System.IdentityModel.Services.WSFederationSerializer)">
+      <summary>通过使用指定的 WS-Federation 序列化程序处理传入 WS-Federation Passive Protocol SignIn 请求。</summary>
+      <param name="requestMessage">传入登录请求消息。</param>
+      <param name="principal">与请求关联的主题。</param>
+      <param name="sts">要用于发布标记的安全标记服务 (STS)。</param>
+      <param name="federationSerializer">用于处理 WS-Federation Passive Protocol 消息的序列化程序。</param>
+      <returns>来自处理请求的登录响应消息。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestMessage" /> 为 <see langword="null" />。  
+或 
+ <paramref name="principal" /> 为 <see langword="null" />。  
+或 
+ <paramref name="sts" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedPassiveSecurityTokenServiceOperations.ProcessSignInResponse(System.IdentityModel.Services.SignInResponseMessage,System.Web.HttpResponse)">
+      <summary>处理登录响应消息。</summary>
+      <param name="signInResponseMessage">已处理登录响应消息。</param>
+      <param name="httpResponse">输出的 HTTP 响应。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="signInResponseMessage" /> 为 <see langword="null" />。  
+或 
+ <paramref name="httpResponse" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedPassiveSecurityTokenServiceOperations.ProcessSignOutRequest(System.IdentityModel.Services.FederationMessage,System.Security.Claims.ClaimsPrincipal,System.String,System.Web.HttpResponse)">
+      <summary>处理传入 WS-Federation Passive Protocol SignOut 请求。</summary>
+      <param name="requestMessage">传入的 WS-Federation 消息代表一个退出请求。 默认情况下，则必须为 <see cref="T:System.IdentityModel.Services.SignOutRequestMessage" /> 或 <see cref="T:System.IdentityModel.Services.SignOutCleanupRequestMessage" /> 的实例。</param>
+      <param name="principal">与请求关联的主题。</param>
+      <param name="reply">在注销之后，被重定向的回复 URL。</param>
+      <param name="httpResponse">输出的 HTTP 响应。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="httpRequest" /> 为 <see langword="null" />。  
+或 
+ <paramref name="principal" /> 为 <see langword="null" />。  
+或 
+ <paramref name="httpResponse" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="httpRequest" /> 不是 <see cref="T:System.IdentityModel.Services.SignOutRequestMessage" /> 或 <see cref="T:System.IdentityModel.Services.SignOutCleanupRequestMessage" /> 的实例。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.FederatedSessionExpiredException">
+      <summary>会话已过期时引发的异常。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedSessionExpiredException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.FederatedSessionExpiredException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedSessionExpiredException.#ctor(System.DateTime,System.DateTime)">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.FederatedSessionExpiredException" /> 类的新实例，该实例具有指定时刻的会话验证和会话过期。</summary>
+      <param name="tested">会话验证的时间。</param>
+      <param name="expired">会话到期的时间。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedSessionExpiredException.#ctor(System.DateTime,System.DateTime,System.Exception)">
+      <summary>使用具有会话验证的指定时刻、会话过期的时刻和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Services.FederatedSessionExpiredException" /> 类的新实例。</summary>
+      <param name="tested">会话验证时间。</param>
+      <param name="expired">会话到期的时间。</param>
+      <param name="inner">作为当前异常原因的异常，如果没有指定内部异常，则为 <see langword="null" />。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedSessionExpiredException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.IdentityModel.Services.FederatedSessionExpiredException" /> 类的新实例。</summary>
+      <param name="info">包含有关所引发异常的序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="info" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedSessionExpiredException.#ctor(System.String)">
+      <summary>用指定的错误消息初始化 <see cref="T:System.IdentityModel.Services.FederatedSessionExpiredException" /> 类的新实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedSessionExpiredException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Services.FederatedSessionExpiredException" /> 类的新实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+      <param name="inner">导致当前异常的 <see cref="T:System.Exception" />。 如果 <paramref name="inner" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.FederatedSessionExpiredException.Expired">
+      <summary>获取会话到期的时间。</summary>
+      <returns>会话到期的时间。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederatedSessionExpiredException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>在派生类中重写时，使用有关异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</summary>
+      <param name="info">包含有关所引发异常的序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />，它包含关于源或目标的上下文信息。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.FederatedSessionExpiredException.Tested">
+      <summary>获取会话验证的时间。</summary>
+      <returns>会话验证的时间。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.FederationException">
+      <summary>在 WS-Federation 支持中引发的异常的基类。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.FederationException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.IdentityModel.Services.FederationException" /> 类的新实例。</summary>
+      <param name="info">保留序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationException.#ctor(System.String)">
+      <summary>用指定的错误消息初始化 <see cref="T:System.IdentityModel.Services.FederationException" /> 类的新实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Services.FederationException" /> 类的新实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+      <param name="inner">导致当前异常的 <see cref="T:System.Exception" />。 如果 <paramref name="inner" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="T:System.IdentityModel.Services.FederationManagement">
+      <summary>定义创建 Federation 元数据文档的静态方法，并基于 Federation 元数据文档更新的应用程序配置。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationManagement.CreateApplicationFederationMetadata(System.Uri,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Collections.ObjectModel.Collection{System.IdentityModel.Metadata.DisplayClaim},System.IdentityModel.Services.ApplicationType,System.Collections.ObjectModel.Collection{System.Uri})">
+      <summary>创建包含 Federation Metadata 的 XML 文档。</summary>
+      <param name="applicationUri">应用程序 URI。</param>
+      <param name="certificate">使用签名元数据的 X.509 证书。</param>
+      <param name="claimsRequired">应用程序需要的声明。</param>
+      <param name="applicationType">
+        <see cref="T:System.IdentityModel.Services.ApplicationType" /> 的一个值指定元数据描述的应用类型。 这用于确定终结点创建。</param>
+      <param name="audienceUris">可用于此应用程序的可接受的 URI 的集合。</param>
+      <returns>包含使用参数创建的元数据文件的 XML 读取器。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo(System.Xml.XmlReader,System.Xml.XmlReader,System.Boolean)">
+      <summary>根据指定的 Federation 元数据文件和指定是否应更新所提供的声明列表的值，更新指定的应用程序配置（如果需要）。</summary>
+      <param name="metadataReader">包含元数据文档的 XML 读取器。</param>
+      <param name="inputConfiguration">含配置的 XML 读取器。</param>
+      <param name="claimsOfferedUpdate">如果应更新提供的要求列表，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>一个 XML 读取器包含更新的配置，或如果无法更新该配置，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="metadataReader" /> 为 <see langword="null" />。  
+或 
+ <paramref name="inputConfiguration" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo(System.Xml.XmlReader,System.Xml.XmlReader,System.Boolean,System.IdentityModel.Metadata.MetadataSerializer)">
+      <summary>根据指定的 Federation 元数据文件和指定是否应更新所提供的声明列表的值，更新指定的应用程序配置（如果需要）。 用于读取安全标识服务（STS）元数据的序列化程序也被指定。</summary>
+      <param name="metadataReader">包含元数据文档的 XML 读取器。</param>
+      <param name="inputConfiguration">含配置的 XML 读取器。</param>
+      <param name="claimsOfferedUpdate">如果应更新提供的要求列表，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="metadataSerializer">读取 STS 元数据的序列化程序。</param>
+      <returns>一个 XML 读取器包含更新的配置，或如果无法更新该配置，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="metadataReader" /> 为 <see langword="null" />。  
+或 
+ <paramref name="inputConfiguration" /> 为 <see langword="null" />。  
+或 
+ <paramref name="metadataSerializer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo(System.Xml.XmlReader,System.Xml.XmlReader,System.Xml.XmlNodeReader@,System.Xml.XmlNodeReader@)">
+      <summary>根据指定的 Federation 元数据文档更新指定应用程序的配置（如果需要）。 如果已更新，返回颁布者名称注册表的配置元素，以及所提供的声明类型的配置元素。</summary>
+      <param name="metadataReader">包含元数据文档的 XML 读取器。</param>
+      <param name="inputConfiguration">含配置的 XML 读取器。</param>
+      <param name="newIssuerNameRegistry">当此方法返回时，包含 XML 节点，该节点包含指定发布者名称注册表的元素。 如果没有颁发者名称注册表指定，则 <see langword="null" />。 该参数未经初始化即被处理。</param>
+      <param name="claimTypesOffered">当此方法返回时，如果提供的声明类型列表已更改，则包含含有指定新列表的元素的 XML 节点读取器。 如果未更改列表，则返回 <see langword="null" />。 该参数未经初始化即被处理。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="metadataReader" /> 为 <see langword="null" />。  
+或 
+ <paramref name="inputConfiguration" /><paramref name="metadataReader" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo(System.Xml.XmlReader,System.Xml.XmlReader,System.Xml.XmlNodeReader@,System.Xml.XmlNodeReader@,System.IdentityModel.Metadata.MetadataSerializer)">
+      <summary>根据指定的 Federation 元数据文档更新指定应用程序的配置（如果需要）。 如果已更新，返回颁布者名称注册表的配置元素，以及所提供的声明类型的配置元素。 用于读取安全标识服务（STS）元数据的序列化程序也被指定。</summary>
+      <param name="metadataReader">包含元数据文档的 XML 读取器。</param>
+      <param name="inputConfiguration">含配置的 XML 读取器。</param>
+      <param name="newIssuerNameRegistry">当此方法返回时，包含 XML 节点，该节点包含指定发布者名称注册表的元素。 如果没有颁发者名称注册表指定，则 <see langword="null" />。 该参数未经初始化即被处理。</param>
+      <param name="claimTypesOffered">当此方法返回时，如果提供的声明类型列表已更改，则包含含有指定新列表的元素的 XML 节点读取器。 如果未更改列表，则返回 <see langword="null" />。 该参数未经初始化即被处理。</param>
+      <param name="metadataSerializer">读取 STS 元数据的序列化程序。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="metadataReader" /> 为 <see langword="null" />。  
+或 
+ <paramref name="inputConfiguration" /> 为 <see langword="null" />。  
+或 
+ <paramref name="metadataSerializer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.FederationMessage">
+      <summary>定义所有从联合消息类派生的基类。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.#ctor(System.Uri)">
+      <summary>从派生类中的构造函数中调用，用于初始化 <see cref="T:System.IdentityModel.Services.FederationMessage" /> 类。</summary>
+      <param name="baseUrl">联合消息应用的基 URL。 初始化 <see cref="P:System.IdentityModel.Services.FederationMessage.BaseUri" /> 属性。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="baseUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">
+        <paramref name="baseUri" /> 不是有效的绝对 URI。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.FederationMessage.BaseUri">
+      <summary>获取或设置消息要应用于的基 URI。</summary>
+      <returns>一个包含基 URL 的 <see cref="T:System.Uri" />。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试设置一个 <see langword="null" /> 值。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">设置无效 URI 值的尝试发生。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.GetBaseUrl(System.Uri)">
+      <summary>从指定的 URI 提取基 URL 的帮手器方法。</summary>
+      <param name="uri">从中提取基 URL 的 URI。</param>
+      <returns>提取的基 URL。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.GetParameter(System.String)">
+      <summary>从参数字典中返回指定的参数值。</summary>
+      <param name="parameter">要进行搜索的参数。</param>
+      <returns>参数或 <see langword="null" /> 的值，（如果参数不存在）。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="parameter" /> 为 <see langword="null" /> 或空字符串。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.FederationMessage.Parameters">
+      <summary>以字典形式获取消息参数。</summary>
+      <returns>一个包含消息参数的字典。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.ParseQueryString(System.Uri)">
+      <summary>将指定的 URI 中的查询字符串分析为 <see cref="T:System.Collections.Specialized.NameValueCollection" /> 的帮助器方法。</summary>
+      <param name="data">要分析的 URI。</param>
+      <returns>一个 <see cref="T:System.Collections.Specialized.NameValueCollection" />，包含查询字符串的参数。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="data" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.RemoveParameter(System.String)">
+      <summary>从参数字典中移除参数。</summary>
+      <param name="parameter">要移除的参数的名称。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="parameter" /> 为 <see langword="null" /> 或空字符串。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.SetParameter(System.String,System.String)">
+      <summary>设置参数字典中参数的值。</summary>
+      <param name="parameter">要设置的参数的名称。</param>
+      <param name="value">分配给参数的值。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="parameter" /> 为 <see langword="null" /> 或空字符串。  
+
+或 - 
+<paramref name="value" /> 为 <see langword="null" /> 或空字符串。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.SetUriParameter(System.String,System.String)">
+      <summary>设置参数字典中参数的值。 该值必须为绝对 URI。</summary>
+      <param name="parameter">参数名。</param>
+      <param name="value">参数值。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="parameter" /> 为 <see langword="null" />。  
+
+或 - 
+<paramref name="value" /> 为 <see langword="null" />，或者不是绝对 URI。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.Validate">
+      <summary>验证消息。</summary>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">
+        <see cref="P:System.IdentityModel.Services.FederationMessage.BaseUri" /> 值的属性是 <see langword="null" /> 或不是绝对 URI。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.Write(System.IO.TextWriter)">
+      <summary>在派生类中重写时，将此消息写入该输出流中。</summary>
+      <param name="writer">消息写出的文本编写器。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.WriteFormPost">
+      <summary>序列化一则消息作为窗体，发布并返回结果窗体和其以字符串形式的Javascript</summary>
+      <returns>作为与其 Javascript 关联的窗体的消息的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.FederationMessage.WriteQueryString">
+      <summary>返回以查询字符串形式的消息的字符串表示形式。</summary>
+      <returns>查询字符串格式的消息。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.HttpModuleBase">
+      <summary>通过 &lt;system.identityModel.services&gt; 元素 (<see cref="T:System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection" />) 配置的 HTTP 模块所派生自的基类。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.HttpModuleBase.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.HttpModuleBase" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.HttpModuleBase.Dispose">
+      <summary>释放由 <see cref="T:System.IdentityModel.Services.HttpModuleBase" /> 类的当前实例占用的资源（内存除外）。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.HttpModuleBase.FederationConfiguration">
+      <summary>获取或设置对于当前模块有效的 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 对象。</summary>
+      <returns>对当前模块有效的 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 对象。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.HttpModuleBase.Init(System.Web.HttpApplication)">
+      <summary>初始化 HTTP 模块。</summary>
+      <param name="context">包含此模块的应用对程序对象。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.HttpModuleBase.InitializeModule(System.Web.HttpApplication)">
+      <summary>在派生类中重写时，将初始化当前模块并为其从 ASP.NET 应用程序对象处理事件做好准备。</summary>
+      <param name="context">包含此模块的应用对程序对象。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.HttpModuleBase.InitializePropertiesFromConfiguration">
+      <summary>在派生类中重写时，将基于 <see cref="T:System.IdentityModel.Services.Configuration.FederationConfiguration" /> 对象（对其有效）中的值初始化模块属性。</summary>
+    </member>
+    <member name="T:System.IdentityModel.Services.MachineKeyTransform">
+      <summary>用 web.config 或 machine.config 配置文件的 <see langword="&lt;machineKey&gt;" /> 部分指定的加密材料保护会话令牌。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.MachineKeyTransform.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.MachineKeyTransform" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.MachineKeyTransform.Decode(System.Byte[])">
+      <summary>反转转换。</summary>
+      <param name="encoded">cookie 的编码形式。</param>
+      <returns>这些解码的字节数组。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.MachineKeyTransform.Encode(System.Byte[])">
+      <summary>应用此转换。</summary>
+      <param name="value">要编码的字节数组。</param>
+      <returns>已编码的 cookie。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.PseudonymRequestMessage">
+      <summary>表示 WS-Federation Pseudonym 请求消息。 如果接收的消息中 wa 参数是“wpseudo1.0”，则创建此消息。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.PseudonymRequestMessage.#ctor(System.Uri)">
+      <summary>初始化使用指定的基本 URL 的 <see cref="T:System.IdentityModel.Services.PseudonymRequestMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">此消息应用的基 URL。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.PseudonymRequestMessage.Pseudonym">
+      <summary>获取或设置消息的 wpseudo 参数。</summary>
+      <returns>一个包含 wpseudo 参数值的字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.PseudonymRequestMessage.PseudonymPtr">
+      <summary>获取或设置消息的 wpseudoptr 参数。</summary>
+      <returns>一个包含 wpseudoptr 参数值的字符串。</returns>
+      <exception cref="T:System.ArgumentException">设置无效 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.PseudonymRequestMessage.Reply">
+      <summary>获取或设置消息的返回参数。</summary>
+      <returns>一个包含 wreply 参数值的字符串。 应发送答复的 URL。</returns>
+      <exception cref="T:System.ArgumentException">设置无效 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.PseudonymRequestMessage.Result">
+      <summary>获取或设置消息的 wresult 参数。</summary>
+      <returns>一个包含 wresult 参数值的字符串。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.PseudonymRequestMessage.ResultPtr">
+      <summary>获取或设置消息的 wresultptr 参数。</summary>
+      <returns>一个包含 wresultptr 参数值的字符串。 这是一个 URI。</returns>
+      <exception cref="T:System.ArgumentException">设置无效 URI 值的尝试发生。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.PseudonymRequestMessage.Validate">
+      <summary>框架未执行验证。 这样的用户应该在外部无效。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.PseudonymRequestMessage.Write(System.IO.TextWriter)">
+      <summary>以查询字符串形式将此消息写入指定的文本写入器。</summary>
+      <param name="writer">要将消息写入到的文本编写器。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="writer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.RedirectingToIdentityProviderEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.RedirectingToIdentityProvider" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.RedirectingToIdentityProviderEventArgs.#ctor(System.IdentityModel.Services.SignInRequestMessage)">
+      <summary>通过使用指定WS-Federation “被动登录”消息初始化 <see cref="T:System.IdentityModel.Services.RedirectingToIdentityProviderEventArgs" /> 类的新实例。</summary>
+      <param name="signInRequestMessage">将用于重定向这个用户重定向到标识提供程序的 WS-Federation 被动登录消息。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="signInRequestMessage" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.RedirectingToIdentityProviderEventArgs.SignInRequestMessage">
+      <summary>获取或设置用于将用户重定向至标识提供程序的 WS-Federation 密钥登录消息。</summary>
+      <returns>将用于重定向这个用户重定向到标识提供程序的 WS-Federation 登录消息。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.SecurityTokenReceivedEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SecurityTokenReceived" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SecurityTokenReceivedEventArgs.#ctor(System.IdentityModel.Tokens.SecurityToken)">
+      <summary>使用指定的安全标记初始化 <see cref="T:System.IdentityModel.Services.SecurityTokenReceivedEventArgs" /> 类的新实例。</summary>
+      <param name="securityToken">已颁发令牌的安全性标记。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="securityToken" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SecurityTokenReceivedEventArgs.#ctor(System.IdentityModel.Tokens.SecurityToken,System.String)">
+      <summary>使用指定安全标记和签入上下文初始化 <see cref="T:System.IdentityModel.Services.SecurityTokenReceivedEventArgs" /> 类的新实例。</summary>
+      <param name="securityToken">已颁发令牌的安全性标记。</param>
+      <param name="signInContext">在控件指定的登录上下文。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="securityToken" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SecurityTokenReceivedEventArgs.SecurityToken">
+      <summary>获取或设置已颁发的安全性标记。</summary>
+      <returns>已颁发令牌的安全性标记。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SecurityTokenReceivedEventArgs.SignInContext">
+      <summary>获取指定在控件登录上下文。</summary>
+      <returns>登录上下文。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.SecurityTokenValidatedEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SecurityTokenValidated" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SecurityTokenValidatedEventArgs.#ctor(System.Security.Claims.ClaimsPrincipal)">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.SecurityTokenValidatedEventArgs" /> 类的新实例。</summary>
+      <param name="claimsPrincipal">接收到的 <see cref="T:System.IdentityModel.Tokens.SecurityToken" /> 的身份验证所引起的声明主体。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="claimsPrincipal" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SecurityTokenValidatedEventArgs.ClaimsPrincipal">
+      <summary>获取或设置从令牌验证中产生的 <see cref="T:System.Security.Claims.ClaimsPrincipal" />。</summary>
+      <returns>标记验证引起的声明主体。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.ServiceCertificateElement">
+      <summary>表示配置文件中的 <see langword="&lt;serviceCertificate&gt;" /> 元素。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.ServiceCertificateElement.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.ServiceCertificateElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.ServiceCertificateElement.CertificateReference">
+      <summary>获取或设置此 <see langword="&lt;certificateReference&gt;" /> 元素的子 <see langword="&lt;serviceCertificate&gt;" /> 元素。</summary>
+      <returns>
+        <see langword="&lt;certificateReference&gt;" /> 元素。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.SessionAuthenticationModule">
+      <summary>实现一个 在 ws-discovery 方案下处理会话 cookies 的 ASP.NET 模块。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.SessionAuthenticationModule" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken(System.IdentityModel.Tokens.SessionSecurityToken,System.Boolean)">
+      <summary>通过验证传入会话标志请求该传入的身份验证。 在成功验证之后，其将使用指定的 <see cref="T:System.IdentityModel.Tokens.SessionSecurityToken" /> 更新当前 HTTP 上下文和线程主体。</summary>
+      <param name="sessionToken">使用会话安全令牌检查传入的 HTTP 请求。</param>
+      <param name="writeCookie">编写会话 cookie，则为 <see langword="true" />；否则 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.ContainsSessionTokenCookie(System.Web.HttpCookieCollection)">
+      <summary>确定指定的会话cookie是否在指定的cookie集合中。</summary>
+      <param name="httpCookieCollection">要在其中搜索的 cookies 集合。</param>
+      <returns>如果找到一个会话 cookie，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="httpCookieCollection" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SessionAuthenticationModule.ContextSessionSecurityToken">
+      <summary>获取当前 <see cref="T:System.IdentityModel.Tokens.SessionSecurityToken" /> 的活动 <see cref="T:System.Web.HttpContext" />。</summary>
+      <returns>活动会话安全标记。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler">
+      <summary>获取用于读取、写入和删除会话 Cookie 的 Cookie 处理程序。</summary>
+      <returns>Cookie 处理程序。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.CreateSessionSecurityToken(System.Security.Claims.ClaimsPrincipal,System.String,System.DateTime,System.DateTime,System.Boolean)">
+      <summary>使用配置会话标记处理程序，从指定参数创建 <see cref="T:System.IdentityModel.Tokens.SessionSecurityToken" /> 。</summary>
+      <param name="principal">在令牌中要被捕捉的主体。</param>
+      <param name="context">应用程序定义的上下文字符串。</param>
+      <param name="validFrom">该标识有效的最初时刻。</param>
+      <param name="validTo">该令牌有效的最初时刻。</param>
+      <param name="isPersistent">如果值应由用户代理执行，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>会话标识。</returns>
+      <exception cref="T:System.InvalidOperationException">没有已配置的无效会话标记处理程序。 （在 <see cref="T:System.IdentityModel.Tokens.SessionSecurityTokenHandler" /> 属性中未配置  <see cref="P:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers" />。）</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie">
+      <summary>从堆栈中移除最顶层会话并将其返回。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.InitializeModule(System.Web.HttpApplication)">
+      <summary>初始化模块并为其从模块的 ASP.NET 应用程序对象处理事件做好准备。</summary>
+      <param name="context">包含该模块的 HTTP 应用对程序对象。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.InitializePropertiesFromConfiguration">
+      <summary>初始化基于在配置文件中的定义的模块属性。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode">
+      <summary>获取或设置一个值，该值指定是否应在会话 Cookie 中存储会话信息（声明值等），或是否应通过使用 Cookie 仅存储引用在服务器端上存储会话内容。</summary>
+      <returns>如果发布的 cookies 在引用模式中，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />，指定了发布的 cookie 不处于引用模式。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest(System.Object,System.EventArgs)">
+      <summary>从 ASP.NET 管道中处理的 <see cref="E:System.Web.HttpApplication.AuthenticateRequest" /> 事件。</summary>
+      <param name="sender">事件的源。 这将是 <see cref="T:System.Web.HttpApplication" /> 对象。</param>
+      <param name="eventArgs">事件的数据。</param>
+      <exception cref="T:System.InvalidOperationException">没有已配置的无效会话标记处理程序。 （在 <see cref="T:System.IdentityModel.Tokens.SessionSecurityTokenHandler" /> 属性中未配置  <see cref="P:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers" />。）</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.OnPostAuthenticateRequest(System.Object,System.EventArgs)">
+      <summary>从 ASP.NET 管道中处理的 <see cref="E:System.Web.HttpApplication.PostAuthenticateRequest" /> 事件。</summary>
+      <param name="sender">事件的源。 这将是 <see cref="T:System.Web.HttpApplication" /> 对象。</param>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenCreated(System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated" /> 事件。</summary>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenReceived(System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived" /> 事件。</summary>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.OnSignedOut(System.EventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.SessionAuthenticationModule.SignedOut" /> 事件。</summary>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.OnSigningOut(System.IdentityModel.Services.SigningOutEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.SessionAuthenticationModule.SigningOut" /> 事件。</summary>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.OnSignOutError(System.IdentityModel.Services.ErrorEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.SessionAuthenticationModule.SignOutError" /> 事件。</summary>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.ReadSessionTokenFromCookie(System.Byte[])">
+      <summary>从指定的会话 Cookie 读取 <see cref="T:System.IdentityModel.Tokens.SessionSecurityToken" />。</summary>
+      <param name="sessionCookie">包含会话标记的原始格式的 cookie。</param>
+      <returns>从 Cookie 读取的会话标识。</returns>
+      <exception cref="T:System.InvalidOperationException">没有已配置的无效会话标记处理程序。 （在 <see cref="T:System.IdentityModel.Tokens.SessionSecurityTokenHandler" /> 属性中未配置  <see cref="P:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers" />。）</exception>
+    </member>
+    <member name="E:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated">
+      <summary>当会话安全标记已创建时发生。</summary>
+    </member>
+    <member name="E:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived">
+      <summary>当会话安全标记已从 cookie 读取时发生。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.SetPrincipalFromSessionToken(System.IdentityModel.Tokens.SessionSecurityToken)">
+      <summary>将 <see cref="T:System.Web.HttpContext" /> 和 <see cref="T:System.Threading.Thread" /> 的主体设置到包含在指定会话标记的主体。</summary>
+      <param name="sessionSecurityToken">从其开始设置主体的会话标识。</param>
+    </member>
+    <member name="E:System.IdentityModel.Services.SessionAuthenticationModule.SignedOut">
+      <summary>在用户注销之后发生。</summary>
+    </member>
+    <member name="E:System.IdentityModel.Services.SessionAuthenticationModule.SigningOut">
+      <summary>在删除登录会话之前发生。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.SignOut">
+      <summary>注销当前用户并引发相应事件。</summary>
+    </member>
+    <member name="E:System.IdentityModel.Services.SessionAuthenticationModule.SignOutError">
+      <summary>当在注销期间有错误时发生。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.TryReadSessionTokenFromCookie(System.IdentityModel.Tokens.SessionSecurityToken@)">
+      <summary>尝试从一个会话 cookie 中读取一个 <see cref="T:System.IdentityModel.Tokens.SessionSecurityToken" />，并返回指示此会话 cookie 是否成功读取的值。</summary>
+      <param name="sessionToken">当此方法返回时，包含从会话 Cookie 读取的会话安全标记。</param>
+      <returns>如果从请求中成功读取了会话 cookie，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.ValidateSessionToken(System.IdentityModel.Tokens.SessionSecurityToken)">
+      <summary>验证指定的 <see cref="T:System.IdentityModel.Tokens.SessionSecurityToken" /> 并返回其标识。</summary>
+      <param name="sessionSecurityToken">要验证的标记。</param>
+      <returns>包含在标记中的标识的集合。</returns>
+      <exception cref="T:System.IdentityModel.Services.FederatedSessionExpiredException">标记已过期。</exception>
+      <exception cref="T:System.IdentityModel.Services.FederationException">标记的开始时间尚未有效。</exception>
+      <exception cref="T:System.InvalidOperationException">没有已配置的无效会话标记处理程序。 （在 <see cref="T:System.IdentityModel.Tokens.SessionSecurityTokenHandler" /> 属性中未配置  <see cref="P:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers" />。）</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionAuthenticationModule.WriteSessionTokenToCookie(System.IdentityModel.Tokens.SessionSecurityToken)">
+      <summary>将指定的 <see cref="T:System.IdentityModel.Tokens.SessionSecurityToken" /> 写入会话 cookie。</summary>
+      <param name="sessionToken">要写入的会话安全令牌。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="sessionToken" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">没有已配置的无效会话标记处理程序。 （在 <see cref="T:System.IdentityModel.Tokens.SessionSecurityTokenHandler" /> 属性中未配置  <see cref="P:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers" />。）</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated" /> 事件和 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.#ctor(System.IdentityModel.Tokens.SessionSecurityToken)">
+      <summary>使用指定的会话初始化 <see cref="T:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs" /> 类的新实例。</summary>
+      <param name="sessionToken">生成的会话安全令牌。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="sessionToken" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken">
+      <summary>获取或设置已创建的会话安全令牌。</summary>
+      <returns>生成的会话标识。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.WriteSessionCookie">
+      <summary>获取或设置一个值，该值指示是否应在响应中编写 Cookie。</summary>
+      <returns>编写响应的 cookie，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值是 <see langword="false" />，该 cookie 未写入响应。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs.#ctor(System.IdentityModel.Tokens.SessionSecurityToken)">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.SecurityTokenReceivedEventArgs" /> 类的新实例，该实例具有指定的会话标记。</summary>
+      <param name="sessionToken">收到的会话安全令牌。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="sessionToken" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs.ReissueCookie">
+      <summary>获取或设置指定是否使用响应重复颁发会话 Cookie 的值。</summary>
+      <returns>如果重新发出响应的会话 cookie，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值是 <see langword="false" />，该会话 cookie 未通过响应重新发出。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs.SessionToken">
+      <summary>获取或设置已接受的会话安全令牌。</summary>
+      <returns>接收到的会话标识。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.SessionSecurityTokenResolver">
+      <summary>从当前缓存里解析会话安全令牌。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionSecurityTokenResolver.#ctor(System.IdentityModel.Tokens.SessionSecurityTokenCache,System.String)">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.SessionSecurityTokenResolver" /> 类的新实例。</summary>
+      <param name="tokenCache">令牌缓存。</param>
+      <param name="endpointId">终点的标识符。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionSecurityTokenResolver.TryResolveSecurityKeyCore(System.IdentityModel.Tokens.SecurityKeyIdentifierClause,System.IdentityModel.Tokens.SecurityKey@)">
+      <summary>在提供了指定的密钥标识符子句的情况下，尝试解析安全密钥核心。</summary>
+      <param name="keyIdentifierClause">安全密钥标识符子句。</param>
+      <param name="key">此方法返回时将包含解析的密钥核心。 此参数未经初始化即被传递。</param>
+      <returns>如果已成功解析密钥核心，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionSecurityTokenResolver.TryResolveTokenCore(System.IdentityModel.Tokens.SecurityKeyIdentifier,System.IdentityModel.Tokens.SecurityToken@)">
+      <summary>从事从指定的密钥标识符解析这个令牌。</summary>
+      <param name="keyIdentifier">密钥标识符。</param>
+      <param name="token">此方法返回时将包含解析的密钥核心。 此参数未经初始化即被传递。</param>
+      <returns>如果已成功解析密钥令牌，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.SessionSecurityTokenResolver.TryResolveTokenCore(System.IdentityModel.Tokens.SecurityKeyIdentifierClause,System.IdentityModel.Tokens.SecurityToken@)">
+      <summary>从事从指定的密钥标识符字句解析这个令牌。</summary>
+      <param name="keyIdentifierClause">密钥标识符子句。</param>
+      <param name="token">此方法返回时将包含解析的密钥核心。 此参数未经初始化即被传递。</param>
+      <returns>如果已成功解析密钥令牌，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.SigningOutEventArgs">
+      <summary>为 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SigningOut" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SigningOutEventArgs.#ctor(System.Boolean)">
+      <summary>使用标志是否由标示提供程序 (IP) 请求的指定值来初始化 <see cref="T:System.IdentityModel.Services.SigningOutEventArgs" /> 类的新实例。</summary>
+      <param name="isIPInitiated">如果由 IP 请求注销，则为 <see langword="true" />，否则为 <see langword="false" />。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.SigningOutEventArgs.IPInitiated">
+      <summary>获取指示的 <see cref="T:System.IdentityModel.Services.SigningOutEventArgs" /> 标识提供程序创始标志(IP)。</summary>
+      <returns>一个 <see cref="T:System.IdentityModel.Services.SigningOutEventArgs" />，它的 <see cref="P:System.IdentityModel.Services.SigningOutEventArgs.IsIPInitiated" /> 属性设置为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SigningOutEventArgs.IsIPInitiated">
+      <summary>获取指示注销是否通过 WS 联合身份验证注销清除消息（“wsignoutcleanup1.0”）被标识符提供程序 (IP) 初始化的值。</summary>
+      <returns>如果由 IP 生成注销，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SigningOutEventArgs.RPInitiated">
+      <summary>获取指示注销已被依赖方（RP）启动的 <see cref="T:System.IdentityModel.Services.SigningOutEventArgs" />。</summary>
+      <returns>一个 <see cref="T:System.IdentityModel.Services.SigningOutEventArgs" />，它的 <see cref="P:System.IdentityModel.Services.SigningOutEventArgs.IsIPInitiated" /> 属性设置为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.IdentityModel.Services.SignInRequestMessage">
+      <summary>表示 WS-Federation Sign-In 请求消息。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInRequestMessage.#ctor(System.Uri,System.String)">
+      <summary>使用指定的基础 URL 和参数初始化 <see cref="T:System.IdentityModel.Services.SignInRequestMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">签名消息应用的基 URL。</param>
+      <param name="realm">wtrealm 消息参数的值。 设置 <see cref="P:System.IdentityModel.Services.SignInRequestMessage.Realm" /> 属性。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="realm" /> 为 <see langword="null" /> 或空字符串。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInRequestMessage.#ctor(System.Uri,System.String,System.String)">
+      <summary>使用指定的基础 URI、 wtrealm 和 wreply 参数初始化 <see cref="T:System.IdentityModel.Services.SignInRequestMessage" /> 类的新实例。 支持向后兼容性的非标准消息创建。</summary>
+      <param name="baseUrl">签名消息应用的基 URL。</param>
+      <param name="realm">wtrealm 消息参数的值。 如果不是 <see langword="null" /> 或为空，则设置 <see cref="P:System.IdentityModel.Services.SignInRequestMessage.Realm" /> 属性。</param>
+      <param name="reply">将向其答复的 URI 。 （wreply 消息参数的值。）如果不为 null 或为空，则设置 <see cref="P:System.IdentityModel.Services.SignInRequestMessage.Reply" /> 属性。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="realm" /> 和 <paramref name="reply" /> 为 <see langword="null" /> 或空字符串。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.AuthenticationType">
+      <summary>获取或设置消息的 wauth 参数。</summary>
+      <returns>身份验证类型。 这被指定为 URI。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.CurrentTime">
+      <summary>获取或设置消息的 wct 参数。</summary>
+      <returns>在 UTC 中为 datetime 的字符串指定 wct 参数的值。</returns>
+      <exception cref="T:System.ArgumentException">尝试设置无效事件字符串的值。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.Federation">
+      <summary>获取或设置消息的 wfed 参数。</summary>
+      <returns>wfed 参数的值。 这被指定为 URI。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.Freshness">
+      <summary>获取或设置消息的 wfresh 参数。</summary>
+      <returns>wfresh 参数的值。 这应该是表示作为字符串的整数。 他指定以分钟为单位的最大生存期是有效的身份验证。 零表发布标记前应提示用户。</returns>
+      <exception cref="T:System.ArgumentException">尝试设置一个不是整数的字符串表示形式的值。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.HomeRealm">
+      <summary>获取或设置消息的 whr 参数。</summary>
+      <returns>whr 参数的值。 这被指定为 URI。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.Policy">
+      <summary>获取或设置消息的 wp 参数。</summary>
+      <returns>wp 参数的值。 这被指定为 URI。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.Realm">
+      <summary>获取或设置消息的 wtrealm 参数。</summary>
+      <returns>wtrealm 参数的值。 这被指定为 URI。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.Reply">
+      <summary>获取或设置消息的 wreply 参数。</summary>
+      <returns>wreply 参数的值。 这被指定为 URI。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.Request">
+      <summary>获取或设置消息的 wreq 参数。</summary>
+      <returns>wreq 参数的值。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.RequestPtr">
+      <summary>获取或设置消息的 wreqptr 参数。</summary>
+      <returns>wreqptr 参数的值。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.RequestUrl">
+      <summary>获取对应此消息的 URL 的字符串表示形式。</summary>
+      <returns>从当前实例序列化的 URL。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInRequestMessage.Resource">
+      <summary>获取或设置消息的 wres 参数。</summary>
+      <returns>wres 参数的值。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInRequestMessage.Validate">
+      <summary>验证当前实例。</summary>
+      <exception cref="T:System.InvalidOperationException">wa 参数（<see cref="P:System.IdentityModel.Services.WSFederationMessage.Action" /> 属性）未被设置为“wsignin1.0”。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">wtrealm 参数和 wreply 参数都未出现。 （<see cref="P:System.IdentityModel.Services.SignInRequestMessage.Realm" /> 属性和 <see cref="P:System.IdentityModel.Services.SignInRequestMessage.Reply" /> 属性为<see langword="null" />或者为空。） 
+或 
+存在 wreq 参数和 wreqptr 参数。 （<see cref="P:System.IdentityModel.Services.SignInRequestMessage.Request" /> 属性和 <see cref="P:System.IdentityModel.Services.SignInRequestMessage.RequestPtr" /> 属性均被设置。）</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInRequestMessage.Write(System.IO.TextWriter)">
+      <summary>以查询字符串形式将此消息写入指定的文本写入器。</summary>
+      <param name="writer">要为其写入消息的 <see cref="T:System.IO.TextWriter" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="writer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.SignInResponseMessage">
+      <summary>表示 WS-Federation Sign-In 响应消息。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInResponseMessage.#ctor(System.Uri,System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse,System.IdentityModel.Services.WSFederationSerializer,System.IdentityModel.Protocols.WSTrust.WSTrustSerializationContext)">
+      <summary>使用指定的基 URL、响应消息对象、联合序列化程序和序列化上下文来初始化 <see cref="T:System.IdentityModel.Services.SignInResponseMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">签名响应消息应用的基 URL。</param>
+      <param name="response">待返回的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse" />。</param>
+      <param name="federationSerializer">用来序列化响应的 <see cref="T:System.IdentityModel.Services.WSFederationSerializer" />。</param>
+      <param name="context">包含序列化的上下文的 <see cref="T:System.IdentityModel.Protocols.WSTrust.WSTrustSerializationContext" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="baseUrl" /> 为 <see langword="null" />。  
+或 
+ <paramref name="Response" /> 为 <see langword="null" />。  
+或 
+ <paramref name="federationSerializer" /> 为 <see langword="null" />。  
+或 
+ <paramref name="context" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInResponseMessage.#ctor(System.Uri,System.String)">
+      <summary>使用指定的基础 URL 和参数初始化 <see cref="T:System.IdentityModel.Services.SignInResponseMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">签名响应消息应用的基 URL。</param>
+      <param name="result">消息中 wresult 的参数。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="result" /> 为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInResponseMessage.#ctor(System.Uri,System.Uri)">
+      <summary>初始化使用指定基 URL 和 wresultptr 参数的 <see cref="T:System.IdentityModel.Services.SignInResponseMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">签名响应消息应用的基 URL。</param>
+      <param name="resultPtr">消息中 wresultptr 的参数。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="resultPtr" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInResponseMessage.Result">
+      <summary>获取或设置消息的 wresult 参数。</summary>
+      <returns>wresult 参数的值。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignInResponseMessage.ResultPtr">
+      <summary>获取或设置消息的 wresultptr 参数。</summary>
+      <returns>wresultptr 参数的值。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。 可以为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInResponseMessage.Validate">
+      <summary>验证当前实例。</summary>
+      <exception cref="T:System.InvalidOperationException">操作参数 (wa) 不为“wsignin1.0”。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">wresult 参数和 wresultptr 参数都未被指定 
+或 
+指定的 wresult 参数和 wresultptr 参数。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignInResponseMessage.Write(System.IO.TextWriter)">
+      <summary>以窗体发布格式将此消息写入指定的文本写入器。</summary>
+      <param name="writer">要将消息写入到的文本编写器。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="writer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.SignOutCleanupRequestMessage">
+      <summary>表示 WS-Federation Sign-Out 清理消息。 当接收的消息操作参数 (wa) 中设置为“wsignoutcleanup1.0”时，则生成消息。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignOutCleanupRequestMessage.#ctor(System.Uri)">
+      <summary>初始化使用指定的基本 URL 的 <see cref="T:System.IdentityModel.Services.SignOutCleanupRequestMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">此消息应用的基 URL。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignOutCleanupRequestMessage.#ctor(System.Uri,System.String)">
+      <summary>使用指定的基础 URL 和参数初始化 <see cref="T:System.IdentityModel.Services.SignOutCleanupRequestMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">此消息应用的基 URL。</param>
+      <param name="reply">wreply 参数的值。 应发送答复的 URI。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reply" /> 为空或 <see langword="null" />。  
+或 
+ <paramref name="reply" /> 不是有效的 URI。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignOutCleanupRequestMessage.Reply">
+      <summary>获取或设置消息的 wreply 参数。</summary>
+      <returns>wreply 参数的值。 应发送答复的 URL。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignOutCleanupRequestMessage.Validate">
+      <summary>验证当前实例。</summary>
+      <exception cref="T:System.InvalidOperationException">wa 参数（<see cref="P:System.IdentityModel.Services.WSFederationMessage.Action" /> 属性）未被设置为“wsignoutcleanup1.0”。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignOutCleanupRequestMessage.Write(System.IO.TextWriter)">
+      <summary>以查询字符串形式将消息写入指定的文本写入器。</summary>
+      <param name="writer">要将消息写入到的编写器。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="writer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.SignOutRequestMessage">
+      <summary>表示 WS-Federation Sign-Out 消息。 当接收的消息将操作参数 (wa) 设置为“wsignout1.0”时，则会建此消息。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignOutRequestMessage.#ctor(System.Uri)">
+      <summary>初始化使用指定的基本 URL 的 <see cref="T:System.IdentityModel.Services.SignOutRequestMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">此消息应用的基 URL。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="baseUrl" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">
+        <paramref name="baseUrl" /> 不是有效的绝对 URI。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignOutRequestMessage.#ctor(System.Uri,System.String)">
+      <summary>使用指定的基础 URL 和参数初始化 <see cref="T:System.IdentityModel.Services.SignOutRequestMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">此消息应用的基 URL。</param>
+      <param name="reply">wreply 参数的值。 应发送答复的 URI。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="reply" /> 为空或 <see langword="null" />。  
+或 
+ <paramref name="reply" /> 不是有效的绝对 URI。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="baseUrl" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">
+        <paramref name="baseUrl" /> 不是有效的绝对 URI。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.SignOutRequestMessage.Reply">
+      <summary>获取或设置消息的 wreply 参数。</summary>
+      <returns>wreply 参数的值。 浏览器应被重定向到 URL。</returns>
+      <exception cref="T:System.ArgumentException">设置完全无效的 URI 值的尝试发生。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignOutRequestMessage.Validate">
+      <summary>验证当前实例。</summary>
+      <exception cref="T:System.InvalidOperationException">wa 参数（<see cref="P:System.IdentityModel.Services.WSFederationMessage.Action" /> 属性）未被设置为“wsignout1.0”。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.SignOutRequestMessage.Write(System.IO.TextWriter)">
+      <summary>以查询字符串形式将消息写入指定的文本写入器。</summary>
+      <param name="writer">要将消息写入到的编写器。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="writer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler">
+      <summary>使用在配置文件中的 ASP.NET <see langword="&lt;machineKey&gt;" /> 元素中指定的签名和加密密钥处理会话令牌。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler.#ctor(System.TimeSpan)">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler" /> 类的新实例，该实例具有指定的默认标记。</summary>
+      <param name="tokenLifetime">标牌的默认生存期。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="tokenLifetime" /> 小于或等于 <see cref="F:System.TimeSpan.Zero" /></exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler">
+      <summary>
+        <see cref="T:System.IdentityModel.Tokens.UserNameSecurityTokenHandler" /> 使用配置的 <see cref="T:System.IdentityModel.Tokens.UserNameSecurityToken" /> 验证 <see cref="T:System.Web.Security.MembershipProvider" />。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler" /> 类的一个新实例，该实例为应用程序而配置，使用默认的关系。</summary>
+      <exception cref="T:System.InvalidOperationException">没有为应用程序配置默认成员资格提供程序。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler.#ctor(System.Web.Security.MembershipProvider)">
+      <summary>初始化使用指定成员资格的 <see cref="T:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler" /> 类的新实例。</summary>
+      <param name="provider">用来验证成员资格提供程序。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler.CanValidateToken">
+      <summary>获取指示当前实例是否能验证类型 <see cref="T:System.IdentityModel.Tokens.UserNameSecurityToken" /> 的安全标记的值。 总是为 <see langword="true" />。</summary>
+      <returns>如果标记处理程序可以验证用户名安全标记，则为 <see langword="true" />，否则为 <see langword="false" />。 总是为 <see langword="true" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler.LoadCustomConfiguration(System.Xml.XmlNodeList)">
+      <summary>从 XML 加载自定义的配置。</summary>
+      <param name="customConfigElements">自定义 XML 元素</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler.MembershipProvider">
+      <summary>获取 <see cref="T:System.Web.Security.MembershipProvider" /> 配置的当前实例。</summary>
+      <returns>配置的成员资格提供程序。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler.ValidateToken(System.IdentityModel.Tokens.SecurityToken)">
+      <summary>使用配置的 <see cref="T:System.Web.Security.MembershipProvider" /> 验证指定安全标记。</summary>
+      <param name="token">要验证的安全令牌。</param>
+      <returns>令牌中包含的标识。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="token" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="token" /> 不是 <see cref="T:System.IdentityModel.Tokens.UserNameSecurityToken" /> 的实例。</exception>
+      <exception cref="T:System.IdentityModel.Tokens.SecurityTokenValidationException">
+        <paramref name="token" /> 失败验证配置的 <see cref="T:System.Web.Security.MembershipProvider" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.WSFederationAuthenticationModule">
+      <summary>
+        <see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" /> 是一个 HTTP 模块，它通过在传入请求中强制执行联合身份验证设置来保护 ASP.NET 应用程序。 <see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" /> 是 WIF 提供的现成可用的主要模块，用于在 ASP.NET 应用程序中处理基于声明的标识访问。  
+<see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" /> 引发几个事件，它允许 ASP.NET 开发人员更改默认行为和控制身份验证和声明处理如何发生的细节。 <see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" /> 功能被分为任务具体的方法。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.#ctor">
+      <summary>由派生类中的构造函数调用，用于初始化 <see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" /> 类。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.AuthenticationType">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wauth 参数的值。</summary>
+      <returns>一个认证类型的 URI。</returns>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.AuthorizationFailed">
+      <summary>当模块确定是否应该重定向用户配置的颁布者验证时发生。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.CanReadSignInResponse(System.Web.HttpRequestBase)">
+      <summary>返回一个值，该值指示指定 HTTP 请求是否为 WS-Federation 登录响应消息。 如果消息为 WS 联合身份验证注销清理消息（“wsignoutcleanup1.0”），此方法处理请求。</summary>
+      <param name="request">传入的 HTTP 请求。</param>
+      <returns>如果指定的 HTTP 请求包含 wa 参数设置为“wsignout1.0”并且 wresult 参数不为空的 FORM 发布，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.CanReadSignInResponse(System.Web.HttpRequestBase,System.Boolean)">
+      <summary>返回一个值，该值指示指定 HTTP 请求是否为 WS-Federation 登录响应消息。 如果消息为 WS 联合身份验证注销清理消息（“wsignoutcleanup1.0”），此方法处理请求。</summary>
+      <param name="request">传入的 HTTP 请求。</param>
+      <param name="onPage">如果在处理页请求时开始调用，则为 <see langword="true" />。 如果调用方是 HTTP 模块，则为 <see langword="false" />。 如果传入消息是 WS 联合身份验证注销清理消息（“wsignoutcleanup1.0 ”），则该参数确定如何停止进程或发送重定向。</param>
+      <returns>如果指定的 HTTP 请求包含 wa 参数设置为“wsignout1.0”并且 wresult 参数不为空的 FORM 发布，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.CreateSignInRequest(System.String,System.String,System.Boolean)">
+      <summary>使用模块上配置的 WS-Federation 参数，在请求消息中创建 WS-Federation 符号。</summary>
+      <param name="uniqueId">WSFAM 保存请求中的 WS-Federation 标志 wctx 参数值; 但是，该模块在处理签入请求或sign-in反应时不使用它。 您可以将其设置为任何值。 不必是唯一的。</param>
+      <param name="returnUrl">模块应返回在身份验证的 URL。</param>
+      <param name="rememberMeSet">WSFAM 保存请求中的 WS-Federation 标志 wctx 参数值; 但是，该模块在处理签入请求或sign-in反应时不使用它。 可以设置该 <see langword="true" /> 或 <see langword="false" />。</param>
+      <returns>WS-Federation 登录请求消息。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer" /> 属性为 <see langword="null" /> 或空字符串。  
+
+或 - 
+<see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Realm" /> 属性为 <see langword="null" /> 或空字符串。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.FederatedSignOut(System.Uri,System.Uri)">
+      <summary>使用 WS-Federation 协议，在指定的安全标记的服务 (STS) 中注销。</summary>
+      <param name="signOutUrl">接收 WS-Federation 注销请求消息的 STS 的 URL。 不能为 <see langword="null" />。</param>
+      <param name="replyUrl">将作为 wreply 值发送的注销请求消息 URL。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="signOutUrl" /> 不是 <see langword="null" /> 并且不是绝对 URI。  
+
+或 - 
+<paramref name="replyUrl" /> 不是 <see langword="null" /> 并且不是绝对 URI。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="signOutUrl" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Freshness">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wfresh 参数的值。</summary>
+      <returns>身份验证请求所需的最大生存期（以分钟为单位）。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetFederationPassiveSignOutUrl(System.String,System.String,System.String)">
+      <summary>返回表示发送到指定的颁发者的 WS-Federation 注销请求，并包含指定的 wreply 参数和指定的附加参数的 URL。</summary>
+      <param name="issuer">颁发者地址。 要将请求定向到的安全标记服务 (STS) 的地址。</param>
+      <param name="signOutReply">指定该地址返回到注销后的 URL。这将在注销请求中设置 wreply 参数。 如果没有应包含在生成的注销请求中的 wreply 参数，则可以为 <see langword="null" /> 或空。 这应该是绝对 URI。</param>
+      <param name="signOutQueryString">注销请求包含的其他查询字符串参数。 如果生成的注销请求中没有包含附加参数，则可以为 <see langword="null" /> 或空。 这应该是相对 URI。</param>
+      <returns>包含使用指定的参数生成的 WS-Federation 被动标志请求的 URL。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="issuer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetReferencedResult(System.String)">
+      <summary>从指定的 URL 来获取颁发结果 (通常是颁发的令牌)。 解析登录响应消息中在 wresultptr 参数中指定的 URL。</summary>
+      <param name="resultPtr">指定颁布结果地址的 URL。</param>
+      <returns>由 URL 引用的颁发结果。</returns>
+      <exception cref="T:System.NotSupportedException">基类不支持此方法。 必须在派生类中重写它。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetReturnUrlFromResponse(System.Web.HttpRequestBase)">
+      <summary>提取登录响应中最初请求的页的 URL。</summary>
+      <param name="request">包含一窗体 ，包括 WS-Federation 响应消息的 HTTP 请求。</param>
+      <returns>用户最初请求的页 URL。 这是 URL（在依赖方）在成功登录后，客户端应被重定向。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetSecurityToken(System.IdentityModel.Services.SignInResponseMessage)">
+      <summary>从指定 WS Federation 登录响应消息读取安全标记。</summary>
+      <param name="message">从登录响应消息中读取标识。</param>
+      <returns>从该消息读取的安全令牌。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="message" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetSecurityToken(System.Web.HttpRequestBase)">
+      <summary>从指定的 HTTP 请求读取安全令牌。</summary>
+      <param name="request">从中读取标记的 HTTP。</param>
+      <returns>读取的安全令牌。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetSessionTokenContext">
+      <summary>获取在 <see cref="P:System.IdentityModel.Tokens.SessionSecurityToken.Context" /> 属性中应保持会话 Cookie 的字符串。</summary>
+      <returns>保持的字符串在会话 Cookie 中。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer" /> 属性为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetSignInResponseMessage(System.Web.HttpRequestBase)">
+      <summary>从表示指定 HTTP 请求中表 POST 读取 <see cref="T:System.IdentityModel.Services.SignInResponseMessage" /> 对象。</summary>
+      <param name="request">从响应消息中读取符号的 HTTP 请求。 应表示表格 POST 的请求。</param>
+      <returns>生成的登录响应信息。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">无法从指定的请求中读取登录响应消息。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetSignOutRedirectUrl(System.IdentityModel.Services.SignOutCleanupRequestMessage)">
+      <summary>确定包含 wreply 参数的，处理 WS-Federation 注销清理请求(wsignoutcleanup1.0)的重新定位。</summary>
+      <param name="signOutMessage">注销清理请求。</param>
+      <returns>要重定向到的 URL。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="signOutMessage" /> 具有一个为 <see langword="null" /> 或为空的 <see cref="P:System.IdentityModel.Services.SignOutCleanupRequestMessage.Reply" /> 属性。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="signOutMessage" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetXmlTokenFromMessage(System.IdentityModel.Services.SignInResponseMessage)">
+      <summary>从指定 WS-Federation 登录响应消息提取发出标记。</summary>
+      <param name="message">从登录响应消息中提取标记。 以响应包含 STS 问题的标记。</param>
+      <returns>包含表示颁发的令牌的 XML 的字符串。 这是 <see langword="&lt;wst:RequestSecurityTokenResponse&gt;" /> 元素。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="message" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="message" />不包含标记。 （它不包含有效的 wresult 或 wresultptr 参数。）</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.GetXmlTokenFromMessage(System.IdentityModel.Services.SignInResponseMessage,System.IdentityModel.Services.WSFederationSerializer)">
+      <summary>使用指定的 WS-Federation 序列化程序从指定的 WS-Federation 登录响应消息以提取颁发的令牌。</summary>
+      <param name="message">从登录响应消息中提取标记。 以响应包含 STS 问题的标记。</param>
+      <param name="federationSerializer">用于序列化签入响应消息的 WS-Federation 序列化程序。</param>
+      <returns>包含表示颁发的令牌的 XML 的字符串。 这是 <see langword="&lt;wst:RequestSecurityTokenResponse&gt;" /> 元素。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="message" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.HomeRealm">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 whr 参数的值。</summary>
+      <returns>身份提供程序的地址。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.InitializeModule(System.Web.HttpApplication)">
+      <summary>初始化模块并为其从模块的 ASP.NET 应用程序对象处理事件做好准备。</summary>
+      <param name="context">包含该模块的 HTTP 应用对程序对象。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="context" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.InitializePropertiesFromConfiguration">
+      <summary>初始化模块属性，该模块属性是基于指定的 <see cref="P:System.IdentityModel.Services.HttpModuleBase.FederationConfiguration" /> 属性的配置。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.IsSignInResponse(System.Web.HttpRequestBase)">
+      <summary>获取指示指定请求是否为 WS-Federation 登录响应消息的值。</summary>
+      <param name="request">传入的 HTTP 请求。</param>
+      <returns>如果请求为 WS 联合登录响应消息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer">
+      <summary>获取或设置标识安全标记的预期颁发者的 URI。</summary>
+      <returns>确认安全标记服务 (STS) 的 URI。</returns>
+      <exception cref="T:System.ArgumentException">尝试将此属性设置为 <see langword="null" /> 或者空字符串。  
+
+或 - 
+尝试设置这个属性为一个值，该值不是有效的绝对 URI。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnAuthenticateRequest(System.Object,System.EventArgs)">
+      <summary>从 ASP.NET 管道中处理的 <see cref="E:System.Web.HttpApplication.AuthenticateRequest" /> 事件。</summary>
+      <param name="sender">事件的源。 这将是 <see cref="T:System.Web.HttpApplication" /> 对象。</param>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnAuthorizationFailed(System.IdentityModel.Services.AuthorizationFailedEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.AuthorizationFailed" /> 事件。</summary>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnEndRequest(System.Object,System.EventArgs)">
+      <summary>从 ASP.NET 管道中处理的 <see cref="E:System.Web.HttpApplication.EndRequest" /> 事件。</summary>
+      <param name="sender">事件的源。 这将是 <see cref="T:System.Web.HttpApplication" /> 对象。</param>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnPostAuthenticateRequest(System.Object,System.EventArgs)">
+      <summary>从 ASP.NET 管道中处理的 <see cref="E:System.Web.HttpApplication.PostAuthenticateRequest" /> 事件。</summary>
+      <param name="sender">事件的源。 这将是 <see cref="T:System.Web.HttpApplication" /> 对象。</param>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnRedirectingToIdentityProvider(System.IdentityModel.Services.RedirectingToIdentityProviderEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.RedirectingToIdentityProvider" /> 事件。</summary>
+      <param name="e">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnSessionSecurityTokenCreated(System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated" /> 事件。</summary>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnSignedIn(System.EventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SignedIn" /> 事件。</summary>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnSignedOut(System.EventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SignedOut" /> 事件。</summary>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnSignInError(System.IdentityModel.Services.ErrorEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SignInError" /> 事件。</summary>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnSigningOut(System.IdentityModel.Services.SigningOutEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SigningOut" /> 事件。</summary>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.OnSignOutError(System.IdentityModel.Services.ErrorEventArgs)">
+      <summary>引发 <see cref="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SignOutError" /> 事件。</summary>
+      <param name="args">事件的数据。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.PassiveRedirectEnabled">
+      <summary>获取或设置指定是否启用模块以启动 WS-Federation 协议重定向的值。</summary>
+      <returns>如果启用重定向，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.PersistentCookiesOnPassiveRedirects">
+      <summary>获取或设置指定是否对成功的身份验证颁发一致的会话 Cookie 的值。</summary>
+      <returns>如果发出持久性会话验证 Cookie，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Policy">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wp 参数的值。</summary>
+      <returns>标识使用策略的 URL。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Realm">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wtrealm 参数的值。</summary>
+      <returns>标识安全标志服务 (STS)的该依赖方 (RP) 的 URI。</returns>
+      <exception cref="T:System.ArgumentException">尝试将此属性设置为 <see langword="null" /> 或者空字符串。  
+
+或 - 
+尝试设置这个属性为一个值，该值不是有效的绝对 URI。</exception>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.RedirectingToIdentityProvider">
+      <summary>当模块即将重定向用户标识提供程序时发生。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.RedirectToIdentityProvider(System.String,System.String,System.Boolean)">
+      <summary>将用户重定向至 <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer" /> 属性指定的安全服务标记 (STS)，以使用 WS-Federation 协议获取安全标记。</summary>
+      <param name="uniqueId">WSFAM 保存请求中的 WS-Federation 标志 wctx 参数值; 但是，该模块在处理签入请求或sign-in反应时不使用它。 您可以将其设置为任何值。 不必是唯一的。 有关更多信息，请参见 <see cref="M:System.IdentityModel.Services.WSFederationAuthenticationModule.CreateSignInRequest(System.String,System.String,System.Boolean)" /> 方法。</param>
+      <param name="returnUrl">模块应返回在身份验证的 URL。</param>
+      <param name="persist">WSFAM 保存请求中的 WS-Federation 标志 wctx 参数值; 但是，该模块在处理签入请求或sign-in反应时不使用它。 可以设置该 <see langword="true" /> 或 <see langword="false" />。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer" /> 为 <see langword="null" /> 或空字符串。  
+
+或 - 
+<see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Realm" /> 为 <see langword="null" /> 或空字符串。  
+
+或 - 
+<see cref="P:System.Web.HttpContext.Current" /> 属性为 <see langword="null" /> 或为空。  
+
+或 - 
+由 <see cref="P:System.Web.HttpContext.Response" />返回的上下文的 <see cref="P:System.Web.HttpContext.Current" /> 属性为 <see langword="null" /> 或空。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Reply">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wreply 参数的值。</summary>
+      <returns>标识依赖方 (RP) 应用程序的地址的 URL 要接受来自安全标志服务 (STS) 的回复。</returns>
+      <exception cref="T:System.ArgumentException">尝试设置这个属性为一个值，该值不是有效的绝对 URI。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Request">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wreq 参数的值。</summary>
+      <returns>令牌颁发请求以 <see langword="&lt;wst:RequestSecurityToken&gt;" /> 元素表示。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.RequestPtr">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wreqptr 参数的值。</summary>
+      <returns>一个指定令牌颁发请求位置的 URI，表示为一个 <see langword="&lt;wst:RequestSecurityToken&gt;" /> 元素。</returns>
+      <exception cref="T:System.ArgumentException">尝试设置这个属性为一个值，该值不是有效的绝对 URI。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.RequireHttps">
+      <summary>获取或设置指定与安全令牌服务 (STS) 的通信是否必须使用 HTTPS 协议的值。</summary>
+      <returns>如果必须使用 HTTP 对具有 STS 的通信进行保护，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Resource">
+      <summary>获取或设置 WS 联合身份验证登录请求（“wsignin1.0”）中使用的 wres 参数的值。</summary>
+      <returns>标识访问的资源、依赖方 (RP)和对安全标志服务 (STS) 的 URI。</returns>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SecurityTokenReceived">
+      <summary>当安全标记已从安全标记服务 (STS) 获得时发生。</summary>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SecurityTokenValidated">
+      <summary>但是在会话安全标记已创建之前,安全标记服务 (STS) 已被验证的安全标记后发生。</summary>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated">
+      <summary>当会话安全标记已从安全标记服务标记 (STS) 创建时发生。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.SetPrincipalAndWriteSessionToken(System.IdentityModel.Tokens.SessionSecurityToken,System.Boolean)">
+      <summary>设置线程用户和选择写入会话 Cookie。</summary>
+      <param name="sessionToken">从 STS 的 WS-Federation 登录响应消息生成的会话安全标识。</param>
+      <param name="isSession">编写表示会话的包含该响应 cookie，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="sessionToken" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SignedIn">
+      <summary>在用于登录之后发生。</summary>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SignedOut">
+      <summary>只在注销期间删除会话后发生。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.SignIn(System.String)">
+      <summary>通过 WS-Federation 协议执行登录到安全标记服务 (STS) 的操作。</summary>
+      <param name="ControlId">WSFAM 保存请求中的 WS-Federation 标志 wctx 参数值; 但是，该模块在处理签入请求或sign-in反应时不使用它。 您可以将其设置为任何值。 不必是唯一的。 有关更多信息，请参见 <see cref="M:System.IdentityModel.Services.WSFederationAuthenticationModule.CreateSignInRequest(System.String,System.String,System.Boolean)" /> 方法。</param>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.SignInContext">
+      <summary>获取或设置 WS-Federation 登录请求的 wctx 参数将包含应用程序的特定上下文值。</summary>
+      <returns>登录请求中的 wctx 参数，要包含应用程序的特定上下文值。</returns>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SignInError">
+      <summary>当登录过程中出现错误时引发。</summary>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SigningOut">
+      <summary>在注销期间删除会话前发生。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.SignInQueryString">
+      <summary>获取或设置包含要在 WS 联合身份验证登录请求（“wsignin1.0”）中发送的额外参数的查询字符串。</summary>
+      <returns>包含采用以下格式的更多的消息参数的 URL 片段： <c>param1 = value1&amp;param2 = value2&amp;paramN = valueN</c>。 默认值为一个空字符串。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.SignOut">
+      <summary>当前会话的注销并要求重定向回在当前 HTTP 指定的 URL。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.SignOut(System.Boolean)">
+      <summary>当前会话的注销并引发相应事件。</summary>
+      <param name="isIPRequest">如果由 IP-STS 通过 WS 联合身份验证注销清理请求消息（“wsignoutcleanup1.0”）启动请求，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.SignOut(System.String)">
+      <summary>当前会话的注销并要求重定向回指定的 URL。</summary>
+      <param name="redirectUrl">会话删除后浏览器应被重定向到 URL。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="redirectUrl" /> 不是有效的 URI。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.SignOut(System.String,System.Boolean)">
+      <summary>当前会话的注销并要求重定向回指定的 URL。</summary>
+      <param name="redirectUrl">注销后浏览器应被重定向到 URL。</param>
+      <param name="initiateSignoutCleanup">始终设置 <see langword="false" />。 不支持设置此参数到 <see langword="true" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="redirectUrl" /> 不是有效的 URI。</exception>
+      <exception cref="T:System.NotImplementedException">如果 <paramref name="initiateSignoutCleanup" /> 是 <see langword="true" />则引发该异常的 <see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" /> 类。 不要将参数设置为 <see langword="true" />。</exception>
+    </member>
+    <member name="E:System.IdentityModel.Services.WSFederationAuthenticationModule.SignOutError">
+      <summary>当注销过程中出现错误时引发。</summary>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.SignOutQueryString">
+      <summary>获取或设置询问字符串，该字符串包含 WS 联合身份验证注销请求（“wsignout1.0”）中将被发送的额外参数。</summary>
+      <returns>包含采用以下格式的更多的消息参数的 URL 片段： <c>param1 = value1&amp;param2 = value2&amp;paramN = valueN</c>。 默认值为一个空字符串。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.SignOutReply">
+      <summary>获取或设置在 WS 联合身份验证注销请求（“wsignout1.0”）期间使用的 wreply 参数的值。</summary>
+      <returns>通过注销以下 WS-Federation 协议，该客户端应由安全标记服务 (STS) 的重定向到 URL。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationAuthenticationModule.VerifyProperties">
+      <summary>验证 <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer" /> 和 <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Realm" /> 属性为非空，和如果 <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.RequireHttps" /> 属性是否为 <see langword="true" /> 以及为 <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer" /> 和 <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Realm" /> 指定的 URI 遵循 HTTPS。</summary>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer" /> 为 <see langword="null" /> 或空字符串。  
+
+或 - 
+<see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Realm" /> 为 <see langword="null" /> 或空字符串。  
+
+或 - 
+<see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.RequireHttps" /> 为 <see langword="true" />，且 <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Issuer" /> 不兼容 HTTPS。  
+
+或 - 
+<see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.RequireHttps" /> 为 <see langword="true" />，且 <see cref="P:System.IdentityModel.Services.WSFederationAuthenticationModule.Realm" /> 不兼容 HTTPS。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationAuthenticationModule.XmlDictionaryReaderQuotas">
+      <summary>获取设置序列化 WS-Federation 响应消息以获取安全令牌服务 (STS) 使用的令牌时要使用的 <see cref="T:System.Xml.XmlDictionaryReaderQuotas" /> 对象。</summary>
+      <returns>序列化 WS-Federation 响应消息以获取安全标记服务 (STS) 使用的标记时要使用的 <see cref="T:System.Xml.XmlDictionaryReaderQuotas" /> 对象。</returns>
+      <exception cref="T:System.ArgumentNullException">尝试将该属性设置为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.WSFederationMessage">
+      <summary>表示 WS-Federation 消息并定义基类，通过其可衍生更具体 WS-Federation 消息。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessage.#ctor(System.Uri,System.String)">
+      <summary>从该消息应用的基 URL 和要执行的操作（wa 消息参数）来初始化 <see cref="T:System.IdentityModel.Services.WSFederationMessage" /> 类的新实例。</summary>
+      <param name="baseUrl">WS-Federation 消息应用的基 URL。 这是没有任何询问参数的 URL。 设置 <see cref="P:System.IdentityModel.Services.FederationMessage.BaseUri" /> 属性。</param>
+      <param name="action">消息的 wa 参数。 指定要执行的操作；例如，WS 联合身份验证登录请求的“wsignin1.0”。 设置 <see cref="P:System.IdentityModel.Services.WSFederationMessage.Action" /> 属性。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="baseUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="action" /> 为 <see langword="null" /> 或空字符串。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">
+        <paramref name="baseUri" /> 不是有效的绝对 URI。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationMessage.Action">
+      <summary>获取或设置消息的 wa 参数。</summary>
+      <returns>wa 参数的值。</returns>
+      <exception cref="T:System.ArgumentException">尝试设置一个为 <see langword="null" /> 或空字符串的值。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationMessage.Context">
+      <summary>获取或设置消息的 wctx 参数。</summary>
+      <returns>wctx 参数的值。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessage.CreateFromFormPost(System.Web.HttpRequestBase)">
+      <summary>从指定请求接收的窗体发送中创建 WS-Federation 消息。</summary>
+      <param name="request">包含窗体发布参数请求的请求。</param>
+      <returns>生成的消息或如果消息无法生成则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessage.CreateFromNameValueCollection(System.Uri,System.Collections.Specialized.NameValueCollection)">
+      <summary>从参数的 <see cref="T:System.Collections.Specialized.NameValueCollection" /> 创建 WS-Federation 消息。</summary>
+      <param name="baseUrl">联合消息应用的基 URL。</param>
+      <param name="collection">该包含消息的参数的 <see cref="T:System.Collections.Specialized.NameValueCollection" />。</param>
+      <returns>生成的消息或如果消息无法生成则为 <see langword="null" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="baseUrl" /> 为 <see langword="null" />。  
+或 
+ <paramref name="collection" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">wa 参数在参数集合中不可被识别。</exception>
+      <exception cref="T:System.ArgumentException">登录响应消息在参数集合中同时具有 wresult 和 wresultptr 参数。 （合法的登录答案信息的 wa 参数与“wsignin1.0”等效，wsiesult 与 wresultptr 参数也等效，但这两组等效参数不可同时发生。）</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessage.CreateFromUri(System.Uri)">
+      <summary>从指定的 URI 中创建一条 WS-Federation 消息。 参数假定在查询字符串中指定。</summary>
+      <param name="requestUri">从其创建消息的 URI。 指定于查询字符串的消息参数。 wa 参数必须存在。</param>
+      <returns>已创建的消息。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.IdentityModel.Services.WSFederationMessageException">不能从指定的 URI 中创建消息。</exception>
+    </member>
+    <member name="P:System.IdentityModel.Services.WSFederationMessage.Encoding">
+      <summary>获取或设置消息的 wencoding 参数。</summary>
+      <returns>Wencoding 参数的值。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessage.TryCreateFromUri(System.Uri,System.IdentityModel.Services.WSFederationMessage@)">
+      <summary>尝试从指定的 URI 中创建一个 WS-Federation 消息。 参数被假定为查询字符串。</summary>
+      <param name="requestUri">从其创建消息的 URI。 指定于查询字符串的消息参数。 wa 参数必须存在。</param>
+      <param name="fedMsg">当此方法返回时，如果无法创建消息，则包含创建的消息或 <see langword="null" />。 该参数未经初始化即被处理。</param>
+      <returns>如果成功创建了消息，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestUri" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.IdentityModel.Services.WSFederationMessageException">
+      <summary>当序列化或反序列化一个 WS-Federation 消息过程中发生错误时引发的异常。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessageException.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.WSFederationMessageException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessageException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.IdentityModel.Services.WSFederationMessageException" /> 类的新实例。</summary>
+      <param name="info">保留序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象，它包含有关源或目标的上下文信息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessageException.#ctor(System.String)">
+      <summary>用指定的错误消息初始化 <see cref="T:System.IdentityModel.Services.WSFederationMessageException" /> 类的新实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationMessageException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.IdentityModel.Services.WSFederationMessageException" /> 类的新实例。</summary>
+      <param name="message">解释异常原因的错误消息。</param>
+      <param name="inner">导致当前异常的 <see cref="T:System.Exception" />。 如果 <c>innerException</c> 参数不为 <see langword="null" />，则当前异常会在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="T:System.IdentityModel.Services.WSFederationSerializer">
+      <summary>提供方法将 WS-Federation 消息转换为 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> 和 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse" /> 对象，其特定于 WS-Trust 协议。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.#ctor">
+      <summary>初始化 <see cref="T:System.IdentityModel.Services.WSFederationSerializer" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.#ctor(System.IdentityModel.Protocols.WSTrust.WSTrustRequestSerializer,System.IdentityModel.Protocols.WSTrust.WSTrustResponseSerializer)">
+      <summary>使用指定的请求和序列化程序初始化 <see cref="T:System.IdentityModel.Services.WSFederationSerializer" /> 类的新实例。</summary>
+      <param name="requestSerializer">用于读取请求 (RST) 的 WS-Trust 序列化程序。</param>
+      <param name="responseSerializer">用于写入响应 (RSTR) 的 WS-Trust 序列化程序。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="requestSerializer" /> 为 <see langword="null" />。  
+或 
+ <paramref name="responseSerializer" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.#ctor(System.Xml.XmlDictionaryReader)">
+      <summary>根据响应的 XML 的命名空间初始化 <see cref="T:System.IdentityModel.Services.WSFederationSerializer" /> 类的新实例。</summary>
+      <param name="reader">在响应 XML 中打开一个 <see cref="T:System.Xml.XmlDictionaryReader" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="reader" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.CanReadRequest(System.String)">
+      <summary>检查该指定字符串是否为 wst：由包装的 <see cref="T:System.IdentityModel.Protocols.WSTrust.WSTrustRequestSerializer" /> 识别的命名空间的 RequestSecurityToken 消息。</summary>
+      <param name="trustMessage">检查的 WS-Trust 消息。</param>
+      <returns>如果消息为具有匹配 <see cref="T:System.IdentityModel.Services.WSFederationSerializer" /> 支持的e WS-Trust 协议的命名空间的有效 wst:RequestSecurityToken 消息，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.CanReadResponse(System.String)">
+      <summary>检查该指定字符串是否为 wst：由包装的 <see cref="T:System.IdentityModel.Protocols.WSTrust.WSTrustResponseSerializer" /> 识别的命名空间的 RequestSecurityTokenResponse 消息。</summary>
+      <param name="trustMessage">检查的 WS-Trust 消息。</param>
+      <returns>如果消息为具有匹配 <see cref="T:System.IdentityModel.Services.WSFederationSerializer" /> 支持的e WS-Trust 协议的命名空间的有效 wst:RequestSecurityTokenResponse 消息，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.CreateRequest(System.IdentityModel.Services.FederationMessage,System.IdentityModel.Protocols.WSTrust.WSTrustSerializationContext)">
+      <summary>将 WS 联合身份验证登录请求消息转换为安全令牌服务（<see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> 类）可使用的 <see cref="T:System.IdentityModel.SecurityTokenService" /> 对象。</summary>
+      <param name="message">要转换的消息。 这应该是 <see cref="T:System.IdentityModel.Services.SignInRequestMessage" /> 实例。</param>
+      <param name="context">当前序列化上下文。</param>
+      <returns>表示转换的登录请求消息的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> 对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="message" /> 为 null。  
+或 
+ <paramref name="context" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">消息不是类型 <see cref="T:System.IdentityModel.Services.SignInRequestMessage" />。  
+或 
+<see cref="T:System.IdentityModel.Services.SignInRequestMessage" /> 对象缺少用来构造一个有效的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> 对象的请求信息。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.CreateResponse(System.IdentityModel.Services.FederationMessage,System.IdentityModel.Protocols.WSTrust.WSTrustSerializationContext)">
+      <summary>将 WS-Federation Sign-In 请求消息对象转换为 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse" /> 对象。</summary>
+      <param name="message">要转换的消息。 这应该是 <see cref="T:System.IdentityModel.Services.SignInResponseMessage" /> 实例。</param>
+      <param name="context">当前序列化上下文。</param>
+      <returns>表示转换的登录响应消息的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse" /> 对象。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="message" /> 为 <see langword="null" />。  
+或 
+ <paramref name="context" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">消息不是类型 <see cref="T:System.IdentityModel.Services.SignInResponseMessage" />。  
+或 
+<see cref="T:System.IdentityModel.Services.SignInResponseMessage" /> 对象缺少用来构造一个有效的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse" /> 对象的请求信息。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.GetReferencedRequest(System.String)">
+      <summary>从引用的 URL 中获取 wreq 字符串。</summary>
+      <param name="wreqptr">请求数据的 URL。</param>
+      <returns>来自 URL 的请求数据。</returns>
+      <exception cref="T:System.NotSupportedException">实现返回时引发 。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.GetReferencedResult(System.String)">
+      <summary>从引用的 URL 中获取 wresult 字符串。</summary>
+      <param name="wresultptr">结果数据的 URI。</param>
+      <returns>来自 URL 的请求数据。</returns>
+      <exception cref="T:System.NotSupportedException">实现返回时引发 。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.GetRequestAsString(System.IdentityModel.Protocols.WSTrust.RequestSecurityToken,System.IdentityModel.Protocols.WSTrust.WSTrustSerializationContext)">
+      <summary>将指定的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> 对象序列化为字符串。</summary>
+      <param name="request">要序列化的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> 对象。</param>
+      <param name="context">当前序列化上下文。</param>
+      <returns>
+        <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> 对象的序列化字符串表示形式。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="request" /> 为 <see langword="null" />。  
+或 
+ <paramref name="context" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.IdentityModel.Services.WSFederationSerializer.GetResponseAsString(System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse,System.IdentityModel.Protocols.WSTrust.WSTrustSerializationContext)">
+      <summary>将指定的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse" /> 对象序列化为字符串。</summary>
+      <param name="response">要序列化的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse" /> 对象。</param>
+      <param name="context">当前序列化上下文。</param>
+      <returns>
+        <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse" /> 对象的序列化字符串表示形式。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="response" /> 为 <see langword="null" />。  
+或 
+ <paramref name="context" /> 为 <see langword="null" />。</exception>
+    </member>
+  </members>
+</doc>

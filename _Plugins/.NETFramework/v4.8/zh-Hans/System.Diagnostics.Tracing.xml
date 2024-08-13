@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Diagnostics.Tracing</name>
+  </assembly>
+  <members>
+    <member name="M:System.Diagnostics.Tracing.EventCounter.#ctor(System.String,System.Diagnostics.Tracing.EventSource)">
+      <summary>
+              初始化 <see cref="T:System.Diagnostics.Tracing.EventCounter" /> 类的新实例。
+            </summary>
+      <param name="name">
+                事件计数器名称。
+              </param>
+      <param name="eventSource">
+                事件源。
+              </param>
+      <exception cref="T:System.ArgumentNullException">
+                  <paramref name="name" /> 为 <see langword="null" />。
+                
+                  - 或 -
+                
+                  <paramref name="eventSource" /> 为 <see langword="null" />。
+                </exception>
+    </member>
+    <member name="M:System.Diagnostics.Tracing.EventCounter.WriteMetric(System.Single)">
+      <summary>
+              如果已启用性能计数器，请写入指标。
+            </summary>
+      <param name="value">
+                要写入的值。
+              </param>
+    </member>
+    <member name="T:System.Diagnostics.Tracing.EventCounter">
+      <summary>
+              能够通过 <see cref="T:System.Diagnostics.Tracing.EventSource" /> 类收集非常频繁的事件的统计信息。
+            </summary>
+    </member>
+  </members>
+</doc>

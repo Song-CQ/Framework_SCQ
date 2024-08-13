@@ -15,6 +15,14 @@ using AppDomain = ILRuntime.Runtime.Enviorment.AppDomain;
 
 namespace FutureCore
 {
+
+    public interface HotUpdate
+    {
+
+        public void StartLoadHotFix();
+
+    }
+
     public class ILRuntimeMgr : BaseMonoMgr<ILRuntimeMgr>
     {
         private AppDomain this_AppDomain;
@@ -38,7 +46,7 @@ namespace FutureCore
         {
             base.Init();
 
-            if (!AppConst.IsHotUpdateMode)
+            if (AppConst.HotUpdateType != HotUpdateType.ILRuntime)
             {
                 return;
             }
@@ -96,10 +104,12 @@ namespace FutureCore
             }
 #endif
 
-            
+
 
 #if UNITY_EDITOR
-            this_AppDomain.LoadAssembly(dll_ms,pdb_ms,new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+
+            //this_AppDomain.LoadAssembly(dll_ms);
+            this_AppDomain.LoadAssembly(dll_ms, pdb_ms, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
 #else
             this_AppDomain.LoadAssembly(dll_ms);
 #endif

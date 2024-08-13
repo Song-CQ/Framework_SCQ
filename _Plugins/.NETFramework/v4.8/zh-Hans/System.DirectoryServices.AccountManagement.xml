@@ -1,0 +1,1525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.DirectoryServices.AccountManagement</name>
+  </assembly>
+  <members>
+    <member name="T:System.DirectoryServices.AccountManagement.AdvancedFilters">
+      <summary>此类提供对某些属性的可写访问，以便用户能够在使用按示例查询时，修改传递给 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearcher" /> 对象的“虚拟”主体对象的只读属性。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AdvancedFilters.#ctor(System.DirectoryServices.AccountManagement.Principal)">
+      <summary>实例化一个新的 <see cref="T:System.DirectoryServices.AccountManagement.AdvancedFilters" /> 对象。 请不要直接调用。</summary>
+      <param name="p">一个 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AdvancedFilters.AccountExpirationDate(System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>将 <see cref="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.AccountExpirationDate" /> 属性的查询筛选器设置为指定的时间和比较类型。</summary>
+      <param name="expirationTime">一个 <see cref="T:System.DateTime" /> 对象。</param>
+      <param name="match">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，它指定在比较中应如何使用 <paramref name="expirationTime" />。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AdvancedFilters.AccountLockoutTime(System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>将 <see cref="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.AccountLockoutTime" /> 查询筛选器设置为指定的时间和比较类型。</summary>
+      <param name="lockoutTime">一个 <see cref="T:System.DateTime" /> 对象。</param>
+      <param name="match">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，它指定在比较中应如何使用 <paramref name="lockoutTime" />。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AdvancedFilters.AdvancedFilterSet(System.String,System.Object,System.Type,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>为扩展类中的属性创建一个查询筛选器。</summary>
+      <param name="attribute">特性的名称</param>
+      <param name="value">一个对象。</param>
+      <param name="objectType">
+        <paramref name="value" /> 的对象类型。</param>
+      <param name="mt">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，它指定应如何将 <paramref name="value" /> 与属性的值进行比较。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AdvancedFilters.BadLogonCount(System.Int32,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>将 <see cref="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.BadLogonCount" /> 属性的查询筛选器设置为指定的值和比较类型。</summary>
+      <param name="badLogonCount">一个整数。</param>
+      <param name="match">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，它指定应如何将 <paramref name="badLogonCount" /> 与属性的值进行比较。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AdvancedFilters.LastBadPasswordAttempt(System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>将 <see cref="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.LastBadPasswordAttempt" /> 属性的查询筛选器设置为指定的 <see cref="T:System.DateTime" /> 和指定的比较值。</summary>
+      <param name="lastAttempt">一个 <see cref="T:System.DateTime" /> 对象。</param>
+      <param name="match">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，它指定在比较中应如何使用 <paramref name="lastAttempt" />。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AdvancedFilters.LastLogonTime(System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>将 <see cref="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.LastLogon" /> 属性的查询筛选器设置为指定的 <see cref="T:System.DateTime" /> 和指定的比较值。</summary>
+      <param name="logonTime">
+        <see cref="T:System.DateTime" /> 对象。</param>
+      <param name="match">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，它指定在比较中应如何使用 <paramref name="logonTime" />。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AdvancedFilters.LastPasswordSetTime(System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>将 <see cref="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.LastPasswordSet" /> 属性的查询筛选器设置为指定的 <see cref="T:System.DateTime" /> 和指定的比较值。</summary>
+      <param name="passwordSetTime">
+        <see cref="T:System.DateTime" /> 对象。</param>
+      <param name="match">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，它指定在比较中应如何使用 <paramref name="passwordSetTime" />。</param>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.AuthenticablePrincipal">
+      <summary>封装可以对其进行身份验证的主体所通用的帐户和联系人数据。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.#ctor(System.DirectoryServices.AccountManagement.PrincipalContext)">
+      <summary>使用指定的上下文初始化 <see cref="T:System.DirectoryServices.AccountManagement.AuthenticablePrincipal" /> 类的新实例。 此构造函数由派生类构造函数调用以初始化基类，不适合直接在代码中使用。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.#ctor(System.DirectoryServices.AccountManagement.PrincipalContext,System.String,System.String,System.Boolean)">
+      <summary>使用指定的上下文、SAM 帐户名、密码和启用的值初始化 <see cref="T:System.DirectoryServices.AccountManagement.AuthenticablePrincipal" /> 类的新实例。 此构造函数由派生类构造函数调用以初始化基类，不适合直接在代码中使用。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="samAccountName">此主体的 SAM 帐户名。</param>
+      <param name="password">此帐户的密码。</param>
+      <param name="enabled">一个布尔值，指定是否启用帐户。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.AccountExpirationDate">
+      <summary>获取或设置一个可以为 null 的 <see cref="T:System.DateTime" />，用于指定帐户过期的日期和时间。</summary>
+      <returns>一个 <see cref="T:System.DateTime" />，用于指定帐户过期的日期和时间；如果帐户永远不过期，则为 null。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.AccountLockoutTime">
+      <summary>获取一个可以为 null 的 <see cref="T:System.DateTime" />，用于指定帐户被锁定的日期和时间。</summary>
+      <returns>一个 <see cref="T:System.DateTime" />，用于指定帐户被锁定的日期和时间；如果帐户上未设置锁定时间，则为 null。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.AdvancedSearchFilter">
+      <summary>返回一个 <see cref="T:System.DirectoryServices.AccountManagement.AdvancedFilters" /> 对象，供与按示例查询一起使用，以便在将该对象传递给 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearcher" /> 之前设置只读属性。</summary>
+      <returns>对象，用于将其传递给之前设置只读属性<see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearcher" />。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.AllowReversiblePasswordEncryption">
+      <summary>获取或设置一个布尔值，该值指定是否为此帐户启用可逆密码加密。</summary>
+      <returns>如果为此帐户启用可逆密码加密，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.BadLogonCount">
+      <summary>获取对此帐户使用不正确的凭据进行登录的尝试次数。</summary>
+      <returns>对此帐户使用不正确的凭据进行登录的尝试次数。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.Certificates">
+      <summary>获取包含此账户的 X509 证书的 <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2Collection" />。</summary>
+      <returns>包含此账户的 X509 证书的 <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2Collection" />。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.ChangePassword(System.String,System.String)">
+      <summary>将帐户旧密码更改为新密码。 请勿将其与 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 一起使用。</summary>
+      <param name="oldPassword">更改的密码。</param>
+      <param name="newPassword">新密码。</param>
+      <exception cref="T:System.InvalidOperationException">未留存该主体。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PasswordException">新密码不符合复杂性要求。</exception>
+      <exception cref="T:System.NotSupportedException">该主体不是用户。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.DelegationPermitted">
+      <summary>获取或设置一个可以为 null 的布尔值，该值指定是否可以委托帐户。</summary>
+      <returns>如果可以委托帐户，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.Enabled">
+      <summary>获取或设置一个可以为 null 的布尔值，该值指定是否支持此帐户进行身份验证。</summary>
+      <returns>如果启用主体，则为 <see langword="true" />（如果未保持该帐户，则为 null）；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+      <exception cref="T:System.ArgumentNullException">应用程序尝试为此属性设置 Null 值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.ExpirePasswordNow">
+      <summary>使此帐户的密码过期。 这会强制用户在下次登录时更改其密码。</summary>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException">将更改保存到存储区时发生异常。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByBadPasswordAttempt(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回身份验证主体对象的集合，这些对象具有在指定日期和时间范围内进行不正确密码尝试的记录。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识不正确的密码尝试的日期和时间。 此参数与类型参数一起使用，可确定记录返回对象的错误登录重试的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.AuthenticablePrincipal" /> 对象的；如果未找到任何结果，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByBadPasswordAttempt``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回一个对象 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 集合，对象在指定的日期和时间范围内有一次错误密码尝试。 这是想要实现此功能的扩展类的模板函数。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识密码设置的日期和时间。 此参数与类型参数共同使用可确定记录返回对象密码设置的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <typeparam name="T" />
+      <returns>含有一个或多个相应主体类型的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />；如果未找到匹配，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByExpirationTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回身份验证主体对象的集合，这些对象拥有记录在指定日期和时间范围内的帐户过期时间。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">用于标识帐户过期的日期和时间的 <see cref="T:System.DateTime" /> 对象。 此参数与类型参数共同确定时间范围，其中记录有返回的对象的帐户过期时间。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，它包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.AuthenticablePrincipal" /> 对象。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByExpirationTime``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回一个对象 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 集合，对象在指定的日期和时间范围内具有到期日期。 这是想要实现此功能的扩展类的模板函数。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识密码设置的日期和时间。 此参数与类型参数共同使用可确定记录返回对象密码设置的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <typeparam name="T" />
+      <returns>含有一个或多个相应主体类型的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />；如果未找到匹配，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByLockoutTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回身份验证主体对象的集合，这些对象在指定日期和时间范围内记录帐户锁定时间。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">用于标识帐户锁定的日期和时间的 <see cref="T:System.DateTime" /> 对象。 此参数与类型参数共同确定一个时间范围，返回的对象会在此时间范围内记录帐户锁定。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，它包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.AuthenticablePrincipal" /> 对象。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByLockoutTime``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回一个对象 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 集合，对象在指定的日期和时间范围内有一个锁定时间。 这是想要实现此功能的扩展类的模板函数。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识密码设置的日期和时间。 此参数与类型参数共同使用可确定记录返回对象密码设置的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <typeparam name="T" />
+      <returns>含有一个或多个相应主体类型的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />；如果未找到匹配，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByLogonTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回身份验证主体对象的集合，这些对象在指定日期和时间范围内记录帐户登录。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">用于标识登录记录的日期和时间的 <see cref="T:System.DateTime" /> 对象。 此参数与类型参数共同确定一个时间范围，返回的对象会在此时间范围内记录帐户登录。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，它包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.AuthenticablePrincipal" /> 对象。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByLogonTime``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回一个对象 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 集合，对象在指定的日期和时间范围内有登录时间。 这是想要实现此功能的扩展类的模板函数。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识密码设置的日期和时间。 此参数与类型参数共同使用可确定记录返回对象密码设置的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <typeparam name="T" />
+      <returns>含有一个或多个相应主体类型的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />；如果未找到匹配，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByPasswordSetTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回身份验证主体对象集合，对象拥有在指定日期和时间范围内的帐户密码设置的记录。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识密码设置的日期和时间。 此参数与类型参数共同使用可确定记录返回对象密码设置的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，它包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.AuthenticablePrincipal" /> 对象。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByPasswordSetTime``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回对象的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 集合，对象在指定的日期和时间范围内有密码设置时间。  这是想要实现此功能的扩展类的模板函数。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识密码设置的日期和时间。 此参数与类型参数共同使用可确定记录返回对象密码设置的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <typeparam name="T" />
+      <returns>含有一个或多个相应主体类型的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />；如果未找到匹配，则为空集合。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.HomeDirectory">
+      <summary>获取或设置此帐户的主目录。</summary>
+      <returns>此帐户的主目录；如果不存在主目录，则为 null。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.HomeDrive">
+      <summary>获取或设置此帐户的主驱动器。</summary>
+      <returns>此帐户的主驱动器；如果不存在主驱动器，则为 null。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.IsAccountLockedOut">
+      <summary>返回一个布尔值，该值指定帐户当前是否处于锁定状态。</summary>
+      <returns>如果帐户已锁定，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.LastBadPasswordAttempt">
+      <summary>获取一个可以为 null 的 <see cref="T:System.DateTime" />，用于指定最后一次对此帐户进行不正确的密码尝试的日期和时间。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.DateTime" />，用于指定最后一次对此帐户进行不正确的密码尝试的日期和时间；如果未记录不正确的密码尝试，则为 null。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.LastLogon">
+      <summary>获取一个可以为 null 的 <see cref="T:System.DateTime" />，用于指定最后一次登录此帐户的日期和时间。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.DateTime" />，用于指定最后一次登录此帐户的日期和时间。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.LastPasswordSet">
+      <summary>获取一个可以为 null 的 <see cref="T:System.DateTime" />，用于指定最后一次为此帐户设置密码的日期和时间。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.DateTime" />，用于指定最后一次为此帐户设置密码的日期和时间。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.PasswordNeverExpires">
+      <summary>获取或设置一个布尔值，该值指定此帐户的密码是否会过期。</summary>
+      <returns>如果此帐户的密码过期，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.PasswordNotRequired">
+      <summary>获取或设置一个布尔值，该值指定此帐户是否需要密码。</summary>
+      <returns>如果此帐户需要密码，则为 <see langword="false" />；否则为 <see langword="true" />。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.PermittedLogonTimes">
+      <summary>获取或设置主体可以登录的次数。</summary>
+      <returns>此帐户的允许登录次数。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.PermittedWorkstations">
+      <summary>获取允许此主体登录的工作站的列表。</summary>
+      <returns>允许此主体登录的工作站的可变列表。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.RefreshExpiredPassword">
+      <summary>刷新过期的密码。</summary>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException">将更改保存到存储区时发生异常。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.ScriptPath">
+      <summary>获取或设置此帐户的脚本路径。</summary>
+      <returns>此帐户的脚本路径；如果没有脚本路径，则为 null。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.SetPassword(System.String)">
+      <summary>将帐户密码设置为指定的值。</summary>
+      <param name="newPassword">新密码。</param>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PasswordException">如果调用方没有相应权限、新密码不满足密码复杂度要求或由于任何其他原因基础存储区拒绝更改密码，则将引发异常。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.SmartcardLogonRequired">
+      <summary>获取或设置一个布尔值，该值指定登录帐户是否需要智能卡。</summary>
+      <returns>如果登录此帐户需要智能卡，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.UnlockAccount">
+      <summary>如果当前帐户已锁定，则解锁该帐户。</summary>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException">调用方没有适当的权限。
+
+或 -
+
+将更改保存到存储区时发生异常。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.UserCannotChangePassword">
+      <summary>获取或设置一个布尔值，指定用户是否可以更改此帐户的密码。 请勿将其与 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 一起使用。</summary>
+      <returns>如果不允许用户更改密码，则为 <see langword="true" />，否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+      <exception cref="T:System.NotSupportedException">此主体对象不是用户。</exception>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.ComputerPrincipal">
+      <summary>封装作为计算机帐户的主体。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.#ctor(System.DirectoryServices.AccountManagement.PrincipalContext)">
+      <summary>初始化 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 类的新实例，并将其分配到指定上下文。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.#ctor(System.DirectoryServices.AccountManagement.PrincipalContext,System.String,System.String,System.Boolean)">
+      <summary>使用指定的上下文、SAM 帐户名、密码和启用的值初始化 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 类的新实例。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="samAccountName">此计算机主体的 SAM 帐户名。</param>
+      <param name="password">此帐户的密码。</param>
+      <param name="enabled">一个布尔值，指定是否启用帐户。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.FindByBadPasswordAttempt(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 集合，这些对象在指定的参数内具有错误的密码尝试。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">一个 <see cref="T:System.DateTime" /> 结构，与 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 一起用于查找具有错误密码尝试的计算机。</param>
+      <param name="type">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，用于指定要在搜索中使用的比较类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其中包含一个或多个匹配搜索参数的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象，如果未找到匹配项，则为一个空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.FindByExpirationTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 集合，这些对象在指定的日期和时间范围内到期。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">一个 <see cref="T:System.DateTime" /> 结构，与 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 一起用于筛选搜索结果。</param>
+      <param name="type">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，用于指定要在搜索中使用的比较类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其中包含一个或多个匹配搜索参数的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象，如果未找到匹配项，则为一个空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>返回一个与指定的标识类型和值匹配的计算机主体对象。 此版本的 <see cref="Overload:System.DirectoryServices.AccountManagement.ComputerPrincipal.FindByIdentity" /> 方法确定标识值的格式。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityType">
+        <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值，用于指定 <paramref name="identityValue" /> 参数的格式。</param>
+      <param name="identityValue">计算机的标识。 此参数的格式可以是 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举中包含的任何格式。</param>
+      <returns>与指定标识值和类型相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象；若未找到匹配，则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">找到与当前计算机对象匹配的多个计算机主体对象。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">该标识值不是有效的 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.String)">
+      <summary>返回一个与指定的标识值匹配的计算机主体对象。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityValue">计算机的标识。 此参数的格式可以是 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举中包含的任何格式。</param>
+      <returns>与指定标识值相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象，如果找不到匹配项，则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">找到与当前计算机对象匹配的多个计算机主体对象。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.FindByLockoutTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 集合，这些对象在指定的日期和时间范围内锁定。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">一个 <see cref="T:System.DateTime" /> 结构，与 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 一起用于筛选搜索结果。</param>
+      <param name="type">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，用于指定要在搜索中使用的比较类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其中包含一个或多个匹配搜索参数的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象，如果未找到匹配项，则为一个空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.FindByLogonTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 集合，这些对象在指定的日期和时间范围内进行过登录。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">一个 <see cref="T:System.DateTime" /> 结构，与 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 一起用于筛选搜索结果。</param>
+      <param name="type">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，用于指定要在搜索中使用的比较类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其中包含一个或多个匹配搜索参数的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象，如果未找到匹配项，则为一个空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.ComputerPrincipal.FindByPasswordSetTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 集合，这些对象在指定的日期和时间范围内设置过密码。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">一个 <see cref="T:System.DateTime" /> 结构，与 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 一起用于筛选搜索结果。</param>
+      <param name="type">一个 <see cref="T:System.DirectoryServices.AccountManagement.MatchType" />，用于指定要在搜索中使用的比较类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其中包含一个或多个匹配搜索参数的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象，如果未找到匹配项，则为一个空集合。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.ComputerPrincipal.ServicePrincipalNames">
+      <summary>获取计算机帐户的服务主体名称 (SPN) 的集合。</summary>
+      <returns>SPN 的集合，这些 SPN 指定为此计算机注册的帐户的名称。 用于 SPN 的语法取决于基础存储区。</returns>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.ContextOptions">
+      <summary>指定绑定到服务器时使用的选项。 应用程序可以设置多个与按位“或”运算链接的选项。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextOptions.Negotiate">
+      <summary>对客户端进行身份验证时使用 Kerberos 或 NTLM。 如果未提供用户名和密码，帐户管理 API 将使用调用线程的安全上下文来绑定到对象，该上下文是运行应用程序时使用的用户帐户的安全上下文，或是调用线程表示的客户端用户帐户的安全上下文。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextOptions.Sealing">
+      <summary>数据通过使用 Kerberos 进行加密。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextOptions.SecureSocketLayer">
+      <summary>通道通过使用安全套接字层 (SSL) 进行加密。 Active Directory 要求安装证书服务来支持 SSL。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextOptions.ServerBind">
+      <summary>如果应用程序绑定到特定服务器名称，则在使用域上下文类型时，请指定此标志。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextOptions.Signing">
+      <summary>验证数据的完整性。 此标志只能与 Negotiate 上下文选项一起使用，不能用于简单绑定选项。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextOptions.SimpleBind">
+      <summary>对客户端进行身份验证时使用基本身份验证。</summary>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.ContextType">
+      <summary>指定主体所属的存储区的类型。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory">
+      <summary>应用程序目录存储区。 这表示 AD LDS 存储区。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextType.Domain">
+      <summary>域存储区。 这表示 AD DS 存储区。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.ContextType.Machine">
+      <summary>计算机存储区。 这表示 SAM 存储区。</summary>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.DirectoryObjectClassAttribute">
+      <summary>表示用于在目录中创建此类型对象的架构对象。 此特性是主体扩展所必需的，并且只能在类上设置。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.DirectoryObjectClassAttribute.#ctor(System.String)">
+      <summary>使用指定的对象类值初始化 <see cref="T:System.DirectoryServices.AccountManagement.DirectoryObjectClassAttribute" /> 类的新实例。 在目录中创建的对象将使用此对象类类型进行创建。</summary>
+      <param name="objectClass">包含对象类值的字符串。 <see cref="P:System.DirectoryServices.AccountManagement.DirectoryObjectClassAttribute.ObjectClass" /> 属性初始化为该值。 对象类字符串表示应用程序目录和域目录的 objectClass 特性。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.DirectoryObjectClassAttribute.Context">
+      <summary>此属性未实现且始终返回 null。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定此特性应用于的存储区的类型，如果未设置上下文，则为 null。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.DirectoryObjectClassAttribute.ObjectClass">
+      <summary>返回扩展类的对象类值。</summary>
+      <returns>扩展类的对象类值。</returns>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.DirectoryPropertyAttribute">
+      <summary>包含存储区将主体属性映射到目录特性时所需的数据。 此特性是主体扩展所必需的，并且只能在属性上设置。 此特性必须在表示扩展类的目录特性的每个属性上指定。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.DirectoryPropertyAttribute.#ctor(System.String)">
+      <summary>使用架构特性名称初始化 <see cref="T:System.DirectoryServices.AccountManagement.DirectoryPropertyAttribute" /> 类的新实例。</summary>
+      <param name="schemaAttributeName">在目录中设置的特性的名称。 <see cref="P:System.DirectoryServices.AccountManagement.DirectoryPropertyAttribute.SchemaAttributeName" /> 属性初始化为该值。 此属性表示应用程序目录和域目录的 ldapDisplayName。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.DirectoryPropertyAttribute.Context">
+      <summary>此属性未实现且始终返回 null。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定此特性应用于的存储区的类型，如果未设置上下文，则为 null。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.DirectoryPropertyAttribute.SchemaAttributeName">
+      <summary>返回表示目录中特性名称的字符串。</summary>
+      <returns>表示目录中特性名称的字符串。</returns>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.DirectoryRdnPrefixAttribute">
+      <summary>用于为插入到存储区中的新对象构造 RDN 的 RDN 前缀。 如果未设置此特性，则帐户管理 API 使用默认的 RDN 前缀“CN”。 此特性是可选的，并且只能在主体扩展类上设置。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.DirectoryRdnPrefixAttribute.#ctor(System.String)">
+      <summary>使用 RDN 前缀初始化 <see cref="T:System.DirectoryServices.AccountManagement.DirectoryRdnPrefixAttribute" /> 类的新实例。</summary>
+      <param name="rdnPrefix">RDN 前缀。 <see cref="P:System.DirectoryServices.AccountManagement.DirectoryRdnPrefixAttribute.RdnPrefix" /> 属性初始化为该值。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.DirectoryRdnPrefixAttribute.Context">
+      <summary>此属性未实现且始终返回 null。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定此特性应用于的存储区的类型，如果未设置上下文，则为 null。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.DirectoryRdnPrefixAttribute.RdnPrefix">
+      <summary>返回用于构造 RDN 的 RDN 前缀。</summary>
+      <returns>用于构造 RDN 的 RDN 前缀。</returns>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.GroupPrincipal">
+      <summary>封装组帐户。 组帐户可以是出于管理目的而创建的主体对象或帐户的任意集合。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.GroupPrincipal.#ctor(System.DirectoryServices.AccountManagement.PrincipalContext)">
+      <summary>使用指定的上下文初始化 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 类的新实例。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.GroupPrincipal.#ctor(System.DirectoryServices.AccountManagement.PrincipalContext,System.String)">
+      <summary>初始化 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 类的新实例并将该实例分配给指定的上下文和 SAM 帐户名。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="samAccountName">此主体的 SAM 帐户名。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.GroupPrincipal.Dispose">
+      <summary>处置 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象的当前实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.GroupPrincipal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>返回一个与指定的标识类型和值匹配的组主体对象。 此版本的 <see cref="Overload:System.DirectoryServices.AccountManagement.GroupPrincipal.FindByIdentity" /> 方法确定标识值的格式。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityType">
+        <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值，用于指定 <paramref name="identityValue" /> 参数的格式。</param>
+      <param name="identityValue">组主体的标识。 此参数的格式可以是 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举中包含的任何格式。</param>
+      <returns>一个与指定的标识值和类型匹配的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" />；如果未找到匹配项，则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">找到与当前组对象匹配的多个组主体对象。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">该标识值不是有效的 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.GroupPrincipal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.String)">
+      <summary>返回一个与指定的标识值匹配的组主体对象。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityValue">组主体的标识。 此参数的格式可以是 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举中包含的任何格式。</param>
+      <returns>与指定标识值和类型相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象；若未找到匹配，则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">找到与当前组对象匹配的多个组主体对象。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.GroupPrincipal.GetMembers">
+      <summary>返回组中包含的主体对象的集合。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象，其中包含作为组成员的主体对象，如果组没有成员，则为一个空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.GroupPrincipal.GetMembers(System.Boolean)">
+      <summary>返回组中包含的主体对象的集合。 当递归标志设置为 true 时，此方法将以递归方式搜索当前组并返回所有嵌套的组成员。</summary>
+      <param name="recursive">一个布尔值，该值指定是否以递归方式搜索组。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象，其中包含作为组成员的主体对象，如果组没有成员，则为一个空集合。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.GroupPrincipal.GroupScope">
+      <summary>获取或设置一个可以为 null 的 <see cref="T:System.DirectoryServices.AccountManagement.GroupScope" /> 枚举，用于指定此组主体的范围。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.DirectoryServices.AccountManagement.GroupScope" /> 枚举值，该值指定此组的范围，如果未设置范围，则为 null。</returns>
+      <exception cref="T:System.ArgumentNullException">应用程序不能将此属性设置为 null。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.GroupPrincipal.IsSecurityGroup">
+      <summary>获取或设置一个可以为 null 的布尔值，该值指示是否对组启用安全性。</summary>
+      <returns>如果对组启用安全性，则为 <see langword="true" />（如果未保持该组，则为 null）；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentNullException">应用程序不能将此属性设置为 null。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.GroupPrincipal.Members">
+      <summary>获取主体对象的集合，这些对象表示组的成员。</summary>
+      <returns>一个包含主体对象的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 对象，这些对象表示组的成员。</returns>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.GroupScope">
+      <summary>指定组主体的范围。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.GroupScope.Global">
+      <summary>组的范围为全局。 AD DS 支持此组类型。 在对 AD LDS 目录指定全局组时，将改为创建一个 <see cref="F:System.DirectoryServices.AccountManagement.GroupScope.Local" /> 组。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.GroupScope.Local">
+      <summary>组的范围为本地。 AD DS 和 AD LDS 支持此组类型。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.GroupScope.Universal">
+      <summary>组的范围为通用。 AD DS 和 AD LDS 支持此组类型。</summary>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.IdentityType">
+      <summary>指定标识的格式。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.IdentityType.DistinguishedName">
+      <summary>标识是一个可分辨名称 (DN)。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.IdentityType.Guid">
+      <summary>标识是一个全局唯一标识符 (GUID)。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.IdentityType.Name">
+      <summary>标识是一个名称。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.IdentityType.SamAccountName">
+      <summary>标识是一个安全帐户管理器 (SAM) 名称。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.IdentityType.Sid">
+      <summary>标识是一个安全描述符定义语言 (SDDL) 格式的安全标识符 (SID)。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.IdentityType.UserPrincipalName">
+      <summary>标识是一个用户主要名称 (UPN)。</summary>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.MatchType">
+      <summary>
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举指定搜索中使用的比较类型。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.MatchType.Equals">
+      <summary>搜索结果包括的值等于提供的值。 如果提供的值指定一个日期和时间，则返回的集合包括具有相同日期和时间的对象。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.MatchType.GreaterThan">
+      <summary>搜索结果包括的值大于提供的值。 如果提供的值指定一个日期和时间，则返回的集合包括日期在指定日期和时间之后的对象。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.MatchType.GreaterThanOrEquals">
+      <summary>搜索结果包括的值大于或等于提供的值。 如果提供的值指定一个日期和时间，则返回的集合包括日期为指定日期和时间或指定日期和时间之后的对象。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.MatchType.LessThan">
+      <summary>搜索结果包括的值小于提供的值。 如果提供的值指定一个日期和时间，则返回的集合包括日期在指定日期和时间之前的对象。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.MatchType.LessThanOrEquals">
+      <summary>搜索结果包括的值小于或等于提供的值。 如果提供的值指定一个日期和时间，则返回的集合包括日期为指定日期和时间或指定日期和时间之前的对象。</summary>
+    </member>
+    <member name="F:System.DirectoryServices.AccountManagement.MatchType.NotEquals">
+      <summary>搜索结果包括的值不等于提供的值。 如果提供的值指定一个日期和时间，则返回的集合包括的对象不包括指定的日期和时间。</summary>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">
+      <summary>当有多个与搜索查询相匹配的项时，预期与单个主体对象相匹配的方法会引发此异常。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.MultipleMatchesException.#ctor">
+      <summary>实例化 <see cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.MultipleMatchesException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>根据指定的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 和 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 实例初始化 <see cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException" /> 类的新实例。</summary>
+      <param name="info">一个 <see cref="T:System.Runtime.Serialization.SerializationInfo" />，其中包含序列化新的 <see cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException" /> 所需的信息</param>
+      <param name="context">一个 <see cref="T:System.Runtime.Serialization.StreamingContext" />，其中包含与新的 <see cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException" /> 关联的序列化流的源</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.MultipleMatchesException.#ctor(System.String)">
+      <summary>用指定的错误消息实例化 <see cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.MultipleMatchesException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和指定的嵌套异常实例化 <see cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+      <param name="innerException">嵌套异常。</param>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException">
+      <summary>在找不到具有指定参数的匹配主体对象时引发此异常。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException.#ctor">
+      <summary>实例化 <see cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>根据指定的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 和 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 实例初始化 <see cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException" /> 类的新实例。</summary>
+      <param name="info">一个 <see cref="T:System.Runtime.Serialization.SerializationInfo" />，其中包含序列化新的 <see cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException" /> 所需的信息</param>
+      <param name="context">一个 <see cref="T:System.Runtime.Serialization.StreamingContext" />，其中包含与新的 <see cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException" /> 关联的序列化流的源</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException.#ctor(System.String)">
+      <summary>用指定的错误消息实例化 <see cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和指定的嵌套异常实例化 <see cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException" /> 类的新实例。</summary>
+      <param name="message">消息的文本</param>
+      <param name="innerException">嵌套异常。</param>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PasswordException">
+      <summary>在密码不符合复杂性要求时将引发此异常。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PasswordException.#ctor">
+      <summary>实例化 <see cref="T:System.DirectoryServices.AccountManagement.PasswordException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PasswordException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>根据指定的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 和 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 实例初始化 <see cref="T:System.DirectoryServices.AccountManagement.PasswordException" /> 类的新实例。</summary>
+      <param name="info">一个 <see cref="T:System.Runtime.Serialization.SerializationInfo" />，其中包含序列化新的 <see cref="T:System.DirectoryServices.AccountManagement.PasswordException" /> 所需的信息</param>
+      <param name="context">一个 <see cref="T:System.Runtime.Serialization.StreamingContext" />，其中包含与新的 <see cref="T:System.DirectoryServices.AccountManagement.PasswordException" /> 关联的序列化流的源</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PasswordException.#ctor(System.String)">
+      <summary>用指定的错误消息实例化 <see cref="T:System.DirectoryServices.AccountManagement.PasswordException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PasswordException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和指定的嵌套异常实例化 <see cref="T:System.DirectoryServices.AccountManagement.PasswordException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+      <param name="innerException">嵌套异常。</param>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.Principal">
+      <summary>封装对所有安全主体通用的帐户数据和操作。 这是从中派生所有安全主体的抽象基类。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.#ctor">
+      <summary>初始化 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 类的新实例。 此构造函数由派生类构造函数调用以初始化基类，不适合直接从代码中调用。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.CheckDisposedOrDeleted">
+      <summary>确定是否已对此类调用 <see cref="M:System.DirectoryServices.AccountManagement.Principal.Dispose" /> 或 <see cref="M:System.DirectoryServices.AccountManagement.Principal.Delete" /> 方法。 此方法由从此主体类派生的类调用。</summary>
+      <exception cref="T:System.ObjectDisposedException">已对此主体对象调用 <see cref="M:System.DirectoryServices.AccountManagement.Principal.Dispose" /> 方法。</exception>
+      <exception cref="T:System.InvalidOperationException">已对此主体对象调用 <see cref="M:System.DirectoryServices.AccountManagement.Principal.Delete" /> 方法。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.Context">
+      <summary>获取与主体关联的主体上下文。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，其中包含与此主体关联的上下文。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.ContextRaw">
+      <summary>获取与此主体关联的主体上下文。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，其中包含与此主体关联的上下文。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.ContextType">
+      <summary>获取上下文类型枚举值，该值指定与此主体关联的主体上下文的类型。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，该值指定上下文类型。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.Delete">
+      <summary>从存储区中删除主体对象。</summary>
+      <exception cref="T:System.InvalidOperationException">未保持在存储区中的对象。  
+对象已被删除。  
+目标上下文类型必须匹配当前主体的上下文类型。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.Description">
+      <summary>获取或设置主体的说明。</summary>
+      <returns>此主体的说明文本；如果没有说明，则为 null。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.DisplayName">
+      <summary>获取或设置此主体的显示名称。</summary>
+      <returns>此主体的显示名称；如果没有显示名称，则为 null。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.Dispose">
+      <summary>处置 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象的当前实例。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.DistinguishedName">
+      <summary>获取此主体的可分辨名称 (DN)。</summary>
+      <returns>此主体的 DN；如果没有 DN，则为 null。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.Equals(System.Object)">
+      <summary>返回一个布尔值，该值指定提供的对象是否等于当前对象。</summary>
+      <param name="o">与当前实例进行比较的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象。</param>
+      <returns>如果提供的对象和当前主体对象表示存储区中的同一个基础主体，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.ExtensionGet(System.String)">
+      <summary>检索扩展类对象的属性。</summary>
+      <param name="attribute">要检索的属性的名称。</param>
+      <returns>返回对象数组，如果不存在具有该名称的属性，则返回 <see langword="null" />。 请参阅 System.DirectoryServices.AccountManagement 原则扩展获取有关使用此功能的示例。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.ExtensionSet(System.String,System.Object)">
+      <summary>设置扩展类中特性的值。</summary>
+      <param name="attribute">属性名。</param>
+      <param name="value">包含该特性值的对象。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>返回与指定标识类型相匹配的主体对象和值。 此版本的 <see cref="M:System.DirectoryServices.AccountManagement.Principal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)" /> 方法确定标识值的格式。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityType">指定 <paramref name="identityValue" /> 参数格式的 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值。</param>
+      <param name="identityValue">主体的标识。 此参数的格式可以是 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举中包含的任何格式。</param>
+      <returns>与指定标识值和类型相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象；若未找到匹配则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">已找到与当前对象相匹配的多个主体对象。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">该标识类型不是有效的 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.String)">
+      <summary>返回一个与指定的标识值匹配的主体对象。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityValue">主体的标识。 此参数的格式可以是 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举中包含的任何格式。</param>
+      <returns>与指定标识值和类型相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象；若未找到匹配，则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">已找到与当前对象相匹配的多个主体对象。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.FindByIdentityWithType(System.DirectoryServices.AccountManagement.PrincipalContext,System.Type,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>返回与指定标识类型相匹配的主体对象和值。 此方法由派生类 FindByIdentity 方法的实现调用，将搜索限制为派生类类型，不适合直接从代码中调用。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="principalType">为其返回结果的对象的类型。 它必须为 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 类型或从 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 类派生的类型。</param>
+      <param name="identityType">一个 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值，该值指定标识值的类型。</param>
+      <param name="identityValue">主体的标识。</param>
+      <returns>与指定标识值和类型相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象；若未找到匹配则为 null。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.FindByIdentityWithType(System.DirectoryServices.AccountManagement.PrincipalContext,System.Type,System.String)">
+      <summary>返回与指定标识类型相匹配的主体对象和值。 此方法由派生类 FindByIdentity 方法的实现调用，将搜索限制为派生类类型，不适合直接从代码中调用。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="principalType">为其返回结果的对象的类型。 它必须为 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 类型或从 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 类派生的类型。</param>
+      <param name="identityValue">主体的标识。</param>
+      <returns>与指定标识值和类型相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象；若未找到匹配，则为 null。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.GetGroups">
+      <summary>返回组对象的集合，这些对象指定当前主体是其成员的组。</summary>
+      <returns>
+        <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象的集合，这些对象指定当前主体是其成员的组。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.GetGroups(System.DirectoryServices.AccountManagement.PrincipalContext)">
+      <summary>返回组对象的集合，主体是这些对象的成员，并且这些对象存在于由指定的上下文参数提供的存储区中。</summary>
+      <param name="contextToQuery">一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，用于指定对其执行查询的上下文。  
+如果上下文位于另一个域中，则对主体对象在指定上下文中的表示形式执行查询。</param>
+      <returns>
+        <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象的集合，这些对象指定当前主体是其成员的组。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.GetHashCode">
+      <summary>检索从主体对象的内容创建的哈希，适合在哈希算法和哈希表这样的数据结构中使用。</summary>
+      <returns>当前主体的哈希代码。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.GetUnderlyingObject">
+      <summary>返回基础 <see cref="T:System.DirectoryServices.DirectoryEntry" /> 对象，其将提供主体对象的联系人数据。</summary>
+      <returns>基础 <see cref="T:System.DirectoryServices.DirectoryEntry" /> 对象。</returns>
+      <exception cref="T:System.InvalidOperationException">未留存当前主体，且没有关联的 <see cref="T:System.DirectoryServices.DirectoryEntry" /> 对象。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.GetUnderlyingObjectType">
+      <summary>返回基础对象类型。</summary>
+      <returns>基础对象类型。 对于 AD DS、AD LDS 和 SAM，该类型为 <see cref="T:System.DirectoryServices.DirectoryEntry" />。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.Guid">
+      <summary>获取与此主体关联的 GUID。</summary>
+      <returns>与此主体关联的可以为 null 的 <see cref="T:System.Guid" />；如果没有 GUID，则为 null。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.IsMemberOf(System.DirectoryServices.AccountManagement.GroupPrincipal)">
+      <summary>返回一个布尔值，该值指定该主体是否是指定组的成员。</summary>
+      <param name="group">为其确定主体成员资格的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象。</param>
+      <returns>如果主体是指定组的成员，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException">未能找到在组参数中指定的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" />。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">找到多个匹配的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" />。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.IsMemberOf(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>返回一个布尔值，该值指定该主体是否是由标识类型和值指定的组的成员。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityType">一个 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值，该值指定标识值的类型。</param>
+      <param name="identityValue">组的标识。</param>
+      <returns>如果主体是指定组的成员，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException">标识类型或值与 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 不对应。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">找到多个匹配的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" />。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.Name">
+      <summary>获取或设置此主体的名称。</summary>
+      <returns>主体的名称；如果未设置名称特性，则为 null。</returns>
+      <exception cref="T:System.ArgumentNullException">应用程序尝试将名称设置为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.SamAccountName">
+      <summary>获取或设置此主体的 SAM 帐户名。</summary>
+      <returns>此主体的 SAM 帐户名；如果未设置名称，则为 null。</returns>
+      <exception cref="T:System.ArgumentNullException">应用程序尝试将 SAM 帐户名设置为 null。</exception>
+      <exception cref="T:System.InvalidOperationException">应用程序尝试在持久化主体上设置 SAM 帐户名。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.Save">
+      <summary>将对主体对象所做的更改保存到存储区中。 如果它是一个新主体对象，则此方法会将其插入到存储区中。</summary>
+      <exception cref="T:System.InvalidOperationException">主体尚未与 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象关联。  
+无法将此类型的主体插入到存储区中。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException">将更改保存到存储区或更新存储区中的组成员资格时发生异常。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PrincipalExistsException">存储区中已经存在该主体。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PasswordException">密码不满足复杂度要求。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.Save(System.DirectoryServices.AccountManagement.PrincipalContext)">
+      <summary>将对主体对象所做的更改保存到存储区中。 如果它是一个新主体对象，则此方法会将其插入到指定上下文中。 如果已保持主体，则会将该主体从原来的上下文移动到指定的上下文中。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <exception cref="T:System.InvalidOperationException">主体尚未与 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象关联。  
+无法将此类型的主体插入到存储区中。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException">将更改保存到存储区或更新存储区中的组成员资格时发生异常。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PrincipalExistsException">存储区中已经存在该主体。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PasswordException">密码不满足复杂度要求。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.Sid">
+      <summary>获取主体的安全 ID (SID)。</summary>
+      <returns>此主体的 <see cref="T:System.Security.Principal.SecurityIdentifier" />；如果没有 SID，则为 null。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.StructuralObjectClass">
+      <summary>获取结构对象类目录特性。</summary>
+      <returns>结构对象类目录特性。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.Principal.ToString">
+      <summary>返回当前主体对象的用户友好字符串表示形式。</summary>
+      <returns>当前 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象的字符串表示形式。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.Principal.UserPrincipalName">
+      <summary>获取或设置与此主体关联的用户主体名称 (UPN)。</summary>
+      <returns>如果尚未设置 UPN，则与此主体关联的 UPN 为 null。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalCollection">
+      <summary>派生自 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 类的对象的可变集合。 该类设计用于包含 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象的多值属性。 对该集合中的内容进行操作将更改相应的存储属性的内容，当在对应的主体对象上调用 <see cref="M:System.DirectoryServices.AccountManagement.Principal.Save" /> 时该存储属性的内容将变成永久性的。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Add(System.DirectoryServices.AccountManagement.ComputerPrincipal)">
+      <summary>将指定的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象添加到集合的末尾</summary>
+      <param name="computer">一个 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Add(System.DirectoryServices.AccountManagement.GroupPrincipal)">
+      <summary>将指定的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象添加到集合的末尾</summary>
+      <param name="group">一个 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Add(System.DirectoryServices.AccountManagement.Principal)">
+      <summary>将指定的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象添加到集合的末尾</summary>
+      <param name="principal">一个 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Add(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>搜索与参数匹配的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象，并将该对象添加到集合的末尾。</summary>
+      <param name="context">要添加到集合的主体的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象。</param>
+      <param name="identityType">一个 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 对象，该对象指定 <paramref name="identityValue" /> 的格式</param>
+      <param name="identityValue">一个标识主体的字符串，采用 <paramref name="identityType" /> 所指定的格式</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Add(System.DirectoryServices.AccountManagement.UserPrincipal)">
+      <summary>将指定的 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象添加到集合的末尾</summary>
+      <param name="user">一个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Clear">
+      <summary>从集合中删除所有 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Contains(System.DirectoryServices.AccountManagement.ComputerPrincipal)">
+      <summary>返回一个值，该值指示集合是否包含指定的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象。</summary>
+      <param name="computer">一个 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象。</param>
+      <returns>当集合包含指定的对象时为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Contains(System.DirectoryServices.AccountManagement.GroupPrincipal)">
+      <summary>返回一个值，该值指示集合是否包含指定的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象。</summary>
+      <param name="group">一个 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象</param>
+      <returns>当集合包含指定的对象时为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Contains(System.DirectoryServices.AccountManagement.Principal)">
+      <summary>返回一个值，该值指示集合是否包含指定的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象。</summary>
+      <param name="principal">一个 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象</param>
+      <returns>当集合包含指定的对象时为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Contains(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>返回一个值，该值指示匹配 <paramref name="identityType" />/<paramref name="identityValue" /> 对的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象是否位于集合中。</summary>
+      <param name="context">主体的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象。</param>
+      <param name="identityType">一个 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 对象，该对象指定 <paramref name="identityValue" /> 的格式</param>
+      <param name="identityValue">一个标识主体的字符串，采用 <paramref name="identityType" /> 所指定的格式</param>
+      <returns>如果与 <paramref name="identityType" />/<paramref name="identityValue" /> 对匹配的对象位于集合中，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Contains(System.DirectoryServices.AccountManagement.UserPrincipal)">
+      <summary>返回一个值，该值指示集合是否包含指定的 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象。</summary>
+      <param name="user">一个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象。</param>
+      <returns>当集合包含指定的对象时为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.CopyTo(System.DirectoryServices.AccountManagement.Principal[],System.Int32)">
+      <summary>从数组中指定的位置索引开始，将 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象从此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 复制到指定的数组中。</summary>
+      <param name="array">应使用 <see cref="T:System.Array" /> 对象填充的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" />。</param>
+      <param name="index">应将集合中的第一个主体对象复制到其中的 <paramref name="array" /> 中的位置。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalCollection.Count">
+      <summary>返回此集合中 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象的计数。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.GetEnumerator">
+      <summary>返回一个枚举数，用于循环访问 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 中的主体。</summary>
+      <returns>一个 <see cref="T:System.Collections.IEnumerator" />，包含 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 中的主体。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalCollection.IsReadOnly">
+      <summary>返回 <see langword="false" />。 此集合不是只读集合。</summary>
+      <returns>总是为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalCollection.IsSynchronized">
+      <summary>返回 <see langword="false" />。 应用程序负责序列化对此集合的访问。</summary>
+      <returns>总是为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Remove(System.DirectoryServices.AccountManagement.ComputerPrincipal)">
+      <summary>从集合中移除指定的 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象，并在 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员时返回 <see langword="true" />，否则将返回 <see langword="false" />（这种情况下方法不会执行任何操作）。</summary>
+      <param name="computer">一个 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 对象。</param>
+      <returns>如果 <see cref="T:System.DirectoryServices.AccountManagement.ComputerPrincipal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Remove(System.DirectoryServices.AccountManagement.GroupPrincipal)">
+      <summary>从集合中移除指定的 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象，并在 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员时返回 <see langword="true" />，否则将返回 <see langword="false" />（这种情况下方法不会执行任何操作）。</summary>
+      <param name="group">一个 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 对象。</param>
+      <returns>如果 <see cref="T:System.DirectoryServices.AccountManagement.GroupPrincipal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Remove(System.DirectoryServices.AccountManagement.Principal)">
+      <summary>从集合中移除指定的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象，并在 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员时返回 <see langword="true" />，否则将返回 <see langword="false" />（这种情况下方法不会执行任何操作）。</summary>
+      <param name="principal">一个 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象。</param>
+      <returns>如果 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Remove(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>从集合中查找由给定的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 和 <paramref name="identityType" />/<paramref name="identityValue" /> 对指定的 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象，并在标识的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员时返回 <see langword="true" />，否则将返回 <see langword="false" />（这种情况下方法不会执行任何操作）。</summary>
+      <param name="context">一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象。</param>
+      <param name="identityType">一个 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" />，标识 <paramref name="identityValue" /> 的格式。</param>
+      <param name="identityValue">一个字符串。</param>
+      <returns>如果标识的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.Remove(System.DirectoryServices.AccountManagement.UserPrincipal)">
+      <summary>从集合中移除指定的 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象，并在 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员时返回 <see langword="true" />，否则将返回 <see langword="false" />（这种情况下方法不会执行任何操作）。</summary>
+      <param name="user">一个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象。</param>
+      <returns>如果 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 是此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 的成员，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalCollection.SyncRoot">
+      <summary>返回一个同步对象，该对象可用于同步对此集合的访问。</summary>
+      <returns>返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 对象本身。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+      <summary>从数组中指定的位置索引开始，将 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象从此 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 复制到指定的数组中。</summary>
+      <param name="array">应使用 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象填充的 T:System.Array。</param>
+      <param name="index">应将第一个 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象复制到其中的 <paramref name="array" /> 中的位置。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalCollection.System#Collections#ICollection#Count">
+      <summary>返回此集合中 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象的计数。</summary>
+      <returns>计数<see cref="T:System.DirectoryServices.AccountManagement.Principal" />此集合中的对象。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalCollection.System#Collections#ICollection#IsSynchronized">
+      <summary>始终返回 <see langword="false" />。 应用程序负责同步对此集合的访问。</summary>
+      <returns>总是为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalCollection.System#Collections#ICollection#SyncRoot">
+      <summary>返回一个同步对象，该对象可用于同步对此集合的访问。 返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 对象本身。</summary>
+      <returns>
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 对象。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalCollection.System#Collections#IEnumerable#GetEnumerator">
+      <summary>返回一个枚举数，用于循环访问 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 中的主体。</summary>
+      <returns>一个 <see cref="T:System.Collections.IEnumerator" />，包含 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalCollection" /> 中的主体。</returns>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalContext">
+      <summary>封装对其执行所有操作的服务器或域、用作这些操作的基础的容器和用于执行这些操作的凭据。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.#ctor(System.DirectoryServices.AccountManagement.ContextType)">
+      <summary>使用指定的上下文类型初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 类的新实例。</summary>
+      <param name="contextType">一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定主体上下文的存储区的类型。</param>
+      <exception cref="T:System.ArgumentException">在使用应用程序目录上下文时，必须指定名称或容器。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+        <paramref name="contextType" /> 参数不包含有效的 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.#ctor(System.DirectoryServices.AccountManagement.ContextType,System.String)">
+      <summary>使用指定的上下文类型和名称初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 类的新实例。</summary>
+      <param name="contextType">一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定主体上下文的存储区的类型。</param>
+      <param name="name">用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的域或服务器的名称、用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的计算机名称或承载 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 实例的服务器和端口的名称。  
+如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的名称为 <see langword="null" />，则此上下文是运行该线程的用户主体的域的域控制器。 如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的名称为 <see langword="null" />，则此名称是本地计算机名称。 对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数不能为 <see langword="null" />。</param>
+      <exception cref="T:System.ArgumentException">在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 时，必须指定名称。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+        <paramref name="contextType" /> 参数不包含有效的 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.#ctor(System.DirectoryServices.AccountManagement.ContextType,System.String,System.String)">
+      <summary>使用指定的上下文类型、名称和容器初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 类的新实例。</summary>
+      <param name="contextType">一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定主体上下文的存储区的类型。</param>
+      <param name="name">用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的域或服务器的名称、用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的计算机名称或承载 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 实例的服务器和端口的名称。  
+如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的名称为 <see langword="null" />，则此上下文是运行该线程的用户主体的域的域控制器。 如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的名称为 <see langword="null" />，则此名称是本地计算机名称。 对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数不能为 <see langword="null" />。</param>
+      <param name="container">存储区上要用作上下文的根的容器。 所有查询都在此根下执行，并且所有插入都在此容器中执行。  
+对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 和 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数是容器对象的可分辨名称。  
+对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型，此参数必须设置为 <see langword="null" />。</param>
+      <exception cref="T:System.ArgumentException">在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型时，不能指定容器。  
+在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 时，必须指定 name 或 container。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+        <paramref name="contextType" /> 参数不包含有效的 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.#ctor(System.DirectoryServices.AccountManagement.ContextType,System.String,System.String,System.DirectoryServices.AccountManagement.ContextOptions)">
+      <summary>使用指定的上下文类型、名称、容器和上下文选项初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 类的新实例。</summary>
+      <param name="contextType">一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定主体上下文的存储区的类型。</param>
+      <param name="name">用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的域或服务器的名称、用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的计算机名称或承载 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 实例的服务器和端口的名称。  
+如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的名称为 <see langword="null" />，则此上下文是运行该线程的用户主体的域的域控制器。 如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的名称为 <see langword="null" />，则此名称是本地计算机名称。 对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数不能为 <see langword="null" />。</param>
+      <param name="container">存储区上要用作上下文的根的容器。 所有查询都在此根下执行，并且所有插入都在此容器中执行。  
+对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 和 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数是容器对象的可分辨名称。  
+对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型，此参数必须设置为 <see langword="null" />。</param>
+      <param name="options">一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.ContextOptions" /> 枚举值的组合，这些枚举值指定用于绑定到服务器的选项。 如果此参数为 <see langword="null" />，则默认选项为 ContextOptions.Negotiate | ContextOptions.Signing | ContextOptions.Sealing。</param>
+      <exception cref="T:System.ArgumentException">在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型时，不能指定容器。  
+在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 时，必须指定 name 或 container。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+        <paramref name="contextType" /> 参数不包含有效的 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值。  
+<paramref name="options" /> 参数不包含有效 <see cref="T:System.DirectoryServices.AccountManagement.ContextOptions" /> 枚举值的组合。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.#ctor(System.DirectoryServices.AccountManagement.ContextType,System.String,System.String,System.DirectoryServices.AccountManagement.ContextOptions,System.String,System.String)">
+      <summary>使用指定的上下文类型、名称、容器、上下文选项、用户名和密码初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 类的新实例。</summary>
+      <param name="contextType">一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定主体上下文的存储区的类型。</param>
+      <param name="name">用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的域或服务器的名称、用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的计算机名称或承载 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 实例的服务器和端口的名称。  
+如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的名称为 <see langword="null" />，则此上下文是运行该线程的用户主体的域的域控制器。 如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的名称为 <see langword="null" />，则此名称是本地计算机名称。 对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数不能为 <see langword="null" />。</param>
+      <param name="container">存储区上要用作上下文的根的容器。 所有查询都在此根下执行，并且所有插入都在此容器中执行。  
+对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 和 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数是容器对象的可分辨名称。  
+对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型，此参数必须设置为 <see langword="null" />。</param>
+      <param name="options">一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.ContextOptions" /> 枚举值的组合，这些枚举值指定用于绑定到服务器的选项。 如果此参数为 <see langword="null" />，则默认选项为 ContextOptions.Negotiate | ContextOptions.Signing | ContextOptions.Sealing。</param>
+      <param name="userName">用于连接到存储区的用户名。 如果 <paramref name="userName" /> 和 <paramref name="password" /> 参数都为 <see langword="null" />，则使用当前主体的默认凭据。 否则，<paramref name="userName" /> 和 <paramref name="password" /> 都不可以为 null，并使用这两个参数指定的凭据来连接到存储区。</param>
+      <param name="password">用于连接到存储区的密码。 如果 <paramref name="userName" /> 和 <paramref name="password" /> 参数都为 <see langword="null" />，则使用当前主体的默认凭据。 否则，<paramref name="userName" /> 和 <paramref name="password" /> 都不可以为 null，并使用这两个参数指定的凭据来连接到存储区。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="username" /> 和 <paramref name="password" /> 参数必须为 <see langword="null" /> 或包含值。  
+在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型时，不能指定容器。  
+在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 时，必须指定 name 或 container。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+        <paramref name="contextType" /> 参数不包含有效的 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值。  
+<paramref name="options" /> 参数不包含有效 <see cref="T:System.DirectoryServices.AccountManagement.ContextOptions" /> 枚举值的组合。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.#ctor(System.DirectoryServices.AccountManagement.ContextType,System.String,System.String,System.String)">
+      <summary>使用指定的上下文类型、名称、用户名和密码初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 类的新实例。</summary>
+      <param name="contextType">一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定主体上下文的存储区的类型。</param>
+      <param name="name">用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的域或服务器的名称、用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的计算机名称或承载 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 实例的服务器和端口的名称。  
+如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的名称为 <see langword="null" />，则此上下文是运行该线程的用户主体的域的域控制器。 如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的名称为 <see langword="null" />，则此名称是本地计算机名称。 对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数不能为 <see langword="null" />。</param>
+      <param name="userName">用于连接到存储区的用户名。 如果 <paramref name="userName" /> 和 <paramref name="password" /> 参数都为 <see langword="null" />，则使用当前进程的凭据。 否则，<paramref name="userName" /> 和 <paramref name="password" /> 都不可以为 null，并使用这两个参数指定的凭据来连接到存储区。</param>
+      <param name="password">用于连接到存储区的密码。 如果 <paramref name="userName" /> 和 <paramref name="password" /> 参数都为 <see langword="null" />，则使用当前进程的凭据。 否则，<paramref name="userName" /> 和 <paramref name="password" /> 都不可以为 null，并使用这两个参数指定的凭据来连接到存储区。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="username" /> 和 <paramref name="password" /> 参数必须为 <see langword="null" /> 或包含值。  
+在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 时，必须指定名称。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+        <paramref name="contextType" /> 参数不包含有效的 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.#ctor(System.DirectoryServices.AccountManagement.ContextType,System.String,System.String,System.String,System.String)">
+      <summary>使用指定的上下文类型、名称、容器、用户名和密码初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 类的新实例。</summary>
+      <param name="contextType">一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定主体上下文的存储区的类型。</param>
+      <param name="name">用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的域或服务器的名称、用于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的计算机名称或承载 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 实例的服务器和端口的名称。  
+如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 上下文类型的名称为 <see langword="null" />，则此上下文是运行该线程的用户主体的域的域控制器。 如果 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型的名称为 <see langword="null" />，则此名称是本地计算机名称。 对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数不能为 <see langword="null" />。</param>
+      <param name="container">存储区上要用作上下文的根的容器。 所有查询都在此根下执行，并且所有插入都在此容器中执行。  
+对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" /> 和 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 上下文类型，此参数是容器对象的可分辨名称。  
+对于 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型，此参数必须设置为 <see langword="null" />。</param>
+      <param name="userName">用于连接到存储区的用户名。 如果 <paramref name="userName" /> 和 <paramref name="password" /> 参数都为 <see langword="null" />，则使用当前主体的默认凭据。 否则，<paramref name="userName" /> 和 <paramref name="password" /> 都不可以为 null，并使用这两个参数指定的凭据来连接到存储区。</param>
+      <param name="password">用于连接到存储区的密码。 如果 <paramref name="userName" /> 和 <paramref name="password" /> 参数都为 <see langword="null" />，则使用当前主体的默认凭据。 否则，<paramref name="userName" /> 和 <paramref name="password" /> 都不可以为 null，并使用这两个参数指定的凭据来连接到存储区。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="username" /> 和 <paramref name="password" /> 参数必须为 <see langword="null" /> 或包含值。  
+在 <paramref name="contextType" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 上下文类型时，不能指定容器。  
+在 <paramref name="name" /> 参数中指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" /> 时，必须指定 <paramref name="container" /> 或 <paramref name="contextType" />。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+        <paramref name="contextType" /> 参数不包含有效的 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalContext.ConnectedServer">
+      <summary>获取主体上下文连接到的服务器的名称。</summary>
+      <returns>主体上下文连接到的服务器的名称或<see langword="null" />如果主体上下文未连接到服务器。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalContext.Container">
+      <summary>获取在构造函数的容器参数中指定的值。</summary>
+      <returns>要用作上下文的根的存储区中的容器或<see langword="null" />如果未指定的容器。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalContext.ContextType">
+      <summary>获取上下文类型，该上下文类型指定主体上下文的存储区的类型。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextType" /> 枚举值，指定要连接到的目标的类型。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.Dispose">
+      <summary>处置 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象的当前实例。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalContext.Name">
+      <summary>获取构造函数中指定作为 <paramref name="name" /> 参数的值。</summary>
+      <returns>在域或服务器的名称<see cref="F:System.DirectoryServices.AccountManagement.ContextType.Domain" />上下文类型、 主机名<see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" />上下文类型的承载的服务器名称<see cref="F:System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory" />实例，或<see langword="null" />如果未设置。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalContext.Options">
+      <summary>获取在构造函数的 <paramref name="contextOptions" /> 参数中指定的选项。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.ContextOptions" /> 枚举值，指定要连接到的目标的类型。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalContext.UserName">
+      <summary>获取在构造函数的用户名参数中指定的值。</summary>
+      <returns>用于连接到存储的用户名或<see langword="null" />如果用户名不存在。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.ValidateCredentials(System.String,System.String)">
+      <summary>创建到服务器的连接并返回一个布尔值，该值指定所指定的用户名和密码是否有效。</summary>
+      <param name="userName">在服务器上验证的用户名。 有关 <paramref name="userName" /> 格式的详细信息，请参阅“备注”部分。</param>
+      <param name="password">在服务器上验证的密码。</param>
+      <returns>如果凭据有效，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalContext.ValidateCredentials(System.String,System.String,System.DirectoryServices.AccountManagement.ContextOptions)">
+      <summary>创建到服务器的连接并返回一个布尔值，该值指定所指定的用户名和密码是否有效。 此方法对用户名和密码执行快速凭据验证。</summary>
+      <param name="userName">在服务器上验证的用户名。 有关 <paramref name="userName" /> 格式的信息，请参阅“备注”部分。</param>
+      <param name="password">在服务器上验证的密码。</param>
+      <param name="options">一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.ContextOptions" /> 枚举值的组合，这些枚举值指定用于绑定到服务器的选项。 此参数只能指定使用/不使用 SSL 的简单绑定或 Negotiate 绑定。</param>
+      <returns>如果凭据有效，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentException">当上下文类型为 <see cref="F:System.DirectoryServices.AccountManagement.ContextType.Machine" /> 时，<paramref name="options" /> 参数必须指定 <see cref="F:System.DirectoryServices.AccountManagement.ContextOptions.Negotiate" />。</exception>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalException">
+      <summary>
+        <see cref="N:System.DirectoryServices.AccountManagement" /> 对象引发的异常的基类。</summary>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalExistsException">
+      <summary>
+        <see cref="Overload:System.DirectoryServices.AccountManagement.PrincipalCollection.Add" /> 方法在尝试插入的主体在集合中已存在时引发，或 <see cref="M:System.DirectoryServices.AccountManagement.Principal.Save" /> 在尝试保存的新主体在存储区中已存在时引发。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalExistsException.#ctor">
+      <summary>实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalExistsException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalExistsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>根据指定的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 和 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 实例初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalExistsException" /> 类的新实例。</summary>
+      <param name="info">一个 <see cref="T:System.Runtime.Serialization.SerializationInfo" />，其中包含序列化新的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalExistsException" /> 所需的信息</param>
+      <param name="context">一个 <see cref="T:System.Runtime.Serialization.StreamingContext" />，其中包含与新的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalExistsException" /> 关联的序列化流的源</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalExistsException.#ctor(System.String)">
+      <summary>用指定的错误消息实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalExistsException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalExistsException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和指定的嵌套异常实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalExistsException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+      <param name="innerException">嵌套异常。</param>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalOperationException">
+      <summary>当 ADSI 在更新存储区的过程中返回错误时引发。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalOperationException.#ctor">
+      <summary>实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>根据指定的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 和 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 实例初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 类的新实例。</summary>
+      <param name="info">一个 <see cref="T:System.Runtime.Serialization.SerializationInfo" />，其中包含序列化新的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 所需的信息</param>
+      <param name="context">一个 <see cref="T:System.Runtime.Serialization.StreamingContext" />，其中包含与新的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 关联的序列化流的源</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalOperationException.#ctor(System.String)">
+      <summary>用指定的错误消息实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalOperationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和指定的嵌套异常实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+      <param name="innerException">嵌套异常。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalOperationException.#ctor(System.String,System.Exception,System.Int32)">
+      <summary>使用指定的错误消息、指定的嵌套异常和指定的错误代码实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 类的新实例。</summary>
+      <param name="message">消息的文本。</param>
+      <param name="innerException">嵌套异常。</param>
+      <param name="errorCode">错误代码。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalOperationException.#ctor(System.String,System.Int32)">
+      <summary>使用指定的错误消息和指定的错误代码实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 类的新实例。</summary>
+      <param name="message">消息的文本。</param>
+      <param name="errorCode">错误代码。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalOperationException.ErrorCode">
+      <summary>返回整数错误代码。</summary>
+      <returns>整数错误代码。 如果收到来自 win32 API 的基础错误，系统将在异常错误代码属性中返回 0（零）。 调用方需要区分 0（零）和有效的 win32 错误代码。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException" /> 类的新实例。</summary>
+      <param name="info">承载序列化对象数据的对象。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalSearcher">
+      <summary>封装用于对基础主体存储区执行查询的方法和搜索模式。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.#ctor">
+      <summary>初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearcher" /> 类的新实例。 在可以使用主体搜索器搜索对象之前，必须先设置 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 属性。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.#ctor(System.DirectoryServices.AccountManagement.Principal)">
+      <summary>使用指定的查询筛选器初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearcher" /> 类的新实例。</summary>
+      <param name="queryFilter">一个 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象，指定搜索所要使用的筛选器。 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 属性初始化为该值。</param>
+      <exception cref="T:System.ArgumentException">持久化主体对象不能用作 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" />。  
+<paramref name="queryFilter" /> 参数不能为 <see langword="null" /> 或为空。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.Context">
+      <summary>获取用于执行查询的主体上下文。 上下文指定对其执行搜索操作的服务器或域。</summary>
+      <returns>
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，用于指定要对其执行操作的服务器或域。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.Dispose">
+      <summary>处置 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearcher" /> 对象的当前实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.FindAll">
+      <summary>返回主体搜索结果，其中包含与查询筛选器属性中指定的主体相匹配的所有主体对象的集合。</summary>
+      <returns>一个与查询筛选器匹配的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象，如果未找到结果，则为一个空集合。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 包含引用属性。 有关更多信息，请参见“示例查询”概述主题。  
+<see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 是一个持久化主体。</exception>
+      <exception cref="T:System.ArgumentException">执行查询之前，必须先将 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 分配给主体搜索器。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.FindOne">
+      <summary>返回一个主体搜索结果，其中包含找到的与 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 属性指定的主体相匹配的第一个主体对象。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象，其中包含与查询筛选器相匹配的主体对象，如果未找到结果，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 包含引用属性。 有关详细信息，请参阅按示例查询 概述主题。  
+<see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 是一个持久化主体。</exception>
+      <exception cref="T:System.ArgumentException">执行查询之前，必须先将 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 分配给主体搜索器。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.GetUnderlyingSearcher">
+      <summary>返回帐户管理 API 用以执行搜索的基础搜索对象。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.DirectorySearcher" /> 对象。</returns>
+      <exception cref="T:System.InvalidOperationException">执行查询之前，必须先将 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 分配给主体搜索器。  
+<see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 包含引用属性。 有关详细信息，请参阅按示例查询 概述主题。  
+<see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 是一个持久化主体。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.GetUnderlyingSearcherType">
+      <summary>返回从 <see cref="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.GetUnderlyingSearcher" /> 方法返回的对象的类型。</summary>
+      <returns>一个 <see cref="T:System.Type" />，指定从 <see cref="M:System.DirectoryServices.AccountManagement.PrincipalSearcher.GetUnderlyingSearcher" /> 方法返回的对象的类型。</returns>
+      <exception cref="T:System.InvalidOperationException">执行查询之前，必须先将 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 分配给主体搜索器。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter">
+      <summary>获取或设置用于查找匹配主体的查询筛选器。</summary>
+      <returns>
+        <see cref="T:System.DirectoryServices.AccountManagement.Principal" />用于查询的对象或<see langword="null" />如果不设置任何筛选器。</returns>
+      <exception cref="T:System.ArgumentException">持久化主体对象不能用作 <see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" />。  
+<see cref="P:System.DirectoryServices.AccountManagement.PrincipalSearcher.QueryFilter" /> 不能是 <see langword="null" /> 或为空。</exception>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1">
+      <summary>返回由搜索返回的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象的集合。</summary>
+      <typeparam name="T" />
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1.Dispose">
+      <summary>处置 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象的当前实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1.GetEnumerator">
+      <summary>返回循环访问集合的枚举数。</summary>
+      <returns>一个 <see cref="T:System.Collections.Generic.IEnumerator`1" /> 对象，用于循环访问主体对象。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary>返回一个可用于循环访问此集合中对象的枚举数。</summary>
+      <returns>返回一个包含搜索结果集合中的主体的 <see cref="T:System.Collections.IEnumerator" />。</returns>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException">
+      <summary>当 API 无法连接到服务器时，会引发此异常。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalServerDownException.#ctor">
+      <summary>实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalServerDownException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>根据指定的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 和 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 实例初始化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 类的新实例。</summary>
+      <param name="info">一个 <see cref="T:System.Runtime.Serialization.SerializationInfo" />，其中包含序列化新的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 所需的信息</param>
+      <param name="context">一个 <see cref="T:System.Runtime.Serialization.StreamingContext" />，其中包含与新的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 关联的序列化流的源</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalServerDownException.#ctor(System.String)">
+      <summary>用指定的错误消息实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 类的新实例。</summary>
+      <param name="message">错误信息。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalServerDownException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和指定的嵌套异常实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 类的新实例。</summary>
+      <param name="message">消息的文本。</param>
+      <param name="innerException">嵌套异常。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalServerDownException.#ctor(System.String,System.Exception,System.Int32)">
+      <summary>使用指定的错误消息、指定的嵌套异常和指定的错误代码实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 类的新实例。</summary>
+      <param name="message">错误消息的文本。</param>
+      <param name="innerException">嵌套异常。</param>
+      <param name="errorCode">错误代码。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalServerDownException.#ctor(System.String,System.Exception,System.Int32,System.String)">
+      <summary>使用指定的错误消息、指定的嵌套异常、指定的错误代码和指定的服务器名称实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 类的新实例。</summary>
+      <param name="message">消息的文本。</param>
+      <param name="innerException">嵌套异常。</param>
+      <param name="errorCode">错误代码。</param>
+      <param name="serverName">服务器名称。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalServerDownException.#ctor(System.String,System.Int32)">
+      <summary>使用指定的错误消息和指定的错误代码实例化 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalServerDownException" /> 类的新实例。</summary>
+      <param name="message">消息的文本。</param>
+      <param name="errorCode">错误代码。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalServerDownException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用参数名和其他异常信息来设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</summary>
+      <param name="info">一个将包含序列化对象数据的 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 对象。</param>
+      <param name="context">一个将包含有关源或目标的上下文信息的 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 对象。</param>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1">
+      <summary>多值属性（如 <see cref="P:System.DirectoryServices.AccountManagement.AuthenticablePrincipal.PermittedWorkstations" />）具有一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1" /> 类型的值。  此类提供用于枚举和操作这些值的方法。</summary>
+      <typeparam name="T" />
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.Add(`0)">
+      <summary>将指定的值添加到集合的末尾。</summary>
+      <param name="value">一个要添加到集合中的对象。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.Clear">
+      <summary>清除集合的内容。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.Contains(`0)">
+      <summary>如果指定的对象在集合中，则返回 <see langword="true" />；否则返回 <see langword="false" />。</summary>
+      <param name="value">一个对象。</param>
+      <returns>返回 <see langword="bool" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.CopyTo(`0[],System.Int32)">
+      <summary>从数组中的指定位置开始，将集合中的内容复制到指定的数组。</summary>
+      <param name="array">对象的 <see cref="T:System.Array" />。</param>
+      <param name="index">一个整数，表示 <paramref name="array" /> 中的一个位置，会将集合中的第一个对象复制到该位置。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.Count">
+      <summary>获取集合中的对象数。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.GetEnumerator">
+      <summary>返回一个可用于循环访问集合的枚举数。</summary>
+      <returns>一个 <see cref="T:System.Collections.Generic.IEnumerator`1" /> 对象。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.IndexOf(`0)">
+      <summary>返回指定对象的索引；如果该对象不在集合中，则返回 -1。</summary>
+      <param name="value">需要其索引的对象。</param>
+      <returns>
+        <see langword="integer" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.Insert(System.Int32,`0)">
+      <summary>将指定对象插入集合中的指定索引处。</summary>
+      <param name="index">集合中将插入 <paramref name="value" /> 的索引位置。</param>
+      <param name="value">一个对象。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.IsFixedSize">
+      <summary>获取一个 <see langword="bool" />，表示集合大小是否固定。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.IsReadOnly">
+      <summary>获取一个 bool，表示集合是否为只读。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.IsSynchronized">
+      <summary>获取一个值，该值指示对集合的访问是否为同步的（线程安全）。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.Item(System.Int32)">
+      <summary>获取集合中指定索引处的对象。</summary>
+      <param name="index">一个整数。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.Remove(`0)">
+      <summary>从集合中删除指定的对象。</summary>
+      <param name="value">要从集合中移除的对象。</param>
+      <returns>返回 <see langword="bool" />。  如果对象已移除，则返回 <see langword="true" />；如果对象不在集合中，则返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.RemoveAt(System.Int32)">
+      <summary>从集合的指定索引处删除对象。</summary>
+      <param name="index">要从集合中删除的对象的索引。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.SyncRoot">
+      <summary>获取可用于同步对集合的访问的对象。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+      <summary>从指定索引处开始，将集合内容复制到指定数组中。</summary>
+      <param name="array">对象的 <see cref="T:System.Array" />。</param>
+      <param name="index">一个整数，表示 <paramref name="array" /> 中的一个位置，会将集合中的第一个对象复制到该位置。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#ICollection#Count">
+      <summary>获取集合中的对象数。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#ICollection#IsSynchronized">
+      <summary>获取一个值，该值指示对集合的访问是否为同步的（线程安全）。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#ICollection#SyncRoot">
+      <summary>获取可用于同步对集合的访问的对象。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary>返回迭代集合的一个枚举数。</summary>
+      <returns>一个 <see cref="T:System.Collections.IEnumerator" /> 对象。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#Add(System.Object)">
+      <summary>将指定的对象添加到集合末尾。</summary>
+      <param name="value">一个要添加到集合中的对象。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#Clear">
+      <summary>删除集合的内容。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#Contains(System.Object)">
+      <summary>返回一个布尔值，指示指定对象是否在集合中。</summary>
+      <param name="value">一个对象。</param>
+      <returns>
+        <see langword="boolean" />
+      </returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#IndexOf(System.Object)">
+      <summary>返回指定对象在集合中的索引；如果该对象不在集合中，则返回 -1。</summary>
+      <param name="value">一个对象。</param>
+      <returns>
+        <see langword="integer" />。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#Insert(System.Int32,System.Object)">
+      <summary>将指定对象插入到集合中的指定位置。</summary>
+      <param name="index">应将 <paramref name="value" /> 插入到的位置。</param>
+      <param name="value">一个对象。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#IsFixedSize">
+      <summary>获取一个值，该值指示集合大小是否固定。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#IsReadOnly">
+      <summary>获取一个值，该值指示对集合的访问是否为只读。</summary>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#Item(System.Int32)">
+      <summary>获取集合中指定索引处的对象。</summary>
+      <param name="index">一个整数。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#Remove(System.Object)">
+      <summary>从集合中删除指定的对象。</summary>
+      <param name="value">要从集合中移除的对象。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.PrincipalValueCollection`1.System#Collections#IList#RemoveAt(System.Int32)">
+      <summary>从集合的指定索引处删除对象。</summary>
+      <param name="index">要从集合中删除的对象的索引。</param>
+    </member>
+    <member name="T:System.DirectoryServices.AccountManagement.UserPrincipal">
+      <summary>封装作为用户帐户的主体。</summary>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.#ctor(System.DirectoryServices.AccountManagement.PrincipalContext)">
+      <summary>使用指定的上下文初始化 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 类的新实例。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.#ctor(System.DirectoryServices.AccountManagement.PrincipalContext,System.String,System.String,System.Boolean)">
+      <summary>使用指定的上下文、SAM 帐户名、密码和启用的值初始化 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 类的新实例。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="samAccountName">此用户主体的 SAM 帐户名。</param>
+      <param name="password">此帐户的密码。</param>
+      <param name="enabled">一个布尔值，指定是否启用帐户。</param>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.UserPrincipal.AdvancedSearchFilter">
+      <summary>在将对象传递给 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearcher" /> 之前，返回 <see cref="T:System.DirectoryServices.AccountManagement.AdvancedFilters" /> 对象以设置只读属性。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.AdvancedFilters" /> 对象。</returns>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.UserPrincipal.Current">
+      <summary>获取一个用户主体对象，该对象表示运行线程的当前用户。</summary>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" />，表示当前用户。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.NoMatchingPrincipalException">未能找到当前用户的用户主体对象。 主体对象可以包含一个访问控制列表以阻止未经授权的用户进行访问。</exception>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">找到与当前用户匹配的多个用户主体对象。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.UserPrincipal.EmailAddress">
+      <summary>获取或设置此帐户的电子邮件地址。</summary>
+      <returns>用户主体电子邮件地址。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.UserPrincipal.EmployeeId">
+      <summary>获取或设置此用户主体的雇员 ID。</summary>
+      <returns>用户主体的雇员 ID。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.FindByBadPasswordAttempt(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>对于在指定日期和时间范围内有错误密码尝试记录的用户，返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象集合。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识不正确的密码尝试的日期和时间。 此参数与类型参数一起使用，可确定记录返回对象的错误登录重试的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象的；如果未找到任何结果，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.FindByExpirationTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回用户的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象集合，其具有指定日期和时间范围内的帐户过期时间。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识不正确的密码尝试的日期和时间。 此参数与类型参数一起使用，可确定记录返回对象的错误登录重试的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象的；如果未找到任何结果，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.DirectoryServices.AccountManagement.IdentityType,System.String)">
+      <summary>返回与指定标识类型相匹配的用户主体对象和值。 此版本的 <see cref="Overload:System.DirectoryServices.AccountManagement.UserPrincipal.FindByIdentity" /> 方法确定标识值的格式。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityType">
+        <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值，用于指定 <paramref name="identityValue" /> 参数的格式。</param>
+      <param name="identityValue">用户主体的标识。 此参数的格式可以是 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举中包含的任何格式。</param>
+      <returns>与指定标识值和类型相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象；若未找到匹配，则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">已找到多个与当前用户对象相匹配的用户主体对象。</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">该标识值不是有效的 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举值。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.FindByIdentity(System.DirectoryServices.AccountManagement.PrincipalContext,System.String)">
+      <summary>返回与指定标识值相匹配的用户主体对象。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" />，用于指定要对其执行操作的服务器或域。</param>
+      <param name="identityValue">用户主体的标识。 此参数的格式可以是 <see cref="T:System.DirectoryServices.AccountManagement.IdentityType" /> 枚举中包含的任何格式。</param>
+      <returns>与指定标识值相匹配的 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象，如果找不到匹配项，则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.MultipleMatchesException">已找到多个与当前用户对象相匹配的用户主体对象。</exception>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.FindByLockoutTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>对于具有指定日期和时间范围内的帐户锁定时间的用户，返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象集合。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识不正确的密码尝试的日期和时间。 此参数与类型参数一起使用，可确定记录返回对象的错误登录重试的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象的；如果未找到任何结果，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.FindByLogonTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>为用户返回 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象的集合，这些用户在指定日期和时间范围内记录帐户登录。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识不正确的密码尝试的日期和时间。 此参数与类型参数一起使用，可确定记录返回对象的错误登录重试的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象的；如果未找到任何结果，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.FindByPasswordSetTime(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)">
+      <summary>返回用户的 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" /> 对象集合，该用户在指定日期和时间范围内设置了密码。</summary>
+      <param name="context">
+        <see cref="T:System.DirectoryServices.AccountManagement.PrincipalContext" /> 对象，用于指定要对其执行操作的服务器或域。</param>
+      <param name="time">
+        <see cref="T:System.DateTime" /> 对象，用于标识不正确的密码尝试的日期和时间。 此参数与类型参数一起使用，可确定记录返回对象的错误登录重试的时间范围。</param>
+      <param name="type">
+        <see cref="T:System.DirectoryServices.AccountManagement.MatchType" /> 枚举值，用于指定应用到 <paramref name="time" /> 参数的匹配类型。</param>
+      <returns>一个 <see cref="T:System.DirectoryServices.AccountManagement.PrincipalSearchResult`1" />，其包含一个或多个 <see cref="T:System.DirectoryServices.AccountManagement.UserPrincipal" /> 对象的；如果未找到任何结果，则为空集合。</returns>
+    </member>
+    <member name="M:System.DirectoryServices.AccountManagement.UserPrincipal.GetAuthorizationGroups">
+      <summary>返回包含所有授权组（该用户是其中的成员）的主体对象的集合。 此函数仅返回安全组；不返回通讯组。</summary>
+      <returns>包含该用户作为成员所属组的 <see cref="T:System.DirectoryServices.AccountManagement.Principal" /> 对象集合；如果该用户不属于任何组，则为 null。</returns>
+      <exception cref="T:System.DirectoryServices.AccountManagement.PrincipalOperationException">尝试检索授权组失败。</exception>
+      <exception cref="T:System.NotSupportedException">此操作系统不支持授权组的检索。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.UserPrincipal.GivenName">
+      <summary>获取或设置用户主体的名字。</summary>
+      <returns>用户主体的名字。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.UserPrincipal.MiddleName">
+      <summary>获取或设置用户主体的中间名。</summary>
+      <returns>用户主体的中间名。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.UserPrincipal.Surname">
+      <summary>获取或设置用户主体的姓氏。</summary>
+      <returns>用户主体的姓氏。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+    <member name="P:System.DirectoryServices.AccountManagement.UserPrincipal.VoiceTelephoneNumber">
+      <summary>获取或设置用户主体的语音电话号码。</summary>
+      <returns>用户主体的语音电话号码。</returns>
+      <exception cref="T:System.InvalidOperationException">基础存储不支持此属性。</exception>
+    </member>
+  </members>
+</doc>

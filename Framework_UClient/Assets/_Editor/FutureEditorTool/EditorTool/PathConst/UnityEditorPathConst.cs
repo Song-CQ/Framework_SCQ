@@ -14,37 +14,39 @@ namespace FutureEditor
     [InitializeOnLoad]
     public static class UnityEditorPathConst 
     {
-        /// <summary>
-        /// ModuleUI路劲
-        /// </summary>      
-        public readonly static string ModuleUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ModuleUIPath);
 
         /// <summary>
-        /// ModuleUI路劲(热更)
+        /// 存放外部插件路径
         /// </summary>
-        public readonly static string ModuleUIPath_HotFix = Application.dataPath + "../../Framework_Project/HotFix/Model";
+        public readonly static string PluginsPath = Application.dataPath + @"/../../_Plugins";
+
+        /// <summary>
+        /// 临时文件夹 _Temporary
+        /// </summary>
+        public readonly static string TemporaryPath = $"{Application.dataPath}/../_Temporary";
+
+
         /// <summary>
         /// CommModuleUI路劲
         /// </summary>      
         public readonly static string CommonModuleUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.CommonModuleUIPath);
 
         /// <summary>
+        /// ModuleUI路劲
+        /// </summary>      
+        public readonly static string ModuleUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ModuleUIPath);
+        /// <summary>
         /// 自动注册目录
         /// </summary>   
-        public readonly static string AutoRegisterPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.AutoRegisterPath);
-
-        /// <summary>
-        /// 自动注册目录(热更)
-        /// </summary>
-        public readonly static string AutoRegisterPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoRegister";
+        public readonly static string AutoRegisterPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.AutoRegisterPath);      
         /// <summary>
         /// Unity 存放FGUI代码目录
         /// </summary>   
-        public readonly static string FGUIClassPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.FGUIClassPath);         
-        /// <summary>
-        /// 热更 存放FGUI代码目录
-        /// </summary>   
-        public readonly static string FGUIClassPath_HotFix = $"{Application.dataPath}/../../Framework_Project/HotFix/AutoCreator/FGUI_Script";
+        public readonly static string FGUIClassPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.FGUIClassPath);
+
+        
+
+
 
         /// <summary>
         /// 存放FGUI的目录

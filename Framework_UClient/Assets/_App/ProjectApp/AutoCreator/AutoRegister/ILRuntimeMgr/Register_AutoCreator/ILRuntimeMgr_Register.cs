@@ -13,7 +13,7 @@ namespace ProjectApp
 {
     public static partial class ILRuntimeMgr_Register
     {
-        public static void RegisterAll(AppDomain appDomain)
+        public static void RegisterProject(AppDomain appDomain)
         {
             appDomain.RegisterCrossBindingAdaptor(new BaseCtrlAdapter());
             appDomain.RegisterCrossBindingAdaptor(new BaseModelAdapter());
@@ -21,6 +21,9 @@ namespace ProjectApp
             appDomain.RegisterCrossBindingAdaptor(new BaseUIAdapter());
 
         }
+
+
+        
 
     }
 }

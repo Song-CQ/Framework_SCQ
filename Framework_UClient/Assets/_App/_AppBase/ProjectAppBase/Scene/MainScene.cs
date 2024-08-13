@@ -14,7 +14,7 @@ namespace ProjectApp
     {
         public override string Name => SceneConst.MainName;
 
-        public override int SceneId => SceneConst.MainIdx;
+        public override int SceneId => SceneConst.MainIndex;
 
         public override int PreLoadId => PreLoadIdConst.MainScene;
 
@@ -75,18 +75,24 @@ namespace ProjectApp
 
         private void OnAssetsInitComplete(object obj)
         {
-            if (AppConst.IsHotUpdateMode)
+            if (AppConst.HotUpdateType == HotUpdateType.None)
+            {
+                OnLoadHotFixComplete(null);
+            }
+            else if (AppConst.HotUpdateType == HotUpdateType.ILRuntime)
             {
                 AppDispatcher.Instance.AddOnceListener(AppMsg.System_LoadHotFixComplete, OnLoadHotFixComplete);
                 LogUtil.Log("[MainScene]Load HotFix");
                 App.SetLoadingSchedule(ProgressState.LoadHotFix);
+
+
                 //加载热更代码
                 ILRuntimeMgr_Register.RegisterAll(ILRuntimeMgr.Instance.AppDomain);
                 ILRuntimeMgr.Instance.StartLoadHotFix();
             }
             else
             {
-                OnLoadHotFixComplete(null);
+                LogUtil.LogError("代码热重载错误！请检查： HotUpdateType");
             }
             
             
@@ -95,7 +101,17 @@ namespace ProjectApp
 
         private void OnLoadHotFixComplete(object obj)
         {
-            
+
+            AppManagerRegister.GameLogicRegister?.Invoke();
+            AppManagerRegister.GameLogicRegisterData?.Invoke();
+
+            LogUtil.Log("[MainScene]Check Mgr StartUp");
+            GlobalMgr.Instance.CheckStartUp();
+            LogUtil.Log("[MainScene]InitAllModule");
+            ModuleMgr.Instance.InitAllModule();
+            LogUtil.Log("[MainScene]StartUpAllModule");
+            ModuleMgr.Instance.StartUpAllModule();
+
             App.SetLoadingSchedule(ProgressState.ConfigInit);
             AppDispatcher.Instance.AddOnceListener(AppMsg.System_ConfigInitComplete, LoadComplete);
 
@@ -110,10 +126,12 @@ namespace ProjectApp
         /// </summary>
         private void LoadConfigInit()
         {
+           
             //先重置 再设置
             ExcelDataMgr.Instance.ResetData();
 
             ExcelDataMgr.Instance.ReadData();
+            LogUtil.Log("[MainScene]AllModuleReadData");
             ModuleMgr.Instance.AllModuleReadData();
             AppDispatcher.Instance.Dispatch(AppMsg.System_ConfigInitComplete);
         }
@@ -130,21 +148,8 @@ namespace ProjectApp
         {
             LogUtil.Log("[MainScene]Show Scene");
             
-          
-            CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartReady);
-            
-            TimerUtil.Simple.AddTimer(AppConst.GameStartReadyDelayTime, () => {
 
-                ModuleMgr.Instance.AllModuleGameStart();
-                App.HideLoadingUI();
-
-                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartBefore);
-                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_Start);
-                CtrlDispatcher.Instance.Dispatch(CtrlMsg.Game_StartLater);
-
-            });
-            
-
+            SceneMgr.Instance.SwitchScene(SceneConst.GameIndex);
         }
 
         public override void Dispose()

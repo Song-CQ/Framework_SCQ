@@ -10,7 +10,7 @@ namespace ProjectApp
     public static partial class CtrlConst
     {
         public const string LoadCtrl = "LoadCtrl";
-        
+        public const string FXEffectCtrl = "FXEffectCtrl";
 
     }   
 }

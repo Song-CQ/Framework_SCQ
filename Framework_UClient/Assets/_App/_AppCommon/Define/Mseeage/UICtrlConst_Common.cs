@@ -10,7 +10,7 @@ namespace ProjectApp
     public static partial class UICtrlConst
     {
         public const string LoadUICtrl = "LoadUICtrl";
-     
+        public const string FXEffectUICtrl = "FXEffectUICtrl";
 
     }   
 }

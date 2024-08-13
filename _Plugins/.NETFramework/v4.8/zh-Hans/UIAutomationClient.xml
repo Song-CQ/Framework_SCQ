@@ -1,0 +1,1980 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>UIAutomationClient</name>
+  </assembly>
+  <members>
+    <member name="T:System.Windows.Automation.AndCondition">
+      <summary>表示两个或更多 <see cref="T:System.Windows.Automation.PropertyCondition" /> 对象（必须都符合匹配条件）的组合。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.AndCondition.#ctor(System.Windows.Automation.Condition[])">
+      <summary>创建一个只有在全部子条件为真时才为真的 <see cref="T:System.Windows.Automation.PropertyCondition" />。</summary>
+      <param name="conditions">两个或更多子条件。</param>
+    </member>
+    <member name="M:System.Windows.Automation.AndCondition.GetConditions">
+      <summary>检索此条件的子条件数组。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.Automation">
+      <summary>包含 UI 自动化客户端应用程序的方法和字段。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.AddAutomationEventHandler(System.Windows.Automation.AutomationEvent,System.Windows.Automation.AutomationElement,System.Windows.Automation.TreeScope,System.Windows.Automation.AutomationEventHandler)">
+      <summary>注册一个用于处理 UI 自动化事件的方法。</summary>
+      <param name="eventId">该方法将处理的事件的标识符。</param>
+      <param name="element">将与事件处理程序关联的 UI 自动化元素。</param>
+      <param name="scope">要处理的事件的范围；即，它们是在元素本身上，还是在其上级和子代上。</param>
+      <param name="eventHandler">发生指定事件时调用的方法。</param>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.AddAutomationFocusChangedEventHandler(System.Windows.Automation.AutomationFocusChangedEventHandler)">
+      <summary>注册一个将处理 focus-changed 事件的方法。</summary>
+      <param name="eventHandler">发生事件时调用的方法。</param>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.AddAutomationPropertyChangedEventHandler(System.Windows.Automation.AutomationElement,System.Windows.Automation.TreeScope,System.Windows.Automation.AutomationPropertyChangedEventHandler,System.Windows.Automation.AutomationProperty[])">
+      <summary>注册一个将处理 property-changed 事件的方法。</summary>
+      <param name="element">将与事件处理程序关联的 UI 自动化元素。</param>
+      <param name="scope">要处理的事件的范围；即，它们是在元素本身上，还是在其上级和子级上。</param>
+      <param name="eventHandler">发生事件时调用的方法。</param>
+      <param name="properties">所需的 UI 自动化属性。</param>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.AddStructureChangedEventHandler(System.Windows.Automation.AutomationElement,System.Windows.Automation.TreeScope,System.Windows.Automation.StructureChangedEventHandler)">
+      <summary>注册一个将处理 structure-changed 事件的方法。</summary>
+      <param name="element">将与事件处理程序关联的 UI 自动化元素。</param>
+      <param name="scope">要处理的事件的范围；即，它们是在元素本身上，还是在其上级和子代上。</param>
+      <param name="eventHandler">发生 structure-changed 事件时调用的方法。</param>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.Compare(System.Int32[],System.Int32[])">
+      <summary>比较两个包含运行时 标识符 (ID) 的整数数组以确定其内容是否相同。</summary>
+      <param name="runtimeId1">要比较的第一个运行时 ID。</param>
+      <param name="runtimeId2">要比较的第二个运行时 ID。</param>
+      <returns>如果所比较的运行时 ID 引用相同的 用户界面 (UI) 元素，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.Compare(System.Windows.Automation.AutomationElement,System.Windows.Automation.AutomationElement)">
+      <summary>比较两个 UI 自动化元素，如果两个元素引用相同的 UI 元素，则返回 <see langword="true" />。</summary>
+      <param name="el1">要比较的第一个 UI 自动化元素。</param>
+      <param name="el2">要比较的第二个 UI 自动化元素。</param>
+      <returns>如果 UI 元素的运行时标识符相同，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.Automation.ContentViewCondition">
+      <summary>表示 UI 自动化目录树的一个预定义的视图，它只包含其中可包含内容的 UI 自动化元素。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.Automation.ControlViewCondition">
+      <summary>表示 UI 自动化目录树的一个预定义的视图，它只包含作为控件的 UI 自动化元素。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.PatternName(System.Windows.Automation.AutomationPattern)">
+      <summary>检索指定控件模式的名称。</summary>
+      <param name="pattern">控件模式的标识符。</param>
+      <returns>控件模式的友好名称；如果找不到指定的模式，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.PropertyName(System.Windows.Automation.AutomationProperty)">
+      <summary>检索指定 UI 自动化属性的名称。</summary>
+      <param name="property">命名属性的 UI 自动化属性标识符。</param>
+      <returns>UI 自动化 属性的友好名称；如果找不到指定的 UI 自动化 属性，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.Automation.RawViewCondition">
+      <summary>表示 UI 自动化目录树的一个预定义的视图，它包含所有 UI 自动化元素。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.RemoveAllEventHandlers">
+      <summary>移除所有注册的 UI 自动化事件处理程序。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.RemoveAutomationEventHandler(System.Windows.Automation.AutomationEvent,System.Windows.Automation.AutomationElement,System.Windows.Automation.AutomationEventHandler)">
+      <summary>移除指定的 UI 自动化事件处理程序。</summary>
+      <param name="eventId">事件标识符。</param>
+      <param name="element">将移除其上的事件处理程序的 UI 自动化元素。</param>
+      <param name="eventHandler">传递到指定事件标识符和 UI 自动化元素的 <see cref="M:System.Windows.Automation.Automation.AddAutomationEventHandler(System.Windows.Automation.AutomationEvent,System.Windows.Automation.AutomationElement,System.Windows.Automation.TreeScope,System.Windows.Automation.AutomationEventHandler)" /> 的处理程序方法。</param>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.RemoveAutomationFocusChangedEventHandler(System.Windows.Automation.AutomationFocusChangedEventHandler)">
+      <summary>移除指定的 focus-changed 事件处理程序。</summary>
+      <param name="eventHandler">传递到 <see cref="M:System.Windows.Automation.Automation.AddAutomationFocusChangedEventHandler(System.Windows.Automation.AutomationFocusChangedEventHandler)" /> 的处理程序方法</param>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.RemoveAutomationPropertyChangedEventHandler(System.Windows.Automation.AutomationElement,System.Windows.Automation.AutomationPropertyChangedEventHandler)">
+      <summary>移除指定的 property-changed 事件处理程序。</summary>
+      <param name="element">将从中移除事件处理程序的 UI 自动化元素。</param>
+      <param name="eventHandler">传递到指定 UI 自动化元素的 <see cref="M:System.Windows.Automation.Automation.AddAutomationPropertyChangedEventHandler(System.Windows.Automation.AutomationElement,System.Windows.Automation.TreeScope,System.Windows.Automation.AutomationPropertyChangedEventHandler,System.Windows.Automation.AutomationProperty[])" /> 的处理程序方法。</param>
+    </member>
+    <member name="M:System.Windows.Automation.Automation.RemoveStructureChangedEventHandler(System.Windows.Automation.AutomationElement,System.Windows.Automation.StructureChangedEventHandler)">
+      <summary>移除指定的 structure-changed 事件处理程序。</summary>
+      <param name="element">将从中移除事件处理程序的 UI 自动化元素。</param>
+      <param name="eventHandler">传递到指定 UI 自动化元素的 <see cref="M:System.Windows.Automation.Automation.AddStructureChangedEventHandler(System.Windows.Automation.AutomationElement,System.Windows.Automation.TreeScope,System.Windows.Automation.StructureChangedEventHandler)" /> 的处理程序方法。</param>
+    </member>
+    <member name="T:System.Windows.Automation.AutomationElement">
+      <summary>表示 UI 自动化树中的一个 UI 自动化元素，并包含由 UI 自动化客户端应用程序用作标识符的值。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.AcceleratorKeyProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.AcceleratorKey" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.AccessKeyProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.AccessKey" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.AsyncContentLoadedEvent">
+      <summary>标识在异步加载内容过程中引发的事件。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.AutomationElement.AutomationElementInformation">
+      <summary>包含由 <see cref="P:System.Windows.Automation.AutomationElement.Cached" /> 或 <see cref="P:System.Windows.Automation.AutomationElement.Current" /> 属性使用的属性访问器。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.AcceleratorKey">
+      <summary>获取一个包含元素快捷键组合的字符串。</summary>
+      <returns>用于调用与元素关联的操作的键组合序列。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.AccessKey">
+      <summary>获取一个包含元素的访问键字符的字符串。</summary>
+      <returns>与一个元素关联的、用于激活该元素的字符。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.AutomationId">
+      <summary>获取一个字符串，其中包含元素的 UI 自动化 标识符 (ID)。</summary>
+      <returns>ID 是唯一的而在其容器内的同级的元素。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.BoundingRectangle">
+      <summary>获取完全包围元素的矩形的坐标。</summary>
+      <returns>包围矩形的点坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ClassName">
+      <summary>获取一个字符串，其中包含由控件开发人员分配的元素的类名称。</summary>
+      <returns>由控件开发人员分配的类名称。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ControlType">
+      <summary>获取元素的 <see cref="T:System.Windows.Automation.ControlType" />。</summary>
+      <returns>此元素的交互模型。 默认值为 <see cref="F:System.Windows.Automation.ControlType.Custom" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.FrameworkId">
+      <summary>获取基础 UI 框架的名称。</summary>
+      <returns>UI 框架的名称，例如“Win32”、“WinForm”或“DirectUI”。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.HasKeyboardFocus">
+      <summary>获取一个值，该值指示此元素是否具有键盘焦点。</summary>
+      <returns>如果此元素具有键盘焦点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.HelpText">
+      <summary>获取与元素关联的帮助文本。</summary>
+      <returns>元素的工具提示帮助文本。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsContentElement">
+      <summary>获取一个值，该值指定元素是否为内容元素。</summary>
+      <returns>如果元素为内容元素，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsControlElement">
+      <summary>获取一个值，该值指示元素是否以控件的形式查看。</summary>
+      <returns>如果元素以控件的形式查看，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsEnabled">
+      <summary>获取一个值，该值指示是否已启用由 用户界面 (UI)元素引用的 UI 自动化 项。</summary>
+      <returns>如果已启用控件，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsKeyboardFocusable">
+      <summary>获取一个值，该值指示 UI 自动化元素是否可接受键盘焦点。</summary>
+      <returns>如果元素可接收键盘焦点，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsOffscreen">
+      <summary>获取一个值，该值指示 UI 自动化元素在屏幕上是否可见。</summary>
+      <returns>如果控件不可见，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsPassword">
+      <summary>获取一个值，该值指示 UI 自动化元素是否包含受保护的内容。</summary>
+      <returns>如果元素包含受保护的内容，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsRequiredForForm">
+      <summary>获取一个值，该值指示是否需要在窗体上填充 UI 自动化元素。</summary>
+      <returns>如果需要填充元素，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ItemStatus">
+      <summary>获取元素内某一项的状态说明。</summary>
+      <returns>状态的说明。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ItemType">
+      <summary>获取一个项的类型说明。</summary>
+      <returns>一个描述项的本地化字符串。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.LabeledBy">
+      <summary>获取包含此元素的文本标签的元素。</summary>
+      <returns>作为此元素的标签的元素。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.LocalizedControlType">
+      <summary>获取控件类型的说明。</summary>
+      <returns>控件类型（如“button”）的本地化说明。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.Name">
+      <summary>获取元素的名称。</summary>
+      <returns>用户界面 (UI)元素的名称。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.NativeWindowHandle">
+      <summary>获取元素窗口的句柄。</summary>
+      <returns>窗口的句柄（如果存在）；否则为 0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.Orientation">
+      <summary>获取控件的方向。</summary>
+      <returns>方向。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ProcessId">
+      <summary>获取此元素的进程 标识符 (ID)。</summary>
+      <returns>承载此元素的进程 ID。 此属性的默认值为 0。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.AutomationFocusChangedEvent">
+      <summary>标识在已更改焦点时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.AutomationIdProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.AutomationId" /> 属性，该属性用于标识元素。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.AutomationPropertyChangedEvent">
+      <summary>标识 property-changed 事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.BoundingRectangleProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.BoundingRectangle" /> 属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象的已缓存 UI 自动化 属性值。</summary>
+      <returns>一个包含 <see cref="T:System.Windows.Automation.AutomationElement" /> 的已缓存属性值的结构。</returns>
+      <exception cref="T:System.InvalidOperationException">没有已缓存的属性。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.CachedChildren">
+      <summary>获取此 <see cref="T:System.Windows.Automation.AutomationElement" /> 的已缓存子元素。</summary>
+      <returns>子元素的集合。 如果元素没有子级，此集合可以为空。</returns>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+      <exception cref="T:System.InvalidOperationException">未请求缓存此元素的子级。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.CachedParent">
+      <summary>获取此 <see cref="T:System.Windows.Automation.AutomationElement" /> 的已缓存父级。</summary>
+      <returns>父元素。 返回值可以是<see langword="null" />指定的元素是否有任何父-例如，如果此元素是根节点。</returns>
+      <exception cref="T:System.InvalidOperationException">未缓存父元素。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.ClassNameProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ClassName" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.ClickablePointProperty">
+      <summary>标识可单击点的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.ControlTypeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ControlType" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.CultureProperty">
+      <summary>标识区域性属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.Current">
+      <summary>获取 <see cref="T:System.Windows.Automation.AutomationElement" /> 的当前属性值。</summary>
+      <returns>一个包含当前属性值的结构。</returns>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 是否具有与此 <see cref="T:System.Windows.Automation.AutomationElement" /> 相同的值。</summary>
+      <param name="obj">要比较的 <see cref="T:System.Windows.Automation.AutomationElement" />。</param>
+      <returns>如果指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 等于此 <see cref="T:System.Windows.Automation.AutomationElement" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.Finalize">
+      <summary>在垃圾回收将某一对象回收前允许该对象尝试释放资源并执行其他清理操作。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.FindAll(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition)">
+      <summary>返回满足指定条件的全部 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象。</summary>
+      <param name="scope">一个按位值组合，用于指定搜索的范围。</param>
+      <param name="condition">包含匹配条件的对象。</param>
+      <returns>满足指定条件的对象的集合。 如果没有匹配项，则返回空集合。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.FindFirst(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition)">
+      <summary>返回与指定条件匹配的第一个子级或子代元素。</summary>
+      <param name="scope">一个按位值组合，用于指定搜索的范围。</param>
+      <param name="condition">包含匹配条件的对象。</param>
+      <returns>满足条件的第一个元素，如果找不到匹配项，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.FocusedElement">
+      <summary>获取当前获得焦点的 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <returns>获得焦点的 UI 元素。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.FrameworkIdProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.FrameworkId" /> 属性。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.FromHandle(System.IntPtr)">
+      <summary>为指定窗口句柄引用的 用户界面 (UI) 项检索新的 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象。</summary>
+      <param name="hwnd">UI 元素的句柄。</param>
+      <returns>由 <paramref name="hwnd" /> 标识的 UI 项的 <see cref="T:System.Windows.Automation.AutomationElement" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.FromLocalProvider(System.Windows.Automation.Provider.IRawElementProviderSimple)">
+      <summary>从本地 <see cref="T:System.Windows.Automation.Provider.IRawElementProviderSimple" /> 实现检索新的 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象。</summary>
+      <param name="localImpl">提供程序对象。</param>
+      <returns>一个 <see cref="T:System.Windows.Automation.AutomationElement" />，它表示提供程序对象服务的元素。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.FromPoint(System.Windows.Point)">
+      <summary>为桌面上指定点处的 用户界面 (UI) 项检索新的 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象。</summary>
+      <param name="pt">在桌面上定位 UI 元素的物理屏幕坐标。</param>
+      <returns>位于指定点处的 UI 项。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetCachedPattern(System.Windows.Automation.AutomationPattern)">
+      <summary>从此 <see cref="T:System.Windows.Automation.AutomationElement" /> 的缓存中检索指定模式。</summary>
+      <param name="pattern">要检索的模式的标识符。</param>
+      <returns>一个表示指定模式的对象。 如果没有匹配的模式，则返回 <see langword="null" />。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的模式不在缓存中，或者该元素不支持请求的模式。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetCachedPropertyValue(System.Windows.Automation.AutomationProperty)">
+      <summary>从此 <see cref="T:System.Windows.Automation.AutomationElement" /> 的缓存中检索指定属性的值。 对于目标 用户界面 (UI) 元素未显式支持的属性，将返回该属性类型的相应默认值。</summary>
+      <param name="property">要检索的属性的标识符。</param>
+      <returns>一个包含指定属性的值的对象。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 用户界面 (UI) 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetCachedPropertyValue(System.Windows.Automation.AutomationProperty,System.Boolean)">
+      <summary>从此 <see cref="T:System.Windows.Automation.AutomationElement" /> 的缓存中检索指定属性的值，还可以选择忽略任何默认属性。</summary>
+      <param name="property">要检索的属性的标识符。</param>
+      <param name="ignoreDefaultValue">一个值，该值指定如果不支持指定的属性，是否应忽略默认值。</param>
+      <returns>一个包含指定属性的值的对象，如果该元素未提供值并且 <paramref name="ignoreDefaultValue" /> 为 <see langword="true" />，则为 <see cref="F:System.Windows.Automation.AutomationElement.NotSupported" />。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetClickablePoint">
+      <summary>检索 <see cref="T:System.Windows.Automation.AutomationElement" /> 上可以单击的点。</summary>
+      <returns>一个点的物理屏幕坐标，客户端可以使用该点在此元素单击。</returns>
+      <exception cref="T:System.Windows.Automation.NoClickablePointException">没有可单击的点。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetCurrentPattern(System.Windows.Automation.AutomationPattern)">
+      <summary>检索此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上的指定模式对象。</summary>
+      <param name="pattern">要检索的模式的标识符。</param>
+      <returns>模式对象（如果 <see cref="T:System.Windows.Automation.AutomationElement" /> 当前支持指定的模式）。</returns>
+      <exception cref="T:System.InvalidOperationException">该元素不支持此模式。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetCurrentPropertyValue(System.Windows.Automation.AutomationProperty)">
+      <summary>检索此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上指定属性的值。 对于目标 用户界面 (UI) 元素未显式支持的属性，将返回该属性类型的相应默认值。</summary>
+      <param name="property">UI 自动化 属性标识符，用于指定要检索的属性。</param>
+      <returns>一个包含指定属性的值的对象。</returns>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetCurrentPropertyValue(System.Windows.Automation.AutomationProperty,System.Boolean)">
+      <summary>检索此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上指定属性的值，还可以选择忽略任何默认属性。</summary>
+      <param name="property">UI 自动化 属性标识符，用于指定要检索的属性。</param>
+      <param name="ignoreDefaultValue">一个值，该值指定在支持指定的属性的情况下是否应忽略默认值。</param>
+      <returns>一个包含指定属性的值的对象，如果该元素未提供值并且 <paramref name="ignoreDefaultValue" /> 为 <see langword="true" />，则为 <see cref="F:System.Windows.Automation.AutomationElement.NotSupported" />。</returns>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetHashCode">
+      <summary>检索此 <see cref="T:System.Windows.Automation.AutomationElement" /> 的哈希代码。</summary>
+      <returns>32 位有符号整数哈希代码。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetRuntimeId">
+      <summary>检索分配给 用户界面 (UI) 项的唯一标识符。</summary>
+      <returns>一个表示运行时标识符的整数数组。</returns>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetSupportedPatterns">
+      <summary>检索此 <see cref="T:System.Windows.Automation.AutomationElement" /> 支持的控件模式。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.AutomationPattern" /> 对象的数组，表示支持的控件模式。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetSupportedProperties">
+      <summary>检索元素支持的属性的标识符。</summary>
+      <returns>一个受支持属性标识符的数组。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.GetUpdatedCache(System.Windows.Automation.CacheRequest)">
+      <summary>检索一个具有更新缓存的新 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <param name="request">将包含在更新的缓存中的模式和属性。</param>
+      <returns>一个具有更新缓存的新的 <see cref="T:System.Windows.Automation.AutomationElement" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.HasKeyboardFocusProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.HasKeyboardFocus" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.HelpTextProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.HelpText" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsContentElementProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsContentElement" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsControlElementProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsControlElement" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsDockPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.DockPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsEnabledProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsEnabled" /> 属性，它指定是否已启用由 <see cref="T:System.Windows.Automation.AutomationElement" /> 引用的 用户界面 (UI) 项。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsExpandCollapsePatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.ExpandCollapsePattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsGridItemPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.GridItemPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsGridPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.GridPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsInvokePatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.InvokePattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsItemContainerPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.ItemContainerPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsKeyboardFocusableProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsKeyboardFocusable" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsMultipleViewPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.MultipleViewPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsOffscreenProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsOffscreen" /> 属性，它指示 用户界面 (UI) 项在屏幕上是否可见。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsPasswordProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsPassword" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsRangeValuePatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.RangeValuePattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsRequiredForFormProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsRequiredForForm" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsScrollItemPatternAvailableProperty">
+      <summary>标识表示 <see cref="T:System.Windows.Automation.ScrollItemPattern" /> 控件模式对于此 <see cref="T:System.Windows.Automation.AutomationElement" /> 是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsScrollPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.ScrollPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsSelectionItemPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.SelectionItemPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsSelectionPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.SelectionPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsSynchronizedInputPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.SynchronizedInputPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsTableItemPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.TableItemPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsTablePatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.TablePattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsTextPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.TextPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsTogglePatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.TogglePattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsTransformPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.TransformPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsValuePatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.ValuePattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsVirtualizedItemPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.VirtualizedItemPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.IsWindowPatternAvailableProperty">
+      <summary>标识表示在此 <see cref="T:System.Windows.Automation.AutomationElement" /> 上 <see cref="T:System.Windows.Automation.WindowPattern" /> 控件模式是否可用的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.ItemStatusProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ItemStatus" /> 属性，它指定复杂项的可视化表示形式的状态。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.ItemTypeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ItemType" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.LabeledByProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.LabeledBy" /> 属性，它标识与控件关联的标签。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.LayoutInvalidatedEvent">
+      <summary>标识布局失效时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.LocalizedControlTypeProperty">
+      <summary>标识本地语言的 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.LocalizedControlType" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.MenuClosedEvent">
+      <summary>标识在关闭菜单时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.MenuOpenedEvent">
+      <summary>标识在打开菜单时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.NameProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.Name" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.NativeWindowHandleProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.NativeWindowHandle" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.NotSupported">
+      <summary>指示属性不受支持。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.op_Equality(System.Windows.Automation.AutomationElement,System.Windows.Automation.AutomationElement)">
+      <summary>返回一个值，它指示指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象是否引用相同的 用户界面 (UI) 元素。</summary>
+      <param name="left">要比较的第一个 <see cref="T:System.Windows.Automation.AutomationElement" />。</param>
+      <param name="right">要比较的第二个 <see cref="T:System.Windows.Automation.AutomationElement" />。</param>
+      <returns>如果两个 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象引用相同的 UI 元素，为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.op_Inequality(System.Windows.Automation.AutomationElement,System.Windows.Automation.AutomationElement)">
+      <summary>返回一个值，它指示指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象是否引用不同的 用户界面 (UI) 元素。</summary>
+      <param name="left">要比较的第一个 <see cref="T:System.Windows.Automation.AutomationElement" />。</param>
+      <param name="right">要比较的第二个 <see cref="T:System.Windows.Automation.AutomationElement" />。</param>
+      <returns>如果两个对象引用不同的 UI 元素，为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.OrientationProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.Orientation" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.PositionInSetProperty">
+      <summary>描述了自动化元素在一组视为同级的元素中的序号位置。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.ProcessIdProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.ProcessId" /> 属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElement.RootElement">
+      <summary>获取当前桌面的根 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <returns>根元素。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.RuntimeIdProperty">
+      <summary>标识包含元素的运行时标识符的属性。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.SetFocus">
+      <summary>将焦点设置在 <see cref="T:System.Windows.Automation.AutomationElement" /> 上。</summary>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的 UI 不再存在。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.SizeOfSetProperty">
+      <summary>介绍了自动化元素在视为同级的组或集中的数量。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.StructureChangedEvent">
+      <summary>标识在 UI 自动化 树结构更改时将引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.ToolTipClosedEvent">
+      <summary>标识在关闭工具提示时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElement.ToolTipOpenedEvent">
+      <summary>标识在打开工具提示时引发的事件。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.TryGetCachedPattern(System.Windows.Automation.AutomationPattern,System.Object@)">
+      <summary>从缓存中检索控件模式。</summary>
+      <param name="pattern">要检索的控件模式的标识符。</param>
+      <param name="patternObject">返回时，如果模式在缓存中，则包含该模式；否则为 <see langword="null" />。</param>
+      <returns>如果模式在缓存中，为 <see langword="true" />；如果模式不在缓存中或不受支持，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.TryGetClickablePoint(System.Windows.Point@)">
+      <summary>检索元素内一个可单击的点。</summary>
+      <param name="pt">此方法返回时，将包含一个可单击点的物理屏幕坐标。</param>
+      <returns>如果没有可单击的点，为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElement.TryGetCurrentPattern(System.Windows.Automation.AutomationPattern,System.Object@)">
+      <summary>检索一个实现控件模式的对象。</summary>
+      <param name="pattern">要检索的控件模式的标识符。</param>
+      <param name="patternObject">返回时，如果支持控件模式，则为该模式；否则为 <see langword="null" />。</param>
+      <returns>如果该模式受支持，为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.AutomationElementCollection">
+      <summary>表示 <see cref="T:System.Windows.Automation.AutomationElement" /> 对象集合。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElementCollection.CopyTo(System.Array,System.Int32)">
+      <summary>将集合的元素复制到一个数组，复制从目标数组中的指定索引处开始。</summary>
+      <param name="array">从集合复制的元素的目标。</param>
+      <param name="index">目标数组中应开始复制的位置的从零开始的索引。</param>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElementCollection.CopyTo(System.Windows.Automation.AutomationElement[],System.Int32)">
+      <summary>将集合的元素复制到一个特殊的数组实例，复制目标数组中的指定索引处开始。</summary>
+      <param name="array">从集合复制的元素的目标。</param>
+      <param name="index">目标数组中应开始复制的位置的从零开始的索引。</param>
+      <exception cref="T:System.ArgumentException">目标数组不够大，或 <paramref name="index" /> 超出数组边界。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElementCollection.Count">
+      <summary>获取此集合中的元素数。</summary>
+      <returns>元素数量。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationElementCollection.GetEnumerator">
+      <summary>返回一个枚举数，它可用于循环访问集合中的项。</summary>
+      <returns>一个可用于循环访问 <see cref="T:System.Windows.Automation.AutomationElementCollection" /> 的枚举数。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElementCollection.IsSynchronized">
+      <summary>获取一个值，该值指示 <see cref="T:System.Windows.Automation.AutomationElementCollection" /> 对象是否是同步的（线程安全）。</summary>
+      <returns>始终返回 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElementCollection.Item(System.Int32)">
+      <summary>获取位于指定索引处的 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <param name="index">集合中元素的从零开始的索引。</param>
+      <returns>位于指定索引处的 <see cref="T:System.Windows.Automation.AutomationElement" />。</returns>
+      <exception cref="T:System.IndexOutOfRangeException">为 <paramref name="index" /> 指定了一个负整数，或 <paramref name="index" /> 大于或等于 <see cref="P:System.Windows.Automation.AutomationElementCollection.Count" />。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationElementCollection.SyncRoot">
+      <summary>获取可用于同步对 <see cref="T:System.Windows.Automation.AutomationElementCollection" /> 集合的访问的对象。</summary>
+      <returns>可用于同步集合访问的对象。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.AutomationElementMode">
+      <summary>包含指定返回 UI 自动化元素时所使用的引用类型的值。 这些值在 <see cref="P:System.Windows.Automation.CacheRequest.AutomationElementMode" /> 属性中使用。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElementMode.Full">
+      <summary>指定返回的元素具有对基础 UI 的完整引用。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.AutomationElementMode.None">
+      <summary>指定返回的元素没有对基础 UI 的引用并且只包含缓存的信息。 例如，此模式可能用于检索列表框中的项的名称，而不获取对项本身的引用。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.AutomationFocusChangedEventArgs">
+      <summary>为 focus-changed 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.AutomationFocusChangedEventArgs.#ctor(System.Int32,System.Int32)">
+      <summary>初始化 <see cref="T:System.Windows.Automation.AutomationFocusChangedEventArgs" /> 类的新实例。</summary>
+      <param name="idObject">已接收到焦点的对象的 标识符 (ID)。</param>
+      <param name="idChild">已获得焦点的对象的子 ID。</param>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationFocusChangedEventArgs.ChildId">
+      <summary>获取接收焦点的对象的子 Microsoft Active Accessibility 标识符。</summary>
+      <returns>标识符。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.AutomationFocusChangedEventArgs.ObjectId">
+      <summary>获取生成事件的 Microsoft Active Accessibility 对象的 标识符 (ID)。</summary>
+      <returns>ID用户界面 (UI)将接收焦点的元素。 有关可能的值，请参阅对象标识符Microsoft Active Accessibility 文档中。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.AutomationFocusChangedEventHandler">
+      <summary>表示一个方法，该方法由 UI 自动化客户端应用程序实现以处理焦点更改时由 UI 自动化提供程序引发的事件。</summary>
+      <param name="sender">引发事件的对象。</param>
+      <param name="e">有关事件的信息。</param>
+    </member>
+    <member name="T:System.Windows.Automation.BasePattern">
+      <summary>为控件模式类提供基实现。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.BasePattern.Finalize">
+      <summary>在通过垃圾回收将对象回收之前，释放资源并执行其他清理操作。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.CacheRequest">
+      <summary>指定在获得 <see cref="T:System.Windows.Automation.AutomationElement" /> 时，UI 自动化框架缓存的属性和模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.CacheRequest.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Automation.CacheRequest" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.CacheRequest.Activate">
+      <summary>将此 <see cref="T:System.Windows.Automation.CacheRequest" /> 设置为在同一线程中请求 <see cref="T:System.Windows.Automation.AutomationElement" /> 时返回的项的活动规范。</summary>
+      <returns>可用于释放 <see cref="T:System.Windows.Automation.CacheRequest" /> 的对象。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.CacheRequest.Add(System.Windows.Automation.AutomationPattern)">
+      <summary>将指定的 <see cref="T:System.Windows.Automation.AutomationPattern" /> 标识符添加到此 <see cref="T:System.Windows.Automation.CacheRequest" />。</summary>
+      <param name="pattern">一个标识符，指定要缓存的模式。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="T:System.Windows.Automation.CacheRequest" /> 处于活动状态。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.CacheRequest.Add(System.Windows.Automation.AutomationProperty)">
+      <summary>将指定的 <see cref="T:System.Windows.Automation.AutomationProperty" /> 标识符添加到此 <see cref="T:System.Windows.Automation.CacheRequest" />。</summary>
+      <param name="property">一个标识符，指定要缓存的属性值。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="T:System.Windows.Automation.CacheRequest" /> 处于活动状态。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.CacheRequest.AutomationElementMode">
+      <summary>获取或设置一个值，该值指定返回的元素是应包含对基础 用户界面 (UI) 的完整引用，还是仅包含缓存的信息。</summary>
+      <returns>如果返回的元素包含对基础 用户界面 (UI) 的完整引用，则为 <see cref="F:System.Windows.Automation.AutomationElementMode.Full" />；否则为 <see cref="F:System.Windows.Automation.AutomationElementMode.None" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.CacheRequest.Clone">
+      <summary>创建此 <see cref="T:System.Windows.Automation.CacheRequest" /> 的副本。</summary>
+      <returns>当前对象的可修改副本。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.CacheRequest.Current">
+      <summary>获取当前线程中处于活动状态的 <see cref="T:System.Windows.Automation.CacheRequest" />。</summary>
+      <returns>活动的 <see cref="T:System.Windows.Automation.CacheRequest" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.CacheRequest.Pop">
+      <summary>从当前线程的内部堆栈中移除活动的 <see cref="T:System.Windows.Automation.CacheRequest" />。</summary>
+      <exception cref="T:System.InvalidOperationException">尝试移除的缓存请求不是最后压入堆栈的堆栈请求。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.CacheRequest.Push">
+      <summary>将 <see cref="T:System.Windows.Automation.CacheRequest" /> 压入内部状态堆栈，并使它成为当前线程中的活动请求。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.CacheRequest.TreeFilter">
+      <summary>获取或设置一个值，该值指定缓存时要使用的 UI 自动化 元素树的视图。</summary>
+      <returns>UI 自动化 元素树的视图。 默认视图为 <see cref="F:System.Windows.Automation.Automation.ControlViewCondition" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.CacheRequest.TreeScope">
+      <summary>获取或设置一个值，该值指定是仅对子树的根进行缓存，还是也对其子级或子代进行缓存。</summary>
+      <returns>一个或多个 <see cref="F:System.Windows.Automation.TreeScope.Element" />、<see cref="F:System.Windows.Automation.TreeScope.Children" />、<see cref="F:System.Windows.Automation.TreeScope.Descendants" /> 或 <see cref="F:System.Windows.Automation.TreeScope.Subtree" />。 默认值为 <see cref="F:System.Windows.Automation.TreeScope.Element" />。</returns>
+      <exception cref="T:System.ArgumentException">尝试将该属性设置为 <see cref="F:System.Windows.Automation.TreeScope.Parent" /> 或 <see cref="F:System.Windows.Automation.TreeScope.Ancestors" />。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.ClientSettings">
+      <summary>包含使客户端提供程序可用于客户端的方法。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.ClientSettings.RegisterClientSideProviderAssembly(System.Reflection.AssemblyName)">
+      <summary>注册包含客户端提供程序的程序集。</summary>
+      <param name="assemblyName">程序集的名称。</param>
+      <exception cref="T:System.Windows.Automation.ProxyAssemblyNotLoadedException">无法加载程序集。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.ClientSettings.RegisterClientSideProviders(System.Windows.Automation.ClientSideProviderDescription[])">
+      <summary>注册客户端提供程序。</summary>
+      <param name="clientSideProviderDescription">一个提供程序说明的数组。</param>
+      <exception cref="T:System.Windows.Automation.ProxyAssemblyNotLoadedException">无法加载程序集。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.ClientSideProviderDescription">
+      <summary>描述客户端 UI 自动化提供程序的范围，以便在 UI 自动化客户端应用程序上注册。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.ClientSideProviderDescription.#ctor(System.Windows.Automation.ClientSideProviderFactoryCallback,System.String)">
+      <summary>初始化 <see cref="T:System.Windows.Automation.ClientSideProviderDescription" /> 类的新实例。</summary>
+      <param name="clientSideProviderFactoryCallback">为窗口创建客户端提供程序的方法。</param>
+      <param name="className">提供程序所用于的窗口的类名称。</param>
+    </member>
+    <member name="M:System.Windows.Automation.ClientSideProviderDescription.#ctor(System.Windows.Automation.ClientSideProviderFactoryCallback,System.String,System.String,System.Windows.Automation.ClientSideProviderMatchIndicator)">
+      <summary>初始化 <see cref="T:System.Windows.Automation.ClientSideProviderDescription" /> 类的新实例。</summary>
+      <param name="clientSideProviderFactoryCallback">为窗口创建客户端提供程序的方法。</param>
+      <param name="className">提供程序所用于的窗口的类名称。</param>
+      <param name="imageName">窗口所驻留的进程的可执行文件或 DLL 的名称。</param>
+      <param name="flags">指定匹配窗口类名称时的行为的标志。</param>
+    </member>
+    <member name="P:System.Windows.Automation.ClientSideProviderDescription.ClassName">
+      <summary>获取提供程序所用于的窗口的类名称。</summary>
+      <returns>窗口类名称。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ClientSideProviderDescription.ClientSideProviderFactoryCallback">
+      <summary>获取创建客户端提供程序的方法。</summary>
+      <returns>回调方法。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ClientSideProviderDescription.Flags">
+      <summary>获取指定匹配窗口类名称时的行为的标志。</summary>
+      <returns>值的按位组合。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ClientSideProviderDescription.ImageName">
+      <summary>获取窗口所驻留的进程的可执行文件或 动态链接库 (DLL) 的名称。</summary>
+      <returns>图像名称。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.ClientSideProviderFactoryCallback">
+      <summary>表示创建窗口的客户端 UI 自动化提供程序的方法。</summary>
+      <param name="hwnd">为其创建提供程序的窗口。</param>
+      <param name="idChild">对象的子 ID。</param>
+      <param name="idObject">对象的 ID。</param>
+    </member>
+    <member name="T:System.Windows.Automation.ClientSideProviderMatchIndicator">
+      <summary>包含指定在与 <see cref="T:System.Windows.Automation.ClientSideProviderDescription" /> 中的类名称匹配时的行为的值。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ClientSideProviderMatchIndicator.AllowSubstringMatch">
+      <summary>指定使用子字符串比较来比较类名称。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ClientSideProviderMatchIndicator.DisallowBaseClassNameMatch">
+      <summary>指定匹配窗口类名称时不使用对象的基类。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ClientSideProviderMatchIndicator.None">
+      <summary>无特殊标志。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.Condition">
+      <summary>在 UI 自动化目录树中搜索元素时应用于筛选的条件的基类型。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.Condition.FalseCondition">
+      <summary>表示一个 <see cref="T:System.Windows.Automation.Condition" />，其计算结果总是为 <see langword="false" />。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.Condition.TrueCondition">
+      <summary>表示一个 <see cref="T:System.Windows.Automation.Condition" />，其计算结果总是为 <see langword="true" />。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.DockPattern">
+      <summary>表示在某个停靠容器内公开其停靠属性的控件。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.DockPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.DockPattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.DockPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.DockPattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.DockPattern.DockPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.DockPattern" /> 对象的 <see cref="P:System.Windows.Automation.DockPattern.Current" /> 或 <see cref="P:System.Windows.Automation.DockPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.DockPattern.DockPatternInformation.DockPosition">
+      <summary>检索停靠容器内的一个 <see cref="T:System.Windows.Automation.DockPosition" /> 的 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <returns>元素相对于停靠容器和容器内其他元素的边界的 <see cref="T:System.Windows.Automation.DockPosition" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.DockPattern.DockPositionProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.DockPattern.DockPatternInformation.DockPosition" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.DockPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.DockPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.DockPattern.SetDockPosition(System.Windows.Automation.DockPosition)">
+      <summary>将 <see cref="T:System.Windows.Automation.AutomationElement" /> 停靠在停靠容器内请求的 <see cref="T:System.Windows.Automation.DockPosition" /> 处。</summary>
+      <param name="dockPosition">相对于停靠容器边界和容器内的其他元素的停靠位置。</param>
+      <exception cref="T:System.InvalidOperationException">当控件无法执行请求的停靠样式时。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.ExpandCollapsePattern">
+      <summary>表示以可视化方式展开显示内容，折叠隐藏内容的控件。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.ExpandCollapsePattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.ExpandCollapsePattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.ExpandCollapsePattern.Collapse">
+      <summary>隐藏 <see cref="T:System.Windows.Automation.AutomationElement" /> 的所有子代节点、控件或内容。</summary>
+      <exception cref="T:System.InvalidOperationException">当 <see cref="T:System.Windows.Automation.ExpandCollapseState" /> = <see cref="F:System.Windows.Automation.ExpandCollapseState.LeafNode" /> 时，将调用 <see cref="M:System.Windows.Automation.ExpandCollapsePattern.Collapse" />。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.ExpandCollapsePattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.ExpandCollapsePattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.ExpandCollapsePattern.Expand">
+      <summary>显示 <see cref="T:System.Windows.Automation.AutomationElement" /> 的全部子节点、控件或内容。</summary>
+      <exception cref="T:System.InvalidOperationException">当 <see cref="T:System.Windows.Automation.ExpandCollapseState" /> = <see cref="F:System.Windows.Automation.ExpandCollapseState.LeafNode" /> 时，将调用 <see cref="M:System.Windows.Automation.ExpandCollapsePattern.Expand" />。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.ExpandCollapsePattern.ExpandCollapsePatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.ExpandCollapsePattern" /> 对象的 <see cref="P:System.Windows.Automation.ExpandCollapsePattern.Current" /> 或 <see cref="P:System.Windows.Automation.ExpandCollapsePattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.ExpandCollapsePattern.ExpandCollapsePatternInformation.ExpandCollapseState">
+      <summary>获取 <see cref="T:System.Windows.Automation.ExpandCollapseState" /> 的 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.ExpandCollapseState" /> 的 <see cref="T:System.Windows.Automation.AutomationElement" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.ExpandCollapsePattern.ExpandCollapseStateProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ExpandCollapsePattern.ExpandCollapsePatternInformation.ExpandCollapseState" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ExpandCollapsePattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.ExpandCollapsePattern" /> 控件模式。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.GridItemPattern">
+      <summary>表示支持 <see cref="T:System.Windows.Automation.GridPattern" /> 的容器的子控件。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.GridItemPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.GridItemPattern" /> 的缓存属性值。</summary>
+      <returns>缓存的属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.GridItemPattern.ColumnProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.Column" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.GridItemPattern.ColumnSpanProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.ColumnSpan" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.GridItemPattern.ContainingGridProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.ContainingGrid" /> 属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.GridItemPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.GridItemPattern" /> 的当前属性值。</summary>
+      <returns>当前属性值。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.GridItemPattern.GridItemPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.GridItemPattern" /> 对象的 <see cref="P:System.Windows.Automation.GridItemPattern.Current" /> 或 <see cref="P:System.Windows.Automation.GridItemPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.Column">
+      <summary>获取包含单元格或项的列的序号。</summary>
+      <returns>一个从零开始的序号，标识了包含该单元格或项的列。 默认值为 0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.ColumnSpan">
+      <summary>获取单元格或项跨的列数。</summary>
+      <returns>跨越的列数。 默认值为 1。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.ContainingGrid">
+      <summary>获取一个 UI 自动化元素，它支持 <see cref="T:System.Windows.Automation.GridPattern" /> 并表示单元格或项的容器。</summary>
+      <returns>一个 UI 自动化元素，它支持 GridPattern 并表示表单元格或项容器。 默认值为 null 引用 (<see langword="Nothing" />在 Microsoft Visual Basic.NET)。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.Row">
+      <summary>获取包含单元格或项的行的序号。</summary>
+      <returns>一个从零开始的序号，标识包含表单元格或项的行。 默认值为 0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.RowSpan">
+      <summary>获取某个单元格或项跨的行数。</summary>
+      <returns>跨过的行数。 默认值为 1。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.GridItemPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.GridItemPattern" /> 控件模式。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.GridItemPattern.RowProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.Row" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.GridItemPattern.RowSpanProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.GridItemPattern.GridItemPatternInformation.RowSpan" /> 属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.GridPattern">
+      <summary>表示充当子元素集合的容器的控件。 此控件的子级支持 <see cref="T:System.Windows.Automation.GridItemPattern" />，并且在可以按行和列进行遍历的二维逻辑坐标系统中进行组织。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.GridPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.GridPattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.GridPattern.ColumnCountProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount" /> 属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.GridPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.GridPattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.GridPattern.GetItem(System.Int32,System.Int32)">
+      <summary>检索表示指定单元格的 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <param name="row">相关行的序号。</param>
+      <param name="column">相关列的序号。</param>
+      <returns>表示检索的单元格的 <see cref="T:System.Windows.Automation.AutomationElement" />。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">请求的行坐标或列坐标小于零。
+
+或 -
+
+请求的行坐标大于 <see cref="P:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount" /> 或列坐标大于 <see cref="P:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount" />。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.GridPattern.GridPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.GridPattern" /> 对象的 <see cref="P:System.Windows.Automation.GridPattern.Current" /> 或 <see cref="P:System.Windows.Automation.GridPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount">
+      <summary>获取网格中的列数。</summary>
+      <returns>网格中的总列数。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount">
+      <summary>获取网格中的总行数。</summary>
+      <returns>网格中的总行数。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.GridPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.GridPattern" /> 控件模式。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.GridPattern.RowCountProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount" /> 属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.InvokePattern">
+      <summary>表示用于启动或执行单个明确操作的控件，并且这些控件在激活时不保持其状态。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.InvokePattern.Invoke">
+      <summary>发送请求以激活控件并启动其单一、明确的操作。</summary>
+      <exception cref="T:System.InvalidOperationException">该元素不支持 <see cref="T:System.Windows.Automation.InvokePattern" /> 控件模式，或者被隐藏或被阻止。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">元素未启用。 可在 UI 自动化提供程序已实现自己对 <see cref="P:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsEnabled" /> 属性的处理时引发。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.InvokePattern.InvokedEvent">
+      <summary>标识在调用或激活控件时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.InvokePattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.InvokePattern" /> 控件模式。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.ItemContainerPattern">
+      <summary>表示一个对象，该对象管理项并支持按属性值检索项。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.ItemContainerPattern.FindItemByProperty(System.Windows.Automation.AutomationElement,System.Windows.Automation.AutomationProperty,System.Object)">
+      <summary>按指定的属性值检索元素。</summary>
+      <param name="startAfter">容器中的某个项，将从它后面开始搜索。</param>
+      <param name="property">包含要检索的值的属性。</param>
+      <param name="value">要检索的值。</param>
+      <returns>符合搜索条件的第一个项；如果没有匹配项，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.ItemContainerPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.ItemContainerPattern" /> 控件模式。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.MultipleViewPattern">
+      <summary>表示提供同一组信息或子控件的多种表示方式（并能够在这些表示方式之间切换）的控件。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.MultipleViewPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.MultipleViewPattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.MultipleViewPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.MultipleViewPattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.MultipleViewPattern.CurrentViewProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.MultipleViewPattern.MultipleViewPatternInformation.CurrentView" /> 属性。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.MultipleViewPattern.GetViewName(System.Int32)">
+      <summary>检索特定于控件的视图的名称。</summary>
+      <param name="viewId">特定于控件的视图标识符。</param>
+      <returns>一个表示特定于控件的视图名称的本地化字符串。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="viewId" /> 不是受支持的视图集合的成员。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.MultipleViewPattern.MultipleViewPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.MultipleViewPattern" /> 对象的 <see cref="P:System.Windows.Automation.MultipleViewPattern.Current" /> 或 <see cref="P:System.Windows.Automation.MultipleViewPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.MultipleViewPattern.MultipleViewPatternInformation.CurrentView">
+      <summary>检索当前的特定于控件的视图。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的当前视图的整数值。 默认值为 0。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.MultipleViewPattern.MultipleViewPatternInformation.GetSupportedViews">
+      <summary>检索特定于控件的视图标识符的集合。</summary>
+      <returns>一个整数值集合，该集合标识了可用于 <see cref="T:System.Windows.Automation.AutomationElement" /> 的视图。 默认值为一个空的整数数组。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.MultipleViewPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.MultipleViewPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.MultipleViewPattern.SetCurrentView(System.Int32)">
+      <summary>设置当前的特定于控件的视图。</summary>
+      <param name="viewId">特定于控件的视图标识符。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="viewId" /> 不是受支持的视图集合的成员。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.MultipleViewPattern.SupportedViewsProperty">
+      <summary>标识用于获取视图的控件特定集合的属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.NotCondition">
+      <summary>表示一个 <see cref="T:System.Windows.Automation.Condition" />，它是指定 <see cref="T:System.Windows.Automation.Condition" /> 的非值。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.NotCondition.#ctor(System.Windows.Automation.Condition)">
+      <summary>初始化 <see cref="T:System.Windows.Automation.NotCondition" /> 类的新实例。</summary>
+      <param name="condition">要进行非运算的条件。</param>
+    </member>
+    <member name="P:System.Windows.Automation.NotCondition.Condition">
+      <summary>获取此 <see cref="T:System.Windows.Automation.Condition" /> 要对其进行非运算的 <see cref="T:System.Windows.Automation.NotCondition" />。</summary>
+      <returns>此 <see cref="T:System.Windows.Automation.Condition" /> 要对其进行非运算的 <see cref="T:System.Windows.Automation.NotCondition" />。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.OrCondition">
+      <summary>表示两个或更多条件的组合，如果其中的一个条件为真，则表明存在匹配项。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.OrCondition.#ctor(System.Windows.Automation.Condition[])">
+      <summary>初始化 <see cref="T:System.Windows.Automation.OrCondition" /> 类的新实例。</summary>
+      <param name="conditions">两个或更多的条件，其中的任何一个条件为真则表明发生了匹配。</param>
+    </member>
+    <member name="M:System.Windows.Automation.OrCondition.GetConditions">
+      <summary>检索在此条件中进行组合的各个条件。</summary>
+      <returns>组合成此条件的各个条件。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.PropertyCondition">
+      <summary>表示一个 <see cref="T:System.Windows.Automation.Condition" />，它测试属性是否具有指定的值。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.PropertyCondition.#ctor(System.Windows.Automation.AutomationProperty,System.Object)">
+      <summary>初始化 <see cref="T:System.Windows.Automation.PropertyCondition" /> 类的新实例。</summary>
+      <param name="property">要测试的属性。</param>
+      <param name="value">要测试属性的值。</param>
+    </member>
+    <member name="M:System.Windows.Automation.PropertyCondition.#ctor(System.Windows.Automation.AutomationProperty,System.Object,System.Windows.Automation.PropertyConditionFlags)">
+      <summary>初始化 <see cref="T:System.Windows.Automation.PropertyCondition" /> 类的新实例，并使用标志。</summary>
+      <param name="property">要测试的属性。</param>
+      <param name="value">要测试属性的值。</param>
+      <param name="flags">影响比较的标志。</param>
+    </member>
+    <member name="P:System.Windows.Automation.PropertyCondition.Flags">
+      <summary>获取用于测试属性值的标志。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.PropertyCondition.Property">
+      <summary>获取此条件正在测试的属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.PropertyCondition.Value">
+      <summary>获取此条件正在测试的属性值。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.PropertyConditionFlags">
+      <summary>包含一些值，这些值指定如何按照 <see cref="T:System.Windows.Automation.PropertyCondition" /> 对属性值进行测试。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.PropertyConditionFlags.IgnoreCase">
+      <summary>指定在比较字符串属性值时不区分大小写。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.PropertyConditionFlags.None">
+      <summary>指定使用默认行为（按照区分大小写的方式比较字符串）测试属性值。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.RangeValuePattern">
+      <summary>表示一个控件，可将其设置为范围内的一个值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.RangeValuePattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.RangeValuePattern" /> 的缓存属性值。</summary>
+      <returns>缓存的属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.RangeValuePattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.RangeValuePattern" /> 的当前属性值。</summary>
+      <returns>当前属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.RangeValuePattern.IsReadOnlyProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.IsReadOnly" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.RangeValuePattern.LargeChangeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.LargeChange" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.RangeValuePattern.MaximumProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Maximum" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.RangeValuePattern.MinimumProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Minimum" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.RangeValuePattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.RangeValuePattern" /> 控件模式。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.RangeValuePattern" /> 对象的 <see cref="P:System.Windows.Automation.TransformPattern.Current" /> 或 <see cref="P:System.Windows.Automation.TransformPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.IsReadOnly">
+      <summary>获取一个值，该值指定 UI 自动化 元素的值是否为只读。</summary>
+      <returns>如果值为只读，则为 <see langword="true" />；如果它可以修改，则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.LargeChange">
+      <summary>获取将与 <see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" /> 属性相加或相减的特定于控件的显著更改值。</summary>
+      <returns>显著更改值，如果该元素不支持 <see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.LargeChange" /> 则为 <see langword="null" />。 默认值为 0.0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Maximum">
+      <summary>获取 UI 自动化 元素支持的最大范围值。</summary>
+      <returns>支持的最大值UI 自动化元素或<see langword="null" />如果元素不支持<see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Maximum" />。 默认值为 0.0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Minimum">
+      <summary>获取 UI 自动化 元素支持的最小范围值。</summary>
+      <returns>支持的最小值UI 自动化元素或<see langword="null" />如果元素不支持<see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Minimum" />。 默认值为 0.0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.SmallChange">
+      <summary>获取小更改值，该值对于 UI 自动化 元素是唯一的，元素的 <see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Value" /> 属性将加上或减去此值。</summary>
+      <returns>唯一的小更改值UI 自动化元素或<see langword="null" />如果元素不支持<see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.SmallChange" />。 默认值为 0.0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Value">
+      <summary>获取 UI 自动化 元素的当前值。</summary>
+      <returns>当前值UI 自动化元素或<see langword="null" />如果元素不支持<see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Value" />。 默认值为 0.0。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.RangeValuePattern.SetValue(System.Double)">
+      <summary>与 UI 自动化 元素关联的值。</summary>
+      <param name="value">该元素的新值。</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="value" /> 小于该元素最小值或大于该元素的最大值。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.RangeValuePattern.SmallChangeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.SmallChange" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.RangeValuePattern.ValueProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.RangeValuePattern.RangeValuePatternInformation.Value" /> 属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.ScrollItemPattern">
+      <summary>表示支持 <see cref="T:System.Windows.Automation.ScrollPattern" /> 控件模式的容器的子控件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollItemPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.ScrollItemPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.ScrollItemPattern.ScrollIntoView">
+      <summary>滚动容器对象的内容区域，以便在容器可见区域（视区）中显示 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <exception cref="T:System.InvalidOperationException">未能将项滚动到视区中。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.ScrollPattern">
+      <summary>表示充当子元素集合的可滚动容器的控件。 该元素的子级支持 <see cref="T:System.Windows.Automation.ScrollItemPattern" />。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.ScrollPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.ScrollPattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.ScrollPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.ScrollPattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollPattern.HorizontallyScrollableProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.HorizontallyScrollable" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollPattern.HorizontalScrollPercentProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.HorizontalScrollPercent" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollPattern.HorizontalViewSizeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.HorizontalViewSize" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollPattern.NoScroll">
+      <summary>指定不应执行滚动。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.ScrollPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.ScrollPattern.Scroll(System.Windows.Automation.ScrollAmount,System.Windows.Automation.ScrollAmount)">
+      <summary>水平和垂直滚动内容区域的可见区域。</summary>
+      <param name="horizontalAmount">特定于控件的水平增量。 如果不能在此方向上滚动控件，则应传入 <see cref="F:System.Windows.Automation.ScrollPattern.NoScroll" />。</param>
+      <param name="verticalAmount">特定于控件的垂直增量。 如果不能在此方向上滚动控件，则应传入 <see cref="F:System.Windows.Automation.ScrollPattern.NoScroll" />。</param>
+      <exception cref="T:System.ArgumentException">控件仅支持用于水平或垂直滚动的 <see cref="F:System.Windows.Automation.ScrollAmount.SmallIncrement" /> 值，但传入了 <see cref="F:System.Windows.Automation.ScrollAmount.LargeIncrement" /> 值。</exception>
+      <exception cref="T:System.InvalidOperationException">尝试在不支持的方向上滚动。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.ScrollPattern.ScrollHorizontal(System.Windows.Automation.ScrollAmount)">
+      <summary>按指定的 <see cref="T:System.Windows.Automation.ScrollAmount" /> 水平滚动内容区域的当前可见区域。</summary>
+      <param name="amount">特定于控件的水平 <see cref="T:System.Windows.Automation.ScrollAmount" /> 增量。</param>
+      <exception cref="T:System.ArgumentException">如果控件仅对水平或垂直滚动支持 <see cref="F:System.Windows.Automation.ScrollAmount.SmallIncrement" /> 值，但传入了 <see cref="F:System.Windows.Automation.ScrollAmount.LargeIncrement" /> 值。</exception>
+      <exception cref="T:System.InvalidOperationException">尝试在不支持的方向上滚动。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.ScrollPattern.ScrollPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.ScrollPattern" /> 对象的 <see cref="P:System.Windows.Automation.ScrollPattern.Current" /> 或 <see cref="P:System.Windows.Automation.ScrollPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.HorizontallyScrollable">
+      <summary>获取一个值，该值表示 UI 自动化元素是否可水平滚动。</summary>
+      <returns>如果 UI 自动化元素可水平滚动，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.HorizontalScrollPercent">
+      <summary>获取当前水平滚动位置。</summary>
+      <returns>以 UI 自动化元素内总内容区域百分比表示的水平滚动位置。 默认值为 0.0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.HorizontalViewSize">
+      <summary>获取当前的水平视图大小。</summary>
+      <returns>可视区域的水平大小，以 UI 自动化元素内整个内容区域的百分比表示。 默认值为 100.0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.VerticallyScrollable">
+      <summary>检索一个值，该值指示 UI 自动化元素是否可垂直滚动。</summary>
+      <returns>如果 UI 自动化元素可水平滚动，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.VerticalScrollPercent">
+      <summary>获取当前垂直滚动位置。</summary>
+      <returns>以 UI 自动化元素内总内容区域百分比表示的垂直滚动位置。 默认值为 0.0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.VerticalViewSize">
+      <summary>获取当前的垂直视图大小。</summary>
+      <returns>可视区域的垂直大小，以 UI 自动化元素内整个内容区域的百分比表示。 默认值为 100.0。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.ScrollPattern.ScrollVertical(System.Windows.Automation.ScrollAmount)">
+      <summary>按指定的 <see cref="T:System.Windows.Automation.ScrollAmount" /> 垂直滚动内容区域的当前可见区域。</summary>
+      <param name="amount">特定于控件的垂直 <see cref="T:System.Windows.Automation.ScrollAmount" /> 增量。</param>
+      <exception cref="T:System.ArgumentException">如果控件仅对水平或垂直滚动支持 <see cref="F:System.Windows.Automation.ScrollAmount.SmallIncrement" /> 值，但传入了 <see cref="F:System.Windows.Automation.ScrollAmount.LargeIncrement" /> 值。</exception>
+      <exception cref="T:System.InvalidOperationException">尝试在不支持的方向上滚动。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.ScrollPattern.SetScrollPercent(System.Double,System.Double)">
+      <summary>以 <see cref="T:System.Windows.Automation.AutomationElement" /> 内总内容区域百分比的形式设置水平和/或垂直滚动位置。</summary>
+      <param name="horizontalPercent">总水平内容区域的百分比。 如果不能在此方向上滚动控件，则应传入 <see cref="F:System.Windows.Automation.ScrollPattern.NoScroll" />。</param>
+      <param name="verticalPercent">总垂直内容区域的百分比。 如果不能在此方向上滚动控件，则应传入 <see cref="F:System.Windows.Automation.ScrollPattern.NoScroll" />。</param>
+      <exception cref="T:System.ArgumentException">传入无法转换成双精度的值。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">传入了大于 100 或小于 0 的值（-1 除外，因为它等效于 <see cref="F:System.Windows.Automation.ScrollPattern.NoScroll" />）。 <see cref="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.HorizontalScrollPercent" /> 和 <see cref="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.VerticalScrollPercent" /> 值被规范化为 0% 或 100%。</exception>
+      <exception cref="T:System.InvalidOperationException">尝试在不支持的方向上滚动。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollPattern.VerticallyScrollableProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.VerticallyScrollable" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollPattern.VerticalScrollPercentProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.VerticalScrollPercent" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ScrollPattern.VerticalViewSizeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ScrollPattern.ScrollPatternInformation.VerticalViewSize" /> 属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.SelectionItemPattern">
+      <summary>表示支持 <see cref="T:System.Windows.Automation.SelectionPattern" /> 的容器控件中的可选子项。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.SelectionItemPattern.AddToSelection">
+      <summary>将当前元素添加到所选项的集合。</summary>
+      <exception cref="T:System.InvalidOperationException">尝试向 <see cref="F:System.Windows.Automation.SelectionPattern.CanSelectMultipleProperty" /> = <see langword="false" /> 并已选定另一元素的选择容器添加所选内容。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.SelectionItemPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.SelectionItemPattern" /> 的缓存属性值。</summary>
+      <returns>缓存的属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.SelectionItemPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.SelectionItemPattern" /> 的当前属性值。</summary>
+      <returns>当前属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionItemPattern.ElementAddedToSelectionEvent">
+      <summary>标识向选定项的集合添加项时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionItemPattern.ElementRemovedFromSelectionEvent">
+      <summary>标识从选定项的集合中删除项时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionItemPattern.ElementSelectedEvent">
+      <summary>标识在对任何 <see cref="M:System.Windows.Automation.SelectionItemPattern.Select" />、<see cref="M:System.Windows.Automation.SelectionItemPattern.AddToSelection" /> 或 <see cref="M:System.Windows.Automation.SelectionItemPattern.RemoveFromSelection" /> 的调用导致选定单个项时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionItemPattern.IsSelectedProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.SelectionItemPattern.SelectionItemPatternInformation.IsSelected" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionItemPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.SelectionItemPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.SelectionItemPattern.RemoveFromSelection">
+      <summary>从所选项的集合删除当前元素。</summary>
+      <exception cref="T:System.InvalidOperationException">尝试从已选定一项并且 <see cref="F:System.Windows.Automation.SelectionPattern.IsSelectionRequiredProperty" /> = <see langword="true" /> 的选择容器中移除一个选择。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.SelectionItemPattern.Select">
+      <summary>取消选择所有选定项，然后选择当前元素。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionItemPattern.SelectionContainerProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.SelectionItemPattern.SelectionItemPatternInformation.SelectionContainer" /> 属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.SelectionItemPattern.SelectionItemPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.SelectionItemPattern" /> 对象的 <see cref="P:System.Windows.Automation.SelectionItemPattern.Current" /> 或 <see cref="P:System.Windows.Automation.SelectionItemPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.SelectionItemPattern.SelectionItemPatternInformation.IsSelected">
+      <summary>获取一个值，该值指示某个项是否处于选定状态。</summary>
+      <returns>如果选定此项，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.SelectionItemPattern.SelectionItemPatternInformation.SelectionContainer">
+      <summary>获取支持 <see cref="T:System.Windows.Automation.SelectionPattern" /> 控件模式并充当调用对象的容器的 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <returns>容器对象。 默认为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.SelectionPattern">
+      <summary>表示一个控件，该控件充当可选子项集合的容器。 此元素的子级支持 <see cref="T:System.Windows.Automation.SelectionItemPattern" />。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.SelectionPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.SelectionPattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionPattern.CanSelectMultipleProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.SelectionPattern.SelectionPatternInformation.CanSelectMultiple" /> 属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.SelectionPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.SelectionPattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionPattern.InvalidatedEvent">
+      <summary>标识在容器中的选项发生重大更改并需要发送多于 <see cref="F:System.Windows.Automation.Provider.AutomationInteropProvider.InvalidateLimit" /> 常量所允许的添加和删除事件时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionPattern.IsSelectionRequiredProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.SelectionPattern.SelectionPatternInformation.IsSelectionRequired" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.SelectionPattern" /> 控件模式。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.SelectionPattern.SelectionPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.SelectionPattern" /> 对象的 <see cref="P:System.Windows.Automation.SelectionPattern.Current" /> 或 <see cref="P:System.Windows.Automation.SelectionPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.SelectionPattern.SelectionPatternInformation.CanSelectMultiple">
+      <summary>获取一个值，该值指定容器是否允许同时选择多个子元素。</summary>
+      <returns>如果控件支持多重选择，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.SelectionPattern.SelectionPatternInformation.GetSelection">
+      <summary>检索选择容器中选定的所有项。</summary>
+      <returns>已选定项的集合。 默认为空数组。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.SelectionPattern.SelectionPatternInformation.IsSelectionRequired">
+      <summary>获取一个值，该值指定容器是否要求至少选择一个子项。</summary>
+      <returns>如果该控件要求至少选择一个项，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.SelectionPattern.SelectionProperty">
+      <summary>标识用于获取容器中的选定项的属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.SynchronizedInputPattern">
+      <summary>表示支持同步输入事件的对象。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.SynchronizedInputPattern.Cancel">
+      <summary>停止对输入的侦听。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SynchronizedInputPattern.InputDiscardedEvent">
+      <summary>标识在 WPF 丢弃输入时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SynchronizedInputPattern.InputReachedOtherElementEvent">
+      <summary>标识在接收输入的元素不是当前正在侦听输入的元素时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SynchronizedInputPattern.InputReachedTargetEvent">
+      <summary>标识在接收输入的元素是当前正在侦听输入的元素时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.SynchronizedInputPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.SynchronizedInputPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.SynchronizedInputPattern.StartListening(System.Windows.Automation.SynchronizedInputType)">
+      <summary>指定提供程序开始对指定类型的输入进行侦听。</summary>
+      <param name="inputType">要侦听的输入的类型。</param>
+    </member>
+    <member name="T:System.Windows.Automation.TableItemPattern">
+      <summary>表示支持 <see cref="T:System.Windows.Automation.TablePattern" /> 的容器的子控件。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TableItemPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.TableItemPattern" /> 的缓存属性值。</summary>
+      <returns>缓存的属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.TableItemPattern.ColumnHeaderItemsProperty">
+      <summary>标识一个属性，该属性可检索与表项或单元格关联的所有列标题。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TableItemPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.TableItemPattern" /> 的当前属性值。</summary>
+      <returns>当前属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.TableItemPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.TableItemPattern" /> 控件模式。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TableItemPattern.RowHeaderItemsProperty">
+      <summary>标识用于检索与表中项或单元格关联的所有行标题的属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.TableItemPattern.TableItemPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.TableItemPattern" /> 对象的 <see cref="P:System.Windows.Automation.TableItemPattern.Current" /> 或 <see cref="P:System.Windows.Automation.TableItemPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TableItemPattern.TableItemPatternInformation.Column">
+      <summary>获取包含表单元格或项的列的序号。</summary>
+      <returns>一个从零开始的序号，它表示包含表单元格或项的列。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.TableItemPattern.TableItemPatternInformation.ColumnSpan">
+      <summary>获取表单元格或项跨的列数。</summary>
+      <returns>跨越的列数。 默认值为 1。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.TableItemPattern.TableItemPatternInformation.ContainingGrid">
+      <summary>获取 UI 自动化 元素，该元素支持 GridPattern 控件模式，且可表示表格单元或项容器。</summary>
+      <returns>UI 自动化 元素，该元素支持 GridPattern 控件模式，且可表示表格单元或项容器。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TableItemPattern.TableItemPatternInformation.GetColumnHeaderItems">
+      <summary>检索与表项或单元格关联的全部列标题。</summary>
+      <returns>列标题元素的集合。 默认为空数组。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TableItemPattern.TableItemPatternInformation.GetRowHeaderItems">
+      <summary>检索与表项或单元格关联的全部行标题。</summary>
+      <returns>行标题元素的集合。 默认为空数组。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.TableItemPattern.TableItemPatternInformation.Row">
+      <summary>获取包含表单元格或项的行的序号。</summary>
+      <returns>一个从零开始的序号，它表示包含表单元格或项的列。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.TableItemPattern.TableItemPatternInformation.RowSpan">
+      <summary>获取表单元格或项跨的行数。</summary>
+      <returns>跨越的列数。 默认值为 1。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.TablePattern">
+      <summary>表示充当子元素集合的容器的控件。 此元素的子级支持 <see cref="T:System.Windows.Automation.TableItemPattern" />，并且在可以按行和列进行遍历的二维逻辑坐标系统中进行组织。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TablePattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.TablePattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.TablePattern.ColumnHeadersProperty">
+      <summary>标识获取表格列标题集合的属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TablePattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.TablePattern" /> 的当前 UI 自动化 属性值。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TablePattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.TablePattern" /> 控件模式。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TablePattern.RowHeadersProperty">
+      <summary>标识用于获取表的行标题集合的属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TablePattern.RowOrColumnMajorProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.TablePattern.TablePatternInformation.RowOrColumnMajor" /> 属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.TablePattern.TablePatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.TablePattern" /> 对象的 <see cref="P:System.Windows.Automation.TablePattern.Current" /> 或 <see cref="P:System.Windows.Automation.TablePattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TablePattern.TablePatternInformation.ColumnCount">
+      <summary>获取表中的总列数。</summary>
+      <returns>表中的总列数。 默认值为 0。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TablePattern.TablePatternInformation.GetColumnHeaders">
+      <summary>检索一个表示表格中所有列标题的 <see cref="T:System.Windows.Automation.AutomationElement" />的集合。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的集合。 默认为空数组。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TablePattern.TablePatternInformation.GetRowHeaders">
+      <summary>检索一个表示表格中所有行标题的 <see cref="T:System.Windows.Automation.AutomationElement" /> 的集合。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.AutomationElement" /> 的集合。 默认为空数组。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.TablePattern.TablePatternInformation.RowCount">
+      <summary>获取表中的总行数。</summary>
+      <returns>表中的总行数。 默认值为 0。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.TablePattern.TablePatternInformation.RowOrColumnMajor">
+      <summary>检索表遍历的首要方向（<see cref="F:System.Windows.Automation.RowOrColumnMajor.ColumnMajor" />、<see cref="F:System.Windows.Automation.RowOrColumnMajor.RowMajor" /> 和 <see cref="F:System.Windows.Automation.RowOrColumnMajor.Indeterminate" />）。</summary>
+      <returns>首要遍历方向。 默认值为 <see cref="F:System.Windows.Automation.RowOrColumnMajor.Indeterminate" />。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.Text.TextPatternRange">
+      <summary>表示 <see cref="T:System.Windows.Automation.TextPattern" /> 容器中的一块连续文本。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.AddToSelection">
+      <summary>添加到突出显示文本集合中，该集合位于支持多个不连续选择的文本容器中。</summary>
+      <exception cref="T:System.InvalidOperationException">如果文本提供程序不支持选择多个不连续的文本范围（例如，<see cref="P:System.Windows.Automation.TextPattern.SupportedTextSelection" /> 的值必须为 <see langword="Multiple" />）。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.Clone">
+      <summary>检索与原始 <see cref="T:System.Windows.Automation.Text.TextPatternRange" /> 完全相同并且继承了其所有属性的 <see cref="T:System.Windows.Automation.Text.TextPatternRange" />。</summary>
+      <returns>新的文本范围。 从不返回空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.Compare(System.Windows.Automation.Text.TextPatternRange)">
+      <summary>返回一个 <see cref="T:System.Boolean" /> 值，该值指出文本范围的跨度（<see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> 端点到 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> 端点）是否与另一个文本范围相同。</summary>
+      <param name="range">要比较的文本范围。</param>
+      <returns>如果两个文本范围的跨度相同，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentException">如果进行比较的范围不是来自同一个文本提供程序。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.CompareEndpoints(System.Windows.Automation.Text.TextPatternRangeEndpoint,System.Windows.Automation.Text.TextPatternRange,System.Windows.Automation.Text.TextPatternRangeEndpoint)">
+      <summary>返回一个指出两个文本范围是否具有相同端点的 <see cref="T:System.Int32" /> 值。</summary>
+      <param name="endpoint">调用方的 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> 或 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> 端点。</param>
+      <param name="targetRange">要进行比较的目标范围。</param>
+      <param name="targetEndpoint">目标方的 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> 或 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> 端点。</param>
+      <returns>如果调用方的端点在文本中比目标端点先出现，则返回一个负值。  
+如果调用方的端点与目标端点处于同一位置，则返回零。  
+如果调用方的端点在文本中比目标端点后出现，则返回一个正值。</returns>
+      <exception cref="T:System.ArgumentNullException">如果范围是空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</exception>
+      <exception cref="T:System.ArgumentException">如果范围来自其他容器。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.ExpandToEnclosingUnit(System.Windows.Automation.Text.TextUnit)">
+      <summary>将文本范围扩展到指定的 <see cref="T:System.Windows.Automation.Text.TextUnit" />。</summary>
+      <param name="unit">文本单位。</param>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.FindAttribute(System.Windows.Automation.AutomationTextAttribute,System.Object,System.Boolean)">
+      <summary>返回具有指定特性值的文本范围子集。</summary>
+      <param name="attribute">要搜索的特性。</param>
+      <param name="value">要搜索的特性值。 此值必须与为特性指定的类型匹配。</param>
+      <param name="backward">如果应该返回最后一个匹配的文本范围而不是第一个，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>具有匹配特性和特性值的文本范围；否则为 null（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.FindText(System.String,System.Boolean,System.Boolean)">
+      <summary>返回包含指定文本的文本范围子集。</summary>
+      <param name="text">要搜索的文本字符串。</param>
+      <param name="backward">如果应该返回最后一个匹配的文本范围而不是第一个，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="ignoreCase">如果应该忽略大小写，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>与指定文本匹配的文本范围；否则为 null（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.GetAttributeValue(System.Windows.Automation.AutomationTextAttribute)">
+      <summary>返回整个文本范围内指定特性的值。</summary>
+      <param name="attribute">文本特性。</param>
+      <returns>返回指定特性的值。 例如，GetAttributeValue(TextPattern.FontNameAttribute) 将返回一个表示文本范围的字体名称（如果唯一）的字符串，而 GetAttributeValue(TextPattern.IsItalicAttribute) 将返回一个布尔值。  
+如果指定特性的值在文本范围内会发生变化，则返回 <see cref="F:System.Windows.Automation.TextPattern.MixedAttributeValue" />。  
+如果提供程序或控件不支持指定的特性，则返回 <see cref="F:System.Windows.Automation.AutomationElement.NotSupported" />。</returns>
+      <exception cref="T:System.ArgumentException">如果指定的特性无效。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.GetBoundingRectangles">
+      <summary>检索由文本范围中每个完全或部分可见的文本行的边框组成的集合。</summary>
+      <returns>文本范围中每个完全或部分可见的文本行的边框组成的数组。  
+对于退化文本范围，则为一个空数组。  
+对于其屏幕坐标完全位于屏幕之外的文本范围、滚动到视图之外的文本范围或者被某个重叠窗口遮盖住的文本范围，为一个空数组。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.GetChildren">
+      <summary>检索文本范围内的所有嵌入对象的集合。</summary>
+      <returns>文本范围内的所有子对象的集合。 与范围发生重叠但是并未完全包括在文本范围内的子对象也会包括在该集合中。  
+如果不存在任何子对象，则返回一个空集合。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.GetEnclosingElement">
+      <summary>返回包含该文本范围的最内层 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <returns>包含调用方的最内层元素。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.GetText(System.Int32)">
+      <summary>返回文本范围的纯文本。</summary>
+      <param name="maxLength">要返回的字符串的最大长度。 如果没有任何限制，则使用 <c>-1</c>。</param>
+      <returns>文本范围的纯文本（可能在指定 <paramref name="maxLength" /> 处截断）。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">如果 <paramref name="maxLength" /> 小于 -1。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.Move(System.Windows.Automation.Text.TextUnit,System.Int32)">
+      <summary>将文本范围移动指定数量的文本单位。</summary>
+      <param name="unit">文本单位的边界。</param>
+      <param name="count">要移动的文本单位数。 正值表示将文本范围向前移动，负值则表示向后移动文本范围，如果为 0，则不会进行任何移动。</param>
+      <returns>实际移动的单位数。 如果新的文本范围端点大于或小于 <see cref="P:System.Windows.Automation.TextPattern.DocumentRange" /> 端点，则它可能小于请求移动的单位数。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.MoveEndpointByRange(System.Windows.Automation.Text.TextPatternRangeEndpoint,System.Windows.Automation.Text.TextPatternRange,System.Windows.Automation.Text.TextPatternRangeEndpoint)">
+      <summary>将文本范围的一个端点移动到第二个文本范围的指定端点。</summary>
+      <param name="endpoint">要移动的端点。</param>
+      <param name="targetRange">同一文本提供程序中的另一个范围。</param>
+      <param name="targetEndpoint">另一个范围中的端点。</param>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.MoveEndpointByUnit(System.Windows.Automation.Text.TextPatternRangeEndpoint,System.Windows.Automation.Text.TextUnit,System.Int32)">
+      <summary>在文档范围内将文本范围的一个端点移动指定数量的 <see cref="T:System.Windows.Automation.Text.TextUnit" />。</summary>
+      <param name="endpoint">要移动的端点。</param>
+      <param name="unit">移动时使用的文本单位。</param>
+      <param name="count">要移动的单元的数量。 正值表示向前移动端点。 负值表示向后移动端点。 0 值表示不做任何移动。</param>
+      <returns>实际移动的单位数，如果移动端点时遇到了文档的开始或结尾，则可能小于请求移动的单位数。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.RemoveFromSelection">
+      <summary>从支持多个不连续文本选择的文本容器中的某个已有突出显示文本集合中，移除与调用文本范围的 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> 和 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> 端点对应的突出显示文本部分。</summary>
+      <exception cref="T:System.InvalidOperationException">如果文本提供程序不支持选择多个不连续的文本范围（例如，<see cref="P:System.Windows.Automation.TextPattern.SupportedTextSelection" /> 的值必须为 <see langword="Multiple" />）。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.ScrollIntoView(System.Boolean)">
+      <summary>导致文本控件垂直滚动，直到文本范围在视区中可见。</summary>
+      <param name="alignToTop">如果文本控件应该滚动以便文本范围与视区顶部对齐，则为 <see langword="true" />；如果应该与视区底部对齐，则为 <see langword="false" />。</param>
+      <exception cref="T:System.InvalidOperationException">如果控件不支持滚动。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Text.TextPatternRange.Select">
+      <summary>突出显示文本控件中与文本范围的 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> 和 <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> 端点对应的文本。</summary>
+      <exception cref="T:System.InvalidOperationException">在文本控件不支持文本选择时发生。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.Text.TextPatternRange.TextPattern">
+      <summary>获取与文本范围关联的 <see cref="T:System.Windows.Automation.TextPattern" />。</summary>
+      <returns>文本提供程序。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.TextPattern">
+      <summary>表示包含文本的控件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.AnimationStyleAttribute">
+      <summary>标识文本范围的 <see cref="T:System.Windows.Automation.Text.AnimationStyle" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.BackgroundColorAttribute">
+      <summary>标识文本范围的 BackgroundColor 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.BulletStyleAttribute">
+      <summary>标识文本范围的 <see cref="T:System.Windows.Automation.Text.BulletStyle" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.CapStyleAttribute">
+      <summary>标识文本范围的 <see cref="T:System.Windows.Automation.Text.CapStyle" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.CultureAttribute">
+      <summary>标识细化到子语言级别的文本范围的 <see langword="Culture" /> (<see cref="T:System.Globalization.CultureInfo" />) 特性；例如，瑞士法语 (fr-CH)，而不是法语 (fr)。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TextPattern.DocumentRange">
+      <summary>获取包含文档主文本的文本范围。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.FontNameAttribute">
+      <summary>标识文本范围的 <see langword="FontName" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.FontSizeAttribute">
+      <summary>标识文本范围的 <see langword="FontSize" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.FontWeightAttribute">
+      <summary>标识文本范围的 <see langword="FontWeight" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.ForegroundColorAttribute">
+      <summary>标识文本范围的 <see langword="ForegroundColor" /> (COLORREF) 属性。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.TextPattern.GetSelection">
+      <summary>检索与当前文本选择（或多个文本选择）关联的不连续文本范围的集合。</summary>
+      <returns>不连续文本范围的集合。</returns>
+      <exception cref="T:System.InvalidOperationException">文本容器不支持文本选择。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.TextPattern.GetVisibleRanges">
+      <summary>从文本容器中检索一个不连续文本范围的数组，其中每个文本范围都以第一个部分可见的行开始，以最后一个部分可见的行结束。</summary>
+      <returns>容器内可见文本范围的集合或者一个空数组。 从不返回 <see langword="Null" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.HorizontalTextAlignmentAttribute">
+      <summary>标识文本范围的 <see cref="T:System.Windows.Automation.Text.HorizontalTextAlignment" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.IndentationFirstLineAttribute">
+      <summary>标识文本范围的 <see langword="IndentationFirstLine" /> (<see cref="P:System.Windows.Documents.Paragraph.TextIndent" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.IndentationLeadingAttribute">
+      <summary>标识文本范围的 <see langword="IndentationLeading" /> (<see cref="P:System.Windows.Documents.Paragraph.TextIndent" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.IndentationTrailingAttribute">
+      <summary>标识文本范围的 <see langword="IndentationTrailing" /> (<see cref="P:System.Windows.Documents.Paragraph.TextIndent" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.IsHiddenAttribute">
+      <summary>标识文本范围的 <see langword="IsHidden" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.IsItalicAttribute">
+      <summary>标识文本范围的 <see langword="IsItalic" /> (<see cref="T:System.Windows.FontStyle" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.IsReadOnlyAttribute">
+      <summary>标识文本范围的 <see langword="IsReadOnly" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.IsSubscriptAttribute">
+      <summary>标识文本范围的 <see langword="IsSubscript" /> (<see cref="T:System.Windows.FontVariants" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.IsSuperscriptAttribute">
+      <summary>标识文本范围的 <see langword="IsSuperscript" /> (<see cref="T:System.Windows.FontVariants" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.MarginBottomAttribute">
+      <summary>标识文本范围的 <see langword="MarginBottom" /> (<see cref="T:System.Drawing.Printing.PageSettings" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.MarginLeadingAttribute">
+      <summary>标识文本范围的 <see langword="MarginLeading" /> (<see cref="T:System.Drawing.Printing.PageSettings" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.MarginTopAttribute">
+      <summary>标识文本范围的 <see langword="MarginTop" /> (<see cref="T:System.Drawing.Printing.PageSettings" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.MarginTrailingAttribute">
+      <summary>标识文本范围的 <see langword="MarginTrailing" /> (<see cref="T:System.Drawing.Printing.PageSettings" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.MixedAttributeValue">
+      <summary>标识给定特性的值是否在 Rich Edit 控件中的某个文本范围内发生变化。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.OutlineStylesAttribute">
+      <summary>标识文本范围的 <see langword="OutlineStyles" /> (<see cref="T:System.Windows.Automation.Text.OutlineStyles" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.OverlineColorAttribute">
+      <summary>标识文本范围的 <see langword="OverlineColor" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.OverlineStyleAttribute">
+      <summary>标识文本范围的 <see langword="OverlineStyle" /> (<see cref="T:System.Windows.Automation.Text.TextDecorationLineStyle" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.TextPattern" /> 模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.TextPattern.RangeFromChild(System.Windows.Automation.AutomationElement)">
+      <summary>检索包含子元素（例如图像、超链接、Microsoft Excel 电子表格或其他嵌入对象）的一个文本范围。</summary>
+      <param name="childElement">所包含的对象。</param>
+      <returns>涵盖子元素的一个范围。</returns>
+      <exception cref="T:System.ArgumentNullException">子元素为 <see langword="null" />。</exception>
+      <exception cref="T:System.InvalidOperationException">元素不是文本容器的子元素。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.TextPattern.RangeFromPoint(System.Windows.Point)">
+      <summary>返回与指定屏幕坐标最接近的退化（空）文本范围。</summary>
+      <param name="screenLocation">以屏幕坐标的形式表示的位置。</param>
+      <returns>与指定位置最接近的退化范围。 从不返回 <see langword="Null" />。</returns>
+      <exception cref="T:System.ArgumentException">给定点位于与文本模式关联的 <see cref="T:System.Windows.Automation.AutomationElement" /> 的外部。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.StrikethroughColorAttribute">
+      <summary>标识文本范围的 <see langword="StrikethroughColor" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.StrikethroughStyleAttribute">
+      <summary>标识文本范围的 <see langword="StrikethroughStyle" /> (<see cref="T:System.Windows.Automation.Text.TextDecorationLineStyle" />) 特性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TextPattern.SupportedTextSelection">
+      <summary>获取一个指定文本提供程序是否支持文本选择的值，并在支持文本选择的情况下获取所支持的选择的类型。</summary>
+      <returns>来自 <see cref="T:System.Windows.Automation.SupportedTextSelection" /> 的 <see langword="None" />、<see langword="Single" /> 或 <see langword="Multiple" /> 之一。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.TabsAttribute">
+      <summary>标识文本范围的 <see langword="Tabs" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.TextChangedEvent">
+      <summary>标识每当修改文本内容时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.TextFlowDirectionsAttribute">
+      <summary>标识文本范围的 <see langword="TextFlowDirections" /> (<see cref="T:System.Windows.Automation.Text.FlowDirections" />) 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.TextSelectionChangedEvent">
+      <summary>标识在修改文本选择时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.UnderlineColorAttribute">
+      <summary>标识文本范围的 <see langword="UnderlineColor" /> 特性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TextPattern.UnderlineStyleAttribute">
+      <summary>标识文本范围的 <see langword="UnderlineStyle" /> (<see cref="T:System.Windows.Automation.Text.TextDecorationLineStyle" />) 特性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.TogglePattern">
+      <summary>表示可以循环通过一组状态并在设置后保持某种状态的控件。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TogglePattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.TogglePattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.TogglePattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.TogglePattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.TogglePattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.TogglePattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.TogglePattern.Toggle">
+      <summary>循环通过 <see cref="T:System.Windows.Automation.AutomationElement" /> 的多个切换状态。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.TogglePattern.TogglePatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.TogglePattern" /> 对象的 <see cref="P:System.Windows.Automation.TogglePattern.Current" /> 或 <see cref="P:System.Windows.Automation.TogglePattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TogglePattern.TogglePatternInformation.ToggleState">
+      <summary>检索 <see cref="T:System.Windows.Automation.AutomationElement" /> 的切换状态。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.ToggleState" /> 的 <see cref="T:System.Windows.Automation.AutomationElement" />。 默认值为 <see cref="F:System.Windows.Automation.ToggleState.Indeterminate" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.TogglePattern.ToggleStateProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.TogglePattern.TogglePatternInformation.ToggleState" /> 属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.TransformPattern">
+      <summary>表示可以在二维空间中移动、调整大小或旋转的控件。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TransformPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.TransformPattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.TransformPattern.CanMoveProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanMove" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TransformPattern.CanResizeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanResize" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TransformPattern.CanRotateProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanRotate" /> 属性。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TransformPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.TransformPattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TransformPattern.Move(System.Double,System.Double)">
+      <summary>移动此控件。</summary>
+      <param name="x">此控件左侧的绝对屏幕坐标。</param>
+      <param name="y">此控件顶部的绝对屏幕坐标。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanMove" /> 属性为 false。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.TransformPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.TransformPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.TransformPattern.Resize(System.Double,System.Double)">
+      <summary>调整控件大小。</summary>
+      <param name="width">窗口的新宽度（以像素为单位）。</param>
+      <param name="height">窗口的新高度（以像素为单位）。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanResize" /> 属性为 false。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.TransformPattern.Rotate(System.Double)">
+      <summary>旋转控件。</summary>
+      <param name="degrees">将元素旋转的度数。 正数会顺时针旋转；负数会逆时针旋转。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanRotate" /> 属性为 false。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.TransformPattern.TransformPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.TransformPattern" /> 对象的 <see cref="P:System.Windows.Automation.TransformPattern.Current" /> 或 <see cref="P:System.Windows.Automation.TransformPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanMove">
+      <summary>获取一个值，该值指定是否可以移动 UI 自动化 元素。</summary>
+      <returns>如果可以移动该元素，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanResize">
+      <summary>获取一个值，该值指示 UI 自动化元素是否可以调整大小。</summary>
+      <returns>如果元素可以调整大小，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanRotate">
+      <summary>获取一个值，该值指示 UI 自动化 元素可否旋转。</summary>
+      <returns>如果元素可旋转，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Windows.Automation.TreeWalker">
+      <summary>提供用于导航 UI 自动化树的方法和属性。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.#ctor(System.Windows.Automation.Condition)">
+      <summary>初始化 <see cref="T:System.Windows.Automation.TreeWalker" /> 类的新实例。</summary>
+      <param name="condition">
+        <see cref="T:System.Windows.Automation.TreeWalker" /> 将要导航的 UI 自动化元素目录树的视图。</param>
+    </member>
+    <member name="P:System.Windows.Automation.TreeWalker.Condition">
+      <summary>获取一个对象，该对象定义 <see cref="T:System.Windows.Automation.TreeWalker" /> 对象的视图。</summary>
+      <returns>定义视图的条件。 这是传递给构造函数的值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.TreeWalker.ContentViewWalker">
+      <summary>表示一个预定义的 <see cref="T:System.Windows.Automation.TreeWalker" />，其中包含目录树中标记为内容控件的元素的视图。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.TreeWalker.ControlViewWalker">
+      <summary>表示一个预定义的 <see cref="T:System.Windows.Automation.TreeWalker" />，其中包含目录树中标记为控件的元素的视图。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetFirstChild(System.Windows.Automation.AutomationElement)">
+      <summary>检索指定 <see cref="T:System.Windows.Automation.AutomationElement" /> 的第一个子元素。</summary>
+      <param name="element">从中检索第一个子级的元素。</param>
+      <returns>第一个子元素；如果不存在此类元素，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetFirstChild(System.Windows.Automation.AutomationElement,System.Windows.Automation.CacheRequest)">
+      <summary>检索指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 的第一个子元素并缓存属性和模式。</summary>
+      <param name="element">从中检索第一个子级的元素。</param>
+      <param name="request">一个缓存请求对象，它指定返回的 <see cref="T:System.Windows.Automation.AutomationElement" /> 上要进行缓存的属性和模式。</param>
+      <returns>第一个子元素；如果不存在此类元素，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetLastChild(System.Windows.Automation.AutomationElement)">
+      <summary>检索指定 <see cref="T:System.Windows.Automation.AutomationElement" /> 的最后一个子元素。</summary>
+      <param name="element">从中检索最后一个子级的元素。</param>
+      <returns>作为最后一个子元素的 <see cref="T:System.Windows.Automation.AutomationElement" />；如果不存在此类元素，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetLastChild(System.Windows.Automation.AutomationElement,System.Windows.Automation.CacheRequest)">
+      <summary>检索指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 的最后一个子元素并缓存属性和模式。</summary>
+      <param name="element">从中检索最后一个子级的元素。</param>
+      <param name="request">一个缓存请求对象，它指定返回的 <see cref="T:System.Windows.Automation.AutomationElement" /> 上要进行缓存的属性和模式。</param>
+      <returns>最后一个子元素；如果不存在此类元素，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetNextSibling(System.Windows.Automation.AutomationElement)">
+      <summary>检索指定 <see cref="T:System.Windows.Automation.AutomationElement" /> 的下一个同级元素。</summary>
+      <param name="element">从中检索下一个同级元素的 <see cref="T:System.Windows.Automation.AutomationElement" />。</param>
+      <returns>下一个同级元素；如果不存在此类元素，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetNextSibling(System.Windows.Automation.AutomationElement,System.Windows.Automation.CacheRequest)">
+      <summary>检索指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 的下一个同级元素并缓存属性和模式。</summary>
+      <param name="element">从中检索下一个同级的元素。</param>
+      <param name="request">一个缓存请求对象，它指定返回的 <see cref="T:System.Windows.Automation.AutomationElement" /> 上要进行缓存的属性和模式。</param>
+      <returns>下一个同级元素；如果不存在此类元素，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetParent(System.Windows.Automation.AutomationElement)">
+      <summary>检索指定 <see cref="T:System.Windows.Automation.AutomationElement" /> 的父元素。</summary>
+      <param name="element">将返回其父级的元素。</param>
+      <returns>父元素；如果指定元素为目录树中的根元素或者父元素在当前视图中不可见，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetParent(System.Windows.Automation.AutomationElement,System.Windows.Automation.CacheRequest)">
+      <summary>检索指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 的父元素并缓存属性和模式。</summary>
+      <param name="element">将返回其父级的元素。</param>
+      <param name="request">一个缓存请求对象，它指定返回的 <see cref="T:System.Windows.Automation.AutomationElement" /> 上要进行缓存的成员。</param>
+      <returns>父元素；如果指定元素为目录树中的根元素或者父元素在此视图中不可见，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetPreviousSibling(System.Windows.Automation.AutomationElement)">
+      <summary>检索指定 <see cref="T:System.Windows.Automation.AutomationElement" /> 的上一同级元素。</summary>
+      <param name="element">从中检索上一个同级的元素。</param>
+      <returns>上一个同级元素；如果不存在此类元素，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.GetPreviousSibling(System.Windows.Automation.AutomationElement,System.Windows.Automation.CacheRequest)">
+      <summary>检索指定的 <see cref="T:System.Windows.Automation.AutomationElement" /> 的上一个同级并缓存属性和模式。</summary>
+      <param name="element">从中检索上一个同级的元素。</param>
+      <param name="request">一个缓存请求对象，它指定返回的 <see cref="T:System.Windows.Automation.AutomationElement" /> 上要进行缓存的属性和模式。</param>
+      <returns>上一个同级元素；如果不存在此类元素，则为空引用（在 Visual Basic 中为 <see langword="Nothing" />）。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.Normalize(System.Windows.Automation.AutomationElement)">
+      <summary>检索节点本身（如果它满足 <see cref="P:System.Windows.Automation.TreeWalker.Condition" />）或者检索满足 <see cref="P:System.Windows.Automation.TreeWalker.Condition" /> 的最接近的父级或上级节点。</summary>
+      <param name="element">从其开始规范化的元素。</param>
+      <returns>当前视图中最接近的 <see cref="T:System.Windows.Automation.AutomationElement" />。 如果沿上级链向上导航到达根元素，将返回根元素。</returns>
+    </member>
+    <member name="M:System.Windows.Automation.TreeWalker.Normalize(System.Windows.Automation.AutomationElement,System.Windows.Automation.CacheRequest)">
+      <summary>检索节点本身（如果它满足 <see cref="P:System.Windows.Automation.TreeWalker.Condition" />）或者检索满足 <see cref="P:System.Windows.Automation.TreeWalker.Condition" /> 的最接近的父级或上级节点，并缓存属性和模式。</summary>
+      <param name="element">从其开始规范化的元素。</param>
+      <param name="request">一个缓存请求对象，它指定返回的 <see cref="T:System.Windows.Automation.AutomationElement" /> 上要进行缓存的属性和模式。</param>
+      <returns>当前视图中最接近的 <see cref="T:System.Windows.Automation.AutomationElement" />。 如果沿上级链向上导航到达根元素，将返回根元素。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.TreeWalker.RawViewWalker">
+      <summary>表示一个预定义的 <see cref="T:System.Windows.Automation.TreeWalker" />，其中包含目录树中所有元素的视图。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.ValuePattern">
+      <summary>表示一个控件，该控件具有一个不跨越某个范围而且可以表示为一个字符串的内部值。 此字符串既可以是可编辑的，也可以是不可编辑的，具体取决于控件及其设置。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.ValuePattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.ValuePattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>缓存的属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.ValuePattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.ValuePattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>当前属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.ValuePattern.IsReadOnlyProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ValuePattern.ValuePatternInformation.IsReadOnly" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.ValuePattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.ValuePattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.ValuePattern.SetValue(System.String)">
+      <summary>设置控件的值。</summary>
+      <param name="value">要设置的值。 UI 自动化提供程序负责将值转换为相应的数据类型。</param>
+      <exception cref="T:System.InvalidOperationException">控件是只读的。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">控件未启用。</exception>
+    </member>
+    <member name="T:System.Windows.Automation.ValuePattern.ValuePatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.ValuePattern" /> 对象的 <see cref="P:System.Windows.Automation.ValuePattern.Current" /> 或 <see cref="P:System.Windows.Automation.ValuePattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.ValuePattern.ValuePatternInformation.IsReadOnly">
+      <summary>获取一个值，该值指定 UI 自动化 元素的值是否为只读。</summary>
+      <returns>如果值为只读，则为 <see langword="true" />；如果它可以修改，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.ValuePattern.ValuePatternInformation.Value">
+      <summary>获取 UI 自动化 元素的值。</summary>
+      <returns>值UI 自动化元素的字符串形式。 默认值为一个空字符串。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.ValuePattern.ValueProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.ValuePattern.ValuePatternInformation.Value" /> 属性。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.VirtualizedItemPattern">
+      <summary>表示容器内已虚拟化并且需要像 UI 自动化元素一样可完全访问的项。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.VirtualizedItemPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.VirtualizedItemPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.VirtualizedItemPattern.Realize">
+      <summary>使虚拟项像 UI 自动化元素一样可完全访问。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.WindowPattern">
+      <summary>表示一个控件，该控件提供传统图形用户界面 (GUI) 中基于窗口的重要功能。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.WindowPattern.Cached">
+      <summary>获取此 <see cref="T:System.Windows.Automation.WindowPattern" /> 中已缓存的 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含控件模式中已缓存的 UI 自动化 属性值。</returns>
+      <exception cref="T:System.InvalidOperationException">请求的属性不在缓存中。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.CanMaximizeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.CanMaximize" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.CanMinimizeProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.CanMinimize" /> 属性。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.WindowPattern.Close">
+      <summary>试图关闭当前窗口。</summary>
+      <exception cref="T:System.InvalidOperationException">控件无法执行请求的操作。</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">当控件不再可用时。</exception>
+    </member>
+    <member name="P:System.Windows.Automation.WindowPattern.Current">
+      <summary>获取此 <see cref="T:System.Windows.Automation.WindowPattern" /> 的当前 UI 自动化 属性值。</summary>
+      <returns>一个结构，它包含此控件模式的当前 UI 自动化 属性值。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.IsModalProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.IsModal" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.IsTopmostProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.IsTopmost" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.Pattern">
+      <summary>标识 <see cref="T:System.Windows.Automation.WindowPattern" /> 控件模式。</summary>
+    </member>
+    <member name="M:System.Windows.Automation.WindowPattern.SetWindowVisualState(System.Windows.Automation.WindowVisualState)">
+      <summary>更改窗口的 <see cref="T:System.Windows.Automation.WindowVisualState" />。</summary>
+      <param name="state">所请求的窗口的 <see cref="T:System.Windows.Automation.WindowVisualState" />。</param>
+      <exception cref="T:System.InvalidOperationException">某控件不支持请求的行为。</exception>
+    </member>
+    <member name="M:System.Windows.Automation.WindowPattern.WaitForInputIdle(System.Int32)">
+      <summary>在指定时间阻止或在关联进程进入空闲状态之前持续阻止调用代码。</summary>
+      <param name="milliseconds">等待关联进程变为空闲状态的时间（以毫秒为单位）。 最大值为 <see cref="F:System.Int32.MaxValue" />。</param>
+      <returns>如果窗口已进入空闲状态，则为 <see langword="true" />；如果发生超时。则为 <see langword="false" />。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">传入的参数不是有效数字。</exception>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.WindowClosedEvent">
+      <summary>标识在关闭窗口时引发的事件。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.WindowInteractionStateProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.WindowInteractionState" /> 属性。</summary>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.WindowOpenedEvent">
+      <summary>标识在打开窗口时引发的事件。</summary>
+    </member>
+    <member name="T:System.Windows.Automation.WindowPattern.WindowPatternInformation">
+      <summary>支持使用 <see cref="T:System.Windows.Automation.WindowPattern" /> 对象的 <see cref="P:System.Windows.Automation.WindowPattern.Current" /> 或 <see cref="P:System.Windows.Automation.WindowPattern.Cached" /> 访问器访问该对象的属性值。</summary>
+    </member>
+    <member name="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.CanMaximize">
+      <summary>获取一个值，该值指定 <see cref="T:System.Windows.Automation.AutomationElement" /> 能否最大化。</summary>
+      <returns>如果 <see cref="T:System.Windows.Automation.AutomationElement" /> 可以最大化，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.CanMinimize">
+      <summary>获取一个值，该值指定当前 <see cref="T:System.Windows.Automation.AutomationElement" /> 能否最小化。</summary>
+      <returns>如果 <see cref="T:System.Windows.Automation.AutomationElement" /> 可以最小化，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.IsModal">
+      <summary>获取一个值，该值指定 <see cref="T:System.Windows.Automation.AutomationElement" /> 是否为模式。</summary>
+      <returns>如果 <see cref="T:System.Windows.Automation.AutomationElement" /> 是模式，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.IsTopmost">
+      <summary>获取一个值，该值指定 <see cref="T:System.Windows.Automation.AutomationElement" /> 是否是按 z 顺序的最顶端元素。</summary>
+      <returns>如果 <see cref="T:System.Windows.Automation.AutomationElement" /> 位于最顶端，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.WindowInteractionState">
+      <summary>获取 <see cref="T:System.Windows.Automation.WindowInteractionState" /> 的 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.WindowInteractionState" /> 的 <see cref="T:System.Windows.Automation.AutomationElement" />。 默认值为 <see cref="F:System.Windows.Automation.WindowInteractionState.Running" />。</returns>
+    </member>
+    <member name="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.WindowVisualState">
+      <summary>获取 <see cref="T:System.Windows.Automation.WindowVisualState" /> 的 <see cref="T:System.Windows.Automation.AutomationElement" />。</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.WindowVisualState" /> 的 <see cref="T:System.Windows.Automation.AutomationElement" />。 默认值为 <see cref="F:System.Windows.Automation.WindowVisualState.Normal" />。</returns>
+    </member>
+    <member name="F:System.Windows.Automation.WindowPattern.WindowVisualStateProperty">
+      <summary>标识 <see cref="P:System.Windows.Automation.WindowPattern.WindowPatternInformation.WindowVisualState" /> 属性。</summary>
+    </member>
+  </members>
+</doc>

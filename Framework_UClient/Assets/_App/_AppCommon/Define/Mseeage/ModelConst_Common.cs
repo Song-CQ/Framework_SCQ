@@ -10,7 +10,7 @@ namespace ProjectApp
     public static partial class ModelConst
     {
         public const string LoadModel = "LoadModel";
-
+        public const string FXEffectModel = "FXEffectModel";
 
     }   
 }

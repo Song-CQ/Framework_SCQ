@@ -10,7 +10,7 @@ namespace ProjectApp
     public static partial class UIConst
     {
         public const string LoadUI = "LoadUI";
-
+        public const string FXEffectUI = "FXEffectUI";
 
         public const string UGUI_Mask = "GUI/Local_UICommon/UGUI_Mask";
     }   

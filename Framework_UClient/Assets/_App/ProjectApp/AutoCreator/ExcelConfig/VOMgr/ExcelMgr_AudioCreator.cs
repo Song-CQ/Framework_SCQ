@@ -1,7 +1,7 @@
-/****************************************************
+﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2023/8/10 19:58:34
+    日期：2024/7/25 15:39:44
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -18,7 +18,7 @@ namespace ProjectApp
     {
 
         private Dictionary<Type, BaseVO[]> excelDataStrDic;
-        private const bool isEnciphermentData = true;
+        private const bool isEnciphermentData = false;
         protected override void New()
         {
             excelDataStrDic = new Dictionary<Type,BaseVO[]>();

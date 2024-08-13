@@ -1,0 +1,3106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>ReachFramework</name>
+  </assembly>
+  <members>
+    <member name="T:System.Printing.Collation">
+      <summary>指定打印机在打印多页打印作业的多个副本时是否逐份打印输出。</summary>
+    </member>
+    <member name="F:System.Printing.Collation.Collated">
+      <summary>逐份打印输出。</summary>
+    </member>
+    <member name="F:System.Printing.Collation.Uncollated">
+      <summary>不逐份打印输出。</summary>
+    </member>
+    <member name="F:System.Printing.Collation.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.ConflictStatus">
+      <summary>指定是否对合并 <see cref="T:System.Printing.PrintTicket" /> 进行任何更改，以确保获得可行的 <see cref="T:System.Printing.PrintTicket" />。</summary>
+    </member>
+    <member name="F:System.Printing.ConflictStatus.ConflictResolved">
+      <summary>已发现一个或多个冲突且所有冲突已解决。</summary>
+    </member>
+    <member name="F:System.Printing.ConflictStatus.NoConflict">
+      <summary>在初始合并的打印票证和支持的打印机功能之间未发现任何冲突。</summary>
+    </member>
+    <member name="T:System.Printing.DeviceFontSubstitution">
+      <summary>指定是否在打印机上启用设备字体替换。</summary>
+    </member>
+    <member name="F:System.Printing.DeviceFontSubstitution.Off">
+      <summary>禁用设备字体替换。</summary>
+    </member>
+    <member name="F:System.Printing.DeviceFontSubstitution.On">
+      <summary>启用设备字体替换。</summary>
+    </member>
+    <member name="F:System.Printing.DeviceFontSubstitution.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.Duplexing">
+      <summary>指定打印机是使用单面打印，还是使用某种类型的双面（双工打印）打印。</summary>
+    </member>
+    <member name="F:System.Printing.Duplexing.OneSided">
+      <summary>仅在每张纸的单面上输出打印。</summary>
+    </member>
+    <member name="F:System.Printing.Duplexing.TwoSidedLongEdge">
+      <summary>在每张纸的两个面上输出打印，其沿着平行于 <see cref="P:System.Printing.PrintDocumentImageableArea.MediaSizeHeight" /> 的边缘翻转。</summary>
+    </member>
+    <member name="F:System.Printing.Duplexing.TwoSidedShortEdge">
+      <summary>在每张纸的两个面上输出打印，其沿着平行于 <see cref="P:System.Printing.PrintDocumentImageableArea.MediaSizeWidth" /> 的边缘翻转。</summary>
+    </member>
+    <member name="F:System.Printing.Duplexing.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.InputBin">
+      <summary>指定用作空白纸或其他打印介质源的送纸盒。</summary>
+    </member>
+    <member name="F:System.Printing.InputBin.AutoSelect">
+      <summary>根据纸张大小和介质输出类型自动选择送纸盒。</summary>
+    </member>
+    <member name="F:System.Printing.InputBin.AutoSheetFeeder">
+      <summary>使用自动送纸盒。</summary>
+    </member>
+    <member name="F:System.Printing.InputBin.Cassette">
+      <summary>使用可移动的送纸盒。</summary>
+    </member>
+    <member name="F:System.Printing.InputBin.Manual">
+      <summary>使用手动送纸盒。</summary>
+    </member>
+    <member name="F:System.Printing.InputBin.Tractor">
+      <summary>使用持续送纸的牵引器送纸（也称为针孔传输）。</summary>
+    </member>
+    <member name="F:System.Printing.InputBin.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.Interop.BaseDevModeType">
+      <summary>指定默认的 DEVMODE 结构的类型，以用作将托管 <see cref="T:System.Printing.PrintTicket" /> 对象转换为非托管 DEVMODE 结构的基 DEVMODE。</summary>
+    </member>
+    <member name="F:System.Printing.Interop.BaseDevModeType.PrinterDefault">
+      <summary>打印机默认的 DEVMODE 结构。</summary>
+    </member>
+    <member name="F:System.Printing.Interop.BaseDevModeType.UserDefault">
+      <summary>用户默认的DEVMODE 结构。</summary>
+    </member>
+    <member name="T:System.Printing.Interop.PrintTicketConverter">
+      <summary>将托管的 <see cref="T:System.Printing.PrintTicket" /> 对象转换为非托管图形设备接口 (GDI) DEVMODE 结构，并相互进行转换。</summary>
+    </member>
+    <member name="M:System.Printing.Interop.PrintTicketConverter.#ctor(System.String,System.Int32)">
+      <summary>为指定的打印机初始化 <see cref="T:System.Printing.Interop.PrintTicketConverter" /> 类的一个新实例。</summary>
+      <param name="deviceName">绑定到新的 <see cref="T:System.Printing.Interop.PrintTicketConverter" /> 实例的打印机的名称。</param>
+      <param name="clientPrintSchemaVersion">要在 <see cref="T:System.Printing.PrintTicket" /> 以及 DEVMODE 转换中使用的打印架构版本。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="deviceName" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="clientPrintSchemaVersion" /> 为 0 或更小。</exception>
+      <exception cref="T:System.Printing.PrintQueueException">无法将转换器绑定到 <paramref name="deviceName" />。</exception>
+    </member>
+    <member name="M:System.Printing.Interop.PrintTicketConverter.ConvertDevModeToPrintTicket(System.Byte[])">
+      <summary>将指定的 DEVMODE 结构转换为托管代码 <see cref="T:System.Printing.PrintTicket" />。</summary>
+      <param name="devMode">一个包含 DEVMODE 结构的 <see cref="T:System.Byte" /> 数组。</param>
+      <returns>新的托管的 <see cref="T:System.Printing.PrintTicket" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">已释放此 <see cref="T:System.Printing.Interop.PrintTicketConverter" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="devMode" /> 的值为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="devMode" /> 的内容的格式不正确。</exception>
+      <exception cref="T:System.Printing.PrintQueueException">转换失败。</exception>
+    </member>
+    <member name="M:System.Printing.Interop.PrintTicketConverter.ConvertDevModeToPrintTicket(System.Byte[],System.Printing.PrintTicketScope)">
+      <summary>将指定的 DEVMODE 结构转换为具有指定范围的托管代码 <see cref="T:System.Printing.PrintTicket" />。</summary>
+      <param name="devMode">一个包含要转换的 DEVMODE 结构的 <see cref="T:System.Byte" /> 缓冲区。</param>
+      <param name="scope">一个 <see cref="T:System.Printing.PrintTicketScope" /> 值，该值指定新的 <see cref="T:System.Printing.PrintTicket" /> 是适用于一页、一个文档还是整个打印作业。</param>
+      <returns>新的 <see cref="T:System.Printing.PrintTicket" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">已释放此 <see cref="T:System.Printing.Interop.PrintTicketConverter" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="devMode" /> 的值为 null（在 Visual Basic 中为 <see langword="Nothing" />）。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="devMode" /> 的内容的格式不正确。</exception>
+      <exception cref="T:System.Printing.PrintQueueException">转换失败。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="scope" /> 不是有效的 <see cref="T:System.Printing.PrintTicketScope" /> 值。</exception>
+    </member>
+    <member name="M:System.Printing.Interop.PrintTicketConverter.ConvertPrintTicketToDevMode(System.Printing.PrintTicket,System.Printing.Interop.BaseDevModeType)">
+      <summary>将指定的托管 <see cref="T:System.Printing.PrintTicket" /> 转换为非托管 DEVMODE 结构，该结构基于 <see cref="T:System.Printing.Interop.BaseDevModeType" /> 标识的 DEVMODE 结构。</summary>
+      <param name="printTicket">要转换的 <see cref="T:System.Printing.PrintTicket" />。</param>
+      <param name="baseType">用于识别是将用户默认值还是将打印机默认值 DEVMODE 作为基 DEVMODE 的一个值。</param>
+      <returns>包含新 DEVMODE 结构的 <see cref="T:System.Byte" /> 数组。</returns>
+      <exception cref="T:System.ObjectDisposedException">已释放此 <see cref="T:System.Printing.Interop.PrintTicketConverter" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="printTicket" /> 的值为 null（在 Visual Basic 中为 <see langword="Nothing" />）。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="printTicket" /> 的内容的格式不正确。</exception>
+      <exception cref="T:System.Printing.PrintQueueException">转换失败。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="baseType" /> 不是有效的 <see cref="T:System.Printing.Interop.BaseDevModeType" /> 值。</exception>
+    </member>
+    <member name="M:System.Printing.Interop.PrintTicketConverter.ConvertPrintTicketToDevMode(System.Printing.PrintTicket,System.Printing.Interop.BaseDevModeType,System.Printing.PrintTicketScope)">
+      <summary>将含有指定范围的指定托管代码 <see cref="T:System.Printing.PrintTicket" /> 转换为非托管 DEVMODE 结构，该结构基于 <see cref="T:System.Printing.Interop.BaseDevModeType" /> 标识的 DEVMODE 结构。</summary>
+      <param name="printTicket">要转换的 <see cref="T:System.Printing.PrintTicket" />。</param>
+      <param name="baseType">用于识别是将用户默认值还是将打印机默认值 DEVMODE 作为基 DEVMODE 的一个值。</param>
+      <param name="scope">一个 <see cref="T:System.Printing.PrintTicketScope" /> 值，该值用于指定 <see cref="T:System.Printing.PrintTicket" /> 转换是应该在一页、一个文档还是整个打印作业中进行。</param>
+      <returns>表示新 DEVMODE 结构的 <see cref="T:System.Byte" /> 缓冲区。</returns>
+      <exception cref="T:System.ObjectDisposedException">已释放此 <see cref="T:System.Printing.Interop.PrintTicketConverter" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="printTicket" /> 的值为 null（在 Visual Basic 中为 <see langword="Nothing" />）。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="printTicket" /> 的内容的格式不正确。</exception>
+      <exception cref="T:System.Printing.PrintQueueException">转换失败。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="baseType" /> 不是有效的 <see cref="T:System.Printing.Interop.BaseDevModeType" /> 值。  
+或 
+<paramref name="scope" /> 不是有效的 <see cref="T:System.Printing.PrintTicketScope" /> 值。</exception>
+    </member>
+    <member name="M:System.Printing.Interop.PrintTicketConverter.Dispose">
+      <summary>释放由 <see cref="T:System.Printing.Interop.PrintTicketConverter" /> 占用的资源。</summary>
+    </member>
+    <member name="P:System.Printing.Interop.PrintTicketConverter.MaxPrintSchemaVersion">
+      <summary>获取 <see cref="T:System.Printing.Interop.PrintTicketConverter" /> 支持的最高打印架构版本。</summary>
+      <returns>最大值打印架构版本的<see cref="T:System.Printing.Interop.PrintTicketConverter" />可以支持。</returns>
+    </member>
+    <member name="M:System.Printing.Interop.PrintTicketConverter.System#IDisposable#Dispose">
+      <summary>释放 <see cref="T:System.Printing.Interop.PrintTicketConverter" /> 类的当前实例所使用的所有资源。</summary>
+    </member>
+    <member name="T:System.Printing.OutputColor">
+      <summary>指定如何打印包含彩色或灰阶的内容。</summary>
+    </member>
+    <member name="F:System.Printing.OutputColor.Color">
+      <summary>彩色打印输出。</summary>
+    </member>
+    <member name="F:System.Printing.OutputColor.Grayscale">
+      <summary>灰度打印输出。</summary>
+    </member>
+    <member name="F:System.Printing.OutputColor.Monochrome">
+      <summary>以单色打印且具有相同亮度的输出。</summary>
+    </member>
+    <member name="F:System.Printing.OutputColor.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.OutputQuality">
+      <summary>指定打印设备输出质量的类型。</summary>
+    </member>
+    <member name="F:System.Printing.OutputQuality.Automatic">
+      <summary>根据打印作业的内容自动选择质量类型。</summary>
+    </member>
+    <member name="F:System.Printing.OutputQuality.Draft">
+      <summary>草稿质量。</summary>
+    </member>
+    <member name="F:System.Printing.OutputQuality.Fax">
+      <summary>传真质量。</summary>
+    </member>
+    <member name="F:System.Printing.OutputQuality.High">
+      <summary>高于正常质量。</summary>
+    </member>
+    <member name="F:System.Printing.OutputQuality.Normal">
+      <summary>正常质量。</summary>
+    </member>
+    <member name="F:System.Printing.OutputQuality.Photographic">
+      <summary>照片质量。 有关详细信息，请参阅“备注”部分中的 OutputQuality.Photographic 相关说明。</summary>
+    </member>
+    <member name="F:System.Printing.OutputQuality.Text">
+      <summary>文本质量。</summary>
+    </member>
+    <member name="F:System.Printing.OutputQuality.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.PageBorderless">
+      <summary>指定打印设备是打印到介质边缘，还是在边缘周围留出一定的空白不打印。</summary>
+    </member>
+    <member name="F:System.Printing.PageBorderless.Borderless">
+      <summary>无边打印，即设备将打印到打印介质的边缘。</summary>
+    </member>
+    <member name="F:System.Printing.PageBorderless.None">
+      <summary>有边打印，即设备在打印介质的边缘周围留出一定的空白不打印。</summary>
+    </member>
+    <member name="F:System.Printing.PageBorderless.Unknown">
+      <summary>将此功能（其选项由此枚举表示）设置为未在中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.PageImageableArea">
+      <summary>表示页面可打印区域。</summary>
+    </member>
+    <member name="P:System.Printing.PageImageableArea.ExtentHeight">
+      <summary>获取成像区域的高度。</summary>
+      <returns>表示以像素为单位的成像区域高度（1/96 英寸）的 <see cref="T:System.Double" />。</returns>
+    </member>
+    <member name="P:System.Printing.PageImageableArea.ExtentWidth">
+      <summary>获取成像区域的宽度。</summary>
+      <returns>表示以像素为单位的成像区域宽度（1/96 英寸）的 <see cref="T:System.Double" />。</returns>
+    </member>
+    <member name="P:System.Printing.PageImageableArea.OriginHeight">
+      <summary>获取原点高度，即从成像区域左上角（也称为成像区域的“原点”）到页面上边缘最近的点的距离。</summary>
+      <returns>表示以像素为单位的页面上边缘到成像区域顶部的距离（1/96 英寸）的 <see cref="T:System.Double" />。</returns>
+    </member>
+    <member name="P:System.Printing.PageImageableArea.OriginWidth">
+      <summary>获取原点宽度，即页面左边缘到成像区域左上角（也称为成像区域的“原点”）的距离。</summary>
+      <returns>表示以像素为单位的页面左边缘到成像区域左边缘的距离（1/96 英寸）的 <see cref="T:System.Double" />。</returns>
+    </member>
+    <member name="M:System.Printing.PageImageableArea.ToString">
+      <summary>返回 <see cref="T:System.String" /> 的 <see cref="T:System.Printing.PageImageableArea" /> 表示形式。</summary>
+      <returns>表示 <see cref="T:System.String" /> 的属性值的 <see cref="T:System.Printing.PageImageableArea" />。</returns>
+    </member>
+    <member name="T:System.Printing.PageMediaSize">
+      <summary>描述纸张或其他介质的页大小。</summary>
+    </member>
+    <member name="M:System.Printing.PageMediaSize.#ctor(System.Double,System.Double)">
+      <summary>使用宽度和高度初始化 <see cref="T:System.Printing.PageMediaSize" /> 类的一个新实例。</summary>
+      <param name="width">以像素为单位的宽度（1/96 英寸）。</param>
+      <param name="height">以像素为单位的高度（1/96 英寸）。</param>
+    </member>
+    <member name="M:System.Printing.PageMediaSize.#ctor(System.Printing.PageMediaSizeName)">
+      <summary>使用指定的 <see cref="T:System.Printing.PageMediaSize" /> 初始化 <see cref="T:System.Printing.PageMediaSizeName" /> 类的新实例。</summary>
+      <param name="mediaSizeName">纸张（或其他介质）页大小的名称，例如，<see cref="F:System.Printing.PageMediaSizeName.NorthAmericaLetter" /> 或 <see cref="F:System.Printing.PageMediaSizeName.ISOA4" />。</param>
+    </member>
+    <member name="M:System.Printing.PageMediaSize.#ctor(System.Printing.PageMediaSizeName,System.Double,System.Double)">
+      <summary>使用指定的 <see cref="T:System.Printing.PageMediaSize" /> 和宽度及高度初始化 <see cref="T:System.Printing.PageMediaSizeName" /> 类的一个新实例。</summary>
+      <param name="mediaSizeName">纸张（或其他介质）页大小的名称，例如，<see cref="F:System.Printing.PageMediaSizeName.NorthAmericaLetter" /> 或 <see cref="F:System.Printing.PageMediaSizeName.ISOA4" />。</param>
+      <param name="width">以像素为单位的宽度（1/96 英寸）。</param>
+      <param name="height">以像素为单位的高度（1/96 英寸）。</param>
+    </member>
+    <member name="P:System.Printing.PageMediaSize.Height">
+      <summary>获取页面高度。</summary>
+      <returns>一个 <see cref="T:System.Double" />，表示以像素为单位的页面高度（1/96 英寸）。</returns>
+    </member>
+    <member name="P:System.Printing.PageMediaSize.PageMediaSizeName">
+      <summary>获取纸张或其他介质页大小的名称。</summary>
+      <returns>一个命名页大小的 <see cref="T:System.Printing.PageMediaSizeName" /> 值。</returns>
+    </member>
+    <member name="M:System.Printing.PageMediaSize.ToString">
+      <summary>显示纸张或其他介质的页大小。</summary>
+      <returns>一个 <see cref="T:System.String" />，表示纸张或其他介质的页大小。</returns>
+    </member>
+    <member name="P:System.Printing.PageMediaSize.Width">
+      <summary>获取页面的宽度。</summary>
+      <returns>一个 <see cref="T:System.Double" />，表示以像素为单位的页面宽度（1/96 英寸）。</returns>
+    </member>
+    <member name="T:System.Printing.PageMediaSizeName">
+      <summary>指定纸张或其他打印介质的页大小或纸张宽度。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.BusinessCard">
+      <summary>名片</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.CreditCard">
+      <summary>信用卡</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA0">
+      <summary>A0</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA1">
+      <summary>A1</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA10">
+      <summary>A10</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA2">
+      <summary>A2</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA3">
+      <summary>A3</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA3Extra">
+      <summary>A3 特大</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA3Rotated">
+      <summary>A3 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA4">
+      <summary>A4</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA4Extra">
+      <summary>A4 特大</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA4Rotated">
+      <summary>A4 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA5">
+      <summary>A5</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA5Extra">
+      <summary>A5 特大</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA5Rotated">
+      <summary>A5 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA6">
+      <summary>A6</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA6Rotated">
+      <summary>A6 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA7">
+      <summary>A7</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA8">
+      <summary>A8</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOA9">
+      <summary>A9</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB0">
+      <summary>B0</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB1">
+      <summary>B1</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB10">
+      <summary>B10</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB2">
+      <summary>B2</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB3">
+      <summary>B3</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB4">
+      <summary>B4</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB4Envelope">
+      <summary>B4 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB5Envelope">
+      <summary>B5 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB5Extra">
+      <summary>B5 特大</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB7">
+      <summary>B7</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB8">
+      <summary>B8</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOB9">
+      <summary>B9</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC0">
+      <summary>C0</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC1">
+      <summary>C1</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC10">
+      <summary>C10</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC2">
+      <summary>C2</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC3">
+      <summary>C3</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC3Envelope">
+      <summary>C3 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC4">
+      <summary>C4</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC4Envelope">
+      <summary>C4 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC5">
+      <summary>C5</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC5Envelope">
+      <summary>C5 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC6">
+      <summary>C6</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC6C5Envelope">
+      <summary>C6C5 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC6Envelope">
+      <summary>C6 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC7">
+      <summary>C7</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC8">
+      <summary>C8</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOC9">
+      <summary>C9</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISODLEnvelope">
+      <summary>DL 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISODLEnvelopeRotated">
+      <summary>DL 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.ISOSRA3">
+      <summary>SRA 3</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Japan2LPhoto">
+      <summary>2L Photo</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanChou3Envelope">
+      <summary>Chou 3 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanChou3EnvelopeRotated">
+      <summary>Chou 3 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanChou4Envelope">
+      <summary>Chou 4 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanChou4EnvelopeRotated">
+      <summary>Chou 4 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanDoubleHagakiPostcard">
+      <summary>两倍日式明信片</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanDoubleHagakiPostcardRotated">
+      <summary>两倍日式明信片旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanHagakiPostcard">
+      <summary>日式明信片</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanHagakiPostcardRotated">
+      <summary>日式明信片旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanKaku2Envelope">
+      <summary>Kaku 2 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanKaku2EnvelopeRotated">
+      <summary>Kaku 2 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanKaku3Envelope">
+      <summary>Kaku 3 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanKaku3EnvelopeRotated">
+      <summary>Kaku 3 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanLPhoto">
+      <summary>L Photo</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanQuadrupleHagakiPostcard">
+      <summary>四倍日式明信片</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanYou1Envelope">
+      <summary>You 1 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanYou2Envelope">
+      <summary>You 2 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanYou3Envelope">
+      <summary>You 3 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanYou4Envelope">
+      <summary>You 4 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanYou4EnvelopeRotated">
+      <summary>You 4 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanYou6Envelope">
+      <summary>You 6 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JapanYou6EnvelopeRotated">
+      <summary>You 6 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB0">
+      <summary>JIS B0</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB1">
+      <summary>JIS B1</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB10">
+      <summary>JIS B10</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB2">
+      <summary>JIS B2</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB3">
+      <summary>JIS B3</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB4">
+      <summary>JIS B4</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB4Rotated">
+      <summary>JIS B4 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB5">
+      <summary>JIS B5</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB5Rotated">
+      <summary>JIS B5 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB6">
+      <summary>JIS B6</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB6Rotated">
+      <summary>JIS B6 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB7">
+      <summary>JIS B7</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB8">
+      <summary>JIS B8</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.JISB9">
+      <summary>JIS B9</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica10x11">
+      <summary>10 x 11</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica10x12">
+      <summary>10 x 12</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica10x14">
+      <summary>10 x 14</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica11x17">
+      <summary>11 x 17</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica14x17">
+      <summary>14 x 17</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica4x6">
+      <summary>4 x 6</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica4x8">
+      <summary>4 x 8</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica5x7">
+      <summary>5 x 7</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica8x10">
+      <summary>8 x 10</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmerica9x11">
+      <summary>9 x 11</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaArchitectureASheet">
+      <summary>结构 A 型</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaArchitectureBSheet">
+      <summary>结构 B 型</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaArchitectureCSheet">
+      <summary>结构 C 型</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaArchitectureDSheet">
+      <summary>结构 D 型</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaArchitectureESheet">
+      <summary>结构 E 型</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaCSheet">
+      <summary>C 型</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaDSheet">
+      <summary>D 型</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaESheet">
+      <summary>E 型</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaExecutive">
+      <summary>Executive</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaGermanLegalFanfold">
+      <summary>德国法定规格</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaGermanStandardFanfold">
+      <summary>德国标准规格</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaLegal">
+      <summary>Legal</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaLegalExtra">
+      <summary>Legal Extra</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaLetter">
+      <summary>字母</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaLetterExtra">
+      <summary>Letter Extra</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaLetterPlus">
+      <summary>Letter Plus</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaLetterRotated">
+      <summary>Letter Rotated</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaMonarchEnvelope">
+      <summary>Monarch Envelope</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaNote">
+      <summary>说明</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaNumber10Envelope">
+      <summary>#10 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaNumber10EnvelopeRotated">
+      <summary>#10 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaNumber11Envelope">
+      <summary>#11 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaNumber12Envelope">
+      <summary>#12 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaNumber14Envelope">
+      <summary>#14 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaNumber9Envelope">
+      <summary>#9 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaPersonalEnvelope">
+      <summary>Personal Envelope</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaQuarto">
+      <summary>4 开</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaStatement">
+      <summary>Statement</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaSuperA">
+      <summary>Super A</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaSuperB">
+      <summary>Super B</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaTabloid">
+      <summary>Tabloid</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.NorthAmericaTabloidExtra">
+      <summary>Tabloid Extra</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.OtherMetricA3Plus">
+      <summary>A3 Plus</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.OtherMetricA4Plus">
+      <summary>A4 Plus</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.OtherMetricFolio">
+      <summary>Folio</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.OtherMetricInviteEnvelope">
+      <summary>Invite Envelope</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.OtherMetricItalianEnvelope">
+      <summary>Italian Envelope</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC10Envelope">
+      <summary>PRC #10 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC10EnvelopeRotated">
+      <summary>PRC #10 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC16K">
+      <summary>PRC 16K</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC16KRotated">
+      <summary>PRC 16K 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC1Envelope">
+      <summary>PRC #1 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC1EnvelopeRotated">
+      <summary>PRC #1 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC2Envelope">
+      <summary>PRC #2 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC2EnvelopeRotated">
+      <summary>PRC #2 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC32K">
+      <summary>PRC 32K</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC32KBig">
+      <summary>PRC 32K 大</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC32KRotated">
+      <summary>PRC 32K 旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC3Envelope">
+      <summary>PRC #3 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC3EnvelopeRotated">
+      <summary>PRC #3 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC4Envelope">
+      <summary>PRC #4 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC4EnvelopeRotated">
+      <summary>PRC #4 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC5Envelope">
+      <summary>PRC #5 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC5EnvelopeRotated">
+      <summary>PRC #5 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC6Envelope">
+      <summary>PRC #6 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC6EnvelopeRotated">
+      <summary>PRC #6 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC7Envelope">
+      <summary>PRC #7 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC7EnvelopeRotated">
+      <summary>PRC #7 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC8Envelope">
+      <summary>PRC #8 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC8EnvelopeRotated">
+      <summary>PRC #8 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC9Envelope">
+      <summary>PRC #9 信封</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.PRC9EnvelopeRotated">
+      <summary>PRC #9 信封旋转</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll04Inch">
+      <summary>4-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll06Inch">
+      <summary>6-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll08Inch">
+      <summary>8-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll12Inch">
+      <summary>12-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll15Inch">
+      <summary>15-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll18Inch">
+      <summary>18-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll22Inch">
+      <summary>22-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll24Inch">
+      <summary>24-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll30Inch">
+      <summary>30-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll36Inch">
+      <summary>36-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Roll54Inch">
+      <summary>54-inch wide roll</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaSizeName.Unknown">
+      <summary>未知的纸张大小</summary>
+    </member>
+    <member name="T:System.Printing.PageMediaType">
+      <summary>指定打印纸张或其他介质的类型。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Archival">
+      <summary>存档质量介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.AutoSelect">
+      <summary>打印设备选择介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.BackPrintFilm">
+      <summary>专业背面打印胶片。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Bond">
+      <summary>标准铜版纸介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.CardStock">
+      <summary>标准卡片纸。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Continuous">
+      <summary>持续送纸介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.EnvelopePlain">
+      <summary>标准信封。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.EnvelopeWindow">
+      <summary>Window 信封。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Fabric">
+      <summary>纤维介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.HighResolution">
+      <summary>专业高分辨率介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Label">
+      <summary>标签介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.MultiLayerForm">
+      <summary>附加的多部分窗体。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.MultiPartForm">
+      <summary>单个多部分窗体。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.None">
+      <summary>未知或未列出的介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Photographic">
+      <summary>标准照片介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.PhotographicFilm">
+      <summary>胶片照片介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.PhotographicGlossy">
+      <summary>光面照片介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.PhotographicHighGloss">
+      <summary>高光照片介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.PhotographicMatte">
+      <summary>亚光照片介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.PhotographicSatin">
+      <summary>缎纹照片介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.PhotographicSemiGloss">
+      <summary>半光照片介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Plain">
+      <summary>普通纸。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Screen">
+      <summary>以连续窗体显示输出。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.ScreenPaged">
+      <summary>以分页窗体显示输出。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Stationery">
+      <summary>专业静止。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.TabStockFull">
+      <summary>槽片，未预制（单片）。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.TabStockPreCut">
+      <summary>槽片，预制（多片）。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Transparency">
+      <summary>透明纸。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.TShirtTransfer">
+      <summary>用于将图像转印到 T 恤衫的介质。</summary>
+    </member>
+    <member name="F:System.Printing.PageMediaType.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.PageOrder">
+      <summary>指定打印设备是从前往后还是从后往前打印多页文档。</summary>
+    </member>
+    <member name="F:System.Printing.PageOrder.Reverse">
+      <summary>以从后往前的顺序输出打印。</summary>
+    </member>
+    <member name="F:System.Printing.PageOrder.Standard">
+      <summary>以从前往后的顺序输出打印。</summary>
+    </member>
+    <member name="F:System.Printing.PageOrder.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.PageOrientation">
+      <summary>指定如何在打印介质上确定内容页的方向。</summary>
+    </member>
+    <member name="F:System.Printing.PageOrientation.Landscape">
+      <summary>将成像区域的内容从标准（纵向）方向逆时针方向旋转 90 。</summary>
+    </member>
+    <member name="F:System.Printing.PageOrientation.Portrait">
+      <summary>标准方向。</summary>
+    </member>
+    <member name="F:System.Printing.PageOrientation.ReverseLandscape">
+      <summary>将成像区域的内容从标准（纵向）方向顺时针方向旋转 90 。</summary>
+    </member>
+    <member name="F:System.Printing.PageOrientation.ReversePortrait">
+      <summary>将成像区域的内容倒置（相对于标准（纵向）方向）。</summary>
+    </member>
+    <member name="F:System.Printing.PageOrientation.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.PageQualitativeResolution">
+      <summary>将页面的分辨率指定为定性的非数字值。</summary>
+    </member>
+    <member name="F:System.Printing.PageQualitativeResolution.Default">
+      <summary>打印机的默认定性分辨率。</summary>
+    </member>
+    <member name="F:System.Printing.PageQualitativeResolution.Draft">
+      <summary>草稿品质，大多数打印机使用的是 300 dpi。</summary>
+    </member>
+    <member name="F:System.Printing.PageQualitativeResolution.High">
+      <summary>高质量，大多数打印机使用的是 1200 dpi 或以上。</summary>
+    </member>
+    <member name="F:System.Printing.PageQualitativeResolution.Normal">
+      <summary>正常质量，大多数打印机使用的是 600 dpi。</summary>
+    </member>
+    <member name="F:System.Printing.PageQualitativeResolution.Other">
+      <summary>其他质量。</summary>
+    </member>
+    <member name="F:System.Printing.PageQualitativeResolution.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.PageResolution">
+      <summary>将打印输出的页面分辨率定义为定性值和/或每英寸点数。</summary>
+    </member>
+    <member name="M:System.Printing.PageResolution.#ctor(System.Int32,System.Int32)">
+      <summary>初始化具有指定垂直和水平每英寸点数的 <see cref="T:System.Printing.PageResolution" /> 类的一个新实例。</summary>
+      <param name="resolutionX">以每英寸点数为单位的水平分辨率。</param>
+      <param name="resolutionY">以每英寸点数为单位的垂直分辨率。</param>
+    </member>
+    <member name="M:System.Printing.PageResolution.#ctor(System.Int32,System.Int32,System.Printing.PageQualitativeResolution)">
+      <summary>初始化具有指定 <see cref="T:System.Printing.PageResolution" /> 和指定垂直与水平每英寸点数的 <see cref="T:System.Printing.PageQualitativeResolution" /> 类的一个新实例。</summary>
+      <param name="resolutionX">以每英寸点数为单位的水平分辨率。</param>
+      <param name="resolutionY">以每英寸点数为单位的垂直分辨率。</param>
+      <param name="qualitative">一个表示分辨率的值。</param>
+    </member>
+    <member name="M:System.Printing.PageResolution.#ctor(System.Printing.PageQualitativeResolution)">
+      <summary>初始化具有指定 <see cref="T:System.Printing.PageResolution" /> 的 <see cref="T:System.Printing.PageQualitativeResolution" /> 类的一个新实例。</summary>
+      <param name="qualitative">一个表示分辨率的值。</param>
+    </member>
+    <member name="P:System.Printing.PageResolution.QualitativeResolution">
+      <summary>获取页面分辨率的定性表达式（如果有）。</summary>
+      <returns>一个 <see cref="T:System.Printing.PageQualitativeResolution" /> 值，表示页面分辨率的等级。</returns>
+    </member>
+    <member name="M:System.Printing.PageResolution.ToString">
+      <summary>以 <see cref="T:System.String" /> 的形式返回页面分辨率。</summary>
+      <returns>一个 <see cref="T:System.String" />，包含 <see cref="T:System.Printing.PageResolution" /> 对象的属性值。</returns>
+    </member>
+    <member name="P:System.Printing.PageResolution.X">
+      <summary>获取页面水平分辨率的每英寸点数。</summary>
+      <returns>一个 <see cref="T:System.Int32" /> 值，表示页面的水平分辨率。</returns>
+    </member>
+    <member name="P:System.Printing.PageResolution.Y">
+      <summary>获取页面垂直分辨率的每英寸点数。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.Int32" /> 值，表示页面垂直分辨率。</returns>
+    </member>
+    <member name="T:System.Printing.PageScalingFactorRange">
+      <summary>指定打印机可在页面上放大或缩小打印图像的百分比范围。</summary>
+    </member>
+    <member name="P:System.Printing.PageScalingFactorRange.MaximumScale">
+      <summary>获取此范围的最大百分比。</summary>
+      <returns>一个表示百分数的 <see cref="T:System.Int32" /> 值。</returns>
+    </member>
+    <member name="P:System.Printing.PageScalingFactorRange.MinimumScale">
+      <summary>获取此范围的最小百分比。</summary>
+      <returns>一个表示百分数的 <see cref="T:System.Int32" /> 值。</returns>
+    </member>
+    <member name="M:System.Printing.PageScalingFactorRange.ToString">
+      <summary>返回此范围的 <see cref="T:System.String" /> 表示形式。</summary>
+      <returns>缩放范围的 <see cref="T:System.String" /> 表示形式。</returns>
+    </member>
+    <member name="T:System.Printing.PagesPerSheetDirection">
+      <summary>指定在打印介质单面上显示多页内容时的页面排列。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.BottomLeft">
+      <summary>页面以从上到下从右至左（相对于页面方向）的列方式显示。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.BottomRight">
+      <summary>页面以从上到下从左至右（相对于页面方向）的列方式显示。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.LeftBottom">
+      <summary>页面以从右至左从上到下（相对于页面方向）的行方式显示。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.LeftTop">
+      <summary>页面以从右至左从下到上（相对于页面方向）的行方式显示。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.RightBottom">
+      <summary>页面以从左至右从上到下（相对于页面方向）的行方式显示。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.RightTop">
+      <summary>页面以从左至右从下到上（相对于页面方向）的行方式显示。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.TopLeft">
+      <summary>页面以从下到上从右至左（相对于页面方向）的列方式显示。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.TopRight">
+      <summary>页面以从下到上从左至右（相对于页面方向）的列方式显示。</summary>
+    </member>
+    <member name="F:System.Printing.PagesPerSheetDirection.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.PhotoPrintingIntent">
+      <summary>指定打印照片时的输出质量。 打印机驱动程序将 <see cref="T:System.Printing.PhotoPrintingIntent" /> 转换为分辨率和其他质量因素的定性值。</summary>
+    </member>
+    <member name="F:System.Printing.PhotoPrintingIntent.None">
+      <summary>无照片打印目的。 用户设置特定定性属性。</summary>
+    </member>
+    <member name="F:System.Printing.PhotoPrintingIntent.PhotoBest">
+      <summary>最佳质量的照片打印。</summary>
+    </member>
+    <member name="F:System.Printing.PhotoPrintingIntent.PhotoDraft">
+      <summary>草稿品质的照片打印。</summary>
+    </member>
+    <member name="F:System.Printing.PhotoPrintingIntent.PhotoStandard">
+      <summary>标准质量的照片打印。</summary>
+    </member>
+    <member name="F:System.Printing.PhotoPrintingIntent.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.PrintCapabilities">
+      <summary>定义打印机的功能。</summary>
+    </member>
+    <member name="M:System.Printing.PrintCapabilities.#ctor(System.IO.Stream)">
+      <summary>使用指定打印机功能并符合 XML 打印架构的 XML 流（其中包含 PrintCapabilities 文档）初始化 <see cref="T:System.Printing.PrintCapabilities" /> 类的新实例。</summary>
+      <param name="xmlStream">描述打印机功能并符合打印架构的 XML <see cref="T:System.IO.Stream" />。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="xmlStream" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="xmlStream" /> 为无效 XML。</exception>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.CollationCapability">
+      <summary>获取值的集合，这些值用于标识打印机的排序功能。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.Collation" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.DeviceFontSubstitutionCapability">
+      <summary>获取值的集合，这些值用于标识打印机是否可以用基于设备的字体替换基于计算机的字体，以及如何进行替换。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.DeviceFontSubstitution" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.DuplexingCapability">
+      <summary>获取值的集合，这些值用于标识打印机是否可以执行双面打印，以及如何执行双面打印。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.Duplexing" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.InputBinCapability">
+      <summary>获取值的集合，这些值用于指示使用哪个送纸盒（纸盒）。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.InputBin" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.MaxCopyCount">
+      <summary>获取一个值，该值指示设备在一次打印作业中所能打印的最大副本数。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.Int32" /> 值，它指定打印机所能打印的最大副本数。 如果设备驱动程序不报告最大值，则返回 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.OrientedPageMediaHeight">
+      <summary>获取表示页面中成像区域高度的值，其中高度表示与页面方向相对应的垂直尺寸。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.Double" /> 值，该值表示打印机可在页面中打印的区域的高度（以像素为单位，即以 1/96 英寸递增）。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.OrientedPageMediaWidth">
+      <summary>获取表示页面中成像区域宽度的值，其中宽度表示与页面方向相对应的水平尺寸。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.Double" /> 值，该值表示打印机可在页面中打印的区域的宽度（以像素为单位，即以 1/96 英寸递增）。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.OutputColorCapability">
+      <summary>获取值的集合，这些值用于指定打印机对于带有彩色和灰阶内容的打印方法。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.OutputColor" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.OutputQualityCapability">
+      <summary>获取值的集合，这些值用于指示打印机支持的输出质量的类型。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.OutputQuality" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PageBorderlessCapability">
+      <summary>获取值的集合，这些值用于指示打印机是否可以打印到介质的边缘。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.PageBorderless" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PageImageableArea">
+      <summary>获取一个对象，该对象用于表示打印机所能使用页面的区域。</summary>
+      <returns>一个 <see cref="T:System.Printing.PageImageableArea" /> 对象，该对象用于指定成像区域左上角的距离（以像素为单位，即 1/96 英寸为一个单位）。 垂直距离是从纸的上边开始测量的，水平距离是从纸的左边开始测量的。 返回值还指定成像区域的宽度和高度。 如果打印机的驱动程序不报告成像区域，则此属性为 null。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PageMediaSizeCapability">
+      <summary>获取 <see cref="T:System.Printing.PageMediaSize" /> 对象的集合，这些对象用于标识打印机支持的纸张和介质的尺寸。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 对象的 <see cref="T:System.Printing.PageMediaSize" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PageMediaTypeCapability">
+      <summary>获取值的集合，这些值用于标识打印机支持的纸张和其他介质的类型。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值（这些值用于指定打印介质，如卡片纸、标签、普通纸或照片纸）的一个 <see cref="T:System.Printing.PageMediaType" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PageOrderCapability">
+      <summary>获取值的集合，这些值用于指示打印机是否能够从前往后和/或从后往前打印多页文档。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.PageOrder" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PageOrientationCapability">
+      <summary>获取值的集合，这些值用于标识打印机支持的页面方向的类型。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.PageOrientation" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PageResolutionCapability">
+      <summary>获取 <see cref="T:System.Printing.PageResolution" /> 对象的集合，这些对象用于标识打印机支持的页面分辨率的等级。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 对象的 <see cref="T:System.Printing.PageResolution" />。 每一个值以定性值和/或每英寸点数值来表示页面分辨率。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PageScalingFactorRange">
+      <summary>获取打印机可在页面中放大或缩小打印图像的最大和最小百分比。</summary>
+      <returns>具有 <see cref="T:System.Printing.PageScalingFactorRange" /> 和 <see cref="P:System.Printing.PageScalingFactorRange.MaximumScale" /> 属性（包含表示百分比的 <see cref="P:System.Printing.PageScalingFactorRange.MinimumScale" /> 值）的 <see cref="T:System.Int32" /> 对象。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PagesPerSheetCapability">
+      <summary>获取整数的集合，每一个整数用于标识用户可以选择在一页纸的单面上所打印的页数。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Int32" />，这些值表示打印机支持的、用于在每一面上打印多页的选项。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PagesPerSheetDirectionCapability">
+      <summary>获取值的集合，这些值用于标识打印机支持的、用于在每一张纸的单面上呈现多页的模式。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.PagesPerSheetDirection" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.PhotoPrintingIntentCapability">
+      <summary>获取值的集合，这些值用于标识打印机支持的、用于打印照片的质量选项。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.PhotoPrintingIntent" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.StaplingCapability">
+      <summary>获取值的集合，这些值用于标识打印机支持的自动装订的类型。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.Stapling" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCapabilities.TrueTypeFontModeCapability">
+      <summary>获取值的集合，这些值用于标识打印机支持的、用于处理 TrueType 字体的方法。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 值的一个 <see cref="T:System.Printing.TrueTypeFontMode" />。</returns>
+    </member>
+    <member name="T:System.Printing.PrintCommitAttributesException">
+      <summary>错误情况阻止 <see cref="T:System.Printing.PrintSystemObject" /> 将某些特性提交到对象表示的实际计算机、打印机或设备时引发的异常。</summary>
+    </member>
+    <member name="M:System.Printing.PrintCommitAttributesException.#ctor">
+      <summary>初始化 <see cref="T:System.Printing.PrintCommitAttributesException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Printing.PrintCommitAttributesException.#ctor(System.Int32,System.Collections.ObjectModel.Collection{System.String},System.Collections.ObjectModel.Collection{System.String})">
+      <summary>使用指定的错误代码和成功与失败集合初始化 <see cref="T:System.Printing.PrintCommitAttributesException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="attributesSuccessList">命名程序成功提交的特性的字符串集合。</param>
+      <param name="attributesFailList">命名程序无法提交的特性的字符串集合。</param>
+    </member>
+    <member name="M:System.Printing.PrintCommitAttributesException.#ctor(System.Int32,System.String,System.Collections.ObjectModel.Collection{System.String},System.Collections.ObjectModel.Collection{System.String},System.String)">
+      <summary>使用指定的错误代码、消息、对象名称和成功与失败集合初始化 <see cref="T:System.Printing.PrintCommitAttributesException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">错误情况的说明。</param>
+      <param name="attributesSuccessList">命名程序成功提交的特性的字符串集合。</param>
+      <param name="attributesFailList">命名程序无法提交的特性的字符串集合。</param>
+      <param name="objectName">生成异常的对象。</param>
+    </member>
+    <member name="M:System.Printing.PrintCommitAttributesException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用指定的 <see cref="T:System.Printing.PrintCommitAttributesException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 初始化 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的新实例。</summary>
+      <param name="info">存储用于序列化对象的所有数据。</param>
+      <param name="context">描述序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Printing.PrintCommitAttributesException.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Printing.PrintCommitAttributesException" /> 类的一个新实例，并为其提供指定消息。</summary>
+      <param name="message">错误情况的说明。</param>
+    </member>
+    <member name="M:System.Printing.PrintCommitAttributesException.#ctor(System.String,System.Exception)">
+      <summary>使用指定消息和内部 <see cref="T:System.Printing.PrintCommitAttributesException" /> 初始化 <see cref="T:System.Exception" /> 类的一个新实例。</summary>
+      <param name="message">错误情况的说明。</param>
+      <param name="innerException">触发 <see cref="T:System.Printing.PrintCommitAttributesException" /> 的基础条件。</param>
+    </member>
+    <member name="P:System.Printing.PrintCommitAttributesException.CommittedAttributesCollection">
+      <summary>获取成功提交的特性名称的 <see cref="T:System.Collections.ObjectModel.Collection`1" />。</summary>
+      <returns>字符串的一个 <see cref="T:System.Collections.ObjectModel.Collection`1" />，这些字符串标识成功提交的 <see cref="T:System.Printing.PrintSystemObject" /> 特性。</returns>
+    </member>
+    <member name="P:System.Printing.PrintCommitAttributesException.FailedAttributesCollection">
+      <summary>获取未提交的特性名称的 <see cref="T:System.Collections.ObjectModel.Collection`1" />。</summary>
+      <returns>字符串的一个 <see cref="T:System.Collections.ObjectModel.Collection`1" />，这些字符串标识程序无法提交的 <see cref="T:System.Printing.PrintSystemObject" /> 特性。</returns>
+    </member>
+    <member name="M:System.Printing.PrintCommitAttributesException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>获取对象的序列化信息和序列化流的上下文。</summary>
+      <param name="info">存储用于序列化对象的所有数据。</param>
+      <param name="context">描述序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="P:System.Printing.PrintCommitAttributesException.PrintObjectName">
+      <summary>获取引发异常的对象的名称。</summary>
+      <returns>对引发异常的 <see cref="T:System.String" /> 的 <see cref="P:System.Printing.PrintSystemObject.Name" /> 属性的 <see cref="T:System.Printing.PrintSystemObject" /> 引用。</returns>
+    </member>
+    <member name="T:System.Printing.PrintingCanceledException">
+      <summary>代码尝试访问已取消的打印作业时出现的异常。</summary>
+    </member>
+    <member name="M:System.Printing.PrintingCanceledException.#ctor">
+      <summary>初始化 <see cref="T:System.Printing.PrintingCanceledException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Printing.PrintingCanceledException.#ctor(System.Int32,System.String)">
+      <summary>初始化提供特定错误代码和错误情况的 <see cref="T:System.Printing.PrintingCanceledException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Printing.PrintingCanceledException.#ctor(System.Int32,System.String,System.Exception)">
+      <summary>初始化提供特定错误代码和错误情况（包括引发异常的根本原因）的 <see cref="T:System.Printing.PrintingCanceledException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">导致 <see cref="T:System.Printing.PrintingCanceledException" /> 的基本错误情况。</param>
+    </member>
+    <member name="M:System.Printing.PrintingCanceledException.#ctor(System.Int32,System.String,System.String,System.String,System.Int32)">
+      <summary>初始化提供特定错误代码、错误情况、打印队列名称、作业名称和作业 ID 的 <see cref="T:System.Printing.PrintingCanceledException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="printQueueName">承载导致异常的打印作业的打印队列的名称。</param>
+      <param name="jobName">导致异常的打印作业的名称。</param>
+      <param name="jobId">导致异常的打印作业的 ID 号。</param>
+    </member>
+    <member name="M:System.Printing.PrintingCanceledException.#ctor(System.Int32,System.String,System.String,System.String,System.Int32,System.Exception)">
+      <summary>使用特定错误代码、错误情况、打印队列名称、作业名称、作业 ID 和异常的根本原因初始化 <see cref="T:System.Printing.PrintingCanceledException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="printQueueName">承载导致异常的打印作业的打印队列的名称。</param>
+      <param name="jobName">导致异常的打印作业的名称。</param>
+      <param name="jobId">导致异常的打印作业的 ID 号。</param>
+      <param name="innerException">异常的根本原因。</param>
+    </member>
+    <member name="M:System.Printing.PrintingCanceledException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>初始化提供特定 <see cref="T:System.Printing.PrintingCanceledException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 的 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的一个新实例。 此构造函数受到保护。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Printing.PrintingCanceledException.#ctor(System.String)">
+      <summary>初始化提供特定错误情况的 <see cref="T:System.Printing.PrintingCanceledException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Printing.PrintingCanceledException.#ctor(System.String,System.Exception)">
+      <summary>初始化提供特定错误情况（包括引发异常的根本原因）的 <see cref="T:System.Printing.PrintingCanceledException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">导致 <see cref="T:System.Printing.PrintingCanceledException" /> 的基本错误情况。</param>
+    </member>
+    <member name="T:System.Printing.PrintingNotSupportedException">
+      <summary>当打印操作不受支持时引发的异常。</summary>
+    </member>
+    <member name="M:System.Printing.PrintingNotSupportedException.#ctor">
+      <summary>使用由系统提供的用于描述错误的消息初始化 <see cref="T:System.Printing.PrintingNotSupportedException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Printing.PrintingNotSupportedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.Printing.PrintingNotSupportedException" /> 类的新实例。</summary>
+      <param name="info">承载序列化对象数据的对象。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="M:System.Printing.PrintingNotSupportedException.#ctor(System.String)">
+      <summary>使用指定的描述错误的消息初始化 <see cref="T:System.Printing.PrintingNotSupportedException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+    </member>
+    <member name="M:System.Printing.PrintingNotSupportedException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:System.Printing.PrintingNotSupportedException" /> 类的新实例。</summary>
+      <param name="message">描述该异常的消息。 此构造函数的调用方需要确保此字符串已针对当前系统区域性进行了本地化。</param>
+      <param name="innerException">导致当前异常的异常。 如果 <paramref name="innerException" /> 参数不为 <see langword="null" />，则当前异常将在处理内部异常的 <see langword="catch" /> 块中引发。</param>
+    </member>
+    <member name="M:System.Printing.PrintingNotSupportedException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>用序列化数据初始化 <see cref="T:System.Printing.PrintingNotSupportedException" /> 类的新实例。</summary>
+      <param name="info">承载序列化对象数据的对象。</param>
+      <param name="context">关于来源和目标的上下文信息</param>
+    </member>
+    <member name="T:System.Printing.PrintJobException">
+      <summary>在打印作业没有正确运行时发生的异常。</summary>
+    </member>
+    <member name="M:System.Printing.PrintJobException.#ctor">
+      <summary>初始化 <see cref="T:System.Printing.PrintJobException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Printing.PrintJobException.#ctor(System.Int32,System.String)">
+      <summary>初始化提供特定错误代码和错误情况的 <see cref="T:System.Printing.PrintJobException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Printing.PrintJobException.#ctor(System.Int32,System.String,System.Exception)">
+      <summary>初始化提供特定错误代码和错误情况（包括引发异常的根本原因）的 <see cref="T:System.Printing.PrintJobException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">导致 <see cref="T:System.Printing.PrintJobException" /> 的基本错误。</param>
+    </member>
+    <member name="M:System.Printing.PrintJobException.#ctor(System.Int32,System.String,System.String,System.String,System.Int32)">
+      <summary>初始化提供特定错误代码、错误情况、打印队列名称、作业名称和作业 ID 的 <see cref="T:System.Printing.PrintJobException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="printQueueName">承载导致异常的打印作业的打印队列的名称。</param>
+      <param name="jobName">导致异常的打印作业的名称。</param>
+      <param name="jobId">导致异常的打印作业的 ID 号。</param>
+    </member>
+    <member name="M:System.Printing.PrintJobException.#ctor(System.Int32,System.String,System.String,System.String,System.Int32,System.Exception)">
+      <summary>初始化提供特定消息、错误代码、错误情况、打印队列名称、作业名称和作业 ID 的 <see cref="T:System.Printing.PrintJobException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="printQueueName">承载导致异常的打印作业的打印队列的名称。</param>
+      <param name="jobName">导致异常的打印作业的名称。</param>
+      <param name="jobId">导致异常的打印作业的 ID 号。</param>
+      <param name="innerException">异常的根本原因。</param>
+    </member>
+    <member name="M:System.Printing.PrintJobException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>初始化提供特定 <see cref="T:System.Printing.PrintJobException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 的 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的一个新实例。 此构造函数受到保护。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Printing.PrintJobException.#ctor(System.String)">
+      <summary>初始化提供特定错误情况的 <see cref="T:System.Printing.PrintJobException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Printing.PrintJobException.#ctor(System.String,System.Exception)">
+      <summary>初始化提供特定错误情况（包括引发异常的原因）的 <see cref="T:System.Printing.PrintJobException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">导致 <see cref="T:System.Printing.PrintJobException" /> 的基本错误。</param>
+    </member>
+    <member name="M:System.Printing.PrintJobException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>获取用于序列化对象的数据和获取序列化流的上下文。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="P:System.Printing.PrintJobException.JobId">
+      <summary>获取导致异常的打印作业的 ID 号。</summary>
+      <returns>一个标识打印作业的 <see cref="T:System.Int32" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintJobException.JobName">
+      <summary>获取导致异常的打印作业的名称。</summary>
+      <returns>命名打印作业的 <see cref="T:System.String" />。</returns>
+    </member>
+    <member name="P:System.Printing.PrintJobException.PrintQueueName">
+      <summary>获取发生异常时正在承载打印作业的 <see cref="T:System.Printing.PrintQueue" /> 的名称。</summary>
+      <returns>一个 <see cref="T:System.String" />，它指定 <see cref="T:System.Printing.PrintQueue" /> 的名称。</returns>
+    </member>
+    <member name="T:System.Printing.PrintQueueException">
+      <summary>在错误情况阻止访问或创建 <see cref="T:System.Printing.PrintQueue" /> 时引发的异常。</summary>
+    </member>
+    <member name="M:System.Printing.PrintQueueException.#ctor">
+      <summary>初始化 <see cref="T:System.Printing.PrintQueueException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Printing.PrintQueueException.#ctor(System.Int32,System.String,System.String)">
+      <summary>初始化提供特定错误代码、错误情况和打印机名的 <see cref="T:System.Printing.PrintQueueException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="printerName">发生错误时正在访问的打印机的名称。</param>
+    </member>
+    <member name="M:System.Printing.PrintQueueException.#ctor(System.Int32,System.String,System.String,System.Exception)">
+      <summary>初始化提供特定打印机名、错误代码、错误情况（包括引发异常的根本原因）的 <see cref="T:System.Printing.PrintQueueException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="printerName">发生错误时正在访问的打印机的名称。</param>
+      <param name="innerException">导致 <see cref="T:System.Printing.PrintQueueException" /> 的基本错误情况。</param>
+    </member>
+    <member name="M:System.Printing.PrintQueueException.#ctor(System.Int32,System.String,System.String,System.String)">
+      <summary>初始化提供特定错误代码、错误情况、打印机名和打印机消息的 <see cref="T:System.Printing.PrintQueueException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="printerName">发生错误时正在访问的打印机的名称。</param>
+      <param name="printerMessage">由触发了异常的打印机驱动程序或非托管打印系统组件发送的异常消息。</param>
+    </member>
+    <member name="M:System.Printing.PrintQueueException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>初始化提供特定 <see cref="T:System.Printing.PrintQueueException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 的 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的一个新实例。 此构造函数受到保护。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Printing.PrintQueueException.#ctor(System.String)">
+      <summary>初始化提供特定错误情况的 <see cref="T:System.Printing.PrintQueueException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Printing.PrintQueueException.#ctor(System.String,System.Exception)">
+      <summary>初始化提供特定错误情况（包括引发异常的根本原因）的 <see cref="T:System.Printing.PrintQueueException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">导致 <see cref="T:System.Printing.PrintQueueException" /> 的基本错误情况。</param>
+    </member>
+    <member name="M:System.Printing.PrintQueueException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>获取用于序列化对象的数据和获取序列化流的上下文。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="P:System.Printing.PrintQueueException.PrinterName">
+      <summary>获取发生异常时正在访问的打印机的名称。</summary>
+      <returns>命名打印机的 <see cref="T:System.String" />。</returns>
+    </member>
+    <member name="T:System.Printing.PrintServerException">
+      <summary>错误情况阻止访问或创建 <see cref="T:System.Printing.PrintServer" /> 时引发的异常。</summary>
+    </member>
+    <member name="M:System.Printing.PrintServerException.#ctor">
+      <summary>初始化 <see cref="T:System.Printing.PrintServerException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Printing.PrintServerException.#ctor(System.Int32,System.String,System.String)">
+      <summary>初始化提供特定错误代码、错误情况和打印服务器名称的 <see cref="T:System.Printing.PrintServerException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="serverName">出现错误情况时正在访问的打印服务器的名称。</param>
+    </member>
+    <member name="M:System.Printing.PrintServerException.#ctor(System.Int32,System.String,System.String,System.Exception)">
+      <summary>初始化提供特定打印服务器名称、错误代码和错误情况（包括异常的根本原因）的 <see cref="T:System.Printing.PrintServerException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="serverName">出现错误情况时正在访问的打印服务器的名称。</param>
+      <param name="innerException">导致 <see cref="T:System.Printing.PrintServerException" /> 的基础情况。</param>
+    </member>
+    <member name="M:System.Printing.PrintServerException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>初始化提供特定 <see cref="T:System.Printing.PrintServerException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 的 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的一个新实例。 此构造函数受到保护。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Printing.PrintServerException.#ctor(System.String)">
+      <summary>初始化提供特定错误情况的 <see cref="T:System.Printing.PrintServerException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Printing.PrintServerException.#ctor(System.String,System.Exception)">
+      <summary>初始化提供特定错误情况（包括引发异常的根本原因）的 <see cref="T:System.Printing.PrintServerException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">导致 <see cref="T:System.Printing.PrintServerException" /> 的基本错误情况。</param>
+    </member>
+    <member name="M:System.Printing.PrintServerException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>获取用于序列化对象的数据和获取序列化流的上下文。</summary>
+      <param name="info">用于序列化对象的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="P:System.Printing.PrintServerException.ServerName">
+      <summary>获取出现异常时正在访问的打印服务器的名称。</summary>
+      <returns>一个命名打印服务器的 <see cref="T:System.String" />。</returns>
+    </member>
+    <member name="T:System.Printing.PrintSystemException">
+      <summary>在错误条件阻止访问或创建 <see cref="T:System.Printing.PrintSystemObject" /> 时发生的异常。</summary>
+    </member>
+    <member name="M:System.Printing.PrintSystemException.#ctor">
+      <summary>初始化 <see cref="T:System.Printing.PrintSystemException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Printing.PrintSystemException.#ctor(System.Int32,System.String)">
+      <summary>初始化提供特定错误代码和错误消息的 <see cref="T:System.Printing.PrintSystemException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">描述错误条件的字符串。</param>
+    </member>
+    <member name="M:System.Printing.PrintSystemException.#ctor(System.Int32,System.String,System.Exception)">
+      <summary>初始化提供特定错误代码和错误消息（包括发生异常的基础原因）的 <see cref="T:System.Printing.PrintSystemException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">描述错误条件的字符串。</param>
+      <param name="innerException">导致异常的基础错误条件。</param>
+    </member>
+    <member name="M:System.Printing.PrintSystemException.#ctor(System.Int32,System.String,System.String)">
+      <summary>初始化提供特定错误代码、错误消息和打印机消息的 <see cref="T:System.Printing.PrintSystemException" /> 类的一个新实例。</summary>
+      <param name="errorCode">
+        <see cref="T:System.Int32" /> 指 HRESULT，编码数值指分配给特定异常的值。</param>
+      <param name="message">描述错误条件的字符串。</param>
+      <param name="printerMessage">打印机驱动程序或触发了异常的非托管打印系统组件所发送的异常消息。</param>
+    </member>
+    <member name="M:System.Printing.PrintSystemException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>初始化提供特定序列化信息和流上下文的 <see cref="T:System.Printing.PrintSystemException" /> 类的一个新实例。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Printing.PrintSystemException.#ctor(System.String)">
+      <summary>初始化提供特定错误消息的 <see cref="T:System.Printing.PrintSystemException" /> 类的一个新实例。</summary>
+      <param name="message">描述错误条件的字符串。</param>
+    </member>
+    <member name="M:System.Printing.PrintSystemException.#ctor(System.String,System.Exception)">
+      <summary>初始化提供特定错误消息（包括发生异常的基础原因）的 <see cref="T:System.Printing.PrintSystemException" /> 类的一个新实例。</summary>
+      <param name="message">描述错误条件的字符串。</param>
+      <param name="innerException">导致异常的基础错误条件。</param>
+    </member>
+    <member name="M:System.Printing.PrintSystemException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>获取用于序列化对象的数据和获取序列化流的上下文。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="T:System.Printing.PrintTicket">
+      <summary>定义打印作业的设置。</summary>
+    </member>
+    <member name="M:System.Printing.PrintTicket.#ctor">
+      <summary>初始化 <see cref="T:System.Printing.PrintTicket" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Printing.PrintTicket.#ctor(System.IO.Stream)">
+      <summary>使用符合 XML 打印架构的 XML 流（其中包含 PrintTicket 文档）初始化 <see cref="T:System.Printing.PrintTicket" /> 类的新实例。</summary>
+      <param name="xmlStream">描述打印作业且符合打印架构的 XML 流。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="xmlStream" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.FormatException">
+        <paramref name="xmlStream" /> 为无效 XML。</exception>
+    </member>
+    <member name="M:System.Printing.PrintTicket.Clone">
+      <summary>创建此 <see cref="T:System.Printing.PrintTicket" /> 的可修改克隆，从而深度复制此对象的值。</summary>
+      <returns>当前对象的可修改复本。</returns>
+    </member>
+    <member name="P:System.Printing.PrintTicket.Collation">
+      <summary>获取或设置一个值，该值表示打印机是否逐份打印其输出。</summary>
+      <returns>表示打印机是否逐份打印其输出的 <see cref="T:System.Printing.Collation" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.Collation" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.CopyCount">
+      <summary>获取或设置打印作业的份数。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.Int32" /> 值，指定要打印的份数。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为小于 1 的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.DeviceFontSubstitution">
+      <summary>获取或设置一个值，该值表示打印机是否用基于设备的字体替换打印作业上基于计算机的字体。</summary>
+      <returns>一个 <see cref="T:System.Printing.DeviceFontSubstitution" /> 值，表示设备是否用基于设备的字体替换当前打印作业中基于计算机的字体。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.DeviceFontSubstitution" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.Duplexing">
+      <summary>获取或设置一个值，该值表示打印机在执行打印作业时使用的双面打印类型（如果有）。</summary>
+      <returns>一个 <see cref="T:System.Printing.Duplexing" /> 值，该值表示打印机在执行打印作业时使用的双面打印类型（如果有）。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.Duplexing" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="M:System.Printing.PrintTicket.GetXmlStream">
+      <summary>返回表示 <see cref="T:System.Printing.PrintTicket" /> 属性值的 <see cref="T:System.IO.MemoryStream" /> 对象，作为符合打印架构的 XML 流。</summary>
+      <returns>
+        <see cref="T:System.IO.MemoryStream" /> 对象，它描述带有符合打印架构的 XML 的打印票证。</returns>
+    </member>
+    <member name="P:System.Printing.PrintTicket.InputBin">
+      <summary>获取或设置一个表示要使用的送纸器（纸盒）的值。</summary>
+      <returns>一个 <see cref="T:System.Printing.InputBin" /> 值，该值表示要使用的送纸器以及是手动选择还是自动选择。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.InputBin" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.OutputColor">
+      <summary>获取或设置一个值，该值表示打印机如何处理包含颜色或灰影的内容。</summary>
+      <returns>一个 <see cref="T:System.Printing.OutputColor" /> 值，表示打印机如何处理包含颜色或灰影的内容。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.OutputColor" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.OutputQuality">
+      <summary>获取或设置一个表示打印作业输出质量的值。</summary>
+      <returns>指定所需质量级别的 <see cref="T:System.Printing.OutputQuality" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.OutputQuality" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PageBorderless">
+      <summary>获取或设置一个值，该值表示设备是将内容打印到介质边缘，还是在边缘周围留出一些空白不打印。</summary>
+      <returns>指定打印机是否采用无边距打印的 <see cref="T:System.Printing.PageBorderless" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.PageBorderless" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PageMediaSize">
+      <summary>获取或设置打印机在执行打印作业时所用的纸张（或其他介质）的页面大小。</summary>
+      <returns>一个 <see cref="T:System.Printing.PageMediaSize" /> 对象，使用名称、维度或二者兼之来表示页面大小。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试使用至少具有一个 <see langword="null" /> 属性的 <see cref="T:System.Printing.PageMediaSize" /> 对象设置该属性。  
+
+或 - 
+调用代码操作尝试使用 <see cref="T:System.Printing.PageMediaSize" /> 对象来设置属性，该对象的 <see cref="P:System.Printing.PageMediaSize.PageMediaSizeName" /> 属性被设置为不在 <see cref="T:System.Printing.PageMediaSizeName" /> 枚举范围之内的值。  
+
+或 - 
+调用代码操作尝试使用 <see cref="T:System.Printing.PageMediaSize" /> 对象来设置属性，该对象的 <see cref="P:System.Printing.PageMediaSize.Width" /> 或 <see cref="P:System.Printing.PageMediaSize.Height" /> 属性被设置为小于 1 的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PageMediaType">
+      <summary>获取或设置一个值，该值表示打印机在执行打印作业时所用的纸张或介质的类型。</summary>
+      <returns>用于指定打印介质（如卡片纸、标签、普通纸或照片纸）的 <see cref="T:System.Printing.PageMediaType" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.PageMediaType" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PageOrder">
+      <summary>获取或设置一个值，该值表示打印机是按从后向前还是从前向后的顺序打印多个页面。</summary>
+      <returns>用于指定先打印末页还是先打印首页的 <see cref="T:System.Printing.PageOrder" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.PageOrder" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PageOrientation">
+      <summary>获取或设置一个值，该值表示打印时如何定向页面内容。</summary>
+      <returns>用于指定如何定向页面内容的 <see cref="T:System.Printing.PageOrientation" /> 值，如 <see cref="F:System.Printing.PageOrientation.Landscape" /> 或 <see cref="F:System.Printing.PageOrientation.ReversePortrait" />。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.PageOrientation" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PageResolution">
+      <summary>获取或设置打印机在执行打印作业时所使用的页面分辨率等级。</summary>
+      <returns>用于表示定性值、每英寸点数值或二者兼之的分辨率的 <see cref="T:System.Printing.PageResolution" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试使用至少具有一个 <see langword="null" /> 属性的 <see cref="T:System.Printing.PageResolution" /> 对象设置该属性。  
+
+或 - 
+调用代码操作尝试使用 <see cref="T:System.Printing.PageMediaSize" /> 对象来设置属性，该对象的 <see cref="P:System.Printing.PageResolution.QualitativeResolution" /> 属性被设置为不在 <see cref="T:System.Printing.PageQualitativeResolution" /> 枚举范围之内的值。  
+
+或 - 
+调用代码操作尝试使用 <see cref="T:System.Printing.PageResolution" /> 对象来设置属性，该对象的 <see cref="P:System.Printing.PageResolution.X" /> 或 <see cref="P:System.Printing.PageResolution.Y" /> 属性被设置为小于 1 的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PageScalingFactor">
+      <summary>获取或设置打印机放大或缩小页面上打印图像的百分率。</summary>
+      <returns>一个表示百分数的 <see cref="T:System.Int32" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为小于 1 的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PagesPerSheet">
+      <summary>获取或设置打印在一张纸的每一打印面上的页数。</summary>
+      <returns>一个可以为 null 的 <see cref="T:System.Int32" /> 值，表示打印在一张纸的每个打印面上的页数。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为小于 1 的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PagesPerSheetDirection">
+      <summary>获取或设置一个值，该值表示打印机如何排列打印在一张纸的每一页面上的多页。</summary>
+      <returns>用于表示打印机如何在一张纸上呈现多页的 <see cref="T:System.Printing.PagesPerSheetDirection" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.PagesPerSheetDirection" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.PhotoPrintingIntent">
+      <summary>获取或设置一个值，该值表示打印机在打印照片时所使用的定性的质量级别。</summary>
+      <returns>用于表示照片质量级别的 <see cref="T:System.Printing.PhotoPrintingIntent" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.PhotoPrintingIntent" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="E:System.Printing.PrintTicket.PropertyChanged">
+      <summary>在 <see cref="T:System.Printing.PrintTicket" /> 的任何属性变化时发生。</summary>
+    </member>
+    <member name="M:System.Printing.PrintTicket.SaveTo(System.IO.Stream)">
+      <summary>通过使用符合打印架构的 XML 格式将 <see cref="T:System.Printing.PrintTicket" /> 设置保存到 <see cref="T:System.IO.Stream" /> 对象。</summary>
+      <param name="outStream">拥有保存的 <see cref="T:System.IO.Stream" /> 的 <see cref="T:System.Printing.PrintTicket" />。</param>
+    </member>
+    <member name="P:System.Printing.PrintTicket.Stapling">
+      <summary>获取或设置一个表示打印机是否装订多页以及装订多页位置的值。</summary>
+      <returns>用于指定打印机如何装订输出的 <see cref="T:System.Printing.Stapling" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.Stapling" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="P:System.Printing.PrintTicket.TrueTypeFontMode">
+      <summary>获取或设置一个表示打印机如何处理使用 TrueType 字体的文本的值。</summary>
+      <returns>用于指定打印机如何处理 TrueType 字体的 <see cref="T:System.Printing.TrueTypeFontMode" /> 值。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">调用代码操作尝试将属性设置为不在 <see cref="T:System.Printing.TrueTypeFontMode" /> 枚举范围内的值。</exception>
+    </member>
+    <member name="T:System.Printing.PrintTicketScope">
+      <summary>指定 <see cref="T:System.Printing.PrintTicket" /> 是适用于整个打印作业、打印作业中的一个文档，还是仅适用于打印作业中的一页。</summary>
+    </member>
+    <member name="F:System.Printing.PrintTicketScope.DocumentScope">
+      <summary>单个文档。</summary>
+    </member>
+    <member name="F:System.Printing.PrintTicketScope.JobScope">
+      <summary>整个打印作业。</summary>
+    </member>
+    <member name="F:System.Printing.PrintTicketScope.PageScope">
+      <summary>单页。</summary>
+    </member>
+    <member name="T:System.Printing.Stapling">
+      <summary>指定打印机是否装订多页文档，并在什么位置装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.None">
+      <summary>未装订文档。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.SaddleStitch">
+      <summary>沿着折线进行多次装订， 也称为骑马订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.StapleBottomLeft">
+      <summary>在左下角进行单次装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.StapleBottomRight">
+      <summary>在右下角进行单次装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.StapleDualBottom">
+      <summary>沿着下边缘进行两次装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.StapleDualLeft">
+      <summary>沿着左边缘进行两次装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.StapleDualRight">
+      <summary>沿着右边缘进行两次装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.StapleDualTop">
+      <summary>沿着上边缘进行两次装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.StapleTopLeft">
+      <summary>在左上角进行单次装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.StapleTopRight">
+      <summary>在右上角进行单次装订。</summary>
+    </member>
+    <member name="F:System.Printing.Stapling.Unknown">
+      <summary>该功能（其选项由此枚举表示）设置为未在打印架构中定义的选项。</summary>
+    </member>
+    <member name="T:System.Printing.TrueTypeFontMode">
+      <summary>指定打印机对格式为 TrueType 字体的文本的处理方式。</summary>
+    </member>
+    <member name="F:System.Printing.TrueTypeFontMode.Automatic">
+      <summary>打印机驱动程序决定处理 TrueType 字体的最好方式。</summary>
+    </member>
+    <member name="F:System.Printing.TrueTypeFontMode.DownloadAsNativeTrueTypeFont">
+      <summary>打印机驱动程序下载 TrueType 字体。</summary>
+    </member>
+    <member name="F:System.Printing.TrueTypeFontMode.DownloadAsOutlineFont">
+      <summary>打印机驱动程序将 TrueType 字体作为轮廓字体下载。</summary>
+    </member>
+    <member name="F:System.Printing.TrueTypeFontMode.DownloadAsRasterFont">
+      <summary>打印机驱动程序为 TrueType 字体的各个字号创建其所需要的光栅字体，并全部下载。</summary>
+    </member>
+    <member name="F:System.Printing.TrueTypeFontMode.RenderAsBitmap">
+      <summary>打印机驱动程序将文本的各个区域作为图形下载。</summary>
+    </member>
+    <member name="F:System.Printing.TrueTypeFontMode.Unknown">
+      <summary>将此功能（其选项由此枚举表示）设置为未在中定义的选项。 打印架构中。</summary>
+    </member>
+    <member name="T:System.Printing.ValidationResult">
+      <summary>表示保证可行的合并 <see cref="T:System.Printing.PrintTicket" />，并包含为使其可行而更改的任何设置的报告。</summary>
+    </member>
+    <member name="P:System.Printing.ValidationResult.ConflictStatus">
+      <summary>获取指示打印机支持的功能与两个源 <see cref="T:System.Printing.PrintTicket" /> 初始合并时所需的功能之间是否发生冲突的值。</summary>
+      <returns>其中一个 <see cref="T:System.Printing.ConflictStatus" /> 值指示未发生冲突，或至少发生了一个冲突但已解决。 默认值为 <see cref="F:System.Printing.ConflictStatus.NoConflict" />。</returns>
+    </member>
+    <member name="M:System.Printing.ValidationResult.Equals(System.Object)">
+      <summary>确定指定的 <see cref="T:System.Printing.ValidationResult" /> 是否等同于当前的 <see cref="T:System.Printing.ValidationResult" />。</summary>
+      <param name="o">要比较的 <see cref="T:System.Printing.ValidationResult" />。</param>
+      <returns>如果 <see cref="T:System.Printing.ValidationResult" /> 对象相等，则为 <see langword="true" />；否则为 <see langword="false" />。 如果所传递对象不是 <see cref="T:System.Printing.ValidationResult" />，则也返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Printing.ValidationResult.GetHashCode">
+      <summary>获取与 <see cref="T:System.Printing.ValidationResult" /> 关联的哈希代码及其 <see cref="T:System.Printing.PrintTicket" /> 和打印流。</summary>
+      <returns>当前 <see cref="T:System.Printing.ValidationResult" /> 的哈希代码。</returns>
+    </member>
+    <member name="M:System.Printing.ValidationResult.op_Equality(System.Printing.ValidationResult,System.Printing.ValidationResult)">
+      <summary>确定指定的 <see cref="T:System.Printing.ValidationResult" /> 对象是否相等。</summary>
+      <param name="a">要比较的第一个 <see cref="T:System.Printing.ValidationResult" />。</param>
+      <param name="b">要比较的第二个 <see cref="T:System.Printing.ValidationResult" />。</param>
+      <returns>如果 <see cref="T:System.Printing.ValidationResult" /> 对象相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Printing.ValidationResult.op_Inequality(System.Printing.ValidationResult,System.Printing.ValidationResult)">
+      <summary>确定指定的 <see cref="T:System.Printing.ValidationResult" /> 对象是否不相等。</summary>
+      <param name="a">要比较的第一个 <see cref="T:System.Printing.ValidationResult" />。</param>
+      <param name="b">要比较的第二个 <see cref="T:System.Printing.ValidationResult" />。</param>
+      <returns>如果 <see cref="T:System.Printing.ValidationResult" /> 对象不相等，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Printing.ValidationResult.ValidatedPrintTicket">
+      <summary>获取合并两个 <see cref="T:System.Printing.PrintTicket" /> 对象得到的 <see cref="T:System.Printing.PrintTicket" /> 对象（可能已进行调整以确保其可行性）。</summary>
+      <returns>有效且可行的 <see cref="T:System.Printing.PrintTicket" />。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.IDocumentStructureProvider">
+      <summary>定义用于将 XML 纸张规范 (XPS) 的 <see langword="DocumentStructure" /> 部件添加到 XPS 包中的方法。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IDocumentStructureProvider.AddDocumentStructure">
+      <summary>将 XML 纸张规范 (XPS) 的 <see langword="DocumentStructure" /> 部件添加到 XPS 包。</summary>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsStructure" />，表示 XPS 包的 <see langword="DocumentStructure" /> 部件。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.IStoryFragmentProvider">
+      <summary>定义用于将标记的 <see cref="T:System.Windows.Documents.DocumentStructures.StoryFragments" /> 部件添加到 XPS 包中的方法。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IStoryFragmentProvider.AddStoryFragment">
+      <summary>将 <see cref="T:System.Windows.Documents.DocumentStructures.StoryFragments" /> 元素添加到 XPS 包中。</summary>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsStructure" />，表示 XPS 包中的一个 <see cref="T:System.Windows.Documents.DocumentStructures.StoryFragments" /> 元素。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.IXpsFixedDocumentReader">
+      <summary>定义用于读取 <see cref="T:System.Windows.Documents.FixedDocument" /> 的各个部件以及写入文档的有限类型的方法。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.AddSignatureDefinition(System.Windows.Xps.Packaging.XpsSignatureDefinition)">
+      <summary>将指定的 <see cref="T:System.Windows.Xps.Packaging.XpsSignatureDefinition" /> 添加到 <see cref="T:System.Windows.Documents.FixedDocument" />。</summary>
+      <param name="signatureDefinition">添加的定义。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.CommitSignatureDefinition">
+      <summary>刷新包 <see cref="T:System.IO.Stream" /> 并将 <see cref="T:System.Windows.Xps.Packaging.XpsSignatureDefinition" /> 提交至包。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.DocumentNumber">
+      <summary>获取文档在 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 中的位置（从零开始）。</summary>
+      <returns>一个 <see cref="T:System.Int32" />，表示文档在序列中的位置。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.DocumentStructure">
+      <summary>获取 <see cref="T:System.Windows.Documents.FixedDocument" /> 的 <see langword="DocumentStructure" /> 部件（如果存在）。</summary>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsStructure" />，表示 <see langword="DocumentStructure" /> 元素（如果存在）及其子元素。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.FixedPages">
+      <summary>获取 <see cref="T:System.Windows.Documents.FixedPage" /> 读取器的集合，<see cref="T:System.Windows.Documents.FixedDocument" /> 中的每一页对应一个读取器。</summary>
+      <returns>固定页读取器的集合，<see cref="T:System.Windows.Documents.FixedDocument" /> 中的每一页对应一个读取器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.GetFixedPage(System.Uri)">
+      <summary>为具有指定统一资源标识符 (URI) 的 <see cref="T:System.Windows.Documents.FixedPage" /> 获取读取器。</summary>
+      <param name="pageSource">页的 URI。</param>
+      <returns>页的 <see cref="T:System.Windows.Xps.Packaging.IXpsFixedPageReader" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.PrintTicket">
+      <summary>获取与 <see cref="T:System.Printing.PrintTicket" /> 关联的 <see cref="T:System.Windows.Documents.FixedDocument" />（如果存在）。</summary>
+      <returns>包含文档的默认打印选项的 <see cref="T:System.Printing.PrintTicket" />；如果不存在文档的打印票证，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.RemoveSignatureDefinition(System.Windows.Xps.Packaging.XpsSignatureDefinition)">
+      <summary>从 <see cref="T:System.Windows.Xps.Packaging.XpsSignatureDefinition" /> 中移除指定的 <see cref="T:System.Windows.Documents.FixedDocument" />。</summary>
+      <param name="signatureDefinition">已移除的定义。</param>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.SignatureDefinitions">
+      <summary>获取与 <see cref="T:System.Windows.Documents.FixedDocument" /> 关联的所有签名定义的集合。</summary>
+      <returns>签名定义的 <see cref="T:System.Collections.Generic.ICollection`1" />，通常已经或将要对文档进行签名的每个人对应一个。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.Thumbnail">
+      <summary>获取与 <see cref="T:System.Windows.Documents.FixedDocument" /> 关联的缩略图像（如果存在缩略图）。</summary>
+      <returns>一个表示图像的 <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentReader.Uri">
+      <summary>获取 统一资源标识符 (URI) 的 <see cref="T:System.Windows.Documents.FixedDocument" />。</summary>
+      <returns>一个 <see cref="T:System.Uri" />，表示文档的 URI。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader">
+      <summary>定义用于读取 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 的各个部件的方法。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader.FixedDocuments">
+      <summary>获取用于 <see cref="T:System.Windows.Documents.FixedDocument" /> 中每个文档的 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 读取器的集合。</summary>
+      <returns>
+        <see cref="T:System.Windows.Documents.FixedDocument" /> 读取器的集合，<see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 中的每个文档对应一个读取器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader.GetFixedDocument(System.Uri)">
+      <summary>为具有指定统一资源标识符 (URI) 的 <see cref="T:System.Windows.Documents.FixedDocument" /> 获取读取器。</summary>
+      <param name="documentSource">固定文档的URI。</param>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader.PrintTicket">
+      <summary>获取与 <see cref="T:System.Printing.PrintTicket" /> 关联的 <see cref="T:System.Windows.Documents.FixedDocument" />（如果存在）。</summary>
+      <returns>包含序列的默认打印选项的 <see cref="T:System.Printing.PrintTicket" />；如果不存在该文档的打印票证，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader.Thumbnail">
+      <summary>获取与 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 关联的缩略图像（如果存在）。</summary>
+      <returns>一个表示图像的 <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader.Uri">
+      <summary>获取 统一资源标识符 (URI) 的 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</summary>
+      <returns>一个<see cref="T:System.Uri" />，它表示URI序列。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceWriter">
+      <summary>定义用于编写 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 的方法和属性。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceWriter.AddFixedDocument">
+      <summary>将新 <see cref="T:System.Windows.Documents.FixedDocument" /> 添加到 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 中。</summary>
+      <returns>用于输出新 <see cref="T:System.Windows.Documents.FixedDocument" /> 的编写器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceWriter.AddThumbnail(System.Windows.Xps.Packaging.XpsImageType)">
+      <summary>为 <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" /> 添加 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 图像。</summary>
+      <param name="imageType">要编写的图像类型。</param>
+      <returns>
+        <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" /> 的新 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceWriter.Commit">
+      <summary>刷新并关闭 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 编写器。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceWriter.PrintTicket">
+      <summary>为正在编写的 <see cref="T:System.Printing.PrintTicket" /> 设置 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</summary>
+      <returns>一个 <see cref="T:System.Printing.PrintTicket" />，表示序列的默认打印配置。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceWriter.Uri">
+      <summary>获取正在编写的 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 的 URI。</summary>
+      <returns>URI的<see cref="T:System.Windows.Documents.FixedDocumentSequence" />正在编写。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.IXpsFixedDocumentWriter">
+      <summary>定义用于编写 <see cref="T:System.Windows.Documents.FixedDocument" /> 的方法和属性。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentWriter.AddFixedPage">
+      <summary>将新 <see cref="T:System.Windows.Documents.FixedPage" /> 添加到 <see cref="T:System.Windows.Documents.FixedDocument" /> 中。</summary>
+      <returns>用于输出新 <see cref="T:System.Windows.Documents.FixedPage" /> 的编写器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentWriter.AddThumbnail(System.Windows.Xps.Packaging.XpsImageType)">
+      <summary>为 <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" /> 添加 <see cref="T:System.Windows.Documents.FixedDocument" /> 图像。</summary>
+      <param name="imageType">要添加的缩略图的图像类型。</param>
+      <returns>
+        <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" /> 的新 <see cref="T:System.Windows.Documents.FixedDocument" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedDocumentWriter.Commit">
+      <summary>刷新并关闭 <see cref="T:System.Windows.Documents.FixedDocument" /> 编写器。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentWriter.DocumentNumber">
+      <summary>获取 <see cref="T:System.Windows.Documents.FixedDocument" /> 在 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 中的位置（从零开始）。</summary>
+      <returns>
+        <see cref="T:System.Windows.Documents.FixedDocument" /> 在 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 中的位置（从零开始）。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentWriter.PrintTicket">
+      <summary>设置 <see cref="T:System.Windows.Documents.FixedDocument" /> 的默认打印选项。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedDocumentWriter.Uri">
+      <summary>获取 URI 的 <see cref="T:System.Windows.Documents.FixedDocument" />。</summary>
+      <returns>URI 的 <see cref="T:System.Windows.Documents.FixedDocument" />。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.IXpsFixedPageReader">
+      <summary>定义用于读取 <see cref="T:System.Windows.Documents.FixedPage" /> 的各个部件的方法。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.ColorContexts">
+      <summary>获取页上所有颜色上下文的集合。</summary>
+      <returns>一个 <see cref="T:System.Collections.Generic.ICollection`1" />，它包含页上的每个 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.Fonts">
+      <summary>获取页上使用的所有字体的集合。</summary>
+      <returns>一个 <see cref="T:System.Collections.Generic.ICollection`1" />，它包含页上的每个 <see cref="T:System.Windows.Xps.Packaging.XpsFont" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageReader.GetColorContext(System.Uri)">
+      <summary>获取具有指定统一资源标识符 (URI) 的资源的颜色上下文。</summary>
+      <param name="uri">资源的 URI。</param>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageReader.GetFont(System.Uri)">
+      <summary>获取具有指定统一资源标识符 (URI) 的字体。</summary>
+      <param name="uri">字体的 URI。</param>
+      <returns>具有指定 URI 的字体。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageReader.GetImage(System.Uri)">
+      <summary>获取具有指定统一资源标识符 (URI) 的图像。</summary>
+      <param name="uri">图像的 URI。</param>
+      <returns>具有指定 URI 的图像。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageReader.GetResource(System.Uri)">
+      <summary>获取具有指定统一资源标识符 (URI) 的资源。</summary>
+      <param name="resourceUri">资源的 URI。</param>
+      <returns>具有指定 URI 的资源。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageReader.GetResourceDictionary(System.Uri)">
+      <summary>获取具有指定统一资源标识符 (URI) 的资源字典。</summary>
+      <param name="uri">资源字典的 URI。</param>
+      <returns>具有指定 URI 的资源字典。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.Images">
+      <summary>获取页上所有图像的集合。</summary>
+      <returns>一个 <see cref="T:System.Collections.Generic.ICollection`1" />，它包含页上的每个 <see cref="T:System.Windows.Xps.Packaging.XpsImage" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.PageNumber">
+      <summary>获取页码。</summary>
+      <returns>一个表示页码的 <see cref="T:System.Int32" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.PrintTicket">
+      <summary>获取与 <see cref="T:System.Printing.PrintTicket" /> 关联的 <see cref="T:System.Windows.Documents.FixedPage" />（如果存在票证）。</summary>
+      <returns>一个包含页的默认打印选项的 <see cref="T:System.Printing.PrintTicket" />；如果不存在页的 <see cref="T:System.Printing.PrintTicket" />，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.ResourceDictionaries">
+      <summary>获取页的所有资源字典的集合。</summary>
+      <returns>
+        <see cref="T:System.Collections.Generic.ICollection`1" /> 对象的 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.StoryFragment">
+      <summary>获取 XPS 包的标记的 <see cref="T:System.Windows.Documents.DocumentStructures.StoryFragments" /> 部件。</summary>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsStructure" />，表示 XPS 包中的一个 <see cref="T:System.Windows.Documents.DocumentStructures.StoryFragments" /> 元素。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.Thumbnail">
+      <summary>获取与 <see cref="T:System.Windows.Documents.FixedPage" /> 关联的缩略图像（如果存在缩略图）。</summary>
+      <returns>一个表示图像的 <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.Uri">
+      <summary>获取 统一资源标识符 (URI) 的 <see cref="T:System.Windows.Documents.FixedPage" />。</summary>
+      <returns>一个 <see cref="T:System.Uri" />，表示页的 URI。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageReader.XmlReader">
+      <summary>获取页的 <see cref="T:System.Xml.XmlReader" />。</summary>
+      <returns>页的 <see cref="T:System.Xml.XmlReader" />。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.IXpsFixedPageWriter">
+      <summary>定义用于将 <see cref="T:System.Windows.Documents.FixedPage" /> 部件写入 XPS 文档的方法。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddColorContext">
+      <summary>将一个新的 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" /> 添加到当前页中。</summary>
+      <returns>已添加的新颜色上下文资源。</returns>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddFont">
+      <summary>将一个新的 <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> 添加到当前页中。</summary>
+      <returns>已添加的新字体资源。</returns>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddFont(System.Boolean)">
+      <summary>将一个经过模糊处理的新 <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> 添加到当前页中。</summary>
+      <param name="obfuscate">如果要对字体进行模糊处理，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>已添加的新字体资源。</returns>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddFont(System.Boolean,System.Boolean)">
+      <summary>将经过模糊处理或限制的新 <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> 添加到当前页中。</summary>
+      <param name="obfuscate">如果要对字体进行模糊处理，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="addRestrictedRelationship">如果要防止修改使用该字体的任何文本，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>已添加的新字体资源。</returns>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddImage(System.String)">
+      <summary>将一个具有指定 MIME 类型的新 <see cref="T:System.Windows.Xps.Packaging.XpsImage" /> 添加到当前页中。</summary>
+      <param name="mimeType">要添加的图像的 MIME 类型。</param>
+      <returns>已添加到该页中的新图像资源。</returns>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="mimeType" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="mimeType" /> 是一个空字符串。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddImage(System.Windows.Xps.Packaging.XpsImageType)">
+      <summary>将一个具有指定 <see cref="T:System.Windows.Xps.Packaging.XpsImage" /> 的新 <see cref="T:System.Windows.Xps.Packaging.XpsImageType" /> 添加到当前页中。</summary>
+      <param name="imageType">要添加到该页中的图像类型。</param>
+      <returns>已添加到该页中的新图像资源。</returns>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddResource(System.Type,System.Uri)">
+      <summary>将一个新的 <see cref="T:System.Windows.Xps.Packaging.XpsResource" /> 添加到当前页中。</summary>
+      <param name="resourceType">要添加的资源类型。</param>
+      <param name="resourceUri">要添加的资源的绝对路径，或为 <see langword="null" />。</param>
+      <returns>已添加的新 XML 纸张规范 (XPS) 资源。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="resourceType" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="resourceType" /> 是一个空字符串。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddResourceDictionary">
+      <summary>将一个 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> 添加到页中。</summary>
+      <returns>已添加到页中的 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</returns>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddThumbnail(System.Windows.Xps.Packaging.XpsImageType)">
+      <summary>将指定 <see cref="T:System.Windows.Xps.Packaging.XpsImageType" /> 的缩略图像添加到当前页中。</summary>
+      <param name="imageType">要添加到该页中的缩略图像的图像类型。</param>
+      <returns>已添加的新缩略图像资源。</returns>
+      <exception cref="T:System.InvalidOperationException">已调用 <see cref="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.AddThumbnail(System.Windows.Xps.Packaging.XpsImageType)" />，以便为此页添加一个图像缩略图。</exception>
+      <exception cref="T:System.ObjectDisposedException">已调用 <see cref="M:System.IDisposable.Dispose" />。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.IXpsFixedPageWriter.Commit">
+      <summary>刷新并关闭固定页编写器。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageWriter.LinkTargetStream">
+      <summary>获取一个字符串列表，这些字符串标识当前页中包含的 <see cref="T:System.Windows.Documents.LinkTarget" /> 超链接点。</summary>
+      <returns>标识当前页中包含的 <see cref="T:System.Windows.Documents.LinkTarget" /> 超链接点的字符串的列表。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageWriter.PageNumber">
+      <summary>获取此页的页码（从零开始）。</summary>
+      <returns>此页的页码（从零开始）。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageWriter.PrintTicket">
+      <summary>设置页的默认打印选项。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageWriter.Uri">
+      <summary>获取固定页的 URI。</summary>
+      <returns>固定页的 URI。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.IXpsFixedPageWriter.XmlWriter">
+      <summary>获取用于将 XML 标记写入页的 <see cref="T:System.Xml.XmlWriter" />。</summary>
+      <returns>用于将 XML 标记写入页的 <see cref="T:System.Xml.XmlWriter" />。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.PackageInterleavingOrder">
+      <summary>提供用于指定包的主要部件的流动顺序的值。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackageInterleavingOrder.ImagesLast">
+      <summary>流动顺序为：资源（除图像之外）、页、文档、文档序列和图像。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackageInterleavingOrder.None">
+      <summary>流动顺序由打包系统指定。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackageInterleavingOrder.ResourceFirst">
+      <summary>流动顺序为：资源、页、文档和文档序列。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackageInterleavingOrder.ResourceLast">
+      <summary>流动顺序为：文档序列、文档、页和资源。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.PackagingAction">
+      <summary>标识在包序列化过程中发生的事件的类型。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.AddingDocumentSequence">
+      <summary>正在添加文档序列。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.AddingFixedDocument">
+      <summary>正在添加文档。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.AddingFixedPage">
+      <summary>正在添加页。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.DocumentSequenceCompleted">
+      <summary>已添加文档序列，但不一定已提交。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.FixedDocumentCompleted">
+      <summary>已添加文档，但不一定已提交。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.FixedPageCompleted">
+      <summary>已添加页，但不一定已提交。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.FontAdded">
+      <summary>已添加字体，但不一定已提交。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.ImageAdded">
+      <summary>已添加图像，但不一定已提交。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.None">
+      <summary>未执行任何操作。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.ResourceAdded">
+      <summary>已添加资源，但不一定已提交。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.PackagingAction.XpsDocumentCommitted">
+      <summary>文档已提交。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.PackagingProgressEventArgs">
+      <summary>为 <see cref="E:System.Windows.Xps.Serialization.XpsPackagingPolicy.PackagingProgressEvent" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.PackagingProgressEventArgs.#ctor(System.Windows.Xps.Packaging.PackagingAction,System.Int32)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Packaging.PackagingProgressEventArgs" /> 类的新实例。</summary>
+      <param name="action">当前正在执行打包过程的操作。</param>
+      <param name="numberCompleted">指定的 <paramref name="action" /> 同时发生的次数。</param>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.PackagingProgressEventArgs.Action">
+      <summary>获取一个值，该值指示打包过程中当前正在发生什么操作。</summary>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.PackagingAction" />，表示打包过程中当前正在发生的情况。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.PackagingProgressEventArgs.NumberCompleted">
+      <summary>获取 <see cref="P:System.Windows.Xps.Packaging.PackagingProgressEventArgs.Action" /> 中标识的操作同时发生的次数。</summary>
+      <returns>一个 <see cref="T:System.Int32" />，表示 <see cref="P:System.Windows.Xps.Packaging.PackagingProgressEventArgs.Action" /> 中标识的操作同时发生的次数。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.PackagingProgressEventHandler">
+      <summary>表示处理 <see cref="E:System.Windows.Xps.Serialization.XpsPackagingPolicy.PackagingProgressEvent" /> 的方法。</summary>
+      <param name="sender">事件源。</param>
+      <param name="e">事件数据。</param>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.SpotLocation">
+      <summary>表示要在 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中显示数字签名的位置。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.SpotLocation.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Packaging.SpotLocation" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.SpotLocation.PageUri">
+      <summary>获取或设置要在其上显示数字签名的页的 URI。</summary>
+      <returns>要在其上显示签名的页的URI。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.SpotLocation.StartX">
+      <summary>获取或设置数字签名的 X 页坐标。</summary>
+      <returns>数字签名的 X 页坐标。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.SpotLocation.StartY">
+      <summary>获取或设置数字签名的 Y 页坐标。</summary>
+      <returns>数字签名的 Y 页坐标。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsColorContext">
+      <summary>表示位图图像的颜色上下文。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsDigitalSignature">
+      <summary>表示 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的数字签名。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDigitalSignature.#ctor(System.IO.Packaging.PackageDigitalSignature,System.Windows.Xps.Packaging.XpsDocument)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Packaging.XpsDigitalSignature" /> 类的新实例。</summary>
+      <param name="packageSignature">包的关联数字签名。</param>
+      <param name="package">关联的包。</param>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.DocumentPropertiesRestricted">
+      <summary>获取一个值，该值指示更改文档的属性是否会使数字签名无效。</summary>
+      <returns>如果更改文档的属性会使签名无效，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.Id">
+      <summary>获取签名的全局唯一标识符 (GUID)。</summary>
+      <returns>签名的 GUID。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.IsCertificateAvailable">
+      <summary>获取一个值，该值指示签名者的 X.509 证书是否包含在文档 <see cref="T:System.IO.Packaging.Package" /> 中。</summary>
+      <returns>如果签名者的 X.509 证书嵌入文档 <see cref="T:System.IO.Packaging.Package" /> 中，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.SignatureOriginRestricted">
+      <summary>获取一个值，该值指示其他人对包签名是否会使数字签名无效。</summary>
+      <returns>如果应用其他数字签名会使该签名无效，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.SignatureType">
+      <summary>获取一个标识签名类型的 URL 字符串。</summary>
+      <returns>标识签名类型的 URL 字符串。 默认的签名类型为 <see cref="F:System.Security.Cryptography.Xml.SignedXml.XmlDsigC14NTransformUrl" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.SignatureValue">
+      <summary>获取签名的加密哈希值。</summary>
+      <returns>一个 <see cref="T:System.Byte" /> 数组，其中包含签名的加密哈希值。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.SignedDocumentSequence">
+      <summary>为已签名的文档序列获取文档序列读取器。</summary>
+      <returns>
+        <see cref="T:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader" />; 或<see langword="null" />如果不是所有有效XPS部件都进行签名的文档中。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.SignerCertificate">
+      <summary>获取签名程序的 X.509 证书。</summary>
+      <returns>签名程序的 X.509 证书；当文档包中未嵌入证书时，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDigitalSignature.SigningTime">
+      <summary>获取创建签名的日期和时间。</summary>
+      <returns>对页、文档或文档序列签名的日期和时间。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDigitalSignature.Verify">
+      <summary>根据 XPS<see cref="T:System.IO.Packaging.Package" /> 中嵌入的 X.509 证书验证文档的数字签名。</summary>
+      <returns>指定验证尝试结果的 <see cref="T:System.IO.Packaging.VerifyResult" /> 枚举值之一。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDigitalSignature.Verify(System.Security.Cryptography.X509Certificates.X509Certificate)">
+      <summary>根据指定 X.509 证书验证文档数字签名。</summary>
+      <param name="certificate">签名者的真品证书。</param>
+      <returns>指定验证尝试结果的 <see cref="T:System.IO.Packaging.VerifyResult" /> 枚举值之一。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDigitalSignature.VerifyCertificate">
+      <summary>验证包中嵌入的 X.509 证书。</summary>
+      <returns>枚举值的按位组合，这些枚举值指定验证尝试的结果。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDigitalSignature.VerifyCertificate(System.Security.Cryptography.X509Certificates.X509Certificate)">
+      <summary>验证指定的 X.509 证书。</summary>
+      <param name="certificate">真品证书。</param>
+      <returns>枚举值的按位组合，这些枚举值指定验证尝试的结果。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsDigSigPartAlteringRestrictions">
+      <summary>指定从数字签名的范围内排除的 XPS <see cref="T:System.IO.Packaging.Package" /> 的各个部件。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsDigSigPartAlteringRestrictions.Annotations">
+      <summary>排除批注部件。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsDigSigPartAlteringRestrictions.CoreMetadata">
+      <summary>排除核心属性部件。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsDigSigPartAlteringRestrictions.None">
+      <summary>不排除任何部件。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsDigSigPartAlteringRestrictions.SignatureOrigin">
+      <summary>排除签名源部件。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsDocument">
+      <summary>提供用于保存 XPS 文档内容的 <see cref="T:System.IO.Packaging.Package" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.#ctor(System.IO.Packaging.Package)">
+      <summary>通过访问指定的 XML 纸张规范 (XPS) <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 和使用默认的隔行扫描、资源及压缩选项来初始化 <see cref="T:System.IO.Packaging.Package" /> 类的新实例。</summary>
+      <param name="package">
+        <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的目标 XPS 包。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.#ctor(System.IO.Packaging.Package,System.IO.Packaging.CompressionOption)">
+      <summary>用指定的默认隔行扫描、资源和压缩选项初始化指定 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中包含的 <see cref="T:System.IO.Packaging.Package" /> 类的新实例。</summary>
+      <param name="package">
+        <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的目标包。</param>
+      <param name="compressionOption">包压缩选项。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.#ctor(System.IO.Packaging.Package,System.IO.Packaging.CompressionOption,System.String)">
+      <summary>用指定的默认隔行扫描、资源和压缩选项初始化指定 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中包含的 <see cref="T:System.IO.Packaging.Package" /> 类的新实例。</summary>
+      <param name="package">
+        <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的目标包。</param>
+      <param name="compressionOption">包压缩选项。</param>
+      <param name="path">文档的字符串形式的统一资源标识符 (URI)。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.#ctor(System.String,System.IO.FileAccess)">
+      <summary>用默认的隔行扫描、资源和压缩选项初始化指定的 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 文件中包含的 <see cref="T:System.IO.Packaging.Package" /> 类的新实例。</summary>
+      <param name="path">
+        <see cref="T:System.IO.Packaging.Package" /> 的目标 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的路径和文件名。</param>
+      <param name="packageAccess">用于打开 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的文件 I/O 模式。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.#ctor(System.String,System.IO.FileAccess,System.IO.Packaging.CompressionOption)">
+      <summary>用默认的隔行扫描、资源和压缩选项初始化指定的 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 文件中包含的 <see cref="T:System.IO.Packaging.Package" /> 类的新实例。</summary>
+      <param name="path">
+        <see cref="T:System.IO.Packaging.Package" /> 的目标 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的路径和文件名。</param>
+      <param name="packageAccess">用于打开 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的文件 I/O 模式。</param>
+      <param name="compressionOption">包压缩选项。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.AddFixedDocumentSequence">
+      <summary>将根 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 添加到包中并返回一个编写器。</summary>
+      <returns>用于此 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的 XML 纸张规范 (XPS) 固定文档序列编写器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.AddThumbnail(System.Windows.Xps.Packaging.XpsImageType)">
+      <summary>向包中添加缩略图像。</summary>
+      <param name="imageType">图像的格式。</param>
+      <returns>新添加的 <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.Close">
+      <summary>关闭 XPS 文档 <see cref="T:System.IO.Packaging.Package" />。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDocument.CoreDocumentProperties">
+      <summary>获取 XPS 文档的核心 <see cref="T:System.IO.Packaging.PackageProperties" />。</summary>
+      <returns>核心属性<see cref="T:System.Windows.Xps.Packaging.XpsDocument" /><see cref="T:System.IO.Packaging.Package" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.CreateXpsDocumentWriter(System.Windows.Xps.Packaging.XpsDocument)">
+      <summary>创建一个用于编写 <see cref="T:System.Windows.Xps.XpsDocumentWriter" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" />。</summary>
+      <param name="xpsDocument">要编写的 XPS 文档。</param>
+      <returns>要用于编写 XML 纸张规范 (XPS) 文档的 <see cref="T:System.Windows.Xps.XpsDocumentWriter" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.Dispose(System.Boolean)">
+      <summary>释放由 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 占用的非托管资源，还可以选择释放托管资源。</summary>
+      <param name="disposing">若要释放托管资源和非托管资源，则为 <see langword="true" />；若仅释放非托管资源，则为 <see langword="false" />。</param>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDocument.FixedDocumentSequenceReader">
+      <summary>获取一个用于阅读文档的 <see cref="T:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader" />。</summary>
+      <returns>一个用于阅读文档的 <see cref="T:System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.GetFixedDocumentSequence">
+      <summary>返回位于包根位置的固定文档序列。</summary>
+      <returns>包的 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDocument.IsReader">
+      <summary>获取一个值，该值指示包是否可读。</summary>
+      <returns>如果包可读，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDocument.IsSignable">
+      <summary>获取一个值，该值指示是否可对包进行数字签名。</summary>
+      <returns>如果可对包进行签名，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDocument.IsWriter">
+      <summary>获取一个值，该值指示包是否可写。</summary>
+      <returns>如果包可写，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.RemoveSignature(System.Windows.Xps.Packaging.XpsDigitalSignature)">
+      <summary>从包中删除签名。</summary>
+      <param name="signature">已删除的签名。</param>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDocument.Signatures">
+      <summary>获取与包关联的 XML 纸张规范 (XPS) 签名的集合。</summary>
+      <returns>
+        <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> 对象的 <see cref="T:System.Windows.Xps.Packaging.XpsDigitalSignature" />，这些对象表示与包关联的签名。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.SignDigitally(System.Security.Cryptography.X509Certificates.X509Certificate,System.Boolean,System.Windows.Xps.Packaging.XpsDigSigPartAlteringRestrictions)">
+      <summary>使用指定的 X.509 证书对包部件集合进行签名。</summary>
+      <param name="certificate">用于对每个部件进行签名的 X.509 证书；或为 <see langword="null" /> 以提示用户选择已安装的证书。</param>
+      <param name="embedCertificate">若要在包中存储证书，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="restrictions">指示必须从签名中排除的依赖部件的标志。</param>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsDigitalSignature" />，其中包含有关签名的信息。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.SignDigitally(System.Security.Cryptography.X509Certificates.X509Certificate,System.Boolean,System.Windows.Xps.Packaging.XpsDigSigPartAlteringRestrictions,System.Guid)">
+      <summary>使用指定的 X.509 证书对包部件的集合进行签名。</summary>
+      <param name="certificate">用于对每个部件进行签名的 X.509 证书；或为 <see langword="null" /> 以提示用户选择已安装的证书。</param>
+      <param name="embedCertificate">若要在包中存储证书，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="restrictions">指示从签名中排除的依赖部件的标志。</param>
+      <param name="id">要分配给签名的 ID。</param>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsDigitalSignature" />，其中包含有关签名的信息。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.SignDigitally(System.Security.Cryptography.X509Certificates.X509Certificate,System.Boolean,System.Windows.Xps.Packaging.XpsDigSigPartAlteringRestrictions,System.Guid,System.Boolean)">
+      <summary>使用指定的 X.509 证书对包部件集合进行签名。</summary>
+      <param name="certificate">用于对每个部件进行签名的 X.509 证书；或为 <see langword="null" /> 以提示用户选择已安装的证书。</param>
+      <param name="embedCertificate">若要在包中存储证书，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="restrictions">指示要从签名中排除的依赖部件的标志。</param>
+      <param name="id">要分配给签名的 ID。</param>
+      <param name="testIsSignable">若要在签名之前验证 <see cref="P:System.Windows.Xps.Packaging.XpsDocument.IsSignable" /> 是否为 <see langword="true" />，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsDigitalSignature" />，其中包含有关签名的信息。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsDocument.System#IDisposable#Dispose">
+      <summary>此成员支持 Windows Presentation Foundation (WPF) 基础结构，但不能在代码中直接使用。 改用类型安全的 <see cref="M:System.Windows.Xps.Packaging.XpsDocument.Dispose(System.Boolean)" /> 方法。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsDocument.Thumbnail">
+      <summary>获取或设置与文档关联的 XML 纸张规范 (XPS) 缩略图像。</summary>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.XpsThumbnail" />，表示与文档关联的缩略图像。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsFont">
+      <summary>表示 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中的字体。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsFont.IsObfuscated">
+      <summary>获取一个值，该值指示是否对字体进行了模糊处理。</summary>
+      <returns>如果对字体进行了模糊处理，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsFont.IsRestricted">
+      <summary>获取或设置一个指示使用此字体的文本是否可以修改的值。</summary>
+      <returns>如果使用此字体的文本可以更改或编辑，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsFont.ObfuscateFontData(System.Byte[],System.Guid)">
+      <summary>对字体数据进行模糊处理。</summary>
+      <param name="fontData">要进行模糊处理的字体数据。</param>
+      <param name="guid">用于混淆 <paramref name="fontData" /> 的全局唯一标识符 (GUID)。</param>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsImage">
+      <summary>表示 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中的图像。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsImageType">
+      <summary>指定 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中可以包含的图像的图形格式。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsImageType.JpegImageType">
+      <summary>JPEG</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsImageType.PngImageType">
+      <summary>PNG</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsImageType.TiffImageType">
+      <summary>TIFF</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsImageType.WdpImageType">
+      <summary>WDP</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsPartBase">
+      <summary>定义 XPS 包可以包含的所有部件类的父类的抽象类。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsPartBase.Uri">
+      <summary>获取或设置部件的 统一资源标识符 (URI)。</summary>
+      <returns>部件的 <see cref="T:System.Uri" />。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsResource">
+      <summary>为可添加到 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中的资源定义基类。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsResource.Commit">
+      <summary>向文档包提交所有更改并刷新资源。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsResource.GetStream">
+      <summary>在派生类中重写时，返回用于读取或写入资源的 I/O 流。</summary>
+      <returns>用于读取或写入资源的 <see cref="T:System.IO.Stream" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsResource.RelativeUri(System.Uri)">
+      <summary>返回资源相对于指定的绝对 URI 的 URI。</summary>
+      <param name="inUri">起始的绝对URI。</param>
+      <returns>相对于指定的绝对 <paramref name="inUri" /> 的资源 <see cref="T:System.Uri" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsResource.System#IDisposable#Dispose">
+      <summary>此成员支持 Windows Presentation Foundation 基础结构，且不应在代码中直接使用。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsResourceDictionary">
+      <summary>表示可在 <see cref="T:System.Windows.Xps.Packaging.XpsResource" /> 中跨页使用的 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 元素的字典。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsResourceSharing">
+      <summary>指定资源是否可在 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中的页和文档之间共享。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsResourceSharing.NoResourceSharing">
+      <summary>资源不能共享。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Packaging.XpsResourceSharing.ShareResources">
+      <summary>资源可以共享。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsSignatureDefinition">
+      <summary>表示 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 数字签名。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Packaging.XpsSignatureDefinition.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Packaging.XpsSignatureDefinition" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsSignatureDefinition.Culture">
+      <summary>获取或设置签名的 <see cref="T:System.Globalization.CultureInfo" />。</summary>
+      <returns>签名的区域性信息。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsSignatureDefinition.HasBeenModified">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.Windows.Xps.Packaging.XpsSignatureDefinition" /> 类是否存在未写入但必须写入包的流中的属性更改。</summary>
+      <returns>如果存在未提交的更改，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsSignatureDefinition.Intent">
+      <summary>获取或设置签名者在签名时所依据的签名目的协议的字符串值。</summary>
+      <returns>一个表示目的协议的 <see cref="T:System.String" />，例如“I have read and agree”。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsSignatureDefinition.RequestedSigner">
+      <summary>获取或设置被请求对包进行签名（或已签名）的人员的身份。</summary>
+      <returns>一个<see cref="T:System.String" />，它表示签名者，例如，"Mary Jones，Marketing dept" 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsSignatureDefinition.SignBy">
+      <summary>获取或设置请求的签名者必须对指定文档的各部件进行签名的截止日期和时间。</summary>
+      <returns>一个 (<see cref="T:System.Nullable" />) <see cref="T:System.DateTime" />，表示签名者必须对包进行签名的期限。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsSignatureDefinition.SigningLocale">
+      <summary>获取或设置对包进行签名时所在位置的法律管辖区。</summary>
+      <returns>一个表示管辖区的 <see cref="T:System.String" />，例如“State of Utah, United States”。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsSignatureDefinition.SpotId">
+      <summary>获取或设置此 <see cref="T:System.Windows.Xps.Packaging.XpsSignatureDefinition" /> 的唯一标识符。</summary>
+      <returns>一个 (<see cref="T:System.Nullable" />) <see cref="T:System.Guid" /> ，表示签名定义的 ID。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Packaging.XpsSignatureDefinition.SpotLocation">
+      <summary>获取或设置用于指定在 XML 纸张规范 (XPS) 文档中的何处显示可见数字签名的位置。</summary>
+      <returns>一个 <see cref="T:System.Windows.Xps.Packaging.SpotLocation" />，表示对签名的可见请求在包中出现的位置。 默认值为 <see langword="null" />。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsStructure">
+      <summary>表示 <see cref="N:System.Windows.Documents.DocumentStructures" /> 的 <see cref="T:System.Windows.Documents.DocumentStructures.StoryFragments" /> 或 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 元素。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Packaging.XpsThumbnail">
+      <summary>表示文档序列、单个文档或单个页的缩略图像。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.BasePackagingPolicy">
+      <summary>为 XPS 包序列化策略定义基类。 此类为抽象类。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.#ctor">
+      <summary>在派生类中重写时，将初始化 <see cref="T:System.Windows.Xps.Serialization.BasePackagingPolicy" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireResourceStreamForXpsColorContext(System.String)">
+      <summary>在派生类中重写时，获取 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" /> 对象的资源流。</summary>
+      <param name="resourceId">对象的 ID。</param>
+      <returns>
+        <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireResourceStreamForXpsFont">
+      <summary>在派生类中重写时，获取 <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> 对象的资源流。</summary>
+      <returns>
+        <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的一个 <see cref="T:System.Windows.Xps.Packaging.XpsFont" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireResourceStreamForXpsFont(System.String)">
+      <summary>在派生类中重写时，为具有指定资源 ID 的 <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> 获取 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" />。</summary>
+      <param name="resourceId">要获取的 <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> 资源流的资源 ID。</param>
+      <returns>具有指定 <paramref name="resourceID" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> 的 XML 纸张规范 (XPS) 资源流。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireResourceStreamForXpsImage(System.String)">
+      <summary>在派生类中重写时，获取 <see cref="T:System.Windows.Xps.Packaging.XpsImage" /> 对象的资源流。</summary>
+      <param name="resourceId">对象的 ID。</param>
+      <returns>
+        <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsImage" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireResourceStreamForXpsResourceDictionary(System.String)">
+      <summary>在派生类中重写时，获取 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> 对象的资源流。</summary>
+      <param name="resourceId">对象的 ID。</param>
+      <returns>
+        <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireStreamForLinkTargets">
+      <summary>在派生类中重写时，获取一个字符串列表，每个字符串表示一个 <see cref="T:System.Windows.Documents.LinkTarget" /> 元素。</summary>
+      <returns>表示页的可链接目标的 <see cref="T:System.Collections.Generic.IList`1" /> 对象的 <see cref="T:System.String" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireXmlWriterForFixedDocument">
+      <summary>在派生类中重写时，返回 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedDocument" />。</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedDocument" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireXmlWriterForFixedDocumentSequence">
+      <summary>在派生类中重写时，返回 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireXmlWriterForFixedPage">
+      <summary>在派生类中重写时，返回 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedPage" />。</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedPage" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireXmlWriterForPage">
+      <summary>在派生类中重写时，返回当前页的 <see cref="T:System.Xml.XmlWriter" />。</summary>
+      <returns>当前页的 <see cref="T:System.Xml.XmlWriter" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.AcquireXmlWriterForResourceDictionary">
+      <summary>在派生类中重写时，返回 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.BasePackagingPolicy.CurrentFixedDocumentUri">
+      <summary>在派生类中重写时，获取正在处理的固定文档的统一资源标识符 (URI)。</summary>
+      <returns>当前文档的 <see cref="T:System.Uri" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.BasePackagingPolicy.CurrentFixedPageUri">
+      <summary>在派生类中重写时，获取正在处理的固定页的统一资源标识符 (URI)。</summary>
+      <returns>当前页的 <see cref="T:System.Uri" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.PersistPrintTicket(System.Printing.PrintTicket)">
+      <summary>在派生类中重写时，将打印票证写入包或包的某个部件中。</summary>
+      <param name="printTicket">一个提供有关如何打印打印作业的信息的对象。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.PreCommitCurrentPage">
+      <summary>在派生类中重写时，在提交页之前执行所需的任何维护任务，例如刷新流。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.RelateResourceToCurrentPage(System.Uri,System.String)">
+      <summary>在派生类中重写时，从当前页向一些内部或外部资源添加关系。</summary>
+      <param name="targetUri">资源的 统一资源标识符 (URI)。</param>
+      <param name="relationshipName">关系的名称。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.RelateRestrictedFontToCurrentDocument(System.Uri)">
+      <summary>在派生类中重写时，从当前页向字体添加关系。</summary>
+      <param name="targetUri">字体的 统一资源标识符 (URI)。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.ReleaseResourceStreamForXpsColorContext">
+      <summary>在派生类中重写时，将为当前的 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 对象释放 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.ReleaseResourceStreamForXpsFont">
+      <summary>在派生类中重写时，将为当前的 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 对象释放 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.ReleaseResourceStreamForXpsFont(System.String)">
+      <summary>在派生类中重写时，将为当前的 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 对象释放 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</summary>
+      <param name="resourceId">已释放的资源的 ID。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.ReleaseResourceStreamForXpsImage">
+      <summary>在派生类中重写时，将为当前的 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 对象释放 <see cref="T:System.Windows.Xps.Packaging.XpsImage" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.ReleaseResourceStreamForXpsResourceDictionary">
+      <summary>在派生类中重写时，将为当前的 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 对象释放 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.ReleaseXmlWriterForFixedDocument">
+      <summary>在派生类中重写时，将为当前的 <see cref="T:System.Xml.XmlWriter" /> 释放 <see cref="T:System.Windows.Documents.FixedDocument" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.ReleaseXmlWriterForFixedDocumentSequence">
+      <summary>在派生类中重写时，将为当前的 <see cref="T:System.Xml.XmlWriter" /> 释放 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.ReleaseXmlWriterForFixedPage">
+      <summary>在派生类中重写时，将为当前的 <see cref="T:System.Xml.XmlWriter" /> 释放 <see cref="T:System.Windows.Documents.FixedPage" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.BasePackagingPolicy.System#IDisposable#Dispose">
+      <summary>此成员支持 Windows Presentation Foundation (WPF) 基础结构，但不能在代码中直接使用。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.ColorTypeConverter">
+      <summary>提供类型转换器，用于将 <see cref="T:System.Windows.Media.Color" /> 对象与其他类型的对象进行转换。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ColorTypeConverter.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.ColorTypeConverter" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ColorTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>返回一个值，该值指示此转换器是否可将指定类型的实例转换为 <see cref="T:System.Windows.Media.Color" />。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="sourceType">候选转换对象的对象的类型。</param>
+      <returns>如果可以转换指定类型的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ColorTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>返回一个值，该值指示此 <see cref="T:System.Windows.Xps.Serialization.ColorTypeConverter" /> 是否可将 <see cref="T:System.Windows.Media.Color" /> 转换为指定类型的实例。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="destinationType">要将颜色转换为的对象的类型。</param>
+      <returns>如果可以进行转换，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ColorTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+      <summary>将指定的对象转换为 <see cref="T:System.Windows.Media.Color" />。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="culture">转换期间使用的语言和区域性。</param>
+      <param name="value">已转换的对象。</param>
+      <returns>新的 <see cref="T:System.Windows.Media.Color" /> 对象。</returns>
+      <exception cref="T:System.NotImplementedException">从此类中而不是派生类中调用此方法。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="value" /> 不是可以转换的类型。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ColorTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+      <summary>将 <see cref="T:System.Windows.Media.Color" /> 转换为指定类型的对象。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="culture">转换期间使用的语言和区域性。</param>
+      <param name="value">要转换的对象。</param>
+      <param name="destinationType">要将 <paramref name="value" /> 转换为的类型。</param>
+      <returns>指定的类型的新 <see cref="T:System.Object" />。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="destinationType" /> 不是 <paramref name="value" /> 可以转换为的类型。  
+
+或 - 
+<paramref name="culture" /> 是一个非特定区域性。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ColorTypeConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+      <summary>获取指定类型的属性描述的集合。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="value">一个需要其属性描述的类型的对象。</param>
+      <param name="attributes">一个特性数组，这些特性筛选返回的集合以排除不相关的属性。</param>
+      <returns>一个包含为组件公开的属性描述的 <see cref="T:System.ComponentModel.PropertyDescriptorCollection" />；如果没有返回属性描述，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.NotImplementedException">从此类中而不是派生类中调用此方法。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ColorTypeConverter.SerializeColorContext(System.IServiceProvider,System.Windows.Media.ColorContext)">
+      <summary>将 <see cref="T:System.Windows.Media.ColorContext" /> 序列化为 XML 纸张规范 (XPS) 包，并将其 统一资源标识符 (URI) 返回为字符串。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="colorContext">要序列化的对象。</param>
+      <returns>一个 <see cref="T:System.String" />，表示 URI 颜色上下文。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="colorContext" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.FontSubsetterCommitPolicies">
+      <summary>指定在 XPS 文档中保存字体标志符号子集的间隔。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.FontSubsetterCommitPolicies.CommitEntireSequence">
+      <summary>按每个文档序列存储文本中使用的所有标志符号。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.FontSubsetterCommitPolicies.CommitPerDocument">
+      <summary>按每个文档存储文本中使用的所有标志符号。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.FontSubsetterCommitPolicies.CommitPerPage">
+      <summary>按每页存储文本中使用的所有标志符号。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.FontSubsetterCommitPolicies.None">
+      <summary>无子集。  存储文档中使用的所有字体的所有标志符号。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.FontTypeConverter">
+      <summary>提供类型转换器，用于将 <see cref="T:System.Windows.Media.GlyphRun" /> 对象与其他类型的对象进行转换。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.FontTypeConverter.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.FontTypeConverter" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.FontTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>返回一个值，该值指示此转换器是否可将指定类型的实例转换为 <see cref="T:System.Windows.Media.GlyphRun" />。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="sourceType">要转换的对象的类型。</param>
+      <returns>如果可以转换指定类型的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.FontTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>返回一个值，该值指示此 <see cref="T:System.Windows.Xps.Serialization.FontTypeConverter" /> 是否可将 <see cref="T:System.Windows.Media.GlyphRun" /> 转换为指定类型的实例。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="destinationType">要将标志符号运行转换为的对象的类型。</param>
+      <returns>如果可以进行转换，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.FontTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+      <summary>将指定的对象转换为 <see cref="T:System.Windows.Media.GlyphRun" />。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="culture">转换期间使用的语言和区域性。</param>
+      <param name="value">已转换的对象。</param>
+      <returns>新的 <see cref="T:System.Windows.Media.GlyphRun" /> 对象。</returns>
+      <exception cref="T:System.NotImplementedException">从此类中而不是派生类中调用此方法。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="value" /> 不是可以转换的类型。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.FontTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+      <summary>将 <see cref="T:System.Windows.Media.GlyphRun" /> 转换为指定类型的对象。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="culture">转换期间使用的语言和区域性。</param>
+      <param name="value">要转换的对象。</param>
+      <param name="destinationType">要将 <paramref name="value" /> 转换为的类型。</param>
+      <returns>指定的类型的新 <see cref="T:System.Object" />。 在此类中实现时，此值必须为 <see cref="T:System.Uri" />。 它表示 <paramref name="value" /> 参数使用的字体子集的统一资源标识符 (URI)。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="destinationType" /> 不是 <paramref name="value" /> 可以转换为的类型。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="context" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Windows.Xps.XpsSerializationException">序列化标志符号运行时发生错误。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.FontTypeConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+      <summary>获取指定类型的属性描述的集合。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="value">一个需要其属性描述的对象。</param>
+      <param name="attributes">一个特性数组，这些特性筛选返回的集合以排除不相关的属性。</param>
+      <returns>一个包含为组件公开的属性描述的 <see cref="T:System.ComponentModel.PropertyDescriptorCollection" />；如果没有返回属性描述，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.NotImplementedException">从此类中而不是派生类中调用此方法。</exception>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.ImageSourceTypeConverter">
+      <summary>提供类型转换器，用于将 <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> 对象与其他类型的对象进行转换。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ImageSourceTypeConverter.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.ImageSourceTypeConverter" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ImageSourceTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>返回一个值，该值指示此转换器是否可将指定类型的实例转换为 <see cref="T:System.Windows.Media.Imaging.BitmapSource" />。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="sourceType">要转换的对象的类型。</param>
+      <returns>如果可以转换指定类型的对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ImageSourceTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>返回一个值，该值指示此 <see cref="T:System.Windows.Xps.Serialization.ImageSourceTypeConverter" /> 是否可将 <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> 转换为指定类型的实例。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="destinationType">要转换为 <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> 的对象的类型。</param>
+      <returns>如果可以进行转换，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ImageSourceTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+      <summary>将指定的对象转换为 <see cref="T:System.Windows.Media.Imaging.BitmapSource" />。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="culture">转换期间使用的语言和区域性。</param>
+      <param name="value">已转换的对象。</param>
+      <returns>新的 <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> 对象。</returns>
+      <exception cref="T:System.NotImplementedException">从此类中而不是派生类中调用此方法。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="value" /> 不是可以转换的类型。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ImageSourceTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+      <summary>将 <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> 转换为指定类型的对象。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="culture">转换期间使用的语言和区域性。</param>
+      <param name="value">要转换的对象。</param>
+      <param name="destinationType">要将 <paramref name="value" /> 转换为的类型。</param>
+      <returns>指定的类型的新 <see cref="T:System.Object" />。 在此类中实现时，该对象必须为 <see cref="T:System.Uri" />。 该对象表示序列化图像的统一资源标识符 (URI)。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="destinationType" /> 不是 <paramref name="value" /> 可以转换为的类型。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="context" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.Windows.Xps.XpsSerializationException">序列化图像时发生错误。</exception>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.ImageSourceTypeConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+      <summary>获取指定类型的属性描述的集合。</summary>
+      <param name="context">提供上下文信息的对象。</param>
+      <param name="value">一个需要其属性描述的对象。</param>
+      <param name="attributes">一个特性数组，这些特性用于筛选返回的集合以排除不相关的属性。</param>
+      <returns>一个包含为组件公开的属性描述的 <see cref="T:System.ComponentModel.PropertyDescriptorCollection" />；如果没有返回属性描述，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.NotImplementedException">从此类中而不是派生类中调用此方法。</exception>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.PackageSerializationManager">
+      <summary>提供一个基类，该基类用于管理序列化程序和将 Windows Presentation Foundation (WPF) 根对象插入到 XML 纸张规范 (XPS) 包中的类型转换器。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.PackageSerializationManager.#ctor">
+      <summary>在派生类中重写时，将初始化 <see cref="T:System.Windows.Xps.Serialization.PackageSerializationManager" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.PackageSerializationManager.SaveAsXaml(System.Object)">
+      <summary>在派生类中重写时，将指定的序列化对象保存到 XML 纸张规范 (XPS) 包中。</summary>
+      <param name="serializedObject">要保存的对象。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.PackageSerializationManager.System#IDisposable#Dispose">
+      <summary>此成员支持 Windows Presentation Foundation 基础结构，且不应在代码中直接使用。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.PrintTicketLevel">
+      <summary>指定 <see cref="T:System.Printing.PrintTicket" /> 是应用于文档的整个序列还是仅应用于一个文档或一页。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.PrintTicketLevel.FixedDocumentPrintTicket">
+      <summary>一个文档。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.PrintTicketLevel.FixedDocumentSequencePrintTicket">
+      <summary>一个文档序列。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.PrintTicketLevel.FixedPagePrintTicket">
+      <summary>一页。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.PrintTicketLevel.None">
+      <summary>未知或未指定的级别。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.SerializationState">
+      <summary>请勿使用。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.SerializationState.Normal">
+      <summary>请勿使用。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.SerializationState.Stop">
+      <summary>请勿使用。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsPackagingPolicy">
+      <summary>定义与指定的 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 关联的编写器、资源、打印票证和包关系设置。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.#ctor(System.Windows.Xps.Packaging.XpsDocument)">
+      <summary>为指定的 <see cref="T:System.Windows.Xps.Serialization.XpsPackagingPolicy" /> 初始化 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 类的一个新实例。</summary>
+      <param name="xpsPackage">与此 <see cref="T:System.Windows.Xps.Serialization.XpsPackagingPolicy" /> 关联的 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" />。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.#ctor(System.Windows.Xps.Packaging.XpsDocument,System.Windows.Xps.Packaging.PackageInterleavingOrder)">
+      <summary>用指定的 <see cref="T:System.Windows.Xps.Serialization.XpsPackagingPolicy" /> 和指定的隔行扫描顺序初始化 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 类的一个新实例。</summary>
+      <param name="xpsPackage">打包策略应用于的 XML 纸张规范 (XPS) 文档。</param>
+      <param name="interleavingType">隔行扫描文档元素的顺序。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireResourceStreamForXpsColorContext(System.String)">
+      <summary>获取指定 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" /> 的资源流。</summary>
+      <param name="resourceId">颜色上下文的资源标识符。</param>
+      <returns>具有指定 <paramref name="resourceId" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" /> 的资源流。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireResourceStreamForXpsFont">
+      <summary>获取当前 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsFont" />。</summary>
+      <returns>当前 <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> 的资源流。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireResourceStreamForXpsFont(System.String)">
+      <summary>获取指定的 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsFont" />。</summary>
+      <param name="resourceId">XML 纸张规范 (XPS) 字体的标识符。</param>
+      <returns>具有指定的 <paramref name="resourceId" /> 的 XML 纸张规范 (XPS) 字体的资源流。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireResourceStreamForXpsImage(System.String)">
+      <summary>获取指定 <see cref="T:System.Windows.Xps.Packaging.XpsImage" /> 的资源流。</summary>
+      <param name="resourceId">XML 纸张规范 (XPS) 图像的资源标识符。</param>
+      <returns>具有指定 <paramref name="resourceId" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsImage" /> 的资源流。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireResourceStreamForXpsResourceDictionary(System.String)">
+      <summary>获取指定 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> 的资源流。</summary>
+      <param name="resourceId">资源字典的标识符。</param>
+      <returns>具有指定 <paramref name="resourceId" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> 的 XML 纸张规范 (XPS) 资源流。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireStreamForLinkTargets">
+      <summary>返回当前页内容的 <see cref="P:System.Windows.Documents.PageContent.LinkTargets" /> 列表。</summary>
+      <returns>当前页内容的 <see cref="P:System.Windows.Documents.PageContent.LinkTargets" /> 列表。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireXmlWriterForFixedDocument">
+      <summary>获取当前 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedDocument" />。</summary>
+      <returns>当前 <see cref="T:System.Windows.Documents.FixedDocument" /> 的 XML 编写器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireXmlWriterForFixedDocumentSequence">
+      <summary>获取当前 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</summary>
+      <returns>当前 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 的 XML 编写器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireXmlWriterForFixedPage">
+      <summary>获取当前 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedPage" />。</summary>
+      <returns>当前 <see cref="T:System.Windows.Documents.FixedPage" /> 的 XML 编写器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireXmlWriterForPage">
+      <summary>获取当前页的 <see cref="T:System.Xml.XmlWriter" />。</summary>
+      <returns>当前 <see cref="T:System.Windows.Documents.FixedPage" /> 的 XML 编写器。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.AcquireXmlWriterForResourceDictionary">
+      <summary>获取当前 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</summary>
+      <returns>当前 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> 的 XML 编写器。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsPackagingPolicy.CurrentFixedDocumentUri">
+      <summary>获取当前固定文档的统一资源标识符 (URI)。</summary>
+      <returns>当前固定文档的URI。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsPackagingPolicy.CurrentFixedPageUri">
+      <summary>获取当前固定页的统一资源标识符 (URI)。</summary>
+      <returns>当前固定页的URI。</returns>
+    </member>
+    <member name="E:System.Windows.Xps.Serialization.XpsPackagingPolicy.PackagingProgressEvent">
+      <summary>在将 <see cref="T:System.Windows.Documents.FixedPage" />、<see cref="T:System.Windows.Documents.FixedDocument" /> 或 <see cref="T:System.Windows.Documents.FixedDocumentSequence" /> 添加至 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 时发生。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.PersistPrintTicket(System.Printing.PrintTicket)">
+      <summary>将指定的 <see cref="T:System.Printing.PrintTicket" /> 存储为 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的一部分。</summary>
+      <param name="printTicket">要存储为 XML 纸张规范 (XPS) 文档的一部分的打印票证。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.PreCommitCurrentPage">
+      <summary>准备将当前页提交至输出存储区。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.RelateResourceToCurrentPage(System.Uri,System.String)">
+      <summary>添加可使指定资源与当前页关联的具有指定名称的 <see cref="T:System.IO.Packaging.PackageRelationship" />。</summary>
+      <param name="targetUri">要与当前页关联的资源的统一资源标识符 (URI)。</param>
+      <param name="relationshipName">可使当前页与指定资源关联的 <see cref="T:System.IO.Packaging.PackageRelationship" /> 的标识名称。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.RelateRestrictedFontToCurrentDocument(System.Uri)">
+      <summary>添加可使受限字体与当前文档关联的 <see cref="T:System.IO.Packaging.PackageRelationship" />。</summary>
+      <param name="targetUri">要与当前文档关联的受限字体的统一资源标识符 (URI)。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.ReleaseResourceStreamForXpsColorContext">
+      <summary>释放当前 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.ReleaseResourceStreamForXpsFont">
+      <summary>释放当前 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsFont" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.ReleaseResourceStreamForXpsFont(System.String)">
+      <summary>释放指定的 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsFont" />。</summary>
+      <param name="resourceId">要释放的 XML 纸张规范 (XPS) 字体的标识符。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.ReleaseResourceStreamForXpsImage">
+      <summary>释放当前 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsImage" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.ReleaseResourceStreamForXpsResourceDictionary">
+      <summary>释放当前 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 的 <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.ReleaseXmlWriterForFixedDocument">
+      <summary>释放当前 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedDocument" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.ReleaseXmlWriterForFixedDocumentSequence">
+      <summary>释放当前 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedDocumentSequence" />。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsPackagingPolicy.ReleaseXmlWriterForFixedPage">
+      <summary>释放当前 <see cref="T:System.Xml.XmlWriter" /> 的 <see cref="T:System.Windows.Documents.FixedPage" />。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsResourceStream">
+      <summary>表示 XML 纸张规范 (XPS) 资源的流和统一资源标识符 (URI)。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsResourceStream.#ctor(System.IO.Stream,System.Uri)">
+      <summary>使用指定的流和统一资源标识符 (URI) 初始化 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> 类的一个新实例。</summary>
+      <param name="stream">包含资源的流。</param>
+      <param name="uri">资源的 URI。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsResourceStream.Initialize">
+      <summary>初始化 <see cref="T:System.IO.Stream" /> 中的 <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" />。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsResourceStream.Stream">
+      <summary>获取资源的 <see cref="T:System.IO.Stream" />。</summary>
+      <returns>一个包含 XML 纸张规范 (XPS) 资源的 <see cref="T:System.IO.Stream" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsResourceStream.Uri">
+      <summary>获取资源的 <see cref="T:System.Uri" />。</summary>
+      <returns>一个包含 XML 纸张规范 (XPS) 资源的 <see cref="T:System.Uri" />。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializationCompletedEventArgs">
+      <summary>为 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationManagerAsync" /> 的 <see cref="E:System.Windows.Xps.Serialization.XpsSerializationManagerAsync.XpsSerializationCompleted" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationCompletedEventArgs.#ctor(System.Boolean,System.Object,System.Exception)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationCompletedEventArgs" /> 类的新实例。</summary>
+      <param name="canceled">
+        <see langword="true" /> 指示序列化在完成前已被取消；否则为 <see langword="false" />。</param>
+      <param name="state">用户提供的一个对象，可向事件处理程序提供其他数据。</param>
+      <param name="exception">中断序列化操作的异常（如果有）。</param>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializationCompletedEventHandler">
+      <summary>表示处理 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationManagerAsync" /> 的 <see cref="E:System.Windows.Xps.Serialization.XpsSerializationManagerAsync.XpsSerializationCompleted" /> 事件的方法。</summary>
+      <param name="sender">事件源。</param>
+      <param name="e">事件数据。</param>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializationManager">
+      <summary>管理同步 XML 纸张规范 (XPS) 序列化程序和类型转换器。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManager.#ctor(System.Windows.Xps.Serialization.BasePackagingPolicy,System.Boolean)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationManager" /> 类的新实例。</summary>
+      <param name="packagingPolicy">一个对象，提供为 XML 纸张规范 (XPS) 文档的不同部件获取序列化读取器和编写器的方法。</param>
+      <param name="batchMode">如果要指定批处理模式，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManager.Commit">
+      <summary>提交所有更改并写入所有缓冲数据。</summary>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializationManager.IsBatchMode">
+      <summary>获取一个值，该值指示序列化管理器是否处于批处理模式。</summary>
+      <returns>如果该管理器处于批处理模式，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManager.SaveAsXaml(System.Object)">
+      <summary>将指定的 XAML 序列化对象保存到文档包中。</summary>
+      <param name="serializedObject">要保存的 XAML 序列化对象。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManager.SetFontSubsettingCountPolicy(System.Int32)">
+      <summary>设置用于字体子集处理的页数或文档数。</summary>
+      <param name="countPolicy">要一次用于字体子集处理的页数或文档数。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManager.SetFontSubsettingPolicy(System.Windows.Xps.Serialization.FontSubsetterCommitPolicies)">
+      <summary>设置执行字体子集的间隔。</summary>
+      <param name="policy">指定字体子集策略的枚举值之一。</param>
+    </member>
+    <member name="E:System.Windows.Xps.Serialization.XpsSerializationManager.XpsSerializationPrintTicketRequired">
+      <summary>在 XPS 序列化程序请求 <see cref="T:System.Printing.PrintTicket" /> 时发生。</summary>
+    </member>
+    <member name="E:System.Windows.Xps.Serialization.XpsSerializationManager.XpsSerializationProgressChanged">
+      <summary>在页或文档完成序列化时发生。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializationManagerAsync">
+      <summary>管理异步 XML 纸张规范 (XPS) 序列化程序和类型转换器。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManagerAsync.#ctor(System.Windows.Xps.Serialization.BasePackagingPolicy,System.Boolean)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationManagerAsync" /> 类的新实例。</summary>
+      <param name="packagingPolicy">一个对象，提供为 XML 纸张规范 (XPS) 文档的不同部件获取序列化读取器和编写器的方法。</param>
+      <param name="batchMode">如果要指定批处理模式，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManagerAsync.CancelAsync">
+      <summary>取消异步序列化操作。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManagerAsync.Commit">
+      <summary>提交所有更改并将所有缓冲数据作为输出写入。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationManagerAsync.SaveAsXaml(System.Object)">
+      <summary>将指定的序列化对象保存到 XML 纸张规范 (XPS) 包中。</summary>
+      <param name="serializedObject">保存的对象。</param>
+    </member>
+    <member name="E:System.Windows.Xps.Serialization.XpsSerializationManagerAsync.XpsSerializationCompleted">
+      <summary>在序列化操作完成时发生。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializationPrintTicketRequiredEventArgs">
+      <summary>为 <see cref="E:System.Windows.Xps.Serialization.XpsSerializationManager.XpsSerializationPrintTicketRequired" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationPrintTicketRequiredEventArgs.#ctor(System.Windows.Xps.Serialization.PrintTicketLevel,System.Int32)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationPrintTicketRequiredEventArgs" /> 类的新实例。</summary>
+      <param name="printTicketLevel">一个对象，指定 <see cref="T:System.Printing.PrintTicket" /> 的范围。</param>
+      <param name="sequence">打印作业中的总页数或总文档数。 具体应用哪个则取决于 <see cref="T:System.Printing.PrintTicket" /> 的范围。</param>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializationPrintTicketRequiredEventArgs.PrintTicket">
+      <summary>获取或设置写操作中使用的 <see cref="T:System.Printing.PrintTicket" />。</summary>
+      <returns>一个定义打印机如何处理打印作业的 <see cref="T:System.Printing.PrintTicket" />。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializationPrintTicketRequiredEventArgs.PrintTicketLevel">
+      <summary>获取一个值，该值指示 <see cref="T:System.Printing.PrintTicket" /> 的范围。</summary>
+      <returns>一个 <see cref="T:System.Windows.Xps.Serialization.PrintTicketLevel" /> 值，指示 <see cref="T:System.Printing.PrintTicket" /> 的范围。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializationPrintTicketRequiredEventArgs.Sequence">
+      <summary>获取打印作业中的总页数或总文档数。</summary>
+      <returns>一个表示总页数或总文档数的 <see cref="T:System.Int32" />。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializationPrintTicketRequiredEventHandler">
+      <summary>表示处理 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationManager" /> 的 <see cref="E:System.Windows.Xps.Serialization.XpsSerializationManager.XpsSerializationPrintTicketRequired" /> 事件的方法。</summary>
+      <param name="sender">事件源。</param>
+      <param name="e">事件数据。</param>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializationProgressChangedEventArgs">
+      <summary>为 <see cref="E:System.Windows.Xps.Serialization.XpsSerializationManager.XpsSerializationProgressChanged" /> 事件提供数据。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializationProgressChangedEventArgs.#ctor(System.Windows.Xps.Serialization.XpsWritingProgressChangeLevel,System.Int32,System.Int32,System.Object)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationProgressChangedEventArgs" /> 类的新实例。</summary>
+      <param name="writingLevel">一个值，指定进度的更改是因其他页完成还是其他文档完成而引起的。</param>
+      <param name="pageNumber">一个值，指定在发生事件时序列化的总页数或总文档数。</param>
+      <param name="progressPercentage">一个值，指定已完成的总序列化作业的百分比。</param>
+      <param name="userToken">用户提供的一个对象，为事件处理程序提供其他信息。</param>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializationProgressChangedEventArgs.PageNumber">
+      <summary>获取已序列化的页数或文档数。</summary>
+      <returns>在事件发生时已序列化的总页数或总文档数。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializationProgressChangedEventArgs.WritingLevel">
+      <summary>获取一个值，该值指示进度指示器的范围。</summary>
+      <returns>进度指示器的范围。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializationProgressChangedEventHandler">
+      <summary>表示处理 <see cref="T:System.Windows.Xps.Serialization.XpsSerializationManager" /> 的 <see cref="E:System.Windows.Xps.Serialization.XpsSerializationManager.XpsSerializationProgressChanged" /> 事件的方法。</summary>
+      <param name="sender">事件源。</param>
+      <param name="e">事件数据。</param>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsSerializerFactory">
+      <summary>创建并提供有关 XML 纸张规范 (XPS) 序列化程序的信息。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializerFactory.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.Serialization.XpsSerializerFactory" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.Serialization.XpsSerializerFactory.CreateSerializerWriter(System.IO.Stream)">
+      <summary>创建一个可将 XPS 内容输出到指定 <see cref="T:System.IO.Stream" /> 的 <see cref="T:System.Windows.Documents.Serialization.SerializerWriter" />。</summary>
+      <param name="stream">返回的序列化程序要写入其中的输出流。</param>
+      <returns>将 XPS 内容序列化为指定 <paramref name="stream" /> 的输出编写器。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializerFactory.DefaultFileExtension">
+      <summary>获取 XPS 文档的标准文件扩展名。</summary>
+      <returns>XPS 文档的标准文件扩展名（包括前导句点）。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializerFactory.DisplayName">
+      <summary>获取工厂生成的序列化程序的公共名称。</summary>
+      <returns>工厂生成的序列化程序的公共名称。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializerFactory.ManufacturerName">
+      <summary>获取工厂类生成的序列化程序的制作者类的名称。</summary>
+      <returns>制作者类的名称。</returns>
+    </member>
+    <member name="P:System.Windows.Xps.Serialization.XpsSerializerFactory.ManufacturerWebsite">
+      <summary>获取工厂生成的序列化程序的制造商 Web 地址。</summary>
+      <returns>制造商的网站。</returns>
+    </member>
+    <member name="T:System.Windows.Xps.Serialization.XpsWritingProgressChangeLevel">
+      <summary>为 XML 纸张规范 (XPS) 内容指定写进度指示器的范围。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.XpsWritingProgressChangeLevel.FixedDocumentSequenceWritingProgress">
+      <summary>一个或多个文档的整个序列。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.XpsWritingProgressChangeLevel.FixedDocumentWritingProgress">
+      <summary>单个文档。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.XpsWritingProgressChangeLevel.FixedPageWritingProgress">
+      <summary>单页。</summary>
+    </member>
+    <member name="F:System.Windows.Xps.Serialization.XpsWritingProgressChangeLevel.None">
+      <summary>没有对进度值的解释。</summary>
+    </member>
+    <member name="T:System.Windows.Xps.XpsException">
+      <summary>用作由 XML 纸张规范 (XPS) 打包和序列化 API 所引发的异常的基类。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.XpsException.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.XpsException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.XpsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>初始化提供特定 <see cref="T:System.Windows.Xps.XpsException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 的 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的一个新实例。 此构造函数受到保护。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Windows.Xps.XpsException.#ctor(System.String)">
+      <summary>初始化提供特定错误情况的 <see cref="T:System.Windows.Xps.XpsException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Windows.Xps.XpsException.#ctor(System.String,System.Exception)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.XpsException" /> 类的一个新实例，该类提供特定错误情况并包括引发异常的原因。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">导致 <see cref="T:System.Windows.Xps.XpsException" /> 的基本错误。</param>
+    </member>
+    <member name="T:System.Windows.Xps.XpsPackagingException">
+      <summary>当以其他某种方式读取、注册或访问 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 或向其中写入数据时引发的异常。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.XpsPackagingException.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.XpsPackagingException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.XpsPackagingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>初始化提供特定 <see cref="T:System.Windows.Xps.XpsPackagingException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 的 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的一个新实例。 此构造函数受到保护。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Windows.Xps.XpsPackagingException.#ctor(System.String)">
+      <summary>初始化提供特定错误情况的 <see cref="T:System.Windows.Xps.XpsPackagingException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Windows.Xps.XpsPackagingException.#ctor(System.String,System.Exception)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.XpsPackagingException" /> 类的一个新实例，该类提供特定错误情况并包括引发异常的原因。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">导致 <see cref="T:System.Windows.Xps.XpsPackagingException" /> 的基本错误。</param>
+    </member>
+    <member name="T:System.Windows.Xps.XpsSerializationException">
+      <summary>对于 XML 纸张规范 (XPS) 文档序列化错误，将引发该异常。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.XpsSerializationException.#ctor">
+      <summary>初始化 <see cref="T:System.Windows.Xps.XpsSerializationException" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Windows.Xps.XpsSerializationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>初始化提供特定 <see cref="T:System.Windows.Xps.XpsSerializationException" /> 和 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 的 <see cref="T:System.Runtime.Serialization.StreamingContext" /> 类的一个新实例。 此构造函数受到保护。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">序列化流的上下文，包括源和目标。</param>
+    </member>
+    <member name="M:System.Windows.Xps.XpsSerializationException.#ctor(System.String)">
+      <summary>初始化提供特定错误情况的 <see cref="T:System.Windows.Xps.XpsSerializationException" /> 类的一个新实例。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+    </member>
+    <member name="M:System.Windows.Xps.XpsSerializationException.#ctor(System.String,System.Exception)">
+      <summary>初始化 <see cref="T:System.Windows.Xps.XpsSerializationException" /> 类的一个新实例，该类提供特定错误情况并包括引发异常的原因。</summary>
+      <param name="message">一个描述错误情况的 <see cref="T:System.String" />。</param>
+      <param name="innerException">引起异常的基础错误。</param>
+    </member>
+  </members>
+</doc>

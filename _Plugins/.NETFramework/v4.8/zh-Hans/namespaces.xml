@@ -1,0 +1,1649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <members>
+    <member name="N:Accessibility">
+      <summary>
+        <see cref="N:Accessibility" /> 及其公开的所有成员都属于组件对象模型 (COM) 辅助功能接口的托管包装的一部分。</summary>
+    </member>
+    <member name="N:Microsoft.Activities.Build">
+      <summary>与工作流生成任务相关的类。</summary>
+    </member>
+    <member name="N:Microsoft.Activities.Build.Debugger">
+      <summary>与生成调试器相关的类。</summary>
+    </member>
+    <member name="N:Microsoft.Activities.Build.Expressions">
+      <summary>与生成表达式相关的类。</summary>
+    </member>
+    <member name="N:Microsoft.Activities.Build.Validation">
+      <summary>
+        <see cref="N:Microsoft.Activities.Build.Validation" /> 提供与生成验证相关的类。</summary>
+    </member>
+    <member name="N:Microsoft.Build.BuildEngine">
+      <summary>
+        <see cref="N:Microsoft.Build.BuildEngine" /> 命名空间表示 MSBuild 引擎。有关信息，请参见MSBuild。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Construction">
+      <summary>包含 MSBuild 对象模型用来构造具有未计算值的项目根的类型。每个项目根对应于一个项目或目标文件。有关信息，请参见MSBuild。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Conversion">
+      <summary>包含一些类型，Visual Studio 使用它们来转换 Visual Studio 早期版本的项目文件。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Debugging">
+      <summary>包含管理调试器的类型。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Evaluation">
+      <summary>包含 MSBuild 对象模型用来计算项目的类型。每个项目都与一个或多个项目根相关联。有关信息，请参见MSBuild。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Exceptions">
+      <summary>包含在生成过程中可能引发的异常类型。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Execution">
+      <summary>包含 MSBuild 对象模型用来生成项目的类型。有关信息，请参见MSBuild。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Framework">
+      <summary>
+        <see cref="N:Microsoft.Build.Framework" /> 命名空间包含用于定义任务和记录器与 MSBuild 引擎的交互方式的类型。有关信息，请参见MSBuild。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Framework.XamlTypes">
+      <summary>用于表示从文件、规则和其他源中分析得出的 XAML 类型的类。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Logging">
+      <summary>包含用于记录生成进度的类型。有关信息，请参见MSBuild。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Tasks">
+      <summary>
+        <see cref="N:Microsoft.Build.Tasks" /> 命名空间包含 MSBuild 附带的所有任务的实现。有关信息，请参见MSBuild。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Tasks.Deployment.Bootstrapper">
+      <summary>
+        <see cref="N:Microsoft.Build.Tasks.Deployment.Bootstrapper" /> 命名空间包含 MSBuild 在内部使用的类。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Tasks.Deployment.ManifestUtilities">
+      <summary>
+        <see cref="N:Microsoft.Build.Tasks.Deployment.ManifestUtilities" /> 命名空间包含 MSBuild 使用的类。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Tasks.Hosting">
+      <summary>
+        <see cref="N:Microsoft.Build.Tasks.Hosting" /> 命名空间包含 MSBuild 在内部使用的类。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Tasks.Windows">
+      <summary>
+        <see cref="N:Microsoft.Build.Tasks.Windows" /> 命名空间包含 MSBuild 附带的所有任务的实现。此命名空间中的类型支持 Windows Presentation Foundation (WPF) 基础结构，不应在代码中直接使用。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Tasks.Xaml">
+      <summary>提供类，与 XAML 构建任务相关。</summary>
+    </member>
+    <member name="N:Microsoft.Build.Utilities">
+      <summary>
+        <see cref="N:Microsoft.Build.Utilities" /> 命名空间提供了可用于创建自己的 MSBuild 记录器和任务的帮助器类。有关信息，请参见MSBuild。</summary>
+    </member>
+    <member name="N:Microsoft.CSharp">
+      <summary>
+        <see cref="N:Microsoft.CSharp" /> 命名空间包含支持使用 C# 语言编译和生成代码的类。</summary>
+    </member>
+    <member name="N:Microsoft.CSharp.Activities">
+      <summary>与 C# 活动相关的类。</summary>
+    </member>
+    <member name="N:Microsoft.CSharp.RuntimeBinder">
+      <summary>
+        <see cref="N:Microsoft.CSharp.RuntimeBinder" /> 命名空间提供支持动态语言运行时和 C# 之间互操作的类和接口。</summary>
+    </member>
+    <member name="N:Microsoft.JScript">
+      <summary>
+        <see cref="N:Microsoft.JScript" /> 命名空间包含支持使用 JScript 语言编译和生成代码的类。</summary>
+    </member>
+    <member name="N:Microsoft.JScript.Vsa">
+      <summary>Microsoft.JScript.Vsa 命名空间包含允许您集成脚本的接口（为 .NET 框架脚本引擎集成到 JScript）,并由此在运行时编译并执行代码。</summary>
+    </member>
+    <member name="N:Microsoft.SqlServer.Server">
+      <summary>
+        <see cref="N:Microsoft.SqlServer.Server" /> 命名空间包含将 Microsoft .NET Framework 公共语言运行时 (CLR) 集成到 Microsoft SQL Server 和 SQL Server 数据库引擎进程执行环境时所要用到的类、接口和枚举。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic">
+      <summary>
+        <see cref="N:Microsoft.VisualBasic" /> 命名空间包含支持 Visual Basic 运行时（在Visual Basic中的）的类型。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.Activities">
+      <summary>提供类，与 Visual Basic 活动相关。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.Activities.XamlIntegration">
+      <summary>提供类，与 Visual Basic XAML 集成相关。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.ApplicationServices">
+      <summary>包含支持 Visual Basic 应用程序模型并提供对应用程序信息的访问的类型的 <see cref="N:Microsoft.VisualBasic.ApplicationServices" /> 命名空间。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.Compatibility.VB6">
+      <summary>
+        <see cref="N:Microsoft.VisualBasic.Compatibility.VB6" /> 命名空间中的函数和对象是提供给用于将 Visual Basic 6.0 升级到 Visual Basic 2008 的工具使用的。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.CompilerServices">
+      <summary>
+        <see cref="N:Microsoft.VisualBasic.CompilerServices" /> 命名空间包含支持 Visual Basic 编译器的仅供内部使用的类型。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.Devices">
+      <summary>
+        <see cref="N:Microsoft.VisualBasic.Devices" /> 命名空间包含支持 My 对象的类型，这些对象与 Visual Basic 中的设备相关。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.FileIO">
+      <summary>
+        <see cref="N:Microsoft.VisualBasic.FileIO" /> 命名空间包含支持 Visual Basic 中的 My 文件系统对象的类型。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.Logging">
+      <summary>
+        <see cref="N:Microsoft.VisualBasic.Logging" /> 命名空间包含支持 Visual Basic 中的 My 日志记录对象的类型，并提供一个将日志记录输出定向到文件的简单日志侦听器。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.MyServices">
+      <summary>
+        <see cref="N:Microsoft.VisualBasic.MyServices" /> 命名空间包含支持 Visual Basic 中的 My 的类型。</summary>
+    </member>
+    <member name="N:Microsoft.VisualBasic.MyServices.Internal">
+      <summary>
+        <see cref="N:Microsoft.VisualBasic.MyServices.Internal" /> 命名空间包含支持 Visual Basic 中的 My 的仅供内部使用的类型。</summary>
+    </member>
+    <member name="N:Microsoft.VisualC">
+      <summary>
+        <see cref="N:Microsoft.VisualC" /> 命名空间包含支持使用 C++ 语言编译和生成代码的类。</summary>
+    </member>
+    <member name="N:Microsoft.VisualC.StlClr">
+      <summary>包含类、接口和枚举器，它们用于实现 STL/CLR 库。</summary>
+    </member>
+    <member name="N:Microsoft.VisualC.StlClr.Generic">
+      <summary>包含类、接口和迭代器，它们用于实现 STL/CLR 库的泛型接口。通过使用此泛型接口，其他 .NET 语言（如 C# 和 Visual Basic）可以调用使用 STL/CLR 编写的代码。</summary>
+    </member>
+    <member name="N:Microsoft.Win32">
+      <summary>
+        <see cref="N:Microsoft.Win32" /> 命名空间提供两种类型的类：处理由操作系统引发的事件的类和操作系统注册表的类。</summary>
+    </member>
+    <member name="N:Microsoft.Win32.SafeHandles">
+      <summary>
+        <see cref="N:Microsoft.Win32.SafeHandles" /> 命名空间包含安全句柄类的抽象派生类，安全句柄类提供支持文件句柄和操作系统句柄的常见功能。</summary>
+    </member>
+    <member name="N:Microsoft.Windows.Input">
+      <summary>包含 Microsoft Ribbon for WPF 控件中预览命令的接口。</summary>
+    </member>
+    <member name="N:Microsoft.Windows.Themes">
+      <summary>公开一组由 Windows Presentation Foundation 定义的主题。在 WPF 中，主题是在系统级别上定义的一组资源，它为应用程序的控件和其他可视元素提供默认外观。WPF 主题是使用样式创建的，并包括 Luna、Aero、Royale 和 Classic。只有 WPF 应用程序的工作区才能使用这些主题；形成窗口镶边的窗口边框和按钮的外观由 Win32 主题服务控制。</summary>
+    </member>
+    <member name="N:System">
+      <summary>
+        <see cref="N:System" /> 命名空间包含基本类和基类，这些类定义常用的值和引用数据类型、事件和事件处理程序、接口、属性和异常处理。</summary>
+    </member>
+    <member name="N:System.Activities">
+      <summary>提供类，与系统活动相关。</summary>
+    </member>
+    <member name="N:System.Activities.Core.Presentation">
+      <summary>提供类，与表示相关。</summary>
+    </member>
+    <member name="N:System.Activities.Core.Presentation.Factories">
+      <summary>提供类，与表示出场设置相关。</summary>
+    </member>
+    <member name="N:System.Activities.Core.Presentation.Themes">
+      <summary>提供类，与表示主题相关。</summary>
+    </member>
+    <member name="N:System.Activities.Debugger">
+      <summary>提供类，与系统调试器相关。</summary>
+    </member>
+    <member name="N:System.Activities.Debugger.Symbol">
+      <summary>提供类，与调试器标志相关。</summary>
+    </member>
+    <member name="N:System.Activities.DurableInstancing">
+      <summary>提供类，与持久性实例相关。</summary>
+    </member>
+    <member name="N:System.Activities.DynamicUpdate">
+      <summary>提供类，与动态更新相关。</summary>
+    </member>
+    <member name="N:System.Activities.ExpressionParser">
+      <summary>提供类，与表示分析相关。</summary>
+    </member>
+    <member name="N:System.Activities.Expressions">
+      <summary>提供类，与表示相关。</summary>
+    </member>
+    <member name="N:System.Activities.Hosting">
+      <summary>提供类，与承载相关。</summary>
+    </member>
+    <member name="N:System.Activities.Persistence">
+      <summary>提供类，与持久性相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation">
+      <summary>提供类，与表示相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Annotations">
+      <summary>提供类，与表示批注相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Converters">
+      <summary>提供类，与转换器相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Debug">
+      <summary>提供类，与表示调试相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Expressions">
+      <summary>提供类，与表示相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Hosting">
+      <summary>提供类，与承载相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Metadata">
+      <summary>提供类，与表示元数据相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Model">
+      <summary>提供类，与表示模型相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.PropertyEditing">
+      <summary>提供类，与属性编辑相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Services">
+      <summary>提供类，与表示服务相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Sqm">
+      <summary>提供类，与 SQM 相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Toolbox">
+      <summary>与表示工具箱相关的类。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.Validation">
+      <summary>提供类，与验证相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.View">
+      <summary>提供类，与表示视图相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.View.OutlineView">
+      <summary>提供类，与大纲视图相关。</summary>
+    </member>
+    <member name="N:System.Activities.Presentation.ViewState">
+      <summary>提供类，与视图状态和视图状态的管理相关。</summary>
+    </member>
+    <member name="N:System.Activities.Statements">
+      <summary>提供类，与活动声明相关。</summary>
+    </member>
+    <member name="N:System.Activities.Statements.Tracking">
+      <summary>提供类用于监视状态机状态执行和状态转换。</summary>
+    </member>
+    <member name="N:System.Activities.Tracking">
+      <summary>System.Activities.Tracking 命名空间包含用于创建工作流跟踪记录并与之交互的类。跟踪记录由工作流运行时在工作流实例执行时创建，并由继承自 <see cref="T:System.Activities.Tracking.TrackingParticipant" /> 的类访问。</summary>
+    </member>
+    <member name="N:System.Activities.Validation">
+      <summary>提供类，与自定义活动验证相关。</summary>
+    </member>
+    <member name="N:System.Activities.XamlIntegration">
+      <summary>包含为将活动序列化为 XAML 提供支持的类。</summary>
+    </member>
+    <member name="N:System.AddIn">
+      <summary>
+        <see cref="N:System.AddIn" /> 命名空间包含用于标识外接程序的 <see cref="T:System.AddIn.AddInAttribute" /> 特性。</summary>
+    </member>
+    <member name="N:System.AddIn.Contract">
+      <summary>
+        <see cref="N:System.AddIn.Contract" /> 命名空间包含的接口和结构为单独更新的组件之间的通信提供了基础。</summary>
+    </member>
+    <member name="N:System.AddIn.Contract.Automation">
+      <summary>
+        <see cref="N:System.AddIn.Contract.Automation" /> 命名空间包含组件用于访问类型信息和调用类型成员的接口。</summary>
+    </member>
+    <member name="N:System.AddIn.Contract.Collections">
+      <summary>
+        <see cref="N:System.AddIn.Contract.Collections" /> 命名空间包含定义 <see cref="T:System.AddIn.Contract.IContract" /> 和 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 对象的集合的接口。</summary>
+    </member>
+    <member name="N:System.AddIn.Hosting">
+      <summary>
+        <see cref="N:System.AddIn.Hosting" /> 命名空间提供用于发现、注册、激活和控制外接程序的类。</summary>
+    </member>
+    <member name="N:System.AddIn.Pipeline">
+      <summary>
+        <see cref="N:System.AddIn.Pipeline" /> 命名空间提供用于在宿主应用程序与外接程序之间构造通信管线的类。</summary>
+    </member>
+    <member name="N:System.CodeDom">
+      <summary>
+        <see cref="N:System.CodeDom" /> 命名空间包含可以用于表示源代码文档的元素和结构的类。此命名空间中的类可用来建立源代码文档结构的模型，使用 <see cref="N:System.CodeDom.Compiler" /> 命名空间提供的功能可以将源代码文档输出为所支持语言的源代码。</summary>
+    </member>
+    <member name="N:System.CodeDom.Compiler">
+      <summary>
+        <see cref="N:System.CodeDom.Compiler" /> 命名空间包含了这样一些类型：它们的用途是对所支持编程语言的源代码的生成和编译进行管理。每个代码生成器都可以基于代码文档对象模型 (CodeDOM) 源代码模型（由 <see cref="N:System.CodeDom" /> 命名空间提供的元素组成）的结构来生成使用某种特定的编程语言的源代码。</summary>
+    </member>
+    <member name="N:System.Collections">
+      <summary>
+        <see cref="N:System.Collections" /> 命名空间包含定义各种对象集合的接口和类，这些对象包括列表、队列、位数组、哈希表和字典等。</summary>
+    </member>
+    <member name="N:System.Collections.Concurrent">
+      <summary>System.Collections.Concurrent 命名空间提供多个线程安全集合类。当有多个线程并发访问集合时，应使用这些类代替 <see cref="N:System.Collections" /> 和 <see cref="N:System.Collections.Generic" /> 命名空间中的对应类型。但是，通过当前集合实现的实例之一访问的成员（包括扩展方法）不保证是线程安全的，可能需要由调用方同步。</summary>
+    </member>
+    <member name="N:System.Collections.Generic">
+      <summary>
+        <see cref="N:System.Collections.Generic" /> 命名空间包含定义泛型集合的接口和类，泛型集合允许用户创建强类型集合，它能提供比非泛型强类型集合更好的类型安全性和性能。</summary>
+    </member>
+    <member name="N:System.Collections.ObjectModel">
+      <summary>
+        <see cref="N:System.Collections.ObjectModel" /> 名称空间包含可在可重用库的对象模型中用作集合的类。在属性或方法返回集合时使用这些类。</summary>
+    </member>
+    <member name="N:System.Collections.Specialized">
+      <summary>
+        <see cref="N:System.Collections.Specialized" /> 命名空间包含专用的和强类型的集合；例如链接的列表词典、位向量以及只包含字符串的集合。</summary>
+    </member>
+    <member name="N:System.ComponentModel">
+      <summary>
+        <see cref="N:System.ComponentModel" /> 命名空间提供用于实现组件和控件的运行时和设计时行为的类。此命名空间包括用于特性和类型转换器的实现、数据源绑定和组件授权的基类和接口。</summary>
+    </member>
+    <member name="N:System.ComponentModel.Composition">
+      <summary>此命名空间提供构成托管扩展框架 (MEF) 的类的核心的类。</summary>
+    </member>
+    <member name="N:System.ComponentModel.Composition.Hosting">
+      <summary>
+        <see cref="N:System.ComponentModel.Composition.Hosting" /> 命名空间提供 Managed Extensibility Framework (MEF)类型，这些类型对扩展应用程序的设计者或宿主都很有用。</summary>
+    </member>
+    <member name="N:System.ComponentModel.Composition.Primitives">
+      <summary>此命名空间提供作为 MEF 编程模型基础的基元类型。</summary>
+    </member>
+    <member name="N:System.ComponentModel.Composition.ReflectionModel">
+      <summary>The <see cref="N:System.ComponentModel.Composition.ReflectionModel" /> 命名空间为使用基于反射的编程模型的设计者提供 Managed Extensibility Framework (MEF) 类型。</summary>
+    </member>
+    <member name="N:System.ComponentModel.Composition.Registration">
+      <summary>
+        <see cref="N:System.ComponentModel.Composition.Registration" /> 命名空间包含启用托管的扩展性框架 (MEF) 部件的基于规则的配置的类型。</summary>
+    </member>
+    <member name="N:System.ComponentModel.DataAnnotations">
+      <summary>
+        <see cref="N:System.ComponentModel.DataAnnotations" /> 命名空间提供定义 ASP.NET MVC 和 ASP.NET 数据控件的类的特性。</summary>
+    </member>
+    <member name="N:System.ComponentModel.DataAnnotations.Schema">
+      <summary>
+        <see cref="N:System.ComponentModel.DataAnnotations.Schema" /> 命名空间为用于定义 ASP.NET MVC 和 ASP.NET 数据控件的元数据的类的特性提供支持。</summary>
+    </member>
+    <member name="N:System.ComponentModel.Design">
+      <summary>
+        <see cref="N:System.ComponentModel.Design" /> 命名空间包含的类可供开发人员用来为组件生成自定义的设计时行为，以及在设计时配置组件所需的用户界面。设计时环境提供了使开发人员能够安排组件并配置它们的属性的系统。某些组件可能需要特定的设计时仅有的行为，才能在设计时环境中正常运行。同时，提供自定义用户界面来帮助开发人员配置组件或复杂数据类型的值，这可能也非常也用。在此命名空间中定义的类和接口可用于生成组件的设计时行为、访问设计时服务，以及实现自定义的设计时配置接口。</summary>
+    </member>
+    <member name="N:System.ComponentModel.Design.Data">
+      <summary>
+        <see cref="N:System.ComponentModel.Design.Data" /> 命名空间包含的类可用于为数据相关的组件生成自定义设计时行为。</summary>
+    </member>
+    <member name="N:System.ComponentModel.Design.Serialization">
+      <summary>
+        <see cref="N:System.ComponentModel.Design.Serialization" /> 命名空间提供在设计时对序列化进行自定义和控制的类型。</summary>
+    </member>
+    <member name="N:System.Configuration">
+      <summary>
+        <see cref="N:System.Configuration" /> 命名空间包含提供用于处理配置数据的编程模型的类型。</summary>
+    </member>
+    <member name="N:System.Configuration.Assemblies">
+      <summary>
+        <see cref="N:System.Configuration.Assemblies" /> 命名空间包含用于配置程序集的类。</summary>
+    </member>
+    <member name="N:System.Configuration.Install">
+      <summary>
+        <see cref="N:System.Configuration.Install" /> 命名空间提供类，这些类使您可以为自己的组件编写自定义安装程序。<see cref="T:System.Configuration.Install.Installer" /> 类是 .NET Framework 中所有自定义安装程序的基类。</summary>
+    </member>
+    <member name="N:System.Configuration.Internal">
+      <summary>
+        <see cref="N:System.Configuration.Internal" /> 命名空间包含仅供内部使用的配置类型。</summary>
+    </member>
+    <member name="N:System.Configuration.Provider">
+      <summary>
+        <see cref="N:System.Configuration.Provider" /> 命名空间包含由服务器和客户端应用程序共享的基类，用于支持可插接式模型轻松地添加或移除功能。</summary>
+    </member>
+    <member name="N:System.Data">
+      <summary>
+        <see cref="N:System.Data" /> 命名空间提供对表示 ADO.NET 结构的类的访问。通过 ADO.NET 可以生成一些组件，用于有效管理多个数据源的数据。</summary>
+    </member>
+    <member name="N:System.Data.Common">
+      <summary>
+        <see cref="N:System.Data.Common" /> 命名空间包含由各种 .NET Framework 数据提供程序共享的类。</summary>
+    </member>
+    <member name="N:System.Data.Common.CommandTrees">
+      <summary>
+        <see cref="N:System.Data.Common.CommandTrees" /> 命名空间提供一些类，用于生成构成命令树的表达式。</summary>
+    </member>
+    <member name="N:System.Data.Common.CommandTrees.ExpressionBuilder">
+      <summary>
+        <see cref="N:System.Data.Common.CommandTrees.ExpressionBuilder" /> 命名空间提供命令树 API。</summary>
+    </member>
+    <member name="N:System.Data.Common.CommandTrees.ExpressionBuilder.Spatial">
+      <summary>
+        <see cref="N:System.Data.Common.CommandTrees.ExpressionBuilder.Spatial" /> 命名空间包含表示“实体数据模型” （EDM） 空间函数的类。</summary>
+    </member>
+    <member name="N:System.Data.Common.EntitySql">
+      <summary>
+        <see cref="N:System.Data.Common.EntitySql" /> 命名空间包括 <see cref="T:System.Data.Common.EntitySql.EntitySqlParser" /> 类和其他支持类。这些类使您可以分析实体 SQL 查询字符串，以及创建命令树查询。</summary>
+    </member>
+    <member name="N:System.Data.Design">
+      <summary>
+        <see cref="N:System.Data.Design" /> 命名空间包含可用于生成自定义类型化数据集的类。</summary>
+    </member>
+    <member name="N:System.Data.Entity.Design">
+      <summary>
+        <see cref="N:System.Data.Entity.Design" /> 命名空间包含生成实体数据模型 (EDM) 文件和对象源代码的类。</summary>
+    </member>
+    <member name="N:System.Data.Entity.Design.AspNet">
+      <summary>
+        <see cref="N:System.Data.Entity.Design.AspNet" /> 命名空间包含 ASP.NET 生成环境的实体数据模型 (EDM) 生成提供程序。</summary>
+    </member>
+    <member name="N:System.Data.Entity.Design.PluralizationServices">
+      <summary>
+        <see cref="T:System.Data.Entity.Design.PluralizationServices" /> 命名空间提供了一些类，用于将单词由单数形式更改为复数形式，以及有复数形式更改为单数形式。</summary>
+    </member>
+    <member name="N:System.Data.EntityClient">
+      <summary>
+        <see cref="N:System.Data.EntityClient" /> 命名空间是 .NET Framework 的 Entity Framework 数据提供程序。</summary>
+    </member>
+    <member name="N:System.Data.Linq">
+      <summary>
+        <see cref="N:System.Data.Linq" /> 命名空间包含支持与 LINQ to SQL 应用程序中的关系数据库进行交互的类。</summary>
+    </member>
+    <member name="N:System.Data.Linq.Mapping">
+      <summary>
+        <see cref="N:System.Data.Linq.Mapping" /> 命名空间包含用于生成表示关系数据库的结构和内容的 LINQ to SQL 对象模型的类。</summary>
+    </member>
+    <member name="N:System.Data.Linq.SqlClient">
+      <summary>
+        <see cref="N:System.Data.Linq.SqlClient" /> 命名空间包含与 SQL Server 进行通信的提供程序类，以及包含查询帮助器方法的类。</summary>
+    </member>
+    <member name="N:System.Data.Linq.SqlClient.Implementation">
+      <summary>
+        <see cref="N:System.Data.Linq.SqlClient.Implementation" /> 命名空间包含用于 SQL Server 提供程序的内部实现详细信息的类型。</summary>
+    </member>
+    <member name="N:System.Data.Mapping">
+      <summary>
+        <see cref="N:System.Data.Mapping" /> 命名空间提供对 <see cref="T:System.Data.Mapping.MappingItemCollection" /> 和 <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> 类的访问。</summary>
+    </member>
+    <member name="N:System.Data.Metadata.Edm">
+      <summary>
+        <see cref="N:System.Data.Metadata.Edm" /> 命名空间包含一组类型，这些类型表示模型中由 Entity Framework 使用的概念，以及一组帮助应用程序使用元数据的类。 </summary>
+    </member>
+    <member name="N:System.Data.Objects">
+      <summary>
+        <see cref="N:System.Data.Objects" /> 命名空间包含一些类，用于提供对对象服务的核心功能的访问。这些类使您可以藉由作为实体类型实例的强类型 CLR 对象来查询、插入、更新和删除数据。对象服务支持针对实体数据模型 (EDM) 中定义的类型进行的语言集成查询 (LINQ) 和实体 SQL 查询。对象服务将返回的数据具体化为对象，并将对象更改传播回数据源。它还提供了用于跟踪更改、将对象绑定到控件以及处理并发问题的功能。有关详细信息，请参阅Object Services Overview (Entity Framework)。</summary>
+    </member>
+    <member name="N:System.Data.Objects.DataClasses">
+      <summary>
+        <see cref="N:System.Data.Objects.DataClasses" /> 命名空间包含以下这些类：实体数据模型 (EDM) 中定义的类型的基类、由导航属性返回的类型的基类以及用于定义将公共语言运行时 (CLR) 对象映射到概念性模型中的类型的特性的类。</summary>
+    </member>
+    <member name="N:System.Data.Objects.SqlClient">
+      <summary>
+        <see cref="N:System.Data.Objects.SqlClient" /> 命名空间提供 <see cref="T:System.Data.Objects.SqlClient.SqlFunctions" /> 类，该类包含可转换为数据库函数的公共语言运行时 (CLR) 方法。<see cref="T:System.Data.Objects.SqlClient.SqlFunctions" /> 类中的方法只能在 LINQ to Entities 查询中使用。</summary>
+    </member>
+    <member name="N:System.Data.Odbc">
+      <summary>
+        <see cref="N:System.Data.Odbc" /> 命名空间为 ODBC .NET Framework 数据提供程序。</summary>
+    </member>
+    <member name="N:System.Data.OleDb">
+      <summary>
+        <see cref="N:System.Data.OleDb" /> 命名空间为 OLE DB .NET Framework数据提供程序。</summary>
+    </member>
+    <member name="N:System.Data.OracleClient">
+      <summary>
+        <see cref="N:System.Data.OracleClient" /> 命名空间是用于 Oracle 的 .NET Framework 数据提供程序。</summary>
+    </member>
+    <member name="N:System.Data.Services">
+      <summary>提供对用于生成 WCF 数据服务 的类的访问。</summary>
+    </member>
+    <member name="N:System.Data.Services.BuildProvider">
+      <summary>此命名空间中的类根据 WCF 数据服务返回的元数据，为 WCF 数据服务客户端应用程序生成 C# 或 Visual Basic 代码。</summary>
+    </member>
+    <member name="N:System.Data.Services.Client">
+      <summary>表示可供应用程序用来与 WCF 数据服务 进行交互的 .NET Framework 客户端库。</summary>
+    </member>
+    <member name="N:System.Data.Services.Common">
+      <summary>实现 WCF 数据服务客户端和服务器运行时所共有的功能。</summary>
+    </member>
+    <member name="N:System.Data.Services.Configuration">
+      <summary>此命名空间为 WCF 数据服务功能提供配置设置。</summary>
+    </member>
+    <member name="N:System.Data.Services.Design">
+      <summary>由代码生成命令行工具和 Visual Studio 中的工具使用，生成用于与数据服务通信的强类型客户端对象。</summary>
+    </member>
+    <member name="N:System.Data.Services.Internal">
+      <summary>此类不以公共方式使用，而是由系统在内部使用，用于实现对预先加载相关实体的查询的支持。</summary>
+    </member>
+    <member name="N:System.Data.Services.Providers">
+      <summary>提供一系列接口，实现这些接口可以为 WCF 数据服务 定义自定义数据服务提供程序。 </summary>
+    </member>
+    <member name="N:System.Data.Spatial">
+      <summary>包含空间的数据库功能的类的 <see cref="N:System.Data.Spatial" /> 命名空间。</summary>
+    </member>
+    <member name="N:System.Data.Sql">
+      <summary>
+        <see cref="N:System.Data.Sql" /> 命名空间包含支持 SQL Server 特定的功能的类。</summary>
+    </member>
+    <member name="N:System.Data.SqlClient">
+      <summary>
+        <see cref="N:System.Data.SqlClient" /> 命名空间为 SQL服务器.NET Framework 数据提供程序。</summary>
+    </member>
+    <member name="N:System.Data.SqlTypes">
+      <summary>
+        <see cref="N:System.Data.SqlTypes" /> 命名空间用于本机提供选件类数据类型 SQL Server。这些类提供一种比 .NET Framework 公共语言运行时 (CLR) 提供的数据类型更安全、更快的替代方案。使用此命名空间中的类有助于防止出现精度损失造成的类型转换错误。由于其他数据类型在幕后与 SqlTypes 进行相互转换，所以在此命名空间内显式创建和使用对象将会使代码更快。</summary>
+    </member>
+    <member name="N:System.Deployment.Application">
+      <summary>使用 <see cref="N:System.Deployment.Application" /> 命名空间，可以将自定义升级行为编程入 ClickOnce 应用程序。</summary>
+    </member>
+    <member name="N:System.Deployment.Internal">
+      <summary>
+        <see cref="N:System.Deployment.Internal" /> 命名空间包含一些可用于访问 <see cref="T:System.ActivationContext" /> 和 <see cref="T:System.ApplicationIdentity" /> 对象的内部成员的帮助器类。</summary>
+    </member>
+    <member name="N:System.Deployment.Internal.CodeSigning">
+      <summary>
+        <see cref="N:System.Deployment.Internal.CodeSigning" /> 命名空间包含用于处理的数字签名的类。</summary>
+    </member>
+    <member name="N:System.Device.Location">
+      <summary>
+        <see cref="N:System.Device.Location" /> 命名空间使应用程序开发人员可通过使用一个 API 方便地访问计算机的位置。位置信息可能来自多个提供程序，例如 GPS、Wi-Fi 三角测量和移动电话塔三角测量。<see cref="N:System.Device.Location" /> 类提供一个 API，用于在一台计算机上封装多个位置提供程序，并支持在这些提供程序之间无缝地区分优先级和转换。因此，使用此 API 的应用程序开发人员不需要定制应用程序特定的硬件配置。</summary>
+    </member>
+    <member name="N:System.Diagnostics">
+      <summary>
+        <see cref="N:System.Diagnostics" /> 命名空间提供类，使您能够与系统进程、事件日志和性能计数器进行交互。</summary>
+    </member>
+    <member name="N:System.Diagnostics.CodeAnalysis">
+      <summary>
+        <see cref="N:System.Diagnostics.CodeAnalysis" /> 命名空间包含用于与代码分析工具进行交互的类。这些工具用于分析代码与编码约定（如命名规则或安全性规则）的一致性。</summary>
+    </member>
+    <member name="N:System.Diagnostics.Contracts">
+      <summary>
+        <see cref="N:System.Diagnostics.Contracts" /> 命名空间包含用于表示前置条件、后置条件和固定协定等程序协定的静态类。</summary>
+    </member>
+    <member name="N:System.Diagnostics.Contracts.Internal">
+      <summary>
+        <see cref="N:System.Diagnostics.Contracts.Internal" /> 命名空间提供二进制重写工具可用来处理协定失败的类。</summary>
+    </member>
+    <member name="N:System.Diagnostics.Design">
+      <summary>
+        <see cref="N:System.Diagnostics.Design" /> 命名空间包含可用于扩展对应用程序监视和检测的设计时支持的类。</summary>
+    </member>
+    <member name="N:System.Diagnostics.Eventing">
+      <summary>包含用来检测应用程序的类。检测功能（在启用时）会将事件数据记录到 Windows 事件跟踪 (ETW) 跟踪子系统中。有关 ETW 的完整说明，请参见 Windows 事件跟踪。</summary>
+    </member>
+    <member name="N:System.Diagnostics.Eventing.Reader">
+      <summary>使用 <see cref="N:System.Diagnostics.Eventing.Reader" /> 命名空间，可以开发读取和管理事件日志的应用程序。事件日志中的事件包含特定应用程序、服务或操作系统组件发布的信息、警告或错误。这些事件由监视计算机运行状况的应用程序和当特定事件发生时采取操作的应用程序来读取。有关更多信息，请参见Technology Summary for Reading and Managing Event Logs和Event Log Scenarios。</summary>
+    </member>
+    <member name="N:System.Diagnostics.PerformanceData">
+      <summary>使用该命名空间中的类可以提供计数器数据。这些计数器用来向使用者（如性能监视器）公开性能度量值。该命名空间中不包含使用计数器数据的类。有关性能计数器体系结构的完整说明，请参见性能计数器。</summary>
+    </member>
+    <member name="N:System.Diagnostics.SymbolStore">
+      <summary>
+        <see cref="N:System.Diagnostics.SymbolStore" /> 命名空间提供的类允许读取和向 Microsoft 中间语言 (MSIL) 映射写入调试符号信息（如源行）。面向 .NET Framework 的编译器可以将调试符号信息存储到程序员的数据库 (PDB) 文件中。调试器和代码探查器工具可以在运行时读取调试符号信息。</summary>
+    </member>
+    <member name="N:System.Diagnostics.Tracing">
+      <summary>
+        <see cref="N:System.Diagnostics.Tracing" /> 命名空间提供使您能够生成强类型的事件的类型和成员，这些事件利用 Windows (ETW) 事件追踪进行事件捕捉。</summary>
+    </member>
+    <member name="N:System.DirectoryServices">
+      <summary>利用 <see cref="N:System.DirectoryServices" /> 命名空间，可以方便地从托管代码中访问 Active Directory 域服务。该命名空间包含两个组件类，即 <see cref="T:System.DirectoryServices.DirectoryEntry" /> 和 <see cref="T:System.DirectoryServices.DirectorySearcher" />，它们使用 Active Directory 服务接口 (ADSI) 技术。ADSI 是 Microsoft 提供的一组接口，作为使用各种网络提供程序的灵活的工具。无论网络有多大，ADSI 都可以使管理员能够相对容易地定位和管理网络上的资源。</summary>
+    </member>
+    <member name="N:System.DirectoryServices.AccountManagement">
+      <summary>
+        <see cref="N:System.DirectoryServices.AccountManagement" /> 命名空间提供了统一的访问和用户操作、计算机和组安全原则（在多个主要存储）：活动目录域服务 (AD DS)、 活动目录轻量级目录服务 (AD LDS）和机器 SAM （MSAM）。<see cref="N:System.DirectoryServices.AccountManagement" /> 管理独立于 <see cref="N:System.DirectoryServices" /> 命名空间的目录对象。</summary>
+    </member>
+    <member name="N:System.DirectoryServices.ActiveDirectory">
+      <summary>
+        <see cref="N:System.DirectoryServices.ActiveDirectory" /> 命名空间提供一个围绕 Microsoft Active Directory 服务任务构建的高级别抽象对象模型。Active Directory 服务概念（例如，林、域、站点、子网、分区和架构）是此对象模型的一部分。</summary>
+    </member>
+    <member name="N:System.DirectoryServices.Protocols">
+      <summary>
+        <see cref="N:System.DirectoryServices.Protocols" /> 命名空间提供在轻量目录访问协议 (LDAP) 3 版 (V3) 和目录服务标记语言 (DSML) 2.0 版 (V2) 标准中定义的方法。</summary>
+    </member>
+    <member name="N:System.Drawing">
+      <summary>
+        <see cref="N:System.Drawing" /> 命名空间提供了对 GDI+ 基本图形功能的访问权限。<see cref="N:System.Drawing.Drawing2D" />、<see cref="N:System.Drawing.Imaging" /> 和 <see cref="N:System.Drawing.Text" /> 命名空间中提供了更高级功能。</summary>
+    </member>
+    <member name="N:System.Drawing.Configuration">
+      <summary>
+        <see cref="N:System.Drawing.Configuration" /> 命名空间包含支持在 <see cref="N:System.Drawing" /> 命名空间中配置类的类。</summary>
+    </member>
+    <member name="N:System.Drawing.Design">
+      <summary>
+        <see cref="N:System.Drawing.Design" /> 命名空间包含扩展设计时用户界面 (UI) 逻辑和绘制的类。</summary>
+    </member>
+    <member name="N:System.Drawing.Drawing2D">
+      <summary>
+        <see cref="N:System.Drawing.Drawing2D" /> 命名空间提供高级的二维和矢量图形功能。</summary>
+    </member>
+    <member name="N:System.Drawing.Imaging">
+      <summary>
+        <see cref="N:System.Drawing.Imaging" /> 命名空间提供高级 GDI+ 图像处理功能。基本图形功能由 <see cref="N:System.Drawing" /> 命名空间提供。</summary>
+    </member>
+    <member name="N:System.Drawing.Printing">
+      <summary>
+        <see cref="N:System.Drawing.Printing" /> 命名空间为 Windows 窗体应用程序提供与打印相关的服务。</summary>
+    </member>
+    <member name="N:System.Drawing.Text">
+      <summary>
+        <see cref="N:System.Drawing.Text" /> 命名空间提供高级 GDI+ 排版功能。</summary>
+    </member>
+    <member name="N:System.Dynamic">
+      <summary>
+        <see cref="N:System.Dynamic" /> 命名空间提供支持动态语言运行时的类和接口。</summary>
+    </member>
+    <member name="N:System.EnterpriseServices">
+      <summary>
+        <see cref="N:System.EnterpriseServices" /> 命名空间为企业应用程序提供重要的基础结构。COM+ 为企业级环境中部署的组件编程模型提供服务结构。此命名空间为 .NET 对象提供了对 COM+ 服务的访问，从而使 .NET Framework 对象更适用于企业级应用程序。</summary>
+    </member>
+    <member name="N:System.EnterpriseServices.CompensatingResourceManager">
+      <summary>
+        <see cref="N:System.EnterpriseServices.CompensatingResourceManager" /> 命名空间提供各种类，通过它们您可以在托管代码中使用补偿资源管理器 (CRM)。CRM 是由 COM+ 提供的一项服务，它使您可以在 Microsoft 分布式事务处理协调器 (DTC) 事务中包括非事务性对象。虽然 CRM 不提供完整资源管理器的功能，但它们却通过恢复日志提供事务性原子性（全有或全无行为）和持久性。</summary>
+    </member>
+    <member name="N:System.EnterpriseServices.Internal">
+      <summary>
+        <see cref="N:System.EnterpriseServices.Internal" /> 命名空间为 COM+ 服务提供基础结构支持。该命名空间中的类和接口专门用于支持从非托管 COM+ 类对 <see cref="N:System.EnterpriseServices" /> 进行调用。</summary>
+    </member>
+    <member name="N:System.Globalization">
+      <summary>
+        <see cref="N:System.Globalization" /> 命名空间包含定义区域性相关信息的类，这些信息包括语言，国家/地区，正在使用的日历，日期、货币和数字的格式模式，以及字符串的排序顺序。这些类对于编写全球化（国际化）应用程序很有用。而像 <see cref="T:System.Globalization.StringInfo" /> 和 <see cref="T:System.Globalization.TextInfo" /> 这样的类更是为我们提供了诸如代理项支持和文本元素处理等高级全球化功能。</summary>
+    </member>
+    <member name="N:System.IdentityModel">
+      <summary>
+        <see cref="N:System.IdentityModel" /> 命名空间包含用于生成安全令牌服务 （STS） 的类。其中包括 <see cref="T:System.IdentityModel.SecurityTokenService" /> 和 <see cref="T:System.IdentityModel.Scope" /> 类，以及一些实用工具类提供执行 cookie 转换的异常的能力。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Claims">
+      <summary>
+        <see cref="N:System.IdentityModel.Claims" /> 命名空间包含实现 Windows communication foundation (WCF) 基于声明的标识授权模型的类。此模型包括 <see cref="T:System.IdentityModel.Claims.Claim" /> 类和 <see cref="T:System.IdentityModel.Claims.ClaimSet" /> 类。从 .NET Framework 4.5 开始和集成 Windows Identity Foundation (WIF) 到 .NET Framework中，WCF 基于声明的标识模型由 WIF 取代。WIF 提供基于声明的标识对象模型，该模型可用以通过几种 Microsoft 产品堆栈（包括 CLR、WCF、 和 ASP.NET）提供身份验证和授权。WIF 类表示声明、声明类型和标识主体根据需要的包含在 <see cref="N:System.Security.Claims" /> 命名空间。从 .NET 4.5 开始，应使用这些类，而不是 <see cref="N:System.IdentityModel.Claims" /> 命名空间中的类。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Configuration">
+      <summary>
+        <see cref="N:System.IdentityModel.Configuration" /> 命名空间包含使用 Windows Identity Foundation (WIF)提供程序配置和服务生成的类。表示 &lt;identityconfiguration&gt; 元素下的设置的此命名空间的类。使用 WS-Federation 协议配置联合的类主要包含在 <see cref="N:System.IdentityModel.Services.Configuration" /> 命名空间中。这些设置显示在配置文件的 &lt;system.identitymodel.services&gt; 元素下。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Metadata">
+      <summary>
+        <see cref="N:System.IdentityModel.Metadata" /> 命名空间包含在“联合元数据”文档中表示元素的类。“联合元数据”文档是 XML 文档，可以提供建立联合时对合作伙伴有用的信息。有关美国联邦元数据的详细信息，请参见以下规范的第三部分: Web服务联邦语言(WS-联邦) 1.2版 (http://go.microsoft.com/fwlink/?LinkID=210152)。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Policy">
+      <summary>
+        <see cref="N:System.IdentityModel.Policy" /> 命名空间包含使用 WCF 基于声明标识模型时用来实现授权原则的类。从 .NET Framework 4.5 开始和集成 Windows Identity Foundation (WIF) 到 .NET Framework中，WCF 基于声明的标识模型由 WIF 取代。WIF 提供基于声明的标识对象模型，该模型可用以通过几种 Microsoft 产品堆栈（包括 CLR、WCF、 和 ASP.NET）提供身份验证和授权。在 WIF 中，通过使用 <see cref="T:System.Security.Claims.ClaimsAuthorizationManager" /> 类来实现授权策略。从 .NET 4.5 开始，应使用 WIF 实现授权策略，而不是使用 <see cref="N:System.IdentityModel.Claims" /> 命名空间中的类。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Protocols.WSTrust">
+      <summary>
+        <see cref="N:System.IdentityModel.Protocols.WSTrust" /> 命名空间包含表示 ws-discovery 信任项目的选件类。其中包括可以序列化和反序列化该连接的 ws-discovery 信任项目及其在对象模型中的表示形式之间的 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> (RST) 和 <see cref="T:System.IdentityModel.Protocols.WSTrust.RequestSecurityToken" /> (RSTR) 选件类和几个序列化程序。即开即用，Windows Identity Foundation (WIF) 包含了对以下WS-Trust规范的支持：WS-Trust February 2005 (http://go.microsoft.com/fwlink/?LinkID=210149)、WS-Trust 1.3 (http://go.microsoft.com/fwlink/?LinkID=210148) 或 WS-Trust 1.4 (http://go.microsoft.com/fwlink/?LinkID=210229).</summary>
+    </member>
+    <member name="N:System.IdentityModel.Selectors">
+      <summary>
+        <see cref="N:System.IdentityModel.Selectors" /> 命名空间包含实现 Windows communication foundation (WCF) 基于声明的标识模型的授权的类。从 .NET Framework 4.5 开始和集成 Windows Identity Foundation (WIF) 到 .NET Framework中，WCF 基于声明的标识模型由 WIF 取代。WIF 提供基于声明的标识对象模型，该模型可用以通过几种 Microsoft 产品堆栈（包括 CLR、WCF、 和 ASP.NET）提供身份验证和授权。WIF 类表示安全标记和安全进程标记包含在 <see cref="N:System.IdentityModel.Tokens" /> 命名空间中；例如，<see cref="T:System.IdentityModel.Tokens.SecurityToken" /> 和 <see cref="T:System.IdentityModel.Tokens.SecurityTokenHandler" />。从 .NET 4.5 开始，应使用 <see cref="N:System.IdentityModel.Tokens" /> 命名空间中的类，而不是 <see cref="N:System.IdentityModel.Selectors" /> 命名空间中的类。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Services">
+      <summary>
+        <see cref="N:System.IdentityModel.Services" /> 命名空间主要包含使用 Windows 标识基础 (WIF)用于生成的应用程序的类，(WIF) 与 WS-Federation 协议一起执行联合的身份验证。它包含HTTP Modules，<see cref="T:System.IdentityModel.Services.WSFederationAuthenticationModule" /> (WSFAM) 和 <see cref="T:System.IdentityModel.Services.SessionAuthenticationModule" /> (SAM)，也包含支持操作的类。WSFAM 为 WS-Federation 提供登录和注销序列处理，并且 SAM 提供会话管理通过维护和处理 cookies。命名空间也包含表示 WS-Federation 消息的类 (<see cref="T:System.IdentityModel.Services.WSFederationMessage" />)，例如登录 (<see cref="T:System.IdentityModel.Services.SignInRequestMessage" />， <see cref="T:System.IdentityModel.Services.SignInResponseMessage" />) 和注销消息 (<see cref="T:System.IdentityModel.Services.SignOutRequestMessage" />)，以及在对象模型以及这些消息导线表示法之间序列化和反序列化的序列化器。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Services.Configuration">
+      <summary>
+        <see cref="N:System.IdentityModel.Services.Configuration" /> 命名空间包含提供 Windows Identity Foundation (WIF) 应用程序配置的类，这些应用程序使用 WS-Federation 协议。表示 &lt;system.identitymodel.services&gt; 元素下的设置的此命名空间的类。<see cref="N:System.IdentityModel.Services" /> 命名空间也包含一些用于配置 WS-Federation 的类。类配置其他服务和应用程序设置，如安全标志处理程序，主要包含在 <see cref="N:System.IdentityModel.Configuration" /> 命名空间中。这些设置显示在配置文件的 &lt;identityconfiguration&gt; 元素下。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Services.Tokens">
+      <summary>
+        <see cref="N:System.IdentityModel.Services.Tokens" /> 类包含 <see cref="T:System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler" /> 和 <see cref="T:System.IdentityModel.Services.Tokens.MembershipUserNameSecurityTokenHandler" /> 类。</summary>
+    </member>
+    <member name="N:System.IdentityModel.Tokens">
+      <summary>
+        <see cref="N:System.IdentityModel.Tokens" /> 命名空间包含表示安全标记、安全标记处理程序、用于标记生成和操作键和其他项目的标识符子句的选件类。命名空间包含基类 <see cref="T:System.IdentityModel.Tokens.SecurityToken" />， <see cref="T:System.IdentityModel.Tokens.SecurityTokenHandler" />和 <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifierClause" />（如）以及从这些选件类派生并表示数标记类型，项目和处理安装了的支持选件类的 windows 标识基础（WIF）。这包括请包含对 SAML v1.1 和 v2.0 标记支持的选件类，例如： <see cref="T:System.IdentityModel.Tokens.SamlSecurityToken" />、 <see cref="T:System.IdentityModel.Tokens.SamlSecurityTokenHandler" />、 <see cref="T:System.IdentityModel.Tokens.Saml2SecurityToken" />和 <see cref="T:System.IdentityModel.Tokens.Saml2SecurityTokenHandler" />。</summary>
+    </member>
+    <member name="N:System.IO">
+      <summary>System.IO 命名空间包含允许读写文件和数据流的类型以及提供基本文件和目录支持的类型。</summary>
+    </member>
+    <member name="N:System.IO.Compression">
+      <summary>
+        <see cref="N:System.IO.Compression" /> 命名空间包含提供基本的流压缩和解压缩服务的类。</summary>
+    </member>
+    <member name="N:System.IO.IsolatedStorage">
+      <summary>
+        <see cref="N:System.IO.IsolatedStorage" /> 命名空间包含允许创建和使用独立存储区的类型。使用这些存储区可以读取和写入不太受信任的代码无法访问的数据，并可以防止公开保存在文件系统其他位置的敏感信息。数据存储在由当前用户和由代码所在的程序集分隔的隔室中。另外，数据可以由域进行隔离。漫游配置文件可以和独立存储一起使用，这样独立存储区将随用户的配置文件一起移动。<see cref="T:System.IO.IsolatedStorage.IsolatedStorageScope" /> 枚举指示隔离的不同类型。有关何时使用独立存储的更多信息，请参见 独立存储。</summary>
+    </member>
+    <member name="N:System.IO.Log">
+      <summary>System.IO.Log 命名空间定义用于登录到面向记录的顺序 I/O 系统的接口。</summary>
+    </member>
+    <member name="N:System.IO.MemoryMappedFiles">
+      <summary>
+        <see cref="N:System.IO.MemoryMappedFiles" /> 命名空间提供用于使用内存映射文件的类，该文件将文件内容映射到应用程序的逻辑地址空间。</summary>
+    </member>
+    <member name="N:System.IO.Packaging">
+      <summary>提供支持在单个容器中存储多个数据对象的类。</summary>
+    </member>
+    <member name="N:System.IO.Pipes">
+      <summary>
+        <see cref="N:System.IO.Pipes" /> 命名空间包含的类型可提供通过匿名和/或命名管道实现进程间通信的途径。</summary>
+    </member>
+    <member name="N:System.IO.Ports">
+      <summary>
+        <see cref="N:System.IO.Ports" /> 命名空间包含用于控制串行端口的类。最重要的类 <see cref="T:System.IO.Ports.SerialPort" /> 为同步和事件驱动 I/O 提供框架，提供对插针和中断状态的访问以及对串行驱动程序属性的访问。它可以用于包装<see cref="T:System.IO.Stream" />对象中，从而要通过使用流的类访问的串行端口。</summary>
+    </member>
+    <member name="N:System.Linq">
+      <summary>
+        <see cref="N:System.Linq" /> 命名空间提供支持使用语言集成查询 (LINQ) 进行查询的类和接口。</summary>
+    </member>
+    <member name="N:System.Linq.Expressions">
+      <summary>
+        <see cref="N:System.Linq.Expressions" /> 命名空间包含一些类、接口和枚举，它们使语言级别的代码表达式能够表示为表达式目录树形式的对象。</summary>
+    </member>
+    <member name="N:System.Management">
+      <summary>提供对一组丰富的管理信息和管理事件（它们是关于符合 Windows Management Instrumentation (WMI) 基础结构的系统、设备和应用程序的）的访问。应用程序和服务可以使用从 <see cref="T:System.Management.ManagementObjectSearcher" /> 和 <see cref="T:System.Management.ManagementQuery" /> 派生的类，查询感兴趣的管理信息（例如在磁盘上还剩多少可用空间、当前 CPU 利用率是多少、某一应用程序正连接到哪一数据库等等）；或者应用程序和服务可以使用 <see cref="T:System.Management.ManagementEventWatcher" /> 类预订各种管理事件。这些可访问的数据可以来自分布式环境中托管的和非托管的组件。</summary>
+    </member>
+    <member name="N:System.Management.Instrumentation">
+      <summary>提供一些类，检测管理应用程序以及通过 WMI 向潜在使用者公开管理信息和事件时需要这些类。像 Microsoft Application Center 或 Microsoft Operations Manager 这样的使用者然后可以很容易地管理您的应用程序，并且您的应用程序的监视和配置可用于管理员脚本或其他应用程序，无论是托管的还是非托管的。对于您要公开的类使用 InstrumentationClass 自定义属性，或者使用所提供的 <see cref="T:System.Management.Instrumentation.BaseEvent" /> 和 <see cref="T:System.Management.Instrumentation.Instance" /> 基类以及 <see cref="T:System.Management.Instrumentation.Instrumentation" /> 帮助器类，可以很容易地实现为应用程序设置检测点。</summary>
+    </member>
+    <member name="N:System.Media">
+      <summary>
+        <see cref="N:System.Media" /> 命名空间包含用于播放声音文件和访问系统提供的声音的类。</summary>
+    </member>
+    <member name="N:System.Messaging">
+      <summary>
+        <see cref="N:System.Messaging" /> 命名空间提供一些类，您可以使用这些类连接到、监视和管理网络上的消息队列，并发送、接收或查看消息。</summary>
+    </member>
+    <member name="N:System.Messaging.Design">
+      <summary>
+        <see cref="N:System.Messaging.Design" /> 命名空间包含可用于扩展 <see cref="N:System.Messaging" /> 类的设计时支持的类。</summary>
+    </member>
+    <member name="N:System.Net">
+      <summary>
+        <see cref="N:System.Net" /> 命名空间为当前网络上使用的多种协议提供了简单的编程接口。<see cref="T:System.Net.WebRequest" /> 和 <see cref="T:System.Net.WebResponse" /> 类形成了所谓的可插接式协议的基础，可插接式协议是网络服务的一种实现，它使您能够开发出使用 Internet 资源的应用程序，而不必考虑各种不同协议的具体细节。<see cref="N:System.Net" /> 命名空间中的类可用于开发 Windows 应用商店应用程序或桌面应用程序。当使用 Windows 应用商店应用程序时，<see cref="N:System.Net" /> 命名空间中的类将受网络隔离功能（Windows 开发人员预览版使用的一部分应用程序安全模型）的影响。必须在应用程序清单中为本系统的 Windows 应用商店应用程序启动相应的网络功能，以便允许 Windows 应用商店应用程序的网络访问。有关更多信息，请参见 Windows存储App的网络隔离。</summary>
+    </member>
+    <member name="N:System.Net.Cache">
+      <summary>
+        <see cref="N:System.Net.Cache" /> 命名空间定义类型和枚举，这些类型和枚举用于为使用 <see cref="T:System.Net.WebRequest" /> 和 <see cref="T:System.Net.HttpWebRequest" /> 类获得的资源定义缓存策略。</summary>
+    </member>
+    <member name="N:System.Net.Configuration">
+      <summary>
+        <see cref="N:System.Net.Configuration" /> 命名空间包含一些类，应用程序使用这些类以编程方式访问和更新 <see cref="N:System.Net" /> 命名空间的配置设置。</summary>
+    </member>
+    <member name="N:System.Net.Http">
+      <summary>
+        <see cref="N:System.Net.Http" /> 命名空间提供用于现代 HTTP 应用程序的编程接口。</summary>
+    </member>
+    <member name="N:System.Net.Http.Headers">
+      <summary>提供 HTTP 抬头的支持集合，其由 <see cref="N:System.Net.Http" /> 命名空间使用</summary>
+    </member>
+    <member name="N:System.Net.Mail">
+      <summary>
+        <see cref="N:System.Net.Mail" /> 命名空间包含用于将电子邮件发送到简单邮件传输协议 (SMTP) 服务器进行传送的类。</summary>
+    </member>
+    <member name="N:System.Net.Mime">
+      <summary>
+        <see cref="N:System.Net.Mime" /> 命名空间包含用于表示 Multipurpose Internet Mail Exchange (MIME) 标头的类型。这些类型在使用 <see cref="T:System.Net.Mail.SmtpClient" /> 类发送电子邮件时与 <see cref="N:System.Net.Mail" /> 命名空间中的类型一起用于指定 Content-Type、Content-Disposition 和 Content-transfer-Encoding 标头。</summary>
+    </member>
+    <member name="N:System.Net.NetworkInformation">
+      <summary>
+        <see cref="N:System.Net.NetworkInformation" /> 命名空间提供对网络流量数据、网络地址信息和本地计算机的地址更改通知的访问。该命名空间还包含实现 Ping 实用工具的类。可以使用 <see cref="T:System.Net.NetworkInformation.Ping" /> 和相关的类检查是否可通过网络连接到计算机。</summary>
+    </member>
+    <member name="N:System.Net.PeerToPeer">
+      <summary>
+        <see cref="N:System.Net.PeerToPeer" /> 命名空间提供了对等网络功能的访问权。</summary>
+    </member>
+    <member name="N:System.Net.PeerToPeer.Collaboration">
+      <summary>
+        <see cref="N:System.Net.PeerToPeer.Collaboration" /> 命名空间不仅增强了 <see cref="N:System.Net.PeerToPeer" /> 网络功能，还提供了无服务器托管的协作会话功能。</summary>
+    </member>
+    <member name="N:System.Net.Security">
+      <summary>
+        <see cref="N:System.Net.Security" /> 命名空间提供了网络流以便在主机间安全地通信。</summary>
+    </member>
+    <member name="N:System.Net.Sockets">
+      <summary>
+        <see cref="N:System.Net.Sockets" /> 命名空间为需要严密控制网络访问的开发人员提供了 Windows Sockets (Winsock) 接口的托管实现。</summary>
+    </member>
+    <member name="N:System.Net.WebSockets">
+      <summary>
+        <see cref="N:System.Net.WebSockets" /> 命名空间为开发人员提供 WebSocket 接口的托管实现。</summary>
+    </member>
+    <member name="N:System.Numerics">
+      <summary>包含补充由 .NET Framework 定义的数值基元（例如 <see cref="T:System.Byte" />、<see cref="T:System.Double" /> 和 <see cref="T:System.Int32" />）的数值类型的 <see cref="N:System.Numerics" /> 命名空间。</summary>
+    </member>
+    <member name="N:System.Printing">
+      <summary>提供可用于自动管理打印服务器、打印队列和打印作业的类。 </summary>
+    </member>
+    <member name="N:System.Printing.IndexedProperties">
+      <summary>提供一些类，使用这些类可以快速将打印系统对象的属性设置复制到同一类型的另一个对象。另外，这些类还可用于循环访问打印系统对象的属性和在运行时发现其类型（无需使用反射）。</summary>
+    </member>
+    <member name="N:System.Printing.Interop">
+      <summary>提供托管 <see cref="T:System.Printing.PrintTicket" /> 对象与非托管图形设备接口 (GDI) DEVMODE 结构之间的相互转换。</summary>
+    </member>
+    <member name="N:System.Reflection">
+      <summary>
+        <see cref="N:System.Reflection" /> 命名空间包含通过检查托管代码中程序集、模块、成员、参数和其他实体的元数据来检索其相关信息的类型。这些类型还可用于操作加载类型的实例，例如挂钩事件或调用方法。若要动态创建类型，请使用 <see cref="N:System.Reflection.Emit" /> 命名空间。</summary>
+    </member>
+    <member name="N:System.Reflection.Context">
+      <summary>
+        <see cref="N:System.Reflection.Context" /> 命名空间包含启动自定义反射上下文的类。</summary>
+    </member>
+    <member name="N:System.Reflection.Emit">
+      <summary>
+        <see cref="N:System.Reflection.Emit" /> 命名空间包含允许编译器或工具发出元数据和 Microsoft 中间语言 (MSIL) 并可选择在磁盘上生成 PE 文件的类。这些类的主要客户端是脚本引擎和编译器。</summary>
+    </member>
+    <member name="N:System.Resources">
+      <summary>
+        <see cref="N:System.Resources" /> 命名空间提供各种类和接口，这些类和接口使开发人员可以创建、存储和管理在应用程序中使用的不同特定于区域性的资源。<see cref="N:System.Resources" /> 命名空间最重要的类之一是 <see cref="T:System.Resources.ResourceManager" /> 类。</summary>
+    </member>
+    <member name="N:System.Resources.Tools">
+      <summary>
+        <see cref="N:System.Resources.Tools" /> 命名空间包含 <see cref="T:System.Resources.Tools.StronglyTypedResourceBuilder" /> 类，该类提供对强类型资源的支持。从 .NET Framework 2.0 版开始，此编译时功能通过创建包含一组静态只读 (get) 属性的类封装对资源的访问，从而更容易使用资源。</summary>
+    </member>
+    <member name="N:System.Runtime">
+      <summary>
+        <see cref="N:System.Runtime" /> 命名空间包含支持不同命名空间（如 System、Runtime 和 Security 命名空间）的高级类型。</summary>
+    </member>
+    <member name="N:System.Runtime.Caching">
+      <summary>
+        <see cref="N:System.Runtime.Caching" /> 命名空间包含可用于在 .NET Framework 应用程序中实现缓存的类型。</summary>
+    </member>
+    <member name="N:System.Runtime.Caching.Configuration">
+      <summary>
+        <see cref="N:System.Runtime.Caching.Configuration" /> 命名空间包含 .NET Framework 缓存功能的配置处理程序类。</summary>
+    </member>
+    <member name="N:System.Runtime.Caching.Hosting">
+      <summary>
+        <see cref="N:System.Runtime.Caching.Hosting" /> 命名空间中的类型支持使用 ASP.NET 中的缓存功能的 .NET Framework 承载环境。</summary>
+    </member>
+    <member name="N:System.Runtime.CompilerServices">
+      <summary>
+        <see cref="N:System.Runtime.CompilerServices" /> 命名空间为使用托管代码的编译器编写器提供在元数据中指定属性（这些属性影响公共语言运行时的运行时行为）的功能。</summary>
+    </member>
+    <member name="N:System.Runtime.ConstrainedExecution">
+      <summary>
+        <see cref="N:System.Runtime.ConstrainedExecution" /> 命名空间定义一组类型，这些类型枚举和定义某些代码的作者的可靠性和依赖于这些代码的开发人员之间的可靠性协定。<see cref="N:System.Runtime.ConstrainedExecution" /> 命名空间中的类型仅用于受约束执行区域 (CER)。</summary>
+    </member>
+    <member name="N:System.Runtime.DesignerServices">
+      <summary>
+        <see cref="N:System.Runtime.DesignerServices" /> 命名空间提供在集成开发环境 (ide) 中支持应用程序和组件设计师的类。</summary>
+    </member>
+    <member name="N:System.Runtime.DurableInstancing">
+      <summary>此命名空间包含 Windows Communication Foundation (WCF) 基础结构用来实现永久性提供程序的类。</summary>
+    </member>
+    <member name="N:System.Runtime.ExceptionServices">
+      <summary>
+        <see cref="N:System.Runtime.ExceptionServices" /> 命名空间为高级异常处理提供类。</summary>
+    </member>
+    <member name="N:System.Runtime.Hosting">
+      <summary>
+        <see cref="N:System.Runtime.Hosting" /> 命名空间包含用于应用程序域中的应用程序激活的高级类型。</summary>
+    </member>
+    <member name="N:System.Runtime.InteropServices">
+      <summary>
+        <see cref="N:System.Runtime.InteropServices" /> 命名空间提供各种各样支持 COM 互操作及平台调用服务的成员。如果您对这些服务不熟悉，请参见 与非托管代码交互操作。</summary>
+    </member>
+    <member name="N:System.Runtime.InteropServices.ComTypes">
+      <summary>System.Runtime.InteropServices.ComTypes 命名空间包含的方法是托管代码的 COM 函数的定义。这些函数取代了 <see cref="N:System.Runtime.InteropServices" /> 命名空间中现已过时的 UCOM* 方法。</summary>
+    </member>
+    <member name="N:System.Runtime.InteropServices.CustomMarshalers">
+      <summary>提供 .NET Framework 的内部封送处理支持。</summary>
+    </member>
+    <member name="N:System.Runtime.InteropServices.Expando">
+      <summary>
+        <see cref="N:System.Runtime.InteropServices.Expando" /> 命名空间包含 IExpando 接口，该接口允许通过添加或移除对象的成员来修改对象。</summary>
+    </member>
+    <member name="N:System.Runtime.InteropServices.WindowsRuntime">
+      <summary>
+        <see cref="N:System.Runtime.InteropServices.WindowsRuntime" /> 命名空间包含支持在管理代码和 Windows 运行时之间的交互操作，并启用用管理代码生成 Windows 运行时 的类。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting">
+      <summary>
+        <see cref="N:System.Runtime.Remoting" /> 命名空间提供允许开发人员创建和配置分布式应用程序的类和接口。<see cref="N:System.Runtime.Remoting" /> 命名空间的一些更重要的类是  <see cref="T:System.Runtime.Remoting.RemotingConfiguration" /> 类、 <see cref="T:System.Runtime.Remoting.RemotingServices" /> 类和  <see cref="T:System.Runtime.Remoting.ObjRef" /> 类。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Activation">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Activation" /> 命名空间提供支持远程对象的服务器和客户端激活的类与对象。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Channels">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Channels" /> 命名空间包含支持并处理信道和信道接收器的类，这些信道和信道接收器在客户端调用远程对象上的方法时用作传输媒体。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Channels.Http">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Channels.Http" /> 命名空间包含使用 HTTP 协议向远程位置传输消息和对象以及从远程位置传输消息和对象的信道。默认情况下，HTTP 信道以 SOAP 格式对对象和方法调用进行编码以便传输，但在信道的配置属性中也可以指定其他编码和解码格式化程序接收器。<see cref="N:System.Runtime.Remoting.Channels.Http" /> 命名空间最重要的类之一是 <see cref="T:System.Runtime.Remoting.Channels.Http.HttpChannel" /> 类。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Channels.Ipc">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Channels.Ipc" /> 命名空间定义用于远程处理的通信信道，该信道使用 Windows 操作系统的进程间通信 (IPC) 系统。由于不使用网络通信，IPC 信道的速度比 HTTP 和 TCP 信道的速度快得多，但它仅适用于在同一物理计算机上的不同应用程序域之间通信。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Channels.Tcp">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Channels.Tcp" /> 命名空间包含使用 TCP 协议向远程位置传输消息和对象以及从远程位置传输消息和对象的信道。默认情况下，TCP 信道以二进制格式对对象和方法调用进行编码以便传输，但在信道的配置属性中也可以指定其他编码和解码格式化程序接收器。<see cref="N:System.Runtime.Remoting.Channels.Tcp" /> 命名空间最重要的类之一是 <see cref="T:System.Runtime.Remoting.Channels.Tcp.TcpChannel" /> 类。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Contexts">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Contexts" /> 命名空间包含一些定义所有对象所驻留的上下文的对象。上下文是一个有序的属性序列，用于定义其中的对象所处的环境。上下文是在对象的激活过程中创建的，这些对象被配置为要求某些自动服务，如同步、事务、实时 (JIT) 激活、安全性等。多个对象可以存留在一个上下文内。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Lifetime">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Lifetime" /> 命名空间包含管理远程对象生存期的类。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Messaging">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Messaging" /> 命名空间包含用于创建和传输消息的类。远程处理基础结构使用消息与远程对象进行通信。消息用于传输远程方法调用、激活远程对象和交流信息。消息对象携带一组命名属性，其中包括操作标识符、代表信息和参数。<see cref="N:System.Runtime.Remoting.Messaging" /> 命名空间的一些最重要的类是 <see cref="T:System.Runtime.Remoting.Messaging.AsyncResult" /> 类、<see cref="T:System.Runtime.Remoting.Messaging.RemotingSurrogateSelector" /> 类和 <see cref="T:System.Runtime.Remoting.Messaging.ReturnMessage" /> 类。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Metadata">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Metadata" /> 命名空间包含类和属性，这些类和属性可用于自定义对象和字段的 SOAP 的生成和处理。该命名空间的类可用于指示 SOAPAction 标头字段、类型输出、XML 元素名称和方法 XML 命名空间 URI。在 SOAP 生成期间，该信息由 SOAP 序列化程序使用；而在 Web 服务描述语言 (WSDL) 生成期间，该信息由 Soapsuds Tool (Soapsuds.exe) 使用。由该命名空间中的特性指定的信息可在生成的 SOAP 的接收端使用，以自定义远程方法调用和对象的处理。<see cref="N:System.Runtime.Remoting.Metadata" /> 命名空间最重要的类之一是 <see cref="T:System.Runtime.Remoting.Metadata.SoapAttribute" /> 类。该 <see cref="T:System.Runtime.Remoting.Metadata.SoapAttribute" /> 类是非功能性的，并且只能用作所有元数据属性的基类。有关 SOAPAction HTTP 标头字段的更多信息，请参见 www.w3.org/tr/soap/#_Toc478383528。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Metadata.W3cXsd2001">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Metadata.W3cXsd2001" /> 命名空间包含由万维网联合会 (W3C) 在 2001 年定义的 XML 架构定义 (XSD)。来自 W3C 的 XML 架构第 2 部分：数据类型规格标识格式和各种数据类型的行为。此命名空间包含符合 W3C 规范的数据类型的包装类。所有日期和时间类型都符合 ISO 标准规范。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.MetadataServices">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.MetadataServices" /> 命名空间包含由 Soapsuds.exe 命令行工具和用户代码使用的类，这些类用于在元数据和远程处理基础结构的 XML 架构之间进行相互转换。此命名空间的一些最重要的类是 <see cref="T:System.Runtime.Remoting.MetadataServices.SdlChannelSink" /> 类和  <see cref="T:System.Runtime.Remoting.MetadataServices.MetaData" /> 类。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Proxies">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Proxies" /> 命名空间包含控制和提供代理功能的类。代理是作为远程对象映像的本地对象。代理使客户端可以跨远程处理边界访问对象。</summary>
+    </member>
+    <member name="N:System.Runtime.Remoting.Services">
+      <summary>
+        <see cref="N:System.Runtime.Remoting.Services" /> 命名空间包含向 .NET Framework 提供功能的服务类。该命名空间的最重要的类之一是 <see cref="T:System.Runtime.Remoting.Services.TrackingServices" /> 类。</summary>
+    </member>
+    <member name="N:System.Runtime.Serialization">
+      <summary>
+        <see cref="N:System.Runtime.Serialization" /> 命名空间包含可用于将对象序列化和反序列化的类。序列化是将对象或对象图转换为线性的字节序列以存储或传输到其他位置的过程。反序列化是接受存储的信息并利用它重新创建对象的过程。</summary>
+    </member>
+    <member name="N:System.Runtime.Serialization.Configuration">
+      <summary>System.Runtime.Serialization.Configuration 命名空间包含一些类，这些类用于读取在应用程序配置中的 system.xml.serialization 节下找到的值。此命名空间中的类可由序列化基础结构用于处理配置元素，但不能直接使用。相反，若要配置 DataContractSerializer，应创建应用程序配置文件，并使用下面的 XML 元素。&lt;declaredTypes&gt;&lt;knownType&gt; 元素的&lt;system.xml.serialization&gt;&lt;dataContractSerializer&gt;&lt;declaredTypes&gt;&lt;add&gt; 元素</summary>
+    </member>
+    <member name="N:System.Runtime.Serialization.Formatters">
+      <summary>
+        <see cref="N:System.Runtime.Serialization.Formatters" /> 命名空间提供序列化格式化程序所使用的常见枚举、接口和类。</summary>
+    </member>
+    <member name="N:System.Runtime.Serialization.Formatters.Binary">
+      <summary>
+        <see cref="N:System.Runtime.Serialization.Formatters.Binary" /> 命名空间包含 <see cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter" /> 类，该类可用于以二进制格式将对象序列化和反序列化。</summary>
+    </member>
+    <member name="N:System.Runtime.Serialization.Formatters.Soap">
+      <summary>
+        <see cref="N:System.Runtime.Serialization.Formatters.Soap" /> 命名空间包含 <see cref="T:System.Runtime.Serialization.Formatters.Soap.SoapFormatter" /> 类，该类可用于以 SOAP 格式将对象序列化和反序列化。生成使用此命名空间中的类型的应用程序时，必须引用 System.Runtime.Serialization.Formatters.Soap.dll 程序集。</summary>
+    </member>
+    <member name="N:System.Runtime.Serialization.Json">
+      <summary>提供类，与 JSON 连续广播相关。</summary>
+    </member>
+    <member name="N:System.Runtime.Versioning">
+      <summary>
+        <see cref="N:System.Runtime.Versioning" /> 命名空间包含支持在 .NET Framework 的多个并列实现中进行版本控制的高级类型。</summary>
+    </member>
+    <member name="N:System.Security">
+      <summary>
+        <see cref="N:System.Security" /> 命名空间提供公共语言运行时安全系统的基础结构，包括权限的基类。</summary>
+    </member>
+    <member name="N:System.Security.AccessControl">
+      <summary>
+        <see cref="N:System.Security.AccessControl" /> 命名空间提供的编程元素用来控制对可保护对象的访问，并审核针对这些对象执行的与安全有关的操作。</summary>
+    </member>
+    <member name="N:System.Security.Authentication">
+      <summary>Authentication 命名空间提供一组描述连接安全性的枚举。这些枚举包括 <see cref="T:System.Security.Authentication.CipherAlgorithmType" />、 <see cref="T:System.Security.Authentication.ExchangeAlgorithmType" />、 <see cref="T:System.Security.Authentication.HashAlgorithmType" /> 和 <see cref="T:System.Security.Authentication.SslProtocolType" />。</summary>
+    </member>
+    <member name="N:System.Security.Authentication.ExtendedProtection">
+      <summary>
+        <see cref="N:System.Security.Authentication.ExtendedProtection" /> 命名空间使用应用程序扩展保护为身份验证提供支持。</summary>
+    </member>
+    <member name="N:System.Security.Authentication.ExtendedProtection.Configuration">
+      <summary>
+        <see cref="N:System.Security.Authentication.ExtendedProtection.Configuration" /> 命名空间使用应用程序扩展保护为身份验证配置提供支持。</summary>
+    </member>
+    <member name="N:System.Security.Claims">
+      <summary>包含在 .NET Framework 中实现的基于声明的标识，包括表示声明、基于声明的标识和基于声明的原则的类。</summary>
+    </member>
+    <member name="N:System.Security.Cryptography">
+      <summary>
+        <see cref="N:System.Security.Cryptography" /> 命名空间提供加密服务，包括安全的数据编码和解码，以及许多其他操作，例如散列法、随机数字生成和消息身份验证。有关详细信息，请参阅加密服务。</summary>
+    </member>
+    <member name="N:System.Security.Cryptography.Pkcs">
+      <summary>
+        <see cref="N:System.Security.Cryptography.Pkcs" /> 命名空间提供了公钥加密标准 (PKCS) 的编程元素，包括用于对数据签名的方法、用于交换密钥的方法、用于请求证书的方法、用于公钥加密和解密的方法，以及用于其他安全性功能的方法。</summary>
+    </member>
+    <member name="N:System.Security.Cryptography.X509Certificates">
+      <summary>
+        <see cref="N:System.Security.Cryptography.X509Certificates" /> 命名空间包含 Authenticode X.509 v.3 证书的公共语言运行时实现。此证书用唯一明确标识证书持有者的私钥签名。</summary>
+    </member>
+    <member name="N:System.Security.Cryptography.Xml">
+      <summary>
+        <see cref="N:System.Security.Cryptography.Xml" /> 命名空间包含支持创建和验证 XML 数字签名的类。此命名空间中的类可实现万维网联合会建议“XML-Signature Syntax and Processing”（在 http://www.w3.org/TR/xmldsig-core/ 有说明）。</summary>
+    </member>
+    <member name="N:System.Security.Permissions">
+      <summary>
+        <see cref="N:System.Security.Permissions" /> 命名空间根据策略定义控制对操作和资源访问的类。</summary>
+    </member>
+    <member name="N:System.Security.Policy">
+      <summary>
+        <see cref="N:System.Security.Policy" /> 命名空间包含代码组、成员条件和证据。这三种类型的类用于创建由公共语言运行时安全策略系统应用的规则。证据类是安全策略的输入，而成员条件是开关；二者共同创建策略语句并确定授予的权限集。策略级别和代码组是策略层次的结构。代码组是规则的封装并且在策略级别中分层排列。</summary>
+    </member>
+    <member name="N:System.Security.Principal">
+      <summary>
+        <see cref="N:System.Security.Principal" /> 命名空间定义表示代码在其中运行的安全上下文的用户对象。有关详细信息，请参阅基于角色的安全性。</summary>
+    </member>
+    <member name="N:System.Security.RightsManagement">
+      <summary>提供类型以支持对应用程序创建的内容的版权管理，这些内容存储在 <see cref="T:System.IO.Packaging.Package" /> 或 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 中。</summary>
+    </member>
+    <member name="N:System.ServiceModel">
+      <summary>提供类，与服务模型相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activation">
+      <summary>提供类，与服务模型激活相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activation.Configuration">
+      <summary>表示 SMSvcHost.exe 工具的配置设置。此命名空间表示可以在 SMSvcHost.exe.config 文件中配置的配置元素。具体地说，它包括计算机中需要配置的所有设置。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activities">
+      <summary>使用 System.ServiceModel.Activities 命名空间中包含的类，可以向工作流发送消息或从工作流接收消息。在编写工作流服务时可以使用这些活动，通过这些活动，可以定义工作流发送和接收消息的方式。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activities.Activation">
+      <summary>包含在以响应传入消息而动态创建的主机实例托管宿主环境中提供 <see cref="T:System.ServiceModel.Activities.WorkflowServiceHost" /> 的实例的 <see cref="T:System.ServiceModel.Activities.Activation.WorkflowServiceHostFactory" /> 的 System.ServiceModel.Activities.Activation 命名空间。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activities.Configuration">
+      <summary>System.ServiceModel.Activities.Configuration 命名空间包含用于配置工作流服务的类。这些类使您可以应用服务和终结点行为，以及配置跟踪。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activities.Description">
+      <summary>System.ServiceModel.Activities.Description 命名空间包含的类可以用于控制与工作流服务相关的各种行为。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activities.Presentation">
+      <summary>提供类，与服务模型表示活动相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activities.Presentation.Factories">
+      <summary>包含创建 Receive/SendReply 和 Send/ReceiveReply 活动对的工厂。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activities.Tracking">
+      <summary>System.ServiceModel.Activities.Tracking 命名空间包含的类用于创建工作流服务实例的跟踪记录。在工作流实例执行期间，工作流运行时会创建跟踪记录，并将其发送给注册的跟踪参与者。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Activities.Tracking.Configuration">
+      <summary>System.ServiceModel.Activities.Tracking.Configuration 命名空间包含的类用于配置对服务承载的工作流的跟踪。这些类可用于指定您希望工作流服务生成的跟踪信息。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Channels">
+      <summary>提供类，与服务模型通道相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.ComIntegration">
+      <summary>定义用于 COM 应用程序集成所需类。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Configuration">
+      <summary>提供类，与服务模型配置相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Description">
+      <summary>提供类，与服务模型描述相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Diagnostics">
+      <summary>
+        <see cref="N:System.ServiceModel.Diagnostics" /> 命名空间包含一个用来配置诊断目的性能计数器的枚举。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Discovery">
+      <summary>System.ServiceModel.Discovery 命名空间包含创建和使用可发现的服务所必需的类。这些类为 Windows Communication Foundation (WCF) 实现 WS-Discovery 协议。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Discovery.Configuration">
+      <summary>System.ServiceModel.Discovery.Configuration 命名空间包含允许您在配置文件中配置发现设置的类。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Discovery.Version11">
+      <summary>System.ServiceModel.Discovery.Version11 命名空间包含创建和使用可发现的服务所必需的类。这些类为 Windows Communication Foundation (WCF) 实现 WS-Discovery 版本 1.1 协议。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Discovery.VersionApril2005">
+      <summary>System.ServiceModel.Discovery.VersionApril2005 命名空间包含创建和使用可发现的服务所必需的类。这些类为 Windows Communication Foundation (WCF) 实现 WS-Discovery 协议 2005 年 4 月版本。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Discovery.VersionCD1">
+      <summary>System.ServiceModel.Discovery.VersionCD1 命名空间包含创建和使用可发现服务所必需的类。这些类为 Windows Communication Foundation (WCF) 实现 WS-Discovery 协议 Committee Draft 1 版本。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Dispatcher">
+      <summary>提供类，与分离该服务模型相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.MsmqIntegration">
+      <summary>
+        <see cref="N:System.ServiceModel.MsmqIntegration" /> 命名空间包含与 Microsoft 消息队列服务 (MSMQ) 集成相关的类，此类允许在 MSMQ 应用程序与 Windows Communication Foundation (WCF) 应用程序之间通信，。</summary>
+    </member>
+    <member name="N:System.ServiceModel.PeerResolvers">
+      <summary>
+        <see cref="N:System.ServiceModel.PeerResolvers" /> 命名空间包含的类允许开发人员自定义并扩展对等名称解析协议服务。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Persistence">
+      <summary>
+        <see cref="N:System.ServiceModel.Persistence" /> 命名空间包含允许工作流服务（作为工作流实现的 WCF 服务）保留在持久性存储区中的类。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Routing">
+      <summary>此命名空间包含用于配置和管理 WCF <see cref="T:System.ServiceModel.Routing.RoutingService" /> 的类。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Routing.Configuration">
+      <summary>此命名空间包含配置类，Windows Communication Foundation (WCF) 基础结构使用这些类将 XML 转换成公共语言运行时 (CLR) 类型。还可以出于扩展目的直接操作这些类。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Security">
+      <summary>
+        <see cref="N:System.ServiceModel.Security" /> 命名空间处理安全相关的常规主题（例如  <see cref="T:System.ServiceModel.Security.SecurityAlgorithmSuite" />）。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Security.Tokens">
+      <summary>处理安全标记和证书。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Syndication">
+      <summary>提供类，与服务模型联合相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.Web">
+      <summary>提供类，与 web 上使用该服务模型相关。</summary>
+    </member>
+    <member name="N:System.ServiceModel.XamlIntegration">
+      <summary>提供实用工具类以将 Windows Communication Foundation (WCF) 实体序列化为 XAML。</summary>
+    </member>
+    <member name="N:System.ServiceProcess">
+      <summary>
+        <see cref="N:System.ServiceProcess" /> 命名空间提供用于实现、安装和控制 Windows 服务应用程序的类。服务是长期运行的可执行文件，它们不通过用户界面来运行。实现服务涉及以下方面：从 <see cref="T:System.ServiceProcess.ServiceBase" /> 类继承，定义在传入开始、停止、暂停和继续命令时要处理的特定行为，以及定义在系统关闭时要执行的自定义行为和操作。</summary>
+    </member>
+    <member name="N:System.ServiceProcess.Design">
+      <summary>
+        <see cref="N:System.ServiceProcess.Design" /> 命名空间包含可用于扩展对 Windows 服务应用程序的设计时支持的类。</summary>
+    </member>
+    <member name="N:System.Speech.AudioFormat">
+      <summary>
+        <see cref="N:System.Speech.AudioFormat" /> 命名空间包含一个选件类， <see cref="T:System.Speech.AudioFormat.SpeechAudioFormatInfo" />，包含有关音频格式的信息输入到语音识别引擎，或者是从语音合成引擎的输出。</summary>
+    </member>
+    <member name="N:System.Speech.Recognition">
+      <summary>
+        <see cref="N:System.Speech.Recognition" /> 命名空间包含用于实现语音识别的 Windows 桌面语音技术类型。</summary>
+    </member>
+    <member name="N:System.Speech.Recognition.SrgsGrammar">
+      <summary>
+        <see cref="N:System.Speech.Recogntion.SRGSGrammar" /> 命名空间的成员，您可以通过编程方式创建符合 W3C 语音识别语法规范描述版本 1.0  的语法（SRGS）。</summary>
+    </member>
+    <member name="N:System.Speech.Synthesis">
+      <summary>N:System.Speech.Synthesis 命名空间包含初始化和配置的语音合成引擎选件类，为响应事件并输入修改的语音属性创建用于生成语音提示。</summary>
+    </member>
+    <member name="N:System.Speech.Synthesis.TtsEngine">
+      <summary>支持基于语音合成标记语言 (SSML) 创建用于呈现文本到语音 (TTS) 的自定义引擎。</summary>
+    </member>
+    <member name="N:System.Text">
+      <summary>
+        <see cref="N:System.Text" /> 命名空间包含表示 ASCII 和 Unicode 字符编码的类；用于将字符块转换为字节块和将字节块转换为字符块的抽象基类；以及操作和格式化 <see cref="T:System.String" /> 对象而不创建 <see cref="T:System.String" /> 的中间实例的帮助器类。</summary>
+    </member>
+    <member name="N:System.Text.RegularExpressions">
+      <summary>
+        <see cref="N:System.Text.RegularExpressions" /> 命名空间包含一些类，这些类提供对 .NET Framework 正则表达式引擎的访问。该命名空间提供正则表达式功能，可以从运行在 Microsoft .NET Framework 内的任何平台或语言中使用该功能。除了此命名空间中包含的类型外，<see cref="T:System.Configuration.RegexStringValidator" /> 类还允许您确定特定字符串是否与某个正则表达式模式相符。</summary>
+    </member>
+    <member name="N:System.Threading">
+      <summary>
+        <see cref="N:System.Threading" /> 命名空间提供一些使得可以进行多线程编程的类和接口。除同步线程活动和数据访问的类（<see cref="T:System.Threading.Mutex" />、<see cref="T:System.Threading.Monitor" />、 <see cref="T:System.Threading.Interlocked" />、<see cref="T:System.Threading.AutoResetEvent" />等）之外,此命名空间还包含一个 <see cref="T:System.Threading.ThreadPool" /> 类（它可让用户使用系统提供的线程池）和一个 <see cref="T:System.Threading.Timer" /> 类（在线程池线程上执行回调方法）。</summary>
+    </member>
+    <member name="N:System.Threading.Tasks">
+      <summary>该 System.Threading.Tasks 命名空间提供简化编写并发和异步代码的工作的类型。主要类型为 <see cref="T:System.Threading.Tasks.Task" />（表示可以等待和取消的异步操作）和 <see cref="T:System.Threading.Tasks.Task`1" />（可以返回值的任务）。<see cref="T:System.Threading.Tasks.TaskFactory" /> 类提供用于创建和启动任务的静态方法，<see cref="T:System.Threading.Tasks.TaskScheduler" /> 类提供默认线程调度基础结构。</summary>
+    </member>
+    <member name="N:System.Timers">
+      <summary>
+        <see cref="N:System.Timers" /> 命名空间提供 <see cref="T:System.Timers.Timer" /> 组件，它使您可以在指定的间隔是引发事件。</summary>
+    </member>
+    <member name="N:System.Transactions">
+      <summary>使用 <see cref="N:System.Transactions" /> 命名空间包含的类可以编写自己的事务应用程序和资源管理器。具体地说，可以创建和参与（与一个或多个参与者）本地或分布式事务。</summary>
+    </member>
+    <member name="N:System.Transactions.Configuration">
+      <summary>
+        <see cref="N:System.Transactions.Configuration" /> 命名空间包含的类描述 <see cref="N:System.Transactions" /> 类所使用的配置选项。</summary>
+    </member>
+    <member name="N:System.Web">
+      <summary>
+        <see cref="N:System.Web" /> 命名空间提供使得可以进行浏览器与服务器通信的类和接口。此命名空间包括 <see cref="T:System.Web.HttpRequest" /> 类（用于提供有关当前 HTTP 请求的广泛信息）、 <see cref="T:System.Web.HttpResponse" /> 类（用于管理输出到客户端的 HTTP 输出）以及 <see cref="T:System.Web.HttpServerUtility" /> 类（用于提供对服务器端实用工具与进程的访问）。<see cref="N:System.Web" /> 还包括用于 Cookie 操作、文件传输、异常信息和输出缓存控制的类。</summary>
+    </member>
+    <member name="N:System.Web.ApplicationServices">
+      <summary>
+        <see cref="N:System.Web.ApplicationServices" /> 命名空间提供了一些类，通过这些类可以访问 ASP.NET 窗体身份验证、角色和配置文件应用程序服务，如 Windows Communication Foundation (WCF) 服务。</summary>
+    </member>
+    <member name="N:System.Web.Caching">
+      <summary>
+        <see cref="N:System.Web.Caching" /> 命名空间提供用于缓存服务器上常用数据的类。</summary>
+    </member>
+    <member name="N:System.Web.ClientServices">
+      <summary>
+        <see cref="N:System.Web.ClientServices" /> 命名空间提供一些类，这些类在基于 Windows 的应用程序中支持访问 Microsoft Ajax 身份验证、角色和配置文件服务。 </summary>
+    </member>
+    <member name="N:System.Web.ClientServices.Providers">
+      <summary>
+        <see cref="N:System.Web.ClientServices.Providers" /> 命名空间包含在基于 Windows 的应用程序中支持访问 Microsoft Ajax 身份验证、角色和配置文件服务的客户端服务提供程序以及其他类。</summary>
+    </member>
+    <member name="N:System.Web.Compilation">
+      <summary>
+        <see cref="N:System.Web.Compilation" /> 命名空间包含用于生成和编译 ASP.NET 生成环境中的自定义文件类型的类。</summary>
+    </member>
+    <member name="N:System.Web.Configuration">
+      <summary>
+        <see cref="N:System.Web.Configuration" /> 命名空间包含用于设置 ASP.NET 配置的类。</summary>
+    </member>
+    <member name="N:System.Web.Configuration.Internal">
+      <summary>
+        <see cref="N:System.Web.Configuration.Internal" /> 命名空间包含仅供内部使用的配置类型。</summary>
+    </member>
+    <member name="N:System.Web.DynamicData">
+      <summary>
+        <see cref="N:System.Web.DynamicData" /> 命名空间包含为 ASP.NET 动态数据提供核心功能的类。另外，它还提供允许自定义动态数据行为的扩展性功能。</summary>
+    </member>
+    <member name="N:System.Web.DynamicData.Design">
+      <summary>
+        <see cref="N:System.Web.DynamicData.Design" /> 命名空间包含的类为 <see cref="N:System.Web.DynamicData" /> 命名空间中的类提供设计时支持。</summary>
+    </member>
+    <member name="N:System.Web.DynamicData.ModelProviders">
+      <summary>
+        <see cref="N:System.Web.DynamicData.ModelProviders" /> 命名空间包含定义 ASP.NET 动态数据提供程序的核心功能的类。</summary>
+    </member>
+    <member name="N:System.Web.Handlers">
+      <summary>
+        <see cref="N:System.Web.Handlers" /> 命名空间包含的 HTTP 处理程序类用于处理对 Web 服务器发出的请求。</summary>
+    </member>
+    <member name="N:System.Web.Hosting">
+      <summary>
+        <see cref="N:System.Web.Hosting" /> 命名空间提供在 Microsoft Internet 信息服务 (IIS) 之外的托管应用程序中承载 ASP.NET 应用程序的功能。</summary>
+    </member>
+    <member name="N:System.Web.Instrumentation">
+      <summary>
+        <see cref="N:System.Web.Instrumentation" /> 命名空间包含提供有关当前页面执行的信息的类型，该信息包括执行监听器和使用仪器，以及包括在视图引擎呈现输出之前或之后调用的方法。</summary>
+    </member>
+    <member name="N:System.Web.Mail">
+      <summary>此命名空间中的类已被否决。改用 <see cref="N:System.Net.Mail" /> 命名空间。<see cref="N:System.Web.Mail" /> 命名空间包含使您可以使用 CDOSYS（Windows 2000 的协作数据对象）消息组件来构造和发送消息的类。邮件消息是通过内置在 Microsoft Windows 2000 中的 SMTP 邮件服务或任意的 SMTP 服务器来传送的。此命名空间中的类可以在 ASP.NET 或任何托管应用程序中使用。</summary>
+    </member>
+    <member name="N:System.Web.Management">
+      <summary>
+        <see cref="N:System.Web.Management" />命名空间包含用来管理和监视 Web 应用程序运行状况的类和接口。</summary>
+    </member>
+    <member name="N:System.Web.Mobile">
+      <summary>
+        <see cref="N:System.Web.Mobile" /> 命名空间包含生成 ASP.NET 移动 Web 应用程序所需的核心功能，包括身份验证和错误处理。有关如何开发 ASP.NET 移动应用程序的信息，请参见 www.asp.net/mobile 网站。</summary>
+    </member>
+    <member name="N:System.Web.ModelBinding">
+      <summary>
+        <see cref="N:System.Web.ModelBinding" /> 命名空间提供了将数据对象绑定到 ASP.NET 网络窗体服务器控件的类。</summary>
+    </member>
+    <member name="N:System.Web.Profile">
+      <summary>
+        <see cref="N:System.Web.Profile" /> 命名空间包含用于在 Web 服务器应用程序中处理 ASP.NET 用户配置文件的类。</summary>
+    </member>
+    <member name="N:System.Web.Query.Dynamic">
+      <summary>
+        <see cref="N:System.Web.Query.Dynamic" /> 命名空间包含可用于将 <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> 控件中的表达式分析为语言集成查询 (LINQ) 的类。</summary>
+    </member>
+    <member name="N:System.Web.RegularExpressions">
+      <summary>
+        <see cref="N:System.Web.RegularExpressions" /> 命名空间提供可用于分析 ASP.NET 文件的预编译正则表达式。<see cref="N:System.Web.RegularExpressions" /> 命名空间的所有成员都是 <see cref="T:System.Text.RegularExpressions.Regex" /> 类的子代。</summary>
+    </member>
+    <member name="N:System.Web.Routing">
+      <summary>
+        <see cref="N:System.Web.Routing" /> 命名空间提供用于 URL 路由的类，通过该类可以使用不映射到物理文件的URLs 。</summary>
+    </member>
+    <member name="N:System.Web.Script">
+      <summary>
+        <see cref="N:System.Web.Script" /> 命名空间包含提供脚本资源信息的类。</summary>
+    </member>
+    <member name="N:System.Web.Script.Serialization">
+      <summary>
+        <see cref="N:System.Web.Script.Serialization" /> 命名空间包含为托管类型提供 JavaScript 对象表示法 (JSON) 序列化和反序列化的类。还提供用于自定义序列化行为的扩展性功能。</summary>
+    </member>
+    <member name="N:System.Web.Script.Services">
+      <summary>
+        <see cref="N:System.Web.Script.Services" /> 命名空间提供一些用于自定义 Web 服务支持的特性，以便使用 ASP.NET 中的 AJAX 功能。</summary>
+    </member>
+    <member name="N:System.Web.Security">
+      <summary>
+        <see cref="N:System.Web.Security" /> 命名空间包含用于在 Web 服务器应用程序中实现 ASP.NET 安全性的类。</summary>
+    </member>
+    <member name="N:System.Web.Security.AntiXss">
+      <summary>包含可用于代码字符串以有助于防止应用程序遭到站点式脚本 (XSS） 的攻击和 LDAP 注入式攻击的方法。</summary>
+    </member>
+    <member name="N:System.Web.Services">
+      <summary>
+        <see cref="N:System.Web.Services" />命名空间包含使您可以利用 ASP.NET 和 XML Web 服务客户端来创建 XML Web 服务的类。XML Web services 是一些应用程序，它们提供了在使用标准协议（如 HTTP、XML、XSD、SOAP 和 WSDL）的松耦合环境下进行消息交换的能力。利用 XML Web services，可以在异质环境下的公司内部和公司之间生成模块化应用程序，使它们与各种各样的实现、平台和设备交互操作。这些应用程序的基于 SOAP 的 XML 消息可以具有定义完善的部分（结构化和类型化的部分）或者定义比较松散的部分（使用任意 XML）。消息可以随时间发展而不破坏协议的能力对于作为未来的 Web 构造块的 XML Web services 的灵活性和可靠性来说是非常重要的。</summary>
+    </member>
+    <member name="N:System.Web.Services.Configuration">
+      <summary>
+        <see cref="N:System.Web.Services.Configuration" /> 命名空间由用于配置使用 ASP.NET 创建的 XML Web services 的运行方式的类组成。</summary>
+    </member>
+    <member name="N:System.Web.Services.Description">
+      <summary>
+        <see cref="N:System.Web.Services.Description" /> 命名空间由使得您可以通过使用 Web 服务描述语言 (WSDL) 来公开描述 XML Web 服务的类组成。此命名空间中的每个类对应于 WSDL 规范中的一个特定元素，并且类层次结构对应于有效的 WSDL 文档的 XML 结构。有关 WSDL 的更多信息，请参见位于 W3C 网站 (http://www.w3.org/TR/wsdl/) 的规范。</summary>
+    </member>
+    <member name="N:System.Web.Services.Discovery">
+      <summary>
+        <see cref="N:System.Web.Services.Discovery" /> 命名空间由使得 XML Web services 客户端能够通过称为 XML Web 服务发现的进程在 Web 服务器上定位到可用 XML Web services 的类组成。</summary>
+    </member>
+    <member name="N:System.Web.Services.Protocols">
+      <summary>
+        <see cref="N:System.Web.Services.Protocols" /> 命名空间由定义在 XML Web服务器 客户端和用 ASP.NET 创建的 XML Web服务器之间进行通信的过程中在网络上传输数据所使用的协议的类组成。</summary>
+    </member>
+    <member name="N:System.Web.SessionState">
+      <summary>
+        <see cref="N:System.Web.SessionState" /> 命名空间提供可将特定于某个单个客户端的数据存储在服务器上的一个 Web 应用程序中的类和接口。会话状态数据用于向客户端提供与应用程序的持久连接的外观。状态信息可以存储在本地进程内存中，或者，对于网络场配置，也可以使用 ASP.NET 状态服务或 Microsoft SQL Server 数据库将其存储在进程之外。</summary>
+    </member>
+    <member name="N:System.Web.UI">
+      <summary>
+        <see cref="N:System.Web.UI" />命名空间提供可用于创建用作 ASP.NET Web 应用程序用户界面的 ASP.NET 服务器控件和 ASP.NET 网页的类和接口。</summary>
+    </member>
+    <member name="N:System.Web.UI.Adapters">
+      <summary>
+        <see cref="N:System.Web.UI.Adapters" /> 命名空间包含控件适配器和页适配器的基类。可以使用这些适配器来重写页和控件的生命周期状态。如果要修改这些控件的标记或行为，使其适应新的标记标准或特定浏览器，则这样的重写很有用。</summary>
+    </member>
+    <member name="N:System.Web.UI.DataVisualization.Charting">
+      <summary>
+        <see cref="N:System.Web.UI.DataVisualization.Charting" /> 命名空间包含用于图表 Web 服务器控件的方法和属性。</summary>
+    </member>
+    <member name="N:System.Web.UI.Design">
+      <summary>
+        <see cref="N:System.Web.UI.Design" /> 命名空间包含的类可用于扩展对 ASP.NET 网页和 Web 服务器控件的设计时支持。</summary>
+    </member>
+    <member name="N:System.Web.UI.Design.Directives">
+      <summary>
+        <see cref="N:System.Web.UI.Design.Directives" /> 命名空间包含可用于扩展 ASP.NET 网页指令的设计时支持的类。</summary>
+    </member>
+    <member name="N:System.Web.UI.Design.MobileControls">
+      <summary>
+        <see cref="N:System.Web.UI.Design.MobileControls" /> 命名空间包含的类为 <see cref="N:System.Web.UI.MobileControls" /> 命名空间中的类提供设计时支持。有关如何开发 ASP.NET 移动应用程序的信息，请参见 www.asp.net/mobile 网站。</summary>
+    </member>
+    <member name="N:System.Web.UI.Design.MobileControls.Converters">
+      <summary>
+        <see cref="N:System.Web.UI.Design.MobileControls.Converters" /> 命名空间包含的类为移动控件中的数据类型转换器提供设计时支持。有关如何开发 ASP.NET 移动应用程序的信息，请参见 www.asp.net/mobile 网站。</summary>
+    </member>
+    <member name="N:System.Web.UI.Design.WebControls">
+      <summary>
+        <see cref="N:System.Web.UI.Design.WebControls" /> 命名空间包含可用于扩展对 Web 服务器控件的设计时支持的类。</summary>
+    </member>
+    <member name="N:System.Web.UI.Design.WebControls.WebParts">
+      <summary>
+        <see cref="N:System.Web.UI.Design.WebControls.WebParts" />命名空间包含为从 <see cref="N:System.Web.UI.WebControls.WebParts" /> 命名空间中的类派生的控件提供设计时支持的类。</summary>
+    </member>
+    <member name="N:System.Web.UI.HtmlControls">
+      <summary>
+        <see cref="N:System.Web.UI.HtmlControls" /> 命名空间包含的类允许在 Web 窗体页上创建 HTML 服务器控件。HTML 服务器控件运行在服务器上，并且直接映射到大多数浏览器所支持的标准 HTML 标记。这使您得以以编程方式控制 Web 窗体页上的 HTML 元素。</summary>
+    </member>
+    <member name="N:System.Web.UI.MobileControls">
+      <summary>
+        <see cref="N:System.Web.UI.MobileControls" /> 命名空间包含一组 ASP.NET 服务器控件，这些控件可以针对不同的移动设备呈现您的应用程序。此命名空间中的 API 已过时。有关如何开发 ASP.NET 移动应用程序的信息，请参见 www.asp.net/mobile 网站。</summary>
+    </member>
+    <member name="N:System.Web.UI.MobileControls.Adapters">
+      <summary>
+        <see cref="N:System.Web.UI.MobileControls.Adapters" /> 命名空间包含可用于重写移动控件生命周期的各阶段的类，以便针对新的标记标准或特定的浏览器和移动设备修改其默认 HTML、CHTML 或 WML 标记或行为。此命名空间中的 API 已过时。有关如何开发 ASP.NET 移动应用程序的信息，请参见 www.asp.net/mobile 网站。</summary>
+    </member>
+    <member name="N:System.Web.UI.MobileControls.Adapters.XhtmlAdapters">
+      <summary>
+        <see cref="N:System.Web.UI.MobileControls.Adapters.XhtmlAdapters" /> 命名空间包含可用于重写移动控件生命周期各阶段的类，以便针对新的标记标准或特定的浏览器和移动设备修改其默认 XHTML 标记或行为。有关如何开发 ASP.NET 移动应用程序的信息，请参见 www.asp.net/mobile 网站。</summary>
+    </member>
+    <member name="N:System.Web.UI.WebControls">
+      <summary>
+        <see cref="N:System.Web.UI.WebControls" /> 命名空间包含一些类，可使用这些类在网页上创建 Web 服务器控件。Web 服务器控件运行在服务器上，并且包括按钮和文本框等窗体控件。它们还包括具有特殊用途的控件（例如日历）。由于 Web 服务器控件运行在服务器上，因此可以以编程方式来控制这些元素。尽管 Web 服务器控件呈现为 HTML，但它们的对象模型不一定反映 HTML 语法。</summary>
+    </member>
+    <member name="N:System.Web.UI.WebControls.Adapters">
+      <summary>
+        <see cref="N:System.Web.UI.WebControls.Adapters" /> 命名空间包含的类可用来重写 Web 控件的生命周期阶段。使用这些类可以针对新的标记标准或特定浏览器修改控件的标记或行为。</summary>
+    </member>
+    <member name="N:System.Web.UI.WebControls.Expressions">
+      <summary>
+        <see cref="N:System.Web.UI.WebControls.Expressions" /> 命名空间提供了一些类，它们允许您使用 <see cref="T:System.Web.UI.WebControls.QueryExtender" /> 控件来筛选网页中的数据。</summary>
+    </member>
+    <member name="N:System.Web.UI.WebControls.WebParts">
+      <summary>
+        <see cref="N:System.Web.UI.WebControls.WebParts" /> 命名空间包含的类和接口统称为 Web 部件控件集。使用这些类可以创建外观和行为可由最终用户修改（个性化）的网页。每个用户对页的个性化设置都会保存以备将来的浏览器会话使用。</summary>
+    </member>
+    <member name="N:System.Web.Util">
+      <summary>
+        <see cref="N:System.Web.Util" /> 命名空间是类的集合，这些类可以使回调方法在某一事务的范围内运行，并允许将工作发送给多个单独的线程。</summary>
+    </member>
+    <member name="N:System.Web.WebSockets">
+      <summary>
+        <see cref="N:System.Web.WebSockets" /> 命名空间包含支持增加 WebSocket 功能添加到 ASP.NET 网络窗体应用程序的类。</summary>
+    </member>
+    <member name="N:System.Windows">
+      <summary>此命名空间提供了一些重要的 Windows Presentation Foundation (WPF) 基元素类、各种支持 WPF 属性系统和事件逻辑的类以及由 WPF 核心和框架更加广泛使用的其他类型。</summary>
+    </member>
+    <member name="N:System.Windows.Annotations">
+      <summary>提供相应的类来支持用户创建的批注，这些批注与 WPF 文档查看控件中显示的内容有关。</summary>
+    </member>
+    <member name="N:System.Windows.Annotations.Storage">
+      <summary>所提供的类型定义存储体系结构和介质，用来保存和检索用户创建的批注。</summary>
+    </member>
+    <member name="N:System.Windows.Automation">
+      <summary>提供对 Windows Presentation Foundation (WPF) UI 自动化客户端的支持。</summary>
+    </member>
+    <member name="N:System.Windows.Automation.Peers">
+      <summary>定义 <see cref="T:System.Windows.Automation.Peers.AutomationPeer" /> 基类以及从其派生的并对应于 Microsoft .NET Framework 控件的一组类型。每一个 <see cref="T:System.Windows.Automation.Peers.AutomationPeer" /> 都向 Microsoft UI 自动化公开对应的 Microsoft .NET Framework 控件。</summary>
+    </member>
+    <member name="N:System.Windows.Automation.Provider">
+      <summary>提供用于创建 UI 自动化提供程序 的 API。</summary>
+    </member>
+    <member name="N:System.Windows.Automation.Text">
+      <summary>包含指定 Windows Presentation Foundation (WPF) UI 自动化的文本格式设置和相关行为的枚举。</summary>
+    </member>
+    <member name="N:System.Windows.Baml2006">
+      <summary>包含可以以 BAML 形式使用 XAML 的读取器和编写器类。</summary>
+    </member>
+    <member name="N:System.Windows.Controls">
+      <summary>提供一些类以创建称为控件的元素，从而使用户可使用这些元素与应用程序进行交互。控件类在用户的所有应用程序体验中处于核心地位，因为用户可使用它们来查看、选择或输入数据或其他信息。</summary>
+    </member>
+    <member name="N:System.Windows.Controls.Primitives">
+      <summary>包含旨在用作其他更复杂控件的一部分的基类和控件。</summary>
+    </member>
+    <member name="N:System.Windows.Controls.Ribbon">
+      <summary>包含用于使用 Microsoft Ribbon for WPF 创建用户界面的类型。</summary>
+    </member>
+    <member name="N:System.Windows.Controls.Ribbon.Primitives">
+      <summary>包含在 Microsoft Ribbon for WPF 控件中用作布局容器的类型。</summary>
+    </member>
+    <member name="N:System.Windows.Converters">
+      <summary>提供在 Windows Presentation Foundation (WPF) 中的序列化过程中支持类型转换的类。</summary>
+    </member>
+    <member name="N:System.Windows.Data">
+      <summary>包含用于将属性绑定到数据源、数据源提供程序类以及集合和视图的特定于数据的实现的类。</summary>
+    </member>
+    <member name="N:System.Windows.Diagnostics"></member>
+    <member name="N:System.Windows.Documents">
+      <summary>包含一些类型，它们支持 <see cref="T:System.Windows.Documents.FixedDocument" />、<see cref="T:System.Windows.Documents.FlowDocument" /> 和 XML 纸张规范 (XPS) 文档创建。</summary>
+    </member>
+    <member name="N:System.Windows.Documents.DocumentStructures">
+      <summary>提供一些类，这些类使用节、段落、图形、项目符号列表或编号列表以及表格来描述 <see cref="T:System.Windows.Xps.Packaging.XpsDocument" /> 的结构。</summary>
+    </member>
+    <member name="N:System.Windows.Documents.Serialization">
+      <summary>提供一些类型，这些类型支持创建和使用运行时可以访问的插件序列化程序，这些序列化程序用于读写不同数据格式的文档。</summary>
+    </member>
+    <member name="N:System.Windows.Forms">
+      <summary>
+        <see cref="N:System.Windows.Forms" /> 命名空间包含用于创建基于 Windows 的应用程序的类，以充分利用 Microsoft Windows 操作系统中提供的丰富的用户界面功能。</summary>
+    </member>
+    <member name="N:System.Windows.Forms.ComponentModel.Com2Interop">
+      <summary>
+        <see cref="N:System.Windows.Forms.ComponentModel.Com2Interop" /> 命名空间包含帮助器类，Visual Studio 在设计模式下显示属性页时使用这些类。</summary>
+    </member>
+    <member name="N:System.Windows.Forms.DataVisualization.Charting">
+      <summary>
+        <see cref="N:System.Windows.Forms.DataVisualization.Charting" /> 命名空间包含用于图表 Windows 窗体控件的方法和属性。</summary>
+    </member>
+    <member name="N:System.Windows.Forms.Design">
+      <summary>
+        <see cref="N:System.Windows.Forms.Design" /> 命名空间包含支持 Windows 窗体组件的设计时配置及行为的类。这些类包括提供 Windows 窗体组件（即一组设计时服务）支持的设计器类、用于配置特定类型的属性的 UITypeEditor 类，以及用于导入 ActiveX 控件的类。</summary>
+    </member>
+    <member name="N:System.Windows.Forms.Design.Behavior">
+      <summary>
+        <see cref="N:System.Windows.Forms.Design.Behavior" /> 命名空间包含用于在设计时创建组件的自定义用户界面行为的类。</summary>
+    </member>
+    <member name="N:System.Windows.Forms.Integration">
+      <summary>包含支持 Windows 窗体 和 WPF 控件互相操作的类。</summary>
+    </member>
+    <member name="N:System.Windows.Forms.Layout">
+      <summary>
+        <see cref="N:System.Windows.Forms.Layout" /> 命名空间包含用于实现窗体或控件中的布局行为的类。</summary>
+    </member>
+    <member name="N:System.Windows.Forms.PropertyGridInternal">
+      <summary>该 PropertyGridInternal 命名空间为 PropertyGrid 控件提供内部支持。此命名空间中的类支持 .NET Framework 基础结构，但不应在代码中直接使用。</summary>
+    </member>
+    <member name="N:System.Windows.Forms.VisualStyles">
+      <summary>
+        <see cref="N:System.Windows.Forms.VisualStyles" /> 命名空间中包含一些类，这些类使用支持它们的操作系统中的视觉样式呈现控件和其他 Windows 用户界面 (UI) 元素。</summary>
+    </member>
+    <member name="N:System.Windows.Ink">
+      <summary>提供一些类，用于和 Windows Presentation Foundation (WPF) 平台上的墨迹进行交互，以及操作这些墨迹。</summary>
+    </member>
+    <member name="N:System.Windows.Input">
+      <summary>提供一些类型来支持 Windows Presentation Foundation (WPF) 输入系统。其中包括用于鼠标、键盘和触笔设备的设备抽象类；公共输入管理器类；支持命令和自定义命令的类；以及各种实用工具类。</summary>
+    </member>
+    <member name="N:System.Windows.Input.Manipulations">
+      <summary>提供用于将操控程序集合作为单个组合进行监视和响应的功能，这使得应用程序可以跟踪对组合而非单个组件的更改。</summary>
+    </member>
+    <member name="N:System.Windows.Input.StylusPlugIns">
+      <summary>提供一些类，这些类支持对来自 Windows Presentation Foundation (WPF) 平台上触笔的数据进行操作。这些类提供对 <see cref="T:System.Windows.Input.Stylus" /> 输入和数字墨迹 <see cref="T:System.Windows.Ink.Stroke" /> 对象创建的低级别控制。<see cref="T:System.Windows.Input.StylusPlugIns.StylusPlugIn" /> 类提供了一种机制，用于实现自定义行为并将其应用于来自触笔设备的数据流以获得最佳性能。</summary>
+    </member>
+    <member name="N:System.Windows.Interop">
+      <summary>为 Windows Presentation Foundation (WPF) 和其他技术（如 Win32 API）之间的互操作提供支持类型，并为涉及 WPF 的其他特定互操作方案提供基类。</summary>
+    </member>
+    <member name="N:System.Windows.Markup">
+      <summary>提供用于支持 XAML 的类型。其中一些类型位于 WPF 程序集中，由涉及 XAML 的 WPF 方案专用。此命名空间中的其他类型通常为 .NET Framework XAML 服务提供支持，不需要引用 WPF 程序集。</summary>
+    </member>
+    <member name="N:System.Windows.Markup.Localizer">
+      <summary>提供一些类型，这些类型可以协助 二进制 XAML (BAML) 源的本地化。</summary>
+    </member>
+    <member name="N:System.Windows.Markup.Primitives">
+      <summary>包含一些类，这些类支持 Windows Presentation Foundation (WPF) 中的 可扩展应用程序标记语言 (XAML) 。</summary>
+    </member>
+    <member name="N:System.Windows.Media">
+      <summary>提供一些类型，这些类型可以实现丰富媒体的集成，包括 Windows Presentation Foundation (WPF) 应用程序中的绘图、文本和音频/视频内容。</summary>
+    </member>
+    <member name="N:System.Windows.Media.Animation">
+      <summary>提供一些类型，这些类型支持属性动画功能，包括时间线、演示图板和关键帧。</summary>
+    </member>
+    <member name="N:System.Windows.Media.Converters">
+      <summary>包含一些类， <see cref="T:System.Windows.Markup.Primitives.MarkupWriter" /> 使用这些类来对 可扩展应用程序标记语言 (XAML)进行序列化。</summary>
+    </member>
+    <member name="N:System.Windows.Media.Effects">
+      <summary>提供一些类型，这些类型可用于将视觉效果应用到位图图像。</summary>
+    </member>
+    <member name="N:System.Windows.Media.Imaging">
+      <summary>提供一些类型，这些类型可用于对位图图像进行编码和解码。</summary>
+    </member>
+    <member name="N:System.Windows.Media.Media3D">
+      <summary>包含一些类型，这些类型支持 Windows Presentation Foundation (WPF) 应用程序中的 三维 表示。</summary>
+    </member>
+    <member name="N:System.Windows.Media.Media3D.Converters">
+      <summary>包含一些类， <see cref="T:System.Windows.Markup.Primitives.MarkupWriter" /> 使用这些类来对 可扩展应用程序标记语言 (XAML)进行序列化。</summary>
+    </member>
+    <member name="N:System.Windows.Media.TextFormatting">
+      <summary>提供一些类型，它们通常用于在比基于控件的文本表示形式或文本对象模型低的级别上控制文本的格式设置。</summary>
+    </member>
+    <member name="N:System.Windows.Navigation">
+      <summary>提供支持导航的类型，包括窗口和导航日记之间的导航。</summary>
+    </member>
+    <member name="N:System.Windows.Resources">
+      <summary>提供支持 Windows Presentation Foundation (WPF) 资源模型和“资源”生成操作的低级别类。</summary>
+    </member>
+    <member name="N:System.Windows.Shapes">
+      <summary>提供对可在 可扩展应用程序标记语言 (XAML) 或代码中使用的形状库的访问。</summary>
+    </member>
+    <member name="N:System.Windows.Shell">
+      <summary>包含一些类，它们为托管代码提供对 Windows 7 任务栏增强功能的访问。</summary>
+    </member>
+    <member name="N:System.Windows.Threading">
+      <summary>包含用于支持 Windows Presentation Foundation (WPF) 线程系统的类型。</summary>
+    </member>
+    <member name="N:System.Windows.Xps">
+      <summary>提供将 XPS 文档写到数据存储区或打印队列的类。</summary>
+    </member>
+    <member name="N:System.Windows.Xps.Packaging">
+      <summary>提供允许应用程序读写 XPS 文档组件的类型。</summary>
+    </member>
+    <member name="N:System.Windows.Xps.Serialization">
+      <summary>提供支持 XPS 文档序列化的类型。</summary>
+    </member>
+    <member name="N:System.Workflow.Activities">
+      <summary>提供类，与 Windows Workflow Foundation 活动相关。</summary>
+    </member>
+    <member name="N:System.Workflow.Activities.Configuration">
+      <summary>提供表示配置文件中各节的类。</summary>
+    </member>
+    <member name="N:System.Workflow.Activities.Rules">
+      <summary>包含一组类，这些类定义了组成规则的条件和操作。</summary>
+    </member>
+    <member name="N:System.Workflow.Activities.Rules.Design">
+      <summary>包含一组类，这些类用于管理“规则集编辑器”和“规则条件编辑器”对话框。</summary>
+    </member>
+    <member name="N:System.Workflow.ComponentModel">
+      <summary>提供类，与 Windows Workflow Foundation 组件模型相关。</summary>
+    </member>
+    <member name="N:System.Workflow.ComponentModel.Compiler">
+      <summary>提供类，与 Windows Workflow Foundation 组件模型的编译器相关。</summary>
+    </member>
+    <member name="N:System.Workflow.ComponentModel.Design">
+      <summary>提供类，与 Windows Workflow Foundation 组件模型的设计器相关。</summary>
+    </member>
+    <member name="N:System.Workflow.ComponentModel.Serialization">
+      <summary>提供基础结构，该基础结构用于管理活动和工作流与可扩展应用程序标记语言 (XAML) 和 CodeDOM 之间的序列化。</summary>
+    </member>
+    <member name="N:System.Workflow.Runtime">
+      <summary>提供类，与工作流运行时相关。</summary>
+    </member>
+    <member name="N:System.Workflow.Runtime.Configuration">
+      <summary>包含用于配置工作流运行时引擎的类。</summary>
+    </member>
+    <member name="N:System.Workflow.Runtime.DebugEngine">
+      <summary>包含用于调试工作流实例的类和接口。</summary>
+    </member>
+    <member name="N:System.Workflow.Runtime.Hosting">
+      <summary>提供类，与 Windows Workflow Foundation 运行时托管相关。</summary>
+    </member>
+    <member name="N:System.Workflow.Runtime.Tracking">
+      <summary>包含与跟踪服务相关的类和接口。</summary>
+    </member>
+    <member name="N:System.Xaml">
+      <summary>提供与 XAML 读取器和 XAML 编写器相关的类型。这包括 .NET Framework XAML 服务及其 XAML 读取器和 XAML 编写器的默认实现。另外还包含与 XAML 类型系统有关的类型以及其他与 XAML 和 .NET Framework XAML 服务概念有关的支持类型。</summary>
+    </member>
+    <member name="N:System.Xaml.Permissions">
+      <summary>包含一些权限，它们指定某些 XAML 加载方案（如在部分信任下加载或加载内部类型）的权限。</summary>
+    </member>
+    <member name="N:System.Xaml.Schema">
+      <summary>包含一些类型，它们支持 XAML 类型系统的扩展。</summary>
+    </member>
+    <member name="N:System.Xml">
+      <summary>
+        <see cref="N:System.Xml" /> 命名空间为处理 XML 提供基于标准的支持。</summary>
+    </member>
+    <member name="N:System.Xml.Linq">
+      <summary>包含 LINQ to XML 的类。LINQ to XML 是内存中的 XML 编程接口，使您可以轻松有效地修改 XML 文档。</summary>
+    </member>
+    <member name="N:System.Xml.Resolvers">
+      <summary>
+        <see cref="N:System.Xml.Resolvers" /> 命名空间为使用 DTD 或 XML 流填充缓存提供支持。</summary>
+    </member>
+    <member name="N:System.Xml.Schema">
+      <summary>
+        <see cref="N:System.Xml.Schema" /> 命名空间包含的 XML 类为 XML 架构定义语言 (XSD) 构架提供基于标准的支持。</summary>
+    </member>
+    <member name="N:System.Xml.Serialization">
+      <summary>
+        <see cref="N:System.Xml.Serialization" /> 命名空间包含用于将对象序列化为 XML 格式文档或流的类。</summary>
+    </member>
+    <member name="N:System.Xml.Serialization.Advanced">
+      <summary>该 System.Xml.Serialization.Advanced 命名空间包含一些类，这些类允许您自定义用 Web 服务描述语言 (WSDL) 文档生成的代码。</summary>
+    </member>
+    <member name="N:System.Xml.Serialization.Configuration">
+      <summary>
+        <see cref="N:System.Xml.Serialization.Configuration" /> 命名空间中包含的类用于读取应用程序配置文件中的 &lt;system.xml.serialization&gt; 元素 节下所含的值。</summary>
+    </member>
+    <member name="N:System.Xml.XmlConfiguration">
+      <summary>一个包含 XML 配置部分的 <see cref="N:System.Xml.XmlConfiguration" /> 命名空间。</summary>
+    </member>
+    <member name="N:System.Xml.XPath">
+      <summary>
+        <see cref="N:System.Xml.XPath" /> 命名空间中包含的类用于定义光标模型，该模型可将 XML 信息项作为 XQuery 1.0 和 XPath 2.0 数据模型的实例进行导航和编辑。</summary>
+    </member>
+    <member name="N:System.Xml.Xsl">
+      <summary>System.Xml.Xsl 命名空间为“可扩展样式表转换”(XSLT) 转换提供支持。它支持“W3C XSL 转换 (XSLT) 1.0 版推荐”(www.w3.org/TR/xslt)。</summary>
+    </member>
+    <member name="N:System.Xml.Xsl.Runtime">
+      <summary>包含 XSL 转换引擎使用的类型。</summary>
+    </member>
+    <member name="N:UIAutomationClientsideProviders">
+      <summary>包含单个映射客户端自动化提供程序的类型。</summary>
+    </member>
+    <member name="N:Windows.Foundation">
+      <summary>
+        <see cref="N:Windows.Foundation" /> 命名空间包含支持 Windows 应用商店 apps 开发与 .NET framework 的类型。</summary>
+    </member>
+    <member name="N:Windows.UI">
+      <summary>
+        <see cref="N:Windows.UI" /> 命名空间包含支持 Windows 应用商店 apps 开发与 .NET framework 的类型。</summary>
+    </member>
+    <member name="N:Windows.UI.Xaml">
+      <summary>
+        <see cref="N:Windows.UI.Xaml" /> 命名空间包含支持 Windows 应用商店 apps 开发与 .NET framework 的类型。</summary>
+    </member>
+    <member name="N:Windows.UI.Xaml.Automation">
+      <summary>
+        <see cref="N:Windows.UI.Xaml.Automation" /> 命名空间包含支持 Windows 应用商店 apps 开发与 .NET framework 的类型。</summary>
+    </member>
+    <member name="N:Windows.UI.Xaml.Controls.Primitives">
+      <summary>
+        <see cref="N:Windows.UI.Xaml.Controls.Primitives" /> 命名空间包含支持 Windows 应用商店 apps 开发与 .NET framework 的类型。</summary>
+    </member>
+    <member name="N:Windows.UI.Xaml.Markup">
+      <summary>
+        <see cref="N:Windows.UI.Xaml.Markup" /> 命名空间包含支持 Windows 应用商店 apps 开发与 .NET framework 的类型。</summary>
+    </member>
+    <member name="N:Windows.UI.Xaml.Media">
+      <summary>
+        <see cref="N:Windows.UI.Xaml.Media" /> 命名空间包含支持 Windows 与 .NET Framework 的存储应用程序开发的类型。</summary>
+    </member>
+    <member name="N:Windows.UI.Xaml.Media.Animation">
+      <summary>
+        <see cref="N:Windows.UI.Xaml.Media.Animation" /> 命名空间包含支持 Windows 应用商店 apps 开发与 .NET framework 的类型。</summary>
+    </member>
+    <member name="N:Windows.UI.Xaml.Media.Media3D">
+      <summary>
+        <see cref="N:Windows.UI.Xaml.Media.Media3D" /> 命名空间包含支持 Windows 应用商店 apps 开发与 .NET framework 的类型。</summary>
+    </member>
+    <member name="N:XamlGeneratedNamespace">
+      <summary>包含不用于从代码中直接使用的编译器生成的类型。</summary>
+    </member>
+  </members>
+</doc>

@@ -17,7 +17,7 @@ namespace FutureCore
         /// <summary>
         /// 是否使用unityApi切换场景
         /// </summary>
-        private const bool IsUseUnityScene = false;
+        private const bool IsUseUnityScene = true;
 
         public void SwitchInitialScene(int sceneId, Action<object> LoadComplete, object param)
         {

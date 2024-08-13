@@ -1,0 +1,1412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.AddIn.Contract</name>
+  </assembly>
+  <members>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteDelegateContract">
+      <summary>定义一个协定，组件可使用该协定跨应用程序域和进程边界访问委托。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteDelegateContract.InvokeDelegate(System.AddIn.Contract.Collections.IRemoteArgumentArrayContract)">
+      <summary>调用此 <see cref="T:System.AddIn.Contract.Automation.IRemoteDelegateContract" /> 标识的委托。</summary>
+      <param name="args">一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />，指定委托参数。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，指定已调用委托的返回值。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract">
+      <summary>定义一个协定，组件可使用该协定跨应用程序域和进程边界访问有关事件的信息。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteEventInfoContract.GetAddMethod">
+      <summary>返回用于将事件处理程序委托添加到此 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" /> 标识的事件的方法。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />，表示用于将事件处理程序委托添加到此 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" /> 标识的事件的方法。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteEventInfoContract.GetMemberData">
+      <summary>返回有关此 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" /> 标识的事件的信息。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.RemoteMemberData" />，提供有关此 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" /> 标识的事件的信息。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteEventInfoContract.GetRemoveMethod">
+      <summary>返回用于将事件处理程序委托从此 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" /> 标识的事件中移除的方法。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />，表示用于将事件处理程序委托从此 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" /> 标识的事件中移除的方法。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract">
+      <summary>定义一个协定，组件可使用该协定跨应用程序域和进程边界访问有关字段的信息。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteFieldInfoContract.GetFieldData">
+      <summary>返回有关此 <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" /> 标识的字段的信息。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.RemoteFieldData" />，提供有关此 <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" /> 标识的字段的信息。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteFieldInfoContract.GetValue(System.AddIn.Contract.Automation.IRemoteObjectContract)">
+      <summary>返回此 <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" /> 标识的字段的值。</summary>
+      <param name="obj">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />，标识包含字段的对象。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，指定字段值。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteFieldInfoContract.SetValue(System.AddIn.Contract.Automation.IRemoteObjectContract,System.AddIn.Contract.RemoteArgument,System.Int32)">
+      <summary>设置此 <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" /> 表示的字段的值。</summary>
+      <param name="obj">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />，标识包含字段的对象。</param>
+      <param name="value">一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，指定字段值。</param>
+      <param name="localeId">字段在任何区域设置特定的类型转换中将使用的区域设置 ID。</param>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract">
+      <summary>定义一个协定，组件可使用该协定跨应用程序域和进程边界访问有关方法的信息。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteMethodInfoContract.GetMethodData">
+      <summary>返回有关此 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" /> 标识的方法的信息。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" />，提供有关此 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" /> 标识的方法的信息。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteMethodInfoContract.Invoke(System.AddIn.Contract.Automation.IRemoteObjectContract,System.Reflection.BindingFlags,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract,System.Int32)">
+      <summary>调用此 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" /> 标识的方法。</summary>
+      <param name="target">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />，标识包含要调用的方法的对象。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定调用方法的方式。</param>
+      <param name="parameters">一个指定方法参数的 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />；如果方法不具有任何参数，则为 <see langword="null" />。</param>
+      <param name="localeId">方法在参数或返回值的任何区域设置特定的类型转换中将使用的区域设置 ID。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，指定已调用方法的返回值。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteObjectContract">
+      <summary>定义一个协定，组件可使用该协定跨应用程序域和进程边界访问对象。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteObjectContract.GetRemoteType">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />，它指定当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" /> 的类型。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />，它指定当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" /> 的类型。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteObjectContract.RemoteCast(System.String)">
+      <summary>将当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" /> 标识的对象强制转换为指定类型。</summary>
+      <param name="canonicalName">要将对象强制转换成的类型的规范名称。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，表示强制转换操作的结果。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract">
+      <summary>定义一个协定，组件可使用该协定跨应用程序域和进程边界访问有关属性的信息。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.GetGetMethod">
+      <summary>返回此 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 标识的属性的 <see langword="get" /> 访问器。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />，表示此 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 标识的属性的 <see langword="get" /> 访问器；如果属性不具有 <see langword="null" /> 访问器，则为 <see langword="get" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.GetPropertyData">
+      <summary>返回有关此 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 标识的属性的信息。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" />，提供有关此 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 标识的属性的信息。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.GetSetMethod">
+      <summary>返回此 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 标识的属性的 <see langword="set" /> 访问器。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />，表示此 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 标识的属性的 <see langword="set" /> 访问器；如果属性不具有 <see langword="null" /> 访问器，则为 <see langword="set" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.GetValue(System.AddIn.Contract.Automation.IRemoteObjectContract,System.Reflection.BindingFlags,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract,System.Int32)">
+      <summary>返回此 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 标识的属性的值。</summary>
+      <param name="obj">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />，标识包含属性的对象。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定调用属性的方式。</param>
+      <param name="index">一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />，指定已建立索引的属性的索引值；如果未为属性建立索引，则为 <see langword="null" />。</param>
+      <param name="localeId">用于可由属性执行的区域设置特定的转换的区域设置 ID。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，指定属性值。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.SetValue(System.AddIn.Contract.Automation.IRemoteObjectContract,System.AddIn.Contract.RemoteArgument@,System.Reflection.BindingFlags,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract,System.Int32)">
+      <summary>设置此 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 标识的属性的值。</summary>
+      <param name="target">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />，标识包含属性的对象。</param>
+      <param name="value">一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，指定属性值。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定调用属性的方式。</param>
+      <param name="index">一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />，指定已建立索引的属性的索引值；如果未为属性建立索引，则为 <see langword="null" />。</param>
+      <param name="localeId">属性在任何区域设置特定的类型转换中将使用的区域设置 ID。</param>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteTypeContract">
+      <summary>定义一个协定，组件可使用该协定跨应用程序域和进程边界访问类型信息和调用成员。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetCanonicalName">
+      <summary>返回当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的规范名称。</summary>
+      <returns>当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的规范名称。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetEvent(System.String,System.Reflection.BindingFlags)">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />，它提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定事件的访问。</summary>
+      <param name="name">当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的事件的名称。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索事件的方式。</param>
+      <returns>如果找到指定事件，则为一个提供对该事件的访问的 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetEvents(System.Reflection.BindingFlags)">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" /> 对象的集合，该集合提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定事件的访问。</summary>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索事件的方式。</param>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />，它提供对与指定绑定约束匹配的事件的访问；否则为一个空的 <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetField(System.String,System.Reflection.BindingFlags)">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />，它提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定字段的访问。</summary>
+      <param name="name">当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的字段的名称。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索字段的方式。</param>
+      <returns>如果找到指定字段，则为一个提供对该字段的访问的 <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetFields(System.Reflection.BindingFlags)">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" /> 对象的集合，该集合提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定字段的访问。</summary>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索字段的方式。</param>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />，它提供对与指定绑定约束匹配的字段的访问；否则为一个空的 <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetInterface(System.String)">
+      <summary>返回由当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 实现的接口。</summary>
+      <param name="canonicalName">由当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 实现的接口的规范名称。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />，它表示此 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 实现的带有指定规范名称的接口。 如果此 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 未实现带有指定规范名称的接口，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetInterfaces">
+      <summary>返回由当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 实现的接口。</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />，它表示由当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 实现的所有接口。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetMember(System.String,System.Reflection.MemberTypes,System.Reflection.BindingFlags)">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.IContract" /> 对象的集合，该集合提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 中的指定成员类型的所有指定成员的访问（通过使用指定的绑定约束）。</summary>
+      <param name="name">当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的成员的名称。 该名称可表示具有相同名称的多个成员。</param>
+      <param name="memberTypes">
+        <see cref="T:System.Reflection.MemberTypes" /> 值的一个按位组合，用于指定要搜索的成员。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索成员的方式。</param>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.IContract" />，它表示具有指定名称且满足由 <paramref name="memberTypes" /> 和 <paramref name="bindingFlags" /> 参数指定的条件的当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的成员。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetMembers(System.Reflection.BindingFlags)">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.IContract" /> 对象的集合，该集合提供对与指定绑定约束匹配的当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 中的所有成员的访问。</summary>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索成员的方式。</param>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.IContract" />，它提供对满足指定绑定约束的当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的成员的访问。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetMethod(System.String,System.Reflection.BindingFlags,System.AddIn.Contract.Collections.IArrayContract{System.AddIn.Contract.Automation.IRemoteTypeContract})">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />，它提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定方法的访问。</summary>
+      <param name="name">当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的方法的名称。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索方法的方式。</param>
+      <param name="remoteTypes">
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />，它表示要获取的方法参数的数量、顺序和类型。</param>
+      <returns>如果找到指定方法，则为一个提供对该方法的访问的 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetMethods(System.Reflection.BindingFlags)">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" /> 对象的集合，该集合提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定方法的访问。</summary>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索方法的方式。</param>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />，它提供对与指定绑定约束匹配的方法的访问。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetProperties(System.Reflection.BindingFlags)">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> 对象的集合，该集合提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定属性的访问。</summary>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索属性的方式。</param>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />，它提供对与指定绑定约束匹配的属性的访问。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetProperty(System.String,System.Reflection.BindingFlags,System.AddIn.Contract.Automation.IRemoteTypeContract,System.AddIn.Contract.Collections.IArrayContract{System.AddIn.Contract.Automation.IRemoteTypeContract})">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />，它提供对当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定属性的访问。</summary>
+      <param name="name">当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的属性的名称。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索方法的方式。</param>
+      <param name="remoteReturnType">一个 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />，它指定属性的返回类型。</param>
+      <param name="remoteTypes">
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 对象的 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />，表示指定属性的参数。</param>
+      <returns>如果找到指定属性，则为一个提供对该属性的访问的 <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />；否则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetTypeData">
+      <summary>返回有关当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 标识的对象的类型信息。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />，它包含有关当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 标识的对象的信息。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.InvokeMember(System.String,System.Reflection.BindingFlags,System.AddIn.Contract.Automation.IRemoteObjectContract,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract,System.Boolean[],System.Int32)">
+      <summary>调用当前 <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> 的指定成员。</summary>
+      <param name="name">要调用的成员的名称。</param>
+      <param name="bindingFlags">
+        <see cref="T:System.Reflection.BindingFlags" /> 值的一个按位组合，用于指定搜索成员的方式。</param>
+      <param name="target">要在其上调用指定成员的 <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />。</param>
+      <param name="remoteArgs">一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />，其中包含传递给将调用的成员的参数。</param>
+      <param name="remoteArgModifiers">一个布尔值的数组，这些布尔值指示是否通过引用传递每个 <paramref name="remoteArgs" /> 值。</param>
+      <param name="localeId">用于区域设置特定的转换的区域设置 ID，这类转换可由所调用的成员执行。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，它表示被调用成员的返回值。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteFieldData">
+      <summary>提供有关组件可跨应用程序域和进程边界访问的类型的字段的信息。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteFieldData.Attributes">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteFieldData" /> 描述的字段的特性。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteFieldData.FieldType">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteFieldData" /> 描述的字段值的类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteFieldData.MemberData">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteFieldData" /> 描述的字段的成员数据。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteMemberData">
+      <summary>提供有关组件可跨应用程序域和进程边界访问的类型的成员的信息。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMemberData.DeclaringType">
+      <summary>表示声明此 <see cref="T:System.AddIn.Contract.Automation.RemoteMemberData" /> 描述的成员的类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMemberData.Name">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteMemberData" /> 描述的成员的名称。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteMethodData">
+      <summary>提供有关组件可跨应用程序域和进程边界访问的类型的方法的信息。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMethodData.Attributes">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" /> 描述的方法的特性。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMethodData.MemberData">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" /> 描述的方法的成员数据。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMethodData.Parameters">
+      <summary>表示有关此 <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" /> 描述的方法的参数信息。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMethodData.ReturnParameter">
+      <summary>表示有关此 <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" /> 描述的方法的返回值信息。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteParameterData">
+      <summary>提供有关属于某个类型的方法的参数和返回值的信息，组件可跨应用程序域和进程边界访问该类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.Attributes">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> 描述的方法参数的特性。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.DefaultValue">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> 描述的方法参数的默认值。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.IsByRef">
+      <summary>指示此 <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> 是否描述通过引用传递的方法参数。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.IsParameterArray">
+      <summary>指示此 <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> 是否描述可具有可变数目实参的方法形参。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.Name">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> 描述的方法参数的名称。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.ParameterType">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> 描述的方法参数或返回值的类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.Position">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> 描述的方法参数相对于方法的其他参数的位置。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemotePropertyData">
+      <summary>提供有关组件可跨应用程序域和进程边界访问的类型的属性的信息。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.Attributes">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" /> 描述的属性的特性。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.CanRead">
+      <summary>指示此 <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" /> 是否描述可读属性。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.CanWrite">
+      <summary>指示此 <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" /> 是否描述可写属性。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.IndexParameters">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" /> 描述的属性的索引参数。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.MemberData">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" /> 描述的属性的成员数据。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.PropertyType">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" /> 描述的属性的类型。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteTypeData">
+      <summary>提供有关组件可跨应用程序域和进程边界访问的类型的信息。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.ArrayRank">
+      <summary>指示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程数组类型的秩（即维数）。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.AssemblyName">
+      <summary>表示包含此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程类型的程序集的全名。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.AssemblyQualifiedName">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程类型的名称，由包含该类型的程序集的名称限定。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.Attributes">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程类型的特性。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.BaseType">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程类型的基类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.ElementType">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程数组类型中的元素类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.FullName">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程类型的名称，由命名空间限定。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.IsArray">
+      <summary>指示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 是否描述数组类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.IsByRef">
+      <summary>指示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 是否描述通过引用传递的类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.MemberData">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程类型的成员数据。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.TypeCode">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> 描述的远程类型的类型。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IArrayContract`1">
+      <summary>表示 <see cref="T:System.AddIn.Contract.IContract" /> 对象的泛型数组。</summary>
+      <typeparam name="C">数组中元素的类型。 <paramref name="C" /> 必须实现 <see cref="T:System.AddIn.Contract.IContract" /> 接口。</typeparam>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IArrayContract`1.GetCount">
+      <summary>返回 <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 中包含的元素的数目。</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> 中包含的元素数。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IArrayContract`1.GetItem(System.Int32)">
+      <summary>返回指定索引处的元素。</summary>
+      <param name="index">要返回的元素从零开始的索引。</param>
+      <returns>指定索引处的元素。</returns>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+
+或 - 
+<paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.IArrayContract`1.GetCount" /> 的返回值。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IArrayContract`1.SetItem(System.Int32,`0)">
+      <summary>将指定索引处的元素替换为指定的 <see cref="T:System.AddIn.Contract.IContract" />。</summary>
+      <param name="index">待替换元素的从零开始的索引。</param>
+      <param name="value">位于指定索引处的元素的新值。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.IArrayContract`1.GetCount" /> 的返回值。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.ICollectionContract`1">
+      <summary>表示 <see cref="T:System.AddIn.Contract.IContract" /> 对象的泛型集合。</summary>
+      <typeparam name="C">集合中的元素类型。 <paramref name="C" /> 必须实现 <see cref="T:System.AddIn.Contract.IContract" /> 接口。</typeparam>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.Add(`0)">
+      <summary>将 <see cref="T:System.AddIn.Contract.IContract" /> 添加到 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 中。</summary>
+      <param name="item">要添加到 <see cref="T:System.AddIn.Contract.IContract" /> 的 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />。</param>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 为只读。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.Clear">
+      <summary>从 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 中移除所有元素。</summary>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 为只读。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.Contains(`0)">
+      <summary>返回一个值，该值指示指定的 <see cref="T:System.AddIn.Contract.IContract" /> 是否在 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 中。</summary>
+      <param name="item">要在 <see cref="T:System.AddIn.Contract.IContract" /> 中定位的 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />。</param>
+      <returns>如果指定的 <see cref="T:System.AddIn.Contract.IContract" /> 在 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 中，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.CopyTo(`0[],System.Int32)">
+      <summary>从目标数组的指定索引处开始，将整个 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 复制到兼容的一维数组。</summary>
+      <param name="array">一维数组，它是从 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 中复制的元素的目标。</param>
+      <param name="arrayIndex">
+        <paramref name="array" /> 中从零开始的索引，从此处开始复制。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="arrayIndex" /> 小于 0。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="array" /> 是多维的。  
+
+或 - 
+源 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 中的元素个数大于从 <paramref name="arrayIndex" /> 到目标数组末尾之间的可用空间。  
+
+或 - 
+无法自动将类型 <paramref name="C" /> 强制转换为目标数组的类型。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount">
+      <summary>返回 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 中包含的元素的数目。</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 中包含的元素数。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetIsReadOnly">
+      <summary>返回一个值，该值指示 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 是否为只读。</summary>
+      <returns>如果 <see langword="true" /> 是只读的，则为 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.Remove(`0)">
+      <summary>从 <see cref="T:System.AddIn.Contract.IContract" /> 中移除第一次出现的特定 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />。</summary>
+      <param name="item">要从 <see cref="T:System.AddIn.Contract.IContract" /> 移除的 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />。</param>
+      <returns>如果成功移除了 <paramref name="item" />，则为 <see langword="true" />；否则为 <see langword="false" />。 如果在 <see langword="false" /> 中没有找到 <paramref name="item" />，则此方法也会返回 <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />。</returns>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> 为只读。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IEnumerableContract`1">
+      <summary>公开一个枚举数，该枚举数支持对 <see cref="T:System.AddIn.Contract.IContract" /> 对象的泛型集合进行简单迭代。</summary>
+      <typeparam name="C">要枚举的对象的类型。 <paramref name="C" /> 必须实现 <see cref="T:System.AddIn.Contract.IContract" /> 接口。</typeparam>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IEnumerableContract`1.GetEnumeratorContract">
+      <summary>返回一个循环访问集合的枚举器。</summary>
+      <returns>可用于循环访问集合的 <see cref="T:System.AddIn.Contract.Collections.IEnumeratorContract`1" />。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IEnumeratorContract`1">
+      <summary>枚举 <see cref="T:System.AddIn.Contract.IContract" /> 对象的泛型集合的元素。</summary>
+      <typeparam name="C">要枚举的对象的类型。 <paramref name="C" /> 必须实现 <see cref="T:System.AddIn.Contract.IContract" /> 接口。</typeparam>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IEnumeratorContract`1.GetCurrent">
+      <summary>返回集合中位于枚举数当前位置的 <see cref="T:System.AddIn.Contract.IContract" />。</summary>
+      <returns>集合中位于枚举数当前位置的 <see cref="T:System.AddIn.Contract.IContract" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IEnumeratorContract`1.MoveNext">
+      <summary>将枚举数推进到集合的下一个元素。</summary>
+      <returns>如果枚举数已成功地推进到下一个元素，则为 <see langword="true" />；如果枚举数传递到集合的末尾，则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">集合在枚举器创建后被修改。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IEnumeratorContract`1.Reset">
+      <summary>将枚举数设置为其初始位置，该位置位于集合中第一个元素之前。</summary>
+      <exception cref="T:System.InvalidOperationException">集合在枚举器创建后被修改。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IListContract`1">
+      <summary>表示可按照索引单独访问的 <see cref="T:System.AddIn.Contract.IContract" /> 对象的泛型集合。</summary>
+      <typeparam name="C">列表中的对象类型。 <paramref name="C" /> 必须实现 <see cref="T:System.AddIn.Contract.IContract" /> 接口。</typeparam>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.GetItem(System.Int32)">
+      <summary>返回指定索引处的元素。</summary>
+      <param name="index">要获取的元素的索引(索引从零开始)。</param>
+      <returns>指定索引处的元素。</returns>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+
+或 - 
+<paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount" /> 的返回值。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.IndexOf(`0)">
+      <summary>返回 <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> 中的特定元素的索引。</summary>
+      <param name="item">要在 <see cref="T:System.AddIn.Contract.IContract" /> 中定位的 <see cref="T:System.AddIn.Contract.Collections.IListContract`1" />。</param>
+      <returns>如果在列表中找到，则为 <paramref name="item" /> 的索引；否则为 -1。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.Insert(System.Int32,`0)">
+      <summary>将元素插入 <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> 中的指定索引处。</summary>
+      <param name="index">从零开始的索引，在该处插入 <paramref name="item" />。</param>
+      <param name="item">要插入 <see cref="T:System.AddIn.Contract.IContract" /> 中的 <see cref="T:System.AddIn.Contract.Collections.IListContract`1" />。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount" /> 的返回值。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> 为只读。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.RemoveAt(System.Int32)">
+      <summary>移除指定索引处的元素。</summary>
+      <param name="index">要移除的元素的索引。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+
+或 - 
+<paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount" /> 的返回值。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> 为只读。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.SetItem(System.Int32,`0)">
+      <summary>替换指定索引处的元素。</summary>
+      <param name="index">从零开始的索引，在此对元素进行设置。</param>
+      <param name="value">要在指定索引处设置的元素。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount" /> 的返回值。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> 为只读。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract">
+      <summary>表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 对象的数组。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract.GetItem(System.Int32)">
+      <summary>返回指定索引处的元素。</summary>
+      <param name="index">要返回的元素从零开始的索引。</param>
+      <returns>指定索引处的元素。</returns>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount" /> 的返回值。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract.SetItem(System.Int32,System.AddIn.Contract.RemoteArgument)">
+      <summary>将指定索引处的元素替换为指定的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <param name="index">待替换元素的从零开始的索引。</param>
+      <param name="value">位于指定索引处的元素的新值。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount" /> 的返回值。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract">
+      <summary>表示一个 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 对象数组，该数组根据需要动态调整自身大小。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Add(System.AddIn.Contract.RemoteArgument)">
+      <summary>将 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 添加到 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> 的末尾。</summary>
+      <param name="newItem">要添加到 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的结尾处的 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Clear">
+      <summary>从 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> 中移除所有元素。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Contains(System.AddIn.Contract.RemoteArgument)">
+      <summary>指示指定的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 是否在 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> 中。</summary>
+      <param name="item">要在 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 中定位的 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />。</param>
+      <returns>如果在 <see langword="true" /> 中找到 <paramref name="item" />，则为 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.IndexOf(System.AddIn.Contract.RemoteArgument)">
+      <summary>返回指定的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 在 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> 中的第一个匹配项的从零开始的索引。</summary>
+      <param name="item">要在 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 中定位的 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />。</param>
+      <returns>如果找到，则为 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> 中 <paramref name="item" /> 的第一个匹配项的从零开始的索引；否则为 -1。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Insert(System.Int32,System.AddIn.Contract.RemoteArgument)">
+      <summary>将 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 插入到 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> 中的指定索引位置处。</summary>
+      <param name="index">从零开始的索引，在该处插入 <paramref name="item" />。</param>
+      <param name="item">要插入的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount" /> 的返回值。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Remove(System.AddIn.Contract.RemoteArgument)">
+      <summary>从 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 中移除指定的 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> 的第一个匹配项。</summary>
+      <param name="item">要移除的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.RemoveAt(System.Int32)">
+      <summary>移除 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> 的指定索引处的元素。</summary>
+      <param name="index">要移除的元素的从零开始的索引。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount" /> 的返回值。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract">
+      <summary>表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 对象集合。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount">
+      <summary>返回 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" /> 中包含的元素的数目。</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" /> 中包含的元素数。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract">
+      <summary>表示作为键/值对存储的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 对象的集合。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.Add(System.AddIn.Contract.RemoteArgument,System.AddIn.Contract.RemoteArgument)">
+      <summary>在 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中添加一个具有指定的键和值的元素。</summary>
+      <param name="key">用作要添加的元素的键的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</param>
+      <param name="value">用作要添加的元素的键的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中已存在具有相同键的元素。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.Clear">
+      <summary>从 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中移除所有元素。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.ContainsKey(System.AddIn.Contract.RemoteArgument)">
+      <summary>指示 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 是否包含具有指定键的元素。</summary>
+      <param name="key">要在 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中定位的键。</param>
+      <returns>如果 <see langword="true" /> 包含具有指定键的元素，则为 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.GetEnumeratorContract">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" />，可用于循环访问 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中的元素。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" />，可用于循环访问 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中的元素。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.GetItem(System.AddIn.Contract.RemoteArgument)">
+      <summary>返回具有指定键的元素的值。</summary>
+      <param name="key">要返回的值的键。</param>
+      <returns>具有指定键的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.GetKeys">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />，其中包含 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 对象的键。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />，其中包含 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 对象的键。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.GetValues">
+      <summary>返回一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />，其中包含 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 对象的值。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />，其中包含 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 对象的值。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.Remove(System.AddIn.Contract.RemoteArgument)">
+      <summary>从 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中移除带有指定键的元素。</summary>
+      <param name="key">要移除的元素的键。</param>
+      <returns>如果成功找到并移除该元素，则为 <see langword="true" />；否则为 <see langword="false" />。 如果在 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中没有找到 <paramref name="key" />，则此方法返回 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.SetItem(System.AddIn.Contract.RemoteArgument,System.AddIn.Contract.RemoteArgument)">
+      <summary>替换元素的值。</summary>
+      <param name="key">要替换的值的键。</param>
+      <param name="value">已指定元素的新值。</param>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract">
+      <summary>枚举 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 的元素。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract.GetEntry">
+      <summary>返回当前 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 项的键和值。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" />，其中包含当前 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 项的键和值。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" /> 定位于 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 的第一项之前或最后一项之后。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract.GetKey">
+      <summary>返回当前 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 项的键。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，其中包含当前 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 项的键。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" /> 定位于 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 的第一项之前或最后一项之后。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract.GetValue">
+      <summary>返回当前 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 项的值。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，其中包含当前 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 项的值。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" /> 定位于 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 的第一项之前或最后一项之后。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentEnumerableContract">
+      <summary>公开一个枚举数，该枚举数支持对 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 对象的集合进行简单迭代。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentEnumerableContract.GetEnumeratorContract">
+      <summary>返回一个可用于循环访问集合的枚举数。</summary>
+      <returns>可用于循环访问集合的 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract" />。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract">
+      <summary>枚举 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 对象的集合的元素。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract.GetCurrent">
+      <summary>返回集合中位于枚举数当前位置的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>集合中位于枚举数当前位置的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract.MoveNext">
+      <summary>将枚举数推进到集合的下一个元素。</summary>
+      <returns>如果枚举数已成功地推进到下一个元素，则为 <see langword="true" />；如果枚举数传递到集合的末尾，则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">集合在枚举器创建后被修改。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract.Reset">
+      <summary>将枚举数设置为其初始位置，该位置位于集合中第一个元素之前。</summary>
+      <exception cref="T:System.InvalidOperationException">集合在枚举器创建后被修改。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry">
+      <summary>定义 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> 中的键/值对。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry.#ctor(System.AddIn.Contract.RemoteArgument,System.AddIn.Contract.RemoteArgument)">
+      <summary>用指定的键和值初始化 <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" /> 结构的实例。</summary>
+      <param name="key">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />，包含新的 <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" /> 中的键。</param>
+      <param name="value">一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，其中包含新的 <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" /> 中的值。</param>
+    </member>
+    <member name="F:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry.Key">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" /> 代表的键/值对中的键。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry.Value">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" /> 代表的键/值对中的值。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.IContract">
+      <summary>表示用于在单独更新的组件之间进行通信的所有协定的基接口。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.AcquireLifetimeToken">
+      <summary>指定客户端在撤消此协定之前一直可以访问它。</summary>
+      <returns>一个值（也称作生存期标记），用于标识已获取协定的客户端。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.GetRemoteHashCode">
+      <summary>返回 <see cref="T:System.AddIn.Contract.IContract" /> 的哈希代码。</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.IContract" /> 的哈希代码。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.QueryContract(System.String)">
+      <summary>返回由此协定实现的协定。</summary>
+      <param name="contractIdentifier">一个字符串，用于标识所请求的协定。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.IContract" />，它表示客户端从当前协定请求的协定；如果当前协定不支持所请求的协定，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.RemoteEquals(System.AddIn.Contract.IContract)">
+      <summary>指示指定的协定是否与此 <see cref="T:System.AddIn.Contract.IContract" /> 相等。</summary>
+      <param name="contract">要与此 <see cref="T:System.AddIn.Contract.IContract" /> 进行比较的协定。</param>
+      <returns>如果 <paramref name="contract" /> 等于此 <see cref="T:System.AddIn.Contract.IContract" />，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.RemoteToString">
+      <summary>返回当前 <see cref="T:System.AddIn.Contract.IContract" /> 的字符串表示形式。</summary>
+      <returns>当前 <see cref="T:System.AddIn.Contract.IContract" /> 的字符串表示形式。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.RevokeLifetimeToken(System.Int32)">
+      <summary>指定客户端不再能够访问该协定。</summary>
+      <param name="token">一个值（也称作生存期标记），用于标识正在调用协定的客户端。</param>
+    </member>
+    <member name="T:System.AddIn.Contract.IEnumeratorContract`1">
+      <summary>枚举 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中的元素。</summary>
+      <typeparam name="T">要枚举的对象的类型。</typeparam>
+    </member>
+    <member name="M:System.AddIn.Contract.IEnumeratorContract`1.GetCurrent">
+      <summary>返回集合中位于枚举数当前位置的对象。</summary>
+      <returns>集合中位于枚举数当前位置的 <see cref="T:System.AddIn.Contract.IContract" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IEnumeratorContract`1.MoveNext">
+      <summary>将枚举数推进到集合的下一个元素。</summary>
+      <returns>如果枚举数已成功地推进到下一个元素，则为 <see langword="true" />；如果枚举数传递到集合的末尾，则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">集合在枚举器创建后被修改。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.IEnumeratorContract`1.Reset">
+      <summary>将枚举数设置为其初始位置，该位置位于集合中第一个元素之前。</summary>
+      <exception cref="T:System.InvalidOperationException">集合在枚举器创建后被修改。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.IExecutorExtensionContract">
+      <summary>定义一个可由宿主应用程序实现以扩展外接程序执行器的接口。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.AssemblyLoaded(System.String)">
+      <summary>在外接程序执行器加载外接程序程序集后调用。</summary>
+      <param name="assemblyName">已加载的程序集的名称。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.AssemblyLoadedFrom(System.String)">
+      <summary>在外接程序执行器加载指定位置的外接程序程序集后调用。</summary>
+      <param name="assemblyFile">已加载的程序集的名称。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.AssemblyLoading(System.String)">
+      <summary>恰好在外接程序执行器加载外接程序程序集之前调用。</summary>
+      <param name="assemblyName">要加载的程序集的名称。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.AssemblyLoadingFrom(System.String)">
+      <summary>恰好在外接程序执行器加载指定位置的外接程序程序集之前调用。</summary>
+      <param name="assemblyFile">要加载的程序集的名称。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.EntryPointStarted(System.AddIn.Contract.IContract)">
+      <summary>在外接程序执行器实例化外接程序程序集的入口点后调用。</summary>
+      <param name="entryPoint">一个 <see cref="T:System.AddIn.Contract.IContract" />，表示已实例化的入口点。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.EntryPointStarting(System.String,System.String,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract)">
+      <summary>恰好在外接程序执行器实例化外接程序程序集中的入口点之前调用。</summary>
+      <param name="assemblyName">外接程序程序集的名称。</param>
+      <param name="startupClass">作为外接程序程序集的入口点的类的名称。</param>
+      <param name="initArgs">一个 <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />，其中包含将传递给 <paramref name="startupClass" /> 的构造函数的参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.ExecutorCreated">
+      <summary>在外接程序加载器创建新的外接程序执行器后调用。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.IListContract`1">
+      <summary>表示类型的泛型列表，这些类型是按协定定义的且用于传递宿主与外接程序之间的协定类型集合。</summary>
+      <typeparam name="T">列表中的对象的协定类型。</typeparam>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Add(`0)">
+      <summary>将对象添加到 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中。</summary>
+      <param name="item">要添加的对象。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Clear">
+      <summary>从 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中移除所有对象。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Contains(`0)">
+      <summary>确定特定项是否在 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中。</summary>
+      <param name="item">要在集合中查找的对象。</param>
+      <returns>如果 <see langword="true" /> 位于集合中，则为 <paramref name="item" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.GetCount">
+      <summary>获取 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中项的数目。</summary>
+      <returns>集合中项的数目。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.GetEnumeratorContract">
+      <summary>返回一个循环访问 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合的枚举器。</summary>
+      <returns>一个循环访问集合的 <see cref="T:System.AddIn.Contract.IEnumeratorContract`1" /> 枚举器。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.GetIsReadOnly">
+      <summary>确定 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合是否为只读。</summary>
+      <returns>如果该集合为只读，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.GetItem(System.Int32)">
+      <summary>返回 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合的指定索引处的项。</summary>
+      <param name="index">要获取的项的索引（索引从零开始）。</param>
+      <returns>指定索引处的项。</returns>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" /> 的返回值。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.IndexOf(`0)">
+      <summary>返回 <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> 集合中特定项的索引。</summary>
+      <param name="item">集合中的一项。</param>
+      <returns>指定的项的索引。</returns>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" /> 方法的返回值。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Insert(System.Int32,`0)">
+      <summary>将某个项插入 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中的指定索引处。</summary>
+      <param name="index">从零开始的索引，在该处插入 <paramref name="item" />。</param>
+      <param name="item">要在 <see cref="T:System.AddIn.Contract.IContract" /> 集合中插入的 <see cref="T:System.AddIn.Contract.IListContract`1" /> 对象。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" /> 的返回值。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合为只读。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Remove(`0)">
+      <summary>从指定类型的 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中移除项。</summary>
+      <param name="item">要从集合中移除的项。</param>
+      <returns>如果该项被移除，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.RemoveAt(System.Int32)">
+      <summary>移除 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中指定索引处的项。</summary>
+      <param name="index">要移除的项的索引。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" /> 方法的返回值。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合为只读。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.SetItem(System.Int32,`0)">
+      <summary>设置 <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合中指定索引处的项。</summary>
+      <param name="index">从零开始的索引，在此对项进行设置。</param>
+      <param name="item">要在指定索引处设置的项。</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> 小于零。  
+或 
+ <paramref name="index" /> 等于或大于 <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" /> 方法的返回值。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.IListContract`1" /> 集合为只读。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.INativeHandleContract">
+      <summary>提供从本机代码对窗口句柄 (Hwnd) 的访问。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.INativeHandleContract.GetHandle">
+      <summary>获取窗口句柄 (Hwnd)。</summary>
+      <returns>一个 <see cref="T:System.IntPtr" /> 对象，该对象表示指向窗口句柄的指针。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.IProfferServiceContract">
+      <summary>使客户端能够为在其上实现协定的组件提供自定义服务。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.IProfferServiceContract.ProfferService(System.String,System.AddIn.Contract.IServiceProviderContract)">
+      <summary>向组件的客户端可访问的服务组添加服务。</summary>
+      <param name="serviceIdentifier">一个字符串，用于标识所提供的服务。</param>
+      <param name="service">一个 <see cref="T:System.AddIn.Contract.IServiceProviderContract" />，用于实现所提供的服务。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.IProfferServiceContract.RevokeService(System.String)">
+      <summary>从组件提供的服务组中删除服务。</summary>
+      <param name="serviceIdentifier">一个字符串，用于标识所调用的服务。</param>
+    </member>
+    <member name="T:System.AddIn.Contract.ISerializableObjectContract">
+      <summary>定义一个协定，用于提供有关可序列化对象的信息。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.ISerializableObjectContract.GetCanonicalName">
+      <summary>返回此 <see cref="T:System.AddIn.Contract.ISerializableObjectContract" /> 描述的对象类型的规范名称。</summary>
+      <returns>此 <see cref="T:System.AddIn.Contract.ISerializableObjectContract" /> 描述的对象类型的规范名称。</returns>
+    </member>
+    <member name="M:System.AddIn.Contract.ISerializableObjectContract.GetSerializableObjectData">
+      <summary>返回可用于帮助反序列化此 <see cref="T:System.AddIn.Contract.ISerializableObjectContract" /> 描述的对象的数据。</summary>
+      <returns>一个 <see cref="T:System.AddIn.Contract.SerializableObjectData" />，其中包含有关此 <see cref="T:System.AddIn.Contract.ISerializableObjectContract" /> 描述的对象的数据。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.IServiceProviderContract">
+      <summary>定义用于从组件中检索服务协定的机制。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.IServiceProviderContract.QueryService(System.String,System.String)">
+      <summary>返回由此 <see cref="T:System.AddIn.Contract.IServiceProviderContract" /> 实现的服务协定。</summary>
+      <param name="serviceIdentifier">所请求的服务的名称。</param>
+      <param name="serviceContractIdentifier">所请求的服务协定。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.IContract" />，它表示客户端正从 <see cref="T:System.AddIn.Contract.IServiceProviderContract" /> 请求的服务协定；如果 <see cref="T:System.AddIn.Contract.IServiceProviderContract" /> 未实现请求的协定，则为 <see langword="null" />。</returns>
+    </member>
+    <member name="T:System.AddIn.Contract.RemoteArgument">
+      <summary>表示一个类型的实例，可跨进程和应用程序域边界传递该实例。</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.AddIn.Contract.IContract)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.AddIn.Contract.IContract" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.AddIn.Contract.IContract" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.AddIn.Contract.IContract,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.AddIn.Contract.IContract" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.AddIn.Contract.IContract" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.AddIn.Contract.RemoteArgumentKind,System.TypeCode)">
+      <summary>通过对未通过引用传递的参数使用指定的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 和 <see cref="T:System.AddIn.Contract.RemoteArgumentKind" />，初始化 <see cref="T:System.TypeCode" /> 类的新实例。</summary>
+      <param name="remoteArgKind">
+        <see cref="T:System.AddIn.Contract.RemoteArgumentKind" /> 值之一，该值指示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 是否表示内部类型、内部类型数组、<see cref="T:System.AddIn.Contract.IContract" /> 或 <see cref="F:System.Type.Missing" /> 值。</param>
+      <param name="typeCode">一个 <see cref="T:System.TypeCode" />，指定远程参数的基类型。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="remoteArgKind" /> 是 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 或 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.IntrinsicArray" />，且 <paramref name="typeCode" /> 是 <see cref="F:System.TypeCode.Object" /> 或 <see cref="F:System.TypeCode.Empty" />。  
+或 
+ <paramref name="remoteArgKind" /> 是 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Missing" />，且 <paramref name="typeCode" /> 不是 <see cref="F:System.TypeCode.Empty" />。  
+或 
+ <paramref name="remoteArgKind" /> 是 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Contract" />，且 <paramref name="typeCode" /> 不是 <see cref="F:System.TypeCode.Object" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.AddIn.Contract.RemoteArgumentKind,System.TypeCode,System.Boolean)">
+      <summary>通过可通过引用传递的参数使用指定的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 和 <see cref="T:System.AddIn.Contract.RemoteArgumentKind" />，初始化 <see cref="T:System.TypeCode" /> 类的新实例。</summary>
+      <param name="remoteArgKind">
+        <see cref="T:System.AddIn.Contract.RemoteArgumentKind" /> 值之一，该值指示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 是否表示内部类型、内部类型数组、<see cref="T:System.AddIn.Contract.IContract" /> 或 <see cref="F:System.Type.Missing" /> 值。</param>
+      <param name="typeCode">一个 <see cref="T:System.TypeCode" />，指定远程参数的基类型。</param>
+      <param name="isByRef">如果远程参数是通过引用传递的，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="remoteArgKind" /> 是 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 或 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.IntrinsicArray" />，且 <paramref name="typeCode" /> 是 <see cref="F:System.TypeCode.Object" /> 或 <see cref="F:System.TypeCode.Empty" />。  
+或 
+ <paramref name="remoteArgKind" /> 是 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Missing" />，且 <paramref name="typeCode" /> 不是 <see cref="F:System.TypeCode.Empty" />。  
+或 
+ <paramref name="remoteArgKind" /> 是 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Contract" />，且 <paramref name="typeCode" /> 不是 <see cref="F:System.TypeCode.Object" />。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="remoteArgKind" /> 不是有效的 <see cref="T:System.AddIn.Contract.RemoteArgumentKind" /> 值。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Array)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Array" /> 类的新实例。</summary>
+      <param name="array">一个 <see cref="T:System.Array" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <exception cref="T:System.ArgumentException">数组元素类型不是基类型（也就是说，数组元素类型的 <see cref="M:System.Type.GetTypeCode(System.Type)" /> 方法返回 <see cref="F:System.TypeCode.Object" />）。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Array,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Array" /> 类的新实例。</summary>
+      <param name="array">一个 <see cref="T:System.Array" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="array" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <exception cref="T:System.ArgumentException">数组元素类型不是基类型（也就是说，<see cref="M:System.Type.GetTypeCode(System.Type)" /> 方法为数组元素类型返回 <see cref="F:System.TypeCode.Object" />）。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 为 <see langword="null" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Boolean)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Boolean" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Boolean" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Boolean,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Boolean" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Boolean" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Byte)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Byte" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Byte" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Byte,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Byte" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Byte" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Char)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Char" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Char" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Char,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Char" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Char" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.DateTime)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.DateTime" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.DateTime" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.DateTime,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.DateTime" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.DateTime" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.DBNull)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.DBNull" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.DBNull" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.DBNull,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.DBNull" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.DBNull" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Decimal)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Decimal" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Decimal" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Decimal,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Decimal" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Decimal" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Double)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Double" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Double" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Double,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Double" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Double" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int16)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Int16" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Int16" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int16,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Int16" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Int16" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int32)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Int32" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Int32" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int32,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Int32" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Int32" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int64)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Int64" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Int64" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int64,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Int64" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Int64" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.SByte)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.SByte" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.SByte" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.SByte,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.SByte" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.SByte" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Single)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Single" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Single" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Single,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.Single" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.Single" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.String)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.String" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.String" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.String,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.String" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.String" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt16)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.UInt16" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.UInt16" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt16,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.UInt16" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.UInt16" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt32)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.UInt32" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.UInt32" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt32,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.UInt32" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.UInt32" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt64)">
+      <summary>初始化表示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.UInt64" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.UInt64" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt64,System.Boolean)">
+      <summary>初始化表示可通过引用传递的 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 参数的 <see cref="T:System.UInt64" /> 类的新实例。</summary>
+      <param name="value">一个 <see cref="T:System.UInt64" /> 参数，可跨进程或应用程序域边界传递该参数。</param>
+      <param name="isByRef">如果 <paramref name="value" /> 是通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.ArrayValue">
+      <summary>获取或设置 <see cref="T:System.Array" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Array" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.IntrinsicArray" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性设置为 <see cref="F:System.TypeCode.Object" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.BooleanValue">
+      <summary>获取或设置 <see cref="T:System.Boolean" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Boolean" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 <see langword="false" />。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Boolean" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.ByteValue">
+      <summary>获取或设置 <see cref="T:System.Byte" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Byte" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Byte" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.CharValue">
+      <summary>获取或设置 <see cref="T:System.Char" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Char" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 <see cref="F:System.Char.MinValue" />。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Char" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.ContractValue">
+      <summary>获取或设置 <see cref="T:System.AddIn.Contract.IContract" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.IContract" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Contract" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Object" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.CreateRemoteArgument(System.Object)">
+      <summary>为不通过引用传递的参数创建 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <param name="value">将跨进程或应用程序域边界传递的参数。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，表示指定的参数。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="value" /> 的 <see cref="T:System.TypeCode" /> 是 <see cref="F:System.TypeCode.Object" />，且 <paramref name="value" /> 不是 <see cref="T:System.AddIn.Contract.IContract" />。  
+或 
+<paramref name="value" /> 的 <see cref="T:System.TypeCode" /> 是 <see cref="F:System.TypeCode.Empty" />，且 <paramref name="value" /> 未设置为 <see cref="F:System.Reflection.Missing.Value" />。  
+或 
+ <paramref name="value" /> 未实现 <see cref="T:System.IConvertible" /> 接口，且 <paramref name="value" /> 不是 <see cref="T:System.Array" />。  
+或 
+ <paramref name="value" /> 是一个包含元素的 <see cref="T:System.Array" />，这些元素的 <see cref="T:System.TypeCode" /> 值为 <see cref="F:System.TypeCode.Object" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.CreateRemoteArgument(System.Object,System.Boolean)">
+      <summary>为可通过引用传递的参数创建 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <param name="value">将跨进程或应用程序域边界传递的参数。</param>
+      <param name="isByRef">若要通过引用传递 <paramref name="value" /> 参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，表示指定的参数。</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> 为 <see langword="null" />。</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="value" /> 的 <see cref="T:System.TypeCode" /> 是 <see cref="F:System.TypeCode.Object" />，且 <paramref name="value" /> 不是 <see cref="T:System.AddIn.Contract.IContract" />。  
+或 
+<paramref name="value" /> 的 <see cref="T:System.TypeCode" /> 是 <see cref="F:System.TypeCode.Empty" />，且 <paramref name="value" /> 未设置为 <see cref="F:System.Reflection.Missing.Value" />。  
+或 
+ <paramref name="value" /> 未实现 <see cref="T:System.IConvertible" /> 接口，且 <paramref name="value" /> 不是 <see cref="T:System.Array" />。  
+或 
+ <paramref name="value" /> 是一个包含元素的 <see cref="T:System.Array" />，这些元素的 <see cref="T:System.TypeCode" /> 值为 <see cref="F:System.TypeCode.Object" />。</exception>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.CreateRemoteArgument(System.Object,System.Boolean,System.TypeCode)">
+      <summary>为具有指定类型代码且可通过引用传递的参数创建 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <param name="value">将跨进程或应用程序域边界传递的参数。</param>
+      <param name="isByRef">若要通过引用传递参数，则为 <see langword="true" />；否则为 <see langword="false" />。</param>
+      <param name="typeCodeToUse">如果 <paramref name="value" /> 不是一个 <see cref="T:System.TypeCode" />，则为一个指示 <paramref name="value" /> 的类型代码的 <see cref="T:System.Array" />。 否则，为一个指示 <paramref name="value" /> 中的元素的类型代码的 <see cref="T:System.TypeCode" />。</param>
+      <returns>一个 <see cref="T:System.AddIn.Contract.RemoteArgument" />，表示指定的参数。</returns>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="value" /> 的 <see cref="T:System.TypeCode" /> 是 <see cref="F:System.TypeCode.Object" />，同时 <paramref name="value" /> 不是 <see cref="T:System.AddIn.Contract.IContract" /> 且 <paramref name="value" /> 不是 <see langword="null" />。  
+或 
+<paramref name="value" /> 的 <see cref="T:System.TypeCode" /> 是 <see cref="F:System.TypeCode.Empty" />，且 <paramref name="value" /> 不是 <see cref="F:System.Reflection.Missing.Value" />。  
+或 
+ <paramref name="value" /> 未实现 <see cref="T:System.IConvertible" /> 接口，<paramref name="value" /> 不是 <see langword="null" /> 且 <paramref name="value" /> 不是 <see cref="T:System.Array" />。  
+或 
+ <paramref name="value" /> 是一个包含元素的 <see cref="T:System.Array" />，这些元素的 <see cref="T:System.TypeCode" /> 值为 <see cref="F:System.TypeCode.Object" />。</exception>
+      <exception cref="T:System.NotSupportedException">
+        <paramref name="value" /> 的 <see cref="T:System.TypeCode" /> 不是 <see cref="F:System.TypeCode.DBNull" />，且 <paramref name="typeCodeToUse" /> 是 <see cref="F:System.TypeCode.DBNull" />。</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="typeCodeToUse" /> 未指定有效的 <see cref="T:System.TypeCode" /> 值。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.DateTimeValue">
+      <summary>获取或设置 <see cref="T:System.DateTime" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.DateTime" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 <see cref="F:System.DateTime.MinValue" />。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.DateTime" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.DBNullValue">
+      <summary>获取或设置 <see cref="T:System.DBNull" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.DBNull" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.DBNull" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.DecimalValue">
+      <summary>获取或设置 <see cref="T:System.Decimal" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Decimal" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Decimal" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.DoubleValue">
+      <summary>获取或设置 <see cref="T:System.Double" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Double" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0.0。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Double" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.Int16Value">
+      <summary>获取或设置 <see cref="T:System.Int16" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Int16" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Int16" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.Int32Value">
+      <summary>获取或设置 <see cref="T:System.Int32" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Int32" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Int32" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.Int64Value">
+      <summary>获取或设置 <see cref="T:System.Int64" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Int64" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Int64" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.IsByRef">
+      <summary>获取或设置一个值，该值指示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 是否表示通过引用传递的参数。</summary>
+      <returns>如果 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示通过引用传递的参数，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.MissingValue">
+      <summary>获取 <see cref="F:System.Type.Missing" /> 值。</summary>
+      <returns>
+        <see cref="F:System.Type.Missing" /> 值。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Empty" /> 值时，检索此属性值。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind">
+      <summary>获取一个 <see cref="T:System.AddIn.Contract.RemoteArgumentKind" />，指示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示的参数的种类。</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgumentKind" /> 值之一，该值指示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 是否表示内部类型、内部类型数组、<see cref="T:System.AddIn.Contract.IContract" /> 或 <see cref="F:System.Type.Missing" /> 值。</returns>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.SByteValue">
+      <summary>获取或设置 <see cref="T:System.SByte" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.SByte" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.SByte" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.SingleValue">
+      <summary>获取或设置 <see cref="T:System.Single" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.Single" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0.0。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.Single" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.StringValue">
+      <summary>获取或设置 <see cref="T:System.String" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.String" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 <see langword="null" />。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.String" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.TypeCode">
+      <summary>获取一个 <see cref="T:System.TypeCode" />，指示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示的参数的基类型。</summary>
+      <returns>一个 <see cref="T:System.TypeCode" />，指示 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示的参数的基类型。</returns>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.UInt16Value">
+      <summary>获取或设置 <see cref="T:System.UInt16" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.UInt16" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.UInt16" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.UInt32Value">
+      <summary>获取或设置 <see cref="T:System.UInt32" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.UInt32" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.UInt32" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.UInt64Value">
+      <summary>获取或设置 <see cref="T:System.UInt64" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />。</summary>
+      <returns>
+        <see cref="T:System.UInt64" /> 表示的 <see cref="T:System.AddIn.Contract.RemoteArgument" />；如果尚未指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 的值，则为 0（零）。</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性未设置为 <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> 值。  
+或 
+<see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> 属性未设置为 <see cref="F:System.TypeCode.UInt64" /> 值。  
+或 
+当 <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> 属性为 <see langword="false" /> 时，设置此属性。</exception>
+    </member>
+    <member name="T:System.AddIn.Contract.RemoteArgumentKind">
+      <summary>指定 <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示的参数的种类。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.RemoteArgumentKind.Contract">
+      <summary>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示 <see cref="T:System.AddIn.Contract.IContract" />。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic">
+      <summary>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示内部数据类型。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.RemoteArgumentKind.IntrinsicArray">
+      <summary>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示包含内部数据类型的元素的 <see cref="T:System.Array" />。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.RemoteArgumentKind.Missing">
+      <summary>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> 表示 <see cref="F:System.Type.Missing" /> 值。 这是 <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> 属性的默认值。</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.SerializableObjectData">
+      <summary>提供有关可序列化对象的信息。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.DimensionLengths">
+      <summary>表示一个数组，该数组包含此 <see cref="T:System.AddIn.Contract.SerializableObjectData" /> 描述的可序列化数组的每个维度的长度。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.DimensionLowerBounds">
+      <summary>表示一个数组，该数组包含此 <see cref="T:System.AddIn.Contract.SerializableObjectData" /> 描述的可序列化数组的每个维度的下限。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.ElementIndexes">
+      <summary>表示一个包含父数组的索引的数组，该父数组包含此 <see cref="T:System.AddIn.Contract.SerializableObjectData" /> 描述的可序列化对象。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.IsArray">
+      <summary>指示 <see cref="T:System.AddIn.Contract.SerializableObjectData" /> 是否描述可序列化数组。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.IsArrayElement">
+      <summary>指示 <see cref="T:System.AddIn.Contract.SerializableObjectData" /> 是否描述可序列化数组中的元素。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.MemberName">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.SerializableObjectData" /> 描述的可序列化对象的成员名称。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.ObjectId">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.SerializableObjectData" /> 描述的可序列化对象的 ID。</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.ParentId">
+      <summary>表示此 <see cref="T:System.AddIn.Contract.SerializableObjectData" /> 描述的可序列化对象的父级的 ID。</summary>
+    </member>
+    <member name="T:System.AddIn.Pipeline.AddInContractAttribute">
+      <summary>将对象标识为管线的外接程序协定段。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.AddInContractAttribute.#ctor">
+      <summary>初始化 <see cref="T:System.AddIn.Pipeline.AddInContractAttribute" /> 类的新实例。</summary>
+    </member>
+    <member name="T:System.AddIn.Pipeline.QualificationDataAttribute">
+      <summary>提供开发人员指定的管线段数据。</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.QualificationDataAttribute.#ctor(System.String,System.String)">
+      <summary>初始化 <see cref="T:System.AddIn.Pipeline.QualificationDataAttribute" /> 类的新实例。</summary>
+      <param name="name">用作键/值对中的键的任何标识符。</param>
+      <param name="value">任意值。</param>
+    </member>
+    <member name="P:System.AddIn.Pipeline.QualificationDataAttribute.Name">
+      <summary>获取用作键/值对中的键的名称。</summary>
+      <returns>已分配给特性的名称。</returns>
+    </member>
+    <member name="P:System.AddIn.Pipeline.QualificationDataAttribute.Value">
+      <summary>获取键/值对的值。</summary>
+      <returns>已分配给特性的值。</returns>
+    </member>
+  </members>
+</doc>

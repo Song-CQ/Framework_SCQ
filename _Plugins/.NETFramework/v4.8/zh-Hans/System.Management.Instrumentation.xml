@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Management.Instrumentation</name>
+  </assembly>
+  <members>
+    <member name="T:System.Management.Instrumentation.DefaultManagementInstaller">
+      <summary>安装已检测的程序集。 若要使用此默认项目安装程序，只需在程序集中从 <see cref="T:System.Management.Instrumentation.DefaultManagementInstaller" /> 派生类。 不需要重写任何方法。  
+注意：WMI .NET 库现在视为处于最终状态，且没有可用于会影响这些库的非安全性相关问题的进一步开发、增强或更新。 MI API 应用于所有新的开发。</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.DefaultManagementInstaller.#ctor">
+      <summary>初始化 <see cref="T:System.Management.Instrumentation.DefaultManagementInstaller" /> 类的新实例。 这是默认构造函数。</summary>
+    </member>
+    <member name="T:System.Management.Instrumentation.InstrumentationManager">
+      <summary>提供方法，用于管理生命周期和管理用于分离式提供程序的模型。  
+注意：WMI .NET 库现在视为处于最终状态，且没有可用于会影响这些库的非安全性相关问题的进一步开发、增强或更新。 MI API 应用于所有新的开发。</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.Publish(System.Object)">
+      <summary>使提供程序实例可用于 WMI 基础结构。</summary>
+      <param name="value">执行提供程序发布的类的实例。</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.RegisterAssembly(System.Reflection.Assembly)">
+      <summary>在 WMI 基础结构中注册程序集。</summary>
+      <param name="managementAssembly">要注册的程序集。</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.RegisterType(System.Type)">
+      <summary>在 WMI 基础结构中注册类。</summary>
+      <param name="managementType">该类的类型。</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.Revoke(System.Object)">
+      <summary>获取当前可用的提供程序的实例，并使其在 WMI 基础结构中不可用。</summary>
+      <param name="value">用于实现要撤销的提供程序的类的实例。</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.UnregisterAssembly(System.Reflection.Assembly)">
+      <summary>对当前在 WMI 基础结构中注册的程序集取消注册。</summary>
+      <param name="managementAssembly">要取消注册的已注册程序集。</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.UnregisterType(System.Type)">
+      <summary>对在 WMI 基础结构中注册的类取消注册。</summary>
+      <param name="managementType">要取消注册的已注册类型。</param>
+    </member>
+    <member name="T:System.Management.Instrumentation.ManagedCommonProvider">
+      <summary>该类供 WMI.NET 提供程序扩展基础结构在内部使用。  
+注意：WMI .NET 库现在视为处于最终状态，且没有可用于会影响这些库的非安全性相关问题的进一步开发、增强或更新。 MI API 应用于所有新的开发。</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.ManagedCommonProvider.#ctor">
+      <summary>这是 <see cref="T:System.Management.Instrumentation.ManagedCommonProvider" /> 的默认构造函数，前者由 WMI.NET 提供程序扩展基础结构在内部使用。</summary>
+    </member>
+    <member name="T:System.Management.Instrumentation.ManagementQualifierAttribute">
+      <summary>ManagementQualifier 属性包含有关关联的 WMI 类、实例、属性、字段或方法的与 WMI 提供程序相关的信息。  
+注意：WMI .NET 库现在视为处于最终状态，且没有可用于会影响这些库的非安全性相关问题的进一步开发、增强或更新。 MI API 应用于所有新的开发。</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.ManagementQualifierAttribute.#ctor(System.String)">
+      <summary>创建 ManagementQualifierAttribute 的一个实例。</summary>
+      <param name="name">限定符的名称。</param>
+    </member>
+    <member name="P:System.Management.Instrumentation.ManagementQualifierAttribute.Flavor">
+      <summary>该特性的特色信息。</summary>
+      <returns>返回一个指示限定符特色信息的 ManagementQualifierFlavor。</returns>
+    </member>
+    <member name="P:System.Management.Instrumentation.ManagementQualifierAttribute.Name">
+      <summary>限定符的名称。</summary>
+      <returns>返回一个包含限定符名称的字符串。</returns>
+    </member>
+    <member name="P:System.Management.Instrumentation.ManagementQualifierAttribute.Value">
+      <summary>与该限定符关联的值。</summary>
+      <returns>返回一个表示限定符值的对象。</returns>
+    </member>
+    <member name="T:System.Management.Instrumentation.ManagementQualifierFlavors">
+      <summary>可以与 WMI 提供程序扩展一起使用的限定符类型。  
+注意：WMI .NET 库现在视为处于最终状态，且没有可用于会影响这些库的非安全性相关问题的进一步开发、增强或更新。 MI API 应用于所有新的开发。</summary>
+    </member>
+    <member name="F:System.Management.Instrumentation.ManagementQualifierFlavors.Amended">
+      <summary>在基类定义中不需要限定符，并且可以将其移动到要本地化的修订。</summary>
+    </member>
+    <member name="F:System.Management.Instrumentation.ManagementQualifierFlavors.ClassOnly">
+      <summary>限定符传播到实例。</summary>
+    </member>
+    <member name="F:System.Management.Instrumentation.ManagementQualifierFlavors.DisableOverride">
+      <summary>不能在派生类或实例中重写限定符。 请注意，系统默认可以重写传播的限定符。</summary>
+    </member>
+    <member name="F:System.Management.Instrumentation.ManagementQualifierFlavors.ThisClassOnly">
+      <summary>限定符不会传播到派生类。</summary>
+    </member>
+    <member name="T:System.Management.Instrumentation.WmiProviderInstallationException">
+      <summary>表示 WMI 提供程序安装失败时引发的异常。  
+注意：WMI .NET 库现在视为处于最终状态，且没有可用于会影响这些库的非安全性相关问题的进一步开发、增强或更新。 MI API 应用于所有新的开发。</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.WmiProviderInstallationException.#ctor">
+      <summary>初始化类的新实例。 这是默认构造函数。</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.WmiProviderInstallationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>使用序列化信息初始化此类的一个新实例。</summary>
+      <param name="info">序列化或反序列化对象时所需的数据。</param>
+      <param name="context">指定的序列化流的源和目标的说明。</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.WmiProviderInstallationException.#ctor(System.String)">
+      <summary>使用描述异常的消息初始化此类的一个新实例。</summary>
+      <param name="message">描述异常的消息。</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.WmiProviderInstallationException.#ctor(System.String,System.Exception)">
+      <summary>使用指定的字符串和异常初始化一个新类。</summary>
+      <param name="message">描述异常的消息。</param>
+      <param name="innerException">导致当前异常的异常实例。</param>
+    </member>
+  </members>
+</doc>

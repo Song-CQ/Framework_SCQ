@@ -58,9 +58,13 @@ namespace qtools.qhierarchy.pcomponent
         public override void draw(GameObject gameObject, QObjectList objectList, Rect selectionRect)
         {                      
             getIconMethodParams[0] = gameObject;
-            Texture2D icon = (Texture2D)getIconMethodInfo.Invoke(null, getIconMethodParams );    
-            if (icon != null) 
-                GUI.DrawTexture(rect, icon, ScaleMode.ScaleToFit, true);
+            if (getIconMethodInfo!=null)
+            {
+                Texture2D icon = (Texture2D)getIconMethodInfo.Invoke(null, getIconMethodParams);
+                if (icon != null)
+                    GUI.DrawTexture(rect, icon, ScaleMode.ScaleToFit, true);
+            }
+            
         }
                 
         public override void eventHandler(GameObject gameObject, QObjectList objectList, Event currentEvent)

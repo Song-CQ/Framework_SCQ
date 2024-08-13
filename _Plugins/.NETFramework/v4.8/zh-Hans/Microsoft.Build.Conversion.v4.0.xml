@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Build.Conversion.v4.0</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Build.Conversion.ProjectFileConverter">
+      <summary>将 Visual Studio 项目文件转换为 Visual Studio 2010 项目文件格式。</summary>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.#ctor">
+      <summary>初始化 <see cref="T:Microsoft.Build.Conversion.ProjectFileConverter" /> 类的新实例。</summary>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.ConversionSkippedBecauseProjectAlreadyConverted">
+      <summary>获取一个值，该值指示是否因为项目文件已处于最新格式而跳过了上次尝试的转换。</summary>
+      <returns>如果因为项目文件已处于最新格式而跳过了上次尝试的转换，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.ConversionWarnings">
+      <summary>获取在转换过程中生成的警告的列表。</summary>
+      <returns>包含转换过程中所生成任何警告的字符串数组。</returns>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.Convert">
+      <summary>转换 <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile" /> 属性指定的项目并将其保存在 <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.NewProjectFile" /> 属性指定的文件中。</summary>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.Convert(Microsoft.Build.BuildEngine.ProjectLoadSettings)">
+      <summary>转换 <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile" /> 属性指定的项目并将其保存在 <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.NewProjectFile" /> 属性指定的文件中。</summary>
+      <param name="projectLoadSettings">一个 <see cref="T:Microsoft.Build.BuildEngine.ProjectLoadSettings" /> 标志，用于确定加载时项目是否忽略不存在的 .target 文件。</param>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.Convert(System.String)">
+      <summary>这是入口点方法，用于执行项目文件的格式转换。 如果此方法已存在，它将覆盖“newProjectFile”，因此此方法的调用方应向用户确认这是否是他真正要做的。</summary>
+      <param name="msbuildBinPath">MSBuild.exe 的完全限定路径。</param>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.ConvertInMemory">
+      <summary>用 <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile" /> 在内存中创建新项目。</summary>
+      <returns>转换后的 <see cref="T:Microsoft.Build.BuildEngine.Project" />。</returns>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.ConvertInMemory(Microsoft.Build.BuildEngine.Engine)">
+      <summary>用 <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile" /> 在内存中创建新项目。</summary>
+      <param name="engine">要在其中创建新项目的 <see cref="T:Microsoft.Build.BuildEngine.Engine" />。</param>
+      <returns>转换后的 <see cref="T:Microsoft.Build.BuildEngine.Project" />。</returns>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.ConvertInMemory(Microsoft.Build.BuildEngine.Engine,Microsoft.Build.BuildEngine.ProjectLoadSettings)">
+      <summary>这是入口点方法，用于执行项目文件的格式转换。 此方法将仅在内存中创建新的 MSBuild 项目对象，而不尝试将其写入到磁盘。</summary>
+      <param name="engine">要在其中创建新项目的 <see cref="T:Microsoft.Build.BuildEngine.Engine" />。</param>
+      <param name="projectLoadSettings">一个 <see cref="T:Microsoft.Build.BuildEngine.ProjectLoadSettings" /> 标志，用于确定项目是否在加载时忽略不存在的 .target 文件。</param>
+      <returns>转换后的 <see cref="T:Microsoft.Build.BuildEngine.Project" />。</returns>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.FSharpSpecificConversions(System.Boolean)">
+      <summary>执行特定于 F# 项目 (VS2008 CTP -&gt; VS2012) 和 (VS2010 -&gt; VS2012) 的转换。  
+这包括：更改 FSharp 目标的位置，对于 2008CTP，则是添加显式 mscorlib 和 FSharp.Core 引用。</summary>
+      <param name="actuallyMakeChanges">如果为 true，则进行更改，否则不进行任何更改，但返回是否要进行更改</param>
+      <returns>如果发生了（将会发生）任何更改，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.IsUserFile">
+      <summary>获取或设置一个值，该值指示被转换的项目文件是否为 .user 文件。</summary>
+      <returns>如果被转换的项目文件是 .user 文件则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.NewProjectFile">
+      <summary>获取或设置新项目文件名。</summary>
+      <returns>表示新的项目文件名称的字符串。</returns>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile">
+      <summary>获取或设置旧项目文件名。</summary>
+      <returns>旧项目文件名。</returns>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.SolutionFile">
+      <summary>获取或设置包含所转换项目的解决方案文件的名称。</summary>
+      <returns>包含所转换项目的解决方案文件的名称。</returns>
+    </member>
+  </members>
+</doc>

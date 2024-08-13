@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.Services.Design</name>
+  </assembly>
+  <members>
+    <member name="T:System.Data.Services.BuildProvider.DataServiceBuildProvider">
+      <summary>基于数据服务返回的元数据为 WCF Data Services 客户端应用程序生成 C# 或 Visual Basic 代码。</summary>
+    </member>
+    <member name="M:System.Data.Services.BuildProvider.DataServiceBuildProvider.#ctor">
+      <summary>创建 <see cref="T:System.Data.Services.BuildProvider.DataServiceBuildProvider" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Services.BuildProvider.DataServiceBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>基于数据服务返回的元数据为 WCF 数据服务 客户端应用程序生成 C# 或 Visual Basic 代码。</summary>
+      <param name="assemblyBuilder">用于生成程序集的容器。</param>
+    </member>
+    <member name="T:System.Data.Services.Design.DataServiceCodeVersion">
+      <summary>指定生成的代码所面向的 Open Data Protocol (OData) 版本。</summary>
+    </member>
+    <member name="F:System.Data.Services.Design.DataServiceCodeVersion.V1">
+      <summary>针对 1.0 版生成代码。</summary>
+    </member>
+    <member name="F:System.Data.Services.Design.DataServiceCodeVersion.V2">
+      <summary>针对 2.0 版生成代码。</summary>
+    </member>
+    <member name="T:System.Data.Services.Design.EdmToObjectNamespaceMap">
+      <summary>由代码生成命令行工具和 Visual Studio 中的工具使用，生成用于与数据服务通信的强类型客户端对象。</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.Add(System.String,System.String)">
+      <summary>在实体数据模型命名空间和对象之间添加映射。</summary>
+      <param name="edmNamespace">其中包含命名空间名称的字符串。</param>
+      <param name="objectNamespace">其中包含对象命名空间的字符串。</param>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.Clear">
+      <summary>清除 <see cref="T:System.Data.Services.Design.EdmToObjectNamespaceMap" />。</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.Contains(System.String)">
+      <summary>查询映射是否在 <paramref name="edmNamespace" /> 参数中包含对象。</summary>
+      <param name="edmNamespace">包含要查询的映射对象的字符串值。</param>
+      <returns>如果找到该对象，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.EdmToObjectNamespaceMap.Count">
+      <summary>获取由 <see cref="T:System.Data.Services.Design.EdmToObjectNamespaceMap" /> 包含的映射的计数。</summary>
+      <returns>其中包含映射计数的整数值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.EdmToObjectNamespaceMap.EdmNamespaces">
+      <summary>获取 <see cref="T:System.Data.Services.Design.EdmToObjectNamespaceMap" /> 对象中的 <see langword="edmNamespace" /> 项。</summary>
+      <returns>其中包含 <see langword="EdmNamespace" /> 项的字符串值。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.EdmToObjectNamespaceMap.Item(System.String)">
+      <summary>获取由 <paramref name="edmNamespace" /> 参数标识的命名空间。</summary>
+      <param name="edmNamespace">其中包含 <see langword="edmNamespace" /> 名称的字符串值。</param>
+      <returns>
+        <see langword="EdmNamespace" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.Remove(System.String)">
+      <summary>移除 <paramref name="edmNamespace" /> 参数标识的对象。</summary>
+      <param name="edmNamespace">其中包含映射对象的字符串值。</param>
+      <returns>如果操作成功，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.TryGetObjectNamespace(System.String,System.String@)">
+      <summary>测试由 <paramref name="objectNamespace" /> 和 <paramref name="edmNamespace" /> 标识的对象是否由 <see cref="T:System.Data.Services.Design.EdmToObjectNamespaceMap" /> 映射。</summary>
+      <param name="edmNamespace">其中包含命名空间名称的字符串值。</param>
+      <param name="objectNamespace">标识对象命名空间的字符串值</param>
+      <returns>如果返回映射，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.Data.Services.Design.EntityClassGenerator">
+      <summary>由代码生成命令行工具和 Visual Studio 中的工具使用，生成用于与数据服务通信的强类型客户端对象。</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.EntityClassGenerator.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Services.Design.EntityClassGenerator" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.EntityClassGenerator.#ctor(System.Data.Services.Design.LanguageOption)">
+      <summary>初始化 <see cref="T:System.Data.Services.Design.EntityClassGenerator" /> 类的新实例。</summary>
+      <param name="languageOption">选择编程语言。</param>
+    </member>
+    <member name="P:System.Data.Services.Design.EntityClassGenerator.EdmToObjectNamespaceMap">
+      <summary>获取在生成实体类时使用的 <see langword="EdmToObjectNamespaceMap" /> 对象。</summary>
+      <returns>
+        <see langword="EdmToObjectNamespaceMap" /> 对象。</returns>
+    </member>
+    <member name="M:System.Data.Services.Design.EntityClassGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter,System.String)">
+      <summary>依据参数标识的开关为数据模型生成代码。</summary>
+      <param name="sourceReader">XML 读取器对象。</param>
+      <param name="targetWriter">文本编写器对象。</param>
+      <param name="namespacePrefix">其中包含命名空间前缀的字符串。</param>
+      <returns>在生成期间发生的架构错误的列表。</returns>
+    </member>
+    <member name="M:System.Data.Services.Design.EntityClassGenerator.GenerateCode(System.Xml.XmlReader,System.String)">
+      <summary>为对象模型生成代码。</summary>
+      <param name="sourceReader">XML 读取器对象。</param>
+      <param name="targetFilePath">其中包含目标文件路径的字符串。</param>
+      <returns>在生成期间发生的架构错误的列表。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.EntityClassGenerator.LanguageOption">
+      <summary>获取在生成数据模型时使用的语言选项。</summary>
+      <returns>语言选项。</returns>
+    </member>
+    <member name="E:System.Data.Services.Design.EntityClassGenerator.OnPropertyGenerated">
+      <summary>在生成属性时发生。</summary>
+    </member>
+    <member name="E:System.Data.Services.Design.EntityClassGenerator.OnTypeGenerated">
+      <summary>在生成类型时发生。</summary>
+    </member>
+    <member name="P:System.Data.Services.Design.EntityClassGenerator.UseDataServiceCollection">
+      <summary>获取或设置代码生成是否应包含支持数据绑定所需的代码。</summary>
+      <returns>
+        <see langword="true" /> 如果数据绑定代码是必需的;否则为<see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.EntityClassGenerator.Version">
+      <summary>获取或设置生成代码目标的 WCF 数据服务 的版本。</summary>
+      <returns>指示所生成代码的版本的 <see cref="T:System.Data.Services.Design.DataServiceCodeVersion" /> 值。</returns>
+    </member>
+    <member name="T:System.Data.Services.Design.LanguageOption">
+      <summary>由代码生成命令行工具和 Visual Studio 中的工具使用，生成用于与数据服务通信的强类型客户端对象。</summary>
+    </member>
+    <member name="F:System.Data.Services.Design.LanguageOption.GenerateCSharpCode">
+      <summary>生成 C# 代码。</summary>
+    </member>
+    <member name="F:System.Data.Services.Design.LanguageOption.GenerateVBCode">
+      <summary>生成 Visual Basic 代码。</summary>
+    </member>
+    <member name="T:System.Data.Services.Design.PropertyGeneratedEventArgs">
+      <summary>由代码生成命令行工具和 Visual Studio 中的工具使用，生成用于与数据服务通信的强类型客户端对象。</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.PropertyGeneratedEventArgs.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Services.Design.PropertyGeneratedEventArgs" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.PropertyGeneratedEventArgs.#ctor(System.Data.Metadata.Edm.MetadataItem,System.String,System.CodeDom.CodeTypeReference)">
+      <summary>初始化 <see cref="T:System.Data.Services.Design.PropertyGeneratedEventArgs" /> 类的新实例。</summary>
+      <param name="propertySource">属性源。</param>
+      <param name="backingFieldName">支持字段名称。</param>
+      <param name="returnType">返回类型。</param>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.AdditionalAttributes">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>附加特性。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.AdditionalGetStatements">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>附加 Get 语句。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.AdditionalSetStatements">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>附加 Set 语句。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.BackingFieldName">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>支持字段名称。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.PropertySource">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>属性源。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.ReturnType">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>返回类型。</returns>
+    </member>
+    <member name="T:System.Data.Services.Design.TypeGeneratedEventArgs">
+      <summary>由代码生成命令行工具和 Visual Studio 中的工具使用，生成用于与数据服务通信的强类型客户端对象。</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.TypeGeneratedEventArgs.#ctor">
+      <summary>初始化 <see cref="T:System.Data.Services.Design.TypeGeneratedEventArgs" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.TypeGeneratedEventArgs.#ctor(System.Data.Metadata.Edm.GlobalItem,System.CodeDom.CodeTypeReference)">
+      <summary>初始化 <see cref="T:System.Data.Services.Design.TypeGeneratedEventArgs" /> 类的新实例。</summary>
+      <param name="typeSource">类型源。</param>
+      <param name="baseType">基类型。</param>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.AdditionalAttributes">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>附加特性。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.AdditionalInterfaces">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>附加接口。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.AdditionalMembers">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>附加成员。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.BaseType">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>基类型。</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.TypeSource">
+      <summary>此类不应以公共方式使用，而是用于生成可与数据服务通信的强类型客户端对象。</summary>
+      <returns>类型源。</returns>
+    </member>
+  </members>
+</doc>

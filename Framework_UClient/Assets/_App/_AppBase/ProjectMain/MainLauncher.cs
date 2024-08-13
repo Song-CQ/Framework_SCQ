@@ -46,7 +46,7 @@ namespace ProjectApp
             AppConst.LaunchDateTime = DateTime.Now;
 
             // 外观入口
-            AppFacade.MainFunc();
+            AppFacade_Frame.MainFunc();
             // 初始化平台
             //SDKGlobal.InitPlatform();
             // 启动引擎层

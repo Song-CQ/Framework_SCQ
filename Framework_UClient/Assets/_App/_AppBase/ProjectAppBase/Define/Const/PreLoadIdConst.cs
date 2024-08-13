@@ -9,9 +9,9 @@ namespace ProjectApp
 {
     public static class PreLoadIdConst
     {
-        public const int MainScene = SceneConst.MainIdx;
-        public const int LobbyScene = SceneConst.LobbyIdx;
-        public const int GamePlayScene = SceneConst.GameIdx;
+        public const int MainScene = SceneConst.MainIndex;
+        public const int GameScene = SceneConst.GameIndex;
+        public const int LoadScene = SceneConst.LoadIndex;
 
 
     }

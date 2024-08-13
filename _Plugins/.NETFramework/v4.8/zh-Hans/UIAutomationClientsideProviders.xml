@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>UIAutomationClientsideProviders</name>
+  </assembly>
+  <members>
+    <member name="T:UIAutomationClientsideProviders.UIAutomationClientSideProviders">
+      <summary>使应用程序可以发现客户端 UI 自动化提供程序。</summary>
+    </member>
+    <member name="F:UIAutomationClientsideProviders.UIAutomationClientSideProviders.ClientSideProviderDescriptionTable">
+      <summary>提供有关客户端 UI 自动化 提供程序的信息。</summary>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.DynamicData.Design</name>
+  </assembly>
+  <members>
+    <member name="T:System.Web.DynamicData.Design.DataControlReferenceCollectionEditor">
+      <summary>为 <see cref="T:System.Web.DynamicData.DynamicDataManager" /> 控件的数据控件集合提供组件编辑器。</summary>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DataControlReferenceCollectionEditor.#ctor(System.Type)">
+      <summary>使用指定的集合类型初始化 <see cref="T:System.Web.DynamicData.Design.DataControlReferenceCollectionEditor" /> 类的新实例。</summary>
+      <param name="type">要编辑的集合的类型。</param>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DataControlReferenceCollectionEditor.CreateCollectionItemType">
+      <summary>获取要编辑的集合的类型。</summary>
+      <returns>要编辑的集合的类型。</returns>
+    </member>
+    <member name="T:System.Web.DynamicData.Design.DataControlReferenceIDConverter">
+      <summary>创建可由用户选择的数据控件集合。</summary>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DataControlReferenceIDConverter.#ctor">
+      <summary>初始化 <see cref="T:System.Web.DynamicData.Design.DataControlReferenceIDConverter" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DataControlReferenceIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>返回可用控件值的集合。</summary>
+      <param name="context">一个对象，该对象为此类型转换器提供上下文信息。</param>
+      <returns>一个集合，该集合包含可用控件的名称。</returns>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DataControlReferenceIDConverter.GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>返回一个值，该值指示返回的控件名称是否为所有可能值的独占列表。</summary>
+      <param name="context">一个对象，该对象为此类型转换器提供上下文信息。</param>
+      <returns>总是为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DataControlReferenceIDConverter.GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>返回一个值，该值指示此转换器是否支持可从集合中选择的一组标准控件名称。</summary>
+      <param name="context">一个对象，该对象为此类型转换器提供上下文信息。</param>
+      <returns>总是为 <see langword="true" />。</returns>
+    </member>
+    <member name="T:System.Web.DynamicData.Design.DynamicDataManagerDesigner">
+      <summary>在可视化设计器中为 <see cref="T:System.Web.DynamicData.DynamicDataManager" /> 控件提供设计时支持。</summary>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicDataManagerDesigner.#ctor">
+      <summary>初始化 <see cref="T:System.Web.DynamicData.Design.DynamicDataManagerDesigner" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.Web.DynamicData.Design.DynamicDataManagerDesigner.ActionLists">
+      <summary>获取 <see cref="T:System.ComponentModel.Design.DesignerActionList" /> 对象的集合。</summary>
+      <returns>
+        <see cref="T:System.ComponentModel.Design.DesignerActionList" /> 对象的集合。</returns>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicDataManagerDesigner.GetDesignTimeHtml">
+      <summary>生成用于在设计时呈现关联的 <see cref="T:System.Web.DynamicData.DynamicDataManager" /> 控件的 HTML 标记。</summary>
+      <returns>用于在设计时呈现关联的 <see cref="T:System.Web.DynamicData.DynamicDataManager" /> 控件的 HTML 标记。</returns>
+    </member>
+    <member name="T:System.Web.DynamicData.Design.DynamicFieldDesigner">
+      <summary>在可视化设计器中为 <see cref="T:System.Web.DynamicData.DynamicField" /> 对象提供设计时支持。</summary>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicFieldDesigner.#ctor">
+      <summary>初始化 <see cref="T:System.Web.DynamicData.Design.DynamicFieldDesigner" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicFieldDesigner.CreateField">
+      <summary>创建一个空的 <see cref="T:System.Web.DynamicData.DynamicField" /> 对象。</summary>
+      <returns>一个空的字段对象。</returns>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicFieldDesigner.CreateField(System.Web.UI.Design.IDataSourceFieldSchema)">
+      <summary>使用指定的数据字段信息创建一个新的 <see cref="T:System.Web.DynamicData.DynamicField" /> 对象。</summary>
+      <param name="fieldSchema">其中包含数据字段结构的架构信息。</param>
+      <returns>一个新的字段对象。</returns>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicFieldDesigner.CreateTemplateField(System.Web.UI.WebControls.DataControlField,System.Web.UI.WebControls.DataBoundControl)">
+      <summary>为指定的数据字段创建一个 <see cref="T:System.Web.UI.WebControls.TemplateField" /> 字段。</summary>
+      <param name="dataControlField">数据字段对象。</param>
+      <param name="dataBoundControl">其中包含数据字段对象的数据绑定控件。</param>
+      <returns>新的模板字段。</returns>
+    </member>
+    <member name="P:System.Web.DynamicData.Design.DynamicFieldDesigner.DefaultNodeText">
+      <summary>获取为字段编辑器中的数据字段显示的默认文本。</summary>
+      <returns>为字段编辑器中的数据字段显示的默认文本。</returns>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicFieldDesigner.GetNodeText(System.Web.UI.WebControls.DataControlField)">
+      <summary>获取为字段编辑器中的数据字段显示的名称。</summary>
+      <param name="dataControlField">数据字段对象。</param>
+      <returns>为字段编辑器中的数据字段显示的名称。</returns>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicFieldDesigner.GetTemplateContent(System.Web.UI.WebControls.DataControlField,System.Web.UI.WebControls.DataBoundControlMode)">
+      <summary>获取模板字段的内容。</summary>
+      <param name="dataControlField">数据字段对象。</param>
+      <param name="mode">指定数据字段的显示模式。</param>
+      <returns>模板字段的内容。</returns>
+    </member>
+    <member name="M:System.Web.DynamicData.Design.DynamicFieldDesigner.IsEnabled(System.Web.UI.WebControls.DataBoundControl)">
+      <summary>获取一个值，该值指示数据字段在字段编辑器中是否处于启用状态。</summary>
+      <param name="parent">正在编辑其数据控件字段的数据绑定控件。</param>
+      <returns>如果数据字段在字段编辑器中处于启用状态，则为 <see langword="true" />；如果数据字段将不显示在字段编辑器中，则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.Web.DynamicData.Design.DynamicFieldDesigner.UsesSchema">
+      <summary>获取一个值，该值指示是否使用架构信息加载数据字段。</summary>
+      <returns>在所有情况下均为 <see langword="true" />。</returns>
+    </member>
+  </members>
+</doc>

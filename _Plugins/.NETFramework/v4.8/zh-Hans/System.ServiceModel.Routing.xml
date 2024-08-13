@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ServiceModel.Routing</name>
+  </assembly>
+  <members>
+    <member name="T:System.ServiceModel.Dispatcher.EndpointNameMessageFilter">
+      <summary>表示一个查询，该查询测试是否已在具有与指定名称匹配的名称的终结点上接收到消息。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.EndpointNameMessageFilter.#ctor(System.String)">
+      <summary>使用用以测试消息的指定名称初始化 <see cref="T:System.ServiceModel.Dispatcher.EndpointNameMessageFilter" /> 类的新实例。</summary>
+      <param name="endpointName">用以测试消息的 endpointName</param>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.EndpointNameMessageFilter.Match(System.ServiceModel.Channels.Message)">
+      <summary>测试消息是否满足指定的终结点名称。</summary>
+      <param name="message">要检查的消息对象。</param>
+      <returns>如果消息对象满足筛选器中指定的终结点名称，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.EndpointNameMessageFilter.Match(System.ServiceModel.Channels.MessageBuffer)">
+      <summary>测试缓冲消息是否满足指定的终结点名称。</summary>
+      <param name="buffer">要检查的 <see cref="T:System.ServiceModel.Channels.MessageBuffer" /> 对象。</param>
+      <returns>如果消息对象满足筛选器中指定的终结点名称，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Dispatcher.StrictAndMessageFilter">
+      <summary>表示一个查询，该查询测试消息是否满足两个指定的 <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" /> 对象。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.StrictAndMessageFilter.#ctor(System.ServiceModel.Dispatcher.MessageFilter,System.ServiceModel.Dispatcher.MessageFilter)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Dispatcher.StrictAndMessageFilter" /> 对象创建 <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" /> 类的新实例。</summary>
+      <param name="filter1">第一个 <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" /> 对象。</param>
+      <param name="filter2">第二个 <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" /> 对象。</param>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.StrictAndMessageFilter.CreateFilterTable``1">
+      <summary>创建一个新的 <see cref="T:System.ServiceModel.Dispatcher.IMessageFilterTable`1" />。</summary>
+      <typeparam name="TFilterData">与筛选器关联的数据的类型。</typeparam>
+      <returns>一个新创建的 <see cref="T:System.ServiceModel.Dispatcher.IMessageFilterTable`1" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.StrictAndMessageFilter.Match(System.ServiceModel.Channels.Message)">
+      <summary>测试消息是否与此筛选器中指定的两个 <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" /> 对象相匹配。</summary>
+      <param name="message">要测试的 <see cref="T:System.ServiceModel.Channels.Message" />。</param>
+      <returns>如果缓冲区中包含的消息与两个消息筛选器相匹配，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.StrictAndMessageFilter.Match(System.ServiceModel.Channels.MessageBuffer)">
+      <summary>测试缓冲消息是否与此筛选器中指定的两个 <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" /> 对象相匹配。</summary>
+      <param name="buffer">要测试的 <see cref="T:System.ServiceModel.Channels.MessageBuffer" />。</param>
+      <returns>如果缓冲区中包含的消息与两个消息筛选器相匹配，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection">
+      <summary>表示一个配置元素，此元素包含 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" /> 对象的集合。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.Add(System.ServiceModel.Routing.Configuration.BackupEndpointElement)">
+      <summary>将新 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" /> 添加到集合中。</summary>
+      <param name="element">要添加的备份终结点元素。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.Clear">
+      <summary>移除集合中的所有元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.CreateNewElement">
+      <summary>创建一个新的 <see cref="T:System.Configuration.ConfigurationElement" />。</summary>
+      <returns>一个新的配置元素。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>获取指定配置元素的元素键。</summary>
+      <param name="element">要为其返回键的配置元素。</param>
+      <returns>指定配置元素的键。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.Name">
+      <summary>获取或设置用于在配置文件中标识此元素集合的名称。</summary>
+      <returns>集合的名称。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.Remove(System.ServiceModel.Routing.Configuration.BackupEndpointElement)">
+      <summary>从集合中移除 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" /> 的第一个匹配项。</summary>
+      <param name="element">要从集合中移除的备份元素。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement">
+      <summary>表示定义备份终结点元素的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.BackupEndpointElement.EndpointName">
+      <summary>获取或设置用于在配置文件中标识此终结点的名称。</summary>
+      <returns>名称。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.BackupListCollection">
+      <summary>表示包含 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" /> 实例集合的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.Configuration.BackupListCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.Add(System.ServiceModel.Routing.Configuration.BackupEndpointCollection)">
+      <summary>将新 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" /> 添加到集合中。</summary>
+      <param name="element">要添加的备份终结点。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.Clear">
+      <summary>移除集合中的所有元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.CreateNewElement">
+      <summary>创建一个新的 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" />。</summary>
+      <returns>一个新的配置元素。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>获取指定配置元素的元素键。</summary>
+      <param name="element">要为其返回键的配置元素。</param>
+      <returns>指定配置元素的键。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.BackupListCollection.Item(System.String)">
+      <summary>获取具有指定索引的 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" />。</summary>
+      <param name="name">要访问的元素的键。</param>
+      <returns>与指定键匹配的备份终结点。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.Remove(System.ServiceModel.Routing.Configuration.BackupEndpointCollection)">
+      <summary>从集合中移除指定的 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" /> 的第一个匹配项。</summary>
+      <param name="element">集合中的备份终结点。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterElement">
+      <summary>表示定义筛选器元素的配置元素。 此元素用于定义筛选器的类型，以及筛选器所需的任何支持数据或参数。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElement.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.CustomType">
+      <summary>获取或设置要用作筛选器的自定义类型的完全限定类型名称。</summary>
+      <returns>完全限定类型。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.Filter1">
+      <summary>获取或设置此配置元素的 filter1 数据。 此值仅在 <see cref="P:System.ServiceModel.Routing.Configuration.FilterElement.FilterType" /> 设置为 And 时使用。</summary>
+      <returns>此元素的 filter1 值。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.Filter2">
+      <summary>获取或设置此配置元素的 filter2 数据。 此值仅在 <see cref="P:System.ServiceModel.Routing.Configuration.FilterElement.FilterType" /> 设置为 AND 时使用。</summary>
+      <returns>此元素的 filter2 值。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.FilterData">
+      <summary>获取或设置此配置元素的筛选数据。</summary>
+      <returns>此元素的筛选数据。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.FilterType">
+      <summary>获取或设置此配置元素的 <see cref="T:System.ServiceModel.Routing.Configuration.FilterType" />。</summary>
+      <returns>此元素的筛选器类型。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.Name">
+      <summary>获取或设置此配置元素的名称。</summary>
+      <returns>此配置元素的唯一名称。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterElementCollection">
+      <summary>表示 <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" /> 实例的集合。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Routing.Configuration.FilterElementCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.Add(System.ServiceModel.Routing.Configuration.FilterElement)">
+      <summary>将新 <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" /> 添加到集合中。</summary>
+      <param name="element">要添加的筛选器元素。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.Clear">
+      <summary>移除集合中的所有元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.CreateNewElement">
+      <summary>创建一个新的 <see cref="T:System.Configuration.ConfigurationElement" />。</summary>
+      <returns>一个新的配置元素。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>返回指定的 <see cref="T:System.Configuration.ConfigurationElement" /> 元素在集合中的键。</summary>
+      <param name="element">要为其返回键的配置元素。</param>
+      <returns>指定配置元素的键。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.IsElementRemovable(System.Configuration.ConfigurationElement)">
+      <summary>获取一个值，该值指示是否可以移除此元素。</summary>
+      <param name="element">要检查其可移除性的配置元素。</param>
+      <returns>如果可以删除此元素，为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.IsReadOnly">
+      <summary>获取一个值，指示元素是否是只读的。</summary>
+      <returns>如果元素为只读，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElementCollection.Item(System.Int32)">
+      <summary>从集合中获取具有指定索引的元素。</summary>
+      <param name="index">要从集合中检索的元素的索引。</param>
+      <returns>集合中具有指定索引的元素。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElementCollection.Item(System.String)">
+      <summary>从集合中获取具有指定键的元素。</summary>
+      <param name="name">要从集合中检索的元素的键。</param>
+      <returns>集合中与指定键匹配的元素。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.Remove(System.ServiceModel.Routing.Configuration.FilterElement)">
+      <summary>从集合中移除指定的 <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" /> 的第一个匹配项。</summary>
+      <param name="element">要从集合中移除的元素。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterTableCollection">
+      <summary>表示包含 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" /> 实例集合的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.Add(System.ServiceModel.Routing.Configuration.FilterTableEntryCollection)">
+      <summary>将新 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" /> 添加到集合中。</summary>
+      <param name="element">要添加的筛选器表项。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.Clear">
+      <summary>移除集合中的所有元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.CreateNewElement">
+      <summary>创建一个新的 <see cref="T:System.Configuration.ConfigurationElement" />。</summary>
+      <returns>一个新的配置元素。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>获取指定配置元素的元素键。</summary>
+      <param name="element">要为其返回键的配置元素。</param>
+      <returns>指定配置元素的键。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableCollection.Item(System.String)">
+      <summary>获取具有指定索引的 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" />。</summary>
+      <param name="name">要访问的元素的键。</param>
+      <returns>与指定键匹配的筛选器表项。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.Remove(System.ServiceModel.Routing.Configuration.FilterTableEntryCollection)">
+      <summary>从集合中移除指定的 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" /> 的第一个匹配项。</summary>
+      <param name="element">要从集合中移除的筛选器表项。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection">
+      <summary>表示包含 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" /> 实例集合的配置元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.Add(System.ServiceModel.Routing.Configuration.FilterTableEntryElement)">
+      <summary>将新 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" /> 添加到集合中。</summary>
+      <param name="element">要添加的筛选器表项。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.Clear">
+      <summary>移除集合中的所有元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.CreateNewElement">
+      <summary>创建一个新的 <see cref="T:System.Configuration.ConfigurationElement" />。</summary>
+      <returns>一个新的配置元素。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>获取指定配置元素的元素键。</summary>
+      <param name="element">要为其返回键的配置元素。</param>
+      <returns>指定配置元素的键。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.Name">
+      <summary>获取或设置此配置元素的名称。</summary>
+      <returns>此配置元素的唯一名称。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.Remove(System.ServiceModel.Routing.Configuration.FilterTableEntryElement)">
+      <summary>从集合中移除指定的 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" /> 的第一个匹配项。</summary>
+      <param name="element">要从集合中移除的筛选器表项。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement">
+      <summary>表示定义筛选器表项元素的配置元素。 此元素包含筛选器、终结点和备份终结点之间的关联，并用于确定用来路由消息的筛选器。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.BackupList">
+      <summary>获取或设置一个值，该值指定对备份终结点元素的引用。</summary>
+      <returns>对备份终结点元素的引用。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.EndpointName">
+      <summary>获取或设置一个值，该值指定对某个客户端终结点的引用，此客户端终结点将在关联的消息筛选器与消息匹配时发送消息。</summary>
+      <returns>客户端终结点的键。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.FilterName">
+      <summary>获取或设置一个值，该值指定对筛选器元素的引用。</summary>
+      <returns>筛选器元素的键。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.Priority">
+      <summary>获取或设置一个值，该值指定此项的优先级。</summary>
+      <returns>此项的优先级。 默认值为 0。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterType">
+      <summary>指定在路由消息时要使用的筛选器的类型。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.Action">
+      <summary>使用 <see cref="T:System.ServiceModel.Dispatcher.ActionMessageFilter" /> 按操作进行筛选。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.And">
+      <summary>使用 <see cref="T:System.ServiceModel.Dispatcher.StrictAndMessageFilter" /> 按两个消息筛选器（二者用 AND 连接）进行筛选。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.Custom">
+      <summary>使用用户定义的筛选器。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.EndpointAddress">
+      <summary>使用 <see cref="T:System.ServiceModel.Dispatcher.EndpointAddressMessageFilter" />（其 <see cref="P:System.ServiceModel.Dispatcher.EndpointAddressMessageFilter.IncludeHostNameInComparison" /> 设置为 <see langword="false" />）按地址进行筛选。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.EndpointName">
+      <summary>使用 <see cref="T:System.ServiceModel.Dispatcher.EndpointNameMessageFilter" /> 按服务终结点的名称进行筛选。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.MatchAll">
+      <summary>使用 <see cref="T:System.ServiceModel.Dispatcher.MatchAllMessageFilter" /> 以匹配所有消息。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.PrefixEndpointAddress">
+      <summary>使用 <see cref="T:System.ServiceModel.Dispatcher.PrefixEndpointAddressMessageFilter" />（其 <see cref="P:System.ServiceModel.Dispatcher.PrefixEndpointAddressMessageFilter.IncludeHostNameInComparison" /> 设置为 <see langword="false" />）按采用最长前缀匹配项的地址进行筛选。</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.XPath">
+      <summary>使用 <see cref="T:System.ServiceModel.Dispatcher.XPathMessageFilter" /> 按 XPath 表达式进行筛选。</summary>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.NamespaceElement">
+      <summary>表示定义命名空间元素的配置元素。 它包含命名空间到命名空间前缀的映射，稍后可在 XPath 筛选器中使用这些映射。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElement.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" /> 的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.NamespaceElement.Namespace">
+      <summary>获取或设置此配置元素的命名空间。</summary>
+      <returns>此元素的命名空间。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.NamespaceElement.Prefix">
+      <summary>获取或设置此配置元素的命名空间前缀。</summary>
+      <returns>此元素的命名空间前缀。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.NamespaceElementCollection">
+      <summary>表示 <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" /> 实例的集合。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElementCollection" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Add(System.ServiceModel.Routing.Configuration.NamespaceElement)">
+      <summary>将新 <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" /> 添加到集合中。</summary>
+      <param name="element">要添加的命名空间元素。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Clear">
+      <summary>移除集合中的所有元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.CreateNewElement">
+      <summary>创建一个新的 <see cref="T:System.Configuration.ConfigurationElement" />。</summary>
+      <returns>一个新的配置元素。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>返回指定命名空间元素的键。</summary>
+      <param name="element">要为其返回键的配置元素。</param>
+      <returns>指定配置元素的键。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Item(System.Int32)">
+      <summary>从集合中获取具有指定索引的元素。</summary>
+      <param name="index">要从集合中检索的元素的索引。</param>
+      <returns>集合中具有指定索引的命名空间元素。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Item(System.String)">
+      <summary>从集合中获取具有指定键的元素。</summary>
+      <param name="name">要从集合中检索的元素的键。</param>
+      <returns>集合中与指定键匹配的命名空间元素。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Remove(System.ServiceModel.Routing.Configuration.NamespaceElement)">
+      <summary>从集合中移除指定的 <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" /> 的第一个匹配项。</summary>
+      <param name="element">要移除的命名空间元素。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.RoutingExtensionElement">
+      <summary>表示一个配置元素，该元素包含可指定路由行为的子元素。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Routing.Configuration.RoutingExtensionElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.BehaviorType">
+      <summary>获取行为的类型。</summary>
+      <returns>行为类型。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.EnsureOrderedDispatch">
+      <summary>获取或设置一个值，该值指示消息是否以其发送顺序进行调度。</summary>
+      <returns>如果消息按照发送时的顺序调度，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.FilterTableName">
+      <summary>获取或设置此路由服务为路由邮件而使用的筛选器表的名称。</summary>
+      <returns>筛选器表的名称。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.RouteOnHeadersOnly">
+      <summary>获取或设置一个值，该值指示是只允许筛选器访问消息标头，还是允许筛选器访问消息标头和消息正文。</summary>
+      <returns>
+        <see langword="true" /> 如果筛选器只能访问标头的值;，否则为<see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.SoapProcessingEnabled">
+      <summary>获取或设置一个值，该值指示是否应进行 SOAP 处理。</summary>
+      <returns>
+        <see langword="true" /> 如果应封送消息;否则为<see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.RoutingSection">
+      <summary>表示用于配置路由的元素的集合。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.RoutingSection.#ctor">
+      <summary>初始化 <see cref="T:System.ServiceModel.Routing.Configuration.RoutingSection" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingSection.BackupLists">
+      <summary>获取包含 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" /> 对象集合的配置元素。</summary>
+      <returns>一个集合，用于定义包含 <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" /> 对象集合的配置节。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.RoutingSection.CreateFilterTable(System.String)">
+      <summary>使用指定名称创建一个筛选器表。</summary>
+      <param name="name">要创建的筛选器表的名称。</param>
+      <returns>具有指定名称的筛选器表。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingSection.Filters">
+      <summary>获取包含 <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" /> 对象集合的配置元素。</summary>
+      <returns>一个集合，用于定义包含 <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" /> 集合的配置节。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingSection.FilterTables">
+      <summary>获取包含 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" /> 对象集合的配置元素。</summary>
+      <returns>一个集合，用于定义包含 <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" /> 对象集合的配置节。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingSection.NamespaceTable">
+      <summary>获取包含 <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" /> 对象集合的配置元素。</summary>
+      <returns>一个集合，用于定义包含 <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" /> 对象集合的配置节。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement">
+      <summary>表示一个配置元素，该元素定义 SOAP 处理终结点行为。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement" /> 类的新实例。</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement.BehaviorType">
+      <summary>获取行为的类型。</summary>
+      <returns>行为的类型。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement.CreateBehavior">
+      <summary>基于当前配置设置来创建新的 SOAP 处理行为元素。</summary>
+      <returns>行为。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement.ProcessMessages">
+      <summary>获取或设置一个值，该值指示是否应封送 SOAP 消息版本之间的消息。</summary>
+      <returns>
+        <see langword="true" /> 如果应封送消息;否则为<see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.IDuplexSessionRouter">
+      <summary>定义从双工会话通道处理消息时所需的接口。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.IDuplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>启动消息的异步处理。</summary>
+      <param name="message">要处理的消息。</param>
+      <param name="callback">在消息处理完成时将调用的异步回调委托。</param>
+      <param name="state">传递到回调过程的用户定义的状态对象。</param>
+      <returns>可用于轮询和/或等待结果的异步结果；当调用 <see cref="M:System.ServiceModel.Routing.IDuplexSessionRouter.EndProcessMessage(System.IAsyncResult)" /> 时，也需要该值。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.IDuplexSessionRouter.EndProcessMessage(System.IAsyncResult)">
+      <summary>完成消息处理的异步执行。</summary>
+      <param name="result">通过调用 <see cref="M:System.ServiceModel.Routing.IDuplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" /> 返回的异步结果。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.IRequestReplyRouter">
+      <summary>定义从请求-答复通道处理消息时所需的接口。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.IRequestReplyRouter.BeginProcessRequest(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>启动消息的异步处理。</summary>
+      <param name="message">要处理的消息。</param>
+      <param name="callback">在消息处理完成时将调用的异步回调委托。</param>
+      <param name="state">传递到回调过程的用户定义的状态对象。</param>
+      <returns>可用于轮询和/或等待结果的异步结果；当调用 <see cref="M:System.ServiceModel.Routing.IRequestReplyRouter.EndProcessRequest(System.IAsyncResult)" /> 时，也需要该值。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.IRequestReplyRouter.EndProcessRequest(System.IAsyncResult)">
+      <summary>完成消息处理的异步执行。</summary>
+      <param name="result">通过调用 <see cref="M:System.ServiceModel.Routing.IRequestReplyRouter.BeginProcessRequest(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" /> 返回的异步结果。</param>
+      <returns>答复。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.ISimplexDatagramRouter">
+      <summary>定义从单工数据报处理消息时所需的接口。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.ISimplexDatagramRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>启动消息的异步处理。</summary>
+      <param name="message">要处理的消息。</param>
+      <param name="callback">在消息处理完成时将调用的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">传递到回调过程的用户定义的状态对象。</param>
+      <returns>可用于轮询和/或等待结果的 <see cref="T:System.IAsyncResult" />；当调用 <see cref="M:System.ServiceModel.Routing.ISimplexDatagramRouter.EndProcessMessage(System.IAsyncResult)" /> 时，也需要该值。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.ISimplexDatagramRouter.EndProcessMessage(System.IAsyncResult)">
+      <summary>完成消息处理的异步执行。</summary>
+      <param name="result">通过调用 <see cref="M:System.ServiceModel.Routing.ISimplexDatagramRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" /> 返回的异步结果。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.ISimplexSessionRouter">
+      <summary>定义从单工会话通道处理消息时所需的接口。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.ISimplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>启动消息的异步处理。</summary>
+      <param name="message">要处理的消息。</param>
+      <param name="callback">在消息处理完成时将调用的异步回调委托。</param>
+      <param name="state">传递到回调过程的用户定义的状态对象。</param>
+      <returns>可用于轮询和/或等待结果的异步结果；当调用 <see cref="M:System.ServiceModel.Routing.ISimplexSessionRouter.EndProcessMessage(System.IAsyncResult)" /> 时，也需要该值。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.ISimplexSessionRouter.EndProcessMessage(System.IAsyncResult)">
+      <summary>完成消息处理的异步执行。</summary>
+      <param name="result">通过调用 <see cref="M:System.ServiceModel.Routing.ISimplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" /> 返回的异步结果。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.RoutingBehavior">
+      <summary>定义路由行为，此行为用于配置目标终结点、筛选器和路由过程中将要使用的筛选选项。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.#ctor(System.ServiceModel.Routing.RoutingConfiguration)">
+      <summary>使用指定的路由配置创建 <see cref="T:System.ServiceModel.Routing.RoutingBehavior" /> 类的新实例。</summary>
+      <param name="routingConfiguration">路由配置。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.GetContractForDescription(System.ServiceModel.Description.ContractDescription)">
+      <summary>获取指定 <see cref="T:System.ServiceModel.Description.ContractDescription" /> 的协定类型。</summary>
+      <param name="description">要获取其类型的协定说明。</param>
+      <returns>指定 <see cref="T:System.ServiceModel.Description.ContractDescription" /> 的类型。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.System#ServiceModel#Description#IServiceBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>实现 <see cref="M:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)" /> 方法以支持该行为。</summary>
+      <param name="serviceDescription">服务的服务说明。</param>
+      <param name="serviceHostBase">服务的宿主。</param>
+      <param name="endpoints">服务终结点。</param>
+      <param name="bindingParameters">绑定元素可访问的自定义对象。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.System#ServiceModel#Description#IServiceBehavior#ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>实现 <see cref="M:System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)" /> 方法以支持该行为。</summary>
+      <param name="serviceDescription">服务的服务说明。</param>
+      <param name="serviceHostBase">服务的宿主。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.System#ServiceModel#Description#IServiceBehavior#Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>实现 <see cref="M:System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)" /> 方法以支持该行为。</summary>
+      <param name="serviceDescription">服务的服务说明。</param>
+      <param name="serviceHostBase">服务的宿主。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.RoutingConfiguration">
+      <summary>定义 <see cref="T:System.ServiceModel.Routing.RoutingExtension" /> 使用的配置信息。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingConfiguration.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.RoutingConfiguration" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingConfiguration.#ctor(System.ServiceModel.Dispatcher.MessageFilterTable{System.Collections.Generic.IEnumerable{System.ServiceModel.Description.ServiceEndpoint}},System.Boolean)">
+      <summary>使用指定的 <see cref="T:System.ServiceModel.Routing.RoutingConfiguration" /> 和 routeOnHeadersOnly 参数创建 <see cref="T:System.ServiceModel.Dispatcher.MessageFilterTable`1" /> 类的新实例。</summary>
+      <param name="filterTable">要用于此配置的消息筛选器表。</param>
+      <param name="routeOnHeadersOnly">如果 <see cref="T:System.ServiceModel.Dispatcher.MessageFilterTable`1" /> 只能检查消息标头，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.RoutingConfiguration.EnsureOrderedDispatch">
+      <summary>获取或设置一个值，该值指示消息是否以其发送顺序进行调度。</summary>
+      <returns>如果消息按照发送时的顺序调度，则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.RoutingConfiguration.FilterTable">
+      <summary>获取或设置此配置使用的 <see cref="T:System.ServiceModel.Dispatcher.MessageFilterTable`1" />。</summary>
+      <returns>消息筛选器表。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.RoutingConfiguration.RouteOnHeadersOnly">
+      <summary>获取或设置一个值，该值指示筛选器是否能检查消息正文。</summary>
+      <returns>如果筛选器只能检查消息标头，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.RoutingConfiguration.SoapProcessingEnabled">
+      <summary>获取或设置一个值，该值指示是否应处理 SOAP <see cref="T:System.ServiceModel.Channels.MessageVersion" /> 之间的消息。</summary>
+      <returns>如果应处理消息，则为 <see langword="true" />；否则为 <see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.RoutingExtension">
+      <summary>提供对路由服务的运行时访问以允许对路由配置进行动态修改。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingExtension.ApplyConfiguration(System.ServiceModel.Routing.RoutingConfiguration)">
+      <summary>将新的 <see cref="T:System.ServiceModel.Routing.RoutingConfiguration" /> 应用于路由服务的正在运行的实例。</summary>
+      <param name="routingConfiguration">要应用的路由配置。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingExtension.System#ServiceModel#IExtension{System#ServiceModel#ServiceHostBase}#Attach(System.ServiceModel.ServiceHostBase)">
+      <summary>当运行时将扩展附加到 <see cref="T:System.ServiceModel.ServiceHostBase" /> 类的一个实例时调用。  仅限内部使用。</summary>
+      <param name="owner">服务主机基。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingExtension.System#ServiceModel#IExtension{System#ServiceModel#ServiceHostBase}#Detach(System.ServiceModel.ServiceHostBase)">
+      <summary>当运行时从 <see cref="T:System.ServiceModel.ServiceHostBase" /> 类的一个实例中分离扩展时调用。  仅限内部使用。</summary>
+      <param name="owner">服务主机基。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.RoutingService">
+      <summary>定义路由服务，此服务负责根据筛选条件路由终结点之间的消息。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#IDisposable#Dispose">
+      <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IDuplexSessionRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>启动消息的异步处理。</summary>
+      <param name="message">要处理的 <see cref="T:System.ServiceModel.Channels.Message" />。</param>
+      <param name="callback">在消息处理完成时将调用的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">传递到回调过程的用户定义的状态对象。</param>
+      <returns>可用于轮询和/或等待结果的 <see cref="T:System.IAsyncResult" />；当调用 <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IDuplexSessionRouter#EndProcessMessage(System.IAsyncResult)" /> 时，也需要该值。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IDuplexSessionRouter#EndProcessMessage(System.IAsyncResult)">
+      <summary>完成消息处理的异步执行。</summary>
+      <param name="result">通过调用 <see cref="T:System.IAsyncResult" /> 返回的 <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IDuplexSessionRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IRequestReplyRouter#BeginProcessRequest(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>启动消息的异步处理。</summary>
+      <param name="message">要处理的 <see cref="T:System.ServiceModel.Channels.Message" />。</param>
+      <param name="callback">在消息处理完成时将调用的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">传递到回调过程的用户定义的状态对象。</param>
+      <returns>可用于轮询和/或等待结果的 <see cref="T:System.IAsyncResult" />；当调用 <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IRequestReplyRouter#EndProcessRequest(System.IAsyncResult)" /> 时，也需要该值。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IRequestReplyRouter#EndProcessRequest(System.IAsyncResult)">
+      <summary>完成消息处理的异步执行。</summary>
+      <param name="result">通过调用 <see cref="T:System.IAsyncResult" /> 返回的 <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IRequestReplyRouter#BeginProcessRequest(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />。</param>
+      <returns>包含答复的 <see cref="T:System.ServiceModel.Channels.Message" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexDatagramRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>启动消息的异步处理。</summary>
+      <param name="message">要处理的 <see cref="T:System.ServiceModel.Channels.Message" />。</param>
+      <param name="callback">在消息处理完成时将调用的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">传递到回调过程的用户定义的状态对象。</param>
+      <returns>可用于轮询和/或等待结果的 <see cref="T:System.IAsyncResult" />；当调用 <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexDatagramRouter#EndProcessMessage(System.IAsyncResult)" /> 时，也需要该值。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexDatagramRouter#EndProcessMessage(System.IAsyncResult)">
+      <summary>完成消息处理的异步执行。</summary>
+      <param name="result">通过调用 <see cref="T:System.IAsyncResult" /> 返回的 <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexDatagramRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexSessionRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>启动消息的异步处理。</summary>
+      <param name="message">要处理的 <see cref="T:System.ServiceModel.Channels.Message" />。</param>
+      <param name="callback">在消息处理完成时将调用的 <see cref="T:System.AsyncCallback" /> 委托。</param>
+      <param name="state">传递到回调过程的用户定义的状态对象。</param>
+      <returns>可用于轮询和/或等待结果的 <see cref="T:System.IAsyncResult" />；当调用 <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexSessionRouter#EndProcessMessage(System.IAsyncResult)" /> 时，也需要该值。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexSessionRouter#EndProcessMessage(System.IAsyncResult)">
+      <summary>完成消息处理的异步执行。</summary>
+      <param name="result">通过调用 <see cref="T:System.IAsyncResult" /> 返回的 <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexSessionRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />。</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.SoapProcessingBehavior">
+      <summary>定义用于封送不同绑定类型和消息版本之间消息的客户端终结点行为。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.#ctor">
+      <summary>创建 <see cref="T:System.ServiceModel.Routing.SoapProcessingBehavior" /> 类的新实例。</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>将新的绑定元素添加到终结点。</summary>
+      <param name="endpoint">要将绑定元素应用到的服务终结点。</param>
+      <param name="bindingParameters">要应用到终结点的绑定参数集合。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+      <summary>将指定的终结点行为应用于客户端。</summary>
+      <param name="endpoint">要应用到客户端的服务终结点。</param>
+      <param name="clientRuntime">客户端上的运行时。</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>将指定的终结点行为应用于终结点调度程序。</summary>
+      <param name="endpoint">要应用到客户端的服务终结点。</param>
+      <param name="endpointDispatcher">终结点调度程序。</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.SoapProcessingBehavior.ProcessMessages">
+      <summary>获取或设置一个值，该值指示是否应处理消息。</summary>
+      <returns>
+        <see langword="true" /> 如果应封送消息;否则为<see langword="false" />。 默认值为 <see langword="true" />。</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>验证服务终结点。</summary>
+      <param name="endpoint">要验证的服务终结点。</param>
+    </member>
+  </members>
+</doc>
