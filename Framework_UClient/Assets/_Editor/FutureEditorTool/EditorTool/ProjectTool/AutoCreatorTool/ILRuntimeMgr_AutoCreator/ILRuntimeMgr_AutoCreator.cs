@@ -196,7 +196,7 @@ namespace ProjectApp
 
         private static StringBuilder svBuilder = new StringBuilder();
 
-        public static async void AutoRegister_HotFix_ILRuntimeMgr(bool isDelLocalCS, bool isCread_BatFile, CompileCodePlan compileCodePlan, Action cb)
+        public static async void AutoRegister_HotFix_ILRuntimeMgr(bool isDelLocalCS, bool isCread_BatFile, CompileCodePlan compileCodePlan,string MsBuildPath, Action cb)
         {
             if (EditorUtility.DisplayDialog("启动ILRuntime热更流程", "是否启动ILRuntime热更流程", "确认", "取消"))
             {
@@ -207,9 +207,17 @@ namespace ProjectApp
 
                 ClientToHotFixClass(isDelLocalCS);//将代码提取至缓存目录
 
+                //提取完代码后重新编译一下ProjectApp.csproj
+                if (isDelLocalCS)
+                {
+                    //好像不用重新编译一下ProjectApp.csproj也是正常的，注释掉这一步
+                    //CompileProjectApp(MsBuildPath, isCread_BatFile);
+
+                }
+
                 RegisterCode();//注册代码
 
-                await CompileCodeToDll(isCread_BatFile,compileCodePlan);//编译代码 to Dll           
+                await CompileCodeToDll(isCread_BatFile,compileCodePlan, MsBuildPath);//编译代码 to Dll           
 
 
                 Debug.Log("------------------------------------------ILRuntime热更流程----执行完毕---------------------------------------------------------");
@@ -224,6 +232,38 @@ namespace ProjectApp
 
 
             }
+        }
+
+        private static void CompileProjectApp(string MsBuildPath,bool isCread_BatFile)
+        {
+
+            if (!File.Exists(MsBuildPath))
+            {
+                UnityEngine.Debug.LogWarning("[MsBuild]MsBuild.exe 未设置或不存在，跳过编译ProjectApp.csproj");
+
+                return;
+            }
+            string cmdFile = Path.GetFullPath(Application.dataPath + @"\..\..\_Tool\HotFixTool\重新编译项目ProjectApp.bat");
+
+
+            if (!File.Exists(cmdFile) || isCread_BatFile)
+            {
+                string allstr =
+@"@echo off
+cd %~dp0
+@call %1 ../../Framework_UClient/ProjectApp.csproj
+pause";
+                FutureCore.FileUtil.WriteAllText(cmdFile, allstr, true);
+            }
+
+            System.Diagnostics.Process process = System.Diagnostics.Process.Start(cmdFile, MsBuildPath);
+            process.WaitForExit();
+            process.Close();
+            process.Dispose();
+
+            UnityEngine.Debug.Log("[MsBuild]重新编译ProjectApp.csproj完成".AddColor(ColorType.Green));
+
+
         }
 
         /// <summary>
@@ -310,13 +350,13 @@ namespace ProjectApp
         /// <summary>
         /// 编译Dll
         /// </summary>
-        public static async Task CompileCodeToDll(bool isCread_BatFile, CompileCodePlan compileCodePlan)
+        public static async Task CompileCodeToDll(bool isCread_BatFile, CompileCodePlan compileCodePlan,string MsBuildPath)
         {
             Debug.Log("--------------------------- 编译 HotFix Dll ---------------------------");
 
             LogUtil.Log("------ 开始编译Dll ------");
 
-            await Task.Run(() => CompileAssembly(isCread_BatFile, compileCodePlan));
+            await Task.Run(() => CompileAssembly(isCread_BatFile, compileCodePlan, MsBuildPath));
 
 
             LogUtil.Log("------ 复制 HotFix Dll 至 StreamingAssets ------");
@@ -336,7 +376,7 @@ namespace ProjectApp
 
 
 
-        private static bool CompileAssembly(bool isCread_BatFile, CompileCodePlan compileCodePlan)
+        private static bool CompileAssembly(bool isCread_BatFile, CompileCodePlan compileCodePlan,string MsBuildPath)
         {
             // 动态编译程序集 因为不知道怎么在unity线程 动态编译 引用框架 netstandard 导致编译失败 Consider adding a reference to assembly `netstandard,
 
@@ -354,35 +394,29 @@ namespace ProjectApp
             if (compileCodePlan == CompileCodePlan.MsBuild)//使用msbuild 编译Dll
             {
                 string cmdFile = Path.GetFullPath(Application.dataPath + @"\..\..\_Tool\HotFixTool\编译HotFix_Dll_MsBuild.bat");
+               
+
+                if (!File.Exists(MsBuildPath))
+                {
+                    UnityEngine.Debug.LogError("[MsBuild]MsBuild.exe 不存在，路径:" + MsBuildPath);
+                    UnityEngine.Debug.LogError(@"[MsBuild]请重新设置MsBuild.exe,MsBuild位于vs安装目录的VS2022\Msbuild\Current\Bin\msbuild.exe");
+
+                    return false;
+                }
 
                 if (!File.Exists(cmdFile)|| isCread_BatFile)
                 {
                     string allstr =
 @"@echo off
 cd %~dp0
-@call {0} ../../Framework_Project/HotFix/ProjectApp_HotFix.csproj
+@call %1 ../../Framework_Project/HotFix/ProjectApp_HotFix.csproj
 pause";
 
-                    string path = @"E:\SetUp\VS2022\Msbuild\Current\Bin\msbuild.exe";
-                    if (!File.Exists(path))
-                    {
-                        UnityEngine.Debug.LogError("[MsBuild]MsBuild.exe 不存在，路径:"+ path);
-                        UnityEngine.Debug.LogError(@"[MsBuild]请重新设置MsBuild.exe,MsBuild位于vs安装目录的VS2022\Msbuild\Current\Bin\msbuild.exe");
 
-                        return false;
-                    }
-                    //EditorPrefs.HasKey
-
-
-                    string paths = EditorPrefs.GetString("ExternalScriptEditor");
-                    LogUtil.LogError(paths);
-
-
-                    allstr = allstr.Replace("{0}",path);
                     FutureCore.FileUtil.WriteAllText(cmdFile, allstr, true);
                 }
 
-                System.Diagnostics.Process process = System.Diagnostics.Process.Start(cmdFile);
+                System.Diagnostics.Process process = System.Diagnostics.Process.Start(cmdFile, MsBuildPath);
                 process.WaitForExit();
                 process.Close();
                 process.Dispose();

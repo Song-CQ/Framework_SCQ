@@ -49,10 +49,7 @@ namespace ProjectApp.HotFix
         {
             WordRood = new GameObject("WordRood").transform;
             WordRood.transform.position = new Vector3(0, 0, 0);
-
-
-
-
+            
 
         }
 

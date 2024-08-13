@@ -283,6 +283,7 @@ namespace FutureEditor
                 OtherTooDic.Add("[test]--"+i, OnTest);
             }
 
+            MsBuildPath = EditorPrefs.GetString("MsBuildPath",string.Empty);
         }
 
         private void OnOtherToolView_Excel()
@@ -337,12 +338,13 @@ namespace FutureEditor
         private bool showFoldout2_ILRuntime = false;
         private bool showFoldout3_ILRuntime = true;
 
-        private bool isDelClient_ILRuntime = true;
+        private bool isDelClient_ILRuntime = false;
 
         private bool isCread_BatFile = false;
 
         private ILRuntimeMgr_AutoCreator.CompileCodePlan compileCodePlan = ILRuntimeMgr_AutoCreator.CompileCodePlan.MsBuild;
 
+        public string MsBuildPath = string.Empty;
         private void OnOtherToolView_ILRuntime()
         {
             string ModuleMgrPath = UnityEditorPathConst.AutoRegisterPath + "/ModuleMgr";
@@ -363,9 +365,11 @@ namespace FutureEditor
 
 
                 EditorGUILayout.LabelField("[提取的热更代码路径]", Path.GetFullPath(ILRuntimeMgr_AutoCreator.HotFix_Class_Path));
-
-                EditorGUILayout.LabelField("[ModuleMgr 路径]", "Assets" + Path.GetFullPath(ILRuntimeMgr_AutoCreator.HotFix_ModuleMgrPath).Replace(Path.GetFullPath(Application.dataPath), ""));
-                EditorGUILayout.LabelField("[Logic     路径]", "Assets" + Path.GetFullPath(ILRuntimeMgr_AutoCreator.HotFix_LogicPath).Replace(Path.GetFullPath(Application.dataPath), ""));
+                EditorGUILayout.LabelField("[存放HotFix.Dll  路径]", @"Assets\StreamingAssets\HotFix");
+                GUILayout.Space(5);
+                GUILayout.Label("    ---热更文件夹");
+                EditorGUILayout.LabelField("[ModuleMgr  路径]", "Assets" + Path.GetFullPath(ILRuntimeMgr_AutoCreator.HotFix_ModuleMgrPath).Replace(Path.GetFullPath(Application.dataPath), ""));
+                EditorGUILayout.LabelField("[Logic  路径]", "Assets" + Path.GetFullPath(ILRuntimeMgr_AutoCreator.HotFix_LogicPath).Replace(Path.GetFullPath(Application.dataPath), ""));
 
 
 
@@ -384,17 +388,47 @@ namespace FutureEditor
                 EditorGUI.indentLevel++;
                 isDelClient_ILRuntime = GUILayout.Toggle(isDelClient_ILRuntime, "被提取的热更代码 是否删除");
                 GUILayout.Space(2);
-
                 GUILayout.BeginHorizontal();
                 compileCodePlan = (ILRuntimeMgr_AutoCreator.CompileCodePlan)EditorGUILayout.EnumPopup("编译Dll的方案:",compileCodePlan, GUILayout.Width(300));
-
-                if (compileCodePlan == ILRuntimeMgr_AutoCreator.CompileCodePlan.MsBuild|| compileCodePlan == ILRuntimeMgr_AutoCreator.CompileCodePlan.CompileAssembly_HotfixTool)
+                if (compileCodePlan != ILRuntimeMgr_AutoCreator.CompileCodePlan.CompileAssembly_UnityEditor)
                 {
                     GUILayout.Space(5);
                     isCread_BatFile = GUILayout.Toggle(isCread_BatFile, "是否重新创建.bat文件");
                 }
-               
                 GUILayout.EndHorizontal();
+                GUILayout.Space(5);
+                
+                if (compileCodePlan ==  ILRuntimeMgr_AutoCreator.CompileCodePlan.MsBuild)
+                {
+
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.PrefixLabel("MsBuild路径:");
+                    string text = MsBuildPath==string.Empty? @"" : MsBuildPath;
+                    EditorGUILayout.SelectableLabel(text, EditorStyles.textField,GUILayout.Height(20), GUILayout.Width(465));
+
+                    if (GUILayout.Button("选择", GUILayout.Width(50f)))
+                    {
+                        string path = EditorUtility.OpenFilePanel("选择MsBuild.exe", Application.dataPath + @"\..", "exe").Replace(@"\", "/").Replace(@"\\", "/");
+                        if (!path.IsNullOrEmpty())
+                        {
+                            MsBuildPath = path;
+                            EditorPrefs.SetString("MsBuildPath", MsBuildPath);
+                        }
+
+                    }
+                    GUILayout.EndHorizontal();
+                    if (MsBuildPath==string.Empty)
+                    {
+                        GUI.color = Color.green;
+                        GUILayout.Label(@"      Tips: MsBuild.exe 一般位于vs安装目录的VS2022\Msbuild\Current\Bin\MSBuild.exe");
+                        GUI.color = Color.white;
+                    }
+                    
+                }
+                
+               
+              
+               
                 EditorGUI.indentLevel--;
          
             }
@@ -403,13 +437,13 @@ namespace FutureEditor
 
             if (GUILayout.Button("启动ILRuntime热更流程", GUILayout.Height(40), GUILayout.Width(180)))
             {
-                ILRuntimeMgr_AutoCreator.AutoRegister_HotFix_ILRuntimeMgr(isDelClient_ILRuntime, isCread_BatFile, compileCodePlan,Close);
+                ILRuntimeMgr_AutoCreator.AutoRegister_HotFix_ILRuntimeMgr(isDelClient_ILRuntime, isCread_BatFile, compileCodePlan, MsBuildPath, Close);
 
             }
 
             GUILayout.Space(10);
 
-            showFoldout3_ILRuntime = EditorGUILayout.Foldout(showFoldout3_ILRuntime, "[热更流程] ------------------------------------------------------------------------------------------------------");
+            showFoldout3_ILRuntime = EditorGUILayout.Foldout(showFoldout3_ILRuntime, "[热更流程] ---------------------------------------------------------------------------------------------------");
 
             if (showFoldout3_ILRuntime)
             {
@@ -425,13 +459,8 @@ namespace FutureEditor
                     AssetDatabase.Refresh();
                     Close();
                 }
-                if (GUILayout.Button("[Cache Code To Client] - 载入缓存代码", GUILayout.Height(40), GUILayout.Width(230)))
-                {
-                    ILRuntimeMgr_AutoCreator.HotFixClassToClient();
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                    Close();
-                }
+              
+               
                 GUILayout.EndHorizontal();
 
 
@@ -447,18 +476,35 @@ namespace FutureEditor
 
                 if (GUILayout.Button("[Compile Code To Dll] - 编译Dll", GUILayout.Height(40), GUILayout.Width(200)))
                 {
-                    ILRuntimeMgr_AutoCreator.CompileCodeToDll(isCread_BatFile, compileCodePlan);
+                    ILRuntimeMgr_AutoCreator.CompileCodeToDll(isCread_BatFile, compileCodePlan, MsBuildPath);
                 }
                 GUILayout.EndHorizontal();
 
                 EditorGUI.indentLevel--;
+               
 
-                GUILayout.Label("-----------------------------------------------------------------------------------------------------------------");
             }
+            GUILayout.Space(10);
+            GUILayout.Label("[流程工具]---------------------------------------------------------------------------------------------------");
         
 
-            GUILayout.Space(10);
-       
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("载入热更文件夹缓存代码", GUILayout.Height(40), GUILayout.Width(180)))
+            {
+                ILRuntimeMgr_AutoCreator.HotFixClassToClient();
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+                Close();
+            }
+        
+            if (GUILayout.Button("删除热更文件夹缓存代码", GUILayout.Height(40), GUILayout.Width(180)))
+            {
+                ILRuntimeMgr_AutoCreator.Delete_HotFixClass_Cache();
+            }
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10); 
+            GUILayout.Label("[其他工具]---------------------------------------------------------------------------------------------------");
             GUILayout.BeginHorizontal();
             
             if (GUILayout.Button("分析热更DLL生成CLR绑定", GUILayout.Height(40), GUILayout.Width(180)))
@@ -479,10 +525,6 @@ namespace FutureEditor
             
             GUILayout.EndHorizontal();
 
-            if (GUILayout.Button("删除热更文件夹缓存", GUILayout.Height(40), GUILayout.Width(180)))
-            {
-                ILRuntimeMgr_AutoCreator.Delete_HotFixClass_Cache();
-            }
 
         }
 

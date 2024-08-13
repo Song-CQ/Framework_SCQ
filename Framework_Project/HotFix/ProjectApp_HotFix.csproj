@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+	<LangVersion>8.0</LangVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -79,9 +80,15 @@
     <Compile Include= "HotFixClass\Logic\ModuleUI\Tips\TipsUI.cs" />
     <Compile Include= "HotFixClass\Logic\ModuleUI\Tips\TipsUICtrl.cs" />
     <Compile Include= "Main\MainLaunch.cs" />
-    <Compile Include= "Main\FutureCore\Base\BaseMgr.cs" />
-    <Compile Include= "Main\FutureCore\Base\BaseMonoMgr.cs" />
+    <Compile Include= "Main\FutureCore\Common\Singleton\Singleton.cs" />
+    <Compile Include= "Main\FutureCore\Common\Singleton\SingletonMono.cs" />
+    <Compile Include= "Main\FutureCore\Common\System\BaseSystem.cs" />
+    <Compile Include= "Main\FutureCore\Common\System\ISystem.cs" />
+    <Compile Include= "Main\FutureCore\Manager\Base\BaseMgr.cs" />
+    <Compile Include= "Main\FutureCore\Manager\Base\BaseMonoMgr.cs" />
 <!-- Hotfix Class End -->
+
+
 
   </ItemGroup>
   <ItemGroup />

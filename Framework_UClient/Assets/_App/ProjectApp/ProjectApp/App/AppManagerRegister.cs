@@ -62,7 +62,7 @@ namespace ProjectApp
         {
             TimerMgr.UpData_Event_ToFrame += MainThreadLog.LoopLog;
 
-
+            
         }
 
         private static void RegisterPermanentAssets()
