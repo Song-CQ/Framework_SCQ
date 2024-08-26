@@ -15,102 +15,145 @@ namespace ProjectApp
     {
         public ISceneEvent SceneEvent { get; private set; }
 
-        public List<IRole> Roles => SceneEvent.Roles;
+        public Dictionary<RoleKey, IRole> Roles { get; private set; }
 
         public int Index { get; private set; }
 
-        public ComboEventData Combo { get; private set; }
 
-        public Action<ComboEventData> ChangeCombo_Event { get; set; }
 
-       
+
         public virtual void Init()
         {
             Debug.Log("创建画布");
-
+            Roles = new Dictionary<RoleKey, IRole>();
 
         }
 
         public virtual void Show(int _Index)
         {
             Index = _Index;
-            Combo = new ComboEventData(Index);
 
-            Combo.SceneEvent_Key = string.Empty;
-            Combo.RoleEvent_Keys.Clear();
         }
 
-        public virtual bool AddRole(IRole role, int index = -1)
+        public virtual void SetEvent(ISceneEvent newScene)
         {
+            SceneEvent?.ExitPicture(this);
+
+            SceneEvent = newScene;
+            if (SceneEvent != null)
+            {
+                SceneEvent.EnterPicture(this);
+            }
+
+
+        }
+
+        public virtual void RemoveEvent()
+        {
+            SceneEvent?.ExitPicture(this);
+
+
+            SceneEvent = null;
+
+        }
+
+        public virtual bool CheckCanSetRole(RoleKey key,out int potIndex_old, int potIndex = -1)
+        {
+            potIndex_old = 0;
             if (SceneEvent == null)
             {
                 return false;
             }
-            if (index < 0 || index >= Roles.Count)
+            if (potIndex < 0 || potIndex >= SceneEvent.AllRolePot.Count)
             {
                 return false;
             }
-            RemoveRole(index);
 
-            Roles[index].FillModule.EnterPicture(this);
-            Roles[index] = role;
+            potIndex_old = SceneEvent.AllRolePot.FindIndex((e) => key == e);
+
+            if (potIndex_old == potIndex)
+            {
+                return false;
+            }
             return true;
         }
 
-        public bool CheckComplete()
+        public virtual void SetRole(IRole role, int potIndex = -1)
         {
-            if (SceneEvent==null)
-            {
-                return false;
-            }
-            return SceneEvent.IsComplete;
+            //去除要设置位置本身的角色 
+            RemoveRole(potIndex);
+
+
+            SceneEvent.SetRole(potIndex, role.Key);
+
+            Roles[role.Key] = role;
+
+            Roles[role.Key].EnterSceneEvent(this);
+
+
         }
 
-        public virtual bool RemoveRole(int index)
+        public virtual void RemoveRole(int index)
         {
             if (SceneEvent == null)
             {
-                return false;
+                return;
             }
-            if (index < 0 || index >= Roles.Count || Roles[index] == null)
+            if (index < 0 || index >= SceneEvent.AllRolePot.Count)
             {
-                return false;
+                return;
+            }
+         
+             RoleKey roleKey = SceneEvent.AllRolePot[index];    
+
+             RemoveRole(roleKey);
+        }
+
+        public virtual void RemoveRole(RoleKey roleKey)
+        {
+            if (SceneEvent == null)
+            {
+                return;
             }
 
-            Roles[index].FillModule.ExitPicture(this);
-            Roles[index] = null;
+            if (roleKey == RoleKey.Node)
+            {
+                return;
+            }
 
-            return true;
+            SceneEvent.RemoveRole(roleKey);
+
+            Roles[roleKey].ExitSceneEvent(this);
+            Roles[roleKey] = null;
+
+        }
+
+        public void Refactor(Dictionary<RoleKey, RoleState> allRoleState)
+        {
+            if (SceneEvent == null)
+            {
+                return;
+            }
+
+            SceneEvent.Run(allRoleState, Roles);
+
+            RefreshView();
+        }
+
+        private void RefreshView()
+        {
+            //刷新角色状态
+
+            //刷新场景显示
+            SceneEvent.RefreshView(Roles);
         }
 
         public virtual void Rest()
         {
-            SceneEvent?.FillModule.ExitPicture(this);
+            SceneEvent?.ExitPicture(this);
             SceneEvent = null;         
         }
 
-        public virtual void SetScene(ISceneEvent newScene)
-        {
-            SceneEvent?.FillModule.ExitPicture(this);
-
-            SceneEvent = newScene;
-            if (newScene != null)
-            {
-                SceneEvent.FillModule.EnterPicture(this);
-            }
-            ChaneComboEvent();
-        }
-
-        /// <summary>
-        /// 当前的combo改变
-        /// </summary>
-        /// <param name="oldCombo"></param>
-        /// <param name="newCombo"></param>
-        protected virtual void ChaneComboEvent()
-        {
-            GameLogicTool.FillComboData(Combo,this);
-
-            ChangeCombo_Event?.Invoke(Combo);
-        }
+        
     }
 }
