@@ -17,7 +17,7 @@ namespace ProjectApp
         private GameSys _gameSys;
         private GameWordEntity gameWord;
 
-        private GameStructure gameStructure;
+        public GameStructure GameStructure { private set; get; }
 
         private class PlayerInputDispatcher : BaseDispatcher<PlayerInputDispatcher, PlayerInput, int[]> { }
         private PlayerInputDispatcher playerInputDispatcher;
@@ -166,6 +166,8 @@ namespace ProjectApp
 
 
         private List<RoleKey> tempList = new List<RoleKey>();
+
+        
 
         public void FillData(LevelData levelData)
         {

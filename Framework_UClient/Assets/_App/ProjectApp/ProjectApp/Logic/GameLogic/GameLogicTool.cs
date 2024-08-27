@@ -20,8 +20,13 @@ namespace ProjectApp
 
     public static class GameLogicTool
     {
-
-       
-        
+        public static GameStructure GetGameStructure()
+        {
+           return GameWorldMgr.Instance.GameStructure;
+        }
+        public static int GetGameStructure_RoleCount()
+        {
+            return GameWorldMgr.Instance.GameStructure.LevelData.roles.Count;
+        }
     }
 } 

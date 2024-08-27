@@ -46,6 +46,7 @@ namespace ProjectApp
         public void RemoveRole(RoleKey key);
         public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles);
         public void RefreshView(Dictionary<RoleKey, IRole> roles);
+        public void ShowView(int showType);
     }
 
     
@@ -53,6 +54,7 @@ namespace ProjectApp
     {
         public RoleKey Key { get; }
         public RoleState State {get; }
+        public bool GetLabelKey(LabelKey labelKey);
 
         public void EnterSceneEvent(BasePicture basePicture);
         public void ExitSceneEvent(BasePicture basePicture);

@@ -138,10 +138,17 @@ namespace ProjectApp
         public void RefreshView(Dictionary<RoleKey, IRole> roles)
         {
 
-            code.RefreshView(roles,AllRolePot);
-
+             code.RefreshView(this,roles);
+         
 
         }
+
+        public void ShowView(int showType)
+        {
+           
+        }
+
+       
     }
 
 

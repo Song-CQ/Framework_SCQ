@@ -72,7 +72,7 @@ namespace ProjectApp
         /// <summary>
         /// 死亡
         /// </summary>
-        Death,
+        Dead,
 
     }
 

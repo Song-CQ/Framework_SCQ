@@ -37,6 +37,11 @@ namespace ProjectApp
         {
            
         }
+
+        public bool GetLabelKey(LabelKey labelKey)
+        {   
+            return data.allLabelKey.Contains(labelKey);
+        }
     }
 
    
