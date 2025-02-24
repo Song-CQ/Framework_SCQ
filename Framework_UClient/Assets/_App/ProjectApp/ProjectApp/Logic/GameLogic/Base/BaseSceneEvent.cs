@@ -5,6 +5,7 @@
     类型: 逻辑脚本
     功能: 基础场景事件
 *****************************************************/
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ namespace ProjectApp
         public List<RoleKey> AllRolePot { private set; get; }    
 
         public EventKey Key { get => data.key; }
+
+        public List<int> eventStateList = new List<int>();
 
         protected IPicture picture;
         public virtual void Init(Event_Data _data,EventCode eventCode)
@@ -139,6 +142,11 @@ namespace ProjectApp
         {
 
              code.RefreshView(this,roles);
+
+            foreach (var role in roles)
+            {
+                role.Value.RefreshView();
+            }
          
 
         }
@@ -148,7 +156,12 @@ namespace ProjectApp
            
         }
 
-       
+        public virtual void SetRoleEventState(int rolePot, int eventState)
+        {
+            RoleKey roleKey = AllRolePot[rolePot];
+
+
+        }
     }
 
 

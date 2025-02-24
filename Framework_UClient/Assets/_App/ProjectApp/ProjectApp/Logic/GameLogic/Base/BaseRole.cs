@@ -42,6 +42,13 @@ namespace ProjectApp
         {   
             return data.allLabelKey.Contains(labelKey);
         }
+
+        public virtual void RefreshView()
+        {
+           
+
+
+        }
     }
 
    

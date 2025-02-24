@@ -15,8 +15,9 @@ namespace ProjectApp
     public class GameWorldMgr : BaseMgr<GameWorldMgr>
     {
         private GameSys _gameSys;
+        private  GameWordEntity gameWord;
 
-        private GameWord gameWord;
+        private GameStructure gameStructure;
 
         protected override void New()
         {
@@ -26,7 +27,7 @@ namespace ProjectApp
         public override void Init()
         {
             base.Init();
-            gameWord = new GameWord();
+            gameWord = new GameWordEntity();
             gameWord.Init();
         }
 
@@ -34,34 +35,135 @@ namespace ProjectApp
         {
             base.StartUp();
 
+            LevelData levelData = new LevelData();
 
+            gameStructure = GetGameStructure();
+            gameStructure.FillData(levelData);
+            gameWord.FillStructure(gameStructure);
+
+        }
+
+        private GameStructure GetGameStructure()
+        {
+            GameStructure gameStructure = new GameStructure();
+
+
+            return gameStructure;
+        }
+
+
+
+        public bool CanRoleSetSceneEvent(IRole role, BaseSceneEvent sceneEvent)
+        {
+            if (gameStructure == null)
+            {
+                return false;
+            }
+            return gameStructure.CanRoleSetSceneEvent(role, sceneEvent);
+        }
+
+        public bool GetHaveSceneKeyToIndex(string sceneEventKey, int index)
+        {
+            if (gameStructure == null)
+            {
+                return false;
+            }
+            return gameStructure.GetHaveSceneKeyToIndex(sceneEventKey, index);
         }
     }
 
 
-    public class GameWord
+    public class LevelData
     {
-        public static Transform WordRood;
+        public int allPictureSum = 6;
+        
 
-        public static Vector2 PictureRoodPot = Vector2.zero;
+    }
 
-        public void Init()
+    public class RoleData
+    {
+        public string key;
+
+        /// <summary>
+        /// 该角色经历过的场景
+        /// </summary>
+        public List<ISceneEvent> allSceneEvent;
+
+    }
+
+    public class GameStructure
+    {
+        /// <summary>
+        /// 画面
+        /// </summary>
+        public List<BasePicture> AllPictures = new List<BasePicture>();
+
+
+        public LevelData LevelData { get; private set; }
+
+        private Dictionary<string,RoleData> roleDatas = new Dictionary<string, RoleData>();
+
+        public void FillData(LevelData levelData)
         {
+
+            AllPictures.Clear();
+
+            LevelData = levelData;
+
             WordRood = new GameObject("WordRood").transform;
             WordRood.transform.position = new Vector3(0, 0, 0);
             
 
+
         }
 
+        public void AddPicture(BasePicture _picture)
+        {
+            AllPictures.Add(_picture);
+        }
 
-       
+        public RoleData GetRoleData(string roleKey)
+        {
+            if (roleDatas.ContainsKey(roleKey))
+            {
+                return roleDatas[roleKey];
+            }
+            return null;
+        }
 
         public void Rest()
         {
-            
+            LevelData = null;
 
+            foreach (var _Pictures in AllPictures)
+            {
+                _Pictures.Rest();
+            }
+            AllPictures.Clear();
 
         }
 
+       
+
+        public bool CanRoleSetSceneEvent(IRole role, BaseSceneEvent sceneEvent)
+        {
+
+
+            return false;
+        }
+
+        public bool GetHaveSceneKeyToIndex(string sceneEventKey, int index)
+        {
+           
+
+            if (true)
+            {
+
+            }
+            return false;
+        }
     }
+
+
+    
 }

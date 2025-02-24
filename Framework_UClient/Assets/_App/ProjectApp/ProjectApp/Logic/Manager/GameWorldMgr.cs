@@ -50,9 +50,9 @@ namespace ProjectApp
 
             LevelData levelData = new LevelData();
 
-            gameStructure = GetGameStructure();
-            gameStructure.FillData(levelData);
-            gameWord.FillStructure(gameStructure);
+            GameStructure = GetGameStructure();
+            GameStructure.FillData(levelData);
+            gameWord.FillStructure(GameStructure);
 
         }
 
@@ -82,7 +82,7 @@ namespace ProjectApp
         /// 画面index 事件index 角色RoleKey 
         private void PlayerInput_SetRole(int[] param)
         {
-            if (gameStructure == null)
+            if (GameStructure == null)
             {
                 return;
             }
@@ -90,44 +90,44 @@ namespace ProjectApp
             int potIndex = param[1];
             RoleKey roleKey = (RoleKey)param[2];
 
-            gameStructure.SetRole(pictureIndex, potIndex, roleKey);
+            GameStructure.SetRole(pictureIndex, potIndex, roleKey);
         }
         /// 画面index 事件index  
         private void PlayerInput_RemoveRole(int[] param)
         {
-            if (gameStructure == null)
+            if (GameStructure == null)
             {
                 return;
             }
             int pictureIndex = param[0];
             int potIndex = param[1];
 
-            gameStructure.RemoveRole(pictureIndex,potIndex);
+            GameStructure.RemoveRole(pictureIndex,potIndex);
         }
         /// 画面index 事件EventKey
         private void PlayerInput_SetEvent(int[] param)
         {
-            if (gameStructure == null)
+            if (GameStructure == null)
             {
                 return;
             }
             int pictureIndex = param[0];
 
             EventKey eventKey = (EventKey)param[1];
-            gameStructure.SetEvent(pictureIndex, eventKey);
+            GameStructure.SetEvent(pictureIndex, eventKey);
 
         }
         /// 画面index
         private void PlayerInput_RemoveEvent(int[] param)
         {
-            if (gameStructure == null)
+            if (GameStructure == null)
             {
                 return;
             }
             int pictureIndex = param[0];
 
-  
-            gameStructure.RemoveEvent(pictureIndex);
+
+            GameStructure.RemoveEvent(pictureIndex);
         }
 
         #endregion

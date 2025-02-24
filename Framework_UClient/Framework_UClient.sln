@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicaClothV2", "MagicaClothV2.csproj", "{95964808-307D-2D6B-69D6-4F82B323D463}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins3rdLibrary", "Plugins3rdLibrary.csproj", "{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureEditor", "FutureEditor.csproj", "{3060B796-F739-47E9-F0C9-FD2BB587D4A0}"
@@ -11,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureFrame", "FutureFrame.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCore", "TestCore.csproj", "{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicaClothV2.Editor", "MagicaClothV2.Editor.csproj", "{17FDDFB1-AFD6-78E3-95B5-DAD3763A71F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.Modules.UnityMathematics", "Sirenix.OdinInspector.Modules.UnityMathematics.csproj", "{11A6B1E6-C83F-218C-D064-55A5DBDDD381}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectApp_HotFix", "..\Framework_Project\HotFix\ProjectApp_HotFix.csproj", "{D114B99A-B757-4993-9754-DC684598B992}"
 EndProject
 Global
@@ -19,6 +25,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95964808-307D-2D6B-69D6-4F82B323D463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95964808-307D-2D6B-69D6-4F82B323D463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95964808-307D-2D6B-69D6-4F82B323D463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95964808-307D-2D6B-69D6-4F82B323D463}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +49,14 @@ Global
 		{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CF68BEA-5029-665C-AFC1-9EECDC9BBB16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17FDDFB1-AFD6-78E3-95B5-DAD3763A71F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17FDDFB1-AFD6-78E3-95B5-DAD3763A71F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17FDDFB1-AFD6-78E3-95B5-DAD3763A71F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17FDDFB1-AFD6-78E3-95B5-DAD3763A71F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11A6B1E6-C83F-218C-D064-55A5DBDDD381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11A6B1E6-C83F-218C-D064-55A5DBDDD381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11A6B1E6-C83F-218C-D064-55A5DBDDD381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11A6B1E6-C83F-218C-D064-55A5DBDDD381}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D114B99A-B757-4993-9754-DC684598B992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D114B99A-B757-4993-9754-DC684598B992}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D114B99A-B757-4993-9754-DC684598B992}.Release|Any CPU.ActiveCfg = Release|Any CPU

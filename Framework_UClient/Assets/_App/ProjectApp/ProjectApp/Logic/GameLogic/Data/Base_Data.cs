@@ -43,7 +43,7 @@ namespace ProjectApp
 
 
     /// <summary>
-    /// 角色标签Key
+    /// 角色标签Key 固有标签
     /// </summary>
     public enum LabelKey
     {
@@ -61,7 +61,7 @@ namespace ProjectApp
     }
 
     /// <summary>
-    /// 角色状态key
+    /// 角色状态key 当前画面的状态
     /// </summary>
     public enum StateKey
     {
@@ -75,6 +75,24 @@ namespace ProjectApp
         Dead,
 
     }
+
+    /// <summary>
+    /// 角色在场景中的表现状态
+    /// </summary>
+    public enum RoleStateToEvent
+    {
+        待机 = 0,
+
+        惊吓 = 10,
+        幽灵,
+
+        相爱 = 20,
+        拒绝,
+        心碎,
+
+
+    }
+
 
     /// <summary>
     /// 角色唯一键

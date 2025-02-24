@@ -53,8 +53,12 @@ namespace ProjectApp
     public interface IRole//角色
     {
         public RoleKey Key { get; }
-        public RoleState State {get; }
+        public RoleState State { get; }
+
         public bool GetLabelKey(LabelKey labelKey);
+
+        public void RefreshView();
+
 
         public void EnterSceneEvent(BasePicture basePicture);
         public void ExitSceneEvent(BasePicture basePicture);
