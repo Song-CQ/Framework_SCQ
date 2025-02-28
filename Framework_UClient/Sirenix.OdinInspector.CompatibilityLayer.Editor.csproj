@@ -10,10 +10,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8690BC45-7C33-6280-6C0D-F0AC44804CCE}</ProjectGuid>
+    <ProjectGuid>{CEBA599B-D5F8-BDCC-94A8-A246383CEFD3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>FutureFrame</AssemblyName>
+    <AssemblyName>Sirenix.OdinInspector.CompatibilityLayer.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -23,11 +23,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_3_34;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;UNITY_UGP_API;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;AMPLIFY_SHADER_EDITOR;MAGICACLOTH2;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_3_34;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;UNITY_UGP_API;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_4_6;NET_UNITY_4_8;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;AMPLIFY_SHADER_EDITOR;MAGICACLOTH2;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -50,7 +50,7 @@
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2022.3.34f1c1</UnityVersion>
   </PropertyGroup>
@@ -61,112 +61,18 @@
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\StringConvertUnit\StringConvertUnit.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\AppDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\YieldConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\CameraConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\SceneSwitchMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Effect\Effect.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Common\GenericDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\System\BaseSystem.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Helper\Vector3Helper.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\UIMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\TimerUtil\TimerUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\ColorUtil\ColorUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FuturePlugin\Define\Const\LauncherConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\App\App.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\GameObjectExtend.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\PathConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Effect\EffectEntity.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\ModelDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\TaskSequence\TaskSequence.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\TransformExtend.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\ScreenConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\UIEntity.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPoolStatic.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\Scene\BaseScene.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\EncryptConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Common\Dispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\CommonsExtend\StringExtend.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Ctr\BaseCtrl.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\HttpMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Enem\AppFutureEnem.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\GObjectsPool.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Veriy\HotFixVerify.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Message\AppMsg_Frame_0-9999.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\TimerMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\WebRequestConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\UICtrlDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Model\BaseModel.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Res\ResLoadInfo.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\EngineUtil\EngineUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\AppConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\PrefsUtil\PrefsUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Base\BaseMonoMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\BaseUI.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ILRuntimeMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\SimpleTimer.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\UI\BaseUIDriver.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\MainThreadLogUtil\MainThreadLog.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\FileUtil\FileUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseGenericDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Singleton\Singleton.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\InputMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\CtrlDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\App\FCApplication.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Engine\EngineEventSystem.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\MainThreadDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\LayerMaskConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FuturePlugin\FutureFrame\FutureFrame.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseThreadDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Base\BaseMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\UIInfo.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\GlobalMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\VectorConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\UI\UIEventListener.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\CommonsExtend\ListExtend.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\EncryptUtil\AESEncryptUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\GameMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\CameraMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FuturePlugin\Parser\AppInfoParser.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\SerializeUtil\SerializeUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\System\ISystem.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\App\AppGlobal.cs" />
-    <Compile Include="Assets\_FutureFrame\FuturePlugin\Launcher\EngineLauncher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\AppObjConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ExcelMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\Unity3dUtil\Unity3dUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\VersionUpdateMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\AssetBundleMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\UILayerConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ModuleMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ResMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Veriy\AssetBundleVerify.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\DownloadMgr\DownloadTaskMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\App\AppFacade_Frame.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\CoroutineMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Res\ResLoadNode.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Message\MainThreadMsg_Frame_0-9999.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPool.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\DownloadMgr\DownloadFileMac.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Base\IMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Helper\DOTweenHelper.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\VerifyUtil\VerifyUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\MeshExtend\MeshExtend.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Singleton\SingletonMono.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Effect\EffectData.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Ctr\BaseUICtrl.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\SceneMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\LogUtil\LogInit.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ListPool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\Vector2IntMinMaxAttributeDrawer.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\SyncVarAttributeDrawer.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\BuildAOTAutomation.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\VectorIntPropertyResolvers.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\SyncListDrawer.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\AssemblyImportSettingsAutomation.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\EnsureOdinInspectorDefine.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\VectorIntDrawers.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\FixBrokenUnityObjectWrapperDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_FutureFrame\FutureFrame.asmdef" />
-    <None Include="Assets\_FutureFrame\FutureLib\LogUtil\LogUtil.dll" />
-    <None Include="Assets\_FutureFrame\FutureLib\XLNet\XLNet.dll" />
+    <None Include="Assets\_Editor\Plugins3rdEditorLib\Sirenix\Odin Inspector\Scripts\Editor\Sirenix.OdinInspector.CompatibilityLayer.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -271,6 +177,10 @@
     </Reference>
     <Reference Include="UnityEngine.LocalizationModule">
       <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.LocalizationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.NVIDIAModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
@@ -661,492 +571,504 @@
       <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.GradleProject.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="netstandard">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Win32.Primitives">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\Microsoft.Win32.Primitives.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.AppContext">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.AppContext.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Buffers">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Buffers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Collections.Concurrent">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.Concurrent.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Collections">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Collections.NonGeneric">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.NonGeneric.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Collections.Specialized">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.Specialized.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.EventBasedAsync">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.EventBasedAsync.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.Primitives">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.Primitives.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.TypeConverter">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.TypeConverter.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Console">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Console.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data.Common">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Data.Common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.Contracts">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Contracts.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.Debug">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Debug.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.FileVersionInfo">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.FileVersionInfo.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.Process">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Process.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.StackTrace">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.StackTrace.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.TextWriterTraceListener">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.TextWriterTraceListener.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.Tools">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Tools.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.TraceSource">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.TraceSource.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.Tracing">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Tracing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing.Primitives">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Drawing.Primitives.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Dynamic.Runtime">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Dynamic.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Globalization.Calendars">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.Calendars.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Globalization">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Globalization.Extensions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.Compression">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Compression.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.Compression.ZipFile">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Compression.ZipFile.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.FileSystem">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.FileSystem.DriveInfo">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.DriveInfo.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.FileSystem.Primitives">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.Primitives.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.FileSystem.Watcher">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.Watcher.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.IsolatedStorage">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.IsolatedStorage.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.MemoryMappedFiles">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.MemoryMappedFiles.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.Pipes">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Pipes.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.UnmanagedMemoryStream">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.UnmanagedMemoryStream.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Linq">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Linq.Expressions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Expressions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Linq.Parallel">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Parallel.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Linq.Queryable">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Queryable.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Memory">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Memory.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Http.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.NameResolution">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.NameResolution.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.NetworkInformation">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.NetworkInformation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.Ping">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Ping.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.Primitives">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Primitives.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.Requests">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Requests.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.Security">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Security.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.Sockets">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Sockets.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.WebHeaderCollection">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebHeaderCollection.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.WebSockets.Client">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebSockets.Client.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.WebSockets">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebSockets.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Numerics.Vectors">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Numerics.Vectors.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ObjectModel">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ObjectModel.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.DispatchProxy">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.DispatchProxy.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Emit">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Emit.ILGeneration">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.ILGeneration.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Emit.Lightweight">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.Lightweight.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Extensions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Primitives">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Primitives.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Resources.Reader">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.Reader.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Resources.ResourceManager">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.ResourceManager.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Resources.Writer">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.Writer.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.VisualC">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.CompilerServices.VisualC.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Extensions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Handles">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Handles.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.InteropServices">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.InteropServices.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Numerics">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Numerics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization.Formatters">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Formatters.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization.Json">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization.Primitives">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Primitives.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization.Xml">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Xml.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Claims">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Claims.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Algorithms">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Algorithms.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Csp">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Csp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Encoding">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Encoding.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Primitives">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Primitives.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.X509Certificates.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Principal">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Principal.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.SecureString">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.SecureString.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Text.Encoding">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.Encoding.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Text.Encoding.Extensions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.Encoding.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Text.RegularExpressions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.RegularExpressions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Threading">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Threading.Overlapped">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Overlapped.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Threading.Tasks">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Parallel">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.Parallel.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Threading.Thread">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Thread.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Threading.ThreadPool">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.ThreadPool.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Threading.Timer">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Timer.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ValueTuple">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ValueTuple.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.ReaderWriter">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.ReaderWriter.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.XDocument">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XDocument.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.XmlDocument">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XmlDocument.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.XmlSerializer">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XmlSerializer.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.XPath">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XPath.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.XPath.XDocument">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XPath.XDocument.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.InteropServices.WindowsRuntime">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="mscorlib">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\mscorlib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Core">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Data.dll</HintPath>
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.dll</HintPath>
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Drawing">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Drawing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.Compression.FileSystem">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.IO.Compression.FileSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Net.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Numerics">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Numerics.dll</HintPath>
+    <Reference Include="System.Core">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Runtime.Serialization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel.Web">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ServiceModel.Web.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Transactions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Transactions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Web.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Windows">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Windows.dll</HintPath>
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Runtime.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.dll</HintPath>
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Xml.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml.Linq">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Linq.dll</HintPath>
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Xml.Linq.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Xml.Serialization">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
+    <Reference Include="System.Numerics">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Numerics.Vectors.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Net.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.IO.Compression.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Microsoft.CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Data.DataSetExtensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Drawing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.IO.Compression.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.ComponentModel.Composition.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Transactions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\netstandard.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.AppContext">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.AppContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Buffers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Concurrent">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Collections.Concurrent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.NonGeneric">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Collections.NonGeneric.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Specialized">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Collections.Specialized.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.Annotations.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.EventBasedAsync">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.EventBasedAsync.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.TypeConverter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Console">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Console.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.Common">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Data.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Contracts">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.Contracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Debug">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.Debug.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.FileVersionInfo">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.FileVersionInfo.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.Process.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.StackTrace.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.TextWriterTraceListener">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.TextWriterTraceListener.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tools">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.Tools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.TraceSource">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.TraceSource.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Drawing.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Dynamic.Runtime">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Dynamic.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Globalization.Calendars.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Globalization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Extensions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Globalization.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.ZipFile">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.DriveInfo">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.FileSystem.DriveInfo.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Watcher">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.FileSystem.Watcher.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.IsolatedStorage">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.IsolatedStorage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.MemoryMappedFiles">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.MemoryMappedFiles.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipes">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.Pipes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.UnmanagedMemoryStream">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.UnmanagedMemoryStream.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Linq.Expressions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Parallel">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Linq.Parallel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Queryable">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Linq.Queryable.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Memory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Rtc">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Http.Rtc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.NameResolution">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.NameResolution.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.NetworkInformation">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.NetworkInformation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Ping">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Ping.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Requests">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Requests.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Security">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Security.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Sockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebHeaderCollection">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.WebHeaderCollection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.WebSockets.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.WebSockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ObjectModel">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ObjectModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.DispatchProxy">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.DispatchProxy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Emit.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.ILGeneration">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Emit.ILGeneration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.Lightweight">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Emit.Lightweight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Extensions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.Reader">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Resources.Reader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.ResourceManager">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Resources.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.Writer">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Resources.Writer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.VisualC">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.CompilerServices.VisualC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Handles">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Handles.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Numerics">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Json">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Serialization.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Serialization.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Xml">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Serialization.Xml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Claims">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Claims.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Csp">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.Csp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Principal.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.SecureString">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.SecureString.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Duplex">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.Duplex.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Http">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.NetTcp">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.NetTcp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Primitives">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Security">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.Security.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Text.Encoding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.Extensions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Text.Encoding.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Text.RegularExpressions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Overlapped">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Overlapped.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Tasks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Parallel">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Tasks.Parallel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Thread">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Thread.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.ThreadPool">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.ThreadPool.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Timer">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Timer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ValueTuple.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.ReaderWriter">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XDocument">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XmlDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XmlSerializer">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XmlSerializer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XPath">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument">
+      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">
@@ -1157,12 +1079,16 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Plugins3rdLibrary.csproj">
-      <Project>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</Project>
-      <Name>Plugins3rdLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

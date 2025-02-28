@@ -32,17 +32,17 @@ namespace FutureCore
         public const bool ExcelConfig_UseDll = true;
 
         /// <summary>
-        /// 是否要资源热更模式
+        /// 是否要检测资源版本
         /// </summary>
-        public const bool IsAssetBundlesUpdateMode = true;
+        public static bool IsCheckResVer = true;
         /// <summary>
         /// 是否要使用AB包加载资源
         /// </summary>
-        public const bool IsUseAssetBundlesLoad = false;
+        public static bool IsUseAssetBundlesLoad = false;
         /// <summary>
         /// 是否要使用正式安装路径下的ab包加载资源（false使用ab打包工具的输出路径编辑器有效）
         /// </summary>
-        public const bool IsUseReleaseAB = false;
+        public static bool IsUseReleaseAB = false;
 
         // 是否是开发构建
         public const bool IsDevelopmentBuild = false;

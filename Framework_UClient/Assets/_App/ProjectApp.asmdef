@@ -3,8 +3,7 @@
     "rootNamespace": "ProjectApp",
     "references": [
         "GUID:656fb9ea966b1be41b0af5ee2e454905",
-        "GUID:7800164fe771ef84a9bf718aac992913",
-        "GUID:220b38fbea63a11459d7470dae79dc25"
+        "GUID:7800164fe771ef84a9bf718aac992913"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

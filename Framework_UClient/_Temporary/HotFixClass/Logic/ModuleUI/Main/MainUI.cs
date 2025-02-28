@@ -61,7 +61,9 @@ namespace ProjectApp
 
         private void OnClick()
         {
-            Close();
+            Debug.LogWarning("开始!");
+            GameWorldMgr.Instance.StartGame();
+            //Close();
 
         }
 

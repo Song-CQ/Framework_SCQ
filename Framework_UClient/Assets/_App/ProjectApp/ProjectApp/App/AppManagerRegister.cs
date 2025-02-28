@@ -20,6 +20,7 @@ namespace ProjectApp
             
             globalMgr.AddMgr(UIMgr.Instance);
             globalMgr.AddMgr(UI_EffectManager.Instance);
+            globalMgr.AddMgr(GameWorldMgr.Instance);
 
         }
 

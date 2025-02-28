@@ -15,9 +15,13 @@ namespace ProjectApp
     public class GameWorldMgr : BaseMgr<GameWorldMgr>
     {
         private GameSys _gameSys;
-        private  GameWordEntity gameWord;
+        private GameWordEntity gameWord;
 
-        private GameStructure gameStructure;
+        public GameStructure GameStructure { private set; get; }
+
+        private class PlayerInputDispatcher : BaseDispatcher<PlayerInputDispatcher, PlayerInput, int[]> { }
+        private PlayerInputDispatcher playerInputDispatcher;
+        
 
         protected override void New()
         {
@@ -29,17 +33,35 @@ namespace ProjectApp
             base.Init();
             gameWord = new GameWordEntity();
             gameWord.Init();
+            GameObject.DontDestroyOnLoad(GameWordEntity.WordRood);
+
+            playerInputDispatcher = new PlayerInputDispatcher();
+
+            playerInputDispatcher.AddListener(PlayerInput.SetEvent, PlayerInput_SetEvent);         //param = 画面index 事件EventKey
+            playerInputDispatcher.AddListener(PlayerInput.SetRole, PlayerInput_SetRole);           //param = 画面index 事件index 角色RoleKey 
+            playerInputDispatcher.AddListener(PlayerInput.RemoveEvent, PlayerInput_RemoveEvent);   //param = 画面index
+            playerInputDispatcher.AddListener(PlayerInput.RemoveRole, PlayerInput_RemoveRole);     //param = 画面index 事件index 
+
         }
+
 
         public override void StartUp()
         {
             base.StartUp();
 
+            
+
+        }
+
+        public void StartGame()
+        {
             LevelData levelData = new LevelData();
 
-            gameStructure = GetGameStructure();
-            gameStructure.FillData(levelData);
-            gameWord.FillStructure(gameStructure);
+            GameStructure = GetGameStructure();
+            GameStructure.FillData(levelData);
+            gameWord.FillStructure(GameStructure);
+            Debug.LogWarning("开始游戏");
+
 
         }
 
@@ -47,48 +69,96 @@ namespace ProjectApp
         {
             GameStructure gameStructure = new GameStructure();
 
-
+            gameStructure.gameSys = _gameSys;
             return gameStructure;
         }
 
 
-
-        public bool CanRoleSetSceneEvent(IRole role, BaseSceneEvent sceneEvent)
+        public void Dispatch(PlayerInput playerInput, params int[] pas)
         {
-            if (gameStructure == null)
-            {
-                return false;
-            }
-            return gameStructure.CanRoleSetSceneEvent(role, sceneEvent);
+            playerInputDispatcher.Dispatch(playerInput, pas);
         }
 
-        public bool GetHaveSceneKeyToIndex(string sceneEventKey, int index)
+
+        
+
+
+
+
+
+
+
+        #region PlayerInput
+
+       
+        /// 画面index 事件index 角色RoleKey 
+        private void PlayerInput_SetRole(int[] param)
         {
-            if (gameStructure == null)
+            if (GameStructure == null)
             {
-                return false;
+                return;
             }
-            return gameStructure.GetHaveSceneKeyToIndex(sceneEventKey, index);
+            int pictureIndex = param[0];
+            int potIndex = param[1];
+            RoleKey roleKey = (RoleKey)param[2];
+
+            GameStructure.SetRole(pictureIndex, potIndex, roleKey);
         }
+        /// 画面index 事件index  
+        private void PlayerInput_RemoveRole(int[] param)
+        {
+            if (GameStructure == null)
+            {
+                return;
+            }
+            int pictureIndex = param[0];
+            int potIndex = param[1];
+
+            GameStructure.RemoveRole(pictureIndex,potIndex);
+        }
+        /// 画面index 事件EventKey
+        private void PlayerInput_SetEvent(int[] param)
+        {
+            if (GameStructure == null)
+            {
+                return;
+            }
+            int pictureIndex = param[0];
+
+            EventKey eventKey = (EventKey)param[1];
+            GameStructure.SetEvent(pictureIndex, eventKey);
+
+        }
+        /// 画面index
+        private void PlayerInput_RemoveEvent(int[] param)
+        {
+            if (GameStructure == null)
+            {
+                return;
+            }
+            int pictureIndex = param[0];
+
+
+            GameStructure.RemoveEvent(pictureIndex);
+        }
+
+        #endregion
+
+
     }
+
+   
 
 
     public class LevelData
     {
-        public int allPictureSum = 6;
+        ///画面数量
+        public int allPictureSum = 3;
         
 
-    }
+        public List<Event_Data> events = new List<Event_Data>();
 
-    public class RoleData
-    {
-        public string key;
-
-        /// <summary>
-        /// 该角色经历过的场景
-        /// </summary>
-        public List<ISceneEvent> allSceneEvent;
-
+        public List<Role_Data> roles = new List<Role_Data>();
     }
 
     public class GameStructure
@@ -96,38 +166,48 @@ namespace ProjectApp
         /// <summary>
         /// 画面
         /// </summary>
-        public List<BasePicture> AllPictures = new List<BasePicture>();
+        public List<BasePicture> allPictures = new List<BasePicture>();
 
+        public Dictionary<RoleKey,Role_Data> allRole_Data = new Dictionary<RoleKey, Role_Data>();
+        public Dictionary<EventKey,Event_Data> allEvent_Data = new Dictionary<EventKey, Event_Data>();
+        public GameSys gameSys;
 
         public LevelData LevelData { get; private set; }
 
-        private Dictionary<string,RoleData> roleDatas = new Dictionary<string, RoleData>();
+        private Dictionary<RoleKey, RoleState> allRoleState = new Dictionary<RoleKey, RoleState>();
+
+
+        private List<RoleKey> tempList = new List<RoleKey>();
+
+        
 
         public void FillData(LevelData levelData)
         {
-
-            AllPictures.Clear();
-
             LevelData = levelData;
 
-            WordRood = new GameObject("WordRood").transform;
-            WordRood.transform.position = new Vector3(0, 0, 0);
-            
+            allPictures.Clear();
 
+            foreach (var item in levelData.roles)
+            {
+                allRole_Data.Add(item.key,item);
+                allRoleState.Add(item.key, new RoleState());
+            }
+
+            foreach (var item in levelData.events)
+            {
+                allEvent_Data.Add(item.key, item);
+            }
 
         }
 
         public void AddPicture(BasePicture _picture)
         {
-            AllPictures.Add(_picture);
+            allPictures.Add(_picture);
         }
 
-        public RoleData GetRoleData(string roleKey)
+        public object GetRoleData(string roleKey)
         {
-            if (roleDatas.ContainsKey(roleKey))
-            {
-                return roleDatas[roleKey];
-            }
+
             return null;
         }
 
@@ -135,33 +215,136 @@ namespace ProjectApp
         {
             LevelData = null;
 
-            foreach (var _Pictures in AllPictures)
+            foreach (var _Pictures in allPictures)
             {
                 _Pictures.Rest();
             }
-            AllPictures.Clear();
+            allPictures.Clear();
 
         }
-
        
-
-        public bool CanRoleSetSceneEvent(IRole role, BaseSceneEvent sceneEvent)
+        public void SetRole(int pictureIndex, int potIndex, RoleKey roleKey)
         {
-
-
-            return false;
-        }
-
-        public bool GetHaveSceneKeyToIndex(string sceneEventKey, int index)
-        {
-           
-
-            if (true)
+            if (pictureIndex >= allPictures.Count)
             {
+                return;
+            }
+
+            BasePicture picture = allPictures[pictureIndex];
+
+          
+            if (!picture.CheckCanSetRole(roleKey, out int index_old, potIndex))
+            {
+                return;
+            }
+
+            if (index_old != -1)
+            {
+                //去除 该角色在本画面原先占住的位置 如将2位置换到1位置
+                picture.RemoveRole(index_old);
 
             }
-            return false;
+
+            Role_Data role_Data = allRole_Data[roleKey];
+
+            RoleEntity role = gameSys.GetRoleEntity(role_Data);
+
+            picture.SetRole(role, potIndex);
+
+            RefactorPictures(pictureIndex);
+
         }
+
+        public void SetEvent(int pictureIndex, EventKey eventKey)
+        {
+            if (pictureIndex>=allPictures.Count)
+            {
+                return;
+            }
+
+            BasePicture picture = allPictures[pictureIndex];
+
+
+            SceneEventEntity eventEntity = gameSys.GetSceneEventEntity(allEvent_Data[eventKey]);
+
+            picture.SetEvent(eventEntity);
+
+
+            RefactorPictures(pictureIndex);
+        }
+        
+        public void RemoveEvent(int pictureIndex)
+        {
+
+            if (pictureIndex >= allPictures.Count)
+            {
+                return;
+            }
+
+            BasePicture picture = allPictures[pictureIndex];
+
+            picture.RemoveEvent();
+
+            RefactorPictures(pictureIndex);
+
+        }
+
+        public void RemoveRole(int pictureIndex, int potIndex)
+        {
+            if (pictureIndex >= allPictures.Count)
+            {
+                return;
+            }
+
+            BasePicture picture = allPictures[pictureIndex];
+
+            picture.RemoveRole(potIndex);
+
+            RefactorPictures(pictureIndex);
+        }
+
+
+        /// <summary>
+        /// 刷新 画面
+        /// </summary>
+        private void RefactorPictures(int pictureIndex)
+        {
+            foreach (var state in allRoleState)
+            {
+                state.Value.Rest();
+            }
+
+            for (int i = pictureIndex - 1; i >= 0; i--)
+            {
+                BasePicture picture = allPictures[i];
+
+                foreach (var item in picture.Roles)
+                {
+                    if (!tempList.Contains(item.Key))
+                    {
+                        tempList.Add(item.Key);
+
+                        item.Value.State.CopyTo(allRoleState[item.Key]);
+                    }
+                } 
+
+            }
+            tempList.Clear();
+
+            for (int i = pictureIndex; i < allPictures.Count; i++)
+            {
+                BasePicture picture = allPictures[i];
+
+                picture.Refactor(allRoleState);
+
+            }
+
+
+
+
+        }
+
+
     }
 
 

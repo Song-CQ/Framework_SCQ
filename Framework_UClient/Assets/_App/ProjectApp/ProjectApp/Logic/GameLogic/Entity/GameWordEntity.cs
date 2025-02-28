@@ -20,6 +20,9 @@ namespace ProjectApp
         public static Vector2 PictureRoodPot = Vector2.zero;
         private static ObjectPool<PictureEntity> picturePool;
 
+        public static float p_w  =10;
+        public static float p_h = 7;
+
         public GameObject PicturePlane;
         private GameStructure gameStructure = null;
 
@@ -29,6 +32,7 @@ namespace ProjectApp
         {
                        
             WordRood = new GameObject("WordRood").transform;
+          
             WordRood.transform.position = new Vector3(0, 0, 0);
 
             PicturePlane = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>("Prefabs/GamePrefabs/PicturePlane"));
@@ -43,7 +47,7 @@ namespace ProjectApp
             EntityPool.transform.SetParent(WordRood.transform);
             EntityPool.transform.localPosition = new Vector3(200, 0, 0);
 
-            if (picturePool != null)
+            if (picturePool == null)
             {
                 picturePool = new ObjectPool<PictureEntity>(() => {
                     PictureEntity entity = new PictureEntity();

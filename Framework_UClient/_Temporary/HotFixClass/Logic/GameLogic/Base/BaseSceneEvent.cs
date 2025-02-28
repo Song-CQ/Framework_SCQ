@@ -5,58 +5,100 @@
     类型: 逻辑脚本
     功能: 基础场景事件
 *****************************************************/
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjectApp
 {
-    public class BaseSceneEvent : ISceneEvent ,IFill
+    public class BaseSceneEvent : ISceneEvent
     {
-        public IFill FillModule => this;
-        public List<IRole> Roles { private set; get; }
+        private Event_Data data;
+        private EventCode code;
 
-        public bool IsComplete => GetComplete();
+        public List<RoleKey> AllRolePot { private set; get; }    
 
-        public string Key { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public EventKey Key { get => data.key; }
 
-        public JudgeData JudgeData { private set; get; }
+        public List<int> eventStateList = new List<int>();
+
         protected IPicture picture;
-        public void Init()
+        public virtual void Init(Event_Data _data,EventCode eventCode)
         {
-            
+            data = _data;
+            code = eventCode;
+
+
+            for (int i = 0; i < data.RoleSum; i++)
+            {
+                AllRolePot.Add(RoleKey.Node);
+            }
 
         }
 
         private int GetNullRolePot()
         {
-            for (int i = 0; i < Roles.Count; i++)
+            for (int i = 0; i < AllRolePot.Count; i++)
             {
-                if (Roles[i] == null)
+                if (AllRolePot[i] ==  RoleKey.Node)
                 {
                     return i;
                 }
             }
-            return Roles.Count - 1;
+            return AllRolePot.Count - 1;
         }
 
-        public bool AddRole(IRole role, int index = -1)
+        public void SetRole(int index, RoleKey key)
+        {
+
+            AllRolePot[index] = key;
+        }
+
+        public void RemoveRole(RoleKey key)
+        {
+            int index = GetIndexToRoleKey(key);
+
+            AllRolePot[index] = RoleKey.Node;
+        }
+
+        private int GetIndexToRoleKey(RoleKey key)
+        {
+            if (key == RoleKey.Node)
+            {
+                return -1;
+            }
+
+            for (int i = 0; i < AllRolePot.Count; i++)
+            {
+                if (key == AllRolePot[i])
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+
+        }
+
+
+        public bool AddRole(RoleKey role, int index = -1)
         {
             if (index == -1)
             {
                 index = GetNullRolePot();
             }
 
-            Roles[index] = role;
+            AllRolePot[index] = role;
             return true;
         }
 
         public bool RemoveRole(int index)
         {
-            if (index < Roles.Count)
+            if (index < AllRolePot.Count)
             {
-                if (Roles[index] != null)
+                if (AllRolePot[index] !=  RoleKey.Node)
                 {
-                    Roles[index] = null;
+                    AllRolePot[index] = RoleKey.Node;
 
                     return true;
                 }
@@ -66,79 +108,63 @@ namespace ProjectApp
         }
 
 
-        public void EnterPicture(IPicture picture)
+        public virtual void EnterPicture(IPicture picture)
         {
             Debug.Log("Show场景");
             this.picture = picture;
         }
 
-        public void ExitPicture(IPicture picture)
+        public virtual void ExitPicture(IPicture picture)
         {
             Debug.Log("Exit场景");
+
+            //回收
             this.picture = null;
-
+            AllRolePot.Clear();
         }
 
-
-        protected bool GetComplete()
+        public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles)
         {
-            if (picture==null)
-            {
-                return false;
-            }
-            bool isFace = true;
-            foreach (var item in Roles)
-            {
-                if (item == null)
-                {
-                    isFace = false;
-                    break;
-                }
-            }
-            if (!isFace)
-            {
-                return false;
-            }
 
-            isFace = JudgeData.RunJudgeData(picture.Index,this,Roles);
+            code.RunEvent(allRoleState, roles, AllRolePot);
 
-            return isFace;
-        }
-    }
-
-    public class JudgeData
-    {
-
-        //需要该事件触发才可 触发该事件
-        public string needSceneEvent;
-
-        public RoleMatchType roleMatch;
-
-        public bool isOnly;
-        public bool RunJudgeData(int index,BaseSceneEvent sceneEvent,List<IRole> roles)
-        {
-            bool isFace = true;
-
-
-            if (!isFace) return false;
-
-            
             foreach (var role in roles)
             {
-       
+                RoleState state = allRoleState[role.Key];
+                //将运行出来的角色数据复制到事件角色
+                state.CopyTo(role.Value.State);
 
             }
 
-            return isFace;
         }
-        //首先判断需要的角色
+
+        public void RefreshView(Dictionary<RoleKey, IRole> roles)
+        {
+
+             code.RefreshView(this,roles);
+
+            foreach (var role in roles)
+            {
+                role.Value.RefreshView();
+            }
+         
+
+        }
+
+        public void ShowView(int showType)
+        {
+           
+        }
+
+        public virtual void SetRoleEventState(int rolePot, int eventState)
+        {
+            RoleKey roleKey = AllRolePot[rolePot];
+
+
+        }
     }
 
-    public enum RoleMatchType
-    {
-        AllMatch,
 
 
 
-    }
 }

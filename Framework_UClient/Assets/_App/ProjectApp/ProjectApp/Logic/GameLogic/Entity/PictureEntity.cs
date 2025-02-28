@@ -32,7 +32,7 @@ namespace ProjectApp
             base.Show(index);
             Transform.SetActive(true);
             Transform.SetParent(GameWordEntity.AllPictureEntity);
-            Vector2 pot = new Vector2(TestMgr.Instance.w * (index % 3), -TestMgr.Instance.h * (index / 3));
+            Vector2 pot = new Vector2(GameWordEntity.p_w * (index % 3), - GameWordEntity.p_h * (index / 3));
             Transform.localPosition = GameWordEntity.PictureRoodPot + pot;
         }
 

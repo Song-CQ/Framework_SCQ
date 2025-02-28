@@ -5,26 +5,52 @@
     类型: 逻辑脚本
     功能: 基础角色
 *****************************************************/
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjectApp
 {
-    public class BaseRole: IRole,IFill
+    public class BaseRole: IRole
     {
-        public IFill FillModule => this;
-        public ISceneEvent sceneEvent => throw new System.NotImplementedException();
+        protected Role_Data data;
+        public RoleKey Key { get => data.key; }
 
-        public string Key { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public RoleState State { private set; get; }
 
-
-        public void EnterPicture(IPicture picture)
+        public BaseRole()
         {
-            throw new System.NotImplementedException();
+            State = new RoleState();
         }
 
-        public void ExitPicture(IPicture picture)
+        public void Init(Role_Data data)
         {
-            throw new System.NotImplementedException();
+            this.data = data;
+
+        }
+
+        public void EnterSceneEvent(BasePicture basePicture)
+        {
+           
+        }
+
+        public void ExitSceneEvent(BasePicture basePicture)
+        {
+           
+        }
+
+        public bool GetLabelKey(LabelKey labelKey)
+        {   
+            return data.allLabelKey.Contains(labelKey);
+        }
+
+        public virtual void RefreshView()
+        {
+           
+
+
         }
     }
+
+   
+
 }

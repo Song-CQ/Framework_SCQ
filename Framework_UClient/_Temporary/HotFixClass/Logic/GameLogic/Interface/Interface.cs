@@ -14,19 +14,20 @@ namespace ProjectApp
     public interface IPicture//画面
     {
         public ISceneEvent SceneEvent { get;}
-        public List<IRole> Roles { get; }
-        public ComboEventData Combo { get;}
+        public Dictionary<RoleKey, IRole> Roles { get; }
+
         public int Index { get; }
 
 
 
-        public Action<ComboEventData> ChangeCombo_Event { get; }//变化事件
         public void Init();
-        public void SetScene(ISceneEvent newScene);
+        public void SetEvent(ISceneEvent newScene);
+        public void RemoveEvent();
 
-        public bool AddRole(IRole role, int index = -1);
-        public bool RemoveRole(int index);
+        public void SetRole(IRole role, int index = -1);
+        public void RemoveRole(RoleKey roleKey);
 
+        public bool CheckCanSetRole(RoleKey key, out int potIndex_old, int potIndex = -1);
         public void Rest();
 
 
@@ -34,43 +35,41 @@ namespace ProjectApp
 
     public interface ISceneEvent//事件
     {
-        /// <summary>
-        /// 填充模块
-        /// </summary>
-        public IFill FillModule { get;}
-        public List<IRole> Roles { get; }
+        public EventKey Key { get; }
 
-        /// <summary>
-        /// 事件是否 被完成完成  完成应该要触发一个完成事件
-        /// </summary>
-        public bool IsComplete { get; }
+        public List<RoleKey> AllRolePot { get; }
 
+
+        public void EnterPicture(IPicture picture);
+        public void ExitPicture(IPicture picture);
+        public void SetRole(int index,RoleKey key);
+        public void RemoveRole(RoleKey key);
+        public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles);
+        public void RefreshView(Dictionary<RoleKey, IRole> roles);
+        public void ShowView(int showType);
     }
 
     
     public interface IRole//角色
     {
-        /// <summary>
-        /// 填充模块
-        /// </summary>
-        public IFill FillModule { get; }
-        public ISceneEvent sceneEvent { get; }
+        public RoleKey Key { get; }
+        public RoleState State { get; }
 
+        public bool GetLabelKey(LabelKey labelKey);
+
+        public void RefreshView();
+
+
+        public void EnterSceneEvent(BasePicture basePicture);
+        public void ExitSceneEvent(BasePicture basePicture);
     }
 
-    public interface IFill
+    public interface IEntity
     {
 
-        public string Key { set; get; }
 
-        public void EnterPicture(IPicture picture);
-        public void ExitPicture(IPicture picture);
+
+        
     }
+
 }
-/*
- *   IPicture 被修改 发送ChaneComboEvent
- * 
- *   是否胜利 判断是否有该局固定的  ComboEvent 被成功触发
- * 
- * 
- */

@@ -21,7 +21,7 @@ namespace ProjectApp
 
         private class PlayerInputDispatcher : BaseDispatcher<PlayerInputDispatcher, PlayerInput, int[]> { }
         private PlayerInputDispatcher playerInputDispatcher;
-
+        
 
         protected override void New()
         {
@@ -33,6 +33,7 @@ namespace ProjectApp
             base.Init();
             gameWord = new GameWordEntity();
             gameWord.Init();
+            GameObject.DontDestroyOnLoad(GameWordEntity.WordRood);
 
             playerInputDispatcher = new PlayerInputDispatcher();
 
@@ -48,11 +49,19 @@ namespace ProjectApp
         {
             base.StartUp();
 
+            
+
+        }
+
+        public void StartGame()
+        {
             LevelData levelData = new LevelData();
 
             GameStructure = GetGameStructure();
             GameStructure.FillData(levelData);
             gameWord.FillStructure(GameStructure);
+            Debug.LogWarning("开始游戏");
+
 
         }
 
@@ -69,6 +78,9 @@ namespace ProjectApp
         {
             playerInputDispatcher.Dispatch(playerInput, pas);
         }
+
+
+        
 
 
 

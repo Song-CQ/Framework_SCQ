@@ -56,6 +56,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -129,8 +130,8 @@
     <Compile Include="Assets\MagicaCloth2\Scripts\Core\VirtualMesh\VirtualMeshContainer.cs" />
     <Compile Include="Assets\MagicaCloth2\Scripts\Core\Cloth\Wind\WindSettings.cs" />
     <Compile Include="Assets\MagicaCloth2\Scripts\Core\Utility\Mesh\MeshUtility.cs" />
-    <Compile Include="Assets\MagicaCloth2\Scripts\Core\Cloth\Wind\WindParams.cs" />
     <Compile Include="Assets\MagicaCloth2\Scripts\Core\Cloth\MagicaClothAPI.cs" />
+    <Compile Include="Assets\MagicaCloth2\Scripts\Core\Cloth\Wind\WindParams.cs" />
     <Compile Include="Assets\MagicaCloth2\Scripts\Core\Cloth\Collider\MagicaSphereCollider.cs" />
     <Compile Include="Assets\MagicaCloth2\Scripts\Core\Interface\ITransform.cs" />
     <Compile Include="Assets\MagicaCloth2\Scripts\Core\Utility\Math\MathUtility.cs" />
