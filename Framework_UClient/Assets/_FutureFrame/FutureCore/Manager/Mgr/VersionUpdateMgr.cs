@@ -155,7 +155,7 @@ namespace FutureCore
 
         private void CheckLocalAssetsFile()
         {
-            if (!AppConst.IsAssetBundlesUpdateMode)
+            if (!AppConst.IsCheckResVer)
             {
                 return;
             }
