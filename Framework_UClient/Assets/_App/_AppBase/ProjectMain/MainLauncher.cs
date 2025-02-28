@@ -13,7 +13,9 @@ namespace ProjectApp
 
         private static bool IsInMain = false;
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        //[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        //在加载场景后调用 保证ProjectAppSet对象被顺利读取
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void SceneMain()
         {
             if (!IsAutoLauncher) return;
