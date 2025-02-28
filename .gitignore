@@ -13,3 +13,5 @@ Framework_UClient/_HotFix_Temp
 Framework_Project/HotFix/.vs/
 _Tool/HotFixTool/.vs/
 Framework_UClient/.vsconfig
+/Framework_UClient/Assets/_TerrainAutoUpgrade
+Framework_UClient/Assets/_TerrainAutoUpgrade.meta
