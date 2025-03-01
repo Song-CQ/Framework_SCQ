@@ -154,6 +154,7 @@
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\AppMain.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainUICtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_main.cs" />
+    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\ProjectAppSet.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_rolling.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\SimpleUIMgr\UIManager.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\SceneMgr\SceneMgrRegister.cs" />
