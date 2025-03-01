@@ -56,9 +56,9 @@ namespace FutureEditor
         /// 存放UGUI预制体的目录
         /// </summary>  
         public readonly static string ResUGUIPath = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ResUGUIPath);
-        
+
         /// <summary>
-        /// 存放ABConfig(打包Ab包设置)的路劲 
+        /// 存放ABConfig(打包Ab包设置)的路径
         /// </summary>
         public readonly static string ABConfigPatn_Assest = AssetDatabase.GetAssetPath(UnityEditorPath.Instance.ABConfigPath);
        
@@ -68,8 +68,10 @@ namespace FutureEditor
         /// Fgui编辑器脚本的生成路劲
         /// </summary>
         public readonly static string Fgui_Stript_Patn = $"{Application.dataPath}/../../_Resources/FGUI/FGUI_Script";
-
-        
+        /// <summary>
+        /// 编辑器扩展使用的Texture路径
+        /// </summary>
+        public readonly static string EditorTexturePath = "Assets/_Editor/FutureEditor/Texture2D";
 
 
     }

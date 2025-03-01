@@ -56,6 +56,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -111,8 +112,8 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUIAdapter.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Manager\GameWorldMgr.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseSystemAdapter.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameUI.cs" />
+    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseSystemAdapter.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\btn_minus.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseModelAdapter.cs" />

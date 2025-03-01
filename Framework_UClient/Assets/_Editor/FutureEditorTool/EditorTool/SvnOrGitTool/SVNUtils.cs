@@ -13,7 +13,7 @@ public class SVNUtils
     private static string Path_SVNProject = "null";
 
 
-    [MenuItem("[FC Tool]/SVNTools/更新Assets")]
+    [MenuItem("[FC Tool]/SVNTools/更新Assets",false,110)]
     public static void UpdateSVNProject_Assets()
     {
         UpdateFromSVN(Path_SVNProject);
@@ -28,7 +28,7 @@ public class SVNUtils
         System.Diagnostics.Process.Start(svnProcPath, updateCall);
     }
 
-    [MenuItem("[FC Tool]/SVNTools/提交Assets")]
+    [MenuItem("[FC Tool]/SVNTools/提交Assets", false, 110)]
     public static void CommitProject_Assets()
     {
         CommitToSVN(Path_SVNProject, "提交Assets目录_");
