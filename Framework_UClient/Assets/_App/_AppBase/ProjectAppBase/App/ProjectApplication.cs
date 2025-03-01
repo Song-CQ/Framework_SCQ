@@ -110,6 +110,8 @@ namespace ProjectApp
 
         private void InitDefine()
         {
+            ProjectAppSet.Init();
+
             AppConst.Init();
             //ABPakConst.Init();
             ColorConst.Init();
