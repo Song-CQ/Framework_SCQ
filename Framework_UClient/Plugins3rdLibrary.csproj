@@ -59,20 +59,6 @@
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEditor\Sirenix.Serialization.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEditor\Sirenix.Utilities.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\04_Inheritance\Inheritance.cs" />
@@ -211,8 +197,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Mesh\CompositeMesh.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Reflection\ILRuntimeFieldInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\IKeyboard.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Container.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Bag\BagWindow.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Container.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\11_ValueTypeBinding\Vector3Binder.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Editor\StageCameraEditor.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\CLRBinding\BindingGeneratorExtensions.cs" />
@@ -238,8 +224,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\MeshEditorEffects\Base\MeshEffectsBase.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Cooldown\CooldownMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Bag\BagMain.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GLoader.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Extensions\TextMeshPro\TMPFont.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GLoader.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Tree\TreeNode.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Other\DelegateExportAttribute.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Shape.cs" />
@@ -268,8 +254,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\LitJson\JsonReader.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\CLRBinding\CLRBindingUtils.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\MeshEditorEffects\Data\Triangle.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GList.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Filter\FilterMain.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GList.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\CaptureCamera.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\ToolSet.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\CLRBinding\BindingCodeGenerator.cs" />
@@ -408,11 +394,11 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\RenderTexture\RenderTextureMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\StepTypes.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Editor\UIConfigEditor.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\TurnPage\FairyBook.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\TurnPage\BookPage.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\TurnPage\FairyBook.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\XMLIterator.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Other\ByReferenceKeyComparer.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Editor\UIPainterEditor.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Other\ByReferenceKeyComparer.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\XAsset\XAssetEditor\ManifestInspector.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Gesture\LongPressGesture.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIPackage.cs" />
@@ -886,6 +872,10 @@
       <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sirenix.Reflection.Editor">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Tracker.dll</HintPath>
       <Private>False</Private>
@@ -1000,10 +990,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Reflection.Editor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
