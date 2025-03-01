@@ -56,26 +56,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEditor\Sirenix.Serialization.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEditor\Sirenix.Utilities.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\CtrlConst_AutoCread.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\DragEntity.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\SceneEventEntity.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Commons\RockerComponent.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\CtrlConst_Common.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A002_loading\A002_loadingBinder.cs" />
@@ -100,8 +88,9 @@
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUICtrl.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UICtrlMsg_OpenClose_Common.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainModel.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingCtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_balloon.cs" />
+    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingCtrl.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\GameLogicTool.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIEntity.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Register_AutoCreator\ILRuntimeMgr_Register.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Mseeage\CtrlMsg_Base.cs" />
@@ -115,13 +104,21 @@
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Scene\GameScene.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A002_loading\com_loading.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Data\Base_Data.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Interface\Interface.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Base\BasePicture.cs" />
     <Compile Include="Assets\_App\_AppCommon\Manager\ILRuntimeMgr\Register\ILRuntimeMgr_Register_Common.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseCtrlAdapter.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\RoleEntity.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Data\Event_Data.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Role\RoleState.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_collect.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Base\BaseSceneEvent.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModelConst_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_crazy.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Scene\MainScene.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\App\AppFacade.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Data\Role_Data.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUIAdapter.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Manager\GameWorldMgr.cs" />
@@ -135,6 +132,7 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\UIMgr\UIRegister_FGUI_Common.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\ProjectApplication.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectModel.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\GameWordEntity.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlMsg_OpenClose_AutoCread.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\FGUI\FGUIDriver.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainCtrl.cs" />
@@ -149,12 +147,15 @@
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameModel.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\ModelConst_Common.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Cont\LoadingTrasitionConst.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\EventCode\EventCode.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_playagain.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectUICtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameCtrl.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_cardplaytext.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_green_vid.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\FGUI\FGUIEntity.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\PictureEntity.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Base\BaseRole.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_cash.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\A001_commonBinder.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\BaseManagerRegister.cs" />
@@ -531,6 +532,18 @@
       <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sirenix.Reflection.Editor">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@2.4.3\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Tracker.dll</HintPath>
       <Private>False</Private>
@@ -631,6 +644,10 @@
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
       <Private>False</Private>
@@ -645,10 +662,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Reflection.Editor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
