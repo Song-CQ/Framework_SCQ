@@ -121,9 +121,19 @@ namespace FutureEditor
 				FrameworkToolView.OpenFrameworkWin();
 			}
 
+
 			GUILayout.FlexibleSpace();
 
+			Texture2D texture = EditorToolUtils.GetEditorUI("GithubMark.png");
 			
+
+			if (GUILayout.Button(new GUIContent(" GitHub Desktop", texture, "打开 GitHub Desktop"),GUILayout.Height(22)))
+            {
+                GitUtils.OpenGitHubDesktop();
+ 
+            }
+
+			GUILayout.Space(10);
 
 			//if (GUILayout.Button(new GUIContent("SVN更新", "更新当前的客户端"), ToolbarStyles.ToolBarExtenderBtnStyle))
 			//{
@@ -131,6 +141,7 @@ namespace FutureEditor
 
 			//	Debug.Log("TODO : SVN更新");
 			//}
+
 			//if (GUILayout.Button(new GUIContent("SVN提交", "提交客户端"), ToolbarStyles.ToolBarExtenderBtnStyle))
 			//{
 			//	SVNUtils.UpdateCommitProject();

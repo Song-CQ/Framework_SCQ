@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_3_34;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;UNITY_UGP_API;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;AMPLIFY_SHADER_EDITOR;MAGICACLOTH2;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_3_34;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;UNITY_UGP_API;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;AMPLIFY_SHADER_EDITOR;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
@@ -56,109 +56,123 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEditor\Sirenix.Serialization.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\NoEditor\Sirenix.Utilities.dll" />
+    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\StringConvertUnit\StringConvertUnit.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\AppDispatcher.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Core\UI\BaseUIDriver.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\MainThreadLogUtil\MainThreadLog.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\FileUtil\FileUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\YieldConst.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseGenericDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\CameraConst.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Singleton\Singleton.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\SceneSwitchMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Effect\Effect.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Common\GenericDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\System\BaseSystem.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\InputMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\CtrlDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Helper\Vector3Helper.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\UIMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\TimerUtil\TimerUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\ColorUtil\ColorUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FuturePlugin\Define\Const\LauncherConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\App\App.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\GameObjectExtend.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\PathConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Effect\EffectEntity.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\ModelDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\TaskSequence\TaskSequence.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\TransformExtend.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\ScreenConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\UIEntity.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPoolStatic.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\Scene\BaseScene.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\EncryptConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Common\Dispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\CommonsExtend\StringExtend.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Ctr\BaseCtrl.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\HttpMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Enem\AppFutureEnem.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\GObjectsPool.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Veriy\HotFixVerify.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Message\AppMsg_Frame_0-9999.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\TimerMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\WebRequestConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\UICtrlDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Model\BaseModel.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Res\ResLoadInfo.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\EngineUtil\EngineUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\AppConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\PrefsUtil\PrefsUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Base\BaseMonoMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\BaseUI.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ILRuntimeMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\SimpleTimer.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\View\BaseView.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Core\UI\BaseUIDriver.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\MainThreadLogUtil\MainThreadLog.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\FileUtil\FileUtil.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseGenericDispatcher.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Singleton\Singleton.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\InputMgr.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\CtrlDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\App\FCApplication.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Engine\EngineEventSystem.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\MainThreadDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\LayerMaskConst.cs" />
     <Compile Include="Assets\_FutureFrame\FuturePlugin\FutureFrame\FutureFrame.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseThreadDispatcher.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\ColorUtil\ColorUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Base\BaseMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\UIInfo.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\GlobalMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FuturePlugin\Define\Const\LauncherConst.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\App\App.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\VectorConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\UI\UIEventListener.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\GameObjectExtend.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\PathConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Base\BaseDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Extend\CommonsExtend\ListExtend.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Effect\EffectEntity.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\ModelDispatcher.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\TaskSequence\TaskSequence.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\TransformExtend.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\ScreenConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\EncryptUtil\AESEncryptUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\GameMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\CameraMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Parser\AppInfoParser.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\UIEntity.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\SerializeUtil\SerializeUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\System\ISystem.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPoolStatic.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\App\AppGlobal.cs" />
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Launcher\EngineLauncher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\AppObjConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ExcelMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\Unity3dUtil\Unity3dUtil.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Core\Scene\BaseScene.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\VersionUpdateMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\EncryptConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\AssetBundleMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\UILayerConst.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Common\Dispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ModuleMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Extend\CommonsExtend\StringExtend.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Ctr\BaseCtrl.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\HttpMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ResMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\PETimer.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Enem\AppFutureEnem.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\GObjectsPool.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Data\Veriy\AssetBundleVerify.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Veriy\HotFixVerify.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\DownloadMgr\DownloadTaskMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\App\AppFacade_Frame.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\CoroutineMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Data\Res\ResLoadNode.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Message\AppMsg_Frame_0-9999.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Message\MainThreadMsg_Frame_0-9999.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ObjectPool.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\DownloadMgr\DownloadFileMac.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\MonoMgr\TimerMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\WebRequestConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Base\IMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Helper\DOTweenHelper.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Dispatcher\Inherit\UICtrlDispatcher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\VerifyUtil\VerifyUtil.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Model\BaseModel.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Res\ResLoadInfo.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\EngineUtil\EngineUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Extend\GameObjectExtend\MeshExtend\MeshExtend.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Singleton\SingletonMono.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\AppConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Effect\EffectData.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Utility\PrefsUtil\PrefsUtil.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\View\UI\BaseUI.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Base\BaseMonoMgr.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ILRuntimeMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\MVC\Ctr\BaseUICtrl.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Common\Timer\SimpleTimer.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\SceneMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\LogUtil\LogInit.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Common\Pool\ObjectPool\ListPool.cs" />
@@ -518,15 +532,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DemiEditor">
-      <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>Library\PackageCache\com.unity.collections@2.4.3\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll</HintPath>
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
@@ -566,7 +572,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenEditor">
-      <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VoClassLib">
@@ -582,7 +588,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenProEditor">
-      <HintPath>Assets\_Editor\Plugins3rdEditorLib\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
@@ -629,10 +635,6 @@
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
       <Private>False</Private>
@@ -647,6 +649,10 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sirenix.Reflection.Editor">
+      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">

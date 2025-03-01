@@ -196,6 +196,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 95131247798358336, guid: 35f2b89cd4c78594898f9ba7e9fda86f,
         type: 3}
+      propertyPath: HotUpdateType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95131247798358336, guid: 35f2b89cd4c78594898f9ba7e9fda86f,
+        type: 3}
       propertyPath: IsAutoDestroy
       value: 0
       objectReference: {fileID: 0}
