@@ -19,6 +19,7 @@ namespace ProjectApp
         public static Transform EntityPool;
         public static Vector2 PictureRoodPot = Vector2.zero;
         private static ObjectPool<PictureEntity> picturePool;
+        private static ObjectPool<DragEntity> dragEntityPool;
 
         public static float p_w  =10;
         public static float p_h = 7;
@@ -56,12 +57,30 @@ namespace ProjectApp
                 });
             }
 
+            if (dragEntityPool == null)
+            {
+                dragEntityPool = new ObjectPool<DragEntity>(() => {
+
+                    DragEntity dragEntity = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>("Prefabs/GamePrefabs/DragEntity")).GetComponent<DragEntity>();
+
+                    return dragEntity;
+
+                });
+
+
+            }
+
         }
 
        
         public static void ReleasePictureEntity(PictureEntity entity)
         {
             picturePool.Release(entity);
+        }  
+        public static void ReleaseDragEntity(DragEntity entity)
+        {
+            entity.ResetEntity();
+            dragEntityPool.Release(entity);
         }
               
 
@@ -73,7 +92,7 @@ namespace ProjectApp
             for (int i = 0; i < gameStructure.LevelData.allPictureSum; i++)
             {
                 var picture = picturePool.Get();
-                
+           
                 gameStructure.AddPicture(picture);          
                 picture.Show(i);
             }
@@ -82,14 +101,17 @@ namespace ProjectApp
 
             foreach (var item in gameStructure.LevelData.events)
             {
-                var dragItem = GetDragEntity(DragEntityType.Event);
+                item.Type = DragEntityType.Event;
+                var dragItem = GetDragEntity(item.Type);
                 dragItem.SetData(item);
                 AddDragEntityToMeue(dragItem);
             }
             //创建角色按钮
             foreach (var item in gameStructure.LevelData.roles)
             {
-                var dragItem = GetDragEntity(DragEntityType.Event);
+                item.Type = DragEntityType.Role;
+
+                var dragItem = GetDragEntity(item.Type);
                 dragItem.SetData(item);
                 AddDragEntityToMeue(dragItem);
             }
@@ -110,15 +132,21 @@ namespace ProjectApp
         {
 
             //销毁或者回收 to do
+            foreach (var item in dragEntityMeue)
+            {
+                ReleaseDragEntity(item);
+            }
             dragEntityMeue.Clear();
         }
 
 
         private DragEntity GetDragEntity(DragEntityType entityType)
         {
+            DragEntity dragEntity = dragEntityPool.Get();
 
+            //dragEntity.SetData();
 
-            return null;
+            return dragEntity;
         }
 
         public void Rest()

@@ -55,7 +55,7 @@ namespace ProjectApp
 
         public void StartGame()
         {
-            LevelData levelData = new LevelData();
+            LevelData levelData = GetLevelData(); 
 
             GameStructure = GetGameStructure();
             GameStructure.FillData(levelData);
@@ -71,6 +71,33 @@ namespace ProjectApp
 
             gameStructure.gameSys = _gameSys;
             return gameStructure;
+        }
+
+        private LevelData GetLevelData()
+        {
+            LevelData levelData = new LevelData();
+
+            Role_Data role_Data_1 = new Role_Data();
+            role_Data_1.key = RoleKey.FuHsi;
+
+            Role_Data role_Data_2 = new Role_Data();
+            role_Data_2.key = RoleKey.Nuwa;
+
+            levelData.roles.Add(role_Data_1);
+            levelData.roles.Add(role_Data_2);
+
+            Event_Data event_Data1 = new Event_Data();
+            event_Data1.key = EventKey.Love;
+            event_Data1.RoleSum = 2;
+
+
+            Event_Data event_Data2 = new Event_Data();
+
+            levelData.events.Add(event_Data1);
+            //levelData.events.Add(event_Data2);
+
+
+            return levelData;
         }
 
 

@@ -11,13 +11,12 @@ namespace ProjectApp
 {
     public class Event_Data : Base_Data
     {
+        public override string Desc=> key.ToString();
 
         public EventKey key;
 
 
         public int RoleSum;
-
-
 
     }
 

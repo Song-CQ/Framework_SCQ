@@ -9,11 +9,10 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class Base_Data 
+    public abstract class Base_Data 
     {
-
-
-
+        public abstract string Desc { get; }
+        public DragEntityType Type;
     }
 
     public enum PlayerInput

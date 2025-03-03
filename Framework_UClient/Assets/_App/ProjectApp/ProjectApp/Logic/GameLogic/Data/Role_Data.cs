@@ -12,11 +12,12 @@ namespace ProjectApp
 {
     public class Role_Data: Base_Data
     {
+        public override string Desc => key.ToString();
 
         public RoleKey key;
 
         public List<LabelKey> allLabelKey;
 
-
+     
     }
 }
