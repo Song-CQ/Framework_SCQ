@@ -66,6 +66,9 @@ namespace FutureCore
             //mainCamera.forceIntoRenderTexture = false;
             mainCamera.nearClipPlane = 0.01f;
             mainCamera.farClipPlane = CameraConst.MainCameraFarClipPlane;
+            mainCamera.transparencySortMode = CameraConst.MainCameraSortMode;
+            mainCamera.orthographicSize = CameraConst.MainCameraOrthographicSize;
+
         }
 
 
