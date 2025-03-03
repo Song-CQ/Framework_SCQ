@@ -36,6 +36,7 @@ namespace ProjectApp
             uiInfo.layerType = UILayerType.Normal;
             uiInfo.isNeedOpenAnim = true;
             uiInfo.isNeedCloseAnim = false;
+            uiInfo.isNeedUIMask = true;
            
         }
 

@@ -92,7 +92,7 @@ namespace FutureCore
         /// <summary>
         /// 生产对象
         /// </summary>
-        public T Get<T>(string prefabPath) where T : Component
+        public T Get<T>(string prefabPath) where T : Component 
         {
             if (!m_pools.ContainsKey(prefabPath))
             {
@@ -101,7 +101,7 @@ namespace FutureCore
             ObjectPool<Object> pool = m_pools[prefabPath];
 
             GameObject go = pool.Get() as GameObject;
-
+                       
             return go.GetComponent<T>();
         }
 
@@ -201,7 +201,7 @@ namespace FutureCore
                 {
                     go.SetActive(true);
                 }
-
+               
 
             }
 
@@ -218,14 +218,14 @@ namespace FutureCore
                 m_onRelease_CallBack[prefabPath]?.Invoke(obj);
             }
             GameObject go = (obj as GameObject);
+            
 
-
-            if (go == null)
+            if (go==null)           
             {
                 Component component = obj as Component;
                 if (component != null)
                 {
-                    go = component.gameObject;
+                    go = component.gameObject;                  
                 }
 
             }
@@ -289,7 +289,7 @@ namespace FutureCore
             m_onNew_CallBack.Clear();
             m_onGet_CallBack.Clear();
             m_onRelease_CallBack.Clear();
-
+            
         }
 
         public void ReleaseAll()
