@@ -63,7 +63,7 @@ namespace ProjectApp
         {
             Debug.LogWarning("开始!");
             GameWorldMgr.Instance.StartGame();
-            //Close();
+            Close();
 
         }
 

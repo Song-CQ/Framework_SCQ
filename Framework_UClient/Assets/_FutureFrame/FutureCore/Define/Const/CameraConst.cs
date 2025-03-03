@@ -15,6 +15,8 @@ namespace FutureCore
 
         public const int MainDepth = 0;
         public static float MainCameraFarClipPlane = 60;
+        public static TransparencySortMode MainCameraSortMode =  TransparencySortMode.Perspective;
+        public static int MainCameraOrthographicSize =  10;
         public const int UICameraDepth = 10;
         public static float UICameraFarClipPlane = 100;
 
