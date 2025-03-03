@@ -13,7 +13,7 @@ namespace FutureCore
     public static class CameraConst
     {
         public const int MainDepth = 0;
-        public const TransparencySortMode MainCameraSortMode = TransparencySortMode.Orthographic;
+        public const bool MainCamera_IsOrthographic = true;
 
         public static int MainCameraOrthographicSize = 10;
         public static float MainCameraFarClipPlane = 60;

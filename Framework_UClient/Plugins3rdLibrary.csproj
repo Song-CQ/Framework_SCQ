@@ -56,7 +56,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -120,7 +119,6 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Intepreter\OpCodes\OpCodeEnum.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\XAsset\XAsset\Bundles.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlImage.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\Sirenix\Odin Inspector\Modules\Unity.Mathematics\MathematicsDrawers.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\HitTest\IHitTest.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\IHtmlObject.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\GearDisplay2.cs" />
@@ -467,7 +465,6 @@
     <None Include="Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\XAsset\ver@2019_08_07.txt" />
-    <None Include="Assets\Plugins\Plugins3rdLibrary\Sirenix\Odin Inspector\Modules\Unity.Mathematics\manifest.txt" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
     <None Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.xml" />
@@ -1508,14 +1505,6 @@
     </Reference>
     <Reference Include="Unity.AssetBundleBrowser.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AssetBundleBrowser.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">

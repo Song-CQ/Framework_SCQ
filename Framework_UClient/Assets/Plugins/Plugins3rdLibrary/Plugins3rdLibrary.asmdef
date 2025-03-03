@@ -2,9 +2,7 @@
     "name": "Plugins3rdLibrary",
     "rootNamespace": "",
     "references": [
-        "GUID:c4b8fc492eac8184fb9a42684cf8c464",
-        "GUID:d8b63aba1907145bea998dd612889d6b",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:c4b8fc492eac8184fb9a42684cf8c464"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
