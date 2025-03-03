@@ -91,8 +91,7 @@ namespace ProjectApp
         private void InitMaskPool()
         {
             UIMgr.Instance.ui_GObjectsPool.SetCallBack_onNew(UIConst.UGUI_Mask, (obj) => {
-                obj.gameObject.AddComponent<UIEventListener>();
-
+                (obj as GameObject).AddComponent<UIEventListener>();
             });
         }
 
