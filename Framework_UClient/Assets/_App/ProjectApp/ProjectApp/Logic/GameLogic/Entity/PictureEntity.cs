@@ -40,9 +40,7 @@ namespace ProjectApp
         {
             base.Rest();
 
-            Transform.SetParent(GameWordEntity.EntityPool);
-            Transform.localPosition = Vector3.zero;
-            Transform.SetActive(false);
+
 
             GameWordEntity.ReleasePictureEntity(this);
         }

@@ -54,6 +54,7 @@ namespace FutureCore
                 GameObject.DontDestroyOnLoad(m_Root);
             }
 
+            m_Root.transform.localPosition = new Vector3(1000,0,0);
         }
 
 
@@ -198,7 +199,7 @@ namespace FutureCore
                 Component go = obj as Component;
                 if (go != null)
                 {
-                    go.SetActive(false);
+                    go.SetActive(true);
                 }
 
 
@@ -231,6 +232,7 @@ namespace FutureCore
 
             go.SetActive(false);
             go.transform.SetParent(m_poolParent[prefabPath]);
+            go.transform.localPosition = Vector3.one;
 
         }
         /// <summary>

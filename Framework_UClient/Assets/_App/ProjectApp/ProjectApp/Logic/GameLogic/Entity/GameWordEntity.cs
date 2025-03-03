@@ -15,11 +15,14 @@ namespace ProjectApp
     public class GameWordEntity
     {
         public static Transform WordRood;
+        
+        public static Transform MeueTrf;
+
         public static Transform AllPictureEntity;
-        public static Transform EntityPool;
         public static Vector2 PictureRoodPot = Vector2.zero;
+
         private static ObjectPool<PictureEntity> picturePool;
-        private static ObjectPool<DragEntity> dragEntityPool;
+        private static GObjectsPool entityPool;
 
         public static float p_w  =10;
         public static float p_h = 7;
@@ -29,25 +32,31 @@ namespace ProjectApp
 
         private List<DragEntity> dragEntityMeue = new List<DragEntity>();
 
+        private const string dragEntityPath = "Prefabs/GamePrefabs/DragEntity"; 
+
+
+
         public void Init()
         {
                        
             WordRood = new GameObject("WordRood").transform;
           
             WordRood.transform.position = new Vector3(0, 0, 0);
+            
+            MeueTrf = new GameObject("MeueTrf").transform;
+            MeueTrf.transform.SetParent(WordRood);
+            MeueTrf.transform.localPosition = new Vector3(0,-8,10);
 
             PicturePlane = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>("Prefabs/GamePrefabs/PicturePlane"));
 
             PicturePlane.transform.SetParent(WordRood.transform);
             PicturePlane.transform.localPosition = new Vector3(0f, 0f, 20f);
 
+
             AllPictureEntity = new GameObject("AllPictureEntity").transform;
             AllPictureEntity.transform.SetParent(WordRood.transform);
             AllPictureEntity.transform.localPosition = new Vector3(-9.5f, 3.2f, 17);
-            EntityPool = new GameObject("EntityPool").transform;
-            EntityPool.transform.SetParent(WordRood.transform);
-            EntityPool.transform.localPosition = new Vector3(200, 0, 0);
-
+         
             if (picturePool == null)
             {
                 picturePool = new ObjectPool<PictureEntity>(() => {
@@ -57,17 +66,11 @@ namespace ProjectApp
                 });
             }
 
-            if (dragEntityPool == null)
+            if (entityPool == null)
             {
-                dragEntityPool = new ObjectPool<DragEntity>(() => {
-
-                    DragEntity dragEntity = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>("Prefabs/GamePrefabs/DragEntity")).GetComponent<DragEntity>();
-
-                    return dragEntity;
-
-                });
-
-
+                entityPool = new GObjectsPool();
+                entityPool.InitRoot("EntityPool ", WordRood.transform);
+               
             }
 
         }
@@ -80,7 +83,7 @@ namespace ProjectApp
         public static void ReleaseDragEntity(DragEntity entity)
         {
             entity.ResetEntity();
-            dragEntityPool.Release(entity);
+            entityPool.Release(dragEntityPath, entity);
         }
               
 
@@ -123,6 +126,30 @@ namespace ProjectApp
         {
             dragEntityMeue.Add(entity);
             //添加进按钮啥的
+            entity.transform.SetParent(MeueTrf);
+            entity.transform.position = Vector3.zero;
+
+            SortMeueItem();
+        }
+
+        private void SortMeueItem()
+        {
+            int cont = dragEntityMeue.Count;
+            int cellIndex = cont / 2;
+            if (cellIndex == 0) return;
+
+            int face = cont % 2;
+            int jiange = 10;
+            int size = 10;
+
+            float staretPot = face == 0 ? jiange / 2 : 0;
+
+            for (int i = cellIndex -1; i < cont; i++)
+            {
+                
+            }
+
+
         }
 
         /// <summary>
@@ -142,7 +169,7 @@ namespace ProjectApp
 
         private DragEntity GetDragEntity(DragEntityType entityType)
         {
-            DragEntity dragEntity = dragEntityPool.Get();
+            DragEntity dragEntity = entityPool.Get<DragEntity>(dragEntityPath);
 
             //dragEntity.SetData();
 
@@ -159,12 +186,17 @@ namespace ProjectApp
         public void Dispose()
         {
             Rest();
-            GameObject.Destroy(WordRood);
+           
             WordRood = null;
             PicturePlane = null;
             AllPictureEntity = null;
-            EntityPool = null;
+            picturePool.Dispose();
             picturePool = null;
+
+            entityPool.Dispose();
+            entityPool = null;
+
+            GameObject.Destroy(WordRood);
         }
 
 
