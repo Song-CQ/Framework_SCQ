@@ -8,6 +8,7 @@
 using FairyGUI;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace FutureCore
 {
@@ -68,6 +69,8 @@ namespace FutureCore
             mainCamera.farClipPlane = CameraConst.MainCameraFarClipPlane;
             mainCamera.orthographic = CameraConst.MainCamera_IsOrthographic;
             mainCamera.orthographicSize = CameraConst.MainCameraOrthographicSize;
+
+            mainCamera.gameObject.AddComponent<PhysicsRaycaster>();
 
         }
 

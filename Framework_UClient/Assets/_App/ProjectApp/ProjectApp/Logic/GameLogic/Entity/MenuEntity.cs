@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class DragEntity:MonoBehaviour
+    public class MenuEntity:MonoBehaviour, IDrag
     {
         public DragEntityType entityType;
 
@@ -23,30 +23,36 @@ namespace ProjectApp
 
         private UIEventListener listener;
 
+
         public void Awake()
         {
             listener = UIEventListener.GetEventListener(transform);
 
             listener.BeginDrag += Listener_BeginDrag;
             listener.Drag += Listener_Drag; 
-            listener.EndDrag += Listener_EndDrag; 
+            listener.EndDrag += Listener_EndDrag;
+            listener.PointerClick_Event += Listener_PointerClick_Event; ;
 
+            
 
+        }
 
+        private void Listener_PointerClick_Event(UnityEngine.EventSystems.PointerEventData eventData)
+        {
+            //UnityEngine.Debug.LogError("点击"+ eventData.position+"das"+Input.mousePosition);
         }
 
         private void Listener_BeginDrag(UnityEngine.EventSystems.PointerEventData eventData)
         {
-            //GameWorldMgr.Instance.Dispatch();
+            GameWorldMgr.Instance.BeginDragEntity(this,eventData.position);
         }
         private void Listener_Drag(UnityEngine.EventSystems.PointerEventData eventData)
         {
-            
+            GameWorldMgr.Instance.DragEntity(this, eventData.position);
         }
         private void Listener_EndDrag(UnityEngine.EventSystems.PointerEventData eventData)
         {
-            
-
+            GameWorldMgr.Instance.EndDragEntity(this, eventData.position);
         }
 
         public void SetData(Base_Data data)

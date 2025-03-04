@@ -48,6 +48,11 @@ namespace ProjectApp
             return AllRolePot.Count - 1;
         }
 
+        public virtual int GetRolePotToScendPot(Vector2 pot)
+        {
+            return 0;
+        }
+
         public void SetRole(int index, RoleKey key)
         {
 

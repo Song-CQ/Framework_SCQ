@@ -39,10 +39,10 @@ namespace ProjectApp
         public override void Rest()
         {
             base.Rest();
+            Transform.SetActive(false);
 
 
 
-            GameWordEntity.ReleasePictureEntity(this);
         }
 
        

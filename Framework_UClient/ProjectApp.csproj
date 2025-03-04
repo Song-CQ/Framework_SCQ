@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\CtrlConst_AutoCread.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\DragEntity.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\SceneEventEntity.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Commons\RockerComponent.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\CtrlConst_Common.cs" />
@@ -94,6 +93,7 @@
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIEntity.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Register_AutoCreator\ILRuntimeMgr_Register.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Mseeage\CtrlMsg_Base.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\MenuEntity.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIDriver.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsModel.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUI.cs" />

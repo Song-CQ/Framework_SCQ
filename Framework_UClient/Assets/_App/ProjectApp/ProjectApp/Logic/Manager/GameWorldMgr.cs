@@ -12,9 +12,9 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class GameWorldMgr : BaseMgr<GameWorldMgr>
+    public class GameWorldMgr : BaseMonoMgr<GameWorldMgr>
     {
-        private GameSys _gameSys;
+        private GameSys gameSys;
         public GameWordEntity GameEntity { private set; get; }
 
         public GameStructure GameStructure { private set; get; }
@@ -28,7 +28,7 @@ namespace ProjectApp
         protected override void New()
         {
             base.New();
-            _gameSys = new GameSys();
+            gameSys = new GameSys();
         }
         public override void Init()
         {
@@ -39,13 +39,54 @@ namespace ProjectApp
 
             gameDispatcher = new GameDispatcher();
 
-            gameDispatcher.AddListener(GameEvent.SetEvent, PlayerInput_SetEvent);         //param = 画面index 事件EventKey
-            gameDispatcher.AddListener(GameEvent.SetRole, PlayerInput_SetRole);           //param = 画面index 事件index 角色RoleKey 
-            gameDispatcher.AddListener(GameEvent.RemoveEvent, PlayerInput_RemoveEvent);   //param = 画面index
-            gameDispatcher.AddListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);     //param = 画面index 事件index 
+            gameDispatcher.AddListener(GameEvent.SetEvent, PlayerInput_SetEvent);         
+            gameDispatcher.AddListener(GameEvent.SetRole, PlayerInput_SetRole);            
+            gameDispatcher.AddListener(GameEvent.RemoveEvent, PlayerInput_RemoveEvent);   
+            gameDispatcher.AddListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);     
 
         }
 
+        
+
+        
+
+        public void BeginDragEntity(MenuEntity dragEntity, Vector2 position)
+        {
+            GameEntity.BeginDragEntity(dragEntity,position);
+        }
+
+        public void DragEntity(MenuEntity dragEntity, Vector2 position)
+        {
+            GameEntity.DragEntityPot = position;
+        }
+        public void EndDragEntity(MenuEntity dragEntity, Vector2 position)
+        {
+            GameEntity.EndDrag();
+           
+            PictureEntity pictureEntity = GameEntity.GetPictureToScreenPoint(position);
+            if (pictureEntity == null) return;
+
+            if (dragEntity.entityType == DragEntityType.Event)
+            {
+                Dispatch_GameEvent(GameEvent.SetEvent, pictureEntity , dragEntity.data);
+            }
+            else if (dragEntity.entityType == DragEntityType.Role)
+            {
+                int rolePotIndex = -1;
+                if (pictureEntity.SceneEvent != null)
+                {
+                    rolePotIndex = (pictureEntity.SceneEvent as BaseSceneEvent).GetRolePotToScendPot(position);
+                }
+
+                Dispatch_GameEvent(GameEvent.SetRole, pictureEntity, dragEntity.data, rolePotIndex);
+
+            }
+
+
+
+        }
+
+    
 
         public override void StartUp()
         {
@@ -67,11 +108,20 @@ namespace ProjectApp
 
         }
 
+        private void FixedUpdate()
+        {
+            if (GameEntity!=null)
+            {
+
+                GameEntity.Updata();
+            }
+        }
+
         private GameStructure GetGameStructure()
         {
             GameStructure gameStructure = new GameStructure();
 
-            gameStructure.gameSys = _gameSys;
+            gameStructure.gameSys = gameSys;
             return gameStructure;
         }
 
@@ -103,7 +153,7 @@ namespace ProjectApp
         }
 
 
-        public void Dispatch(GameEvent gameEvent, params object[] pas)
+        public void Dispatch_GameEvent(GameEvent gameEvent, params object[] pas)
         {
             gameDispatcher.Dispatch(gameEvent, pas);
         }
@@ -127,9 +177,13 @@ namespace ProjectApp
             {
                 return;
             }
-            int pictureIndex = (int)param[0];
-            int potIndex = (int)param[1];
-            RoleKey roleKey = (RoleKey)param[2];
+            PictureEntity pictureEntity = param[0] as PictureEntity;
+            Role_Data data = param[1] as Role_Data;
+            int potIndex = (int)param[2];
+            
+            int pictureIndex = pictureEntity.Index;
+
+            RoleKey roleKey = data.key;
 
             GameStructure.SetRole(pictureIndex, potIndex, roleKey);
         }
@@ -146,16 +200,17 @@ namespace ProjectApp
             GameStructure.RemoveRole(pictureIndex,potIndex);
         }
         /// 画面index 事件EventKey
-        private void PlayerInput_SetEvent(object par)
+        private void PlayerInput_SetEvent(object[] par)
         {
             if (GameStructure == null)
             {
                 return;
             }
-            int[] param = par as int[];
-            int pictureIndex = param[0];
+            PictureEntity pictureEntity = par[0] as PictureEntity;
+            Event_Data data = par[1] as Event_Data;
+            int pictureIndex = pictureEntity.Index;
 
-            EventKey eventKey = (EventKey)param[1];
+            EventKey eventKey = data.key;
             GameStructure.SetEvent(pictureIndex, eventKey);
 
         }

@@ -64,7 +64,7 @@ namespace ProjectApp
         public void ExitSceneEvent(BasePicture basePicture);
     }
 
-    public interface IEntity
+    public interface IDrag
     {
 
 

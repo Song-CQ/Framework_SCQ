@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class RoleEntity : BaseRole, IEntity
+    public class RoleEntity : BaseRole, IDrag
     {
         
     }

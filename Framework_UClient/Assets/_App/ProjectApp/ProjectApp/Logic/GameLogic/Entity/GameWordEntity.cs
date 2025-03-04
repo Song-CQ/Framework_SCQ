@@ -27,6 +27,8 @@ namespace ProjectApp
         public static float p_w  =10;
         public static float p_h = 7;
 
+        public float MaxDeltaPot = 3f;
+
         public float MeueItem_Size = 3;
         public float MeueItem_Interval = 1;
 
@@ -34,14 +36,15 @@ namespace ProjectApp
         private GameStructure gameStructure = null;
         private Transform MeueTrf;
 
-        public DragEntity SelectDragEntity {private set; get;}
+        public MenuEntity SelectDragEntity {private set; get;}
         public Vector2 DragEntityPot { set; get;}
 
-        private List<DragEntity> dragEntityMeue = new List<DragEntity>();
+        private List<MenuEntity> dragEntityMeue = new List<MenuEntity>();
+        private List<PictureEntity> pictureEntityList = new List<PictureEntity>();
 
         private const string dragEntityPath = "Prefabs/GamePrefabs/DragEntity";
 
-        
+        private bool IsInit = false;
 
         public void Init()
         {
@@ -81,19 +84,55 @@ namespace ProjectApp
                
             }
 
+            if (SelectDragEntity == null)
+            {
+                SelectDragEntity = entityPool.Get<MenuEntity>(dragEntityPath);
+                SelectDragEntity.gameObject.SetActive(false);
+                SelectDragEntity.transform.SetParent(WordRood);
+                SelectDragEntity.transform.localPosition = new Vector3(0,0,5);
+            }
+
+            IsInit = true;
         }
 
        
-        public static void ReleasePictureEntity(PictureEntity entity)
+        public void ReleasePictureEntity(PictureEntity entity)
         {
+           
+            entity.Rest();
             picturePool.Release(entity);
         }  
-        public static void ReleaseDragEntity(DragEntity entity)
+        public void ReleaseDragEntity(MenuEntity entity)
         {
             entity.ResetEntity();
             entityPool.Release(dragEntityPath, entity);
         }
-              
+
+        public PictureEntity GetPictureToScreenPoint(Vector2 position)
+        {
+            Ray ray = CameraMgr.Instance.mainCamera.ScreenPointToRay(position);
+            // 用于存储射线检测的结果
+            RaycastHit hit;
+
+            // 发射射线并检测碰撞
+            if (Physics.Raycast(ray, out hit))
+            {
+                Transform trf = hit.transform;
+
+                foreach (var picture in pictureEntityList)
+                {
+                    if (picture.Transform == trf)
+                    {
+                        
+
+                        return picture;
+                    }
+                }
+
+
+            }
+            return null;
+        }
 
         public void FillStructure(GameStructure _gameStructure)
         {
@@ -104,7 +143,8 @@ namespace ProjectApp
             {
                 var picture = picturePool.Get();
            
-                gameStructure.AddPicture(picture);          
+                gameStructure.AddPicture(picture);
+                pictureEntityList.Add(picture);
                 picture.Show(i);
             }
 
@@ -132,32 +172,50 @@ namespace ProjectApp
         }
 
 
-        public void SetBingDragEntity(DragEntity entity)
+        public void BeginDragEntity(MenuEntity entity,Vector2 pot)
         {
             if (entity)
             {
-                SelectDragEntity.gameObject.SetActive(true);
-                SelectDragEntity.SetData(entity.data);
-                DragEntityPot = entity.transform.position;
+                DragEntityPot = pot;
 
-            }
-            else
-            {
-                SelectDragEntity.ResetEntity();
-                SelectDragEntity.gameObject.SetActive(false);
-                DragEntityPot = Vector2.zero;
-            }
-   
-          
+                pot = Camera.main.ScreenToWorldPoint(DragEntityPot);
+
+                SelectDragEntity.transform.localPosition = new Vector3(pot.x,pot.y,5);
+
+                SelectDragEntity.SetData(entity.data);
+                SelectDragEntity.gameObject.SetActive(true);
+
+
+            }    
 
         }
 
+        public void EndDrag()
+        {
+            SelectDragEntity.ResetEntity();
+            SelectDragEntity.gameObject.SetActive(false);
+            DragEntityPot = Vector2.zero;
+        }
+
+       
         public void Updata()
         {
-            
+            if (!IsInit) return;
+
+            if (SelectDragEntity.gameObject.activeInHierarchy)
+            {
+                float z = SelectDragEntity.transform.position.z;
+                var pot = Camera.main.ScreenToWorldPoint(DragEntityPot);
+                pot = Vector2.MoveTowards( SelectDragEntity.transform.position, pot, MaxDeltaPot);
+                pot.z = z;
+                
+                SelectDragEntity.transform.position = pot;
+            }
+
+
         }
 
-        private void AddDragEntityToMeue(DragEntity entity)
+        private void AddDragEntityToMeue(MenuEntity entity)
         {
             dragEntityMeue.Add(entity);
             //添加进按钮啥的
@@ -167,8 +225,7 @@ namespace ProjectApp
           
         }
 
-        
-
+       
         public void SortMeueItem()
         {
             int cont = dragEntityMeue.Count;
@@ -224,8 +281,14 @@ namespace ProjectApp
         /// <summary>
         /// 清空拖拽实体
         /// </summary>
-        private void ClearDragEntityMeue()
+        private void ClearEntity()
         {
+            foreach (var item in pictureEntityList)
+            {
+                
+                ReleasePictureEntity(item);
+            }
+            pictureEntityList.Clear();
 
             //销毁或者回收 to do
             foreach (var item in dragEntityMeue)
@@ -236,9 +299,9 @@ namespace ProjectApp
         }
 
 
-        private DragEntity GetDragEntity(DragEntityType entityType)
+        private MenuEntity GetDragEntity(DragEntityType entityType)
         {
-            DragEntity dragEntity = entityPool.Get<DragEntity>(dragEntityPath);
+            MenuEntity dragEntity = entityPool.Get<MenuEntity>(dragEntityPath);
 
             //dragEntity.SetData();
 
@@ -252,7 +315,8 @@ namespace ProjectApp
             gameStructure.Rest();
             gameStructure = null;
 
-            ClearDragEntityMeue();
+            ClearEntity();
+        
         }
         public void Dispose()
         {
