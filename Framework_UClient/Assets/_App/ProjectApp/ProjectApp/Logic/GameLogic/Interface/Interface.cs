@@ -5,9 +5,12 @@
     类型: 逻辑脚本
     功能: 接口
 *****************************************************/
+using FutureCore;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static FutureCore.UIEventListener;
 
 namespace ProjectApp
 {
@@ -66,10 +69,12 @@ namespace ProjectApp
 
     public interface IDrag
     {
-
-
-
-        
+        public Base_Data Data { get; }
+        void AddListener(PointerHandler _BeginDrag, PointerHandler _Drag_Delegate, PointerHandler _EndDrag_Delegate);
+        void RomveListener();
+        void BeginDrag();
+        void Drag();
+        void EndDrag();
     }
 
 }

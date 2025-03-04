@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class GameWorldMgr : BaseMonoMgr<GameWorldMgr>
+    public class GameWorldMgr : BaseMonoMgr<GameWorldMgr> 
     {
         private GameSys gameSys;
         public GameWordEntity GameEntity { private set; get; }
@@ -48,43 +48,9 @@ namespace ProjectApp
 
         
 
+       
+
         
-
-        public void BeginDragEntity(MenuEntity dragEntity, Vector2 position)
-        {
-            GameEntity.BeginDragEntity(dragEntity,position);
-        }
-
-        public void DragEntity(MenuEntity dragEntity, Vector2 position)
-        {
-            GameEntity.DragEntityPot = position;
-        }
-        public void EndDragEntity(MenuEntity dragEntity, Vector2 position)
-        {
-            GameEntity.EndDrag();
-           
-            PictureEntity pictureEntity = GameEntity.GetPictureToScreenPoint(position);
-            if (pictureEntity == null) return;
-
-            if (dragEntity.entityType == DragEntityType.Event)
-            {
-                Dispatch_GameEvent(GameEvent.SetEvent, pictureEntity , dragEntity.data);
-            }
-            else if (dragEntity.entityType == DragEntityType.Role)
-            {
-                int rolePotIndex = -1;
-                if (pictureEntity.SceneEvent != null)
-                {
-                    rolePotIndex = (pictureEntity.SceneEvent as BaseSceneEvent).GetRolePotToScendPot(position);
-                }
-
-                Dispatch_GameEvent(GameEvent.SetRole, pictureEntity, dragEntity.data, rolePotIndex);
-
-            }
-
-
-
-        }
 
     
 

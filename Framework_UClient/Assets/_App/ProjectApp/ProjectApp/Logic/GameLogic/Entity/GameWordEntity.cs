@@ -16,7 +16,7 @@ namespace ProjectApp
     public class GameWordEntity
     {
         public static Transform WordRood;
-        
+
 
         public static Transform AllPictureEntity;
         public static Vector2 PictureRoodPot = Vector2.zero;
@@ -24,7 +24,7 @@ namespace ProjectApp
         private static ObjectPool<PictureEntity> picturePool;
         private static GObjectsPool entityPool;
 
-        public static float p_w  =10;
+        public static float p_w = 10;
         public static float p_h = 7;
 
         public float MaxDeltaPot = 3f;
@@ -36,8 +36,8 @@ namespace ProjectApp
         private GameStructure gameStructure = null;
         private Transform MeueTrf;
 
-        public MenuEntity SelectDragEntity {private set; get;}
-        public Vector2 DragEntityPot { set; get;}
+        public MenuEntity SelectDragEntity { private set; get; }
+        public Vector2 DragEntityPot { set; get; }
 
         private List<MenuEntity> dragEntityMeue = new List<MenuEntity>();
         private List<PictureEntity> pictureEntityList = new List<PictureEntity>();
@@ -48,15 +48,15 @@ namespace ProjectApp
 
         public void Init()
         {
-            
-            
+
+
             WordRood = new GameObject("WordRood").transform;
-          
+
             WordRood.transform.position = new Vector3(0, 0, 0);
-            
+
             MeueTrf = new GameObject("MeueTrf").transform;
             MeueTrf.transform.SetParent(WordRood);
-            MeueTrf.transform.localPosition = new Vector3(0,-8,10);
+            MeueTrf.transform.localPosition = new Vector3(0, -8, 10);
 
             PicturePlane = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>("Prefabs/GamePrefabs/PicturePlane"));
 
@@ -67,10 +67,11 @@ namespace ProjectApp
             AllPictureEntity = new GameObject("AllPictureEntity").transform;
             AllPictureEntity.transform.SetParent(WordRood.transform);
             AllPictureEntity.transform.localPosition = new Vector3(-9.5f, 3.2f, 17);
-         
+
             if (picturePool == null)
             {
-                picturePool = new ObjectPool<PictureEntity>(() => {
+                picturePool = new ObjectPool<PictureEntity>(() =>
+                {
                     PictureEntity entity = new PictureEntity();
                     entity.Init();
                     return entity;
@@ -81,7 +82,7 @@ namespace ProjectApp
             {
                 entityPool = new GObjectsPool();
                 entityPool.InitRoot("EntityPool ", WordRood.transform);
-               
+
             }
 
             if (SelectDragEntity == null)
@@ -89,23 +90,90 @@ namespace ProjectApp
                 SelectDragEntity = entityPool.Get<MenuEntity>(dragEntityPath);
                 SelectDragEntity.gameObject.SetActive(false);
                 SelectDragEntity.transform.SetParent(WordRood);
-                SelectDragEntity.transform.localPosition = new Vector3(0,0,5);
+                SelectDragEntity.transform.localPosition = new Vector3(0, 0, 5);
             }
 
             IsInit = true;
         }
 
-       
+
         public void ReleasePictureEntity(PictureEntity entity)
         {
-           
+
             entity.Rest();
             picturePool.Release(entity);
-        }  
+        }
         public void ReleaseDragEntity(MenuEntity entity)
         {
+            entity.RomveListener();
             entity.ResetEntity();
             entityPool.Release(dragEntityPath, entity);
+        }
+
+        public void BeginDragEntity(IDrag entity, Vector2 pot)
+        {
+            if (entity != null)
+            {
+                entity.BeginDrag();
+
+                DragEntityPot = pot;
+
+                pot = Camera.main.ScreenToWorldPoint(DragEntityPot);
+
+                SelectDragEntity.transform.localPosition = new Vector3(pot.x, pot.y, 5);
+
+                SelectDragEntity.SetData(entity.Data);
+                SelectDragEntity.gameObject.SetActive(true);
+
+
+            }
+
+        }
+
+
+        public void DragEntity(IDrag dragEntity, Vector2 position)
+        {
+            dragEntity.Drag();
+            DragEntityPot = position;
+        }
+        public void EndDragEntity(IDrag dragEntity, Vector2 position)
+        {
+            dragEntity.EndDrag();
+            RestSelectDragEntity();
+
+
+            PictureEntity pictureEntity = GetPictureToScreenPoint(position);
+
+            if (pictureEntity == null) return;
+
+            if (dragEntity.Data.Type == DragEntityType.Event)
+            {
+                GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetEvent, pictureEntity, dragEntity.Data);
+            }
+            else if (dragEntity.Data.Type == DragEntityType.Role)
+            {
+                int rolePotIndex = -1;
+                if (pictureEntity.SceneEvent != null)
+                {
+                    rolePotIndex = (pictureEntity.SceneEvent as BaseSceneEvent).GetRolePotToScendPot(position);
+                }
+
+                GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetRole, pictureEntity, dragEntity.Data, rolePotIndex);
+
+            }
+
+
+
+        }
+
+        private void RestSelectDragEntity()
+        {
+            SelectDragEntity.ResetEntity();
+            SelectDragEntity.gameObject.SetActive(false);
+            DragEntityPot = Vector2.zero;
+
+
+
         }
 
         public PictureEntity GetPictureToScreenPoint(Vector2 position)
@@ -123,7 +191,7 @@ namespace ProjectApp
                 {
                     if (picture.Transform == trf)
                     {
-                        
+
 
                         return picture;
                     }
@@ -142,7 +210,7 @@ namespace ProjectApp
             for (int i = 0; i < gameStructure.LevelData.allPictureSum; i++)
             {
                 var picture = picturePool.Get();
-           
+
                 gameStructure.AddPicture(picture);
                 pictureEntityList.Add(picture);
                 picture.Show(i);
@@ -172,32 +240,9 @@ namespace ProjectApp
         }
 
 
-        public void BeginDragEntity(MenuEntity entity,Vector2 pot)
-        {
-            if (entity)
-            {
-                DragEntityPot = pot;
-
-                pot = Camera.main.ScreenToWorldPoint(DragEntityPot);
-
-                SelectDragEntity.transform.localPosition = new Vector3(pot.x,pot.y,5);
-
-                SelectDragEntity.SetData(entity.data);
-                SelectDragEntity.gameObject.SetActive(true);
 
 
-            }    
 
-        }
-
-        public void EndDrag()
-        {
-            SelectDragEntity.ResetEntity();
-            SelectDragEntity.gameObject.SetActive(false);
-            DragEntityPot = Vector2.zero;
-        }
-
-       
         public void Updata()
         {
             if (!IsInit) return;
@@ -206,9 +251,9 @@ namespace ProjectApp
             {
                 float z = SelectDragEntity.transform.position.z;
                 var pot = Camera.main.ScreenToWorldPoint(DragEntityPot);
-                pot = Vector2.MoveTowards( SelectDragEntity.transform.position, pot, MaxDeltaPot);
+                pot = Vector2.MoveTowards(SelectDragEntity.transform.position, pot, MaxDeltaPot);
                 pot.z = z;
-                
+
                 SelectDragEntity.transform.position = pot;
             }
 
@@ -222,10 +267,10 @@ namespace ProjectApp
             entity.transform.SetParent(MeueTrf);
             entity.transform.position = Vector3.zero;
 
-          
+
         }
 
-       
+
         public void SortMeueItem()
         {
             int cont = dragEntityMeue.Count;
@@ -234,9 +279,9 @@ namespace ProjectApp
 
 
             int face = cont % 2;
-            int l_index = face ==0 ? face : face - 1;
+            int l_index = face == 0 ? face : face - 1;
             int r_index = face + 1;
-            
+
             float interval = MeueItem_Interval;
             float size = MeueItem_Size;
             if (face == 1)
@@ -244,10 +289,10 @@ namespace ProjectApp
                 dragEntityMeue[cellIndex].transform.localPosition = Vector3.zero;
             }
 
-            float staretPot = face == 0 ? (interval+size) / 2 : (interval + size);
+            float staretPot = face == 0 ? (interval + size) / 2 : (interval + size);
 
-            float l_Pot  =  - staretPot;
-            float r_Pot  = staretPot;
+            float l_Pot = -staretPot;
+            float r_Pot = staretPot;
 
             while (true)
             {
@@ -256,7 +301,7 @@ namespace ProjectApp
                 {
                     b = false;
 
-                    dragEntityMeue[l_index].transform.localPosition = new Vector3(l_Pot, 0,0);
+                    dragEntityMeue[l_index].transform.localPosition = new Vector3(l_Pot, 0, 0);
 
                     l_Pot -= (interval + size);
                     l_index--;
@@ -285,7 +330,7 @@ namespace ProjectApp
         {
             foreach (var item in pictureEntityList)
             {
-                
+
                 ReleasePictureEntity(item);
             }
             pictureEntityList.Clear();
@@ -303,12 +348,25 @@ namespace ProjectApp
         {
             MenuEntity dragEntity = entityPool.Get<MenuEntity>(dragEntityPath);
 
-            //dragEntity.SetData();
+            dragEntity.Init();
+            dragEntity.AddListener(
+                (e) =>
+                {
+                    BeginDragEntity(dragEntity, e.position);
+                },
+                (e) =>
+                {
+                    DragEntity(dragEntity, e.position);
+                }, (e) =>
+                {
+                    EndDragEntity(dragEntity, e.position);
+                }
+            );
 
             return dragEntity;
         }
 
-     
+
 
         public void Rest()
         {
@@ -316,12 +374,12 @@ namespace ProjectApp
             gameStructure = null;
 
             ClearEntity();
-        
+
         }
         public void Dispose()
         {
             Rest();
-           
+
             WordRood = null;
             PicturePlane = null;
             AllPictureEntity = null;

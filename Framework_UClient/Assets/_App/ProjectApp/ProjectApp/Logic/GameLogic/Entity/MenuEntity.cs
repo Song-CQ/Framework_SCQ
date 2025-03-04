@@ -6,8 +6,10 @@
     功能: 拖拽实体
 *****************************************************/
 using FutureCore;
+using System;
 using TMPro;
 using UnityEngine;
+using static FutureCore.UIEventListener;
 
 
 namespace ProjectApp
@@ -16,25 +18,48 @@ namespace ProjectApp
     {
         public DragEntityType entityType;
 
-        public Base_Data data;
+        public Base_Data Data { get; private set; }
+
+        public UIEventListener Listener { get; private set; }
 
         public TextMeshPro type;
         public TextMeshPro val;
 
-        private UIEventListener listener;
+        private PointerHandler beginDrag_Delegate;
+        private PointerHandler drag_Delegate;
+        private PointerHandler endDrag_Delegate;
+        private bool IsInit =false;
 
-
-        public void Awake()
+        public void Init()
         {
-            listener = UIEventListener.GetEventListener(transform);
+            if (IsInit) return;
+            Listener = UIEventListener.GetEventListener(transform);
 
-            listener.BeginDrag += Listener_BeginDrag;
-            listener.Drag += Listener_Drag; 
-            listener.EndDrag += Listener_EndDrag;
-            listener.PointerClick_Event += Listener_PointerClick_Event; ;
+            IsInit = true;
 
-            
 
+
+        }
+
+        public void AddListener(PointerHandler _BeginDrag, PointerHandler _Drag_Delegate, PointerHandler _EndDrag_Delegate)
+        {
+            beginDrag_Delegate = _BeginDrag;
+            drag_Delegate = _Drag_Delegate;
+            endDrag_Delegate = _EndDrag_Delegate;
+
+            Listener.BeginDrag += beginDrag_Delegate;
+            Listener.Drag += drag_Delegate;
+            Listener.EndDrag += endDrag_Delegate;
+
+        }
+        public void RomveListener()
+        {
+            Listener.BeginDrag -= beginDrag_Delegate;
+            Listener.Drag -= drag_Delegate;
+            Listener.EndDrag -= endDrag_Delegate;
+            beginDrag_Delegate = null;
+            drag_Delegate = null;
+            endDrag_Delegate = null;
         }
 
         private void Listener_PointerClick_Event(UnityEngine.EventSystems.PointerEventData eventData)
@@ -42,22 +67,24 @@ namespace ProjectApp
             //UnityEngine.Debug.LogError("点击"+ eventData.position+"das"+Input.mousePosition);
         }
 
-        private void Listener_BeginDrag(UnityEngine.EventSystems.PointerEventData eventData)
+        public void BeginDrag()
         {
-            GameWorldMgr.Instance.BeginDragEntity(this,eventData.position);
+           
         }
-        private void Listener_Drag(UnityEngine.EventSystems.PointerEventData eventData)
+
+        public void Drag()
         {
-            GameWorldMgr.Instance.DragEntity(this, eventData.position);
+            
         }
-        private void Listener_EndDrag(UnityEngine.EventSystems.PointerEventData eventData)
+
+        public void EndDrag()
         {
-            GameWorldMgr.Instance.EndDragEntity(this, eventData.position);
+           
         }
 
         public void SetData(Base_Data data)
         {
-            this.data = data;
+            this.Data = data;
             entityType = data.Type;
 
             
@@ -67,7 +94,7 @@ namespace ProjectApp
 
         public void ResetEntity()
         {
-            this.data = null;
+            this.Data = null;
 
         }
 

@@ -9,6 +9,9 @@ using FutureCore;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static FutureCore.UIEventListener;
+using static UnityEditorInternal.VersionControl.ListControl;
 
 namespace ProjectApp
 {
@@ -17,7 +20,12 @@ namespace ProjectApp
 
         public List<Transform> RoleSoltPot = new List<Transform>();
 
-        
+        public Base_Data Data => base.data;
+
+        public UIEventListener Listener { get;private set; }
+        private PointerHandler beginDrag_Delegate;
+        private PointerHandler drag_Delegate;
+        private PointerHandler endDrag_Delegate;
 
         public override void Init(Event_Data _data, EventCode eventCode)
         {
@@ -26,6 +34,28 @@ namespace ProjectApp
             LoadEntity();
 
         }
+
+        public void AddListener(PointerHandler _BeginDrag, PointerHandler _Drag_Delegate, PointerHandler _EndDrag_Delegate)
+        {
+            beginDrag_Delegate = _BeginDrag;
+            drag_Delegate = _Drag_Delegate;
+            endDrag_Delegate = _EndDrag_Delegate;
+
+            Listener.BeginDrag += beginDrag_Delegate;
+            Listener.Drag += drag_Delegate;
+            Listener.EndDrag += endDrag_Delegate;
+
+        }
+        public void RomveListener()
+        {
+            Listener.BeginDrag -= beginDrag_Delegate;
+            Listener.Drag -= drag_Delegate;
+            Listener.EndDrag -= endDrag_Delegate;
+            beginDrag_Delegate = null;
+            drag_Delegate = null;
+            endDrag_Delegate = null;
+        }
+
 
         private void LoadEntity()
         {
@@ -53,7 +83,19 @@ namespace ProjectApp
             return index;
         }
 
+        public void BeginDrag()
+        {
+            
+        }
 
+        public void Drag()
+        {
+           
+        }
 
+        public void EndDrag()
+        {
+            
+        }
     }
 }

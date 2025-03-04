@@ -13,8 +13,8 @@ namespace ProjectApp
 {
     public class BaseSceneEvent : ISceneEvent
     {
-        private Event_Data data;
-        private EventCode code;
+        protected Event_Data data;
+        protected EventCode code;
 
         public List<RoleKey> AllRolePot { private set; get; }    
 
