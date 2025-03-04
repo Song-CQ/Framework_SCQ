@@ -4,10 +4,14 @@ namespace FutureCore
 {
     public sealed class TimerMgr : BaseMonoMgr<TimerMgr>
     {
-        private DateTime startDataTime = new DateTime(1970,1,1,0,0,0);//计算机元年
-        
-        public SimpleTimer SimpleTimer{ private set; get; }
+        private DateTime startDataTime = new DateTime(1970, 1, 1, 0, 0, 0);//计算机元年
+
+        public SimpleTimer SimpleTimer { private set; get; }
         public PETimer Timer { private set; get; }
+        /// <summary>
+        /// 每固定帧执行的事件
+        /// </summary>
+        public static event Action FixedUpdate_Event_ToFrame;
         /// <summary>
         /// 每帧执行的事件
         /// </summary>
@@ -17,7 +21,7 @@ namespace FutureCore
         /// </summary>
         public static event Action UpData_Event_ToSecond;
         private float timeTemp_Second = 0;
-        
+
 
         private void InitTimeRood()
         {
@@ -32,15 +36,15 @@ namespace FutureCore
         private void CreateSimpleTimer()
         {
             SimpleTimer = new SimpleTimer();
-  
-        } 
-        
+
+        }
+
 
         public override void Init()
         {
             base.Init();
             InitTimeRood();
-            
+
         }
 
         private void Update()
@@ -61,7 +65,16 @@ namespace FutureCore
             }
 
         }
-        
+
+        private void FixedUpdate()
+        {
+            if (!IsInit)
+            {
+                return;
+            }
+            FixedUpdate_Event_ToFrame?.Invoke();
+        }
+
         public override void Dispose()
         {
             SimpleTimer.Dispose();
@@ -103,7 +116,7 @@ namespace FutureCore
         /// <returns></returns>
         public int GetWeek()
         {
-            return (int) GetLocalDateTime().DayOfWeek;
+            return (int)GetLocalDateTime().DayOfWeek;
         }
 
         /// <summary>
