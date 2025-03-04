@@ -15,13 +15,15 @@ namespace ProjectApp
     public class GameWorldMgr : BaseMgr<GameWorldMgr>
     {
         private GameSys _gameSys;
-        private GameWordEntity gameWord;
+        public GameWordEntity GameEntity { private set; get; }
 
         public GameStructure GameStructure { private set; get; }
 
-        private class PlayerInputDispatcher : BaseDispatcher<PlayerInputDispatcher, PlayerInput, int[]> { }
-        private PlayerInputDispatcher playerInputDispatcher;
         
+
+        public class GameDispatcher : BaseDispatcher<GameDispatcher, GameEvent, object[]> { }
+
+        public GameDispatcher gameDispatcher { private set; get; }
 
         protected override void New()
         {
@@ -31,16 +33,16 @@ namespace ProjectApp
         public override void Init()
         {
             base.Init();
-            gameWord = new GameWordEntity();
-            gameWord.Init();
+            GameEntity = new GameWordEntity();
+            GameEntity.Init();
             GameObject.DontDestroyOnLoad(GameWordEntity.WordRood);
 
-            playerInputDispatcher = new PlayerInputDispatcher();
+            gameDispatcher = new GameDispatcher();
 
-            playerInputDispatcher.AddListener(PlayerInput.SetEvent, PlayerInput_SetEvent);         //param = 画面index 事件EventKey
-            playerInputDispatcher.AddListener(PlayerInput.SetRole, PlayerInput_SetRole);           //param = 画面index 事件index 角色RoleKey 
-            playerInputDispatcher.AddListener(PlayerInput.RemoveEvent, PlayerInput_RemoveEvent);   //param = 画面index
-            playerInputDispatcher.AddListener(PlayerInput.RemoveRole, PlayerInput_RemoveRole);     //param = 画面index 事件index 
+            gameDispatcher.AddListener(GameEvent.SetEvent, PlayerInput_SetEvent);         //param = 画面index 事件EventKey
+            gameDispatcher.AddListener(GameEvent.SetRole, PlayerInput_SetRole);           //param = 画面index 事件index 角色RoleKey 
+            gameDispatcher.AddListener(GameEvent.RemoveEvent, PlayerInput_RemoveEvent);   //param = 画面index
+            gameDispatcher.AddListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);     //param = 画面index 事件index 
 
         }
 
@@ -59,7 +61,7 @@ namespace ProjectApp
 
             GameStructure = GetGameStructure();
             GameStructure.FillData(levelData);
-            gameWord.FillStructure(GameStructure);
+            GameEntity.FillStructure(GameStructure);
             Debug.LogWarning("开始游戏");
 
 
@@ -101,9 +103,9 @@ namespace ProjectApp
         }
 
 
-        public void Dispatch(PlayerInput playerInput, params int[] pas)
+        public void Dispatch(GameEvent gameEvent, object pas)
         {
-            playerInputDispatcher.Dispatch(playerInput, pas);
+            gameDispatcher.Dispatch(gameEvent, pas);
         }
 
 
@@ -144,12 +146,13 @@ namespace ProjectApp
             GameStructure.RemoveRole(pictureIndex,potIndex);
         }
         /// 画面index 事件EventKey
-        private void PlayerInput_SetEvent(int[] param)
+        private void PlayerInput_SetEvent(object par)
         {
             if (GameStructure == null)
             {
                 return;
             }
+            int[] param = par as int[];
             int pictureIndex = param[0];
 
             EventKey eventKey = (EventKey)param[1];

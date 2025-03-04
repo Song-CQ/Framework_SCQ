@@ -12,11 +12,12 @@ using UnityEngine;
 
 namespace ProjectApp
 {
+
     public class GameWordEntity
     {
         public static Transform WordRood;
         
-        public static Transform MeueTrf;
+        private Transform MeueTrf;
 
         public static Transform AllPictureEntity;
         public static Vector2 PictureRoodPot = Vector2.zero;
@@ -27,14 +28,17 @@ namespace ProjectApp
         public static float p_w  =10;
         public static float p_h = 7;
 
+        public float MeueItem_Size = 3;
+        public float MeueItem_Interval = 1;
+
         public GameObject PicturePlane;
         private GameStructure gameStructure = null;
 
         private List<DragEntity> dragEntityMeue = new List<DragEntity>();
 
-        private const string dragEntityPath = "Prefabs/GamePrefabs/DragEntity"; 
+        private const string dragEntityPath = "Prefabs/GamePrefabs/DragEntity";
 
-
+        
 
         public void Init()
         {
@@ -119,6 +123,8 @@ namespace ProjectApp
                 AddDragEntityToMeue(dragItem);
             }
 
+            SortMeueItem();
+
         }
 
 
@@ -129,26 +135,60 @@ namespace ProjectApp
             entity.transform.SetParent(MeueTrf);
             entity.transform.position = Vector3.zero;
 
-            SortMeueItem();
+          
         }
 
-        private void SortMeueItem()
+        
+
+        public void SortMeueItem()
         {
             int cont = dragEntityMeue.Count;
             int cellIndex = cont / 2;
             if (cellIndex == 0) return;
 
+
             int face = cont % 2;
-            int jiange = 10;
-            int size = 10;
-
-            float staretPot = face == 0 ? jiange / 2 : 0;
-
-            for (int i = cellIndex -1; i < cont; i++)
+            int l_index = face ==0 ? face : face - 1;
+            int r_index = face + 1;
+            
+            float interval = MeueItem_Interval;
+            float size = MeueItem_Size;
+            if (face == 1)
             {
-                
+                dragEntityMeue[cellIndex].transform.localPosition = Vector3.zero;
             }
 
+            float staretPot = face == 0 ? (interval+size) / 2 : (interval + size);
+
+            float l_Pot  =  - staretPot;
+            float r_Pot  = staretPot;
+
+            while (true)
+            {
+                bool b = true;
+                if (l_index >= 0)
+                {
+                    b = false;
+
+                    dragEntityMeue[l_index].transform.localPosition = new Vector3(l_Pot, 0,0);
+
+                    l_Pot -= (interval + size);
+                    l_index--;
+                }
+                if (r_index < cont)
+                {
+                    b = false;
+
+                    dragEntityMeue[r_index].transform.localPosition = new Vector3(r_Pot, 0, 0);
+
+                    r_Pot += (interval + size);
+
+                    r_index++;
+                }
+
+                if (b) break;
+
+            }
 
         }
 

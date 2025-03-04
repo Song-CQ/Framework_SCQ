@@ -5,6 +5,7 @@
     类型: 逻辑脚本
     功能: 拖拽实体
 *****************************************************/
+using FutureCore;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +20,34 @@ namespace ProjectApp
 
         public TextMeshPro type;
         public TextMeshPro val;
+
+        private UIEventListener listener;
+
+        public void Awake()
+        {
+            listener = UIEventListener.GetEventListener(transform);
+
+            listener.BeginDrag += Listener_BeginDrag;
+            listener.Drag += Listener_Drag; 
+            listener.EndDrag += Listener_EndDrag; 
+
+
+
+        }
+
+        private void Listener_BeginDrag(UnityEngine.EventSystems.PointerEventData eventData)
+        {
+            GameWorldMgr.Instance.Dispatch();
+        }
+        private void Listener_Drag(UnityEngine.EventSystems.PointerEventData eventData)
+        {
+            
+        }
+        private void Listener_EndDrag(UnityEngine.EventSystems.PointerEventData eventData)
+        {
+            
+
+        }
 
         public void SetData(Base_Data data)
         {

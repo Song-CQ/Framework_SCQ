@@ -15,7 +15,7 @@ namespace ProjectApp
         public DragEntityType Type;
     }
 
-    public enum PlayerInput
+    public enum GameEvent : uint
     {
         //将事件设置进画面
         SetEvent = 1,
