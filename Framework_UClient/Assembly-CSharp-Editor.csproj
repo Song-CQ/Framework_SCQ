@@ -9,11 +9,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>FutureEditor</RootNamespace>
-    <ProjectGuid>{3060B796-F739-47E9-F0C9-FD2BB587D4A0}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{3798781D-C4C4-6001-E6DC-BBBA2D0E25D9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>FutureEditor</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -61,119 +61,30 @@
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolUtils.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phelper\QObjectListManager.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\SequencedChannel.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorUITool\UGUIWnd_EditorView.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\ConsoleProDebug.cs" />
-    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshFragmentization\MeshFragmentizationInspector.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolbar\ToolbarExtender.cs" />
-    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\Base\MeshEffectsBaseInspector.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\UI_AutoCreator\UI_AutoCreator.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QStaticComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QTagLayerComponent.cs" />
-    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\Utility\EditorToolkit.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetDataReader.cs" />
-    <Compile Include="Assets\_Editor\FutureEditor\FutureEditor_Init.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\ReliableChannel.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QErrorComponent.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\GUIStyleWindow.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorSceneTool\EditorSceneTool.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\SvnOrGitTool\SVNUtils.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetPacket.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phelper\QComponentsOrderList.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\GUIWindowKit.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QMonoBehaviorIconComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetPeer.cs" />
-    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Unity_Logs_ViewerEditor\ReporterEditor.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QColorComponent.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\BulidAssetBundleTool\ABConfig.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetThread.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorCoroutineTool\EditorCoroutineRunner.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NtpSyncModule.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoRegisterTool\ProjectAutoRegisterTool.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetEndPoint.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pdata\QSettingsObject.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QGameObjectIconComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Scripts\QObjectList.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QVerticesAndTrianglesCountComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetManager.cs" />
-    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshBlow\MeshBlowInspector.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\UnityTool\UnityEditorTool.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorCoroutineTool\EditorCoroutine.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ScriptableObjecTool\ScriptableObjectTool.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QLockComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QPrefabComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pdata\QResources.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\SimpleChannel.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\04_BuildAssestWnd\BuildAssestWnd.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\Module_AutoCreator\ModuleMgr_AutoCreator.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolbar\ToolbarCallback.cs" />
-    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshVortex\MeshVortexInspector.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ConfigBatTool\ConfigBatTool.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\BulidAssetBundleTool\ExportABTool.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QLayerIconComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetSerializer.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QSeparatorComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phierarchy\QHierarchySettingsWindow.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\INetEventListener.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\EditorStyleViewer.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QComponentsComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QVisibilityComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QRendererComponent.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\RegisterStriptTemplate.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\SvnOrGitTool\GitUtils.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoRegisterTool\EditorAutoRegisterTool.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetPeerCollection.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetDataWriter.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phelper\QColorUtils.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QTreeMapComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pdata\QSettings.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NatPunchModule.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\QHierarchyInitializer.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolbar\ToolBarExtenderView.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\ILRuntimeMgr_AutoCreator\ILRuntimeMgr_AutoCreator.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\pbase\QBaseComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phierarchy\QHierarchy.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetPacketPool.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetConstants.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetDebug.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\FrameworkToolView.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\MVC_CreatorTool.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\FastBitConverter.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phelper\QObjectListInspector.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetUtils.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\OpenPathTool\OpenPathTool.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetSocket.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\UnityTool\GameObjectTool.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\PathConst\UnityEditorPathConst.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\IconWindow.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\PathConst\UnityEditorPath.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\ConsoleProRemoteServer.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\03_CreadView\EditorCreadWnd.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QTagIconComponent.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QChildrenCountComponent.cs" />
-    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshWave\MeshWaveInspector.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phelper\QColorPickerWindow.cs" />
+    <Compile Include="Assets\Test\XLua\Src\Editor\Hotfix.cs" />
+    <Compile Include="Assets\Test\XLua\Src\Editor\Report.cs" />
+    <Compile Include="Assets\Test\XLua\Src\Editor\LinkXmlGen\LinkXmlGen.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\08_Hotfix\Editor\HotfixTestCfg.cs" />
+    <Compile Include="Assets\Test\XLua\Editor\XLuaUnityDefaultConfig.cs" />
+    <Compile Include="Assets\Test\XLua\Src\Editor\TemplateRef.cs" />
+    <Compile Include="Assets\Test\XLua\Editor\ExampleConfig.cs" />
+    <Compile Include="Assets\Test\XLua\Src\Editor\Generator.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\13_BuildFromCLI\Editor\BuildFromCLI.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\UI_FGUITemplate.txt" />
-    <None Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Editor\ConsolePro.Editor.dll" />
-    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\Template\32-[FC]C# Script-NewScript.cs.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\UICtrlTemplate.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\Template\33-[FC]C# Core-NewClass.cs.txt" />
-    <None Include="Assets\_Editor\Store3rdEditorLib\ConsoleE\Editor\ConsoleE.dll" />
-    <None Include="Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll" />
-    <None Include="Assets\_Editor\Store3rdEditorLib\ConsoleE\ver@3.3.txt" />
-    <None Include="Assets\_Editor\Store3rdEditorLib\RainbowAssets\ver@2.2.0.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\CtrlTemplate.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\ModelTemplate.txt" />
-    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\UI_UGUITemplate.txt" />
-    <None Include="Assets\_Editor\Store3rdEditorLib\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll" />
-    <None Include="Assets\_Editor\FutureEditor.asmdef" />
-    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\Template\31-[FC]C# Class-NewClass.cs.txt" />
-    <None Include="Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\NOTICES.txt" />
-    <None Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\ver@4.4.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaInterfaceBridge.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaWrapPusher.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaDelegateWrap.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaRegister.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaClassWrap.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaRegisterGCM.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\LinkXmlGen\LinkXmlGen.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\PackUnpack.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaEnumWrapGCM.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaClassWrapGCM.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\TemplateCommon.lua.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaDelegateBridge.tpl.txt" />
+    <None Include="Assets\Test\XLua\Src\Editor\Template\LuaEnumWrap.tpl.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1176,22 +1087,6 @@
       <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AssetBundleBrowser.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AssetBundleBrowser.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
       <Private>False</Private>
@@ -1200,19 +1095,219 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Services.Analytics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Analytics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Stores">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityCore">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Codeless">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityStub">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Purchasing.Common">
+      <HintPath>Library\ScriptAssemblies\Purchasing.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Analytics">
+      <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Analytics">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AssetBundleBrowser.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}</Project>
+      <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="FutureEditor.csproj">
+      <Project>{3060B796-F739-47E9-F0C9-FD2BB587D4A0}</Project>
+      <Name>FutureEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="FutureFrame.csproj">
       <Project>{8690BC45-7C33-6280-6C0D-F0AC44804CCE}</Project>
       <Name>FutureFrame</Name>
     </ProjectReference>
-    <ProjectReference Include="Plugins3rdLibrary.csproj">
-      <Project>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</Project>
-      <Name>Plugins3rdLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="ProjectApp.csproj">
       <Project>{87F2FCF0-988D-6D8B-EB81-CE63C02B0DBE}</Project>
       <Name>ProjectApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Plugins3rdLibrary.csproj">
+      <Project>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</Project>
+      <Name>Plugins3rdLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

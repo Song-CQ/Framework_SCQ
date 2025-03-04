@@ -17,7 +17,6 @@ namespace ProjectApp
     {
         public static Transform WordRood;
         
-        private Transform MeueTrf;
 
         public static Transform AllPictureEntity;
         public static Vector2 PictureRoodPot = Vector2.zero;
@@ -33,6 +32,10 @@ namespace ProjectApp
 
         public GameObject PicturePlane;
         private GameStructure gameStructure = null;
+        private Transform MeueTrf;
+
+        public DragEntity SelectDragEntity {private set; get;}
+        public Vector2 DragEntityPot { set; get;}
 
         private List<DragEntity> dragEntityMeue = new List<DragEntity>();
 
@@ -42,7 +45,8 @@ namespace ProjectApp
 
         public void Init()
         {
-                       
+            
+            
             WordRood = new GameObject("WordRood").transform;
           
             WordRood.transform.position = new Vector3(0, 0, 0);
@@ -127,6 +131,31 @@ namespace ProjectApp
 
         }
 
+
+        public void SetBingDragEntity(DragEntity entity)
+        {
+            if (entity)
+            {
+                SelectDragEntity.gameObject.SetActive(true);
+                SelectDragEntity.SetData(entity.data);
+                DragEntityPot = entity.transform.position;
+
+            }
+            else
+            {
+                SelectDragEntity.ResetEntity();
+                SelectDragEntity.gameObject.SetActive(false);
+                DragEntityPot = Vector2.zero;
+            }
+   
+          
+
+        }
+
+        public void Updata()
+        {
+            
+        }
 
         private void AddDragEntityToMeue(DragEntity entity)
         {
@@ -215,6 +244,8 @@ namespace ProjectApp
 
             return dragEntity;
         }
+
+     
 
         public void Rest()
         {

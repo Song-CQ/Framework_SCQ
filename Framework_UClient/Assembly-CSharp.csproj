@@ -9,11 +9,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>ProjectApp</RootNamespace>
-    <ProjectGuid>{87F2FCF0-988D-6D8B-EB81-CE63C02B0DBE}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{B4382BDA-39BE-4415-B2FB-0B912E8C4FC5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>ProjectApp</AssemblyName>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -27,7 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -61,123 +61,148 @@
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\CtrlConst_AutoCread.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\DragEntity.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\SceneEventEntity.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Commons\RockerComponent.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\CtrlConst_Common.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A002_loading\A002_loadingBinder.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\SceneConst.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\PreLoadIdConst.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\UIMgr\UIRegister_FGUI.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_pp.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUICtrlAdapter.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainUI.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsUICtrl.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsCtrl.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UICtrlConst_Common.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectCtrl.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\com_light.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\RealItem.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\ColorConst.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Commons\UIDragComponent.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\SimpleUIMgr\UIWindow.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Manager\UI_EffectManager.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameUICtrl.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectMain\MainLauncher.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUICtrl.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UICtrlMsg_OpenClose_Common.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainModel.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_balloon.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingCtrl.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\GameLogicTool.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIEntity.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Register_AutoCreator\ILRuntimeMgr_Register.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Mseeage\CtrlMsg_Base.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIDriver.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsModel.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUI.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\G004_mainBinder.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\btn_add.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlConst_AutoCread.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingModel.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Scene\GameScene.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectUI.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A002_loading\com_loading.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Data\Base_Data.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Interface\Interface.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Base\BasePicture.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Manager\ILRuntimeMgr\Register\ILRuntimeMgr_Register_Common.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseCtrlAdapter.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\RoleEntity.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Data\Event_Data.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Role\RoleState.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_collect.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Base\BaseSceneEvent.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModelConst_AutoCread.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_crazy.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Scene\MainScene.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\App\AppFacade.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Data\Role_Data.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUIAdapter.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Manager\GameWorldMgr.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameUI.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseSystemAdapter.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\btn_minus.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseModelAdapter.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsUI.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\UIMgr\UIRegister_FGUI_Common.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\ProjectApplication.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectModel.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\GameWordEntity.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlMsg_OpenClose_AutoCread.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\FGUI\FGUIDriver.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainCtrl.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\GameLogicRegister.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_playnum.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_gift.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\System\GameSys.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\App\AppManagerRegister.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UIConst_Common.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\pb_jiazai.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameModel.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\ModelConst_Common.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Define\Cont\LoadingTrasitionConst.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\EventCode\EventCode.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_playagain.cs" />
-    <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectUICtrl.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameCtrl.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_cardplaytext.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_green_vid.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\FGUI\FGUIEntity.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\PictureEntity.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Base\BaseRole.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_cash.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\A001_commonBinder.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\BaseManagerRegister.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Extend\ImageExtend.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_cardnum.cs" />
-    <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\ModuleMgrRegister_Common.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_coin.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\AppRedirection.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\AppFacadeRedirection.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UIConst_AutoCread.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\AppMain.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Main\MainUICtrl.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_main.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\ProjectAppSet.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_rolling.cs" />
-    <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\SimpleUIMgr\UIManager.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\SceneMgr\SceneMgrRegister.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_BaseTestWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_BoundsWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_ColorWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\Tutorial_DerivedClassExtensionsWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\Utils.cs" />
+    <Compile Include="Assets\Test\XLua\Src\ObjectTranslator.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\02_U3DScripting\LuaBehaviour.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_Foo1ParentWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_BehaviourWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\GenericDelegateBridge.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\Tutorial_CSCallLua_ItfDBridge.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_MonoBehaviourWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_SkinnedMeshRendererWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\07_AsyncTest\MessageBox.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_Foo1ChildWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\09_GenericMethod\GenericMethodExample.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_Vector4Wrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaGenAutoRegister.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_FooWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\CodeEmit.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\Tutorial_DerivedClassWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\EnumWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_LightWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\StaticLuaCallbacks.cs" />
+    <Compile Include="Assets\Test\XLua\Src\LuaEnv.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_KeyframeWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_AnimationClipWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_PeddingWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\DelegateBridge.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_QuaternionWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\ObjectTranslatorPool.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\Tutorial_ICalcWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\10_SignatureLoader\SignatureLoaderTest.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_ParticleSystemWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\05_NoGc\NoGc.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_RendererWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Tutorial\LoadLuaScript\Loader\CustomLoader.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\06_Coroutine\CoroutineTest.cs" />
+    <Compile Include="Assets\Test\XLua\Src\LuaTable.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\System_ObjectWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\ObjectPool.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_Foo2ParentWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_Vector3Wrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\System_Collections_Generic_List_1_System_Int32_Wrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\PackUnpack.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_ObjectWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\RawObject.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_InvokeLua_ICalcBridge.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_GameObjectWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_TimeWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_RayWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_IExchangerBridge.cs" />
+    <Compile Include="Assets\Test\XLua\Tutorial\CSharpCallLua\CSCallLua.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\01_Helloworld\Helloworld.cs" />
+    <Compile Include="Assets\Test\XLua\Src\TypeExtensions.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_TextAssetWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_WaitForSecondsWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\WrapPusher.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_Ray2DWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\SignatureLoader.cs" />
+    <Compile Include="Assets\Test\tsetGo.cs" />
+    <Compile Include="Assets\Test\XLua\Src\CopyByValue.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\08_Hotfix\HotfixTest.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_MyStructWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_MathfWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_ResourcesWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\LuaDLL.cs" />
+    <Compile Include="Assets\Test\XLua\Src\LuaException.cs" />
+    <Compile Include="Assets\Test\TestMgr.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\11_RawObject\RawObjectTest.cs" />
+    <Compile Include="Assets\Test\XLua\Src\GenAttributes.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_DebugWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_LuaBehaviourWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\MethodWarpsCache.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_NoGcWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\InternalGlobals.cs" />
+    <Compile Include="Assets\Test\XLua\Tutorial\LoadLuaScript\ByFile\ByFile.cs" />
+    <Compile Include="Assets\Test\XLua\Tutorial\LoadLuaScript\ByString\ByString.cs" />
+    <Compile Include="Assets\Test\XLua\Src\TemplateEngine\TemplateEngine.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\07_AsyncTest\AsyncTest.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_TransformWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\08_Hotfix\HotfixTest2.cs" />
+    <Compile Include="Assets\Test\XLua\Tutorial\LuaCallCSharp\LuaCallCs.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_AnimationCurveWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\Tutorial_BaseClassWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\LuaBase.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_FooExtensionWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\XLuaTest_Foo2ChildWrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\ObjectCasters.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\08_Hotfix\StatefullTest.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\04_LuaObjectOrented\InvokeLua.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\09_GenericMethod\Foo.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\ExampleGenConfig.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\System_Collections_IEnumeratorBridge.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\DelegatesGensBridge.cs" />
+    <Compile Include="Assets\Test\XLua\Gen\UnityEngine_Vector2Wrap.cs" />
+    <Compile Include="Assets\Test\XLua\Src\LuaFunction.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\12_ReImplementInLua\ReImplementInLua.cs" />
+    <Compile Include="Assets\Test\XLua\Examples\06_Coroutine\Coroutine_Runner.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\VoClassLib.dll" />
-    <None Include="Assets\_App\ProjectApp.asmdef" />
-    <None Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll" />
+    <None Include="Assets\Test\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
+    <None Include="Assets\Test\XLua\Tutorial\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\SignDailyReward_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\slotreward_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Flop_reward_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_PP_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\TaskList_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\prop_Data.txt" />
+    <None Include="Assets\Test\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />
+    <None Include="Assets\Test\XLua\Resources\xlua\util.lua.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Guidance_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\bingoRedeem_Data.txt" />
+    <None Include="Assets\Test\shar\SimpleShader\Chapter5_SimpleShader.shader" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\giftcard_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\StaticExcelData\path_StaticData.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\paymentType_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Num_probability_Data.txt" />
+    <None Include="Assets\StreamingAssets\HotFix\HotFix.dll" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\forceAd_Data.txt" />
+    <None Include="Assets\Test\XLua\Resources\perf\profiler.lua.txt" />
+    <None Include="Assets\Test\testShader.shader" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\giftList_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_coin_Data.txt" />
+    <None Include="Assets\Test\XLua\Resources\perf\memory.lua.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\turntable_Data.txt" />
+    <None Include="Assets\Test\shar\001\001.shader" />
+    <None Include="Assets\Test\XLua\Examples\03_UIEvent\ButtonInteraction.lua.txt" />
+    <None Include="Assets\Test\XLua\Gen\link.xml" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\out_cash_Data.txt" />
+    <None Include="Assets\Test\XLua\Examples\02_U3DScripting\LuaTestScript.lua.txt" />
+    <None Include="Assets\Test\XLua\Examples\07_AsyncTest\Resources\message_box.lua.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\pickBox_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\adReward_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\lang_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\StaticExcelData\Common_StaticData.txt" />
+    <None Include="Assets\Test\XLua\Resources\tdr\tdr.lua.txt" />
+    <None Include="Assets\Test\XLua\CHANGELOG.txt" />
+    <None Include="Assets\Test\XLua\Examples\06_Coroutine\Resources\cs_coroutine.lua.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\piggy_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\rolling_Data.txt" />
+    <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Item_Data.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -512,18 +537,6 @@
       <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.Graphs">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
-      <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="ILRuntime.Mono.Cecil">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
       <Private>False</Private>
@@ -552,20 +565,8 @@
       <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ConsolePro.Editor">
-      <HintPath>Assets\_Editor\Store3rdEditorLib\ConsolePro\Editor\ConsolePro.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Sirenix.Serialization">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.5\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ConsoleE">
-      <HintPath>Assets\_Editor\Store3rdEditorLib\ConsoleE\Editor\ConsoleE.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DemiLib">
@@ -588,20 +589,12 @@
       <HintPath>Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.5\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="RainbowCore">
       <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenProEditor">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.5\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
@@ -632,10 +625,6 @@
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="RainbowFolders">
-      <HintPath>Assets\_Editor\Store3rdEditorLib\RainbowAssets\RainbowFolders\Editor\Assemblies\RainbowFolders.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
       <Private>False</Private>
@@ -650,10 +639,6 @@
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.5\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BaseVoClassLib">
@@ -1164,23 +1149,211 @@
       <HintPath>E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Services.Analytics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Analytics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Stores">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityCore">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Codeless">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityStub">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Purchasing.Common">
+      <HintPath>Library\ScriptAssemblies\Purchasing.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Analytics">
+      <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Analytics">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AssetBundleBrowser.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="FutureEditor.csproj">
+      <Project>{3060B796-F739-47E9-F0C9-FD2BB587D4A0}</Project>
+      <Name>FutureEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="FutureFrame.csproj">
       <Project>{8690BC45-7C33-6280-6C0D-F0AC44804CCE}</Project>
       <Name>FutureFrame</Name>
+    </ProjectReference>
+    <ProjectReference Include="ProjectApp.csproj">
+      <Project>{87F2FCF0-988D-6D8B-EB81-CE63C02B0DBE}</Project>
+      <Name>ProjectApp</Name>
     </ProjectReference>
     <ProjectReference Include="Plugins3rdLibrary.csproj">
       <Project>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</Project>

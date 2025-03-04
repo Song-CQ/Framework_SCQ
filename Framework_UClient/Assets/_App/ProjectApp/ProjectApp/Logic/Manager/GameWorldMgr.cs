@@ -103,7 +103,7 @@ namespace ProjectApp
         }
 
 
-        public void Dispatch(GameEvent gameEvent, object pas)
+        public void Dispatch(GameEvent gameEvent, params object[] pas)
         {
             gameDispatcher.Dispatch(gameEvent, pas);
         }
@@ -111,7 +111,7 @@ namespace ProjectApp
 
         
 
-
+        
 
 
 
@@ -121,27 +121,27 @@ namespace ProjectApp
 
        
         /// 画面index 事件index 角色RoleKey 
-        private void PlayerInput_SetRole(int[] param)
+        private void PlayerInput_SetRole(object[] param)
         {
             if (GameStructure == null)
             {
                 return;
             }
-            int pictureIndex = param[0];
-            int potIndex = param[1];
+            int pictureIndex = (int)param[0];
+            int potIndex = (int)param[1];
             RoleKey roleKey = (RoleKey)param[2];
 
             GameStructure.SetRole(pictureIndex, potIndex, roleKey);
         }
         /// 画面index 事件index  
-        private void PlayerInput_RemoveRole(int[] param)
+        private void PlayerInput_RemoveRole(object[] param)
         {
             if (GameStructure == null)
             {
                 return;
             }
-            int pictureIndex = param[0];
-            int potIndex = param[1];
+            int pictureIndex = (int)param[0];
+            int potIndex = (int)param[1];
 
             GameStructure.RemoveRole(pictureIndex,potIndex);
         }
@@ -160,13 +160,13 @@ namespace ProjectApp
 
         }
         /// 画面index
-        private void PlayerInput_RemoveEvent(int[] param)
+        private void PlayerInput_RemoveEvent(object[] param)
         {
             if (GameStructure == null)
             {
                 return;
             }
-            int pictureIndex = param[0];
+            int pictureIndex = (int)param[0];
 
 
             GameStructure.RemoveEvent(pictureIndex);

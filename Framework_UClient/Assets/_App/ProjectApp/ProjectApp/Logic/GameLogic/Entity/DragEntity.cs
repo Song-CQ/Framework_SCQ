@@ -37,7 +37,7 @@ namespace ProjectApp
 
         private void Listener_BeginDrag(UnityEngine.EventSystems.PointerEventData eventData)
         {
-            GameWorldMgr.Instance.Dispatch();
+            //GameWorldMgr.Instance.Dispatch();
         }
         private void Listener_Drag(UnityEngine.EventSystems.PointerEventData eventData)
         {

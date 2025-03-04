@@ -9,6 +9,10 @@ namespace FutureCore
         public SimpleTimer SimpleTimer{ private set; get; }
         public PETimer Timer { private set; get; }
         /// <summary>
+        /// 每固定帧执行的事件
+        /// </summary>
+        public static event Action FixedUpdate_Event_ToFrame;
+        /// <summary>
         /// 每帧执行的事件
         /// </summary>
         public static event Action UpData_Event_ToFrame;
@@ -61,7 +65,16 @@ namespace FutureCore
             }
 
         }
-        
+
+        private void FixedUpdate()
+        {
+            if (!IsInit)
+            {
+                return;
+            }
+            FixedUpdate_Event_ToFrame?.Invoke();
+        }
+
         public override void Dispose()
         {
             SimpleTimer.Dispose();
