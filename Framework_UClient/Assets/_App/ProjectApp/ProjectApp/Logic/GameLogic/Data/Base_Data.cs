@@ -9,10 +9,15 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public abstract class Base_Data 
+    public abstract class Base_Data
     {
         public abstract string Desc { get; }
         public DragEntityType Type;
+
+        public T GetData<T>()where T : Base_Data
+        {
+            return this as T;
+        }
     }
 
     public enum GameEvent : uint
@@ -106,7 +111,7 @@ namespace ProjectApp
         /// <summary>
         /// 伏羲
         /// </summary>
-        FuHsi,
+        Fuxi,
         /// <summary>
         /// 女娲
         /// </summary>

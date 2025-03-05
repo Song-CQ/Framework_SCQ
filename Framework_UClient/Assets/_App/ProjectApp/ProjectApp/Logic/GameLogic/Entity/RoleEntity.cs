@@ -9,8 +9,8 @@ using FutureCore;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static FutureCore.UIEventListener;
-using static UnityEditorInternal.VersionControl.ListControl;
+
+
 
 namespace ProjectApp
 {
@@ -21,11 +21,11 @@ namespace ProjectApp
 
         public UIEventListener Listener { get; private set; }
 
-        private PointerHandler beginDrag_Delegate;
-        private PointerHandler drag_Delegate;
-        private PointerHandler endDrag_Delegate;
+        private UIEventListener.PointerHandler beginDrag_Delegate;
+        private UIEventListener.PointerHandler drag_Delegate;
+        private UIEventListener.PointerHandler endDrag_Delegate;
 
-        public void AddListener(PointerHandler _BeginDrag, PointerHandler _Drag_Delegate, PointerHandler _EndDrag_Delegate)
+        public void AddListener(UIEventListener.PointerHandler _BeginDrag, UIEventListener.PointerHandler _Drag_Delegate, UIEventListener.PointerHandler _EndDrag_Delegate)
         {
             beginDrag_Delegate = _BeginDrag;
             drag_Delegate = _Drag_Delegate;
@@ -59,9 +59,14 @@ namespace ProjectApp
 
         public void EndDrag()
         {
-        
+           
+    
+
         }
 
-        
+        public IPicture GetPicture()
+        {
+            return sceneEvent.Picture;
+        }
     }
 }

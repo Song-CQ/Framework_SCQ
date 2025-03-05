@@ -98,5 +98,9 @@ namespace ProjectApp
 
         }
 
+        public IPicture GetPicture()
+        {
+            return null;
+        }
     }
 }

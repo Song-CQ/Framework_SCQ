@@ -13,6 +13,7 @@ namespace ProjectApp
     public class BaseRole: IRole
     {
         protected Role_Data data;
+        protected ISceneEvent sceneEvent = null;
         public RoleKey Key { get => data.key; }
 
         public RoleState State { private set; get; }
@@ -28,14 +29,18 @@ namespace ProjectApp
 
         }
 
-        public void EnterSceneEvent(BasePicture basePicture)
+        public void EnterSceneEvent(ISceneEvent sceneEvent)
         {
-           
+            Debug.Log("角色:"+Key.ToString()+"进入场景:"+sceneEvent.Key.ToString());
+            this.sceneEvent = sceneEvent;
+
         }
 
-        public void ExitSceneEvent(BasePicture basePicture)
+        public void ExitSceneEvent(ISceneEvent sceneEvent)
         {
-           
+            Debug.Log("角色:" + Key.ToString() + "退出场景:" + sceneEvent.Key.ToString());
+            this.sceneEvent = null;
+
         }
 
         public bool GetLabelKey(LabelKey labelKey)

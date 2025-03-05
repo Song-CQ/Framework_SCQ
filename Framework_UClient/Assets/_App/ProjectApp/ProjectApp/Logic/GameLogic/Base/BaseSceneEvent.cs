@@ -22,7 +22,7 @@ namespace ProjectApp
 
         public List<int> eventStateList = new List<int>();
 
-        protected IPicture picture;
+        public IPicture Picture { private set; get;}
         public virtual void Init(Event_Data _data,EventCode eventCode)
         {
             data = _data;
@@ -53,20 +53,39 @@ namespace ProjectApp
             return 0;
         }
 
-        public void SetRole(int index, RoleKey key)
+        public bool SetRole(int index, RoleKey key)
         {
-
-            AllRolePot[index] = key;
+            if (index == -1)
+            {
+                index = GetNullRolePot();
+            }
+            if (index < AllRolePot.Count)
+            { 
+                AllRolePot[index] = key;
+                return true;
+            }
+            return false;
         }
 
-        public void RemoveRole(RoleKey key)
+        public bool RemoveRole(RoleKey key)
         {
             int index = GetIndexToRoleKey(key);
-
-            AllRolePot[index] = RoleKey.Node;
+            return RemoveRole(index);
         }
 
-        private int GetIndexToRoleKey(RoleKey key)
+        public bool RemoveRole(int index)
+        {
+            if (index >= 0 && index < AllRolePot.Count)
+            {
+                AllRolePot[index] = RoleKey.Node;
+                return true;
+            }
+            return false;
+        }
+
+
+
+        public int GetIndexToRoleKey(RoleKey key)
         {
             if (key == RoleKey.Node)
             {
@@ -86,37 +105,15 @@ namespace ProjectApp
         }
 
 
-        public bool AddRole(RoleKey role, int index = -1)
-        {
-            if (index == -1)
-            {
-                index = GetNullRolePot();
-            }
+        
 
-            AllRolePot[index] = role;
-            return true;
-        }
-
-        public bool RemoveRole(int index)
-        {
-            if (index < AllRolePot.Count)
-            {
-                if (AllRolePot[index] !=  RoleKey.Node)
-                {
-                    AllRolePot[index] = RoleKey.Node;
-
-                    return true;
-                }
-
-            }
-            return false;
-        }
+        
 
 
         public virtual void EnterPicture(IPicture picture)
         {
             Debug.Log("Show场景");
-            this.picture = picture;
+            this.Picture = picture;
         }
 
         public virtual void ExitPicture(IPicture picture)
@@ -124,7 +121,7 @@ namespace ProjectApp
             Debug.Log("Exit场景");
 
             //回收
-            this.picture = null;
+            this.Picture = null;
             AllRolePot.Clear();
         }
 

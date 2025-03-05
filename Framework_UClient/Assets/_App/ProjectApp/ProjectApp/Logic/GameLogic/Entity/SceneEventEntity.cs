@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static FutureCore.UIEventListener;
-using static UnityEditorInternal.VersionControl.ListControl;
 
 namespace ProjectApp
 {
@@ -90,12 +89,20 @@ namespace ProjectApp
 
         public void Drag()
         {
-           
+            
         }
 
         public void EndDrag()
         {
-            
+            //将自身从画面中移除 如果存在于画面中的话
+          
+           
+
+        }
+
+        public IPicture GetPicture()
+        {
+            return Picture;
         }
     }
 }

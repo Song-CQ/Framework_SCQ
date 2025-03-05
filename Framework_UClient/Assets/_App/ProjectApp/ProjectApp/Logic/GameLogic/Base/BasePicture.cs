@@ -88,7 +88,7 @@ namespace ProjectApp
 
             Roles[role.Key] = role;
 
-            Roles[role.Key].EnterSceneEvent(this);
+            Roles[role.Key].EnterSceneEvent(this.SceneEvent);
 
 
         }
@@ -109,6 +109,8 @@ namespace ProjectApp
              RemoveRole(roleKey);
         }
 
+     
+
         public virtual void RemoveRole(RoleKey roleKey)
         {
             if (SceneEvent == null)
@@ -123,7 +125,7 @@ namespace ProjectApp
 
             SceneEvent.RemoveRole(roleKey);
 
-            Roles[roleKey].ExitSceneEvent(this);
+            Roles[roleKey].ExitSceneEvent(this.SceneEvent);
             Roles[roleKey] = null;
 
         }

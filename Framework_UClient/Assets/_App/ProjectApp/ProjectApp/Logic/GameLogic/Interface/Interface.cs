@@ -38,15 +38,17 @@ namespace ProjectApp
 
     public interface ISceneEvent//事件
     {
+        public IPicture Picture {  get; }
         public EventKey Key { get; }
 
         public List<RoleKey> AllRolePot { get; }
 
 
+
         public void EnterPicture(IPicture picture);
         public void ExitPicture(IPicture picture);
-        public void SetRole(int index,RoleKey key);
-        public void RemoveRole(RoleKey key);
+        public bool SetRole(int index,RoleKey key);
+        public bool RemoveRole(RoleKey key);
         public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles);
         public void RefreshView(Dictionary<RoleKey, IRole> roles);
         public void ShowView(int showType);
@@ -63,8 +65,8 @@ namespace ProjectApp
         public void RefreshView();
 
 
-        public void EnterSceneEvent(BasePicture basePicture);
-        public void ExitSceneEvent(BasePicture basePicture);
+        public void EnterSceneEvent(ISceneEvent sceneEvent);
+        public void ExitSceneEvent(ISceneEvent sceneEvent);
     }
 
     public interface IDrag
@@ -75,6 +77,8 @@ namespace ProjectApp
         void BeginDrag();
         void Drag();
         void EndDrag();
+
+        IPicture GetPicture();
     }
 
 }

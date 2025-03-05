@@ -56,7 +56,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -181,6 +180,7 @@
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\Num_probability_Data.txt" />
     <None Include="Assets\StreamingAssets\HotFix\HotFix.dll" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\forceAd_Data.txt" />
+    <None Include="Assets\_Res\Fonts\TextMeshPro\7000汉字_符号_英文字符集.txt" />
     <None Include="Assets\Test\XLua\Resources\perf\profiler.lua.txt" />
     <None Include="Assets\Test\testShader.shader" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ExcelData\giftList_Data.txt" />
@@ -1225,12 +1225,12 @@
       <HintPath>Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">

@@ -144,23 +144,39 @@ namespace ProjectApp
 
             PictureEntity pictureEntity = GetPictureToScreenPoint(position);
 
-            if (pictureEntity == null) return;
-
-            if (dragEntity.Data.Type == DragEntityType.Event)
+            if (pictureEntity == null)
             {
-                GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetEvent, pictureEntity, dragEntity.Data);
-            }
-            else if (dragEntity.Data.Type == DragEntityType.Role)
-            {
-                int rolePotIndex = -1;
-                if (pictureEntity.SceneEvent != null)
+                if (dragEntity.Data.Type == DragEntityType.Event)
                 {
-                    rolePotIndex = (pictureEntity.SceneEvent as BaseSceneEvent).GetRolePotToScendPot(position);
+                    GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveEvent, pictureEntity, dragEntity);
                 }
+                else if (dragEntity.Data.Type == DragEntityType.Role)
+                {
+                   
+                    GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveRole, pictureEntity, dragEntity);
 
-                GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetRole, pictureEntity, dragEntity.Data, rolePotIndex);
-
+                }
             }
+            else
+            {
+                if (dragEntity.Data.Type == DragEntityType.Event)
+                {
+                    GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetEvent, pictureEntity, dragEntity);
+                }
+                else if (dragEntity.Data.Type == DragEntityType.Role)
+                {
+                    int rolePotIndex = -1;
+                    if (pictureEntity.SceneEvent != null)
+                    {
+                        rolePotIndex = (pictureEntity.SceneEvent as BaseSceneEvent).GetRolePotToScendPot(position);
+                    }
+
+                    GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetRole, pictureEntity, dragEntity, rolePotIndex);
+
+                }
+            }
+
+            
 
 
 

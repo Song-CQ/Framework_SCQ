@@ -96,7 +96,7 @@ namespace ProjectApp
             LevelData levelData = new LevelData();
 
             Role_Data role_Data_1 = new Role_Data();
-            role_Data_1.key = RoleKey.FuHsi;
+            role_Data_1.key = RoleKey.Fuxi;
 
             Role_Data role_Data_2 = new Role_Data();
             role_Data_2.key = RoleKey.Nuwa;
@@ -144,11 +144,18 @@ namespace ProjectApp
                 return;
             }
             PictureEntity pictureEntity = param[0] as PictureEntity;
-            Role_Data data = param[1] as Role_Data;
-            int potIndex = (int)param[2];
-            
-            int pictureIndex = pictureEntity.Index;
+            IDrag drag = param[1] as IDrag;
+            Role_Data data = drag.Data.GetData<Role_Data>();
 
+            //判断是从菜单设置 还是从画面上设置 如果是画面上设置得将原来的画面移除
+            IPicture sourPicture = drag.GetPicture();
+            if (sourPicture != null)
+            {
+                GameStructure.RemoveRole(sourPicture.Index,data.key);
+            }
+
+            int potIndex = (int)param[2];        
+            int pictureIndex = pictureEntity.Index;
             RoleKey roleKey = data.key;
 
             GameStructure.SetRole(pictureIndex, potIndex, roleKey);
@@ -160,10 +167,12 @@ namespace ProjectApp
             {
                 return;
             }
-            int pictureIndex = (int)param[0];
-            int potIndex = (int)param[1];
-
-            GameStructure.RemoveRole(pictureIndex,potIndex);
+            PictureEntity pictureEntity = param[0] as PictureEntity;
+            int pictureIndex = pictureEntity.Index;
+            IDrag drag = param[1] as IDrag;
+            Role_Data data = drag.Data.GetData<Role_Data>();
+         
+            GameStructure.RemoveRole(pictureIndex,data.key);
         }
         /// 画面index 事件EventKey
         private void PlayerInput_SetEvent(object[] par)
@@ -173,10 +182,17 @@ namespace ProjectApp
                 return;
             }
             PictureEntity pictureEntity = par[0] as PictureEntity;
-            Event_Data data = par[1] as Event_Data;
-            int pictureIndex = pictureEntity.Index;
+            IDrag drag = par[1] as IDrag;
 
-            EventKey eventKey = data.key;
+            //判断是从菜单设置 还是从画面上设置 如果是画面上设置得将原来的画面移除
+            IPicture sourPicture = drag.GetPicture();
+            if (sourPicture != null)
+            {
+                GameStructure.RemoveEvent(sourPicture.Index);
+            }
+            
+            int pictureIndex = pictureEntity.Index;
+            EventKey eventKey = drag.Data.GetData<Event_Data>().key;
             GameStructure.SetEvent(pictureIndex, eventKey);
 
         }
@@ -187,7 +203,8 @@ namespace ProjectApp
             {
                 return;
             }
-            int pictureIndex = (int)param[0];
+            PictureEntity pictureEntity = param[0] as PictureEntity;
+            int pictureIndex = pictureEntity.Index;
 
 
             GameStructure.RemoveEvent(pictureIndex);
@@ -354,6 +371,19 @@ namespace ProjectApp
             RefactorPictures(pictureIndex);
         }
 
+        public void RemoveRole(int pictureIndex, RoleKey key)
+        {
+            if (pictureIndex >= allPictures.Count)
+            {
+                return;
+            }
+
+            BasePicture picture = allPictures[pictureIndex];
+
+            picture.RemoveRole(key);
+
+            RefactorPictures(pictureIndex);
+        }
 
         /// <summary>
         /// 刷新 画面
@@ -395,7 +425,7 @@ namespace ProjectApp
 
         }
 
-
+        
     }
 
 
