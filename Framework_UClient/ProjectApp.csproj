@@ -95,8 +95,10 @@
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsModel.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\G004_mainBinder.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Mgr\ConfigDataMgr.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\btn_add.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\UICtrlConst_AutoCread.cs" />
+    <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOMgr\ConfigDataMgr_AudioCreator.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingModel.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Scene\GameScene.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectUI.cs" />
@@ -111,7 +113,6 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModuleMgrRegister_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseUIAdapter.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\Manager\GameWorldMgr.cs" />
-    <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOMgr\ExcelMgr_AudioCreator.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Game\GameUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseSystemAdapter.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Const\PrefsKeyConst.cs" />

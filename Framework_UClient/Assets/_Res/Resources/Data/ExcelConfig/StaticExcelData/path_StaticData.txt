@@ -1,1 +1,0 @@
-{"UpDataPath":"E:/UnityPro/Framework_SCQ/_Resources/UpData"}

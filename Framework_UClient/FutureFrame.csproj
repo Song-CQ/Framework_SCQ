@@ -114,7 +114,6 @@
     <Compile Include="Assets\_FutureFrame\FutureCore\App\AppGlobal.cs" />
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Launcher\EngineLauncher.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\AppObjConst.cs" />
-    <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\ExcelMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Utility\Unity3dUtil\Unity3dUtil.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\Scene\BaseScene.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\Mgr\VersionUpdateMgr.cs" />

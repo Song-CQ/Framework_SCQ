@@ -72,13 +72,13 @@ namespace ProjectApp.Data
             {
                 if (!m_keyDic.TryGetValue(key,out vo))
                 {
-                   UnityEngine.Debug.Log("键"+key+"不存在");   
+                    LogUtil.LogError("键"+key+"不存在");   
                 }
             }
             else
               
             {
-                UnityEngine.Debug.Log("未初始化");   
+                LogUtil.LogError("未初始化");   
             }
             return vo;
         }
@@ -90,14 +90,19 @@ namespace ProjectApp.Data
             {
                 if (!m_idDic.TryGetValue(id,out vo))
                 {
-                    UnityEngine.Debug.Log("id"+id+"不存在");   
+                    LogUtil.LogError("id"+id+"不存在");   
                 }
             }
             else
             {
-                UnityEngine.Debug.Log("未初始化");   
+                LogUtil.LogError("未初始化");   
             }
             return vo;
+        }
+
+        public List<VOClass> GetVOList()
+        {
+            return m_voLst;
         }
 
         public VOClass GetFirstVO()

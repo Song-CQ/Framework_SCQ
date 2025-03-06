@@ -28,3 +28,4 @@ H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLi
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.CopyComplete
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.dll
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.pdb
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\LogUtil.dll

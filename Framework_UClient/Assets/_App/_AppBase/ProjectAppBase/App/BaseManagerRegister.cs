@@ -20,7 +20,7 @@ namespace ProjectApp
            
             globalMgr.AddMgr(CameraMgr.Instance);
             //globalMgr.AddMgr(ConfigMgr.Instance);
-            globalMgr.AddMgr(ExcelDataMgr.Instance);
+            globalMgr.AddMgr(ConfigDataMgr.Instance);
             //globalMgr.AddMgr(ConsoleMgr.Instance);
             //globalMgr.AddMgr(DateTimeMgr.Instance);
             globalMgr.AddMgr(TimerMgr.Instance);

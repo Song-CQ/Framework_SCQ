@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public sealed class ExcelDataMgr:BaseMgr<ExcelDataMgr>
+    public sealed partial class ConfigDataMgr : BaseMgr<ConfigDataMgr>
     {
 
         private Dictionary<Type, BaseVO[]> excelDataStrDic;
@@ -46,7 +46,7 @@ namespace ProjectApp
         }
 
 
-        public void SetExcalData<T>(string tableName) where T:BaseVO
+        private void SetExcalData<T>(string tableName) where T:BaseVO
         {
             TextAsset textAsset = ResMgr.Instance.GetExcelData(@"ExcelData\"+tableName + "_Data");
             T[] vos = null;

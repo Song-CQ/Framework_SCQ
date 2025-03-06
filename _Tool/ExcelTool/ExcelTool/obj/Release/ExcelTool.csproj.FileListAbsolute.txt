@@ -1,0 +1,9 @@
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe.config
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.pdb
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Release\ExcelTool.csproj.AssemblyReference.cache
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Release\ExcelTool.csproj.SuggestedBindingRedirects.cache
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Release\ExcelTool.csproj.CoreCompileInputs.cache
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Release\ExcelTool.csproj.CopyComplete
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Release\ExcelTool.exe
+H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Release\ExcelTool.pdb
