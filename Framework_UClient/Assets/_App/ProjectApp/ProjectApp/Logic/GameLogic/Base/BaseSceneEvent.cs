@@ -16,6 +16,8 @@ namespace ProjectApp
         protected Event_Data data;
         protected EventCode code;
 
+        protected 
+
         public List<RoleKey> AllRolePot { private set; get; }    
 
         public EventKey Key { get => data.key; }

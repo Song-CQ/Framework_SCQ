@@ -6,6 +6,7 @@
     功能: Nothing
 *****************************************************/
 using FutureCore;
+using ProjectApp.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace ProjectApp
 {
     public class SceneEventEntity :BaseSceneEvent ,IDrag
     {
+        public GameObject Entity; 
 
         public List<Transform> RoleSoltPot = new List<Transform>();
 
@@ -29,9 +31,10 @@ namespace ProjectApp
         public override void Init(Event_Data _data, EventCode eventCode)
         {
             base.Init(_data, eventCode);
-
+            
+    
             LoadEntity();
-
+            
         }
 
         public void AddListener(PointerHandler _BeginDrag, PointerHandler _Drag_Delegate, PointerHandler _EndDrag_Delegate)
@@ -58,7 +61,12 @@ namespace ProjectApp
 
         private void LoadEntity()
         {
-            //RoleSoltPot.Add();
+            Entity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.SceneEntityPath);
+            for (int i = 0; i < data.RoleSum; i++)
+            {
+                RoleSoltPot
+            }
+
 
         }
 
@@ -104,5 +112,17 @@ namespace ProjectApp
         {
             return Picture;
         }
+
+        public void Dispose()
+        {
+            RomveListener();
+            RoleSoltPot.Clear();
+
+
+            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.SceneEntityPath,Entity);
+            ObjectPoolStatic<SceneEventEntity>.Release(this);
+        }
+
+       
     }
 }

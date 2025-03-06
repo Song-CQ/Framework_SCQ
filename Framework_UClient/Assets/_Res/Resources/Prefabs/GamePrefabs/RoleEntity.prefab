@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 521301508465142668}
   - component: {fileID: 7752260487521008278}
   m_Layer: 0
-  m_Name: RoleEntity_Fuxi
+  m_Name: RoleEntity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

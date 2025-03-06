@@ -22,7 +22,8 @@ namespace ProjectApp
         public override void Init()
         {
             base.Init();
-            Transform = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>("Prefabs/GamePrefabs/PictureEntity")).transform;
+            Transform = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.PictureEntityPath).transform;
+            
             EventListener = UIEventListener.GetEventListener(Transform);
 
         }
@@ -31,7 +32,7 @@ namespace ProjectApp
         {
             base.Show(index);
             Transform.SetActive(true);
-            Transform.SetParent(GameWordEntity.AllPictureEntity);
+          
             Vector2 pot = new Vector2(GameWordEntity.p_w * (index % 3), - GameWordEntity.p_h * (index / 3));
             Transform.localPosition = GameWordEntity.PictureRoodPot + pot;
         }

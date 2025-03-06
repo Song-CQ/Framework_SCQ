@@ -14,7 +14,7 @@ namespace ProjectApp
 {
     public class GameSys :BaseSystem
     {
-
+        
 
         private Dictionary<EventKey, EventCode> allEventCodeDic;
 
@@ -58,7 +58,7 @@ namespace ProjectApp
 
         public SceneEventEntity GetSceneEventEntity(Event_Data _data)
         {
-            SceneEventEntity entity = new SceneEventEntity();
+            SceneEventEntity entity = ObjectPoolStatic<SceneEventEntity>.Get();
 
             EventCode eventCode = GetEventCode(_data.key);
 
@@ -66,6 +66,8 @@ namespace ProjectApp
 
             return entity;
         }
+
+
 
         private EventCode GetEventCode(EventKey key)
         {

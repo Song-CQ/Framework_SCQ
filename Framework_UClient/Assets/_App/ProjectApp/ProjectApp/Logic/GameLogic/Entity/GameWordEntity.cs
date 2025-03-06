@@ -18,11 +18,11 @@ namespace ProjectApp
         public static Transform WordRood;
 
 
-        public static Transform AllPictureEntity;
         public static Vector2 PictureRoodPot = Vector2.zero;
+        public Transform AllPictureEntity;
 
-        private static ObjectPool<PictureEntity> picturePool;
-        private static GObjectsPool entityPool;
+        private ObjectPool<PictureEntity> picturePool;
+        private GObjectsPool entityPool;
 
         public static float p_w = 10;
         public static float p_h = 7;
@@ -42,7 +42,10 @@ namespace ProjectApp
         private List<MenuEntity> dragEntityMeue = new List<MenuEntity>();
         private List<PictureEntity> pictureEntityList = new List<PictureEntity>();
 
-        private const string dragEntityPath = "Prefabs/GamePrefabs/DragEntity";
+        public const string PictureEntityPath = "Prefabs/GamePrefabs/PictureEntity";
+        public const string DragEntityPath = "Prefabs/GamePrefabs/DragEntity";
+        public const string RoleEntityPath = "Prefabs/GamePrefabs/RoleEntity";
+        public const string SceneEntityPath = "Prefabs/GamePrefabs/SceneEntity";
 
         private bool IsInit = false;
 
@@ -81,13 +84,13 @@ namespace ProjectApp
             if (entityPool == null)
             {
                 entityPool = new GObjectsPool();
-                entityPool.InitRoot("EntityPool ", WordRood.transform);
+                entityPool.InitRoot("EntityGoPool ", WordRood.transform);
 
             }
 
             if (SelectDragEntity == null)
             {
-                SelectDragEntity = entityPool.Get<MenuEntity>(dragEntityPath);
+                SelectDragEntity = entityPool.Get<MenuEntity>(DragEntityPath);
                 SelectDragEntity.gameObject.SetActive(false);
                 SelectDragEntity.transform.SetParent(WordRood);
                 SelectDragEntity.transform.localPosition = new Vector3(0, 0, 5);
@@ -96,6 +99,15 @@ namespace ProjectApp
             IsInit = true;
         }
 
+        public GameObject GetPrefabGo(string loadPath)
+        {
+           return entityPool.Get(loadPath);
+        }
+
+        public void ReleasePrefabGo(string loadPath,GameObject go)
+        {
+            entityPool.Release(loadPath,go);
+        }
 
         public void ReleasePictureEntity(PictureEntity entity)
         {
@@ -107,7 +119,7 @@ namespace ProjectApp
         {
             entity.RomveListener();
             entity.ResetEntity();
-            entityPool.Release(dragEntityPath, entity);
+            entityPool.Release(DragEntityPath, entity);
         }
 
         public void BeginDragEntity(IDrag entity, Vector2 pot)
@@ -225,10 +237,11 @@ namespace ProjectApp
 
             for (int i = 0; i < gameStructure.LevelData.allPictureSum; i++)
             {
-                var picture = picturePool.Get();
-
+                PictureEntity picture = picturePool.Get();
                 gameStructure.AddPicture(picture);
                 pictureEntityList.Add(picture);
+                
+                picture.Transform.SetParent(AllPictureEntity);
                 picture.Show(i);
             }
 
@@ -362,7 +375,7 @@ namespace ProjectApp
 
         private MenuEntity GetDragEntity(DragEntityType entityType)
         {
-            MenuEntity dragEntity = entityPool.Get<MenuEntity>(dragEntityPath);
+            MenuEntity dragEntity = entityPool.Get<MenuEntity>(DragEntityPath);
 
             dragEntity.Init();
             dragEntity.AddListener(

@@ -7,7 +7,7 @@
 *****************************************************/
 namespace FutureCore
 {
-    public class ExcelMgr 
+    public class ConfigDataMgr
     {
 
 
