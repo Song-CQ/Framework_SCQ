@@ -33,5 +33,15 @@ namespace ProjectApp.Data
         public abstract void Init();
         public abstract void Reset();
         public abstract void Dispose();
+
+
+        public abstract BaseVO GetBaseVO(string key);
+        public abstract BaseVO GetBaseVO(int id);
+        public abstract List<BaseVO> GetBaseVOList();      
+        public abstract BaseVO GetFirstBaseVO();
+        public abstract BaseVO GetLastBaseVO();
+
+        public abstract void SetData(BaseVO[] voLists);
+       
     }
 }

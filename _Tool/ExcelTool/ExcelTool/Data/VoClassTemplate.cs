@@ -12,6 +12,8 @@ namespace ProjectApp.Data
 {
     public partial class #Class:BaseVO
     {
+        public const ConfigVO VOType = ConfigVO.#ConfigVO;
+        
         #Val
     }
 }

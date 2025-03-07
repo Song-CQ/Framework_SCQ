@@ -1,6 +1,6 @@
 ﻿namespace ProjectApp.Data
 {
-    public abstract class BaseVO
+    public class BaseVO
     {
         /// <summary>
         /// id
@@ -11,6 +11,12 @@
         /// key
         /// </summary>
         public string key;
+
+    }
+
+    public class BaseStaticVO
+    {
+        public virtual string Key { get; }
 
     }
 }

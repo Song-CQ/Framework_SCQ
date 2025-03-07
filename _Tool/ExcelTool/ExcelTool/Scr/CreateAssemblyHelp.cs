@@ -57,11 +57,11 @@ namespace ExcelTool
 
             // Generate debug information.
 
-            cp.IncludeDebugInformation = true;
+            cp.IncludeDebugInformation = false;
 
             // Save the assembly as a physical file.
 
-            cp.GenerateInMemory = true;
+            cp.GenerateInMemory = false;
 
             cp.OutputAssembly = MainMgr.Instance.CurrentDirectory+ @"\VoClassLib.dll";
             
@@ -76,6 +76,11 @@ namespace ExcelTool
             cp.TreatWarningsAsErrors = false;
 
             // Set compiler argument to optimize output.
+
+            //是否保存编译中的临时文件
+            cp.TempFiles.KeepFiles = false;
+
+
 
             cp.CompilerOptions = "/optimize";
            
@@ -155,12 +160,14 @@ namespace ExcelTool
                 StringColor.WriteLine("解析" + tableName + "表成功", ConsoleColor.Green);
                 
             }
+            //创建数据类
+            string configDataStr = GetTemplateClass("ExcelTool.Data.ConfigData.cs");
             //创建表数据管理器类
-            CreateDataModeMgrToClass(allStaticVO,allModel);
+            CreateDataModeMgrToClass(allStaticVO,allModel,ref configDataStr);
             //创建打表Version
             CreateVOVersionToClass();
             //将所有类写入程序集
-            Assembly assembly = WriteInAssembly(allClassname,allClassval);
+            Assembly assembly = WriteInAssembly(allClassname,allClassval, configDataStr);
             
             return assembly; 
         }
@@ -248,6 +255,7 @@ namespace ExcelTool
             classVal =classVal.Replace("#Name",data.Name);
             classVal = classVal.Replace("#Val",svBuilder.ToString());
             classVal =classVal.Replace("#Class",item.TableName.RemoveTableNameAnnotation()+"StaticVO");
+            classVal =classVal.Replace("#ConfigVO", item.TableName.RemoveTableNameAnnotation());
             
             return classVal;
         }
@@ -388,6 +396,7 @@ namespace ExcelTool
             string classVal = GetTemplateClass("ExcelTool.Data.VoClassTemplate.cs");
             classVal = classVal.Replace("#Name",excelData.Name.Replace(".xlsx",""));
             classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation()+"VO");
+            classVal = classVal.Replace("#ConfigVO", item.TableName.RemoveTableNameAnnotation());
             svBuilder.Clear();
 
             foreach (DataColumn itemColumn in item.Columns)
@@ -440,7 +449,7 @@ namespace ExcelTool
         }
 
 
-        public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal)
+        public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal,string configDataStr)
         {
 
             if (IsCreateDll)
@@ -458,8 +467,15 @@ namespace ExcelTool
             Assembly assembly = null;
             
             Console.WriteLine("开始编译程序集");
+            string[] sourStr = new string[allClassVal.Count + 1];
+            sourStr[0] = configDataStr;
+            for (int i = 0; i < allClassVal.Count; i++)
+            {
+                sourStr[i + 1] = allClassVal[i];
+            }
+       
 
-            CompilerResults result = provider.CompileAssemblyFromSource(cp, allClassVal.ToArray());
+            CompilerResults result = provider.CompileAssemblyFromSource(cp, sourStr);
 
             if (result.Errors.Count > 0)
             {
@@ -472,6 +488,9 @@ namespace ExcelTool
                     string dir = GetClassNameDir(allClassName[i]);
                     WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\VOClass\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                 }
+
+                WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOClass", "ConfigData_AutoCreate",configDataStr);
+
                 CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll", MainMgr.Instance.OutClassPath+@"\VODll");
                 StringColor.WriteLine("编译程序集失败");
                 
@@ -499,6 +518,8 @@ namespace ExcelTool
                       
                         WriteIn2Cs(MainMgr.Instance.OutClassPath+ @"\VOClass\" + dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
                     }
+                    WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOClass", "ConfigData_AutoCreate", configDataStr);
+
                 }
             }
             return assembly;
@@ -534,35 +555,53 @@ namespace ExcelTool
         /// </summary>
         /// <param name="allStaticVo"></param>
         /// <param name="allModel"></param>
-        private static void CreateDataModeMgrToClass(List<string> allStaticVo, List<string> allModel)
+        private static void CreateDataModeMgrToClass(List<string> allStaticVo, List<string> allModel,ref string configDataStr)
         {
+            string configType = string.Empty;
             string setStaticDataToDic = string.Empty;
-            string setDataToDic = string.Empty;
             string init = string.Empty;
             string reset = string.Empty;
             string setDataModel = string.Empty;
+            uint configTypeIndex = 0;
             foreach (var tableName in allStaticVo)
             {
-                string setDataVal = "\n            "+tableName+"StaticVO.SetData(GetStaticExcalData<" + tableName+"StaticVO"+">("+'"'+tableName+'"'+"));";
+                string setDataVal = "\n            "+tableName+ "StaticVO.SetData(configStaticVODic[ConfigVO." + tableName +"] as "+ tableName + "StaticVO);";
                 setStaticDataToDic += setDataVal;
+
+                init += string.Format("\n            configTypeDic.Add(ConfigVO.{0},typeof({1}));",tableName,tableName+ "StaticVO");
+
+                configTypeIndex++;
+                configType += string.Format("\n{0} = {1},",tableName,configTypeIndex);
+                reset += "\n            " + tableName + "StaticVO.ResetData();";
+
             }
+            configTypeIndex = 100;
             foreach (var tableName in allModel)
             {
+                configTypeIndex++;
+                configType += string.Format("\n{0} = {1},", tableName, configTypeIndex);
+
                 string className = tableName + "VOModel";
-                string setDataVal = "\n            SetExcalData<"+tableName+"VO"+">("+'"'+tableName+'"'+");";
-                setDataToDic += setDataVal;
-                init += "\n            " + className + ".Instance.Init();";
-                reset += "\n            " + className + ".Instance.Reset();";
-                setDataModel += "\n            "+ className + ".Instance.SetData(excelDataStrDic[typeof("+tableName+"VO"+")]"+" as "+tableName+"VO"+"[]);";
+                setDataModel += "\n            AddVOModel(ConfigVO." + tableName + ","+ className + ".Instance);";
+
+                init += string.Format("\n            configTypeDic.Add(ConfigVO.{0},typeof({1}[]));", tableName, tableName + "VO");
+                
+               
             }
-            string mgrTempLate = GetTemplateClass("ExcelTool.Data.ExcelDataMgr.cs");
+            configType = configType.Substring(0, configType.LastIndexOf(','));
+            configDataStr = configDataStr.Replace("#ConfigVO", configType);
+
+            string mgrTempLate = GetTemplateClass("ExcelTool.Data.ConfigDataMgr.cs"); 
             mgrTempLate = mgrTempLate.Replace("#IsEnciphermentData",ExcelToAssemblyDataHelp.IsEnciphermentData.ToString().ToLower());
-            mgrTempLate = mgrTempLate.Replace("#SetStaticDataToDic",setStaticDataToDic);
-            mgrTempLate = mgrTempLate.Replace("#SetDataToDic",setDataToDic);
-            mgrTempLate = mgrTempLate.Replace("#Init",init);
-            mgrTempLate = mgrTempLate.Replace("#Reset", reset);
+            mgrTempLate = mgrTempLate.Replace("#IsOutMultipleDatas", ExcelToAssemblyDataHelp.IsOutMultipleDatas.ToString().ToLower());
+            mgrTempLate = mgrTempLate.Replace("#Init",init); 
+            mgrTempLate = mgrTempLate.Replace("#SetStaticDataToDic", setStaticDataToDic);
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
+
+            mgrTempLate = mgrTempLate.Replace("#Reset", reset);
             WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\VOMgr", "ConfigDataMgr_AudioCreator", mgrTempLate);
+
+
         }
         
         /// <summary>

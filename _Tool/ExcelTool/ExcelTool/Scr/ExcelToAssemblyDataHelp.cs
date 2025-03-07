@@ -11,6 +11,7 @@ using System.Threading;
 using ExcelTool.Data;
 using ExcelTool.Tool;
 using Newtonsoft.Json;
+using ProjectApp.Data;
 
 namespace ExcelTool
 {
@@ -22,12 +23,20 @@ namespace ExcelTool
         private static List<string> tempm_Id = new List<string>();
 
         public static bool IsEnciphermentData = true;
+        public static bool IsOutMultipleDatas = false;
+
+        
+        private static Dictionary<uint, BaseStaticVO> allConfigData_configStaticVODic = new Dictionary<uint, BaseStaticVO>();
+        private static Dictionary<uint, BaseVO[]> allConfigData_configVODic = new Dictionary<uint, BaseVO[]>();
 
         public static void Start(Assembly assembly, List<ExcelData> excelDataLst)
         {
 
             _assembly = assembly;
             StringColor.WriteLine("表数据是否加密：" + ExcelToAssemblyDataHelp.IsEnciphermentData, ConsoleColor.Yellow);
+            StringColor.WriteLine("是否每个表都创建单独的数据文件：" + ExcelToAssemblyDataHelp.IsOutMultipleDatas, ConsoleColor.Yellow);
+           
+            
             foreach (var excelData in excelDataLst)
             {
                 if (excelData.IsStart)
@@ -38,6 +47,49 @@ namespace ExcelTool
                 {
                     CreateObj(excelData.Name, excelData.Sheet);
                 }
+            }
+
+            if (!IsOutMultipleDatas)
+            {
+
+                CreateConfigData();
+            }
+        }
+
+        private static void CreateConfigData()
+        {
+            try
+            {
+               object allConfigData = _assembly.CreateInstance("ProjectApp.Data.ConfigData");
+               Type allConfigDataType = allConfigData.GetType();
+
+              
+
+                var StaticVODic = allConfigDataType.GetField("configStaticVODic", BindingFlags.Public | BindingFlags.Instance);
+                var VODic = allConfigDataType.GetField("configVODic", BindingFlags.Public | BindingFlags.Instance);
+
+                StaticVODic.SetValue(allConfigData, allConfigData_configStaticVODic);
+                VODic.SetValue(allConfigData, allConfigData_configVODic);
+
+                string jsonData = JsonConvert.SerializeObject(allConfigData);
+               
+                if (IsEnciphermentData)
+                {
+                    byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
+                    File.WriteAllBytes(MainMgr.Instance.OutDataPath + @"\ConfigData.bytes", bytes);
+                }
+                else
+                {
+                    File.WriteAllText(MainMgr.Instance.OutDataPath + @"\ConfigData.txt", jsonData);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                StringColor.WriteLine(e);
+                StringColor.WriteLine("生成ConfigData数据失败");
+                Thread.CurrentThread.Abort();
             }
         }
 
@@ -113,17 +165,30 @@ namespace ExcelTool
                     object val = ValToObj(fieldInfo.FieldType, valStr);
                     fieldInfo.SetValue(myObject, val);
                 }
-                string jsonData = JsonConvert.SerializeObject(myObject);
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\StaticExcelData");
-                if (IsEnciphermentData)
+                if (IsOutMultipleDatas)
                 {
-                    byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                    File.WriteAllBytes(directoryInfo.FullName + @"\" + tableName + "_StaticData.bytes", bytes);
+                    string jsonData = JsonConvert.SerializeObject(myObject);
+                    DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\StaticExcelData");
+                    if (IsEnciphermentData)
+                    {
+                        byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
+                        File.WriteAllBytes(directoryInfo.FullName + @"\" + tableName + "_StaticData.bytes", bytes);
+                    }
+                    else
+                    {
+                        File.WriteAllText(directoryInfo.FullName + @"\" + tableName + "_StaticData.txt", jsonData);
+                    }
                 }
                 else
                 {
-                    File.WriteAllText(directoryInfo.FullName + @"\" + tableName + "_StaticData.txt", jsonData);
+
+                    FieldInfo constField = myType.GetField("VOType", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+                    uint key = Convert.ToUInt32(constField.GetValue(myObject));
+                    allConfigData_configStaticVODic.Add(key, myObject as BaseStaticVO);
+
                 }
+
+                
 
                 StringColor.WriteLine("生成静态表：" + name + "数据成功", ConsoleColor.Green);
             }
@@ -221,18 +286,37 @@ namespace ExcelTool
                 Thread.CurrentThread.Abort();
             }
 
-
-            string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
-            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\ExcelData");
-            if (IsEnciphermentData)
+            if (IsOutMultipleDatas)
             {
-                byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                File.WriteAllBytes(directoryInfo.FullName + @"\" + tableName + "_Data.bytes", bytes);
+                string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\ExcelData");
+                if (IsEnciphermentData)
+                {
+                    byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
+                    File.WriteAllBytes(directoryInfo.FullName + @"\" + tableName + "_Data.bytes", bytes);
+                }
+                else
+                {
+                    File.WriteAllText(directoryInfo.FullName + @"\" + tableName + "_Data.txt", jsonData);
+                }
             }
             else
             {
-                File.WriteAllText(directoryInfo.FullName + @"\" + tableName + "_Data.txt", jsonData);
+                Type myType = myDataLst[0].GetType();
+                FieldInfo constField = myType.GetField("VOType", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+                uint key = Convert.ToUInt32(constField.GetValue(myDataLst[0]));
+                List<BaseVO> allBaseStatics = new List<BaseVO>();
+                foreach (var item in myDataLst)
+                {
+                    allBaseStatics.Add(item as BaseVO);
+                }
+
+                allConfigData_configVODic.Add(key, allBaseStatics.ToArray());
+
             }
+
+
+            
             StringColor.WriteLine("生成表：" + Name + "数据成功", ConsoleColor.Green);
         }
 

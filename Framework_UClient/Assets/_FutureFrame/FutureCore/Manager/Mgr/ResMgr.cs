@@ -11,7 +11,7 @@ namespace FutureCore
     public class ResMgr : BaseMgr<ResMgr>
     {
 
-        public TextAsset GetExcelData(string tableName)
+        public TextAsset GetConfigData(string tableName)
         {
             string path = @"Data\ExcelConfig" + @"\" + tableName;
             TextAsset data = Resources.Load<TextAsset>(path);

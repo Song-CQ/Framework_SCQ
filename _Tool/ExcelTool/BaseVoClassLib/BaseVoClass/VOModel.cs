@@ -3,8 +3,8 @@ using System.Diagnostics;
 
 namespace ProjectApp.Data
 {
-    public abstract class VOModel<MyModel,VOClass>:BaseVOModel
-        where MyModel:class,new()
+    public abstract class VOModel<MyModel,VOClass>:BaseVOModel 
+        where MyModel: BaseVOModel, new()
         where VOClass:BaseVO 
     {
         private static MyModel m_instance;
@@ -15,6 +15,7 @@ namespace ProjectApp.Data
                 if (m_instance == null)
                 {
                     m_instance = new MyModel();
+                    m_instance.Init();
                 }
                 return m_instance;
             }
@@ -47,19 +48,19 @@ namespace ProjectApp.Data
             m_keyDic = null;
             m_voLst = null;
         }
-        
-        public void SetData(VOClass[] voLists)
+
+        public override void SetData(BaseVO[] voLists)
         {
             foreach (VOClass _vo in voLists)
             {
                 m_voLst.Add(_vo);
                 if (HasStringKey)
                 {
-                    m_keyDic.Add(_vo.key,_vo);
+                    m_keyDic.Add(_vo.key, _vo);
                 }
                 if (HasStringId)
                 {
-                    m_idDic.Add(_vo.id,_vo);
+                    m_idDic.Add(_vo.id, _vo);
                 }
             }
             IsInit = true;
@@ -121,8 +122,28 @@ namespace ProjectApp.Data
             }
             return null;
         }
+
+        public override BaseVO GetBaseVO(string key)
+        {
+            return GetVO(key);
         
-        
+        }
+        public override BaseVO GetBaseVO(int id)
+        {
+            return GetVO(id);
+        }
+        public override List<BaseVO> GetBaseVOList()
+        {
+            return GetVOList() as List<BaseVO>;
+        }
+        public override BaseVO GetFirstBaseVO()
+        {
+            return GetFirstVO();
+        }
+        public override BaseVO GetLastBaseVO() 
+        {
+            return GetLastVO();
+        }
         
 
     }
