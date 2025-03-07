@@ -7,6 +7,7 @@ using System.IO;
 using UnityEditor.AnimatedValues;
 using System.Collections.Generic;
 using FutureEditor;
+using NUnit.Framework;
 
 namespace FutureEditor
 {
@@ -65,7 +66,7 @@ namespace FutureEditor
             abConfig = new ABConfig();
             if (temp == null)
             {
-                abConfig.outputPath = Path.GetFullPath(Application.dataPath + "/../../_Resources/UpData/AssetBundles");
+                abConfig.outputPath = "Assets/../../_Resources/UpData/AssetBundles";
                 abConfig.abRoot = "Assets/_Res/AssetBundleRes";
                 abConfig.verifyPath = UnityEditorPathConst.ABConfigPatn_Assest + "/version.json";
                 abConfig.allBeDependPath = UnityEditorPathConst.ABConfigPatn_Assest + "/allBeDependData.json";
@@ -354,7 +355,7 @@ namespace FutureEditor
             }
             if (GUILayout.Button("打开导出目录"))
             {
-                Application.OpenURL(abConfig.outputPath);
+                Application.OpenURL(Path.GetFullPath(abConfig.outputPath.Replace(@"Assets\..\..\", Application.dataPath + @"\..\..\")));
             }
             GUILayout.EndHorizontal();
             GUILayout.Space(5);
@@ -540,10 +541,12 @@ namespace FutureEditor
 
             if (GUILayout.Button("浏览", GUILayout.Width(50f)))
             {
-                string path = EditorUtility.OpenFolderPanel("选择AB包输出目录", Application.dataPath + @"\..", "").Replace(@"\", "/").Replace(@"\\", "/");
-                if (!path.IsNullOrEmpty())
+                string basePath = Path.GetFullPath(Application.dataPath+"/../..").Replace(@"\", "/").Replace(@"\\", "/");
+
+                string path = EditorUtility.OpenFolderPanel("选择AB包输出目录", Application.dataPath , "").Replace(@"\", "/").Replace(@"\\", "/");
+                if (path.Contains(basePath))
                 {
-                    abConfig.outputPath = path;
+                    abConfig.outputPath = path.Replace(basePath, "Assets/../..");
                     Repaint();
                 }
 
@@ -568,8 +571,8 @@ namespace FutureEditor
                 string path = EditorUtility.OpenFolderPanel("选择AB信息文件夹", Application.dataPath, "").Replace(@"\", "/").Replace(@"\\", "/");
                 if (path.Contains(Application.dataPath))
                 {
-                    versionPath = path;
-
+                    versionPath = path.Replace(Application.dataPath, "Assets");
+                    Repaint();
                 }
             }
 

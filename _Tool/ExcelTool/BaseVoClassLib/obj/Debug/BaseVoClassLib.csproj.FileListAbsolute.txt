@@ -29,3 +29,11 @@ H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLi
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.dll
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.pdb
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\LogUtil.dll
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\BaseVoClassLib.dll
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\BaseVoClassLib.pdb
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\bin\Debug\LogUtil.dll
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.AssemblyReference.cache
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.csproj.CoreCompileInputs.cache
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoCl.10C9E770.Up2Date
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.dll
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\BaseVoClassLib\obj\Debug\BaseVoClassLib.pdb

@@ -51,16 +51,17 @@ namespace ProjectApp.Data
 
         public override void SetData(BaseVO[] voLists)
         {
-            foreach (VOClass _vo in voLists)
+            foreach (BaseVO _vo in voLists)
             {
-                m_voLst.Add(_vo);
+                VOClass vOClass = _vo as VOClass;
+                m_voLst.Add(vOClass);
                 if (HasStringKey)
                 {
-                    m_keyDic.Add(_vo.key, _vo);
+                    m_keyDic.Add(_vo.key, vOClass);
                 }
                 if (HasStringId)
                 {
-                    m_idDic.Add(_vo.id, _vo);
+                    m_idDic.Add(_vo.id, vOClass);
                 }
             }
             IsInit = true;

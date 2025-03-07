@@ -34,25 +34,30 @@ namespace ExcelTool
                 Console.WriteLine(e);
             },null);
             LogUtil.LogGirl();
-            if (args==null||args.Length==0||args[0]=="Dll")
+            if (args==null||args.Length==0)
             {
                 CreateAssemblyHelp.IsCreateDll = true;
-               
-            }
-            else if (args[0]=="CS")
-            {
-                CreateAssemblyHelp.IsCreateDll = false;
-            }
-            if (args==null||args.Length==0||args[1]=="True")
-            {
-                ExcelToAssemblyDataHelp.IsEnciphermentData = true;
-               
-            }
-            else if (args[1]=="False")
-            {
                 ExcelToAssemblyDataHelp.IsEnciphermentData = false;
+                ExcelToAssemblyDataHelp.IsOutMultipleDatas = false;
+               
             }
+            else 
+            {
+               
+                CreateAssemblyHelp.IsCreateDll = args[0] == "Dll";
+                ExcelToAssemblyDataHelp.IsEnciphermentData = args[1] == "True";
+                ExcelToAssemblyDataHelp.IsOutMultipleDatas = args[2] == "True";
+            }
+
+
            
+            StringColor.WriteLine("输出类型:"+ CreateAssemblyHelp.IsCreateDll.ToString(), ConsoleColor.Yellow);
+            StringColor.WriteLine("是否加密:"+ ExcelToAssemblyDataHelp.IsEnciphermentData, ConsoleColor.Yellow);
+            StringColor.WriteLine("是否单独为表生成数据文件:"+ ExcelToAssemblyDataHelp.IsOutMultipleDatas, ConsoleColor.Yellow);
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine();
+
+
             try
             {
                 task = new Task(Init);

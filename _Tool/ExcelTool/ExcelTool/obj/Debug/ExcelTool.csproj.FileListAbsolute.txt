@@ -36,3 +36,11 @@ H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.csproj.C
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.csproj.CopyComplete
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.exe
 H:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.pdb
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe.config
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.exe
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\Release\ExcelTool.pdb
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.csproj.AssemblyReference.cache
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.csproj.CoreCompileInputs.cache
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.csproj.Up2Date
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.exe
+G:\UnityPro\Framework_SCQ\_Tool\ExcelTool\ExcelTool\obj\Debug\ExcelTool.pdb
