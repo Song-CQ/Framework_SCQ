@@ -14,7 +14,7 @@ namespace ProjectApp
     {
         protected Role_Data data;
         protected ISceneEvent sceneEvent = null;
-        public RoleKey Key { get => data.key; }
+        public RoleKey Key { get => data.Key; }
 
         public RoleState State { private set; get; }
 
@@ -23,7 +23,7 @@ namespace ProjectApp
             State = new RoleState();
         }
 
-        public void Init(Role_Data data)
+        public virtual void Init(Role_Data data)
         {
             this.data = data;
 

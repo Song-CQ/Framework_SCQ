@@ -16,18 +16,40 @@ namespace ProjectApp
     public class PictureEntity: BasePicture
     {
         public Transform Transform {  get; private set; }
+        public Transform RolesTrf {  get; private set; }
+        public Transform EventTrf {  get; private set; }
         public UIEventListener EventListener { get; private set; }
+        private SceneEventEntity sceneEvent;
 
-       
+
         public override void Init()
         {
             base.Init();
             Transform = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.PictureEntityPath).transform;
-            
+
+            EventTrf = Transform.Find("Event").transform;
+            RolesTrf = Transform.Find("AllRole").transform;
+
             EventListener = UIEventListener.GetEventListener(Transform);
 
         }
-     
+
+
+        public override bool SetRole(IRole role, int potIndex = -1)
+        {
+            bool isres =  base.SetRole(role, potIndex);
+
+            if (isres) 
+            {
+                RoleEntity roleEntity = role as RoleEntity;
+
+                roleEntity.Entity.transform.SetParent(RolesTrf);
+
+                roleEntity.Entity.transform.localPosition = sceneEvent.GetRolePot(potIndex);
+            }
+            return isres;
+        }
+
         public override void Show(int index)
         {
             base.Show(index);

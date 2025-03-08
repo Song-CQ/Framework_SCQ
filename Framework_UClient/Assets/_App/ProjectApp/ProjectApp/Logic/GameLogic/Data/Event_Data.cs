@@ -5,18 +5,26 @@
     类型: 逻辑脚本
     功能: Nothing
 *****************************************************/
+using ProjectApp.Data;
+using System;
 using UnityEngine;
 
 namespace ProjectApp
 {
     public class Event_Data : Base_Data
     {
-        public override string Desc=> key.ToString();
+        public override string Desc => VO.desc;
 
-        public EventKey key;
+        public EventKey Key { private set; get; }
+        public int RoleSum => VO.roleSum;
 
+        public SceneEventVO VO { private set; get; }
 
-        public int RoleSum;
+        public Event_Data(EventKey key)
+        {
+            Key = key;
+            VO = ConfigDataMgr.Instance.GetConfigVO<SceneEventVO>( ConfigVO.SceneEvent, key.ToString());
+        }
 
     }
 

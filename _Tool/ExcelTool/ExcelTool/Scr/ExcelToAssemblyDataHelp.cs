@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using System.Xml.Linq;
 using ExcelTool.Data;
 using ExcelTool.Tool;
 using Newtonsoft.Json;
@@ -143,6 +144,8 @@ namespace ExcelTool
             string className = "ProjectApp.Data." + tableName + "StaticVO";
             Console.WriteLine("开始生成静态表：" + name + "数据");
             Console.WriteLine("类名：" + className);
+            bool _SetFaceNo = true;
+
             try
             {
 
@@ -161,10 +164,33 @@ namespace ExcelTool
                     }
                     string valStr = dataRow[staticValueColumn].ToString().Trim();
                     FieldInfo fieldInfo = myType.GetField(keyStr);
-                    
-                    object val = ValToObj(fieldInfo.FieldType, valStr);
+                    object val = null;
+
+                    try
+                    {
+                        val = ValToObj(fieldInfo.FieldType, valStr);
+                        
+                    }
+                    catch (Exception e)
+                    {
+                       
+                        StringColor.WriteLine("生成静态表：" + name + "数据失败");
+                        LogUtil.LogError("字段值写入数据失败！");
+                        LogUtil.LogError("字段名:" + keyStr);
+                        LogUtil.LogError("目标类型:" + fieldInfo.FieldType.ToString());
+                        LogUtil.LogError("写入值:" + valStr);
+                        StringColor.WriteLine(e);
+                        Thread.CurrentThread.Abort();
+
+
+
+                    }
+
                     fieldInfo.SetValue(myObject, val);
+
                 }
+
+
                 if (IsOutMultipleDatas)
                 {
                     string jsonData = JsonConvert.SerializeObject(myObject);
@@ -199,6 +225,7 @@ namespace ExcelTool
                 Thread.CurrentThread.Abort();
             }
 
+
         }
 
 
@@ -218,6 +245,7 @@ namespace ExcelTool
             List<object> myDataLst = new List<object>();
             tempm_key.Clear();
             tempm_Id.Clear();
+      
             try
             {
                 for (int i = 4; i < sheet.Rows.Count; i++)
@@ -247,7 +275,22 @@ namespace ExcelTool
                         }
 
                         string valStr = dataRow[itemColumn].ToString().Trim();
-                        object val = ValToObj(fieldInfo.FieldType, valStr);
+                        object val = null;
+                        try
+                        {
+                            val = ValToObj(fieldInfo.FieldType, valStr);
+                        }
+                        catch (Exception)
+                        {
+
+                            LogUtil.LogError("字段值写入数据失败！");
+                            LogUtil.LogError("字段名:"+ _fieldName);
+                            LogUtil.LogError("目标类型:" + fieldInfo.FieldType.ToString());
+                            LogUtil.LogError("写入值:"+ valStr);
+                            StringColor.WriteLine("生成表：" + Name + "数据失败");
+                            Thread.CurrentThread.Abort();
+                        }
+                        
                         if (_fieldName.ToLower() == "id")
                         {
                             if (valStr == string.Empty || valStr == null)
@@ -284,7 +327,9 @@ namespace ExcelTool
                 StringColor.WriteLine(e);
                 StringColor.WriteLine("生成表：" + Name + "数据失败");
                 Thread.CurrentThread.Abort();
+
             }
+            
 
             if (IsOutMultipleDatas)
             {
@@ -325,6 +370,7 @@ namespace ExcelTool
         {
             object obj = null;
             // thisType = GetTypeByString(type);
+            
             if (thisType != null)
             {
                 if (valString == null || valString == string.Empty)

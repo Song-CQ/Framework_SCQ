@@ -27,8 +27,8 @@ namespace ProjectApp
         public void SetEvent(ISceneEvent newScene);
         public void RemoveEvent();
 
-        public void SetRole(IRole role, int index = -1);
-        public void RemoveRole(RoleKey roleKey);
+        public bool SetRole(IRole role, int index = -1);
+        public bool RemoveRole(RoleKey roleKey);
 
         public bool CheckCanSetRole(RoleKey key, out int potIndex_old, int potIndex = -1);
         public void Rest();

@@ -96,20 +96,19 @@ namespace ProjectApp
             LevelData levelData = new LevelData();
 
             Role_Data role_Data_1 = new Role_Data();
-            role_Data_1.key = RoleKey.Fuxi;
+            role_Data_1.Key = RoleKey.Fuxi;
 
             Role_Data role_Data_2 = new Role_Data();
-            role_Data_2.key = RoleKey.Nuwa;
+            role_Data_2.Key = RoleKey.Nuwa;
 
             levelData.roles.Add(role_Data_1);
             levelData.roles.Add(role_Data_2);
 
-            Event_Data event_Data1 = new Event_Data();
-            event_Data1.key = EventKey.Love;
-            event_Data1.RoleSum = 2;
+            Event_Data event_Data1 = new Event_Data( EventKey.Love);
 
 
-            Event_Data event_Data2 = new Event_Data();
+
+            Event_Data event_Data2 = new Event_Data(EventKey.Love);
 
             levelData.events.Add(event_Data1);
             //levelData.events.Add(event_Data2);
@@ -151,12 +150,12 @@ namespace ProjectApp
             IPicture sourPicture = drag.GetPicture();
             if (sourPicture != null)
             {
-                GameStructure.RemoveRole(sourPicture.Index,data.key);
+                GameStructure.RemoveRole(sourPicture.Index,data.Key);
             }
 
             int potIndex = (int)param[2];        
             int pictureIndex = pictureEntity.Index;
-            RoleKey roleKey = data.key;
+            RoleKey roleKey = data.Key;
 
             GameStructure.SetRole(pictureIndex, potIndex, roleKey);
         }
@@ -172,7 +171,7 @@ namespace ProjectApp
             IDrag drag = param[1] as IDrag;
             Role_Data data = drag.Data.GetData<Role_Data>();
          
-            GameStructure.RemoveRole(pictureIndex,data.key);
+            GameStructure.RemoveRole(pictureIndex,data.Key);
         }
         /// 画面index 事件EventKey
         private void PlayerInput_SetEvent(object[] par)
@@ -192,7 +191,7 @@ namespace ProjectApp
             }
             
             int pictureIndex = pictureEntity.Index;
-            EventKey eventKey = drag.Data.GetData<Event_Data>().key;
+            EventKey eventKey = drag.Data.GetData<Event_Data>().Key;
             GameStructure.SetEvent(pictureIndex, eventKey);
 
         }
@@ -257,13 +256,13 @@ namespace ProjectApp
 
             foreach (var item in levelData.roles)
             {
-                allRole_Data.Add(item.key,item);
-                allRoleState.Add(item.key, new RoleState());
+                allRole_Data.Add(item.Key,item);
+                allRoleState.Add(item.Key, new RoleState());
             }
 
             foreach (var item in levelData.events)
             {
-                allEvent_Data.Add(item.key, item);
+                allEvent_Data.Add(item.Key, item);
             }
 
         }

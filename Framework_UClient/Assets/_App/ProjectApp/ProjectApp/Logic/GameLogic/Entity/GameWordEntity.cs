@@ -180,7 +180,7 @@ namespace ProjectApp
                     int rolePotIndex = -1;
                     if (pictureEntity.SceneEvent != null)
                     {
-                        rolePotIndex = (pictureEntity.SceneEvent as BaseSceneEvent).GetRolePotToScendPot(position);
+                        rolePotIndex = (pictureEntity.SceneEvent as SceneEventEntity).GetRolePotToScendPot(position);
                     }
 
                     GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetRole, pictureEntity, dragEntity, rolePotIndex);

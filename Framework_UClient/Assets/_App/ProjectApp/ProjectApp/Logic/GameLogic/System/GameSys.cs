@@ -18,6 +18,7 @@ namespace ProjectApp
 
         private Dictionary<EventKey, EventCode> allEventCodeDic;
 
+
         public override void Init()
         {
             base.Init();
@@ -60,7 +61,7 @@ namespace ProjectApp
         {
             SceneEventEntity entity = ObjectPoolStatic<SceneEventEntity>.Get();
 
-            EventCode eventCode = GetEventCode(_data.key);
+            EventCode eventCode = GetEventCode(_data.Key);
 
             entity.Init(_data, eventCode);
 

@@ -20,10 +20,27 @@ namespace ProjectApp
         public Base_Data Data => base.data;
 
         public UIEventListener Listener { get; private set; }
+        public GameObject Entity { get; private set; }
 
         private UIEventListener.PointerHandler beginDrag_Delegate;
         private UIEventListener.PointerHandler drag_Delegate;
         private UIEventListener.PointerHandler endDrag_Delegate;
+
+        public override void Init(Role_Data data)
+        {
+            base.Init(data);
+
+            LoadEntity();
+
+        }
+
+        private void LoadEntity()
+        {
+            Entity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.SceneEntityPath);
+            
+
+
+        }
 
         public void AddListener(UIEventListener.PointerHandler _BeginDrag, UIEventListener.PointerHandler _Drag_Delegate, UIEventListener.PointerHandler _EndDrag_Delegate)
         {
@@ -67,6 +84,16 @@ namespace ProjectApp
         public IPicture GetPicture()
         {
             return sceneEvent.Picture;
+        }
+
+        public void Dispose()
+        {
+            RomveListener();
+
+
+
+            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.RoleEntityPath, Entity);
+            ObjectPoolStatic<RoleEntity>.Release(this);
         }
     }
 }

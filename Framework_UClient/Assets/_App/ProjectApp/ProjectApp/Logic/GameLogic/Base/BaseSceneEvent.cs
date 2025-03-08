@@ -16,11 +16,11 @@ namespace ProjectApp
         protected Event_Data data;
         protected EventCode code;
 
-        protected 
+        //protected 
 
         public List<RoleKey> AllRolePot { private set; get; }    
 
-        public EventKey Key { get => data.key; }
+        public EventKey Key { get => data.Key; }
 
         public List<int> eventStateList = new List<int>();
 
@@ -50,12 +50,7 @@ namespace ProjectApp
             return AllRolePot.Count - 1;
         }
 
-        public virtual int GetRolePotToScendPot(Vector2 pot)
-        {
-            return 0;
-        }
-
-        public bool SetRole(int index, RoleKey key)
+        public virtual bool SetRole(int index, RoleKey key)
         {
             if (index == -1)
             {
@@ -69,13 +64,13 @@ namespace ProjectApp
             return false;
         }
 
-        public bool RemoveRole(RoleKey key)
+        public virtual bool RemoveRole(RoleKey key)
         {
             int index = GetIndexToRoleKey(key);
             return RemoveRole(index);
         }
 
-        public bool RemoveRole(int index)
+        public virtual bool RemoveRole(int index)
         {
             if (index >= 0 && index < AllRolePot.Count)
             {

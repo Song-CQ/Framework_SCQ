@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2025/3/8 1:52:8
+    日期：2025/3/9 0:25:49
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -24,7 +24,7 @@ namespace ProjectApp
         /// <summary>
         /// 是否加密表数据
         /// </summary>
-        private const bool isEnciphermentData = true;
+        private const bool isEnciphermentData = false;
         /// <summary>
         /// 是否将每张表都生成一个数据文件
         /// </summary>
@@ -44,28 +44,7 @@ namespace ProjectApp
             
             configTypeDic.Add(ConfigVO.path,typeof(pathStaticVO));
             configTypeDic.Add(ConfigVO.Common,typeof(CommonStaticVO));
-            configTypeDic.Add(ConfigVO.paymentType,typeof(paymentTypeVO[]));
-            configTypeDic.Add(ConfigVO.forceAd,typeof(forceAdVO[]));
-            configTypeDic.Add(ConfigVO.giftcard,typeof(giftcardVO[]));
-            configTypeDic.Add(ConfigVO.bingoRedeem,typeof(bingoRedeemVO[]));
-            configTypeDic.Add(ConfigVO.out_PP,typeof(out_PPVO[]));
-            configTypeDic.Add(ConfigVO.out_coin,typeof(out_coinVO[]));
-            configTypeDic.Add(ConfigVO.out_cash,typeof(out_cashVO[]));
-            configTypeDic.Add(ConfigVO.Flop_reward,typeof(Flop_rewardVO[]));
-            configTypeDic.Add(ConfigVO.pickBox,typeof(pickBoxVO[]));
-            configTypeDic.Add(ConfigVO.adReward,typeof(adRewardVO[]));
-            configTypeDic.Add(ConfigVO.rolling,typeof(rollingVO[]));
-            configTypeDic.Add(ConfigVO.slotreward,typeof(slotrewardVO[]));
-            configTypeDic.Add(ConfigVO.SignDailyReward,typeof(SignDailyRewardVO[]));
-            configTypeDic.Add(ConfigVO.Num_probability,typeof(Num_probabilityVO[]));
-            configTypeDic.Add(ConfigVO.TaskList,typeof(TaskListVO[]));
-            configTypeDic.Add(ConfigVO.giftList,typeof(giftListVO[]));
-            configTypeDic.Add(ConfigVO.prop,typeof(propVO[]));
-            configTypeDic.Add(ConfigVO.piggy,typeof(piggyVO[]));
-            configTypeDic.Add(ConfigVO.Guidance,typeof(GuidanceVO[]));
-            configTypeDic.Add(ConfigVO.lang,typeof(langVO[]));
-            configTypeDic.Add(ConfigVO.Item,typeof(ItemVO[]));
-            configTypeDic.Add(ConfigVO.turntable,typeof(turntableVO[]));           
+            configTypeDic.Add(ConfigVO.SceneEvent,typeof(SceneEventVO[]));           
         }
 
 
@@ -98,28 +77,7 @@ namespace ProjectApp
             CommonStaticVO.SetData(configStaticVODic[ConfigVO.Common] as CommonStaticVO);
 
             
-            AddVOModel(ConfigVO.paymentType,paymentTypeVOModel.Instance);
-            AddVOModel(ConfigVO.forceAd,forceAdVOModel.Instance);
-            AddVOModel(ConfigVO.giftcard,giftcardVOModel.Instance);
-            AddVOModel(ConfigVO.bingoRedeem,bingoRedeemVOModel.Instance);
-            AddVOModel(ConfigVO.out_PP,out_PPVOModel.Instance);
-            AddVOModel(ConfigVO.out_coin,out_coinVOModel.Instance);
-            AddVOModel(ConfigVO.out_cash,out_cashVOModel.Instance);
-            AddVOModel(ConfigVO.Flop_reward,Flop_rewardVOModel.Instance);
-            AddVOModel(ConfigVO.pickBox,pickBoxVOModel.Instance);
-            AddVOModel(ConfigVO.adReward,adRewardVOModel.Instance);
-            AddVOModel(ConfigVO.rolling,rollingVOModel.Instance);
-            AddVOModel(ConfigVO.slotreward,slotrewardVOModel.Instance);
-            AddVOModel(ConfigVO.SignDailyReward,SignDailyRewardVOModel.Instance);
-            AddVOModel(ConfigVO.Num_probability,Num_probabilityVOModel.Instance);
-            AddVOModel(ConfigVO.TaskList,TaskListVOModel.Instance);
-            AddVOModel(ConfigVO.giftList,giftListVOModel.Instance);
-            AddVOModel(ConfigVO.prop,propVOModel.Instance);
-            AddVOModel(ConfigVO.piggy,piggyVOModel.Instance);
-            AddVOModel(ConfigVO.Guidance,GuidanceVOModel.Instance);
-            AddVOModel(ConfigVO.lang,langVOModel.Instance);
-            AddVOModel(ConfigVO.Item,ItemVOModel.Instance);
-            AddVOModel(ConfigVO.turntable,turntableVOModel.Instance);
+            AddVOModel(ConfigVO.SceneEvent,SceneEventVOModel.Instance);
         }
 
 

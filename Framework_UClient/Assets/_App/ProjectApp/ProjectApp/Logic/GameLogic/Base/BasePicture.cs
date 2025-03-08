@@ -78,55 +78,62 @@ namespace ProjectApp
             return true;
         }
 
-        public virtual void SetRole(IRole role, int potIndex = -1)
+        public virtual bool SetRole(IRole role, int potIndex = -1)
         {
             //去除要设置位置本身的角色 
             RemoveRole(potIndex);
 
 
-            SceneEvent.SetRole(potIndex, role.Key);
+            bool isRst = SceneEvent.SetRole(potIndex, role.Key);
+            if (isRst)
+            {
+                Roles[role.Key] = role;
 
-            Roles[role.Key] = role;
+                Roles[role.Key].EnterSceneEvent(this.SceneEvent);
+            }
 
-            Roles[role.Key].EnterSceneEvent(this.SceneEvent);
+            return isRst;
 
 
         }
 
-        public virtual void RemoveRole(int index)
+        public virtual bool RemoveRole(int index)
         {
             if (SceneEvent == null)
             {
-                return;
+                return false;
             }
             if (index < 0 || index >= SceneEvent.AllRolePot.Count)
             {
-                return;
+                return false;
             }
-         
-             RoleKey roleKey = SceneEvent.AllRolePot[index];    
-
-             RemoveRole(roleKey);
+            RoleKey roleKey = SceneEvent.AllRolePot[index];
+            return RemoveRole(roleKey);
+            
         }
 
      
 
-        public virtual void RemoveRole(RoleKey roleKey)
+        public virtual bool RemoveRole(RoleKey roleKey)
         {
             if (SceneEvent == null)
             {
-                return;
+                return false;
             }
 
             if (roleKey == RoleKey.Node)
             {
-                return;
+                return false;
             }
 
-            SceneEvent.RemoveRole(roleKey);
+            if (SceneEvent.RemoveRole(roleKey)) 
+            {
+                Roles[roleKey].ExitSceneEvent(this.SceneEvent);
+                Roles[roleKey] = null;
+                return true;
+            }
 
-            Roles[roleKey].ExitSceneEvent(this.SceneEvent);
-            Roles[roleKey] = null;
+            return false;
 
         }
 

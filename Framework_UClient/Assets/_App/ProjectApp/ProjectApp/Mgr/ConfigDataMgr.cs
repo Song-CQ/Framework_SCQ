@@ -36,7 +36,9 @@ namespace ProjectApp
         {
             if (configModelDic.ContainsKey(type))
             {
-                return configModelDic[type].GetBaseVO(key) as VO;
+                BaseVO baseVO = configModelDic[type].GetBaseVO(key);
+                VO vo = baseVO as VO;
+                return vo;
             }
 
             LogUtil.LogError("表类型:" + type + "不存在!");
