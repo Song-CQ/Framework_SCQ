@@ -27,8 +27,8 @@ namespace ExcelTool
         public static bool IsOutMultipleDatas = false;
 
 
-        private static Dictionary<uint, BaseStaticVO> allConfigData_configStaticVODic = new Dictionary<uint, BaseStaticVO>();
-        private static Dictionary<uint, BaseVO[]> allConfigData_configVODic = new Dictionary<uint, BaseVO[]>();
+        private static Dictionary<string, BaseStaticVO> allConfigData_configStaticVODic = new Dictionary<string, BaseStaticVO>();
+        private static Dictionary<string, List<BaseVO>> allConfigData_configVODic = new Dictionary<string, List<BaseVO>>();
 
         public static void Start(Assembly assembly, List<ExcelData> excelDataLst)
         {
@@ -62,15 +62,39 @@ namespace ExcelTool
             try
             {
                 object allConfigData = _assembly.CreateInstance("ProjectApp.Data.ConfigData");
-                Type allConfigDataType = allConfigData.GetType();
+                Type configDataType = allConfigData.GetType();
+
+                var files = configDataType.GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+                foreach (var item in allConfigData_configStaticVODic)
+                {
+                    FieldInfo fieldInfo = configDataType.GetField(item.Key , BindingFlags.Public | BindingFlags.Instance);
+                    fieldInfo.SetValue(allConfigData, item.Value);
+                }
+
+                foreach (var item in allConfigData_configVODic)
+                {
+                    FieldInfo fieldInfo = configDataType.GetField(item.Key+"_List", BindingFlags.Public | BindingFlags.Instance);
+
+                    // 获取字段的泛型类型（即 List<T> 中的 T）
+                    Type listType = fieldInfo.FieldType;
+                    Type itemType = listType.GetGenericArguments()[0]; // 获取 T 的类型
 
 
+                    //  创建 List<T> 实例
+                    object listValue = Activator.CreateInstance(listType);
 
-                var StaticVODic = allConfigDataType.GetField("configStaticVODic", BindingFlags.Public | BindingFlags.Instance);
-                var VODic = allConfigDataType.GetField("configVODic", BindingFlags.Public | BindingFlags.Instance);
+                    // 获取 List<int> 的 Add 方法
+                    MethodInfo addMethod = listValue.GetType().GetMethod("Add");
 
-                StaticVODic.SetValue(allConfigData, allConfigData_configStaticVODic);
-                VODic.SetValue(allConfigData, allConfigData_configVODic);
+                    foreach (var i in item.Value)
+                    {
+                        // 调用 Add 方法
+                        addMethod.Invoke(listValue, new[] { i });
+                    }
+                    
+                    fieldInfo.SetValue(allConfigData, listValue);
+                }
 
                 string jsonData = JsonConvert.SerializeObject(allConfigData);
 
@@ -209,8 +233,8 @@ namespace ExcelTool
                 {
 
                     FieldInfo constField = myType.GetField("VOType", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-                    uint key = Convert.ToUInt32(constField.GetValue(myObject));
-                    allConfigData_configStaticVODic.Add(key, myObject as BaseStaticVO);
+                    
+                    allConfigData_configStaticVODic.Add(tableName, myObject as BaseStaticVO);
 
                 }
 
@@ -356,7 +380,7 @@ namespace ExcelTool
                     allBaseStatics.Add(item as BaseVO);
                 }
 
-                allConfigData_configVODic.Add(key, allBaseStatics.ToArray());
+                allConfigData_configVODic.Add(tableName, allBaseStatics);
 
             }
 
