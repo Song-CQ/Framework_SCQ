@@ -26,7 +26,7 @@ namespace ExcelTool
         public static bool IsEnciphermentData = true;
         public static bool IsOutMultipleDatas = false;
 
-        
+
         private static Dictionary<uint, BaseStaticVO> allConfigData_configStaticVODic = new Dictionary<uint, BaseStaticVO>();
         private static Dictionary<uint, BaseVO[]> allConfigData_configVODic = new Dictionary<uint, BaseVO[]>();
 
@@ -36,8 +36,8 @@ namespace ExcelTool
             _assembly = assembly;
             StringColor.WriteLine("表数据是否加密：" + ExcelToAssemblyDataHelp.IsEnciphermentData, ConsoleColor.Yellow);
             StringColor.WriteLine("是否每个表都创建单独的数据文件：" + ExcelToAssemblyDataHelp.IsOutMultipleDatas, ConsoleColor.Yellow);
-           
-            
+
+
             foreach (var excelData in excelDataLst)
             {
                 if (excelData.IsStart)
@@ -61,10 +61,10 @@ namespace ExcelTool
         {
             try
             {
-               object allConfigData = _assembly.CreateInstance("ProjectApp.Data.ConfigData");
-               Type allConfigDataType = allConfigData.GetType();
+                object allConfigData = _assembly.CreateInstance("ProjectApp.Data.ConfigData");
+                Type allConfigDataType = allConfigData.GetType();
 
-              
+
 
                 var StaticVODic = allConfigDataType.GetField("configStaticVODic", BindingFlags.Public | BindingFlags.Instance);
                 var VODic = allConfigDataType.GetField("configVODic", BindingFlags.Public | BindingFlags.Instance);
@@ -73,7 +73,7 @@ namespace ExcelTool
                 VODic.SetValue(allConfigData, allConfigData_configVODic);
 
                 string jsonData = JsonConvert.SerializeObject(allConfigData);
-               
+
                 if (IsEnciphermentData)
                 {
                     byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
@@ -157,7 +157,7 @@ namespace ExcelTool
                     string idStr = dataRow[idColumn].ToString().Trim();
                     string keyStr = dataRow[staticKeyColumn].ToString().Trim();
                     string typeStr = dataRow[staticTypeColumn].ToString().Trim();
-                    if (keyStr == "" || id == ""||typeStr =="")
+                    if (keyStr == "" || id == "" || typeStr == "")
                     {
                         ///忽略空
                         continue;
@@ -169,11 +169,11 @@ namespace ExcelTool
                     try
                     {
                         val = ValToObj(fieldInfo.FieldType, valStr);
-                        
+
                     }
                     catch (Exception e)
                     {
-                       
+
                         StringColor.WriteLine("生成静态表：" + name + "数据失败");
                         LogUtil.LogError("字段值写入数据失败！");
                         LogUtil.LogError("字段名:" + keyStr);
@@ -214,7 +214,7 @@ namespace ExcelTool
 
                 }
 
-                
+
 
                 StringColor.WriteLine("生成静态表：" + name + "数据成功", ConsoleColor.Green);
             }
@@ -245,7 +245,7 @@ namespace ExcelTool
             List<object> myDataLst = new List<object>();
             tempm_key.Clear();
             tempm_Id.Clear();
-      
+
             try
             {
                 for (int i = 4; i < sheet.Rows.Count; i++)
@@ -258,7 +258,7 @@ namespace ExcelTool
                         string _fieldName = field_Names[itemColumn].ToString().Trim();
 
                         string _fieldType = field_Types[itemColumn].ToString().Trim();
-                        if (_fieldName==""||_fieldType=="")
+                        if (_fieldName == "" || _fieldType == "")
                         {
                             ///忽略空
                             continue;
@@ -284,13 +284,13 @@ namespace ExcelTool
                         {
 
                             LogUtil.LogError("字段值写入数据失败！");
-                            LogUtil.LogError("字段名:"+ _fieldName);
+                            LogUtil.LogError("字段名:" + _fieldName);
                             LogUtil.LogError("目标类型:" + fieldInfo.FieldType.ToString());
-                            LogUtil.LogError("写入值:"+ valStr);
+                            LogUtil.LogError("写入值:" + valStr);
                             StringColor.WriteLine("生成表：" + Name + "数据失败");
                             Thread.CurrentThread.Abort();
                         }
-                        
+
                         if (_fieldName.ToLower() == "id")
                         {
                             if (valStr == string.Empty || valStr == null)
@@ -329,7 +329,7 @@ namespace ExcelTool
                 Thread.CurrentThread.Abort();
 
             }
-            
+
 
             if (IsOutMultipleDatas)
             {
@@ -361,7 +361,7 @@ namespace ExcelTool
             }
 
 
-            
+
             StringColor.WriteLine("生成表：" + Name + "数据成功", ConsoleColor.Green);
         }
 
@@ -370,7 +370,7 @@ namespace ExcelTool
         {
             object obj = null;
             // thisType = GetTypeByString(type);
-            
+
             if (thisType != null)
             {
                 if (valString == null || valString == string.Empty)

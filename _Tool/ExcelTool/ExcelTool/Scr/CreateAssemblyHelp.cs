@@ -491,7 +491,7 @@ namespace ExcelTool
 
                 WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOClass", "ConfigData_AutoCreate",configDataStr);
 
-                CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll", MainMgr.Instance.OutClassPath+@"\VODll");
+                CopyDirectory(MainMgr.Instance.CurrentDirectory + @"\..\BaseVoClassLib\BaseVoClass", MainMgr.Instance.OutClassPath + @"\BaseVOClass");
                 StringColor.WriteLine("编译程序集失败");
                 
                 Thread.CurrentThread.Abort();
@@ -511,7 +511,12 @@ namespace ExcelTool
                 }
                 else
                 {
-                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll",MainMgr.Instance.OutClassPath + @"\VODll");
+                 
+                    CopyDirectory(MainMgr.Instance.CurrentDirectory + @"\..\BaseVoClassLib\BaseVoClass", MainMgr.Instance.OutClassPath + @"\BaseVOClass");
+
+
+
+
                     for (int i = 0; i < allClassName.Count; i++)
                     {
                         string dir = GetClassNameDir(allClassName[i]);
@@ -525,6 +530,31 @@ namespace ExcelTool
             return assembly;
         }
 
+        private static void CopyDirectory(string sourceDir, string destinationDir)
+        {
+            // 获取源文件夹的信息
+            DirectoryInfo dir = new DirectoryInfo(sourceDir);
+
+            // 如果目标文件夹不存在，则创建它
+            if (!Directory.Exists(destinationDir))
+            {
+                Directory.CreateDirectory(destinationDir);
+            }
+
+            // 复制所有文件
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                string targetFilePath = Path.Combine(destinationDir, file.Name);
+                file.CopyTo(targetFilePath, overwrite: true); // 覆盖已存在的文件
+            }
+
+            // 递归复制子文件夹
+            foreach (DirectoryInfo subDir in dir.GetDirectories())
+            {
+                string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                CopyDirectory(subDir.FullName, newDestinationDir);
+            }
+        }
         private static string GetClassNameDir(string name)
         {
             string dir = name.Replace("VO", String.Empty);
