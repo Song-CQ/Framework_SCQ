@@ -19,7 +19,7 @@ namespace ProjectApp
     {
         private Dictionary<ConfigVO, Type> configTypeDic;
         private Dictionary<ConfigVO, BaseStaticVO> configStaticVODic;
-        private Dictionary<ConfigVO, BaseVO[]> configVODic;
+        private Dictionary<ConfigVO, List<BaseVO>> configVODic;
         private Dictionary<ConfigVO, BaseVOModel> configModelDic;
         /// <summary>
         /// 是否加密表数据
@@ -33,7 +33,7 @@ namespace ProjectApp
         {
             configTypeDic = new Dictionary<ConfigVO, Type>();
             configStaticVODic = new Dictionary<ConfigVO, BaseStaticVO>();
-            configVODic = new Dictionary<ConfigVO, BaseVO[]>();
+            configVODic = new Dictionary<ConfigVO, List<BaseVO>>();
             configModelDic = new Dictionary<ConfigVO, BaseVOModel>();
         }
 
