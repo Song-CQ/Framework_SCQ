@@ -58,15 +58,9 @@ namespace ProjectApp
             {
 
                 ConfigData configData = LoadConfigData();
-                foreach (var item in configData.configStaticVODic)
-                {
-                    configStaticVODic.Add((ConfigVO)item.Key, item.Value);
-                }
-                foreach (var item in configData.configVODic)
-                {
-                    configVODic.Add((ConfigVO)item.Key, item.Value);
-                }
-                configData.Dispose();
+                #LoadAllData
+                
+                configData = null;
             }
 
             #SetStaticDataToDic

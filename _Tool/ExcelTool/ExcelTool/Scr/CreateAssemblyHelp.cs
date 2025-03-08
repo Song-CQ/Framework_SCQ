@@ -587,6 +587,8 @@ namespace ExcelTool
         /// <param name="allModel"></param>
         private static void CreateDataModeMgrToClass(List<string> allStaticVo, List<string> allModel,ref string configDataStr)
         {
+            string configData_AllConfigFileInfo = string.Empty;
+            string loadAllData = string.Empty;
             string configType = string.Empty;
             string setStaticDataToDic = string.Empty;
             string init = string.Empty;
@@ -595,6 +597,7 @@ namespace ExcelTool
             uint configTypeIndex = 0;
             foreach (var tableName in allStaticVo)
             {
+                
                 string setDataVal = "\n            "+tableName+ "StaticVO.SetData(configStaticVODic[ConfigVO." + tableName +"] as "+ tableName + "StaticVO);";
                 setStaticDataToDic += setDataVal;
 
@@ -604,27 +607,33 @@ namespace ExcelTool
                 configType += string.Format("\n{0} = {1},",tableName,configTypeIndex);
                 reset += "\n            " + tableName + "StaticVO.ResetData();";
 
+                configData_AllConfigFileInfo += "\n            public " + tableName + "StaticVO "+tableName+" = null;";
+                loadAllData += "\n                configStaticVODic.Add(ConfigVO." + tableName + ", configData." + tableName + ");";
             }
             configTypeIndex = 100;
             foreach (var tableName in allModel)
             {
                 configTypeIndex++;
-                configType += string.Format("\n{0} = {1},", tableName, configTypeIndex);
+                configType += string.Format("\n        {0} = {1},", tableName, configTypeIndex);
 
                 string className = tableName + "VOModel";
                 setDataModel += "\n            AddVOModel(ConfigVO." + tableName + ","+ className + ".Instance);";
 
                 init += string.Format("\n            configTypeDic.Add(ConfigVO.{0},typeof({1}[]));", tableName, tableName + "VO");
-                
-               
+
+                configData_AllConfigFileInfo += "\n            public List<" + tableName + "VO> "+tableName+"_List = null;";
+                loadAllData += "\n                configVODic.Add(ConfigVO." + tableName + ", configData." + tableName + "_List);";
+
             }
-            configType = configType.Substring(0, configType.LastIndexOf(','));
-            configDataStr = configDataStr.Replace("#ConfigVO", configType);
+            configType = configType.Substring(1, configType.LastIndexOf(','));
+            configDataStr = configDataStr.Replace("#ConfigVO", configType);   
+            configDataStr = configDataStr.Replace("#AllConfigFileInfo", configData_AllConfigFileInfo);
 
             string mgrTempLate = GetTemplateClass("ExcelTool.Data.ConfigDataMgr.cs"); 
             mgrTempLate = mgrTempLate.Replace("#IsEnciphermentData",ExcelToAssemblyDataHelp.IsEnciphermentData.ToString().ToLower());
             mgrTempLate = mgrTempLate.Replace("#IsOutMultipleDatas", ExcelToAssemblyDataHelp.IsOutMultipleDatas.ToString().ToLower());
             mgrTempLate = mgrTempLate.Replace("#Init",init); 
+            mgrTempLate = mgrTempLate.Replace("#LoadAllData", loadAllData);
             mgrTempLate = mgrTempLate.Replace("#SetStaticDataToDic", setStaticDataToDic);
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
 
