@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 using FutureCore;
 using System.IO;
 using System.Collections.Generic;
+using static UnityEngine.GridBrushBase;
+using static FutureEditor.ConfigBatTool;
 
 namespace FutureEditor
 {
@@ -25,12 +27,12 @@ namespace FutureEditor
         {
             CreateWindow<FrameworkToolView>("Framework Tool");
         }
-        
-        
+
+
 
         private void OnEnable()
         {
-      
+
             minSize = new Vector2(900, 500);
             maxSize = minSize;
             InitData();
@@ -57,11 +59,11 @@ namespace FutureEditor
         private int toolbatIndex = 0;
         private void OnGUI()
         {
-          
+
             toolbatIndex = GUILayout.Toolbar(toolbatIndex, toolbatVal);
-           
+
             switch (toolbatIndex)
-            {           
+            {
                 case (int)ShowType.UnityTool:
                     RefreshUI_UnityTool();
                     break;
@@ -70,34 +72,34 @@ namespace FutureEditor
                     break;
                 case (int)ShowType.AutoRegisterTool:
                     RefreshUI_AutoRegisterTool();
-                    break; 
+                    break;
                 case (int)ShowType.OtherTool:
                     RefreshUI_OtherTool();
                     break;
             }
         }
 
-       
+
 
         private enum ShowType
         {
-            UnityTool=0,
+            UnityTool = 0,
             GameTool,
             CreateTool,
             AutoRegisterTool,
             OtherTool,
         }
-     
+
         #region UnityTool
         private void RefreshUI_UnityTool()
         {
-            
+
             GUILayout.BeginArea(new Rect(10, 35, 200, 800));
-            GUILayout.Label("Unity Editor",  GUILayout.Height(20),GUILayout.Width(80));
+            GUILayout.Label("Unity Editor", GUILayout.Height(20), GUILayout.Width(80));
             if (GUILayout.Button("重启Unity", GUILayout.Height(40), GUILayout.Width(100)))
             {
                 UnityEditorTool.StartRest();
-            }     
+            }
             GUILayout.EndArea();
 
             GUILayout.BeginArea(new Rect(550, 60, 300, 500));
@@ -161,14 +163,14 @@ namespace FutureEditor
             GUILayout.EndArea();
 
 
-           
+
 
         }
 
-        
+
         #endregion
 
-        
+
 
         #region CreateTool
 
@@ -182,9 +184,9 @@ namespace FutureEditor
             {
                 MVC_CreadTool.OpenGUICread();
                 Close();
-            } 
-            
-        
+            }
+
+
             GUILayout.EndVertical();
             GUILayout.EndArea();
         }
@@ -197,14 +199,14 @@ namespace FutureEditor
             if (GUILayout.Button("注册编辑器环境", GUILayout.Height(40), GUILayout.Width(180)))
             {
                 EditorAutoRegisterTool_Editor.AutoRegisterAll(Close);
-               
-            }          
+
+            }
             if (GUILayout.Button("自动注册项目数据", GUILayout.Height(40), GUILayout.Width(180)))
             {
                 ProjectAutoRegisterTool.AutoRegisterAll(Close);
-               
+
             }
-            
+
             GUILayout.EndArea();
         }
 
@@ -215,21 +217,21 @@ namespace FutureEditor
         private Vector2 otherToolPos;
         private Vector2 otherToolPos2;
         private string selectOtherToolKey;
-        private Color selectColor = new Color(100/255f,207/255f,255/255f);
+        private Color selectColor = new Color(100 / 255f, 207 / 255f, 255 / 255f);
 
         private Dictionary<string, Action> OtherTooDic = new Dictionary<string, Action>();
         private void RefreshUI_OtherTool()
         {
-            
+
             GUILayout.BeginArea(new Rect(5, 25, 185, 465), new GUIStyle("grey_border"));
 
             GUILayout.BeginArea(new Rect(0, 2, 182, 460));
             otherToolPos = GUILayout.BeginScrollView(otherToolPos, false, true, GUI.skin.horizontalScrollbar, GUI.skin.verticalScrollbar);//grey_border//Dopesheetkeyframe
 
-            
+
             foreach (var item in OtherTooDic)
             {
-                if (selectOtherToolKey==string.Empty)
+                if (selectOtherToolKey == string.Empty)
                 {
                     selectOtherToolKey = item.Key;
                 }
@@ -242,14 +244,14 @@ namespace FutureEditor
 
                 }
 
-                if (GUILayout.Button(item.Key, GUILayout.Width(160),GUILayout.Height(30)))
+                if (GUILayout.Button(item.Key, GUILayout.Width(160), GUILayout.Height(30)))
                 {
                     selectOtherToolKey = item.Key;
                 }
 
                 GUI.backgroundColor = Color.white;
             }
-            
+
             GUILayout.EndScrollView();
             GUILayout.EndArea();
             GUILayout.EndArea();
@@ -264,12 +266,12 @@ namespace FutureEditor
             GUILayout.EndArea();
 
 
-          
+
         }
-     
+
         private void OnInitOtherToolData()
         {
-           
+
             selectOtherToolKey = string.Empty;
             OtherTooDic.Clear();
             OtherTooDic.Add("[Excel Tool]", OnOtherToolView_Excel);
@@ -280,37 +282,54 @@ namespace FutureEditor
             for (int i = 0; i < 30; i++)
             {
 
-                OtherTooDic.Add("[test]--"+i, OnTest);
+                OtherTooDic.Add("[test]--" + i, OnTest);
             }
 
-            MsBuildPath = EditorPrefs.GetString("MsBuildPath",string.Empty);
+            MsBuildPath = EditorPrefs.GetString("MsBuildPath", string.Empty);
+
+            buildOutType = EditorPrefs.GetInt("ExcelTool_BuildOutType", 0);
+            isEnciphermentData = EditorPrefs.GetBool("ExcelTool_IsEnciphermentData", false);
+            isOutMultipleDatas = EditorPrefs.GetBool("ExcelTool_IsOutMultipleDatas", false);
         }
+
+        #region Excel
+        private int buildOutType;
+        private bool isEnciphermentData = false;
+        private bool isOutMultipleDatas = false;
 
         private void OnOtherToolView_Excel()
         {
-            if (GUILayout.Button("Dll自动打表", GUILayout.Height(40), GUILayout.Width(100)))
-            {
-                Close();
-                ConfigBatTool.SyncConfig2Dll();
+            GUILayout.Space(5);
 
-            }
-            if (GUILayout.Button("CS文件自动打表", GUILayout.Height(40), GUILayout.Width(100)))
+            ConfigBatTool.BuildOutType type = (ConfigBatTool.BuildOutType)EditorGUILayout.EnumPopup("[生成Class类型]:", (ConfigBatTool.BuildOutType)buildOutType, GUILayout.Width(400));
+            buildOutType = (int)type;
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel("[加密表数据]");
+            GUILayout.Space(5);
+            isEnciphermentData = EditorGUILayout.Toggle(isEnciphermentData);
+            GUILayout.EndHorizontal();
+            
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel("[每张表单独生成数据文件]");
+            GUILayout.Space(5);
+            isOutMultipleDatas = EditorGUILayout.Toggle(isOutMultipleDatas);
+            GUILayout.EndHorizontal();
+            GUILayout.Space(10);
+            if (GUILayout.Button("自动打表", GUILayout.Height(40), GUILayout.Width(100)))
             {
-                Close();
-                ConfigBatTool.SyncConfig2CS();
+                EditorPrefs.SetInt("ExcelTool_BuildOutType", buildOutType);
+                EditorPrefs.SetBool("ExcelTool_IsEnciphermentData", isEnciphermentData);
+                EditorPrefs.SetBool("ExcelTool_IsOutMultipleDatas", isOutMultipleDatas);
 
-            }
-            if (GUILayout.Button("Dll自动打表(表数据加密)", GUILayout.Height(40), GUILayout.Width(150)))
-            {
                 Close();
-                ConfigBatTool.SyncConfig2Dll_EncryptData();
+                ConfigBatTool.SyncConfigData(type, isEnciphermentData, isOutMultipleDatas);
             }
-            if (GUILayout.Button("CS文件自动打表(表数据加密)", GUILayout.Height(40), GUILayout.Width(180)))
-            {
-                Close();
-                ConfigBatTool.SyncConfig2CS_EncryptData();
-            }
+
+
         }
+        #endregion
+
+
 
         private void OnOtherToolView_AssetBundle()
         {
@@ -384,12 +403,12 @@ namespace FutureEditor
             if (showFoldout_ILRuntime)
             {
                 GUILayout.Space(5);
-              
+
                 EditorGUI.indentLevel++;
                 isDelClient_ILRuntime = GUILayout.Toggle(isDelClient_ILRuntime, "被提取的热更代码 是否删除");
                 GUILayout.Space(2);
                 GUILayout.BeginHorizontal();
-                compileCodePlan = (ILRuntimeMgr_AutoCreator.CompileCodePlan)EditorGUILayout.EnumPopup("编译Dll的方案:",compileCodePlan, GUILayout.Width(300));
+                compileCodePlan = (ILRuntimeMgr_AutoCreator.CompileCodePlan)EditorGUILayout.EnumPopup("编译Dll的方案:", compileCodePlan, GUILayout.Width(300));
                 if (compileCodePlan != ILRuntimeMgr_AutoCreator.CompileCodePlan.CompileAssembly_UnityEditor)
                 {
                     GUILayout.Space(5);
@@ -397,14 +416,14 @@ namespace FutureEditor
                 }
                 GUILayout.EndHorizontal();
                 GUILayout.Space(5);
-                
-                if (compileCodePlan ==  ILRuntimeMgr_AutoCreator.CompileCodePlan.MsBuild)
+
+                if (compileCodePlan == ILRuntimeMgr_AutoCreator.CompileCodePlan.MsBuild)
                 {
 
                     GUILayout.BeginHorizontal();
                     EditorGUILayout.PrefixLabel("MsBuild路径:");
-                    string text = MsBuildPath==string.Empty? @"" : MsBuildPath;
-                    EditorGUILayout.SelectableLabel(text, EditorStyles.textField,GUILayout.Height(20), GUILayout.Width(465));
+                    string text = MsBuildPath == string.Empty ? @"" : MsBuildPath;
+                    EditorGUILayout.SelectableLabel(text, EditorStyles.textField, GUILayout.Height(20), GUILayout.Width(465));
 
                     if (GUILayout.Button("选择", GUILayout.Width(50f)))
                     {
@@ -417,20 +436,20 @@ namespace FutureEditor
 
                     }
                     GUILayout.EndHorizontal();
-                    if (MsBuildPath==string.Empty)
+                    if (MsBuildPath == string.Empty)
                     {
                         GUI.color = Color.green;
                         GUILayout.Label(@"      Tips: MsBuild.exe 一般位于vs安装目录的VS2022\Msbuild\Current\Bin\MSBuild.exe");
                         GUI.color = Color.white;
                     }
-                    
+
                 }
-                
-               
-              
-               
+
+
+
+
                 EditorGUI.indentLevel--;
-         
+
             }
             GUILayout.Space(5);
 
@@ -451,7 +470,7 @@ namespace FutureEditor
                 EditorGUI.indentLevel++;
 
                 GUILayout.BeginHorizontal();
-                GUILayout.Label("(1)", GUILayout.Width(20),GUILayout.Height(40));
+                GUILayout.Label("(1)", GUILayout.Width(20), GUILayout.Height(40));
                 if (GUILayout.Button("[Client Code To Cache] - 提取代码", GUILayout.Height(40), GUILayout.Width(215)))
                 {
                     ILRuntimeMgr_AutoCreator.ClientToHotFixClass(true);
@@ -459,8 +478,8 @@ namespace FutureEditor
                     AssetDatabase.Refresh();
                     Close();
                 }
-              
-               
+
+
                 GUILayout.EndHorizontal();
 
 
@@ -481,12 +500,12 @@ namespace FutureEditor
                 GUILayout.EndHorizontal();
 
                 EditorGUI.indentLevel--;
-               
+
 
             }
             GUILayout.Space(10);
             GUILayout.Label("[流程工具]---------------------------------------------------------------------------------------------------");
-        
+
 
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("载入热更文件夹缓存代码", GUILayout.Height(40), GUILayout.Width(180)))
@@ -496,17 +515,17 @@ namespace FutureEditor
                 AssetDatabase.Refresh();
                 Close();
             }
-        
+
             if (GUILayout.Button("删除热更文件夹缓存代码", GUILayout.Height(40), GUILayout.Width(180)))
             {
                 ILRuntimeMgr_AutoCreator.Delete_HotFixClass_Cache();
             }
             GUILayout.EndHorizontal();
 
-            GUILayout.Space(10); 
+            GUILayout.Space(10);
             GUILayout.Label("[其他工具]---------------------------------------------------------------------------------------------------");
             GUILayout.BeginHorizontal();
-            
+
             if (GUILayout.Button("分析热更DLL生成CLR绑定", GUILayout.Height(40), GUILayout.Width(180)))
             {
                 ILRuntimeMgr_AutoCreator.GenerateCLRBindingByAnalysis();
@@ -522,7 +541,7 @@ namespace FutureEditor
                 Close();
             }
 
-            
+
             GUILayout.EndHorizontal();
 
 

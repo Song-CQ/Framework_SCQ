@@ -6,6 +6,7 @@
     功能: 编辑器数据初始化
 *****************************************************/
 using FutureCore;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -25,7 +26,12 @@ namespace FutureEditor
             ABConfig abConfig = AssetDatabase.LoadAssetAtPath<ABConfig>(abConfigPath);
             if (abConfig != null)
             {
-                PathConst.EditorAssetBundlesPath = abConfig.outputPath  + "/StandaloneWindows";
+                PathConst.EditorAssetBundlesPath = Path.GetFullPath(abConfig.outputPath.Replace(@"Assets\..\..\",Application.dataPath+ @"\..\..\"))  + @"\StandaloneWindows";
+                if (!Directory.Exists(PathConst.EditorAssetBundlesPath))
+                {
+                    LogUtil.LogError("AB包输出目录不存在! ----  "+ PathConst.EditorAssetBundlesPath);
+                    LogUtil.LogError("请重新选择AB包输出目录!");
+                }
             }
 
         }

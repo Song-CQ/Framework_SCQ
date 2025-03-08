@@ -1,3 +1,5 @@
+using Codice.Utils;
+using System;
 using System.Diagnostics;
 using System.IO;
 using UnityEditor;
@@ -7,108 +9,76 @@ namespace FutureEditor
 {
     public static class ConfigBatTool
     {
- 
+        public enum BuildOutType
+        {
+            Dll = 0,
+            CS = 1,
+        }
+
         public static string ToolDir = Path.GetFullPath(Application.dataPath + @"\..\..\_Tool\");
         
         [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 Dll")]
         public static void SyncConfig2Dll()
         {
-            if (EditorUtility.DisplayDialog("【自动化】Dll自动打表", "是否进行Dll自动化打表！", "确认", "取消"))
-            {
-                //Debug.Log("打表");
-                string cmd = @"ExcelTool\1.自动化打表生成_Dll.bat";
-                string cmdFile = Path.Combine(ToolDir, cmd);
-                if (File.Exists(cmdFile))
-                {
-                    Process process = Process.Start(cmdFile);
-                    process.WaitForExit();
-                    process.Close();
-                    process.Dispose();
-
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                    UnityEngine.Debug.Log("[ConfigBatTool]Dll自动打表完成");
-                }
-                else
-                {
-                    UnityEngine.Debug.LogError("没有Bat打表文件");
-                }   
-                     
-            }
+            SyncConfigData(BuildOutType.Dll, true, false);
         }
-        [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 Dll(表数据加密)")]
-        public static void SyncConfig2Dll_EncryptData()
-        {
-            if (EditorUtility.DisplayDialog("【自动化】Dll自动打表 数据加密", "是否进行Dll自动化打表!(表数据加密)", "确认", "取消"))
-            {
-                //Debug.Log("打表");
-                string cmd = @"ExcelTool\2.自动化打表生成_Dll_表数据加密.bat";
-                string cmdFile = Path.Combine(ToolDir, cmd);
-                if (File.Exists(cmdFile))
-                {
-                    Process process = Process.Start(cmdFile);
-                    process.WaitForExit();
-                    process.Close();
-                    process.Dispose();
 
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                    UnityEngine.Debug.Log("[ConfigBatTool]Dll自动打表完成(表数据加密)");
-                }
-                else
-                {
-                    UnityEngine.Debug.LogError("没有Bat打表文件");
-                }   
-                     
-            }
-        }
         [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 CS")]
         public static void SyncConfig2CS()
         {
-            if (EditorUtility.DisplayDialog("【自动化】CS文件自动打表", "是否进行CS文件自动化打表！", "确认", "取消"))
-            {
-                string cmd = @"ExcelTool\3.自动化打表生成_CS.bat";
-                string cmdFile = Path.Combine(ToolDir, cmd);
-                if (File.Exists(cmdFile))
-                {
-                    Process process = Process.Start(cmdFile);
-                    process.WaitForExit();
-                    process.Close();
-                    process.Dispose();
-
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                    UnityEngine.Debug.Log("[ConfigBatTool]CS文件自动打表完成");
-                }
-                else
-                {
-                    UnityEngine.Debug.LogError("没有Bat打表文件");
-                }
-            }
+            SyncConfigData(BuildOutType.CS, true, false);          
         }
-        [MenuItem("[FC Tool]/ExcelConfig Tool/自动化打表 CS(表数据加密)")]
-        public static void SyncConfig2CS_EncryptData()
+     
+
+        /// <summary>
+        /// 自动打表
+        /// </summary>
+        public static void SyncConfigData(BuildOutType type = BuildOutType.Dll , bool isEnciphermentData = false, bool isOutMultipleDatas = false)
         {
-            if (EditorUtility.DisplayDialog("【自动化】CS文件自动打表", "是否进行CS文件自动化打表！(表数据加密)", "确认", "取消"))
+            if (EditorUtility.DisplayDialog("【自动化】自动打表", "是否进行自动化打表！", "确认", "取消"))
             {
-                string cmd = @"ExcelTool\4.自动化打表生成_CS_表数据加密.bat";
+                //Debug.Log("打表");
+                string cmd = @"ExcelTool\自动化打表生成.bat";
                 string cmdFile = Path.Combine(ToolDir, cmd);
                 if (File.Exists(cmdFile))
                 {
-                    Process process = Process.Start(cmdFile);
-                    process.WaitForExit();
-                    process.Close();
-                    process.Dispose();
+
+                    // 创建 ProcessStartInfo 对象
+                    ProcessStartInfo processInfo = new ProcessStartInfo(cmdFile);
+                    processInfo.FileName = cmdFile; // 设置要执行的 .bat 文件
+                    processInfo.Arguments = $"{type} {isEnciphermentData} {isOutMultipleDatas}"; // 传递参数
+              
+
+                    processInfo.UseShellExecute = true; // 不使用操作系统 shell 启动进程
+                    processInfo.CreateNoWindow = false; // 不创建新窗口
+
+                    // 启动进程
+                    using (Process process = new Process())
+                    {
+                        process.StartInfo = processInfo;
+                        process.Start();
+
+
+                        // 等待进程结束
+                        process.WaitForExit();
+                        process.Close();
+                        process.Dispose();
+                    }
+    
 
                     AssetDatabase.SaveAssets();
                     AssetDatabase.Refresh();
-                    UnityEngine.Debug.Log("[ConfigBatTool]CS文件自动打表完成(表数据加密)");
+                    UnityEngine.Debug.Log("[ConfigBatTool]自动打表完成");
                 }
                 else
                 {
                     UnityEngine.Debug.LogError("没有Bat打表文件");
                 }
+
             }
+
+
+
         }
     }
     

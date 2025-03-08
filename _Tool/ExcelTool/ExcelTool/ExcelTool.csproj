@@ -29,7 +29,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -69,12 +69,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\ExcelDataMgr.cs" />
+    <EmbeddedResource Include="Data\ConfigDataMgr.cs" />
     <EmbeddedResource Include="Data\VoModelTemplate.cs" />
     <EmbeddedResource Include="Data\VoStaticKeyTemplate.cs" />
     <EmbeddedResource Include="Data\VoStaticExcelTemplate.cs" />
     <EmbeddedResource Include="Data\VersionTemplate.cs" />
     <Compile Include="Data\UrlData.cs" />
+    <EmbeddedResource Include="Data\ConfigData.cs" />
     <Compile Include="Scr\ExcelToAssemblyDataHelp.cs" />
     <Compile Include="Scr\MainMgr.cs" />
     <Compile Include="Scr\CreateAssemblyHelp.cs" />

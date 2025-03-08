@@ -126,11 +126,11 @@ namespace ProjectApp
         /// </summary>
         private void LoadConfigInit()
         {
-           
-            //先重置 再设置
-            ExcelDataMgr.Instance.ResetData();
 
-            ExcelDataMgr.Instance.ReadData();
+            //先重置 再设置
+            ConfigDataMgr.Instance.ResetData();
+
+            ConfigDataMgr.Instance.ReadData();
             LogUtil.Log("[MainScene]AllModuleReadData");
             ModuleMgr.Instance.AllModuleReadData();
             AppDispatcher.Instance.Dispatch(AppMsg.System_ConfigInitComplete);

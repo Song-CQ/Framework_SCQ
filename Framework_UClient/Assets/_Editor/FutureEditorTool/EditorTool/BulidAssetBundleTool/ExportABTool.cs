@@ -157,7 +157,7 @@ namespace FutureEditor
         {
             try
             {
-                outputPath = ABConfig.outputPath + "/" + ABConfig.abPlatform.ToString();
+                outputPath = Path.GetFullPath(ABConfig.outputPath.Replace(@"Assets\..\..\", Application.dataPath + @"\..\..\")) + "/" + ABConfig.abPlatform.ToString();
                 //检测路径是否存在，没有则创建
                 if (!Directory.Exists(outputPath))
                 {
