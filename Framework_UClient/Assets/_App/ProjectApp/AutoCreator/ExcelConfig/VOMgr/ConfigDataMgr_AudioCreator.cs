@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2025/3/8 1:52:8
+    日期：2025/3/8 20:50:42
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -24,7 +24,7 @@ namespace ProjectApp
         /// <summary>
         /// 是否加密表数据
         /// </summary>
-        private const bool isEnciphermentData = true;
+        private const bool isEnciphermentData = false;
         /// <summary>
         /// 是否将每张表都生成一个数据文件
         /// </summary>

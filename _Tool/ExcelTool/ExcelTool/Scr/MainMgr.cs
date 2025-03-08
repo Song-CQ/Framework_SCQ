@@ -49,7 +49,7 @@ namespace ExcelTool
         {
             get
             {
-                string temp = CurrentDirectory.Substring(0, CurrentDirectory.IndexOf("Framework_SCQ") + 13);
+                string temp = Path.GetFullPath(CurrentDirectory + "/../../..");
                 return temp;
             }
         }

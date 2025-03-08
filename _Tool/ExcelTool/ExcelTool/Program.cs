@@ -51,7 +51,7 @@ namespace ExcelTool
 
 
            
-            StringColor.WriteLine("输出类型:"+ CreateAssemblyHelp.IsCreateDll.ToString(), ConsoleColor.Yellow);
+            StringColor.WriteLine("输出类型:"+ (CreateAssemblyHelp.IsCreateDll ?"Dll":"CS"), ConsoleColor.Yellow);
             StringColor.WriteLine("是否加密:"+ ExcelToAssemblyDataHelp.IsEnciphermentData, ConsoleColor.Yellow);
             StringColor.WriteLine("是否单独为表生成数据文件:"+ ExcelToAssemblyDataHelp.IsOutMultipleDatas, ConsoleColor.Yellow);
             Console.WriteLine("---------------------------------------------");
