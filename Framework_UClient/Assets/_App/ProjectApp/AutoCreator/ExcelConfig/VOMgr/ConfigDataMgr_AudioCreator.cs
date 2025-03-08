@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2025/3/9 2:21:8
+    日期：2025/3/9 2:36:4
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -19,7 +19,7 @@ namespace ProjectApp
     {
         private Dictionary<ConfigVO, Type> configTypeDic;
         private Dictionary<ConfigVO, BaseStaticVO> configStaticVODic;
-        private Dictionary<ConfigVO, BaseVO[]> configVODic;
+        private Dictionary<ConfigVO, List<BaseVO>> configVODic;
         private Dictionary<ConfigVO, BaseVOModel> configModelDic;
         /// <summary>
         /// 是否加密表数据
@@ -33,7 +33,7 @@ namespace ProjectApp
         {
             configTypeDic = new Dictionary<ConfigVO, Type>();
             configStaticVODic = new Dictionary<ConfigVO, BaseStaticVO>();
-            configVODic = new Dictionary<ConfigVO, BaseVO[]>();
+            configVODic = new Dictionary<ConfigVO, List<BaseVO>>();
             configModelDic = new Dictionary<ConfigVO, BaseVOModel>();
         }
 
@@ -85,28 +85,28 @@ namespace ProjectApp
                 
                 configStaticVODic.Add(ConfigVO.path, configData.path);
                 configStaticVODic.Add(ConfigVO.Common, configData.Common);
-                configVODic.Add(ConfigVO.paymentType, configData.paymentType_List);
-                configVODic.Add(ConfigVO.forceAd, configData.forceAd_List);
-                configVODic.Add(ConfigVO.giftcard, configData.giftcard_List);
-                configVODic.Add(ConfigVO.bingoRedeem, configData.bingoRedeem_List);
-                configVODic.Add(ConfigVO.out_PP, configData.out_PP_List);
-                configVODic.Add(ConfigVO.out_coin, configData.out_coin_List);
-                configVODic.Add(ConfigVO.out_cash, configData.out_cash_List);
-                configVODic.Add(ConfigVO.Flop_reward, configData.Flop_reward_List);
-                configVODic.Add(ConfigVO.pickBox, configData.pickBox_List);
-                configVODic.Add(ConfigVO.adReward, configData.adReward_List);
-                configVODic.Add(ConfigVO.rolling, configData.rolling_List);
-                configVODic.Add(ConfigVO.slotreward, configData.slotreward_List);
-                configVODic.Add(ConfigVO.SignDailyReward, configData.SignDailyReward_List);
-                configVODic.Add(ConfigVO.Num_probability, configData.Num_probability_List);
-                configVODic.Add(ConfigVO.TaskList, configData.TaskList_List);
-                configVODic.Add(ConfigVO.giftList, configData.giftList_List);
-                configVODic.Add(ConfigVO.prop, configData.prop_List);
-                configVODic.Add(ConfigVO.piggy, configData.piggy_List);
-                configVODic.Add(ConfigVO.Guidance, configData.Guidance_List);
-                configVODic.Add(ConfigVO.lang, configData.lang_List);
-                configVODic.Add(ConfigVO.Item, configData.Item_List);
-                configVODic.Add(ConfigVO.turntable, configData.turntable_List);
+                configVODic.Add(ConfigVO.paymentType, configData.paymentType_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.forceAd, configData.forceAd_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.giftcard, configData.giftcard_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.bingoRedeem, configData.bingoRedeem_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.out_PP, configData.out_PP_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.out_coin, configData.out_coin_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.out_cash, configData.out_cash_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.Flop_reward, configData.Flop_reward_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.pickBox, configData.pickBox_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.adReward, configData.adReward_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.rolling, configData.rolling_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.slotreward, configData.slotreward_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.SignDailyReward, configData.SignDailyReward_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.Num_probability, configData.Num_probability_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.TaskList, configData.TaskList_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.giftList, configData.giftList_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.prop, configData.prop_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.piggy, configData.piggy_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.Guidance, configData.Guidance_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.lang, configData.lang_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.Item, configData.Item_List.Cast<BaseVO>().ToList());
+                configVODic.Add(ConfigVO.turntable, configData.turntable_List.Cast<BaseVO>().ToList());
                 
                 configData = null;
             }

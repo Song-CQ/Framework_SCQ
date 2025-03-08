@@ -622,7 +622,7 @@ namespace ExcelTool
                 init += string.Format("\n            configTypeDic.Add(ConfigVO.{0},typeof({1}[]));", tableName, tableName + "VO");
 
                 configData_AllConfigFileInfo += "\n            public List<" + tableName + "VO> "+tableName+"_List = null;";
-                loadAllData += "\n                configVODic.Add(ConfigVO." + tableName + ", configData." + tableName + "_List);";
+                loadAllData += "\n                configVODic.Add(ConfigVO." + tableName + ", configData." + tableName + "_List.Cast<BaseVO>().ToList());";
 
             }
             configType = configType.Substring(1, configType.LastIndexOf(','));
