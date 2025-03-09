@@ -357,7 +357,7 @@ namespace ExcelTool
 
             if (IsOutMultipleDatas)
             {
-                string jsonData = JsonConvert.SerializeObject(myDataLst.ToArray());
+                string jsonData = JsonConvert.SerializeObject(myDataLst);
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\ExcelData");
                 if (IsEnciphermentData)
                 {
