@@ -40,8 +40,7 @@ namespace ProjectApp
         public override void Init()
         { 
             base.Init();
-            
-            #Init           
+          
         }
 
 
@@ -49,10 +48,7 @@ namespace ProjectApp
         {
             if (isOutMultipleDatas)
             {
-                foreach (var item in configTypeDic)
-                {
-                    GetExcalData(item.Key);
-                }
+                #IsOutMultiple_LoadAllData
             }
             else
             {
@@ -117,22 +113,24 @@ namespace ProjectApp
 
 
 
-        private void GetExcalData(ConfigVO configVO)
+        private object GetExcalData<T>(ConfigVO configVO, bool isStatic)
         {
-            bool isStatic = (int)configVO <= 100;
+            Type type = null;
             string path = string.Empty;
             //小与等于100 为静态表
             if (isStatic)
             {
-                path = @"StaticExcelData\" + configVO.ToString() + "_Data";
+                path = @"StaticExcelData\" + configVO.ToString() + "_StaticData";
+                type = typeof(T);
             }
             else
             {
                 path = @"ExcelData\" + configVO.ToString() + "_Data";
+                type = typeof(List<T>);
             }
 
             TextAsset textAsset = ResMgr.Instance.GetConfigData(path);
-            Type type = configTypeDic[configVO];
+
             if (textAsset != null)
             {
                 string val = null;
@@ -148,16 +146,17 @@ namespace ProjectApp
 
                 if (isStatic)
                 {
-                    configStaticVODic.Add(configVO, vos as BaseStaticVO);
+                    return vos;
                 }
                 else
                 {
-                    configVODic.Add(configVO, vos as BaseVO[]);
+                    return (vos as List<T>).OfType<T, BaseVO>();
                 }
             }
             else
             {
                 LogUtil.LogError("未找到表:" + configVO.ToString() + "的数据");
+                return null;
             }
 
         }

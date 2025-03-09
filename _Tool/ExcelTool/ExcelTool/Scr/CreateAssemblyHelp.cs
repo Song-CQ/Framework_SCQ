@@ -588,10 +588,11 @@ namespace ExcelTool
         private static void CreateDataModeMgrToClass(List<string> allStaticVo, List<string> allModel,ref string configDataStr)
         {
             string configData_AllConfigFileInfo = string.Empty;
+            string loadAllData_IsOutMultiple = string.Empty;
             string loadAllData = string.Empty;
             string configType = string.Empty;
             string setStaticDataToDic = string.Empty;
-            string init = string.Empty;
+
             string reset = string.Empty;
             string setDataModel = string.Empty;
             uint configTypeIndex = 0;
@@ -601,7 +602,7 @@ namespace ExcelTool
                 string setDataVal = "\n            "+tableName+ "StaticVO.SetData(configStaticVODic[ConfigVO." + tableName +"] as "+ tableName + "StaticVO);";
                 setStaticDataToDic += setDataVal;
 
-                init += string.Format("\n            configTypeDic.Add(ConfigVO.{0},typeof({1}));",tableName,tableName+ "StaticVO");
+
 
                 configTypeIndex++;
                 configType += string.Format("\n{0} = {1},",tableName,configTypeIndex);
@@ -609,6 +610,8 @@ namespace ExcelTool
 
                 configData_AllConfigFileInfo += "\n            public " + tableName + "StaticVO "+tableName+" = null;";
                 loadAllData += "\n                configStaticVODic.Add(ConfigVO." + tableName + ", configData." + tableName + ");";
+                loadAllData_IsOutMultiple += "\n                configStaticVODic.Add(ConfigVO." + tableName + ", GetExcalData<" + tableName + "StaticVO>(ConfigVO." + tableName+",true) as "+tableName+ "StaticVO);";
+
             }
             configTypeIndex = 100;
             foreach (var tableName in allModel)
@@ -619,11 +622,9 @@ namespace ExcelTool
                 string className = tableName + "VOModel";
                 setDataModel += "\n            AddVOModel(ConfigVO." + tableName + ","+ className + ".Instance);";
 
-                init += string.Format("\n            configTypeDic.Add(ConfigVO.{0},typeof({1}[]));", tableName, tableName + "VO");
-
                 configData_AllConfigFileInfo += "\n            public List<" + tableName + "VO> "+tableName+"_List = null;";
-                loadAllData += "\n                configVODic.Add(ConfigVO." + tableName + ", configData." + tableName + "_List.Cast<BaseVO>().ToList());";
-
+                loadAllData += "\n                configVODic.Add(ConfigVO." + tableName + ", configData." + tableName + "_List.OfType<"+ tableName + "VO,BaseVO>());";
+                loadAllData_IsOutMultiple += "\n                configVODic.Add(ConfigVO." + tableName + ", GetExcalData<" + tableName + "VO>(ConfigVO." + tableName + ",false) as List<BaseVO>);";
             }
             configType = configType.Substring(1, configType.LastIndexOf(','));
             configDataStr = configDataStr.Replace("#ConfigVO", configType);   
@@ -632,7 +633,8 @@ namespace ExcelTool
             string mgrTempLate = GetTemplateClass("ExcelTool.Data.ConfigDataMgr.cs"); 
             mgrTempLate = mgrTempLate.Replace("#IsEnciphermentData",ExcelToAssemblyDataHelp.IsEnciphermentData.ToString().ToLower());
             mgrTempLate = mgrTempLate.Replace("#IsOutMultipleDatas", ExcelToAssemblyDataHelp.IsOutMultipleDatas.ToString().ToLower());
-            mgrTempLate = mgrTempLate.Replace("#Init",init); 
+
+            mgrTempLate = mgrTempLate.Replace("#IsOutMultiple_LoadAllData", loadAllData_IsOutMultiple);
             mgrTempLate = mgrTempLate.Replace("#LoadAllData", loadAllData);
             mgrTempLate = mgrTempLate.Replace("#SetStaticDataToDic", setStaticDataToDic);
             mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);

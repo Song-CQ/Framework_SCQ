@@ -41,7 +41,7 @@ namespace ProjectApp.Data
         public abstract BaseVO GetFirstBaseVO();
         public abstract BaseVO GetLastBaseVO();
 
-        public abstract void SetData(BaseVO[] voLists);
+        public abstract void SetData(List<BaseVO> voLists);
        
     }
 }

@@ -49,7 +49,7 @@ namespace ProjectApp.Data
             m_voLst = null;
         }
 
-        public override void SetData(BaseVO[] voLists)
+        public override void SetData(List<BaseVO> voLists)
         {
             foreach (BaseVO _vo in voLists)
             {
