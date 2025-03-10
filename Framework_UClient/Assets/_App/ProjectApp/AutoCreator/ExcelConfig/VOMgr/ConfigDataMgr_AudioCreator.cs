@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2025/3/10 15:49:0
+    日期：2025/3/10 20:35:6
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -24,7 +24,7 @@ namespace ProjectApp
         /// <summary>
         /// 是否加密表数据
         /// </summary>
-        private const bool isEnciphermentData = true;
+        private const bool isEnciphermentData = false;
         /// <summary>
         /// 是否将每张表都生成一个数据文件
         /// </summary>
@@ -51,7 +51,8 @@ namespace ProjectApp
                 
                 configStaticVODic.Add(ConfigVO.path, GetExcalData<pathStaticVO>(ConfigVO.path,true) as pathStaticVO);
                 configStaticVODic.Add(ConfigVO.Common, GetExcalData<CommonStaticVO>(ConfigVO.Common,true) as CommonStaticVO);
-                configVODic.Add(ConfigVO.SceneEvent, GetExcalData<SceneEventVO>(ConfigVO.SceneEvent,false) as List<BaseVO>);
+                configVODic.Add(ConfigVO.EventData, GetExcalData<EventDataVO>(ConfigVO.EventData,false) as List<BaseVO>);
+                configVODic.Add(ConfigVO.RoleData, GetExcalData<RoleDataVO>(ConfigVO.RoleData,false) as List<BaseVO>);
             }
             else
             {
@@ -60,7 +61,8 @@ namespace ProjectApp
                 
                 configStaticVODic.Add(ConfigVO.path, configData.path);
                 configStaticVODic.Add(ConfigVO.Common, configData.Common);
-                configVODic.Add(ConfigVO.SceneEvent, configData.SceneEvent_List.OfType<SceneEventVO,BaseVO>());
+                configVODic.Add(ConfigVO.EventData, configData.EventData_List.OfType<EventDataVO,BaseVO>());
+                configVODic.Add(ConfigVO.RoleData, configData.RoleData_List.OfType<RoleDataVO,BaseVO>());
                 
                 configData = null;
             }
@@ -70,7 +72,8 @@ namespace ProjectApp
             CommonStaticVO.SetData(configStaticVODic[ConfigVO.Common] as CommonStaticVO);
 
             
-            AddVOModel(ConfigVO.SceneEvent,SceneEventVOModel.Instance);
+            AddVOModel(ConfigVO.EventData,EventDataVOModel.Instance);
+            AddVOModel(ConfigVO.RoleData,RoleDataVOModel.Instance);
         }
 
 

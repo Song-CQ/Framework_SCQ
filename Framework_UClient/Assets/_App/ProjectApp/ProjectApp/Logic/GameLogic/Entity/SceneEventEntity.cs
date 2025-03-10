@@ -174,7 +174,7 @@ namespace ProjectApp
 
             if (isRest) 
             {
-                var roleEntity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.SceneEntityPath);
+                
             }
 
             return isRest;

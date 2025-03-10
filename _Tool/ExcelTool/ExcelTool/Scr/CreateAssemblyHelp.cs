@@ -110,54 +110,60 @@ namespace ExcelTool
             List<string> allStaticVO = new List<string>();
             foreach (var data in dataList)
             {
-                DataTable item = data.Sheet;
-                string tableName = item.TableName.RemoveTableNameAnnotation();
-                if (data.IsStart)
+                foreach (var _var in data.Sheets)
                 {
-                    if (item.Rows.Count < 4)
+                    DataTable item = _var.Sheet;
+                    string tableName = item.TableName.RemoveTableNameAnnotation();
+                    if (_var.IsStart)
                     {
-                        continue;
+                        if (item.Rows.Count < 4)
+                        {
+                            continue;
+                        }
+                        Console.WriteLine("解析表: " + _var.TableName);
+                        string classStr = ParsingStaticHeaders(_var);
+                        if (classStr != null || classStr != string.Empty)
+                        {
+                            allClassval.Add(classStr);
+                            allClassname.Add(tableName + "StaticVO");
+                            allStaticVO.Add(tableName);
+                        }
+
                     }
-                    Console.WriteLine("解析表: " + data.Name);
-                    string classStr = ParsingStaticHeaders(data);
-                    if (classStr!=null||classStr!=string.Empty)
+                    else
                     {
+                        if (item.Rows.Count < 4)
+                        {
+                            continue;
+                        }
+                        Console.WriteLine("解析表: " + _var.TableName);
+                        DataRow field_Names = item.Rows[0];
+                        DataRow field_Types = item.Rows[1];
+                        DataRow field_description = item.Rows[2];
+
+
+                        string classStr = ParsingHeaders(_var, field_Names, field_description, field_Types);
                         allClassval.Add(classStr);
-                        allClassname.Add(tableName + "StaticVO");
-                        allStaticVO.Add(tableName);
+                        allClassname.Add(tableName + "VO");
+
+                        string VoClassStr = ParsingCreateVoModel(_var, field_Names, field_description, field_Types);
+                        allClassval.Add(VoClassStr);
+                        allClassname.Add(tableName + "VOModel");
+                        allModel.Add(tableName);
+
+                        string staticKeyStr = ParsingstaticKey(_var);
+                        if (staticKeyStr != string.Empty)
+                        {
+                            allClassval.Add(staticKeyStr);
+                            allClassname.Add(tableName + "StaticKey");
+                        }
+
                     }
-                   
+                    StringColor.WriteLine("解析" + tableName + "表成功", ConsoleColor.Green);
+
                 }
-                else
-                {
-                    if (item.Rows.Count < 4)
-                    {
-                        continue;
-                    }
-                    Console.WriteLine("解析表: " + data.Name);
-                    DataRow field_Names = item.Rows[0];
-                    DataRow field_Types = item.Rows[1];
-                    DataRow field_description = item.Rows[2];
-           
 
-                    string classStr = ParsingHeaders(data, field_Names, field_description, field_Types);
-                    allClassval.Add(classStr);
-                    allClassname.Add(tableName + "VO");
-
-                    string VoClassStr = ParsingCreateVoModel(data, field_Names, field_description, field_Types);
-                    allClassval.Add(VoClassStr);
-                    allClassname.Add(tableName + "VOModel");
-                    allModel.Add(tableName);
-
-                    string staticKeyStr = ParsingstaticKey(data);
-                    if (staticKeyStr != string.Empty)
-                    {
-                        allClassval.Add(staticKeyStr);
-                        allClassname.Add(tableName + "StaticKey");
-                    }
-                    
-                }
-                StringColor.WriteLine("解析" + tableName + "表成功", ConsoleColor.Green);
+          
                 
             }
             //创建数据类
@@ -173,7 +179,7 @@ namespace ExcelTool
         }
         
 
-        private static string ParsingStaticHeaders(ExcelData data)
+        private static string ParsingStaticHeaders(DataTableItem data)
         {
             DataTable item = data.Sheet;
             DataRow field_Names = item.Rows[0];
@@ -252,7 +258,7 @@ namespace ExcelTool
                 svBuilder.Append(line);
             }
             string classVal = GetTemplateClass("ExcelTool.Data.VoStaticExcelTemplate.cs");
-            classVal =classVal.Replace("#Name",data.Name);
+            classVal =classVal.Replace("#Name",data.TableName);
             classVal = classVal.Replace("#Val",svBuilder.ToString());
             classVal =classVal.Replace("#Class",item.TableName.RemoveTableNameAnnotation()+"StaticVO");
             classVal =classVal.Replace("#ConfigVO", item.TableName.RemoveTableNameAnnotation());
@@ -302,9 +308,9 @@ namespace ExcelTool
             return valStr;
         }
 
-        private static string ParsingstaticKey(ExcelData excelData)
+        private static string ParsingstaticKey(DataTableItem excelData)
         {
-
+            
             DataColumn keyColums = null;
             DataTable item = excelData.Sheet;
             DataRow field_Names =item.Rows[0];
@@ -340,7 +346,7 @@ namespace ExcelTool
                 string val = $"\n        public const string {fieldName} = " + '"' + key + '"'+";";
                 svBuilder.Append(val);
             }
-            classVal =classVal.Replace("#Name",excelData.Name);
+            classVal =classVal.Replace("#Name",excelData.TableName);
             classVal = classVal.Replace("#Val",svBuilder.ToString());
             classVal =classVal.Replace("#Class",item.TableName.RemoveTableNameAnnotation()+"StaticKey");
             return classVal;
@@ -348,13 +354,13 @@ namespace ExcelTool
         }
 
 
-        private static string ParsingCreateVoModel(ExcelData excelData, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
+        private static string ParsingCreateVoModel(DataTableItem excelData, DataRow fieldNames, DataRow fieldDescription, DataRow fieldTypes)
         {
             DataTable item = excelData.Sheet;
             string tableName = item.TableName.RemoveTableNameAnnotation();
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoModelTemplate.cs");
-            classVal = classVal.Replace("#Name",excelData.Name);
+            classVal = classVal.Replace("#Name",excelData.TableName);
             classVal = classVal.Replace("#Class", tableName+"VOModel");
             classVal = classVal.Replace("#DataVo", tableName+"VO");
             
@@ -389,12 +395,12 @@ namespace ExcelTool
             
         }
 
-        private static string ParsingHeaders(ExcelData excelData, DataRow field_Names, DataRow field_description, DataRow field_Types)
+        private static string ParsingHeaders(DataTableItem excelData, DataRow field_Names, DataRow field_description, DataRow field_Types)
         {
             DataTable item = excelData.Sheet;
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoClassTemplate.cs");
-            classVal = classVal.Replace("#Name",excelData.Name.Replace(".xlsx",""));
+            classVal = classVal.Replace("#Name",excelData.TableName);
             classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation()+"VO");
             classVal = classVal.Replace("#ConfigVO", item.TableName.RemoveTableNameAnnotation());
             svBuilder.Clear();

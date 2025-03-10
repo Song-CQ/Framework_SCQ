@@ -7,13 +7,22 @@ using Newtonsoft.Json;
 
 namespace ExcelTool.Data
 {
+
+    public class DataTableItem
+    {
+        public string TableName => Sheet.TableName;
+        public bool IsStart ;
+        public DataTable Sheet;
+
+    }
+    
     public class ExcelData
     {
         private DataSet mData;
 
         public string Name { get; private set; }
 
-        public bool IsStart { get; private set; }
+        public int DataTableCount;
 
         public ExcelData(string filePath)
         {
@@ -22,11 +31,11 @@ namespace ExcelTool.Data
             {
                 if (filePath.Contains("静态配置表"))
                 {
-                    IsStart = true;
+                    //IsStart = true;
                 }
                 else if (filePath.Contains("游戏配置表"))
                 {
-                    IsStart = false;
+                    //IsStart = false;
                 }
                 using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
@@ -53,49 +62,59 @@ namespace ExcelTool.Data
                 throw e;
             }
 
+            DataTableCount = mData.Tables.Count;
+            Sheets = new DataTableItem[DataTableCount];
+
             if (mData.Tables.Count < 1)
             {
                 StringColor.WriteLine(filePath + "表为空", ConsoleColor.Blue);
             }
             else
             {
-                bool IsHaveStaticKeyRow = false;
-                bool IsHaveStaticTypeRow = false;
-                DataRow dataRow = Sheet.Rows[0];
-                foreach (DataColumn itemColumn in Sheet.Columns)
+                for (int i = 0; i < mData.Tables.Count; i++)               
                 {
-                    if (dataRow[itemColumn].ToString().ToLower().Trim()== "statickey")
+                    DataTable Sheet = mData.Tables[i];
+                    bool IsStart = false;
+
+                    bool IsHaveStaticKeyRow = false;
+                    bool IsHaveStaticTypeRow = false;
+                    DataRow dataRow = Sheet.Rows[0];
+                    foreach (DataColumn itemColumn in Sheet.Columns)
                     {
-                        IsHaveStaticKeyRow = true;
+                        if (dataRow[itemColumn].ToString().ToLower().Trim() == "statickey")
+                        {
+                            IsHaveStaticKeyRow = true;
+                        }
+                        if (dataRow[itemColumn].ToString().ToLower().Trim() == "statictype")
+                        {
+                            IsHaveStaticTypeRow = true;
+                        }
                     }
-                    if (dataRow[itemColumn].ToString().ToLower().Trim() == "statictype")
+                    if (IsHaveStaticKeyRow && IsHaveStaticTypeRow)
                     {
-                        IsHaveStaticTypeRow = true;
+                        IsStart = true;
                     }
+                    else
+                    {
+                        IsStart = false;
+                    }
+
+                    DataTableItem dataTableEX = new DataTableItem();
+                    dataTableEX.IsStart = IsStart;
+                    dataTableEX.Sheet = Sheet;
+
+                    Sheets[i] = dataTableEX;
                 }
-                if (IsHaveStaticKeyRow && IsHaveStaticTypeRow)
-                {
-                    IsStart = true;
-                }
-                else
-                {
-                    IsStart = false;
-                }
+
+                
 
             }
         }
 
-        public DataTable Sheet
-        {
-            get
-            {
-                if (mData.Tables.Count < 1)
-                {
-                    return null;
-                }
-                return mData.Tables[0];
-            }
-        }
+        public DataTableItem[] Sheets { private set; get;}
+        
+
+     
 
     }
 

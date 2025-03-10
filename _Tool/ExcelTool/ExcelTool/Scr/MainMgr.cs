@@ -69,7 +69,7 @@ namespace ExcelTool
             foreach (var VARIABLE in path)
             {
                 ExcelData item = new ExcelData(VARIABLE);
-                if (item.Sheet != null)
+                if (item.DataTableCount != 0)
                 {
                     excelDataLst.Add(item);
                 }

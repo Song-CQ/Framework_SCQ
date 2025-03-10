@@ -158,16 +158,20 @@ namespace ProjectApp
 
             if (pictureEntity == null)
             {
-                if (dragEntity.Data.Type == DragEntityType.Event)
+                if (!(dragEntity is MenuEntity))
                 {
-                    GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveEvent, pictureEntity, dragEntity);
-                }
-                else if (dragEntity.Data.Type == DragEntityType.Role)
-                {
-                   
-                    GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveRole, pictureEntity, dragEntity);
+                    if (dragEntity.Data.Type == DragEntityType.Event)
+                    {
+                        GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveEvent, pictureEntity, dragEntity);
+                    }
+                    else if (dragEntity.Data.Type == DragEntityType.Role)
+                    {
 
+                        GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveRole, pictureEntity, dragEntity);
+
+                    }
                 }
+                
             }
             else
             {

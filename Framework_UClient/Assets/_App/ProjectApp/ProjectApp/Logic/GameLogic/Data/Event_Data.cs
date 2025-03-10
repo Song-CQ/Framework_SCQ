@@ -18,12 +18,12 @@ namespace ProjectApp
         public EventKey Key { private set; get; }
         public int RoleSum => VO.roleSum;
 
-        public SceneEventVO VO { private set; get; }
+        public EventDataVO VO { private set; get; }
 
         public Event_Data(EventKey key)
         {
             Key = key;
-            VO = ConfigDataMgr.Instance.GetConfigVO<SceneEventVO>( ConfigVO.SceneEvent, key.ToString());
+            VO = ConfigDataMgr.Instance.GetConfigVO<EventDataVO>( ConfigVO.EventData, key.ToString());
         }
 
     }

@@ -41,6 +41,8 @@ namespace ProjectApp
 
             Entity.transform.Find("desc").GetComponent<TextMeshPro>().text = Data.Desc;
 
+
+
         }
 
         public void AddListener(UIEventListener.PointerHandler _BeginDrag, UIEventListener.PointerHandler _Drag_Delegate, UIEventListener.PointerHandler _EndDrag_Delegate)
