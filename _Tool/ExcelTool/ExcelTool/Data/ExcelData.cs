@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using ExcelDataReader;
@@ -63,7 +64,7 @@ namespace ExcelTool.Data
             }
 
             DataTableCount = mData.Tables.Count;
-            Sheets = new DataTableItem[DataTableCount];
+            Sheets = new List<DataTableItem>();
 
             if (mData.Tables.Count < 1)
             {
@@ -78,6 +79,12 @@ namespace ExcelTool.Data
 
                     bool IsHaveStaticKeyRow = false;
                     bool IsHaveStaticTypeRow = false;
+
+                    if (Sheet.Rows.Count == 0)
+                    {
+                        continue;
+                    }
+
                     DataRow dataRow = Sheet.Rows[0];
                     foreach (DataColumn itemColumn in Sheet.Columns)
                     {
@@ -97,13 +104,35 @@ namespace ExcelTool.Data
                     else
                     {
                         IsStart = false;
+
+                        if (Sheet.Rows.Count < 4)
+                        {
+                            continue;
+                        }
+           
+                        string _fieldName = Sheet.Rows[0][0].ToString().Trim();
+                        string _fieldName2 = Sheet.Rows[1][0].ToString().Trim();
+                        if (_fieldName != "id" || _fieldName2!="int")
+                        {
+                            StringColor.WriteLine( Sheet.TableName + "表结构不符合约定，已跳过", ConsoleColor.Red);
+                            if(_fieldName != "id")
+                                StringColor.WriteLine("表头第一位字段 "+_fieldName  + " != id ", ConsoleColor.Red);
+                            if (_fieldName2 != "int")                        
+                                    StringColor.WriteLine("第二位id字段 的数据结构" + _fieldName + " != int ", ConsoleColor.Red);
+
+                            continue;
+                        }
+
                     }
+
+
+
 
                     DataTableItem dataTableEX = new DataTableItem();
                     dataTableEX.IsStart = IsStart;
                     dataTableEX.Sheet = Sheet;
 
-                    Sheets[i] = dataTableEX;
+                    Sheets.Add(dataTableEX);
                 }
 
                 
@@ -111,7 +140,7 @@ namespace ExcelTool.Data
             }
         }
 
-        public DataTableItem[] Sheets { private set; get;}
+        public List<DataTableItem> Sheets { private set; get;}
         
 
      
