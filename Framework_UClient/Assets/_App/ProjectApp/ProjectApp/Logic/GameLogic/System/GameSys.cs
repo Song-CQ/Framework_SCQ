@@ -33,6 +33,7 @@ namespace ProjectApp
             allEventCodeDic = new Dictionary<EventKey, EventCode>();
 
             allEventCodeDic.Add(EventKey.Empty, new Empty_EventCode());
+            allEventCodeDic.Add(EventKey.Love, new Love_EventCode());
 
 
         }
@@ -76,7 +77,7 @@ namespace ProjectApp
             {
                 return allEventCodeDic[key];
             }
-            return null;
+            return new Empty_EventCode();
         }
 
         public RoleEntity GetRoleEntity(Role_Data _data)

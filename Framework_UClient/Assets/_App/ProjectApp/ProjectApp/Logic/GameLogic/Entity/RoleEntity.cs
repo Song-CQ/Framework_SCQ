@@ -7,6 +7,7 @@
 *****************************************************/
 using FutureCore;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -36,9 +37,9 @@ namespace ProjectApp
 
         private void LoadEntity()
         {
-            Entity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.SceneEntityPath);
-            
+            Entity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.RoleEntityPath);
 
+            Entity.transform.Find("desc").GetComponent<TextMeshPro>().text = Data.Desc;
 
         }
 

@@ -18,7 +18,7 @@ namespace ProjectApp
 
         //protected 
 
-        public List<RoleKey> AllRolePot { private set; get; }    
+        public List<RoleKey> AllRolePot { private set; get; } = new List<RoleKey>();   
 
         public EventKey Key { get => data.Key; }
 
@@ -124,6 +124,7 @@ namespace ProjectApp
 
         public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles)
         {
+            
 
             code.RunEvent(allRoleState, roles, AllRolePot);
 
@@ -137,10 +138,13 @@ namespace ProjectApp
 
         }
 
+        
+
+
         public void RefreshView(Dictionary<RoleKey, IRole> roles)
         {
 
-             code.RefreshView(this,roles);
+            code.RefreshView(this,roles);
 
             foreach (var role in roles)
             {
@@ -150,7 +154,7 @@ namespace ProjectApp
 
         }
 
-        public void ShowView(int showType)
+        public virtual void OnShowView(int showType)
         {
            
         }

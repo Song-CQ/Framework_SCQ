@@ -42,7 +42,9 @@ namespace ProjectApp
             gameDispatcher.AddListener(GameEvent.SetEvent, PlayerInput_SetEvent);         
             gameDispatcher.AddListener(GameEvent.SetRole, PlayerInput_SetRole);            
             gameDispatcher.AddListener(GameEvent.RemoveEvent, PlayerInput_RemoveEvent);   
-            gameDispatcher.AddListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);     
+            gameDispatcher.AddListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);
+
+            gameSys.Init();
 
         }
 

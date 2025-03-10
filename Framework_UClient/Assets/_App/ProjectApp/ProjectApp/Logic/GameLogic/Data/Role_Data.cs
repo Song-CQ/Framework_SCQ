@@ -16,7 +16,7 @@ namespace ProjectApp
 
         public RoleKey Key;
 
-        public List<LabelKey> allLabelKey;
+        public List<LabelKey> allLabelKey = new List<LabelKey>();
 
      
     }

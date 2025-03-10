@@ -192,7 +192,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1057331077463405759}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &683247086
+--- !u!114 &683247089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,6 +209,9 @@ MonoBehaviour:
   Camera: {fileID: 0}
   sys: 0
   sysiio: 0
+  MeueItem_Size: 3
+  MeueItem_Interval: 1
+  MaxDeltaPot: 0.3
 --- !u!1001 &1057331077463405759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,7 +292,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7894352979171397432, guid: 35f2b89cd4c78594898f9ba7e9fda86f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 683247086}
+      addedObject: {fileID: 683247089}
   m_SourcePrefab: {fileID: 100100000, guid: 35f2b89cd4c78594898f9ba7e9fda86f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

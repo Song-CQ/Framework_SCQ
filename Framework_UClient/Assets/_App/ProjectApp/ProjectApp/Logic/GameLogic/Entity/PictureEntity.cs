@@ -19,7 +19,7 @@ namespace ProjectApp
         public Transform RolesTrf {  get; private set; }
         public Transform EventTrf {  get; private set; }
         public UIEventListener EventListener { get; private set; }
-        private SceneEventEntity sceneEvent;
+        private SceneEventEntity sceneEventEntity => SceneEvent as SceneEventEntity;
 
 
         public override void Init()
@@ -44,8 +44,9 @@ namespace ProjectApp
                 RoleEntity roleEntity = role as RoleEntity;
 
                 roleEntity.Entity.transform.SetParent(RolesTrf);
+                roleEntity.Entity.transform.localScale = Vector3.one;
 
-                roleEntity.Entity.transform.localPosition = sceneEvent.GetRolePot(potIndex);
+                roleEntity.Entity.transform.localPosition = sceneEventEntity.GetRolePot(potIndex);
             }
             return isres;
         }

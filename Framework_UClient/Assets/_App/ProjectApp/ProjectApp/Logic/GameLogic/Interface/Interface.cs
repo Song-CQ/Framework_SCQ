@@ -51,7 +51,7 @@ namespace ProjectApp
         public bool RemoveRole(RoleKey key);
         public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles);
         public void RefreshView(Dictionary<RoleKey, IRole> roles);
-        public void ShowView(int showType);
+        public void OnShowView(int showType);
     }
 
     

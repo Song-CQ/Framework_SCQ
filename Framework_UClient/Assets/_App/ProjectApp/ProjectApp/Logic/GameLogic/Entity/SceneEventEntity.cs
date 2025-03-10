@@ -9,6 +9,7 @@ using FutureCore;
 using ProjectApp.Data;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static FutureCore.UIEventListener;
@@ -23,6 +24,7 @@ namespace ProjectApp
 
         public Base_Data Data => base.data;
 
+        public PictureEntity PictureEntity => (Picture as PictureEntity);
 
         public UIEventListener Listener { get;private set; }
         private PointerHandler beginDrag_Delegate;
@@ -65,6 +67,7 @@ namespace ProjectApp
         private void LoadEntity()
         {
             Entity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.SceneEntityPath);
+            Entity.transform.Find("desc").GetComponent<TextMeshPro>().text = Data.Desc;
             Transform rolesTrf = Entity.transform.Find("Roles");
 
             for (int i = 0; i < data.RoleSum; i++)
@@ -93,6 +96,29 @@ namespace ProjectApp
 
 
         }
+
+        public override void EnterPicture(IPicture picture)
+        {
+            base.EnterPicture(picture);
+
+            Entity.transform.SetParent(PictureEntity.EventTrf);
+            Entity.transform.localPosition = Vector3.zero;
+            Entity.transform.localScale = Vector3.one;
+
+
+
+        }
+
+
+        public override void ExitPicture(IPicture picture)
+        {
+            base.ExitPicture(picture);
+
+            Entity.transform.SetParent(null);
+           
+
+        }
+
 
         /// <summary>
         /// 获取离输入的屏幕坐标最近的角色位置索引
