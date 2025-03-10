@@ -40,14 +40,18 @@ namespace ExcelTool
 
             foreach (var excelData in excelDataLst)
             {
-                if (excelData.IsStart)
+                foreach (var item in excelData.Sheets)
                 {
-                    CreateStartObj(excelData.Name, excelData.Sheet);
+                    if (item.IsStart)
+                    {
+                        CreateStartObj(excelData.Name, item.Sheet);
+                    }
+                    else
+                    {
+                        CreateObj(excelData.Name, item.Sheet);
+                    }
                 }
-                else
-                {
-                    CreateObj(excelData.Name, excelData.Sheet);
-                }
+                
             }
 
             if (!IsOutMultipleDatas)

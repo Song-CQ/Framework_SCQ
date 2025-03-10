@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2025/3/9 15:41:11
+    日期：2025/3/10 20:59:29
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -24,7 +24,7 @@ namespace ProjectApp
         /// <summary>
         /// 是否加密表数据
         /// </summary>
-        private const bool isEnciphermentData = true;
+        private const bool isEnciphermentData = false;
         /// <summary>
         /// 是否将每张表都生成一个数据文件
         /// </summary>
@@ -59,6 +59,7 @@ namespace ProjectApp
                 configVODic.Add(ConfigVO.out_coin, GetExcalData<out_coinVO>(ConfigVO.out_coin,false) as List<BaseVO>);
                 configVODic.Add(ConfigVO.out_cash, GetExcalData<out_cashVO>(ConfigVO.out_cash,false) as List<BaseVO>);
                 configVODic.Add(ConfigVO.Flop_reward, GetExcalData<Flop_rewardVO>(ConfigVO.Flop_reward,false) as List<BaseVO>);
+                configVODic.Add(ConfigVO.Sheet1, GetExcalData<Sheet1VO>(ConfigVO.Sheet1,false) as List<BaseVO>);
                 configVODic.Add(ConfigVO.pickBox, GetExcalData<pickBoxVO>(ConfigVO.pickBox,false) as List<BaseVO>);
                 configVODic.Add(ConfigVO.adReward, GetExcalData<adRewardVO>(ConfigVO.adReward,false) as List<BaseVO>);
                 configVODic.Add(ConfigVO.rolling, GetExcalData<rollingVO>(ConfigVO.rolling,false) as List<BaseVO>);
@@ -89,6 +90,7 @@ namespace ProjectApp
                 configVODic.Add(ConfigVO.out_coin, configData.out_coin_List.OfType<out_coinVO,BaseVO>());
                 configVODic.Add(ConfigVO.out_cash, configData.out_cash_List.OfType<out_cashVO,BaseVO>());
                 configVODic.Add(ConfigVO.Flop_reward, configData.Flop_reward_List.OfType<Flop_rewardVO,BaseVO>());
+                configVODic.Add(ConfigVO.Sheet1, configData.Sheet1_List.OfType<Sheet1VO,BaseVO>());
                 configVODic.Add(ConfigVO.pickBox, configData.pickBox_List.OfType<pickBoxVO,BaseVO>());
                 configVODic.Add(ConfigVO.adReward, configData.adReward_List.OfType<adRewardVO,BaseVO>());
                 configVODic.Add(ConfigVO.rolling, configData.rolling_List.OfType<rollingVO,BaseVO>());
@@ -120,6 +122,7 @@ namespace ProjectApp
             AddVOModel(ConfigVO.out_coin,out_coinVOModel.Instance);
             AddVOModel(ConfigVO.out_cash,out_cashVOModel.Instance);
             AddVOModel(ConfigVO.Flop_reward,Flop_rewardVOModel.Instance);
+            AddVOModel(ConfigVO.Sheet1,Sheet1VOModel.Instance);
             AddVOModel(ConfigVO.pickBox,pickBoxVOModel.Instance);
             AddVOModel(ConfigVO.adReward,adRewardVOModel.Instance);
             AddVOModel(ConfigVO.rolling,rollingVOModel.Instance);
