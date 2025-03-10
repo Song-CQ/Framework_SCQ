@@ -109,6 +109,19 @@ namespace ExcelTool.Data
                         {
                             continue;
                         }
+           
+                        string _fieldName = Sheet.Rows[0][0].ToString().Trim();
+                        string _fieldName2 = Sheet.Rows[1][0].ToString().Trim();
+                        if (_fieldName != "id" || _fieldName2!="int")
+                        {
+                            StringColor.WriteLine( Sheet.TableName + "表结构不符合约定，已跳过", ConsoleColor.Red);
+                            if(_fieldName != "id")
+                                StringColor.WriteLine("表头第一位字段 "+_fieldName  + " != id ", ConsoleColor.Red);
+                            if (_fieldName2 != "int")                        
+                                    StringColor.WriteLine("第二位id字段 的数据结构" + _fieldName + " != int ", ConsoleColor.Red);
+
+                            continue;
+                        }
 
                     }
 

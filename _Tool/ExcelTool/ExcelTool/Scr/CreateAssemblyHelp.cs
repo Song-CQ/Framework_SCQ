@@ -110,6 +110,7 @@ namespace ExcelTool
             List<string> allStaticVO = new List<string>();
             foreach (var data in dataList)
             {
+                StringColor.WriteLine("开始解析文件: " + data.Name, ConsoleColor.Yellow);
                 foreach (var _var in data.Sheets)
                 {
                     DataTable item = _var.Sheet;
@@ -134,15 +135,19 @@ namespace ExcelTool
                     {
                         if (item.Rows.Count < 4)
                         {
+                            StringColor.WriteLine("解析" + tableName + "表失败", ConsoleColor.Red);
                             continue;
                         }
+                        
                         Console.WriteLine("解析表: " + _var.TableName);
                         DataRow field_Names = item.Rows[0];
                         DataRow field_Types = item.Rows[1];
                         DataRow field_description = item.Rows[2];
 
+                        
 
-                        string classStr = ParsingHeaders(_var, field_Names, field_description, field_Types);
+
+                        string classStr = ParsingHeaders(_var, field_Names, field_description, field_Types, data.Name);
                         allClassval.Add(classStr);
                         allClassname.Add(tableName + "VO");
 
@@ -395,11 +400,12 @@ namespace ExcelTool
             
         }
 
-        private static string ParsingHeaders(DataTableItem excelData, DataRow field_Names, DataRow field_description, DataRow field_Types)
+        private static string ParsingHeaders(DataTableItem excelData, DataRow field_Names, DataRow field_description, DataRow field_Types,string excel)
         {
             DataTable item = excelData.Sheet;
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoClassTemplate.cs");
+            classVal = classVal.Replace("#Excel", excel);
             classVal = classVal.Replace("#Name",excelData.TableName);
             classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation()+"VO");
             classVal = classVal.Replace("#ConfigVO", item.TableName.RemoveTableNameAnnotation());
