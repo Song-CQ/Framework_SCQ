@@ -106,64 +106,73 @@ namespace ProjectApp
 
         public override void RefreshView(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles)
         {
-            if (!IsFullRole(sceneEvent.AllRolePot))
-            {
-                return;
-            }
+            
 
 
             bool isShow = false;
 
+
             RoleStateToEvent eventState_0 = RoleStateToEvent.待机;
             RoleStateToEvent eventState_1 = RoleStateToEvent.待机;
-
-            List<RoleKey> allPots = sceneEvent.AllRolePot;
-
-            IRole role_0 = roles[allPots[0]];
-            IRole role_1 = roles[allPots[1]];
-
-            if (allPots[0] != RoleKey.Node && allPots[1] != RoleKey.Node)
+            IRole role_0 = null;
+            IRole role_1 = null;
+            if (IsFullRole(sceneEvent.AllRolePot))
             {
+               
+                List<RoleKey> allPots = sceneEvent.AllRolePot;
+
                 role_0 = roles[allPots[0]];
                 role_1 = roles[allPots[1]];
-         
 
-                bool isLove_0 = GetIsLoveTo(role_0, role_1);
-                bool isLove_1 = GetIsLoveTo(role_1, role_0);
-
-
-                if (isLove_0 && isLove_1)
+                if (allPots[0] != RoleKey.Node && allPots[1] != RoleKey.Node)
                 {
-                    //成功
-                    isShow = true;
+                    role_0 = roles[allPots[0]];
+                    role_1 = roles[allPots[1]];
+
+
+                    bool isLove_0 = GetIsLoveTo(role_0, role_1);
+                    bool isLove_1 = GetIsLoveTo(role_1, role_0);
+
+
+                    if (isLove_0 && isLove_1)
+                    {
+                        //成功
+                        isShow = true;
+                    }
                 }
+
+                if (role_0 != null && role_1 != null)
+                {
+                    if (isShow)
+                    {
+                        //满足条件设置相爱状态
+                        eventState_0 = RoleStateToEvent.相爱;
+                        eventState_1 = RoleStateToEvent.相爱;
+
+                    }
+                    else
+                    {
+                        GetRoleStateToEvent(role_0, role_1, ref eventState_0, ref eventState_1);
+
+                    }
+                }
+
+                sceneEvent.SetRoleEventState(0, eventState_0);
+                sceneEvent.SetRoleEventState(1, eventState_1);
             }
 
-            if (role_0!=null &&role_1!=null)
-            {
-                if (isShow)
-                {
-                    //满足条件设置相爱状态
-                    eventState_0 = RoleStateToEvent.相爱;
-                    eventState_1 = RoleStateToEvent.相爱;
-
-                }
-                else
-                {
-                    SetRolesStateToEvent(role_0, role_1, ref eventState_0, ref eventState_1);
-
-                }
-            }
+           
 
             sceneEvent.OnShowView(isShow ? 1 : 0);
 
-            sceneEvent.SetRoleEventState(0, (int)eventState_0);
-            sceneEvent.SetRoleEventState(1, (int)eventState_1);
+
+
+           
 
 
         }
 
-        private void SetRolesStateToEvent(IRole role_0, IRole role_1, ref RoleStateToEvent eventState_0, ref RoleStateToEvent eventState_1)
+        private void GetRoleStateToEvent(IRole role_0, IRole role_1, ref RoleStateToEvent eventState_0, ref RoleStateToEvent eventState_1)
         {
 
             //判断是否有死亡

@@ -31,6 +31,9 @@ namespace ProjectApp
         private UIEventListener.PointerHandler drag_Delegate;
         private UIEventListener.PointerHandler endDrag_Delegate;
 
+
+        public TextMeshPro stateTextMeshPro;
+
         public override void Init(Role_Data data)
         {
             base.Init(data);
@@ -47,7 +50,7 @@ namespace ProjectApp
 
             Entity.transform.Find("desc").GetComponent<TextMeshPro>().text = Data.Desc;
 
-
+            stateTextMeshPro = Entity.transform.Find("state").GetComponent<TextMeshPro>();
 
         }
 
@@ -118,7 +121,14 @@ namespace ProjectApp
 
         }
 
-        
+        public override void RefreshView()
+        {
+            base.RefreshView();
+            string val = State.GetString();
+
+            stateTextMeshPro.text = val;
+
+        }
 
         public IPicture GetPicture()
         {

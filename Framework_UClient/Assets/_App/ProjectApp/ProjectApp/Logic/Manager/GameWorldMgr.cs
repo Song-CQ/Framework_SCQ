@@ -99,9 +99,11 @@ namespace ProjectApp
 
             Role_Data role_Data_1 = new Role_Data();
             role_Data_1.Key = RoleKey.Fuxi;
+            role_Data_1.allLabelKey.Add(LabelKey.CanLove);
 
             Role_Data role_Data_2 = new Role_Data();
             role_Data_2.Key = RoleKey.Nuwa;
+            role_Data_2.allLabelKey.Add(LabelKey.CanLove);
 
             levelData.roles.Add(role_Data_1);
             levelData.roles.Add(role_Data_2);

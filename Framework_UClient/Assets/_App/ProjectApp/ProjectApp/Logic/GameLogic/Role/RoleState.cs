@@ -73,7 +73,23 @@ namespace ProjectApp
 
         }
 
-        
+        public string GetString()
+        {
+            string val = string.Empty;
+
+
+            foreach (var state in allState)
+            {
+                val = "StateKey: " + state.Key+ "\n";
+                foreach (var item in state.Value.dataList_RoleKey)
+                {
+                    val += item.ToString()+"\n";
+                }
+                            
+            }
+            return val;
+
+        }
     }
 
 

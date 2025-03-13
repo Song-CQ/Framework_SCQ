@@ -22,7 +22,7 @@ namespace ProjectApp
 
         public EventKey Key { get => data.Key; }
 
-        public List<int> eventStateList = new List<int>();
+        public Dictionary<RoleKey, RoleStateToEvent> eventStateList = new Dictionary<RoleKey, RoleStateToEvent>();
 
         public IPicture Picture { private set; get;}
         public virtual void Init(Event_Data _data,EventCode eventCode)
@@ -139,19 +139,21 @@ namespace ProjectApp
 
         public void RefreshView(Dictionary<RoleKey, IRole> roles)
         {
-            code.RefreshView(this,roles); 
+            code.RefreshView(this,roles);
+   
         }
 
         public virtual void OnShowView(int showType)
         {
-           
+            eventStateList.Clear();
+
         }
 
-        public virtual void SetRoleEventState(int rolePot, int eventState)
+        public virtual void SetRoleEventState(int rolePot, RoleStateToEvent eventState)
         {
             RoleKey roleKey = AllRolePot[rolePot];
 
-
+            eventStateList.Add(roleKey,eventState);
         }
 
         
