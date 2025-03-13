@@ -129,7 +129,7 @@ namespace ProjectApp
             if (SceneEvent.RemoveRole(roleKey)) 
             {
                 Roles[roleKey].ExitSceneEvent(this.SceneEvent);
-                Roles[roleKey] = null;
+                Roles.Remove(roleKey);
                 return true;
             }
 
@@ -149,12 +149,18 @@ namespace ProjectApp
             RefreshView();
         }
 
-        private void RefreshView()
-        {
-            //刷新角色状态
+        private void RefreshView()        {
 
             //刷新场景显示
             SceneEvent.RefreshView(Roles);
+
+            //刷新角色状态
+            foreach (var role in Roles)
+            {
+                role.Value.RefreshView();
+            }
+
+           
         }
 
         public virtual void Rest()

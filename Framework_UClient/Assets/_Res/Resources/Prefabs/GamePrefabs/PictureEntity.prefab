@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3442605331738351930}
   - component: {fileID: 7950482968863941307}
   - component: {fileID: 9149775289090024084}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PictureEntity
   m_TagString: Untagged
   m_Icon: {fileID: 0}

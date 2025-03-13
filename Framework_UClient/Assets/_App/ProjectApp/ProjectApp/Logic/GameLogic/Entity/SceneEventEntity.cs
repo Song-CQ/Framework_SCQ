@@ -39,14 +39,26 @@ namespace ProjectApp
             
     
             LoadEntity();
-            
+            AddListener();
+
         }
 
-        public void AddListener(PointerHandler _BeginDrag, PointerHandler _Drag_Delegate, PointerHandler _EndDrag_Delegate)
+        public void AddListener()
         {
-            beginDrag_Delegate = _BeginDrag;
-            drag_Delegate = _Drag_Delegate;
-            endDrag_Delegate = _EndDrag_Delegate;
+            Listener = UIEventListener.GetEventListener(Entity.transform);
+
+            beginDrag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.BeginDragEntity(this, e.position);
+            };
+            drag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.DragEntity(this, e.position);
+            };
+            endDrag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.EndDragEntity(this, e.position);
+            };
 
             Listener.BeginDrag += beginDrag_Delegate;
             Listener.Drag += drag_Delegate;
@@ -61,6 +73,7 @@ namespace ProjectApp
             beginDrag_Delegate = null;
             drag_Delegate = null;
             endDrag_Delegate = null;
+            Listener = null;
         }
 
 
@@ -69,6 +82,7 @@ namespace ProjectApp
             Entity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.SceneEntityPath);
             Entity.transform.Find("desc").GetComponent<TextMeshPro>().text = Data.Desc;
             Transform rolesTrf = Entity.transform.Find("Roles");
+            
 
             for (int i = 0; i < data.RoleSum; i++)
             {
@@ -94,7 +108,6 @@ namespace ProjectApp
 
             }
 
-
         }
 
         public override void EnterPicture(IPicture picture)
@@ -114,9 +127,17 @@ namespace ProjectApp
         {
             base.ExitPicture(picture);
 
-            Entity.transform.SetParent(null);
-           
+            foreach (var role in picture.Roles)
+            {
+                if (role.Value!=null)
+                {
+                    role.Value.ExitSceneEvent(this);
+                }
+                
+            }
 
+            Entity.transform.SetParent(null);
+            Dispose();
         }
 
 
@@ -170,14 +191,8 @@ namespace ProjectApp
 
         public override bool SetRole(int index, RoleKey key)
         {
-            bool isRest = base.SetRole(index, key);
 
-            if (isRest) 
-            {
-                
-            }
-
-            return isRest;
+            return base.SetRole(index, key);
         }
 
 
@@ -197,6 +212,19 @@ namespace ProjectApp
 
         public Vector2 GetRolePot(int potIndex)
         {
+            if (potIndex < 0 || potIndex >= data.RoleSum)
+            {
+                return Vector2.zero;
+            }
+
+            return RoleSoltPot[potIndex].localPosition;
+
+
+        }
+        public Vector2 GetRolePot(RoleKey roleKey)
+        {
+            int potIndex = GetRoleIndexToRoleKey(roleKey);
+
             if (potIndex < 0 || potIndex >= data.RoleSum)
             {
                 return Vector2.zero;

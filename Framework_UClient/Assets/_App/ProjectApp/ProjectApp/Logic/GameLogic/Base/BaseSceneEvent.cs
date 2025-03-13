@@ -66,7 +66,7 @@ namespace ProjectApp
 
         public virtual bool RemoveRole(RoleKey key)
         {
-            int index = GetIndexToRoleKey(key);
+            int index = GetRoleIndexToRoleKey(key);
             return RemoveRole(index);
         }
 
@@ -82,7 +82,7 @@ namespace ProjectApp
 
 
 
-        public int GetIndexToRoleKey(RoleKey key)
+        public int GetRoleIndexToRoleKey(RoleKey key)
         {
             if (key == RoleKey.Node)
             {
@@ -102,20 +102,16 @@ namespace ProjectApp
         }
 
 
-        
-
-        
-
 
         public virtual void EnterPicture(IPicture picture)
         {
-            Debug.Log("Show场景");
+            Debug.Log("Show场景:"+ Key.ToString());
             this.Picture = picture;
         }
 
         public virtual void ExitPicture(IPicture picture)
         {
-            Debug.Log("Exit场景");
+            Debug.Log("Exit场景:" + Key.ToString());
 
             //回收
             this.Picture = null;
@@ -143,15 +139,7 @@ namespace ProjectApp
 
         public void RefreshView(Dictionary<RoleKey, IRole> roles)
         {
-
-            code.RefreshView(this,roles);
-
-            foreach (var role in roles)
-            {
-                role.Value.RefreshView();
-            }
-         
-
+            code.RefreshView(this,roles); 
         }
 
         public virtual void OnShowView(int showType)
@@ -165,6 +153,8 @@ namespace ProjectApp
 
 
         }
+
+        
     }
 
 

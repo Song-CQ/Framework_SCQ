@@ -29,14 +29,14 @@ namespace ProjectApp
 
         }
 
-        public void EnterSceneEvent(ISceneEvent sceneEvent)
+        public virtual void EnterSceneEvent(ISceneEvent sceneEvent)
         {
             Debug.Log("角色:"+Key.ToString()+"进入场景:"+sceneEvent.Key.ToString());
             this.sceneEvent = sceneEvent;
 
         }
 
-        public void ExitSceneEvent(ISceneEvent sceneEvent)
+        public virtual void ExitSceneEvent(ISceneEvent sceneEvent)
         {
             Debug.Log("角色:" + Key.ToString() + "退出场景:" + sceneEvent.Key.ToString());
             this.sceneEvent = null;

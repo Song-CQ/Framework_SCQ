@@ -162,16 +162,16 @@ namespace ProjectApp
                 {
                     if (dragEntity.Data.Type == DragEntityType.Event)
                     {
-                        GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveEvent, pictureEntity, dragEntity);
+                        GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveEvent, dragEntity);
                     }
                     else if (dragEntity.Data.Type == DragEntityType.Role)
                     {
 
-                        GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveRole, pictureEntity, dragEntity);
+                        GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveRole, dragEntity);
 
                     }
                 }
-                
+
             }
             else
             {
@@ -215,7 +215,7 @@ namespace ProjectApp
             RaycastHit hit;
 
             // 发射射线并检测碰撞
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit,100,LayerMask.GetMask("Picture")))
             {
                 Transform trf = hit.transform;
 
@@ -382,19 +382,7 @@ namespace ProjectApp
             MenuEntity dragEntity = entityPool.Get<MenuEntity>(DragEntityPath);
 
             dragEntity.Init();
-            dragEntity.AddListener(
-                (e) =>
-                {
-                    BeginDragEntity(dragEntity, e.position);
-                },
-                (e) =>
-                {
-                    DragEntity(dragEntity, e.position);
-                }, (e) =>
-                {
-                    EndDragEntity(dragEntity, e.position);
-                }
-            );
+            dragEntity.AddListener();
 
             return dragEntity;
         }

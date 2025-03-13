@@ -571,6 +571,10 @@
       <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="VoClassLib">
+      <HintPath>Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\VoClassLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.5\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
@@ -637,6 +641,10 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.5\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BaseVoClassLib">
+      <HintPath>Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VODll\BaseVoClassLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">

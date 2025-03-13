@@ -168,11 +168,13 @@ namespace ProjectApp
             {
                 return;
             }
-            PictureEntity pictureEntity = param[0] as PictureEntity;
-            int pictureIndex = pictureEntity.Index;
-            IDrag drag = param[1] as IDrag;
+            IDrag drag = param[0] as IDrag;
+            IPicture picture = drag.GetPicture(); 
+            if (picture == null || drag == null) return;
+
+            int pictureIndex = picture.Index;
             Role_Data data = drag.Data.GetData<Role_Data>();
-         
+                                   
             GameStructure.RemoveRole(pictureIndex,data.Key);
         }
         /// 画面index 事件EventKey
@@ -204,11 +206,11 @@ namespace ProjectApp
             {
                 return;
             }
-            PictureEntity pictureEntity = param[0] as PictureEntity;
-            int pictureIndex = pictureEntity.Index;
+            IPicture picture = (param[0] as IDrag).GetPicture();
+            if (picture == null) return;
 
 
-            GameStructure.RemoveEvent(pictureIndex);
+            GameStructure.RemoveEvent(picture.Index);
         }
 
         #endregion
@@ -431,4 +433,4 @@ namespace ProjectApp
 
 
     
-}
+}                                                                                                                                                                                                                                                                                                                                           

@@ -41,11 +41,20 @@ namespace ProjectApp
 
         }
 
-        public void AddListener(PointerHandler _BeginDrag, PointerHandler _Drag_Delegate, PointerHandler _EndDrag_Delegate)
+        public void AddListener()
         {
-            beginDrag_Delegate = _BeginDrag;
-            drag_Delegate = _Drag_Delegate;
-            endDrag_Delegate = _EndDrag_Delegate;
+            beginDrag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.BeginDragEntity(this, e.position);
+            };
+            drag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.DragEntity(this, e.position);
+            };
+            endDrag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.EndDragEntity(this, e.position);
+            };
 
             Listener.BeginDrag += beginDrag_Delegate;
             Listener.Drag += drag_Delegate;

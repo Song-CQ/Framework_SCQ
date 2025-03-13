@@ -52,6 +52,8 @@ namespace ProjectApp
         public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles);
         public void RefreshView(Dictionary<RoleKey, IRole> roles);
         public void OnShowView(int showType);
+
+        public int GetRoleIndexToRoleKey(RoleKey roleKey);
     }
 
     
@@ -72,7 +74,7 @@ namespace ProjectApp
     public interface IDrag
     {
         public Base_Data Data { get; }
-        void AddListener(PointerHandler _BeginDrag, PointerHandler _Drag_Delegate, PointerHandler _EndDrag_Delegate);
+        void AddListener();
         void RomveListener();
         void BeginDrag();
         void Drag();

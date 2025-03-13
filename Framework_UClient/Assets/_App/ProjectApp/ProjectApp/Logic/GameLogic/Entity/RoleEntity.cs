@@ -23,6 +23,10 @@ namespace ProjectApp
         public UIEventListener Listener { get; private set; }
         public GameObject Entity { get; private set; }
 
+        private PictureEntity pictureEntity => sceneEvent.Picture as PictureEntity;
+
+        public SceneEventEntity sceneEventEntity => sceneEvent as SceneEventEntity;
+
         private UIEventListener.PointerHandler beginDrag_Delegate;
         private UIEventListener.PointerHandler drag_Delegate;
         private UIEventListener.PointerHandler endDrag_Delegate;
@@ -32,6 +36,8 @@ namespace ProjectApp
             base.Init(data);
 
             LoadEntity();
+
+            AddListener( );
 
         }
 
@@ -45,11 +51,21 @@ namespace ProjectApp
 
         }
 
-        public void AddListener(UIEventListener.PointerHandler _BeginDrag, UIEventListener.PointerHandler _Drag_Delegate, UIEventListener.PointerHandler _EndDrag_Delegate)
+        public void AddListener()
         {
-            beginDrag_Delegate = _BeginDrag;
-            drag_Delegate = _Drag_Delegate;
-            endDrag_Delegate = _EndDrag_Delegate;
+            Listener = UIEventListener.GetEventListener(Entity.transform);
+            beginDrag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.BeginDragEntity(this, e.position);
+            };
+            drag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.DragEntity(this, e.position);
+            };
+            endDrag_Delegate = (e) =>
+            {
+                GameWorldMgr.Instance.GameEntity.EndDragEntity(this, e.position);
+            };
 
             Listener.BeginDrag += beginDrag_Delegate;
             Listener.Drag += drag_Delegate;
@@ -66,6 +82,24 @@ namespace ProjectApp
             endDrag_Delegate = null;
         }
 
+        public override void EnterSceneEvent(ISceneEvent sceneEvent)
+        {
+            base.EnterSceneEvent(sceneEvent);
+           
+            Entity.transform.SetParent(pictureEntity.RolesTrf);
+            Entity.transform.localScale = Vector3.one;
+            Entity.transform.localPosition = sceneEventEntity.GetRolePot(Key);
+
+        }
+
+        public override void ExitSceneEvent(ISceneEvent sceneEvent)
+        {
+            base.ExitSceneEvent(sceneEvent);
+
+            Entity.transform.SetParent(null);
+            Dispose();
+
+        }
 
         public void BeginDrag()
         {
@@ -83,6 +117,8 @@ namespace ProjectApp
     
 
         }
+
+        
 
         public IPicture GetPicture()
         {
