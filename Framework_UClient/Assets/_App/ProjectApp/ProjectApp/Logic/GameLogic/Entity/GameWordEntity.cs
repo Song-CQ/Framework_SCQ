@@ -42,6 +42,7 @@ namespace ProjectApp
         private List<MenuEntity> dragEntityMeue = new List<MenuEntity>();
         private List<PictureEntity> pictureEntityList = new List<PictureEntity>();
 
+        public const string RoleAniPath = "Prefabs/GamePrefabs/RoleAni/";
         public const string PictureEntityPath = "Prefabs/GamePrefabs/PictureEntity";
         public const string DragEntityPath = "Prefabs/GamePrefabs/DragEntity";
         public const string RoleEntityPath = "Prefabs/GamePrefabs/RoleEntity";

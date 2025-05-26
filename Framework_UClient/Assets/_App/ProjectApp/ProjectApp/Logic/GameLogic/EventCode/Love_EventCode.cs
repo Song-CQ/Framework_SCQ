@@ -104,13 +104,11 @@ namespace ProjectApp
 
 
 
-        public override void RefreshView(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles)
+        public override void UpdataState(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles)
         {
             
 
-
             bool isShow = false;
-
 
             RoleStateToEvent eventState_0 = RoleStateToEvent.待机;
             RoleStateToEvent eventState_1 = RoleStateToEvent.待机;
@@ -162,7 +160,7 @@ namespace ProjectApp
             }
 
            
-
+ 
             sceneEvent.OnShowView(isShow ? 1 : 0);
 
 
@@ -199,8 +197,6 @@ namespace ProjectApp
                     isLove = true;
 
                 }
-
-
             }
 
             return isLove;

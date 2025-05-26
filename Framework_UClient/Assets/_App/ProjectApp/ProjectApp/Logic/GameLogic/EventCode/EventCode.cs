@@ -33,7 +33,7 @@ namespace ProjectApp
             return true;
         }
 
-        public abstract void RefreshView(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles);
+        public abstract void UpdataState(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles);
 
         protected bool GetRoleDead(IRole role)
         {
@@ -91,7 +91,7 @@ namespace ProjectApp
             Debug.Log("运行事件：" + Key.ToString());
         }
 
-        public override void RefreshView(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles)
+        public override void UpdataState(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles)
         {
 
         }

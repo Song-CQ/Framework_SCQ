@@ -7,7 +7,6 @@
 *****************************************************/
 using FutureCore;
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -32,7 +31,12 @@ namespace ProjectApp
         private UIEventListener.PointerHandler endDrag_Delegate;
 
 
-        public TextMeshPro stateTextMeshPro;
+        private RoleAvatar roleAvatar;
+
+
+
+        
+        
 
         public override void Init(Role_Data data)
         {
@@ -40,7 +44,7 @@ namespace ProjectApp
 
             LoadEntity();
 
-            AddListener( );
+            AddListener();
 
         }
 
@@ -48,9 +52,13 @@ namespace ProjectApp
         {
             Entity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.RoleEntityPath);
 
-            Entity.transform.Find("desc").GetComponent<TextMeshPro>().text = Data.Desc;
+            roleAvatar = Entity.GetComponent<RoleAvatar>() ?? Entity.AddComponent<RoleAvatar>();
 
-            stateTextMeshPro = Entity.transform.Find("state").GetComponent<TextMeshPro>();
+            roleAvatar.Init(data);
+
+           
+
+            
 
         }
 
@@ -124,9 +132,9 @@ namespace ProjectApp
         public override void RefreshView()
         {
             base.RefreshView();
-            string val = State.GetString();
+           
 
-            stateTextMeshPro.text = val;
+            roleAvatar.SetState(State);
 
         }
 
@@ -139,7 +147,8 @@ namespace ProjectApp
         {
             RomveListener();
 
-
+            roleAvatar.Clear();
+            roleAvatar = null;
 
             GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.RoleEntityPath, Entity);
             ObjectPoolStatic<RoleEntity>.Release(this);

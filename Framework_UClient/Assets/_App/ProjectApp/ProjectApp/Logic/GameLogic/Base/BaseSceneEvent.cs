@@ -120,7 +120,7 @@ namespace ProjectApp
 
         public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles)
         {
-            
+            eventStateList.Clear();
 
             code.RunEvent(allRoleState, roles, AllRolePot);
 
@@ -139,13 +139,13 @@ namespace ProjectApp
 
         public void RefreshView(Dictionary<RoleKey, IRole> roles)
         {
-            code.RefreshView(this,roles);
+            code.UpdataState(this,roles);
    
         }
 
         public virtual void OnShowView(int showType)
         {
-            eventStateList.Clear();
+            Debug.Log( " 画面 " +Picture.Index + " 的ShowType："+showType);
 
         }
 

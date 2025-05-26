@@ -69,6 +69,16 @@ namespace ProjectApp
     /// </summary>
     public enum StateKey
     {
+
+        /// <summary>
+        /// 拿起
+        /// </summary>
+        Hand = 0 ,
+
+
+
+
+
         /// <summary>
         /// 相爱
         /// </summary>
