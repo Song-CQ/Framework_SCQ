@@ -12,9 +12,12 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class GameSys :BaseSystem
+    public class GameSys : BaseSystem
     {
-        
+
+        public class GameDispatcher : BaseDispatcher<GameDispatcher, GameEvent, object[]> { }
+
+        public GameDispatcher gameDispatcher { private set; get; }
 
         private Dictionary<EventKey, EventCode> allEventCodeDic;
 
@@ -24,7 +27,9 @@ namespace ProjectApp
             base.Init();
 
             InitEventCode();
-            
+
+            gameDispatcher = new GameDispatcher();
+
 
         }
 
@@ -42,7 +47,7 @@ namespace ProjectApp
         {
             base.Start();
         }
-       
+
         public override void Shutdown()
         {
             base.Shutdown();
@@ -89,7 +94,22 @@ namespace ProjectApp
             return roleEntity;
         }
 
+        public void AddListener(GameEvent setEvent, Action<object[]> paramCB)
+        {
+            gameDispatcher.AddListener(GameEvent.SetEvent, paramCB);
+        }
+        public void RemoveListener(GameEvent setEvent, Action<object[]> paramCB)
+        {
+            gameDispatcher.RemoveListener(GameEvent.SetEvent, paramCB);
+        }
+
+        public void Dispatch(GameEvent gameEvent, params object[] pas)
+        {
+            gameDispatcher.Dispatch(gameEvent, pas);
+        }
         
+
+
     }
 
 

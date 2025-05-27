@@ -18,7 +18,12 @@ namespace ProjectApp
         private TextMeshPro descTextMeshPro;
 
         private Animation animation;
-        private Role_Data data;
+
+        [SerializeField]
+        private Role_Data role_Data;
+
+        [SerializeField]
+        private RoleState role_State;
 
 
 
@@ -28,7 +33,10 @@ namespace ProjectApp
             stateTextMeshPro = transform.Find("state").GetComponent<TextMeshPro>();
 
             descTextMeshPro = transform.Find("desc").GetComponent<TextMeshPro>();
-            // descTextMeshPro.text = "Role";
+
+            stateTextMeshPro.text = string.Empty;
+            descTextMeshPro.text = string.Empty;
+            
 
         }
 
@@ -38,13 +46,13 @@ namespace ProjectApp
         {
             Transform role = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.RoleAniPath + data.Key.ToString()).transform;
             role.SetParent(transform);
-            role.localScale = Vector3.one * 0.3f;
+            role.localScale = Vector3.one * 0.15f;
             role.localPosition = Vector3.zero;
 
             animation = role.GetComponent<Animation>();
             animation.Play("ideo_01");
 
-            this.data = data;
+            this.role_Data = data;
 
 
 
@@ -56,9 +64,10 @@ namespace ProjectApp
             descTextMeshPro.text = string.Empty;
 
             animation.gameObject.SetActive(false);
-            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.RoleAniPath + data.Key.ToString(), animation.gameObject);
+            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.RoleAniPath + role_Data.Key.ToString(), animation.gameObject);
             animation = null;
-            data = null;
+            role_Data = null;
+            role_State = null;
 
 
 
@@ -66,6 +75,7 @@ namespace ProjectApp
 
         public void SetState(RoleState state)
         {
+            role_State = state;
             string val = state.GetString();
             stateTextMeshPro.text = val;
 

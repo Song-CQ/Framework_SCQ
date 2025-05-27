@@ -5,12 +5,14 @@
     类型: 逻辑脚本
     功能: 人物数据
 *****************************************************/
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjectApp
 {
-    public class Role_Data: Base_Data
+    [Serializable]
+    public class Role_Data : Base_Data
     {
         public override string Desc => Key.ToString();
 
@@ -18,6 +20,6 @@ namespace ProjectApp
 
         public List<LabelKey> allLabelKey = new List<LabelKey>();
 
-     
+
     }
 }

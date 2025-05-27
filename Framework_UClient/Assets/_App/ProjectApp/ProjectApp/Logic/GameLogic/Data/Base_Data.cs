@@ -5,16 +5,18 @@
     类型: 逻辑脚本
     功能: Nothing
 *****************************************************/
+using System;
 using UnityEngine;
 
 namespace ProjectApp
 {
+    [Serializable]
     public abstract class Base_Data
     {
         public abstract string Desc { get; }
         public DragEntityType Type;
 
-        public T GetData<T>()where T : Base_Data
+        public T GetData<T>() where T : Base_Data
         {
             return this as T;
         }

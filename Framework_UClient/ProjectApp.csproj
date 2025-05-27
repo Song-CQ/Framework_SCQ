@@ -110,6 +110,7 @@
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Scene\GameScene.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\FXEffect\FXEffectUI.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A002_loading\com_loading.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Game\GameSys.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Data\Base_Data.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Interface\Interface.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Base\BasePicture.cs" />
@@ -145,7 +146,6 @@
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\GameLogicRegister.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_playnum.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_gift.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\System\GameSys.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\App\AppManagerRegister.cs" />
     <Compile Include="Assets\_App\_AppCommon\Define\Mseeage\UIConst_Common.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\ExcelConfig\VOVersion\ConfigVOVersion_AutoCreator.cs" />
@@ -177,6 +177,7 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_main.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\App\ProjectAppSet.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Script\G004_main\com_rolling.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Game\GameStructure.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\SimpleUIMgr\UIManager.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\SceneMgr\SceneMgrRegister.cs" />
   </ItemGroup>

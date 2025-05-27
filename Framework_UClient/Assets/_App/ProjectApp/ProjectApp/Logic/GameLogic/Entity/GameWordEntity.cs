@@ -8,6 +8,7 @@
 using FutureCore;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace ProjectApp
@@ -16,13 +17,21 @@ namespace ProjectApp
     public class GameWordEntity
     {
         public static Transform WordRood;
-
-
         public static Vector2 PictureRoodPot = Vector2.zero;
-        public Transform AllPictureEntity;
+
+        #region Const
+
+        private Transform AllPictureEntity;
+
+        private GameObject PicturePlane;
+        private Transform MeueTrf;
+
+
 
         private ObjectPool<PictureEntity> picturePool;
         private GObjectsPool entityPool;
+
+
 
         public static float p_w = 10;
         public static float p_h = 7;
@@ -32,27 +41,31 @@ namespace ProjectApp
         public float MeueItem_Size = 3;
         public float MeueItem_Interval = 1;
 
-        public GameObject PicturePlane;
-        private GameStructure gameStructure = null;
-        private Transform MeueTrf;
-
-        public MenuEntity SelectDragEntity { private set; get; }
-        public Vector2 DragEntityPot { set; get; }
-
-        private List<MenuEntity> dragEntityMeue = new List<MenuEntity>();
-        private List<PictureEntity> pictureEntityList = new List<PictureEntity>();
-
         public const string RoleAniPath = "Prefabs/GamePrefabs/RoleAni/";
         public const string PictureEntityPath = "Prefabs/GamePrefabs/PictureEntity";
         public const string DragEntityPath = "Prefabs/GamePrefabs/DragEntity";
         public const string RoleEntityPath = "Prefabs/GamePrefabs/RoleEntity";
         public const string SceneEntityPath = "Prefabs/GamePrefabs/SceneEntity";
+        public const string TitleEntityPath = "Prefabs/GamePrefabs/TitleEntity";
 
+        #endregion
+
+        private Vector2 DragEntityPot;
+        private MenuEntity SelectDragEntity;
+
+
+        private List<MenuEntity> dragEntityMeue = new List<MenuEntity>();
+        private List<PictureEntity> pictureEntityList = new List<PictureEntity>();
+
+        private TextMeshPro titleText;
+        private TextMeshPro resultText;
+
+
+        private GameStructure gameStructure = null;
         private bool IsInit = false;
 
         public void Init()
         {
-
 
             WordRood = new GameObject("WordRood").transform;
 
@@ -66,6 +79,13 @@ namespace ProjectApp
 
             PicturePlane.transform.SetParent(WordRood.transform);
             PicturePlane.transform.localPosition = new Vector3(0f, 0f, 20f);
+
+            GameObject TitleEntity = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>(TitleEntityPath));
+            TitleEntity.transform.SetParent(WordRood.transform);
+            TitleEntity.transform.localPosition = new Vector3(0f, 0f, 10f);
+            titleText = TitleEntity.transform.Find("TitleText").GetComponent<TextMeshPro>();
+            resultText = TitleEntity.transform.Find("ResultText").GetComponent<TextMeshPro>();
+
 
 
             AllPictureEntity = new GameObject("AllPictureEntity").transform;
@@ -102,12 +122,12 @@ namespace ProjectApp
 
         public GameObject GetPrefabGo(string loadPath)
         {
-           return entityPool.Get(loadPath);
+            return entityPool.Get(loadPath);
         }
 
-        public void ReleasePrefabGo(string loadPath,GameObject go)
+        public void ReleasePrefabGo(string loadPath, GameObject go)
         {
-            entityPool.Release(loadPath,go);
+            entityPool.Release(loadPath, go);
         }
 
         public void ReleasePictureEntity(PictureEntity entity)
@@ -163,12 +183,12 @@ namespace ProjectApp
                 {
                     if (dragEntity.Data.Type == DragEntityType.Event)
                     {
-                        GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveEvent, dragEntity);
+                        gameStructure.gameSys.Dispatch(GameEvent.RemoveEvent, dragEntity);
                     }
                     else if (dragEntity.Data.Type == DragEntityType.Role)
                     {
 
-                        GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.RemoveRole, dragEntity);
+                        gameStructure.gameSys.Dispatch(GameEvent.RemoveRole, dragEntity);
 
                     }
                 }
@@ -178,7 +198,7 @@ namespace ProjectApp
             {
                 if (dragEntity.Data.Type == DragEntityType.Event)
                 {
-                    GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetEvent, pictureEntity, dragEntity);
+                    gameStructure.gameSys.Dispatch(GameEvent.SetEvent, pictureEntity, dragEntity);
                 }
                 else if (dragEntity.Data.Type == DragEntityType.Role)
                 {
@@ -188,12 +208,12 @@ namespace ProjectApp
                         rolePotIndex = (pictureEntity.SceneEvent as SceneEventEntity).GetRolePotToScendPot(position);
                     }
 
-                    GameWorldMgr.Instance.Dispatch_GameEvent(GameEvent.SetRole, pictureEntity, dragEntity, rolePotIndex);
+                    gameStructure.gameSys.Dispatch(GameEvent.SetRole, pictureEntity, dragEntity, rolePotIndex);
 
                 }
             }
 
-            
+
 
 
 
@@ -216,7 +236,7 @@ namespace ProjectApp
             RaycastHit hit;
 
             // 发射射线并检测碰撞
-            if (Physics.Raycast(ray, out hit,100,LayerMask.GetMask("Picture")))
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Picture")))
             {
                 Transform trf = hit.transform;
 
@@ -239,13 +259,20 @@ namespace ProjectApp
         {
             gameStructure = _gameStructure;
 
+            //标题开头
+            titleText.text = _gameStructure.LevelData.title;
+
+            resultText.text = "未完成";
+            resultText.color = Color.red;
+
+
 
             for (int i = 0; i < gameStructure.LevelData.allPictureSum; i++)
             {
                 PictureEntity picture = picturePool.Get();
                 gameStructure.AddPicture(picture);
                 pictureEntityList.Add(picture);
-                
+
                 picture.Transform.SetParent(AllPictureEntity);
                 picture.Show(i);
             }
@@ -272,9 +299,6 @@ namespace ProjectApp
             SortMeueItem();
 
         }
-
-
-
 
 
         public void Updata()
