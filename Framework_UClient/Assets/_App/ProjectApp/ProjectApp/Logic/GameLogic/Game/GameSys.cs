@@ -107,6 +107,17 @@ namespace ProjectApp
         {
             gameDispatcher.Dispatch(gameEvent, pas);
         }
+
+
+        public bool CheckFinish(Dictionary<RoleKey, RoleState> allRoleState)
+        {
+
+            
+
+
+
+            return false;
+        }
         
 
 

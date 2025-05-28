@@ -5,6 +5,7 @@
     类型: 逻辑脚本
     功能: 游戏结构
 *****************************************************/
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -286,6 +287,8 @@ namespace ProjectApp
                 state.Value.Rest();
             }
 
+
+            //从当前节点往上寻找角色状态
             for (int i = pictureIndex - 1; i >= 0; i--)
             {
                 BasePicture picture = allPictures[i];
@@ -311,12 +314,19 @@ namespace ProjectApp
 
             }
 
+            bool isFinish = gameSys.CheckFinish(allRoleState);
+
+            if (isFinish)
+            {
+                gameSys.Dispatch(GameEvent.GameFinish);
+            }
+
 
 
 
         }
 
-
+        
     }
 
 

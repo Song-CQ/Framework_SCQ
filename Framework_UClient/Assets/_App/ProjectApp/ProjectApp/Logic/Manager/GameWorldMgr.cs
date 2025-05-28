@@ -15,7 +15,7 @@ namespace ProjectApp
     public class GameWorldMgr : BaseMonoMgr<GameWorldMgr> 
     {
         /// <summary>
-        /// 游戏表现实体层面和逻辑层面通过 gamesys 交互
+        /// 游戏表现实体 和 数据实体通过 gamesys 交互
         /// </summary>
         private GameSys gameSys;
         

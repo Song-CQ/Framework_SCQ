@@ -24,14 +24,17 @@ namespace ProjectApp
 
     public enum GameEvent : uint
     {
+        //关卡完成
+        GameFinish = 0,
         //将事件设置进画面
-        SetEvent = 1,
+        SetEvent,
         //将角色设置进事件
         SetRole,
         //将角色从事件中移除
         RemoveRole,
         //将事件从画面移除
         RemoveEvent,
+
 
     }
 
@@ -76,9 +79,6 @@ namespace ProjectApp
         /// 拿起
         /// </summary>
         Hand = 0 ,
-
-
-
 
 
         /// <summary>
