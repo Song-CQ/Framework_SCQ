@@ -112,15 +112,46 @@ namespace ProjectApp
         public bool CheckFinish(Dictionary<RoleKey, RoleState> allRoleState)
         {
 
-            
+            Dictionary<RoleKey, List<CheckCondition>> allCondition = null;
+
+            foreach (var item in allCondition)//角色
+            {
+
+                foreach (var condition in item.Value)//角色的所有条件
+                {
+                    if (!CheckConditionFinish(condition,allRoleState[item.Key]))
+                    {
+                        return false;
+                    }
+
+                }
+
+            }
+
+            return true;
+        }
 
 
+
+        private bool CheckConditionFinish(CheckCondition condition, RoleState roleState)
+        {
+            if (allEventCodeDic.TryGetValue((EventKey)condition.eventKey, out EventCode code))
+            {
+                return code.CheckConditionFinish(condition,roleState);
+            }
+
+            LogUtil.LogError("未有该类型检测器，Type：" + (EventKey)condition.eventKey);
 
             return false;
         }
+
+        
         
 
 
+        
+
+ 
     }
 
 

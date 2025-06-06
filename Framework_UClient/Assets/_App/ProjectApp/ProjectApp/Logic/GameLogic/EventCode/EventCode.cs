@@ -11,6 +11,22 @@ using UnityEngine;
 
 namespace ProjectApp
 {
+    /// <summary>
+    /// 检测条件
+    /// </summary>
+    public struct CheckCondition
+    {
+
+        public int eventKey;//要检测的事件类型
+
+        public int checkType;//检测类型
+
+        public int data;//数据
+
+
+
+    }
+
     public abstract class EventCode
     {
         public EventKey Key;
@@ -73,13 +89,12 @@ namespace ProjectApp
             return false;
         }
 
-
-
-        
+        public abstract bool CheckConditionFinish(CheckCondition condition, RoleState roleState);
     }
 
     public class Empty_EventCode : EventCode
     {
+
 
         public override void Init()
         {
@@ -95,7 +110,13 @@ namespace ProjectApp
         {
 
         }
+
+        public override bool CheckConditionFinish(CheckCondition condition, RoleState roleState)
+        {
+            return true;
+        }
+
     }
 
-    
+
 }

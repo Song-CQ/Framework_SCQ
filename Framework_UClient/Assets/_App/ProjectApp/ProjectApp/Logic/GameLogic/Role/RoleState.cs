@@ -66,6 +66,15 @@ namespace ProjectApp
                         stateData.dataList_RoleKey.Add(data);
                     }
                 }
+                if (item.Value.dataList_RoleKey2 != null)
+                {
+                    stateData.dataList_RoleKey2 = new List<RoleKey>(item.Value.dataList_RoleKey2.Capacity);
+
+                    foreach (var data in item.Value.dataList_RoleKey2)
+                    {
+                        stateData.dataList_RoleKey2.Add(data);
+                    }
+                }
 
                 state.allState.Add(item.Key, stateData);
 
@@ -98,6 +107,7 @@ namespace ProjectApp
     {
         public int data_int;
         public List<RoleKey> dataList_RoleKey;
+        public List<RoleKey> dataList_RoleKey2;
 
 
         public void Rest()
@@ -105,6 +115,7 @@ namespace ProjectApp
             data_int = 0;
 
             dataList_RoleKey = null;
+            dataList_RoleKey2 = null;
         }
     }
 }

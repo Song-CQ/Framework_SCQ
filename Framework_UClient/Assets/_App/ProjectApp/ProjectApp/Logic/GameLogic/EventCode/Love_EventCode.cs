@@ -10,10 +10,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjectApp
-{   
+{
 
     public class Love_EventCode : EventCode
     {
+
+
 
         public override void Init()
         {
@@ -106,7 +108,7 @@ namespace ProjectApp
 
         public override void UpdataState(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles)
         {
-            
+
 
             bool isShow = false;
 
@@ -116,7 +118,7 @@ namespace ProjectApp
             IRole role_1 = null;
             if (IsFullRole(sceneEvent.AllRolePot))
             {
-               
+
                 List<RoleKey> allPots = sceneEvent.AllRolePot;
 
                 role_0 = roles[allPots[0]];
@@ -159,13 +161,13 @@ namespace ProjectApp
                 sceneEvent.SetRoleEventState(1, eventState_1);
             }
 
-           
- 
+
+
             sceneEvent.OnShowView(isShow ? 1 : 0);
 
 
 
-           
+
 
 
         }
@@ -178,12 +180,12 @@ namespace ProjectApp
 
 
 
-         
+
 
 
         }
 
-        
+
 
         private bool GetIsLoveTo(IRole role_0, IRole role_1)
         {
@@ -202,6 +204,109 @@ namespace ProjectApp
             return isLove;
 
         }
+
+
+
+
+
+
+        #region CheckCondition
+        private enum CheckType
+        {
+            isLove = 0,//是否正在爱
+            isLoved = 1,//是否曾经爱过
+
+
+        }
+
+
+        public override bool CheckConditionFinish(CheckCondition condition, RoleState roleState)
+        {
+            switch ((CheckType)condition.checkType)
+            {
+
+                case CheckType.isLove:
+                    {
+                        return GetIsLove(roleState,(RoleKey)condition.data);
+                    }
+                case CheckType.isLoved:
+                    {
+                        return GetIsLoved(roleState,(RoleKey)condition.data);
+                    }
+
+
+                default:
+
+                    LogUtil.LogError("没有这种检测：" + Key + "  检测类型：" + (CheckType)condition.checkType);
+                    return false;
+
+            }
+
+
+
+
+
+        }
+
+        /// <summary>
+        /// 是否正在喜欢
+        /// </summary>
+        /// <param name="roleState"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        private bool GetIsLove(RoleState roleState, RoleKey role)
+        {
+            if (roleState.GetState(StateKey.Love, out StateData stateData_0))
+            {
+                if (role == RoleKey.Node)
+                {
+                    return stateData_0.dataList_RoleKey.Count >= 1;
+                }
+
+                if (stateData_0.dataList_RoleKey.Contains(role))
+                {
+                    return true;
+
+                }
+            }
+
+            return false;
+
+
+
+        }
+
+        /// <summary>
+        /// 是否曾经喜欢过
+        /// </summary>
+        /// <param name="roleState"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
+
+        private bool GetIsLoved(RoleState roleState, RoleKey role)
+        {
+            if (roleState.GetState(StateKey.Love, out StateData stateData_0))
+            {
+                if (role == RoleKey.Node)
+                {
+                    return stateData_0.dataList_RoleKey2.Count >= 1;
+                }
+
+                if (stateData_0.dataList_RoleKey2.Contains(role))
+                {
+                    return true;
+
+                }
+            }
+
+            return false;
+
+
+
+        }
+
+        #endregion
+
 
     }
 
