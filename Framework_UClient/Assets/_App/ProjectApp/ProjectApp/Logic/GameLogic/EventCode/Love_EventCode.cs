@@ -234,7 +234,6 @@ namespace ProjectApp
                         return GetIsLoved(roleState,(RoleKey)condition.data);
                     }
 
-
                 default:
 
                     LogUtil.LogError("没有这种检测：" + Key + "  检测类型：" + (CheckType)condition.checkType);
