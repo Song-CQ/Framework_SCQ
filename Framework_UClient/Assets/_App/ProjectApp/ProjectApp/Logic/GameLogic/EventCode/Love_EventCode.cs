@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ProjectApp.Data;
 
 namespace ProjectApp
 {
@@ -50,17 +51,21 @@ namespace ProjectApp
                 if (!roleState_0.GetState(StateKey.Love, out StateData data_0))
                 {
                     data_0.dataList_RoleKey = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
+                    data_0.dataList_RoleKey2 = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
 
                 }
-                data_0.dataList_RoleKey.Add(roleKey_1);
+                data_0.dataList_RoleKey.Add(roleKey_1);// 加入正在爱列表
+                data_0.dataList_RoleKey2.Add(roleKey_1);// 加入爱过列表 
                 roleState_0.SetState(StateKey.Love, data_0);
 
                 if (!roleState_1.GetState(StateKey.Love, out StateData data_1))
                 {
                     data_1.dataList_RoleKey = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
+                    data_1.dataList_RoleKey2 = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
 
                 }
-                data_1.dataList_RoleKey.Add(roleKey_0);
+                data_1.dataList_RoleKey.Add(roleKey_0); // 加入正在爱列表
+                data_1.dataList_RoleKey2.Add(roleKey_0); // 加入爱过列表 
                 roleState_1.SetState(StateKey.Love, data_1);
 
             }
@@ -82,9 +87,9 @@ namespace ProjectApp
                 return false;
             }
 
-            if (role.GetLabelKey(LabelKey.CanLove))
+            if (role.GetLabelKey(RoleLabelStaticKey.CanLove))
             {
-                if (role.GetLabelKey(LabelKey.Passionate))
+                if (role.GetLabelKey(RoleLabelStaticKey.Passionate))
                 {
                     return true;
                 }
@@ -220,9 +225,9 @@ namespace ProjectApp
         }
 
 
-        public override bool CheckConditionFinish(CheckCondition condition, RoleState roleState)
+        public override bool CheckConditionFinish(CheckConditionVO condition, RoleState roleState)
         {
-            switch ((CheckType)condition.checkType)
+            switch ((CheckType)condition.eventCheckType)
             {
 
                 case CheckType.isLove:
@@ -233,10 +238,9 @@ namespace ProjectApp
                     {
                         return GetIsLoved(roleState,(RoleKey)condition.data);
                     }
-
                 default:
 
-                    LogUtil.LogError("没有这种检测：" + Key + "  检测类型：" + (CheckType)condition.checkType);
+                    LogUtil.LogError("没有这种检测：" + Key + "  检测类型：" + (CheckType)condition.eventCheckType);
                     return false;
 
             }
@@ -286,6 +290,8 @@ namespace ProjectApp
         {
             if (roleState.GetState(StateKey.Love, out StateData stateData_0))
             {
+                
+
                 if (role == RoleKey.Node)
                 {
                     return stateData_0.dataList_RoleKey2.Count >= 1;

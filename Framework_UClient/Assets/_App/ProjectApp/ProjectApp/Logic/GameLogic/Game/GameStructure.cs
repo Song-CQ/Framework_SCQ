@@ -7,12 +7,16 @@
 *****************************************************/
 using System;
 using System.Collections.Generic;
+using ILRuntime.Runtime;
+using ProjectApp.Data;
 using UnityEngine;
 
 namespace ProjectApp
 {
     public class LevelData
     {
+
+        public LevelDataVO data { private set; get;}
         //标题
         public string title;
         ///画面数量
@@ -22,6 +26,19 @@ namespace ProjectApp
         public List<Event_Data> events = new List<Event_Data>();
 
         public List<Role_Data> roles = new List<Role_Data>();
+
+
+        public LevelData(LevelDataVO _data)
+        {
+            data = _data;
+
+            title = data.title;
+            allPictureSum = data.PictureSum;      
+
+            
+             
+
+        }
     }
 
     public class GameStructure
@@ -292,7 +309,7 @@ namespace ProjectApp
             for (int i = pictureIndex - 1; i >= 0; i--)
             {
                 BasePicture picture = allPictures[i];
-
+ 
                 foreach (var item in picture.Roles)
                 {
                     if (!tempList.Contains(item.Key))
@@ -314,7 +331,7 @@ namespace ProjectApp
 
             }
 
-            bool isFinish = gameSys.CheckFinish(allRoleState);
+            bool isFinish = gameSys.CheckFinish(allRoleState,LevelData);
 
             if (isFinish)
             {

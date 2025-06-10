@@ -6,6 +6,7 @@
     功能: 基础角色
 *****************************************************/
 using System.Collections.Generic;
+using ProjectApp.Data;
 using UnityEngine;
 
 namespace ProjectApp
@@ -43,9 +44,23 @@ namespace ProjectApp
 
         }
 
-        public bool GetLabelKey(LabelKey labelKey)
-        {   
-            return data.allLabelKey.Contains(labelKey);
+        public bool GetLabelKey(string labelKey)
+        {
+            foreach (var labeID in data.VO.LabeID_list)
+            {
+                var vo = RoleLabelVOModel.Instance.GetVO(labeID);
+                if (vo != null)
+                {
+                    if (vo.key == labelKey)
+                    {
+                        return true;
+                    }
+                }
+
+            }
+
+
+            return false;
         }
 
         public virtual void RefreshView()

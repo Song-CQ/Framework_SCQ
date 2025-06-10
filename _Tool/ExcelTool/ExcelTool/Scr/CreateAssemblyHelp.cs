@@ -421,6 +421,8 @@ namespace ExcelTool
                 }
                 string _fieldDescription = field_description[itemColumn].ToString().Trim();
                 string _fieldType = field_Types[itemColumn].ToString().Trim();
+
+                
                 
                 svBuilder.Append(WrittenField(_fieldType,_fieldName,_fieldDescription));
             }
@@ -431,6 +433,9 @@ namespace ExcelTool
 
         private static string WrittenField(string field_Type, string field_Name,string _fieldDescription)
         {
+            field_Type = field_Type.Replace("list", "List");
+
+
             string val =  "\n        /// <summary>\n        /// {0} \n        /// </summary>\n        public {1} {2};\n";
             val = String.Format(val,_fieldDescription,field_Type,field_Name);
             return val;

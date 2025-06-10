@@ -117,8 +117,37 @@ namespace ProjectApp
                 SelectDragEntity.transform.localPosition = new Vector3(0, 0, 5);
             }
 
+
+           
+
             IsInit = true;
+            
+
         }
+        private void AddListener()
+        {
+            gameStructure.gameSys.AddListener(GameEvent.GameFinish, GameFinish);
+          
+
+        }
+
+        
+
+        private void RemoveListener()
+        {
+            gameStructure.gameSys.RemoveListener(GameEvent.GameFinish, GameFinish);
+        
+        }
+
+        private void GameFinish(object[] obj)
+        {
+            resultText.text = "关卡完成";
+            resultText.color = Color.green;
+            LogUtil.LogWarning("关卡完成");
+
+        }
+
+
 
         public GameObject GetPrefabGo(string loadPath)
         {
@@ -259,6 +288,8 @@ namespace ProjectApp
         {
             gameStructure = _gameStructure;
 
+
+
             //标题开头
             titleText.text = _gameStructure.LevelData.title;
 
@@ -297,6 +328,8 @@ namespace ProjectApp
             }
 
             SortMeueItem();
+            
+            AddListener();
         }
 
 
@@ -415,15 +448,18 @@ namespace ProjectApp
 
         public void Rest()
         {
-            gameStructure.Rest();
+
             gameStructure = null;
 
+
             ClearEntity();
+            RemoveListener();
 
         }
         public void Dispose()
         {
             Rest();
+            
 
             WordRood = null;
             PicturePlane = null;

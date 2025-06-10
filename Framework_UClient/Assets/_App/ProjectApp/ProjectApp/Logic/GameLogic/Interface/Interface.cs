@@ -62,7 +62,7 @@ namespace ProjectApp
         public RoleKey Key { get; }
         public RoleState State { get; }
 
-        public bool GetLabelKey(LabelKey labelKey);
+        public bool GetLabelKey(string labelKey);
 
         public void RefreshView();
 

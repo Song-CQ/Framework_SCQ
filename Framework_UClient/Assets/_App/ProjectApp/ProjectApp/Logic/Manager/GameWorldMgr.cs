@@ -9,6 +9,7 @@ using FutureCore;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ProjectApp.Data;
 
 namespace ProjectApp
 {
@@ -63,7 +64,7 @@ namespace ProjectApp
 
         public void StartGame()
         {
-            LevelData levelData = GetLevelData(); 
+            LevelData levelData = GetLevelData(1); 
 
 
             GameStructure.FillData(levelData);
@@ -89,31 +90,27 @@ namespace ProjectApp
             return gameStructure;
         }
 
-        private LevelData GetLevelData()
+        private LevelData GetLevelData(int id)
         {
-            LevelData levelData = new LevelData();
+            var VO = ConfigDataMgr.Instance.GetConfigVO<LevelDataVO>(ConfigVO.LevelData, id);
 
-            levelData.title = "让伏羲和夏娃结婚";
+            LevelData levelData = new LevelData(VO);
 
-            Role_Data role_Data_1 = new Role_Data();
-            role_Data_1.Key = RoleKey.Fuxi;
-            role_Data_1.allLabelKey.Add(LabelKey.CanLove);
+            foreach (var roleId in levelData.data.roles)
+            {
+                Role_Data role_Data = new Role_Data(roleId);
 
-            Role_Data role_Data_2 = new Role_Data();
-            role_Data_2.Key = RoleKey.Nuwa;
-            role_Data_2.allLabelKey.Add(LabelKey.CanLove);
+                levelData.roles.Add(role_Data);
 
-            levelData.roles.Add(role_Data_1);
-            levelData.roles.Add(role_Data_2);
+            }
 
-            Event_Data event_Data1 = new Event_Data( EventKey.Love);
+            foreach (var roleId in levelData.data.events)
+            {
+                Event_Data event_Data = new Event_Data(roleId);
 
+                levelData.events.Add(event_Data);
 
-
-            Event_Data event_Data2 = new Event_Data(EventKey.Love);
-
-            levelData.events.Add(event_Data1);
-            //levelData.events.Add(event_Data2);
+            }
 
 
             return levelData;

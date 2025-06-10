@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2025/3/11 15:24:18
+    日期：2025/6/10 17:28:32
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -52,7 +52,11 @@ namespace ProjectApp
                 configStaticVODic.Add(ConfigVO.path, GetExcalData<pathStaticVO>(ConfigVO.path,true) as pathStaticVO);
                 configStaticVODic.Add(ConfigVO.Common, GetExcalData<CommonStaticVO>(ConfigVO.Common,true) as CommonStaticVO);
                 configVODic.Add(ConfigVO.EventData, GetExcalData<EventDataVO>(ConfigVO.EventData,false) as List<BaseVO>);
+                configVODic.Add(ConfigVO.LevelData, GetExcalData<LevelDataVO>(ConfigVO.LevelData,false) as List<BaseVO>);
+                configVODic.Add(ConfigVO.CheckCondition, GetExcalData<CheckConditionVO>(ConfigVO.CheckCondition,false) as List<BaseVO>);
                 configVODic.Add(ConfigVO.RoleData, GetExcalData<RoleDataVO>(ConfigVO.RoleData,false) as List<BaseVO>);
+                configVODic.Add(ConfigVO.RoleKey, GetExcalData<RoleKeyVO>(ConfigVO.RoleKey,false) as List<BaseVO>);
+                configVODic.Add(ConfigVO.RoleLabel, GetExcalData<RoleLabelVO>(ConfigVO.RoleLabel,false) as List<BaseVO>);
             }
             else
             {
@@ -62,7 +66,11 @@ namespace ProjectApp
                 configStaticVODic.Add(ConfigVO.path, configData.path);
                 configStaticVODic.Add(ConfigVO.Common, configData.Common);
                 configVODic.Add(ConfigVO.EventData, configData.EventData_List.OfType<EventDataVO,BaseVO>());
+                configVODic.Add(ConfigVO.LevelData, configData.LevelData_List.OfType<LevelDataVO,BaseVO>());
+                configVODic.Add(ConfigVO.CheckCondition, configData.CheckCondition_List.OfType<CheckConditionVO,BaseVO>());
                 configVODic.Add(ConfigVO.RoleData, configData.RoleData_List.OfType<RoleDataVO,BaseVO>());
+                configVODic.Add(ConfigVO.RoleKey, configData.RoleKey_List.OfType<RoleKeyVO,BaseVO>());
+                configVODic.Add(ConfigVO.RoleLabel, configData.RoleLabel_List.OfType<RoleLabelVO,BaseVO>());
                 
                 configData = null;
             }
@@ -73,7 +81,11 @@ namespace ProjectApp
 
             
             AddVOModel(ConfigVO.EventData,EventDataVOModel.Instance);
+            AddVOModel(ConfigVO.LevelData,LevelDataVOModel.Instance);
+            AddVOModel(ConfigVO.CheckCondition,CheckConditionVOModel.Instance);
             AddVOModel(ConfigVO.RoleData,RoleDataVOModel.Instance);
+            AddVOModel(ConfigVO.RoleKey,RoleKeyVOModel.Instance);
+            AddVOModel(ConfigVO.RoleLabel,RoleLabelVOModel.Instance);
         }
 
 

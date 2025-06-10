@@ -7,6 +7,7 @@
 *****************************************************/
 using System;
 using System.Collections.Generic;
+using ProjectApp.Data;
 using UnityEngine;
 
 namespace ProjectApp
@@ -18,7 +19,25 @@ namespace ProjectApp
 
         public RoleKey Key;
 
-        public List<LabelKey> allLabelKey = new List<LabelKey>();
+        public List<int> allLabelId = new List<int>();
+        
+        public RoleDataVO VO { private set; get; }
+
+        public Role_Data(int roleId)
+        {
+            VO = ConfigDataMgr.Instance.GetConfigVO<RoleDataVO>(ConfigVO.RoleData, roleId);
+
+            var _rolekey = ConfigDataMgr.Instance.GetConfigVO<RoleKeyVO>(ConfigVO.RoleKey, VO.RolekeyId);
+
+            Key = GameSys.GetRoleKey(_rolekey.key);
+
+
+
+            
+
+
+            
+        }
 
 
     }

@@ -51,23 +51,7 @@ namespace ProjectApp
 
 
 
-    /// <summary>
-    /// 角色标签Key 固有标签
-    /// </summary>
-    public enum LabelKey
-    {
-        /// <summary>
-        /// 能相爱
-        /// </summary>
-        CanLove = 1,
-        /// <summary>
-        /// 多情,可以爱多个
-        /// </summary>
-        Passionate,
 
-        
-
-    }
 
     /// <summary>
     /// 角色状态key 当前画面的状态

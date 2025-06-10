@@ -9,6 +9,7 @@ using FutureCore;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ProjectApp.Data;
 
 namespace ProjectApp
 {
@@ -21,15 +22,38 @@ namespace ProjectApp
 
         private Dictionary<EventKey, EventCode> allEventCodeDic;
 
+        private static Dictionary<string, EventKey> eventKeyDic = new Dictionary<string, EventKey>();
+        private static Dictionary<string, RoleKey> roleKeyDic = new Dictionary<string, RoleKey>();
+
 
         public override void Init()
         {
             base.Init();
 
+            InitEnum();
+
             InitEventCode();
 
             gameDispatcher = new GameDispatcher();
 
+
+
+
+        }
+
+        private void InitEnum()
+        {
+            foreach (var data in Enum.GetValues(typeof(EventKey)))
+            {
+                EventKey key = (EventKey)data;
+                eventKeyDic.Add(key.ToString(), key);
+            }
+
+            foreach (var data in Enum.GetValues(typeof(RoleKey)))
+            {
+                RoleKey key = (RoleKey)data;
+                roleKeyDic.Add(key.ToString(), key);
+            }
 
         }
 
@@ -94,13 +118,13 @@ namespace ProjectApp
             return roleEntity;
         }
 
-        public void AddListener(GameEvent setEvent, Action<object[]> paramCB)
+        public void AddListener(GameEvent gameEvent, Action<object[]> paramCB)
         {
-            gameDispatcher.AddListener(GameEvent.SetEvent, paramCB);
+            gameDispatcher.AddListener(gameEvent, paramCB);
         }
-        public void RemoveListener(GameEvent setEvent, Action<object[]> paramCB)
+        public void RemoveListener(GameEvent gameEvent, Action<object[]> paramCB)
         {
-            gameDispatcher.RemoveListener(GameEvent.SetEvent, paramCB);
+            gameDispatcher.RemoveListener(gameEvent, paramCB);
         }
 
         public void Dispatch(GameEvent gameEvent, params object[] pas)
@@ -109,22 +133,34 @@ namespace ProjectApp
         }
 
 
-        public bool CheckFinish(Dictionary<RoleKey, RoleState> allRoleState)
+        public bool CheckFinish(Dictionary<RoleKey, RoleState> allRoleState, LevelData levelData)
         {
 
-            Dictionary<RoleKey, List<CheckCondition>> allCondition = null;
 
-            foreach (var item in allCondition)//角色
+            foreach (var id in levelData.data.CheckConditionList)//角色
             {
+                CheckConditionVO condition = ConfigDataMgr.Instance.GetConfigVO<CheckConditionVO>(ConfigVO.CheckCondition, id);
 
-                foreach (var condition in item.Value)//角色的所有条件
-                {
-                    if (!CheckConditionFinish(condition,allRoleState[item.Key]))
+                if (condition.type == 0) // 以角色状态为检测主体 检测角色状态
+                { 
+                     if (!condition.rolekey.IsNullOrEmpty()) 
                     {
-                        return false;
+                        RoleKey rolekey = GameSys.GetRoleKey(condition.rolekey);
+
+                        if (!CheckConditionFinish(condition, allRoleState[rolekey]))
+                        {
+                            return false;
+                        }
+
+
                     }
 
                 }
+
+               
+
+
+
 
             }
 
@@ -133,28 +169,52 @@ namespace ProjectApp
 
 
 
-        private bool CheckConditionFinish(CheckCondition condition, RoleState roleState)
+        private bool CheckConditionFinish(CheckConditionVO condition, RoleState roleState)
         {
-            if (allEventCodeDic.TryGetValue((EventKey)condition.eventKey, out EventCode code))
+            if (allEventCodeDic.TryGetValue(GetEventKey(condition.eventKey), out EventCode code))
             {
-                return code.CheckConditionFinish(condition,roleState);
+                return code.CheckConditionFinish(condition, roleState);
             }
 
-            LogUtil.LogError("未有该类型检测器，Type：" + (EventKey)condition.eventKey);
+            LogUtil.LogError("未有该类型检测器，Type：" + condition.eventKey);
 
             return false;
         }
 
-        
-        
+        public static EventKey GetEventKey(string KeyStr)
+        {
+            if (eventKeyDic.TryGetValue(KeyStr, out EventKey key))
+            {
+                return key;
+            }
+
+            LogUtil.LogError("转换成EventKey失败，请检查： " + KeyStr);
+
+            return EventKey.Empty;
+        }
+
+        public static RoleKey GetRoleKey(string KeyStr)
+        {
+            if (roleKeyDic.TryGetValue(KeyStr, out RoleKey key))
+            {
+                return key;
+            }
+
+       
+
+            LogUtil.LogError("转换成RoleKey失败，请检查： " + KeyStr);
+
+            return RoleKey.Node;
+        }
 
 
-        
 
- 
+
+
+
     }
 
 
-    
+
 
 }
