@@ -25,7 +25,7 @@ namespace ProjectApp
             //globalMgr.AddMgr(DateTimeMgr.Instance);
             globalMgr.AddMgr(TimerMgr.Instance);
             //globalMgr.AddMgr(DispatcherMgr.Instance);
-            globalMgr.AddMgr(GameMgr.Instance);
+            globalMgr.AddMgr(FutureCore.GameMgr.Instance);
             //globalMgr.AddMgr(GMMgr.Instance);
             //globalMgr.AddMgr(GraphicsMgr.Instance);
             //globalMgr.AddMgr(LoadPipelineMgr.Instance);

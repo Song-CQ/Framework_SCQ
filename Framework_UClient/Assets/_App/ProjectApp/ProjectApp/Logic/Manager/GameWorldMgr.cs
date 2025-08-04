@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class GameWorldMgr : BaseMgr<GameWorldMgr>
+    public class GameMgr : BaseMgr<GameMgr>
     {
         private GameSys _gameSys;
 
