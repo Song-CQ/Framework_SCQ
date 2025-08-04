@@ -21,8 +21,7 @@ namespace ProjectApp
         public List<RoleKey> AllRolePot { private set; get; } = new List<RoleKey>();   
 
         public EventKey Key { get => data.Key; }
-
-        public Dictionary<RoleKey, RoleStateToEvent> eventStateList = new Dictionary<RoleKey, RoleStateToEvent>();
+        
 
         public IPicture Picture { private set; get;}
         public virtual void Init(Event_Data _data,EventCode eventCode)
@@ -120,17 +119,10 @@ namespace ProjectApp
 
         public void Run(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles)
         {
-            eventStateList.Clear();
+            
 
-            code.RunEvent(allRoleState, roles, AllRolePot);
+            code.RunEvent(Picture.Index,allRoleState, roles, AllRolePot);
 
-            foreach (var role in roles)
-            {
-                RoleState state = allRoleState[role.Key];
-                //将运行出来的角色数据复制到事件角色
-                state.CopyTo(role.Value.State);
-
-            }
 
         }
 
@@ -149,11 +141,12 @@ namespace ProjectApp
 
         }
 
-        public virtual void SetRoleEventState(int rolePot, RoleStateToEvent eventState)
+        public virtual void SetRoleEventState(RoleKey roleKey, RunEventData data)
         {
-            RoleKey roleKey = AllRolePot[rolePot];
-
-            eventStateList.Add(roleKey,eventState);
+            if (AllRolePot.Contains(roleKey))
+            { 
+               Picture.SetRoleEventState(roleKey,data);
+            }
         }
 
         

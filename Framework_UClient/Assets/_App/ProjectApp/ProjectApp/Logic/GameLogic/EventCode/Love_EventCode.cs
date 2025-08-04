@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using ProjectApp.Data;
+using FutureCore;
 
 namespace ProjectApp
 {
@@ -25,7 +26,7 @@ namespace ProjectApp
 
 
 
-        public override void RunEvent(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles, List<RoleKey> allRolePot)
+        public override void RunEvent(int pictureIndex, Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles, List<RoleKey> allRolePot)
         {
 
             if (!IsFullRole(allRolePot))
@@ -42,31 +43,66 @@ namespace ProjectApp
             RoleState roleState_1 = allRoleState[roleKey_1];
             IRole role_1 = roles[roleKey_1];
 
-            bool role_0_OK = CanAddLoveState(role_0, roleState_0);
-            bool role_1_OK = CanAddLoveState(role_1, roleState_1);
+            bool role_0_OK = CanAddLoveState(role_0, roleKey_1, out bool isNo_0);
+            bool role_1_OK = CanAddLoveState(role_1, roleKey_0, out bool isNo_1);
 
 
             if (role_0_OK && role_1_OK)
             {
-                if (!roleState_0.GetState(StateKey.Love, out StateData data_0))
+                // if (!roleState_0.GetState(StateKey.Love, out StateData data_0))
+                // {
+                //     data_0.dataList_RoleKey = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
+                //     data_0.dataList_RoleKey2 = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
+
+                // }
+                // data_0.dataList_RoleKey.Add(roleKey_1);// 加入正在爱列表
+                // data_0.dataList_RoleKey2.Add(roleKey_1);// 加入爱过列表 
+                roleState_0.AddRunEvent(pictureIndex, RunEventKey.Love, (int)roleKey_1);
+                roleState_0.AddState(RoleStateKey.相爱, (int)role_1.Key);
+
+                // if (!roleState_1.GetState(StateKey.Love, out StateData data_1))
+                // {
+                //     data_1.dataList_RoleKey = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
+                //     data_1.dataList_RoleKey2 = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
+                // }
+                // data_1.dataList_RoleKey.Add(roleKey_0); // 加入正在爱列表
+                // data_1.dataList_RoleKey2.Add(roleKey_0); // 加入爱过列表 
+                roleState_1.AddRunEvent(pictureIndex, RunEventKey.Love, (int)roleKey_0);
+                roleState_1.AddState(RoleStateKey.相爱, (int)role_0.Key);
+
+
+
+            }
+            else
+            {
+
+                if (isNo_0 && isNo_1)
                 {
-                    data_0.dataList_RoleKey = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
-                    data_0.dataList_RoleKey2 = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
+                    //同时给与对方拒绝
+                    roleState_0.AddState(RoleStateKey.拒绝, (int)role_1.Key);
+                    roleState_1.AddState(RoleStateKey.拒绝, (int)role_0.Key);
 
                 }
-                data_0.dataList_RoleKey.Add(roleKey_1);// 加入正在爱列表
-                data_0.dataList_RoleKey2.Add(roleKey_1);// 加入爱过列表 
-                roleState_0.SetState(StateKey.Love, data_0);
-
-                if (!roleState_1.GetState(StateKey.Love, out StateData data_1))
+                else
                 {
-                    data_1.dataList_RoleKey = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
-                    data_1.dataList_RoleKey2 = new List<RoleKey>(GameLogicTool.GetGameStructure_RoleCount());
+                    if (isNo_0)
+                    {
+                        roleState_0.AddState(RoleStateKey.拒绝, (int)role_1.Key);
+
+                        roleState_1.AddState(RoleStateKey.心碎, (int)role_0.Key);
+
+                    }
+                    else
+                    if (isNo_1)
+                    {
+                        roleState_0.AddState(RoleStateKey.心碎, (int)role_1.Key);
+                        
+                        roleState_1.AddState(RoleStateKey.拒绝, (int)role_0.Key);
+
+                    }
 
                 }
-                data_1.dataList_RoleKey.Add(roleKey_0); // 加入正在爱列表
-                data_1.dataList_RoleKey2.Add(roleKey_0); // 加入爱过列表 
-                roleState_1.SetState(StateKey.Love, data_1);
+
 
             }
 
@@ -77,10 +113,14 @@ namespace ProjectApp
 
         /// <summary>
         /// 能否添加相爱状态
+        /// 
+        /// HisLove: 是否是拒绝对方
+        /// 
         /// </summary>
         /// <returns></returns>
-        private bool CanAddLoveState(IRole role, RoleState roleState)
+        private bool CanAddLoveState(IRole role, RoleKey checkRoleKey, out bool HisLove)
         {
+            HisLove = false;
 
             if (GetRoleDead(role))
             {
@@ -94,17 +134,29 @@ namespace ProjectApp
                     return true;
                 }
 
+                bool isLove = true;
 
-                bool isLove = roleState.GetState(StateKey.Love);
+                foreach (var stateData in role.State.GetAllRunEvents())
+                {
 
-                if (!isLove)
-                {
-                    return true;
+                    if (stateData.Value.stateKey == RunEventKey.Love && stateData.Value.data_int != (int)checkRoleKey)
+                    {
+                        isLove = false;
+                        //给与拒绝
+                        HisLove = true;
+                    }
+
+                    if (stateData.Value.stateKey == RunEventKey.LoveDead)
+                    {
+                        isLove = true;
+                        HisLove = false;
+
+                    }
+
+
                 }
-                else
-                {
-                    return false;
-                }
+
+                return isLove;
             }
             return false;
         }
@@ -117,8 +169,8 @@ namespace ProjectApp
 
             bool isShow = false;
 
-            RoleStateToEvent eventState_0 = RoleStateToEvent.待机;
-            RoleStateToEvent eventState_1 = RoleStateToEvent.待机;
+            RoleStateKey eventState_0 = RoleStateKey.待机;
+            RoleStateKey eventState_1 = RoleStateKey.待机;
             IRole role_0 = null;
             IRole role_1 = null;
             if (IsFullRole(sceneEvent.AllRolePot))
@@ -135,37 +187,34 @@ namespace ProjectApp
                     role_1 = roles[allPots[1]];
 
 
-                    bool isLove_0 = GetIsLoveTo(role_0, role_1);
-                    bool isLove_1 = GetIsLoveTo(role_1, role_0);
-
-
-                    if (isLove_0 && isLove_1)
+                    bool isLove = GetIsLoveTo(role_0, role_1);
+                    if (isLove)
                     {
                         //成功
                         isShow = true;
-                    }
-                }
-
-                if (role_0 != null && role_1 != null)
-                {
-                    if (isShow)
-                    {
-                        //满足条件设置相爱状态
-                        eventState_0 = RoleStateToEvent.相爱;
-                        eventState_1 = RoleStateToEvent.相爱;
-
+                        eventState_0 = RoleStateKey.相爱;
+                        eventState_1 = RoleStateKey.相爱;
                     }
                     else
                     {
-                        GetRoleStateToEvent(role_0, role_1, ref eventState_0, ref eventState_1);
+
+
+
 
                     }
+
+
+
+
+
                 }
 
-                sceneEvent.SetRoleEventState(0, eventState_0);
-                sceneEvent.SetRoleEventState(1, eventState_1);
+
+                // sceneEvent.SetRoleEventState(0, eventState_0);
+                // sceneEvent.SetRoleEventState(1, eventState_1);
             }
 
+            eventState_0 = role_0.GetShowState();
 
 
             sceneEvent.OnShowView(isShow ? 1 : 0);
@@ -177,18 +226,7 @@ namespace ProjectApp
 
         }
 
-        private void GetRoleStateToEvent(IRole role_0, IRole role_1, ref RoleStateToEvent eventState_0, ref RoleStateToEvent eventState_1)
-        {
 
-            //判断是否有死亡
-            if (SetRolesStateEvent_Dead(role_0, role_1, ref eventState_0, ref eventState_1)) return;
-
-
-
-
-
-
-        }
 
 
 
@@ -196,12 +234,15 @@ namespace ProjectApp
         {
             bool isLove = false;
 
-            if (role_0.State.GetState(StateKey.Love, out StateData stateData_0))
+            if (role_0.State.GetState(RoleStateKey.相爱, out List<int> datas))
             {
-
-                if (stateData_0.dataList_RoleKey.Contains(role_1.Key))
+                foreach (var data in datas)
                 {
-                    isLove = true;
+                    if (data == (int)role_1.Key)
+                    {
+                        isLove = true;
+                        break;
+                    }
 
                 }
             }
@@ -232,11 +273,11 @@ namespace ProjectApp
 
                 case CheckType.isLove:
                     {
-                        return GetIsLove(roleState,(RoleKey)condition.data);
+                        return GetIsLove(roleState, (RoleKey)condition.data);
                     }
                 case CheckType.isLoved:
                     {
-                        return GetIsLoved(roleState,(RoleKey)condition.data);
+                        return GetIsLoved(roleState, (RoleKey)condition.data);
                     }
                 default:
 
@@ -259,19 +300,19 @@ namespace ProjectApp
         /// <returns></returns>
         private bool GetIsLove(RoleState roleState, RoleKey role)
         {
-            if (roleState.GetState(StateKey.Love, out StateData stateData_0))
-            {
-                if (role == RoleKey.Node)
-                {
-                    return stateData_0.dataList_RoleKey.Count >= 1;
-                }
+            // if (roleState.GetState(StateKey.Love, out StateData stateData_0))
+            // {
+            //     if (role == RoleKey.Node)
+            //     {
+            //         return stateData_0.dataList_RoleKey.Count >= 1;
+            //     }
 
-                if (stateData_0.dataList_RoleKey.Contains(role))
-                {
-                    return true;
+            //     if (stateData_0.dataList_RoleKey.Contains(role))
+            //     {
+            //         return true;
 
-                }
-            }
+            //     }
+            // }
 
             return false;
 
@@ -288,21 +329,21 @@ namespace ProjectApp
 
         private bool GetIsLoved(RoleState roleState, RoleKey role)
         {
-            if (roleState.GetState(StateKey.Love, out StateData stateData_0))
-            {
-                
+            // if (roleState.GetState(StateKey.Love, out StateData stateData_0))
+            // {
 
-                if (role == RoleKey.Node)
-                {
-                    return stateData_0.dataList_RoleKey2.Count >= 1;
-                }
 
-                if (stateData_0.dataList_RoleKey2.Contains(role))
-                {
-                    return true;
+            //     if (role == RoleKey.Node)
+            //     {
+            //         return stateData_0.dataList_RoleKey2.Count >= 1;
+            //     }
 
-                }
-            }
+            //     if (stateData_0.dataList_RoleKey2.Contains(role))
+            //     {
+            //         return true;
+
+            //     }
+            // }
 
             return false;
 

@@ -26,10 +26,11 @@ namespace ProjectApp
         public Role_Data(int roleId)
         {
             VO = ConfigDataMgr.Instance.GetConfigVO<RoleDataVO>(ConfigVO.RoleData, roleId);
+            
+            Key = GameSys.GetRoleKey(VO.Rolekey);
 
-            var _rolekey = ConfigDataMgr.Instance.GetConfigVO<RoleKeyVO>(ConfigVO.RoleKey, VO.RolekeyId);
+            var _rolekey = ConfigDataMgr.Instance.GetConfigVO<RoleKeyVO>(ConfigVO.RoleKey, (int)Key);
 
-            Key = GameSys.GetRoleKey(_rolekey.key);
 
 
 

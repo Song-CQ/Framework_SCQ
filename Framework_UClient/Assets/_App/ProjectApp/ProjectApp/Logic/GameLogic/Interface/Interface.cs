@@ -32,8 +32,7 @@ namespace ProjectApp
 
         public bool CheckCanSetRole(RoleKey key, out int potIndex_old, int potIndex = -1);
         public void Rest();
-
-
+        public void SetRoleEventState(RoleKey roleKey, RunEventData data);
     }
 
     public interface ISceneEvent//事件
@@ -69,6 +68,7 @@ namespace ProjectApp
 
         public void EnterSceneEvent(ISceneEvent sceneEvent);
         public void ExitSceneEvent(ISceneEvent sceneEvent);
+        public RoleStateKey GetShowState();
     }
 
     public interface IDrag

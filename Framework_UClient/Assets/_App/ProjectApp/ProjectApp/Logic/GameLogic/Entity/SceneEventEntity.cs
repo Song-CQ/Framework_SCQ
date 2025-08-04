@@ -16,9 +16,9 @@ using static FutureCore.UIEventListener;
 
 namespace ProjectApp
 {
-    public class SceneEventEntity :BaseSceneEvent ,IDrag
+    public class SceneEventEntity : BaseSceneEvent, IDrag
     {
-        public GameObject Entity; 
+        public GameObject Entity;
 
         public List<Transform> RoleSoltPot = new List<Transform>();
 
@@ -26,18 +26,18 @@ namespace ProjectApp
 
         public PictureEntity PictureEntity => (Picture as PictureEntity);
 
-        public UIEventListener Listener { get;private set; }
+        public UIEventListener Listener { get; private set; }
         private PointerHandler beginDrag_Delegate;
         private PointerHandler drag_Delegate;
         private PointerHandler endDrag_Delegate;
+        private Transform SceneTrf;
 
         public override void Init(Event_Data _data, EventCode eventCode)
         {
             base.Init(_data, eventCode);
 
 
-            
-    
+
             LoadEntity();
             AddListener();
 
@@ -81,30 +81,18 @@ namespace ProjectApp
         {
             Entity = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.SceneEntityPath);
             Entity.transform.Find("desc").GetComponent<TextMeshPro>().text = Data.Desc;
-            Transform rolesTrf = Entity.transform.Find("Roles");
-            
+            Transform Content = Entity.transform.Find("Content");
 
+            SceneTrf = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.SceneKeyPath + data.Key.ToString()).transform;
+            SceneTrf.SetParent(Content);
+            SceneTrf.localPosition = Vector3.zero;
+            SceneTrf.localScale = Vector3.one;
+
+            Transform rolesTrf = SceneTrf.transform.Find("RolePot");
             for (int i = 0; i < data.RoleSum; i++)
             {
-                Transform potGo = null;
-                if (i >= rolesTrf.childCount)
-                {
-                    potGo = new GameObject("RolePot_" + i).transform;
-                    potGo.SetParent(rolesTrf);
-                    potGo.SetSiblingIndex(i);
-                }
-                else 
-                {
-                    potGo = rolesTrf.GetChild(i);
-                }
-               
-                potGo.SetActive(true);
-
-                potGo.localPosition = new Vector3(data.VO.allRolePot[i*2], data.VO.allRolePot[i*2+1]);
-
+                Transform potGo = rolesTrf.GetChild(i);
                 RoleSoltPot.Add(potGo);
-
-
 
             }
 
@@ -129,14 +117,14 @@ namespace ProjectApp
 
             foreach (var role in picture.Roles)
             {
-                if (role.Value!=null)
+                if (role.Value != null)
                 {
                     role.Value.ExitSceneEvent(this);
                 }
-                
+
             }
 
-            Entity.transform.SetParent(null);
+
             Dispose();
         }
 
@@ -156,31 +144,31 @@ namespace ProjectApp
                 Transform t = RoleSoltPot[i];
                 Vector2 t_pot = CameraMgr.Instance.mainCamera.WorldToScreenPoint(t.position);
                 float val = Vector2.Distance(t_pot, pot);
-                if (dic < 0 || val<dic)
+                if (dic < 0 || val < dic)
                 {
                     dic = val;
                     index = i;
                 }
 
-            } 
+            }
             return index;
         }
 
         public void BeginDrag()
         {
-            
+
         }
 
         public void Drag()
         {
-            
+
         }
 
         public void EndDrag()
         {
             //将自身从画面中移除 如果存在于画面中的话
-          
-           
+
+
 
         }
 
@@ -196,17 +184,17 @@ namespace ProjectApp
         }
 
 
-        public void Dispose()
+        private void Dispose()
         {
             RomveListener();
-            foreach (Transform t in RoleSoltPot)
-            {
-                t.gameObject.SetActive(false);
-            }
-            RoleSoltPot.Clear();
-           
 
-            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.SceneEntityPath,Entity);
+            RoleSoltPot.Clear();
+
+            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.SceneKeyPath + data.Key.ToString(), SceneTrf.gameObject);
+            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.SceneEntityPath, Entity);
+            Entity = null;
+            SceneTrf = null;
+
             ObjectPoolStatic<SceneEventEntity>.Release(this);
         }
 
@@ -234,5 +222,16 @@ namespace ProjectApp
 
 
         }
+
+        public override void SetRoleEventState(RoleKey roleKey, RunEventData data)
+        {
+            base.SetRoleEventState(roleKey, data);
+            if (AllRolePot.Contains(roleKey))
+            {
+                // GameWorldMgr.Instance.GameSys.Dispatch(GameEvent.ChangeRoleState);
+            }
+
+        }
+
     }
 }

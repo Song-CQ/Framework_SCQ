@@ -24,10 +24,10 @@ namespace ProjectApp
             State = new RoleState();
         }
 
-        public virtual void Init(Role_Data data)
+        public virtual void Init(Role_Data data, RoleState state)
         {
             this.data = data;
-
+            this.State = state;
         }
 
         public virtual void EnterSceneEvent(ISceneEvent sceneEvent)
@@ -63,9 +63,42 @@ namespace ProjectApp
             return false;
         }
 
+        public RoleStateKey GetShowState()
+        {
+            var currState = RoleStateKey.待机;
+            List<RoleStateKey> roleStateKeys = State.GetAllState(out List<int> datas);
+
+            for (int i = 0; i < roleStateKeys.Count; i++)
+            {
+                RoleStateKey key = roleStateKeys[i];
+                int data = datas[i];
+
+                if (currState == RoleStateKey.幽灵)
+                {
+                    if (key == RoleStateKey.复活)
+                    {
+                        currState = RoleStateKey.待机;
+                    }
+                }
+                else
+                {
+                    currState = key;
+
+                }
+
+
+            }
+
+            return currState;
+
+
+
+
+        }
+
         public virtual void RefreshView()
         {
-           
+
 
 
         }

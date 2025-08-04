@@ -61,7 +61,7 @@ namespace ProjectApp
         {
             allEventCodeDic = new Dictionary<EventKey, EventCode>();
 
-            allEventCodeDic.Add(EventKey.Empty, new Empty_EventCode());
+            allEventCodeDic.Add(EventKey.Empty, new Meet_EventCode());
             allEventCodeDic.Add(EventKey.Love, new Love_EventCode());
 
 
@@ -106,14 +106,14 @@ namespace ProjectApp
             {
                 return allEventCodeDic[key];
             }
-            return new Empty_EventCode();
+            return null;
         }
 
-        public RoleEntity GetRoleEntity(Role_Data _data)
+        public RoleEntity GetRoleEntity(Role_Data _data,RoleState state)
         {
             RoleEntity roleEntity = new RoleEntity();
 
-            roleEntity.Init(_data);
+            roleEntity.Init(_data,state);
 
             return roleEntity;
         }

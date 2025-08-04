@@ -41,7 +41,8 @@ namespace ProjectApp
         public float MeueItem_Size = 3;
         public float MeueItem_Interval = 1;
 
-        public const string RoleAniPath = "Prefabs/GamePrefabs/RoleAni/";
+        public const string RoleKeyPath = "Prefabs/GamePrefabs/RoleKey/";
+        public const string SceneKeyPath = "Prefabs/GamePrefabs/SceneKey/";
         public const string PictureEntityPath = "Prefabs/GamePrefabs/PictureEntity";
         public const string DragEntityPath = "Prefabs/GamePrefabs/DragEntity";
         public const string RoleEntityPath = "Prefabs/GamePrefabs/RoleEntity";
@@ -116,7 +117,7 @@ namespace ProjectApp
                 SelectDragEntity.transform.SetParent(WordRood);
                 SelectDragEntity.transform.localPosition = new Vector3(0, 0, 5);
             }
-
+            
 
            
 
@@ -126,18 +127,94 @@ namespace ProjectApp
         }
         private void AddListener()
         {
-            gameStructure.gameSys.AddListener(GameEvent.GameFinish, GameFinish);
-          
+            GameWorldMgr.Instance.GameSys.AddListener(GameEvent.GameFinish, GameFinish);
+            GameWorldMgr.Instance.GameSys.AddListener(GameEvent.SetEvent, PlayerInput_SetEvent);
+            GameWorldMgr.Instance.GameSys.AddListener(GameEvent.SetRole, PlayerInput_SetRole);
+            GameWorldMgr.Instance.GameSys.AddListener(GameEvent.RemoveEvent, PlayerInput_RemoveEvent);
+            GameWorldMgr.Instance.GameSys.AddListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);
 
         }
 
-        
+
 
         private void RemoveListener()
         {
-            gameStructure.gameSys.RemoveListener(GameEvent.GameFinish, GameFinish);
+            GameWorldMgr.Instance.GameSys.RemoveListener(GameEvent.GameFinish, GameFinish);
+            GameWorldMgr.Instance.GameSys.RemoveListener(GameEvent.SetEvent, PlayerInput_SetEvent);
+            GameWorldMgr.Instance.GameSys.RemoveListener(GameEvent.SetRole, PlayerInput_SetRole);
+            GameWorldMgr.Instance.GameSys.RemoveListener(GameEvent.RemoveEvent, PlayerInput_RemoveEvent);
+            GameWorldMgr.Instance.GameSys.RemoveListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);
         
         }
+
+        #region PlayerInput
+
+
+        /// 画面index 事件index 角色RoleKey 
+        private void PlayerInput_SetRole(object[] param)
+        {
+
+            PictureEntity pictureEntity = param[0] as PictureEntity;
+            IDrag drag = param[1] as IDrag;
+            Role_Data data = drag.Data.GetData<Role_Data>();
+
+            //判断是从菜单设置 还是从画面上设置 如果是画面上设置得将原来的画面移除
+            IPicture sourPicture = drag.GetPicture();
+            if (sourPicture != null)
+            {
+                gameStructure.RemoveRole(sourPicture.Index, data.Key);
+            }
+
+            int potIndex = (int)param[2];
+            int pictureIndex = pictureEntity.Index;
+            RoleKey roleKey = data.Key;
+
+            gameStructure.SetRole(pictureIndex, potIndex, roleKey);
+        }
+        /// 画面index 事件index  
+        private void PlayerInput_RemoveRole(object[] param)
+        {
+
+            IDrag drag = param[0] as IDrag;
+            IPicture picture = drag.GetPicture();
+            if (picture == null || drag == null) return;
+
+            int pictureIndex = picture.Index;
+            Role_Data data = drag.Data.GetData<Role_Data>();
+
+            gameStructure.RemoveRole(pictureIndex, data.Key);
+        }
+        /// 画面index 事件EventKey
+        private void PlayerInput_SetEvent(object[] par)
+        {
+
+            PictureEntity pictureEntity = par[0] as PictureEntity;
+            IDrag drag = par[1] as IDrag;
+
+            //判断是从菜单设置 还是从画面上设置 如果是画面上设置得将原来的画面移除
+            IPicture sourPicture = drag.GetPicture();
+            if (sourPicture != null)
+            {
+                gameStructure.RemoveEvent(sourPicture.Index);
+            }
+
+            int pictureIndex = pictureEntity.Index;
+            EventKey eventKey = drag.Data.GetData<Event_Data>().Key;
+            gameStructure.SetEvent(pictureIndex, eventKey);
+
+        }
+        /// 画面index
+        private void PlayerInput_RemoveEvent(object[] param)
+        {
+
+            IPicture picture = (param[0] as IDrag).GetPicture();
+            if (picture == null) return;
+
+            gameStructure.RemoveEvent(picture.Index);
+        }
+
+        #endregion
+
 
         private void GameFinish(object[] obj)
         {
@@ -212,12 +289,12 @@ namespace ProjectApp
                 {
                     if (dragEntity.Data.Type == DragEntityType.Event)
                     {
-                        gameStructure.gameSys.Dispatch(GameEvent.RemoveEvent, dragEntity);
+                        GameWorldMgr.Instance.GameSys.Dispatch(GameEvent.RemoveEvent, dragEntity);
                     }
                     else if (dragEntity.Data.Type == DragEntityType.Role)
                     {
 
-                        gameStructure.gameSys.Dispatch(GameEvent.RemoveRole, dragEntity);
+                        GameWorldMgr.Instance.GameSys.Dispatch(GameEvent.RemoveRole, dragEntity);
 
                     }
                 }
@@ -227,7 +304,7 @@ namespace ProjectApp
             {
                 if (dragEntity.Data.Type == DragEntityType.Event)
                 {
-                    gameStructure.gameSys.Dispatch(GameEvent.SetEvent, pictureEntity, dragEntity);
+                    GameWorldMgr.Instance.GameSys.Dispatch(GameEvent.SetEvent, pictureEntity, dragEntity);
                 }
                 else if (dragEntity.Data.Type == DragEntityType.Role)
                 {
@@ -237,7 +314,7 @@ namespace ProjectApp
                         rolePotIndex = (pictureEntity.SceneEvent as SceneEventEntity).GetRolePotToScendPot(position);
                     }
 
-                    gameStructure.gameSys.Dispatch(GameEvent.SetRole, pictureEntity, dragEntity, rolePotIndex);
+                    GameWorldMgr.Instance.GameSys.Dispatch(GameEvent.SetRole, pictureEntity, dragEntity, rolePotIndex);
 
                 }
             }

@@ -24,7 +24,7 @@ namespace ProjectApp
         }
         public abstract void Init();
 
-        public abstract void RunEvent(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles, List<RoleKey> allRolePot);
+        public abstract void RunEvent(int pictureIndex, Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles, List<RoleKey> allRolePot);
 
         protected virtual bool IsFullRole(List<RoleKey> allRolePot)
         {
@@ -40,14 +40,14 @@ namespace ProjectApp
 
         protected bool GetRoleDead(IRole role)
         {
-            if (role.State.GetState(StateKey.Dead, out StateData stateData))
+            if (role.State.GetDead())
             {
                 return true;
             }
             return false;
         }
 
-        protected bool SetRolesStateEvent_Dead(IRole role_0, IRole role_1, ref RoleStateToEvent state_0, ref RoleStateToEvent state_1)
+        protected bool SetRolesStateEvent_Dead(IRole role_0, IRole role_1, ref RoleStateKey state_0, ref RoleStateKey state_1)
         {
             if (role_0 == null || role_1 == null) return false;
 
@@ -57,18 +57,18 @@ namespace ProjectApp
             {
                 if (isDead_0 && isDead_1)
                 {
-                    state_0 = RoleStateToEvent.幽灵;
-                    state_1 = RoleStateToEvent.幽灵;
+                    state_0 = RoleStateKey.幽灵;
+                    state_1 = RoleStateKey.幽灵;
                 }
                 else if (isDead_0)
                 {
-                    state_0 = RoleStateToEvent.幽灵;
-                    state_1 = RoleStateToEvent.惊吓;
+                    state_0 = RoleStateKey.幽灵;
+                    state_1 = RoleStateKey.惊吓;
                 }
                 else if (isDead_1)
                 {
-                    state_0 = RoleStateToEvent.惊吓;
-                    state_1 = RoleStateToEvent.幽灵;
+                    state_0 = RoleStateKey.惊吓;
+                    state_1 = RoleStateKey.幽灵;
                 }
 
                 return true;
@@ -88,9 +88,9 @@ namespace ProjectApp
             Key = EventKey.Empty;
         }
 
-        public override void RunEvent(Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles, List<RoleKey> allRolePot)
+        public override void RunEvent(int pictureIndex,Dictionary<RoleKey, RoleState> allRoleState, Dictionary<RoleKey, IRole> roles, List<RoleKey> allRolePot)
         {
-            Debug.Log("运行事件：" + Key.ToString());
+            Debug.Log( "pictureIndex:" +pictureIndex+" 运行事件：" + Key.ToString());
         }
 
         public override void UpdataState(BaseSceneEvent sceneEvent, Dictionary<RoleKey, IRole> roles)

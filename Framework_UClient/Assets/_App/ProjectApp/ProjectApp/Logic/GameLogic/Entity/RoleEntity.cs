@@ -38,9 +38,9 @@ namespace ProjectApp
         
         
 
-        public override void Init(Role_Data data)
+        public override void Init(Role_Data data,RoleState State)
         {
-            base.Init(data);
+            base.Init(data,State);
 
             LoadEntity();
 

@@ -20,11 +20,12 @@ namespace ProjectApp
 
         public EventDataVO VO { private set; get; }
 
-        public Event_Data(int eventId)
+        public Event_Data(EventKey eventKey)
         {
-            VO = ConfigDataMgr.Instance.GetConfigVO<EventDataVO>(ConfigVO.EventData, eventId);
+            Key = eventKey;
+
+            VO = ConfigDataMgr.Instance.GetConfigVO<EventDataVO>(ConfigVO.EventData, (int)Key);
             
-            Key = GameSys.GetEventKey(VO.key);
             
 
         }

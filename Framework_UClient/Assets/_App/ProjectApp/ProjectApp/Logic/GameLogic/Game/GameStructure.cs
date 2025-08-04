@@ -59,95 +59,33 @@ namespace ProjectApp
 
         private List<RoleKey> tempList = new List<RoleKey>();
 
-        public GameSys gameSys;
+        private GameSys gameSys;
+
+
+        public GameStructure(GameSys sys)
+        {
+            gameSys = sys;
+        }
 
         private void AddListener()
         {
-            gameSys.AddListener(GameEvent.SetEvent, PlayerInput_SetEvent);
-            gameSys.AddListener(GameEvent.SetRole, PlayerInput_SetRole);
-            gameSys.AddListener(GameEvent.RemoveEvent, PlayerInput_RemoveEvent);
-            gameSys.AddListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);
+
 
         }
+
+        
+
         private void RemoveListener()
         {
-            gameSys.RemoveListener(GameEvent.SetEvent, PlayerInput_SetEvent);
-            gameSys.RemoveListener(GameEvent.SetRole, PlayerInput_SetRole);
-            gameSys.RemoveListener(GameEvent.RemoveEvent, PlayerInput_RemoveEvent);
-            gameSys.RemoveListener(GameEvent.RemoveRole, PlayerInput_RemoveRole);
+           
 
         }
 
-
-        #region PlayerInput
-
-
-        /// 画面index 事件index 角色RoleKey 
-        private void PlayerInput_SetRole(object[] param)
-        {
-
-            PictureEntity pictureEntity = param[0] as PictureEntity;
-            IDrag drag = param[1] as IDrag;
-            Role_Data data = drag.Data.GetData<Role_Data>();
-
-            //判断是从菜单设置 还是从画面上设置 如果是画面上设置得将原来的画面移除
-            IPicture sourPicture = drag.GetPicture();
-            if (sourPicture != null)
-            {
-                RemoveRole(sourPicture.Index, data.Key);
-            }
-
-            int potIndex = (int)param[2];
-            int pictureIndex = pictureEntity.Index;
-            RoleKey roleKey = data.Key;
-
-            SetRole(pictureIndex, potIndex, roleKey);
-        }
-        /// 画面index 事件index  
-        private void PlayerInput_RemoveRole(object[] param)
-        {
-
-            IDrag drag = param[0] as IDrag;
-            IPicture picture = drag.GetPicture();
-            if (picture == null || drag == null) return;
-
-            int pictureIndex = picture.Index;
-            Role_Data data = drag.Data.GetData<Role_Data>();
-
-            RemoveRole(pictureIndex, data.Key);
-        }
-        /// 画面index 事件EventKey
-        private void PlayerInput_SetEvent(object[] par)
-        {
-
-            PictureEntity pictureEntity = par[0] as PictureEntity;
-            IDrag drag = par[1] as IDrag;
-
-            //判断是从菜单设置 还是从画面上设置 如果是画面上设置得将原来的画面移除
-            IPicture sourPicture = drag.GetPicture();
-            if (sourPicture != null)
-            {
-                RemoveEvent(sourPicture.Index);
-            }
-
-            int pictureIndex = pictureEntity.Index;
-            EventKey eventKey = drag.Data.GetData<Event_Data>().Key;
-            SetEvent(pictureIndex, eventKey);
-
-        }
-        /// 画面index
-        private void PlayerInput_RemoveEvent(object[] param)
-        {
-
-            IPicture picture = (param[0] as IDrag).GetPicture();
-            if (picture == null) return;
-
-            RemoveEvent(picture.Index);
-        }
-
-        #endregion
+      
+        
 
 
+       
         public void FillData(LevelData levelData)
         {
             LevelData = levelData;
@@ -224,7 +162,7 @@ namespace ProjectApp
 
             Role_Data role_Data = allRole_Data[roleKey];
 
-            RoleEntity role = gameSys.GetRoleEntity(role_Data);
+            RoleEntity role = gameSys.GetRoleEntity(role_Data,allRoleState[roleKey]);
 
             picture.SetRole(role, potIndex);
 
@@ -240,6 +178,11 @@ namespace ProjectApp
             }
 
             BasePicture picture = allPictures[pictureIndex];
+
+            if (picture.SceneEvent.Key == eventKey)
+            {
+                return;
+            }
 
 
             SceneEventEntity eventEntity = gameSys.GetSceneEventEntity(allEvent_Data[eventKey]);
@@ -299,30 +242,31 @@ namespace ProjectApp
         /// </summary>
         private void RefactorPictures(int pictureIndex)
         {
-            foreach (var state in allRoleState)
-            {
-                state.Value.Rest();
-            }
+            // foreach (var state in allRoleState)
+            // {
+            //     state.Value.Rest();
+            // }
 
 
-            //从当前节点往上寻找角色状态
-            for (int i = pictureIndex - 1; i >= 0; i--)
-            {
-                BasePicture picture = allPictures[i];
- 
-                foreach (var item in picture.Roles)
-                {
-                    if (!tempList.Contains(item.Key))
-                    {
-                        tempList.Add(item.Key);
+            // //从当前节点往上寻找角色状态
+            // for (int i = pictureIndex - 1; i >= 0; i--)
+            // {
+            //     BasePicture picture = allPictures[i];
 
-                        item.Value.State.CopyTo(allRoleState[item.Key]);
-                    }
-                }
+            //     foreach (var item in picture.Roles)
+            //     {
+            //         if (!tempList.Contains(item.Key))
+            //         {
+            //             tempList.Add(item.Key);
 
-            }
-            tempList.Clear();
+            //             item.Value.State.CopyTo(allRoleState[item.Key]);
+            //         }
+            //     }
 
+            // }
+            // tempList.Clear();
+
+            
             for (int i = pictureIndex; i < allPictures.Count; i++)
             {
                 BasePicture picture = allPictures[i];

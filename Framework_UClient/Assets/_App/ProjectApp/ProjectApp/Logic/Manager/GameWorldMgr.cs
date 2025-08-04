@@ -18,7 +18,7 @@ namespace ProjectApp
         /// <summary>
         /// 游戏表现实体 和 数据实体通过 gamesys 交互
         /// </summary>
-        private GameSys gameSys;
+        public GameSys GameSys { get; private set;}
         
         /// <summary>
         /// 游戏表现实体
@@ -35,13 +35,13 @@ namespace ProjectApp
         protected override void New()
         {
             base.New();
-            gameSys = new GameSys();
+            GameSys = new GameSys();
         }
         public override void Init()
         {
             base.Init();
 
-            gameSys.Init();
+            GameSys.Init();
 
             GameEntity = new GameWordEntity();
             GameEntity.Init();
@@ -84,9 +84,8 @@ namespace ProjectApp
 
         private GameStructure GetGameStructure()
         {
-            GameStructure gameStructure = new GameStructure();
+            GameStructure gameStructure = new GameStructure(GameSys);
 
-            gameStructure.gameSys = gameSys;
             return gameStructure;
         }
 
@@ -104,9 +103,11 @@ namespace ProjectApp
 
             }
 
-            foreach (var roleId in levelData.data.events)
+            foreach (var eventKey in levelData.data.events)
             {
-                Event_Data event_Data = new Event_Data(roleId);
+                EventKey key = GameSys.GetEventKey(eventKey);
+
+                Event_Data event_Data = new Event_Data(key);
 
                 levelData.events.Add(event_Data);
 

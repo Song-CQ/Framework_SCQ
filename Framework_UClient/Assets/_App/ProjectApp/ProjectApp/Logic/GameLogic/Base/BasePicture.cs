@@ -136,6 +136,15 @@ namespace ProjectApp
             return false;
 
         }
+        public void SetRoleEventState(RoleKey roleKey, RunEventData stateData)
+        {
+
+            // if (Roles.TryGetValue(roleKey, out IRole roleState))
+            // {
+            //     roleState.State.SetState(Index, stateData); 
+                
+            // }
+        }
 
         public void Refactor(Dictionary<RoleKey, RoleState> allRoleState)
         {

@@ -44,7 +44,7 @@ namespace ProjectApp
 
         public void Init(Role_Data data)
         {
-            Transform role = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.RoleAniPath + data.Key.ToString()).transform;
+            Transform role = GameWorldMgr.Instance.GameEntity.GetPrefabGo(GameWordEntity.RoleKeyPath + data.Key.ToString()).transform;
             role.SetParent(transform);
             role.localScale = Vector3.one * 0.15f;
             role.localPosition = Vector3.zero;
@@ -64,7 +64,7 @@ namespace ProjectApp
             descTextMeshPro.text = string.Empty;
 
             animation.gameObject.SetActive(false);
-            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.RoleAniPath + role_Data.Key.ToString(), animation.gameObject);
+            GameWorldMgr.Instance.GameEntity.ReleasePrefabGo(GameWordEntity.RoleKeyPath + role_Data.Key.ToString(), animation.gameObject);
             animation = null;
             role_Data = null;
             role_State = null;
@@ -79,12 +79,12 @@ namespace ProjectApp
             string val = state.GetString();
             stateTextMeshPro.text = val;
 
-            if (state.GetState(StateKey.Hand))
-            {
-                animation.Play("hand_02");
+            // if (state.GetState(EventKey.Love))
+            // {
+            //     animation.Play("hand_02");
 
-            }
-            else
+            // }
+            // else
             {
                 animation.Play("ideo_01");
                 

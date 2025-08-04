@@ -64,7 +64,6 @@
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\04_Inheritance\Inheritance.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\08_MonoBehaviour\MonoBehaviourDemo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\LitJson\JsonWriter.cs" />
@@ -170,8 +169,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Enviorment\CrossBindingCodeGenerator.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\LitJson\ParserToken.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\03_Delegate\DelegateDemo.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Reflection\ILRuntimePropertyInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\HitTest\PixelHitTest.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Reflection\ILRuntimePropertyInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\BreakPointContext.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Joystick\JoystickModule.cs" />
@@ -272,11 +271,11 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Extension\ExtensionMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GTreeNode.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIContentScaler.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIConfig.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GScrollBar.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\MeshEditorEffects\MeshVortex\MeshVortex.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Intepreter\OpCodes\OpCodeREnum.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Basics\BasicsMain.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIConfig.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Model\ModelMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Basics\Window2.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Emoji\EmojiMain.cs" />
@@ -309,8 +308,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Reflection\ILRuntimeConstructorInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIPanel.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Extensions\TextMeshPro\TMPTextFormat.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Enviorment\CrossBindingMethodInfo.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Extensions\TextMeshPro\TMPTextFormat.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\IColorGear.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\XAsset\XAssetEditor\ExecuteInternalMono.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlLink.cs" />
@@ -406,9 +405,9 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Gesture\LongPressGesture.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIPackage.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Relations.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Event\EventDispatcher.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\IAnimationGear.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenDeAudio.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Event\EventDispatcher.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\GearAnimation.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\HeadBar\HeadBarMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\RenderTexture\RenderImage.cs" />
@@ -449,6 +448,7 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\XAsset\XAsset\Versions.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlParser.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\HitTest\MeshColliderHitTest.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\04_Inheritance\Inheritance.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll" />
