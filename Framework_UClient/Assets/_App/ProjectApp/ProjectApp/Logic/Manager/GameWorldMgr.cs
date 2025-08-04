@@ -43,7 +43,7 @@ namespace ProjectApp
     {
         public static Transform WordRood;
 
-        public static Vector2 PictureRoodPot = Vector2.zero;
+        public static Vector2 RoodPot = Vector2.zero;
 
         public void Init()
         {
