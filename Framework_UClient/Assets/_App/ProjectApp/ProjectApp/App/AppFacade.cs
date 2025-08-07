@@ -14,12 +14,12 @@ namespace ProjectApp
         /// <summary>
         /// 项目描述
         /// </summary>
-        public const string AppDesc = "框架";
+        public const string AppDesc = "Crossbow Hero";
 
         /// <summary>
         /// 包名
         /// </summary>
-        public const string PackageName = "com.Framework.Grimore";
+        public const string PackageName = "com.Framework.CrossbowHero";
 
 
         /// <summary>
