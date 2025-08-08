@@ -41,11 +41,14 @@ namespace ProjectApp
 
 
         public void StartGame()
-        { 
+        {
+            GameStructure gameStructure = new GameStructure();
+            gameStructure.Init(gameWord);
+
+            gameStructure.Fill();
+
+            gameStructure.Start();
             
-
-
-
 
 
 

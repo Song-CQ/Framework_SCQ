@@ -93,8 +93,10 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_balloon.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingCtrl.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIEntity.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\GameStructure.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Register_AutoCreator\ILRuntimeMgr_Register.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\Define\Mseeage\CtrlMsg_Base.cs" />
+    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Entity\Entity.cs" />
     <Compile Include="Assets\_App\_AppBase\ProjectAppBase\UI\UGUI\Core\UGUIDriver.cs" />
     <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\ModuleUI\Tips\TipsModel.cs" />
     <Compile Include="Assets\_App\_AppCommon\ModuleUI\Loading\LoadingUI.cs" />
@@ -109,7 +111,6 @@
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A002_loading\com_loading.cs" />
     <Compile Include="Assets\_App\_AppCommon\Manager\ILRuntimeMgr\Register\ILRuntimeMgr_Register_Common.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ILRuntimeMgr\Adapter_AutoCreator\BaseCtrlAdapter.cs" />
-    <Compile Include="Assets\_App\ProjectApp\ProjectApp\Logic\GameLogic\Game.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_collect.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\AutoRegister\ModuleMgr\ModelConst_AutoCread.cs" />
     <Compile Include="Assets\_App\ProjectApp\AutoCreator\FGUI_Common\A001_common\btn_crazy.cs" />
