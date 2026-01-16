@@ -1,26 +1,21 @@
-﻿<Project ToolsVersion="Current">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
-    <BaseIntermediateOutputPath>Temp\obj\$(Configuration)\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-  </PropertyGroup>
-  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
-  <ItemGroup>
-    <ProjectCapability Include="Unity" />
-  </ItemGroup>
-  <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <EnableDefaultItems>false</EnableDefaultItems>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <LangVersion>9.0</LangVersion>
-    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
+    <ProjectGuid>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Plugins3rdLibrary</AssemblyName>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,27 +39,29 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <NoStandardLibraries>true</NoStandardLibraries>
-    <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
-    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
-    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
-    <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
+    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2022.3.34f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\ASUS072\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="E:\SetUp\VS2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="H:\UnityPro\Framework_SCQ\Framework_UClient\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\SetUp\UNITY\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\04_Inheritance\Inheritance.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\08_MonoBehaviour\MonoBehaviourDemo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\LitJson\JsonWriter.cs" />
@@ -147,11 +144,11 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\EmitNumbers\EmitNumbersMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GGraph.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlInput.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Gesture\SwipeGesture.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\XAsset\XAsset\Assets.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\MeshEditorEffects\Utility\Toolkit.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\TreeView\TreeViewMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\NGraphics.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Gesture\SwipeGesture.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GRoot.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Intepreter\RegisterVM\ILIntepreter.Register.cs" />
@@ -164,14 +161,14 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\TurnCard\TurnCardMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\LitJson\JsonMapper.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Event\InputEvent.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\RenderTexture\Window3.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\IHtmlPageContext.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\RenderTexture\Window3.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\MaterialManager.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Enviorment\CrossBindingCodeGenerator.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\LitJson\ParserToken.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\03_Delegate\DelegateDemo.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\HitTest\PixelHitTest.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Reflection\ILRuntimePropertyInfo.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\HitTest\PixelHitTest.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\BreakPointContext.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Joystick\JoystickModule.cs" />
@@ -182,8 +179,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\11_ValueTypeBinding\QuaternionBinder.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\Emoji.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlButton.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GComboBox.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Intepreter\RegisterVM\Optimizer.ELDC.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GComboBox.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\XAsset\XAssetEditor\BuildProcessor.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\GearText.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\HitTest\ShapeHitTest.cs" />
@@ -197,8 +194,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\DynamicFont.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Mesh\RoundedRectMesh.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Reflection\ILRuntimeFieldInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Mesh\CompositeMesh.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Reflection\ILRuntimeFieldInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\IKeyboard.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Bag\BagWindow.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Container.cs" />
@@ -236,8 +233,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\XAsset\XAsset\Reference.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Filter\BlurFilter.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Bag\MyGLoader.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Stack\RuntimeStack.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\TranslationHelper.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Stack\RuntimeStack.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Enviorment\AppDomain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\VariableInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\MeshEditorEffects\Data\Fragment.cs" />
@@ -272,11 +269,11 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Extension\ExtensionMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GTreeNode.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIContentScaler.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIConfig.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\GScrollBar.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\MeshEditorEffects\MeshVortex\MeshVortex.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Intepreter\OpCodes\OpCodeREnum.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Basics\BasicsMain.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIConfig.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Model\ModelMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Basics\Window2.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Emoji\EmojiMain.cs" />
@@ -284,8 +281,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\CLRBinding\FieldBindingGenerator.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlElement.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\AsyncCreationHelper.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\EmitNumbers\EmitManager.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Event\EventBridge.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\EmitNumbers\EmitManager.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Action\ControllerAction.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\02_Invocation\Invocation.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\SelectionShape.cs" />
@@ -380,8 +377,8 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\Protocol\CSResolveIndexer.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\Text\FontManager.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\Protocol\CSResolveVariable.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\BreakpointInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\CLRBinding\ConstructorBindingGenerator.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Runtime\Debugger\BreakpointInfo.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Tween\TweenValue.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\Curve\CurveMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\NTexture.cs" />
@@ -406,9 +403,9 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Gesture\LongPressGesture.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\UIPackage.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Relations.cs" />
+    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Event\EventDispatcher.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\IAnimationGear.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenDeAudio.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Event\EventDispatcher.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\UI\Gears\GearAnimation.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\HeadBar\HeadBarMain.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\FGUIEditor\Examples\RenderTexture\RenderImage.cs" />
@@ -449,7 +446,6 @@
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\XAsset\XAsset\Versions.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Utils\Html\HtmlParser.cs" />
     <Compile Include="Assets\Plugins\Plugins3rdLibrary\FairyGUI\Scripts\Core\HitTest\MeshColliderHitTest.cs" />
-    <Compile Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Demo\Scripts\Examples\04_Inheritance\Inheritance.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll" />
@@ -1511,16 +1507,13 @@
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
-  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  <ItemGroup>
-    <ProjectCapability Remove="LaunchProfiles" />
-    <ProjectCapability Remove="SharedProjectReferences" />
-    <ProjectCapability Remove="ReferenceManagerSharedProjects" />
-    <ProjectCapability Remove="ProjectReferences" />
-    <ProjectCapability Remove="ReferenceManagerProjects" />
-    <ProjectCapability Remove="COMReferences" />
-    <ProjectCapability Remove="ReferenceManagerCOM" />
-    <ProjectCapability Remove="AssemblyReferences" />
-    <ProjectCapability Remove="ReferenceManagerAssemblies" />
-  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>
