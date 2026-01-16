@@ -1,3 +1,5 @@
+using FutureCore;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +9,11 @@ namespace ProjectApp
 {
     public enum ElementType
     {
-        Red,    // 红色基础元素
-        Yellow, // 黄色基础元素
-        Blue,   // 蓝色基础元素
-        Green,  // 绿色基础元素
+        Baihe,    // 红色基础元素
+        fengjiao, // 黄色基础元素
+        shuihu,   // 蓝色基础元素
+        xihongshui,  // 绿色基础元素
+        zhiwu,  // 紫色基础元素
         Special // 特殊元素（可切换类型）
     }
 
@@ -25,6 +28,7 @@ namespace ProjectApp
         [Header("游戏配置")]
         [SerializeField] private int boardWidth = 10;    // 棋盘宽度
         [SerializeField] private int boardHeight = 14;   // 棋盘高度
+        [SerializeField] private Vector3 startVector3;   // 棋盘高度
         [SerializeField] private GameMode currentMode = GameMode.BuildHive;
 
         [Header("元素预设")]
@@ -47,6 +51,8 @@ namespace ProjectApp
         // 当前选中的元素
         private Vector2Int selectedElement = new Vector2Int(-1, -1);
 
+        public Transform itemsTrf;
+
         void Start()
         {
             InitializeBoard();
@@ -62,6 +68,7 @@ namespace ProjectApp
             elementObjects = new GameObject[boardWidth, boardHeight];
         }
 
+        [Button("生成")]
         /// <summary>
         /// 生成初始元素（简化的随机生成）
         /// </summary>
@@ -77,7 +84,7 @@ namespace ProjectApp
 
                     if (rand < 0.7f) // 70%为基础元素
                     {
-                        type = (ElementType)Random.Range(0, 4);
+                        type = (ElementType)Random.Range(0, 5);
                     }
                     else if (rand < 0.9f) // 20%为特殊元素
                     {
@@ -105,13 +112,14 @@ namespace ProjectApp
 
             if (elementPrefabs.Length > (int)type)
             {
-                Vector3 position = new Vector3(x, y, 0);
+                Vector3 position = startVector3 + new Vector3(x, y, 0);
                 elementObjects[x, y] = Instantiate(elementPrefabs[(int)type], position, Quaternion.identity);
 
                 // 添加元素脚本
                 Element elementScript = elementObjects[x, y].AddComponent<Element>();
                 elementScript.Initialize(x, y, type);
                 elementScript.OnElementClicked += OnElementClicked;
+                elementObjects[x, y].SetParent(itemsTrf);
             }
         }
 
@@ -163,7 +171,7 @@ namespace ProjectApp
         {
             if (elementObjects[x, y] != null)
             {
-                SpriteRenderer renderer = elementObjects[x, y].GetComponent<SpriteRenderer>();
+                SpriteRenderer renderer = elementObjects[x, y].GetComponentInChildren<SpriteRenderer>();
                 renderer.color = highlight ? Color.yellow : Color.white;
             }
         }
