@@ -3,7 +3,7 @@
     作者: Clear
     日期: 2023/12/4 11:6:21
     类型: 逻辑脚本
-    功能: 游戏系统
+    功能: 游戏效果系统
 *****************************************************/
 using FutureCore;
 using UnityEngine;
@@ -32,5 +32,8 @@ namespace ProjectApp
         {
             base.Dispose();
         }
+
+
+
     }
 }
