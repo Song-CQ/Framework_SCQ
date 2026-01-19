@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -25,12 +26,32 @@ namespace ProjectApp
 
         public Vector2Int boardSize;
 
+        public int BoardWidth => boardSize.x;
+        public int BoardHeight => boardSize.y;
+
         #endregion
 
         // 当前分数
         public int currentScore = 0;
         public int targetScore = 100000; // 目标分数
 
+        public ElementData GetElementData(Vector2Int pot)
+        {
+            if (pot.x >= BoardWidth || pot.y >= BoardHeight)
+            {
+                return default;
+            }
+            return boardData[pot.x, pot.y];
+        }
+
+        public void SetElementData(ElementData elementData)
+        {
+            if (elementData.X >= BoardWidth || elementData.Y >= BoardHeight)
+            {
+                return;
+            }
+            boardData[elementData.X, elementData.Y] = elementData;
+        }
     }
 
 
@@ -39,7 +60,7 @@ namespace ProjectApp
         [Header("游戏配置")]
         [SerializeField] private int _boardWidth = 10;    // 棋盘宽度
         [SerializeField] private int _boardHeight = 14;   // 棋盘高度
-        [SerializeField] private Vector3 startVector3;   // 棋盘高度
+        [SerializeField] public Vector3 startVector3;   // 棋盘高度
         [SerializeField] private GameMode currentMode = GameMode.BuildHive;
 
         [Header("元素预设")]
@@ -113,7 +134,8 @@ namespace ProjectApp
         #endregion
 
         public EliminateGameData Data { get; private set; }
-        private GameRules_Module gameRuleMode;
+        private GameInitial_Module gameInitialModule;
+        private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
         private List<IGameModule> gameModules = new List<IGameModule>();
 
@@ -123,11 +145,14 @@ namespace ProjectApp
 
             Data = new EliminateGameData();
 
-            gameRuleMode = new GameRules_Module();
+            gameInitialModule = new GameInitial_Module();
+
+            gameRuleModule = new GameRule_Module();
             visualEffectsModule = new VisualEffects_Module();
 
 
-            gameModules.Add(gameRuleMode);
+            gameModules.Add(gameInitialModule);
+            gameModules.Add(gameRuleModule);
             gameModules.Add(visualEffectsModule);
 
 
@@ -172,8 +197,7 @@ namespace ProjectApp
         /// </summary>
         void InitializeBoard(int boardWidth,int boardHeight)
         {
-            Data.boardData = new ElementData[boardWidth, boardHeight];
-            Data.boardSize = new Vector2Int(boardWidth,boardHeight);
+            
             foreach (var item in gameModules)
             {
                 item.InitializeBoard( boardWidth, boardHeight);
@@ -187,19 +211,14 @@ namespace ProjectApp
         /// </summary>
         void GenerateInitialElements()
         {
-            for (int x = 0; x < boardWidth; x++)
+            foreach (var item in gameModules)
             {
-                for (int y = 0; y < boardHeight; y++)
-                {
-                    ElementType type = GetRandomElementType();
-                    
-
-                    CreadElement(x, y, type);
-                }
+                item.GenerateInitialElements();
             }
 
-            // 检查并消除初始匹配
-            CheckInitialMatches();
+            
+
+            
         }
 
        
@@ -208,42 +227,7 @@ namespace ProjectApp
 
         
 
-        /// <summary>
-        /// 检查初始匹配（避免开局就有匹配）
-        /// </summary>
-        void CheckInitialMatches()
-        {
-            bool hasMatches = true;
-            int attempts = 0;
-
-            while (hasMatches && attempts < 10)
-            {
-                hasMatches = false;
-                List<Vector2Int> initialMatches = new List<Vector2Int>();
-
-                for (int x = 0; x < boardWidth; x++)
-                {
-                    for (int y = 0; y < boardHeight; y++)
-                    {
-                        initialMatches.AddRange(FindMatchesAt(x, y));
-                    }
-                }
-
-                if (initialMatches.Count > 0)
-                {
-                    hasMatches = true;
-                    // 重新生成有匹配的位置
-                    foreach (Vector2Int match in initialMatches)
-                    {
-                        Destroy(elementObjects[match.x, match.y]);
-                        ElementType newType = (ElementType)Random.Range(0, 4);
-                        CreadElement(match.x, match.y, newType);
-                    }
-                }
-
-                attempts++;
-            }
-        }
+        
 
         /// <summary>
         /// 生成道具
@@ -306,7 +290,7 @@ namespace ProjectApp
             // 清除道具
             Destroy(elementObjects[x, y]);
             elementObjects[x, y] = null;
-            board[x, y] = ElementType.Special;
+            board[x, y] = ElementType.Fixed_Special;
 
             StartCoroutine(FillEmptySpaces());
         }
@@ -322,7 +306,7 @@ namespace ProjectApp
                 {
                     Destroy(elementObjects[i, y]);
                     elementObjects[i, y] = null;
-                    board[i, y] = ElementType.Special;
+                    board[i, y] = ElementType.Fixed_Special;
                 }
             }
         }
@@ -338,7 +322,7 @@ namespace ProjectApp
                 {
                     Destroy(elementObjects[x, j]);
                     elementObjects[x, j] = null;
-                    board[x, j] = ElementType.Special;
+                    board[x, j] = ElementType.Fixed_Special;
                 }
             }
         }
@@ -357,7 +341,7 @@ namespace ProjectApp
                     {
                         Destroy(elementObjects[i, j]);
                         elementObjects[i, j] = null;
-                        board[i, j] = ElementType.Special;
+                        board[i, j] = ElementType.Fixed_Special;
                     }
                 }
             }
@@ -379,7 +363,7 @@ namespace ProjectApp
                     {
                         Destroy(elementObjects[i, j]);
                         elementObjects[i, j] = null;
-                        board[i, j] = ElementType.Special;
+                        board[i, j] = ElementType.Fixed_Special;
                     }
                 }
             }
@@ -405,7 +389,7 @@ namespace ProjectApp
 
         public ElementType GetRandomElementType()
         {
-            ElementType elementType =  ElementType.Baihe;
+            ElementType elementType =  ElementType.Item_Baihe;
             // 根据配置表比例生成元素（这里简化为随机）
             int rand = GameTool.RandomToInt(0,5);
 
@@ -424,6 +408,11 @@ namespace ProjectApp
             //    type = (ElementType)Random.Range(0, 4);
             //}
 
+        }
+
+        public List<Vector2Int> FindAllMatches(List<Vector2Int> allMatches = null)
+        {
+            return gameRuleModule.FindAllMatches(allMatches);
         }
     }
 }

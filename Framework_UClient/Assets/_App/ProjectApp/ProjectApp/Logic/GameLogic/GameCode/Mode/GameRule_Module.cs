@@ -6,33 +6,40 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class GameRules_Module : IGameModule
+    public class GameRule_Module : IGameModule
     {
-        private EliminateGameCore core;
-        private EliminateGameData data;
+        
         private Vector2Int SelectedElement
         {
-            get => data.selectedElement;
-            set => data.selectedElement = value;
+            get => Data.selectedElement;
+            set => Data.selectedElement = value;
         }
-        private ElementData[,] BoardData => data.boardData;
+        private ElementData[,] BoardData => Data.boardData;
 
         private Vector2Int boardSize;
         private bool[,] _visited;
+        public GameRule_Module() { }
+        
+        #region 临时数据 
+        private List<Vector2Int> temp_AllMatchesList = new List<Vector2Int>();
+        #endregion
 
-        public Dispatcher<uint> Dispatcher => core.Dispatcher;
-        public GameRules_Module() { }
+        #region 流程
+        public Dispatcher<uint> Dispatcher => Core.Dispatcher;
+        public EliminateGameData Data => Core.Data;
+
+        public EliminateGameCore Core { get; private set; }
+
         public void FillCore(EliminateGameCore _core)
         {
-            core = _core;
-            data = core.Data;
-
-            AddListener();
+            Core = _core;
         }
 
         public void InitializeBoard(int w, int h)
         {
             boardSize = new Vector2Int(w, h);
+            _visited = new bool[boardSize.x, boardSize.y];
+
         }
 
 
@@ -47,6 +54,19 @@ namespace ProjectApp
         {
             Dispatcher.RemoveListener(GameMsg.ClickElement, OnElementClicked);
         }
+
+        public void GenerateInitialElements()
+        {
+            
+        }
+        public void Disposed()
+        {
+
+
+        }
+
+        #endregion
+
 
         /// <summary>
         /// 点击元素
@@ -105,7 +125,7 @@ namespace ProjectApp
         void SelectElement(int x, int y)
         {
             var elementData = BoardData[x, y];
-            if ((int)elementData.Type >= 1000)
+            if (!ElementTypeTool.CheckType_ClickEvent(elementData.Type))
             {
                 //不可点击
                 return;
@@ -249,36 +269,7 @@ namespace ProjectApp
         }
 
 
-        /// <summary>
-        /// 查找所有匹配（使用Span的高性能版本）
-        /// </summary>
-        public List<Vector2Int> FindAllMatches()
-        {
-            var allMatches = new List<Vector2Int>();
-
-            // 使用bool数组记录已访问位置
-            bool[,] visited = new bool[boardSize.x, boardSize.y];
-
-            for (int y = 0; y < boardSize.y; y++)
-            {
-                for (int x = 0; x < boardSize.x; x++)
-                {
-                    if (!visited[x, y] &&
-                        BoardData[x, y].Type != ElementType.None &&
-                        BoardData[x, y].Type != ElementType.Special)
-                    {
-                        // 查找这个位置的匹配组
-                        var matches = FindMatchGroup(x, y, visited);
-                        if (matches.Count >= 3)
-                        {
-                            allMatches.AddRange(matches);
-                        }
-                    }
-                }
-            }
-
-            return allMatches;
-        }
+       
 
         /// <summary>
         /// 查找匹配组（使用BFS）
@@ -330,7 +321,7 @@ namespace ProjectApp
                 return false;
 
             ElementType type = BoardData[x, y].Type;
-            if (type == ElementType.Special || type == ElementType.None)
+            if (type == ElementType.Fixed_Special || type == ElementType.Fixed_None)
                 return false;
 
             // 使用栈分配数组
@@ -381,7 +372,7 @@ namespace ProjectApp
                 return false;
 
             ElementType type = BoardData[x, y].Type;
-            if (type == ElementType.Special || type == ElementType.None)
+            if (type == ElementType.Fixed_Special || type == ElementType.Fixed_None)
                 return false;
 
             // 使用栈分配数组
@@ -458,7 +449,7 @@ namespace ProjectApp
                 int creadCont = 0;
                 for (int y = 0; y < boardSize.y; y++)
                 {
-                    if (BoardData[x, y].Type == ElementType.Special) // 空位标记
+                    if (BoardData[x, y].Type == ElementType.Fixed_Special) // 空位标记
                     {
                         //要填充的位置
                         ElementData tar = BoardData[x, y];
@@ -482,7 +473,7 @@ namespace ProjectApp
                             {
                                 sour = BoardData[x, temp_y];
                                 //下落了 将自身设置为空的
-                                BoardData[x, temp_y].SetType(ElementType.Special);
+                                BoardData[x, temp_y].SetType(ElementType.Fixed_Special);
                             }
                             else
                             {
@@ -496,7 +487,7 @@ namespace ProjectApp
                         if (temp_y >= boardSize.y || isCreate)
                         {
                             // 生成新元素
-                            ElementType newType = core.GetRandomElementType();
+                            ElementType newType = Core.GetRandomElementType();
                             //因为 是新创建的 所以可能 在高于棋盘的位置  
                             sour = new ElementData(x, temp_y + creadCont, newType);
                             creadCont++;
@@ -523,7 +514,7 @@ namespace ProjectApp
             if (souList.Count > 0 && tarList.Count > 0)
             {
                 // 下落元素
-                core.Dispatch(GameMsg.ElementsFall, souList, tarList);
+                Core.Dispatch(GameMsg.ElementsFall, souList, tarList);
             }
 
 
@@ -539,20 +530,7 @@ namespace ProjectApp
         void CheckAllMatches()
         {
             // 使用对象池获取列表，避免GC分配
-            var allMatches = ListPool<Vector2Int>.Get();
-            
-            var visited = GetVisited();
-            // 优化2：一次性收集所有匹配位置
-            for (int x = 0; x < boardSize.x; x++)
-            {
-                for (int y = 0; y < boardSize.y; y++)
-                {
-                    // 跳过已检查位置和空位
-                    if(ElementTypeTool.CheckType_CanMatches(BoardData[x,y].Type) || visited[x,y])
-
-                    FindMatchesAt(x, y, visited,ref allMatches);
-                }
-            }
+            var allMatches = FindAllMatches();
 
             if (allMatches.Count > 0)
             {
@@ -562,10 +540,40 @@ namespace ProjectApp
                 FillEmptySpaces();
             }
 
-
-            ListPool<Vector2Int>.Release(allMatches);
+            allMatches.Clear();
 
         }
+
+
+
+        /// <summary>
+        /// 查找所有匹配
+        /// </summary>
+        public List<Vector2Int> FindAllMatches(List<Vector2Int> allMatches = null)
+        {
+            if(allMatches == null) allMatches = temp_AllMatchesList;
+
+            allMatches.Clear();
+
+            var visited = GetVisited();
+            // 优化2：一次性收集所有匹配位置
+            for (int x = 0; x < boardSize.x; x++)
+            {
+                for (int y = 0; y < boardSize.y; y++)
+                {
+                    // 跳过已检查位置和空位
+                    if (!ElementTypeTool.CheckType_CanMatches(BoardData[x, y].Type) || visited[x, y])
+                    {
+                        continue;
+                    }
+
+                    FindMatchesAt(x, y, visited, ref allMatches);
+                }
+            }
+
+            return allMatches;
+        }
+
 
         private bool[,] GetVisited()
         {
@@ -637,9 +645,9 @@ namespace ProjectApp
             // 消除元素
             foreach (Vector2Int match in matches)
             {
-                if (BoardData[match.x, match.y].Type != ElementType.None) //如果不是不存在
+                if (BoardData[match.x, match.y].Type != ElementType.Fixed_None) //如果不是不存在
                 {
-                    BoardData[match.x, match.y].SetType(ElementType.Special); // 临时标记为空
+                    BoardData[match.x, match.y].SetType(ElementType.Fixed_Special); // 临时标记为空
                 }
             }
 
@@ -674,24 +682,20 @@ namespace ProjectApp
         /// </summary>
         void AddScore(int score)
         {
-            int oldSocre = data.currentScore;
-            data.currentScore += score;
-            Debug.Log($"当前分数: {data.currentScore}");
+            int oldSocre = Data.currentScore;
+            Data.currentScore += score;
+            Debug.Log($"当前分数: {Data.currentScore}");
 
-            core.Dispatch(GameMsg.ScoreUpdated, oldSocre, data.currentScore);
+            Core.Dispatch(GameMsg.ScoreUpdated, oldSocre, Data.currentScore);
             // 检查是否达到目标
-            if (data.currentScore >= data.targetScore)
+            if (Data.currentScore >= Data.targetScore)
             {
                 Dispatcher.Dispatch(GameMsg.GameWin);
             }
         }
 
-        public void Disposed()
-        {
+       
 
-
-        }
-
-
+        
     }
 }

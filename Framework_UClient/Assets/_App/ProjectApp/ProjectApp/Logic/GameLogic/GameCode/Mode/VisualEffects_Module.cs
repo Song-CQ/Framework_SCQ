@@ -9,10 +9,9 @@ namespace ProjectApp
 {
     public class VisualEffects_Module:IGameModule
     {
-        public ElementItem[,] elementItems;
-        
-        private EliminateGameCore core;
-        public Dispatcher<uint> Dispatcher => core.Dispatcher;  
+        private ElementItem[,] elementItems;
+
+        private Vector3 startVector3;
 
         #region 对象池
         private ElementItem OnNewElement()
@@ -40,19 +39,35 @@ namespace ProjectApp
         private Transform itemsTrf;
         #endregion
 
+        #region 流程
+
+        public Dispatcher<uint> Dispatcher => Core.Dispatcher;
+        public EliminateGameData Data => Core.Data;
+
+        public EliminateGameCore Core { get; private set; }
         public void FillCore(EliminateGameCore eliminateGameCore)
         {
-            core = eliminateGameCore;
+            Core = eliminateGameCore;
 
             elementsPool = new ObjectPool<ElementItem>(OnNewElement, OnGetElement, OnRelease);
             elementsPoolTrf = new GameObject("elementsPoolTrf").transform;
-            elementsPoolTrf.SetParent(core.transform);
+            elementsPoolTrf.SetParent(Core.transform);
             elementsPoolTrf.localPosition = Vector3.zero;
+            
+            startVector3 = Core.startVector3;
         }
 
         public void InitializeBoard(int w, int h)
         {
             elementItems = new ElementItem[w, h];
+
+
+
+
+        }
+
+        public void GenerateInitialElements()
+        {
 
         }
 
@@ -75,19 +90,20 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
 
         }
-        
 
-         /// <summary>
+        #endregion
+
+        /// <summary>
         /// 创建元素
         /// </summary>
         private void CreadElement(int x, int y, ElementType type)
         {
-            ElementData data = new ElementData();
-            data.X = x; 
-            data.Y = y; 
-            data.Type = type;
+            //ElementData data = new ElementData();
+            //data.X = x; 
+            //data.Y = y; 
+            //data.Type = type;
 
-            board[x, y] = data;
+            //board[x, y] = data;
 
             ElementItem element = GetElement(data);
 
