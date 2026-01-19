@@ -77,6 +77,34 @@ namespace ProjectApp
         }
         
 
+         /// <summary>
+        /// 创建元素
+        /// </summary>
+        private void CreadElement(int x, int y, ElementType type)
+        {
+            ElementData data = new ElementData();
+            data.X = x; 
+            data.Y = y; 
+            data.Type = type;
+
+            board[x, y] = data;
+
+            ElementItem element = GetElement(data);
+
+            Vector3 position = startVector3 + new Vector3(x, y, 0);
+            element.Pos = position;
+
+        }
+
+
+        private ElementItem GetElement(ElementData data)
+        {
+            ElementItem element = elementsPool.Get();
+
+            element.Init(data);
+            return element;
+        }
+
         // ========== 事件处理方法（方法签名，无实现代码） ==========
 
         /// <summary>

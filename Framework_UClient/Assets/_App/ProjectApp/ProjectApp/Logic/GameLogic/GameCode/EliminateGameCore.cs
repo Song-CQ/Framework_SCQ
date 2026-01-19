@@ -65,6 +65,8 @@ namespace ProjectApp
 
         public ElementItem[,] ElementItems => visualEffectsModule.elementItems;
 
+        public int CurrentScore => Data.currentScore;
+
         #endregion
 
 
@@ -122,11 +124,11 @@ namespace ProjectApp
             Data = new EliminateGameData();
 
             gameRuleMode = new GameRules_Module();
-            gameVisualEffectsModule = new VisualEffects_Module();
+            visualEffectsModule = new VisualEffects_Module();
 
 
             gameModules.Add(gameRuleMode);
-            gameModules.Add(gameRuleMode);
+            gameModules.Add(visualEffectsModule);
 
 
             foreach (var item in gameModules)
@@ -200,33 +202,7 @@ namespace ProjectApp
             CheckInitialMatches();
         }
 
-        /// <summary>
-        /// ´´½¨ÔªËØ
-        /// </summary>
-        void CreadElement(int x, int y, ElementType type)
-        {
-            ElementData data = new ElementData();
-            data.X = x; 
-            data.Y = y; 
-            data.Type = type;
-
-            board[x, y] = data;
-
-            ElementItem element = GetElement(data);
-
-            Vector3 position = startVector3 + new Vector3(x, y, 0);
-            element.Pos = position;
-
-        }
-
-
-        private ElementItem GetElement(ElementData data)
-        {
-            ElementItem element = elementsPool.Get();
-
-            element.Init(data);
-            return element;
-        }
+       
 
        
 

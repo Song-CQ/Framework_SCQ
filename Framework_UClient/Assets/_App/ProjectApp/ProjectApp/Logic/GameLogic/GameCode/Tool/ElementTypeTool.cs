@@ -13,6 +13,8 @@ namespace ProjectApp
         xihongshui,  // 绿色基础元素
         zhiwu,  // 紫色基础元素
 
+        CanMatche = 100,// 站位比他小的允许参与匹配消除
+
         //不可下落
         NoDown = 900,//占位 比他大的不可下落
 
@@ -55,6 +57,23 @@ namespace ProjectApp
             }
 
             return false;
+        }
+
+
+        /// <summary>
+        /// 该元素是否 可 匹配
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static bool CheckType_CanMatches(ElementType type)
+        {
+            if( type < ElementType.CanMatche)
+            {
+                return true;
+            }
+
+            return false;
+            
         }
     }
 }
