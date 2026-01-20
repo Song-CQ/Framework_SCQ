@@ -7,10 +7,10 @@ using UnityEngine.EventSystems;
 namespace ProjectApp
 {
 
-    public interface IRaycast3D
+    public interface IRaycast3D_OnClick
     {
         public Collider Collider {get;}
-        public void OnObjectClicked(Vector3 hitPoint);
+        public void Raycast_OnClick(Vector3 hitPoint);
 
 
     }
@@ -23,13 +23,13 @@ namespace ProjectApp
         public int layerMask = 1000;
         
         /// <summary>
-        /// QueryTriggerInteraction.UseGlobal     // 使用Physics设置（默认）
-        /// QueryTriggerInteraction.Ignore        // 忽略所有触发器
-        /// QueryTriggerInteraction.Collide       // 检测触发器
+        /// .UseGlobal     // 使用Physics设置（默认）
+        /// .Ignore        // 忽略所有触发器
+        /// .Collide       // 检测触发器
         /// </summary>
         public QueryTriggerInteraction queryTriggerInteraction  = QueryTriggerInteraction.UseGlobal;
 
-        public Dictionary<uint,IRaycast3D> raycast3DList = new Dictionary<uint,IRaycast3D>();
+        public Dictionary<int, IRaycast3D_OnClick> raycast3D_OnClick = new Dictionary<int, IRaycast3D_OnClick>();
 
         public override void Init()
         {
@@ -38,6 +38,11 @@ namespace ProjectApp
             layerMask =  LayerMask.GetMask();
             queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
 
+        }
+
+        public override void Start()
+        {
+            base.Start();
         }
 
         public override void Run()
@@ -54,35 +59,33 @@ namespace ProjectApp
             }
         }
 
-        void CheckClick()
+        private void CheckClick()
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit,maxDistance,layerMask,queryTriggerInteraction))
             {
-                if (hit.collider.gameObject == gameObject)
+                int id = hit.colliderInstanceID;
+                if (raycast3D_OnClick.TryGetValue(id, out IRaycast3D_OnClick raycast))
                 {
-                    OnObjectClicked(hit.point);
+                    raycast.Raycast_OnClick(hit.point);
                 }
             }
         }
 
-        void OnObjectClicked(Vector3 hitPoint)
+
+        public void RegisterEvent_OnClick(IRaycast3D_OnClick raycast3D)
         {
-            Debug.Log($"点击了3D物体:在位置: {hitPoint}");
-
-
-
+            int id = raycast3D.Collider.GetInstanceID();
+            if (raycast3D_OnClick.ContainsKey(id)) return;
+            
+            raycast3D_OnClick.Add(id,raycast3D);
         }
 
-        public void RegisterEvent()
+        public void UnregisterEvent_OnClick(IRaycast3D_OnClick raycast3D) 
         {
-            
-        }
-        public void UnregisterEvent() 
-        {
-            
+            raycast3D_OnClick.Remove(raycast3D.Collider.GetInstanceID());
         }
 
     }

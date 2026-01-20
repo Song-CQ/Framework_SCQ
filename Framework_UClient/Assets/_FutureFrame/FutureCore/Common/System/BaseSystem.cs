@@ -5,6 +5,8 @@
     类型: 框架核心脚本(请勿修改)
     功能: 基础系统
 *****************************************************/
+using UnityEditor;
+
 namespace FutureCore
 {
     public class BaseSystem : ISystem
@@ -42,7 +44,15 @@ namespace FutureCore
         {
         
         }
+        public void RegisterEvent_UpData__Run()
+        {
+            TimerMgr.UpData_Event_ToFrame += Run;
+        }
 
+        public void UnregisterEvent_UpData__Run()
+        {
+            TimerMgr.UpData_Event_ToFrame -= Run;
+        }
         /// <summary>
         /// 销毁
         /// </summary>
