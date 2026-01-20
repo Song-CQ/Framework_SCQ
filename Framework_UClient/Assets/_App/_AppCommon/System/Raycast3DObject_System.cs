@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FutureCore;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace ProjectApp
 {
@@ -87,6 +89,59 @@ namespace ProjectApp
         {
             raycast3D_OnClick.Remove(raycast3D.Collider.GetInstanceID());
         }
+
+        public void AddCheckLayerMask(string layerName)
+        {
+            AddCheckLayerMask(LayerMask.NameToLayer(layerName));
+        }
+        public void RemoveCheckLayerMask(string layerName)
+        {
+            RemoveCheckLayerMask(LayerMask.NameToLayer(layerName));
+        }
+
+        public void AddCheckLayerMask(int layerID)
+        {
+            if (layerID >= 0 && layerID < 32)
+            {
+                layerMask |= (1 << layerID);
+            }
+        }
+        public void RemoveCheckLayerMask(int layerID)
+        {
+            if (layerID >= 0 && layerID < 32)
+            {
+                layerMask &= ~(1 << layerID);
+            }
+        }
+
+        // 检查是否包含某个层级
+        public bool ContainsLayer(string layerName)
+        {
+            int layerID = LayerMask.NameToLayer(layerName);
+            return ContainsLayer(layerID);
+        }
+
+        public bool ContainsLayer(int layerID)
+        {
+            if (layerID < 0 || layerID >= 32) return false;
+            return (layerMask & (1 << layerID)) != 0;
+        }
+
+        // 清空所有层级
+        public void ClearAllLayers()
+        {
+            layerMask = 0;
+            Debug.Log("已清空所有层级");
+        }
+
+        // 设置包含所有层级
+        public void SetAllLayers()
+        {
+            layerMask = ~0; // 所有位都为1
+            Debug.Log("已包含所有层级");
+        }
+
+
 
     }
 }
