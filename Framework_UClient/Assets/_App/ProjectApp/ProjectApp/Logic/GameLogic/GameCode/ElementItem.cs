@@ -1,6 +1,9 @@
 using System;
+using System.Diagnostics.Tracing;
+using FutureCore;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using static PlasticGui.PlasticTableColumn;
 
 namespace ProjectApp
@@ -20,7 +23,7 @@ namespace ProjectApp
         }
 
         // 提供修改坐标的方法（返回新实例）
-        public void WithPosition(int x, int y)
+        public void SetPot(int x, int y)
         {
             X = x;
             Y = y;
@@ -56,8 +59,11 @@ namespace ProjectApp
         public Transform Transform { get; private set; }
 
         public ElementData Data { get; private set; }
+        
         private BoxCollider2D collide;
         private SpriteRenderer icon;
+
+        private bool isHighlight;
 
         public Vector2 Pos
         {
@@ -79,6 +85,12 @@ namespace ProjectApp
             collide = Transform.GetComponent<BoxCollider2D>();
             icon = Transform.Find("icon").GetComponent<SpriteRenderer>();
             
+            // listener  = UIEventListener.GetEventListener(Transform);
+            // listener.PointerClick_Event += OnClickEvent;
+        }
+        private void PointerClick_Event() 
+        {
+            GameTool.GameCore.Dispatch(GameMsg.ClickElement,this);
         }
 
 
@@ -87,6 +99,8 @@ namespace ProjectApp
             Data = _data;
 
             AddListener();
+
+            RefreshView();
 
         }
 
@@ -101,16 +115,12 @@ namespace ProjectApp
             GameTool.GameCore.RemoveListener(GameMsg.DeselectElement, DeselectElement);
         }
 
-        public void Refresh()
+        public void RefreshView()
         {
-            icon.sprite = GameTool.GetSprite(Data.Type);
-
-
-        }
-
-        public void UpdatePosition(int x, int y)
-        {
-            Data.WithPosition(x, y);
+            if(ElementTypeTool.CheckType_HasIcon(Data.Type))
+            { 
+               icon.sprite = GameTool.GetSprite(Data.Type);
+            }
         }
 
         /// <summary>
@@ -141,14 +151,28 @@ namespace ProjectApp
 
         }
 
-        void OnMouseDown()
-        {
-            GameTool.GameCore.Dispatch(GameMsg.ClickElement,this);
-        }
 
         public void Release()
         {
             RemoveListener();
+
+            SetHighlight(false);
+
+        }
+
+        public void SetHighlight(bool v)
+        {
+            if(v == isHighlight) return;
+            isHighlight = v;
+            if(isHighlight)
+            {
+                icon.color = Color.yellow;
+            }else
+            {
+                icon.color = Color.white;
+            }
+
+
         }
     }
 }

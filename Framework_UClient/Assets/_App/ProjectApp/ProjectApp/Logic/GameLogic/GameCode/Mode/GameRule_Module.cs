@@ -694,6 +694,153 @@ namespace ProjectApp
             }
         }
 
+
+        #region 道具系统
+        /*
+
+        /// <summary>
+        /// 生成道具
+        /// </summary>
+        void GeneratePropAt(int x, int y, PropType propType)
+        {
+            GameObject propPrefab = null;
+
+            switch (propType)
+            {
+                case PropType.Horizontal:
+                    propPrefab = horizontalProp;
+                    break;
+                case PropType.Vertical:
+                    propPrefab = verticalProp;
+                    break;
+                case PropType.Bomb:
+                    propPrefab = bombProp;
+                    break;
+                case PropType.Wild:
+                    propPrefab = wildProp;
+                    break;
+            }
+
+            if (propPrefab != null && elementObjects[x, y] != null)
+            {
+                // 在元素位置生成道具
+                Destroy(elementObjects[x, y]);
+                GameObject prop = Instantiate(propPrefab, new Vector3(x, y, 0), Quaternion.identity);
+                elementObjects[x, y] = prop;
+
+                // 添加道具脚本
+                GameProp propScript = prop.AddComponent<GameProp>();
+                propScript.Initialize(propType, x, y);
+                propScript.OnPropClicked += OnPropClicked;
+            }
+        }
+
+        /// <summary>
+        /// 道具点击事件
+        /// </summary>
+        void OnPropClicked(PropType propType, int x, int y)
+        {
+            switch (propType)
+            {
+                case PropType.Horizontal:
+                    ActivateHorizontalProp(x, y);
+                    break;
+                case PropType.Vertical:
+                    ActivateVerticalProp(x, y);
+                    break;
+                case PropType.Bomb:
+                    ActivateBombProp(x, y);
+                    break;
+                case PropType.Wild:
+                    ActivateWildProp(x, y);
+                    break;
+            }
+
+            // 清除道具
+            Destroy(elementObjects[x, y]);
+            elementObjects[x, y] = null;
+            board[x, y] = ElementType.Fixed_Special;
+
+            StartCoroutine(FillEmptySpaces());
+        }
+
+        /// <summary>
+        /// 激活横向道具
+        /// </summary>
+        void ActivateHorizontalProp(int x, int y)
+        {
+            for (int i = 0; i < boardWidth; i++)
+            {
+                if (elementObjects[i, y] != null)
+                {
+                    Destroy(elementObjects[i, y]);
+                    elementObjects[i, y] = null;
+                    board[i, y] = ElementType.Fixed_Special;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 激活竖向道具
+        /// </summary>
+        void ActivateVerticalProp(int x, int y)
+        {
+            for (int j = 0; j < boardHeight; j++)
+            {
+                if (elementObjects[x, j] != null)
+                {
+                    Destroy(elementObjects[x, j]);
+                    elementObjects[x, j] = null;
+                    board[x, j] = ElementType.Fixed_Special;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 激活炸弹道具
+        /// </summary>
+        void ActivateBombProp(int x, int y)
+        {
+            // 3x3范围消除
+            for (int i = Mathf.Max(0, x - 1); i <= Mathf.Min(boardWidth - 1, x + 1); i++)
+            {
+                for (int j = Mathf.Max(0, y - 1); j <= Mathf.Min(boardHeight - 1, y + 1); j++)
+                {
+                    if (elementObjects[i, j] != null)
+                    {
+                        Destroy(elementObjects[i, j]);
+                        elementObjects[i, j] = null;
+                        board[i, j] = ElementType.Fixed_Special;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 激活Wild道具
+        /// </summary>
+        void ActivateWildProp(int x, int y)
+        {
+            // 随机选择一种颜色消除
+            ElementType randomType = (ElementType)Random.Range(0, 4);
+
+            for (int i = 0; i < boardWidth; i++)
+            {
+                for (int j = 0; j < boardHeight; j++)
+                {
+                    if (board[i, j] == randomType && elementObjects[i, j] != null)
+                    {
+                        Destroy(elementObjects[i, j]);
+                        elementObjects[i, j] = null;
+                        board[i, j] = ElementType.Fixed_Special;
+                    }
+                }
+            }
+        }
+
+        */
+        #endregion
+
        
 
         

@@ -22,7 +22,7 @@ namespace ProjectApp
         {
             if (!elementTypeSpr.ContainsKey(type))
             {
-                Sprite sprite = Resources.Load<Sprite>("ItemIcon/icon_"+type.ToString());
+                Sprite sprite = Resources.Load<Sprite>("ItemIcon/"+type.ToString());
                 elementTypeSpr[type] = sprite;
             }
             return elementTypeSpr[type];
@@ -34,7 +34,7 @@ namespace ProjectApp
         {
             if (element_Prefab == null)
             { 
-                element_Prefab =  Resources.Load<GameObject>("Prefab/Element");
+                element_Prefab =  Resources.Load<GameObject>("Prefabs/GamePrefab/Element");
             }
 
             return GameObject.Instantiate(element_Prefab);

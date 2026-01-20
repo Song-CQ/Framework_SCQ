@@ -7,7 +7,7 @@ namespace ProjectApp
 {
     public enum ElementType
     {
-        Item_Baihe,    // 红色基础元素
+        Item_Baihe = 1,    // 红色基础元素
         Item_fengjiao, // 黄色基础元素
         Item_shuihu,   // 蓝色基础元素
         Item_xihongshui,  // 绿色基础元素
@@ -29,6 +29,26 @@ namespace ProjectApp
     }
     public static class ElementTypeTool
     {
+
+        /// <summary>
+        /// 该元素是否要显示图片
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static bool CheckType_HasIcon(ElementType type)
+        {
+            switch(type)
+            {
+                case ElementType.Dummy_CanMatche:
+                case ElementType.Dummy_CanClickEvent:
+                case ElementType.Dummy_CanDown:
+                case ElementType.Fixed_Special:
+                case ElementType.Fixed_None:
+                return false;
+            }
+            return true;
+        }
         /// <summary>
         /// 该元素是否可下落
         /// </summary>
@@ -93,5 +113,7 @@ namespace ProjectApp
             }
             return false;
         }
+        
+        
     }
 }

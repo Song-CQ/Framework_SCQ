@@ -7,11 +7,12 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class VisualEffects_Module:IGameModule
+    public class VisualEffects_Module : IGameModule
     {
-        private ElementItem[,] elementItems;
+        public ElementItem[,] elementItems;
 
         private Vector3 startVector3;
+
 
         #region 对象池
         private ElementItem OnNewElement()
@@ -25,19 +26,22 @@ namespace ProjectApp
         {
             element.Transform.SetActive(false);
             element.Transform.SetParent(elementsPoolTrf);
+            element.Release();
         }
 
         private void OnGetElement(ElementItem element)
         {
             element.Transform.SetActive(true);
-            element.Transform.SetParent(itemsTrf);
+            element.Transform.SetParent(elementItemsTrf);
         }
         private ObjectPool<ElementItem> elementsPool;
 
         private Transform elementsPoolTrf;
 
-        private Transform itemsTrf;
+        private Transform elementItemsTrf;
+
         #endregion
+      
 
         #region 流程
 
@@ -50,34 +54,25 @@ namespace ProjectApp
             Core = eliminateGameCore;
 
             elementsPool = new ObjectPool<ElementItem>(OnNewElement, OnGetElement, OnRelease);
-            elementsPoolTrf = new GameObject("elementsPoolTrf").transform;
+            elementsPoolTrf = new GameObject("ElementsPool").transform;
             elementsPoolTrf.SetParent(Core.transform);
             elementsPoolTrf.localPosition = Vector3.zero;
-            
+      
+            elementItemsTrf = new GameObject("ElementItems").transform;
+            elementItemsTrf.SetParent(Core.transform);
+            elementItemsTrf.localPosition = Vector3.zero;
+
             startVector3 = Core.startVector3;
+        
+            
         }
-
-        public void InitializeBoard(int w, int h)
-        {
-            elementItems = new ElementItem[w, h];
-
-
-
-
-        }
-
-        public void GenerateInitialElements()
-        {
-
-        }
-
         public void AddListener()
         {
             Dispatcher.AddFinallyListener(GameMsg.DeselectElement, OnDeselectElement);
             Dispatcher.AddFinallyListener(GameMsg.SwapElements, OnSwapElements);
             Dispatcher.AddFinallyListener(GameMsg.ClearElements, OnClearElements);
             Dispatcher.AddFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
-            Dispatcher.AddFinallyListener(GameMsg.SelectElement,OnSelectElement);
+            Dispatcher.AddFinallyListener(GameMsg.SelectElement, OnSelectElement);
 
         }
 
@@ -91,35 +86,73 @@ namespace ProjectApp
 
         }
 
+        public void InitializeBoard(int w, int h)
+        {
+            
+
+            elementItems = new ElementItem[w, h];
+
+        }
+
+        public void GenerateInitialElements()
+        {
+            for (int x = 0; x < Data.BoardWidth; x++)
+            {
+                for (int y = 0; y < Data.BoardHeight; y++)
+                {
+                    ElementData data = Data.boardData[x, y];
+                    ElementItem element = CreadElemenItem(Data.boardData[x, y]);
+                    
+                    //设置位置
+                    element.Pos = GetPosition(data);
+
+
+                }
+            }
+
+
+        }
+
+
+
         #endregion
 
         /// <summary>
         /// 创建元素
         /// </summary>
-        private void CreadElement(int x, int y, ElementType type)
-        {
-            //ElementData data = new ElementData();
-            //data.X = x; 
-            //data.Y = y; 
-            //data.Type = type;
-
-            //board[x, y] = data;
-
-            ElementItem element = GetElement(data);
-
-            Vector3 position = startVector3 + new Vector3(x, y, 0);
-            element.Pos = position;
-
-        }
-
-
-        private ElementItem GetElement(ElementData data)
+        private ElementItem CreadElemenItem(ElementData data)
         {
             ElementItem element = elementsPool.Get();
-
             element.Init(data);
+
             return element;
         }
+
+        private Vector3 GetPosition(int X , int Y)
+        {
+            Vector3 position = startVector3 + new Vector3(X, Y, 0);
+            return position;
+        }
+        private Vector3 GetPosition(ElementData data)
+        {         
+            return GetPosition(data.X,data.Y);;
+        }
+
+
+        /// <summary>
+        /// 查找棋盘对应的元素
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private ElementItem FindElementItem(ElementData data)
+        {
+            if(data.X>= Data.BoardWidth || data.Y >= Data.BoardHeight )return null;
+
+            return elementItems[data.X,data.Y];
+
+        }
+
+
 
         // ========== 事件处理方法（方法签名，无实现代码） ==========
 
@@ -130,10 +163,19 @@ namespace ProjectApp
         private void OnSelectElement(object data)
         {
             // TODO: 实现元素选择逻辑
+            ElementData elementData = (ElementData)data;
             // 1. 获取被选择的元素
+            ElementItem item = FindElementItem(elementData);
             // 2. 高亮显示选中状态
-            // 3. 更新选择状态
-            // 4. 播放选择音效
+            if(item!=null)
+            {
+               // 3. 更新选择状态
+               item.SetHighlight(true);
+               // 4. 播放选择音效
+
+            }
+
+            
         }
 
         /// <summary>
@@ -143,9 +185,19 @@ namespace ProjectApp
         private void OnDeselectElement(object data)
         {
             // TODO: 实现元素取消选择逻辑
-            // 1. 移除元素的高亮状态
+            // TODO: 实现元素选择逻辑
+            ElementData elementData = (ElementData)data;
+            // 1. 获取被选择的元素
+            ElementItem item = FindElementItem(elementData);
             // 2. 重置选择状态
-            // 3. 清理相关缓存
+            if(item!=null)
+            {
+               // 3. 更新选择状态
+               item.SetHighlight(false);
+               // 4. 播放选择音效
+
+            }
+
         }
 
         /// <summary>
@@ -196,6 +248,6 @@ namespace ProjectApp
 
         }
 
-       
+
     }
 }

@@ -35,6 +35,7 @@ namespace FutureCore
                 UpData_Second?.Invoke();
             }
         }
+
         
     }
 

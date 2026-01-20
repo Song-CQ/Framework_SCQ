@@ -63,9 +63,6 @@ namespace ProjectApp
         [SerializeField] public Vector3 startVector3;   // 棋盘高度
         [SerializeField] private GameMode currentMode = GameMode.BuildHive;
 
-        [Header("元素预设")]
-        [SerializeField] private Sprite[] elementIocns; // 0-3为基础元素，4为特殊元素
-
         [Header("道具预设")]
         [SerializeField] private GameObject horizontalProp;   // 横向消除道具
         [SerializeField] private GameObject verticalProp;     // 竖向消除道具
@@ -75,7 +72,6 @@ namespace ProjectApp
 
 
         #region 棋盘属性
-
 
         public ElementData[,] BoardData => Data.boardData;
         // 当前选中的元素
@@ -90,27 +86,6 @@ namespace ProjectApp
 
         #endregion
 
-
-
-
-
-
-
-        /// <summary>
-        /// 能否操作
-        /// </summary>
-        public bool EndedCtr { get => _endedCtrSum > 0; set { if (value) _endedCtrSum++; else _endedCtrSum--; } }
-        /// <summary>
-        /// 操作计数器
-        /// </summary>
-        private int _endedCtrSum = 0;
-
-        private void Awake()
-        { 
-            Dispatcher = new Dispatcher<uint>();
-        }
-
-        
 
         #region 消息派发
 
@@ -138,12 +113,27 @@ namespace ProjectApp
         private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
         private List<IGameModule> gameModules = new List<IGameModule>();
+        
+        /// <summary>
+        /// 能否操作 Controller
+        /// </summary>
+        public bool Enabled_PlayerCtr { get => _enabledCtrSum > 0; set { if (value) _enabledCtrSum++; else _enabledCtrSum--; } }
+        /// <summary>
+        /// 操作计数器
+        /// </summary>
+        private int _enabledCtrSum = 0;
+
+        private void Awake()
+        { 
+            Dispatcher = new Dispatcher<uint>();
+        }
 
         void Start()
         {
             GameTool.GameCore = this;
 
             Data = new EliminateGameData();
+            
 
             gameInitialModule = new GameInitial_Module();
 
@@ -171,7 +161,7 @@ namespace ProjectApp
             GenerateInitialElements();
 
             //允许操作
-            EndedCtr = true;
+            Enabled_PlayerCtr = true;
 
         }
 
@@ -215,160 +205,10 @@ namespace ProjectApp
             {
                 item.GenerateInitialElements();
             }
-
-            
-
             
         }
 
        
-
-       
-
-        
-
-        
-
-        /// <summary>
-        /// 生成道具
-        /// </summary>
-        void GeneratePropAt(int x, int y, PropType propType)
-        {
-            GameObject propPrefab = null;
-
-            switch (propType)
-            {
-                case PropType.Horizontal:
-                    propPrefab = horizontalProp;
-                    break;
-                case PropType.Vertical:
-                    propPrefab = verticalProp;
-                    break;
-                case PropType.Bomb:
-                    propPrefab = bombProp;
-                    break;
-                case PropType.Wild:
-                    propPrefab = wildProp;
-                    break;
-            }
-
-            if (propPrefab != null && elementObjects[x, y] != null)
-            {
-                // 在元素位置生成道具
-                Destroy(elementObjects[x, y]);
-                GameObject prop = Instantiate(propPrefab, new Vector3(x, y, 0), Quaternion.identity);
-                elementObjects[x, y] = prop;
-
-                // 添加道具脚本
-                GameProp propScript = prop.AddComponent<GameProp>();
-                propScript.Initialize(propType, x, y);
-                propScript.OnPropClicked += OnPropClicked;
-            }
-        }
-
-        /// <summary>
-        /// 道具点击事件
-        /// </summary>
-        void OnPropClicked(PropType propType, int x, int y)
-        {
-            switch (propType)
-            {
-                case PropType.Horizontal:
-                    ActivateHorizontalProp(x, y);
-                    break;
-                case PropType.Vertical:
-                    ActivateVerticalProp(x, y);
-                    break;
-                case PropType.Bomb:
-                    ActivateBombProp(x, y);
-                    break;
-                case PropType.Wild:
-                    ActivateWildProp(x, y);
-                    break;
-            }
-
-            // 清除道具
-            Destroy(elementObjects[x, y]);
-            elementObjects[x, y] = null;
-            board[x, y] = ElementType.Fixed_Special;
-
-            StartCoroutine(FillEmptySpaces());
-        }
-
-        /// <summary>
-        /// 激活横向道具
-        /// </summary>
-        void ActivateHorizontalProp(int x, int y)
-        {
-            for (int i = 0; i < boardWidth; i++)
-            {
-                if (elementObjects[i, y] != null)
-                {
-                    Destroy(elementObjects[i, y]);
-                    elementObjects[i, y] = null;
-                    board[i, y] = ElementType.Fixed_Special;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 激活竖向道具
-        /// </summary>
-        void ActivateVerticalProp(int x, int y)
-        {
-            for (int j = 0; j < boardHeight; j++)
-            {
-                if (elementObjects[x, j] != null)
-                {
-                    Destroy(elementObjects[x, j]);
-                    elementObjects[x, j] = null;
-                    board[x, j] = ElementType.Fixed_Special;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 激活炸弹道具
-        /// </summary>
-        void ActivateBombProp(int x, int y)
-        {
-            // 3x3范围消除
-            for (int i = Mathf.Max(0, x - 1); i <= Mathf.Min(boardWidth - 1, x + 1); i++)
-            {
-                for (int j = Mathf.Max(0, y - 1); j <= Mathf.Min(boardHeight - 1, y + 1); j++)
-                {
-                    if (elementObjects[i, j] != null)
-                    {
-                        Destroy(elementObjects[i, j]);
-                        elementObjects[i, j] = null;
-                        board[i, j] = ElementType.Fixed_Special;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// 激活Wild道具
-        /// </summary>
-        void ActivateWildProp(int x, int y)
-        {
-            // 随机选择一种颜色消除
-            ElementType randomType = (ElementType)Random.Range(0, 4);
-
-            for (int i = 0; i < boardWidth; i++)
-            {
-                for (int j = 0; j < boardHeight; j++)
-                {
-                    if (board[i, j] == randomType && elementObjects[i, j] != null)
-                    {
-                        Destroy(elementObjects[i, j]);
-                        elementObjects[i, j] = null;
-                        board[i, j] = ElementType.Fixed_Special;
-                    }
-                }
-            }
-        }
-
         /// <summary>
         /// 游戏胜利
         /// </summary>
@@ -377,6 +217,14 @@ namespace ProjectApp
             Debug.Log("游戏胜利！达到目标分数！");
             // 这里可以触发胜利界面、奖励发放等
         }
+       
+
+        
+
+        
+
+
+        
 
         public void Disposed()
         {
@@ -389,9 +237,9 @@ namespace ProjectApp
 
         public ElementType GetRandomElementType()
         {
-            ElementType elementType =  ElementType.Item_Baihe;
+            ElementType elementType =  ElementType.Fixed_None;
             // 根据配置表比例生成元素（这里简化为随机）
-            int rand = GameTool.RandomToInt(0,5);
+            int rand = GameTool.RandomToInt(1,6);
 
             elementType = (ElementType)rand;
             return elementType;
