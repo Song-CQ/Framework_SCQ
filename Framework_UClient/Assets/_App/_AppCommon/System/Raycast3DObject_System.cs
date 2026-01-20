@@ -22,7 +22,7 @@ namespace ProjectApp
         public Camera mainCamera;
 
         public float maxDistance = Mathf.Infinity;
-        public int layerMask = 1000;
+        public int layerMask = ~0;
         
         /// <summary>
         /// .UseGlobal     // 使用Physics设置（默认）
