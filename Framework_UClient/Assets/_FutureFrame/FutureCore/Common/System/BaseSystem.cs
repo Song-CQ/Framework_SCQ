@@ -36,6 +36,14 @@ namespace FutureCore
             isRunning = false;
         }
         /// <summary>
+        /// 运行
+        /// </summary>
+        public virtual void Run()
+        {
+        
+        }
+
+        /// <summary>
         /// 销毁
         /// </summary>
         public virtual void Dispose()
