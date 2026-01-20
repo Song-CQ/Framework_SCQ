@@ -13,6 +13,7 @@ namespace ProjectApp
 
         private Vector3 startVector3;
 
+        public Raycast3D_System RaycastSys { get; private set; }
 
         #region ∂‘œÛ≥ÿ
         private ElementItem OnNewElement()
@@ -63,9 +64,27 @@ namespace ProjectApp
             elementItemsTrf.localPosition = Vector3.zero;
 
             startVector3 = Core.startVector3;
-        
-            
+
+
+            InitRaycastSys();
+           
+
+
+
+
         }
+
+        private void InitRaycastSys()
+        {
+            RaycastSys = new Raycast3D_System();
+            RaycastSys.Init();
+
+            RaycastSys.mainCamera = Camera.main;
+            RaycastSys.queryTriggerInteraction = QueryTriggerInteraction.Ignore;
+            RaycastSys.ClearCheckAllLayers();
+            RaycastSys.AddCheckLayerMask("ElementItem");
+        }
+
         public void AddListener()
         {
             Dispatcher.AddFinallyListener(GameMsg.DeselectElement, OnDeselectElement);
