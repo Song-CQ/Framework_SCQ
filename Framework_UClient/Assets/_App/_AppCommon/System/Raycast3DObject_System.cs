@@ -4,16 +4,14 @@ using System.Collections.Generic;
 using FutureCore;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace ProjectApp
 {
 
     public interface IRaycast3D_OnClick
     {
-        public Collider Collider {get;}
+        public Collider Collider { get; }
         public void Raycast_OnClick(Vector3 hitPoint);
-
 
     }
 
@@ -21,25 +19,25 @@ namespace ProjectApp
     {
         public Camera mainCamera;
 
-        public float maxDistance = Mathf.Infinity;
+        public float maxDistance = 1000;
         public int layerMask = 0;
-        
+
         /// <summary>
         /// .UseGlobal     // 使用Physics设置（默认）
         /// .Ignore        // 忽略所有触发器
         /// .Collide       // 检测触发器
         /// </summary>
-        public QueryTriggerInteraction queryTriggerInteraction  = QueryTriggerInteraction.UseGlobal;
+        public QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
 
         public Dictionary<int, IRaycast3D_OnClick> raycast3D_OnClick = new Dictionary<int, IRaycast3D_OnClick>();
 
         public override void Init()
         {
             mainCamera = Camera.main;
-            maxDistance = Mathf.Infinity;
-            layerMask =  ~0;
+            maxDistance = 1000;
+            layerMask = ~0;
             queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
-         
+
         }
 
         public override void Start()
@@ -49,7 +47,7 @@ namespace ProjectApp
 
         public override void Run()
         {
-            if(!IsRunning)return;
+            if (!IsRunning) return;
             if (Input.GetMouseButtonDown(0))
             {
                 // 检查UI遮挡
@@ -66,12 +64,34 @@ namespace ProjectApp
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit,maxDistance,layerMask,queryTriggerInteraction))
+            if (Physics.Raycast(ray, out hit, maxDistance, layerMask, queryTriggerInteraction))
             {
                 int id = hit.colliderInstanceID;
                 if (raycast3D_OnClick.TryGetValue(id, out IRaycast3D_OnClick raycast))
                 {
                     raycast.Raycast_OnClick(hit.point);
+                }
+            }
+            else //2D 
+            {
+                // 保存原始设置
+                bool originalHitTriggers = Physics2D.queriesHitTriggers;
+                // 设置为忽略触发器（与3D保持一致）
+                Physics2D.queriesHitTriggers = queryTriggerInteraction == QueryTriggerInteraction.Ignore ? false:true;
+
+                // 2D 的 layerMask 是 int 类型
+                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray,maxDistance,layerMask);
+
+                // 恢复原始设置
+                Physics2D.queriesHitTriggers = originalHitTriggers;
+                     
+                if (hit2D.collider != null)
+                {
+                    int id = hit2D.collider.GetInstanceID();
+                    if (raycast3D_OnClick.TryGetValue(id, out IRaycast3D_OnClick raycast))
+                    {
+                        raycast.Raycast_OnClick(hit2D.point);
+                    }
                 }
             }
         }
@@ -81,11 +101,11 @@ namespace ProjectApp
         {
             int id = raycast3D.Collider.GetInstanceID();
             if (raycast3D_OnClick.ContainsKey(id)) return;
-            
-            raycast3D_OnClick.Add(id,raycast3D);
+
+            raycast3D_OnClick.Add(id, raycast3D);
         }
 
-        public void UnregisterEvent_OnClick(IRaycast3D_OnClick raycast3D) 
+        public void UnregisterEvent_OnClick(IRaycast3D_OnClick raycast3D)
         {
             raycast3D_OnClick.Remove(raycast3D.Collider.GetInstanceID());
         }
@@ -131,7 +151,7 @@ namespace ProjectApp
         public void ClearCheckAllLayers()
         {
             layerMask = 0;
-            Debug.Log("已清空所有层级");
+            // Debug.Log("已清空所有层级");
         }
 
 
@@ -139,7 +159,14 @@ namespace ProjectApp
         public void SetCheckAllLayers()
         {
             layerMask = ~0; // 所有位都为1
-            Debug.Log("已包含所有层级");
+            // Debug.Log("已包含所有层级");
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            raycast3D_OnClick.Clear();
+
         }
 
 

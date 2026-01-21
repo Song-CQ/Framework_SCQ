@@ -14,8 +14,9 @@ namespace ProjectApp
         private Vector3 startVector3;
 
         public Raycast3D_System RaycastSys { get; private set; }
+        public DoTweenAnimation_System AnimationSys { get; private set; }
 
-        #region ¶ÔÏó³Ø
+        #region å¯¹è±¡æ± 
         private ElementItem OnNewElement()
         {
             GameObject go = GameTool.InstantiateElementPrefab();
@@ -25,6 +26,7 @@ namespace ProjectApp
 
         private void OnRelease(ElementItem element)
         {
+            RaycastSys.RegisterEvent_OnClick(element);
             element.Transform.SetActive(false);
             element.Transform.SetParent(elementsPoolTrf);
             element.Release();
@@ -44,7 +46,7 @@ namespace ProjectApp
         #endregion
       
 
-        #region Á÷³Ì
+        #region æµç¨‹
 
         public Dispatcher<uint> Dispatcher => Core.Dispatcher;
         public EliminateGameData Data => Core.Data;
@@ -66,23 +68,28 @@ namespace ProjectApp
             startVector3 = Core.startVector3;
 
 
-            InitRaycastSys();
+            InitSys();
            
-
-
-
-
         }
 
-        private void InitRaycastSys()
+        private void InitSys()
         {
             RaycastSys = new Raycast3D_System();
             RaycastSys.Init();
 
             RaycastSys.mainCamera = Camera.main;
+            RaycastSys.maxDistance = 1000;
             RaycastSys.queryTriggerInteraction = QueryTriggerInteraction.Ignore;
             RaycastSys.ClearCheckAllLayers();
             RaycastSys.AddCheckLayerMask("ElementItem");
+
+            RaycastSys.Start();
+
+
+            AnimationSys = new DoTweenAnimation_System();
+            AnimationSys.Init();
+            AnimationSys.Start();
+
         }
 
         public void AddListener()
@@ -122,9 +129,10 @@ namespace ProjectApp
                     ElementData data = Data.boardData[x, y];
                     ElementItem element = CreadElemenItem(Data.boardData[x, y]);
                     
-                    //ÉèÖÃÎ»ÖÃ
+                    //è®¾ç½®ä½ç½®
                     element.Pos = GetPosition(data);
 
+                    elementItems[x,y] = element;
 
                 }
             }
@@ -132,17 +140,53 @@ namespace ProjectApp
 
         }
 
+        public void Dispose()
+        {
+            RemoveListener();
+            
+            Core = null;
+            startVector3 = Vector3.zero;
+
+            foreach (var item in elementItems)
+            {
+                elementsPool.Release(item);
+            }
+            elementItems = null;
+            elementsPool = null;
+            GameObject.Destroy(elementsPoolTrf.gameObject);
+            GameObject.Destroy(elementItemsTrf.gameObject);
+            elementsPoolTrf = null;
+            elementItemsTrf = null;
+
+            RaycastSys.Shutdown();
+            RaycastSys.Dispose();
+            RaycastSys = null;
+
+            AnimationSys.Shutdown();
+            AnimationSys.Dispose();
+            AnimationSys = null;
+
+
+
+
+
+        }
+
+        
+        
+
 
 
         #endregion
 
         /// <summary>
-        /// ´´½¨ÔªËØ
+        /// åˆ›å»ºå…ƒç´ 
         /// </summary>
         private ElementItem CreadElemenItem(ElementData data)
         {
             ElementItem element = elementsPool.Get();
             element.Init(data);
+            RaycastSys.RegisterEvent_OnClick(element);
 
             return element;
         }
@@ -159,7 +203,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ²éÕÒÆåÅÌ¶ÔÓ¦µÄÔªËØ
+        /// æŸ¥æ‰¾æ£‹ç›˜å¯¹åº”çš„å…ƒç´ 
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -173,24 +217,24 @@ namespace ProjectApp
 
 
 
-        // ========== ÊÂ¼ş´¦Àí·½·¨£¨·½·¨Ç©Ãû£¬ÎŞÊµÏÖ´úÂë£© ==========
+        // ========== äº‹ä»¶å¤„ç†æ–¹æ³•ï¼ˆæ–¹æ³•ç­¾åï¼Œæ— å®ç°ä»£ç ï¼‰ ==========
 
         /// <summary>
-        /// ´¦ÀíÔªËØÑ¡ÔñÊÂ¼ş
+        /// å¤„ç†å…ƒç´ é€‰æ‹©äº‹ä»¶
         /// </summary>
-        /// <param name="data">ÊÂ¼şÊı¾İ£¬Í¨³£°üº¬±»Ñ¡ÔñµÄÔªËØĞÅÏ¢</param>
+        /// <param name="data">äº‹ä»¶æ•°æ®ï¼Œé€šå¸¸åŒ…å«è¢«é€‰æ‹©çš„å…ƒç´ ä¿¡æ¯</param>
         private void OnSelectElement(object data)
         {
-            // TODO: ÊµÏÖÔªËØÑ¡ÔñÂß¼­
+            // TODO: å®ç°å…ƒç´ é€‰æ‹©é€»è¾‘
             ElementData elementData = (ElementData)data;
-            // 1. »ñÈ¡±»Ñ¡ÔñµÄÔªËØ
+            // 1. è·å–è¢«é€‰æ‹©çš„å…ƒç´ 
             ElementItem item = FindElementItem(elementData);
-            // 2. ¸ßÁÁÏÔÊ¾Ñ¡ÖĞ×´Ì¬
+            // 2. é«˜äº®æ˜¾ç¤ºé€‰ä¸­çŠ¶æ€
             if(item!=null)
             {
-               // 3. ¸üĞÂÑ¡Ôñ×´Ì¬
-               item.SetHighlight(true);
-               // 4. ²¥·ÅÑ¡ÔñÒôĞ§
+               // 3. æ›´æ–°é€‰æ‹©çŠ¶æ€
+               item.SetSelect(true);
+               // 4. æ’­æ”¾é€‰æ‹©éŸ³æ•ˆ
 
             }
 
@@ -198,74 +242,71 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ´¦ÀíÔªËØÈ¡ÏûÑ¡ÔñÊÂ¼ş
+        /// å¤„ç†å…ƒç´ å–æ¶ˆé€‰æ‹©äº‹ä»¶
         /// </summary>
-        /// <param name="data">ÊÂ¼şÊı¾İ£¬Í¨³£°üº¬±»È¡ÏûÑ¡ÔñµÄÔªËØĞÅÏ¢</param>
+        /// <param name="data">äº‹ä»¶æ•°æ®ï¼Œé€šå¸¸åŒ…å«è¢«å–æ¶ˆé€‰æ‹©çš„å…ƒç´ ä¿¡æ¯</param>
         private void OnDeselectElement(object data)
         {
-            // TODO: ÊµÏÖÔªËØÈ¡ÏûÑ¡ÔñÂß¼­
-            // TODO: ÊµÏÖÔªËØÑ¡ÔñÂß¼­
+            // TODO: å®ç°å…ƒç´ å–æ¶ˆé€‰æ‹©é€»è¾‘
+            // TODO: å®ç°å…ƒç´ é€‰æ‹©é€»è¾‘
             ElementData elementData = (ElementData)data;
-            // 1. »ñÈ¡±»Ñ¡ÔñµÄÔªËØ
+            // 1. è·å–è¢«é€‰æ‹©çš„å…ƒç´ 
             ElementItem item = FindElementItem(elementData);
-            // 2. ÖØÖÃÑ¡Ôñ×´Ì¬
+            // 2. é‡ç½®é€‰æ‹©çŠ¶æ€
             if(item!=null)
             {
-               // 3. ¸üĞÂÑ¡Ôñ×´Ì¬
-               item.SetHighlight(false);
-               // 4. ²¥·ÅÑ¡ÔñÒôĞ§
+               // 3. æ›´æ–°é€‰æ‹©çŠ¶æ€
+               item.SetSelect(false);
+               // 4. æ’­æ”¾é€‰æ‹©éŸ³æ•ˆ
 
             }
 
         }
 
         /// <summary>
-        /// ´¦ÀíÔªËØ½»»»ÊÂ¼ş
+        /// å¤„ç†å…ƒç´ äº¤æ¢äº‹ä»¶
         /// </summary>
-        /// <param name="data">ÊÂ¼şÊı¾İ£¬°üº¬½»»»µÄÁ½¸öÔªËØĞÅÏ¢</param>
+        /// <param name="data">äº‹ä»¶æ•°æ®ï¼ŒåŒ…å«äº¤æ¢çš„ä¸¤ä¸ªå…ƒç´ ä¿¡æ¯</param>
         private void OnSwapElements(object data)
         {
-            // TODO: ÊµÏÖÔªËØ½»»»Âß¼­
-            // 1. ½âÎö½»»»µÄÔªËØÊı¾İ
-            // 2. Ö´ĞĞ½»»»¶¯»­
-            // 3. ÑéÖ¤½»»»½á¹û
-            // 4. ¼ì²éÊÇ·ñĞÎ³ÉÆ¥Åä
+            // TODO: å®ç°å…ƒç´ äº¤æ¢é€»è¾‘
+            // 1. è§£æäº¤æ¢çš„å…ƒç´ æ•°æ®
+            // 2. æ‰§è¡Œäº¤æ¢åŠ¨ç”»
+            // 3. éªŒè¯äº¤æ¢ç»“æœ
+            // 4. æ£€æŸ¥æ˜¯å¦å½¢æˆåŒ¹é…
         }
 
         /// <summary>
-        /// ´¦ÀíÔªËØÇå³ıÊÂ¼ş
+        /// å¤„ç†å…ƒç´ æ¸…é™¤äº‹ä»¶
         /// </summary>
-        /// <param name="data">ÊÂ¼şÊı¾İ£¬°üº¬ĞèÒªÇå³ıµÄÔªËØÎ»ÖÃÁĞ±í</param>
+        /// <param name="data">äº‹ä»¶æ•°æ®ï¼ŒåŒ…å«éœ€è¦æ¸…é™¤çš„å…ƒç´ ä½ç½®åˆ—è¡¨</param>
         private void OnClearElements(object data)
         {
-            // TODO: ÊµÏÖÔªËØÇå³ıÂß¼­
-            // 1. »ñÈ¡ĞèÒªÇå³ıµÄÔªËØÁĞ±í
-            // 2. ²¥·ÅÇå³ı¶¯»­
-            // 3. ¼ÆËãÇå³ıµÃ·Ö
-            // 4. ´ÓÓÎÏ·°åÒÆ³ıÔªËØ
+            // TODO: å®ç°å…ƒç´ æ¸…é™¤é€»è¾‘
+            // 1. è·å–éœ€è¦æ¸…é™¤çš„å…ƒç´ åˆ—è¡¨
+            // 2. æ’­æ”¾æ¸…é™¤åŠ¨ç”»
+            // 3. è®¡ç®—æ¸…é™¤å¾—åˆ†
+            // 4. ä»æ¸¸æˆæ¿ç§»é™¤å…ƒç´ 
         }
 
         /// <summary>
-        /// ´¦ÀíÔªËØÉú³ÉÊÂ¼ş
+        /// å¤„ç†å…ƒç´ ç”Ÿæˆäº‹ä»¶
         /// </summary>
-        /// <param name="data">ÊÂ¼şÊı¾İ£¬°üº¬ĞèÒªÉú³ÉÔªËØµÄ¿ÕÈ±Î»ÖÃ</param>
+        /// <param name="data">äº‹ä»¶æ•°æ®ï¼ŒåŒ…å«éœ€è¦ç”Ÿæˆå…ƒç´ çš„ç©ºç¼ºä½ç½®</param>
         private void OnGenerateElements(object data)
         {
-            // TODO: ÊµÏÖÔªËØÉú³ÉÂß¼­
-            // 1. »ñÈ¡¿ÕÈ±Î»ÖÃÁĞ±í
-            // 2. Éú³ÉĞÂµÄËæ»úÔªËØ
-            // 3. ²¥·ÅÉú³É¶¯»­
-            // 4. Ìî³äÓÎÏ·°å¿ÕÈ±
+            // TODO: å®ç°å…ƒç´ ç”Ÿæˆé€»è¾‘
+            // 1. è·å–ç©ºç¼ºä½ç½®åˆ—è¡¨
+            // 2. ç”Ÿæˆæ–°çš„éšæœºå…ƒç´ 
+            // 3. æ’­æ”¾ç”ŸæˆåŠ¨ç”»
+            // 4. å¡«å……æ¸¸æˆæ¿ç©ºç¼º
         }
 
 
 
 
 
-        public void Disposed()
-        {
-
-        }
+        
 
 
     }

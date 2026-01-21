@@ -2,13 +2,15 @@ using FutureCore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ProjectApp
 {
     public class GameRule_Module : IGameModule
     {
-        
+
         private Vector2Int SelectedElement
         {
             get => Data.selectedElement;
@@ -19,7 +21,7 @@ namespace ProjectApp
         private Vector2Int boardSize;
         private bool[,] _visited;
         public GameRule_Module() { }
-        
+
         #region 临时数据 
         private List<Vector2Int> temp_AllMatchesList = new List<Vector2Int>();
         #endregion
@@ -46,26 +48,74 @@ namespace ProjectApp
 
         public void AddListener()
         {
-            Dispatcher.AddListener(GameMsg.ClickElement, OnElementClicked);
+            Dispatcher.AddListener(GameMsg.ClickElement, OnElementClicked_test);
 
         }
 
         public void RemoveListener()
         {
-            Dispatcher.RemoveListener(GameMsg.ClickElement, OnElementClicked);
+            Dispatcher.RemoveListener(GameMsg.ClickElement, OnElementClicked_test);
         }
 
         public void GenerateInitialElements()
         {
-            
-        }
-        public void Disposed()
-        {
 
+        }
+        public void Dispose()
+        {
+            RemoveListener();
+
+
+            Core = null;
+            _visited = null;
+            temp_AllMatchesList = null;
+            boardSize = Vector2Int.zero;
 
         }
 
         #endregion
+
+
+        private const string lockStr = "loack";
+        void OnElementClicked_test(object o)
+        {
+
+            try
+            {
+                using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5)))
+                {
+                    Task task = Task.Run(() =>
+                    {
+                        Thread currentThread = Thread.CurrentThread;
+                        Debug.Log("当前线程" + currentThread.ManagedThreadId + ("  " + SelectedElement.x + "--" + SelectedElement.y));
+                        OnElementClicked(o);
+                    }
+                     , cts.Token);
+                    task.Wait(cts.Token);  // 同步等待，会抛出异常
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("OnElementClicked 执行超时，可能死循环");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            }
+            catch (AggregateException ae)
+            {
+                foreach (var ex in ae.InnerExceptions)
+                {
+                    Debug.LogError($"OnElementClicked 执行出错: {ex.Message}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"OnElementClicked 执行出错: {ex.Message}");
+            }
+
+        }
+
+
 
 
         /// <summary>
@@ -74,9 +124,10 @@ namespace ProjectApp
         /// <param name="o"></param>
         void OnElementClicked(object o)
         {
-            ElementItem element = (ElementItem)o;
-            int x = element.Data.X;
-            int y = element.Data.Y;
+
+            ElementData element = (ElementData)(o);
+            int x = element.X;
+            int y = element.Y;
 
             if (SelectedElement.x < 0 || SelectedElement.y < 0)
             {
@@ -88,6 +139,7 @@ namespace ProjectApp
                 // 第二次点击，判断是否相邻
                 if (IsAdjacent(SelectedElement.x, SelectedElement.y, x, y))
                 {
+
                     // 交换元素
                     SwapElements(SelectedElement.x, SelectedElement.y, x, y);
 
@@ -100,7 +152,7 @@ namespace ProjectApp
                         // 有匹配，进行消除
                         ProcessMatches(matches);
                         // 创建新元素 并补位
-                        FillEmptySpaces();
+                        // FillEmptySpaces();
                     }
                     else
                     {
@@ -116,6 +168,7 @@ namespace ProjectApp
                 DeselectElement(SelectedElement.x, SelectedElement.y);
 
             }
+
         }
 
 
@@ -162,6 +215,8 @@ namespace ProjectApp
             ElementData tempData1 = BoardData[x1, y1];
             ElementData tempData2 = BoardData[x2, y2];
 
+            Debug.Log(string.Format("交换元素{0}  和 {1}", tempData1.ToString(), tempData2.ToString()));
+
             BoardData[x1, y1] = tempData2;
             BoardData[x2, y2] = tempData1;
 
@@ -170,6 +225,8 @@ namespace ProjectApp
             elementDatas.Add(tempData2);
             Dispatcher.Dispatch(GameMsg.SwapElements, elementDatas);
             FutureCore.ListPool<ElementData>.Release(elementDatas);
+
+
 
 
         }
@@ -182,8 +239,11 @@ namespace ProjectApp
             if (matches == null) matches = new List<Vector2Int>();
             var visited = GetVisited();
             // 检查交换的两个位置及其相关行列
-            FindMatchesAt(x1, y1, visited,ref matches);
-            FindMatchesAt(x2, y2, visited,ref matches);
+            FindMatchesAt(x1, y1, visited, ref matches);
+            FindMatchesAt(x2, y2, visited, ref matches);
+
+            Debug.Log(string.Format("交换元素后消除的元素数量{0}", matches.Count));
+
 
             return matches;
         }
@@ -211,15 +271,16 @@ namespace ProjectApp
             //查找指定位置的垂直匹配
             FindVerticalMatchesAt(x, y, 4, ref tempMatches, ref matchCount);
 
-            foreach (var item in tempMatches)
+            Span<Vector2Int> validMatches = tempMatches.Slice(0, matchCount);
+            foreach (var item in validMatches)
             {
-                if(!visited[item.x,item.y])
+                if (!visited[item.x, item.y])
                 {
                     //未加入过
                     matches.Add(item);
-                    visited[item.x,item.y] = true;
+                    visited[item.x, item.y] = true;
                 }
-               
+
             }
             return matches;
         }
@@ -269,7 +330,7 @@ namespace ProjectApp
         }
 
 
-       
+
 
         /// <summary>
         /// 查找匹配组（使用BFS）
@@ -551,7 +612,7 @@ namespace ProjectApp
         /// </summary>
         public List<Vector2Int> FindAllMatches(List<Vector2Int> allMatches = null)
         {
-            if(allMatches == null) allMatches = temp_AllMatchesList;
+            if (allMatches == null) allMatches = temp_AllMatchesList;
 
             allMatches.Clear();
 
@@ -577,8 +638,8 @@ namespace ProjectApp
 
         private bool[,] GetVisited()
         {
-            if(_visited ==null)
-            { 
+            if (_visited == null)
+            {
                 _visited = new bool[boardSize.x, boardSize.y];
             }
             else
@@ -642,9 +703,11 @@ namespace ProjectApp
 
 
 
+
             // 消除元素
             foreach (Vector2Int match in matches)
             {
+                Debug.Log("消除：" + Data.boardData[match.x, match.y].ToString());
                 if (BoardData[match.x, match.y].Type != ElementType.Fixed_None) //如果不是不存在
                 {
                     BoardData[match.x, match.y].SetType(ElementType.Fixed_Special); // 临时标记为空
@@ -841,8 +904,8 @@ namespace ProjectApp
         */
         #endregion
 
-       
 
-        
+
+
     }
 }

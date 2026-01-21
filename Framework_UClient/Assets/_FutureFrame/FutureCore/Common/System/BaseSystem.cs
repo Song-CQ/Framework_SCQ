@@ -13,9 +13,18 @@ namespace FutureCore
     {
         private bool isInit = false;
         private bool isRunning = false;
+
         public bool IsInit => isInit;
 
         public bool IsRunning => isRunning;
+
+        //是否注册过Update标记
+        private bool isRegisterUpdate = false;
+
+        /// <summary>
+        /// 是否自动注册Update
+        /// </summary>
+        public bool IsAutoRegisterUpdate { get; set; }
         /// <summary>
         /// 初始化
         /// </summary>
@@ -29,6 +38,8 @@ namespace FutureCore
         public virtual void Start()
         {
             isRunning = true;
+            if(IsAutoRegisterUpdate)
+            AddRun_To_UpdataFrame();
         }
         /// <summary>
         /// 停止
@@ -36,6 +47,8 @@ namespace FutureCore
         public virtual void Shutdown()
         {
             isRunning = false;
+            if (IsAutoRegisterUpdate)
+            RemoveRun_To_UpdataFrame();
         }
         /// <summary>
         /// 运行
@@ -44,14 +57,28 @@ namespace FutureCore
         {
         
         }
-        public void RegisterEvent_UpData__Run()
+        /// <summary>
+        /// 将Run方法注册到Update
+        /// </summary>
+        private void AddRun_To_UpdataFrame()
         {
-            TimerMgr.UpData_Event_ToFrame += Run;
+            if (!isRegisterUpdate)
+            { 
+                TimerMgr.UpData_Event_ToFrame += Run;
+                isRegisterUpdate = true;
+            }
         }
 
-        public void UnregisterEvent_UpData__Run()
+        /// <summary>
+        /// 将Run方法取消注册Update
+        /// </summary>
+        private void RemoveRun_To_UpdataFrame()
         {
-            TimerMgr.UpData_Event_ToFrame -= Run;
+            if (isRegisterUpdate)
+            {
+                TimerMgr.UpData_Event_ToFrame -= Run;
+                isRegisterUpdate = false;
+            }
         }
         /// <summary>
         /// 销毁
@@ -60,6 +87,7 @@ namespace FutureCore
         {
             isInit = false;
             isRunning = false;
+            IsAutoRegisterUpdate = false;
         }
     }
 }
