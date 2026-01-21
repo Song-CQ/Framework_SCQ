@@ -140,6 +140,13 @@ namespace ProjectApp
             Debug.Log("已包含所有层级");
         }
 
+        public override void Dispose()
+        {
+            base.Dispose();
+            raycast3D_OnClick.Clear();
+            
+        }
+
 
 
     }
