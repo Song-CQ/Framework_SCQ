@@ -44,12 +44,18 @@ namespace FutureCore
         {
         
         }
-        public void RegisterEvent_UpData__Run()
+		/// <summary>
+        /// 将Run方法注册到Update
+        /// </summary>
+        public void AddRun_To_UpdataFrame()
         {
             TimerMgr.UpData_Event_ToFrame += Run;
         }
-
-        public void UnregisterEvent_UpData__Run()
+        
+		/// <summary>
+        /// 将Run方法取消注册Update
+        /// </summary>
+        public void RemoveRun_To_UpdataFrame()
         {
             TimerMgr.UpData_Event_ToFrame -= Run;
         }
