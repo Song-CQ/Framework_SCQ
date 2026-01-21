@@ -130,14 +130,14 @@ namespace ProjectApp
         public void ClearAllLayers()
         {
             layerMask = 0;
-            Debug.Log("已清空所有层级");
+            //Debug.Log("已清空所有层级");
         }
 
         // 设置包含所有层级
         public void SetAllLayers()
         {
             layerMask = ~0; // 所有位都为1
-            Debug.Log("已包含所有层级");
+            //Debug.Log("已包含所有层级");
         }
 
         public override void Dispose()
