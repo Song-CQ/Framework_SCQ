@@ -1,3 +1,4 @@
+using FlyingWormConsole3;
 using FutureCore;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace ProjectApp
         void IGameModule.AddListener()
         {
         }
-        void IGameModule.RemoveListener()
+        public void RemoveListener()
         {
 
         }
@@ -55,9 +56,10 @@ namespace ProjectApp
 
         }
 
-        void IGameModule.Disposed()
+        void IGameModule.Dispose()
         {
-          
+            RemoveListener();
+            Core = null;
         }
 
 

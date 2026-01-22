@@ -1,3 +1,4 @@
+using ConsoleE;
 using FutureCore;
 using Sirenix.OdinInspector;
 using System;
@@ -13,15 +14,15 @@ namespace ProjectApp
 
     public enum GameMode
     {
-        BuildHive,      // ½¨Ôì·ä³²Ä£Ê½
-        WorkerBeeChallenge // ¹¤·äÌôÕ½Ä£Ê½
+        BuildHive,      // å»ºé€ èœ‚å·¢æ¨¡å¼
+        WorkerBeeChallenge // å·¥èœ‚æŒ‘æˆ˜æ¨¡å¼
     }
 
     public class EliminateGameData
     {
-        #region ÆåÅÌÊı¾İ
+        #region æ£‹ç›˜æ•°æ®
         public ElementData[,] boardData;
-        // µ±Ç°Ñ¡ÖĞµÄÔªËØ
+        // å½“å‰é€‰ä¸­çš„å…ƒç´ 
         public Vector2Int selectedElement = new Vector2Int(-1, -1);
 
         public Vector2Int boardSize;
@@ -31,9 +32,9 @@ namespace ProjectApp
 
         #endregion
 
-        // µ±Ç°·ÖÊı
+        // å½“å‰åˆ†æ•°
         public int currentScore = 0;
-        public int targetScore = 100000; // Ä¿±ê·ÖÊı
+        public int targetScore = 100000; // ç›®æ ‡åˆ†æ•°
 
         public ElementData GetElementData(Vector2Int pot)
         {
@@ -52,29 +53,37 @@ namespace ProjectApp
             }
             boardData[elementData.X, elementData.Y] = elementData;
         }
+
+        public void Dispose()
+        {
+            boardData = null;
+            selectedElement = new Vector2Int(-1, -1);
+            boardSize = new Vector2Int(0, 0);
+
+        }
     }
 
 
     public class EliminateGameCore : MonoBehaviour
     {
-        [Header("ÓÎÏ·ÅäÖÃ")]
-        [SerializeField] private int _boardWidth = 10;    // ÆåÅÌ¿í¶È
-        [SerializeField] private int _boardHeight = 14;   // ÆåÅÌ¸ß¶È
-        [SerializeField] public Vector3 startVector3;   // ÆåÅÌ¸ß¶È
+        [Header("æ¸¸æˆé…ç½®")]
+        [SerializeField] private int _boardWidth = 10;    // æ£‹ç›˜å®½åº¦
+        [SerializeField] private int _boardHeight = 14;   // æ£‹ç›˜é«˜åº¦
+        [SerializeField] public Vector3 startVector3;   // æ£‹ç›˜é«˜åº¦
         [SerializeField] private GameMode currentMode = GameMode.BuildHive;
 
-        [Header("µÀ¾ßÔ¤Éè")]
-        [SerializeField] private GameObject horizontalProp;   // ºáÏòÏû³ıµÀ¾ß
-        [SerializeField] private GameObject verticalProp;     // ÊúÏòÏû³ıµÀ¾ß
-        [SerializeField] private GameObject bombProp;         // Õ¨µ¯µÀ¾ß
-        [SerializeField] private GameObject wildProp;         // WildµÀ¾ß
+        [Header("é“å…·é¢„è®¾")]
+        [SerializeField] private GameObject horizontalProp;   // æ¨ªå‘æ¶ˆé™¤é“å…·
+        [SerializeField] private GameObject verticalProp;     // ç«–å‘æ¶ˆé™¤é“å…·
+        [SerializeField] private GameObject bombProp;         // ç‚¸å¼¹é“å…·
+        [SerializeField] private GameObject wildProp;         // Wildé“å…·
 
 
 
-        #region ÆåÅÌÊôĞÔ
+        #region æ£‹ç›˜å±æ€§
 
         public ElementData[,] BoardData => Data.boardData;
-        // µ±Ç°Ñ¡ÖĞµÄÔªËØ
+        // å½“å‰é€‰ä¸­çš„å…ƒç´ 
         public Vector2Int SelectedElement => Data.selectedElement;
 
         public Vector2Int BoardSize => Data.boardSize;
@@ -87,13 +96,23 @@ namespace ProjectApp
         #endregion
 
 
-        #region ÏûÏ¢ÅÉ·¢
+        #region æ¶ˆæ¯æ´¾å‘
 
         public Dispatcher<uint> Dispatcher { get; private set; }
 
         public void Dispatch(uint msg, params object[] param)
         {
-            Dispatcher.Dispatch(msg,param);
+            if (param == null || param.Length == 0)
+            {
+                Dispatcher.Dispatch(msg);
+            }else
+            if(param.Length == 1)
+            {   
+                Dispatcher.Dispatch(msg,param[0]);
+            }else
+            {
+                Dispatcher.Dispatch(msg,(object)param);
+            }
         }
 
         public void AddListener(uint msg, Action<object> paramCB)
@@ -112,57 +131,66 @@ namespace ProjectApp
         private GameInitial_Module gameInitialModule;
         private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
-        private List<IGameModule> gameModules = new List<IGameModule>();
+        private List<IGameModule> gameModules;
+
+        private bool isInit = false;
         
         /// <summary>
-        /// ÄÜ·ñ²Ù×÷ Controller
+        /// èƒ½å¦æ“ä½œ Controller
         /// </summary>
         public bool Enabled_PlayerCtr { get => _enabledCtrSum > 0; set { if (value) _enabledCtrSum++; else _enabledCtrSum--; } }
         /// <summary>
-        /// ²Ù×÷¼ÆÊıÆ÷
+        /// æ“ä½œè®¡æ•°å™¨
         /// </summary>
         private int _enabledCtrSum = 0;
 
         private void Awake()
         { 
-            Dispatcher = new Dispatcher<uint>();
+            Init();
         }
 
-        void Start()
+
+        public void Init()
         {
             GameTool.GameCore = this;
+            GameTool.SetRandomSeed(132131231);//è®¾ç½®ç§å­
 
             Data = new EliminateGameData();
-            
+            Dispatcher = new Dispatcher<uint>();
 
             gameInitialModule = new GameInitial_Module();
 
             gameRuleModule = new GameRule_Module();
             visualEffectsModule = new VisualEffects_Module();
 
-
+            gameModules = new List<IGameModule>();
             gameModules.Add(gameInitialModule);
             gameModules.Add(gameRuleModule);
             gameModules.Add(visualEffectsModule);
 
 
+            //å¡«å……æ ¸å¿ƒ
+            FillCore();
+            //æ³¨å†Œäº‹ä»¶
+            RegisterEvent();
+            //åˆå§‹åŒ–æ£‹ç›˜
+            InitializeBoard(_boardWidth,_boardHeight);
+            //ç”Ÿæˆå…ƒç´ 
+            GenerateInitialElements();
+
+            //å…è®¸æ“ä½œ
+            Enabled_PlayerCtr = true;
+
+            
+            isInit = true;
+        }
+
+        private void FillCore()
+        {
             foreach (var item in gameModules)
             {
                 item.FillCore(this);
             }
-
-            RegisterEvent();
-
-            //ÉèÖÃÖÖ×Ó
-            GameTool.SetRandomSeed(132131231);
-           
-            InitializeBoard(_boardWidth,_boardHeight);
-            
-            GenerateInitialElements();
-
-            //ÔÊĞí²Ù×÷
-            Enabled_PlayerCtr = true;
-
         }
 
         private void RegisterEvent()
@@ -171,8 +199,7 @@ namespace ProjectApp
             {
                 item.AddListener();
             }
-            
-            
+
         }
         private void UnregisterEvent()
         {
@@ -183,11 +210,10 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ³õÊ¼»¯ÆåÅÌ
+        /// åˆå§‹åŒ–æ£‹ç›˜
         /// </summary>
-        void InitializeBoard(int boardWidth,int boardHeight)
-        {
-            
+        private void InitializeBoard(int boardWidth,int boardHeight)
+        {     
             foreach (var item in gameModules)
             {
                 item.InitializeBoard( boardWidth, boardHeight);
@@ -195,11 +221,11 @@ namespace ProjectApp
 
         }
 
-        [Button("Éú³É")]
+
         /// <summary>
-        /// Éú³É³õÊ¼ÔªËØ£¨¼ò»¯µÄËæ»úÉú³É£©
+        /// ç”Ÿæˆåˆå§‹å…ƒç´ ï¼ˆç®€åŒ–çš„éšæœºç”Ÿæˆï¼‰
         /// </summary>
-        void GenerateInitialElements()
+        private void GenerateInitialElements()
         {
             foreach (var item in gameModules)
             {
@@ -207,51 +233,68 @@ namespace ProjectApp
             }
             
         }
-
-       
-        /// <summary>
-        /// ÓÎÏ·Ê¤Àû
-        /// </summary>
-        void GameWin()
+        
+        public  Vector2Int temp1 = new Vector2Int(0,13);
+        public  Vector2Int temp2 = new Vector2Int(0,12);
+        [Button("äº¤æ¢å…ƒç´ ")]
+        public void Test1()
         {
-            Debug.Log("ÓÎÏ·Ê¤Àû£¡´ïµ½Ä¿±ê·ÖÊı£¡");
-            // ÕâÀï¿ÉÒÔ´¥·¢Ê¤Àû½çÃæ¡¢½±Àø·¢·ÅµÈ
+            Dispatcher.Dispatch(GameMsg.ClickElement,new ElementData(temp1.x,temp1.y, ElementType.Fixed_None));
+            Dispatcher.Dispatch(GameMsg.ClickElement,new ElementData(temp2.x,temp2.y, ElementType.Fixed_None));
+
         }
-       
-
         
-
-        
-
-
-        
-
-        public void Disposed()
+        [Button("é‡æ–°å¼€å§‹")]
+        public void ResetGame()
         {
-            UnregisterEvent();
-            foreach (var item in gameModules)
+            Dispose();
+
+
+            Invoke("Init",1);
+
+
+        }
+
+
+        /// <summary>
+        /// æ¸¸æˆèƒœåˆ©
+        /// </summary>
+        private void GameWin()
+        {
+            Debug.Log("æ¸¸æˆèƒœåˆ©ï¼è¾¾åˆ°ç›®æ ‡åˆ†æ•°ï¼");
+            // è¿™é‡Œå¯ä»¥è§¦å‘èƒœåˆ©ç•Œé¢ã€å¥–åŠ±å‘æ”¾ç­‰
+        }
+
+
+        private void Update()
+        {
+            if(!isInit) return;
+            
+            if(Enabled_PlayerCtr)
             {
-                item.Disposed();
+                visualEffectsModule.RaycastSys.Run();
             }
+            //æ­£å¼çš„ä¸ç”¨åŠ 
+            visualEffectsModule.AnimationSys.Run();
         }
 
         public ElementType GetRandomElementType()
         {
             ElementType elementType =  ElementType.Fixed_None;
-            // ¸ù¾İÅäÖÃ±í±ÈÀıÉú³ÉÔªËØ£¨ÕâÀï¼ò»¯ÎªËæ»ú£©
+            // æ ¹æ®é…ç½®è¡¨æ¯”ä¾‹ç”Ÿæˆå…ƒç´ ï¼ˆè¿™é‡Œç®€åŒ–ä¸ºéšæœºï¼‰
             int rand = GameTool.RandomToInt(1,6);
 
             elementType = (ElementType)rand;
             return elementType;
-            //if (rand < 0.7f) // 70%Îª»ù´¡ÔªËØ
+            //if (rand < 0.7f) // 70%ä¸ºåŸºç¡€å…ƒç´ 
             //{
             //    type = (ElementType)Random.Range(0, 5);
             //}
-            //else if (rand < 0.9f) // 20%ÎªÌØÊâÔªËØ
+            //else if (rand < 0.9f) // 20%ä¸ºç‰¹æ®Šå…ƒç´ 
             //{
             //    type = ElementType.Special;
             //}
-            //else // 10%Ëæ»úÉú³ÉµÀ¾ß£¨¼ò»¯´¦Àí£©
+            //else // 10%éšæœºç”Ÿæˆé“å…·ï¼ˆç®€åŒ–å¤„ç†ï¼‰
             //{
             //    type = (ElementType)Random.Range(0, 4);
             //}
@@ -261,6 +304,31 @@ namespace ProjectApp
         public List<Vector2Int> FindAllMatches(List<Vector2Int> allMatches = null)
         {
             return gameRuleModule.FindAllMatches(allMatches);
+        }
+
+        public void Dispose()
+        {
+            UnregisterEvent();
+
+            foreach (var item in gameModules)
+            {
+                item.Dispose();
+            }
+            gameInitialModule = null;
+            gameRuleModule = null;
+            visualEffectsModule = null;
+
+            gameModules.Clear();
+            gameModules = null;
+
+            Data.Dispose();
+            Data = null;
+
+            Dispatcher.Dispose();
+            Dispatcher = null;
+
+
+            isInit = false;
         }
     }
 }

@@ -27,6 +27,6 @@ namespace ProjectApp
         /// 生成初始棋盘数据
         /// </summary>
         void GenerateInitialElements();
-        void Disposed();
+        void Dispose();
     }
 }

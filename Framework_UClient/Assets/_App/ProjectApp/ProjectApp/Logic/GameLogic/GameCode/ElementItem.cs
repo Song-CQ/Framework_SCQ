@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics.Tracing;
+using DG.Tweening;
 using FutureCore;
+using ProjectApp.Data;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,7 +10,7 @@ using static PlasticGui.PlasticTableColumn;
 
 namespace ProjectApp
 {
-
+    [Serializable]
     public struct ElementData
     {
         public int X;
@@ -51,19 +53,48 @@ namespace ProjectApp
         {
             return !left.Equals(right);
         }
+        
+        public string ToString()
+        {
+            return string.Format("[{0},{1}]:{2}",X,Y,Type);
+        }
+    
+    }
+
+    public class DebugElementItem : MonoBehaviour
+    {
+        public ElementItem elementItem;
+        
+        [SerializeField]
+        public ElementData Data; 
+        public bool isSelect; 
+
+        public void Init(ElementItem _elementItem)
+        {
+           elementItem =_elementItem;
+        }
+
+        public void Update()
+        {
+            if(elementItem==null)return;
+
+            Data = elementItem.Data;
+            isSelect = elementItem.isSelect;
+            elementItem.selectGo.SetActive(isSelect);
+
+        }
     }
 
     //元素类
-    public class ElementItem
+    [Serializable]
+    public class ElementItem:IRaycast3D_OnClick
     {
         public Transform Transform { get; private set; }
 
         public ElementData Data { get; private set; }
         
-        private BoxCollider2D collide;
         private SpriteRenderer icon;
-
-        private bool isHighlight;
+        public GameObject selectGo;
 
         public Vector2 Pos
         {
@@ -75,22 +106,21 @@ namespace ProjectApp
             }
         }
 
+        public Collider Collider {get;private set;}
+
         private Vector2 pos;
+        public bool isSelect;
 
         public ElementItem() { }
         
         public ElementItem(Transform transform)
         {
             Transform = transform;
-            collide = Transform.GetComponent<BoxCollider2D>();
+            Collider = Transform.GetComponent<BoxCollider>();
             icon = Transform.Find("icon").GetComponent<SpriteRenderer>();
-            
-            // listener  = UIEventListener.GetEventListener(Transform);
-            // listener.PointerClick_Event += OnClickEvent;
-        }
-        private void PointerClick_Event() 
-        {
-            GameTool.GameCore.Dispatch(GameMsg.ClickElement,this);
+            selectGo = Transform.Find("selectGo").gameObject;
+            Transform.gameObject.AddComponent<DebugElementItem>().Init(this);
+
         }
 
 
@@ -98,22 +128,10 @@ namespace ProjectApp
         {
             Data = _data;
 
-            AddListener();
-
             RefreshView();
 
         }
 
-        private void AddListener()
-        {
-            GameTool.GameCore.AddListener(GameMsg.SelectElement, SelectElement);
-            GameTool.GameCore.AddListener(GameMsg.DeselectElement, DeselectElement);
-        }
-        private void RemoveListener()
-        {
-            GameTool.GameCore.RemoveListener(GameMsg.SelectElement, SelectElement);
-            GameTool.GameCore.RemoveListener(GameMsg.DeselectElement, DeselectElement);
-        }
 
         public void RefreshView()
         {
@@ -121,57 +139,40 @@ namespace ProjectApp
             { 
                icon.sprite = GameTool.GetSprite(Data.Type);
             }
-        }
 
-        /// <summary>
-        /// 选中元素
-        /// </summary>
-        void SelectElement(object o)
-        {
-            ElementItem element = (ElementItem)o;
-
-            if (element.Data == Data)
-            {
-                icon.color =  Color.yellow;
-            }
+            selectGo.SetActive(isSelect);
 
         }
-
-        /// <summary>
-        /// 取消选中元素
-        /// </summary>
-        void DeselectElement(object o)
-        {
-            ElementItem element = (ElementItem)o;
-
-            if (element.Data == Data)
-            {
-                icon.color = Color.yellow;
-            }
-
-        }
-
 
         public void Release()
         {
-            RemoveListener();
-
-            SetHighlight(false);
+            isSelect = false;
 
         }
 
-        public void SetHighlight(bool v)
+        public void SetSelect(bool v)
         {
-            if(v == isHighlight) return;
-            isHighlight = v;
-            if(isHighlight)
-            {
-                icon.color = Color.yellow;
-            }else
-            {
-                icon.color = Color.white;
-            }
+            if(v == isSelect) return;
+            isSelect = v;
 
+            // selectGo.SetActive(isSelect);
+
+        }
+
+        public void Raycast_OnClick(Vector3 hitPoint)
+        {
+            GameTool.GameCore.Dispatch(GameMsg.ClickElement,this.Data);
+        }
+
+
+        public void StopAllDOTween()
+        {
+            
+
+
+            Transform.localScale = Vector3.one;
+            Transform.rotation = Quaternion.identity;
+            pos = Vector3.zero;
 
         }
     }

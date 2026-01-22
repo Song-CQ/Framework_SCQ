@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureFrame", "FutureFrame.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureEditor", "FutureEditor.csproj", "{3060B796-F739-47E9-F0C9-FD2BB587D4A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test.csproj", "{9BA590B9-E3D8-DCB8-ED60-622B6F8792B7}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectApp_HotFix", "..\Framework_Project\HotFix\ProjectApp_HotFix.csproj", "{D114B99A-B757-4993-9754-DC684598B992}"
 EndProject
 Global
@@ -33,6 +35,10 @@ Global
 		{3060B796-F739-47E9-F0C9-FD2BB587D4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3060B796-F739-47E9-F0C9-FD2BB587D4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3060B796-F739-47E9-F0C9-FD2BB587D4A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA590B9-E3D8-DCB8-ED60-622B6F8792B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA590B9-E3D8-DCB8-ED60-622B6F8792B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA590B9-E3D8-DCB8-ED60-622B6F8792B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA590B9-E3D8-DCB8-ED60-622B6F8792B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D114B99A-B757-4993-9754-DC684598B992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D114B99A-B757-4993-9754-DC684598B992}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D114B99A-B757-4993-9754-DC684598B992}.Release|Any CPU.ActiveCfg = Release|Any CPU
