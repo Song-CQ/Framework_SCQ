@@ -14,7 +14,7 @@ namespace ProjectApp
         private Vector3 startVector3;
 
         public Raycast3D_System RaycastSys { get; private set; }
-        public DoTweenAnimation_System AnimationSys { get; private set; }
+        public ElementAni_System AnimationSys { get; private set; }
 
         #region 对象池
         private ElementItem OnNewElement()
@@ -86,7 +86,7 @@ namespace ProjectApp
             RaycastSys.Start();
 
 
-            AnimationSys = new DoTweenAnimation_System();
+            AnimationSys = new ElementAni_System();
             AnimationSys.Init();
             AnimationSys.Start();
 

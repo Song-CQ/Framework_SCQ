@@ -302,6 +302,8 @@ MonoBehaviour:
   verticalProp: {fileID: 0}
   bombProp: {fileID: 0}
   wildProp: {fileID: 0}
+  temp1: {x: 0, y: 13}
+  temp2: {x: 0, y: 12}
 --- !u!4 &277895815
 Transform:
   m_ObjectHideFlags: 0
@@ -751,7 +753,7 @@ GameObject:
   - component: {fileID: 913881394}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

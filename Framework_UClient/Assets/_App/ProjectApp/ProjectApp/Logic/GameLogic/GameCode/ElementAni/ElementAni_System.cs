@@ -1,14 +1,18 @@
+using ConsoleE;
 using DG.Tweening;
+using FairyGUI;
 using FutureCore;
+using ProjectApp.GameLogic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjectApp
 {
-    public class DoTweenAnimation_System : BaseSystem
+    public class ElementAni_System : BaseSystem
     {
-        private Dictionary<string, Sequence> animationLibrary = new Dictionary<string, Sequence>();
+        private Dictionary<ElementAniType, Queue<IElementAni>> animationLibrary = new Dictionary<ElementAniType, Queue<IElementAni>>();
 
         public override void Init()
         {
@@ -38,55 +42,63 @@ namespace ProjectApp
             base.Dispose();
         }
 
-        public Transform target;
-        public float duration = 1f;
-
-        public void PlayComplexAnimation()
+        public void PlaySwapAin(ElementItem item1,ElementItem item2)
         {
-            // 创建一个动画序列
-            Sequence sequence = DOTween.Sequence();
+            //停止正在播放的Dotw
 
-            // ========== 第一阶段：顺序动画 ==========
+            SwapElementAni_Sequence ani1 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
+            ani1.formPot = item1.Pos;
+            ani1.toPot = item2.Pos;
+            ani1.SetElementAndPlay(item1);
 
-            // 1. 先移动到位置A
-            sequence.Append(target.DOMove(new Vector3(2, 0, 0), duration));
+            SwapElementAni_Sequence ani2 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
+            ani2.formPot = item1.Pos;
+            ani2.toPot = item2.Pos;
+            ani2.SetElementAndPlay(item2);
 
-            // 2. 然后旋转90度
-            sequence.Append(target.DORotate(new Vector3(0, 90, 0), duration));
 
-            // ========== 第二阶段：同时播放的动画 ==========
 
-            // 3. 移动到位置B的同时改变颜色（假设有Renderer）
-            sequence.Append(target.DOMove(new Vector3(2, 2, 0), duration));
-            sequence.Join(GetComponent<Renderer>().material.DOColor(Color.red, duration));
 
-            // 4. 然后缩放和旋转同时进行
-            sequence.Append(target.DOScale(Vector3.one * 2, duration));
-            sequence.Join(target.DORotate(new Vector3(0, 180, 0), duration));
-
-            // ========== 第三阶段：回调和其他控制 ==========
-
-            // 动画完成时回调
-            sequence.OnComplete(() =>
-            {
-                Debug.Log("动画播放完成！");
-            });
-
-            // 动画开始时回调
-            sequence.OnStart(() =>
-            {
-                Debug.Log("动画开始播放！");
-            });
-
-            // 设置循环
-            sequence.SetLoops(2, LoopType.Yoyo); // 来回播放2次
-
-            // 设置缓动函数
-            sequence.SetEase(Ease.OutBounce);
-
-            // 播放动画
-            sequence.Play();
         }
+
+        
+
+        public IElementAni GetAnimation(ElementAniType type)
+        {
+
+            if (!animationLibrary.TryGetValue(type, out Queue<IElementAni> aniQueue))
+            {
+                aniQueue = new Queue<IElementAni>();
+                animationLibrary[type] = aniQueue;
+            }
+            IElementAni ani = null;
+            if (aniQueue.Count > 0)
+            {
+                ani = aniQueue.Dequeue();
+            }
+            else
+            {
+                ani = CreateElementAni(type);
+            }          
+            return ani;
+
+        }
+
+        private IElementAni CreateElementAni(ElementAniType type)
+        {
+            switch (type)
+            {
+                case ElementAniType.Swap:
+                    return new SwapElementAni_Sequence();
+                default:
+                    return null;
+
+            }
+        }
+
+
+
+
 
         #region 核心属性
         [SerializeField, Range(0f, 2f)]
