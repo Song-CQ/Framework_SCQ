@@ -13,9 +13,16 @@ namespace ProjectApp.GameLogic
 
     public interface IElementAni
     {
-        public ElementAniType Key { get; }
-        public ElementItem Tar { get; }
-        public void SetElementAndPlay(ElementItem elementItem);
+        ElementAniType Key { get; }
+        ElementItem Tar { get; }
+        bool IsPlay { get; }
+        float Duration { get; }
+
+        void SetElementAndPlay(ElementItem elementItem);
+
+        void Pause();
+        void CanlePause();
+        void Stop();
     }
 
 
@@ -23,10 +30,15 @@ namespace ProjectApp.GameLogic
     {
         public ElementAniType Key => ElementAniType.Swap;
         public ElementItem Tar { get; set; }
+
+        public new bool IsPlay => base.IsPlay;
+        
+        public float Duration => duration;
+
         public Vector3 formPot = Vector3.zero;
         public Vector3 toPot = Vector3.zero;
 
-        private float time = 0.3f;
+        private float duration = 0.3f;
         public void SetElementAndPlay(ElementItem elementItem)
         {
             Tar = elementItem;
@@ -42,7 +54,7 @@ namespace ProjectApp.GameLogic
                     Tar.Pos = Vector3.Lerp(formPot, toPot, x);
                 },
                 1f,
-                time));
+                duration));
         }
 
         public override void Disp()
@@ -51,7 +63,7 @@ namespace ProjectApp.GameLogic
             Tar = null;
             formPot = Vector3.zero;
             toPot = Vector3.zero;
-    }
+        }
 
 
     }

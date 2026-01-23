@@ -13,28 +13,63 @@ namespace ProjectApp
     public class ElementAni_System : BaseSystem
     {
         private Dictionary<ElementAniType, Queue<IElementAni>> animationLibrary = new Dictionary<ElementAniType, Queue<IElementAni>>();
-
+        private Dictionary<ElementItem,IElementAni> runAllElementAni; 
+        private List<ElementItem> elementItems;
+ 
         public override void Init()
         {
             base.Init();
             IsAutoRegisterUpdate = true;
+            animationLibrary = new Dictionary<ElementAniType, Queue<IElementAni>>();
+            runAllElementAni = new Dictionary<ElementItem, IElementAni>();
+            elementItems = new List<ElementItem>();
         }
 
         public override void Start()
         {
             base.Start();
+
+            foreach (var item in runAllElementAni)
+            {
+                item.Value.CanlePause();
+            }
             
         }
 
         public override void Shutdown()
         {
             base.Shutdown();
+            foreach (var item in runAllElementAni)
+            {
+                item.Value.Pause();
+            }
             
         }
 
         public override void Run()
         {
             base.Run();
+            
+            elementItems.Clear();
+            foreach (var item in runAllElementAni)
+            {
+                var elementAni = item.Value;
+
+                if(elementAni.IsPlay)
+                {
+                    continue;
+                }
+                //回收对象
+                ReleaseIElementAni(elementAni);
+
+                //加入移除列表
+                elementItems.Add(item.Key);
+            }
+
+            foreach (var item in elementItems)
+            {
+                runAllElementAni.Remove(item);      
+            } 
         }
 
         public override void Dispose()
@@ -42,9 +77,14 @@ namespace ProjectApp
             base.Dispose();
         }
 
-        public void PlaySwapAin(ElementItem item1,ElementItem item2)
+        
+
+        public float PlaySwapAin(ElementItem item1,ElementItem item2)
         {
             //停止正在播放的Dotw
+            StopElementItemAni(item1);
+            StopElementItemAni(item2);
+
 
             SwapElementAni_Sequence ani1 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
             ani1.formPot = item1.Pos;
@@ -56,14 +96,24 @@ namespace ProjectApp
             ani2.toPot = item2.Pos;
             ani2.SetElementAndPlay(item2);
 
+            float dur = ani1.Duration;
+
+            return dur;
+        }
 
 
+        private void StopElementItemAni(ElementItem item)
+        {
+            if (runAllElementAni.TryGetValue(item,out IElementAni elementAni))
+            {
+                runAllElementAni.Remove(item);
+                ReleaseIElementAni(elementAni);
+            }
 
         }
 
-        
-
-        public IElementAni GetAnimation(ElementAniType type)
+ 
+        private IElementAni GetAnimation(ElementAniType type)
         {
 
             if (!animationLibrary.TryGetValue(type, out Queue<IElementAni> aniQueue))
@@ -83,7 +133,16 @@ namespace ProjectApp
             return ani;
 
         }
-
+        
+        private void ReleaseIElementAni(IElementAni val)
+        {
+            val.Stop();
+            if(!animationLibrary.ContainsKey(val.Key))
+            {
+                animationLibrary = new Dictionary<ElementAniType, Queue<IElementAni>>();
+            }
+            animationLibrary[val.Key].Enqueue(val);
+        }
         private IElementAni CreateElementAni(ElementAniType type)
         {
             switch (type)
@@ -95,8 +154,6 @@ namespace ProjectApp
 
             }
         }
-
-
 
 
 

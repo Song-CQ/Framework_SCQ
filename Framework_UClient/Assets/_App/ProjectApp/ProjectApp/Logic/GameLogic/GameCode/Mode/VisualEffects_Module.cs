@@ -1,8 +1,11 @@
 using ConsoleE;
 using FutureCore;
+using ILRuntime.Mono.Cecil.Cil;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 namespace ProjectApp
@@ -15,6 +18,10 @@ namespace ProjectApp
 
         public Raycast3D_System RaycastSys { get; private set; }
         public ElementAni_System AnimationSys { get; private set; }
+
+
+
+        private bool isInit;
 
         #region 对象池
         private ElementItem OnNewElement()
@@ -37,14 +44,118 @@ namespace ProjectApp
             element.Transform.SetActive(true);
             element.Transform.SetParent(elementItemsTrf);
         }
-        private ObjectPool<ElementItem> elementsPool;
+        private FutureCore.ObjectPool<ElementItem> elementsPool;
 
         private Transform elementsPoolTrf;
 
         private Transform elementItemsTrf;
 
         #endregion
-      
+
+        #region 画面显示流程
+
+        private class VisuaProcess
+        {
+            private static FutureCore.ObjectPool<VisuaProcess> objectPool = new FutureCore.ObjectPool<VisuaProcess>();
+            public static VisuaProcess Get()
+            {
+                return objectPool.Get();
+            }
+            public static void ClearPool()
+            {
+                objectPool.Clear();
+            }
+            public string type;
+            public float duration;
+            private Action<VisuaProcess> _executeCB;
+            private Action<VisuaProcess> _finishCB;
+
+            public bool isRun = false;
+            public bool isFinish = false;
+
+            public void SetLinkExecute(Action<VisuaProcess> cb)
+            {
+                _executeCB = cb;
+            }
+            public void SetLinkFinish(Action<VisuaProcess> cb)
+            {
+                _finishCB = cb;
+            }
+
+            public void Execute()
+            {
+                _executeCB?.Invoke(this);
+                isRun = true;
+            }
+
+            public void Run()
+            {
+                if (!isRun) return;
+
+                duration -= Time.deltaTime;
+
+                if (duration <= 0)
+                {
+                    Finish();
+                }
+            }
+
+            public void Finish()
+            {
+                _finishCB?.Invoke(this);
+                isRun = false;
+                isFinish = true;
+            }
+
+            public void Release()
+            {
+                isRun = false;
+                isFinish = false;
+                _finishCB = null;
+                _executeCB = null;
+
+                objectPool.Release(this);
+            }
+
+
+        }
+        private Queue<VisuaProcess> visuaProcessesQueue;
+        private VisuaProcess currVisuaProcess;
+        private void AddVisuaProcess(VisuaProcess process)
+        {
+            visuaProcessesQueue.Enqueue(process);
+        }
+        private VisuaProcess NextProcess()
+        {
+            if (visuaProcessesQueue.Count > 0)
+            {
+                var process = visuaProcessesQueue.Dequeue();
+                process.Execute();
+            }
+            return null;
+        }
+
+        private void RunProcess()
+        {
+
+            if (currVisuaProcess == null)//取出
+            {
+                currVisuaProcess = NextProcess();
+            }
+            
+            if (currVisuaProcess != null)// 在下一帧运行
+            {
+                currVisuaProcess.Run();
+                if (currVisuaProcess.isFinish)
+                {
+                    currVisuaProcess.Release();
+                    //回收 当前流程 
+                }
+            }
+
+
+        }
+        #endregion
 
         #region 流程
 
@@ -60,7 +171,7 @@ namespace ProjectApp
             elementsPoolTrf = new GameObject("ElementsPool").transform;
             elementsPoolTrf.SetParent(Core.transform);
             elementsPoolTrf.localPosition = Vector3.zero;
-      
+
             elementItemsTrf = new GameObject("ElementItems").transform;
             elementItemsTrf.SetParent(Core.transform);
             elementItemsTrf.localPosition = Vector3.zero;
@@ -69,7 +180,9 @@ namespace ProjectApp
 
 
             InitSys();
-           
+
+            isInit = true;
+
         }
 
         private void InitSys()
@@ -83,12 +196,11 @@ namespace ProjectApp
             RaycastSys.ClearCheckAllLayers();
             RaycastSys.AddCheckLayerMask("ElementItem");
 
-            RaycastSys.Start();
-
 
             AnimationSys = new ElementAni_System();
             AnimationSys.Init();
-            AnimationSys.Start();
+
+            visuaProcessesQueue = new Queue<VisuaProcess>();
 
         }
 
@@ -114,10 +226,10 @@ namespace ProjectApp
 
         public void InitializeBoard(int w, int h)
         {
-            
-
             elementItems = new ElementItem[w, h];
 
+            RaycastSys.Start();
+            AnimationSys.Start();
         }
 
         public void GenerateInitialElements()
@@ -128,11 +240,11 @@ namespace ProjectApp
                 {
                     ElementData data = Data.boardData[x, y];
                     ElementItem element = CreadElemenItem(Data.boardData[x, y]);
-                    
+
                     //设置位置
                     element.Pos = GetPosition(data);
 
-                    elementItems[x,y] = element;
+                    elementItems[x, y] = element;
 
                 }
             }
@@ -143,7 +255,7 @@ namespace ProjectApp
         public void Dispose()
         {
             RemoveListener();
-            
+
             Core = null;
             startVector3 = Vector3.zero;
 
@@ -166,19 +278,35 @@ namespace ProjectApp
             AnimationSys.Dispose();
             AnimationSys = null;
 
-
-
-
+            while (visuaProcessesQueue.Count > 0)
+            {
+                var process = visuaProcessesQueue.Dequeue();
+                process.Release();
+            }
+            visuaProcessesQueue = null;
+            VisuaProcess.ClearPool();
 
         }
 
-        
-        
+        public void Update()
+        {
+            if (!isInit) return;
+            if (Core.Enabled_PlayerCtr)
+            {
+                RaycastSys.Run();
+            }
+
+            AnimationSys.Run();
+
+            RunProcess();
+        }
 
 
 
         #endregion
 
+
+        #region  ElementItemTool
         /// <summary>
         /// 创建元素
         /// </summary>
@@ -191,16 +319,15 @@ namespace ProjectApp
             return element;
         }
 
-        private Vector3 GetPosition(int X , int Y)
+        private Vector3 GetPosition(int X, int Y)
         {
             Vector3 position = startVector3 + new Vector3(X, Y, 0);
             return position;
         }
         private Vector3 GetPosition(ElementData data)
-        {         
-            return GetPosition(data.X,data.Y);;
+        {
+            return GetPosition(data.X, data.Y); ;
         }
-
 
         /// <summary>
         /// 查找棋盘对应的元素
@@ -209,11 +336,14 @@ namespace ProjectApp
         /// <returns></returns>
         private ElementItem FindElementItem(ElementData data)
         {
-            if(data.X>= Data.BoardWidth || data.Y >= Data.BoardHeight )return null;
+            if (data.X >= Data.BoardWidth || data.Y >= Data.BoardHeight) return null;
 
-            return elementItems[data.X,data.Y];
+            return elementItems[data.X, data.Y];
 
         }
+        #endregion
+
+
 
 
 
@@ -230,15 +360,15 @@ namespace ProjectApp
             // 1. 获取被选择的元素
             ElementItem item = FindElementItem(elementData);
             // 2. 高亮显示选中状态
-            if(item!=null)
+            if (item != null)
             {
-               // 3. 更新选择状态
-               item.SetSelect(true);
-               // 4. 播放选择音效
-
+                // 3. 更新选择状态
+                item.SetSelect(true);
+                // 4. 播放选择音效
             }
 
-            
+
+
         }
 
         /// <summary>
@@ -253,11 +383,11 @@ namespace ProjectApp
             // 1. 获取被选择的元素
             ElementItem item = FindElementItem(elementData);
             // 2. 重置选择状态
-            if(item!=null)
+            if (item != null)
             {
-               // 3. 更新选择状态
-               item.SetSelect(false);
-               // 4. 播放选择音效
+                // 3. 更新选择状态
+                item.SetSelect(false);
+                // 4. 播放选择音效
 
             }
 
@@ -271,10 +401,29 @@ namespace ProjectApp
         {
             // TODO: 实现元素交换逻辑
             // 1. 解析交换的元素数据
-            // 2. 执行交换动画
-            // 3. 验证交换结果
-            // 4. 检查是否形成匹配
+            List<ElementData> elementDatas = data as List<ElementData>;
+            ElementItem item1 = FindElementItem(elementDatas[0]);
+            ElementItem item2 = FindElementItem(elementDatas[1]);
+            // 2. 创建动画流程
+
+            var process = VisuaProcess.Get();
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+                p.duration = AnimationSys.PlaySwapAin(item1, item2);
+            });
+
+            process.SetLinkFinish((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+            });
+
+            AddVisuaProcess(process);
+
+
         }
+
+
 
         /// <summary>
         /// 处理元素清除事件
@@ -306,7 +455,7 @@ namespace ProjectApp
 
 
 
-        
+
 
 
     }

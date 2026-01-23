@@ -270,12 +270,8 @@ namespace ProjectApp
         {
             if(!isInit) return;
             
-            if(Enabled_PlayerCtr)
-            {
-                visualEffectsModule.RaycastSys.Run();
-            }
-            //正式的不用加
-            visualEffectsModule.AnimationSys.Run();
+            visualEffectsModule.Update();
+            
         }
 
         public ElementType GetRandomElementType()

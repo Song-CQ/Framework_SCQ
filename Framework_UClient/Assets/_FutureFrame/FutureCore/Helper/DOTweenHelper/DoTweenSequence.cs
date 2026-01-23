@@ -63,6 +63,7 @@ namespace FutureCore
             //sequence.Rewind();
             //sequence.Play();
             sequence.Restart();
+            
         }
         public void Pause()
         {
