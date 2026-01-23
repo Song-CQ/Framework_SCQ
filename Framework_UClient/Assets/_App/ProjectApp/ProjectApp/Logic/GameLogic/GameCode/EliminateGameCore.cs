@@ -179,6 +179,7 @@ namespace ProjectApp
             GenerateInitialElements();
 
             //允许操作
+            _enabledCtrSum = 0;
             Enabled_PlayerCtr = true;
 
             
@@ -269,7 +270,7 @@ namespace ProjectApp
         private void Update()
         {
             if(!isInit) return;
-            
+
             visualEffectsModule.Update();
             
         }
