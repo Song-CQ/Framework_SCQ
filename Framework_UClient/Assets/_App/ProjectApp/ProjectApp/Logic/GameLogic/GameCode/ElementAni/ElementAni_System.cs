@@ -92,8 +92,8 @@ namespace ProjectApp
             ani1.SetElementAndPlay(item1);
 
             SwapElementAni_Sequence ani2 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
-            ani2.formPot = item1.Pos;
-            ani2.toPot = item2.Pos;
+            ani2.formPot = item2.Pos;
+            ani2.toPot = item1.Pos;
             ani2.SetElementAndPlay(item2);
 
             float dur = ani1.Duration;

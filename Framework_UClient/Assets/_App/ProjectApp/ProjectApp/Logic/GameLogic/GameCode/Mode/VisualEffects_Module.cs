@@ -302,7 +302,6 @@ namespace ProjectApp
         }
 
 
-
         #endregion
 
 
@@ -342,8 +341,6 @@ namespace ProjectApp
 
         }
         #endregion
-
-
 
 
 
@@ -404,6 +401,9 @@ namespace ProjectApp
             List<ElementData> elementDatas = data as List<ElementData>;
             ElementItem item1 = FindElementItem(elementDatas[0]);
             ElementItem item2 = FindElementItem(elementDatas[1]);
+
+            Vector3 pot1 = item1.Pos;
+            Vector3 pot2 = item2.Pos;
             // 2. 创建动画流程
 
             var process = VisuaProcess.Get();
