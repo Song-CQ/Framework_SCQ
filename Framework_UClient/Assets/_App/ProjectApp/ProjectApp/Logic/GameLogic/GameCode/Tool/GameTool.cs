@@ -13,7 +13,7 @@ using Random = System.Random;
 
 namespace ProjectApp
 {
-    public static class GameTool 
+    public static class GameTool
     {
         public static EliminateGameCore GameCore;
 
@@ -22,7 +22,7 @@ namespace ProjectApp
         {
             if (!elementTypeSpr.ContainsKey(type))
             {
-                Sprite sprite = Resources.Load<Sprite>("ItemIcon/"+type.ToString());
+                Sprite sprite = Resources.Load<Sprite>("ItemIcon/" + type.ToString());
                 elementTypeSpr[type] = sprite;
             }
             return elementTypeSpr[type];
@@ -33,11 +33,25 @@ namespace ProjectApp
         public static GameObject InstantiateElementPrefab()
         {
             if (element_Prefab == null)
-            { 
-                element_Prefab =  Resources.Load<GameObject>("Prefabs/GamePrefab/Element");
+            {
+                element_Prefab = Resources.Load<GameObject>("Prefabs/GamePrefab/Element");
             }
 
             return GameObject.Instantiate(element_Prefab);
+        }
+        public static ElementType[] AllBaseElements = new ElementType[] { ElementType.Item_A,ElementType.Item_B,ElementType.Item_C,ElementType.Item_D };
+
+        public static void YatesElements()
+        {
+            for (int i = AllBaseElements.Length-1; i > 0; i--)
+            {
+                int j = RandomToInt(0, i+1);
+                // 交换
+                ElementType temp = AllBaseElements[i];
+                AllBaseElements[i] = AllBaseElements[j];
+                AllBaseElements[j] = temp;
+            }
+
         }
 
         private static Random _systemRandom = new Random();

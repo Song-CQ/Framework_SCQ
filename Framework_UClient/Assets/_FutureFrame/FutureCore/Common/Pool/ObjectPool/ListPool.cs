@@ -4,7 +4,7 @@ namespace FutureCore
 {
     public static class ListPool<T>
     {
-        private static readonly ObjectPool<List<T>> _objectPool= new ObjectPool<List<T>>(null,Clead);
+        private static readonly ObjectPool<List<T>> _objectPool= new ObjectPool<List<T>>(null, OnRelease);
 
         public static List<T> Get()
         {
@@ -16,9 +16,14 @@ namespace FutureCore
             _objectPool.Release(list);
         }
 
-        private static void Clead(List<T> list)
+        private static void OnRelease(List<T> list)
         {
             list.Clear();
+        }
+
+        public static void Clear()
+        {
+            _objectPool.Clear();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace ProjectApp
         {         
             fXEffectUICtrl = ModuleMgr.Instance.GetUICtrl(UICtrlConst.FXEffectUICtrl) as FXEffectUICtrl;
             fXEffectUICtrl.OpenUI();
-            InputMgr.ClickScreen += InputMgr_ClickScreen;
+            InputMgr.OnScreenClick += InputMgr_ClickScreen;
 
         }
 

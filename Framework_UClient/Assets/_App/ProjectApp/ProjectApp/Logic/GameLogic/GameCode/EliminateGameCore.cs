@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -17,10 +18,11 @@ namespace ProjectApp
         BuildHive,      // 建造蜂巢模式
         WorkerBeeChallenge // 工蜂挑战模式
     }
-
-    public class EliminateGameData
+    [Serializable]
+    public class ElementGameData
     {
         #region 棋盘数据
+        [SerializeField]
         public ElementData[,] boardData;
         // 当前选中的元素
         public Vector2Int selectedElement = new Vector2Int(-1, -1);
@@ -54,6 +56,7 @@ namespace ProjectApp
             boardData[elementData.X, elementData.Y] = elementData;
         }
 
+
         public void Dispose()
         {
             boardData = null;
@@ -61,6 +64,8 @@ namespace ProjectApp
             boardSize = new Vector2Int(0, 0);
 
         }
+
+       
     }
 
 
@@ -105,13 +110,13 @@ namespace ProjectApp
             if (param == null || param.Length == 0)
             {
                 Dispatcher.Dispatch(msg);
-            }else
-            if(param.Length == 1)
-            {   
-                Dispatcher.Dispatch(msg,param[0]);
-            }else
+            } else
+            if (param.Length == 1)
             {
-                Dispatcher.Dispatch(msg,(object)param);
+                Dispatcher.Dispatch(msg, param[0]);
+            } else
+            {
+                Dispatcher.Dispatch(msg, (object)param);
             }
         }
 
@@ -127,7 +132,7 @@ namespace ProjectApp
 
         #endregion
 
-        public EliminateGameData Data { get; private set; }
+        public ElementGameData Data { private set; get;}
         private GameInitial_Module gameInitialModule;
         private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
@@ -152,10 +157,14 @@ namespace ProjectApp
 
         public void Init()
         {
+            InputMgr.Instance.Init();
+            InputMgr.Instance.StartUp();
+
             GameTool.GameCore = this;
             GameTool.SetRandomSeed(132131231);//设置种子
+            GameTool.AllBaseElements = new ElementType[] { ElementType.Item_A, ElementType.Item_B, ElementType.Item_C, ElementType.Item_D };
 
-            Data = new EliminateGameData();
+            Data = new ElementGameData();
             Dispatcher = new Dispatcher<uint>();
 
             gameInitialModule = new GameInitial_Module();
@@ -240,8 +249,8 @@ namespace ProjectApp
         [Button("交换元素")]
         public void Test1()
         {
-            Dispatcher.Dispatch(GameMsg.ClickElement,new ElementData(temp1.x,temp1.y, ElementType.Fixed_None));
-            Dispatcher.Dispatch(GameMsg.ClickElement,new ElementData(temp2.x,temp2.y, ElementType.Fixed_None));
+            Dispatcher.Dispatch(GameMsg.ClickElement,new ElementData().SetPot(temp1.x,temp1.y));
+            Dispatcher.Dispatch(GameMsg.ClickElement,new ElementData().SetPot(temp2.x,temp2.y));
 
         }
         
@@ -275,14 +284,29 @@ namespace ProjectApp
             
         }
 
-        public ElementType GetRandomElementType()
+        public ElementData GetRandomElementData()
         {
             ElementType elementType =  ElementType.Fixed_None;
             // 根据配置表比例生成元素（这里简化为随机）
             int rand = GameTool.RandomToInt(1,6);
 
             elementType = (ElementType)rand;
-            return elementType;
+
+            ElementData data = new ElementData(elementType);
+           
+            ///特殊元素
+            if (data.Type == ElementType.Item_Change)
+            {
+                GameTool.YatesElements();
+                var values = GameTool.AllBaseElements;
+                
+                data.data1 = (int)values[0];
+                data.data2 = (int)values[1];
+                data.data3 = (int)values[2];
+               
+            }
+            
+            return data;
             //if (rand < 0.7f) // 70%为基础元素
             //{
             //    type = (ElementType)Random.Range(0, 5);

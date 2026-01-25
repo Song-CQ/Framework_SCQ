@@ -19,6 +19,12 @@ namespace FutureCore
         private bool isPlay = false;
 
         /// <summary>
+        ///  播放结束后是否自动销毁
+        /// </summary>
+        public bool autoDestroy = false;
+
+        
+        /// <summary>
         /// 结束CallBack
         /// </summary>
         public event Action<Effect> Event_Stop_Action;
@@ -39,7 +45,7 @@ namespace FutureCore
             entity.SetActive(true);
             StopType stopType = data.stopType;
 
-            if (entity.main_ParticleSystem != null&&stopType == StopType.ParticleSystemStopped_ToMain)
+            if (stopType == StopType.ParticleSystemStopped_ToMain&& entity.main_ParticleSystem == null)
             {
                 stopType = StopType.Default;
             }
@@ -89,8 +95,24 @@ namespace FutureCore
 
             entity.SetActive(false);
             Event_Stop_Action?.Invoke(this);
+            if (autoDestroy)
+            {
+                Dispose();
+            }
         }
 
+        public void Dispose()
+        {
+            Event_Stop_Action = null;
+            isPlay = false;
+            data = null;
+            autoDestroy = false;
+            if (entity)
+            { 
+                GameObject.Destroy(entity.gameObject);
+            }
+            entity = null;
 
+        }
     }
 }

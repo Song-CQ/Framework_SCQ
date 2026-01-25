@@ -28,7 +28,7 @@ namespace ProjectApp
 
         #region 流程
         public Dispatcher<uint> Dispatcher => Core.Dispatcher;
-        public EliminateGameData Data => Core.Data;
+        public ElementGameData Data => Core.Data;
 
         public EliminateGameCore Core { get; private set; }
 
@@ -71,6 +71,8 @@ namespace ProjectApp
             temp_AllMatchesList = null;
             boardSize = Vector2Int.zero;
 
+            ListPool<ElementData>.Clear();
+
         }
 
         #endregion
@@ -79,7 +81,8 @@ namespace ProjectApp
         private const string lockStr = "loack";
         void OnElementClicked_test(object o)
         {
-
+            OnElementClicked(o);
+            return;
             try
             {
                 using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5)))
@@ -136,36 +139,40 @@ namespace ProjectApp
             }
             else
             {
+                int select_X = SelectedElement.x;
+                int select_Y = SelectedElement.y;
+                // 清除选中状态
+                DeselectElement(SelectedElement.x, SelectedElement.y);
+                
                 // 第二次点击，判断是否相邻
-                if (IsAdjacent(SelectedElement.x, SelectedElement.y, x, y))
+                if (IsAdjacent(select_X, select_Y, x, y))
                 {
 
                     // 交换元素
-                    SwapElements(SelectedElement.x, SelectedElement.y, x, y);
+                    SwapElements(select_X, select_Y, x, y);
 
                     // 检查匹配
                     List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
-                    matches = CheckMatchesAfterSwap(SelectedElement.x, SelectedElement.y, x, y, ref matches);
+                    matches = CheckMatchesAfterSwap(select_X, select_Y, x, y, ref matches);
 
                     if (matches.Count > 0)
                     {
                         // 有匹配，进行消除
                         ProcessMatches(matches);
                         // 创建新元素 并补位
-                        // FillEmptySpaces();
+                        FillEmptySpaces();
                     }
                     else
                     {
                         // 无匹配，交换回来
-                        SwapElements(SelectedElement.x, SelectedElement.y, x, y);
+                        SwapElements(select_X, select_Y, x, y);
                     }
                     //使用完回收List
                     FutureCore.ListPool<Vector2Int>.Release(matches);
 
                 }
 
-                // 清除选中状态
-                DeselectElement(SelectedElement.x, SelectedElement.y);
+                
 
             }
 
@@ -211,25 +218,27 @@ namespace ProjectApp
         /// </summary>
         void SwapElements(int x1, int y1, int x2, int y2)
         {
-            // 交换棋盘数据
+            
             ElementData tempData1 = BoardData[x1, y1];
             ElementData tempData2 = BoardData[x2, y2];
-
             Debug.Log(string.Format("交换元素{0}  和 {1}", tempData1.ToString(), tempData2.ToString()));
 
-            BoardData[x1, y1] = tempData2;
-            BoardData[x2, y2] = tempData1;
-
+            // 实际交换棋盘数据
+            // 设置这个坐标位置 的数据
+            SetBoardData(x1,y1, tempData2);
+            SetBoardData(x2,y2, tempData1);
+   
+            // 通知其他模块 交换数据
             List<ElementData> elementDatas = FutureCore.ListPool<ElementData>.Get();
             elementDatas.Add(tempData1);
             elementDatas.Add(tempData2);
             Dispatcher.Dispatch(GameMsg.SwapElements, elementDatas);
             FutureCore.ListPool<ElementData>.Release(elementDatas);
 
-
-
-
         }
+
+
+        
 
         /// <summary>
         /// 检查交换后的匹配
@@ -243,6 +252,10 @@ namespace ProjectApp
             FindMatchesAt(x2, y2, visited, ref matches);
 
             Debug.Log(string.Format("交换元素后消除的元素数量{0}", matches.Count));
+            foreach (var item in matches)
+            {
+                Debug.Log(string.Format("分别是{0}", item.ToString()));
+            }
 
 
             return matches;
@@ -381,7 +394,7 @@ namespace ProjectApp
             if (!IsPositionValid(x, y))
                 return false;
 
-            ElementType type = BoardData[x, y].Type;
+            ElementType type = ElementTypeTool.GetTypeToElementData(BoardData[x, y]);
             if (type == ElementType.Fixed_Special || type == ElementType.Fixed_None)
                 return false;
 
@@ -395,8 +408,9 @@ namespace ProjectApp
             // 向左检查
             for (int i = x - 1; i >= 0; i--)
             {
+                ElementType tarType = ElementTypeTool.GetTypeToElementData(BoardData[i, y]);
 
-                if (BoardData[i, y].Type == type)
+                if (tarType == type)
                     tempMatches[matchCount++] = new Vector2Int(i, y);
                 else
                     break;
@@ -405,7 +419,8 @@ namespace ProjectApp
             // 向右检查
             for (int i = x + 1; i < boardSize.x; i++)
             {
-                if (BoardData[i, y].Type == type)
+                ElementType tarType = ElementTypeTool.GetTypeToElementData(BoardData[i, y]);
+                if (tarType == type)
                     tempMatches[matchCount++] = new Vector2Int(i, y);
                 else
                     break;
@@ -432,7 +447,7 @@ namespace ProjectApp
             if (!IsPositionValid(x, y))
                 return false;
 
-            ElementType type = BoardData[x, y].Type;
+            ElementType type = ElementTypeTool.GetTypeToElementData(BoardData[x, y]);
             if (type == ElementType.Fixed_Special || type == ElementType.Fixed_None)
                 return false;
 
@@ -446,7 +461,8 @@ namespace ProjectApp
             // 向下检查
             for (int j = y - 1; j >= 0; j--)
             {
-                if (BoardData[x, j].Type == type)
+                ElementType tarType = ElementTypeTool.GetTypeToElementData(BoardData[x, j]);
+                if (tarType == type)
                     tempMatches[matchCount++] = new Vector2Int(x, j);
                 else
                     break;
@@ -455,7 +471,8 @@ namespace ProjectApp
             // 向上检查
             for (int j = y + 1; j < boardSize.y; j++)
             {
-                if (BoardData[x, j].Type == type)
+                ElementType tarType = ElementTypeTool.GetTypeToElementData(BoardData[x, j]);
+                if (tarType == type)
                     tempMatches[matchCount++] = new Vector2Int(x, j);
                 else
                     break;
@@ -500,8 +517,11 @@ namespace ProjectApp
         /// </summary>
         void FillEmptySpaces()
         {
+            //要下落的元素
             List<ElementData> souList = ListPool<ElementData>.Get();
+            //下落元素的目标
             List<ElementData> tarList = ListPool<ElementData>.Get();
+            //新创建的元素位置
             List<ElementData> creadList = ListPool<ElementData>.Get();
 
 
@@ -517,7 +537,7 @@ namespace ProjectApp
                         //要填充的 源位置
                         ElementData sour = default;
 
-
+     
                         //向上寻找到最近的不是空的物体
                         int temp_y = y + 1;
                         bool isCreate = false;
@@ -527,6 +547,7 @@ namespace ProjectApp
                             //是空的 
                             if (ElementTypeTool.CheckType_UpEmpty(BoardData[x, temp_y].Type))
                             {
+                                temp_y ++;
                                 continue;
                             }
                             //可下落
@@ -544,13 +565,15 @@ namespace ProjectApp
                             break;
                         }
 
+
                         //最近的空
                         if (temp_y >= boardSize.y || isCreate)
                         {
                             // 生成新元素
-                            ElementType newType = Core.GetRandomElementType();
+                            sour = Core.GetRandomElementData();
                             //因为 是新创建的 所以可能 在高于棋盘的位置  
-                            sour = new ElementData(x, temp_y + creadCont, newType);
+                            sour.SetPot(x, temp_y + creadCont);
+
                             creadCont++;
                             creadList.Add(sour);
 
@@ -560,10 +583,15 @@ namespace ProjectApp
                         tarList.Add(tar);
 
                         //设置当前的类型
-                        BoardData[x, y].SetType(sour.Type);
-
+                        SetBoardData(x,y,sour);
                     }
                 }
+            }
+
+            Debug.LogError("要创建的元素数量"+ creadList.Count);
+            foreach (var item in creadList)
+            {
+                Debug.Log(item.ToString());
             }
 
             if (creadList.Count > 0)
@@ -571,19 +599,35 @@ namespace ProjectApp
                 //创建元素
                 Dispatcher.Dispatch(GameMsg.GenerateElements, creadList);
             }
+            ListPool<ElementData>.Release(creadList);
+
+            Debug.LogError("要下落的元素数量" + souList.Count);
+            for (int i = 0; i < souList.Count; i++)
+            {
+                ElementData item = souList[i];
+                Debug.Log("下落元素" + item.ToString()+"目标位置"+ tarList[i].ToString());
+            }
 
             if (souList.Count > 0 && tarList.Count > 0)
             {
                 // 下落元素
                 Core.Dispatch(GameMsg.ElementsFall, souList, tarList);
             }
+            ListPool<ElementData>.Release(souList);
+            ListPool<ElementData>.Release(tarList);
 
 
             // 检查新的匹配
+         
             CheckAllMatches();
         }
 
-
+        private void SetBoardData(int x,int y,ElementData sour)
+        {
+            sour.SetPot(x, y);
+            BoardData[x, y] = sour;
+        }
+        
 
         /// <summary>
         /// 检查所有匹配
@@ -703,19 +747,21 @@ namespace ProjectApp
 
 
 
+            List<ElementData> allMatches = ListPool<ElementData>.Get();
 
             // 消除元素
             foreach (Vector2Int match in matches)
             {
                 Debug.Log("消除：" + Data.boardData[match.x, match.y].ToString());
-                if (BoardData[match.x, match.y].Type != ElementType.Fixed_None) //如果不是不存在
+                if (BoardData[match.x, match.y].Type != ElementType.Fixed_Special) //如果不是不存在
                 {
+                    allMatches.Add(BoardData[match.x, match.y]);
                     BoardData[match.x, match.y].SetType(ElementType.Fixed_Special); // 临时标记为空
                 }
             }
 
-            Dispatcher.Dispatch(GameMsg.ClearElements, matches);
-
+            Dispatcher.Dispatch(GameMsg.ClearElements, allMatches);
+            ListPool<ElementData>.Release(allMatches);
 
             // 计算分数
             int matchCount = matches.Count;

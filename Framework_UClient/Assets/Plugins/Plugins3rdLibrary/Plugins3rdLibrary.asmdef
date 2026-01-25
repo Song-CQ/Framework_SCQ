@@ -1,9 +1,7 @@
 {
     "name": "Plugins3rdLibrary",
     "rootNamespace": "",
-    "references": [
-        "GUID:c4b8fc492eac8184fb9a42684cf8c464"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FutureCore;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -31,6 +32,11 @@ namespace ProjectApp
 
         public Dictionary<int, IRaycast3D_OnClick> raycast3D_OnClick = new Dictionary<int, IRaycast3D_OnClick>();
 
+        private Vector2 touchStart;
+        private float touchTime;
+
+        private float touchDistance;
+
         public override void Init()
         {
             mainCamera = Camera.main;
@@ -43,33 +49,67 @@ namespace ProjectApp
         public override void Start()
         {
             base.Start();
+            InputMgr.OnClick += OnClick;
+            InputMgr.OnSwipe += OnSwipe;
+        }
+
+        public override void Shutdown()
+        {
+            base.Shutdown();
+
+            InputMgr.OnClick -= OnClick;
+            InputMgr.OnSwipe -= OnSwipe;
         }
 
         public override void Run()
         {
             if (!IsRunning) return;
-            if (Input.GetMouseButtonDown(0))
-            {
-                // 检查UI遮挡
-                if (EventSystem.current != null &&
-                    EventSystem.current.IsPointerOverGameObject())
-                    return;
-
-                CheckClick();
-            }
         }
 
-        private void CheckClick()
+        private void OnClick(Vector2 pot)
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            if (!IsRunning) return;
 
-            if (Physics.Raycast(ray, out hit, maxDistance, layerMask, queryTriggerInteraction))
+            if (GetClickRaycast3D(pot, out IRaycast3D_OnClick raycast3D, out Vector3 hitPot))
+            {
+                raycast3D.Raycast_OnClick(hitPot);
+            }
+
+        }
+
+
+        private void OnSwipe(SwipeDirection arg1, Vector2 potStart, Vector2 potEnd)
+        {
+            if (!IsRunning) return;
+
+            if (GetClickRaycast3D(potStart, out IRaycast3D_OnClick raycast3D_start, out Vector3 hitPot_start)
+                && GetClickRaycast3D(potEnd, out IRaycast3D_OnClick raycast3D_end, out Vector3 hitPot_end))
+            {
+                raycast3D_start.Raycast_OnClick(hitPot_start);
+                raycast3D_end.Raycast_OnClick(hitPot_end);
+
+            }
+
+
+        }
+
+
+
+
+        private bool GetClickRaycast3D(Vector3 pot, out IRaycast3D_OnClick raycast, out Vector3 hitPot)
+        {
+            Ray ray = mainCamera.ScreenPointToRay(pot);
+
+            hitPot = Vector3.zero;
+            raycast = null;
+
+            if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, layerMask, queryTriggerInteraction))
             {
                 int id = hit.colliderInstanceID;
-                if (raycast3D_OnClick.TryGetValue(id, out IRaycast3D_OnClick raycast))
+                if (raycast3D_OnClick.TryGetValue(id, out raycast))
                 {
-                    raycast.Raycast_OnClick(hit.point);
+                    hitPot = hit.point;
+                    return true;
                 }
             }
             else //2D 
@@ -77,25 +117,28 @@ namespace ProjectApp
                 // 保存原始设置
                 bool originalHitTriggers = Physics2D.queriesHitTriggers;
                 // 设置为忽略触发器（与3D保持一致）
-                Physics2D.queriesHitTriggers = queryTriggerInteraction == QueryTriggerInteraction.Ignore ? false:true;
+                Physics2D.queriesHitTriggers = queryTriggerInteraction == QueryTriggerInteraction.Ignore ? false : true;
 
                 // 2D 的 layerMask 是 int 类型
-                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray,maxDistance,layerMask);
+                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, maxDistance, layerMask);
 
                 // 恢复原始设置
                 Physics2D.queriesHitTriggers = originalHitTriggers;
-                     
+
                 if (hit2D.collider != null)
                 {
                     int id = hit2D.collider.GetInstanceID();
-                    if (raycast3D_OnClick.TryGetValue(id, out IRaycast3D_OnClick raycast))
+                    if (raycast3D_OnClick.TryGetValue(id, out raycast))
                     {
-                        raycast.Raycast_OnClick(hit2D.point);
+                        hitPot = hit2D.point;
+                        return true;
+
                     }
                 }
             }
-        }
 
+            return false;
+        }
 
         public void RegisterEvent_OnClick(IRaycast3D_OnClick raycast3D)
         {

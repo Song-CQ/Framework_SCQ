@@ -55,7 +55,7 @@ namespace FutureCore
 
         }
 
-        protected abstract void AddTweenToSequence(Sequence sequence);
+        protected abstract void AddTweenToSequence(Sequence seq);
 
         public void Play()
         {
@@ -83,7 +83,7 @@ namespace FutureCore
             sequence.Pause();
             sequence.Rewind();
             IsPlay = false;
-
+            ResetState();
         }
 
         protected virtual void OnStart()
@@ -94,6 +94,11 @@ namespace FutureCore
         protected virtual void OnComplete()
         {
             IsPlay = false;
+        }
+
+        public virtual void ResetState()
+        {
+
         }
 
         public virtual void Disp()

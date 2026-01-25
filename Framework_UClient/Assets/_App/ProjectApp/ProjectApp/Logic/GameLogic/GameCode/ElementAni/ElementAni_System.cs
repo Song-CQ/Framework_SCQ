@@ -6,7 +6,9 @@ using ProjectApp.GameLogic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
+using static Codice.Client.Commands.WkTree.WorkspaceTreeNode;
 
 namespace ProjectApp
 {
@@ -77,28 +79,13 @@ namespace ProjectApp
             base.Dispose();
         }
 
-        
 
-        public float PlaySwapAin(ElementItem item1,ElementItem item2)
+
+
+        private void AddRunElementAni(ElementItem item,IElementAni ani)
         {
-            //停止正在播放的Dotw
-            StopElementItemAni(item1);
-            StopElementItemAni(item2);
-
-
-            SwapElementAni_Sequence ani1 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
-            ani1.formPot = item1.Pos;
-            ani1.toPot = item2.Pos;
-            ani1.SetElementAndPlay(item1);
-
-            SwapElementAni_Sequence ani2 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
-            ani2.formPot = item2.Pos;
-            ani2.toPot = item1.Pos;
-            ani2.SetElementAndPlay(item2);
-
-            float dur = ani1.Duration;
-
-            return dur;
+            if (item != null && ani != null) return;
+            runAllElementAni[item] = ani;
         }
 
 
@@ -124,10 +111,12 @@ namespace ProjectApp
             IElementAni ani = null;
             if (aniQueue.Count > 0)
             {
+                //Debug.Log("使用旧的");
                 ani = aniQueue.Dequeue();
             }
             else
             {
+                //Debug.Log("创建新达到");
                 ani = CreateElementAni(type);
             }          
             return ani;
@@ -148,7 +137,11 @@ namespace ProjectApp
             switch (type)
             {
                 case ElementAniType.Swap:
-                    return new SwapElementAni_Sequence();
+                    return new SwapElementAni_Sequence(); 
+                case ElementAniType.Clear:
+                    return new ClearElementAni_Sequence();
+                case ElementAniType.FallMove:          
+                    return new FallMoveElementAni_Sequence();
                 default:
                     return null;
 
@@ -156,7 +149,74 @@ namespace ProjectApp
         }
 
 
+        #region 动画
+       
+        public float PlayAin_SwapElement(ElementItem item1, ElementItem item2)
+        {
+            //停止正在播放的Dotw
+            StopElementItemAni(item1);
+            StopElementItemAni(item2);
 
+
+            SwapElementAni_Sequence ani1 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
+            ani1.formPot = item1.Pos;
+            ani1.toPot = item2.Pos;
+            ani1.SetElementAndPlay(item1);
+            AddRunElementAni(item1,ani1);
+
+            SwapElementAni_Sequence ani2 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
+            ani2.formPot = item2.Pos;
+            ani2.toPot = item1.Pos;
+            ani2.SetElementAndPlay(item2);
+            AddRunElementAni(item2,ani2);
+
+            float dur = ani1.Duration;
+
+
+            return dur;
+        }
+        public float PlayAin_ClearElements(List<ElementItem> items)
+        {
+            float dur = 0;
+            foreach (var item in items)
+            {
+                if (item == null) continue;
+                StopElementItemAni(item);
+
+                IElementAni ani = GetAnimation(ElementAniType.Clear);
+                ani.SetElementAndPlay(item);
+
+                AddRunElementAni(item,ani);
+                dur = ani.Duration;
+            }
+            return dur;
+        }
+        public float PlayAin_FallElements(List<ElementItem> elementItemList, List<Vector3> tarPotList)
+        {
+            float dur = 0;
+            for (int i = 0; i < elementItemList.Count; i++)
+            {
+                var item = elementItemList[i];
+                var pot = tarPotList[i];
+                if (item == null) continue;
+                StopElementItemAni(item);
+                FallMoveElementAni_Sequence ani = GetAnimation(ElementAniType.FallMove) as FallMoveElementAni_Sequence;
+                ani.formPot = item.Pos;
+                ani.toPot = pot;
+                
+                ani.SetElementAndPlay(item);
+                AddRunElementAni(item, ani);
+                dur = ani.Duration;
+
+            }
+
+            return dur;
+        }
+
+        #endregion
+
+        #region 测试方法
+        /*
         #region 核心属性
         [SerializeField, Range(0f, 2f)]
         private float globalPlaybackSpeed = 1f;
@@ -310,9 +370,12 @@ namespace ProjectApp
             managedTweens.Clear();
             originalSpeeds.Clear();
         }
+
         #endregion
 
 
+        */
+        #endregion
 
     }
 }

@@ -8,7 +8,7 @@ namespace ProjectApp
     public interface IGameModule 
     {
         EliminateGameCore Core { get; }
-        EliminateGameData Data { get; }
+        ElementGameData Data { get; }
 
         Dispatcher<uint> Dispatcher { get; }
 

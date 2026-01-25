@@ -7,16 +7,35 @@ namespace ProjectApp
 {
     public enum ElementType
     {
-        Item_Baihe = 1,    // 红色基础元素
-        Item_fengjiao, // 黄色基础元素
-        Item_shuihu,   // 蓝色基础元素
-        Item_xihongshui,  // 绿色基础元素
-        Item_zhiwu,  // 紫色基础元素
+        Item_A = 1,    // 红色基础元素
+        Item_B, // 黄色基础元素
+        Item_C,   // 蓝色基础元素
+        Item_D,  // 绿色基础元素
+
+        Item_Change,// 可变换元素
+
+
+        // 可切换的特殊元素
+        Prop_Rocket,           // 火箭组合（横竖可切换）
+        RocketBombCombo,       // 火箭炸弹组合
+        DoubleRocket,          // 双火箭（可切换方向）
+        CrossRocket,           // 十字火箭
+        MegaBomb,              // 超级炸弹（可切换模式）
+
+        // 状态相关
+        Transformable,         // 可变换元素
+
 
         Dummy_CanMatche = 100,// 站位 比他小的允许参与匹配消除
 
-        Dummy_CanClickEvent = 200, // 占位 比他小的接受点击
+        //道具
+        Prop_HorizontalRocket,      // 横向火箭
+        VerticalRocket,        // 纵向火箭
+        Bomb,                  // 炸弹
+        ColorBomb,             // 彩色炸弹/万能元素
 
+        Dummy_CanClickEvent = 200, // 占位 比他小的接受点击
+        
 
         //不可下落
         Dummy_CanDown = 900,//占位 比他大的不可下落
@@ -113,7 +132,14 @@ namespace ProjectApp
             }
             return false;
         }
-        
-        
+
+        public static ElementType GetTypeToElementData(ElementData data)
+        {
+            if (data.Type == ElementType.Item_Change)
+            {
+                return (ElementType)data.data1;
+            }
+            return data.Type;
+        }
     }
 }

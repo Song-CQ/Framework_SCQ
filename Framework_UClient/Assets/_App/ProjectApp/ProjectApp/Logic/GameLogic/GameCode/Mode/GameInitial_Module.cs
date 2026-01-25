@@ -11,7 +11,7 @@ namespace ProjectApp
 
         #region 流程
         public Dispatcher<uint> Dispatcher => Core.Dispatcher;
-        public EliminateGameData Data => Core.Data;
+        public ElementGameData Data => Core.Data;
 
         public EliminateGameCore Core { get; private set; }
 
@@ -43,10 +43,11 @@ namespace ProjectApp
             {
                 for (int y = 0; y < Data.boardSize.y; y++)
                 {
-                    ElementType type = Core.GetRandomElementType();
+                    ElementData data = Core.GetRandomElementData();
+                    data.SetPot(x,y);
 
-                    Data.boardData[x,y] = new ElementData(x, y, type);
-                
+                    Data.boardData[x,y] = data;
+
                 }
             }
 
@@ -85,8 +86,9 @@ namespace ProjectApp
                     // 重新生成有匹配的位置
                     foreach (Vector2Int pot in initialMatches)
                     {
-                        ElementData elementData = Data.GetElementData(pot);
-                        elementData.Type = Core.GetRandomElementType();
+                        ElementData elementData = Core.GetRandomElementData();
+                        elementData.SetPot(pot.x,pot.y);
+
                         Data.SetElementData(elementData);
                     }
                 }
