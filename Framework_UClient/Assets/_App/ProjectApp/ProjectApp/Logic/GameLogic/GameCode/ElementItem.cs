@@ -271,7 +271,7 @@ public class DebugElementItem : MonoBehaviour
     public void Update()
     {
         if (elementItem == null) return;
-
+         
         Data = elementItem.Data;
         isSelect = elementItem.isSelect;
         //elementItem.selectGo.SetActive(isSelect);

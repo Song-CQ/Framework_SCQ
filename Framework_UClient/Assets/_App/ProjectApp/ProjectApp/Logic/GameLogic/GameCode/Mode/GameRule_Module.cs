@@ -10,7 +10,6 @@ namespace ProjectApp
 {
     public class GameRule_Module : IGameModule
     {
-
         private Vector2Int SelectedElement
         {
             get => Data.selectedElement;
@@ -228,9 +227,6 @@ namespace ProjectApp
                 for (int y = 0; y < Data.boardSize.y; y++)
                 {
                     ElementData data = Core.GetRandomElementData();
-                    data.SetPot(x,y);
-
-                    Data.boardData[x,y] = data;
 
                     SetBoardData(x,y,data);
 
@@ -238,6 +234,8 @@ namespace ProjectApp
             }
 
             Dispatcher.Dispatch(GameMsg.RestAllElements);
+
+            CheckAllMatches();
         }
 
         #endregion

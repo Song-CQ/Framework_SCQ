@@ -20,6 +20,9 @@ namespace FutureCore
             //sequence.SetAutoKill(false).SetRecyclable(true); 
             sequence.SetAutoKill(false);
 
+
+
+
             AddTweenToSequence(sequence);
             // ========== 第一阶段：顺序动画 ==========
 
@@ -39,16 +42,11 @@ namespace FutureCore
             //sequence.Append(target.DOScale(Vector3.one * 2, duration));
             //sequence.Join(target.DORotate(new Vector3(0, 180, 0), duration));
 
-
-
-            // ========== 第三阶段：回调和其他控制 ==========
-
             // 动画完成时回调
             sequence.OnComplete(OnComplete);
 
             // 动画开始时回调
             sequence.OnStart(OnStart);
-
             // 设置缓动函数
             sequence.SetEase(Ease.Linear);
             sequence.Pause();

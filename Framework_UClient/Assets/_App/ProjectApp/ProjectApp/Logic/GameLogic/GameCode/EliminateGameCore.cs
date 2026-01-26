@@ -148,13 +148,13 @@ namespace ProjectApp
             }
             else
                 if (param.Length == 1)
-                {
-                    Dispatcher.Dispatch(msg, param[0]);
-                }
-                else
-                {
-                    Dispatcher.Dispatch(msg, (object)param);
-                }
+            {
+                Dispatcher.Dispatch(msg, param[0]);
+            }
+            else
+            {
+                Dispatcher.Dispatch(msg, (object)param);
+            }
         }
 
         public void AddListener(uint msg, Action<object> paramCB)
@@ -300,6 +300,11 @@ namespace ProjectApp
             Invoke("Init", 1);
 
 
+        }
+        [Button("重新随机")]
+        public void Ranan()
+        {
+            gameRuleModule.Player_RananAllElement();
         }
 
 

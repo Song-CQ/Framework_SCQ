@@ -1,3 +1,4 @@
+using Codice.Client.Common;
 using ConsoleE;
 using FutureCore;
 using ILRuntime.Mono.Cecil.Cil;
@@ -129,17 +130,23 @@ namespace ProjectApp
 
 
         }
-        private Queue<VisuaProcess> visuaProcessesQueue;
+        private Queue<VisuaProcess> visuaProcessQueue;
         private VisuaProcess currVisuaProcess;
-        private void AddVisuaProcess(VisuaProcess process)
+        private VisuaProcess EnqueueVisuaProcess(VisuaProcess process)
         {
-            visuaProcessesQueue.Enqueue(process);
+            visuaProcessQueue.Enqueue(process);
+            return process;
+        }
+
+        private VisuaProcess GetProcessToEnqueue()
+        {
+            return EnqueueVisuaProcess(VisuaProcess.Get());
         }
         private VisuaProcess NextProcess()
         {
-            if (visuaProcessesQueue.Count > 0)
+            if (visuaProcessQueue.Count > 0)
             {
-                var process = visuaProcessesQueue.Dequeue();
+                var process = visuaProcessQueue.Dequeue();
                 process.Execute();
                 return process;
             }
@@ -212,7 +219,7 @@ namespace ProjectApp
             AnimationSys = new ElementAni_System();
             AnimationSys.Init();
 
-            visuaProcessesQueue = new Queue<VisuaProcess>();
+            visuaProcessQueue = new Queue<VisuaProcess>();
 
         }
 
@@ -293,12 +300,12 @@ namespace ProjectApp
             AnimationSys.Dispose();
             AnimationSys = null;
 
-            while (visuaProcessesQueue.Count > 0)
+            while (visuaProcessQueue.Count > 0)
             {
-                var process = visuaProcessesQueue.Dequeue();
+                var process = visuaProcessQueue.Dequeue();
                 process.Release();
             }
-            visuaProcessesQueue = null;
+            visuaProcessQueue = null;
             VisuaProcess.ClearPool();
 
             ListPool<ElementItem>.Clear();
@@ -398,6 +405,8 @@ namespace ProjectApp
             item.SetData(data);
             elementItems[x, y] = item;
         }
+
+
 
         private ElementItem FindElementItem(int x, int y)
         {
@@ -508,7 +517,7 @@ namespace ProjectApp
                 Core.Enabled_PlayerCtr = true;
             });
 
-            AddVisuaProcess(process);
+            EnqueueVisuaProcess(process);
 
 
         }
@@ -555,7 +564,7 @@ namespace ProjectApp
                 ListPool<ElementItem>.Release(elementItemList);
             });
 
-            AddVisuaProcess(process);
+            EnqueueVisuaProcess(process);
 
             
         }
@@ -595,7 +604,7 @@ namespace ProjectApp
                 ListPool<ElementItem>.Release(elementItemList);
             });
             
-            AddVisuaProcess(process);
+            EnqueueVisuaProcess(process);
 
 
         }
@@ -658,7 +667,7 @@ namespace ProjectApp
                 ListPool<Vector3>.Release(tarPotList);
             });
 
-            AddVisuaProcess(process);
+            EnqueueVisuaProcess(process);
 
         }
 
@@ -667,7 +676,47 @@ namespace ProjectApp
         /// </summary>
         private void OnRestAllElements(object obj)
         {
-            
+
+            List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
+            for (int x = 0; x < Data.BoardWidth; x++)
+            {
+
+                for (int y = 0; y < Data.BoardHeight; y++)
+                {          
+                    elementItems[x, y].SetData(Data.boardData[x, y]);
+                    elementItemList.Add(elementItems[x, y]);
+                }
+            }
+
+
+            var process = GetProcessToEnqueue();
+            process.Duration = 3f;
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+                for (int x = 0; x < Data.BoardWidth; x++)
+                {
+
+                    for (int y = 0; y < Data.BoardHeight; y++)
+                    {
+                        elementItems[x, y].RefreshView();
+                    }
+                }
+                
+                float time = AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+
+               
+            });
+
+            process.SetLinkFinish((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+
+                ListPool<ElementItem>.Release(elementItemList);
+
+            });
+
+
         }
         #endregion
 
@@ -675,6 +724,6 @@ namespace ProjectApp
 
 
 
-
+       
     }
 }

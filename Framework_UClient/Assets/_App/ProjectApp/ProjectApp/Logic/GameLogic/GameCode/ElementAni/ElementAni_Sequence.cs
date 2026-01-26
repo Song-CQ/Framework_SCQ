@@ -12,6 +12,7 @@ namespace ProjectApp.GameLogic
         Swap = 0,
         Clear,
         FallMove,
+        ElasticShake,
     }
 
     public interface IElementAni
@@ -212,6 +213,82 @@ namespace ProjectApp.GameLogic
            
 
         }
+    }
+
+
+    public class ElasticShakeAnimation_Sequence : DoTweenSequence, IElementAni
+    {
+        public ElementAniType Key => ElementAniType.Swap;
+        public ElementItem Tar { get; set; }
+
+        public new bool IsPlay => base.IsPlay;
+
+        public float Duration => shakeDuration;
+
+       
+        private float shakeDuration = 0.6f;
+        private float shakeIntensity = 0.05f;
+        private int bounces = 3;
+        private Vector3 originalPos;
+        public void SetElementAndPlay(ElementItem elementItem)
+        {
+            Tar = elementItem;
+            originalPos = elementItem.Pos;
+            Play();
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+         
+
+        }
+
+        protected override void AddTweenToSequence(Sequence seq)
+        {
+         
+
+            seq.Append(DOTween.To(
+                () => 0f,
+                progress =>
+                {
+                    // 弹性公式：y = e^(-damping * t) * sin(frequency * t)
+                    float damping = 5f;
+                    float frequency = Mathf.PI * 2 * bounces;
+                    float time = progress * shakeDuration;
+
+                    float shakeValue = Mathf.Exp(-damping * time) *
+                                      Mathf.Sin(frequency * time) *
+                                      shakeIntensity;
+
+                    // 随机方向抖动
+                    Vector3 direction = GetRandomDirection();
+                    Tar.Pos = originalPos + direction * shakeValue;
+                },
+                1f,
+                shakeDuration
+            ).SetEase(Ease.OutSine));
+
+        }
+
+        public override void ResetState()
+        {
+            Tar.Pos = originalPos;
+        }
+
+        protected override void OnComplete()
+        {
+            base.OnComplete();
+            ResetState();
+        }
+        private Vector3 GetRandomDirection()
+        {
+            // 基于元素ID生成固定的随机方向
+            int elementId = Tar.GetHashCode();
+            float angle = (elementId % 360) * Mathf.Deg2Rad;
+            return new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0).normalized;
+        }
+
     }
 }
 

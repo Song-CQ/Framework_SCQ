@@ -142,6 +142,8 @@ namespace ProjectApp
                     return new ClearElementAni_Sequence();
                 case ElementAniType.FallMove:          
                     return new FallMoveElementAni_Sequence();
+                case ElementAniType.ElasticShake:
+                    return new ElasticShakeAnimation_Sequence();
                 default:
                     return null;
 
@@ -210,6 +212,22 @@ namespace ProjectApp
 
             }
 
+            return dur;
+        }
+
+        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList)
+        {
+            float dur = -1;
+            foreach (var item in elementItemList)
+            {
+                if (item == null) continue;
+                StopElementItemAni(item);
+                var ani = GetAnimation(ElementAniType.ElasticShake);
+                ani.SetElementAndPlay(item);
+                AddRunElementAni(item, ani);
+                if (dur != -1)
+                dur = ani.Duration;
+            }
             return dur;
         }
 
