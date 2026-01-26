@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-   
+
 
     public enum GameMode
     {
@@ -22,6 +22,10 @@ namespace ProjectApp
     public class ElementGameData
     {
         #region 棋盘数据
+
+
+        //上一次操作的数据快照
+        private List<ElementData[,]> lastBoardDataList = new List<ElementData[,]>(GameTool.maxUndoSum);
         [SerializeField]
         public ElementData[,] boardData;
         // 当前选中的元素
@@ -56,16 +60,53 @@ namespace ProjectApp
             boardData[elementData.X, elementData.Y] = elementData;
         }
 
-
         public void Dispose()
         {
+            currentScore  = 0;
+            targetScore  = 0;
             boardData = null;
+            lastBoardDataList.Clear();
             selectedElement = new Vector2Int(-1, -1);
             boardSize = new Vector2Int(0, 0);
+        }
+
+        /// <summary>
+        /// 记录快照
+        /// </summary>
+        public void TakeMemorySnapshotBoardData()
+        {
+            var lastBoardData = (ElementData[,])boardData.Clone();
+            if (lastBoardDataList.Count >= GameTool.maxUndoSum)
+            {
+                lastBoardDataList.RemoveAt(0);
+            }
+            lastBoardDataList.Add(lastBoardData);
+        }
+
+        public void SetBoardData(ElementData[,] newBoardData)
+        {
+            boardData = (ElementData[,])newBoardData.Clone();
+        }
+
+        public bool UndoStepBoardData()
+        {
+            if(!CanUndo())return false;
+            var data = lastBoardDataList[lastBoardDataList.Count-1];
+            lastBoardDataList.RemoveAt(lastBoardDataList.Count -1);
+            SetBoardData(data);
+            return true;
+        }
+
+        public bool CanUndo()
+        {
+            if(lastBoardDataList.Count <=0)
+            {
+                return false;
+            }
+            return true;
 
         }
 
-       
     }
 
 
@@ -76,12 +117,6 @@ namespace ProjectApp
         [SerializeField] private int _boardHeight = 14;   // 棋盘高度
         [SerializeField] public Vector3 startVector3;   // 棋盘高度
         [SerializeField] private GameMode currentMode = GameMode.BuildHive;
-
-        [Header("道具预设")]
-        [SerializeField] private GameObject horizontalProp;   // 横向消除道具
-        [SerializeField] private GameObject verticalProp;     // 竖向消除道具
-        [SerializeField] private GameObject bombProp;         // 炸弹道具
-        [SerializeField] private GameObject wildProp;         // Wild道具
 
 
 
@@ -110,14 +145,16 @@ namespace ProjectApp
             if (param == null || param.Length == 0)
             {
                 Dispatcher.Dispatch(msg);
-            } else
-            if (param.Length == 1)
-            {
-                Dispatcher.Dispatch(msg, param[0]);
-            } else
-            {
-                Dispatcher.Dispatch(msg, (object)param);
             }
+            else
+                if (param.Length == 1)
+                {
+                    Dispatcher.Dispatch(msg, param[0]);
+                }
+                else
+                {
+                    Dispatcher.Dispatch(msg, (object)param);
+                }
         }
 
         public void AddListener(uint msg, Action<object> paramCB)
@@ -132,14 +169,14 @@ namespace ProjectApp
 
         #endregion
 
-        public ElementGameData Data { private set; get;}
+        public ElementGameData Data { private set; get; }
         private GameInitial_Module gameInitialModule;
         private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
         private List<IGameModule> gameModules;
 
         private bool isInit = false;
-        
+
         /// <summary>
         /// 能否操作 Controller
         /// </summary>
@@ -150,7 +187,7 @@ namespace ProjectApp
         private int _enabledCtrSum = 0;
 
         private void Awake()
-        { 
+        {
             Init();
         }
 
@@ -183,7 +220,7 @@ namespace ProjectApp
             //注册事件
             RegisterEvent();
             //初始化棋盘
-            InitializeBoard(_boardWidth,_boardHeight);
+            InitializeBoard(_boardWidth, _boardHeight);
             //生成元素
             GenerateInitialElements();
 
@@ -191,7 +228,7 @@ namespace ProjectApp
             _enabledCtrSum = 0;
             Enabled_PlayerCtr = true;
 
-            
+
             isInit = true;
         }
 
@@ -222,11 +259,11 @@ namespace ProjectApp
         /// <summary>
         /// 初始化棋盘
         /// </summary>
-        private void InitializeBoard(int boardWidth,int boardHeight)
-        {     
+        private void InitializeBoard(int boardWidth, int boardHeight)
+        {
             foreach (var item in gameModules)
             {
-                item.InitializeBoard( boardWidth, boardHeight);
+                item.InitializeBoard(boardWidth, boardHeight);
             }
 
         }
@@ -241,26 +278,26 @@ namespace ProjectApp
             {
                 item.GenerateInitialElements();
             }
-            
+
         }
-        
-        public  Vector2Int temp1 = new Vector2Int(0,13);
-        public  Vector2Int temp2 = new Vector2Int(0,12);
+
+        public Vector2Int temp1 = new Vector2Int(0, 13);
+        public Vector2Int temp2 = new Vector2Int(0, 12);
         [Button("交换元素")]
         public void Test1()
         {
-            Dispatcher.Dispatch(GameMsg.ClickElement,new ElementData().SetPot(temp1.x,temp1.y));
-            Dispatcher.Dispatch(GameMsg.ClickElement,new ElementData().SetPot(temp2.x,temp2.y));
+            Dispatcher.Dispatch(GameMsg.ClickElement, new ElementData().SetPot(temp1.x, temp1.y));
+            Dispatcher.Dispatch(GameMsg.ClickElement, new ElementData().SetPot(temp2.x, temp2.y));
 
         }
-        
+
         [Button("重新开始")]
         public void ResetGame()
         {
             Dispose();
 
 
-            Invoke("Init",1);
+            Invoke("Init", 1);
 
 
         }
@@ -278,34 +315,34 @@ namespace ProjectApp
 
         private void Update()
         {
-            if(!isInit) return;
+            if (!isInit) return;
 
             visualEffectsModule.Update();
-            
+
         }
 
         public ElementData GetRandomElementData()
         {
-            ElementType elementType =  ElementType.Fixed_None;
+            ElementType elementType = ElementType.Fixed_None;
             // 根据配置表比例生成元素（这里简化为随机）
-            int rand = GameTool.RandomToInt(1,6);
+            int rand = GameTool.RandomToInt(1, 6);
 
             elementType = (ElementType)rand;
 
             ElementData data = new ElementData(elementType);
-           
+
             ///特殊元素
             if (data.Type == ElementType.Item_Change)
             {
                 GameTool.YatesElements();
                 var values = GameTool.AllBaseElements;
-                
+
                 data.data1 = (int)values[0];
                 data.data2 = (int)values[1];
                 data.data3 = (int)values[2];
-               
+
             }
-            
+
             return data;
             //if (rand < 0.7f) // 70%为基础元素
             //{

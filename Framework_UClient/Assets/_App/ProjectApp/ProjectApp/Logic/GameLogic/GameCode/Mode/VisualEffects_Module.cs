@@ -224,6 +224,7 @@ namespace ProjectApp
             Dispatcher.AddFinallyListener(GameMsg.ElementsFall, OnElementsFall);
             Dispatcher.AddFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
             Dispatcher.AddFinallyListener(GameMsg.SelectElement, OnSelectElement);
+            Dispatcher.AddFinallyListener(GameMsg.RestAllElements,OnRestAllElements);
 
         }
 
@@ -235,8 +236,11 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.ClearElements, OnClearElements);
             Dispatcher.RemoveFinallyListener(GameMsg.ElementsFall, OnElementsFall);
             Dispatcher.RemoveFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
+            Dispatcher.RemoveFinallyListener(GameMsg.RestAllElements,OnRestAllElements);
 
         }
+
+
 
         public void InitializeBoard(int w, int h)
         {
@@ -656,6 +660,14 @@ namespace ProjectApp
 
             AddVisuaProcess(process);
 
+        }
+
+        /// <summary>
+        /// 处理改变当前元素类型的事件
+        /// </summary>
+        private void OnRestAllElements(object obj)
+        {
+            
         }
         #endregion
 

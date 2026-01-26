@@ -55,6 +55,11 @@ namespace ProjectApp
         }
 
         private static Random _systemRandom = new Random();
+       
+        /// <summary>
+        /// 最大撤回步数
+        /// </summary>
+        public static int  maxUndoSum  = 10;
 
         public static void SetRandomSeed(int seed)
         {

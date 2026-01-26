@@ -120,6 +120,7 @@ namespace ProjectApp
 
 
 
+        #region  核心代码
 
         /// <summary>
         /// 点击元素
@@ -143,41 +144,19 @@ namespace ProjectApp
                 int select_Y = SelectedElement.y;
                 // 清除选中状态
                 DeselectElement(SelectedElement.x, SelectedElement.y);
-                
+
                 // 第二次点击，判断是否相邻
                 if (IsAdjacent(select_X, select_Y, x, y))
                 {
 
-                    // 交换元素
-                    SwapElements(select_X, select_Y, x, y);
-
-                    // 检查匹配
-                    List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
-                    matches = CheckMatchesAfterSwap(select_X, select_Y, x, y, ref matches);
-
-                    if (matches.Count > 0)
-                    {
-                        // 有匹配，进行消除
-                        ProcessMatches(matches);
-                        // 创建新元素 并补位
-                        FillEmptySpaces();
-                    }
-                    else
-                    {
-                        // 无匹配，交换回来
-                        SwapElements(select_X, select_Y, x, y);
-                    }
-                    //使用完回收List
-                    FutureCore.ListPool<Vector2Int>.Release(matches);
+                    Player_SwapElement(select_X, select_Y, x, y);
 
                 }
 
-                
 
             }
 
         }
-
 
         /// <summary>
         /// 选中元素
@@ -195,13 +174,75 @@ namespace ProjectApp
             Dispatcher.Dispatch(GameMsg.SelectElement, elementData);
 
         }
-
-        private void DeselectElement(int x, int y)
+        /// <summary>
+        /// 取消元素
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        void DeselectElement(int x, int y)
         {
             var elementData = BoardData[x, y];
             SelectedElement = new Vector2Int(-1, -1);
             Dispatcher.Dispatch(GameMsg.DeselectElement, elementData);
         }
+
+        #region 一次操作
+        private void Player_SwapElement(int select_X, int select_Y, int x, int y)
+        {
+            //记录快照
+            Data.TakeMemorySnapshotBoardData();
+
+            // 交换元素
+            SwapElements(select_X, select_Y, x, y);
+
+            // 检查匹配
+            List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
+            matches = CheckMatchesAfterSwap(select_X, select_Y, x, y, ref matches);
+
+            if (matches.Count > 0)
+            {
+                // 有匹配，进行消除
+                ProcessMatches(matches);
+                // 创建新元素 并补位
+                FillEmptySpaces();
+            }
+            else
+            {
+                // 无匹配，交换回来
+                SwapElements(select_X, select_Y, x, y);
+            }
+            //使用完回收List
+            FutureCore.ListPool<Vector2Int>.Release(matches);
+
+
+        }
+        
+        public void Player_RananAllElement()
+        {
+            //记录快照
+            Data.TakeMemorySnapshotBoardData();
+
+
+            for (int x = 0; x < Data.boardSize.x; x++)
+            {
+                for (int y = 0; y < Data.boardSize.y; y++)
+                {
+                    ElementData data = Core.GetRandomElementData();
+                    data.SetPot(x,y);
+
+                    Data.boardData[x,y] = data;
+
+                    SetBoardData(x,y,data);
+
+                }
+            }
+
+            Dispatcher.Dispatch(GameMsg.RestAllElements);
+        }
+
+        #endregion
+
+
 
         /// <summary>
         /// 判断两个元素是否相邻
@@ -218,16 +259,16 @@ namespace ProjectApp
         /// </summary>
         void SwapElements(int x1, int y1, int x2, int y2)
         {
-            
+
             ElementData tempData1 = BoardData[x1, y1];
             ElementData tempData2 = BoardData[x2, y2];
             Debug.Log(string.Format("交换元素{0}  和 {1}", tempData1.ToString(), tempData2.ToString()));
 
             // 实际交换棋盘数据
             // 设置这个坐标位置 的数据
-            SetBoardData(x1,y1, tempData2);
-            SetBoardData(x2,y2, tempData1);
-   
+            SetBoardData(x1, y1, tempData2);
+            SetBoardData(x2, y2, tempData1);
+
             // 通知其他模块 交换数据
             List<ElementData> elementDatas = FutureCore.ListPool<ElementData>.Get();
             elementDatas.Add(tempData1);
@@ -236,9 +277,6 @@ namespace ProjectApp
             FutureCore.ListPool<ElementData>.Release(elementDatas);
 
         }
-
-
-        
 
         /// <summary>
         /// 检查交换后的匹配
@@ -491,8 +529,6 @@ namespace ProjectApp
             return false;
         }
 
-
-
         /// <summary>
         /// 位置有效性检查
         /// </summary>
@@ -537,7 +573,7 @@ namespace ProjectApp
                         //要填充的 源位置
                         ElementData sour = default;
 
-     
+
                         //向上寻找到最近的不是空的物体
                         int temp_y = y + 1;
                         bool isCreate = false;
@@ -547,7 +583,7 @@ namespace ProjectApp
                             //是空的 
                             if (ElementTypeTool.CheckType_UpEmpty(BoardData[x, temp_y].Type))
                             {
-                                temp_y ++;
+                                temp_y++;
                                 continue;
                             }
                             //可下落
@@ -583,12 +619,12 @@ namespace ProjectApp
                         tarList.Add(tar);
 
                         //设置当前的类型
-                        SetBoardData(x,y,sour);
+                        SetBoardData(x, y, sour);
                     }
                 }
             }
 
-            Debug.LogError("要创建的元素数量"+ creadList.Count);
+            Debug.LogError("要创建的元素数量" + creadList.Count);
             foreach (var item in creadList)
             {
                 Debug.Log(item.ToString());
@@ -605,7 +641,7 @@ namespace ProjectApp
             for (int i = 0; i < souList.Count; i++)
             {
                 ElementData item = souList[i];
-                Debug.Log("下落元素" + item.ToString()+"目标位置"+ tarList[i].ToString());
+                Debug.Log("下落元素" + item.ToString() + "目标位置" + tarList[i].ToString());
             }
 
             if (souList.Count > 0 && tarList.Count > 0)
@@ -618,16 +654,16 @@ namespace ProjectApp
 
 
             // 检查新的匹配
-         
+
             CheckAllMatches();
         }
 
-        private void SetBoardData(int x,int y,ElementData sour)
+        private void SetBoardData(int x, int y, ElementData sour)
         {
             sour.SetPot(x, y);
             BoardData[x, y] = sour;
         }
-        
+
 
         /// <summary>
         /// 检查所有匹配
@@ -648,8 +684,6 @@ namespace ProjectApp
             allMatches.Clear();
 
         }
-
-
 
         /// <summary>
         /// 查找所有匹配
@@ -679,7 +713,6 @@ namespace ProjectApp
             return allMatches;
         }
 
-
         private bool[,] GetVisited()
         {
             if (_visited == null)
@@ -693,11 +726,6 @@ namespace ProjectApp
 
             return _visited;
         }
-
-
-
-
-
 
         /// <summary>
         /// 处理匹配消除
@@ -803,6 +831,7 @@ namespace ProjectApp
             }
         }
 
+        #endregion
 
         #region 道具系统
         /*

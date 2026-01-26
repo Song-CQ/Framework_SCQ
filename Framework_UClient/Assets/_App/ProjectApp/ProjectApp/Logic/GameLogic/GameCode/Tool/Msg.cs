@@ -51,6 +51,15 @@ namespace ProjectApp
         public static readonly uint ElementsFall = ++_counter;
 
         /// <summary>
+        ///  改变元素的类型
+        /// </summary>
+        public static readonly uint RestElements = ++_counter;
+        /// <summary>
+        ///  改变全部元素的类型
+        /// </summary>
+        public static readonly uint RestAllElements = ++_counter;
+
+        /// <summary>
         /// 游戏分数更新
         /// </summary>
         public static readonly uint ScoreUpdated = ++_counter;
