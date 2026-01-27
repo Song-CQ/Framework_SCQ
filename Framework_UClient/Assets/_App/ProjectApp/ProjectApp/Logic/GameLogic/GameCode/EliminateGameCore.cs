@@ -5,7 +5,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -35,6 +34,11 @@ namespace ProjectApp
 
         public int BoardWidth => boardSize.x;
         public int BoardHeight => boardSize.y;
+        
+        //连接的棋盘位置 [5,0]和[5,1] 连接
+        public Vector2Int[,] linkBoardPot;
+
+        public int linkBoardPotLength ;
 
         #endregion
 
@@ -178,7 +182,7 @@ namespace ProjectApp
         private bool isInit = false;
 
         /// <summary>
-        /// 能否操作 Controller
+        /// 能否操作 Controller 
         /// </summary>
         public bool Enabled_PlayerCtr { get => _enabledCtrSum > 0; set { if (value) _enabledCtrSum++; else _enabledCtrSum--; } }
         /// <summary>
@@ -393,6 +397,25 @@ namespace ProjectApp
 
             isInit = false;
         }
+        
+        #region 玩家的操作 点击元素 拖动元素 
+        public void OnClickElementItem(ElementItem elementItem)
+        {
+            if(!Enabled_PlayerCtr) return;
+            Dispatch(GameMsg.ClickElement,elementItem);
+        }
+
+        public void OnSwipeElementItem(ElementItem startItem, ElementItem endItem)
+        {
+            if(!Enabled_PlayerCtr) return;
+            if(startItem!=null&&endItem!=null)
+            {
+                Dispatch(GameMsg.SwipeElement,startItem.Data,endItem.Data);
+            }
+
+        }
+
+        #endregion
     }
 }
 

@@ -15,6 +15,14 @@ namespace ProjectApp
         /// </summary>
         public static readonly uint ClickElement = ++_counter;
         /// <summary>
+        /// 拖动一个元素到另一个元素
+        /// </summary>
+        public static readonly uint SwipeElement = ++_counter;
+
+        
+        
+
+        /// <summary>
         /// 选中一个元素
         /// </summary>
         public static readonly uint SelectElement = ++_counter;
@@ -23,7 +31,6 @@ namespace ProjectApp
         /// 取消选中元素
         /// </summary>
         public static readonly uint DeselectElement = ++_counter; // 1002
-
 
         /// <summary>
         /// 交换两个元素

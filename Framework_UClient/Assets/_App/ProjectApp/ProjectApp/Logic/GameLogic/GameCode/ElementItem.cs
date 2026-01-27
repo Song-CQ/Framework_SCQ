@@ -95,7 +95,7 @@ namespace ProjectApp
 
     //元素类
     [Serializable]
-    public class ElementItem:IRaycast3D_OnClick
+    public class ElementItem:IRaycast3D
     {
         public Transform Transform { get; private set; }
 
@@ -214,10 +214,28 @@ namespace ProjectApp
             selectGo.SetActive(isSelect);
 
         }
-
+        
+        /// <summary>
+        /// 点击
+        /// </summary>
+        /// <param name="hitPoint"></param>
         public void Raycast_OnClick(Vector3 hitPoint)
         {
-            GameTool.GameCore.Dispatch(GameMsg.ClickElement,this.Data);
+
+            GameTool.GameCore.OnClickElementItem(this);
+            selectGo.SetActive(isSelect);
+        }
+        
+        /// <summary>
+        /// 滑动
+        /// </summary>
+        /// <param name="hitPoint"></param>
+        public void Raycast_OnSwipe(Vector3 startPoint,Vector3 endPoint,IRaycast3D raycast3D_end)
+        {
+            ElementItem endItem = (raycast3D_end as ElementItem);
+
+            GameTool.GameCore.OnSwipeElementItem(this,endItem);
+
         }
 
 

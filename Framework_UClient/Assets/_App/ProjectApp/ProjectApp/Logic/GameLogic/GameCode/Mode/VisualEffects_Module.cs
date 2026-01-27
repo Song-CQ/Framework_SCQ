@@ -18,9 +18,6 @@ namespace ProjectApp
         public Raycast3D_System RaycastSys { get; private set; }
         public ElementAni_System AnimationSys { get; private set; }
 
-        
-
-
         private bool isInit;
 
         #region 对象池
@@ -33,7 +30,7 @@ namespace ProjectApp
 
         private void OnRelease(ElementItem element)
         {
-            RaycastSys.RegisterEvent_OnClick(element);
+            RaycastSys.UnregisterEvent_OnClick(element);
             element.Transform.SetParent(elementsPoolTrf);
             element.SetActive(false);
             element.Release();
@@ -69,7 +66,7 @@ namespace ProjectApp
             public string type;
             public float Duration
             {
-                get => duration; 
+                get => duration;
                 set
                 {
                     duration = value + CONST_AddTime;
@@ -229,7 +226,7 @@ namespace ProjectApp
             Dispatcher.AddFinallyListener(GameMsg.ElementsFall, OnElementsFall);
             Dispatcher.AddFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
             Dispatcher.AddFinallyListener(GameMsg.SelectElement, OnSelectElement);
-            Dispatcher.AddFinallyListener(GameMsg.RestAllElements,OnRestAllElements);
+            Dispatcher.AddFinallyListener(GameMsg.RestAllElements, OnRestAllElements);
 
         }
 
@@ -241,7 +238,7 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.ClearElements, OnClearElements);
             Dispatcher.RemoveFinallyListener(GameMsg.ElementsFall, OnElementsFall);
             Dispatcher.RemoveFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
-            Dispatcher.RemoveFinallyListener(GameMsg.RestAllElements,OnRestAllElements);
+            Dispatcher.RemoveFinallyListener(GameMsg.RestAllElements, OnRestAllElements);
 
         }
 
@@ -313,10 +310,8 @@ namespace ProjectApp
         public void Update()
         {
             if (!isInit) return;
-            if (Core.Enabled_PlayerCtr)
-            {
-                RaycastSys.Run();
-            }
+
+            RaycastSys.Run();
 
             AnimationSys.Run();
 
@@ -328,11 +323,11 @@ namespace ProjectApp
 
         #region  ElementItemTool
 
-        private Dictionary<Vector2Int,ElementItem> creadElementItemList = new Dictionary<Vector2Int, ElementItem>();
+        private Dictionary<Vector2Int, ElementItem> creadElementItemList = new Dictionary<Vector2Int, ElementItem>();
 
         private void Enqueue_To_CreadList(ElementItem item)
         {
-            Vector2Int key = new Vector2Int(item.Data.X,item.Data.Y);
+            Vector2Int key = new Vector2Int(item.Data.X, item.Data.Y);
             if (creadElementItemList.ContainsKey(key))
             {
                 Debug.LogError("当前的位置已经有了一个ElementItem：回收原来的ElementItem");
@@ -371,7 +366,7 @@ namespace ProjectApp
 
         private Vector3 GetPosition(int X, int Y)
         {
-            Vector3 position = startVector3 + new Vector3(X, Y, Y*0.1f);
+            Vector3 position = startVector3 + new Vector3(X, Y, Y * 0.1f);
             return position;
         }
         private Vector3 GetPosition(ElementData data)
@@ -393,7 +388,7 @@ namespace ProjectApp
         /// </summary>
         /// <param name="item1"></param>
         /// <param name="data"></param>
-        private void SetElementItemPot(ElementItem item, int x,int y)
+        private void SetElementItemPot(ElementItem item, int x, int y)
         {
             if (x >= Data.BoardWidth || y >= Data.BoardHeight) return;
             //这个是错误的 这修改的其实是返回属性的副本
@@ -511,7 +506,6 @@ namespace ProjectApp
 
             process.SetLinkFinish((p) =>
             {
-
                 Core.Enabled_PlayerCtr = true;
             });
 
@@ -548,8 +542,8 @@ namespace ProjectApp
             {
                 Core.Enabled_PlayerCtr = false;
                 float time = AnimationSys.PlayAin_ClearElements(elementItemList);
-               
-                p.Duration = time; 
+
+                p.Duration = time;
             });
 
             process.SetLinkFinish((p) =>
@@ -564,7 +558,7 @@ namespace ProjectApp
 
             EnqueueVisuaProcess(process);
 
-            
+
         }
 
 
@@ -581,14 +575,14 @@ namespace ProjectApp
 
             foreach (var _data in creadDatas)
             {
-                var item  =  CreadElemenItem(_data);
+                var item = CreadElemenItem(_data);
                 item.Pos = GetPosition(item.Data);
                 item.SetActive(false);
-                
+
                 Enqueue_To_CreadList(item);
                 elementItemList.Add(item);
             }
-            
+
             var process = VisuaProcess.Get();
 
             process.SetLinkFinish((p) =>
@@ -597,11 +591,11 @@ namespace ProjectApp
                 foreach (var item in elementItemList)
                 {
                     item.SetActive(true);
-                   
+
                 }
                 ListPool<ElementItem>.Release(elementItemList);
             });
-            
+
             EnqueueVisuaProcess(process);
 
 
@@ -626,7 +620,7 @@ namespace ProjectApp
             List<Vector3> tarPotList = ListPool<Vector3>.Get();
 
             for (int i = 0; i < souList.Count; i++)
-            {      
+            {
                 ElementData sourData = souList[i];
                 int tarX = tarList[i].X;
                 int tarY = tarList[i].Y;
@@ -638,14 +632,14 @@ namespace ProjectApp
                     sourItem = FindElementItem(sourData);
                 }
                 elementItemList.Add(sourItem);
-                
+
                 Vector3 pot = GetPosition(tarX, tarY);
                 tarPotList.Add(pot);
 
                 //设置item 新位置
                 //设置新位置数据
                 SetElementItemPot(sourItem, tarX, tarY);
-     
+
             }
 
             var process = VisuaProcess.Get();
@@ -680,7 +674,7 @@ namespace ProjectApp
             {
 
                 for (int y = 0; y < Data.BoardHeight; y++)
-                {          
+                {
                     elementItems[x, y].SetData(Data.boardData[x, y]);
                     elementItemList.Add(elementItems[x, y]);
                 }
@@ -700,10 +694,10 @@ namespace ProjectApp
                         elementItems[x, y].RefreshView();
                     }
                 }
-                
+
                 float time = AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
 
-               
+
             });
 
             process.SetLinkFinish((p) =>
@@ -722,6 +716,6 @@ namespace ProjectApp
 
 
 
-       
+
     }
 }

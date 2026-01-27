@@ -47,13 +47,19 @@ namespace ProjectApp
 
         public void AddListener()
         {
-            Dispatcher.AddListener(GameMsg.ClickElement, OnElementClicked_test);
+            //最先运行
+            Dispatcher.AddPriorityListener(GameMsg.ClickElement, OnClickElement_test);
+            Dispatcher.AddPriorityListener(GameMsg.SwipeElement, OnSwipe_Element);
 
         }
 
+
+
         public void RemoveListener()
         {
-            Dispatcher.RemoveListener(GameMsg.ClickElement, OnElementClicked_test);
+
+            Dispatcher.RemovePriorityListener(GameMsg.ClickElement, OnClickElement_test);
+            Dispatcher.RemovePriorityListener(GameMsg.SwipeElement, OnSwipe_Element);
         }
 
         public void GenerateInitialElements()
@@ -78,9 +84,9 @@ namespace ProjectApp
 
 
         private const string lockStr = "loack";
-        void OnElementClicked_test(object o)
+        void OnClickElement_test(object o)
         {
-            OnElementClicked(o);
+            OnClick_Element(o);
             return;
             try
             {
@@ -90,7 +96,7 @@ namespace ProjectApp
                     {
                         Thread currentThread = Thread.CurrentThread;
                         Debug.Log("当前线程" + currentThread.ManagedThreadId + ("  " + SelectedElement.x + "--" + SelectedElement.y));
-                        OnElementClicked(o);
+                        OnClick_Element(o);
                     }
                      , cts.Token);
                     task.Wait(cts.Token);  // 同步等待，会抛出异常
@@ -125,7 +131,7 @@ namespace ProjectApp
         /// 点击元素
         /// </summary>
         /// <param name="o"></param>
-        void OnElementClicked(object o)
+        void OnClick_Element(object o)
         {
 
             ElementData element = (ElementData)(o);
@@ -156,6 +162,26 @@ namespace ProjectApp
             }
 
         }
+
+        /// <summary>
+        /// 拖动元素 到另一个元素上
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        void OnSwipe_Element(object obj)
+        {
+            object[] datas = obj as object[];
+
+            ElementData data1 = (ElementData)datas[0];
+            ElementData data2 = (ElementData)datas[1];
+
+            if (IsAdjacent(data1.X, data1.Y, data2.X, data2.Y))
+            {
+                Player_SwapElement(data1.X, data1.Y, data2.X, data2.Y);
+            }
+
+        }
+
 
         /// <summary>
         /// 选中元素
@@ -215,7 +241,7 @@ namespace ProjectApp
 
 
         }
-        
+
         public void Player_RananAllElement()
         {
             //记录快照
@@ -228,7 +254,7 @@ namespace ProjectApp
                 {
                     ElementData data = Core.GetRandomElementData();
 
-                    SetBoardData(x,y,data);
+                    SetBoardData(x, y, data);
 
                 }
             }
@@ -832,6 +858,11 @@ namespace ProjectApp
         #endregion
 
         #region 道具系统
+
+
+
+
+
         /*
 
         /// <summary>

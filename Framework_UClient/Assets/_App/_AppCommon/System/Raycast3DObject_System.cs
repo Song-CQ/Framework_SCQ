@@ -9,10 +9,12 @@ using UnityEngine.EventSystems;
 namespace ProjectApp
 {
 
-    public interface IRaycast3D_OnClick
+    public interface IRaycast3D
     {
         public Collider Collider { get; }
         public void Raycast_OnClick(Vector3 hitPoint);
+        
+        public void Raycast_OnSwipe(Vector3 startPoint,Vector3 endPoint,IRaycast3D endIRaycast3D);
 
     }
 
@@ -30,12 +32,8 @@ namespace ProjectApp
         /// </summary>
         public QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
 
-        public Dictionary<int, IRaycast3D_OnClick> raycast3D_OnClick = new Dictionary<int, IRaycast3D_OnClick>();
+        public Dictionary<int, IRaycast3D> raycast3D_OnClick = new Dictionary<int, IRaycast3D>();
 
-        private Vector2 touchStart;
-        private float touchTime;
-
-        private float touchDistance;
 
         public override void Init()
         {
@@ -48,17 +46,19 @@ namespace ProjectApp
 
         public override void Start()
         {
+
             base.Start();
             InputMgr.OnClick += OnClick;
             InputMgr.OnSwipe += OnSwipe;
+            
         }
 
         public override void Shutdown()
         {
             base.Shutdown();
-
             InputMgr.OnClick -= OnClick;
             InputMgr.OnSwipe -= OnSwipe;
+       
         }
 
         public override void Run()
@@ -68,9 +68,9 @@ namespace ProjectApp
 
         private void OnClick(Vector2 pot)
         {
-            if (!IsRunning) return;
+ 
 
-            if (GetClickRaycast3D(pot, out IRaycast3D_OnClick raycast3D, out Vector3 hitPot))
+            if (GetClickRaycast3D(pot, out IRaycast3D raycast3D, out Vector3 hitPot))
             {
                 raycast3D.Raycast_OnClick(hitPot);
             }
@@ -80,14 +80,13 @@ namespace ProjectApp
 
         private void OnSwipe(SwipeDirection arg1, Vector2 potStart, Vector2 potEnd)
         {
-            if (!IsRunning) return;
 
-            if (GetClickRaycast3D(potStart, out IRaycast3D_OnClick raycast3D_start, out Vector3 hitPot_start)
-                && GetClickRaycast3D(potEnd, out IRaycast3D_OnClick raycast3D_end, out Vector3 hitPot_end))
+
+            if (GetClickRaycast3D(potStart, out IRaycast3D raycast3D_start, out Vector3 hitPot_start))
             {
-                raycast3D_start.Raycast_OnClick(hitPot_start);
-                raycast3D_end.Raycast_OnClick(hitPot_end);
+                GetClickRaycast3D(potEnd, out IRaycast3D raycast3D_end, out Vector3 hitPot_end);
 
+                raycast3D_start.Raycast_OnSwipe(hitPot_start,hitPot_end,raycast3D_end);             
             }
 
 
@@ -96,7 +95,7 @@ namespace ProjectApp
 
 
 
-        private bool GetClickRaycast3D(Vector3 pot, out IRaycast3D_OnClick raycast, out Vector3 hitPot)
+        private bool GetClickRaycast3D(Vector3 pot, out IRaycast3D raycast, out Vector3 hitPot)
         {
             Ray ray = mainCamera.ScreenPointToRay(pot);
 
@@ -140,7 +139,7 @@ namespace ProjectApp
             return false;
         }
 
-        public void RegisterEvent_OnClick(IRaycast3D_OnClick raycast3D)
+        public void RegisterEvent_OnClick(IRaycast3D raycast3D)
         {
             int id = raycast3D.Collider.GetInstanceID();
             if (raycast3D_OnClick.ContainsKey(id)) return;
@@ -148,7 +147,7 @@ namespace ProjectApp
             raycast3D_OnClick.Add(id, raycast3D);
         }
 
-        public void UnregisterEvent_OnClick(IRaycast3D_OnClick raycast3D)
+        public void UnregisterEvent_OnClick(IRaycast3D raycast3D)
         {
             raycast3D_OnClick.Remove(raycast3D.Collider.GetInstanceID());
         }
