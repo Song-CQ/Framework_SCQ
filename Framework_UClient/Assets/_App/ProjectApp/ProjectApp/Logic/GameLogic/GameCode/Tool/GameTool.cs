@@ -75,5 +75,52 @@ namespace ProjectApp
         {
             return minInclusive + (float)_systemRandom.NextDouble() * (maxInclusive - minInclusive);
         }
+
+
+        
+
+        #region 斜对角生成
+        const int MAX_ATTEMPTS_PER_CONNECTION = 100;
+
+        
+
+        // 随机选择斜对角方向
+        private static Vector2Int[] diagonalDirections = new Vector2Int[]
+        {
+            new Vector2Int(1, 1),   // 右下
+            new Vector2Int(-1, 1),  // 左下
+            new Vector2Int(1, -1),  // 右上
+            new Vector2Int(-1, -1)  // 左上
+        };
+
+        /// <summary>
+        /// 将两个坐标 转化为 唯一的long key
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static long EncodeConnection(Vector2Int a, Vector2Int b)
+        {
+            // 标准化顺序：确保a总是在b之前
+            if (a.x > b.x || (a.x == b.x && a.y > b.y))
+            {
+                Vector2Int temp = a;
+                a = b;
+                b = temp;
+            }
+
+            // 使用位运算将4个short编码为一个long
+            // 假设坐标范围在0-65535之间（够用了）
+            // 格式：a.x(16位) | a.y(16位) | b.x(16位) | b.y(16位)
+            long key = 0L;
+            key |= ((long)a.x & 0xFFFF) << 48;
+            key |= ((long)a.y & 0xFFFF) << 32;
+            key |= ((long)b.x & 0xFFFF) << 16;
+            key |= ((long)b.y & 0xFFFF);
+
+            return key;
+        }
+
+        #endregion
     }
 }

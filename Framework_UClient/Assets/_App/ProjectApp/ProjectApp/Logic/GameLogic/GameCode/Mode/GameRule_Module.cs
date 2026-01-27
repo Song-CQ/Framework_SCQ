@@ -151,7 +151,7 @@ namespace ProjectApp
                 DeselectElement(SelectedElement.x, SelectedElement.y);
 
                 // 第二次点击，判断是否相邻
-                if (IsAdjacent(select_X, select_Y, x, y))
+                if (IsAdjacent(select_X, select_Y, x, y) || Data.HasConnection(select_X, select_Y, x, y))
                 {
 
                     Player_SwapElement(select_X, select_Y, x, y);
@@ -175,7 +175,8 @@ namespace ProjectApp
             ElementData data1 = (ElementData)datas[0];
             ElementData data2 = (ElementData)datas[1];
 
-            if (IsAdjacent(data1.X, data1.Y, data2.X, data2.Y))
+            if (IsAdjacent(data1.X, data1.Y, data2.X, data2.Y)
+                || Data.HasConnection(data1.X, data1.Y, data2.X, data2.Y))
             {
                 Player_SwapElement(data1.X, data1.Y, data2.X, data2.Y);
             }

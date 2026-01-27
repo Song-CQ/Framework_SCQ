@@ -1,4 +1,3 @@
-using ConsoleE;
 using FutureCore;
 using Sirenix.OdinInspector;
 using System;
@@ -35,16 +34,21 @@ namespace ProjectApp
         public int BoardWidth => boardSize.x;
         public int BoardHeight => boardSize.y;
         
-        //连接的棋盘位置 [5,0]和[5,1] 连接
-        public Vector2Int[,] linkBoardPot;
 
-        public int linkBoardPotLength ;
+        public int linkBoardPotLength;
+        /// <summary>
+        /// 连接的棋盘位置 long值哈希表
+        /// </summary>
+        // 从Key到Connection的映射
+        //连接的棋盘位置 [5,0]和[5,1] 连接
+        private Dictionary<long, (Vector2Int, Vector2Int)> _keyToConnection = new Dictionary<long, (Vector2Int, Vector2Int)>();
 
         #endregion
 
         // 当前分数
         public int currentScore = 0;
         public int targetScore = 100000; // 目标分数
+  
 
         public ElementData GetElementData(Vector2Int pot)
         {
@@ -64,12 +68,57 @@ namespace ProjectApp
             boardData[elementData.X, elementData.Y] = elementData;
         }
 
+        public bool HasConnection(int x1, int y1, int x2, int y2)
+        {
+            return HasConnection(new Vector2Int(x1, y1), new Vector2Int(x2, y2));
+        }
+
+        // 快速检查连接是否存在
+        public bool HasConnection(Vector2Int point1, Vector2Int point2)
+        {
+            long key = GameTool.EncodeConnection(point1, point2);
+            return _keyToConnection.ContainsKey(key);
+        }
+
+        // 添加连接
+        public bool AddConnection(Vector2Int point1, Vector2Int point2)
+        {
+            long key = GameTool.EncodeConnection(point1, point2);          
+            // 检查是否重复（双向检查）
+            if (!_keyToConnection.ContainsKey(key))
+            {
+                _keyToConnection[key] = (point1, point2);
+                return true;
+            }
+            return false;
+        }
+
+        // 移除连接
+        public bool RemoveConnection(Vector2Int point1, Vector2Int point2)
+        {
+            long key = GameTool.EncodeConnection(point1, point2);
+            if (_keyToConnection.ContainsKey(key))
+            {
+                _keyToConnection.Remove(key);
+                return true;
+            }
+            return false;
+        }
+
+
+
+
+
         public void Dispose()
         {
             currentScore  = 0;
             targetScore  = 0;
             boardData = null;
             lastBoardDataList.Clear();
+
+            linkBoardPotLength = 0;
+            _keyToConnection.Clear();
+            
             selectedElement = new Vector2Int(-1, -1);
             boardSize = new Vector2Int(0, 0);
         }

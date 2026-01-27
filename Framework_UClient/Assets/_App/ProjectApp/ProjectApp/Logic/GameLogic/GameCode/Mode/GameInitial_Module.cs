@@ -11,13 +11,13 @@ namespace ProjectApp
     public class GameInitial_Module : IGameModule
     {
         #region 斜对角生成
-        private int linkBoardPotSum = 8;
         const int MAX_ATTEMPTS_PER_CONNECTION = 100;
-        // 使用HashSet来避免重复连接
-        HashSet<string> usedConnections = new HashSet<string>();
+
+        private int linkBoardPotSum = 8;
+
 
         // 随机选择斜对角方向
-        private Vector2Int[] diagonalDirections = new Vector2Int[]
+        private static Vector2Int[] diagonalDirections = new Vector2Int[]
         {
             new Vector2Int(1, 1),   // 右下
             new Vector2Int(-1, 1),  // 左下
@@ -40,7 +40,7 @@ namespace ProjectApp
 
         void IGameModule.AddListener()
         {
-
+          
         }
         public void RemoveListener()
         {
@@ -56,7 +56,6 @@ namespace ProjectApp
             Data.boardData = new ElementData[w, h];
             Data.boardSize = new Vector2Int(w, h);
 
-            Data.linkBoardPot = new Vector2Int[linkBoardPotSum, 2];
             Data.linkBoardPotLength = linkBoardPotSum;
         }
         void IGameModule.GenerateInitialElements()
@@ -83,7 +82,9 @@ namespace ProjectApp
 
         private void RandomLinkPot(int sum)
         {
-            usedConnections.Clear();
+
+            // 使用HashSet<long>替代HashSet<string>
+            HashSet<long> _connectionSet = new HashSet<long>();
             int attempts = 0;
 
             for (int i = 0; i < sum; i++)
@@ -107,19 +108,7 @@ namespace ProjectApp
                     if (end.x >= 0 && end.x < Data.boardSize.x &&
                         end.y >= 0 && end.y < Data.boardSize.y)
                     {
-                        // 创建连接的唯一标识（确保顺序一致，避免重复）
-                        string connectionKey1 = $"{start.x},{start.y}-{end.x},{end.y}";
-                        string connectionKey2 = $"{end.x},{end.y}-{start.x},{start.y}";
-
-                        // 检查是否重复（双向检查）
-                        if (!usedConnections.Contains(connectionKey1) &&
-                            !usedConnections.Contains(connectionKey2))
-                        {
-                            Data.linkBoardPot[i, 0] = start;
-                            Data.linkBoardPot[i, 1] = end;
-                            usedConnections.Add(connectionKey1);
-                            validConnectionFound = true;
-                        }
+                        validConnectionFound = Data.AddConnection(start, end);
                     }
                 }
 
@@ -136,15 +125,8 @@ namespace ProjectApp
 
                             if (end.x < Data.boardSize.x && end.y < Data.boardSize.y)
                             {
-                                string connectionKey = $"{start.x},{start.y}-{end.x},{end.y}";
+                                validConnectionFound = Data.AddConnection(start, end);
 
-                                if (!usedConnections.Contains(connectionKey))
-                                {
-                                    Data.linkBoardPot[i, 0] = start;
-                                    Data.linkBoardPot[i, 1] = end;
-                                    usedConnections.Add(connectionKey);
-                                    validConnectionFound = true;
-                                }
                             }
                         }
                     }
@@ -154,6 +136,8 @@ namespace ProjectApp
 
 
         }
+
+
 
         void IGameModule.Dispose()
         {
