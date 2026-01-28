@@ -47,6 +47,8 @@ namespace ProjectApp
 
         private Transform elementItemsTrf;
 
+        private Transform connectionTrf;
+
         #endregion
 
         #region 画面显示流程
@@ -190,6 +192,10 @@ namespace ProjectApp
             elementItemsTrf.SetParent(Core.transform);
             elementItemsTrf.localPosition = Vector3.zero;
 
+            connectionTrf = new GameObject("ConnectionTrf").transform;
+            connectionTrf.SetParent(Core.transform);
+            connectionTrf.localPosition = Vector3.zero;
+
             startVector3 = Core.startVector3;
 
 
@@ -268,9 +274,39 @@ namespace ProjectApp
 
                 }
             }
+   
+            LoadAllConnectionGo();
 
 
         }
+
+        private void LoadAllConnectionGo()
+        {
+            
+
+            foreach (var item in Data.GetAllConnection())
+            {
+                Vector2Int start = item.Value.Item1;
+                Vector2Int end = item.Value.Item2;
+
+                var dir = GameTool.GetDirection(start, end);
+                Vector3 addVector =  new Vector3(dir.x,dir.y) * 0.5f;
+                Vector3 pot = GetPosition(start.x,start.y)+ addVector;
+                SpriteRenderer go = GameTool.InstantiateConnectionPrefab().GetComponent<SpriteRenderer>();
+                pot.z =  1;
+                go.name = (start + "-" + end);                
+                go.transform.SetParent(connectionTrf);
+                go.transform.localPosition = pot;
+                go.transform.localScale = Vector3.one * 0.4f;
+                go.flipX = start.x > end.x;
+            
+            
+
+            }
+
+        }
+
+        
 
         public void Dispose()
         {
@@ -284,8 +320,10 @@ namespace ProjectApp
             elementsPool = null;
             GameObject.Destroy(elementsPoolTrf.gameObject);
             GameObject.Destroy(elementItemsTrf.gameObject);
+            GameObject.Destroy(connectionTrf.gameObject);
             elementsPoolTrf = null;
             elementItemsTrf = null;
+            connectionTrf = null;
 
             RaycastSys.Shutdown();
             RaycastSys.Dispose();
@@ -366,7 +404,7 @@ namespace ProjectApp
 
         private Vector3 GetPosition(int X, int Y)
         {
-            Vector3 position = startVector3 + new Vector3(X, Y, Y * 0.1f);
+            Vector3 position = startVector3 + new Vector3(X, Y, Y * 0.01f);
             return position;
         }
         private Vector3 GetPosition(ElementData data)

@@ -102,6 +102,7 @@ namespace ProjectApp
         public ElementData Data { get; private set; }
 
         private SpriteRenderer icon;
+
         public GameObject selectGo;
 
         public Vector3 Pos
@@ -109,7 +110,7 @@ namespace ProjectApp
             get => pos;
             set 
             {
-                pos = value; 
+                pos = value;
                 Transform.localPosition = pos;
             }
         }

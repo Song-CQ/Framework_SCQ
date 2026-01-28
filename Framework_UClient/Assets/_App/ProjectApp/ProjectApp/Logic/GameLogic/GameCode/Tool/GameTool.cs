@@ -28,6 +28,17 @@ namespace ProjectApp
             return elementTypeSpr[type];
         }
 
+        private static GameObject connection_Prefab;
+
+        public static GameObject InstantiateConnectionPrefab()
+        {
+            if (connection_Prefab == null)
+            {
+                connection_Prefab = Resources.Load<GameObject>("Prefabs/GamePrefab/Connection");
+            }
+
+            return GameObject.Instantiate(connection_Prefab);
+        }
         private static GameObject element_Prefab;
 
         public static GameObject InstantiateElementPrefab()
@@ -85,13 +96,29 @@ namespace ProjectApp
         
 
         // 随机选择斜对角方向
-        private static Vector2Int[] diagonalDirections = new Vector2Int[]
+
+        public static Vector2Int GetDirection(Vector2Int start, Vector2Int end)
         {
-            new Vector2Int(1, 1),   // 右下
-            new Vector2Int(-1, 1),  // 左下
-            new Vector2Int(1, -1),  // 右上
-            new Vector2Int(-1, -1)  // 左上
-        };
+            Vector2Int delta = end - start;
+
+            // 判断是否为相邻位置
+            if (Mathf.Abs(delta.x) <= 1 && Mathf.Abs(delta.y) <= 1)
+            {
+                // 4方向判断
+                if (delta.x == 1 && delta.y == 0) return Vector2Int.right;
+                if (delta.x == -1 && delta.y == 0) return Vector2Int.left;
+                if (delta.x == 0 && delta.y == 1) return Vector2Int.up;
+                if (delta.x == 0 && delta.y == -1) return Vector2Int.down;
+
+                // 如果需要8方向，添加对角线判断
+                if (delta.x == 1 && delta.y == 1) return new Vector2Int(1, 1);
+                if (delta.x == -1 && delta.y == 1) return new Vector2Int(-1, 1);
+                if (delta.x == 1 && delta.y == -1) return new Vector2Int(1, -1);
+                if (delta.x == -1 && delta.y == -1) return new Vector2Int(-1, -1);
+            }
+
+            return Vector2Int.zero;
+        }
 
         /// <summary>
         /// 将两个坐标 转化为 唯一的long key
@@ -99,7 +126,7 @@ namespace ProjectApp
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static long EncodeConnection(Vector2Int a, Vector2Int b)
+        public static long EncodeConnection(ref Vector2Int a,ref Vector2Int b)
         {
             // 标准化顺序：确保a总是在b之前
             if (a.x > b.x || (a.x == b.x && a.y > b.y))

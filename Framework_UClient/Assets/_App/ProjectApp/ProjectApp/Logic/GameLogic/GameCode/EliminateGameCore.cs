@@ -76,14 +76,14 @@ namespace ProjectApp
         // 快速检查连接是否存在
         public bool HasConnection(Vector2Int point1, Vector2Int point2)
         {
-            long key = GameTool.EncodeConnection(point1, point2);
+            long key = GameTool.EncodeConnection(ref point1,ref point2);
             return _keyToConnection.ContainsKey(key);
         }
 
         // 添加连接
         public bool AddConnection(Vector2Int point1, Vector2Int point2)
         {
-            long key = GameTool.EncodeConnection(point1, point2);          
+            long key = GameTool.EncodeConnection(ref point1,ref point2);          
             // 检查是否重复（双向检查）
             if (!_keyToConnection.ContainsKey(key))
             {
@@ -96,13 +96,18 @@ namespace ProjectApp
         // 移除连接
         public bool RemoveConnection(Vector2Int point1, Vector2Int point2)
         {
-            long key = GameTool.EncodeConnection(point1, point2);
+            long key = GameTool.EncodeConnection(ref point1,ref point2);
             if (_keyToConnection.ContainsKey(key))
             {
                 _keyToConnection.Remove(key);
                 return true;
             }
             return false;
+        }
+
+        public Dictionary<long, (Vector2Int, Vector2Int)> GetAllConnection()
+        { 
+            return _keyToConnection;
         }
 
 
@@ -451,7 +456,7 @@ namespace ProjectApp
         public void OnClickElementItem(ElementItem elementItem)
         {
             if(!Enabled_PlayerCtr) return;
-            Dispatch(GameMsg.ClickElement,elementItem);
+            Dispatch(GameMsg.ClickElement,elementItem.Data);
         }
 
         public void OnSwipeElementItem(ElementItem startItem, ElementItem endItem)
