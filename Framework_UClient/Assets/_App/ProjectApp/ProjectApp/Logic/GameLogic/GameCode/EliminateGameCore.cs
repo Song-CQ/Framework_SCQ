@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -344,8 +345,8 @@ namespace ProjectApp
         [Button("交换元素")]
         public void Test1()
         {
-            Dispatcher.Dispatch(GameMsg.ClickElement, new ElementData().SetPot(temp1.x, temp1.y));
-            Dispatcher.Dispatch(GameMsg.ClickElement, new ElementData().SetPot(temp2.x, temp2.y));
+            Dispatcher.Dispatch(GameMsg.Player_ClickElement, new ElementData().SetPot(temp1.x, temp1.y));
+            Dispatcher.Dispatch(GameMsg.Player_ClickElement, new ElementData().SetPot(temp2.x, temp2.y));
 
         }
 
@@ -453,21 +454,34 @@ namespace ProjectApp
         }
         
         #region 玩家的操作 点击元素 拖动元素 
-        public void OnClickElementItem(ElementItem elementItem)
+        public void ClickElementItem(ElementItem elementItem)
         {
             if(!Enabled_PlayerCtr) return;
-            Dispatch(GameMsg.ClickElement,elementItem.Data);
+            Dispatch(GameMsg.Player_ClickElement,elementItem.Data);
         }
 
-        public void OnSwipeElementItem(ElementItem startItem, ElementItem endItem)
+        public void SwipeItemToItem(ElementItem startItem, ElementItem endItem)
         {
             if(!Enabled_PlayerCtr) return;
-            if(startItem!=null&&endItem!=null)
+
+
+            if (startItem != null && endItem != null&&startItem!=endItem)
             {
-                Dispatch(GameMsg.SwipeElement,startItem.Data,endItem.Data);
+                //拖动一个元素到另一个元素
+                Dispatch(GameMsg.Player_SwipeElementToElement, startItem.Data, endItem.Data);
             }
+           
 
         }
+
+        public void SwipeElementItem(ElementItem startItem,Vector2 dir)
+        {
+            if (!Enabled_PlayerCtr) return;
+
+            Dispatch(GameMsg.Player_SwipeElement, startItem.Data,dir);
+        }
+
+
 
         #endregion
     }

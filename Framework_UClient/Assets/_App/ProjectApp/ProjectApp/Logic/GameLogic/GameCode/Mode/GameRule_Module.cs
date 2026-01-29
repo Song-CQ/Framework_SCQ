@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using UnityEngine;
 
 namespace ProjectApp
@@ -48,8 +49,9 @@ namespace ProjectApp
         public void AddListener()
         {
             //最先运行
-            Dispatcher.AddPriorityListener(GameMsg.ClickElement, OnClickElement_test);
-            Dispatcher.AddPriorityListener(GameMsg.SwipeElement, OnSwipe_Element);
+            Dispatcher.AddPriorityListener(GameMsg.Player_ClickElement, OnClickElement_test);
+            Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElement, OnPlayer_SwipeElement);
+            Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElementToElement, OnPlayer_SwipeElementToElement);
 
         }
 
@@ -58,8 +60,9 @@ namespace ProjectApp
         public void RemoveListener()
         {
 
-            Dispatcher.RemovePriorityListener(GameMsg.ClickElement, OnClickElement_test);
-            Dispatcher.RemovePriorityListener(GameMsg.SwipeElement, OnSwipe_Element);
+            Dispatcher.RemovePriorityListener(GameMsg.Player_ClickElement, OnClickElement_test);
+            Dispatcher.RemovePriorityListener(GameMsg.Player_SwipeElement, OnPlayer_SwipeElement);
+            Dispatcher.RemovePriorityListener(GameMsg.Player_SwipeElementToElement, OnPlayer_SwipeElementToElement);
         }
 
         public void GenerateInitialElements()
@@ -168,7 +171,7 @@ namespace ProjectApp
         /// </summary>
         /// <param name="obj"></param>
         /// <exception cref="NotImplementedException"></exception>
-        void OnSwipe_Element(object obj)
+        void OnPlayer_SwipeElementToElement(object obj)
         {
             object[] datas = obj as object[];
 
@@ -182,6 +185,27 @@ namespace ProjectApp
             }
 
         }
+
+        /// <summary>
+        /// 在一个元素上 拖动 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        void OnPlayer_SwipeElement(object obj)
+        {
+            object[] datas = obj as object[];
+
+            ElementData data = (ElementData)datas[0];
+            Vector2 dir = (Vector2)datas[1];
+
+            if (data.Type == ElementType.Item_Change)
+            {
+                Player_ChangeElementType(data.X,data.Y,dir.x > 0);
+            }
+        }
+
+
+
 
 
         /// <summary>
@@ -263,6 +287,36 @@ namespace ProjectApp
             Dispatcher.Dispatch(GameMsg.RestAllElements);
 
             CheckAllMatches();
+        }
+        
+        public void Player_ChangeElementType(int x,int y, bool isRith)
+        {
+            ElementData data = BoardData[x, y];
+            if (data.Type == ElementType.Item_Change)
+            {
+                if (isRith)
+                {
+                    int temp = data.data1;
+                    data.data1 = data.data2;
+                    data.data2 = data.data3;
+                    data.data3 = temp;
+                }
+                else
+                {
+                    int temp = data.data1;
+                    data.data1 = data.data3;
+                    data.data3 = data.data2;
+                    data.data2 = temp;
+                }
+
+
+                BoardData[x, y] = data;
+
+
+                Core.Dispatch(GameMsg.ChangeElementType,data,isRith);
+
+
+            }
         }
 
         #endregion

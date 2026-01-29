@@ -233,8 +233,11 @@ namespace ProjectApp
             Dispatcher.AddFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
             Dispatcher.AddFinallyListener(GameMsg.SelectElement, OnSelectElement);
             Dispatcher.AddFinallyListener(GameMsg.RestAllElements, OnRestAllElements);
+            Dispatcher.AddFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
 
         }
+
+        
 
         public void RemoveListener()
         {
@@ -245,6 +248,7 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.ElementsFall, OnElementsFall);
             Dispatcher.RemoveFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
             Dispatcher.RemoveFinallyListener(GameMsg.RestAllElements, OnRestAllElements);
+            Dispatcher.RemoveFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
 
         }
 
@@ -748,6 +752,23 @@ namespace ProjectApp
 
 
         }
+
+        /// <summary>
+        /// 处理特殊元素切换当前显示类型
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void OnChangeElementType(object obj)
+        {
+            object[] datas = obj as object[];
+            //要下落的元素
+            ElementData data = (ElementData)datas[0];
+            bool isR = (bool)datas[1];
+
+
+
+        }
+
         #endregion
 
 

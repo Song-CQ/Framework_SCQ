@@ -13,11 +13,15 @@ namespace ProjectApp
         /// <summary>
         /// 点击一个元素
         /// </summary>
-        public static readonly uint ClickElement = ++_counter;
+        public static readonly uint Player_ClickElement = ++_counter;
         /// <summary>
-        /// 拖动一个元素到另一个元素
+        /// 滑动一个元素到另一个元素
         /// </summary>
-        public static readonly uint SwipeElement = ++_counter;
+        public static readonly uint Player_SwipeElementToElement = ++_counter;
+        /// <summary>
+        /// 在一个元素上滑动
+        /// </summary>
+        public static readonly uint Player_SwipeElement = ++_counter;
 
         
         
@@ -65,6 +69,11 @@ namespace ProjectApp
         ///  改变全部元素的类型
         /// </summary>
         public static readonly uint RestAllElements = ++_counter;
+
+        /// <summary>
+        /// 特殊元素切换元素类型
+        /// </summary>
+        public static readonly uint ChangeElementType = ++_counter;
 
         /// <summary>
         /// 游戏分数更新

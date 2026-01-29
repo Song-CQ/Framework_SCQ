@@ -223,7 +223,7 @@ namespace ProjectApp
         public void Raycast_OnClick(Vector3 hitPoint)
         {
 
-            GameTool.GameCore.OnClickElementItem(this);
+            GameTool.GameCore.ClickElementItem(this);
             selectGo.SetActive(isSelect);
         }
         
@@ -235,7 +235,17 @@ namespace ProjectApp
         {
             ElementItem endItem = (raycast3D_end as ElementItem);
 
-            GameTool.GameCore.OnSwipeElementItem(this,endItem);
+            if (endItem != this)
+            {
+                GameTool.GameCore.SwipeItemToItem(this, endItem);
+            }
+            else
+            {
+                Vector2 dir = startPoint - endPoint;
+                GameTool.GameCore.SwipeElementItem(this,dir.normalized);
+            }
+
+
 
         }
 
