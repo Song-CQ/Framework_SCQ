@@ -297,12 +297,12 @@ namespace ProjectApp
                 Vector3 addVector =  new Vector3(dir.x,dir.y) * 0.5f;
                 Vector3 pot = GetPosition(start.x,start.y)+ addVector;
                 SpriteRenderer go = GameTool.InstantiateConnectionPrefab().GetComponent<SpriteRenderer>();
-                pot.z =  1;
+                pot.z =  0.5f;
                 go.name = (start + "-" + end);                
                 go.transform.SetParent(connectionTrf);
                 go.transform.localPosition = pot;
                 go.transform.localScale = Vector3.one * 0.4f;
-                go.flipX = start.x > end.x;
+                go.flipX = start.y > end.y;
             
             
 
@@ -657,7 +657,6 @@ namespace ProjectApp
             //先找到下落元素
 
 
-
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
             List<Vector3> tarPotList = ListPool<Vector3>.Get();
 
@@ -764,6 +763,18 @@ namespace ProjectApp
             //要下落的元素
             ElementData data = (ElementData)datas[0];
             bool isR = (bool)datas[1];
+
+            ElementItem item = FindElementItem(data.X,data.Y);
+
+            if (isR)
+            {
+                item.SwitchToNext();
+            }
+            else
+            {
+                item.SwitchToPrevious();
+            }
+            elementItems[data.X, data.Y].SetData(data);
 
 
 
