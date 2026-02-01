@@ -1,3 +1,4 @@
+using Codice.Client.Common;
 using ConsoleE;
 using FutureCore;
 using System;
@@ -65,7 +66,7 @@ namespace ProjectApp
             {
                 objectPool.Clear();
             }
-            public string type;
+            public uint id;
             public float Duration
             {
                 get => duration;
@@ -75,19 +76,19 @@ namespace ProjectApp
                 }
             }
             private float duration = 0.01f;
-            private Action<VisuaProcess> _executeCB;
-            private Action<VisuaProcess> _finishCB;
+            private event Action<VisuaProcess> _executeCB;
+            private event Action<VisuaProcess> _finishCB;
 
             public bool isRun = false;
             public bool isFinish = false;
 
             public void SetLinkExecute(Action<VisuaProcess> cb)
             {
-                _executeCB = cb;
+                _executeCB += cb;
             }
             public void SetLinkFinish(Action<VisuaProcess> cb)
             {
-                _finishCB = cb;
+                _finishCB += cb;
             }
 
             public void Execute()
@@ -100,7 +101,7 @@ namespace ProjectApp
             {
                 if (!isRun) return;
 
-                duration -= Time.deltaTime;
+                duration -= UnityEngine.Time.deltaTime;
 
                 if (duration <= 0)
                 {
@@ -117,6 +118,7 @@ namespace ProjectApp
 
             public void Release()
             {
+                id = 0;
                 isRun = false;
                 isFinish = false;
                 _finishCB = null;
@@ -128,16 +130,37 @@ namespace ProjectApp
 
         }
         private Queue<VisuaProcess> visuaProcessQueue;
+        private Dictionary<uint, VisuaProcess> visuaProcessDic;
         private VisuaProcess currVisuaProcess;
         private VisuaProcess EnqueueVisuaProcess(VisuaProcess process)
         {
             visuaProcessQueue.Enqueue(process);
+            if (process.id != 0)
+            {
+                if (visuaProcessDic.ContainsKey(process.id))
+                {
+                    visuaProcessDic[process.id].Release();
+                }
+                visuaProcessDic[process.id] = process;
+            }
             return process;
         }
 
-        private VisuaProcess GetProcessToEnqueue()
+        private VisuaProcess GetProcessToEnqueue(uint id = 0)
         {
-            return EnqueueVisuaProcess(VisuaProcess.Get());
+            var process = VisuaProcess.Get();
+            if (id == 0) return EnqueueVisuaProcess(process);
+
+            if (visuaProcessDic.ContainsKey(id))
+            {
+                return visuaProcessDic[id];
+            }
+            else
+            {
+                process.id = id;
+                return EnqueueVisuaProcess(process);
+            }
+
         }
         private VisuaProcess NextProcess()
         {
@@ -163,6 +186,10 @@ namespace ProjectApp
                 currVisuaProcess.Run();
                 if (currVisuaProcess.isFinish)
                 {
+                    if (visuaProcessDic.ContainsKey(currVisuaProcess.id))
+                    {
+                        visuaProcessDic.Remove(currVisuaProcess.id);
+                    }
                     currVisuaProcess.Release();
                     currVisuaProcess = null;
                     //回收 当前流程 
@@ -221,6 +248,7 @@ namespace ProjectApp
             AnimationSys.Init();
 
             visuaProcessQueue = new Queue<VisuaProcess>();
+            visuaProcessDic = new Dictionary<uint, VisuaProcess>();
 
         }
 
@@ -234,10 +262,10 @@ namespace ProjectApp
             Dispatcher.AddFinallyListener(GameMsg.SelectElement, OnSelectElement);
             Dispatcher.AddFinallyListener(GameMsg.RestAllElements, OnRestAllElements);
             Dispatcher.AddFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
-
+            Dispatcher.AddFinallyListener(GameMsg.ActivateProp, OnActivateProp);
         }
 
-        
+
 
         public void RemoveListener()
         {
@@ -249,6 +277,7 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.GenerateElements, OnGenerateElements);
             Dispatcher.RemoveFinallyListener(GameMsg.RestAllElements, OnRestAllElements);
             Dispatcher.RemoveFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
+            Dispatcher.RemoveFinallyListener(GameMsg.ActivateProp, OnActivateProp);
 
         }
 
@@ -278,7 +307,7 @@ namespace ProjectApp
 
                 }
             }
-   
+
             LoadAllConnectionGo();
 
 
@@ -286,7 +315,7 @@ namespace ProjectApp
 
         private void LoadAllConnectionGo()
         {
-            
+
 
             foreach (var item in Data.GetAllConnection())
             {
@@ -294,23 +323,23 @@ namespace ProjectApp
                 Vector2Int end = item.Value.Item2;
 
                 var dir = GameTool.GetDirection(start, end);
-                Vector3 addVector =  new Vector3(dir.x,dir.y) * 0.5f;
-                Vector3 pot = GetPosition(start.x,start.y)+ addVector;
+                Vector3 addVector = new Vector3(dir.x, dir.y) * 0.5f;
+                Vector3 pot = GetPosition(start.x, start.y) + addVector;
                 SpriteRenderer go = GameTool.InstantiateConnectionPrefab().GetComponent<SpriteRenderer>();
-                pot.z =  0.5f;
-                go.name = (start + "-" + end);                
+                pot.z = 0.5f;
+                go.name = (start + "-" + end);
                 go.transform.SetParent(connectionTrf);
                 go.transform.localPosition = pot;
                 go.transform.localScale = Vector3.one * 0.4f;
                 go.flipX = start.y > end.y;
-            
-            
+
+
 
             }
 
         }
 
-        
+
 
         public void Dispose()
         {
@@ -321,7 +350,12 @@ namespace ProjectApp
 
             elementItems = null;
             elementsPool.ReleaseAll();
-            elementsPool = null;
+            foreach (var item in elementsPool.GetAll())
+            {
+                item.Dispose();
+            }
+            elementsPool.Dispose();
+            elementsPool= null;
             GameObject.Destroy(elementsPoolTrf.gameObject);
             GameObject.Destroy(elementItemsTrf.gameObject);
             GameObject.Destroy(connectionTrf.gameObject);
@@ -764,7 +798,7 @@ namespace ProjectApp
             ElementData data = (ElementData)datas[0];
             bool isR = (bool)datas[1];
 
-            ElementItem item = FindElementItem(data.X,data.Y);
+            ElementItem item = FindElementItem(data.X, data.Y);
 
             if (isR)
             {
@@ -777,6 +811,109 @@ namespace ProjectApp
             elementItems[data.X, data.Y].SetData(data);
 
 
+
+        }
+
+        private void OnActivateProp(object obj)
+        {
+            object[] datas = obj as object[];
+            //要激活的道具
+            uint indexId = (uint)datas[0];
+            ElementData data = (ElementData)datas[1];
+            List<Vector2Int> matches = datas[2] as List<Vector2Int>;
+            List<ElementItem> props = datas[3] as List<ElementItem>;
+
+
+            List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
+            foreach (var matche in matches)
+            {
+                ElementItem _item = FindElementItem(matche.x, matche.y);
+                elementItemList.Add(_item);
+            }
+          
+            ElementItem item = FindElementItem(data.X, data.Y);
+
+            //将激活的道具设置为空
+            elementItems[data.X, data.Y].SetSpecial();
+
+            var process = GetProcessToEnqueue(indexId);
+
+            float time = GetPropAction(data.Type, item, elementItemList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB);
+
+            process.Duration = time > process.Duration ? time : process.Duration;
+
+            process.SetLinkExecute(executeCB);
+            process.SetLinkExecute(finishCB);
+
+        }
+
+        private float GetPropAction(ElementType type, ElementItem item, List<ElementItem> elementItemList,
+            out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
+        {
+            float time = 0;
+            executeCB = null;
+            finishCB = null;
+            switch (type)
+            {
+                case ElementType.Prop_Horizontal:
+                    {
+                        time = 1f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            elementsPool.Release(item);
+                            GameTool.PlayTestEffect(item.Transform.position);
+                            AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                        };
+                    }
+                    break;
+                case ElementType.Prop_Vertical:
+                    time = 1f;
+                    executeCB = (p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        elementsPool.Release(item);
+                        GameTool.PlayTestEffect(item.Transform.position);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                    };
+                    break;
+                case ElementType.Prop_Bomb:
+                    time = 1f;
+                    executeCB = (p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        elementsPool.Release(item);
+                        GameTool.PlayTestEffect(item.Transform.position);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                    };
+
+                    break;
+                case ElementType.Prop_Wild:
+                    time = 1f;
+                    executeCB = (p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        elementsPool.Release(item);
+                        GameTool.PlayTestEffect(item.Transform.position);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                    };
+
+                    break;
+            }
+
+
+            if (finishCB == null)
+            {
+                finishCB = (p) =>
+                {
+                    Core.Enabled_PlayerCtr = true;
+
+                    ListPool<ElementItem>.Release(elementItemList);
+
+                };
+            }
+
+            return time;
 
         }
 

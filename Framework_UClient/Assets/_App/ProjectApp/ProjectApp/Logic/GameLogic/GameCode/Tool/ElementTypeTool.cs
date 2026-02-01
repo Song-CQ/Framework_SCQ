@@ -14,25 +14,25 @@ namespace ProjectApp
 
         Item_Change,// 可变换元素
 
+      
+        //// 可切换的特殊元素
+        //Prop_Rocket,           // 火箭组合（横竖可切换）
+        //RocketBombCombo,       // 火箭炸弹组合
+        //DoubleRocket,          // 双火箭（可切换方向）
+        //CrossRocket,           // 十字火箭
+        //MegaBomb,              // 超级炸弹（可切换模式）
 
-        // 可切换的特殊元素
-        Prop_Rocket,           // 火箭组合（横竖可切换）
-        RocketBombCombo,       // 火箭炸弹组合
-        DoubleRocket,          // 双火箭（可切换方向）
-        CrossRocket,           // 十字火箭
-        MegaBomb,              // 超级炸弹（可切换模式）
-
-        // 状态相关
-        Transformable,         // 可变换元素
 
 
         Dummy_CanMatche = 100,// 站位 比他小的允许参与匹配消除
 
         //道具
-        Prop_HorizontalRocket,      // 横向火箭
-        VerticalRocket,        // 纵向火箭
-        Bomb,                  // 炸弹
-        ColorBomb,             // 彩色炸弹/万能元素
+        Prop_Horizontal,      // 横向火箭
+        Prop_Vertical,        // 纵向火箭
+        Prop_Wild,             // 彩色炸弹/万能元素   
+        Prop_Bomb,                 // 炸弹
+
+
 
         Dummy_CanClickEvent = 200, // 占位 比他小的接受点击
         
@@ -140,6 +140,17 @@ namespace ProjectApp
                 return (ElementType)data.data1;
             }
             return data.Type;
+        }
+
+        public static bool CheckType_IsProp(ElementType type)
+        {
+            if (type >= ElementType.Prop_Horizontal && type <= ElementType.Prop_Bomb)
+            {
+                return true;
+            }
+
+            return false;
+
         }
     }
 }

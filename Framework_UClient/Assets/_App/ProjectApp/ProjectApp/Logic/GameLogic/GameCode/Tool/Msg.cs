@@ -74,6 +74,15 @@ namespace ProjectApp
         /// 特殊元素切换元素类型
         /// </summary>
         public static readonly uint ChangeElementType = ++_counter;
+        /// <summary>
+        /// 激活道具
+        /// </summary>
+        public static readonly uint ActivateProp = ++_counter;
+
+
+
+
+
 
         /// <summary>
         /// 游戏分数更新

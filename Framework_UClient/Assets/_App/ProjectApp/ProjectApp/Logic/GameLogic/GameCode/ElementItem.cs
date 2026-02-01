@@ -1,6 +1,4 @@
 using System;
-using System.Diagnostics.Tracing;
-using System.Text;
 using DG.Tweening;
 using FutureCore;
 using ProjectApp;
@@ -8,9 +6,7 @@ using ProjectApp.Data;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using static PlasticGui.PlasticTableColumn;
-using static UnityEditor.LightingExplorerTableColumn;
+
 
 namespace ProjectApp
 {
@@ -90,7 +86,16 @@ namespace ProjectApp
             return string.Format("[{0},{1}]:{2}", X, Y, Type);
         }
 
-
+        /// <summary>
+        /// 设置空标记 保留xy坐标 清空其他数据
+        /// </summary>
+        public void SetSpecial()
+        {
+            Type = ElementType.Fixed_Special;
+            data1 = 0;
+            data2 = 0;
+            data3 = 0;
+        }
     }
 
     //元素类
@@ -169,6 +174,13 @@ namespace ProjectApp
             Data = _data;
         }
 
+        public void SetSpecial()
+        {
+           var temp  = Data;
+            temp.SetSpecial();
+            Data = temp;
+        }
+
         public void SetActive(bool value)
         {
             if (value != _active)
@@ -227,7 +239,6 @@ namespace ProjectApp
         /// <param name="hitPoint"></param>
         public void Raycast_OnClick(Vector3 hitPoint)
         {
-
             GameTool.GameCore.ClickElementItem(this);
             selectGo.SetActive(isSelect);
         }
@@ -246,7 +257,7 @@ namespace ProjectApp
             }
             else
             {
-                Vector2 dir = startPoint - endPoint;
+                Vector2 dir =  endPoint - startPoint;
                 GameTool.GameCore.SwipeElementItem(this, dir.normalized);
             }
 
@@ -257,36 +268,52 @@ namespace ProjectApp
 
         public void StopAllDOTween()
         {
-            Transform.localScale = Vector3.one;
-            Transform.rotation = Quaternion.identity;
-            pos = Vector3.zero;
+            switchSequenceL.Pause();
+            switchSequenceR.Pause();         
 
+            UpdateIconLayout();
+
+        }
+
+        public void Dispose()
+        {
+            // 清理DOTween动画
+            switchSequenceR?.Kill();
+            switchSequenceR = null;
+            switchSequenceL?.Kill();
+            switchSequenceL = null;
+
+            Transform = null;
+            Collider = null;
+            icon = null;
+            selectGo = null;
+
+            changeTrf = null;
+            changeIcons = null;
         }
 
 
 
 
+        #region 切换动画
 
-
-        private int currentIndex = 0; // 当前中间的图标索引
-
-        [Header("动画设置")]
-        [SerializeField] private float switchDuration = 0.3f;
-        [SerializeField] private float centerScale = 0.7f;
-        [SerializeField] private float sideScale = 0.4f;
-        [SerializeField] private Vector3 topLeftPosition = new Vector3(-0.357f, 0.345f, -0.1f);
-        [SerializeField] private Vector3 centerPosition = new Vector3(0f, 0f, -0.2f);
-        [SerializeField] private Vector3 bottomRightPosition = new Vector3(0.397f, -0.345f, -0.1f);
+        //[Header("动画设置")]
+        private float switchDuration = 0.3f;
+        private float centerScale = 0.7f;
+        private float sideScale = 0.4f;
+        private Vector3 topLeftPosition = new Vector3(-0.357f, 0.345f, -0.1f);
+        private Vector3 centerPosition = new Vector3(0f, 0f, -0.2f);
+        private Vector3 bottomRightPosition = new Vector3(0.397f, -0.345f, -0.1f);
 
 
 
         // 切换到下一个图标
         public void SwitchToNext()
         {
-
+            
             UpdateIconLayout();
             // 计算下一个索引
-            int nextIndex = (currentIndex + 1) % 3;
+
             PerformSwitchAnimation(true);
         }
 
@@ -296,12 +323,10 @@ namespace ProjectApp
 
             UpdateIconLayout();
             // 计算上一个索引
-            int prevIndex = (currentIndex - 1 + 3) % 3;
+
             PerformSwitchAnimation(false);
         }
 
-
-        private bool isAnimating = false;
 
         private Sequence switchSequenceR;
         private Sequence switchSequenceL;
@@ -315,28 +340,38 @@ namespace ProjectApp
                 if (switchSequenceR == null)
                 {
                     // 执行滑动动画
-                    Sequence sequence = DOTween.Sequence().SetAutoKill(false);
+                    Sequence sequence = DOTween.Sequence();
 
                     // 左上图标移动到中间
-                    sequence.Join(changeIcons[0].transform
+                    sequence.Join(changeIcons[1].transform
                         .DOLocalMove(centerPosition, switchDuration));
-                    sequence.Join(changeIcons[0].transform
+                    sequence.Join(changeIcons[1].transform
                         .DOScale(centerScale, switchDuration));
 
                     // 中间图标移动到右下
-                    sequence.Join(changeIcons[2].transform
+                    sequence.Join(changeIcons[0].transform
                         .DOLocalMove(bottomRightPosition, switchDuration));
-                    sequence.Join(changeIcons[2].transform
+                    sequence.Join(changeIcons[0].transform
                         .DOScale(sideScale, switchDuration));
 
                     // 右下图标移动到左上（完成循环）
-                    sequence.Join(changeIcons[1].transform
+                    sequence.Join(changeIcons[2].transform
                         .DOLocalMove(topLeftPosition, switchDuration));
-                    sequence.Join(changeIcons[1].transform
+                    sequence.Join(changeIcons[2].transform
                         .DOScale(sideScale, switchDuration));
 
+                    sequence.OnStart(() => Debug.Log("1动画开始"));
+                    sequence.OnUpdate(() => Debug.Log("1动画进行中..."));
+                    sequence.onComplete = () =>
+                    {
+                        Debug.Log("1动画完成");
+                        UpdateIconLayout();
+                    };
+
                     // 更新显示顺序
-                    sequence.SetEase(Ease.OutCubic).onComplete = () => UpdateIconLayout();
+                    sequence.SetEase(Ease.OutCubic);
+                    switchSequenceR = sequence;
+
                 }
                 else
                 {
@@ -368,8 +403,18 @@ namespace ProjectApp
                     sequence.Join(changeIcons[1].transform
                         .DOScale(sideScale, switchDuration));
 
+
+                    sequence.OnStart(() => Debug.Log("2动画开始"));
+                    sequence.OnUpdate(() => Debug.Log("2动画进行中..."));
+                    sequence.onComplete = () =>
+                    {
+                        Debug.Log("2动画完成");
+                        UpdateIconLayout();
+                    };
+
                     // 更新显示顺序
-                    sequence.SetEase(Ease.OutCubic).onComplete = () => UpdateIconLayout();
+                    sequence.SetEase(Ease.OutCubic);
+                    switchSequenceL = sequence;
                 }
                 else
                 {
@@ -379,7 +424,7 @@ namespace ProjectApp
 
         }
 
-        // 更新图标布局（无动画）
+        // 重置图标布局（无动画）
         private void UpdateIconLayout()
         {
 
@@ -398,25 +443,10 @@ namespace ProjectApp
             changeIcons[2].sprite = GameTool.GetSprite((ElementType)Data.data3);
         }
 
-        // 重置位置（用于调试）
-        public void ResetPositions()
-        {
-            isAnimating = false;
-            currentIndex = 0;
-            UpdateIconLayout();
-        }
-
-        void OnDestroy()
-        {
-            // 清理DOTween动画
-            switchSequenceR.Kill();
-            switchSequenceR = null;
-        }
+        #endregion
 
 
-
-
-
+        
     }
 
 
@@ -459,6 +489,7 @@ public class DebugElementItem : MonoBehaviour
     [Button("next")]
     public void SwitchToNext()
         {
+
         if (elementItem == null) return;
         elementItem.SwitchToNext();
 

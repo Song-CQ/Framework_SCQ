@@ -5,6 +5,7 @@
     类型: 逻辑脚本
     功能: Nothing
 *****************************************************/
+using FutureCore;
 using log4net.Util;
 using System;
 using System.Collections.Generic;
@@ -74,8 +75,7 @@ namespace ProjectApp
 
         public static void SetRandomSeed(int seed)
         {
-            _systemRandom = new System.Random(seed);
-            
+            _systemRandom = new System.Random(seed);   
         }
 
         public static int RandomToInt(int v1, int v2)
@@ -87,6 +87,10 @@ namespace ProjectApp
             return minInclusive + (float)_systemRandom.NextDouble() * (maxInclusive - minInclusive);
         }
 
+        public static ElementType GetRandomBaseElementType()
+        {
+            return (ElementType)RandomToInt((int)ElementType.Item_A, (int)ElementType.Item_D+1);
+        }
 
         
 
@@ -147,7 +151,51 @@ namespace ProjectApp
 
             return key;
         }
-
         #endregion
+
+        private static uint _uint_Index = 0;
+        public static uint GetNextIndex()
+        {
+            if (_uint_Index >= uint.MaxValue)
+            {
+                _uint_Index = 1;
+            }
+            else
+            {
+                _uint_Index ++;
+            }
+
+           return _uint_Index;
+        }
+
+
+        public static void PlayTestEffect(Vector3 pot)
+        {
+            string effectName = "ClickUIEffect";
+            string effectPath = "Prefabs/Effect/Common_UIEffect/ClickUIEffect";
+
+            PlayEffect(pot,effectName,effectPath);
+
+        }
+
+        public static void PlayEffect(Vector3 pot,string effectName,string effectPath)
+        {
+            
+            //这块可以用异步加载
+            EffectEntity effectEntity = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>(effectPath)).GetComponent<EffectEntity>();
+
+            EffectData effectData = new EffectData();
+            effectData.stopType = StopType.ParticleSystemStopped_ToMain;
+            effectData.effectName = effectName;
+            effectData.effectPath = effectPath;
+            Effect effect = new Effect(effectData, effectEntity);
+            effect.autoDestroy = true;
+
+            effect.entity.transform.position = pot;
+            effect.entity.transform.localScale = Vector3.one * 0.3f;
+            effect.Play();
+        }
+
+        
     }
 }

@@ -93,6 +93,7 @@ namespace ProjectApp
         {
             if (runAllElementAni.TryGetValue(item,out IElementAni elementAni))
             {
+                item.StopAllDOTween();
                 runAllElementAni.Remove(item);
                 ReleaseIElementAni(elementAni);
             }
@@ -223,6 +224,7 @@ namespace ProjectApp
                 if (item == null) continue;
                 StopElementItemAni(item);
                 var ani = GetAnimation(ElementAniType.ElasticShake);
+                Debug.LogWarning("抖动"+item.Data.ToString());
                 ani.SetElementAndPlay(item);
                 AddRunElementAni(item, ani);
                 if (dur != -1)

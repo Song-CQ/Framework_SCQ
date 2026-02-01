@@ -227,10 +227,6 @@ MonoBehaviour:
   _boardHeight: 14
   startVector3: {x: -4.55, y: -6, z: 0}
   currentMode: 0
-  horizontalProp: {fileID: 0}
-  verticalProp: {fileID: 0}
-  bombProp: {fileID: 0}
-  wildProp: {fileID: 0}
   temp1: {x: 0, y: 13}
   temp2: {x: 0, y: 12}
 --- !u!4 &277895815
@@ -1130,6 +1126,7 @@ MonoBehaviour:
   data:
     selectedElement: {x: -1, y: -1}
     boardSize: {x: 0, y: 0}
+    linkBoardPotLength: 0
     currentScore: 0
     targetScore: 100000
   text: {fileID: 845585695}

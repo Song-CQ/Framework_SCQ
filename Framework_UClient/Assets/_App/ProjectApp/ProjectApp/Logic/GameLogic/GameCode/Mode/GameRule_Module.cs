@@ -1,11 +1,17 @@
+using Codice.CM.Common;
 using FutureCore;
+using ILRuntime.CLR.TypeSystem;
+using JetBrains.Annotations;
+using Sirenix.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace ProjectApp
 {
@@ -109,7 +115,7 @@ namespace ProjectApp
             {
                 Debug.LogError("OnElementClicked 执行超时，可能死循环");
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
 #endif
             }
             catch (AggregateException ae)
@@ -136,10 +142,21 @@ namespace ProjectApp
         /// <param name="o"></param>
         void OnClick_Element(object o)
         {
+            ElementData data = (ElementData)(o);
+            int x = data.X;
+            int y = data.Y;
 
-            ElementData element = (ElementData)(o);
-            int x = element.X;
-            int y = element.Y;
+            //获取当前棋盘上对应位置的元素 不能信任传过来的数据
+            data = Data.boardData[x, y];
+
+            if (ElementTypeTool.CheckType_IsProp(data.Type))
+            {
+                //触发道具
+                Player_ActivateProp(data);
+                return;
+            }
+            
+
 
             if (SelectedElement.x < 0 || SelectedElement.y < 0)
             {
@@ -158,7 +175,6 @@ namespace ProjectApp
                 {
 
                     Player_SwapElement(select_X, select_Y, x, y);
-
                 }
 
 
@@ -200,7 +216,8 @@ namespace ProjectApp
 
             if (data.Type == ElementType.Item_Change)
             {
-                Player_ChangeElementType(data.X,data.Y,dir.x > 0);
+
+                Player_ChangeElementType(data.X, data.Y, dir.x > 0);
             }
         }
 
@@ -288,8 +305,8 @@ namespace ProjectApp
 
             CheckAllMatches();
         }
-        
-        public void Player_ChangeElementType(int x,int y, bool isRith)
+
+        public void Player_ChangeElementType(int x, int y, bool isRith)
         {
             ElementData data = BoardData[x, y];
             if (data.Type == ElementType.Item_Change)
@@ -313,7 +330,7 @@ namespace ProjectApp
                 BoardData[x, y] = data;
 
 
-                Core.Dispatch(GameMsg.ChangeElementType,data,isRith);
+                Core.Dispatch(GameMsg.ChangeElementType, data, isRith);
 
 
             }
@@ -703,7 +720,7 @@ namespace ProjectApp
                 }
             }
 
-            Debug.LogError("要创建的元素数量" + creadList.Count);
+            Debug.Log("要创建的元素数量" + creadList.Count);
             foreach (var item in creadList)
             {
                 Debug.Log(item.ToString());
@@ -716,7 +733,7 @@ namespace ProjectApp
             }
             ListPool<ElementData>.Release(creadList);
 
-            Debug.LogError("要下落的元素数量" + souList.Count);
+            Debug.Log("要下落的元素数量" + souList.Count);
             for (int i = 0; i < souList.Count; i++)
             {
                 ElementData item = souList[i];
@@ -863,7 +880,7 @@ namespace ProjectApp
                 if (BoardData[match.x, match.y].Type != ElementType.Fixed_Special) //如果不是不存在
                 {
                     allMatches.Add(BoardData[match.x, match.y]);
-                    BoardData[match.x, match.y].SetType(ElementType.Fixed_Special); // 临时标记为空
+                    BoardData[match.x, match.y].SetSpecial(); // 标记为空
                 }
             }
 
@@ -915,156 +932,492 @@ namespace ProjectApp
         #region 道具系统
 
 
-
-
-
-        /*
-
-        /// <summary>
-        /// 生成道具
-        /// </summary>
-        void GeneratePropAt(int x, int y, PropType propType)
+        private void Player_Activate2Prop(ElementData data1, ElementData data2)
         {
-            GameObject propPrefab = null;
+            if (!ElementTypeTool.CheckType_IsProp(data1.Type)|| !ElementTypeTool.CheckType_IsProp(data2.Type)) return;
+            Data.TakeMemorySnapshotBoardData();
 
-            switch (propType)
+            List<ElementData> currProps = ListPool<ElementData>.Get();
+            currProps.Add(data1);
+
+            while (currProps.Count > 0)
             {
-                case PropType.Horizontal:
-                    propPrefab = horizontalProp;
-                    break;
-                case PropType.Vertical:
-                    propPrefab = verticalProp;
-                    break;
-                case PropType.Bomb:
-                    propPrefab = bombProp;
-                    break;
-                case PropType.Wild:
-                    propPrefab = wildProp;
-                    break;
-            }
+                List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
+                List<ElementData> tempProps = ListPool<ElementData>.Get();
 
-            if (propPrefab != null && elementObjects[x, y] != null)
-            {
-                // 在元素位置生成道具
-                Destroy(elementObjects[x, y]);
-                GameObject prop = Instantiate(propPrefab, new Vector3(x, y, 0), Quaternion.identity);
-                elementObjects[x, y] = prop;
+                //用来判断当前是否在同一组
+                uint index = GameTool.GetNextIndex();
 
-                // 添加道具脚本
-                GameProp propScript = prop.AddComponent<GameProp>();
-                propScript.Initialize(propType, x, y);
-                propScript.OnPropClicked += OnPropClicked;
-            }
-        }
-
-        /// <summary>
-        /// 道具点击事件
-        /// </summary>
-        void OnPropClicked(PropType propType, int x, int y)
-        {
-            switch (propType)
-            {
-                case PropType.Horizontal:
-                    ActivateHorizontalProp(x, y);
-                    break;
-                case PropType.Vertical:
-                    ActivateVerticalProp(x, y);
-                    break;
-                case PropType.Bomb:
-                    ActivateBombProp(x, y);
-                    break;
-                case PropType.Wild:
-                    ActivateWildProp(x, y);
-                    break;
-            }
-
-            // 清除道具
-            Destroy(elementObjects[x, y]);
-            elementObjects[x, y] = null;
-            board[x, y] = ElementType.Fixed_Special;
-
-            StartCoroutine(FillEmptySpaces());
-        }
-
-        /// <summary>
-        /// 激活横向道具
-        /// </summary>
-        void ActivateHorizontalProp(int x, int y)
-        {
-            for (int i = 0; i < boardWidth; i++)
-            {
-                if (elementObjects[i, y] != null)
+                for (int i = 0; i < currProps.Count; i++)
                 {
-                    Destroy(elementObjects[i, y]);
-                    elementObjects[i, y] = null;
-                    board[i, y] = ElementType.Fixed_Special;
+                    var propData = currProps[i];
+
+                    List<Vector2Int> matches = ListPool<Vector2Int>.Get();
+                    List<ElementData> oneProp = ListPool<ElementData>.Get();
+
+                    ActivateProp(propData, ref matches, ref oneProp);
+
+                    Core.Dispatch(GameMsg.ActivateProp, index, data1, matches, oneProp);
+
+                    tempMatches.AddRange(matches);
+                    tempProps.AddRange(oneProp);
+                    ListPool<Vector2Int>.Release(matches);
+                    ListPool<ElementData>.Release(oneProp);
                 }
-            }
-        }
 
-        /// <summary>
-        /// 激活竖向道具
-        /// </summary>
-        void ActivateVerticalProp(int x, int y)
-        {
-            for (int j = 0; j < boardHeight; j++)
-            {
-                if (elementObjects[x, j] != null)
+                if (tempMatches.Count > 0)
                 {
-                    Destroy(elementObjects[x, j]);
-                    elementObjects[x, j] = null;
-                    board[x, j] = ElementType.Fixed_Special;
+                    ProcessMatches(tempMatches);
                 }
+
+                //本次循环完成
+                currProps.Clear();
+                if (tempProps.Count > 0)
+                {
+                    //本次触发了道具 继续触发道具
+                    currProps.AddRange(tempProps);
+                }
+
+                ListPool<Vector2Int>.Release(tempMatches);
+                ListPool<ElementData>.Release(tempProps);
+
+
+            }
+
+            ListPool<ElementData>.Release(currProps);
+
+            //补位
+            FillEmptySpaces();
+
+
+        }
+
+
+        /// <summary>
+        /// 一次使用棋盘道具的操作
+        /// </summary>
+        /// <param name="data"></param>
+        public void Player_ActivateProp(ElementData data)
+        {
+            if (!ElementTypeTool.CheckType_IsProp(data.Type)) return;
+
+            Data.TakeMemorySnapshotBoardData();
+
+
+            List<ElementData> currProps = ListPool<ElementData>.Get();
+            currProps.Add(data);
+
+            while (currProps.Count > 0)
+            {
+                List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
+                List<ElementData> tempProps = ListPool<ElementData>.Get();
+
+                //用来判断当前是否在同一组
+                uint index = GameTool.GetNextIndex(); 
+                
+                for (int i = 0; i < currProps.Count; i++)
+                {
+                    var propData = currProps[i];
+
+                    List<Vector2Int> matches = ListPool<Vector2Int>.Get();
+                    List<ElementData> oneProp = ListPool<ElementData>.Get();
+                    
+                    ActivateProp(propData, ref matches, ref oneProp);
+                   
+                    Core.Dispatch(GameMsg.ActivateProp, index ,data, matches, oneProp);
+
+                    tempMatches.AddRange(matches);
+                    tempProps.AddRange(oneProp);
+                    ListPool<Vector2Int>.Release(matches);
+                    ListPool<ElementData>.Release(oneProp);
+                }
+
+                if (tempMatches.Count > 0)
+                {
+                    ProcessMatches(tempMatches);
+                }
+
+                //本次循环完成
+                currProps.Clear();
+                if (tempProps.Count > 0)
+                { 
+                    //本次触发了道具 继续触发道具
+                    currProps.AddRange(tempProps);
+                }
+
+                ListPool<Vector2Int>.Release(tempMatches);
+                ListPool<ElementData>.Release(tempProps);
+                
+    
+            }
+
+            ListPool<ElementData>.Release(currProps);
+
+            //补位
+            FillEmptySpaces();
+
+        }
+
+        private void ActivateProp(ElementData data, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
+        {
+            switch (data.Type)
+            {
+                case ElementType.Prop_Horizontal:
+                    ActivateProp_Horizontal(data,ref matches,ref dataProp);
+                    break;
+                case ElementType.Prop_Vertical:
+                    ActivateProp_Vertical(data, ref matches, ref dataProp);
+                    break;
+                case ElementType.Prop_Bomb:
+                    ActivateProp_Bomb(2,data,ref matches, ref dataProp);
+                    break;
+                case ElementType.Prop_Wild:
+                    ActivateProp_Wild(ElementType.Fixed_Special,data,ref matches, ref dataProp);
+                    break;
+
+                default:
+                    Debug.Log(data.ToString() + "并不是道具");
+                    break;
             }
         }
 
-        /// <summary>
-        /// 激活炸弹道具
-        /// </summary>
-        void ActivateBombProp(int x, int y)
+        private void ActivateProp_Horizontal(ElementData data, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
         {
-            // 3x3范围消除
-            for (int i = Mathf.Max(0, x - 1); i <= Mathf.Min(boardWidth - 1, x + 1); i++)
+            if (data.Type != ElementType.Prop_Horizontal) return;
+
+            int L_Pot = data.X - 1;
+            int R_Pot = data.X + 1;
+            bool isL = true;
+
+            for (int x = 0; x < Data.BoardWidth -1; x++)
             {
-                for (int j = Mathf.Max(0, y - 1); j <= Mathf.Min(boardHeight - 1, y + 1); j++)
+                int potX = 0;
+                if (isL)
                 {
-                    if (elementObjects[i, j] != null)
+                    if (L_Pot >= 0)
                     {
-                        Destroy(elementObjects[i, j]);
-                        elementObjects[i, j] = null;
-                        board[i, j] = ElementType.Fixed_Special;
+                        potX = L_Pot;
+                        L_Pot--;
+                        
+                    }
+                    else
+                    {
+                        potX = R_Pot;
+                        R_Pot++;
+                    }
+                }
+                else
+                {
+                    if (R_Pot < Data.BoardWidth)
+                    {            
+                        potX = R_Pot;
+                        R_Pot++;
+                    }
+                    else
+                    {
+                        potX = L_Pot;
+                        L_Pot--;
+                    }
+
+                }
+                var tempData = Data.boardData[potX, data.Y];
+                if (ElementTypeTool.CheckType_CanMatches(tempData.Type))
+                {
+                    matches.Add(new Vector2Int(potX, data.Y));
+                }
+                else
+                {
+                    dataProp.Add(tempData);
+                }
+
+                isL = !isL;
+
+            }
+
+            Data.boardData[data.X, data.Y].SetSpecial();
+        }
+
+        private void ActivateProp_Vertical(ElementData data, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
+        {
+            if (data.Type != ElementType.Prop_Vertical) return;
+
+            int U_Pot = data.Y + 1;
+            int D_Pot = data.Y - 1;
+            bool isD = true;
+
+            for (int x = 0; x < Data.BoardHeight - 1; x++)
+            {
+                int potY = 0;
+                if (isD)
+                {
+                    if (D_Pot >= 0)
+                    {
+                        potY = D_Pot;
+                        D_Pot--;
+
+                    }
+                    else
+                    {
+                        potY = U_Pot;
+                        U_Pot++;
+                    }
+                }
+                else
+                {
+                    if (U_Pot < Data.BoardHeight)
+                    {
+                        potY = U_Pot;
+                        U_Pot++;
+                    }
+                    else
+                    {
+                        potY = D_Pot;
+                        D_Pot--;
+                    }
+
+                }
+                //Debug.Log(potY);
+                var tempData = Data.boardData[data.X, potY];
+                if (ElementTypeTool.CheckType_CanMatches(tempData.Type))
+                {
+                    matches.Add(new Vector2Int(data.X, potY));
+                }
+                else
+                {
+                    dataProp.Add(tempData);
+                }
+
+                isD = !isD;
+
+            }
+
+            Data.boardData[data.X, data.Y].SetSpecial();
+        }
+
+
+        private void ActivateProp_Bomb(int bombRadius, ElementData data , ref List<Vector2Int> matches, ref List<ElementData> dataProp)
+        {
+            Vector2Int bombGridPosition = new Vector2Int(data.X, data.Y);
+
+            int height = Data.BoardHeight;
+            int width = Data.BoardWidth;
+
+
+           
+            // 检查以炸弹为中心的圆形区域
+            for (int x = -bombRadius; x <= bombRadius; x++)
+            {
+                for (int y = -bombRadius; y <= bombRadius; y++)
+                {
+                    // 计算实际网格位置
+                    int targetX = bombGridPosition.x + x;
+                    int targetY = bombGridPosition.y + y;
+
+                    // 检查是否在网格范围内
+                    if (targetX >= 0 && targetX < width &&
+                        targetY >= 0 && targetY < height)
+                    {
+                        // 使用圆形范围（距离平方判断）
+                        int distanceSquared = x * x + y * y;
+                        if (distanceSquared <= bombRadius * bombRadius)
+                        {
+                            // 检查该位置是否有可消除的方块
+                            var tempData = Data.boardData[targetX, targetY];
+                            if (tempData == data) continue;
+                            if (ElementTypeTool.CheckType_CanMatches(tempData.Type))
+                            {
+                                matches.Add(new Vector2Int(targetX, targetY));
+                            }
+                            else
+                            {
+                                dataProp.Add(tempData);
+                            }
+                        }
                     }
                 }
             }
+            Data.boardData[data.X, data.Y].SetSpecial();
+
         }
 
-        /// <summary>
-        /// 激活Wild道具
-        /// </summary>
-        void ActivateWildProp(int x, int y)
+        private void ActivateProp_Wild(ElementType matches_type, ElementData data, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
         {
-            // 随机选择一种颜色消除
-            ElementType randomType = (ElementType)Random.Range(0, 4);
+            if (data.Type != ElementType.Prop_Wild) return;
 
-            for (int i = 0; i < boardWidth; i++)
+            if (matches_type == ElementType.Fixed_Special)
+            { 
+                matches_type = GameTool.GetRandomBaseElementType();
+            }
+
+
+            for (int x = 0; x < boardSize.x; x++)
+            {
+                for (int y = 0; y < boardSize.y; y++)
+                {
+                    ElementType type = ElementTypeTool.GetTypeToElementData(BoardData[x, y]);
+                    if (matches_type == type)
+                    {
+                        matches.Add(new Vector2Int(x,y));
+                    }
+
+                }
+            }
+
+            Data.boardData[data.X, data.Y].SetSpecial();
+
+
+        }
+
+
+
+
+            /*
+
+            /// <summary>
+            /// 生成道具
+            /// </summary>
+            void GeneratePropAt(int x, int y, PropType propType)
+            {
+                GameObject propPrefab = null;
+
+                switch (propType)
+                {
+                    case PropType.Horizontal:
+                        propPrefab = horizontalProp;
+                        break;
+                    case PropType.Vertical:
+                        propPrefab = verticalProp;
+                        break;
+                    case PropType.Bomb:
+                        propPrefab = bombProp;
+                        break;
+                    case PropType.Wild:
+                        propPrefab = wildProp;
+                        break;
+                }
+
+                if (propPrefab != null && elementObjects[x, y] != null)
+                {
+                    // 在元素位置生成道具
+                    Destroy(elementObjects[x, y]);
+                    GameObject prop = Instantiate(propPrefab, new Vector3(x, y, 0), Quaternion.identity);
+                    elementObjects[x, y] = prop;
+
+                    // 添加道具脚本
+                    GameProp propScript = prop.AddComponent<GameProp>();
+                    propScript.Initialize(propType, x, y);
+                    propScript.OnPropClicked += OnPropClicked;
+                }
+            }
+
+            /// <summary>
+            /// 道具点击事件
+            /// </summary>
+            void OnPropClicked(PropType propType, int x, int y)
+            {
+                switch (propType)
+                {
+                    case PropType.Horizontal:
+                        ActivateHorizontalProp(x, y);
+                        break;
+                    case PropType.Vertical:
+                        ActivateVerticalProp(x, y);
+                        break;
+                    case PropType.Bomb:
+                        ActivateBombProp(x, y);
+                        break;
+                    case PropType.Wild:
+                        ActivateWildProp(x, y);
+                        break;
+                }
+
+                // 清除道具
+                Destroy(elementObjects[x, y]);
+                elementObjects[x, y] = null;
+                board[x, y] = ElementType.Fixed_Special;
+
+                StartCoroutine(FillEmptySpaces());
+            }
+
+            /// <summary>
+            /// 激活横向道具
+            /// </summary>
+            void ActivateHorizontalProp(int x, int y)
+            {
+                for (int i = 0; i < boardWidth; i++)
+                {
+                    if (elementObjects[i, y] != null)
+                    {
+                        Destroy(elementObjects[i, y]);
+                        elementObjects[i, y] = null;
+                        board[i, y] = ElementType.Fixed_Special;
+                    }
+                }
+            }
+
+            /// <summary>
+            /// 激活竖向道具
+            /// </summary>
+            void ActivateVerticalProp(int x, int y)
             {
                 for (int j = 0; j < boardHeight; j++)
                 {
-                    if (board[i, j] == randomType && elementObjects[i, j] != null)
+                    if (elementObjects[x, j] != null)
                     {
-                        Destroy(elementObjects[i, j]);
-                        elementObjects[i, j] = null;
-                        board[i, j] = ElementType.Fixed_Special;
+                        Destroy(elementObjects[x, j]);
+                        elementObjects[x, j] = null;
+                        board[x, j] = ElementType.Fixed_Special;
                     }
                 }
             }
+
+            /// <summary>
+            /// 激活炸弹道具
+            /// </summary>
+            void ActivateBombProp(int x, int y)
+            {
+                // 3x3范围消除
+                for (int i = Mathf.Max(0, x - 1); i <= Mathf.Min(boardWidth - 1, x + 1); i++)
+                {
+                    for (int j = Mathf.Max(0, y - 1); j <= Mathf.Min(boardHeight - 1, y + 1); j++)
+                    {
+                        if (elementObjects[i, j] != null)
+                        {
+                            Destroy(elementObjects[i, j]);
+                            elementObjects[i, j] = null;
+                            board[i, j] = ElementType.Fixed_Special;
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            /// 激活Wild道具
+            /// </summary>
+            void ActivateWildProp(int x, int y)
+            {
+                // 随机选择一种颜色消除
+                ElementType randomType = (ElementType)Random.Range(0, 4);
+
+                for (int i = 0; i < boardWidth; i++)
+                {
+                    for (int j = 0; j < boardHeight; j++)
+                    {
+                        if (board[i, j] == randomType && elementObjects[i, j] != null)
+                        {
+                            Destroy(elementObjects[i, j]);
+                            elementObjects[i, j] = null;
+                            board[i, j] = ElementType.Fixed_Special;
+                        }
+                    }
+                }
+            }
+
+            */
+            #endregion
+
+
+
+
         }
-
-        */
-        #endregion
-
-
-
-
-    }
 }

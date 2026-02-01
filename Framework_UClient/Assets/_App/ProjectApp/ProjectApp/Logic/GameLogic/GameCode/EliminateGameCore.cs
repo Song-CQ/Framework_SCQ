@@ -212,7 +212,8 @@ namespace ProjectApp
             }
             else
             {
-                Dispatcher.Dispatch(msg, (object)param);
+       
+                Dispatcher.Dispatch(msg, param);
             }
         }
 

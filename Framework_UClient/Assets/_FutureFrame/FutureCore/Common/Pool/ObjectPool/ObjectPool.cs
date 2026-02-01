@@ -85,6 +85,10 @@ namespace FutureCore
                 }
             }
         }
+        public List<T> GetAll()
+        {
+            return m_List;
+        }
         
         public bool Contains(T item)
         {

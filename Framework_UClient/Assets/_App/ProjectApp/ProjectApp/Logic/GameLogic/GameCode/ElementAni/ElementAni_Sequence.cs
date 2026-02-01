@@ -264,6 +264,7 @@ namespace ProjectApp.GameLogic
                     // 随机方向抖动
                     Vector3 direction = GetRandomDirection();
                     Tar.Pos = originalPos + direction * shakeValue;
+                    
                 },
                 1f,
                 shakeDuration
