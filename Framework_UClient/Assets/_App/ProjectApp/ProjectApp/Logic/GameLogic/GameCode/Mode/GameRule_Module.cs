@@ -1303,7 +1303,7 @@ namespace ProjectApp
                         int distanceSquared = x * x + y * y;
                         if (distanceSquared <= bombRadius * bombRadius)
                         {
-                            if (targetX == bombGridPosition.X && targetX == bombGridPosition.Y) continue;
+                            if (targetX == bombGridPosition.x && targetX == bombGridPosition.y) continue;
 
                             // 检查该位置是否有可消除的方块
                             var tempData = Data.boardData[targetX, targetY];

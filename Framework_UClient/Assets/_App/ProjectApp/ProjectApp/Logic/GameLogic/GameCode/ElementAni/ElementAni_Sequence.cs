@@ -9,7 +9,7 @@ namespace ProjectApp.GameLogic
 {
     public enum ElementAniType
     {
-        Swap = 0,
+        Move = 0,
         Clear,
         FallMove,
         ElasticShake,
@@ -21,8 +21,12 @@ namespace ProjectApp.GameLogic
         ElementItem Tar { get; }
         bool IsPlay { get; }
         float Duration { get; }
+        /// <summary>
+        /// 延迟播放时间
+        /// </summary>
+        float Delay { get; }
 
-        void SetElementAndPlay(ElementItem elementItem);
+        void SetElement(ElementItem elementItem);
 
         void Pause();
         void CanlePause();
@@ -32,29 +36,33 @@ namespace ProjectApp.GameLogic
     }
 
 
-    public class SwapElementAni_Sequence : DoTweenSequence, IElementAni
+    public class MoveElementAni_Sequence : DoTweenSequence, IElementAni
     {
-        public ElementAniType Key => ElementAniType.Swap;
+        public ElementAniType Key => ElementAniType.Move;
         public ElementItem Tar { get; set; }
 
         public new bool IsPlay => base.IsPlay;
 
         public float Duration { get; private set; } = 0.3f;
 
+
+        public float Delay { get; set; } = 0;
+
         public Vector3 formPot = Vector3.zero;
         public Vector3 toPot = Vector3.zero;
         protected override void OnStart()
         {
             base.OnStart();
-            Tar.Pos = formPot;
+            ResetState();
+            TimerUtil.Timer.AddTimeTask();
 
         }
 
 
-        public void SetElementAndPlay(ElementItem elementItem)
+        public void SetElement(ElementItem elementItem)
         {
             Tar = elementItem;
-            Play();
+           
         }
 
         protected override void AddTweenToSequence(Sequence seq)
@@ -77,20 +85,22 @@ namespace ProjectApp.GameLogic
             toPot = Vector3.zero;
         }
 
-        public void ResetState()
+        public override void ResetState()
         {
-            
+            Tar.Pos = formPot;
         }
     }
 
     public class FallMoveElementAni_Sequence : DoTweenSequence, IElementAni
     {
-        public ElementAniType Key => ElementAniType.Swap;
+        public ElementAniType Key => ElementAniType.Move;
         public ElementItem Tar { get; set; }
 
         public new bool IsPlay => base.IsPlay;
 
         public float Duration => fallDuration+fallBounceDuration;
+
+        public float Delay { get; set; }
 
         //[Header("下落设置")]
         private float fallDuration = 0.4f;      // 下落持续时间
@@ -103,10 +113,9 @@ namespace ProjectApp.GameLogic
         public Vector3 formPot;  // 起始位置
         public Vector3 toPot;    // 目标位置
 
-        public void SetElementAndPlay(ElementItem elementItem)
+        public void SetElement(ElementItem elementItem)
         {
             Tar = elementItem;
-            Play();
         }
         protected override void OnStart()
         {
@@ -160,17 +169,16 @@ namespace ProjectApp.GameLogic
 
     public class ClearElementAni_Sequence : DoTweenSequence, IElementAni
     {
-        public ElementAniType Key =>  ElementAniType.Swap;
+        public ElementAniType Key =>  ElementAniType.Move;
         public ElementItem Tar { get; set; }
 
         public new bool IsPlay => base.IsPlay;
 
         public float Duration { get; private set; } = 0.04f;
 
-        public void SetElementAndPlay(ElementItem elementItem)
+        public void SetElement(ElementItem elementItem)
         {
             Tar = elementItem;
-            Play();
         }
 
         protected override void AddTweenToSequence(Sequence seq)
@@ -218,7 +226,7 @@ namespace ProjectApp.GameLogic
 
     public class ElasticShakeAnimation_Sequence : DoTweenSequence, IElementAni
     {
-        public ElementAniType Key => ElementAniType.Swap;
+        public ElementAniType Key => ElementAniType.Move;
         public ElementItem Tar { get; set; }
 
         public new bool IsPlay => base.IsPlay;
@@ -230,7 +238,7 @@ namespace ProjectApp.GameLogic
         private float shakeIntensity = 0.05f;
         private int bounces = 3;
         private Vector3 originalPos;
-        public void SetElementAndPlay(ElementItem elementItem)
+        public void SetElement(ElementItem elementItem)
         {
             Tar = elementItem;
             originalPos = elementItem.Pos;

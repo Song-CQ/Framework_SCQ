@@ -8,6 +8,7 @@ namespace FutureCore
 
         public bool IsPlay;
         public bool IsPause;
+
         public DoTweenSequence()
         {
             CreadSequence();
@@ -105,6 +106,7 @@ namespace FutureCore
             IsPlay = false;
             sequence.Kill();
             sequence = null;
+            
 
         }
 

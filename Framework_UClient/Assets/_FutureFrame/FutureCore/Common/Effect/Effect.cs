@@ -66,7 +66,7 @@ namespace FutureCore
                 default:
                     if (data.lifeTime != -1)
                     {
-                        TimerUtil.Simple.AddTimer(data.lifeTime,Stopped);
+                        TimerUtil.Simple.AddDelayTask(data.lifeTime,Stopped);
                     }
                     break;
             }

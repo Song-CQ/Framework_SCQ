@@ -57,6 +57,11 @@ namespace ProjectApp
             {
                 var elementAni = item.Value;
 
+                if (elementAni.Delay != 0)
+                {
+                    elementAni.Delay -= Time.deltaTime;
+                }
+
                 if(elementAni.IsPlay)
                 {
                     continue;
@@ -137,8 +142,8 @@ namespace ProjectApp
         {
             switch (type)
             {
-                case ElementAniType.Swap:
-                    return new SwapElementAni_Sequence(); 
+                case ElementAniType.Move:
+                    return new MoveElementAni_Sequence(); 
                 case ElementAniType.Clear:
                     return new ClearElementAni_Sequence();
                 case ElementAniType.FallMove:          
@@ -153,6 +158,25 @@ namespace ProjectApp
 
 
         #region 动画
+
+        public float PlayAin_MovePot(ElementItem item,Vector3 tarPot,float deale)
+        {
+            StopElementItemAni(item);
+
+            MoveElementAni_Sequence ani1 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
+            ani1.formPot = item.Pos;
+            ani1.toPot = tarPot;
+            ani1.SetElement(item);
+            AddRunElementAni(item, ani1);
+
+            float dur = 1f;
+
+            AddDelayTask
+
+
+
+            return dur;
+        }
        
         public float PlayAin_SwapElement(ElementItem item1, ElementItem item2)
         {
@@ -161,16 +185,16 @@ namespace ProjectApp
             StopElementItemAni(item2);
 
 
-            SwapElementAni_Sequence ani1 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
+            MoveElementAni_Sequence ani1 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
             ani1.formPot = item1.Pos;
             ani1.toPot = item2.Pos;
-            ani1.SetElementAndPlay(item1);
+            ani1.SetElement(item1);
             AddRunElementAni(item1,ani1);
 
-            SwapElementAni_Sequence ani2 = GetAnimation(ElementAniType.Swap) as SwapElementAni_Sequence;
+            MoveElementAni_Sequence ani2 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
             ani2.formPot = item2.Pos;
             ani2.toPot = item1.Pos;
-            ani2.SetElementAndPlay(item2);
+            ani2.SetElement(item2);
             AddRunElementAni(item2,ani2);
 
             float dur = ani1.Duration;
@@ -187,7 +211,7 @@ namespace ProjectApp
                 StopElementItemAni(item);
 
                 IElementAni ani = GetAnimation(ElementAniType.Clear);
-                ani.SetElementAndPlay(item);
+                ani.SetElement(item);
 
                 AddRunElementAni(item,ani);
                 dur = ani.Duration;
@@ -207,7 +231,7 @@ namespace ProjectApp
                 ani.formPot = item.Pos;
                 ani.toPot = pot;
                 
-                ani.SetElementAndPlay(item);
+                ani.SetElement(item);
                 AddRunElementAni(item, ani);
                 dur = ani.Duration;
 
@@ -225,7 +249,7 @@ namespace ProjectApp
                 StopElementItemAni(item);
                 var ani = GetAnimation(ElementAniType.ElasticShake);
                 Debug.LogWarning("抖动"+item.Data.ToString());
-                ani.SetElementAndPlay(item);
+                ani.SetElement(item);
                 AddRunElementAni(item, ani);
                 if (dur != -1)
                 dur = ani.Duration;

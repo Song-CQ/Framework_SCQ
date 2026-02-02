@@ -48,7 +48,7 @@ namespace ProjectApp
         {
             LogUtil.Log("[GameScene]Show Scene");
             
-            TimerUtil.Simple.AddTimer(AppConst.GameStartReadyDelayTime, () => {
+            TimerUtil.Simple.AddDelayTask(AppConst.GameStartReadyDelayTime, () => {
 
                 ModuleMgr.Instance.AllModuleGameStart();
                 App.HideLoadingUI();

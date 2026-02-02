@@ -1,3 +1,4 @@
+using Codice.Client.BaseCommands.BranchExplorer;
 using Codice.Client.Common;
 using ConsoleE;
 using FutureCore;
@@ -935,8 +936,106 @@ namespace ProjectApp
                 elementItemList.Add(_item);
             }
 
-            
+            ElementItem formItem = FindElementItem(formData);
+            ElementItem toItem = FindElementItem(toData);
 
+            var process = GetProcessToEnqueue();
+
+            float time = GetPropActionTwo(formItem, toItem, elementItemList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB);
+
+            process.Duration = time > process.Duration ? time : process.Duration;
+
+            process.SetLinkExecute(executeCB);
+            process.SetLinkExecute(finishCB);
+
+        }
+
+
+        private float GetPropActionTwo(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
+        {
+            ElementData formData = formItem.Data;
+            ElementData toData = toItem.Data;
+
+            if (toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal)
+            {
+                if ((toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
+                {
+                    //横竖
+                    formItem.SetSpecial();
+                    toItem.SetSpecial();
+
+
+                    float time = 1;
+
+                    executeCB = (p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+
+                        
+
+                        AnimationSys.PlayAin_SwapElement(elementItemList);
+                    };
+
+                    finishCB = (p) =>
+                    {
+                        Core.Enabled_PlayerCtr = true;
+
+                        ListPool<ElementItem>.Release(elementItemList);
+
+                    };
+
+
+                    return time;
+
+                }
+
+            }
+
+            if (toData.Type == ElementType.Prop_Bomb || formData.Type == ElementType.Prop_Bomb)
+            {
+                if (toData.Type == ElementType.Prop_Bomb && formData.Type == ElementType.Prop_Bomb)
+                {
+                    //双炸弹
+
+                }
+
+
+                if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
+                {
+                    //炸弹加竖
+
+
+                }
+
+                if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
+                {
+                    //炸弹加横
+
+
+                }
+
+            }
+
+            if (toData.Type == ElementType.Prop_Wild || formData.Type == ElementType.Prop_Wild)
+            {
+                if (toData.Type == ElementType.Prop_Bomb || formData.Type == ElementType.Prop_Bomb)
+                {
+                    //wild加炸弹
+                  
+                }
+
+                if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
+                {
+                    //wild加Vertical
+
+                }
+
+                if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
+                {
+                    //wild加Horizontal
+
+                }
+            }
 
         }
 

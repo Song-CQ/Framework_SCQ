@@ -40,6 +40,15 @@ namespace FutureCore
             return string.Concat(DateTime.Now.Year, "/", DateTime.Now.Month, "/",
                                     DateTime.Now.Day, " ", DateTime.Now.Hour, ":", DateTime.Now.Minute, ":", DateTime.Now.Second);
         }
+
+        public static void AddDelayTask(Action task,float delay)
+        {
+            Simple.AddDelayTask(task,delay);
+        }
+        public static int AddTimeTask(Action<int> task,double delay, int _count = 1,TimeType timeType = TimeType.Second)
+        {
+            return Timer.AddTimeTask(task,delay,_count,timeType);
+        }
     
     }
 }

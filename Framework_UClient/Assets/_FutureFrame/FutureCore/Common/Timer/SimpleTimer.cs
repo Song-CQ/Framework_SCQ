@@ -15,7 +15,6 @@ namespace FutureCore
         {
             currTime = 0;
         }
-
         public void Update()
         {
 
@@ -45,7 +44,7 @@ namespace FutureCore
             }
         }
 
-        public void AddTimer(float interval, Action func)
+        public void AddDelayTask(Action func,float interval)
         {
             if (func != null)
             {
@@ -76,7 +75,7 @@ namespace FutureCore
             triggers = null;
         }
 
-        public void RemoveTimer(Action func)
+        public void RemoveDelayTask(Action func)
         {
             if (func != null)
             {
