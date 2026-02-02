@@ -263,6 +263,7 @@ namespace ProjectApp
             Dispatcher.AddFinallyListener(GameMsg.RestAllElements, OnRestAllElements);
             Dispatcher.AddFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
             Dispatcher.AddFinallyListener(GameMsg.ActivateProp, OnActivateProp);
+            Dispatcher.AddFinallyListener(GameMsg.ActivateTwoProp, OnActivateTwoProp);
         }
 
 
@@ -278,6 +279,7 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.RestAllElements, OnRestAllElements);
             Dispatcher.RemoveFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
             Dispatcher.RemoveFinallyListener(GameMsg.ActivateProp, OnActivateProp);
+            Dispatcher.RemoveFinallyListener(GameMsg.ActivateTwoProp, OnActivateTwoProp);
 
         }
 
@@ -914,6 +916,27 @@ namespace ProjectApp
             }
 
             return time;
+
+        }
+        
+        private void OnActivateTwoProp(object obj)
+        {
+            object[] datas = obj as object[];
+            //要激活的道具
+            ElementData formData = (ElementData)datas[0];
+            ElementData toData = (ElementData)datas[1];
+            List<Vector2Int> matches = datas[2] as List<Vector2Int>;
+            List<ElementItem> props = datas[3] as List<ElementItem>;
+
+            List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
+            foreach (var matche in matches)
+            {
+                ElementItem _item = FindElementItem(matche.x, matche.y);
+                elementItemList.Add(_item);
+            }
+
+            
+
 
         }
 

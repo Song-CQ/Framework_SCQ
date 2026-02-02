@@ -78,6 +78,10 @@ namespace ProjectApp
         /// 激活道具
         /// </summary>
         public static readonly uint ActivateProp = ++_counter;
+        /// <summary>
+        /// 激活双重道具
+        /// </summary>
+        public static readonly uint ActivateTwoProp = ++_counter;
 
 
 
