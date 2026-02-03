@@ -177,6 +177,8 @@ namespace ProjectApp
         [SerializeField] public Vector3 startVector3;   // 棋盘高度
         [SerializeField] private GameMode currentMode = GameMode.BuildHive;
 
+        public bool IsFill;
+        public bool IsClickProp;
 
 
         #region 棋盘属性
@@ -343,6 +345,8 @@ namespace ProjectApp
 
         public Vector2Int temp1 = new Vector2Int(0, 13);
         public Vector2Int temp2 = new Vector2Int(0, 12);
+
+
         [Button("交换元素")]
         public void Test1()
         {

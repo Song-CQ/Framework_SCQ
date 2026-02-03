@@ -148,7 +148,7 @@ namespace ProjectApp
             //获取当前棋盘上对应位置的元素 不能信任传过来的数据
             data = Data.boardData[x, y];
 
-            if (ElementTypeTool.CheckType_IsProp(data.Type))
+            if (ElementTypeTool.CheckType_IsProp(data.Type)&&!Core.IsClickProp)
             {
                 //触发道具
                 Player_ActivateProp(data);
@@ -172,6 +172,11 @@ namespace ProjectApp
                 // 第二次点击，判断是否相邻
                 if (IsAdjacent(select_X, select_Y, x, y) || Data.HasConnection(select_X, select_Y, x, y))
                 {
+                    if (Core.IsClickProp)
+                    {
+                        Player_ActivateTwoProp(select_X, select_Y, x, y);
+                        return;
+                    }
 
                     Player_SwapElement(select_X, select_Y, x, y);
                 }
@@ -197,6 +202,8 @@ namespace ProjectApp
                 || Data.HasConnection(data1.X, data1.Y, data2.X, data2.Y))
             {
 
+               
+
                 if (ElementTypeTool.CheckType_IsProp(data1.Type) && ElementTypeTool.CheckType_IsProp(data2.Type))
                 {
                     Player_ActivateTwoProp(data1.X, data1.Y, data2.X, data2.Y);
@@ -207,6 +214,7 @@ namespace ProjectApp
                     Player_SwapElement(data1.X, data1.Y, data2.X, data2.Y);
                 }
 
+                
 
 
             }
@@ -674,6 +682,8 @@ namespace ProjectApp
         /// </summary>
         void FillEmptySpaces()
         {
+            if (!Core.IsFill) return;
+
             //要下落的元素
             List<ElementData> souList = ListPool<ElementData>.Get();
             //下落元素的目标
@@ -1089,7 +1099,7 @@ namespace ProjectApp
 
             if (toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal)
             {
-                if ((toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
+                if ((formData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //横竖
@@ -1098,6 +1108,7 @@ namespace ProjectApp
 
                     ActivateProp_Horizontal(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X, toData.Y, ref matches, ref dataProp);
+                    Debug.LogWarning("横竖");
 
                 }
 
@@ -1113,6 +1124,7 @@ namespace ProjectApp
                     Data.boardData[toData.X, toData.Y].SetSpecial();
 
                     ActivateProp_Bomb(toData.X, toData.Y, 3, ref matches, ref dataProp);
+                    Debug.LogWarning("双炸弹");
                 }
 
 
@@ -1125,10 +1137,10 @@ namespace ProjectApp
                     ActivateProp_Vertical(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X + 1, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X - 1, toData.Y, ref matches, ref dataProp);
-
+                    Debug.LogWarning("炸弹加竖");
                 }
 
-                if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
+                if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //炸弹加横
@@ -1137,7 +1149,7 @@ namespace ProjectApp
                     ActivateProp_Horizontal(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Horizontal(toData.X + 1, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Horizontal(toData.X - 1, toData.Y, ref matches, ref dataProp);
-
+                    Debug.LogWarning("炸弹加横");
                 }
 
             }
@@ -1147,7 +1159,7 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb || formData.Type == ElementType.Prop_Bomb)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //wild加炸弹
+                    Debug.LogWarning("wild加炸弹");
                     Data.boardData[formData.X, formData.Y].SetSpecial();
                     Data.boardData[toData.X, toData.Y].SetSpecial();
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb, 3, ref matches, ref dataProp);
@@ -1157,6 +1169,7 @@ namespace ProjectApp
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //wild加Vertical
+                    Debug.LogWarning("wild加Vertical");
                     Data.boardData[formData.X, formData.Y].SetSpecial();
                     Data.boardData[toData.X, toData.Y].SetSpecial();
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Vertical, 3, ref matches, ref dataProp);
@@ -1166,6 +1179,7 @@ namespace ProjectApp
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //wild加Horizontal
+                    Debug.LogWarning("wild加Horizontal");
                     Data.boardData[formData.X, formData.Y].SetSpecial();
                     Data.boardData[toData.X, toData.Y].SetSpecial();
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Horizontal, 3, ref matches, ref dataProp);
@@ -1180,11 +1194,11 @@ namespace ProjectApp
         {
             if (!IsPositionValid(X, Y)) return;
 
-            int L_Pot = X - 1;
+            int L_Pot = X;
             int R_Pot = X + 1;
             bool isL = true;
 
-            for (int x = 0; x < Data.BoardWidth - 1; x++)
+            for (int x = 0; x < Data.BoardWidth; x++)
             {
                 int potX = 0;
                 if (isL)
@@ -1220,7 +1234,7 @@ namespace ProjectApp
                 {
                     matches.Add(new Vector2Int(potX, Y));
                 }
-                else
+                else if (ElementTypeTool.CheckType_IsProp(tempData.Type))
                 {
                     dataProp.Add(tempData);
                 }
@@ -1237,11 +1251,11 @@ namespace ProjectApp
             if (!IsPositionValid(X, Y)) return;
 
 
-            int U_Pot = Y + 1;
+            int U_Pot = Y;
             int D_Pot = Y - 1;
             bool isD = true;
 
-            for (int x = 0; x < Data.BoardHeight - 1; x++)
+            for (int x = 0; x < Data.BoardHeight; x++)
             {
                 int potY = 0;
                 if (isD)
@@ -1278,7 +1292,7 @@ namespace ProjectApp
                 {
                     matches.Add(new Vector2Int(X, potY));
                 }
-                else
+                else if (ElementTypeTool.CheckType_IsProp(tempData.Type))
                 {
                     dataProp.Add(tempData);
                 }
@@ -1316,7 +1330,6 @@ namespace ProjectApp
                         int distanceSquared = x * x + y * y;
                         if (distanceSquared <= bombRadius * bombRadius)
                         {
-                            if (targetX == bombGridPosition.x && targetX == bombGridPosition.y) continue;
 
                             // 检查该位置是否有可消除的方块
                             var tempData = Data.boardData[targetX, targetY];
@@ -1325,7 +1338,7 @@ namespace ProjectApp
                             {
                                 matches.Add(new Vector2Int(targetX, targetY));
                             }
-                            else
+                            else if (ElementTypeTool.CheckType_IsProp(tempData.Type))
                             {
                                 dataProp.Add(tempData);
                             }

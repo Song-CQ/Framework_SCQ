@@ -60,14 +60,14 @@ namespace ProjectApp.GameLogic
 
         public float StartPlayTime  { get; private set; }
 
-        public bool IsComplete => throw new System.NotImplementedException();
+        bool IElementAni.IsComplete => base.IsComplete;
 
         public Vector3 formPot = Vector3.zero;
         public Vector3 toPot = Vector3.zero;
         protected override void OnStart()
         {
             base.OnStart();
-            Tar.Pos = formPot;
+           
         }
 
 
@@ -105,11 +105,12 @@ namespace ProjectApp.GameLogic
         }
 
 
+
     }
 
     public class FallMoveElementAni_Sequence : DoTweenSequence, IElementAni
     {
-        public ElementAniType Key => ElementAniType.Move;
+        public ElementAniType Key => ElementAniType.FallMove;
         public ElementItem Tar { get; set; }
 
         bool IElementAni.IsPlay => base.IsPlay;
@@ -137,10 +138,7 @@ namespace ProjectApp.GameLogic
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime();
             Delay = delay;
-        }
-        protected override void OnStart()
-        {
-            base.OnStart();
+
             Tar.Pos = formPot;
             // 创建弹跳中间点
             bouncePoint = new Vector3(
@@ -148,6 +146,12 @@ namespace ProjectApp.GameLogic
                 toPot.y + bounceHeight,
                 toPot.z
             );
+
+        }
+        protected override void OnStart()
+        {
+            base.OnStart();
+           
         }
 
         protected override void AddTweenToSequence(Sequence seq)
@@ -193,7 +197,7 @@ namespace ProjectApp.GameLogic
 
     public class ClearElementAni_Sequence : DoTweenSequence, IElementAni
     {
-        public ElementAniType Key =>  ElementAniType.Move;
+        public ElementAniType Key =>  ElementAniType.Clear;
         public ElementItem Tar { get; set; }
 
         bool IElementAni.IsPlay => base.IsPlay;
@@ -254,7 +258,7 @@ namespace ProjectApp.GameLogic
 
     public class ElasticShakeAnimation_Sequence : DoTweenSequence, IElementAni
     {
-        public ElementAniType Key => ElementAniType.Move;
+        public ElementAniType Key => ElementAniType.ElasticShake;
         public ElementItem Tar { get; set; }
 
         bool IElementAni.IsPlay => base.IsPlay;

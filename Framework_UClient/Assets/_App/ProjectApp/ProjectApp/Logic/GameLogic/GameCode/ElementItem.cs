@@ -470,7 +470,7 @@ public class DebugElementItem : MonoBehaviour
     public ElementData Data;
     public bool isSelect;
 
-    public ElementType newType;
+    public ElementType newType = ElementType.Prop_Bomb;
 
 
     public System.Collections.Generic.List<string> InfoText = new System.Collections.Generic.List<string>();

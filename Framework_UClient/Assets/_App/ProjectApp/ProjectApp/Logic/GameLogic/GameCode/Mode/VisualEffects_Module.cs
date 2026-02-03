@@ -265,6 +265,7 @@ namespace ProjectApp
             Dispatcher.AddFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
             Dispatcher.AddFinallyListener(GameMsg.ActivateProp, OnActivateProp);
             Dispatcher.AddFinallyListener(GameMsg.ActivateTwoProp, OnActivateTwoProp);
+            Dispatcher.AddFinallyListener(GameMsg.UseExternalProp, OnUseExternalProp);
         }
 
 
@@ -281,10 +282,11 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
             Dispatcher.RemoveFinallyListener(GameMsg.ActivateProp, OnActivateProp);
             Dispatcher.RemoveFinallyListener(GameMsg.ActivateTwoProp, OnActivateTwoProp);
+            Dispatcher.RemoveFinallyListener(GameMsg.UseExternalProp, OnUseExternalProp);
 
         }
 
-
+        
 
         public void InitializeBoard(int w, int h)
         {
@@ -526,8 +528,6 @@ namespace ProjectApp
                 // 4. 播放选择音效
             }
 
-
-
         }
 
         /// <summary>
@@ -637,7 +637,6 @@ namespace ProjectApp
 
 
         }
-
 
         /// <summary>
         /// 处理元素生成事件
@@ -815,6 +814,10 @@ namespace ProjectApp
 
         }
 
+        /// <summary>
+        /// 处理触发单个道具事件
+        /// </summary>
+        /// <param name="obj"></param>
         private void OnActivateProp(object obj)
         {
             object[] datas = obj as object[];
@@ -834,26 +837,76 @@ namespace ProjectApp
 
             ElementItem item = FindElementItem(data.X, data.Y);
 
-            //将激活的道具设置为空
-            elementItems[data.X, data.Y].SetSpecial();
-
-            var process = GetProcessToEnqueue(indexId);
-
-            float time = GetPropAction(data.Type, item, elementItemList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB);
-
-            process.Duration = time > process.Duration ? time : process.Duration;
-
-            process.SetLinkExecute(executeCB);
-            process.SetLinkExecute(finishCB);
+            GetPropAction(indexId,data.Type, item, elementItemList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB); 
 
         }
 
-        private float GetPropAction(ElementType type, ElementItem item, List<ElementItem> elementItemList,
-            out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
+        /// <summary>
+        /// 处理触发组合道具事件
+        /// </summary>
+        /// <param name="obj"></param>
+        private void OnActivateTwoProp(object obj)
+        {
+            object[] datas = obj as object[];
+            //要激活的道具
+            ElementData formData = (ElementData)datas[0];
+            ElementData toData = (ElementData)datas[1];
+            List<Vector2Int> matches = datas[2] as List<Vector2Int>;
+            List<ElementData> props = datas[3] as List<ElementData>;
+
+            List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
+            foreach (var matche in matches)
+            {
+                ElementItem _item = FindElementItem(matche.x, matche.y);
+                elementItemList.Add(_item);
+            }
+            List<ElementItem> propItemList = ListPool<ElementItem>.Get();
+            foreach (var item in props)
+            {
+                ElementItem _item = FindElementItem(item.X, item.Y);
+                propItemList.Add(_item);
+            }
+
+            ElementItem formItem = FindElementItem(formData);
+            ElementItem toItem = FindElementItem(toData);
+
+            GetTwoPropAction(formItem, toItem, elementItemList, propItemList);
+
+
+
+        }
+
+        /// <summary>
+        /// 处理使用盘外道具
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void OnUseExternalProp(object obj)
+        {
+            object[] datas = obj as object[];
+            ExternalProp Type = (ExternalProp)datas[0];
+            List<Vector2Int> list = datas[1] as List<Vector2Int>;
+
+
+
+
+        }
+
+        #endregion
+
+        #region 道具
+        private float GetPropAction(uint indexId, ElementType type, ElementItem item, List<ElementItem> elementItemList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
         {
             float time = 0;
             executeCB = null;
             finishCB = null;
+
+            //将激活的道具设置为空
+            item.SetSpecial();
+
+
+            var process = GetProcessToEnqueue(indexId);
+
             switch (type)
             {
                 case ElementType.Prop_Horizontal:
@@ -914,81 +967,34 @@ namespace ProjectApp
                 };
             }
 
+            process.Duration = time > process.Duration ? time : process.Duration;
+
+            process.SetLinkExecute(executeCB);
+            process.SetLinkExecute(finishCB);
+
             return time;
 
         }
 
-        private void OnActivateTwoProp(object obj)
-        {
-            object[] datas = obj as object[];
-            //要激活的道具
-            ElementData formData = (ElementData)datas[0];
-            ElementData toData = (ElementData)datas[1];
-            List<Vector2Int> matches = datas[2] as List<Vector2Int>;
-            List<ElementData> props = datas[3] as List<ElementData>;
 
-            List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
-            foreach (var matche in matches)
-            {
-                ElementItem _item = FindElementItem(matche.x, matche.y);
-                elementItemList.Add(_item);
-            }
-            List<ElementItem> propItemList = ListPool<ElementItem>.Get();
-            foreach (var item in props)
-            {
-                ElementItem _item = FindElementItem(item.X, item.Y);
-                propItemList.Add(_item);
-            }
-
-            ElementItem formItem = FindElementItem(formData);
-            ElementItem toItem = FindElementItem(toData);
-
-
-
-            PlayPropActionTwo(formItem, toItem, elementItemList, propItemList);
-
-
-
-        }
-
-
-
-
-        private float PlayPropActionTwo(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
+        private float GetTwoPropAction(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
         {
             ElementData formData = formItem.Data;
             ElementData toData = toItem.Data;
 
+            formItem.SetSpecial();
+            toItem.SetSpecial();
+            foreach (var item in elementItemList)
+            {
+                item.SetSpecial();
+            }
+
             if (toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal)
             {
-                if ((toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
+                if ((formData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
                 {
                     //横竖
-
-                    //移动
-                    AddFormMoveTo(formItem, toItem);
-
-
-                    var process = GetProcessToEnqueue();
-
-                    float time = 1;
-
-                    process.SetLinkExecute((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = false;
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
-                    });
-
-                    process.SetLinkFinish((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = true;
-                        ListPool<ElementItem>.Release(elementItemList);
-                        ListPool<ElementItem>.Release(propElementList);
-
-                    });
-
-
-                    return time;
+                    return ActivateProp_V_H(formItem, toItem, elementItemList, propElementList);
 
                 }
 
@@ -999,60 +1005,15 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb && formData.Type == ElementType.Prop_Bomb)
                 {
                     //双炸弹
-                    AddFormMoveTo(formItem, toItem);
-
-
-                    var process = GetProcessToEnqueue();
-
-                    float time = 1;
-
-                    process.SetLinkExecute((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = false;
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
-                    });
-
-                    process.SetLinkFinish((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = true;
-                        ListPool<ElementItem>.Release(elementItemList);
-                        ListPool<ElementItem>.Release(propElementList);
-                    });
-
-
-                    return time;
+                    return ActivateProp_2Bomb(formItem, toItem, elementItemList, propElementList);
 
                 }
-
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
                 {
                     //炸弹加竖
 
-                    AddFormMoveTo(formItem, toItem);
-
-
-                    var process = GetProcessToEnqueue();
-
-                    float time = 1;
-
-                    process.SetLinkExecute((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = false;
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
-                    });
-
-                    process.SetLinkFinish((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = true;
-                        ListPool<ElementItem>.Release(elementItemList);
-                        ListPool<ElementItem>.Release(propElementList);
-
-                    });
-
-
-                    return time;
-
+                    return ActivateProp_Bomb_V(formItem, toItem, elementItemList, propElementList);
 
                 }
 
@@ -1060,30 +1021,7 @@ namespace ProjectApp
                 {
                     //炸弹加横
 
-                    AddFormMoveTo(formItem, toItem);
-
-
-                    var process = GetProcessToEnqueue();
-
-                    float time = 1;
-
-                    process.SetLinkExecute((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = false;
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
-                    });
-
-                    process.SetLinkFinish((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = true;
-                        ListPool<ElementItem>.Release(elementItemList);
-                        ListPool<ElementItem>.Release(propElementList);
-
-                    });
-
-
-                    return time;
-
+                    return ActivateProp_Bomb_H(formItem, toItem, elementItemList, propElementList);
 
                 }
 
@@ -1094,115 +1032,22 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb || formData.Type == ElementType.Prop_Bomb)
                 {
                     //wild加炸弹
-                    AddFormMoveTo(formItem, toItem);
-
-                    foreach (var item in propElementList)
-                    {
-                        item.SetType(ElementType.Prop_Bomb);
-                    }
-
-
-                    var process = GetProcessToEnqueue();
-
-                    float time = 1;
-
-                    process.SetLinkExecute((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = false;
-                        foreach (var item in propElementList)
-                        {
-                            item.RefreshView();
-                        }
-                        AnimationSys.PlayAin_ElasticShakeElements(propElementList);
-                    });
-
-                    process.SetLinkFinish((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = true;
-                        ListPool<ElementItem>.Release(elementItemList);
-                        ListPool<ElementItem>.Release(propElementList);
-
-                    });
-
-
-                    return time;
+                    return ActivateProp_Wild_XX(ElementType.Prop_Bomb, formItem, toItem, elementItemList, propElementList);
 
                 }
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
                 {
                     //wild加Vertical
-             
-                    AddFormMoveTo(formItem, toItem);
 
-                    foreach (var item in propElementList)
-                    {
-                        item.SetType(ElementType.Prop_Vertical);
-                    }
-
-
-                    var process = GetProcessToEnqueue();
-
-                    float time = 1;
-
-                    process.SetLinkExecute((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = false;
-                        foreach (var item in propElementList)
-                        {
-                            item.RefreshView();
-                        }
-                        AnimationSys.PlayAin_ElasticShakeElements(propElementList);
-                    });
-
-                    process.SetLinkFinish((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = true;
-                        ListPool<ElementItem>.Release(elementItemList);
-                        ListPool<ElementItem>.Release(propElementList);
-
-                    });
-
-
-                    return time;
+                    return ActivateProp_Wild_XX(ElementType.Prop_Vertical, formItem, toItem, elementItemList, propElementList);
 
                 }
 
                 if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
                 {
                     //wild加Horizontal
-                    AddFormMoveTo(formItem, toItem);
-
-                    foreach (var item in propElementList)
-                    {
-                        item.SetType(ElementType.Prop_Horizontal);
-                    }
-
-                    var process = GetProcessToEnqueue();
-
-                    float time = 1;
-
-                    process.SetLinkExecute((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = false;
-                        foreach (var item in propElementList)
-                        {
-                            item.RefreshView();
-                        }
-                        AnimationSys.PlayAin_ElasticShakeElements(propElementList);
-                    });
-
-                    process.SetLinkFinish((p) =>
-                    {
-                        Core.Enabled_PlayerCtr = true;
-                        ListPool<ElementItem>.Release(elementItemList);
-                        ListPool<ElementItem>.Release(propElementList);
-
-                    });
-
-
-                    return time;
-
+                    return ActivateProp_Wild_XX(ElementType.Prop_Horizontal, formItem, toItem, elementItemList, propElementList);
                 }
             }
 
@@ -1210,6 +1055,154 @@ namespace ProjectApp
 
         }
 
+        private float ActivateProp_Wild_XX(ElementType type, ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
+        {
+            AddFormMoveTo(formItem, toItem);
+
+            List<ElementType> elementTypes = ListPool<ElementType>.Get();
+            foreach (var item in propElementList)
+            {
+                elementTypes.Add(type);
+            }
+
+            var process = GetProcessToEnqueue();
+
+            float time = 3;
+
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+                for (int i = 0; i < propElementList.Count; i++)
+                {
+                    var item = propElementList[i];
+                    item.SetType(elementTypes[i]);
+                    item.RefreshView();
+                }
+                AnimationSys.PlayAin_ElasticShakeElements(propElementList);
+            });
+
+            process.SetLinkFinish((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+                ListPool<ElementItem>.Release(elementItemList);
+                ListPool<ElementItem>.Release(propElementList);
+                ListPool<ElementType>.Release(elementTypes);
+
+            });
+
+            process.Duration = time;
+            return time;
+        }
+
+        private float ActivateProp_Bomb_H(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
+        {
+            AddFormMoveTo(formItem, toItem);
+
+
+            var process = GetProcessToEnqueue();
+
+            float time = 1;
+
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+            });
+
+            process.SetLinkFinish((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+                ListPool<ElementItem>.Release(elementItemList);
+                ListPool<ElementItem>.Release(propElementList);
+
+            });
+
+            process.Duration = time;
+            return time;
+        }
+
+        private float ActivateProp_Bomb_V(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
+        {
+            AddFormMoveTo(formItem, toItem);
+
+
+            var process = GetProcessToEnqueue();
+
+            float time = 1;
+
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+            });
+
+            process.SetLinkFinish((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+                ListPool<ElementItem>.Release(elementItemList);
+                ListPool<ElementItem>.Release(propElementList);
+
+            });
+
+            process.Duration = time;
+            return time;
+        }
+
+        private float ActivateProp_2Bomb(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
+        {
+            AddFormMoveTo(formItem, toItem);
+
+
+            var process = GetProcessToEnqueue();
+
+            float time = 1;
+
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+            });
+
+            process.SetLinkFinish((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+                ListPool<ElementItem>.Release(elementItemList);
+                ListPool<ElementItem>.Release(propElementList);
+            });
+
+            process.Duration = time;
+            return time;
+        }
+
+        private float ActivateProp_V_H(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
+        {
+            //移动
+            AddFormMoveTo(formItem, toItem);
+
+
+            var process = GetProcessToEnqueue();
+
+            float time = 1;
+
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+            });
+
+            process.SetLinkFinish((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+                ListPool<ElementItem>.Release(elementItemList);
+                ListPool<ElementItem>.Release(propElementList);
+
+            });
+
+            process.Duration = time;
+
+
+            return time;
+        }
 
         private void AddFormMoveTo(ElementItem formItem, ElementItem toItem)
         {

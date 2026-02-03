@@ -78,6 +78,10 @@ namespace ProjectApp
             CheckInitialMatches();
 
 
+            Data.boardData[6, 5].SetType( ElementType.Prop_Horizontal);
+            Data.boardData[5, 5].SetType( ElementType.Prop_Vertical);
+
+
         }
 
         private void RandomLinkPot(int sum)

@@ -58,25 +58,25 @@ namespace ProjectApp
             {
                 var elementAni = item.Value;
 
+                if (elementAni.IsComplete)
+                {
+                    //回收对象
+                    ReleaseIElementAni(elementAni);
+                    //加入移除列表
+                   
+                    elementItems.Add(item.Key);
+                    continue;
+                }
+
                 if (!elementAni.IsPlay)
                 {
                     if (currTIme > elementAni.Delay + elementAni.StartPlayTime)
                     {
+              
                         elementAni.Play();
                     }
-                    continue;
+               
                 }
-
-                if (elementAni.IsComplete)
-                {
-                    elementAni.ResetState();
-                    //回收对象
-                    ReleaseIElementAni(elementAni);
-                    //加入移除列表
-                    elementItems.Add(item.Key);
-                }
-
-
 
             }
 
@@ -96,9 +96,12 @@ namespace ProjectApp
 
         private void AddRunElementAni(ElementItem item, IElementAni ani)
         {
-            if (item != null && ani != null) return;
+            if (item != null && ani != null)
+            {
+                runAllElementAni[item] = ani;
+            }
 
-            runAllElementAni[item] = ani;
+
         }
 
 
@@ -125,8 +128,8 @@ namespace ProjectApp
             IElementAni ani = null;
             if (aniQueue.Count > 0)
             {
-                //Debug.Log("使用旧的");
                 ani = aniQueue.Dequeue();
+                Debug.Log(type+"使用旧的:"+(ani.GetType()));
             }
             else
             {
@@ -142,8 +145,9 @@ namespace ProjectApp
             val.Stop();
             if (!animationLibrary.ContainsKey(val.Key))
             {
-                animationLibrary = new Dictionary<ElementAniType, Queue<IElementAni>>();
+                animationLibrary[val.Key] = new Queue<IElementAni>();
             }
+            //Debug.Log( "回收:" + val.GetType());
             animationLibrary[val.Key].Enqueue(val);
         }
         private IElementAni CreateElementAni(ElementAniType type)
