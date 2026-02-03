@@ -8,6 +8,9 @@ namespace FutureCore
 
         public bool IsPlay;
         public bool IsPause;
+        public bool IsComplete;
+
+        
 
         public DoTweenSequence()
         {
@@ -62,7 +65,7 @@ namespace FutureCore
             //sequence.Rewind();
             //sequence.Play();
             sequence.Restart();
-            
+            IsPlay = true;
         }
         public void Pause()
         {
@@ -87,23 +90,26 @@ namespace FutureCore
 
         protected virtual void OnStart()
         {
-            IsPlay = true;
+           
 
         }
         protected virtual void OnComplete()
         {
             IsPlay = false;
+            IsComplete = true;
         }
 
         public virtual void ResetState()
         {
+            IsComplete = false;
+            IsPause = false;
+            IsPlay = false;
 
         }
 
         public virtual void Disp()
         {
-            IsPause = false;
-            IsPlay = false;
+            ResetState();
             sequence.Kill();
             sequence = null;
             

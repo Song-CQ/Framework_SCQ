@@ -15,9 +15,9 @@ namespace ProjectApp
     public class ElementAni_System : BaseSystem
     {
         private Dictionary<ElementAniType, Queue<IElementAni>> animationLibrary = new Dictionary<ElementAniType, Queue<IElementAni>>();
-        private Dictionary<ElementItem,IElementAni> runAllElementAni; 
+        private Dictionary<ElementItem, IElementAni> runAllElementAni;
         private List<ElementItem> elementItems;
- 
+
         public override void Init()
         {
             base.Init();
@@ -35,7 +35,7 @@ namespace ProjectApp
             {
                 item.Value.CanlePause();
             }
-            
+
         }
 
         public override void Shutdown()
@@ -45,38 +45,45 @@ namespace ProjectApp
             {
                 item.Value.Pause();
             }
-            
+
         }
 
         public override void Run()
         {
             base.Run();
-            
+            float currTIme = TimerUtil.GetGameTime();
+
             elementItems.Clear();
             foreach (var item in runAllElementAni)
             {
                 var elementAni = item.Value;
 
-                if (elementAni.Delay != 0)
+                if (!elementAni.IsPlay)
                 {
-                    elementAni.Delay -= Time.deltaTime;
-                }
-
-                if(elementAni.IsPlay)
-                {
+                    if (currTIme > elementAni.Delay + elementAni.StartPlayTime)
+                    {
+                        elementAni.Play();
+                    }
                     continue;
                 }
-                //回收对象
-                ReleaseIElementAni(elementAni);
 
-                //加入移除列表
-                elementItems.Add(item.Key);
+                if (elementAni.IsComplete)
+                {
+                    elementAni.ResetState();
+                    //回收对象
+                    ReleaseIElementAni(elementAni);
+                    //加入移除列表
+                    elementItems.Add(item.Key);
+                }
+
+
+
             }
 
             foreach (var item in elementItems)
             {
-                runAllElementAni.Remove(item);      
-            } 
+                runAllElementAni.Remove(item);
+            }
         }
 
         public override void Dispose()
@@ -87,16 +94,17 @@ namespace ProjectApp
 
 
 
-        private void AddRunElementAni(ElementItem item,IElementAni ani)
+        private void AddRunElementAni(ElementItem item, IElementAni ani)
         {
             if (item != null && ani != null) return;
+
             runAllElementAni[item] = ani;
         }
 
 
         private void StopElementItemAni(ElementItem item)
         {
-            if (runAllElementAni.TryGetValue(item,out IElementAni elementAni))
+            if (runAllElementAni.TryGetValue(item, out IElementAni elementAni))
             {
                 item.StopAllDOTween();
                 runAllElementAni.Remove(item);
@@ -105,7 +113,7 @@ namespace ProjectApp
 
         }
 
- 
+
         private IElementAni GetAnimation(ElementAniType type)
         {
 
@@ -124,15 +132,15 @@ namespace ProjectApp
             {
                 //Debug.Log("创建新达到");
                 ani = CreateElementAni(type);
-            }          
+            }
             return ani;
 
         }
-        
+
         private void ReleaseIElementAni(IElementAni val)
         {
             val.Stop();
-            if(!animationLibrary.ContainsKey(val.Key))
+            if (!animationLibrary.ContainsKey(val.Key))
             {
                 animationLibrary = new Dictionary<ElementAniType, Queue<IElementAni>>();
             }
@@ -143,10 +151,10 @@ namespace ProjectApp
             switch (type)
             {
                 case ElementAniType.Move:
-                    return new MoveElementAni_Sequence(); 
+                    return new MoveElementAni_Sequence();
                 case ElementAniType.Clear:
                     return new ClearElementAni_Sequence();
-                case ElementAniType.FallMove:          
+                case ElementAniType.FallMove:
                     return new FallMoveElementAni_Sequence();
                 case ElementAniType.ElasticShake:
                     return new ElasticShakeAnimation_Sequence();
@@ -159,26 +167,26 @@ namespace ProjectApp
 
         #region 动画
 
-        public float PlayAin_MovePot(ElementItem item,Vector3 tarPot,float deale)
+        public float PlayAin_MovePot(ElementItem item, Vector3 tarPot, float delay = 0)
         {
             StopElementItemAni(item);
 
             MoveElementAni_Sequence ani1 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
             ani1.formPot = item.Pos;
             ani1.toPot = tarPot;
-            ani1.SetElement(item);
+            ani1.SetElement(item, delay);
             AddRunElementAni(item, ani1);
 
             float dur = 1f;
 
-            AddDelayTask
+
 
 
 
             return dur;
         }
-       
-        public float PlayAin_SwapElement(ElementItem item1, ElementItem item2)
+
+        public float PlayAin_SwapElement(ElementItem item1, ElementItem item2, float delay = 0)
         {
             //停止正在播放的Dotw
             StopElementItemAni(item1);
@@ -188,21 +196,21 @@ namespace ProjectApp
             MoveElementAni_Sequence ani1 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
             ani1.formPot = item1.Pos;
             ani1.toPot = item2.Pos;
-            ani1.SetElement(item1);
-            AddRunElementAni(item1,ani1);
+            ani1.SetElement(item1, delay);
+            AddRunElementAni(item1, ani1);
 
             MoveElementAni_Sequence ani2 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
             ani2.formPot = item2.Pos;
             ani2.toPot = item1.Pos;
-            ani2.SetElement(item2);
-            AddRunElementAni(item2,ani2);
+            ani2.SetElement(item2, delay);
+            AddRunElementAni(item2, ani2);
 
             float dur = ani1.Duration;
 
 
             return dur;
         }
-        public float PlayAin_ClearElements(List<ElementItem> items)
+        public float PlayAin_ClearElements(List<ElementItem> items, float delay = 0)
         {
             float dur = 0;
             foreach (var item in items)
@@ -211,14 +219,14 @@ namespace ProjectApp
                 StopElementItemAni(item);
 
                 IElementAni ani = GetAnimation(ElementAniType.Clear);
-                ani.SetElement(item);
+                ani.SetElement(item, delay);
 
-                AddRunElementAni(item,ani);
+                AddRunElementAni(item, ani);
                 dur = ani.Duration;
             }
             return dur;
         }
-        public float PlayAin_FallElements(List<ElementItem> elementItemList, List<Vector3> tarPotList)
+        public float PlayAin_FallElements(List<ElementItem> elementItemList, List<Vector3> tarPotList, float delay = 0)
         {
             float dur = 0;
             for (int i = 0; i < elementItemList.Count; i++)
@@ -230,8 +238,8 @@ namespace ProjectApp
                 FallMoveElementAni_Sequence ani = GetAnimation(ElementAniType.FallMove) as FallMoveElementAni_Sequence;
                 ani.formPot = item.Pos;
                 ani.toPot = pot;
-                
-                ani.SetElement(item);
+
+                ani.SetElement(item, delay);
                 AddRunElementAni(item, ani);
                 dur = ani.Duration;
 
@@ -240,7 +248,7 @@ namespace ProjectApp
             return dur;
         }
 
-        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList)
+        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList, float delay = 0)
         {
             float dur = -1;
             foreach (var item in elementItemList)
@@ -248,11 +256,11 @@ namespace ProjectApp
                 if (item == null) continue;
                 StopElementItemAni(item);
                 var ani = GetAnimation(ElementAniType.ElasticShake);
-                Debug.LogWarning("抖动"+item.Data.ToString());
-                ani.SetElement(item);
+                // Debug.LogWarning("抖动"+item.Data.ToString());
+                ani.SetElement(item, delay);
                 AddRunElementAni(item, ani);
                 if (dur != -1)
-                dur = ani.Duration;
+                    dur = ani.Duration;
             }
             return dur;
         }

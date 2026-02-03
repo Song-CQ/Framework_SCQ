@@ -70,6 +70,7 @@ namespace ProjectApp
         /// </summary>
         public static readonly uint RestAllElements = ++_counter;
 
+
         /// <summary>
         /// 特殊元素切换元素类型
         /// </summary>
@@ -82,6 +83,11 @@ namespace ProjectApp
         /// 激活双重道具
         /// </summary>
         public static readonly uint ActivateTwoProp = ++_counter;
+
+        /// <summary>
+        /// 使用盘外道具
+        /// </summary>
+        public static readonly uint UseExternalProp = ++_counter;
 
 
 

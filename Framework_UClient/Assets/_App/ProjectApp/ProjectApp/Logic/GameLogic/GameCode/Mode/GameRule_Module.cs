@@ -197,9 +197,9 @@ namespace ProjectApp
                 || Data.HasConnection(data1.X, data1.Y, data2.X, data2.Y))
             {
 
-                if (ElementTypeTool.CheckType_IsProp(data1.Type)&&ElementTypeTool.CheckType_IsProp(data2.Type))
+                if (ElementTypeTool.CheckType_IsProp(data1.Type) && ElementTypeTool.CheckType_IsProp(data2.Type))
                 {
-                    Player_ActivateTwoProp(data1.X,data1.Y,data2.X,data2.Y);
+                    Player_ActivateTwoProp(data1.X, data1.Y, data2.X, data2.Y);
                 }
                 else
                 {
@@ -316,6 +316,19 @@ namespace ProjectApp
             Dispatcher.Dispatch(GameMsg.RestAllElements);
 
             CheckAllMatches();
+        }
+
+        public bool Player_UndoElement()
+        {
+            bool isCan = Data.CanUndo();
+
+            if (!isCan) return false;
+
+            Data.UndoStepBoardData();
+
+            Dispatcher.Dispatch(GameMsg.RestAllElements);
+
+            return true;
         }
 
         public void Player_ChangeElementType(int x, int y, bool isRith)
@@ -944,22 +957,22 @@ namespace ProjectApp
         #region 道具系统
 
 
-        private void Player_ActivateTwoProp(int form_x,int form_y, int to_x,int to_y)
+        private void Player_ActivateTwoProp(int form_x, int form_y, int to_x, int to_y)
         {
-            ElementData formData = Data.boardData[form_x,form_y];
-            ElementData toData = Data.boardData[to_x,to_y];
+            ElementData formData = Data.boardData[form_x, form_y];
+            ElementData toData = Data.boardData[to_x, to_y];
 
             if (!ElementTypeTool.CheckType_IsProp(formData.Type) || !ElementTypeTool.CheckType_IsProp(toData.Type)) return;
-            
+
             List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
             List<ElementData> currProps = ListPool<ElementData>.Get();
-            
+
             //激活两个道具
             ActivatePropTwo(formData, toData, ref tempMatches, ref currProps);
 
             Core.Dispatch(GameMsg.ActivateTwoProp, formData, toData, tempMatches, currProps);
             if (tempMatches.Count > 0)
-            {             
+            {
                 ProcessMatches(tempMatches);
             }
 
@@ -1018,7 +1031,7 @@ namespace ProjectApp
                     Data.boardData[propData.X, propData.Y].SetSpecial();
 
                     ActivateProp(propData, ref matches, ref oneProp);
-                    
+
                     Core.Dispatch(GameMsg.ActivateProp, index, propData, matches, oneProp);
 
                     tempMatches.AddRange(matches);
@@ -1073,7 +1086,7 @@ namespace ProjectApp
 
         private void ActivatePropTwo(ElementData formData, ElementData toData, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
         {
-          
+
             if (toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal)
             {
                 if ((toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
@@ -1137,7 +1150,7 @@ namespace ProjectApp
                     //wild加炸弹
                     Data.boardData[formData.X, formData.Y].SetSpecial();
                     Data.boardData[toData.X, toData.Y].SetSpecial();
-                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb,3,ref matches, ref dataProp);
+                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb, 3, ref matches, ref dataProp);
                 }
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
@@ -1146,7 +1159,7 @@ namespace ProjectApp
                     //wild加Vertical
                     Data.boardData[formData.X, formData.Y].SetSpecial();
                     Data.boardData[toData.X, toData.Y].SetSpecial();
-                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Vertical,3, ref matches, ref dataProp);
+                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Vertical, 3, ref matches, ref dataProp);
                 }
 
                 if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
@@ -1155,7 +1168,7 @@ namespace ProjectApp
                     //wild加Horizontal
                     Data.boardData[formData.X, formData.Y].SetSpecial();
                     Data.boardData[toData.X, toData.Y].SetSpecial();
-                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Horizontal,3, ref matches, ref dataProp);
+                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Horizontal, 3, ref matches, ref dataProp);
                 }
             }
 
@@ -1350,7 +1363,7 @@ namespace ProjectApp
 
 
 
-        private void ActivateProp_WildAndProp(int X, int Y, ElementType elementType,int rananSum, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
+        private void ActivateProp_WildAndProp(int X, int Y, ElementType elementType, int rananSum, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
         {
             if (!IsPositionValid(X, Y)) return;
 
@@ -1369,8 +1382,8 @@ namespace ProjectApp
                 ElementData data = datas[index];
                 data.SetSpecial();
                 data.Type = elementType;
-                Data.boardData[data.X,data.Y] = data;
-                
+                Data.boardData[data.X, data.Y] = data;
+
                 datas.RemoveAt(index);
                 dataProp.Add(data);
             }
@@ -1378,6 +1391,181 @@ namespace ProjectApp
             ListPool<ElementData>.Release(datas);
         }
 
+
+
+        public bool UseExternalProp(ExternalProp propType, List<Vector2Int> list)
+        {
+
+            bool isSu = false;
+
+            switch (propType)
+            {
+                case ExternalProp.Hammer:
+                    {
+                        Vector2Int pot = list[0];
+                        if (!IsPositionValid(pot)) return false;
+                        Data.TakeMemorySnapshotBoardData();
+                        // 成功使用道具 通知表现
+                        Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                        // 道具效果
+                        ProcessMatches(list);
+                        isSu = true;
+                    }
+                    break;
+                case ExternalProp.Swipe:
+                    {
+                        Vector2Int pot1 = list[0];
+                        Vector2Int pot2 = list[1];
+
+                        if (!IsPositionValid(pot1) && !IsPositionValid(pot2)) return false;
+
+                        if (IsAdjacent(pot1.x, pot1.y, pot2.x, pot2.y) || Data.HasConnection(pot1.x, pot1.y, pot2.x, pot2.y))
+                        {
+                            Data.TakeMemorySnapshotBoardData();
+                            // 成功使用道具 通知表现
+                            Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+
+                            // 交换元素
+                            SwapElements(pot1.x, pot1.y, pot2.x, pot2.y);
+
+                            // 检查匹配
+                            List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
+                            matches = CheckMatchesAfterSwap(pot1.x, pot1.y, pot2.x, pot2.y, ref matches);
+
+                            if (matches.Count > 0)
+                            {
+                                // 有匹配，进行消除
+                                ProcessMatches(matches);
+                                // 创建新元素 并补位
+                                FillEmptySpaces();
+                            }
+                            //使用完回收List
+                            FutureCore.ListPool<Vector2Int>.Release(matches);
+
+                            isSu = true;
+                        }
+
+
+                    }
+                    break;
+                case ExternalProp.Horizontal:
+                    {
+                        Vector2Int pot = list[0];
+                        if (!IsPositionValid(pot)) return false;
+                        Data.TakeMemorySnapshotBoardData();
+                        // 成功使用道具 通知表现
+                        Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                        // 道具效果
+                        List<ElementData> currProps = ListPool<ElementData>.Get();
+                        currProps.Add(new ElementData(ElementType.Prop_Horizontal).SetPot(pot.x, pot.y));
+
+                        ActivatePropList(currProps);
+
+                        ListPool<ElementData>.Release(currProps);
+
+                        //补位
+                        FillEmptySpaces();
+
+                        isSu = true;
+
+                    }
+                    break;
+                case ExternalProp.Vertical:
+                    {
+                        Vector2Int pot = list[0];
+                        if (!IsPositionValid(pot)) return false;
+                        Data.TakeMemorySnapshotBoardData();
+                        // 成功使用道具 通知表现
+                        Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                        // 道具效果
+                        List<ElementData> currProps = ListPool<ElementData>.Get();
+                        currProps.Add(new ElementData(ElementType.Prop_Vertical).SetPot(pot.x, pot.y));
+
+                        ActivatePropList(currProps);
+
+                        ListPool<ElementData>.Release(currProps);
+
+                        //补位
+                        FillEmptySpaces();
+
+                        isSu = true;
+
+                    }
+                    break;
+                case ExternalProp.AllRanan:
+                    {
+                        // 成功使用道具 通知表现
+                        Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                        Player_RananAllElement();
+                        isSu = true;
+
+                    }
+                    break;
+                case ExternalProp.Undo:
+                    {
+                        // 成功使用道具 后退
+                        bool isCan = Data.CanUndo();
+                        if (isCan)
+                        {
+                            Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                            Player_UndoElement();
+                            isCan = true;
+                        }
+                    }
+                    break;
+                case ExternalProp.Wild:
+                    {
+                        Vector2Int pot = list[0];
+                        if (!IsPositionValid(pot)) return false;
+
+                        ElementType type = BoardData[pot.x, pot.y].Type;
+
+
+                        // 成功使用道具 魔法棒
+                        bool isCan = Data.CanUndo();
+                        if (isCan)
+                        {
+                            Data.TakeMemorySnapshotBoardData();
+                            Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                            List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
+                            List<ElementData> propList = FutureCore.ListPool<ElementData>.Get();
+                            ActivateProp_Wild(pot.x, pot.y, type, ref matches, ref propList);
+
+                            if (matches.Count > 0)
+                            {
+                                // 有匹配，进行消除
+                                ProcessMatches(matches);
+                                // 创建新元素 并补位
+                                FillEmptySpaces();
+                            }
+
+                            FutureCore.ListPool<Vector2Int>.Release(matches);
+                            FutureCore.ListPool<ElementData>.Release(propList);
+
+                            isCan = true;
+                        }
+                    }
+                    break;
+                case ExternalProp.AddScore:
+                    { 
+                        AddScore(3000);
+                        isSu = true;
+                    }
+                break;
+                    
+
+
+
+            }
+
+            return isSu;
+
+
+
+
+
+
+        }
 
         /*
 

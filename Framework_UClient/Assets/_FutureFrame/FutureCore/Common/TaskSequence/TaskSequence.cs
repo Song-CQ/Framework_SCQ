@@ -59,10 +59,10 @@ namespace FutureCore
             TaskProcedure taskProcedure = ObjectPoolStatic<TaskProcedure>.Get();
             taskProcedure.onTaskFunc = (task) =>
             {
-                TimerUtil.Simple.AddDelayTask(delayTime, () =>
+                TimerUtil.Simple.AddDelayTask(() =>
                 {
                     taskFunc?.Invoke(task);
-                });
+                },delayTime);
             };
             taskProcedure.taskSequence = this;
             taskList.Add(taskProcedure);
@@ -74,10 +74,10 @@ namespace FutureCore
             TaskProcedure taskProcedure = ObjectPoolStatic<TaskProcedure>.Get();
             taskProcedure.onTaskFunc = (task) =>
             {
-                TimerUtil.Simple.AddDelayTask(delayTime, () =>
+                TimerUtil.Simple.AddDelayTask(() =>
                 {
                     task.onComplete?.Invoke();
-                });
+                },delayTime);
             };
             taskProcedure.taskSequence = this;
             taskList.Add(taskProcedure);
@@ -108,10 +108,10 @@ namespace FutureCore
 
         public TaskSequence RunDelay(float delayTime)
         {
-            TimerUtil.Simple.AddDelayTask(delayTime, () =>
+            TimerUtil.Simple.AddDelayTask(() =>
             {
                 Run();
-            });
+            },delayTime);
             return this;
         }
 
@@ -151,7 +151,7 @@ namespace FutureCore
             }
             public void DelayInvokeComplete(float delayTime)
             {
-                TimerUtil.Simple.AddDelayTask(delayTime, InvokeComplete);
+                TimerUtil.Simple.AddDelayTask(InvokeComplete,delayTime);
             }
             public void TaskFunc()
             {

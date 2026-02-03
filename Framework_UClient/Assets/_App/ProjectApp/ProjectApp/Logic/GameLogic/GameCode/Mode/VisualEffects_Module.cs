@@ -358,7 +358,7 @@ namespace ProjectApp
                 item.Dispose();
             }
             elementsPool.Dispose();
-            elementsPool= null;
+            elementsPool = null;
             GameObject.Destroy(elementsPoolTrf.gameObject);
             GameObject.Destroy(elementItemsTrf.gameObject);
             GameObject.Destroy(connectionTrf.gameObject);
@@ -610,9 +610,7 @@ namespace ProjectApp
             foreach (var item in elementItemList)
             {
                 //设置下落标记
-                var _data = item.Data;
-                _data.SetType(ElementType.Fixed_Special);
-                item.SetData(_data);
+                item.SetSpecial();
             }
 
             // 2. 播放清除动画
@@ -833,7 +831,7 @@ namespace ProjectApp
                 ElementItem _item = FindElementItem(matche.x, matche.y);
                 elementItemList.Add(_item);
             }
-          
+
             ElementItem item = FindElementItem(data.X, data.Y);
 
             //将激活的道具设置为空
@@ -919,7 +917,7 @@ namespace ProjectApp
             return time;
 
         }
-        
+
         private void OnActivateTwoProp(object obj)
         {
             object[] datas = obj as object[];
@@ -927,7 +925,7 @@ namespace ProjectApp
             ElementData formData = (ElementData)datas[0];
             ElementData toData = (ElementData)datas[1];
             List<Vector2Int> matches = datas[2] as List<Vector2Int>;
-            List<ElementItem> props = datas[3] as List<ElementItem>;
+            List<ElementData> props = datas[3] as List<ElementData>;
 
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
             foreach (var matche in matches)
@@ -935,23 +933,28 @@ namespace ProjectApp
                 ElementItem _item = FindElementItem(matche.x, matche.y);
                 elementItemList.Add(_item);
             }
+            List<ElementItem> propItemList = ListPool<ElementItem>.Get();
+            foreach (var item in props)
+            {
+                ElementItem _item = FindElementItem(item.X, item.Y);
+                propItemList.Add(_item);
+            }
 
             ElementItem formItem = FindElementItem(formData);
             ElementItem toItem = FindElementItem(toData);
 
-            var process = GetProcessToEnqueue();
 
-            float time = GetPropActionTwo(formItem, toItem, elementItemList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB);
 
-            process.Duration = time > process.Duration ? time : process.Duration;
+            PlayPropActionTwo(formItem, toItem, elementItemList, propItemList);
 
-            process.SetLinkExecute(executeCB);
-            process.SetLinkExecute(finishCB);
+
 
         }
 
 
-        private float GetPropActionTwo(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
+
+
+        private float PlayPropActionTwo(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
         {
             ElementData formData = formItem.Data;
             ElementData toData = toItem.Data;
@@ -961,28 +964,28 @@ namespace ProjectApp
                 if ((toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
                 {
                     //横竖
-                    formItem.SetSpecial();
-                    toItem.SetSpecial();
 
+                    //移动
+                    AddFormMoveTo(formItem, toItem);
+
+
+                    var process = GetProcessToEnqueue();
 
                     float time = 1;
 
-                    executeCB = (p) =>
+                    process.SetLinkExecute((p) =>
                     {
                         Core.Enabled_PlayerCtr = false;
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                    });
 
-                        
-
-                        AnimationSys.PlayAin_SwapElement(elementItemList);
-                    };
-
-                    finishCB = (p) =>
+                    process.SetLinkFinish((p) =>
                     {
                         Core.Enabled_PlayerCtr = true;
-
                         ListPool<ElementItem>.Release(elementItemList);
+                        ListPool<ElementItem>.Release(propElementList);
 
-                    };
+                    });
 
 
                     return time;
@@ -996,6 +999,28 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb && formData.Type == ElementType.Prop_Bomb)
                 {
                     //双炸弹
+                    AddFormMoveTo(formItem, toItem);
+
+
+                    var process = GetProcessToEnqueue();
+
+                    float time = 1;
+
+                    process.SetLinkExecute((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                    });
+
+                    process.SetLinkFinish((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = true;
+                        ListPool<ElementItem>.Release(elementItemList);
+                        ListPool<ElementItem>.Release(propElementList);
+                    });
+
+
+                    return time;
 
                 }
 
@@ -1004,12 +1029,60 @@ namespace ProjectApp
                 {
                     //炸弹加竖
 
+                    AddFormMoveTo(formItem, toItem);
+
+
+                    var process = GetProcessToEnqueue();
+
+                    float time = 1;
+
+                    process.SetLinkExecute((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                    });
+
+                    process.SetLinkFinish((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = true;
+                        ListPool<ElementItem>.Release(elementItemList);
+                        ListPool<ElementItem>.Release(propElementList);
+
+                    });
+
+
+                    return time;
+
 
                 }
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
                 {
                     //炸弹加横
+
+                    AddFormMoveTo(formItem, toItem);
+
+
+                    var process = GetProcessToEnqueue();
+
+                    float time = 1;
+
+                    process.SetLinkExecute((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                    });
+
+                    process.SetLinkFinish((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = true;
+                        ListPool<ElementItem>.Release(elementItemList);
+                        ListPool<ElementItem>.Release(propElementList);
+
+                    });
+
+
+                    return time;
 
 
                 }
@@ -1021,24 +1094,148 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb || formData.Type == ElementType.Prop_Bomb)
                 {
                     //wild加炸弹
-                  
+                    AddFormMoveTo(formItem, toItem);
+
+                    foreach (var item in propElementList)
+                    {
+                        item.SetType(ElementType.Prop_Bomb);
+                    }
+
+
+                    var process = GetProcessToEnqueue();
+
+                    float time = 1;
+
+                    process.SetLinkExecute((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        foreach (var item in propElementList)
+                        {
+                            item.RefreshView();
+                        }
+                        AnimationSys.PlayAin_ElasticShakeElements(propElementList);
+                    });
+
+                    process.SetLinkFinish((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = true;
+                        ListPool<ElementItem>.Release(elementItemList);
+                        ListPool<ElementItem>.Release(propElementList);
+
+                    });
+
+
+                    return time;
+
                 }
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
                 {
                     //wild加Vertical
+             
+                    AddFormMoveTo(formItem, toItem);
+
+                    foreach (var item in propElementList)
+                    {
+                        item.SetType(ElementType.Prop_Vertical);
+                    }
+
+
+                    var process = GetProcessToEnqueue();
+
+                    float time = 1;
+
+                    process.SetLinkExecute((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        foreach (var item in propElementList)
+                        {
+                            item.RefreshView();
+                        }
+                        AnimationSys.PlayAin_ElasticShakeElements(propElementList);
+                    });
+
+                    process.SetLinkFinish((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = true;
+                        ListPool<ElementItem>.Release(elementItemList);
+                        ListPool<ElementItem>.Release(propElementList);
+
+                    });
+
+
+                    return time;
 
                 }
 
                 if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
                 {
                     //wild加Horizontal
+                    AddFormMoveTo(formItem, toItem);
+
+                    foreach (var item in propElementList)
+                    {
+                        item.SetType(ElementType.Prop_Horizontal);
+                    }
+
+                    var process = GetProcessToEnqueue();
+
+                    float time = 1;
+
+                    process.SetLinkExecute((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = false;
+                        foreach (var item in propElementList)
+                        {
+                            item.RefreshView();
+                        }
+                        AnimationSys.PlayAin_ElasticShakeElements(propElementList);
+                    });
+
+                    process.SetLinkFinish((p) =>
+                    {
+                        Core.Enabled_PlayerCtr = true;
+                        ListPool<ElementItem>.Release(elementItemList);
+                        ListPool<ElementItem>.Release(propElementList);
+
+                    });
+
+
+                    return time;
 
                 }
             }
 
+            return 0;
+
         }
 
+
+        private void AddFormMoveTo(ElementItem formItem, ElementItem toItem)
+        {
+            formItem.SetSpecial();
+            toItem.SetSpecial();
+
+            var process = GetProcessToEnqueue();
+            Vector3 tar = toItem.Pos;
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+                AnimationSys.PlayAin_MovePot(formItem, tar);
+            });
+
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+                GameTool.PlayTestEffect(tar);
+
+                elementsPool.Release(formItem);
+                elementsPool.Release(toItem);
+
+            });
+            process.Duration = 0.3f;
+
+        }
         #endregion
 
 

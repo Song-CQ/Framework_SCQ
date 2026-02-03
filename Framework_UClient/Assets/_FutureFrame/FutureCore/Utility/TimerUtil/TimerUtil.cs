@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Codice.Client.Common;
 using UnityEngine;
 
 namespace FutureCore
@@ -49,6 +50,10 @@ namespace FutureCore
         {
             return Timer.AddTimeTask(task,delay,_count,timeType);
         }
-    
+
+        public static float GetGameTime()
+        {
+            return UnityEngine.Time.time;
+        }
     }
 }

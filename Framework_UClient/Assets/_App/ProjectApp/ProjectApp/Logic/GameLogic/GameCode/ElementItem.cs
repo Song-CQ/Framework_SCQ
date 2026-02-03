@@ -176,8 +176,16 @@ namespace ProjectApp
 
         public void SetSpecial()
         {
-           var temp  = Data;
+            var temp  = Data;
             temp.SetSpecial();
+            Data = temp;
+        }
+
+        public void SetType(ElementType type)
+        {
+            var temp  = Data;
+            temp.SetSpecial();
+            temp.Type =  type;
             Data = temp;
         }
 

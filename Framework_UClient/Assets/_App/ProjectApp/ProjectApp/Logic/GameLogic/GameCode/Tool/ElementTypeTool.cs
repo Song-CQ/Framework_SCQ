@@ -5,6 +5,21 @@ using UnityEngine;
 
 namespace ProjectApp
 {
+
+    public enum ExternalProp
+    {
+        Hammer,
+        Swipe,
+        Horizontal,
+        Vertical,
+        AllRanan,
+        Undo,
+        Wild,
+        AddScore,
+
+    }
+
+
     public enum ElementType
     {
         Item_A = 1,    // ºìÉ«»ù´¡ÔªËØ
