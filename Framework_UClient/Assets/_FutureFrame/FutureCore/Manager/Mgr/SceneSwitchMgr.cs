@@ -8,6 +8,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 namespace FutureCore
@@ -28,8 +29,37 @@ namespace FutureCore
         {
             StartCoroutine(OnLoadScene(idx, LoadComplete, param));
         }
+        public void AdditiveScene(int idx, Action<object> LoadComplete, object param,bool isGc = false)
+        {
+            StartCoroutine(OnAdditiveScene(idx, LoadComplete, param,isGc));
+        }
 
-        
+        private IEnumerator OnAdditiveScene(int idx, Action<object> LoadComplete, object param, bool isGc)
+        {
+            yield return YieldConst.WaitFor100ms;
+
+            if (isGc)
+            {
+                AsyncOperation asyncGC = ResMgr.Instance.GCAssets(true);
+                yield return asyncGC;
+            }
+
+            //LogUtil.Log("AB内存快照:", AssetBundleMgr.Instance.GetLoadedABsInfo());
+
+
+            if (IsUseUnityScene)
+            {
+                AsyncOperation asyncUnityScene = SceneManager.LoadSceneAsync(idx, LoadSceneMode.Additive);
+                yield return asyncUnityScene;
+            }
+
+            if (LoadComplete != null)
+            {
+                LoadComplete(param);
+            }
+        }
+
+
 
         private IEnumerator OnLoadInitialScene(int sceneId, Action<object> loadComplete, object param)
         {
@@ -51,9 +81,9 @@ namespace FutureCore
             AsyncOperation asyncGC = ResMgr.Instance.GCAssets(true);
             yield return asyncGC;
 
-   //       LogUtil.Log("AB内存快照:", AssetBundleMgr.Instance.GetLoadedABsInfo());
+            //       LogUtil.Log("AB内存快照:", AssetBundleMgr.Instance.GetLoadedABsInfo());
 
-   
+
             if (IsUseUnityScene)
             {
                 AsyncOperation asyncUnityScene = SceneManager.LoadSceneAsync(idx, LoadSceneMode.Single);

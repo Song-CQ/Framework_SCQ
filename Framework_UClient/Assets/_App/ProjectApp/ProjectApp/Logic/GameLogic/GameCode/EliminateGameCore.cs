@@ -254,6 +254,7 @@ namespace ProjectApp
         private GameInitial_Module gameInitialModule;
         private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
+        private ExternalProp_Module externalProp_Module;
         private List<IGameModule> gameModules;
 
         private bool isInit = false;
@@ -269,10 +270,10 @@ namespace ProjectApp
 
         private void Awake()
         {
-            Init();
+          
         }
 
-
+        [Button("Init")]
         public void Init()
         {
             InputMgr.Instance.Init();
@@ -289,11 +290,13 @@ namespace ProjectApp
 
             gameRuleModule = new GameRule_Module();
             visualEffectsModule = new VisualEffects_Module();
+            externalProp_Module = new ExternalProp_Module();
 
             gameModules = new List<IGameModule>();
             gameModules.Add(gameInitialModule);
             gameModules.Add(gameRuleModule);
             gameModules.Add(visualEffectsModule);
+            gameModules.Add(externalProp_Module);
 
 
             //填充核心
@@ -364,7 +367,7 @@ namespace ProjectApp
 
         public Vector2Int temp1 = new Vector2Int(0, 13);
         public Vector2Int temp2 = new Vector2Int(0, 12);
-
+        public bool isPool = true;
 
         [Button("交换元素")]
         public void Test1()
@@ -472,6 +475,8 @@ namespace ProjectApp
 
             Dispatcher.Dispose();
             Dispatcher = null;
+
+            GameTool.GameCore = null;
 
 
             isInit = false;

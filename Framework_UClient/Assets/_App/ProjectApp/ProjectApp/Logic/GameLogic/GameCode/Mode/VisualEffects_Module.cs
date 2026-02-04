@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace ProjectApp
 {
     public class VisualEffects_Module : IGameModule
     {
         public ElementItem[,] elementItems;
-
-        public List<ExternalPropItem> externalPropItems = new List<ExternalPropItem>();
+        public List<ExternalPropItem> externalPropItems;
 
         private Vector3 startVector3;
 
@@ -162,6 +162,12 @@ namespace ProjectApp
         private Queue<VisuaProcess> visuaProcessQueue;
         private Dictionary<uint, VisuaProcess> visuaProcessDic;
         private VisuaProcess currVisuaProcess;
+
+        private void InitVisuaProcess()
+        {
+            visuaProcessQueue = new Queue<VisuaProcess>();
+            visuaProcessDic = new Dictionary<uint, VisuaProcess>();
+        }
         private VisuaProcess EnqueueVisuaProcess(VisuaProcess process)
         {
             visuaProcessQueue.Enqueue(process);
@@ -256,11 +262,11 @@ namespace ProjectApp
             externalPropPool = new ObjectPool<ExternalPropItem>(OnNewExternalPropItem,OnGetExternalPropItem,OnReleaseExternalPropItem);
             externalPropsTrf = new GameObject("ExternalPropsTrf").transform;
             externalPropsTrf.SetParent(Core.transform);
-            externalPropsTrf.localPosition = Vector3.zero;
+            externalPropsTrf.localPosition = new Vector3(0,-7.5f,0);
 
             startVector3 = Core.startVector3;
 
-            
+            InitVisuaProcess();
 
             InitSys();
 
@@ -357,6 +363,8 @@ namespace ProjectApp
         
         public void LoadExternalProp()
         {
+
+            return;
             for (int i = 0; i < Data.externalProps.Count; i++)
             {
                 ExternalProp type = Data.externalProps[i];
@@ -364,6 +372,7 @@ namespace ProjectApp
                 propItem.Transform.parent = externalPropsTrf;
                 propItem.SetType(type);
                 externalPropItems.Add(propItem);
+                propItem.Transform.localPosition = Vector3.zero;
             }
 
         }
@@ -434,6 +443,7 @@ namespace ProjectApp
 
             ListPool<ElementItem>.Clear();
 
+
         }
 
         public void Update()
@@ -501,7 +511,7 @@ namespace ProjectApp
 
         private Vector3 GetPosition(int X, int Y)
         {
-            Vector3 position = startVector3 + new Vector3(X, Y, Y * 0.01f);
+            Vector3 position = startVector3 + new Vector3(X*10f, Y*10f, Y * 0.05f);
             return position;
         }
         private Vector3 GetPosition(ElementData data)
@@ -1286,17 +1296,22 @@ namespace ProjectApp
 
         #endregion
 
+      
+
+
         #region 外置道具模块
-        private Vector3 externalPropPot = new Vector3(0,10,0);
+        private Vector3 externalProp_TarPot = new Vector3(0, -16, 0);
         private float swipeSpeed = 1;
+        private int externalPropInterval = 10;
+
         public void AddSwipeVector2(Vector2 v)
         {
-            externalPropPot = externalPropPot + new Vector3(v.x,0,0) * 1.2f;
+            externalProp_TarPot = externalProp_TarPot + new Vector3(v.x, 0, 0) * 1.2f;
         }
 
         private void UpdateExternalProp()
         {
-            externalPropsTrf.localPosition = Vector3.Lerp(externalPropsTrf.localPosition,externalPropPot,UnityEngine.Time.deltaTime * swipeSpeed);
+            externalPropsTrf.localPosition = Vector3.Lerp(externalPropsTrf.localPosition, externalProp_TarPot, UnityEngine.Time.deltaTime * swipeSpeed);
 
         }
 
@@ -1305,30 +1320,40 @@ namespace ProjectApp
             int index = -1;
             for (int i = 0; i < externalPropItems.Count; i++)
             {
-                if(externalPropItems[i] == propItem)
-                {             
-                  index = i;
-                  break;
+                if (externalPropItems[i] == propItem)
+                {
+                    index = i;
+                    break;
                 }
             }
             return index;
         }
 
-        
+
         /// <summary>
         /// 选中了对应index 的道具
         /// </summary>
         /// <param name="index"></param>
         public void SelectExternalPropToIndex(int index)
         {
-           // 发光之类的
+            // 发光之类的
+        }
+
+        private void RefreshExternalProp()
+        {
+            for (int i = 0; i < externalPropItems.Count; i++)
+            {
+                float x = i * externalPropInterval;
+
+
+
+            }
+
         }
 
 
 
         #endregion
-
-
 
 
 

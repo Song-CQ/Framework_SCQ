@@ -126,7 +126,7 @@ namespace ProjectApp
                 animationLibrary[type] = aniQueue;
             }
             IElementAni ani = null;
-            if (aniQueue.Count > 0)
+            if (aniQueue.Count > 0&&GameTool.GameCore.isPool)
             {
                 ani = aniQueue.Dequeue();
                 Debug.Log(type+"使用旧的:"+(ani.GetType()));

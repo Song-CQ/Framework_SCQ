@@ -23,7 +23,7 @@ namespace ProjectApp
         {
             if (!elementTypeSpr.ContainsKey((int)type))
             {
-                Sprite sprite = Resources.Load<Sprite>("ItemIcon/" + type.ToString());
+                Sprite sprite = Resources.Load<Sprite>("GameUI/ItemIcon/" + type.ToString());
                 elementTypeSpr[(int)type] = sprite;
             }
             return elementTypeSpr[(int)type];
@@ -32,7 +32,7 @@ namespace ProjectApp
         {
             if (!elementTypeSpr.ContainsKey((int)type))
             {
-                Sprite sprite = Resources.Load<Sprite>("ExternalProp/ExternalProp_" + type.ToString());
+                Sprite sprite = Resources.Load<Sprite>("GameUI/ExternalProp/ExternalProp_" + type.ToString());
                 elementTypeSpr[(int)type] = sprite;
             }
             return elementTypeSpr[(int)type];

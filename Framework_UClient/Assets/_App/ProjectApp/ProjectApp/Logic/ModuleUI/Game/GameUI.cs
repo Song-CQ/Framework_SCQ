@@ -30,9 +30,9 @@ namespace ProjectApp
             uiInfo.packageName = "Game";
             uiInfo.assetName = "Game_Plane";
             uiInfo.layerType = UILayerType.Normal;
-            uiInfo.isNeedOpenAnim = true;
-            uiInfo.isNeedCloseAnim = true;
-            uiInfo.isNeedUIMask = true;
+            uiInfo.isNeedOpenAnim = false;
+            uiInfo.isNeedCloseAnim = false;
+            uiInfo.isNeedUIMask = false;
         }
 
         #region 生命周期

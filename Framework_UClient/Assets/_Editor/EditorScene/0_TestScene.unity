@@ -192,1034 +192,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 20
   m_TargetDisplay: 0
---- !u!1 &187633175
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 187633176}
-  - component: {fileID: 187633177}
-  m_Layer: 0
-  m_Name: bg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &187633176
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187633175}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07, y: -0.14, z: 0.1}
-  m_LocalScale: {x: 0.82, y: 0.84, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1738429848}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &187633177
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187633175}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 837f215be91b0be4dbc23371645da452, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6313726}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.18, y: 1.18}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &277895813
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 277895815}
-  - component: {fileID: 277895814}
-  - component: {fileID: 277895818}
-  - component: {fileID: 277895817}
-  m_Layer: 0
-  m_Name: gameRood
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &277895814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277895813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8920064e22a4d604ab0b79d6b5c5de75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _boardWidth: 10
-  _boardHeight: 14
-  startVector3: {x: -4.55, y: -6, z: 0}
-  currentMode: 0
-  IsFill: 0
-  IsClickProp: 1
-  temp1: {x: 0, y: 13}
-  temp2: {x: 0, y: 12}
---- !u!4 &277895815
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277895813}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1928469146}
-  - {fileID: 3262958174493635172}
-  - {fileID: 1734733209}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &277895817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277895813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d39248b1fd8a834e8721714cbebcfc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grid:
-    _width: 10
-    _height: 14
-    _cells:
-    - X: 0
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 0
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 1
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 2
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 3
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 4
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 5
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 6
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 7
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 8
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 9
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 10
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 11
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 12
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 0
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 1
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 2
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 3
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 4
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 5
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 6
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 7
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 8
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-    - X: 9
-      Y: 13
-      Type: 2000
-      data1: 0
-      data2: 0
-      data3: 0
-  gridWidth: 10
-  gridHeight: 14
-  showDebugInfo: 1
-  gridInfo: "\u7F51\u683C\u7EDF\u8BA1:\n\u5C3A\u5BF8: 10 \xD7 14\n\u603B\u5355\u5143\u683C\u6570:
-    140\n\nItem_A: 0\nItem_B: 0\nItem_C: 0\nItem_D: 0\nItem_Change: 0\nDummy_CanMatche:
-    0\nProp_Horizontal: 0\nProp_Vertical: 0\nProp_Wild: 0\nProp_Bomb: 0\nDummy_CanClickEvent:
-    0\nDummy_CanDown: 0\nFixed_Special: 0\nFixed_None: 140\n"
---- !u!114 &277895818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277895813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f73c4d032899fd24dbdf8af764cd9a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  core: {fileID: 277895814}
-  data:
-    selectedElement: {x: -1, y: -1}
-    boardSize: {x: 0, y: 0}
-    linkBoardPotLength: 0
-    currentScore: 0
-    targetScore: 100000
-  text: {fileID: 0}
-  elementGrid:
-    data: []
-    width: 5
-    height: 5
 --- !u!1 &360358350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +343,1962 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &494978169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494978173}
+  - component: {fileID: 494978172}
+  - component: {fileID: 494978171}
+  - component: {fileID: 494978170}
+  m_Layer: 0
+  m_Name: GameCore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &494978170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494978169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d39248b1fd8a834e8721714cbebcfc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid:
+    _width: 10
+    _height: 14
+    _cells:
+    - X: 0
+      Y: 0
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 0
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 0
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 0
+      Type: 5
+      data1: 1
+      data2: 2
+      data3: 4
+    - X: 4
+      Y: 0
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 0
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 0
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 0
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 0
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 0
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 1
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 1
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 1
+      Type: 5
+      data1: 4
+      data2: 1
+      data3: 2
+    - X: 3
+      Y: 1
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 1
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 1
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 1
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 1
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 1
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 1
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 2
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 2
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 2
+    - X: 2
+      Y: 2
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 2
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 2
+      Type: 5
+      data1: 2
+      data2: 4
+      data3: 3
+    - X: 5
+      Y: 2
+      Type: 5
+      data1: 4
+      data2: 1
+      data3: 3
+    - X: 6
+      Y: 2
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 2
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 2
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 2
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 3
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 3
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 3
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 2
+    - X: 3
+      Y: 3
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 2
+    - X: 4
+      Y: 3
+      Type: 5
+      data1: 3
+      data2: 1
+      data3: 4
+    - X: 5
+      Y: 3
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 3
+      Type: 5
+      data1: 3
+      data2: 2
+      data3: 1
+    - X: 7
+      Y: 3
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 3
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 3
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 4
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 4
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 4
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 4
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 4
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 4
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 4
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 4
+      Type: 5
+      data1: 1
+      data2: 3
+      data3: 2
+    - X: 8
+      Y: 4
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 4
+      Type: 5
+      data1: 2
+      data2: 3
+      data3: 4
+    - X: 0
+      Y: 5
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 1
+    - X: 1
+      Y: 5
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 5
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 5
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 5
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 5
+      Type: 102
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 5
+      Type: 101
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 5
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 5
+      Type: 5
+      data1: 4
+      data2: 1
+      data3: 3
+    - X: 9
+      Y: 5
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 6
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 6
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 6
+      Type: 5
+      data1: 4
+      data2: 1
+      data3: 2
+    - X: 3
+      Y: 6
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 2
+    - X: 4
+      Y: 6
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 6
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 6
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 6
+      Type: 5
+      data1: 2
+      data2: 3
+      data3: 1
+    - X: 8
+      Y: 6
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 6
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 7
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 7
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 7
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 7
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 2
+    - X: 4
+      Y: 7
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 7
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 7
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 7
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 7
+      Type: 5
+      data1: 3
+      data2: 2
+      data3: 1
+    - X: 9
+      Y: 7
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 8
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 2
+    - X: 1
+      Y: 8
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 8
+      Type: 5
+      data1: 3
+      data2: 2
+      data3: 4
+    - X: 3
+      Y: 8
+      Type: 5
+      data1: 3
+      data2: 1
+      data3: 4
+    - X: 4
+      Y: 8
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 8
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 8
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 8
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 1
+    - X: 8
+      Y: 8
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 8
+      Type: 5
+      data1: 2
+      data2: 1
+      data3: 4
+    - X: 0
+      Y: 9
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 9
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 9
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 9
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 9
+      Type: 5
+      data1: 1
+      data2: 3
+      data3: 2
+    - X: 5
+      Y: 9
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 9
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 9
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 9
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 9
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 10
+      Type: 5
+      data1: 1
+      data2: 3
+      data3: 4
+    - X: 1
+      Y: 10
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 10
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 10
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 10
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 10
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 10
+      Type: 5
+      data1: 1
+      data2: 3
+      data3: 2
+    - X: 7
+      Y: 10
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 10
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 10
+      Type: 5
+      data1: 3
+      data2: 1
+      data3: 4
+    - X: 0
+      Y: 11
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 11
+      Type: 5
+      data1: 3
+      data2: 1
+      data3: 4
+    - X: 2
+      Y: 11
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 11
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 11
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 11
+      Type: 5
+      data1: 2
+      data2: 1
+      data3: 4
+    - X: 6
+      Y: 11
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 2
+    - X: 7
+      Y: 11
+      Type: 5
+      data1: 1
+      data2: 4
+      data3: 3
+    - X: 8
+      Y: 11
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 11
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 12
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 12
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 12
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 12
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 12
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 12
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 12
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 12
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 12
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 12
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 13
+      Type: 5
+      data1: 2
+      data2: 4
+      data3: 3
+    - X: 1
+      Y: 13
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 13
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 13
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 13
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 1
+    - X: 5
+      Y: 13
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 13
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 13
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 13
+      Type: 5
+      data1: 2
+      data2: 4
+      data3: 1
+    - X: 9
+      Y: 13
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+  gridWidth: 10
+  gridHeight: 14
+  showDebugInfo: 1
+  gridInfo: "\u7F51\u683C\u7EDF\u8BA1:\n\u5C3A\u5BF8: 10 \xD7 14\n\u603B\u5355\u5143\u683C\u6570:
+    140\n\nItem_A: 23\nItem_B: 27\nItem_C: 27\nItem_D: 27\nItem_Change: 34\nDummy_CanMatche:
+    0\nProp_Horizontal: 1\nProp_Vertical: 1\nProp_Wild: 0\nProp_Bomb: 0\nDummy_CanClickEvent:
+    0\nDummy_CanDown: 0\nFixed_Special: 0\nFixed_None: 0\n"
+--- !u!114 &494978171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494978169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73c4d032899fd24dbdf8af764cd9a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  core: {fileID: 494978172}
+  data:
+    selectedElement: {x: -1, y: -1}
+    boardSize: {x: 10, y: 14}
+    linkBoardPotLength: 8
+    externalProps: 10270000122700001327000011270000152700001627000014270000
+    selectExternalPropIndex: -1
+    currentScore: 0
+    targetScore: 100000
+  text: {fileID: 0}
+  elementGrid:
+    data:
+    - X: 0
+      Y: 0
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 0
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 0
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 0
+      Type: 5
+      data1: 1
+      data2: 2
+      data3: 4
+    - X: 4
+      Y: 0
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 0
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 0
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 0
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 0
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 0
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 1
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 1
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 1
+      Type: 5
+      data1: 4
+      data2: 1
+      data3: 2
+    - X: 3
+      Y: 1
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 1
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 1
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 1
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 1
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 1
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 1
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 2
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 2
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 2
+    - X: 2
+      Y: 2
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 2
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 2
+      Type: 5
+      data1: 2
+      data2: 4
+      data3: 3
+    - X: 5
+      Y: 2
+      Type: 5
+      data1: 4
+      data2: 1
+      data3: 3
+    - X: 6
+      Y: 2
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 2
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 2
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 2
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 3
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 3
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 3
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 2
+    - X: 3
+      Y: 3
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 2
+    - X: 4
+      Y: 3
+      Type: 5
+      data1: 3
+      data2: 1
+      data3: 4
+    - X: 5
+      Y: 3
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 3
+      Type: 5
+      data1: 3
+      data2: 2
+      data3: 1
+    - X: 7
+      Y: 3
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 3
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 3
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 4
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 4
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 4
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 4
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 4
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 4
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 4
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 4
+      Type: 5
+      data1: 1
+      data2: 3
+      data3: 2
+    - X: 8
+      Y: 4
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 4
+      Type: 5
+      data1: 2
+      data2: 3
+      data3: 4
+    - X: 0
+      Y: 5
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 1
+    - X: 1
+      Y: 5
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 5
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 5
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 5
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 5
+      Type: 102
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 5
+      Type: 101
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 5
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 5
+      Type: 5
+      data1: 4
+      data2: 1
+      data3: 3
+    - X: 9
+      Y: 5
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 6
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 6
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 6
+      Type: 5
+      data1: 4
+      data2: 1
+      data3: 2
+    - X: 3
+      Y: 6
+      Type: 5
+      data1: 4
+      data2: 3
+      data3: 2
+    - X: 4
+      Y: 6
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 6
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 6
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 6
+      Type: 5
+      data1: 2
+      data2: 3
+      data3: 1
+    - X: 8
+      Y: 6
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 6
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 7
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 7
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 7
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 7
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 2
+    - X: 4
+      Y: 7
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 7
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 7
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 7
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 7
+      Type: 5
+      data1: 3
+      data2: 2
+      data3: 1
+    - X: 9
+      Y: 7
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 8
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 2
+    - X: 1
+      Y: 8
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 8
+      Type: 5
+      data1: 3
+      data2: 2
+      data3: 4
+    - X: 3
+      Y: 8
+      Type: 5
+      data1: 3
+      data2: 1
+      data3: 4
+    - X: 4
+      Y: 8
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 8
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 8
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 8
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 1
+    - X: 8
+      Y: 8
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 8
+      Type: 5
+      data1: 2
+      data2: 1
+      data3: 4
+    - X: 0
+      Y: 9
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 9
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 9
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 9
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 9
+      Type: 5
+      data1: 1
+      data2: 3
+      data3: 2
+    - X: 5
+      Y: 9
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 9
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 9
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 9
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 9
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 10
+      Type: 5
+      data1: 1
+      data2: 3
+      data3: 4
+    - X: 1
+      Y: 10
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 10
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 10
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 10
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 10
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 10
+      Type: 5
+      data1: 1
+      data2: 3
+      data3: 2
+    - X: 7
+      Y: 10
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 10
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 10
+      Type: 5
+      data1: 3
+      data2: 1
+      data3: 4
+    - X: 0
+      Y: 11
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 11
+      Type: 5
+      data1: 3
+      data2: 1
+      data3: 4
+    - X: 2
+      Y: 11
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 11
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 11
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 11
+      Type: 5
+      data1: 2
+      data2: 1
+      data3: 4
+    - X: 6
+      Y: 11
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 2
+    - X: 7
+      Y: 11
+      Type: 5
+      data1: 1
+      data2: 4
+      data3: 3
+    - X: 8
+      Y: 11
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 11
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 12
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 1
+      Y: 12
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 12
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 12
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 12
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 5
+      Y: 12
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 12
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 12
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 12
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 9
+      Y: 12
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 0
+      Y: 13
+      Type: 5
+      data1: 2
+      data2: 4
+      data3: 3
+    - X: 1
+      Y: 13
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 2
+      Y: 13
+      Type: 1
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 3
+      Y: 13
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 4
+      Y: 13
+      Type: 5
+      data1: 3
+      data2: 4
+      data3: 1
+    - X: 5
+      Y: 13
+      Type: 2
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 6
+      Y: 13
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 7
+      Y: 13
+      Type: 4
+      data1: 0
+      data2: 0
+      data3: 0
+    - X: 8
+      Y: 13
+      Type: 5
+      data1: 2
+      data2: 4
+      data3: 1
+    - X: 9
+      Y: 13
+      Type: 3
+      data1: 0
+      data2: 0
+      data3: 0
+    width: 10
+    height: 14
+--- !u!114 &494978172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494978169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8920064e22a4d604ab0b79d6b5c5de75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boardWidth: 10
+  _boardHeight: 14
+  startVector3: {x: -4.55, y: -6, z: 0}
+  currentMode: 0
+  IsFill: 0
+  IsClickProp: 1
+  temp1: {x: 0, y: 13}
+  temp2: {x: 0, y: 12}
+--- !u!4 &494978173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494978169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 532188192}
+  - {fileID: 522421208}
+  - {fileID: 3262958174493635172}
+  - {fileID: 1738429848}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &522421207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522421208}
+  - component: {fileID: 522421209}
+  m_Layer: 0
+  m_Name: bg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522421208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522421207}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.38, z: 9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 494978173}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &522421209
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522421207}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: c71e82c672f4c48439f9d1b35be9e04f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 1
+  m_Size: {x: 10.826359, y: 15.129735}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &532188191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 532188192}
+  - component: {fileID: 532188193}
+  m_Layer: 0
+  m_Name: bg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &532188192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532188191}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 9.9823}
+  m_LocalScale: {x: 1.0343829, y: 1.0343829, z: 1.0343829}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1863039514}
+  m_Father: {fileID: 494978173}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &532188193
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532188191}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e68cccba8d563dd41a717ca06edb7248, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 1
+  m_Size: {x: 10.8, y: 23.405714}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &555248658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1694,13 +2622,13 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1080
-    height: 1920
+    width: 1290
+    height: 2796
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11.11
+  orthographic size: 11.8
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1820,90 +2748,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2533214319552546590}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1394619158
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1394619159}
-  - component: {fileID: 1394619160}
-  m_Layer: 0
-  m_Name: bg (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1394619159
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394619158}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1.3005, y: 1.3005, z: 1.3005}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1928469146}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1394619160
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394619158}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e68cccba8d563dd41a717ca06edb7248, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 10.8, y: 23.405714}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1582864522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,146 +2849,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1734733208
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1734733209}
-  m_Layer: 0
-  m_Name: ExternalProp
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1734733209
+--- !u!4 &1738429848 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+    type: 3}
+  m_PrefabInstance: {fileID: 2040041495854443989}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734733208}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1738429848}
-  m_Father: {fileID: 277895815}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1738429847
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1738429848}
-  - component: {fileID: 1738429849}
-  - component: {fileID: 1738429850}
-  m_Layer: 0
-  m_Name: Propitem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1738429848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738429847}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 187633176}
-  - {fileID: 2081050406}
-  m_Father: {fileID: 1734733209}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1738429849
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738429847}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7fa4ce06ed5259a4ca07ce971641c51b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.18, y: 1.18}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!65 &1738429850
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738429847}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.18, y: 1.18, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1851568434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,6 +2958,90 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1863039513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1863039514}
+  - component: {fileID: 1863039515}
+  m_Layer: 0
+  m_Name: bg (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1863039514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863039513}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1.3005, y: 1.3005, z: 1.3005}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 532188192}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1863039515
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863039513}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e68cccba8d563dd41a717ca06edb7248, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10.8, y: 23.405714}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1869437342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,91 +3117,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869437342}
   m_CullTransparentMesh: 1
---- !u!1 &1928469145
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1928469146}
-  - component: {fileID: 1928469147}
-  m_Layer: 0
-  m_Name: bg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1928469146
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928469145}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1394619159}
-  m_Father: {fileID: 277895815}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1928469147
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928469145}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e68cccba8d563dd41a717ca06edb7248, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 10.8, y: 23.405714}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1962684393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2477,90 +3186,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -1
   m_TargetDisplay: 0
---- !u!1 &2081050405
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2081050406}
-  - component: {fileID: 2081050407}
-  m_Layer: 0
-  m_Name: icon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2081050406
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081050405}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1738429848}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2081050407
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081050405}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7fa4ce06ed5259a4ca07ce971641c51b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.18, y: 1.18}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &2095253473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +3280,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &2040041495854443989
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 494978173}
+    m_Modifications:
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291409268247460895, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104631186210408596, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_Name
+      value: ExternalProp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104631186210408596, guid: ba3ff8b64d2adde44833ccac11c2ddfa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba3ff8b64d2adde44833ccac11c2ddfa, type: 3}
 --- !u!1001 &2146330001229734439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2983,7 +3681,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 277895815}
+    m_TransformParent: {fileID: 494978173}
     m_Modifications:
     - target: {fileID: 228069464447574316, guid: 008e6069e1cf40a428f77b5c8e9a585c,
         type: 3}
@@ -3065,4 +3763,4 @@ SceneRoots:
   - {fileID: 76845932}
   - {fileID: 555248658}
   - {fileID: 913881396}
-  - {fileID: 277895815}
+  - {fileID: 494978173}

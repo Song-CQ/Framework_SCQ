@@ -39,6 +39,7 @@ namespace FutureCore
         }
         public void AddListener(Msg msg, Action<Param> paramCB)
         {
+            
             if (!m_msgDict.TryGetValue(msg,out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();

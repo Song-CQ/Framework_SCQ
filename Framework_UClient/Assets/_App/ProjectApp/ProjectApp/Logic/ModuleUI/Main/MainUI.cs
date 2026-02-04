@@ -63,6 +63,7 @@ namespace ProjectApp
         private void OnClick()
         {
             Close();
+            GameManager.Instance.EnterGame();
 
         }
 

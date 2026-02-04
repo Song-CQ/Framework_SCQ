@@ -76,6 +76,8 @@ namespace ProjectApp.GameLogic
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime();
             Delay = delay;
+
+         
         }
 
         protected override void AddTweenToSequence(Sequence seq)
@@ -86,10 +88,20 @@ namespace ProjectApp.GameLogic
                 x =>
                 {
                     Tar.Pos = Vector3.Lerp(formPot, toPot, x);
+                    Debug.Log(Tar.Data.ToString() + "ÒªÒÆ" + formPot + " to " + toPot+ " x "+x + "µ±Ç°"+ Tar.Pos);
                 },
                 1f,
                 Duration));
         }
+
+        protected override void OnComplete()
+        {
+            base.OnComplete();
+
+            Tar.Pos = toPot;
+
+        }
+
 
         public override void Disp()
         {
@@ -103,6 +115,8 @@ namespace ProjectApp.GameLogic
             formPot = Vector3.zero;
             toPot = Vector3.zero;
         }
+
+
 
 
 

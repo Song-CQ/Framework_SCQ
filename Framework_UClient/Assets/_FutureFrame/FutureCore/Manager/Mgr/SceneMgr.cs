@@ -81,5 +81,11 @@ namespace FutureCore
             return val;
         }
 
+
+        public void AdditiveScene(int idx, Action<object> LoadComplete, object param, bool isGc = false)
+        {
+            SceneSwitchMgr.Instance.AdditiveScene(idx,LoadComplete,param,isGc);
+        }
+
     }
 }

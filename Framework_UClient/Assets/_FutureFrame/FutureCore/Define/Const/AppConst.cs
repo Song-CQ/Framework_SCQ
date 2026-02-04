@@ -84,11 +84,11 @@ namespace FutureCore
 
         /// 应用设置参数
         // 标准分辨率
-        public static Vector2Int StandardResolution = new Vector2Int(1920, 1080);
+        public static Vector2Int StandardResolution = new Vector2Int(1290, 2796);
         // UI分辨率
-        public static Vector2Int UIResolution = new Vector2Int(1920, 1080);
+        public static Vector2Int UIResolution = new Vector2Int(1290, 2796);
         // PC测试分辨率
-        public static Vector2Int PCTestResolution = new Vector2Int(1920, 1080);
+        public static Vector2Int PCTestResolution = new Vector2Int(1290, 2796);
         // 是否编辑器加载内置配置
         public static bool IsConfigEditorLoadInternally = true;
         // 是否允许配置表回滚

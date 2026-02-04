@@ -3,7 +3,7 @@
     作者: Clear
     日期: 2023/12/4 14:59:5
     类型: 逻辑脚本
-    功能: 游戏世界管理器
+    功能: 游戏核心管理器
 *****************************************************/
 using FutureCore;
 using System;
@@ -12,22 +12,18 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public class GameMgr : BaseMgr<GameMgr>
+    public class GameManager : BaseMgr<GameManager>
     {
-        private GameSys _gameSys;
-
-        private GameWord gameWord;
+        public EliminateGameCore gameCore;
 
         protected override void New()
         {
             base.New();
-            _gameSys = new GameSys();
         }
         public override void Init()
         {
             base.Init();
-            gameWord = new GameWord();
-            gameWord.Init();
+
         }
 
         public override void StartUp()
@@ -36,32 +32,25 @@ namespace ProjectApp
 
 
         }
-    }
 
-
-    public class GameWord
-    {
-        public static Transform WordRood;
-
-        public static Vector2 RoodPot = Vector2.zero;
-
-        public void Init()
+        public void EnterGame()
         {
-            WordRood = new GameObject("WordRood").transform;
-            WordRood.transform.position = new Vector3(0, 0, 0);
-            
+            SceneMgr.Instance.AdditiveScene(2,LoadComplete,null);
 
         }
 
-
-       
-
-        public void Rest()
+        private void LoadComplete(object obj)
         {
-            
+            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.GameUI_Open);
 
+            gameCore = GameObject.FindObjectOfType<EliminateGameCore>(true);
+           
+
+            gameCore.Init();
 
         }
-
     }
+
+
+    
 }

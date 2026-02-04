@@ -188,11 +188,11 @@ namespace ProjectApp
             LogUtil.Log("[Application]StartUpGameMain");
             if (!IsRestart)
             {
-                FutureCore.GameMgr.Instance.InitialMain();
+                FutureCore.GameProcessMgr.Instance.InitialMain();
             }
             else
             {
-                FutureCore.GameMgr.Instance.EnterMain();
+                FutureCore.GameProcessMgr.Instance.EnterMain();
             }
         }
 

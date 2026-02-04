@@ -9,7 +9,7 @@ namespace ProjectApp
 {
     public static partial class UICtrlMsg
     {
-        private static uint cursor_UIOpenClose_Common = 110000;
+        private static uint cursor_UIOpenClose_Common = 100000;
 
         public static uint LoadingUI_Open = ++cursor_UIOpenClose_Common;
         public static uint LoadingUI_Close = ++cursor_UIOpenClose_Common;
