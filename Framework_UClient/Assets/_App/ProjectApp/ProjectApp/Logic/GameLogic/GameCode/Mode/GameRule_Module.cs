@@ -54,9 +54,11 @@ namespace ProjectApp
         public void AddListener()
         {
             //最先运行
-            Dispatcher.AddPriorityListener(GameMsg.Player_ClickElement, OnClickElement_test);
+            Dispatcher.AddPriorityListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement_test);
             Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElement, OnPlayer_SwipeElement);
             Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElementToElement, OnPlayer_SwipeElementToElement);
+
+            Dispatcher.AddFinallyListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
 
         }
 
@@ -65,9 +67,11 @@ namespace ProjectApp
         public void RemoveListener()
         {
 
-            Dispatcher.RemovePriorityListener(GameMsg.Player_ClickElement, OnClickElement_test);
+            Dispatcher.RemovePriorityListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement_test);
             Dispatcher.RemovePriorityListener(GameMsg.Player_SwipeElement, OnPlayer_SwipeElement);
             Dispatcher.RemovePriorityListener(GameMsg.Player_SwipeElementToElement, OnPlayer_SwipeElementToElement);
+
+            Dispatcher.AddFinallyListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
         }
 
         public void GenerateInitialElements()
@@ -92,7 +96,7 @@ namespace ProjectApp
 
 
         private const string lockStr = "loack";
-        void OnClickElement_test(object o)
+        void OnPlayer_ClickElement_test(object o)
         {
             OnClick_Element(o);
             return;
@@ -132,8 +136,49 @@ namespace ProjectApp
         }
 
 
+        #region  操作
 
-        #region  核心代码
+        /// <summary>
+        /// 该道具是否可以触发
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private bool IsActivateExternalProp(ExternalProp type,bool isClick = false)
+        {
+            bool isFade = false;
+            switch (type)
+            {
+                case ExternalProp.Undo:
+                case ExternalProp.AllRandom:
+                case ExternalProp.AddScore:
+                    {
+                        isFade = true;
+                        break;
+                    }
+                case ExternalProp.Hammer:
+                case ExternalProp.Horizontal:
+                case ExternalProp.Vertical:
+                case ExternalProp.Wild:
+                    {
+                        if(isClick)
+                        {
+                            isFade = true;
+                        }
+                        break;
+                    }
+                case ExternalProp.Swipe:
+                    {
+                        if(isClick && SelectedElement.x != -1 && SelectedElement.y != -1)
+                        {
+                            isFade = true;
+                        }
+                        break;
+                    }
+            }
+
+            return isFade;
+        }
+
 
         /// <summary>
         /// 点击元素
@@ -148,7 +193,28 @@ namespace ProjectApp
             //获取当前棋盘上对应位置的元素 不能信任传过来的数据
             data = Data.boardData[x, y];
 
-            if (ElementTypeTool.CheckType_IsProp(data.Type)&&!Core.IsClickProp)
+
+            if (Data.IsSelectExternalProp())
+            {
+                ExternalProp type = Data.externalProps[Data.selectExternalPropIndex];
+
+                if (IsActivateExternalProp(type))
+                {
+                    if (UseExternalProp(type, null))
+                    {
+                        //消耗
+                        Data.ConsumeItem(Data.selectExternalPropIndex);
+                    }
+                    else
+                    {
+                        Data.selectExternalPropIndex = -1;
+                    }
+                }
+
+                return;
+            }
+
+            if (ElementTool.CheckType_IsProp(data.Type) && !Core.IsClickProp)
             {
                 //触发道具
                 Player_ActivateProp(data);
@@ -202,9 +268,9 @@ namespace ProjectApp
                 || Data.HasConnection(data1.X, data1.Y, data2.X, data2.Y))
             {
 
-               
 
-                if (ElementTypeTool.CheckType_IsProp(data1.Type) && ElementTypeTool.CheckType_IsProp(data2.Type))
+
+                if (ElementTool.CheckType_IsProp(data1.Type) && ElementTool.CheckType_IsProp(data2.Type))
                 {
                     Player_ActivateTwoProp(data1.X, data1.Y, data2.X, data2.Y);
                 }
@@ -214,7 +280,7 @@ namespace ProjectApp
                     Player_SwapElement(data1.X, data1.Y, data2.X, data2.Y);
                 }
 
-                
+
 
 
             }
@@ -240,9 +306,39 @@ namespace ProjectApp
             }
         }
 
+        /// <summary>
+        /// 点击外置道具
+        /// </summary>
+        /// <param name="o"></param>
+        void OnPlayer_ClickExternalProp(object obj)
+        {
+            int index = (int)obj;
+            Data.selectExternalPropIndex = index;
+
+            ExternalProp type = Data.externalProps[Data.selectExternalPropIndex];
+
+            if (IsActivateExternalProp(type))
+            {
+                if (UseExternalProp(type, null))
+                {
+                    //消耗
+                    Data.ConsumeItem(Data.selectExternalPropIndex);
+                }
+                else
+                {
+
+                    Data.selectExternalPropIndex = -1;
+                }
+
+            }
 
 
+        }
 
+        #endregion
+
+
+        #region  核心代码
 
         /// <summary>
         /// 选中元素
@@ -250,7 +346,7 @@ namespace ProjectApp
         void SelectElement(int x, int y)
         {
             var elementData = BoardData[x, y];
-            if (!ElementTypeTool.CheckType_ClickEvent(elementData.Type))
+            if (!ElementTool.CheckType_ClickEvent(elementData.Type))
             {
                 //不可点击
                 return;
@@ -439,7 +535,7 @@ namespace ProjectApp
                 return matches;
 
             ElementType type = BoardData[x, y].Type;
-            if (!ElementTypeTool.CheckType_CanMatches(type))
+            if (!ElementTool.CheckType_CanMatches(type))
                 return matches;
 
             // 使用栈内存避免堆分配
@@ -561,7 +657,7 @@ namespace ProjectApp
             if (!IsPositionValid(x, y))
                 return false;
 
-            ElementType type = ElementTypeTool.GetTypeToElementData(BoardData[x, y]);
+            ElementType type = ElementTool.GetTypeToElementData(BoardData[x, y]);
             if (type == ElementType.Fixed_Special || type == ElementType.Fixed_None)
                 return false;
 
@@ -575,7 +671,7 @@ namespace ProjectApp
             // 向左检查
             for (int i = x - 1; i >= 0; i--)
             {
-                ElementType tarType = ElementTypeTool.GetTypeToElementData(BoardData[i, y]);
+                ElementType tarType = ElementTool.GetTypeToElementData(BoardData[i, y]);
 
                 if (tarType == type)
                     tempMatches[matchCount++] = new Vector2Int(i, y);
@@ -586,7 +682,7 @@ namespace ProjectApp
             // 向右检查
             for (int i = x + 1; i < boardSize.x; i++)
             {
-                ElementType tarType = ElementTypeTool.GetTypeToElementData(BoardData[i, y]);
+                ElementType tarType = ElementTool.GetTypeToElementData(BoardData[i, y]);
                 if (tarType == type)
                     tempMatches[matchCount++] = new Vector2Int(i, y);
                 else
@@ -614,7 +710,7 @@ namespace ProjectApp
             if (!IsPositionValid(x, y))
                 return false;
 
-            ElementType type = ElementTypeTool.GetTypeToElementData(BoardData[x, y]);
+            ElementType type = ElementTool.GetTypeToElementData(BoardData[x, y]);
             if (type == ElementType.Fixed_Special || type == ElementType.Fixed_None)
                 return false;
 
@@ -628,7 +724,7 @@ namespace ProjectApp
             // 向下检查
             for (int j = y - 1; j >= 0; j--)
             {
-                ElementType tarType = ElementTypeTool.GetTypeToElementData(BoardData[x, j]);
+                ElementType tarType = ElementTool.GetTypeToElementData(BoardData[x, j]);
                 if (tarType == type)
                     tempMatches[matchCount++] = new Vector2Int(x, j);
                 else
@@ -638,7 +734,7 @@ namespace ProjectApp
             // 向上检查
             for (int j = y + 1; j < boardSize.y; j++)
             {
-                ElementType tarType = ElementTypeTool.GetTypeToElementData(BoardData[x, j]);
+                ElementType tarType = ElementTool.GetTypeToElementData(BoardData[x, j]);
                 if (tarType == type)
                     tempMatches[matchCount++] = new Vector2Int(x, j);
                 else
@@ -712,13 +808,13 @@ namespace ProjectApp
                         {
                             ElementType type = BoardData[x, temp_y].Type;
                             //是空的 
-                            if (ElementTypeTool.CheckType_UpEmpty(BoardData[x, temp_y].Type))
+                            if (ElementTool.CheckType_UpEmpty(BoardData[x, temp_y].Type))
                             {
                                 temp_y++;
                                 continue;
                             }
                             //可下落
-                            if (ElementTypeTool.CheckType_FillEmpty(type))
+                            if (ElementTool.CheckType_FillEmpty(type))
                             {
                                 sour = BoardData[x, temp_y];
                                 //下落了 将自身设置为空的
@@ -832,7 +928,7 @@ namespace ProjectApp
                 for (int y = 0; y < boardSize.y; y++)
                 {
                     // 跳过已检查位置和空位
-                    if (!ElementTypeTool.CheckType_CanMatches(BoardData[x, y].Type) || visited[x, y])
+                    if (!ElementTool.CheckType_CanMatches(BoardData[x, y].Type) || visited[x, y])
                     {
                         continue;
                     }
@@ -972,7 +1068,7 @@ namespace ProjectApp
             ElementData formData = Data.boardData[form_x, form_y];
             ElementData toData = Data.boardData[to_x, to_y];
 
-            if (!ElementTypeTool.CheckType_IsProp(formData.Type) || !ElementTypeTool.CheckType_IsProp(toData.Type)) return;
+            if (!ElementTool.CheckType_IsProp(formData.Type) || !ElementTool.CheckType_IsProp(toData.Type)) return;
 
             List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
             List<ElementData> currProps = ListPool<ElementData>.Get();
@@ -1004,7 +1100,7 @@ namespace ProjectApp
         /// <param name="data"></param>
         public void Player_ActivateProp(ElementData data)
         {
-            if (!ElementTypeTool.CheckType_IsProp(data.Type)) return;
+            if (!ElementTool.CheckType_IsProp(data.Type)) return;
 
             Data.TakeMemorySnapshotBoardData();
 
@@ -1230,11 +1326,11 @@ namespace ProjectApp
 
                 }
                 var tempData = Data.boardData[potX, Y];
-                if (ElementTypeTool.CheckType_CanMatches(tempData.Type))
+                if (ElementTool.CheckType_CanMatches(tempData.Type))
                 {
                     matches.Add(new Vector2Int(potX, Y));
                 }
-                else if (ElementTypeTool.CheckType_IsProp(tempData.Type))
+                else if (ElementTool.CheckType_IsProp(tempData.Type))
                 {
                     dataProp.Add(tempData);
                 }
@@ -1288,11 +1384,11 @@ namespace ProjectApp
                 }
                 //Debug.Log(potY);
                 var tempData = Data.boardData[X, potY];
-                if (ElementTypeTool.CheckType_CanMatches(tempData.Type))
+                if (ElementTool.CheckType_CanMatches(tempData.Type))
                 {
                     matches.Add(new Vector2Int(X, potY));
                 }
-                else if (ElementTypeTool.CheckType_IsProp(tempData.Type))
+                else if (ElementTool.CheckType_IsProp(tempData.Type))
                 {
                     dataProp.Add(tempData);
                 }
@@ -1334,11 +1430,11 @@ namespace ProjectApp
                             // 检查该位置是否有可消除的方块
                             var tempData = Data.boardData[targetX, targetY];
 
-                            if (ElementTypeTool.CheckType_CanMatches(tempData.Type))
+                            if (ElementTool.CheckType_CanMatches(tempData.Type))
                             {
                                 matches.Add(new Vector2Int(targetX, targetY));
                             }
-                            else if (ElementTypeTool.CheckType_IsProp(tempData.Type))
+                            else if (ElementTool.CheckType_IsProp(tempData.Type))
                             {
                                 dataProp.Add(tempData);
                             }
@@ -1363,7 +1459,7 @@ namespace ProjectApp
             {
                 for (int y = 0; y < boardSize.y; y++)
                 {
-                    ElementType type = ElementTypeTool.GetTypeToElementData(BoardData[x, y]);
+                    ElementType type = ElementTool.GetTypeToElementData(BoardData[x, y]);
                     if (matches_type == type)
                     {
                         matches.Add(new Vector2Int(x, y));
@@ -1383,7 +1479,7 @@ namespace ProjectApp
             List<ElementData> datas = ListPool<ElementData>.Get();
             foreach (var item in Data.boardData)
             {
-                if (ElementTypeTool.CheckType_CanMatches(item.Type))
+                if (ElementTool.CheckType_CanMatches(item.Type))
                 {
                     datas.Add(item);
                 }
@@ -1505,7 +1601,7 @@ namespace ProjectApp
 
                     }
                     break;
-                case ExternalProp.AllRanan:
+                case ExternalProp.AllRandom:
                     {
                         // 成功使用道具 通知表现
                         Core.Dispatch(GameMsg.UseExternalProp, propType, list);
@@ -1560,12 +1656,12 @@ namespace ProjectApp
                     }
                     break;
                 case ExternalProp.AddScore:
-                    { 
+                    {
                         AddScore(3000);
                         isSu = true;
                     }
-                break;
-                    
+                    break;
+
 
 
 

@@ -78,6 +78,15 @@ namespace ProjectApp
             CheckInitialMatches();
 
 
+            Data.externalProps.Add( ExternalProp.Hammer);
+            Data.externalProps.Add( ExternalProp.Horizontal);
+            Data.externalProps.Add( ExternalProp.Vertical);
+            Data.externalProps.Add( ExternalProp.Swipe);
+            Data.externalProps.Add( ExternalProp.Undo);
+            Data.externalProps.Add( ExternalProp.Wild);
+            Data.externalProps.Add( ExternalProp.AllRandom);
+
+
             Data.boardData[6, 5].SetType( ElementType.Prop_Horizontal);
             Data.boardData[5, 5].SetType( ElementType.Prop_Vertical);
 

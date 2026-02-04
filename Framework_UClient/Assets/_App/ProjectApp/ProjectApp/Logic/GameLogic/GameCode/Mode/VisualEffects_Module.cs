@@ -15,7 +15,10 @@ namespace ProjectApp
     {
         public ElementItem[,] elementItems;
 
+        public List<ExternalPropItem> externalPropItems = new List<ExternalPropItem>();
+
         private Vector3 startVector3;
+
 
         public Raycast3D_System RaycastSys { get; private set; }
         public ElementAni_System AnimationSys { get; private set; }
@@ -23,6 +26,17 @@ namespace ProjectApp
         private bool isInit;
 
         #region 对象池
+
+        private FutureCore.ObjectPool<ElementItem> elementsPool;
+        private FutureCore.ObjectPool<ExternalPropItem> externalPropPool;
+
+        private Transform elementsPoolTrf;
+
+        private Transform elementItemsTrf;
+
+        private Transform connectionTrf;
+        private Transform externalPropsTrf;
+
         private ElementItem OnNewElement()
         {
             GameObject go = GameTool.InstantiateElementPrefab();
@@ -43,13 +57,28 @@ namespace ProjectApp
             element.SetActive(true);
             element.Transform.SetParent(elementItemsTrf);
         }
-        private FutureCore.ObjectPool<ElementItem> elementsPool;
 
-        private Transform elementsPoolTrf;
+        private ExternalPropItem OnNewExternalPropItem()
+        {
+            GameObject go = GameTool.InstantiateExternalPropPrefab();
+            ExternalPropItem element = new ExternalPropItem(go);
+            return element;
+        }
 
-        private Transform elementItemsTrf;
+        private void OnGetExternalPropItem(ExternalPropItem propItem)
+        {            
+            propItem.Transform.SetActive(true);
+            RaycastSys.RegisterEvent_OnClick(propItem); 
+        }
 
-        private Transform connectionTrf;
+        private void OnReleaseExternalPropItem(ExternalPropItem propItem)
+        { 
+            propItem.Transform.parent = elementsPoolTrf;
+            propItem.Transform.SetActive(false);
+            RaycastSys.UnregisterEvent_OnClick(propItem);
+            externalPropPool.Release(propItem);
+        }
+
 
         #endregion
 
@@ -223,15 +252,23 @@ namespace ProjectApp
             connectionTrf = new GameObject("ConnectionTrf").transform;
             connectionTrf.SetParent(Core.transform);
             connectionTrf.localPosition = Vector3.zero;
+            
+            externalPropPool = new ObjectPool<ExternalPropItem>(OnNewExternalPropItem,OnGetExternalPropItem,OnReleaseExternalPropItem);
+            externalPropsTrf = new GameObject("ExternalPropsTrf").transform;
+            externalPropsTrf.SetParent(Core.transform);
+            externalPropsTrf.localPosition = Vector3.zero;
 
             startVector3 = Core.startVector3;
 
+            
 
             InitSys();
 
             isInit = true;
 
         }
+
+
 
         private void InitSys()
         {
@@ -242,14 +279,13 @@ namespace ProjectApp
             RaycastSys.maxDistance = 1000;
             RaycastSys.queryTriggerInteraction = QueryTriggerInteraction.Ignore;
             RaycastSys.ClearCheckAllLayers();
-            RaycastSys.AddCheckLayerMask("ElementItem");
+            RaycastSys.AddCheckLayerMask("GameLayer");
 
 
             AnimationSys = new ElementAni_System();
             AnimationSys.Init();
 
-            visuaProcessQueue = new Queue<VisuaProcess>();
-            visuaProcessDic = new Dictionary<uint, VisuaProcess>();
+
 
         }
 
@@ -266,9 +302,8 @@ namespace ProjectApp
             Dispatcher.AddFinallyListener(GameMsg.ActivateProp, OnActivateProp);
             Dispatcher.AddFinallyListener(GameMsg.ActivateTwoProp, OnActivateTwoProp);
             Dispatcher.AddFinallyListener(GameMsg.UseExternalProp, OnUseExternalProp);
+
         }
-
-
 
         public void RemoveListener()
         {
@@ -284,9 +319,9 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.ActivateTwoProp, OnActivateTwoProp);
             Dispatcher.RemoveFinallyListener(GameMsg.UseExternalProp, OnUseExternalProp);
 
-        }
 
-        
+
+        }
 
         public void InitializeBoard(int w, int h)
         {
@@ -315,6 +350,21 @@ namespace ProjectApp
 
             LoadAllConnectionGo();
 
+            LoadExternalProp();
+
+
+        }
+        
+        public void LoadExternalProp()
+        {
+            for (int i = 0; i < Data.externalProps.Count; i++)
+            {
+                ExternalProp type = Data.externalProps[i];
+                ExternalPropItem propItem = externalPropPool.Get();
+                propItem.Transform.parent = externalPropsTrf;
+                propItem.SetType(type);
+                externalPropItems.Add(propItem);
+            }
 
         }
 
@@ -343,8 +393,6 @@ namespace ProjectApp
             }
 
         }
-
-
 
         public void Dispose()
         {
@@ -397,6 +445,11 @@ namespace ProjectApp
             AnimationSys.Run();
 
             RunProcess();
+            
+            UpdateExternalProp();
+          
+            
+            
         }
 
 
@@ -405,6 +458,7 @@ namespace ProjectApp
         #region  ElementItemTool
 
         private Dictionary<Vector2Int, ElementItem> creadElementItemList = new Dictionary<Vector2Int, ElementItem>();
+        
 
         private void Enqueue_To_CreadList(ElementItem item)
         {
@@ -1229,6 +1283,49 @@ namespace ProjectApp
             process.Duration = 0.3f;
 
         }
+
+        #endregion
+
+        #region 外置道具模块
+        private Vector3 externalPropPot = new Vector3(0,10,0);
+        private float swipeSpeed = 1;
+        public void AddSwipeVector2(Vector2 v)
+        {
+            externalPropPot = externalPropPot + new Vector3(v.x,0,0) * 1.2f;
+        }
+
+        private void UpdateExternalProp()
+        {
+            externalPropsTrf.localPosition = Vector3.Lerp(externalPropsTrf.localPosition,externalPropPot,UnityEngine.Time.deltaTime * swipeSpeed);
+
+        }
+
+        public int GetIndexPropItem(ExternalPropItem propItem)
+        {
+            int index = -1;
+            for (int i = 0; i < externalPropItems.Count; i++)
+            {
+                if(externalPropItems[i] == propItem)
+                {             
+                  index = i;
+                  break;
+                }
+            }
+            return index;
+        }
+
+        
+        /// <summary>
+        /// 选中了对应index 的道具
+        /// </summary>
+        /// <param name="index"></param>
+        public void SelectExternalPropToIndex(int index)
+        {
+           // 发光之类的
+        }
+
+
+
         #endregion
 
 

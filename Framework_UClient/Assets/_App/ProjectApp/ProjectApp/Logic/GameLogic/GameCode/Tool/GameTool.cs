@@ -18,15 +18,24 @@ namespace ProjectApp
     {
         public static EliminateGameCore GameCore;
 
-        private static Dictionary<ElementType, Sprite> elementTypeSpr = new Dictionary<ElementType, Sprite>();
+        private static Dictionary<int, Sprite> elementTypeSpr = new Dictionary<int, Sprite>();
         public static Sprite GetSprite(ElementType type)
         {
-            if (!elementTypeSpr.ContainsKey(type))
+            if (!elementTypeSpr.ContainsKey((int)type))
             {
                 Sprite sprite = Resources.Load<Sprite>("ItemIcon/" + type.ToString());
-                elementTypeSpr[type] = sprite;
+                elementTypeSpr[(int)type] = sprite;
             }
-            return elementTypeSpr[type];
+            return elementTypeSpr[(int)type];
+        }
+        public static Sprite GetSprite(ExternalProp type)
+        {
+            if (!elementTypeSpr.ContainsKey((int)type))
+            {
+                Sprite sprite = Resources.Load<Sprite>("ExternalProp/ExternalProp_" + type.ToString());
+                elementTypeSpr[(int)type] = sprite;
+            }
+            return elementTypeSpr[(int)type];
         }
 
         private static GameObject connection_Prefab;
@@ -51,6 +60,19 @@ namespace ProjectApp
 
             return GameObject.Instantiate(element_Prefab);
         }
+        private static GameObject externalProp_Prefab;
+
+        public static GameObject InstantiateExternalPropPrefab()
+        {
+            if (externalProp_Prefab == null)
+            {
+                externalProp_Prefab = Resources.Load<GameObject>("Prefabs/GamePrefab/ExternalProp");
+            }
+
+            return GameObject.Instantiate(externalProp_Prefab);
+        }
+
+
         public static ElementType[] AllBaseElements = new ElementType[] { ElementType.Item_A,ElementType.Item_B,ElementType.Item_C,ElementType.Item_D };
 
         public static void YatesElements()

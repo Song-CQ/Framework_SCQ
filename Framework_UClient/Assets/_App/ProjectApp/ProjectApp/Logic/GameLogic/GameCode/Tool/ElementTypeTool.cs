@@ -6,20 +6,6 @@ using UnityEngine;
 namespace ProjectApp
 {
 
-    public enum ExternalProp
-    {
-        Hammer,
-        Swipe,
-        Horizontal,
-        Vertical,
-        AllRanan,
-        Undo,
-        Wild,
-        AddScore,
-
-    }
-
-
     public enum ElementType
     {
         Item_A = 1,    // 红色基础元素
@@ -29,7 +15,7 @@ namespace ProjectApp
 
         Item_Change,// 可变换元素
 
-      
+
         //// 可切换的特殊元素
         //Prop_Rocket,           // 火箭组合（横竖可切换）
         //RocketBombCombo,       // 火箭炸弹组合
@@ -50,7 +36,7 @@ namespace ProjectApp
 
 
         Dummy_CanClickEvent = 200, // 占位 比他小的接受点击
-        
+
 
         //不可下落
         Dummy_CanDown = 900,//占位 比他大的不可下落
@@ -61,7 +47,7 @@ namespace ProjectApp
         Fixed_None = 2000,//该方格被禁用方格 一般是地形 后面可能会有可破坏地形
 
     }
-    public static class ElementTypeTool
+    public static class ElementTool
     {
 
         /// <summary>
@@ -72,14 +58,14 @@ namespace ProjectApp
         /// <exception cref="NotImplementedException"></exception>
         public static bool CheckType_HasIcon(ElementType type)
         {
-            switch(type)
+            switch (type)
             {
                 case ElementType.Dummy_CanMatche:
                 case ElementType.Dummy_CanClickEvent:
                 case ElementType.Dummy_CanDown:
                 case ElementType.Fixed_Special:
                 case ElementType.Fixed_None:
-                return false;
+                    return false;
             }
             return true;
         }
@@ -124,13 +110,13 @@ namespace ProjectApp
         /// <returns></returns>
         public static bool CheckType_CanMatches(ElementType type)
         {
-            if( type < ElementType.Dummy_CanMatche)
+            if (type < ElementType.Dummy_CanMatche)
             {
                 return true;
             }
 
             return false;
-            
+
         }
 
         /// <summary>
@@ -141,7 +127,7 @@ namespace ProjectApp
         /// <exception cref="NotImplementedException"></exception>
         public static bool CheckType_ClickEvent(ElementType type)
         {
-            if (type< ElementType.Dummy_CanClickEvent)
+            if (type < ElementType.Dummy_CanClickEvent)
             {
                 return true;
             }
@@ -167,5 +153,8 @@ namespace ProjectApp
             return false;
 
         }
+
+
+        
     }
 }

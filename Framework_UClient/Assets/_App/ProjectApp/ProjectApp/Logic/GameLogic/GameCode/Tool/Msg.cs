@@ -22,6 +22,10 @@ namespace ProjectApp
         /// 在一个元素上滑动
         /// </summary>
         public static readonly uint Player_SwipeElement = ++_counter;
+        /// <summary>
+        /// 点击一个盘外道具
+        /// </summary>
+        public static readonly uint Player_ClickExternalPropItem = ++_counter;
 
         
         

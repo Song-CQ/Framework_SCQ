@@ -202,7 +202,7 @@ namespace ProjectApp
 
         public void RefreshView()
         {
-            if (ElementTypeTool.CheckType_HasIcon(Data.Type))
+            if (ElementTool.CheckType_HasIcon(Data.Type))
             {
                 icon.sprite = GameTool.GetSprite(Data.Type);
             }

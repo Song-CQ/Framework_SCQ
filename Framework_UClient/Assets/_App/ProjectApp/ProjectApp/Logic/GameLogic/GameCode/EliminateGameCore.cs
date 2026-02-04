@@ -44,7 +44,13 @@ namespace ProjectApp
         //连接的棋盘位置 [5,0]和[5,1] 连接
         private Dictionary<long, (Vector2Int, Vector2Int)> _keyToConnection = new Dictionary<long, (Vector2Int, Vector2Int)>();
 
+
         #endregion
+
+        public List<ExternalProp> externalProps = new List<ExternalProp>();
+
+        public int selectExternalPropIndex = -1;
+        
 
         // 当前分数
         public int currentScore = 0;
@@ -124,6 +130,9 @@ namespace ProjectApp
 
             linkBoardPotLength = 0;
             _keyToConnection.Clear();
+
+            selectExternalPropIndex = -1;
+            externalProps.Clear();
             
             selectedElement = new Vector2Int(-1, -1);
             boardSize = new Vector2Int(0, 0);
@@ -166,6 +175,16 @@ namespace ProjectApp
 
         }
 
+        public void ConsumeItem(int _index)
+        {
+            externalProps.RemoveAt(_index);
+            selectExternalPropIndex = -1;
+        }
+
+        public bool IsSelectExternalProp()
+        {
+            return selectExternalPropIndex != -1;
+        }
     }
 
 
@@ -483,6 +502,24 @@ namespace ProjectApp
             if (!Enabled_PlayerCtr) return;
 
             Dispatch(GameMsg.Player_SwipeElement, startItem.Data,dir);
+        }
+
+        public void ClickExternalPropItem(ExternalPropItem propItem)
+        {
+           if (!Enabled_PlayerCtr) return;
+           int index = visualEffectsModule.GetIndexPropItem(propItem);
+           visualEffectsModule.SelectExternalPropToIndex(index);
+
+           Dispatch(GameMsg.Player_ClickExternalPropItem,index);
+
+
+        }
+
+        public void AddSwipeVector2(Vector3 v)
+        {
+            if (!Enabled_PlayerCtr) return;
+
+            visualEffectsModule.AddSwipeVector2(v);
         }
 
 
