@@ -361,7 +361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &494978170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,7 +1232,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494978169}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f73c4d032899fd24dbdf8af764cd9a25, type: 3}
   m_Name: 
@@ -2108,9 +2108,10 @@ MonoBehaviour:
   startVector3: {x: -4.55, y: -6, z: 0}
   currentMode: 0
   IsFill: 0
-  IsClickProp: 1
-  temp1: {x: 0, y: 13}
-  temp2: {x: 0, y: 12}
+  IsClickProp: 0
+  temp1: {x: 0, y: 0}
+  temp2: {x: 0, y: 1}
+  isPool: 1
 --- !u!4 &494978173
 Transform:
   m_ObjectHideFlags: 0
@@ -2146,7 +2147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &522421208
 Transform:
   m_ObjectHideFlags: 0
@@ -2230,7 +2231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &532188192
 Transform:
   m_ObjectHideFlags: 0
@@ -2602,7 +2603,7 @@ Camera:
   m_GameObject: {fileID: 913881393}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

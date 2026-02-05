@@ -70,6 +70,7 @@ namespace ProjectApp
 
         protected override void OnOpen(object args)
         {
+            
         }
 
         protected override void OnHide()

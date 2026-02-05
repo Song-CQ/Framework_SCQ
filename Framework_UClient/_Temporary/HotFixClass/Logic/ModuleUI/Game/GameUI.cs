@@ -49,6 +49,8 @@ namespace ProjectApp
         {
             u_Entity = uiEntity as UGUIEntity;
 
+            
+
         }
 
         protected override void OnOpenBefore(object args)

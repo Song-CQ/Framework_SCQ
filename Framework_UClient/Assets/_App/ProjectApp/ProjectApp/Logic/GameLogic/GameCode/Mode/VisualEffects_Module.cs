@@ -511,7 +511,7 @@ namespace ProjectApp
 
         private Vector3 GetPosition(int X, int Y)
         {
-            Vector3 position = startVector3 + new Vector3(X*10f, Y*10f, Y * 0.05f);
+            Vector3 position = new Vector3(X*10, Y*10, 0.05f*Y);
             return position;
         }
         private Vector3 GetPosition(ElementData data)
@@ -637,14 +637,12 @@ namespace ProjectApp
 
             // 2. 创建动画流程
 
-            Vector3 pot1 = item1.Pos;
-            Vector3 pot2 = item2.Pos;
-
             var process = VisuaProcess.Get();
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
                 p.Duration = AnimationSys.PlayAin_SwapElement(item1, item2);
+                Debug.Log("当前触发"+UnityEngine.Time.time+"次序事件："+ p.Duration);
             });
 
             process.SetLinkFinish((p) =>

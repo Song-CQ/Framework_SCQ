@@ -119,10 +119,12 @@ namespace ProjectApp
                 Transform.localPosition = pos;
             }
         }
+        private Vector3 pos;
+
 
         public Collider Collider { get; private set; }
 
-        private Vector3 pos;
+       
         public bool isSelect;
 
         private bool _active = false;
@@ -186,6 +188,7 @@ namespace ProjectApp
             var temp  = Data;
             temp.SetSpecial();
             temp.Type =  type;
+        
             Data = temp;
         }
 

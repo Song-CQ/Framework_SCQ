@@ -62,8 +62,8 @@ namespace ProjectApp.GameLogic
 
         bool IElementAni.IsComplete => base.IsComplete;
 
-        public Vector3 formPot = Vector3.zero;
-        public Vector3 toPot = Vector3.zero;
+        public Vector3 formPot = Vector3Int.zero;
+        public Vector3 toPot = Vector3Int.zero;
         protected override void OnStart()
         {
             base.OnStart();
@@ -88,7 +88,7 @@ namespace ProjectApp.GameLogic
                 x =>
                 {
                     Tar.Pos = Vector3.Lerp(formPot, toPot, x);
-                    Debug.Log(Tar.Data.ToString() + "要移" + formPot + " to " + toPot+ " x "+x + "当前"+ Tar.Pos);
+                    Debug.Log(TimerUtil.GetGameTime()+Tar.Data.ToString() + "要移" + formPot + " to " + toPot+ " x "+x + "当前"+ Tar.Pos);
                 },
                 1f,
                 Duration));
@@ -99,8 +99,12 @@ namespace ProjectApp.GameLogic
             base.OnComplete();
 
             Tar.Pos = toPot;
+            Debug.Log(Tar.Data.ToString() + "移动完成" + formPot + " to " + toPot + "当前"+ Tar.Pos);
 
         }
+        
+
+        
 
 
         public override void Disp()
@@ -112,8 +116,8 @@ namespace ProjectApp.GameLogic
             Duration = 0;
 
 
-            formPot = Vector3.zero;
-            toPot = Vector3.zero;
+            formPot = Vector3Int.zero;
+            toPot = Vector3Int.zero;
         }
 
 
@@ -165,7 +169,7 @@ namespace ProjectApp.GameLogic
         protected override void OnStart()
         {
             base.OnStart();
-           
+            Tar.Pos = toPot;
         }
 
         protected override void AddTweenToSequence(Sequence seq)
@@ -203,6 +207,8 @@ namespace ProjectApp.GameLogic
         protected override void OnComplete()
         {
             base.OnComplete();
+
+
         }
 
 

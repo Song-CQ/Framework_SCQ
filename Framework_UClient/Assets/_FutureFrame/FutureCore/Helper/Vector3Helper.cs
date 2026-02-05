@@ -183,6 +183,25 @@ namespace FutureCore
 
             return angle + 180;
         }
+
+        public static Vector3Int ToVector3Int(this Vector3 vector3)
+        {
+            return new Vector3Int(
+                Mathf.RoundToInt(vector3.x),
+                Mathf.RoundToInt(vector3.y),
+                Mathf.RoundToInt(vector3.z)
+            );
+        }
+
+        public static Vector3Int ToVector3IntFloor(this Vector3 vector3)
+        {
+            return Vector3Int.FloorToInt(vector3);
+        }
+
+        public static Vector3Int ToVector3IntCeil(this Vector3 vector3)
+        {
+            return Vector3Int.CeilToInt(vector3);
+        }
     }
 
     public struct EightDirection

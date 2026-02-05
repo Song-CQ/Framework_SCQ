@@ -82,11 +82,13 @@ namespace FutureCore
 
         public void Stop()
         {
+            sequence.Complete();//调用OnComplete
             sequence.Pause();
             //sequence.Rewind(); 将动画回到第一针 会导致动画影响的物体回拉 一般在会开始的时候用
             IsPlay = false;
             ResetState();
         }
+
 
         protected virtual void OnStart()
         {
