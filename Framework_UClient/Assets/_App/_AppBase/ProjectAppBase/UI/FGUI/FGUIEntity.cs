@@ -63,5 +63,10 @@ namespace ProjectApp
             UI = null;
             base.Dispose();
         }
+
+        public override T GetComponent<T>(string namePath, bool isAutoAdd, bool isCance)
+        {
+            return null;
+        }
     }
 }

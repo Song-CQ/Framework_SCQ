@@ -212,5 +212,24 @@ namespace FutureCore
         }
         #endregion
 
+
+        #region Tool
+
+        /// <summary>
+        /// 获取对应路径名字的组件
+        /// </summary>
+        /// <typeparam name="T">组件名</typeparam>
+        /// <param name="namePath">路径名</param>
+        /// <param name="isAutoAdd">是否要添加</param>
+        /// <param name="isCance">是否缓存</param>
+        /// <returns></returns>
+        protected T GetComponent<T>(string namePath, bool isAutoAdd = false, bool isCance = false) where T : UnityEngine.Component
+        {
+            if(uiEntity==null)return null;
+            
+            return uiEntity.GetComponent<T>(namePath,isAutoAdd,isCance);
+        }
+
+        #endregion
     }
 }

@@ -52,10 +52,10 @@ namespace ProjectApp
         /// </summary>
         /// <typeparam name="T">组件名</typeparam>
         /// <param name="namePath">路径名</param>
-        /// <param name="isAdd">是否要添加</param>
+        /// <param name="isAutoAdd">是否要添加</param>
         /// <param name="isCance">是否缓存</param>
         /// <returns></returns>
-        public T GetComponent<T>(string namePath, bool isAdd = false, bool isCance = false) where T : Component
+        public override T GetComponent<T>(string namePath, bool isAutoAdd = false, bool isCance = false)
         {
             if (Transform == null) return null;
             Component _component = null;
@@ -65,7 +65,7 @@ namespace ProjectApp
                 if (trf)
                 {
                     _component = trf.GetComponent<T>();
-                    if (!_component && isAdd)
+                    if (!_component && isAutoAdd)
                     {
                         _component = trf.gameObject.AddComponent<T>();
                     }

@@ -6,6 +6,7 @@
 	功能：UI实体
 *****************************************************/
 using System;
+using UnityEngine;
 
 namespace FutureCore
 {
@@ -46,7 +47,10 @@ namespace FutureCore
         {
             thisName = null;
         }
-   
 
+        public virtual T GetComponent<T>(string namePath, bool isAutoAdd, bool isCance) where T : Component
+        {
+            return null;
+        }
     }
 }
