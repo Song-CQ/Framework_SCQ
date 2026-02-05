@@ -35,8 +35,14 @@ namespace ProjectApp
 
         public void EnterGame()
         {
-            SceneMgr.Instance.AdditiveScene(2,LoadComplete,null);
+            SceneMgr.Instance.AdditiveScene(2, LoadComplete, null);
 
+
+        }
+
+        public void ExitGame()
+        {
+            SceneMgr.Instance.UnAdditiveScene(2, null, null);
         }
 
         private void LoadComplete(object obj)

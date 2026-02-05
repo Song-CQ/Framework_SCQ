@@ -266,8 +266,8 @@ namespace ProjectApp.GameLogic
             Effect effect = new Effect(effectData, effectEntity);
             effect.autoDestroy = true;
 
-            effect.entity.transform.position = Tar.Transform.position - Vector3.forward;
-            effect.entity.transform.localScale = Vector3.one * 0.3f;
+            effect.entity.transform.position = Tar.Transform.position - Vector3.forward*10;
+            effect.entity.transform.localScale = Vector3.one * 5;
             effect.Play();
 
            
@@ -293,15 +293,13 @@ namespace ProjectApp.GameLogic
         private float shakeDuration = 0.6f;
         private float shakeIntensity = 0.05f;
         private int bounces = 3;
-        private Vector3 originalPos;
+        public Vector3 originalPos;
 
         public void SetElement(ElementItem elementItem,float delay)
         {
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime();
             Delay = delay;
-
-            originalPos = elementItem.Pos;
         }
 
         protected override void OnStart()

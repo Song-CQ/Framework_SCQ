@@ -87,5 +87,10 @@ namespace FutureCore
             SceneSwitchMgr.Instance.AdditiveScene(idx,LoadComplete,param,isGc);
         }
 
+        public void UnAdditiveScene(int idx, Action<object> LoadComplete, object param)
+        {
+            SceneSwitchMgr.Instance.UnloadSceneByIndex(idx, LoadComplete, param);
+        }
+
     }
 }

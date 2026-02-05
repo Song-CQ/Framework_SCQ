@@ -96,5 +96,35 @@ namespace FutureCore
             }
         }
 
+        // 卸载指定名称的场景
+        public void UnloadSceneByName(string sceneName,Action<object> loadComplete, object param)
+        {
+            StartCoroutine(UnloadSceneCoroutine(sceneName, loadComplete, param));
+        }
+
+        // 卸载指定索引的场景
+        public void UnloadSceneByIndex(int sceneIndex, Action<object> loadComplete, object param)
+        {
+            StartCoroutine(UnloadSceneCoroutine(sceneIndex,loadComplete,param));
+        }
+
+        private IEnumerator UnloadSceneCoroutine(object sceneIdentifier, Action<object> loadComplete, object param)
+        {
+            AsyncOperation asyncUnload;
+
+            if (sceneIdentifier is string)
+                asyncUnload = SceneManager.UnloadSceneAsync((string)sceneIdentifier);
+            else
+                asyncUnload = SceneManager.UnloadSceneAsync((int)sceneIdentifier);
+
+            while (!asyncUnload.isDone)
+            {
+                yield return null;
+            }
+
+            Debug.Log("场景卸载完成");
+            // 可在这里执行卸载后的操作
+        }
+
     }
 }

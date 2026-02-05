@@ -171,12 +171,12 @@ namespace ProjectApp
 
         #region 动画
 
-        public float PlayAin_MovePot(ElementItem item, Vector3 tarPot, float delay = 0)
+        public float PlayAin_MovePot(ElementItem item,Vector3 formPot, Vector3 tarPot, float delay = 0)
         {
             StopElementItemAni(item);
 
             MoveElementAni_Sequence ani1 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
-            ani1.formPot = item.Pos;
+            ani1.formPot = formPot;
             ani1.toPot = tarPot;
             ani1.SetElement(item, delay);
             AddRunElementAni(item, ani1);
@@ -190,7 +190,7 @@ namespace ProjectApp
             return dur;
         }
 
-        public float PlayAin_SwapElement(ElementItem item1, ElementItem item2, float delay = 0)
+        public float PlayAin_SwapElement(ElementItem item1, ElementItem item2, Vector3 item1Pot , Vector3 item2Pot, float delay = 0)
         {
             //停止正在播放的Dotw
             StopElementItemAni(item1);
@@ -198,14 +198,14 @@ namespace ProjectApp
 
 
             MoveElementAni_Sequence ani1 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
-            ani1.formPot = item1.Pos;
-            ani1.toPot = item2.Pos;
+            ani1.formPot = item1Pot;
+            ani1.toPot = item2Pot;
             ani1.SetElement(item1, delay);
             AddRunElementAni(item1, ani1);
 
             MoveElementAni_Sequence ani2 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
-            ani2.formPot = item2.Pos;
-            ani2.toPot = item1.Pos;
+            ani2.formPot = item2Pot;
+            ani2.toPot = item1Pot;
             ani2.SetElement(item2, delay);
             AddRunElementAni(item2, ani2);
 
@@ -230,18 +230,19 @@ namespace ProjectApp
             }
             return dur;
         }
-        public float PlayAin_FallElements(List<ElementItem> elementItemList, List<Vector3> tarPotList, float delay = 0)
+        public float PlayAin_FallElements(List<ElementItem> elementItemList, List<Vector3> formPotLis, List<Vector3> tarPotList, float delay = 0)
         {
             float dur = 0;
             for (int i = 0; i < elementItemList.Count; i++)
             {
                 var item = elementItemList[i];
-                var pot = tarPotList[i];
+                var formPot = formPotLis[i];
+                var toPot = tarPotList[i];
                 if (item == null) continue;
                 StopElementItemAni(item);
                 FallMoveElementAni_Sequence ani = GetAnimation(ElementAniType.FallMove) as FallMoveElementAni_Sequence;
-                ani.formPot = item.Pos;
-                ani.toPot = pot;
+                ani.formPot = formPot;
+                ani.toPot = toPot;
 
                 ani.SetElement(item, delay);
                 AddRunElementAni(item, ani);
@@ -252,19 +253,22 @@ namespace ProjectApp
             return dur;
         }
 
-        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList, float delay = 0)
+        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList , float delay = 0)
         {
             float dur = -1;
-            foreach (var item in elementItemList)
+            for (int i = 0; i < elementItemList.Count; i++)
             {
+                ElementItem item = elementItemList[i];
+                Vector3 pot =  GameTool.GetPosition(item.Data);
                 if (item == null) continue;
                 StopElementItemAni(item);
-                var ani = GetAnimation(ElementAniType.ElasticShake);
+                var ani = GetAnimation(ElementAniType.ElasticShake) as ElasticShakeAnimation_Sequence;
                 // Debug.LogWarning("抖动"+item.Data.ToString());
                 ani.SetElement(item, delay);
+                ani.originalPos = pot;
                 AddRunElementAni(item, ani);
                 if (dur != -1)
-                    dur = ani.Duration;
+                    dur = ani.Duration+0.2f;
             }
             return dur;
         }

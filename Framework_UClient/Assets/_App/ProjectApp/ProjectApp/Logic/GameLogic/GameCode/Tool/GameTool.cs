@@ -114,7 +114,15 @@ namespace ProjectApp
             return (ElementType)RandomToInt((int)ElementType.Item_A, (int)ElementType.Item_D+1);
         }
 
-        
+        public static Vector3 GetPosition(int X, int Y)
+        {
+            Vector3 position = new Vector3(X * 10.05f, Y * 10.05f, 0.05f * Y);
+            return position;
+        }
+        public static Vector3 GetPosition(ElementData data)
+        {
+            return GetPosition(data.X, data.Y); ;
+        }
 
         #region 斜对角生成
         const int MAX_ATTEMPTS_PER_CONNECTION = 100;

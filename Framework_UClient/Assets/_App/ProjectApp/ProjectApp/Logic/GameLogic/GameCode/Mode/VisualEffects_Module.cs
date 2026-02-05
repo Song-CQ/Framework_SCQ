@@ -86,7 +86,7 @@ namespace ProjectApp
 
         private class VisuaProcess
         {
-            public const float CONST_AddTime = 0.01f;
+            public const float CONST_AddTime = 0.02f;
             private static FutureCore.ObjectPool<VisuaProcess> objectPool = new FutureCore.ObjectPool<VisuaProcess>();
             public static VisuaProcess Get()
             {
@@ -253,7 +253,7 @@ namespace ProjectApp
 
             elementItemsTrf = new GameObject("ElementItems").transform;
             elementItemsTrf.SetParent(Core.transform);
-            elementItemsTrf.localPosition = Vector3.zero;
+            elementItemsTrf.localPosition = Core.startVector3;
 
             connectionTrf = new GameObject("ConnectionTrf").transform;
             connectionTrf.SetParent(Core.transform);
@@ -347,7 +347,7 @@ namespace ProjectApp
                     ElementItem element = CreadElemenItem(Data.boardData[x, y]);
 
                     //设置位置
-                    element.Pos = GetPosition(data);
+                    element.Pos = GameTool.GetPosition(data);
 
                     elementItems[x, y] = element;
 
@@ -387,14 +387,14 @@ namespace ProjectApp
                 Vector2Int end = item.Value.Item2;
 
                 var dir = GameTool.GetDirection(start, end);
-                Vector3 addVector = new Vector3(dir.x, dir.y) * 0.5f;
-                Vector3 pot = GetPosition(start.x, start.y) + addVector;
+                Vector3 addVector = new Vector3(dir.x, dir.y) * 5f;
+                Vector3 pot = startVector3 + GameTool.GetPosition(start.x, start.y) + addVector;
                 SpriteRenderer go = GameTool.InstantiateConnectionPrefab().GetComponent<SpriteRenderer>();
-                pot.z = 0.5f;
+                pot.z = 1.5f;
                 go.name = (start + "-" + end);
                 go.transform.SetParent(connectionTrf);
                 go.transform.localPosition = pot;
-                go.transform.localScale = Vector3.one * 0.4f;
+                go.transform.localScale = Vector3.one * 4f;
                 go.flipX = start.y > end.y;
 
 
@@ -509,15 +509,7 @@ namespace ProjectApp
             return element;
         }
 
-        private Vector3 GetPosition(int X, int Y)
-        {
-            Vector3 position = new Vector3(X*10, Y*10, 0.05f*Y);
-            return position;
-        }
-        private Vector3 GetPosition(ElementData data)
-        {
-            return GetPosition(data.X, data.Y); ;
-        }
+        
 
         /// <summary>
         /// 查找棋盘对应的元素
@@ -637,11 +629,14 @@ namespace ProjectApp
 
             // 2. 创建动画流程
 
+            Vector3 item1Pot = GameTool.GetPosition(itemData1);
+            Vector3 item2Pot = GameTool.GetPosition(itemData2);
+
             var process = VisuaProcess.Get();
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                p.Duration = AnimationSys.PlayAin_SwapElement(item1, item2);
+                p.Duration = AnimationSys.PlayAin_SwapElement(item1, item2, item1Pot, item2Pot);
                 Debug.Log("当前触发"+UnityEngine.Time.time+"次序事件："+ p.Duration);
             });
 
@@ -714,7 +709,7 @@ namespace ProjectApp
             foreach (var _data in creadDatas)
             {
                 var item = CreadElemenItem(_data);
-                item.Pos = GetPosition(item.Data);
+                item.Pos = GameTool.GetPosition(item.Data);
                 item.SetActive(false);
 
                 Enqueue_To_CreadList(item);
@@ -754,6 +749,7 @@ namespace ProjectApp
 
 
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
+            List<Vector3> formPotList = ListPool<Vector3>.Get();
             List<Vector3> tarPotList = ListPool<Vector3>.Get();
 
             for (int i = 0; i < souList.Count; i++)
@@ -769,9 +765,13 @@ namespace ProjectApp
                     sourItem = FindElementItem(sourData);
                 }
                 elementItemList.Add(sourItem);
+                
+                Vector3 formPot = GameTool.GetPosition(sourItem.Data);
+                formPotList.Add(formPot);
 
-                Vector3 pot = GetPosition(tarX, tarY);
-                tarPotList.Add(pot);
+                Vector3 toPot = GameTool.GetPosition(tarX, tarY);
+                tarPotList.Add(toPot);
+
 
                 //设置item 新位置
                 //设置新位置数据
@@ -783,7 +783,7 @@ namespace ProjectApp
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                float time = AnimationSys.PlayAin_FallElements(elementItemList, tarPotList);
+                float time = AnimationSys.PlayAin_FallElements(elementItemList, formPotList,tarPotList);
 
                 p.Duration = time;
             });
@@ -793,6 +793,7 @@ namespace ProjectApp
                 Core.Enabled_PlayerCtr = true;
 
                 ListPool<ElementItem>.Release(elementItemList);
+                ListPool<Vector3>.Release(formPotList);
                 ListPool<Vector3>.Release(tarPotList);
             });
 
@@ -807,6 +808,7 @@ namespace ProjectApp
         {
 
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
+       
             for (int x = 0; x < Data.BoardWidth; x++)
             {
 
@@ -814,6 +816,7 @@ namespace ProjectApp
                 {
                     elementItems[x, y].SetData(Data.boardData[x, y]);
                     elementItemList.Add(elementItems[x, y]);
+                   
                 }
             }
 
@@ -842,7 +845,6 @@ namespace ProjectApp
                 Core.Enabled_PlayerCtr = true;
 
                 ListPool<ElementItem>.Release(elementItemList);
-
             });
 
 
@@ -894,12 +896,12 @@ namespace ProjectApp
             foreach (var matche in matches)
             {
                 ElementItem _item = FindElementItem(matche.x, matche.y);
-                elementItemList.Add(_item);
+                elementItemList.Add(_item);                
             }
 
             ElementItem item = FindElementItem(data.X, data.Y);
 
-            GetPropAction(indexId,data.Type, item, elementItemList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB); 
+            GetPropAction(indexId,data.Type, item, elementItemList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB); 
 
         }
 
@@ -1025,6 +1027,7 @@ namespace ProjectApp
                     Core.Enabled_PlayerCtr = true;
 
                     ListPool<ElementItem>.Release(elementItemList);
+              
 
                 };
             }
@@ -1272,17 +1275,18 @@ namespace ProjectApp
             toItem.SetSpecial();
 
             var process = GetProcessToEnqueue();
-            Vector3 tar = toItem.Pos;
+            Vector3 formPot = formItem.Pos;
+            Vector3 tarPot = toItem.Pos;
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                AnimationSys.PlayAin_MovePot(formItem, tar);
+                AnimationSys.PlayAin_MovePot(formItem, formPot,tarPot);
             });
 
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = true;
-                GameTool.PlayTestEffect(tar);
+                GameTool.PlayTestEffect(tarPot);
 
                 elementsPool.Release(formItem);
                 elementsPool.Release(toItem);
