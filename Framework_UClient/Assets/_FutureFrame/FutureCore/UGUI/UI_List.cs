@@ -36,12 +36,14 @@ namespace FutureCore
         [SerializeField] private GameObject itemPrefab;
 
         [Header("列表设置")]
-        [SerializeField] private float itemSpacing = 10f;
+        [SerializeField] private Vector2 spacing;
         [SerializeField] private float itemWidth = 100f;
         [SerializeField] private float itemHeight = 100f;
         [SerializeField] private int bufferSize = 2; // 缓冲区数量
         [SerializeField] private bool isVirtual = false; // 是否虚拟列表
-        [SerializeField] private LayoutGroupType layoutGroupType  = LayoutGroupType.Horizontal; //
+        [SerializeField] private LayoutGroupType layoutGroupType  = LayoutGroupType.Horizontal;
+        [Header("排列方式")]
+        [SerializeField] private TextAnchor anchor = TextAnchor.LowerLeft;
 
         
 
@@ -49,6 +51,8 @@ namespace FutureCore
         private List<UI_ListBaseItem> activeItems = new List<UI_ListBaseItem>();
         private List<UI_ListBaseItem> currentShowItems = new List<UI_ListBaseItem>();
         private Queue<UI_ListBaseItem> itemPool = new Queue<UI_ListBaseItem>();
+
+        private LayoutGroup layoutGroup;
 
         public delegate void UpdateItemData(UI_ListBaseItem item,object data);
 
@@ -112,12 +116,52 @@ namespace FutureCore
             viewportWidth = viewport.rect.width;
 
             contentSize = content.GetComponent<ContentSizeFitter>()??content.gameObject.AddComponent<ContentSizeFitter>();
+            
+            switch (layoutGroupType)
+            {
+                case LayoutGroupType.Horizontal:
+                    {
+                        var _layoutGroup = contentSize.GetComponent<HorizontalLayoutGroup>() ?? content.gameObject.AddComponent<HorizontalLayoutGroup>();
+                        _layoutGroup.spacing = spacing.x;
+                        contentSize.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+                        contentSize.verticalFit = ContentSizeFitter.FitMode.Unconstrained;
+                        scrollRect.horizontal = true;
+                        scrollRect.vertical = false;
+                        layoutGroup = _layoutGroup;
+                    }
+                    break;
 
- 
-            // 设置垂直滑动
-            scrollRect.horizontal = false;
-            scrollRect.vertical = true;
+                case LayoutGroupType.Version:
+                    {
+                        var _layoutGroup = contentSize.GetComponent<VerticalLayoutGroup>() ?? content.gameObject.AddComponent<VerticalLayoutGroup>();
+                        layoutGroup = _layoutGroup;
+                        contentSize.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+                        contentSize.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+                        scrollRect.horizontal = false;
+                        scrollRect.vertical = true;
+                        _layoutGroup.spacing = spacing.y;
+                    }
+                    break;
+                case LayoutGroupType.Grip:
+                    {
+                        var _layoutGroup = contentSize.GetComponent<GridLayoutGroup>() ?? content.gameObject.AddComponent<GridLayoutGroup>();
+                        layoutGroup = _layoutGroup;
+                        contentSize.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+                        contentSize.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+                        scrollRect.horizontal = true;
+                        scrollRect.vertical = true;
+                        _layoutGroup.spacing = spacing;
+                        _layoutGroup.cellSize = new Vector2(itemWidth, itemHeight);
+                    }
+                    break;
+
+            }
+
             scrollRect.movementType = ScrollRect.MovementType.Clamped;
+            layoutGroup.childAlignment = TextAnchor.UpperLeft;
+            
+
+
 
             // 准备对象池
             PreparePool(20);
@@ -176,11 +220,11 @@ namespace FutureCore
             activeItems.Clear();
 
             // 计算内容高度
-            float contentHeight = totalItems * itemHeight + (totalItems - 1) * itemSpacing;
+            float contentHeight = totalItems * itemHeight + (totalItems - 1) * spacing.x;
             content.sizeDelta = new Vector2(content.sizeDelta.x, contentHeight);
 
             // 计算可见项数量
-            visibleItems = Mathf.CeilToInt(viewportHeight / (itemHeight + itemSpacing)) + bufferSize * 2;
+            visibleItems = Mathf.CeilToInt(viewportHeight / (itemHeight + spacing.x)) + bufferSize * 2;
             visibleItems = Mathf.Min(visibleItems, totalItems);
 
             // 显示初始项
@@ -200,7 +244,7 @@ namespace FutureCore
 
             // 计算应该显示的第一个索引
             float scrollPos = content.anchoredPosition.y;
-            int newFirstIndex = Mathf.FloorToInt(scrollPos / (itemHeight + itemSpacing));
+            int newFirstIndex = Mathf.FloorToInt(scrollPos / (itemHeight + spacing.x));
             newFirstIndex = Mathf.Max(0, newFirstIndex - bufferSize);
 
             // 如果索引没变化，不更新
@@ -247,7 +291,7 @@ namespace FutureCore
                     listItem.Initialize(dataList[i], i);
 
                     // 设置位置
-                    float yPos = -i * (itemHeight + itemSpacing);
+                    float yPos = -i * (itemHeight + spacing.x);
                     (item.transform as RectTransform).anchoredPosition = new Vector2(0, yPos);
 
                     activeItems.Add(item);
