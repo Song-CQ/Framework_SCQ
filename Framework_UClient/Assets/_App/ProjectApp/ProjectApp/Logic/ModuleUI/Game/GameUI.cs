@@ -8,7 +8,7 @@
 using FutureCore;
 using UnityEngine;
 using UnityEngine.UI;
-using static FutureCore.ListView;
+
 
 namespace ProjectApp
 {
@@ -23,7 +23,7 @@ namespace ProjectApp
         private GameModel model;
         private UGUIEntity u_Entity;
 
-        private ListView ui_PropList;
+        private UI_List ui_PropList;
 
         public GameUI(GameUICtrl ctrl) : base(ctrl)
         {
@@ -55,12 +55,15 @@ namespace ProjectApp
         {
             u_Entity = uiEntity as UGUIEntity;
 
-            ui_PropList = GetComponent<ListView>(ui_PropList_Key);
+            ui_PropList = GetComponent<UI_List>(ui_PropList_Key);
+            ui_PropList.updateItemData = UpdataItemData;
+
+            ui_PropList.SetData(null);
 
         }
 
 
-        private void UpdataItemData(ListItem item)
+        private void UpdataItemData(UI_ListBaseItem item, object data)
         {
             
 

@@ -8,16 +8,27 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 
 namespace FutureCore
 {
 
     /// <summary>
-    /// 基础滑动列表
+    /// 基础滑动列表 （只需要传数列表 ， item必须继承UI_ListBaseItem）
     /// </summary>
-    public class ListView : MonoBehaviour
+    public class UI_List : MonoBehaviour
     {
+        enum LayoutGroupType
+        {
+            Horizontal,
+            Version,
+
+            Grip
+
+        }
+
+
         [Header("组件引用")]
         [SerializeField] private ScrollRect scrollRect;
         [SerializeField] private RectTransform viewport;
@@ -26,33 +37,58 @@ namespace FutureCore
 
         [Header("列表设置")]
         [SerializeField] private float itemSpacing = 10f;
+        [SerializeField] private float itemWidth = 100f;
         [SerializeField] private float itemHeight = 100f;
         [SerializeField] private int bufferSize = 2; // 缓冲区数量
+        [SerializeField] private bool isVirtual = false; // 是否虚拟列表
+        [SerializeField] private LayoutGroupType layoutGroupType  = LayoutGroupType.Horizontal; //
 
-        private List<ListItemData> dataList = new List<ListItemData>();
-        private List<GameObject> activeItems = new List<GameObject>();
-        private Queue<GameObject> itemPool = new Queue<GameObject>();
+        
+
+        private List<object> dataList = new List<object>();
+        private List<UI_ListBaseItem> activeItems = new List<UI_ListBaseItem>();
+        private List<UI_ListBaseItem> currentShowItems = new List<UI_ListBaseItem>();
+        private Queue<UI_ListBaseItem> itemPool = new Queue<UI_ListBaseItem>();
+
+        public delegate void UpdateItemData(UI_ListBaseItem item,object data);
+
+        [HideInInspector]
+        public UpdateItemData updateItemData;
+
+        [HideInInspector]
+        public UpdateItemData onCenterOnChild;
+
+        [HideInInspector]
+        public UpdateItemData changeSelectItemData;
 
         private float viewportHeight;
+        private float viewportWidth;
         private int totalItems;
         private int visibleItems;
         private int currentFirstIndex = 0;
 
-        public class ListItemData
-        {
-            public string title;
-            public string description;
-            public Sprite icon;
-            public object userData;
+       
 
-            public ListItemData(string title, string desc, Sprite icon = null, object data = null)
-            {
-                this.title = title;
-                this.description = desc;
-                this.icon = icon;
-                this.userData = data;
-            }
+        private void OnEnable() 
+        {
+            Initialize();
+
+            
+            
+
+
         }
+
+        void GenerateTestData(int count)
+        {
+            dataList.Clear();
+            for (int i = 0; i < count; i++)
+            {
+                dataList.Add(new object());
+            }
+            totalItems = dataList.Count;
+        }
+
 
         void Start()
         {
@@ -63,15 +99,21 @@ namespace FutureCore
             RefreshList();
         }
 
+        private ContentSizeFitter contentSize;
+
         void Initialize()
         {
             if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
             if (viewport == null) viewport = scrollRect.viewport;
             if (content == null) content = scrollRect.content;
 
-            viewportHeight = viewport.rect.height;
             scrollRect.onValueChanged.AddListener(OnScrollValueChanged);
+            viewportHeight = viewport.rect.height;
+            viewportWidth = viewport.rect.width;
 
+            contentSize = content.GetComponent<ContentSizeFitter>()??content.gameObject.AddComponent<ContentSizeFitter>();
+
+ 
             // 设置垂直滑动
             scrollRect.horizontal = false;
             scrollRect.vertical = true;
@@ -85,13 +127,13 @@ namespace FutureCore
         {
             for (int i = 0; i < count; i++)
             {
-                GameObject item = Instantiate(itemPrefab, content);
+                UI_ListBaseItem item = InstantiateItem();
                 item.SetActive(false);
                 itemPool.Enqueue(item);
             }
         }
 
-        GameObject GetPooledItem()
+        UI_ListBaseItem GetPooledItem()
         {
             if (itemPool.Count > 0)
             {
@@ -99,32 +141,25 @@ namespace FutureCore
             }
             else
             {
-                return Instantiate(itemPrefab, content);
+                return InstantiateItem();
             }
         }
 
-        void ReturnToPool(GameObject item)
+        private UI_ListBaseItem InstantiateItem()
+        {
+            UI_ListBaseItem item = Instantiate(itemPrefab, content).GetComponent<UI_ListBaseItem>();
+            return item;
+        }
+
+        void ReturnToPool(UI_ListBaseItem item)
         {
             item.SetActive(false);
             itemPool.Enqueue(item);
         }
 
-        void GenerateTestData(int count)
-        {
-            dataList.Clear();
-            for (int i = 0; i < count; i++)
-            {
-                dataList.Add(new ListItemData(
-                    $"Item {i + 1}",
-                    $"Description for item {i + 1}\nThis is sample content.",
-                    null,
-                    i
-                ));
-            }
-            totalItems = dataList.Count;
-        }
+        
 
-        public void SetData(List<ListItemData> newData)
+        public void SetData(List<object> newData)
         {
             dataList = newData;
             totalItems = dataList.Count;
@@ -160,6 +195,7 @@ namespace FutureCore
 
         void UpdateVisibleItems()
         {
+            if(isVirtual)
             if (totalItems == 0) return;
 
             // 计算应该显示的第一个索引
@@ -177,7 +213,7 @@ namespace FutureCore
             // 回收不再显示的项
             for (int i = activeItems.Count - 1; i >= 0; i--)
             {
-                int itemIndex = (int)activeItems[i].GetComponent<ListItem>().index;
+                int itemIndex = (int)activeItems[i].GetComponent<UI_ListBaseItem>().index;
                 if (itemIndex < currentFirstIndex || itemIndex >= currentFirstIndex + visibleItems)
                 {
                     ReturnToPool(activeItems[i]);
@@ -193,7 +229,7 @@ namespace FutureCore
                 bool alreadyActive = false;
                 foreach (var item in activeItems)
                 {
-                    if ((int)item.GetComponent<ListItem>().index == i)
+                    if ((int)item.GetComponent<UI_ListBaseItem>().index == i)
                     {
                         alreadyActive = true;
                         break;
@@ -202,11 +238,11 @@ namespace FutureCore
 
                 if (!alreadyActive)
                 {
-                    GameObject item = GetPooledItem();
+                    UI_ListBaseItem item = GetPooledItem();
                     item.SetActive(true);
 
-                    ListItem listItem = item.GetComponent<ListItem>();
-                    if (listItem == null) listItem = item.AddComponent<ListItem>();
+                    UI_ListBaseItem listItem = item.GetComponent<UI_ListBaseItem>();
+                    
 
                     listItem.Initialize(dataList[i], i);
 
@@ -219,6 +255,22 @@ namespace FutureCore
             }
         }
 
+        public void RefreshCurrentShowItems()
+        {
+            if (currentShowItems == null || currentShowItems.Count < 1) return;
+            for (int i = 0; i < currentShowItems.Count; i++)
+            {
+                if (updateItemData != null)
+                {
+                    updateItemData(currentShowItems[i],dataList[i]);
+                }
+            }
+        }
+        public List<UI_ListBaseItem> GetCurrentShowItems()
+        {
+            return currentShowItems;
+        }
+
         void OnDestroy()
         {
             if (scrollRect != null)
@@ -228,6 +280,6 @@ namespace FutureCore
         }
     }
 
-    
+
 
 }
