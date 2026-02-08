@@ -15,7 +15,6 @@ namespace ProjectApp
     public class VisualEffects_Module : IGameModule
     {
         public ElementItem[,] elementItems;
-        public List<ExternalPropItem> externalPropItems;
 
         private Vector3 startVector3;
 
@@ -28,14 +27,13 @@ namespace ProjectApp
         #region 对象池
 
         private FutureCore.ObjectPool<ElementItem> elementsPool;
-        private FutureCore.ObjectPool<ExternalPropItem> externalPropPool;
 
         private Transform elementsPoolTrf;
 
         private Transform elementItemsTrf;
 
         private Transform connectionTrf;
-        private Transform externalPropsTrf;
+
 
         private ElementItem OnNewElement()
         {
@@ -58,28 +56,7 @@ namespace ProjectApp
             element.Transform.SetParent(elementItemsTrf);
         }
 
-        private ExternalPropItem OnNewExternalPropItem()
-        {
-            GameObject go = GameTool.InstantiateExternalPropPrefab();
-            ExternalPropItem element = new ExternalPropItem(go);
-            return element;
-        }
-
-        private void OnGetExternalPropItem(ExternalPropItem propItem)
-        {            
-            propItem.Transform.SetActive(true);
-            RaycastSys.RegisterEvent_OnClick(propItem); 
-        }
-
-        private void OnReleaseExternalPropItem(ExternalPropItem propItem)
-        { 
-            propItem.Transform.parent = elementsPoolTrf;
-            propItem.Transform.SetActive(false);
-            RaycastSys.UnregisterEvent_OnClick(propItem);
-            externalPropPool.Release(propItem);
-        }
-
-
+        
         #endregion
 
         #region 画面显示流程
@@ -257,12 +234,7 @@ namespace ProjectApp
 
             connectionTrf = new GameObject("ConnectionTrf").transform;
             connectionTrf.SetParent(Core.transform);
-            connectionTrf.localPosition = Vector3.zero;
-            
-            externalPropPool = new ObjectPool<ExternalPropItem>(OnNewExternalPropItem,OnGetExternalPropItem,OnReleaseExternalPropItem);
-            externalPropsTrf = new GameObject("ExternalPropsTrf").transform;
-            externalPropsTrf.SetParent(Core.transform);
-            externalPropsTrf.localPosition = new Vector3(0,-7.5f,0);
+            connectionTrf.localPosition = Vector3.zero;         
 
             startVector3 = Core.startVector3;
 
@@ -356,26 +328,9 @@ namespace ProjectApp
 
             LoadAllConnectionGo();
 
-            LoadExternalProp();
-
 
         }
         
-        public void LoadExternalProp()
-        {
-
-            return;
-            for (int i = 0; i < Data.externalProps.Count; i++)
-            {
-                ExternalProp type = Data.externalProps[i];
-                ExternalPropItem propItem = externalPropPool.Get();
-                propItem.Transform.parent = externalPropsTrf;
-                propItem.SetType(type);
-                externalPropItems.Add(propItem);
-                propItem.Transform.localPosition = Vector3.zero;
-            }
-
-        }
 
         private void LoadAllConnectionGo()
         {
@@ -455,8 +410,6 @@ namespace ProjectApp
             AnimationSys.Run();
 
             RunProcess();
-            
-            UpdateExternalProp();
           
             
             
@@ -1302,56 +1255,56 @@ namespace ProjectApp
 
 
         #region 外置道具模块
-        private Vector3 externalProp_TarPot = new Vector3(0, -16, 0);
-        private float swipeSpeed = 1;
-        private int externalPropInterval = 10;
+        //private Vector3 externalProp_TarPot = new Vector3(0, -16, 0);
+        //private float swipeSpeed = 1;
+        //private int externalPropInterval = 10;
 
-        public void AddSwipeVector2(Vector2 v)
-        {
-            externalProp_TarPot = externalProp_TarPot + new Vector3(v.x, 0, 0) * 1.2f;
-        }
+        //public void AddSwipeVector2(Vector2 v)
+        //{
+        //    externalProp_TarPot = externalProp_TarPot + new Vector3(v.x, 0, 0) * 1.2f;
+        //}
 
-        private void UpdateExternalProp()
-        {
-            externalPropsTrf.localPosition = Vector3.Lerp(externalPropsTrf.localPosition, externalProp_TarPot, UnityEngine.Time.deltaTime * swipeSpeed);
+        //private void UpdateExternalProp()
+        //{
+        //    externalPropsTrf.localPosition = Vector3.Lerp(externalPropsTrf.localPosition, externalProp_TarPot, UnityEngine.Time.deltaTime * swipeSpeed);
 
-        }
+        //}
 
-        public int GetIndexPropItem(ExternalPropItem propItem)
-        {
-            int index = -1;
-            for (int i = 0; i < externalPropItems.Count; i++)
-            {
-                if (externalPropItems[i] == propItem)
-                {
-                    index = i;
-                    break;
-                }
-            }
-            return index;
-        }
-
-
-        /// <summary>
-        /// 选中了对应index 的道具
-        /// </summary>
-        /// <param name="index"></param>
-        public void SelectExternalPropToIndex(int index)
-        {
-            // 发光之类的
-        }
-
-        private void RefreshExternalProp()
-        {
-            for (int i = 0; i < externalPropItems.Count; i++)
-            {
-                float x = i * externalPropInterval;
+        //public int GetIndexPropItem(ExternalPropItem propItem)
+        //{
+        //    int index = -1;
+        //    for (int i = 0; i < externalPropItems.Count; i++)
+        //    {
+        //        if (externalPropItems[i] == propItem)
+        //        {
+        //            index = i;
+        //            break;
+        //        }
+        //    }
+        //    return index;
+        //}
 
 
+        ///// <summary>
+        ///// 选中了对应index 的道具
+        ///// </summary>
+        ///// <param name="index"></param>
+        //public void SelectExternalPropToIndex(int index)
+        //{
+        //    // 发光之类的
+        //}
 
-            }
+        //private void RefreshExternalProp()
+        //{
+        //    for (int i = 0; i < externalPropItems.Count; i++)
+        //    {
+        //        float x = i * externalPropInterval;
 
-        }
+
+
+        //    }
+
+        //}
 
 
 

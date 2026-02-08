@@ -14,6 +14,10 @@ namespace ProjectApp
 
         public EliminateGameCore Core { get; private set; }
 
+        public ExternalProp SelectExternalProp { get; set; } = ExternalProp.None;
+
+
+
 
         public void FillCore(EliminateGameCore _core)
         {
@@ -40,9 +44,19 @@ namespace ProjectApp
         {
 
         }
+        /// <summary>
+        /// 消耗外置道具
+        /// </summary>
+        /// <param name="type"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void ConsumeExternalProp(ExternalProp type)
+        {
 
 
-        
+
+        }
+
+
 
 
 

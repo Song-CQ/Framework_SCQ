@@ -95,7 +95,7 @@ namespace ProjectApp
         #endregion
 
 
-        private const string lockStr = "loack";
+        private const string lockStr = "lock";
         void OnPlayer_ClickElement_test(object o)
         {
             OnClick_Element(o);
@@ -194,20 +194,14 @@ namespace ProjectApp
             data = Data.boardData[x, y];
 
 
-            if (Data.IsSelectExternalProp())
+            if (Core.SelectExternalProp != ExternalProp.None)
             {
-                ExternalProp type = Data.externalProps[Data.selectExternalPropIndex];
-
+                ExternalProp type = Core.SelectExternalProp;
                 if (IsActivateExternalProp(type))
                 {
-                    if (UseExternalProp(type, null))
+                    if (!UseExternalProp(type, null))
                     {
-                        //ÏûºÄ
-                        Data.ConsumeItem(Data.selectExternalPropIndex);
-                    }
-                    else
-                    {
-                        Data.selectExternalPropIndex = -1;
+                        //Core.SelectExternalProp = ExternalProp.None;
                     }
                 }
 
@@ -312,22 +306,13 @@ namespace ProjectApp
         /// <param name="o"></param>
         void OnPlayer_ClickExternalProp(object obj)
         {
-            int index = (int)obj;
-            Data.selectExternalPropIndex = index;
-
-            ExternalProp type = Data.externalProps[Data.selectExternalPropIndex];
+            ExternalProp type = (ExternalProp)obj;
 
             if (IsActivateExternalProp(type))
             {
-                if (UseExternalProp(type, null))
+                if (!UseExternalProp(type, null))
                 {
-                    //ÏûºÄ
-                    Data.ConsumeItem(Data.selectExternalPropIndex);
-                }
-                else
-                {
-
-                    Data.selectExternalPropIndex = -1;
+                    //Core.SelectExternalProp =  ExternalProp.None;
                 }
 
             }

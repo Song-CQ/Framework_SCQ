@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -46,11 +47,6 @@ namespace ProjectApp
 
 
         #endregion
-
-        public List<ExternalProp> externalProps = new List<ExternalProp>();
-
-        public int selectExternalPropIndex = -1;
-        
 
         // 当前分数
         public int currentScore = 0;
@@ -130,9 +126,6 @@ namespace ProjectApp
 
             linkBoardPotLength = 0;
             _keyToConnection.Clear();
-
-            selectExternalPropIndex = -1;
-            externalProps.Clear();
             
             selectedElement = new Vector2Int(-1, -1);
             boardSize = new Vector2Int(0, 0);
@@ -175,16 +168,7 @@ namespace ProjectApp
 
         }
 
-        public void ConsumeItem(int _index)
-        {
-            externalProps.RemoveAt(_index);
-            selectExternalPropIndex = -1;
-        }
 
-        public bool IsSelectExternalProp()
-        {
-            return selectExternalPropIndex != -1;
-        }
     }
 
 
@@ -481,7 +465,19 @@ namespace ProjectApp
 
             isInit = false;
         }
+
+
+        #region 外置道具
+
+        public ExternalProp SelectExternalProp => externalProp_Module.SelectExternalProp;
+
+
         
+
+
+        #endregion
+
+
         #region 玩家的操作 点击元素 拖动元素 
         public void ClickElementItem(ElementItem elementItem)
         {
@@ -509,23 +505,21 @@ namespace ProjectApp
             Dispatch(GameMsg.Player_SwipeElement, startItem.Data,dir);
         }
 
-        public void ClickExternalPropItem(ExternalPropItem propItem)
+        public void ClickExternalPropItem(ExternalProp type)
         {
            if (!Enabled_PlayerCtr) return;
-           int index = visualEffectsModule.GetIndexPropItem(propItem);
-           visualEffectsModule.SelectExternalPropToIndex(index);
 
-           Dispatch(GameMsg.Player_ClickExternalPropItem,index);
+
+
+           Dispatch(GameMsg.Player_ClickExternalPropItem,type);
 
 
         }
 
-        public void AddSwipeVector2(Vector3 v)
-        {
-            if (!Enabled_PlayerCtr) return;
 
-            visualEffectsModule.AddSwipeVector2(v);
-        }
+       
+
+
 
 
 

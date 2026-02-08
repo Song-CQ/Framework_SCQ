@@ -5,7 +5,10 @@
     类型: MVC_AutoCread
     功能: GameUI界面
 *****************************************************/
+using ConsoleE;
 using FutureCore;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +27,8 @@ namespace ProjectApp
         private UGUIEntity u_Entity;
 
         private UI_List ui_PropList;
+
+        private EliminateGameCore core;
 
         public GameUI(GameUICtrl ctrl) : base(ctrl)
         {
@@ -51,6 +56,13 @@ namespace ProjectApp
         {
         }
 
+        private class PropData
+        {
+            public ExternalProp type;
+            public int Sum;
+
+        }
+
         protected override void OnBind()
         {
             u_Entity = uiEntity as UGUIEntity;
@@ -58,14 +70,39 @@ namespace ProjectApp
             ui_PropList = GetComponent<UI_List>(ui_PropList_Key);
             ui_PropList.updateItemData = UpdataItemData;
 
-            ui_PropList.SetData(null);
+            List<ItemData> datas = new List<ItemData>();
+            datas.Add(new ItemData() { IntData = (int)ExternalProp.Undo });
+            datas.Add(new ItemData() { IntData = (int)ExternalProp.Vertical });
+            datas.Add(new ItemData() { IntData = (int)ExternalProp.Horizontal });
+            datas.Add(new ItemData() { IntData = (int)ExternalProp.Wild });
+            datas.Add(new ItemData() { IntData = (int)ExternalProp.Hammer });
+            datas.Add(new ItemData() { IntData = (int)ExternalProp.AddScore });
+            datas.Add(new ItemData() { IntData = (int)ExternalProp.Swipe });
+            datas.Add(new ItemData() { IntData = (int)ExternalProp.AllRandom });
+
+            ui_PropList.SetData(datas);
+
+            core = GameTool.GameCore;
+
 
         }
 
 
-        private void UpdataItemData(UI_ListBaseItem item, object data)
+        private void UpdataItemData(BaseUIList_Item item, ItemData data)
         {
-            
+            ExternalPropUIList_Item externalPropItem = item as ExternalPropUIList_Item;
+            externalPropItem.SetClickCallback(OnClickPropItem);
+      
+
+        }
+
+        private void OnClickPropItem(BaseUIList_Item item, ItemData data)
+        {
+           
+            ExternalProp type = (ExternalProp)data.IntData;
+            core.ClickExternalPropItem(type);
+
+
 
         }
 
