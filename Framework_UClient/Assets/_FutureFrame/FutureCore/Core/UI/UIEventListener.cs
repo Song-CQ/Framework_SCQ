@@ -7,20 +7,100 @@
     附加到需要交互的UI元素上，用于监听用户的操作，类似于EventTrigger
     如果附加到3d物体上则需要添加碰撞器
 *****************************************************/
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace FutureCore
 {
     public class UIEventListener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IScrollHandler, IUpdateSelectedHandler, ISelectHandler, IDeselectHandler, IMoveHandler, ISubmitHandler, ICancelHandler
     {
-
+        public delegate void PointerHandler(PointerEventData eventData);
         public static UIEventListener GetEventListener(Transform tf)
         {
             return tf.GetComponent<UIEventListener>() ?? tf.gameObject.AddComponent<UIEventListener>();
         }
 
-        public delegate void PointerHandler(PointerEventData eventData);
+        #region 事件传递设置
+
+        [Header("UI事件传递")]
+        [LabelText("是否传递给父级")]
+        [SerializeField] private bool forwardEventsToParent = true;
+
+        [LabelText("允许点击传递"), ShowIf(@"forwardEventsToParent"), FoldoutGroup("UIEvent")]
+        [SerializeField] private bool allowClickPropagation = false; // 允许点击事件传递给父级
+        [LabelText("允许拖拽传递"), ShowIf(@"forwardEventsToParent"), FoldoutGroup("UIEvent")]
+        [SerializeField] private bool allowDragPropagation = true; // 允许拖拽事件传递给父级
+
+        [Space(5)]
+        [LabelText("自动查找ScrollRect")]
+        [SerializeField] private bool autoFindScrollRect = true; // 自动查找ScrollRect
+
+        private ScrollRect parentScrollRect;
+        private bool hasParentScrollRect = false;
+
+        private void Awake()
+        {
+            if (autoFindScrollRect)
+            {
+                FindParentScrollRect();
+            }
+        }
+        // 方法1：查找父级所有ScrollRect，找到最近的
+        private void FindParentScrollRect()
+        {
+            parentScrollRect = null;
+            Transform parent = transform.parent;
+
+            while (parent != null)
+            {
+                // 尝试获取当前父级的ScrollRect
+                parentScrollRect = parent.GetComponent<ScrollRect>();
+                if (parentScrollRect != null)
+                {
+                    hasParentScrollRect = true;
+                    Debug.Log($"{name} 找到父级ScrollRect: {parentScrollRect.name}", this);
+                    return;
+                }
+
+                // 继续向上查找
+                parent = parent.parent;
+            }
+
+            hasParentScrollRect = false;
+            // Debug.Log($"{name} 没有找到父级ScrollRect", this);
+        }
+        // 方法2：使用缓存和按需查找
+        public ScrollRect GetParentScrollRect()
+        {
+            if (parentScrollRect != null) return parentScrollRect;
+
+            // 如果没有缓存，查找一次
+            if (autoFindScrollRect)
+            {
+                FindParentScrollRect();
+            }
+
+            return parentScrollRect;
+        }
+
+        // 方法3：使用属性，自动查找
+        public ScrollRect ParentScrollRect
+        {
+            get
+            {
+                if (parentScrollRect == null && autoFindScrollRect)
+                {
+                    parentScrollRect = GetComponentInParent<ScrollRect>();
+                    hasParentScrollRect = parentScrollRect != null;
+                }
+                return parentScrollRect;
+            }
+        }
+
+        #endregion
+
         #region 鼠标指针事件
 
         /// <summary>
@@ -81,28 +161,86 @@ namespace FutureCore
         public void OnInitializePotentialDrag(PointerEventData eventData)
         {
             if (InitializePotentialDrag != null) InitializePotentialDrag(eventData);
+
+           
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (BeginDrag != null) BeginDrag(eventData);
+
+            // 传递事件给父级ScrollRect
+            if (allowDragPropagation && forwardEventsToParent)
+            {
+                var scrollRect = ParentScrollRect;
+                if (scrollRect != null)
+                {
+                    // 手动调用ScrollRect的事件方法
+                    ExecuteEvents.Execute<IBeginDragHandler>(
+                        scrollRect.gameObject,
+                        eventData,
+                        (handler, data) => handler.OnBeginDrag((PointerEventData)data)
+                    );
+                }
+            }
         }
 
         public void OnDrag(PointerEventData eventData)
         {
             if (Drag != null) Drag(eventData);
+            if (allowDragPropagation && forwardEventsToParent)
+            {
+                var scrollRect = ParentScrollRect;
+                if (scrollRect != null)
+                {
+                    ExecuteEvents.Execute<IDragHandler>(
+                        scrollRect.gameObject,
+                        eventData,
+                        (handler, data) => handler.OnDrag((PointerEventData)data)
+                    );
+                }
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
             if (EndDrag != null) EndDrag(eventData);
+            if (allowDragPropagation && forwardEventsToParent)
+            {
+                var scrollRect = ParentScrollRect;
+                if (scrollRect != null)
+                {
+                    ExecuteEvents.Execute<IDragHandler>(
+                        scrollRect.gameObject,
+                        eventData,
+                        (handler, data) => handler.OnDrag((PointerEventData)data)
+                    );
+                }
+            }
         }
 
         public void OnDrop(PointerEventData eventData)
         {
             if (Drop != null) Drop(eventData);
-        }
 
+            if (allowDragPropagation && forwardEventsToParent)
+            {
+                var scrollRect = ParentScrollRect;
+                if (scrollRect != null)
+                {
+                    ExecuteEvents.Execute<IEndDragHandler>(
+                        scrollRect.gameObject,
+                        eventData,
+                        (handler, data) => handler.OnEndDrag((PointerEventData)data)
+                    );
+                }
+            }
+        }
+        public void SetParentScrollRect(ScrollRect scrollRect)
+        {
+            parentScrollRect = scrollRect;
+            hasParentScrollRect = scrollRect != null;
+        }
 
 
         #endregion
@@ -113,6 +251,19 @@ namespace FutureCore
         public void OnScroll(PointerEventData eventData)
         {
             if (Scroll != null) Scroll(eventData);
+
+            if (allowDragPropagation && forwardEventsToParent)
+            {
+                var scrollRect = ParentScrollRect;
+                if (scrollRect != null)
+                {
+                    ExecuteEvents.Execute<IScrollHandler>(
+                        scrollRect.gameObject,
+                        eventData,
+                        (handler, data) => handler.OnScroll((PointerEventData)data)
+                    );
+                }
+            }
         }
 
 
