@@ -253,19 +253,21 @@ namespace ProjectApp
             return dur;
         }
 
-        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList , float delay = 0)
+        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList ,List<Vector3> potList, float delay = 0)
         {
             float dur = -1;
+            // Debug.Log("设置抖动"+TimerUtil.GetGameTime());
             for (int i = 0; i < elementItemList.Count; i++)
             {
                 ElementItem item = elementItemList[i];
-                Vector3 pot =  GameTool.GetPosition(item.Data);
-                if (item == null) continue;
+                Vector3 pot = potList[i];
+
+                if (item == null) continue; 
                 StopElementItemAni(item);
                 var ani = GetAnimation(ElementAniType.ElasticShake) as ElasticShakeAnimation_Sequence;
-                // Debug.LogWarning("抖动"+item.Data.ToString());
                 ani.SetElement(item, delay);
                 ani.originalPos = pot;
+                
                 AddRunElementAni(item, ani);
                 if (dur != -1)
                     dur = ani.Duration+0.2f;

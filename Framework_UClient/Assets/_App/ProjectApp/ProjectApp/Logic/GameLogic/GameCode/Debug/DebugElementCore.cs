@@ -79,6 +79,8 @@ namespace ProjectApp
     {
         public EliminateGameCore core;
         public ElementGameData data;
+        
+        public VisualEffects_Module  visualEffects;
 
         public TextMeshProUGUI text;
 

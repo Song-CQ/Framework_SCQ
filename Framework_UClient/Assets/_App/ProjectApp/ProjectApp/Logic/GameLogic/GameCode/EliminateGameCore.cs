@@ -180,8 +180,6 @@ namespace ProjectApp
         [SerializeField] public Vector3 startVector3;   // 棋盘高度
         [SerializeField] private GameMode currentMode = GameMode.BuildHive;
 
-        public bool IsFill;
-        public bool IsClickProp;
 
 
         #region 棋盘属性
@@ -349,9 +347,20 @@ namespace ProjectApp
 
         }
 
+        #region 测试
+
         public Vector2Int temp1 = new Vector2Int(0, 13);
         public Vector2Int temp2 = new Vector2Int(0, 12);
+
+        [LabelText("是否填充")]
+        public bool IsFill;
+        [LabelText("是否触发组合道具 点击模式")]
+        public bool IsClickProp;
+        [LabelText("是否使用对象池动画")]
         public bool isPool = true;
+         [LabelText("是否检查元素消除")]
+        public bool isCheckAllMatches = true;
+
 
         [Button("交换元素")]
         public void Test1()
@@ -376,6 +385,8 @@ namespace ProjectApp
         {
             gameRuleModule.Player_RananAllElement();
         }
+
+        #endregion
 
 
         /// <summary>

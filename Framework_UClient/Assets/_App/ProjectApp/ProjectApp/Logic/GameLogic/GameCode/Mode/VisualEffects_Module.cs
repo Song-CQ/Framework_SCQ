@@ -79,7 +79,7 @@ namespace ProjectApp
                 get => duration;
                 set
                 {
-                    duration = value + CONST_AddTime;
+                    duration = value;
                 }
             }
             private float duration = 0.01f;
@@ -110,9 +110,10 @@ namespace ProjectApp
 
                 duration -= UnityEngine.Time.deltaTime;
 
-                if (duration <= 0)
+                if (duration + CONST_AddTime <= 0)
                 {
                     Finish();
+                    Debug.Log("完成");
                 }
             }
 
@@ -197,6 +198,7 @@ namespace ProjectApp
             if (currVisuaProcess != null)// 在下一帧运行
             {
                 currVisuaProcess.Run();
+                // Debug.Log("运行"+currVisuaProcess.Duration);
                 if (currVisuaProcess.isFinish)
                 {
                     if (visuaProcessDic.ContainsKey(currVisuaProcess.id))
@@ -761,6 +763,7 @@ namespace ProjectApp
         {
 
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
+            List<Vector3> potList = ListPool<Vector3>.Get();
        
             for (int x = 0; x < Data.BoardWidth; x++)
             {
@@ -769,15 +772,22 @@ namespace ProjectApp
                 {
                     elementItems[x, y].SetData(Data.boardData[x, y]);
                     elementItemList.Add(elementItems[x, y]);
-                   
+
+                    potList.Add(GameTool.GetPosition(x,y));
+                    
                 }
+
             }
+
+            // elementItemList.Clear();
+            // elementItemList.Add(elementItems[0, 0]);
 
 
             var process = GetProcessToEnqueue();
-            process.Duration = 3f;
+            process.Duration = 2f;
             process.SetLinkExecute((p) =>
             {
+                
                 Core.Enabled_PlayerCtr = false;
                 for (int x = 0; x < Data.BoardWidth; x++)
                 {
@@ -787,9 +797,8 @@ namespace ProjectApp
                         elementItems[x, y].RefreshView();
                     }
                 }
-
-                float time = AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
-
+              
+                float time = AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
 
             });
 
@@ -798,6 +807,7 @@ namespace ProjectApp
                 Core.Enabled_PlayerCtr = true;
 
                 ListPool<ElementItem>.Release(elementItemList);
+                ListPool<Vector3>.Release(potList);
             });
 
 
@@ -846,15 +856,19 @@ namespace ProjectApp
 
 
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
+            List<Vector3> potList = ListPool<Vector3>.Get();
+
             foreach (var matche in matches)
             {
                 ElementItem _item = FindElementItem(matche.x, matche.y);
-                elementItemList.Add(_item);                
+                elementItemList.Add(_item);       
+                potList.Add(GameTool.GetPosition(matche.x, matche.y));
+         
             }
 
             ElementItem item = FindElementItem(data.X, data.Y);
 
-            GetPropAction(indexId,data.Type, item, elementItemList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB); 
+            GetPropAction(indexId,data.Type, item, elementItemList ,potList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB); 
 
         }
 
@@ -912,7 +926,7 @@ namespace ProjectApp
         #endregion
 
         #region 道具
-        private float GetPropAction(uint indexId, ElementType type, ElementItem item, List<ElementItem> elementItemList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
+        private float GetPropAction(uint indexId, ElementType type, ElementItem item, List<ElementItem> elementItemList,List<Vector3> potList,out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
         {
             float time = 0;
             executeCB = null;
@@ -934,7 +948,7 @@ namespace ProjectApp
                             Core.Enabled_PlayerCtr = false;
                             elementsPool.Release(item);
                             GameTool.PlayTestEffect(item.Transform.position);
-                            AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                            AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
                         };
                     }
                     break;
@@ -945,7 +959,7 @@ namespace ProjectApp
                         Core.Enabled_PlayerCtr = false;
                         elementsPool.Release(item);
                         GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
                     };
                     break;
                 case ElementType.Prop_Bomb:
@@ -955,7 +969,7 @@ namespace ProjectApp
                         Core.Enabled_PlayerCtr = false;
                         elementsPool.Release(item);
                         GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
                     };
 
                     break;
@@ -966,7 +980,7 @@ namespace ProjectApp
                         Core.Enabled_PlayerCtr = false;
                         elementsPool.Release(item);
                         GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
                     };
 
                     break;
@@ -980,8 +994,8 @@ namespace ProjectApp
                     Core.Enabled_PlayerCtr = true;
 
                     ListPool<ElementItem>.Release(elementItemList);
+                    ListPool<Vector3>.Release(potList);
               
-
                 };
             }
 
@@ -1083,6 +1097,10 @@ namespace ProjectApp
                 elementTypes.Add(type);
             }
 
+            List<Vector3> potList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(propElementList,ref potList);
+            
+
             var process = GetProcessToEnqueue();
 
             float time = 3;
@@ -1096,7 +1114,7 @@ namespace ProjectApp
                     item.SetType(elementTypes[i]);
                     item.RefreshView();
                 }
-                AnimationSys.PlayAin_ElasticShakeElements(propElementList);
+                AnimationSys.PlayAin_ElasticShakeElements(propElementList,potList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1105,6 +1123,7 @@ namespace ProjectApp
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
                 ListPool<ElementType>.Release(elementTypes);
+                ListPool<Vector3>.Release(potList);
 
             });
 
@@ -1121,10 +1140,13 @@ namespace ProjectApp
 
             float time = 1;
 
+            List<Vector3> potList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(elementItemList,ref potList);
+
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1132,6 +1154,7 @@ namespace ProjectApp
                 Core.Enabled_PlayerCtr = true;
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
+                ListPool<Vector3>.Release(potList);
 
             });
 
@@ -1143,6 +1166,9 @@ namespace ProjectApp
         {
             AddFormMoveTo(formItem, toItem);
 
+            List<Vector3> potList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(elementItemList,ref potList);
+
 
             var process = GetProcessToEnqueue();
 
@@ -1151,7 +1177,7 @@ namespace ProjectApp
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1159,6 +1185,7 @@ namespace ProjectApp
                 Core.Enabled_PlayerCtr = true;
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
+                ListPool<Vector3>.Release(potList);
 
             });
 
@@ -1169,6 +1196,9 @@ namespace ProjectApp
         private float ActivateProp_2Bomb(ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
         {
             AddFormMoveTo(formItem, toItem);
+            
+            List<Vector3> potList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(elementItemList,ref potList);           
 
 
             var process = GetProcessToEnqueue();
@@ -1178,7 +1208,7 @@ namespace ProjectApp
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1186,6 +1216,7 @@ namespace ProjectApp
                 Core.Enabled_PlayerCtr = true;
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
+                ListPool<Vector3>.Release(potList);
             });
 
             process.Duration = time;
@@ -1196,6 +1227,10 @@ namespace ProjectApp
         {
             //移动
             AddFormMoveTo(formItem, toItem);
+            
+            List<Vector3> potList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(elementItemList,ref potList);
+            
 
 
             var process = GetProcessToEnqueue();
@@ -1205,7 +1240,7 @@ namespace ProjectApp
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                AnimationSys.PlayAin_ElasticShakeElements(elementItemList);
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList,potList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1213,6 +1248,7 @@ namespace ProjectApp
                 Core.Enabled_PlayerCtr = true;
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
+                ListPool<Vector3>.Release(potList);
 
             });
 

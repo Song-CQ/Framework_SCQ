@@ -291,8 +291,8 @@ namespace ProjectApp.GameLogic
         public float StartPlayTime  {set;get;}
 
         private float shakeDuration = 0.6f;
-        private float shakeIntensity = 0.05f;
-        private int bounces = 3;
+        private float shakeIntensity = 1.2f;
+        private int bounces = 3;//次数
         public Vector3 originalPos;
 
         public void SetElement(ElementItem elementItem,float delay)
@@ -300,12 +300,13 @@ namespace ProjectApp.GameLogic
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime();
             Delay = delay;
+           
         }
 
         protected override void OnStart()
         {
             base.OnStart();
-            
+            // Debug.Log("开始抖动"+TimerUtil.GetGameTime());
          
         }
 
@@ -323,11 +324,12 @@ namespace ProjectApp.GameLogic
                     float shakeValue = Mathf.Exp(-damping * time) *
                                       Mathf.Sin(frequency * time) *
                                       shakeIntensity;
+           
 
                     // 随机方向抖动
                     Vector3 direction = GetRandomDirection();
-                    Tar.Pos = originalPos + direction * shakeValue;
-                    
+                    Tar.Pos = originalPos + direction * shakeValue;        
+                    // Debug.Log("正在抖动"+TimerUtil.GetGameTime()+Tar.Pos);
                 },
                 1f,
                 shakeDuration
@@ -339,7 +341,7 @@ namespace ProjectApp.GameLogic
         protected override void OnComplete()
         {
             base.OnComplete();
-            Tar.Pos = originalPos;
+            // Tar.Pos = originalPos;
         }
         private Vector3 GetRandomDirection()
         {

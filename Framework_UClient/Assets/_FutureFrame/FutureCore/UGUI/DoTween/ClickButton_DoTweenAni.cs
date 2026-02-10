@@ -5,9 +5,11 @@
     类型: 逻辑脚本
     功能: Nothing
 *****************************************************/
+using System;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace FutureCore
@@ -23,21 +25,19 @@ namespace FutureCore
         [SerializeField] private Ease clickEase = Ease.Linear;    // 点击时的动画曲线
         [SerializeField] private Ease releaseEase = Ease.Linear;    // 释放时的动画曲线
 
-        private Button button;
         private Vector3 originalScale;
 
         private void Awake()
         {
-            button = GetComponent<Button>();
             originalScale = transform.localScale;
-
-            if (button != null)
+            UIEventListener uIEventListener = UIEventListener.GetEventListener(transform);
+            if(uIEventListener != null)
             {
-                button.onClick.AddListener(OnButtonClick);
+                uIEventListener.PointerClick_Event += OnButtonClick;
             }
         }
 
-        private void OnButtonClick()
+        private void OnButtonClick(PointerEventData eventData)
         {
             // 创建点击动画序列
             Sequence clickSequence = DOTween.Sequence();
@@ -53,5 +53,6 @@ namespace FutureCore
             // 播放动画
             clickSequence.Play();
         }
+
     }
 }

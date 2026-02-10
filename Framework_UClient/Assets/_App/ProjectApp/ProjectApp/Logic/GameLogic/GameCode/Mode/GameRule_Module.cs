@@ -882,6 +882,8 @@ namespace ProjectApp
         /// </summary>
         void CheckAllMatches()
         {
+            if(!Core.isCheckAllMatches) return;
+
             // 使用对象池获取列表，避免GC分配
             var allMatches = FindAllMatches();
 

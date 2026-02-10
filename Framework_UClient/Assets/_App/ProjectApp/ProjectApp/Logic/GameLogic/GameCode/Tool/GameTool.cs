@@ -123,6 +123,28 @@ namespace ProjectApp
         {
             return GetPosition(data.X, data.Y); ;
         }
+        public static bool GetPositionToList(List<ElementItem> elementItemList, ref List<Vector3> potList)
+        {
+            if(potList==null) return false;
+            potList.Clear();
+            for (int i = 0; i < elementItemList.Count; i++)
+            {
+                potList.Add(GetPosition(elementItemList[i].Data));
+            }
+            return true;
+
+        }
+        public static bool GetPositionToList(List<ElementData> elementDataList, ref List<Vector3> potList)
+        {
+            if(potList==null) return false;
+            potList.Clear();
+            for (int i = 0; i < elementDataList.Count; i++)
+            {
+                potList.Add(GetPosition(elementDataList[i]));
+            }
+            return true;
+
+        }
 
         #region 斜对角生成
         const int MAX_ATTEMPTS_PER_CONNECTION = 100;
@@ -226,6 +248,5 @@ namespace ProjectApp
             effect.Play();
         }
 
-        
     }
 }
