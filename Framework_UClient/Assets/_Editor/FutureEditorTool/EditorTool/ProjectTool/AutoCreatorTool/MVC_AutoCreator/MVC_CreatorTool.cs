@@ -186,7 +186,7 @@ namespace FutureEditor
                 string item_name = item.name;
                 if (item_name.Trim().StartsWith("ui_"))
                 {
-                    val += string.Format("private const string {0}_Key = \"{0}\";\n", item_name);
+                    val += string.Format("        private const string {0}_Key = \"{0}\";\n", item_name);
                 }
             } 
             return val;

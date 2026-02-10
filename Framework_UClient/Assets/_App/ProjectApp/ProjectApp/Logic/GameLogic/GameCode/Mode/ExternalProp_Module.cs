@@ -17,6 +17,7 @@ namespace ProjectApp
 
         public ExternalProp SelectExternalProp { get; set; } = ExternalProp.None;
         private List<ElementData> selectElementDataList = new List<ElementData>();
+        private List<ElementData> dataList = new List<ElementData>();
 
 
 
@@ -42,9 +43,9 @@ namespace ProjectApp
         {
             Dispatcher.AddListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
             Dispatcher.AddListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
-
             
             Dispatcher.AddListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement);
+
 
         }
 
@@ -135,8 +136,9 @@ namespace ProjectApp
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        private bool IsActivateExternalProp(ExternalProp type,bool isClick = false)
+        private bool IsActivateExternalProp(ExternalProp type)
         {
+            dataList.Clear();
             bool isFade = false;
             switch (type)
             {
@@ -147,23 +149,46 @@ namespace ProjectApp
                         isFade = true;
                         break;
                     }
-                case ExternalProp.Hammer:
                 case ExternalProp.Horizontal:
                 case ExternalProp.Vertical:
-                case ExternalProp.Wild:
                     {
-                        if(selectElementDataList.Count == 1)
+                        if (selectElementDataList.Count == 1)
                         {
                             isFade = true;
+                            dataList.Add(selectElementDataList[0]);
                         }
                         break;
                     }
+                case ExternalProp.Hammer:
+                case ExternalProp.Wild:
+                    {
+                        foreach (var item in selectElementDataList)
+                        {
+                            if (ElementTool.CheckType_CanMatches(item.Type))
+                            {
+                                dataList.Add(item);
+                                isFade = true;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    
                 case ExternalProp.Swipe:
                     {
-                        if(selectElementDataList.Count == 2)
+                        foreach (var item in selectElementDataList)
                         {
-                            isFade = true;
-                        }
+                            if (ElementTool.CheckType_CanMatches(item.Type)||ElementTool.CheckType_IsProp(item.Type))
+                            {
+                                dataList.Add(item);
+                            }
+
+                            if (dataList.Count >= 2)
+                            {
+                                isFade = true;
+                                break;
+                            }
+                        }      
                         break;
                     }
             }
@@ -176,20 +201,20 @@ namespace ProjectApp
 
         private void ActivateExternalProp(ExternalProp propType)
         {
-            List<Vector3Int> vector3List = null;
-            if(selectElementDataList.Count!=0)
+            List<Vector2Int> vector3List = null;
+            if(dataList.Count!=0)
             {
-                vector3List = ListPool<Vector3Int>.Get();
-                foreach (var item in selectElementDataList)
+                vector3List = ListPool<Vector2Int>.Get();
+                foreach (var item in dataList)
                 {
-                    vector3List.Add(new Vector3Int(item.X,item.Y));
+                    vector3List.Add(new Vector2Int(item.X,item.Y));
                 }
             }
 
             Rest_SelectExternalProp();
             Core.Dispatch(GameMsg.UseExternalProp,propType,vector3List);
+            ListPool<Vector2Int>.Release(vector3List);
         }
-        
 
 
 

@@ -62,7 +62,7 @@ namespace FutureEditor
             int startIndex = text.IndexOf("#region 控件常量")+12;
             int endIndex = text.Substring(startIndex).IndexOf("#endregion")+ startIndex;
             string uiClassStr = MVC_CreadTool.Fill_UGUICont(obj);
-            string allText = text.Substring(0, startIndex)+ "\n        //框架自动创建请勿在此处修改内容\n        " + uiClassStr+ "\n        " + text.Substring(endIndex, text.Length-endIndex);
+            string allText = text.Substring(0, startIndex)+ "\n        //框架自动创建请勿在此处修改内容\n" + uiClassStr+ "\n        " + text.Substring(endIndex, text.Length-endIndex);
 
             File.Delete(path);
             File.WriteAllText(path, allText, Encoding.UTF8);

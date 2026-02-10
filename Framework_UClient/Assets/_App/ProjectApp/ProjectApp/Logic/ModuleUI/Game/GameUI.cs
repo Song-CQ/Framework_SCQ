@@ -9,6 +9,7 @@ using ConsoleE;
 using FutureCore;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,8 +19,9 @@ namespace ProjectApp
     public class GameUI : BaseUI
     {
         #region 控件常量
-        //框架自动创建请勿在此处修改内容(会被覆盖掉)
+        //框架自动创建请勿在此处修改内容
         private const string ui_PropList_Key = "ui_PropList";
+        private const string ui_TipsText_Key = "ui_TipsText";
 
         #endregion
         private GameUICtrl uiCtrl;
@@ -27,6 +29,7 @@ namespace ProjectApp
         private UGUIEntity u_Entity;
 
         private UI_List ui_PropList;
+        private TextMeshProUGUI ui_TipsText;
 
         private EliminateGameCore core;
 
@@ -69,6 +72,9 @@ namespace ProjectApp
 
             ui_PropList = GetComponent<UI_List>(ui_PropList_Key);
             ui_PropList.updateItemData = UpdataItemData;
+
+            ui_TipsText = GetComponent<TextMeshProUGUI>(ui_TipsText_Key);
+            ui_TipsText.SetActive(false);
 
             List<ItemData> datas = new List<ItemData>();
             datas.Add(new ItemData() { IntData = (int)ExternalProp.Undo });
@@ -113,6 +119,30 @@ namespace ProjectApp
 
         protected override void OnOpen(object args)
         {
+            core.AddListener(GameMsg.Player_ClickExternalPropItem, OnClickExternalPropItem);
+            core.AddListener(GameMsg.UseExternalProp, OnUseExternalProp);
+            core.AddListener(GameMsg.ScoreUpdated, OnScoreUpdated);
+
+        }
+
+        private void OnScoreUpdated(object obj)
+        {
+           
+
+
+
+        }
+
+        private void OnUseExternalProp(object obj)
+        {
+            ui_TipsText.SetActive(false);
+        }
+
+        private void OnClickExternalPropItem(object obj)
+        {
+            ui_TipsText.SetActive(true);
+
+
         }
 
         protected override void OnHide()
