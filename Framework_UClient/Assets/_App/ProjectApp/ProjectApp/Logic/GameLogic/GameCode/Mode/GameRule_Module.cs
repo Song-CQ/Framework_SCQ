@@ -58,11 +58,13 @@ namespace ProjectApp
             Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElement, OnPlayer_SwipeElement);
             Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElementToElement, OnPlayer_SwipeElementToElement);
 
-            Dispatcher.AddFinallyListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
+            Dispatcher.AddPriorityListener(GameMsg.UseExternalProp, OnUseExternalProp);
+
+           
 
         }
 
-
+       
 
         public void RemoveListener()
         {
@@ -71,7 +73,9 @@ namespace ProjectApp
             Dispatcher.RemovePriorityListener(GameMsg.Player_SwipeElement, OnPlayer_SwipeElement);
             Dispatcher.RemovePriorityListener(GameMsg.Player_SwipeElementToElement, OnPlayer_SwipeElementToElement);
 
-            Dispatcher.AddFinallyListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
+            Dispatcher.RemovePriorityListener(GameMsg.UseExternalProp, OnUseExternalProp);
+
+      
         }
 
         public void GenerateInitialElements()
@@ -138,47 +142,6 @@ namespace ProjectApp
 
         #region  操作
 
-        /// <summary>
-        /// 该道具是否可以触发
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        private bool IsActivateExternalProp(ExternalProp type,bool isClick = false)
-        {
-            bool isFade = false;
-            switch (type)
-            {
-                case ExternalProp.Undo:
-                case ExternalProp.AllRandom:
-                case ExternalProp.AddScore:
-                    {
-                        isFade = true;
-                        break;
-                    }
-                case ExternalProp.Hammer:
-                case ExternalProp.Horizontal:
-                case ExternalProp.Vertical:
-                case ExternalProp.Wild:
-                    {
-                        if(isClick)
-                        {
-                            isFade = true;
-                        }
-                        break;
-                    }
-                case ExternalProp.Swipe:
-                    {
-                        if(isClick && SelectedElement.x != -1 && SelectedElement.y != -1)
-                        {
-                            isFade = true;
-                        }
-                        break;
-                    }
-            }
-
-            return isFade;
-        }
-
 
         /// <summary>
         /// 点击元素
@@ -196,14 +159,7 @@ namespace ProjectApp
 
             if (Core.SelectExternalProp != ExternalProp.None)
             {
-                ExternalProp type = Core.SelectExternalProp;
-                if (IsActivateExternalProp(type))
-                {
-                    if (!UseExternalProp(type, null))
-                    {
-                        //Core.SelectExternalProp = ExternalProp.None;
-                    }
-                }
+                //当前有正在激活的道具
 
                 return;
             }
@@ -300,25 +256,7 @@ namespace ProjectApp
             }
         }
 
-        /// <summary>
-        /// 点击外置道具
-        /// </summary>
-        /// <param name="o"></param>
-        void OnPlayer_ClickExternalProp(object obj)
-        {
-            ExternalProp type = (ExternalProp)obj;
-
-            if (IsActivateExternalProp(type))
-            {
-                if (!UseExternalProp(type, null))
-                {
-                    //Core.SelectExternalProp =  ExternalProp.None;
-                }
-
-            }
-
-
-        }
+        
 
         #endregion
 
@@ -1487,9 +1425,18 @@ namespace ProjectApp
             ListPool<ElementData>.Release(datas);
         }
 
+        
+        private void OnUseExternalProp(object obj)
+        {
+            object[] objects = obj as object[];
+            ExternalProp propType = (ExternalProp)objects[0];
+            List<Vector2Int> list = objects[1] as List<Vector2Int>;
 
 
-        public bool UseExternalProp(ExternalProp propType, List<Vector2Int> list)
+            UseExternalProp(propType,list);  
+        }
+
+        private bool UseExternalProp(ExternalProp propType, List<Vector2Int> list)
         {
 
             bool isSu = false;
@@ -1502,7 +1449,7 @@ namespace ProjectApp
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
                         // 成功使用道具 通知表现
-                        Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                        Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                         // 道具效果
                         ProcessMatches(list);
                         isSu = true;
@@ -1519,7 +1466,7 @@ namespace ProjectApp
                         {
                             Data.TakeMemorySnapshotBoardData();
                             // 成功使用道具 通知表现
-                            Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                            Core.Dispatch(GameMsg.CostExternalProp, propType, list);
 
                             // 交换元素
                             SwapElements(pot1.x, pot1.y, pot2.x, pot2.y);
@@ -1550,7 +1497,7 @@ namespace ProjectApp
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
                         // 成功使用道具 通知表现
-                        Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                        Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                         // 道具效果
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Horizontal).SetPot(pot.x, pot.y));
@@ -1572,7 +1519,7 @@ namespace ProjectApp
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
                         // 成功使用道具 通知表现
-                        Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                        Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                         // 道具效果
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Vertical).SetPot(pot.x, pot.y));
@@ -1591,7 +1538,7 @@ namespace ProjectApp
                 case ExternalProp.AllRandom:
                     {
                         // 成功使用道具 通知表现
-                        Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                        Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                         Player_RananAllElement();
                         isSu = true;
 
@@ -1603,7 +1550,7 @@ namespace ProjectApp
                         bool isCan = Data.CanUndo();
                         if (isCan)
                         {
-                            Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                            Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                             Player_UndoElement();
                             isCan = true;
                         }
@@ -1622,7 +1569,7 @@ namespace ProjectApp
                         if (isCan)
                         {
                             Data.TakeMemorySnapshotBoardData();
-                            Core.Dispatch(GameMsg.UseExternalProp, propType, list);
+                            Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                             List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
                             List<ElementData> propList = FutureCore.ListPool<ElementData>.Get();
                             ActivateProp_Wild(pot.x, pot.y, type, ref matches, ref propList);
@@ -1644,13 +1591,11 @@ namespace ProjectApp
                     break;
                 case ExternalProp.AddScore:
                     {
+                        Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                         AddScore(3000);
                         isSu = true;
                     }
                     break;
-
-
-
 
             }
 

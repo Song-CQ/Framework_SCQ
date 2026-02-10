@@ -102,6 +102,7 @@ namespace ProjectApp
             {
                 _executeCB?.Invoke(this);
                 isRun = true;
+                Debug.Log("流程开始："+ FutureCore.TimerUtil.GetGameTime());
             }
 
             public void Run()
@@ -113,7 +114,7 @@ namespace ProjectApp
                 if (duration + CONST_AddTime <= 0)
                 {
                     Finish();
-                    Debug.Log("完成");
+                    Debug.Log("流程完成："+ FutureCore.TimerUtil.GetGameTime());
                 }
             }
 

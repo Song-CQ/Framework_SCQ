@@ -92,6 +92,11 @@ namespace ProjectApp
         /// 使用盘外道具
         /// </summary>
         public static readonly uint UseExternalProp = ++_counter;
+        
+        /// <summary>
+        /// 消耗盘外道具
+        /// </summary>
+        public static readonly uint CostExternalProp = ++_counter;
 
 
 

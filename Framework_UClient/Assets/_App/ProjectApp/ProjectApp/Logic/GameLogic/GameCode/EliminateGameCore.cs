@@ -269,10 +269,10 @@ namespace ProjectApp
             Dispatcher = new Dispatcher<uint>();
 
             gameInitialModule = new GameInitial_Module();
+            externalProp_Module = new ExternalProp_Module();
 
             gameRuleModule = new GameRule_Module();
             visualEffectsModule = new VisualEffects_Module();
-            externalProp_Module = new ExternalProp_Module();
 
             gameModules = new List<IGameModule>();
             gameModules.Add(gameInitialModule);
