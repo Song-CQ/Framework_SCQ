@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 
 namespace ProjectApp
@@ -50,7 +51,7 @@ namespace ProjectApp
 
         // 当前分数
         public int currentScore = 0;
-        public int targetScore = 10000; // 目标分数
+        public int targetScore = 100000; // 目标分数
 
 
 
@@ -241,7 +242,7 @@ namespace ProjectApp
         private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
         private ExternalProp_Module externalProp_Module;
-        private List<IGameModule> gameModules;
+        private Dictionary<Type,IGameModule> gameModules;
 
         private bool isInit = false;
 
@@ -279,12 +280,12 @@ namespace ProjectApp
             gameRuleModule = new GameRule_Module();
             visualEffectsModule = new VisualEffects_Module();
 
-            gameModules = new List<IGameModule>();
-            gameModules.Add(gameInitialModule);
-            gameModules.Add(gameEndModule);
-            gameModules.Add(gameRuleModule);
-            gameModules.Add(visualEffectsModule);
-            gameModules.Add(externalProp_Module);
+            gameModules = new Dictionary<Type,IGameModule>();
+            gameModules.Add(gameInitialModule.GetType(), gameInitialModule);
+            gameModules.Add(gameEndModule.GetType(), gameEndModule);
+            gameModules.Add(gameRuleModule.GetType(), gameRuleModule);
+            gameModules.Add(visualEffectsModule.GetType(), visualEffectsModule);
+            gameModules.Add(externalProp_Module.GetType(), externalProp_Module);
 
 
             //填充核心
@@ -300,6 +301,8 @@ namespace ProjectApp
             _enabledCtrSum = 0;
             Enabled_PlayerCtr = true;
 
+            Dispatch(GameMsg.GameStart);
+            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.GameUI_Open);
 
             isInit = true;
         }
@@ -308,7 +311,7 @@ namespace ProjectApp
         {
             foreach (var item in gameModules)
             {
-                item.FillCore(this);
+                item.Value.FillCore(this);
             }
         }
 
@@ -316,7 +319,7 @@ namespace ProjectApp
         {
             foreach (var item in gameModules)
             {
-                item.AddListener();
+                item.Value.AddListener();
             }
 
         }
@@ -324,7 +327,7 @@ namespace ProjectApp
         {
             foreach (var item in gameModules)
             {
-                item.RemoveListener();
+                item.Value.RemoveListener();
             }
         }
 
@@ -335,12 +338,18 @@ namespace ProjectApp
         {
             foreach (var item in gameModules)
             {
-                item.InitializeBoard(boardWidth, boardHeight);
+                item.Value.InitializeBoard(boardWidth, boardHeight);
             }
 
         }
 
+        public T GetModule<T>() where T : IGameModule
+        {
+            Type type = typeof(T);
+            gameModules.TryGetValue(type, out IGameModule module);
 
+            return (T)module;
+        }
         /// <summary>
         /// 生成初始元素（简化的随机生成）
         /// </summary>
@@ -348,7 +357,7 @@ namespace ProjectApp
         {
             foreach (var item in gameModules)
             {
-                item.GenerateInitialElements();
+                item.Value.GenerateInitialElements();
             }
 
         }
@@ -384,7 +393,7 @@ namespace ProjectApp
             Dispose();
 
 
-            Invoke("Init", 1);
+            Init();
 
 
         }
@@ -400,10 +409,21 @@ namespace ProjectApp
         /// <summary>
         /// 游戏胜利
         /// </summary>
-        private void GameWin()
+        public void GameWin()
         {
             Debug.Log("游戏胜利！达到目标分数！");
             // 这里可以触发胜利界面、奖励发放等
+            Dispatch(GameMsg.GameWin);
+
+            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.GameWinUI_Open);
+        }
+
+        public void ExitGame()
+        {
+            Dispatch(GameMsg.GameOver);
+
+
+
         }
 
 
@@ -419,9 +439,15 @@ namespace ProjectApp
         {
             ElementType elementType = ElementType.Fixed_None;
             // 根据配置表比例生成元素（这里简化为随机）
-            int rand = GameTool.RandomToInt(1, 6);
-
-            elementType = (ElementType)rand;
+            int rand = GameTool.RandomToInt(1, 7);
+            if (rand == 6)
+            {
+                elementType = (ElementType)GameTool.RandomToInt(101, 105);
+            }
+            else
+            { 
+                elementType = (ElementType)rand;
+            }
 
             ElementData data = new ElementData(elementType);
 
@@ -464,7 +490,7 @@ namespace ProjectApp
 
             foreach (var item in gameModules)
             {
-                item.Dispose();
+                item.Value.Dispose();
             }
             gameInitialModule = null;
             gameRuleModule = null;
@@ -533,6 +559,8 @@ namespace ProjectApp
 
 
         }
+
+       
 
 
 

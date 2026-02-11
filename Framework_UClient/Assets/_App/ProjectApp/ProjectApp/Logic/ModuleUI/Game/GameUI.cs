@@ -10,6 +10,7 @@ using FutureCore;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,7 @@ namespace ProjectApp
         //框架自动创建请勿在此处修改内容
         private const string ui_BeesTrf_Key = "ui_BeesTrf";
         private const string ui_BetterBeesTrf_Key = "ui_BetterBeesTrf";
+        private const string ui_soce_Fg_Key = "ui_soce_Fg";
         private const string ui_currentScore_Key = "ui_currentScore";
         private const string ui_scoreChangeText_Key = "ui_scoreChangeText";
         private const string ui_tastText_Key = "ui_tastText";
@@ -32,14 +34,19 @@ namespace ProjectApp
         private GameUICtrl uiCtrl;
         private GameModel model;
         private UGUIEntity u_Entity;
-
+       
         private UI_List ui_PropList;
         private TextMeshProUGUI ui_TipsText;
+        private Image ui_soce_FgImg;
         private List<Transform> beesTars;
         private Queue<BetterBeeFlight> betterBeesFlightQueue;
         private BetterBeeFlight LastBetterBeesFlight;
 
         private EliminateGameCore core;
+        private List<ItemData> propDataList = new List<ItemData>();
+
+
+        private ExternalProp_PlayerData externalProp_PlayerData;
 
         public GameUI(GameUICtrl ctrl) : base(ctrl)
         {
@@ -64,11 +71,9 @@ namespace ProjectApp
             //model = moduleMgr.GetModel(ModelConst.GameModel) as GameModel;
         }
 
-        protected override void OnClose()
-        {
-        }
+        
 
-        private class PropData
+        private class PropData :ItemData
         {
             public ExternalProp type;
             public int Sum;
@@ -88,6 +93,7 @@ namespace ProjectApp
             ui_TipsText = GetComponent<TextMeshProUGUI>(ui_TipsText_Key);
             ui_TipsText.SetActive(false);
 
+            ui_soce_FgImg = GetComponent<Image>(ui_soce_Fg_Key);
             beesTars = new List<Transform>();
             Transform trf = GetComponent<Transform>(ui_BeesTrf_Key);
             foreach (Transform item in trf.GetComponentsInChildren<Transform>(true))
@@ -114,21 +120,19 @@ namespace ProjectApp
                 item.SetActive(false);
             }
 
+            
 
-            List<ItemData> datas = new List<ItemData>();
-            datas.Add(new ItemData() { IntData = (int)ExternalProp.Undo });
-            datas.Add(new ItemData() { IntData = (int)ExternalProp.Vertical });
-            datas.Add(new ItemData() { IntData = (int)ExternalProp.Horizontal });
-            datas.Add(new ItemData() { IntData = (int)ExternalProp.Wild });
-            datas.Add(new ItemData() { IntData = (int)ExternalProp.Hammer });
-            datas.Add(new ItemData() { IntData = (int)ExternalProp.AddScore });
-            datas.Add(new ItemData() { IntData = (int)ExternalProp.Swipe });
-            datas.Add(new ItemData() { IntData = (int)ExternalProp.AllRandom });
-
-            ui_PropList.SetData(datas);
 
             core = GameTool.GameCore;
 
+            externalProp_PlayerData = PlayerDataMgr.Instance.GetData<ExternalProp_PlayerData>();
+
+            foreach (var item in externalProp_PlayerData.allExternalProp)
+            {
+                propDataList.Add(new PropData() { type = item.Key,Sum = item.Value});
+            }
+
+            ui_PropList.SetData(propDataList);
 
         }
 
@@ -154,22 +158,77 @@ namespace ProjectApp
         {
             core.AddListener(GameMsg.Player_ClickExternalPropItem, OnClickExternalPropItem);
             core.AddListener(GameMsg.UseExternalProp, OnUseExternalProp);
+            core.AddListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
+            core.AddListener(GameMsg.GameStart, RestUI);
 
             UICtrlDispatcher.Instance.AddListener(GameMsg.ScoreUpdated, OnScoreUpdated);
-            UICtrlDispatcher.Instance.AddListener(GameMsg.GameWin, OnGame);
+            UICtrlDispatcher.Instance.AddListener(GameMsg.GameWin, OnGameWin);
+        }
+
+        
+
+        protected override void OnClose()
+        {
+            core.RemoveListener(GameMsg.Player_ClickExternalPropItem, OnClickExternalPropItem);
+            core.RemoveListener(GameMsg.UseExternalProp, OnUseExternalProp);
+            core.RemoveListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
+            core.RemoveListener(GameMsg.GameStart, RestUI);
+
+            UICtrlDispatcher.Instance.RemoveListener(GameMsg.ScoreUpdated, OnScoreUpdated);
+            UICtrlDispatcher.Instance.RemoveListener(GameMsg.GameWin, OnGameWin);
+
+
+        }
+
+        private void OnConsumeExternalProp(object obj)
+        {
+            object[] objects = obj as object[];
+            ExternalProp propType = (ExternalProp)objects[0];
+            List<Vector2Int> list = objects[1] as List<Vector2Int>;
+
+
+
+            foreach (PropData item in propDataList)
+            {
+                if (item.type == propType)
+                {
+                    if (!externalProp_PlayerData.allExternalProp.ContainsKey(propType))
+                    {
+                        externalProp_PlayerData.allExternalProp[propType] = 0;
+                    }
+                    item.Sum = externalProp_PlayerData.allExternalProp[propType];
+                }
+            }
+
+            RefershPropList();
+
+
+        }
+
+        private void RefershPropList()
+        {
+            ui_PropList.RefreshCurrentShowItems();
+
         }
 
         protected override void OnOpen(object args)
         {
-            scoreText.text = "0";
-            scoreChangeText.text = "";
-
+            RestUI();
 
         }
 
-        private void OnGame(object obj)
+        private void RestUI(object args =null)
+        {
+            scoreText.text = "0";
+            scoreChangeText.text = "";
+            ui_soce_FgImg.fillAmount = 0;
+
+        }
+
+        private void OnGameWin(object obj)
         {
             ui_TipsText.text = "胜利";
+            ui_TipsText.SetActive(true);
         }
 
         public override void OnUpdate()
@@ -180,11 +239,15 @@ namespace ProjectApp
             {
                 UpdateScoreAnimation();
             }
+
+           
+
         }
 
 
 
         #region  分数动画
+
 
         private void OnScoreUpdated(object obj)
         {
@@ -192,9 +255,10 @@ namespace ProjectApp
             int oldScore = (int)objects[0];
             int currScore = (int)objects[1];
 
+
             StartScoreAnimation(oldScore, currScore);
 
-            StartBetterBeesAnimation(currScore);
+
         }
 
         private void StartBetterBeesAnimation(float currScore)
@@ -204,6 +268,7 @@ namespace ProjectApp
             {
                 return;
             }
+            sum = sum > beesTars.Count ? beesTars.Count:sum;
 
             Transform tartrf = beesTars[sum - 1];
 
@@ -257,6 +322,8 @@ namespace ProjectApp
             animationProgress = 0f;
             isAnimating = true;
 
+            StartBetterBeesAnimation(targetScore);
+
             // 显示分数变化文字
             if (scoreChangeText != null)
             {
@@ -306,6 +373,10 @@ namespace ProjectApp
                     float scale = 1f + Mathf.Sin(animationProgress * Mathf.PI * 8f) * 0.05f;
                     scoreText.transform.localScale = new Vector3(scale, scale, 1f);
                 }
+            }
+            if (ui_soce_FgImg)
+            { 
+                ui_soce_FgImg.fillAmount =  currentDisplayScore *1f / core.TargetScore;
             }
 
             // 隐藏分数变化文字

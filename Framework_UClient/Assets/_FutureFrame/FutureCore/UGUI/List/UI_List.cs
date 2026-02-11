@@ -282,6 +282,8 @@ namespace FutureCore
         }
 
 
+
+
         void RefreshList()
         {
             // 清空当前显示项
@@ -291,7 +293,7 @@ namespace FutureCore
             }
             activeItems.Clear();
             currentShowItems.Clear();
-            for (int i = 0; i < dataList.Count; i++)
+            for (int i = 0; i < totalItems; i++)
             {
                 BaseUIList_Item item = GetPooledItem();
                 item.SetActive(true);
@@ -385,8 +387,12 @@ namespace FutureCore
 
                     BaseUIList_Item listItem = item.GetComponent<BaseUIList_Item>();
 
-
-                    listItem.Initialize(i, dataList[i]);
+                    ItemData itemData = null;
+                    if (dataList != null)
+                    {
+                        itemData = dataList[i];
+                    }
+                    listItem.Initialize(i, itemData); 
 
                     // 设置位置
                     float yPos = -i * (itemHeight + spacing.x);
@@ -404,8 +410,13 @@ namespace FutureCore
             {
                 if (updateItemData != null)
                 {
-                    currentShowItems[i].Initialize(i, dataList[i]);
-                    updateItemData(currentShowItems[i], dataList[i]);
+                    ItemData itemData = null;
+                    if (dataList != null)
+                    {
+                        itemData = dataList[i];
+                    }
+                    currentShowItems[i].Initialize(i, itemData);
+                    updateItemData(currentShowItems[i], itemData);
                 }
             }
         }

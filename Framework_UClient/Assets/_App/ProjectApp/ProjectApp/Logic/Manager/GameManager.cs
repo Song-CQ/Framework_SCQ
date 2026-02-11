@@ -47,7 +47,7 @@ namespace ProjectApp
 
         private void LoadComplete(object obj)
         {
-            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.GameUI_Open);
+            //UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.GameUI_Open);
 
             gameCore = GameObject.FindObjectOfType<EliminateGameCore>(true);
            

@@ -979,7 +979,7 @@ namespace ProjectApp
             // 检查是否达到目标
             if (Data.currentScore >= Data.targetScore)
             {
-                Dispatcher.Dispatch(GameMsg.GameWin);
+                Core.GameWin();
             }
         }
 

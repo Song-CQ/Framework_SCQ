@@ -112,6 +112,10 @@ namespace ProjectApp
         /// 游戏结束
         /// </summary>
         public static readonly uint GameOver = ++_counter;
+        /// <summary>
+        /// 游戏开始
+        /// </summary>
+        public static readonly uint GameStart = ++_counter;
 
         /// <summary>
         /// 游戏胜利

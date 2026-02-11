@@ -9,19 +9,7 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-    public enum ExternalProp
-    {
-        None = 0,
-        Hammer = 10000,
-        Swipe,
-        Horizontal,
-        Vertical,
-        AllRandom,
-        Undo,
-        Wild,
-        AddScore,
-
-    }
+    
 
   
 

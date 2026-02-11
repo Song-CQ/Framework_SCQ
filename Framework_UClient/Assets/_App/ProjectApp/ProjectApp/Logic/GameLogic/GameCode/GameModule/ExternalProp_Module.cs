@@ -8,6 +8,19 @@ using UnityEngine;
 
 namespace ProjectApp
 {
+    public enum ExternalProp
+    {
+        None = 0,
+        Hammer = 10000,
+        Swipe,
+        Horizontal,
+        Vertical,
+        AllRandom,
+        Undo,
+        Wild,
+        AddScore,
+
+    }
     public class ExternalProp_Module : IGameModule
     {
         public Dispatcher<uint> Dispatcher => Core.Dispatcher;
@@ -20,6 +33,7 @@ namespace ProjectApp
         private List<ElementData> dataList = new List<ElementData>();
 
 
+        private Dictionary<ExternalProp,int> allExternalProp = new Dictionary<ExternalProp, int> ();
 
 
         public void FillCore(EliminateGameCore _core)
@@ -41,9 +55,9 @@ namespace ProjectApp
         }
         public void AddListener()
         {
-            Dispatcher.AddListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
-            Dispatcher.AddListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
+            Dispatcher.AddPriorityListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
             
+            Dispatcher.AddListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
             Dispatcher.AddListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement);
 
 
@@ -51,10 +65,10 @@ namespace ProjectApp
 
         public void RemoveListener()
         {
-            Dispatcher.RemoveListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
             ///消耗
-            Dispatcher.RemoveListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
+            Dispatcher.RemovePriorityListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
 
+            Dispatcher.RemoveListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
             Dispatcher.RemoveListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement);
         }
         
@@ -65,10 +79,10 @@ namespace ProjectApp
             ExternalProp propType = (ExternalProp)objects[0];
             List<Vector2Int> list = objects[1] as List<Vector2Int>;
 
-
-            
             //消耗
             ConsumeExternalProp(propType);
+
+
         }
 
         /// <summary>
@@ -78,12 +92,25 @@ namespace ProjectApp
         /// <exception cref="NotImplementedException"></exception>
         private void ConsumeExternalProp(ExternalProp type)
         {
-
+            if (allExternalProp.ContainsKey(type))
+            {
+                int sum = allExternalProp[type];
+                if (sum > 0)
+                {
+                    sum = sum - 1;
+                    allExternalProp[type] = sum;
+                }
+            }
 
 
         }
 
-        
+        public Dictionary<ExternalProp, int> GetAllPropData()
+        {
+
+            return allExternalProp;
+        }
+
 
         /// <summary>
         /// 点击外置道具
@@ -231,6 +258,6 @@ namespace ProjectApp
 
         }
 
-
+        
     }
 }

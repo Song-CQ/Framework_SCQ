@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件: ModuleMgrRegister.cs
     作者: Clear
-    日期: 2026/2/6 6:17:21
+    日期: 2026/2/11 23:12:53
     类型: 自动创建
     功能: 模块数据注册
 *****************************************************/
@@ -15,6 +15,7 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddModel(ModelConst.GameModel,new GameModel());
+            moduleMgr.AddModel(ModelConst.GameWinModel,new GameWinModel());
             moduleMgr.AddModel(ModelConst.MainModel,new MainModel());
             moduleMgr.AddModel(ModelConst.TipsModel,new TipsModel());
 
@@ -24,6 +25,7 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddUIType(UIConst.GameUI,typeof(GameUI));
+            moduleMgr.AddUIType(UIConst.GameWinUI,typeof(GameWinUI));
             moduleMgr.AddUIType(UIConst.MainUI,typeof(MainUI));
             moduleMgr.AddUIType(UIConst.TipsUI,typeof(TipsUI));
 
@@ -33,6 +35,7 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddCtrl(CtrlConst.GameCtrl,new GameCtrl());
+            moduleMgr.AddCtrl(CtrlConst.GameWinCtrl,new GameWinCtrl());
             moduleMgr.AddCtrl(CtrlConst.MainCtrl,new MainCtrl());
             moduleMgr.AddCtrl(CtrlConst.TipsCtrl,new TipsCtrl());
 
@@ -42,6 +45,7 @@ namespace ProjectApp
         {
             ModuleMgr moduleMgr = ModuleMgr.Instance;
             moduleMgr.AddUICtrl(UICtrlConst.GameUICtrl,new GameUICtrl());
+            moduleMgr.AddUICtrl(UICtrlConst.GameWinUICtrl,new GameWinUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.MainUICtrl,new MainUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.TipsUICtrl,new TipsUICtrl());
 

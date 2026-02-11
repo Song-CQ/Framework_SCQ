@@ -1,4 +1,5 @@
 ﻿using FutureCore;
+using ProjectApp.UGUI;
 
 namespace ProjectApp
 {
@@ -53,7 +54,7 @@ namespace ProjectApp
             //// AppMgr
             //globalMgr.AddMgr(ChannelMgr.Instance);
             //globalMgr.AddMgr(GameDataMgr.Instance);
-            //globalMgr.AddMgr(PreferencesMgr.Instance);
+            globalMgr.AddMgr(PlayerDataMgr.Instance);
 
 
             //// AppMonoMgr
