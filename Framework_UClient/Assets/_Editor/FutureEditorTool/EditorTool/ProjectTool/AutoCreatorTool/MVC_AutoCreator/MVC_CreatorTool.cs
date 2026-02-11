@@ -181,7 +181,7 @@ namespace FutureEditor
         {
             string val = string.Empty;
 
-            foreach (var item in wnd.GetComponentsInChildren<Transform>())
+            foreach (var item in wnd.GetComponentsInChildren<Transform>(true))
             {
                 string item_name = item.name;
                 if (item_name.Trim().StartsWith("ui_"))

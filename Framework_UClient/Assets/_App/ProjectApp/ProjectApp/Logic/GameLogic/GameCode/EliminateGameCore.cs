@@ -35,7 +35,7 @@ namespace ProjectApp
 
         public int BoardWidth => boardSize.x;
         public int BoardHeight => boardSize.y;
-        
+
 
         public int linkBoardPotLength;
         /// <summary>
@@ -51,7 +51,9 @@ namespace ProjectApp
         // 当前分数
         public int currentScore = 0;
         public int targetScore = 100000; // 目标分数
-  
+
+
+
 
         public ElementData GetElementData(Vector2Int pot)
         {
@@ -79,14 +81,14 @@ namespace ProjectApp
         // 快速检查连接是否存在
         public bool HasConnection(Vector2Int point1, Vector2Int point2)
         {
-            long key = GameTool.EncodeConnection(ref point1,ref point2);
+            long key = GameTool.EncodeConnection(ref point1, ref point2);
             return _keyToConnection.ContainsKey(key);
         }
 
         // 添加连接
         public bool AddConnection(Vector2Int point1, Vector2Int point2)
         {
-            long key = GameTool.EncodeConnection(ref point1,ref point2);          
+            long key = GameTool.EncodeConnection(ref point1, ref point2);
             // 检查是否重复（双向检查）
             if (!_keyToConnection.ContainsKey(key))
             {
@@ -99,7 +101,7 @@ namespace ProjectApp
         // 移除连接
         public bool RemoveConnection(Vector2Int point1, Vector2Int point2)
         {
-            long key = GameTool.EncodeConnection(ref point1,ref point2);
+            long key = GameTool.EncodeConnection(ref point1, ref point2);
             if (_keyToConnection.ContainsKey(key))
             {
                 _keyToConnection.Remove(key);
@@ -109,7 +111,7 @@ namespace ProjectApp
         }
 
         public Dictionary<long, (Vector2Int, Vector2Int)> GetAllConnection()
-        { 
+        {
             return _keyToConnection;
         }
 
@@ -119,14 +121,14 @@ namespace ProjectApp
 
         public void Dispose()
         {
-            currentScore  = 0;
-            targetScore  = 0;
+            currentScore = 0;
+            targetScore = 0;
             boardData = null;
             lastBoardDataList.Clear();
 
             linkBoardPotLength = 0;
             _keyToConnection.Clear();
-            
+
             selectedElement = new Vector2Int(-1, -1);
             boardSize = new Vector2Int(0, 0);
         }
@@ -151,16 +153,16 @@ namespace ProjectApp
 
         public bool UndoStepBoardData()
         {
-            if(!CanUndo())return false;
-            var data = lastBoardDataList[lastBoardDataList.Count-1];
-            lastBoardDataList.RemoveAt(lastBoardDataList.Count -1);
+            if (!CanUndo()) return false;
+            var data = lastBoardDataList[lastBoardDataList.Count - 1];
+            lastBoardDataList.RemoveAt(lastBoardDataList.Count - 1);
             SetBoardData(data);
             return true;
         }
 
         public bool CanUndo()
         {
-            if(lastBoardDataList.Count <=0)
+            if (lastBoardDataList.Count <= 0)
             {
                 return false;
             }
@@ -210,19 +212,20 @@ namespace ProjectApp
             }
             else
                 if (param.Length == 1)
-            {
-                Dispatcher.Dispatch(msg, param[0]);
-            }
-            else
-            {
-       
-                Dispatcher.Dispatch(msg, param);
-            }
+                {
+                    Dispatcher.Dispatch(msg, param[0]);
+                }
+                else
+                {
+
+                    Dispatcher.Dispatch(msg, param);
+                }
         }
 
         public void AddListener(uint msg, Action<object> paramCB)
         {
             Dispatcher.AddListener(msg, paramCB);
+
         }
 
         public void RemoveListener(uint msg, Action<object> paramCB)
@@ -234,6 +237,7 @@ namespace ProjectApp
 
         public ElementGameData Data { private set; get; }
         private GameInitial_Module gameInitialModule;
+        private GameEnd_Module gameEndModule;
         private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
         private ExternalProp_Module externalProp_Module;
@@ -245,21 +249,21 @@ namespace ProjectApp
         /// 能否操作 Controller 
         /// </summary>
         public bool Enabled_PlayerCtr { get => _enabledCtrSum > 0; set { if (value) _enabledCtrSum++; else _enabledCtrSum--; } }
+
+        public int TargetScore => Data.targetScore;
         /// <summary>
         /// 操作计数器
         /// </summary>
         private int _enabledCtrSum = 0;
 
-        private void Awake()
-        {
-          
-        }
-
         [Button("Init")]
         public void Init()
         {
-            InputMgr.Instance.Init();
-            InputMgr.Instance.StartUp();
+            if (isEditor)
+            {
+                InputMgr.Instance.Init();
+                InputMgr.Instance.StartUp();
+            }
 
             GameTool.GameCore = this;
             GameTool.SetRandomSeed(132131231);//设置种子
@@ -269,6 +273,7 @@ namespace ProjectApp
             Dispatcher = new Dispatcher<uint>();
 
             gameInitialModule = new GameInitial_Module();
+            gameEndModule = new GameEnd_Module();
             externalProp_Module = new ExternalProp_Module();
 
             gameRuleModule = new GameRule_Module();
@@ -276,6 +281,7 @@ namespace ProjectApp
 
             gameModules = new List<IGameModule>();
             gameModules.Add(gameInitialModule);
+            gameModules.Add(gameEndModule);
             gameModules.Add(gameRuleModule);
             gameModules.Add(visualEffectsModule);
             gameModules.Add(externalProp_Module);
@@ -352,15 +358,17 @@ namespace ProjectApp
         public Vector2Int temp1 = new Vector2Int(0, 13);
         public Vector2Int temp2 = new Vector2Int(0, 12);
 
+        [LabelText("是否编辑器模式")]
+        private bool isEditor;
         [LabelText("是否填充")]
         public bool IsFill;
         [LabelText("是否触发组合道具 点击模式")]
         public bool IsClickProp;
         [LabelText("是否使用对象池动画")]
         public bool isPool = true;
-         [LabelText("是否检查元素消除")]
+        [LabelText("是否检查元素消除")]
         public bool isCheckAllMatches = true;
-
+      
 
         [Button("交换元素")]
         public void Test1()
@@ -483,7 +491,6 @@ namespace ProjectApp
         public ExternalProp SelectExternalProp => externalProp_Module.SelectExternalProp;
 
 
-        
 
 
         #endregion
@@ -492,43 +499,43 @@ namespace ProjectApp
         #region 玩家的操作 点击元素 拖动元素 
         public void ClickElementItem(ElementItem elementItem)
         {
-            if(!Enabled_PlayerCtr) return;
-            Dispatch(GameMsg.Player_ClickElement,elementItem.Data);
+            if (!Enabled_PlayerCtr) return;
+            Dispatch(GameMsg.Player_ClickElement, elementItem.Data);
         }
 
         public void SwipeItemToItem(ElementItem startItem, ElementItem endItem)
         {
-            if(!Enabled_PlayerCtr) return;
+            if (!Enabled_PlayerCtr) return;
 
-            if (startItem != null && endItem != null&&startItem!=endItem)
+            if (startItem != null && endItem != null && startItem != endItem)
             {
                 //拖动一个元素到另一个元素
                 Dispatch(GameMsg.Player_SwipeElementToElement, startItem.Data, endItem.Data);
             }
-           
+
 
         }
 
-        public void SwipeElementItem(ElementItem startItem,Vector2 dir)
+        public void SwipeElementItem(ElementItem startItem, Vector2 dir)
         {
             if (!Enabled_PlayerCtr) return;
 
-            Dispatch(GameMsg.Player_SwipeElement, startItem.Data,dir);
+            Dispatch(GameMsg.Player_SwipeElement, startItem.Data, dir);
         }
 
         public void ClickExternalPropItem(ExternalProp type)
         {
-           if (!Enabled_PlayerCtr) return;
+            if (!Enabled_PlayerCtr) return;
 
 
 
-           Dispatch(GameMsg.Player_ClickExternalPropItem,type);
+            Dispatch(GameMsg.Player_ClickExternalPropItem, type);
 
 
         }
 
 
-       
+
 
 
 

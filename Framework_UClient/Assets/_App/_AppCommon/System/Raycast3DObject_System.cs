@@ -50,15 +50,18 @@ namespace ProjectApp
             base.Start();
             InputMgr.OnClick += OnClick;
             InputMgr.OnSwipe += OnSwipe;
+   
             
         }
+
+
 
         public override void Shutdown()
         {
             base.Shutdown();
             InputMgr.OnClick -= OnClick;
             InputMgr.OnSwipe -= OnSwipe;
-       
+
         }
 
         public override void Run()
@@ -68,7 +71,6 @@ namespace ProjectApp
 
         private void OnClick(Vector2 pot)
         {
- 
 
             if (GetClickRaycast3D(pot, out IRaycast3D raycast3D, out Vector3 hitPot))
             {
@@ -80,8 +82,6 @@ namespace ProjectApp
 
         private void OnSwipe(SwipeDirection arg1, Vector2 potStart, Vector2 potEnd)
         {
-
-
             if (GetClickRaycast3D(potStart, out IRaycast3D raycast3D_start, out Vector3 hitPot_start))
             {
                 GetClickRaycast3D(potEnd, out IRaycast3D raycast3D_end, out Vector3 hitPot_end);
@@ -89,9 +89,8 @@ namespace ProjectApp
                 raycast3D_start.Raycast_OnSwipe(hitPot_start,hitPot_end,raycast3D_end);             
             }
 
-
         }
-
+ 
 
 
 

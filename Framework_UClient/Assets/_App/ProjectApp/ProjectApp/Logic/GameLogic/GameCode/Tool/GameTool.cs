@@ -148,8 +148,8 @@ namespace ProjectApp
 
         #region 斜对角生成
         const int MAX_ATTEMPTS_PER_CONNECTION = 100;
+       
 
-        
 
         // 随机选择斜对角方向
 
@@ -206,6 +206,10 @@ namespace ProjectApp
         #endregion
 
         private static uint _uint_Index = 0;
+        public static float MaxOrthographicSize = 130;
+        public static float MinOrthographicSize = 110;
+        public static float DefOrthographicSize = 120;
+
         public static uint GetNextIndex()
         {
             if (_uint_Index >= uint.MaxValue)

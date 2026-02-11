@@ -10,17 +10,17 @@ namespace FutureCore
     /// </summary>
     public sealed class InputMgr : BaseMonoMgr<InputMgr>
     {
-
         /// <summary>
         /// 是否忽略UI检测（即使点击在UI上也触发事件）
         /// 默认false：点击在UI上不触发事件
         /// true：即使点击在UI上也触发事件
         /// </summary>
         public static bool IgnoreUICheck { get; set; } = false;
+
         // ==================== 事件定义区域 ====================
+
         /// <summary>全局点击事件，任何点击都会触发（包括点击在UI上）</summary>
         public static event Action<Vector2> OnScreenClick;
-
 
         // 点击相关事件
         /// <summary>屏幕点击事件，参数为点击的屏幕坐标(Vector2)</summary>
@@ -46,6 +46,23 @@ namespace FutureCore
         /// <summary>拖拽结束事件，参数：上一帧坐标、结束坐标</summary>
         public static event Action<Vector2, Vector2> OnDragEnd;
 
+        // ==================== 双指事件区域 ====================
+
+        /// <summary>双指缩放事件，参数：缩放增量(像素)</summary>
+        public static event Action<float> OnPinchZoom;
+        /// <summary>双指旋转事件，参数：旋转角度增量</summary>
+        public static event Action<float> OnTwoFingerRotate;
+        /// <summary>双指滑动事件，参数：滑动向量</summary>
+        public static event Action<Vector2> OnTwoFingerDrag;
+        /// <summary>双指点击事件，参数：双指中心点</summary>
+        public static event Action<Vector2> OnTwoFingerTap;
+        /// <summary>双指长按事件，参数：双指中心点</summary>
+        public static event Action<Vector2> OnTwoFingerLongPress;
+        /// <summary>双指开始触摸事件</summary>
+        public static event Action OnTwoFingerTouchStart;
+        /// <summary>双指结束触摸事件</summary>
+        public static event Action OnTwoFingerTouchEnd;
+
         // ==================== 配置常量区域 ====================
 
         /// <summary>最小滑动距离(像素)，低于此距离视为点击</summary>
@@ -58,6 +75,19 @@ namespace FutureCore
         private const float DRAG_START_DISTANCE = 5f;
         /// <summary>点击判定距离(像素)，移动距离小于此值视为点击</summary>
         private const float CLICK_DISTANCE_THRESHOLD = 10f;
+
+        // ==================== 双指配置常量 ====================
+
+        /// <summary>双指点击判定时间(秒)</summary>
+        private const float TWO_FINGER_TAP_TIME = 0.3f;
+        /// <summary>双指长按判定时间(秒)</summary>
+        private const float TWO_FINGER_LONG_PRESS_TIME = 1.0f;
+        /// <summary>双指缩放灵敏度系数</summary>
+        private const float PINCH_ZOOM_SENSITIVITY = 0.01f;
+        /// <summary>双指旋转灵敏度系数</summary>
+        private const float ROTATE_SENSITIVITY = 0.5f;
+        /// <summary>双指滑动灵敏度系数</summary>
+        private const float TWO_FINGER_DRAG_SENSITIVITY = 0.01f;
 
         // ==================== 状态变量区域 ====================
 
@@ -73,6 +103,27 @@ namespace FutureCore
         private bool isDragging = false;
         /// <summary>长按事件是否已触发（防止重复触发）</summary>
         private bool isLongPressInvoked = false;
+
+        // ==================== 双指状态变量 ====================
+
+        /// <summary>双指状态</summary>
+        private TwoFingerState twoFingerState = TwoFingerState.None;
+        /// <summary>双指开始触摸时间</summary>
+        private float twoFingerStartTime;
+        /// <summary>双指上一帧的距离</summary>
+        private float previousTwoFingerDistance;
+        /// <summary>双指上一帧的角度</summary>
+        private float previousTwoFingerAngle;
+        /// <summary>双指上一帧的中心点</summary>
+        private Vector2 previousTwoFingerCenter;
+        /// <summary>双指是否有效（已初始化）</summary>
+        private bool isTwoFingerValid = false;
+        /// <summary>双指长按是否已触发</summary>
+        private bool isTwoFingerLongPressInvoked = false;
+        /// <summary>双指点击起始位置1</summary>
+        private Vector2 twoFingerStartPos1;
+        /// <summary>双指点击起始位置2</summary>
+        private Vector2 twoFingerStartPos2;
 
         // ==================== 生命周期方法 ====================
 
@@ -92,15 +143,22 @@ namespace FutureCore
             // 检查管理器状态，未启动或已销毁则不处理输入
             if (!IsStartUp || IsDispose) return;
 
-            HandleInput();
+            // 处理双指触摸
+            HandleTwoFingerInput();
+
+            // 处理单指触摸（仅在无双指时处理）
+            if (Input.touchCount <= 1)
+            {
+                HandleSingleTouchInput();
+            }
         }
 
-        // ==================== 输入处理核心方法 ====================
+        // ==================== 单指输入处理方法 ====================
 
         /// <summary>
-        /// 统一处理所有输入事件
+        /// 处理单指输入事件
         /// </summary>
-        private void HandleInput()
+        private void HandleSingleTouchInput()
         {
             // 鼠标/触摸开始
             if (Input.GetMouseButtonDown(0))
@@ -246,6 +304,157 @@ namespace FutureCore
             ResetTouch();
         }
 
+        // ==================== 双指输入处理方法 ====================
+
+        /// <summary>
+        /// 处理双指输入事件
+        /// </summary>
+        private void HandleTwoFingerInput()
+        {
+            // 检查是否为双指触摸
+            if (Input.touchCount == 2)
+            {
+                Touch touch1 = Input.GetTouch(0);
+                Touch touch2 = Input.GetTouch(1);
+
+                // 检查是否在UI上（根据IgnoreUICheck决定）
+                if (!IgnoreUICheck && (IsPointerOverUI(touch1.position) || IsPointerOverUI(touch2.position)))
+                {
+                    ResetTwoFingerState();
+                    return;
+                }
+
+                // 处理双指状态机
+                switch (twoFingerState)
+                {
+                    case TwoFingerState.None:
+                        OnTwoFingerTouchStart?.Invoke();
+                        twoFingerState = TwoFingerState.Touching;
+                        twoFingerStartTime = Time.time;
+                        twoFingerStartPos1 = touch1.position;
+                        twoFingerStartPos2 = touch2.position;
+                        isTwoFingerLongPressInvoked = false;
+                        break;
+
+                    case TwoFingerState.Touching:
+                        // 检测双指移动
+                        if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
+                        {
+                            twoFingerState = TwoFingerState.Moving;
+                            InitializeTwoFingerGesture(touch1, touch2);
+                        }
+                        // 检测双指长按
+                        else if (!isTwoFingerLongPressInvoked && 
+                                 Time.time - twoFingerStartTime > TWO_FINGER_LONG_PRESS_TIME)
+                        {
+                            Vector2 center = (touch1.position + touch2.position) * 0.5f;
+                            OnTwoFingerLongPress?.Invoke(center);
+                            isTwoFingerLongPressInvoked = true;
+                            twoFingerState = TwoFingerState.LongPress;
+                        }
+                        break;
+
+                    case TwoFingerState.Moving:
+                        ProcessTwoFingerGestures(touch1, touch2);
+                        break;
+
+                    case TwoFingerState.LongPress:
+                        // 长按后如果有移动，仍然可以处理手势
+                        if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
+                        {
+                            if (!isTwoFingerValid)
+                            {
+                                InitializeTwoFingerGesture(touch1, touch2);
+                            }
+                            ProcessTwoFingerGestures(touch1, touch2);
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                // 双指触摸结束
+                if (twoFingerState != TwoFingerState.None)
+                {
+                    OnTwoFingerTouchEnd?.Invoke();
+
+                    // 检测双指点击（触摸时间短且移动距离小）
+                    if (twoFingerState == TwoFingerState.Touching && 
+                        Time.time - twoFingerStartTime <= TWO_FINGER_TAP_TIME)
+                    {
+                        Vector2 center = (twoFingerStartPos1 + twoFingerStartPos2) * 0.5f;
+                        OnTwoFingerTap?.Invoke(center);
+                    }
+
+                    ResetTwoFingerState();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 初始化双指手势数据
+        /// </summary>
+        private void InitializeTwoFingerGesture(Touch touch1, Touch touch2)
+        {
+            previousTwoFingerDistance = Vector2.Distance(touch1.position, touch2.position);
+            previousTwoFingerAngle = GetAngle(touch1.position, touch2.position);
+            previousTwoFingerCenter = (touch1.position + touch2.position) * 0.5f;
+            isTwoFingerValid = true;
+        }
+
+        /// <summary>
+        /// 处理双指手势（缩放、旋转、滑动）
+        /// </summary>
+        private void ProcessTwoFingerGestures(Touch touch1, Touch touch2)
+        {
+            if (!isTwoFingerValid)
+            {
+                InitializeTwoFingerGesture(touch1, touch2);
+                return;
+            }
+
+            // 当前帧数据
+            float currentDistance = Vector2.Distance(touch1.position, touch2.position);
+            float currentAngle = GetAngle(touch1.position, touch2.position);
+            Vector2 currentCenter = (touch1.position + touch2.position) * 0.5f;
+
+            // 1. 缩放检测
+            float deltaDistance = currentDistance - previousTwoFingerDistance;
+            if (Mathf.Abs(deltaDistance) > 0.5f) // 忽略微小变化
+            {
+                OnPinchZoom?.Invoke(deltaDistance * PINCH_ZOOM_SENSITIVITY);
+            }
+
+            // 2. 旋转检测
+            float deltaAngle = Mathf.DeltaAngle(previousTwoFingerAngle, currentAngle);
+            if (Mathf.Abs(deltaAngle) > 0.5f) // 忽略微小角度变化
+            {
+                OnTwoFingerRotate?.Invoke(deltaAngle * ROTATE_SENSITIVITY);
+            }
+
+            // 3. 双指滑动检测
+            Vector2 deltaCenter = currentCenter - previousTwoFingerCenter;
+            if (deltaCenter.magnitude > 0.5f)
+            {
+                OnTwoFingerDrag?.Invoke(deltaCenter * TWO_FINGER_DRAG_SENSITIVITY);
+            }
+
+            // 更新上一帧数据
+            previousTwoFingerDistance = currentDistance;
+            previousTwoFingerAngle = currentAngle;
+            previousTwoFingerCenter = currentCenter;
+        }
+
+        /// <summary>
+        /// 重置双指状态
+        /// </summary>
+        private void ResetTwoFingerState()
+        {
+            twoFingerState = TwoFingerState.None;
+            isTwoFingerValid = false;
+            isTwoFingerLongPressInvoked = false;
+        }
+
         // ==================== 工具方法 ====================
 
         /// <summary>
@@ -275,13 +484,16 @@ namespace FutureCore
                 return SwipeDirection.Down;
             else // -67.5f 到 -22.5f
                 return SwipeDirection.DownRight;
+        }
 
-            /* 简化版（4方向）代码：
-            if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
-                return delta.x > 0 ? SwipeDirection.Right : SwipeDirection.Left;
-            else
-                return delta.y > 0 ? SwipeDirection.Up : SwipeDirection.Down;
-            */
+        /// <summary>
+        /// 计算两点间的角度（相对于屏幕X轴）
+        /// </summary>
+        private float GetAngle(Vector2 p1, Vector2 p2)
+        {
+            Vector2 dir = p1 - p2;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            return angle;
         }
 
         /// <summary>
@@ -311,14 +523,27 @@ namespace FutureCore
         }
 
         /// <summary>
+        /// 检查指定位置的触摸/点击是否在UI元素上
+        /// </summary>
+        /// <param name="position">屏幕坐标</param>
+        /// <returns>true表示在UI上，false表示不在UI上</returns>
+        private bool IsPointerOverUI(Vector2 position)
+        {
+            if (EventSystem.current == null) return false;
+            PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+            pointerEventData.position = position;
+            var results = new System.Collections.Generic.List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerEventData, results);
+            return results.Count > 0;
+        }
+
+        /// <summary>
         /// 检查当前触摸/点击是否在UI元素上
         /// </summary>
         /// <returns>true表示在UI上，应忽略此次输入；false表示不在UI上</returns>
         private bool IsPointerOverUI()
         {
-            // EventSystem可能为空，需要检查
-            if (EventSystem.current == null) return false;
-            return EventSystem.current.IsPointerOverGameObject();
+            return IsPointerOverUI(Input.mousePosition);
         }
 
         /// <summary>
@@ -346,6 +571,15 @@ namespace FutureCore
             OnDragStart = null;
             OnDrag = null;
             OnDragEnd = null;
+            
+            // 清除双指事件
+            OnPinchZoom = null;
+            OnTwoFingerRotate = null;
+            OnTwoFingerDrag = null;
+            OnTwoFingerTap = null;
+            OnTwoFingerLongPress = null;
+            OnTwoFingerTouchStart = null;
+            OnTwoFingerTouchEnd = null;
         }
 
         /// <summary>
@@ -357,6 +591,63 @@ namespace FutureCore
             // 如果单例未初始化，默认返回true
             if (Instance == null) return true;
             return IgnoreUICheck || !Instance.IsPointerOverUI();
+        }
+
+        // ==================== 双指公共静态方法 ====================
+
+        /// <summary>
+        /// 获取当前双指距离
+        /// </summary>
+        public static float GetTwoFingerDistance()
+        {
+            if (Input.touchCount == 2)
+            {
+                return Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
+            }
+            return 0;
+        }
+
+        /// <summary>
+        /// 获取当前双指中心点
+        /// </summary>
+        public static Vector2 GetTwoFingerCenter()
+        {
+            if (Input.touchCount == 2)
+            {
+                return (Input.GetTouch(0).position + Input.GetTouch(1).position) * 0.5f;
+            }
+            return Vector2.zero;
+        }
+
+        /// <summary>
+        /// 当前是否为双指触摸状态
+        /// </summary>
+        public static bool IsTwoFingerTouching
+        {
+            get { return Instance != null && Instance.twoFingerState != TwoFingerState.None; }
+        }
+
+        /// <summary>
+        /// 当前双指是否在移动中
+        /// </summary>
+        public static bool IsTwoFingerMoving
+        {
+            get { return Instance != null && Instance.twoFingerState == TwoFingerState.Moving; }
+        }
+
+        /// <summary>
+        /// 设置双指手势灵敏度
+        /// </summary>
+        /// <param name="zoom">缩放灵敏度 (默认0.01f)</param>
+        /// <param name="rotate">旋转灵敏度 (默认0.5f)</param>
+        /// <param name="drag">滑动灵敏度 (默认0.01f)</param>
+        public static void SetTwoFingerSensitivity(float zoom = 0.01f, float rotate = 0.5f, float drag = 0.01f)
+        {
+            if (Instance != null)
+            {
+                // 这里可以添加设置灵敏度的逻辑
+                // 由于是常量，如果需要运行时调整，可以改为变量
+            }
         }
     }
 
@@ -376,5 +667,16 @@ namespace FutureCore
         UpRight,    // 右上
         DownLeft,   // 左下
         DownRight   // 右下
+    }
+
+    /// <summary>
+    /// 双指状态枚举
+    /// </summary>
+    public enum TwoFingerState
+    {
+        None,       // 无双指
+        Touching,   // 双指触摸（未移动）
+        Moving,     // 双指移动中
+        LongPress   // 双指长按
     }
 }
