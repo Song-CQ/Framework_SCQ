@@ -80,7 +80,7 @@ namespace FutureCore
         private void Process_Init()
         {
             isOpen = false;
-            isVisible = false;
+            isVisible = true;
             isClose = false;
 
             uiInfo = ObjectPoolStatic<UIInfo>.Get();
@@ -93,6 +93,7 @@ namespace FutureCore
         public void Process_Bind()
         {
             OnBind();
+            
         }
 
         public void Process_OpenBefore(object args)

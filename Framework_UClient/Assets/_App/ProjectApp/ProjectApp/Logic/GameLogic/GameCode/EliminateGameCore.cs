@@ -50,7 +50,7 @@ namespace ProjectApp
 
         // 当前分数
         public int currentScore = 0;
-        public int targetScore = 100000; // 目标分数
+        public int targetScore = 10000; // 目标分数
 
 
 

@@ -32,12 +32,13 @@ namespace ProjectApp
 
         void Awake()
         {
-           Init();
+            Init();
         }
         public void Init()
         {
-            if(isInit) return;
+            if (isInit) return;
             o_Pot = transform.localPosition;
+            LogUtil.LogFormat(transform.localPosition+"设置 "+o_Pot.ToString());
             isInit = true;
         }
 
@@ -45,6 +46,7 @@ namespace ProjectApp
         public void FlyToHive(Transform trf)
         {
             Init();
+            LogUtil.LogFormat(transform.localPosition+" 当前"+o_Pot.ToString());
 
             hiveTarget = trf;
 
@@ -75,7 +77,15 @@ namespace ProjectApp
             // 旋转看向目标
             if (rotateToTarget)
             {
-                transform.DOLookAt(hiveTarget.position, 0.5f);
+                // transform.DOLookAt(hiveTarget.position, 0.5f);
+                // 获取2D方向
+                Vector2 direction = hiveTarget.position - transform.position;
+
+                // 创建从右方向到目标方向的旋转（只绕Z轴）
+                Quaternion targetRotation = Quaternion.FromToRotation(Vector2.up, direction);
+
+                // 应用旋转
+                transform.DORotateQuaternion(targetRotation, 0.5f);
             }
         }
 
@@ -84,15 +94,17 @@ namespace ProjectApp
             _cb?.Invoke();
 
             Reset();
-            
 
-            
+
+
 
         }
 
-        private void Reset() 
+        private void Reset()
         {
             _cb = null;
+
+            LogUtil.LogFormat(transform.localPosition+" 复原"+o_Pot.ToString());
 
             transform.localPosition = o_Pot;
 
@@ -111,13 +123,13 @@ namespace ProjectApp
 
         public void AddCB(Action value)
         {
-            if(_cb!=null)
+            if (_cb != null)
             {
-                _cb +=  value;
+                _cb += value;
             }
             else
-            { 
-               _cb = value;
+            {
+                _cb = value;
             }
         }
     }

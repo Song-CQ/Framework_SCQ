@@ -24,6 +24,7 @@ namespace ProjectApp
         private const string ui_BetterBeesTrf_Key = "ui_BetterBeesTrf";
         private const string ui_currentScore_Key = "ui_currentScore";
         private const string ui_scoreChangeText_Key = "ui_scoreChangeText";
+        private const string ui_tastText_Key = "ui_tastText";
         private const string ui_PropList_Key = "ui_PropList";
         private const string ui_TipsText_Key = "ui_TipsText";
 
@@ -88,11 +89,23 @@ namespace ProjectApp
             ui_TipsText.SetActive(false);
 
             beesTars = new List<Transform>();
-            foreach (Transform item in GetComponent<Transform>(ui_BeesTrf_Key).GetComponentsInChildren<Transform>(true))
+            Transform trf = GetComponent<Transform>(ui_BeesTrf_Key);
+            foreach (Transform item in trf.GetComponentsInChildren<Transform>(true))
             {
+                if(trf == item) continue;
+
                 beesTars.Add(item);
                 item.SetActive(false);
             }
+            
+            int cocr = 0;
+            UIEventListener uIEvent = UIEventListener.GetEventListener(trf);
+            uIEvent.PointerClick_Event += (e)=>
+            {
+                cocr += 1000;
+                StartBetterBeesAnimation(cocr);
+            };
+
 
             betterBeesFlightQueue = new Queue<BetterBeeFlight>();
             foreach (BetterBeeFlight item in GetComponent<Transform>(ui_BetterBeesTrf_Key).GetComponentsInChildren<BetterBeeFlight>(true))
@@ -139,16 +152,18 @@ namespace ProjectApp
 
         protected override void OnOpenBefore(object args)
         {
-
-        }
-
-        protected override void OnOpen(object args)
-        {
             core.AddListener(GameMsg.Player_ClickExternalPropItem, OnClickExternalPropItem);
             core.AddListener(GameMsg.UseExternalProp, OnUseExternalProp);
 
             UICtrlDispatcher.Instance.AddListener(GameMsg.ScoreUpdated, OnScoreUpdated);
             UICtrlDispatcher.Instance.AddListener(GameMsg.GameWin, OnGame);
+        }
+
+        protected override void OnOpen(object args)
+        {
+            scoreText.text = "0";
+            scoreChangeText.text = "";
+
 
         }
 
@@ -200,13 +215,15 @@ namespace ProjectApp
                 item.AddCB(() =>
                 {
                     RefreshBeesTars(sum);
-                    betterBeesFlightQueue.Enqueue(item);         
+                    item.SetActive(false);
+                    betterBeesFlightQueue.Enqueue(item);
                 });
 
                 item.FlyToHive(tartrf);
-            }else
+            }
+            else
             {
-                LastBetterBeesFlight.AddCB(()=>RefreshBeesTars(sum));
+                LastBetterBeesFlight.AddCB(() => RefreshBeesTars(sum));
             }
         }
 
@@ -224,7 +241,7 @@ namespace ProjectApp
         private int targetScore;
         private float animationProgress = 0f;
         private bool isAnimating = false;
-        private float animationTime = 0.5f;
+        private float animationTime = 0.8f;
         private int animationStartValue;
 
         private TextMeshProUGUI scoreText;
@@ -233,6 +250,7 @@ namespace ProjectApp
 
         private void StartScoreAnimation(int startValue, int endValue)
         {
+
             animationStartValue = startValue;
             targetScore = endValue;
             currentDisplayScore = startValue;
@@ -282,7 +300,7 @@ namespace ProjectApp
                 {
                     // 轻微的颜色变化
                     float pulse = Mathf.Sin(animationProgress * Mathf.PI * 4f) * 0.3f + 0.7f;
-                    scoreText.color = new Color(pulse, pulse, 1f);
+                    // scoreText.color = new Color(pulse, pulse, 1f);
 
                     // 缩放效果
                     float scale = 1f + Mathf.Sin(animationProgress * Mathf.PI * 8f) * 0.05f;
