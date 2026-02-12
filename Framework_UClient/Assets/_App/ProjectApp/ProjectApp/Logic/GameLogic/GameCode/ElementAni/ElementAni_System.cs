@@ -58,6 +58,8 @@ namespace ProjectApp
             {
                 var elementAni = item.Value;
 
+                
+
                 if (elementAni.IsComplete)
                 {
                     //回收对象
@@ -77,6 +79,12 @@ namespace ProjectApp
                     }
                
                 }
+
+                if(elementAni.IsRun)
+                {
+                   elementAni.Run(); 
+                }
+
 
             }
 

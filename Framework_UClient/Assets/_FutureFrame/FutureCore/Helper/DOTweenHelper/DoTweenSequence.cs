@@ -1,16 +1,12 @@
 using DG.Tweening;
+using UnityEngine;
 
 namespace FutureCore
 {
-    public abstract class DoTweenSequence
+    public abstract class DoTweenSequence:Base_CurveTween
     {
         protected Sequence sequence;
 
-        public bool IsPlay;
-        public bool IsPause;
-        public bool IsComplete;
-
-        
 
         public DoTweenSequence()
         {
@@ -59,59 +55,48 @@ namespace FutureCore
 
         protected abstract void AddTweenToSequence(Sequence seq);
 
-        public void Play()
+        public override void Play()
         {
+            base.Play();
             // 播放动画
             //sequence.Rewind();
             //sequence.Play();
             sequence.Restart();
-            IsPlay = true;
         }
-        public void Pause()
+        public override void Pause()
         {
-            IsPause = true;
+            base.Pause();
+       
             sequence.Pause();
+
         }
 
-        public void CanlePause()
+        public override void CanlePause()
         {
-            IsPause = false;
+            base.CanlePause();
+
             sequence.Play();
+
         }
 
 
-        public void Stop()
+        public override void Stop()
         {
+            base.Stop();
+
             sequence.Pause();
             //sequence.Complete();//调用OnComplete
             //sequence.Rewind(); 将动画回到第一针 会导致动画影响的物体回拉 一般在会开始的时候用
-            IsPlay = false;
-            ResetState();
-        }
-
-
-        protected virtual void OnStart()
-        {
-           
-
-        }
-        protected virtual void OnComplete()
-        {
-            IsPlay = false;
-            IsComplete = true;
-        }
-
-        public virtual void ResetState()
-        {
-            IsComplete = false;
-            IsPause = false;
-            IsPlay = false;
 
         }
 
-        public virtual void Disp()
+
+        
+
+        public override void Disp()
         {
-            ResetState();
+            base.Disp();
+
             sequence.Kill();
             sequence = null;
             
@@ -121,5 +106,109 @@ namespace FutureCore
 
     }
     
+
+    public abstract class Base_CurveTween
+    {
+        public AnimationCurve moveCurve = AnimationCurve.Linear(0, 0, 1, 1);
+
+        public bool IsPlay;
+        public bool IsPause;
+        public bool IsComplete;
+        public bool IsRun;
+
+        public float StartPlayTime;
+        public float Duration;
+        public float Delay;
+
+        
+
+        public virtual void Play()
+        {
+            IsPlay = true;
+            IsRun = true;
+        }
+        public virtual void Pause()
+        {
+            IsPause = true;
+            IsRun = false;
+        }
+
+        public virtual void CanlePause()
+        {
+            IsPause = false;
+            IsRun = true;
+        }
+
+
+        public virtual void Stop()
+        {
+            ResetState();
+        }
+
+        protected virtual void OnStart()
+        {
+
+        }
+        protected virtual void OnComplete()
+        {
+            IsPlay = false;
+            IsComplete = true;
+            IsRun = false;
+        }
+
+        protected virtual void ResetState()
+        {
+            IsComplete = false;
+            IsPause = false;
+            IsPlay = false;
+            IsRun = false;
+
+        }
+
+        public void Run()
+        {
+            if (!IsPlay || IsComplete || IsPause) return;
+
+            float currentTime = TimerUtil.GetGameTime();
+
+            // 延迟检查
+            if (currentTime < StartPlayTime + Delay) return;
+
+            // 计算进度
+            float elapsed = currentTime - StartPlayTime;
+            float progress = Mathf.Clamp01(elapsed / Duration);
+
+            // 使用AnimationCurve计算最终进度
+            float curveValue =  moveCurve.Evaluate(progress);
+
+            UpdateProgress(curveValue);
+
+            // 完成检查
+            if (progress >= 1f)
+            {
+                OnComplete();
+            }
+        }
+
+        protected float GetMoveCurveToTime(float elapsed)
+        {
+            float progress = Mathf.Clamp01(elapsed / Duration);
+
+            // 使用AnimationCurve计算最终进度
+            float curveValue = moveCurve.Evaluate(progress);
+
+            return curveValue;
+        }
+
+        protected virtual void UpdateProgress(float curveValue)
+        {
+
+        }
+
+        public virtual void Disp()
+        {
+            ResetState();
+        }
+    }
 
 }

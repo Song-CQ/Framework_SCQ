@@ -2,6 +2,7 @@ using Codice.Client.Common;
 using DG.DemiEditor;
 using DG.Tweening;
 using FutureCore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,29 +22,26 @@ namespace ProjectApp.GameLogic
         ElementAniType Key { get; }
         ElementItem Tar { get; }
         bool IsPlay { get; }
+        bool IsRun { get; }
         bool IsComplete { get; }
         float Duration { get; }
         /// <summary>
         /// 延迟播放时间
         /// </summary>
         float Delay { get; }
-        
+
         /// <summary>
         /// 开始播放时间
         /// </summary>
-        float StartPlayTime { get;}
+        float StartPlayTime { get; }
 
-        void SetElement(ElementItem elementItem,float delay);
+        void SetElement(ElementItem elementItem, float delay);
 
         void Play();
         void Pause();
         void CanlePause();
         void Stop();
-
-        void ResetState();
-
-
-
+        void Run();
     }
 
 
@@ -52,43 +50,43 @@ namespace ProjectApp.GameLogic
         public ElementAniType Key => ElementAniType.Move;
         public ElementItem Tar { get; set; }
 
-        public new bool IsPlay => base.IsPlay;
-
-        public float Duration { get; private set; } = 0.3f;
-
-        public float Delay { get; set; } 
-
-        public float StartPlayTime  { get; private set; }
-
+        bool IElementAni.IsPlay => base.IsPlay;
+        bool IElementAni.IsRun => base.IsRun;
         bool IElementAni.IsComplete => base.IsComplete;
+
+        float IElementAni.Duration => base.Duration = 0.3f;
+
+        float IElementAni.Delay => base.Delay;
+
+        float IElementAni.StartPlayTime => base.StartPlayTime;
+
+
 
         public Vector3 formPot = Vector3Int.zero;
         public Vector3 toPot = Vector3Int.zero;
-        protected override void OnStart()
-        {
-            base.OnStart();
-           
-        }
+
+        
 
 
-        public void SetElement(ElementItem elementItem,float delay)
+
+        public void SetElement(ElementItem elementItem, float delay)
         {
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime();
             Delay = delay;
 
-         
+
         }
 
         protected override void AddTweenToSequence(Sequence seq)
         {
             seq.Append(DOTween.To(
                 () => 0f,
-        
+
                 x =>
                 {
                     Tar.Pos = Vector3.Lerp(formPot, toPot, x);
-                    Debug.Log(TimerUtil.GetGameTime()+Tar.Data.ToString() + "要移" + formPot + " to " + toPot+ " x "+x + "当前"+ Tar.Pos);
+                    Debug.Log(TimerUtil.GetGameTime() + Tar.Data.ToString() + "要移" + formPot + " to " + toPot + " x " + x + "当前" + Tar.Pos);
                 },
                 1f,
                 Duration));
@@ -99,12 +97,11 @@ namespace ProjectApp.GameLogic
             base.OnComplete();
 
             Tar.Pos = toPot;
-            Debug.Log(Tar.Data.ToString() + "移动完成" + formPot + " to " + toPot + "当前"+ Tar.Pos);
+            Debug.Log(Tar.Data.ToString() + "移动完成" + formPot + " to " + toPot + "当前" + Tar.Pos);
 
         }
-        
 
-        
+
 
 
         public override void Disp()
@@ -120,25 +117,25 @@ namespace ProjectApp.GameLogic
             toPot = Vector3Int.zero;
         }
 
-
-
-
-
     }
 
-    public class FallMoveElementAni_Sequence : DoTweenSequence, IElementAni
+
+
+    public class FallMoveElementAni_Sequence : Base_CurveTween, IElementAni
     {
         public ElementAniType Key => ElementAniType.FallMove;
         public ElementItem Tar { get; set; }
 
         bool IElementAni.IsPlay => base.IsPlay;
         bool IElementAni.IsComplete => base.IsComplete;
+        bool IElementAni.IsRun => base.IsRun;
 
-        public float Duration => fallDuration + fallBounceDuration;
+        float IElementAni.Duration => base.Duration;
 
-        public float Delay { get; set; }
+        float IElementAni.Delay => base.Delay;
 
-        public float StartPlayTime  { get; set; }
+        float IElementAni.StartPlayTime => base.StartPlayTime;
+
 
         //[Header("下落设置")]
         private float fallDuration = 0.4f;      // 下落持续时间
@@ -148,15 +145,18 @@ namespace ProjectApp.GameLogic
         private Ease bounceEase = Ease.OutBounce; // 弹跳缓动
         private Vector3 bouncePoint;
 
+        private float fallEnd;
+        private float fallBounceEnd;
         public Vector3 formPot;  // 起始位置
         public Vector3 toPot;    // 目标位置
 
-        public void SetElement(ElementItem elementItem,float delay)
+
+
+        public void SetElement(ElementItem elementItem, float delay)
         {
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime();
             Delay = delay;
-
             Tar.Pos = formPot;
             // 创建弹跳中间点
             bouncePoint = new Vector3(
@@ -165,6 +165,10 @@ namespace ProjectApp.GameLogic
                 toPot.z
             );
 
+            fallDuration = Vector2.Distance(formPot,toPot) * 0.2f;
+            fallEnd = GetMoveCurveToTime(fallDuration);
+            fallBounceEnd = 1;
+            Duration = fallDuration + fallBounceDuration;
         }
         protected override void OnStart()
         {
@@ -172,7 +176,7 @@ namespace ProjectApp.GameLogic
             Tar.Pos = toPot;
         }
 
-        protected override void AddTweenToSequence(Sequence seq)
+        protected void AddTweenToSequence(Sequence seq)
         {
             // 第一阶段：下落动画
             seq.Append(DOTween.To(
@@ -204,6 +208,39 @@ namespace ProjectApp.GameLogic
 
         }
 
+
+
+        protected override void UpdateProgress(float curveValue)
+        {
+
+            if (curveValue <= fallEnd)
+            {
+                float x = curveValue/ fallEnd;
+
+                // 计算当前位置（从起始点下落到弹跳点）
+                float currentY = Mathf.Lerp(formPot.y, bouncePoint.y, x);
+                Tar.Pos = new Vector3(
+                    Mathf.Lerp(formPot.x, bouncePoint.x, x),
+                    currentY,
+                    Mathf.Lerp(formPot.z, bouncePoint.z, x)
+                );
+
+            }
+            else if (curveValue <= fallBounceDuration)
+            {
+                float x = (curveValue - fallEnd) / (fallBounceDuration - fallEnd);
+                
+                Tar.Pos = Vector3.Lerp(bouncePoint, toPot, x);
+            }
+
+
+
+
+
+
+
+        }
+
         protected override void OnComplete()
         {
             base.OnComplete();
@@ -212,25 +249,27 @@ namespace ProjectApp.GameLogic
         }
 
 
-
     }
 
     public class ClearElementAni_Sequence : DoTweenSequence, IElementAni
     {
-        public ElementAniType Key =>  ElementAniType.Clear;
+        public ElementAniType Key => ElementAniType.Clear;
         public ElementItem Tar { get; set; }
 
         bool IElementAni.IsPlay => base.IsPlay;
         bool IElementAni.IsComplete => base.IsComplete;
+        bool IElementAni.IsRun => base.IsRun;
 
-        public float Duration { get; private set; } = 0.04f;
+        float IElementAni.Duration => base.Duration = 0.04f;
 
-        public float Delay {set;get;}
+        float IElementAni.Delay => base.Delay;
 
-        public float StartPlayTime  {set;get;}
+        float IElementAni.StartPlayTime => base.StartPlayTime;
 
-        public void SetElement(ElementItem elementItem,float delay)
+
+        public void SetElement(ElementItem elementItem, float delay)
         {
+           
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime();
             Delay = delay;
@@ -251,7 +290,7 @@ namespace ProjectApp.GameLogic
         protected override void OnComplete()
         {
             base.OnComplete();
-            
+
             Tar.Transform.localScale = Vector3.one;
 
             string effectName = "ClickUIEffect";
@@ -266,15 +305,15 @@ namespace ProjectApp.GameLogic
             Effect effect = new Effect(effectData, effectEntity);
             effect.autoDestroy = true;
 
-            effect.entity.transform.position = Tar.Transform.position - Vector3.forward*10;
+            effect.entity.transform.position = Tar.Transform.position - Vector3.forward * 10;
             effect.entity.transform.localScale = Vector3.one * 5;
             effect.Play();
 
-           
+
 
         }
-    }
 
+    }
 
     public class ElasticShakeAnimation_Sequence : DoTweenSequence, IElementAni
     {
@@ -283,31 +322,32 @@ namespace ProjectApp.GameLogic
 
         bool IElementAni.IsPlay => base.IsPlay;
         bool IElementAni.IsComplete => base.IsComplete;
+        bool IElementAni.IsRun => base.IsRun;
 
-        public float Duration => shakeDuration;
+        float IElementAni.Duration => base.Duration = shakeDuration;
 
-        public float Delay {set;get;}
+        float IElementAni.Delay => base.Delay;
 
-        public float StartPlayTime  {set;get;}
+        float IElementAni.StartPlayTime => base.StartPlayTime;
 
         private float shakeDuration = 0.6f;
         private float shakeIntensity = 1.2f;
         private int bounces = 3;//次数
         public Vector3 originalPos;
 
-        public void SetElement(ElementItem elementItem,float delay)
+        public void SetElement(ElementItem elementItem, float delay)
         {
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime();
             Delay = delay;
-           
+
         }
 
         protected override void OnStart()
         {
             base.OnStart();
             // Debug.Log("开始抖动"+TimerUtil.GetGameTime());
-         
+
         }
 
         protected override void AddTweenToSequence(Sequence seq)
@@ -324,11 +364,11 @@ namespace ProjectApp.GameLogic
                     float shakeValue = Mathf.Exp(-damping * time) *
                                       Mathf.Sin(frequency * time) *
                                       shakeIntensity;
-           
+
 
                     // 随机方向抖动
                     Vector3 direction = GetRandomDirection();
-                    Tar.Pos = originalPos + direction * shakeValue;        
+                    Tar.Pos = originalPos + direction * shakeValue;
                     // Debug.Log("正在抖动"+TimerUtil.GetGameTime()+Tar.Pos);
                 },
                 1f,
@@ -351,6 +391,8 @@ namespace ProjectApp.GameLogic
             return new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0).normalized;
         }
 
+  
+      
     }
 }
 

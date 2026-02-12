@@ -32,13 +32,12 @@ namespace ProjectApp
         private List<ElementData> selectElementDataList = new List<ElementData>();
         private List<ElementData> dataList = new List<ElementData>();
 
-
-        private Dictionary<ExternalProp,int> allExternalProp = new Dictionary<ExternalProp, int> ();
-
+        private ExternalProp_PlayerData externalProp_PlayerData;
 
         public void FillCore(EliminateGameCore _core)
         {
             Core = _core;
+            externalProp_PlayerData = PlayerDataMgr.Instance.GetData<ExternalProp_PlayerData>();
 
 
         }
@@ -92,24 +91,19 @@ namespace ProjectApp
         /// <exception cref="NotImplementedException"></exception>
         private void ConsumeExternalProp(ExternalProp type)
         {
-            if (allExternalProp.ContainsKey(type))
+            if (externalProp_PlayerData.allExternalProp.ContainsKey(type))
             {
-                int sum = allExternalProp[type];
+                int sum = externalProp_PlayerData.allExternalProp[type];
                 if (sum > 0)
                 {
                     sum = sum - 1;
-                    allExternalProp[type] = sum;
+                    externalProp_PlayerData.allExternalProp[type] = sum;
                 }
             }
 
-
         }
 
-        public Dictionary<ExternalProp, int> GetAllPropData()
-        {
 
-            return allExternalProp;
-        }
 
 
         /// <summary>
