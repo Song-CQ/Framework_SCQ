@@ -28,7 +28,7 @@ namespace ProjectApp
             base.Init();
 
             // 使用示例
-            //RegisterData(new PlayerLevelData());
+            RegisterData(new ExternalProp_PlayerData());
             //RegisterData(new PlayerInventoryData());
 
         }

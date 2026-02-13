@@ -371,8 +371,8 @@ namespace ProjectApp
                     sequence.Join(changeIcons[2].transform
                         .DOScale(sideScale, switchDuration));
 
-                    sequence.OnStart(() => Debug.Log("1动画开始"));
-                    sequence.OnUpdate(() => Debug.Log("1动画进行中..."));
+                    //sequence.OnStart(() => Debug.Log("1动画开始"));
+                    //sequence.OnUpdate(() => Debug.Log("1动画进行中..."));
                     sequence.onComplete = () =>
                     {
                         Debug.Log("1动画完成");

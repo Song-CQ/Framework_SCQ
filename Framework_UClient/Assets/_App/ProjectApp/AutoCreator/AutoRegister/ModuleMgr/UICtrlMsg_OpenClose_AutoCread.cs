@@ -1,7 +1,7 @@
 /****************************************************
     文件: UICtrlMsg_OpenClose.cs
 	作者: Clear
-    日期: 2026/2/11 23:12:53
+    日期: 2026/2/13 1:1:48
     类型: 框架自动创建(请勿修改)
 	功能: UI打开关闭消息
 *****************************************************/
@@ -19,6 +19,8 @@ namespace ProjectApp
         public static uint MainUI_Close = ++cursor_UIOpenClose;
         public static uint TipsUI_Open = ++cursor_UIOpenClose;
         public static uint TipsUI_Close = ++cursor_UIOpenClose;
+        public static uint UsePropUI_Open = ++cursor_UIOpenClose;
+        public static uint UsePropUI_Close = ++cursor_UIOpenClose;
 
 
     }

@@ -1,14 +1,11 @@
-using ConsoleE;
 using DG.Tweening;
-using FairyGUI;
 using FutureCore;
 using ProjectApp.GameLogic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
 using UnityEngine;
-using static Codice.Client.Commands.WkTree.WorkspaceTreeNode;
+
 
 namespace ProjectApp
 {
@@ -58,31 +55,31 @@ namespace ProjectApp
             {
                 var elementAni = item.Value;
 
-                
+
 
                 if (elementAni.IsComplete)
                 {
                     //回收对象
                     ReleaseIElementAni(elementAni);
                     //加入移除列表
-                   
+
                     elementItems.Add(item.Key);
                     continue;
                 }
 
                 if (!elementAni.IsPlay)
                 {
-                    if (currTIme > elementAni.Delay + elementAni.StartPlayTime)
+                    if (currTIme > elementAni.StartPlayTime)
                     {
-              
+
                         elementAni.Play();
                     }
-               
+
                 }
 
-                if(elementAni.IsRun)
+                if (elementAni.IsRun)
                 {
-                   elementAni.Run(); 
+                    elementAni.Run();
                 }
 
 
@@ -134,10 +131,10 @@ namespace ProjectApp
                 animationLibrary[type] = aniQueue;
             }
             IElementAni ani = null;
-            if (aniQueue.Count > 0&&GameTool.GameCore.isPool)
+            if (aniQueue.Count > 0 && GameTool.GameCore.isPool)
             {
                 ani = aniQueue.Dequeue();
-                Debug.Log(type+"使用旧的:"+(ani.GetType()));
+                Debug.Log(type + "使用旧的:" + (ani.GetType()));
             }
             else
             {
@@ -179,7 +176,7 @@ namespace ProjectApp
 
         #region 动画
 
-        public float PlayAin_MovePot(ElementItem item,Vector3 formPot, Vector3 tarPot, float delay = 0)
+        public float PlayAin_MovePot(ElementItem item, Vector3 formPot, Vector3 tarPot, float delay = 0)
         {
             StopElementItemAni(item);
 
@@ -198,7 +195,7 @@ namespace ProjectApp
             return dur;
         }
 
-        public float PlayAin_SwapElement(ElementItem item1, ElementItem item2, Vector3 item1Pot , Vector3 item2Pot, float delay = 0)
+        public float PlayAin_SwapElement(ElementItem item1, ElementItem item2, Vector3 item1Pot, Vector3 item2Pot, float delay = 0)
         {
             //停止正在播放的Dotw
             StopElementItemAni(item1);
@@ -254,32 +251,55 @@ namespace ProjectApp
 
                 ani.SetElement(item, delay);
                 AddRunElementAni(item, ani);
-                dur = ani.Duration;
+                if (ani.Duration > dur)
+                {
+                    dur = ani.Duration;
+                }
 
             }
 
             return dur;
         }
 
-        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList ,List<Vector3> potList, float delay = 0)
+        public float PlayAin_ElasticShakeElements(List<ElementItem> elementItemList, List<Vector3> potList, float delay = 0)
         {
             float dur = -1;
-            // Debug.Log("设置抖动"+TimerUtil.GetGameTime());
+            Debug.Log("设置抖动"+TimerUtil.GetGameTime());
             for (int i = 0; i < elementItemList.Count; i++)
             {
                 ElementItem item = elementItemList[i];
                 Vector3 pot = potList[i];
 
-                if (item == null) continue; 
+                if (item == null) continue;
                 StopElementItemAni(item);
                 var ani = GetAnimation(ElementAniType.ElasticShake) as ElasticShakeAnimation_Sequence;
                 ani.SetElement(item, delay);
                 ani.originalPos = pot;
-                
+
                 AddRunElementAni(item, ani);
                 if (dur != -1)
-                    dur = ani.Duration+0.2f;
+                    dur = ani.Duration + 0.2f;
             }
+            return dur;
+        }
+        public float PlayAin_ElasticShakeElement(ElementItem elementItem, Vector3 potList, float delay = 0)
+        {
+            float dur = -1;
+            Debug.Log("设置抖动"+TimerUtil.GetGameTime());
+
+            ElementItem item = elementItem;
+            Vector3 pot = potList;
+
+           
+            StopElementItemAni(item);
+            var ani = GetAnimation(ElementAniType.ElasticShake) as ElasticShakeAnimation_Sequence;
+            ani.SetElement(item, delay);
+            ani.originalPos = pot;
+
+            AddRunElementAni(item, ani);
+            if (dur != -1)
+                dur = ani.Duration + 0.2f;
+
             return dur;
         }
 

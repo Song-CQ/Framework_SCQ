@@ -1718,7 +1718,7 @@ MonoBehaviour:
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
-    Key: Plugins3rdEditorLib
+    Key: _ThirdParty
     Ordinal: 142
     Priority: 0
     IconType: 90

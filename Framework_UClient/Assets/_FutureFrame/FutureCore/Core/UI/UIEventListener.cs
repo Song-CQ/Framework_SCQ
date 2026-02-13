@@ -60,7 +60,7 @@ namespace FutureCore
                 if (parentScrollRect != null)
                 {
                     hasParentScrollRect = true;
-                    LogUtil.LogFormat($"{name} 找到父级ScrollRect: {parentScrollRect.name}", this);
+                    //LogUtil.LogFormat($"{name} 找到父级ScrollRect: {parentScrollRect.name}", this);
                     return;
                 }
 

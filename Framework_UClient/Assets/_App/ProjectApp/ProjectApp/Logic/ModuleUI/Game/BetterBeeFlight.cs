@@ -1,6 +1,6 @@
 /****************************************************
     文件: BetterBeeFlight.cs
-    作者: Clear
+    作�? Clear
     日期: 2026/2/11 2:10:17
     类型: 逻辑脚本
     功能: Nothing
@@ -104,7 +104,7 @@ namespace ProjectApp
         {
             _cb = null;
 
-            LogUtil.LogFormat(transform.localPosition+" 复原"+o_Pot.ToString());
+
 
             transform.localPosition = o_Pot;
 

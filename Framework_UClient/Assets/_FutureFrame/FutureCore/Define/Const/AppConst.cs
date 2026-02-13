@@ -34,7 +34,7 @@ namespace FutureCore
         /// <summary>
         /// 是否要检测资源版本
         /// </summary>
-        public static bool IsCheckResVer = true;
+        public static bool IsCheckResVer = false;
         /// <summary>
         /// 是否要使用AB包加载资源
         /// </summary>
@@ -50,7 +50,7 @@ namespace FutureCore
         public static bool IsDevelopMode = true;
 
         // 热更新代码模式（None）无热更代码
-        public static HotUpdateType HotUpdateType =  HotUpdateType.ILRuntime;
+        public static HotUpdateType HotUpdateType =  HotUpdateType.None;
         // 是否开启调试引擎分析器
         public static bool IsEnabledEngineProfiler = false;
         // 是否开启调试应用分析器
@@ -180,6 +180,7 @@ namespace FutureCore
             {
                 IsDevelopMode = false;
             }
+            IsDevelopMode = false;
         }
 
         public static void UpdateFrameRate()

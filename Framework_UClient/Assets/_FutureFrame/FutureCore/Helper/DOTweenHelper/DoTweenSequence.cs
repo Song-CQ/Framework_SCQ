@@ -1,214 +1,5 @@
-using DG.Tweening;
-using UnityEngine;
-
-namespace FutureCore
-{
-    public abstract class DoTweenSequence:Base_CurveTween
-    {
-        protected Sequence sequence;
-
-
-        public DoTweenSequence()
+using DG.Tweening;using UnityEngine;namespace FutureCore{    public abstract class DoTweenSequence:Base_CurveTween    {        protected Sequence sequence;        public DoTweenSequence()        {            CreadSequence();        }        private void CreadSequence()        {            // 创建一个动画序列            sequence = DOTween.Sequence();            //sequence.SetAutoKill(false).SetRecyclable(true);             sequence.SetAutoKill(false);            AddTweenToSequence(sequence);            // ========== 第一阶段：顺序动画 ==========            // 1. 先移动到位置A            //// 2. 然后旋转90度            //sequence.Append(target.DORotate(new Vector3(0, 90, 0), duration));            //// ========== 第二阶段：同时播放的动画 ==========            //// 3. 移动到位置B的同时改变颜色（假设有Renderer）            //sequence.Append(target.DOMove(new Vector3(2, 2, 0), duration));            ////sequence.Join(GetComponent<Renderer>().material.DOColor(Color.red, duration));            //// 4. 然后缩放和旋转同时进行            //sequence.Append(target.DOScale(Vector3.one * 2, duration));            //sequence.Join(target.DORotate(new Vector3(0, 180, 0), duration));            // 动画完成时回调            sequence.OnComplete(OnComplete);            // 动画开始时回调            sequence.OnStart(OnStart);            // 设置缓动函数            sequence.SetEase(Ease.Linear);            sequence.Pause();        }        protected abstract void AddTweenToSequence(Sequence seq);        public override void Play()        {            base.Play();            // 播放动画            //sequence.Rewind();            //sequence.Play();            sequence.Restart();        }        public override void Pause()        {            base.Pause();                   sequence.Pause();        }        public override void CanlePause()        {            base.CanlePause();            sequence.Play();        }        public override void Stop()        {            base.Stop();            sequence.Pause();            //sequence.Complete();//调用OnComplete            //sequence.Rewind(); 将动画回到第一针 会导致动画影响的物体回拉 一般在会开始的时候用        }        public override void Run()
         {
-            CreadSequence();
-        }
-
-        private void CreadSequence()
-        {
-            // 创建一个动画序列
-            sequence = DOTween.Sequence();
-            //sequence.SetAutoKill(false).SetRecyclable(true); 
-            sequence.SetAutoKill(false);
-
-
-
-
-            AddTweenToSequence(sequence);
-            // ========== 第一阶段：顺序动画 ==========
-
-            // 1. 先移动到位置A
-
-
-            //// 2. 然后旋转90度
-            //sequence.Append(target.DORotate(new Vector3(0, 90, 0), duration));
-
-            //// ========== 第二阶段：同时播放的动画 ==========
-
-            //// 3. 移动到位置B的同时改变颜色（假设有Renderer）
-            //sequence.Append(target.DOMove(new Vector3(2, 2, 0), duration));
-            ////sequence.Join(GetComponent<Renderer>().material.DOColor(Color.red, duration));
-
-            //// 4. 然后缩放和旋转同时进行
-            //sequence.Append(target.DOScale(Vector3.one * 2, duration));
-            //sequence.Join(target.DORotate(new Vector3(0, 180, 0), duration));
-
-            // 动画完成时回调
-            sequence.OnComplete(OnComplete);
-
-            // 动画开始时回调
-            sequence.OnStart(OnStart);
-            // 设置缓动函数
-            sequence.SetEase(Ease.Linear);
-            sequence.Pause();
-
-        }
-
-        protected abstract void AddTweenToSequence(Sequence seq);
-
-        public override void Play()
-        {
-            base.Play();
-            // 播放动画
-            //sequence.Rewind();
-            //sequence.Play();
-            sequence.Restart();
-        }
-        public override void Pause()
-        {
-            base.Pause();
-       
-            sequence.Pause();
-
-        }
-
-        public override void CanlePause()
-        {
-            base.CanlePause();
-
-            sequence.Play();
-
-        }
-
-
-        public override void Stop()
-        {
-            base.Stop();
-
-            sequence.Pause();
-            //sequence.Complete();//调用OnComplete
-            //sequence.Rewind(); 将动画回到第一针 会导致动画影响的物体回拉 一般在会开始的时候用
-
-        }
-
-
-        
-
-        public override void Disp()
-        {
-            base.Disp();
-
-            sequence.Kill();
-            sequence = null;
-            
-
-        }
-
-
-    }
-    
-
-    public abstract class Base_CurveTween
-    {
-        public AnimationCurve moveCurve = AnimationCurve.Linear(0, 0, 1, 1);
-
-        public bool IsPlay;
-        public bool IsPause;
-        public bool IsComplete;
-        public bool IsRun;
-
-        public float StartPlayTime;
-        public float Duration;
-        public float Delay;
-
-        
-
-        public virtual void Play()
-        {
-            IsPlay = true;
-            IsRun = true;
-        }
-        public virtual void Pause()
-        {
-            IsPause = true;
-            IsRun = false;
-        }
-
-        public virtual void CanlePause()
-        {
-            IsPause = false;
-            IsRun = true;
-        }
-
-
-        public virtual void Stop()
-        {
-            ResetState();
-        }
-
-        protected virtual void OnStart()
-        {
-
-        }
-        protected virtual void OnComplete()
-        {
-            IsPlay = false;
-            IsComplete = true;
-            IsRun = false;
-        }
-
-        protected virtual void ResetState()
-        {
-            IsComplete = false;
-            IsPause = false;
-            IsPlay = false;
-            IsRun = false;
-
-        }
-
-        public void Run()
-        {
-            if (!IsPlay || IsComplete || IsPause) return;
-
-            float currentTime = TimerUtil.GetGameTime();
-
-            // 延迟检查
-            if (currentTime < StartPlayTime + Delay) return;
-
-            // 计算进度
-            float elapsed = currentTime - StartPlayTime;
-            float progress = Mathf.Clamp01(elapsed / Duration);
-
-            // 使用AnimationCurve计算最终进度
-            float curveValue =  moveCurve.Evaluate(progress);
-
-            UpdateProgress(curveValue);
-
-            // 完成检查
-            if (progress >= 1f)
-            {
-                OnComplete();
-            }
-        }
-
-        protected float GetMoveCurveToTime(float elapsed)
-        {
-            float progress = Mathf.Clamp01(elapsed / Duration);
-
-            // 使用AnimationCurve计算最终进度
-            float curveValue = moveCurve.Evaluate(progress);
-
-            return curveValue;
-        }
-
-        protected virtual void UpdateProgress(float curveValue)
-        {
-
-        }
-
-        public virtual void Disp()
-        {
-            ResetState();
-        }
-    }
-
-}
+            //base.Run();
+            //doTween 动画不用内部调用完成
+        }        public override void Disp()        {            base.Disp();            sequence.Kill();            sequence = null;                    }    }        public abstract class Base_CurveTween    {        private AnimationCurve moveCurve = AnimationCurve.Linear(0, 0, 1, 1);        public bool IsPlay;        public bool IsPause;        public bool IsComplete;        public bool IsRun;        public float StartPlayTime;        public float Duration;                    public virtual void Play()        {            IsPlay = true;            IsRun = true;        }        public virtual void Pause()        {            IsPause = true;            IsRun = false;        }        public virtual void CanlePause()        {            IsPause = false;            IsRun = true;        }        public virtual void Stop()        {            ResetState();        }        protected virtual void OnStart()        {        }        protected virtual void OnComplete()        {            IsPlay = false;            IsComplete = true;            IsRun = false;        }        protected virtual void ResetState()        {            IsComplete = false;            IsPause = false;            IsPlay = false;            IsRun = false;            StartPlayTime = 0;            Duration = 0;        }        public virtual void Run()        {            if (!IsPlay || IsComplete || IsPause) return;            float currentTime = TimerUtil.GetGameTime();            // 延迟检查            if (currentTime < StartPlayTime) return;            // 计算进度            float elapsed = currentTime - StartPlayTime;            float progress = Mathf.Clamp01(elapsed / Duration);            // 使用AnimationCurve计算最终进度            float curveValue =  moveCurve.Evaluate(progress);            UpdateProgress(curveValue);            // 完成检查            if (progress >= 1f)            {                OnComplete();            }        }        protected float GetMoveCurveToTime(float elapsed)        {            float progress = Mathf.Clamp01(elapsed / Duration);            // 使用AnimationCurve计算最终进度            float curveValue = moveCurve.Evaluate(progress);            return curveValue;        }        protected virtual void UpdateProgress(float curveValue)        {        }        public virtual void Disp()        {            ResetState();        }    }}

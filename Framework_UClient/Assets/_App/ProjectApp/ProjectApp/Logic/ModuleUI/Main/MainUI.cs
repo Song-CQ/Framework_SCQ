@@ -9,6 +9,7 @@ using FutureCore;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 //using UI.G000_Main;
 
 namespace ProjectApp
@@ -16,12 +17,20 @@ namespace ProjectApp
     public class MainUI : BaseUI
     {
         #region 控件常量
+        //框架自动创建请勿在此处修改内容
         private const string ui_OnClick_Key = "ui_OnClick";
+        private const string ui_InputField_Key = "ui_InputField";
+        private const string ui_InputFieldScor_Key = "ui_InputFieldScor";
+
         #endregion
         
         private MainUICtrl uiCtrl;
         private MainModel model;
         private UGUIEntity u_Entity;
+        public static int GameRandomSeed = 132131231;
+        public static int GameTarScore = 50000;
+        private TMP_InputField inputField;
+        private TMP_InputField inputScoreField;
 
         public MainUI(MainUICtrl ctrl) : base(ctrl)
         {
@@ -58,13 +67,16 @@ namespace ProjectApp
         protected override void OnOpenBefore(object args)
         {
             u_Entity.GetComponent<Button>(ui_OnClick_Key).onClick.AddListener(OnClick);
+            inputField = u_Entity.GetComponent<TMP_InputField>(ui_InputField_Key);
+            inputScoreField = u_Entity.GetComponent<TMP_InputField>(ui_InputFieldScor_Key);
         }
 
         private void OnClick()
         {
             Close();
+            GameRandomSeed = int.Parse(inputField.text);
+            GameTarScore = int.Parse(inputScoreField.text);
             GameManager.Instance.EnterGame();
-
         }
 
         protected override void OnOpen(object args)

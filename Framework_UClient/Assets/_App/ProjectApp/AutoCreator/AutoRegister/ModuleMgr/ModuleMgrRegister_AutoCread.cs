@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件: ModuleMgrRegister.cs
     作者: Clear
-    日期: 2026/2/11 23:12:53
+    日期: 2026/2/13 1:1:48
     类型: 自动创建
     功能: 模块数据注册
 *****************************************************/
@@ -18,6 +18,7 @@ namespace ProjectApp
             moduleMgr.AddModel(ModelConst.GameWinModel,new GameWinModel());
             moduleMgr.AddModel(ModelConst.MainModel,new MainModel());
             moduleMgr.AddModel(ModelConst.TipsModel,new TipsModel());
+            moduleMgr.AddModel(ModelConst.UsePropModel,new UsePropModel());
 
         }
 
@@ -28,6 +29,7 @@ namespace ProjectApp
             moduleMgr.AddUIType(UIConst.GameWinUI,typeof(GameWinUI));
             moduleMgr.AddUIType(UIConst.MainUI,typeof(MainUI));
             moduleMgr.AddUIType(UIConst.TipsUI,typeof(TipsUI));
+            moduleMgr.AddUIType(UIConst.UsePropUI,typeof(UsePropUI));
 
         }
 
@@ -38,6 +40,7 @@ namespace ProjectApp
             moduleMgr.AddCtrl(CtrlConst.GameWinCtrl,new GameWinCtrl());
             moduleMgr.AddCtrl(CtrlConst.MainCtrl,new MainCtrl());
             moduleMgr.AddCtrl(CtrlConst.TipsCtrl,new TipsCtrl());
+            moduleMgr.AddCtrl(CtrlConst.UsePropCtrl,new UsePropCtrl());
 
         }
 
@@ -48,6 +51,7 @@ namespace ProjectApp
             moduleMgr.AddUICtrl(UICtrlConst.GameWinUICtrl,new GameWinUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.MainUICtrl,new MainUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.TipsUICtrl,new TipsUICtrl());
+            moduleMgr.AddUICtrl(UICtrlConst.UsePropUICtrl,new UsePropUICtrl());
 
         }
 

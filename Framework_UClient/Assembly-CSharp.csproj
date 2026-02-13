@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_3_34;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;UNITY_UGP_API;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;AMPLIFY_SHADER_EDITOR;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_3_34;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_ANDROID;TEXTCORE_1_0_OR_NEWER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;ENABLE_ETC_COMPRESSION;PLATFORM_EXTENDS_VULKAN_DEVICE;PLATFORM_HAS_MULTIPLE_SWAPCHAINS;UNITY_ANDROID_SUPPORTS_SHADOWFILES;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;AMPLIFY_SHADER_EDITOR;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
@@ -51,20 +51,140 @@
     <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2022.3.34f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\Plugins\_Demigiant\DOTween\DemiLib\Core\DemiLib.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\Plugins\_Demigiant\DOTween\DOTweenEditor\CoreEditor\DemiEditor.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\Plugins\_Demigiant\DOTween\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\Plugins\_Demigiant\DOTween\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\Plugins\_Demigiant\DOTween\DOTween\DOTween.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\Plugins\_Demigiant\DOTween\DOTweenPro\DOTweenPro.dll" />
     <Analyzer Include="G:\UnityHub\Unity\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="G:\UnityHub\Unity\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Utilities.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Serialization.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Serialization.Config.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\NoEditor\Sirenix.Serialization.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll" />
+    <Analyzer Include="G:\UnityPro\Framework_Match3Game\Framework_UClient\Assets\_ThirdParty\Sirenix\Assemblies\NoEditor\Sirenix.Utilities.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ExternalProp_Module.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\HitTest\HitTestMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolUtils.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorUITool\UGUIWnd_EditorView.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshFragmentization\MeshFragmentizationInspector.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolbar\ToolbarExtender.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\Base\MeshEffectsBaseInspector.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\UI_AutoCreator\UI_AutoCreator.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Model\ModelMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Cooldown\CooldownMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\Utility\EditorToolkit.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\FutureEditor_Init.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\ModalWaiting\ModalWaitingMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Bag\MyGLoader.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\GUIStyleWindow.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorSceneTool\EditorSceneTool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Emoji\EmojiMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\SvnOrGitTool\SVNUtils.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TurnPage\TurnPageMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\PullToRefresh\ScrollPaneHeader.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\GUIWindowKit.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Joystick\JoystickModule.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\Unity_Logs_ViewerEditor\ReporterEditor.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Emoji\EmojiParser.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\RenderTexture\RenderImage.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\BulidAssetBundleTool\ABConfig.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\PullToRefresh\PullToRefreshMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Guide\GuideMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\CutScene\CutSceneMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Particles\ParticlesMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorCoroutineTool\EditorCoroutineRunner.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoRegisterTool\ProjectAutoRegisterTool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\VirtualList\VirtualListMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Joystick\JoystickMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Particles\CoolComponent.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshBlow\MeshBlowInspector.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\UnityTool\UnityEditorTool.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorCoroutineTool\EditorCoroutine.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ScriptableObjecTool\ScriptableObjectTool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\EmitNumbers\EmitNumbersMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\HeadBar\HeadBarMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TurnPage\BookPage.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Curve\CurveMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\04_BuildAssestWnd\BuildAssestWnd.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Basics\Window2.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TreeView\TreeViewMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\Module_AutoCreator\ModuleMgr_AutoCreator.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolbar\ToolbarCallback.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshVortex\MeshVortexInspector.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ConfigBatTool\ConfigBatTool.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\BulidAssetBundleTool\ExportABTool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TurnCard\Card.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Bag\BagMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\UGUIEditor\GuideMaskEditor\GuideMaskEditor.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\EditorStyleViewer.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\EmitNumbers\EmitComponent.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\RenderTexture\Window3.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\ScrollPane\ScrollPaneMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Bag\BagWindow.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Filter\FilterMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\RegisterStriptTemplate.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\SvnOrGitTool\GitUtils.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoRegisterTool\EditorAutoRegisterTool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Bag\IconManager.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\BundleUsage\BundleUsageMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\LoopList\LoopListMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\RenderTexture\RenderTextureMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Basics\Window1.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TurnPage\FairyBook.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Perspetive\PerspectiveMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\EmitNumbers\EmitManager.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\EditorToolbar\ToolBarExtenderView.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\ILRuntimeMgr_AutoCreator\ILRuntimeMgr_AutoCreator.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Gesture\GestureMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Basics\BasicsMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Extension\MailItem.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\FrameworkToolView.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\MVC_CreatorTool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TypingEffect\TypingEffectMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Transition\TransitionMain.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\CutScene\LevelManager.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\OpenPathTool\OpenPathTool.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\ModalWaiting\Window4.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\UnityTool\GameObjectTool.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\PathConst\UnityEditorPathConst.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\IconWindow.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TurnCard\TurnCardMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\PathConst\UnityEditorPath.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\03_CreadView\EditorCreadWnd.cs" />
+    <Compile Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Extension\ExtensionMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditor\MeshEditor\MeshWave\MeshWaveInspector.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\UI_FGUITemplate.txt" />
+    <None Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Resources\RenderTexture\FullScreen.shader" />
+    <None Include="Assets\_Editor\Plugins3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Resources\Role\Materials\Role-Diffuse.shader" />
+    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\Template\32-[FC]C# Script-NewScript.cs.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\UICtrlTemplate.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\Template\33-[FC]C# Core-NewClass.cs.txt" />
     <None Include="Assets\_Res\Resources\Data\ExcelConfig\ConfigData.txt" />
     <None Include="Assets\StreamingAssets\HotFix\HotFix.dll" />
+    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\CtrlTemplate.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\ModelTemplate.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoCreatorTool\MVC_AutoCreator\Template\UI_UGUITemplate.txt" />
+    <None Include="Assets\_Res\Fonts\font_text.txt" />
+    <None Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\Template\31-[FC]C# Class-NewClass.cs.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -101,14 +221,6 @@
     </Reference>
     <Reference Include="UnityEngine.ClothModule">
       <HintPath>G:\UnityHub\Unity\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.ClothModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterInputModule">
-      <HintPath>G:\UnityHub\Unity\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.ClusterInputModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterRendererModule">
-      <HintPath>G:\UnityHub\Unity\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.ClusterRendererModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ContentLoadModule">
@@ -323,10 +435,6 @@
       <HintPath>G:\UnityHub\Unity\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VideoModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.VirtualTexturingModule">
-      <HintPath>G:\UnityHub\Unity\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VirtualTexturingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.WindModule">
       <HintPath>G:\UnityHub\Unity\2022.3.34f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
       <Private>False</Private>
@@ -400,15 +508,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DemiEditor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Reflection.Editor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
@@ -420,23 +528,23 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DemiLib\Core\DemiLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenEditor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VoClassLib">
@@ -448,19 +556,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenProEditor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="LogUtil">
@@ -472,15 +580,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DOTweenPro\DOTweenPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Pdb">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -488,7 +596,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Mdb">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BaseVoClassLib">
@@ -1011,6 +1119,58 @@
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityCore">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Codeless">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
       <Private>False</Private>
@@ -1023,16 +1183,12 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Services.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
@@ -1055,100 +1211,60 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Analytics">
-      <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+    <Reference Include="Analytics">
+      <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Services.Core.Environments">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Services.Analytics">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Analytics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing.SecurityCore">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Updater">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing.Codeless">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Services.Core.Analytics">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.AssetBundleBrowser.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AssetBundleBrowser.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{26DD20DD-D0D9-A08D-13ED-697B08DBE3B5}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="_ThirdParty.csproj">
+      <Project>{A24C952A-91F4-AB45-9F1F-19743A544B1D}</Project>
+      <Name>_ThirdParty</Name>
+    </ProjectReference>
     <ProjectReference Include="FutureFrame.csproj">
       <Project>{8690BC45-7C33-6280-6C0D-F0AC44804CCE}</Project>
       <Name>FutureFrame</Name>
@@ -1156,10 +1272,6 @@
     <ProjectReference Include="ProjectApp.csproj">
       <Project>{87F2FCF0-988D-6D8B-EB81-CE63C02B0DBE}</Project>
       <Name>ProjectApp</Name>
-    </ProjectReference>
-    <ProjectReference Include="Plugins3rdLibrary.csproj">
-      <Project>{F0852F95-DCC6-57EE-7A42-EB12C9C44CB6}</Project>
-      <Name>Plugins3rdLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="FutureEditor.csproj">
       <Project>{3060B796-F739-47E9-F0C9-FD2BB587D4A0}</Project>

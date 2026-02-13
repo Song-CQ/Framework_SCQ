@@ -1,16 +1,9 @@
-using Codice.Client.BaseCommands.BranchExplorer;
-using Codice.Client.Common;
-using ConsoleE;
-using FutureCore;
-using ILRuntime.Mono.Cecil.Cil;
+﻿using FutureCore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 namespace ProjectApp
 {
@@ -48,7 +41,6 @@ namespace ProjectApp
         {
             RaycastSys.UnregisterEvent_OnClick(element);
             element.Transform.SetParent(elementsPoolTrf);
-            element.SetActive(false);
             element.Release();
         }
 
@@ -284,7 +276,7 @@ namespace ProjectApp
             Dispatcher.AddFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
             Dispatcher.AddFinallyListener(GameMsg.ActivateProp, OnActivateProp);
             Dispatcher.AddFinallyListener(GameMsg.ActivateTwoProp, OnActivateTwoProp);
-            Dispatcher.AddFinallyListener(GameMsg.UseExternalProp, OnUseExternalProp);
+            Dispatcher.AddFinallyListener(GameMsg.CostExternalProp, OnCostExternalProp);
             Dispatcher.AddFinallyListener(GameMsg.ScoreUpdated, OnScoreUpdated);
             Dispatcher.AddFinallyListener(GameMsg.GameWin, OnGameWin);
 
@@ -306,7 +298,7 @@ namespace ProjectApp
             Dispatcher.RemoveFinallyListener(GameMsg.ChangeElementType, OnChangeElementType);
             Dispatcher.RemoveFinallyListener(GameMsg.ActivateProp, OnActivateProp);
             Dispatcher.RemoveFinallyListener(GameMsg.ActivateTwoProp, OnActivateTwoProp);
-            Dispatcher.RemoveFinallyListener(GameMsg.UseExternalProp, OnUseExternalProp);
+            Dispatcher.RemoveFinallyListener(GameMsg.CostExternalProp, OnCostExternalProp);
             Dispatcher.RemoveFinallyListener(GameMsg.ScoreUpdated, OnScoreUpdated);
             Dispatcher.RemoveFinallyListener(GameMsg.GameWin, OnGameWin);
 
@@ -796,8 +788,8 @@ namespace ProjectApp
 
             }
 
-            // elementItemList.Clear();
-            // elementItemList.Add(elementItems[0, 0]);
+            //elementItemList.Clear();
+            //elementItemList.Add(elementItems[0, 0]);
 
 
             var process = GetProcessToEnqueue();
@@ -925,18 +917,44 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// 处理使用盘外道具
+        /// 处理成功使用盘外道具
         /// </summary>
         /// <param name="obj"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private void OnUseExternalProp(object obj)
+        private void OnCostExternalProp(object obj)
         {
             object[] datas = obj as object[];
             ExternalProp Type = (ExternalProp)datas[0];
             List<Vector2Int> list = datas[1] as List<Vector2Int>;
 
+            switch (Type)
+            {
+                case ExternalProp.None:
+                    break;
+                case ExternalProp.Hammer:
+                    break;
+                case ExternalProp.Swipe:
+                    {
 
-
+                       
+                        
+                    }
+                    break;
+                case ExternalProp.Horizontal:
+                    break;
+                case ExternalProp.Vertical:
+                    break;
+                case ExternalProp.AllRandom:
+                    break;
+                case ExternalProp.Undo:
+                    break;
+                case ExternalProp.Wild:
+                    break;
+                case ExternalProp.AddScore:
+                    break;
+                default:
+                    break;
+            }
 
         }
 
@@ -959,45 +977,44 @@ namespace ProjectApp
             {
                 case ElementType.Prop_Horizontal:
                     {
-                        time = 1f;
+                        time = 1.5f;
                         executeCB = (p) =>
                         {
-                            Core.Enabled_PlayerCtr = false;
-                            elementsPool.Release(item);
-                            GameTool.PlayTestEffect(item.Transform.position);
-                            AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+                            AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                            //GameTool.PlayTestEffect(item.Transform.position);
+                            AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.5f);
                         };
                     }
                     break;
                 case ElementType.Prop_Vertical:
-                    time = 1f;
+                    time = 1.5f;
                     executeCB = (p) =>
                     {
-                        Core.Enabled_PlayerCtr = false;
-                        elementsPool.Release(item);
-                        GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+                        Debug.Log("道具开始"+TimerUtil.GetGameTime());
+                        AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.5f);
                     };
                     break;
                 case ElementType.Prop_Bomb:
-                    time = 1f;
+                    time = 1.5f;
                     executeCB = (p) =>
                     {
-                        Core.Enabled_PlayerCtr = false;
-                        elementsPool.Release(item);
-                        GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+                        AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        //GameTool.PlayTestEffect(item.Transform.position);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.5f);
                     };
 
                     break;
                 case ElementType.Prop_Wild:
-                    time = 1f;
+                    time = 1.5f;
                     executeCB = (p) =>
                     {
                         Core.Enabled_PlayerCtr = false;
-                        elementsPool.Release(item);
-                        GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+
+                        AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        //GameTool.PlayTestEffect(item.Transform.position);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList,0.5f);
                     };
 
                     break;
@@ -1008,8 +1025,12 @@ namespace ProjectApp
             {
                 finishCB = (p) =>
                 {
-                    Core.Enabled_PlayerCtr = true;
+                    GameTool.PlayTestEffect(item.Transform.position);
+                    elementsPool.Release(item);
 
+                    Debug.Log("道具结束"+TimerUtil.GetGameTime());
+
+                    Core.Enabled_PlayerCtr = true;
                     ListPool<ElementItem>.Release(elementItemList);
                     ListPool<Vector3>.Release(potList);
 
@@ -1019,7 +1040,7 @@ namespace ProjectApp
             process.Duration = time > process.Duration ? time : process.Duration;
 
             process.SetLinkExecute(executeCB);
-            process.SetLinkExecute(finishCB);
+            process.SetLinkFinish(finishCB);
 
             return time;
 
@@ -1342,6 +1363,7 @@ namespace ProjectApp
 
         private void UpdateOrthographicSize()
         {
+            
             CameraMgr.Instance.mainCamera.orthographicSize = orthographicSize;
         }
         #endregion

@@ -5,12 +5,10 @@
     类型: MVC_AutoCread
     功能: GameUI界面
 *****************************************************/
-using ConsoleE;
 using FutureCore;
 using System;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,12 +71,7 @@ namespace ProjectApp
 
         
 
-        private class PropData :ItemData
-        {
-            public ExternalProp type;
-            public int Sum;
-
-        }
+       
 
         protected override void OnBind()
         {
@@ -91,7 +84,7 @@ namespace ProjectApp
             ui_PropList.updateItemData = UpdataItemData;
 
             ui_TipsText = GetComponent<TextMeshProUGUI>(ui_TipsText_Key);
-            ui_TipsText.SetActive(false);
+            ui_TipsText.transform.parent.SetActive(false);
 
             ui_soce_FgImg = GetComponent<Image>(ui_soce_Fg_Key);
             beesTars = new List<Transform>();
@@ -147,8 +140,8 @@ namespace ProjectApp
 
         private void OnClickPropItem(BaseUIList_Item item, ItemData data)
         {
-            ExternalProp type = (ExternalProp)data.IntData;
-            core.ClickExternalPropItem(type);
+            PropData propData = (data as PropData);
+            core.ClickExternalPropItem(propData.type);
 
 
 
@@ -228,7 +221,7 @@ namespace ProjectApp
         private void OnGameWin(object obj)
         {
             ui_TipsText.text = "胜利";
-            ui_TipsText.SetActive(true);
+            //ui_TipsText.transform.parent.SetActive(true);
         }
 
         public override void OnUpdate()
@@ -441,12 +434,12 @@ namespace ProjectApp
 
         private void OnUseExternalProp(object obj)
         {
-            ui_TipsText.SetActive(false);
+            //ui_TipsText.transform.parent.SetActive(false);
         }
 
         private void OnClickExternalPropItem(object obj)
         {
-            ui_TipsText.SetActive(true);
+            //ui_TipsText.transform.parent.SetActive(true);
 
 
         }

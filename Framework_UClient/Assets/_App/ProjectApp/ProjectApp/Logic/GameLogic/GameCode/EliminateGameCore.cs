@@ -257,6 +257,11 @@ namespace ProjectApp
         /// </summary>
         private int _enabledCtrSum = 0;
 
+        private void Awake()
+        {
+            if (isEditor)Init();
+        }
+
         [Button("Init")]
         public void Init()
         {
@@ -264,13 +269,16 @@ namespace ProjectApp
             {
                 InputMgr.Instance.Init();
                 InputMgr.Instance.StartUp();
+
+                CameraMgr.Instance.mainCamera = Camera.main;
             }
 
             GameTool.GameCore = this;
-            GameTool.SetRandomSeed(132131231);//设置种子
+            GameTool.SetRandomSeed(MainUI.GameRandomSeed);//设置种子
             GameTool.AllBaseElements = new ElementType[] { ElementType.Item_A, ElementType.Item_B, ElementType.Item_C, ElementType.Item_D };
 
             Data = new ElementGameData();
+            Data.targetScore = MainUI.GameTarScore;
             Dispatcher = new Dispatcher<uint>();
 
             gameInitialModule = new GameInitial_Module();
@@ -368,7 +376,7 @@ namespace ProjectApp
         public Vector2Int temp2 = new Vector2Int(0, 12);
 
         [LabelText("是否编辑器模式")]
-        private bool isEditor;
+        public bool isEditor;
         [LabelText("是否填充")]
         public bool IsFill;
         [LabelText("是否触发组合道具 点击模式")]
@@ -439,13 +447,14 @@ namespace ProjectApp
         {
             ElementType elementType = ElementType.Fixed_None;
             // 根据配置表比例生成元素（这里简化为随机）
-            int rand = GameTool.RandomToInt(1, 7);
-            if (rand == 6)
+            int rand = GameTool.RandomToInt(0, 10);
+            if (rand == 0)
             {
                 elementType = (ElementType)GameTool.RandomToInt(101, 105);
             }
             else
             { 
+                rand = GameTool.RandomToInt(1, 6);
                 elementType = (ElementType)rand;
             }
 

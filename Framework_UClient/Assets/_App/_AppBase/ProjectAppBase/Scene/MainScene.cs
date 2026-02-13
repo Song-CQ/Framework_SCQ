@@ -7,6 +7,7 @@
 *****************************************************/
 using FutureCore;
 using System;
+using UnityEngine;
 
 namespace ProjectApp
 {
@@ -47,12 +48,14 @@ namespace ProjectApp
             LogUtil.Log("[MainScene]Start Up App Process");
             AppDispatcher.Instance.Dispatch(AppMsg.App_StartUp);
 
-            
+            LogUtil.LogError("AppConst.IsCheckResVer"+AppConst.IsCheckResVer);
+            LogUtil.LogError("AppConst.IsDevelopMode" + AppConst.IsDevelopMode);
             // 初始化资源
-            if (!AppConst.IsDevelopMode)
+            if (!AppConst.IsDevelopMode&&AppConst.IsCheckResVer)
             {
                 //检测版本资源更新
                 App.SetLoadingSchedule(ProgressState.AssetsPrepare);
+
                 VersionUpdateMgr.Instance.StartUpProcess(InitAssets);
             }
             else

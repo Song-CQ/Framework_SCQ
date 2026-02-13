@@ -13,6 +13,12 @@ using UnityEngine.UI;
 
 namespace ProjectApp
 {
+    public class PropData : ItemData
+    {
+        public ExternalProp type;
+        public int Sum;
+
+    }
     public class ExternalPropUIList_Item : BaseUIList_Item
     {
         public Image icon;
@@ -30,9 +36,11 @@ namespace ProjectApp
         public override void Initialize(int index, ItemData data)
         {
             base.Initialize(index, data);
-            
-            icon.sprite = GameTool.GetSprite((ExternalProp)data.IntData);
-            int sum = 1;
+            PropData propData = data as PropData;
+
+
+            icon.sprite = GameTool.GetSprite(propData.type);
+            int sum = propData.Sum;
             if (sum == 0)
             {
                 btn_AddTrf.gameObject.SetActive(true);

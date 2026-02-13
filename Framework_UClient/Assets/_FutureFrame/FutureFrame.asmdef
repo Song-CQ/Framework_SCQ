@@ -2,7 +2,7 @@
     "name": "FutureFrame",
     "rootNamespace": "",
     "references": [
-        "Plugins3rdLibrary"
+        "_ThirdParty"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

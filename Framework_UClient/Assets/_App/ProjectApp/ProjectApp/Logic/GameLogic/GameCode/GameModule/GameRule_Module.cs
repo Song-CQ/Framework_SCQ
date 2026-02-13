@@ -1,16 +1,12 @@
-using Codice.CM.Common;
+
 using FutureCore;
-using ILRuntime.CLR.TypeSystem;
-using Sirenix.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace ProjectApp
 {
@@ -384,6 +380,21 @@ namespace ProjectApp
 
                 Core.Dispatch(GameMsg.ChangeElementType, data, isRith);
 
+
+
+                List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
+                var visited = GetVisited();
+                FindMatchesAt(data.X, data.Y, visited, ref matches);
+                if (matches.Count > 0)
+                {
+                    //记录快照
+                    Data.TakeMemorySnapshotBoardData();
+
+                    // 有匹配，进行消除
+                    ProcessMatches(matches);
+                    // 创建新元素 并补位
+                    FillEmptySpaces();
+                }
 
             }
         }
@@ -775,10 +786,10 @@ namespace ProjectApp
             }
 
             Debug.Log("要创建的元素数量" + creadList.Count);
-            foreach (var item in creadList)
-            {
-                Debug.Log(item.ToString());
-            }
+            //foreach (var item in creadList)
+            //{
+            //    Debug.Log(item.ToString());
+            //}
 
             if (creadList.Count > 0)
             {
@@ -791,7 +802,7 @@ namespace ProjectApp
             for (int i = 0; i < souList.Count; i++)
             {
                 ElementData item = souList[i];
-                Debug.Log("下落元素" + item.ToString() + "目标位置" + tarList[i].ToString());
+                //Debug.Log("下落元素" + item.ToString() + "目标位置" + tarList[i].ToString());
             }
 
             if (souList.Count > 0 && tarList.Count > 0)
@@ -932,7 +943,7 @@ namespace ProjectApp
             // 消除元素
             foreach (Vector2Int match in matches)
             {
-                Debug.Log("消除：" + Data.boardData[match.x, match.y].ToString());
+                //Debug.Log("消除：" + Data.boardData[match.x, match.y].ToString());
                 if (BoardData[match.x, match.y].Type != ElementType.Fixed_Special) //如果不是不存在
                 {
                     allMatches.Add(BoardData[match.x, match.y]);
@@ -1452,6 +1463,8 @@ namespace ProjectApp
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                         // 道具效果
                         ProcessMatches(list);
+
+                        FillEmptySpaces();
                         isSu = true;
                     }
                     break;

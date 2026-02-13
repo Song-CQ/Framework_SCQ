@@ -55,6 +55,7 @@ namespace ProjectApp
         public void AddListener()
         {
             Dispatcher.AddPriorityListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
+            Dispatcher.AddPriorityListener(GameMsg.CancelExternalProp, OnCancelExternalProp);
             
             Dispatcher.AddListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
             Dispatcher.AddListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement);
@@ -62,10 +63,13 @@ namespace ProjectApp
 
         }
 
+        
+
         public void RemoveListener()
         {
             ///消耗
             Dispatcher.RemovePriorityListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
+            Dispatcher.RemovePriorityListener(GameMsg.CancelExternalProp, OnCancelExternalProp);
 
             Dispatcher.RemoveListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
             Dispatcher.RemoveListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement);
@@ -81,6 +85,7 @@ namespace ProjectApp
             //消耗
             ConsumeExternalProp(propType);
 
+          
 
         }
 
@@ -103,7 +108,14 @@ namespace ProjectApp
 
         }
 
-
+        /// <summary>
+        /// 取消使用盘外道具
+        /// </summary>
+        /// <param name="obj"></param>
+        private void OnCancelExternalProp(object obj)
+        {
+            Rest_SelectExternalProp();
+        }
 
 
         /// <summary>
@@ -115,12 +127,17 @@ namespace ProjectApp
             ExternalProp type = (ExternalProp)obj;
 
             SelectExternalProp = type;
-            
+
             /// 如果是点击后立即触发的
             if (IsActivateExternalProp(type))
             {
                 ActivateExternalProp(type);
 
+            }
+            else
+            {
+                //打开使用道具界面
+                UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.UsePropUI_Open);
             }
 
         }
@@ -134,6 +151,7 @@ namespace ProjectApp
 
 
             selectElementDataList.Add(data);
+            Dispatcher.Dispatch(GameMsg.SelectElement, data);
 
             if (IsActivateExternalProp(SelectExternalProp))
             {
@@ -145,8 +163,14 @@ namespace ProjectApp
         private void Rest_SelectExternalProp()
         {
             SelectExternalProp = ExternalProp.None;
+            foreach (var item in selectElementDataList)
+            {
+                Dispatcher.Dispatch(GameMsg.DeselectElement, item);
+            }
 
             selectElementDataList.Clear();
+
+            UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.UsePropUI_Close);
 
         }
 
@@ -234,6 +258,7 @@ namespace ProjectApp
 
             Rest_SelectExternalProp();
             Core.Dispatch(GameMsg.UseExternalProp,propType,vector3List);
+            if(vector3List!=null)
             ListPool<Vector2Int>.Release(vector3List);
         }
 
