@@ -56,11 +56,11 @@ namespace ProjectApp
 
             Dispatcher.AddPriorityListener(GameMsg.UseExternalProp, OnUseExternalProp);
 
-           
+
 
         }
 
-       
+
 
         public void RemoveListener()
         {
@@ -71,7 +71,7 @@ namespace ProjectApp
 
             Dispatcher.RemovePriorityListener(GameMsg.UseExternalProp, OnUseExternalProp);
 
-      
+
         }
 
         public void GenerateInitialElements()
@@ -252,7 +252,7 @@ namespace ProjectApp
             }
         }
 
-        
+
 
         #endregion
 
@@ -292,7 +292,7 @@ namespace ProjectApp
         {
             //记录快照
             Data.TakeMemorySnapshotBoardData();
-            
+
             // 交换元素
             SwapElements(select_X, select_Y, x, y);
 
@@ -301,7 +301,7 @@ namespace ProjectApp
             matches = CheckMatchesAfterSwap(select_X, select_Y, x, y, ref matches);
 
             if (matches.Count > 0)
-            {           
+            {
                 // 有匹配，进行消除
                 ProcessMatches(matches);
                 // 创建新元素 并补位
@@ -309,11 +309,15 @@ namespace ProjectApp
             }
             else
             {
-                // 无匹配，交换回来
-                SwapElements(select_X, select_Y, x, y);
-                //操作不允许 删除上一回记录的快照
-                Data.DelLastMemorySnapshotBoardData();
-                
+                if (Core.IsBackSwap)
+                {
+
+                    // 无匹配，交换回来
+                    SwapElements(select_X, select_Y, x, y);
+                    //操作不允许 删除上一回记录的快照
+                    Data.DelLastMemorySnapshotBoardData();
+
+                }
             }
             //使用完回收List
             FutureCore.ListPool<Vector2Int>.Release(matches);
@@ -833,7 +837,7 @@ namespace ProjectApp
         /// </summary>
         void CheckAllMatches()
         {
-            if(!Core.isCheckAllMatches) return;
+            if (!Core.isCheckAllMatches) return;
 
             // 使用对象池获取列表，避免GC分配
             var allMatches = FindAllMatches();
@@ -1438,7 +1442,7 @@ namespace ProjectApp
             ListPool<ElementData>.Release(datas);
         }
 
-        
+
         private void OnUseExternalProp(object obj)
         {
             object[] objects = obj as object[];
@@ -1446,7 +1450,7 @@ namespace ProjectApp
             List<Vector2Int> list = objects[1] as List<Vector2Int>;
 
 
-            UseExternalProp(propType,list);  
+            UseExternalProp(propType, list);
         }
 
         private bool UseExternalProp(ExternalProp propType, List<Vector2Int> list)

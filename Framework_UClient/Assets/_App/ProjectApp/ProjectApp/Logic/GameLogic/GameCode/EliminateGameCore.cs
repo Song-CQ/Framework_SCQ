@@ -393,6 +393,8 @@ namespace ProjectApp
         public bool isPool = true;
         [LabelText("是否检查元素消除")]
         public bool isCheckAllMatches = true;
+         [LabelText("无消除是否要交换回元素")]
+        public bool IsBackSwap  = true;
       
 
         [Button("交换元素")]
@@ -532,6 +534,8 @@ namespace ProjectApp
         #region 外置道具
 
         public ExternalProp SelectExternalProp => externalProp_Module.SelectExternalProp;
+
+        
 
 
 
