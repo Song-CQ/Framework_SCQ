@@ -290,7 +290,9 @@ namespace ProjectApp
         #region 一次操作
         private void Player_SwapElement(int select_X, int select_Y, int x, int y)
         {
-
+            //记录快照
+            Data.TakeMemorySnapshotBoardData();
+            
             // 交换元素
             SwapElements(select_X, select_Y, x, y);
 
@@ -299,10 +301,7 @@ namespace ProjectApp
             matches = CheckMatchesAfterSwap(select_X, select_Y, x, y, ref matches);
 
             if (matches.Count > 0)
-            {
-                //记录快照
-                Data.TakeMemorySnapshotBoardData();
-
+            {           
                 // 有匹配，进行消除
                 ProcessMatches(matches);
                 // 创建新元素 并补位
@@ -312,6 +311,9 @@ namespace ProjectApp
             {
                 // 无匹配，交换回来
                 SwapElements(select_X, select_Y, x, y);
+                //操作不允许 删除上一回记录的快照
+                Data.DelLastMemorySnapshotBoardData();
+                
             }
             //使用完回收List
             FutureCore.ListPool<Vector2Int>.Release(matches);

@@ -147,6 +147,14 @@ namespace ProjectApp
             lastBoardDataList.Add(lastBoardData);
         }
 
+        public void DelLastMemorySnapshotBoardData()
+        {
+            if(CanUndo())
+            {              
+               lastBoardDataList.RemoveAt(lastBoardDataList.Count-1);
+            }
+        }
+
         public void SetBoardData(ElementData[,] newBoardData)
         {
             boardData = (ElementData[,])newBoardData.Clone();
