@@ -2039,6 +2039,11 @@ PrefabInstance:
       propertyPath: isEditor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 694037648143051489, guid: 2778b9afe6d448340b20a3478f9ba793,
+        type: 3}
+      propertyPath: IsBackSwap
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3840173086398887437, guid: 2778b9afe6d448340b20a3478f9ba793,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -1265,6 +1265,7 @@ namespace ProjectApp
         {
             //移动
             AddFormMoveTo(formItem, toItem);
+            return 0.3f;
 
             List<Vector3> potList = ListPool<Vector3>.Get();
             GameTool.GetPositionToList(elementItemList, ref potList);
@@ -1298,6 +1299,7 @@ namespace ProjectApp
 
         private void AddFormMoveTo(ElementItem formItem, ElementItem toItem)
         {
+            Debug.Log("道具移动formItem"+formItem.ToString()+" to " +toItem.ToString());
             formItem.SetSpecial();
             toItem.SetSpecial();
 
@@ -1319,7 +1321,7 @@ namespace ProjectApp
                 elementsPool.Release(toItem);
 
             });
-            process.Duration = 0.3f;
+            process.Duration = 3f;
 
         }
 
@@ -1352,13 +1354,21 @@ namespace ProjectApp
         #region 棋盘的缩放
 
         private float orthographicSize = 120;
-        private float orthographicSizeSpeed = 1;
+        private float sizeSpeed = 10;
+        private float size = 1;
+        private float maxSize = 1.2f;
+        private float minSize = 1;
         private void OnPinchZoom(float delta)
         {
             if(!Core.Enabled_PlayerCtr)return;
-            CameraMgr.Instance.mainCamera.orthographicSize = GameTool.DefOrthographicSize;
-            orthographicSize = orthographicSize + delta*orthographicSizeSpeed;
-            orthographicSize = Mathf.Clamp(orthographicSize,GameTool.MinOrthographicSize,GameTool.MaxOrthographicSize);
+            //CameraMgr.Instance.mainCamera.orthographicSize = GameTool.DefOrthographicSize;
+            //orthographicSize = orthographicSize + delta*orthographicSizeSpeed;
+            //orthographicSize = Mathf.Clamp(orthographicSize,GameTool.MinOrthographicSize,GameTool.MaxOrthographicSize);
+
+            size = size + delta * sizeSpeed *Time.deltaTime;
+
+            Core.transform.localScale = Vector3.one * size;
+
         }
 
         private void UpdateOrthographicSize()

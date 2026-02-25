@@ -59,21 +59,24 @@ namespace ProjectApp.GameLogic
         public Vector3 formPot = Vector3Int.zero;
         public Vector3 toPot = Vector3Int.zero;
 
-
+        private void SetDuration()
+        {
+            Duration = 0.3f;
+        }
 
         public void SetElement(ElementItem elementItem, float delay)
         {
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime() + delay;
             Delay = delay;
-         
+            SetDuration();
 
 
         }
 
         protected override void AddTweenToSequence(Sequence seq)
         {
-            Duration = 0.3f;
+            SetDuration();
             seq.Append(DOTween.To(
                 () => 0f,
 
@@ -100,6 +103,7 @@ namespace ProjectApp.GameLogic
             base.ResetState();
             Tar = null;
             Delay = 0;
+          
 
             formPot = Vector3Int.zero;
             toPot = Vector3Int.zero;
@@ -279,18 +283,22 @@ namespace ProjectApp.GameLogic
 
         float IElementAni.StartPlayTime => base.StartPlayTime;
 
+        private void SetDuration()
+        {
+            Duration = 0.05f;
+        }
 
         public void SetElement(ElementItem elementItem, float delay)
         {
-            
+            SetDuration();
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime() + delay;
-            Delay = delay;
+            Delay = delay;    
         }
 
         protected override void AddTweenToSequence(Sequence seq)
         {
-            Duration = 0.05f;
+            SetDuration();
             seq.Append(DOTween.To(
                () => 1f,
                x =>
@@ -357,12 +365,16 @@ namespace ProjectApp.GameLogic
         private float shakeDuration = 0.6f;
         private float shakeIntensity = 1.2f;
         private int bounces = 3;//´ÎÊý
-        
 
 
+        private void SetDuration()
+        {
+            Duration = shakeDuration;
+        }
 
         public void SetElement(ElementItem elementItem, float delay)
         {
+            SetDuration();
             Tar = elementItem;
             StartPlayTime = TimerUtil.GetGameTime() + delay;
             Delay = delay;
@@ -379,7 +391,7 @@ namespace ProjectApp.GameLogic
 
         protected override void AddTweenToSequence(Sequence seq)
         {
-            Duration = shakeDuration;
+            SetDuration();
 
             seq.Append(DOTween.To(
                 () => 0f,

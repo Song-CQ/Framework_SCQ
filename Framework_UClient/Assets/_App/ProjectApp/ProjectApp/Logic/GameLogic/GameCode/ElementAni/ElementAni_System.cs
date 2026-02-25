@@ -199,7 +199,9 @@ namespace ProjectApp
         {
             //停止正在播放的Dotw
             StopElementItemAni(item1);
+            
             StopElementItemAni(item2);
+           
 
 
             MoveElementAni_Sequence ani1 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
@@ -207,14 +209,15 @@ namespace ProjectApp
             ani1.toPot = item2Pot;
             ani1.SetElement(item1, delay);
             AddRunElementAni(item1, ani1);
-
+        
             MoveElementAni_Sequence ani2 = GetAnimation(ElementAniType.Move) as MoveElementAni_Sequence;
             ani2.formPot = item2Pot;
             ani2.toPot = item1Pot;
             ani2.SetElement(item2, delay);
             AddRunElementAni(item2, ani2);
 
-            float dur = ani1.Duration;
+
+            float dur = (ani1.Duration + ani2.Duration)/2;
 
 
             return dur;
