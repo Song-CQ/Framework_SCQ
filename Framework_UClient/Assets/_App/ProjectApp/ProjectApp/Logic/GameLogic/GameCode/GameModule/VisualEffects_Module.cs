@@ -1265,7 +1265,7 @@ namespace ProjectApp
         {
             //移动
             AddFormMoveTo(formItem, toItem);
-            return 0.3f;
+
 
             List<Vector3> potList = ListPool<Vector3>.Get();
             GameTool.GetPositionToList(elementItemList, ref potList);
@@ -1312,7 +1312,7 @@ namespace ProjectApp
                 AnimationSys.PlayAin_MovePot(formItem, formPot, tarPot);
             });
 
-            process.SetLinkExecute((p) =>
+            process.SetLinkFinish((p) =>
             {
                 Core.Enabled_PlayerCtr = true;
                 GameTool.PlayTestEffect(tarPot);
@@ -1321,7 +1321,7 @@ namespace ProjectApp
                 elementsPool.Release(toItem);
 
             });
-            process.Duration = 3f;
+            process.Duration = 0.3f;
 
         }
 
