@@ -1,12 +1,9 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 using FutureCore;
 using System.IO;
 using System.Collections.Generic;
-using static UnityEngine.GridBrushBase;
-using static FutureEditor.ConfigBatTool;
 
 namespace FutureEditor
 {
@@ -99,6 +96,10 @@ namespace FutureEditor
             if (GUILayout.Button("重启Unity", GUILayout.Height(40), GUILayout.Width(100)))
             {
                 UnityEditorTool.StartRest();
+            }
+            if (GUILayout.Button("编辑该界面脚本", GUILayout.Height(40), GUILayout.Width(100)))
+            {
+                UnityEditorTool.OpenScriptByPath("Assets/_Editor/FutureEditorTool/WindowEditor/01_FrameworkViewer/FrameworkToolView");
             }
             GUILayout.EndArea();
 
@@ -323,6 +324,11 @@ namespace FutureEditor
 
                 Close();
                 ConfigBatTool.SyncConfigData(type, isEnciphermentData, isOutMultipleDatas);
+            }
+
+            if (GUILayout.Button("打开表格目录", GUILayout.Height(40), GUILayout.Width(100)))
+            {
+                ConfigBatTool.OpenExcelPath();
             }
 
 

@@ -310,13 +310,17 @@ namespace ExcelTool
                         }
                         catch (Exception)
                         {
-
-                            LogUtil.LogError("字段值写入数据失败！");
+                            LogUtil.LogWarning("----------------------------------------------------");
+                            LogUtil.LogError("生成表：" + Name + "数据失败");                     
+                            LogUtil.LogError("类名：" + className);
+                            LogUtil.LogError("");
+                            LogUtil.LogError("行数 "+ (i+1) +" 数据 字段值写入失败！");
                             LogUtil.LogError("字段名:" + _fieldName);
                             LogUtil.LogError("目标类型:" + fieldInfo.FieldType.ToString());
                             LogUtil.LogError("写入值:" + valStr);
-                            StringColor.WriteLine("生成表：" + Name + "数据失败");
-                            Thread.CurrentThread.Abort();
+                            LogUtil.LogWarning("----------------------------------------------------");
+
+                            Thread.CurrentThread.Abort(); 
                         }
 
                         if (_fieldName.ToLower() == "id")

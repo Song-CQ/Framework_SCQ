@@ -160,7 +160,27 @@ namespace FutureEditor
 
         #endregion
 
+        public static void OpenScriptByPath(string scriptPath)
+        {
+            if (!scriptPath.EndsWith(".cs"))
+            {
+                scriptPath += ".cs";
+            }
+            // 1. 通过路径加载脚本资源
+            MonoScript script = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath);
 
+            // 2. 检查是否成功找到脚本
+            if (script != null)
+            {
+                // 3. 使用默认编辑器打开脚本
+                AssetDatabase.OpenAsset(script);
+                LogUtil.Log($"已打开脚本: {scriptPath}");
+            }
+            else
+            {
+                LogUtil.LogError($"在路径 {scriptPath} 未找到脚本，请检查路径是否正确。");
+            }
+        }
 
         #region Assets
         /// <summary>
@@ -183,6 +203,8 @@ namespace FutureEditor
             EditorGUIUtility.PingObject(obj);
             Selection.activeObject = obj;
         }
+
+        
         #endregion
 
     }

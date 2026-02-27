@@ -21,6 +21,7 @@
 using System;
 using ExcelTool.Tool;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ExcelTool
 {
@@ -31,7 +32,13 @@ namespace ExcelTool
         {
 
             LogUtil.SetLogCallBack_Log((e) => {
-                Console.WriteLine(e);
+                StringColor.WriteLine(e, ConsoleColor.White);
+            },null);
+            LogUtil.SetLogCallBack_LogError((e) => {
+                StringColor.WriteLine(e, ConsoleColor.Red);
+            },null);
+            LogUtil.SetLogCallBack_LogWarning((e) => {
+                StringColor.WriteLine(e, ConsoleColor.Yellow);
             },null);
             LogUtil.LogGirl();
             if (args==null||args.Length==0)

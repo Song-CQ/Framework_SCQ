@@ -11,6 +11,7 @@ using System.Reflection.Emit;
 using System.Text;
 using ExcelTool.Tool;
 using System.Threading;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ExcelTool
 {
@@ -431,6 +432,8 @@ namespace ExcelTool
 
         private static string WrittenField(string field_Type, string field_Name,string _fieldDescription)
         {
+            _fieldDescription = _fieldDescription.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", "\n///");
+
             string val =  "\n        /// <summary>\n        /// {0} \n        /// </summary>\n        public {1} {2};\n";
             val = String.Format(val,_fieldDescription,field_Type,field_Name);
             return val;
