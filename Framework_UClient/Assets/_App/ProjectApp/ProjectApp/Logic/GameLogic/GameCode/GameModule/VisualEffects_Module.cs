@@ -990,7 +990,7 @@ namespace ProjectApp
                     time = 1.5f;
                     executeCB = (p) =>
                     {
-                        Debug.Log("道具开始"+TimerUtil.GetGameTime());
+                 
                         AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
                         
                         AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.5f);
@@ -1061,7 +1061,7 @@ namespace ProjectApp
 
             if (toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal)
             {
-                if ((formData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
+                if (formData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Horizontal)
                 {
                     //横竖
                     return ActivateProp_V_H(formItem, toItem, elementItemList, propElementList);

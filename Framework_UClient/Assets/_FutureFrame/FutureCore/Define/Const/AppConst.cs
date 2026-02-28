@@ -181,6 +181,8 @@ namespace FutureCore
                 IsDevelopMode = false;
             }
             IsDevelopMode = false;
+
+
         }
 
         public static void UpdateFrameRate()

@@ -39,7 +39,7 @@ namespace ProjectApp
             Core = _core;
             externalProp_PlayerData = PlayerDataMgr.Instance.GetData<ExternalProp_PlayerData>();
 
-
+ 
         }
 
 
@@ -67,7 +67,7 @@ namespace ProjectApp
 
         public void RemoveListener()
         {
-            ///ÏûºÄ
+            ///æ¶ˆè€—
             Dispatcher.RemovePriorityListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
             Dispatcher.RemovePriorityListener(GameMsg.CancelExternalProp, OnCancelExternalProp);
 
@@ -75,14 +75,14 @@ namespace ProjectApp
             Dispatcher.RemoveListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement);
         }
         
-        /// ÏûºÄµÀ¾ß
+        /// æ¶ˆè€—é“å…·
         private void OnConsumeExternalProp(object obj)
         {
             object[] objects = obj as object[];
             ExternalProp propType = (ExternalProp)objects[0];
             List<Vector2Int> list = objects[1] as List<Vector2Int>;
 
-            //ÏûºÄ
+            //æ¶ˆè€—
             ConsumeExternalProp(propType);
 
           
@@ -90,7 +90,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ÏûºÄÍâÖÃµÀ¾ß
+        /// æ¶ˆè€—å¤–ç½®é“å…·
         /// </summary>
         /// <param name="type"></param>
         /// <exception cref="NotImplementedException"></exception>
@@ -109,7 +109,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// È¡ÏûÊ¹ÓÃÅÌÍâµÀ¾ß
+        /// å–æ¶ˆä½¿ç”¨ç›˜å¤–é“å…·
         /// </summary>
         /// <param name="obj"></param>
         private void OnCancelExternalProp(object obj)
@@ -119,7 +119,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// µã»÷ÍâÖÃµÀ¾ß
+        /// ç‚¹å‡»å¤–ç½®é“å…·
         /// </summary>
         /// <param name="o"></param>
         void OnPlayer_ClickExternalProp(object obj)
@@ -128,7 +128,7 @@ namespace ProjectApp
 
             SelectExternalProp = type;
 
-            /// Èç¹ûÊÇµã»÷ºóÁ¢¼´´¥·¢µÄ
+            /// å¦‚æœæ˜¯ç‚¹å‡»åç«‹å³è§¦å‘çš„
             if (IsActivateExternalProp(type))
             {
                 ActivateExternalProp(type);
@@ -136,7 +136,7 @@ namespace ProjectApp
             }
             else
             {
-                //´ò¿ªÊ¹ÓÃµÀ¾ß½çÃæ
+                //æ‰“å¼€ä½¿ç”¨é“å…·ç•Œé¢
                 UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.UsePropUI_Open);
             }
 
@@ -177,7 +177,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ¸ÃµÀ¾ßÊÇ·ñ¿ÉÒÔ´¥·¢
+        /// è¯¥é“å…·æ˜¯å¦å¯ä»¥è§¦å‘
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -242,7 +242,7 @@ namespace ProjectApp
         }
 
         
-        //¼¤»îÍâÎ§µÀ¾ß
+        //æ¿€æ´»å¤–å›´é“å…·
 
         private void ActivateExternalProp(ExternalProp propType)
         {
