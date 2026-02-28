@@ -127,9 +127,9 @@ namespace FutureEditor
 			Texture2D texture = EditorToolUtils.GetEditorUI("GithubMark.png");
 			
 
-			if (GUILayout.Button(new GUIContent(" GitHub Desktop", texture, "打开 GitHub Desktop"),GUILayout.Height(22)))
+			if (GUILayout.Button(new GUIContent(" Git Desktop", texture, "打开 Git Desktop"),GUILayout.Height(22)))
             {
-                GitUtils.OpenGitHubDesktop();
+                GitUtils.OpenGitClient();
  
             }
 

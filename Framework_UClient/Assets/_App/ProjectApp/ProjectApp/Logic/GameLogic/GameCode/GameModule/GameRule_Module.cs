@@ -1137,7 +1137,7 @@ namespace ProjectApp
 
             if (toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal)
             {
-                if ((formData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Horizontal) && formData.Type != toData.Type)
+                if (formData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Horizontal)
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //ºáÊú

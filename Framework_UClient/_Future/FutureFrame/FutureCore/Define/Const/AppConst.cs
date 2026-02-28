@@ -115,7 +115,7 @@ namespace FutureCore
         // LogsViewer拉起的圈数 (Debug模式)
         public static int LogsViewerShowNum_Debug = 10;
         // LogsViewer拉起的圈数 (Release模式)
-        public static int LogsViewerShowNum_Release = 50;
+        public static int LogsViewerShowNum_Release = 30;
   
         /// <summary>
         /// ui驱动类型
@@ -125,7 +125,7 @@ namespace FutureCore
         /// <summary>
         /// Fgui和世界物体的大小比例（0.01f代表世界物体大小乘以100等于UI物体大小）
         /// </summary>
-        public const float FGUIRatio = 0.01f;
+        public const float FGUIRatio = 0.1f;
 
         /// 项目控制参数
         // 控制器关闭列表

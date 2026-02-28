@@ -16,7 +16,7 @@ namespace FutureCore
         public const bool MainCamera_IsOrthographic =  true;
         
         public static int MainCameraOrthographicSize =  120;
-        public static float MainCameraFarClipPlane = 60;
+        public static float MainCameraFarClipPlane = 120;
         public const int MainCameraPosValue = 0;
         public const int MainCameraZPos = -20;
 
