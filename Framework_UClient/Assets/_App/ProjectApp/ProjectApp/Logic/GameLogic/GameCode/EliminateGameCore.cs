@@ -1,4 +1,5 @@
 using FutureCore;
+using ProjectApp.Data;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -254,6 +255,8 @@ namespace ProjectApp
 
         private bool isInit = false;
 
+        private LevelVO levelData;
+
         /// <summary>
         /// 能否操作 Controller 
         /// </summary>
@@ -271,7 +274,7 @@ namespace ProjectApp
         }
 
         [Button("Init")]
-        public void Init()
+        public void Init(int levelID = 1)
         {
             if (isEditor)
             {
@@ -281,12 +284,16 @@ namespace ProjectApp
                 CameraMgr.Instance.mainCamera = Camera.main;
             }
 
+            levelData = LevelVOModel.Instance.GetVO(levelID);
+
+
+
             GameTool.GameCore = this;
             GameTool.SetRandomSeed(MainUI.GameRandomSeed);//设置种子
             GameTool.AllBaseElements = new ElementType[] { ElementType.Item_A, ElementType.Item_B, ElementType.Item_C, ElementType.Item_D };
 
             Data = new ElementGameData();
-            Data.targetScore = MainUI.GameTarScore;
+            Data.targetScore = levelData.Passing_Score;
             Dispatcher = new Dispatcher<uint>();
 
             gameInitialModule = new GameInitial_Module();
