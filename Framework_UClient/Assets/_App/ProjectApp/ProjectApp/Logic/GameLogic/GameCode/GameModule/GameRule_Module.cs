@@ -24,11 +24,11 @@ namespace ProjectApp
         private bool[,] _visited;
         public GameRule_Module() { }
 
-        #region ÁÙÊ±Êý¾Ý 
+        #region ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ 
         private List<Vector2Int> temp_AllMatchesList = new List<Vector2Int>();
         #endregion
 
-        #region Á÷³Ì
+        #region ï¿½ï¿½ï¿½ï¿½
         public Dispatcher<uint> Dispatcher => Core.Dispatcher;
         public ElementGameData Data => Core.Data;
 
@@ -50,7 +50,7 @@ namespace ProjectApp
 
         public void AddListener()
         {
-            //×îÏÈÔËÐÐ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Dispatcher.AddPriorityListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement_test);
             Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElement, OnPlayer_SwipeElement);
             Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElementToElement, OnPlayer_SwipeElementToElement);
@@ -108,16 +108,16 @@ namespace ProjectApp
                     Task task = Task.Run(() =>
                     {
                         Thread currentThread = Thread.CurrentThread;
-                        Debug.Log("µ±Ç°Ïß³Ì" + currentThread.ManagedThreadId + ("  " + SelectedElement.x + "--" + SelectedElement.y));
+                        Debug.Log("ï¿½ï¿½Ç°ï¿½ß³ï¿½" + currentThread.ManagedThreadId + ("  " + SelectedElement.x + "--" + SelectedElement.y));
                         OnClick_Element(o);
                     }
                      , cts.Token);
-                    task.Wait(cts.Token);  // Í¬²½µÈ´ý£¬»áÅ×³öÒì³£
+                    task.Wait(cts.Token);  // Í¬ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ì³£
                 }
             }
             catch (OperationCanceledException)
             {
-                Debug.LogError("OnElementClicked Ö´ÐÐ³¬Ê±£¬¿ÉÄÜËÀÑ­»·");
+                Debug.LogError("OnElementClicked Ö´ï¿½Ð³ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½");
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
 #endif
@@ -126,22 +126,22 @@ namespace ProjectApp
             {
                 foreach (var ex in ae.InnerExceptions)
                 {
-                    Debug.LogError($"OnElementClicked Ö´ÐÐ³ö´í: {ex.Message}");
+                    Debug.LogError($"OnElementClicked Ö´ï¿½Ð³ï¿½ï¿½ï¿½: {ex.Message}");
                 }
             }
             catch (Exception ex)
             {
-                Debug.LogError($"OnElementClicked Ö´ÐÐ³ö´í: {ex.Message}");
+                Debug.LogError($"OnElementClicked Ö´ï¿½Ð³ï¿½ï¿½ï¿½: {ex.Message}");
             }
 
         }
 
 
-        #region  ²Ù×÷
+        #region  ï¿½ï¿½ï¿½ï¿½
 
 
         /// <summary>
-        /// µã»÷ÔªËØ
+        /// ï¿½ï¿½ï¿½Ôªï¿½ï¿½
         /// </summary>
         /// <param name="o"></param>
         void OnClick_Element(object o)
@@ -150,20 +150,20 @@ namespace ProjectApp
             int x = data.X;
             int y = data.Y;
 
-            //»ñÈ¡µ±Ç°ÆåÅÌÉÏ¶ÔÓ¦Î»ÖÃµÄÔªËØ ²»ÄÜÐÅÈÎ´«¹ýÀ´µÄÊý¾Ý
+            //ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½Ó¦Î»ï¿½Ãµï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             data = Data.boardData[x, y];
 
 
             if (Core.SelectExternalProp != ExternalProp.None)
             {
-                //µ±Ç°ÓÐÕýÔÚ¼¤»îµÄµÀ¾ß
+                //ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½
 
                 return;
             }
 
             if (ElementTool.CheckType_IsProp(data.Type) && !Core.IsClickProp)
             {
-                //´¥·¢µÀ¾ß
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 Player_ActivateProp(data);
                 return;
             }
@@ -172,17 +172,17 @@ namespace ProjectApp
 
             if (SelectedElement.x < 0 || SelectedElement.y < 0)
             {
-                // µÚÒ»´Îµã»÷£¬Ñ¡ÖÐÔªËØ
+                // ï¿½ï¿½Ò»ï¿½Îµï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ôªï¿½ï¿½
                 SelectElement(x, y);
             }
             else
             {
                 int select_X = SelectedElement.x;
                 int select_Y = SelectedElement.y;
-                // Çå³ýÑ¡ÖÐ×´Ì¬
+                // ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬
                 DeselectElement(SelectedElement.x, SelectedElement.y);
 
-                // µÚ¶þ´Îµã»÷£¬ÅÐ¶ÏÊÇ·ñÏàÁÚ
+                // ï¿½Ú¶ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
                 if (IsAdjacent(select_X, select_Y, x, y) || Data.HasConnection(select_X, select_Y, x, y))
                 {
                     if (Core.IsClickProp)
@@ -200,7 +200,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ÍÏ¶¯ÔªËØ µ½ÁíÒ»¸öÔªËØÉÏ
+        /// ï¿½Ï¶ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½
         /// </summary>
         /// <param name="obj"></param>
         /// <exception cref="NotImplementedException"></exception>
@@ -236,7 +236,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ÔÚÒ»¸öÔªËØÉÏ ÍÏ¶¯ 
+        /// ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ ï¿½Ï¶ï¿½ 
         /// </summary>
         /// <param name="obj"></param>
         /// <exception cref="NotImplementedException"></exception>
@@ -258,17 +258,17 @@ namespace ProjectApp
         #endregion
 
 
-        #region  ºËÐÄ´úÂë
+        #region  ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
 
         /// <summary>
-        /// Ñ¡ÖÐÔªËØ
+        /// Ñ¡ï¿½ï¿½Ôªï¿½ï¿½
         /// </summary>
         void SelectElement(int x, int y)
         {
             var elementData = BoardData[x, y];
             if (!ElementTool.CheckType_ClickEvent(elementData.Type))
             {
-                //²»¿Éµã»÷
+                //ï¿½ï¿½ï¿½Éµï¿½ï¿½
                 return;
             }
 
@@ -277,7 +277,7 @@ namespace ProjectApp
 
         }
         /// <summary>
-        /// È¡ÏûÔªËØ
+        /// È¡ï¿½ï¿½Ôªï¿½ï¿½
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -288,24 +288,24 @@ namespace ProjectApp
             Dispatcher.Dispatch(GameMsg.DeselectElement, elementData);
         }
 
-        #region Ò»´Î²Ù×÷
+        #region Ò»ï¿½Î²ï¿½ï¿½ï¿½
         private void Player_SwapElement(int select_X, int select_Y, int x, int y)
         {
-            //¼ÇÂ¼¿ìÕÕ
+            //ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
             Data.TakeMemorySnapshotBoardData();
 
-            // ½»»»ÔªËØ
+            // ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
             SwapElements(select_X, select_Y, x, y);
 
-            // ¼ì²éÆ¥Åä
+            // ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
             List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
             matches = CheckMatchesAfterSwap(select_X, select_Y, x, y, ref matches);
 
             if (matches.Count > 0)
             {
-                // ÓÐÆ¥Åä£¬½øÐÐÏû³ý
+                // ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 ProcessMatches(matches);
-                // ´´½¨ÐÂÔªËØ ²¢²¹Î»
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Î»
                 FillEmptySpaces();
             }
             else
@@ -313,14 +313,14 @@ namespace ProjectApp
                 if (Core.IsBackSwap)
                 {
 
-                    // ÎÞÆ¥Åä£¬½»»»»ØÀ´
+                    // ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     SwapElements(select_X, select_Y, x, y);
-                    //²Ù×÷²»ÔÊÐí É¾³ýÉÏÒ»»Ø¼ÇÂ¼µÄ¿ìÕÕ
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ É¾ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ø¼ï¿½Â¼ï¿½Ä¿ï¿½ï¿½ï¿½
                     Data.DelLastMemorySnapshotBoardData();
 
                 }
             }
-            //Ê¹ÓÃÍê»ØÊÕList
+            //Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½List
             FutureCore.ListPool<Vector2Int>.Release(matches);
 
 
@@ -328,7 +328,7 @@ namespace ProjectApp
 
         public void Player_RananAllElement()
         {
-            //¼ÇÂ¼¿ìÕÕ
+            //ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
             Data.TakeMemorySnapshotBoardData();
 
 
@@ -394,12 +394,12 @@ namespace ProjectApp
                 FindMatchesAt(data.X, data.Y, visited, ref matches);
                 if (matches.Count > 0)
                 {
-                    //¼ÇÂ¼¿ìÕÕ
+                    //ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
                     Data.TakeMemorySnapshotBoardData();
 
-                    // ÓÐÆ¥Åä£¬½øÐÐÏû³ý
+                    // ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     ProcessMatches(matches);
-                    // ´´½¨ÐÂÔªËØ ²¢²¹Î»
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Î»
                     FillEmptySpaces();
                 }
 
@@ -411,7 +411,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ÅÐ¶ÏÁ½¸öÔªËØÊÇ·ñÏàÁÚ
+        /// ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         bool IsAdjacent(int x1, int y1, int x2, int y2)
         {
@@ -421,21 +421,21 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ½»»»Á½¸öÔªËØ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
         /// </summary>
         void SwapElements(int x1, int y1, int x2, int y2)
         {
 
             ElementData tempData1 = BoardData[x1, y1];
             ElementData tempData2 = BoardData[x2, y2];
-            Debug.Log(string.Format("½»»»ÔªËØ{0}  ºÍ {1}", tempData1.ToString(), tempData2.ToString()));
+            Debug.Log(string.Format("ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½{0}  ï¿½ï¿½ {1}", tempData1.ToString(), tempData2.ToString()));
 
-            // Êµ¼Ê½»»»ÆåÅÌÊý¾Ý
-            // ÉèÖÃÕâ¸ö×ø±êÎ»ÖÃ µÄÊý¾Ý
+            // Êµï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             SetBoardData(x1, y1, tempData2);
             SetBoardData(x2, y2, tempData1);
 
-            // Í¨ÖªÆäËûÄ£¿é ½»»»Êý¾Ý
+            // Í¨Öªï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             List<ElementData> elementDatas = FutureCore.ListPool<ElementData>.Get();
             elementDatas.Add(tempData1);
             elementDatas.Add(tempData2);
@@ -445,20 +445,20 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ¼ì²é½»»»ºóµÄÆ¥Åä
+        /// ï¿½ï¿½é½»ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
         /// </summary>
         private List<Vector2Int> CheckMatchesAfterSwap(int x1, int y1, int x2, int y2, ref List<Vector2Int> matches)
         {
             if (matches == null) matches = new List<Vector2Int>();
             var visited = GetVisited();
-            // ¼ì²é½»»»µÄÁ½¸öÎ»ÖÃ¼°ÆäÏà¹ØÐÐÁÐ
+            // ï¿½ï¿½é½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             FindMatchesAt(x1, y1, visited, ref matches);
             FindMatchesAt(x2, y2, visited, ref matches);
 
-            Debug.Log(string.Format("½»»»ÔªËØºóÏû³ýµÄÔªËØÊýÁ¿{0}", matches.Count));
+            Debug.Log(string.Format("ï¿½ï¿½ï¿½ï¿½Ôªï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{0}", matches.Count));
             foreach (var item in matches)
             {
-                Debug.Log(string.Format("·Ö±ðÊÇ{0}", item.ToString()));
+                Debug.Log(string.Format("ï¿½Ö±ï¿½ï¿½ï¿½{0}", item.ToString()));
             }
 
 
@@ -467,11 +467,11 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ²éÕÒÖ¸¶¨Î»ÖÃµÄÆ¥Åä
+        /// ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ãµï¿½Æ¥ï¿½ï¿½
         /// </summary>
         private List<Vector2Int> FindMatchesAt(int x, int y, bool[,] visited, ref List<Vector2Int> matches)
         {
-            // ±ß½ç¼ì²é
+            // ï¿½ß½ï¿½ï¿½ï¿½
             if (!IsPositionValid(x, y))
                 return matches;
 
@@ -479,13 +479,13 @@ namespace ProjectApp
             if (!ElementTool.CheckType_CanMatches(type))
                 return matches;
 
-            // Ê¹ÓÃÕ»ÄÚ´æ±ÜÃâ¶Ñ·ÖÅä
+            // Ê¹ï¿½ï¿½Õ»ï¿½Ú´ï¿½ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½
             Span<Vector2Int> tempMatches = stackalloc Vector2Int[boardSize.x * boardSize.y];
             int matchCount = 0;
 
-            //²éÕÒÖ¸¶¨Î»ÖÃµÄ´¹Ö±Æ¥Åä
+            //ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½ÃµÄ´ï¿½Ö±Æ¥ï¿½ï¿½
             FindHorizontalMatchesAt(x, y, 4, ref tempMatches, ref matchCount);
-            //²éÕÒÖ¸¶¨Î»ÖÃµÄ´¹Ö±Æ¥Åä
+            //ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½ÃµÄ´ï¿½Ö±Æ¥ï¿½ï¿½
             FindVerticalMatchesAt(x, y, 4, ref tempMatches, ref matchCount);
 
             Span<Vector2Int> validMatches = tempMatches.Slice(0, matchCount);
@@ -493,7 +493,7 @@ namespace ProjectApp
             {
                 if (!visited[item.x, item.y])
                 {
-                    //Î´¼ÓÈë¹ý
+                    //Î´ï¿½ï¿½ï¿½ï¿½ï¿½
                     matches.Add(item);
                     visited[item.x, item.y] = true;
                 }
@@ -503,26 +503,26 @@ namespace ProjectApp
         }
 
 
-        #region ÓÐ´íÎóµÄÆ¥Åä·½·¨
+        #region ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ä·½ï¿½ï¿½
         /// <summary>
-        /// µÝ¹éÊÕ¼¯ËùÓÐÏàÁÚµÄÆ¥Åä£¨Ö§³ÖTÐÎ¡¢LÐÎµÈ¸´ÔÓÆ¥Åä£©
+        /// ï¿½Ý¹ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Æ¥ï¿½ä£¨Ö§ï¿½ï¿½Tï¿½Î¡ï¿½Lï¿½ÎµÈ¸ï¿½ï¿½ï¿½Æ¥ï¿½ä£©
         /// </summary>
         private void CollectMatchesRecursive(int x, int y, ElementType type, Span<Vector2Int> matches, ref int matchCount)
         {
-            // ¼ì²éÊÇ·ñÒÑ·ÃÎÊ»òÀàÐÍ²»Æ¥Åä
+            // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ñ·ï¿½ï¿½Ê»ï¿½ï¿½ï¿½ï¿½Í²ï¿½Æ¥ï¿½ï¿½
             if (!IsPositionValid(x, y) ||
                 BoardData[x, y].Type != type ||
                 ContainsPosition(matches, matchCount, new Vector2Int(x, y)))
                 return;
 
-            // Ìí¼Óµ½Æ¥ÅäÁÐ±í
+            // ï¿½ï¿½ï¿½Óµï¿½Æ¥ï¿½ï¿½ï¿½Ð±ï¿½
             matches[matchCount++] = new Vector2Int(x, y);
 
-            // ¼ì²éËÄ¸ö·½Ïò
-            CheckAndCollect(x + 1, y, type, matches, ref matchCount); // ÓÒ
-            CheckAndCollect(x - 1, y, type, matches, ref matchCount); // ×ó
-            CheckAndCollect(x, y + 1, type, matches, ref matchCount); // ÉÏ
-            CheckAndCollect(x, y - 1, type, matches, ref matchCount); // ÏÂ
+            // ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½
+            CheckAndCollect(x + 1, y, type, matches, ref matchCount); // ï¿½ï¿½
+            CheckAndCollect(x - 1, y, type, matches, ref matchCount); // ï¿½ï¿½
+            CheckAndCollect(x, y + 1, type, matches, ref matchCount); // ï¿½ï¿½
+            CheckAndCollect(x, y - 1, type, matches, ref matchCount); // ï¿½ï¿½
         }
 
         private void CheckAndCollect(int x, int y, ElementType type, Span<Vector2Int> matches, ref int matchCount)
@@ -534,7 +534,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ¼ì²éÎ»ÖÃÊÇ·ñÒÑÔÚÆ¥ÅäÁÐ±íÖÐ
+        /// ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½
         /// </summary>
         private bool ContainsPosition(Span<Vector2Int> matches, int count, Vector2Int position)
         {
@@ -550,14 +550,14 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ²éÕÒÆ¥Åä×é£¨Ê¹ÓÃBFS£©
+        /// ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½é£¨Ê¹ï¿½ï¿½BFSï¿½ï¿½
         /// </summary>
         private List<Vector2Int> FindMatchGroup(int startX, int startY, bool[,] visited)
         {
             var matches = new List<Vector2Int>();
             var type = BoardData[startX, startY].Type;
 
-            // Ê¹ÓÃ¶ÓÁÐ½øÐÐBFS
+            // Ê¹ï¿½Ã¶ï¿½ï¿½Ð½ï¿½ï¿½ï¿½BFS
             var queue = new Queue<Vector2Int>();
             queue.Enqueue(new Vector2Int(startX, startY));
 
@@ -571,7 +571,7 @@ namespace ProjectApp
                 visited[pos.x, pos.y] = true;
                 matches.Add(pos);
 
-                // ¼ì²éËÄ¸ö·½Ïò
+                // ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½
                 CheckAndEnqueue(pos.x + 1, pos.y, type, visited, queue);
                 CheckAndEnqueue(pos.x - 1, pos.y, type, visited, queue);
                 CheckAndEnqueue(pos.x, pos.y + 1, type, visited, queue);
@@ -591,7 +591,7 @@ namespace ProjectApp
         #endregion
 
         /// <summary>
-        /// ²éÕÒÖ¸¶¨Î»ÖÃµÄË®Æ½Æ¥Åä
+        /// ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ãµï¿½Ë®Æ½Æ¥ï¿½ï¿½
         /// </summary>
         private bool FindHorizontalMatchesAt(int x, int y, int minMatchCount, ref Span<Vector2Int> finalMatches, ref int finalMatchesCont)
         {
@@ -602,14 +602,14 @@ namespace ProjectApp
             if (type == ElementType.Fixed_Empty || type == ElementType.Fixed_None)
                 return false;
 
-            // Ê¹ÓÃÕ»·ÖÅäÊý×é
+            // Ê¹ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Span<Vector2Int> tempMatches = stackalloc Vector2Int[boardSize.x];
             int matchCount = 0;
 
-            // ÆðÊ¼Î»ÖÃ
+            // ï¿½ï¿½Ê¼Î»ï¿½ï¿½
             tempMatches[matchCount++] = new Vector2Int(x, y);
 
-            // Ïò×ó¼ì²é
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             for (int i = x - 1; i >= 0; i--)
             {
                 ElementType tarType = ElementTool.GetTypeToElementData(BoardData[i, y]);
@@ -620,7 +620,7 @@ namespace ProjectApp
                     break;
             }
 
-            // ÏòÓÒ¼ì²é
+            // ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½
             for (int i = x + 1; i < boardSize.x; i++)
             {
                 ElementType tarType = ElementTool.GetTypeToElementData(BoardData[i, y]);
@@ -630,7 +630,7 @@ namespace ProjectApp
                     break;
             }
 
-            // Èç¹ûÖÁÉÙÓÐ3¸öÆ¥Åä£¬´´½¨×îÖÕÁÐ±í
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
             if (matchCount >= minMatchCount)
             {
                 foreach (var item in tempMatches.Slice(0, matchCount))
@@ -644,7 +644,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ²éÕÒÖ¸¶¨Î»ÖÃµÄ´¹Ö±Æ¥Åä£¨µ¥¶À·½·¨£¬¹©ÌØÊâÐèÇóÊ¹ÓÃ£©
+        /// ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½ÃµÄ´ï¿½Ö±Æ¥ï¿½ä£¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½
         /// </summary>
         private bool FindVerticalMatchesAt(int x, int y, int minMatchCount, ref Span<Vector2Int> finalMatches, ref int finalMatchesCont)
         {
@@ -655,14 +655,14 @@ namespace ProjectApp
             if (type == ElementType.Fixed_Empty || type == ElementType.Fixed_None)
                 return false;
 
-            // Ê¹ÓÃÕ»·ÖÅäÊý×é
+            // Ê¹ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Span<Vector2Int> tempMatches = stackalloc Vector2Int[boardSize.y];
             int matchCount = 0;
 
-            // ÆðÊ¼Î»ÖÃ
+            // ï¿½ï¿½Ê¼Î»ï¿½ï¿½
             tempMatches[matchCount++] = new Vector2Int(x, y);
 
-            // ÏòÏÂ¼ì²é
+            // ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
             for (int j = y - 1; j >= 0; j--)
             {
                 ElementType tarType = ElementTool.GetTypeToElementData(BoardData[x, j]);
@@ -672,7 +672,7 @@ namespace ProjectApp
                     break;
             }
 
-            // ÏòÉÏ¼ì²é
+            // ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½
             for (int j = y + 1; j < boardSize.y; j++)
             {
                 ElementType tarType = ElementTool.GetTypeToElementData(BoardData[x, j]);
@@ -682,7 +682,7 @@ namespace ProjectApp
                     break;
             }
 
-            // Èç¹ûÖÁÉÙÓÐ3¸öÆ¥Åä£¬´´½¨×îÖÕÁÐ±í
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
             if (matchCount >= minMatchCount)
             {
                 foreach (var item in tempMatches.Slice(0, matchCount))
@@ -696,7 +696,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// Î»ÖÃÓÐÐ§ÐÔ¼ì²é
+        /// Î»ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ô¼ï¿½ï¿½
         /// </summary>
         private bool IsPositionValid(int x, int y)
         {
@@ -705,7 +705,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// Î»ÖÃÓÐÐ§ÐÔ¼ì²é£¨Vector2Int°æ±¾£©
+        /// Î»ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ô¼ï¿½é£¨Vector2Intï¿½æ±¾ï¿½ï¿½
         /// </summary>
         private bool IsPositionValid(Vector2Int pos)
         {
@@ -715,17 +715,17 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// Ìî³ä¿ÕÎ»
+        /// ï¿½ï¿½ï¿½ï¿½Î»
         /// </summary>
         void FillEmptySpaces()
         {
             if (!Core.IsFill) return;
 
-            //ÒªÏÂÂäµÄÔªËØ
+            //Òªï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
             List<ElementData> souList = ListPool<ElementData>.Get();
-            //ÏÂÂäÔªËØµÄÄ¿±ê
+            //ï¿½ï¿½ï¿½ï¿½Ôªï¿½Øµï¿½Ä¿ï¿½ï¿½
             List<ElementData> tarList = ListPool<ElementData>.Get();
-            //ÐÂ´´½¨µÄÔªËØÎ»ÖÃ
+            //ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Î»ï¿½ï¿½
             List<ElementData> creadList = ListPool<ElementData>.Get();
 
 
@@ -734,48 +734,48 @@ namespace ProjectApp
                 int creadCont = 0;
                 for (int y = 0; y < boardSize.y; y++)
                 {
-                    if (BoardData[x, y].Type == ElementType.Fixed_Empty) // ¿ÕÎ»±ê¼Ç
+                    if (BoardData[x, y].Type == ElementType.Fixed_Empty) // ï¿½ï¿½Î»ï¿½ï¿½ï¿½
                     {
-                        //ÒªÌî³äµÄÎ»ÖÃ
+                        //Òªï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
                         ElementData tar = BoardData[x, y];
-                        //ÒªÌî³äµÄ Ô´Î»ÖÃ
+                        //Òªï¿½ï¿½ï¿½ï¿½ Ô´Î»ï¿½ï¿½
                         ElementData sour = default;
 
 
-                        //ÏòÉÏÑ°ÕÒµ½×î½üµÄ²»ÊÇ¿ÕµÄÎïÌå
+                        //ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½Ç¿Õµï¿½ï¿½ï¿½ï¿½ï¿½
                         int temp_y = y + 1;
                         bool isCreate = false;
                         while (temp_y < boardSize.y)
                         {
                             ElementType type = BoardData[x, temp_y].Type;
-                            //ÊÇ¿ÕµÄ 
+                            //ï¿½Ç¿Õµï¿½ 
                             if (ElementTool.CheckType_UpEmpty(BoardData[x, temp_y].Type))
                             {
                                 temp_y++;
                                 continue;
                             }
-                            //¿ÉÏÂÂä
+                            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                             if (ElementTool.CheckType_FillEmpty(type))
                             {
                                 sour = BoardData[x, temp_y];
-                                //ÏÂÂäÁË ½«×ÔÉíÉèÖÃÎª¿ÕµÄ
+                                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õµï¿½
                                 BoardData[x, temp_y].SetType(ElementType.Fixed_Empty);
                             }
                             else
                             {
-                                //Åöµ½²»¿ÉÏÂÂäµÄÔªËØ Òª´´½¨ÐÂÔªËØ
+                                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
                                 isCreate = true;
                             }
                             break;
                         }
 
 
-                        //×î½üµÄ¿Õ
+                        //ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½
                         if (temp_y >= boardSize.y || isCreate)
                         {
-                            // Éú³ÉÐÂÔªËØ
+                            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
                             sour = Core.GetRandomElementData();
-                            //ÒòÎª ÊÇÐÂ´´½¨µÄ ËùÒÔ¿ÉÄÜ ÔÚ¸ßÓÚÆåÅÌµÄÎ»ÖÃ  
+                            //ï¿½ï¿½Îª ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½Î»ï¿½ï¿½  
                             sour.SetPot(x, temp_y + creadCont);
 
                             creadCont++;
@@ -786,13 +786,13 @@ namespace ProjectApp
                         souList.Add(sour);
                         tarList.Add(tar);
 
-                        //ÉèÖÃµ±Ç°µÄÀàÐÍ
+                        //ï¿½ï¿½ï¿½Ãµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                         SetBoardData(x, y, sour);
                     }
                 }
             }
 
-            Debug.Log("Òª´´½¨µÄÔªËØÊýÁ¿" + creadList.Count);
+            Debug.Log("Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + creadList.Count);
             //foreach (var item in creadList)
             //{
             //    Debug.Log(item.ToString());
@@ -800,28 +800,28 @@ namespace ProjectApp
 
             if (creadList.Count > 0)
             {
-                //´´½¨ÔªËØ
+                //ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
                 Dispatcher.Dispatch(GameMsg.GenerateElements, creadList);
             }
             ListPool<ElementData>.Release(creadList);
 
-            Debug.Log("ÒªÏÂÂäµÄÔªËØÊýÁ¿" + souList.Count);
+            Debug.Log("Òªï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + souList.Count);
             for (int i = 0; i < souList.Count; i++)
             {
                 ElementData item = souList[i];
-                //Debug.Log("ÏÂÂäÔªËØ" + item.ToString() + "Ä¿±êÎ»ÖÃ" + tarList[i].ToString());
+                //Debug.Log("ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½" + item.ToString() + "Ä¿ï¿½ï¿½Î»ï¿½ï¿½" + tarList[i].ToString());
             }
 
             if (souList.Count > 0 && tarList.Count > 0)
             {
-                // ÏÂÂäÔªËØ
+                // ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
                 Core.Dispatch(GameMsg.ElementsFall, souList, tarList);
             }
             ListPool<ElementData>.Release(souList);
             ListPool<ElementData>.Release(tarList);
 
 
-            // ¼ì²éÐÂµÄÆ¥Åä
+            // ï¿½ï¿½ï¿½ï¿½Âµï¿½Æ¥ï¿½ï¿½
 
             CheckAllMatches();
         }
@@ -834,20 +834,20 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ¼ì²éËùÓÐÆ¥Åä
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
         /// </summary>
         void CheckAllMatches()
         {
             if (!Core.isCheckAllMatches) return;
 
-            // Ê¹ÓÃ¶ÔÏó³Ø»ñÈ¡ÁÐ±í£¬±ÜÃâGC·ÖÅä
+            // Ê¹ï¿½Ã¶ï¿½ï¿½ï¿½Ø»ï¿½È¡ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GCï¿½ï¿½ï¿½ï¿½
             var allMatches = FindAllMatches();
 
             if (allMatches.Count > 0)
             {
-                //Ïû³ý
+                //ï¿½ï¿½ï¿½ï¿½
                 ProcessMatches(allMatches);
-                //²¹Î»
+                //ï¿½ï¿½Î»
                 FillEmptySpaces();
             }
 
@@ -856,7 +856,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ²éÕÒËùÓÐÆ¥Åä
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
         /// </summary>
         public List<Vector2Int> FindAllMatches(List<Vector2Int> allMatches = null)
         {
@@ -865,12 +865,12 @@ namespace ProjectApp
             allMatches.Clear();
 
             var visited = GetVisited();
-            // ÓÅ»¯2£ºÒ»´ÎÐÔÊÕ¼¯ËùÓÐÆ¥ÅäÎ»ÖÃ
+            // ï¿½Å»ï¿½2ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½Î»ï¿½ï¿½
             for (int x = 0; x < boardSize.x; x++)
             {
                 for (int y = 0; y < boardSize.y; y++)
                 {
-                    // Ìø¹ýÒÑ¼ì²éÎ»ÖÃºÍ¿ÕÎ»
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¼ï¿½ï¿½Î»ï¿½ÃºÍ¿ï¿½Î»
                     if (!ElementTool.CheckType_CanMatches(BoardData[x, y].Type) || visited[x, y])
                     {
                         continue;
@@ -898,17 +898,17 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ´¦ÀíÆ¥ÅäÏû³ý
+        /// ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         void ProcessMatches(List<Vector2Int> matches)
         {
 
-            // ËÄÏû¹æÔò£ºÐèÒª4¸ö»ò¸ü¶àÏàÍ¬ÔªËØ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ôªï¿½ï¿½
             //if (horizontalMatches.Count >= 4)
             //{
             //    matches.AddRange(horizontalMatches);
 
-            //    // Éú³ÉµÀ¾ß£¨¸ù¾ÝÏû³ýÊýÁ¿£©
+            //    // ï¿½ï¿½ï¿½Éµï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             //    if (horizontalMatches.Count == 5)
             //    {
             //        GeneratePropAt(x, y, PropType.Horizontal);
@@ -927,7 +927,7 @@ namespace ProjectApp
             //{
             //    matches.AddRange(verticalMatches);
 
-            //    // Éú³ÉµÀ¾ß
+            //    // ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½
             //    if (verticalMatches.Count == 5)
             //    {
             //        GeneratePropAt(x, y, PropType.Vertical);
@@ -947,21 +947,21 @@ namespace ProjectApp
 
             List<ElementData> allMatches = ListPool<ElementData>.Get();
 
-            // Ïû³ýÔªËØ
+            // ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
             foreach (Vector2Int match in matches)
             {
-                //Debug.Log("Ïû³ý£º" + Data.boardData[match.x, match.y].ToString());
-                if (BoardData[match.x, match.y].Type != ElementType.Fixed_Empty) //Èç¹û²»ÊÇ²»´æÔÚ
+                //Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Data.boardData[match.x, match.y].ToString());
+                if (BoardData[match.x, match.y].Type != ElementType.Fixed_Empty) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½
                 {
                     allMatches.Add(BoardData[match.x, match.y]);
-                    BoardData[match.x, match.y].SetEmpty(); // ±ê¼ÇÎª¿Õ
+                    BoardData[match.x, match.y].SetEmpty(); // ï¿½ï¿½ï¿½Îªï¿½ï¿½
                 }
             }
 
             Dispatcher.Dispatch(GameMsg.ClearElements, allMatches);
             ListPool<ElementData>.Release(allMatches);
 
-            // ¼ÆËã·ÖÊý
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             int matchCount = matches.Count;
             int scoreToAdd = CalculateScore(matchCount);
             AddScore(scoreToAdd);
@@ -970,17 +970,17 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ¼ÆËã·ÖÊý
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         int CalculateScore(int matchCount)
         {
             switch (matchCount)
             {
-                case 4: return GeneralStaticVO.Instance.MatchScore_4;  // ËÄÏû»ù´¡·Ö
-                case 5: return GeneralStaticVO.Instance.MatchScore_5;  // ÎåÏûµÃ·Ö
-                case 6: return GeneralStaticVO.Instance.MatchScore_6;  // ÁùÏûµÃ·Ö
-                case 7: return GeneralStaticVO.Instance.MatchScore_7;  // ÆßÏûµÃ·Ö
-                default:  // ¸ü¶àÏû³ý
+                case 4: return GeneralStaticVO.Instance.MatchScore_4;  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                case 5: return GeneralStaticVO.Instance.MatchScore_5;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½
+                case 6: return GeneralStaticVO.Instance.MatchScore_6;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½
+                case 7: return GeneralStaticVO.Instance.MatchScore_7;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½
+                default:  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     {
                         if(matchCount< 7)
                         {
@@ -994,16 +994,16 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// Ìí¼Ó·ÖÊý
+        /// ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½
         /// </summary>
         void AddScore(int score)
         {
             int oldSocre = Data.currentScore;
             Data.currentScore += score;
-            Debug.Log($"µ±Ç°·ÖÊý: {Data.currentScore}");
+            Debug.Log($"ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½: {Data.currentScore}");
 
             Core.Dispatch(GameMsg.ScoreUpdated, oldSocre, Data.currentScore);
-            // ¼ì²éÊÇ·ñ´ïµ½Ä¿±ê
+            // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ïµ½Ä¿ï¿½ï¿½
             if (Data.currentScore >= Data.targetScore)
             {
                 Core.GameWin();
@@ -1012,7 +1012,7 @@ namespace ProjectApp
 
         #endregion
 
-        #region µÀ¾ßÏµÍ³
+        #region ï¿½ï¿½ï¿½ï¿½ÏµÍ³
 
 
         private void Player_ActivateTwoProp(int form_x, int form_y, int to_x, int to_y)
@@ -1025,7 +1025,7 @@ namespace ProjectApp
             List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
             List<ElementData> currProps = ListPool<ElementData>.Get();
 
-            //¼¤»îÁ½¸öµÀ¾ß
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             ActivatePropTwo(formData, toData, ref tempMatches, ref currProps);
 
             Core.Dispatch(GameMsg.ActivateTwoProp, formData, toData, tempMatches, currProps);
@@ -1034,12 +1034,12 @@ namespace ProjectApp
                 ProcessMatches(tempMatches);
             }
 
-            //µÀ¾ß´¥·¢µÄµÀ¾ß ¼¤»î
+            //ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             ActivatePropList(currProps);
 
             ListPool<ElementData>.Release(currProps);
 
-            //²¹Î»
+            //ï¿½ï¿½Î»
             FillEmptySpaces();
 
 
@@ -1047,7 +1047,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// Ò»´ÎÊ¹ÓÃÆåÅÌµÀ¾ßµÄ²Ù×÷
+        /// Ò»ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ßµÄ²ï¿½ï¿½ï¿½
         /// </summary>
         /// <param name="data"></param>
         public void Player_ActivateProp(ElementData data)
@@ -1064,7 +1064,7 @@ namespace ProjectApp
 
             ListPool<ElementData>.Release(currProps);
 
-            //²¹Î»
+            //ï¿½ï¿½Î»
             FillEmptySpaces();
 
         }
@@ -1076,7 +1076,7 @@ namespace ProjectApp
                 List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
                 List<ElementData> tempProps = ListPool<ElementData>.Get();
 
-                //ÓÃÀ´ÅÐ¶Ïµ±Ç°ÊÇ·ñÔÚÍ¬Ò»×é
+                //ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ïµï¿½Ç°ï¿½Ç·ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½
                 uint index = GameTool.GetNextIndex();
 
                 for (int i = 0; i < currProps.Count; i++)
@@ -1103,11 +1103,11 @@ namespace ProjectApp
                     ProcessMatches(tempMatches);
                 }
 
-                //±¾´ÎÑ­»·Íê³É
+                //ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½
                 currProps.Clear();
                 if (tempProps.Count > 0)
                 {
-                    //±¾´Î´¥·¢ÁËµÀ¾ß ¼ÌÐø´¥·¢µÀ¾ß
+                    //ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     currProps.AddRange(tempProps);
                 }
 
@@ -1137,7 +1137,7 @@ namespace ProjectApp
                     break;
 
                 default:
-                    Debug.Log(data.ToString() + "²¢²»ÊÇµÀ¾ß");
+                    Debug.Log(data.ToString() + "ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½");
                     break;
             }
         }
@@ -1150,13 +1150,13 @@ namespace ProjectApp
                 if (formData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Horizontal)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //ºáÊú
+                    //ï¿½ï¿½ï¿½ï¿½
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
 
                     ActivateProp_Horizontal(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X, toData.Y, ref matches, ref dataProp);
-                    Debug.LogWarning("ºáÊú");
+                    Debug.LogWarning("ï¿½ï¿½ï¿½ï¿½");
 
                 }
 
@@ -1167,37 +1167,37 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb && formData.Type == ElementType.Prop_Bomb)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //Ë«Õ¨µ¯
+                    //Ë«Õ¨ï¿½ï¿½
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
 
                     ActivateProp_Bomb(toData.X, toData.Y, 3, ref matches, ref dataProp);
-                    Debug.LogWarning("Ë«Õ¨µ¯");
+                    Debug.LogWarning("Ë«Õ¨ï¿½ï¿½");
                 }
 
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //Õ¨µ¯¼ÓÊú
+                    //Õ¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
                     ActivateProp_Vertical(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X + 1, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X - 1, toData.Y, ref matches, ref dataProp);
-                    Debug.LogWarning("Õ¨µ¯¼ÓÊú");
+                    Debug.LogWarning("Õ¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                 }
 
                 if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //Õ¨µ¯¼Óºá
+                    //Õ¨ï¿½ï¿½ï¿½Óºï¿½
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
                     ActivateProp_Horizontal(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Horizontal(toData.X + 1, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Horizontal(toData.X - 1, toData.Y, ref matches, ref dataProp);
-                    Debug.LogWarning("Õ¨µ¯¼Óºá");
+                    Debug.LogWarning("Õ¨ï¿½ï¿½ï¿½Óºï¿½");
                 }
 
             }
@@ -1207,32 +1207,29 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb || formData.Type == ElementType.Prop_Bomb)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    Debug.LogWarning("wild¼ÓÕ¨µ¯");
+                    Debug.LogWarning("wildï¿½ï¿½Õ¨ï¿½ï¿½");
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
-                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Bomb);
-                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb, sum, ref matches, ref dataProp);
+                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb, 3, ref matches, ref dataProp);
                 }
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //wild¼ÓVertical
-                    Debug.LogWarning("wild¼ÓVertical");
+                    //wildï¿½ï¿½Vertical
+                    Debug.LogWarning("wildï¿½ï¿½Vertical");
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
-                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Vertical);
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Vertical, 3, ref matches, ref dataProp);
                 }
 
                 if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //wild¼ÓHorizontal
-                    Debug.LogWarning("wild¼ÓHorizontal");
+                    //wildï¿½ï¿½Horizontal
+                    Debug.LogWarning("wildï¿½ï¿½Horizontal");
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
-                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Horizontal);
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Horizontal, 3, ref matches, ref dataProp);
                 }
             }
@@ -1364,25 +1361,25 @@ namespace ProjectApp
             int height = Data.BoardHeight;
             int width = Data.BoardWidth;
 
-            // ¼ì²éÒÔÕ¨µ¯ÎªÖÐÐÄµÄÔ²ÐÎÇøÓò
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Õ¨ï¿½ï¿½Îªï¿½ï¿½ï¿½Äµï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             for (int x = -bombRadius; x <= bombRadius; x++)
             {
                 for (int y = -bombRadius; y <= bombRadius; y++)
                 {
-                    // ¼ÆËãÊµ¼ÊÍø¸ñÎ»ÖÃ
+                    // ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
                     int targetX = bombGridPosition.x + x;
                     int targetY = bombGridPosition.y + y;
 
-                    // ¼ì²éÊÇ·ñÔÚÍø¸ñ·¶Î§ÄÚ
+                    // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½
                     if (targetX >= 0 && targetX < width &&
                         targetY >= 0 && targetY < height)
                     {
-                        // Ê¹ÓÃÔ²ÐÎ·¶Î§£¨¾àÀëÆ½·½ÅÐ¶Ï£©
+                        // Ê¹ï¿½ï¿½Ô²ï¿½Î·ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½
                         int distanceSquared = x * x + y * y;
                         if (distanceSquared <= bombRadius * bombRadius)
                         {
 
-                            // ¼ì²é¸ÃÎ»ÖÃÊÇ·ñÓÐ¿ÉÏû³ýµÄ·½¿é
+                            // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
                             var tempData = Data.boardData[targetX, targetY];
 
                             if (ElementTool.CheckType_CanMatches(tempData.Type))
@@ -1478,9 +1475,9 @@ namespace ProjectApp
                         Vector2Int pot = list[0];
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
-                        // ³É¹¦Ê¹ÓÃµÀ¾ß Í¨Öª±íÏÖ
+                        // ï¿½É¹ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ Í¨Öªï¿½ï¿½ï¿½ï¿½
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
-                        // µÀ¾ßÐ§¹û
+                        // ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
                         ProcessMatches(list);
 
                         FillEmptySpaces();
@@ -1497,24 +1494,24 @@ namespace ProjectApp
                         if (IsAdjacent(pot1.x, pot1.y, pot2.x, pot2.y) || Data.HasConnection(pot1.x, pot1.y, pot2.x, pot2.y))
                         {
                             Data.TakeMemorySnapshotBoardData();
-                            // ³É¹¦Ê¹ÓÃµÀ¾ß Í¨Öª±íÏÖ
+                            // ï¿½É¹ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ Í¨Öªï¿½ï¿½ï¿½ï¿½
                             Core.Dispatch(GameMsg.CostExternalProp, propType, list);
 
-                            // ½»»»ÔªËØ
+                            // ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
                             SwapElements(pot1.x, pot1.y, pot2.x, pot2.y);
 
-                            // ¼ì²éÆ¥Åä
+                            // ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
                             List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
                             matches = CheckMatchesAfterSwap(pot1.x, pot1.y, pot2.x, pot2.y, ref matches);
 
                             if (matches.Count > 0)
                             {
-                                // ÓÐÆ¥Åä£¬½øÐÐÏû³ý
+                                // ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                                 ProcessMatches(matches);
-                                // ´´½¨ÐÂÔªËØ ²¢²¹Î»
+                                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Î»
                                 FillEmptySpaces();
                             }
-                            //Ê¹ÓÃÍê»ØÊÕList
+                            //Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½List
                             FutureCore.ListPool<Vector2Int>.Release(matches);
 
                             isSu = true;
@@ -1528,9 +1525,9 @@ namespace ProjectApp
                         Vector2Int pot = list[0];
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
-                        // ³É¹¦Ê¹ÓÃµÀ¾ß Í¨Öª±íÏÖ
+                        // ï¿½É¹ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ Í¨Öªï¿½ï¿½ï¿½ï¿½
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
-                        // µÀ¾ßÐ§¹û
+                        // ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Horizontal).SetPot(pot.x, pot.y));
 
@@ -1538,7 +1535,7 @@ namespace ProjectApp
 
                         ListPool<ElementData>.Release(currProps);
 
-                        //²¹Î»
+                        //ï¿½ï¿½Î»
                         FillEmptySpaces();
 
                         isSu = true;
@@ -1550,9 +1547,9 @@ namespace ProjectApp
                         Vector2Int pot = list[0];
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
-                        // ³É¹¦Ê¹ÓÃµÀ¾ß Í¨Öª±íÏÖ
+                        // ï¿½É¹ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ Í¨Öªï¿½ï¿½ï¿½ï¿½
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
-                        // µÀ¾ßÐ§¹û
+                        // ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Vertical).SetPot(pot.x, pot.y));
 
@@ -1560,7 +1557,7 @@ namespace ProjectApp
 
                         ListPool<ElementData>.Release(currProps);
 
-                        //²¹Î»
+                        //ï¿½ï¿½Î»
                         FillEmptySpaces();
 
                         isSu = true;
@@ -1569,7 +1566,7 @@ namespace ProjectApp
                     break;
                 case ExternalProp.AllRandom:
                     {
-                        // ³É¹¦Ê¹ÓÃµÀ¾ß Í¨Öª±íÏÖ
+                        // ï¿½É¹ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ Í¨Öªï¿½ï¿½ï¿½ï¿½
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                         Player_RananAllElement();
                         isSu = true;
@@ -1578,7 +1575,7 @@ namespace ProjectApp
                     break;
                 case ExternalProp.Undo:
                     {
-                        // ³É¹¦Ê¹ÓÃµÀ¾ß ºóÍË
+                        // ï¿½É¹ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                         bool isCan = Data.CanUndo();
                         if (isCan)
                         {
@@ -1596,7 +1593,7 @@ namespace ProjectApp
                         ElementType type = BoardData[pot.x, pot.y].Type;
 
 
-                        // ³É¹¦Ê¹ÓÃµÀ¾ß Ä§·¨°ô
+                        // ï¿½É¹ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ Ä§ï¿½ï¿½ï¿½ï¿½
                         bool isCan = Data.CanUndo();
                         if (isCan)
                         {
@@ -1608,9 +1605,9 @@ namespace ProjectApp
 
                             if (matches.Count > 0)
                             {
-                                // ÓÐÆ¥Åä£¬½øÐÐÏû³ý
+                                // ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                                 ProcessMatches(matches);
-                                // ´´½¨ÐÂÔªËØ ²¢²¹Î»
+                                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Î»
                                 FillEmptySpaces();
                             }
 
@@ -1643,7 +1640,7 @@ namespace ProjectApp
         /*
 
         /// <summary>
-        /// Éú³ÉµÀ¾ß
+        /// ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½
         /// </summary>
         void GeneratePropAt(int x, int y, PropType propType)
         {
@@ -1667,12 +1664,12 @@ namespace ProjectApp
 
             if (propPrefab != null && elementObjects[x, y] != null)
             {
-                // ÔÚÔªËØÎ»ÖÃÉú³ÉµÀ¾ß
+                // ï¿½ï¿½Ôªï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½
                 Destroy(elementObjects[x, y]);
                 GameObject prop = Instantiate(propPrefab, new Vector3(x, y, 0), Quaternion.identity);
                 elementObjects[x, y] = prop;
 
-                // Ìí¼ÓµÀ¾ß½Å±¾
+                // ï¿½ï¿½ï¿½Óµï¿½ï¿½ß½Å±ï¿½
                 GameProp propScript = prop.AddComponent<GameProp>();
                 propScript.Initialize(propType, x, y);
                 propScript.OnPropClicked += OnPropClicked;

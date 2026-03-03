@@ -1,4 +1,4 @@
-﻿using FutureCore;
+using FutureCore;
 using ProjectApp.Data;
 using System;
 using System.Collections;
@@ -838,15 +838,32 @@ namespace ProjectApp
 
             ElementItem item = FindElementItem(data.X, data.Y);
 
-            if (isR)
+            var process = GetProcessToEnqueue();
+
+
+            process.SetLinkExecute((p) =>
             {
-                item.SwitchToNext();
-            }
-            else
+                Core.Enabled_PlayerCtr = false;
+                if (isR)
+                {
+                    item.SwitchToNext();
+                }
+                else
+                {
+                    item.SwitchToPrevious();
+                }
+                elementItems[data.X, data.Y].SetData(data);
+            });
+
+            process.SetLinkFinish((p) =>
             {
-                item.SwitchToPrevious();
-            }
-            elementItems[data.X, data.Y].SetData(data);
+                Core.Enabled_PlayerCtr = true;
+
+            });
+
+            process.Duration = item.switchDuration;
+
+            
 
 
 
@@ -1371,7 +1388,7 @@ namespace ProjectApp
         {
             if(!Core.Enabled_PlayerCtr)return;
 
-            size = size + delta;
+            size = size + delta * sizeSpeed * Time.deltaTime;
 
             size = Mathf.Clamp(size,minSize,maxSize);
 

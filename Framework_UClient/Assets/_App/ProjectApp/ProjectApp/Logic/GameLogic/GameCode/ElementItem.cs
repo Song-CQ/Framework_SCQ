@@ -309,7 +309,7 @@ namespace ProjectApp
         #region «–ªª∂Øª≠
 
         //[Header("∂Øª≠…Ë÷√")]
-        private float switchDuration = 0.3f;
+        public  float switchDuration = 0.3f;
         private float centerScale = 0.7f;
         private float sideScale = 0.4f;
         private Vector3 topLeftPosition = new Vector3(-0.357f, 0.345f, -0.1f);
