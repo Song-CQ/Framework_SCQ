@@ -13,7 +13,7 @@ namespace ProjectApp
         Item_C,   // 蓝色基础元素
         Item_D,  // 绿色基础元素
 
-        Item_Change,// 可变换元素
+        Item_Special,// 可变换元素
 
 
         //// 可切换的特殊元素
@@ -43,12 +43,13 @@ namespace ProjectApp
 
 
         //不可点击
-        Fixed_Special = 1000, // 空位标记
+        Fixed_Empty = 1000, // 空位标记
         Fixed_None = 2000,//该方格被禁用方格 一般是地形 后面可能会有可破坏地形
 
     }
     public static class ElementTool
     {
+        
 
         /// <summary>
         /// 该元素是否要显示图片
@@ -63,7 +64,7 @@ namespace ProjectApp
                 case ElementType.Dummy_CanMatche:
                 case ElementType.Dummy_CanClickEvent:
                 case ElementType.Dummy_CanDown:
-                case ElementType.Fixed_Special:
+                case ElementType.Fixed_Empty:
                 case ElementType.Fixed_None:
                     return false;
             }
@@ -94,7 +95,7 @@ namespace ProjectApp
 
         public static bool CheckType_UpEmpty(ElementType type)
         {
-            if (type == ElementType.Fixed_Special)
+            if (type == ElementType.Fixed_Empty)
             {
                 return true;
             }
@@ -136,7 +137,7 @@ namespace ProjectApp
 
         public static ElementType GetTypeToElementData(ElementData data)
         {
-            if (data.Type == ElementType.Item_Change)
+            if (data.Type == ElementType.Item_Special)
             {
                 return (ElementType)data.data1;
             }

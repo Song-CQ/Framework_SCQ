@@ -89,9 +89,9 @@ namespace ProjectApp
         /// <summary>
         /// 设置空标记 保留xy坐标 清空其他数据
         /// </summary>
-        public void SetSpecial()
+        public void SetEmpty()
         {
-            Type = ElementType.Fixed_Special;
+            Type = ElementType.Fixed_Empty;
             data1 = 0;
             data2 = 0;
             data3 = 0;
@@ -176,17 +176,17 @@ namespace ProjectApp
             Data = _data;
         }
 
-        public void SetSpecial()
+        public void SetEmpty()
         {
             var temp  = Data;
-            temp.SetSpecial();
+            temp.SetEmpty();
             Data = temp;
         }
 
         public void SetType(ElementType type)
         {
             var temp  = Data;
-            temp.SetSpecial();
+            temp.SetEmpty();
             temp.Type =  type;
         
             Data = temp;
@@ -210,7 +210,7 @@ namespace ProjectApp
                 icon.sprite = GameTool.GetSprite(Data.Type);
             }
 
-            if (Data.Type == ElementType.Item_Change)
+            if (Data.Type == ElementType.Item_Special)
             {
                 changeTrf.gameObject.SetActive(true);
 

@@ -54,6 +54,11 @@ namespace ProjectApp
         public int currentScore = 0;
         public int targetScore = 100000; // 目标分数
 
+        public int activeSum;//激活的位置数量
+
+
+
+
 
 
 
@@ -125,6 +130,7 @@ namespace ProjectApp
         {
             currentScore = 0;
             targetScore = 0;
+            activeSum = 0;
             boardData = null;
             lastBoardDataList.Clear();
 
@@ -150,9 +156,9 @@ namespace ProjectApp
 
         public void DelLastMemorySnapshotBoardData()
         {
-            if(CanUndo())
-            {              
-               lastBoardDataList.RemoveAt(lastBoardDataList.Count-1);
+            if (CanUndo())
+            {
+                lastBoardDataList.RemoveAt(lastBoardDataList.Count - 1);
             }
         }
 
@@ -206,6 +212,11 @@ namespace ProjectApp
         public ElementItem[,] ElementItems => visualEffectsModule.elementItems;
 
         public int CurrentScore => Data.currentScore;
+        
+        public int TargetScore
+        {
+            get => Data.targetScore;
+        }
 
         #endregion
 
@@ -251,18 +262,21 @@ namespace ProjectApp
         private GameRule_Module gameRuleModule;
         private VisualEffects_Module visualEffectsModule;
         private ExternalProp_Module externalProp_Module;
-        private Dictionary<Type,IGameModule> gameModules;
+        private Dictionary<Type, IGameModule> gameModules;
 
         private bool isInit = false;
 
         private LevelVO levelData;
+
+        [SerializeField]
+        private int levelID;
 
         /// <summary>
         /// 能否操作 Controller 
         /// </summary>
         public bool Enabled_PlayerCtr { get => _enabledCtrSum > 0; set { if (value) _enabledCtrSum++; else _enabledCtrSum--; } }
 
-        public int TargetScore => Data.targetScore;
+
         /// <summary>
         /// 操作计数器
         /// </summary>
@@ -270,22 +284,24 @@ namespace ProjectApp
 
         private void Awake()
         {
-            if (isEditor)Init();
+            if (isEditor) Init();
         }
 
         [Button("Init")]
-        public void Init(int levelID = 1)
+        public void Init(int _levelID = 0)
         {
             if (isEditor)
             {
                 InputMgr.Instance.Init();
                 InputMgr.Instance.StartUp();
 
+                ConfigDataMgr.Instance.ResetData();
+                ConfigDataMgr.Instance.ReadData();
+
+                ConfigDataMgr.Instance.Init();
+                ConfigDataMgr.Instance.StartUp();
                 CameraMgr.Instance.mainCamera = Camera.main;
             }
-
-            levelData = LevelVOModel.Instance.GetVO(levelID);
-
 
 
             GameTool.GameCore = this;
@@ -293,7 +309,7 @@ namespace ProjectApp
             GameTool.AllBaseElements = new ElementType[] { ElementType.Item_A, ElementType.Item_B, ElementType.Item_C, ElementType.Item_D };
 
             Data = new ElementGameData();
-            Data.targetScore = levelData.Passing_Score;
+
             Dispatcher = new Dispatcher<uint>();
 
             gameInitialModule = new GameInitial_Module();
@@ -303,13 +319,67 @@ namespace ProjectApp
             gameRuleModule = new GameRule_Module();
             visualEffectsModule = new VisualEffects_Module();
 
-            gameModules = new Dictionary<Type,IGameModule>();
+            gameModules = new Dictionary<Type, IGameModule>();
             gameModules.Add(gameInitialModule.GetType(), gameInitialModule);
             gameModules.Add(gameEndModule.GetType(), gameEndModule);
             gameModules.Add(gameRuleModule.GetType(), gameRuleModule);
             gameModules.Add(visualEffectsModule.GetType(), visualEffectsModule);
             gameModules.Add(externalProp_Module.GetType(), externalProp_Module);
 
+            _enabledCtrSum = 0;
+            Enabled_PlayerCtr = false;
+            isInit = true;
+
+            if (_levelID != 0)
+            {
+                levelID = _levelID;
+            }
+
+            levelData = LevelVOModel.Instance.GetVO(levelID);
+
+            if (levelData == null)
+            {
+                LogUtil.LogError("ID : " + levelID + " 关卡数据为空");
+                return;
+            }
+
+
+            //解析关卡表数据
+            Parse_CfgData();
+
+            //开始
+            GameStart();
+
+
+
+        }
+
+        private void Parse_CfgData()
+        {
+            Data.targetScore = levelData.Passing_Score;
+
+            allElement_Rate = 0;
+
+            prop_Rate = levelData.Proportion_Of_Props;
+            special_Rate = levelData.Special_Element;
+            allElement_Rate = special_Rate + prop_Rate;
+            baseType_Rate = new List<int>();
+            foreach (var item in levelData.Basic_Proportion)
+            {
+                baseType_Rate.Add(item);
+                allElement_Rate += item;
+            }
+
+
+            //wild 加其他道具
+            wildAndBomb_Rate = GeneralStaticVO.Instance.Proportion_Wild_Bomb;
+            wildAndHorizontal_Rate = GeneralStaticVO.Instance.Proportion_Wild_H_V;
+            wildAndVertical_Rate = GeneralStaticVO.Instance.Proportion_Wild_H_V;
+
+        }
+
+        private void GameStart()
+        {
 
             //填充核心
             FillCore();
@@ -320,14 +390,13 @@ namespace ProjectApp
             //生成元素
             GenerateInitialElements();
 
-            //允许操作
-            _enabledCtrSum = 0;
-            Enabled_PlayerCtr = true;
-
+            //开始
             Dispatch(GameMsg.GameStart);
             UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.GameUI_Open);
 
-            isInit = true;
+            //允许操作
+            _enabledCtrSum = 0;
+            Enabled_PlayerCtr = true;
         }
 
         private void FillCore()
@@ -400,9 +469,9 @@ namespace ProjectApp
         public bool isPool = true;
         [LabelText("是否检查元素消除")]
         public bool isCheckAllMatches = true;
-         [LabelText("无消除是否要交换回元素")]
-        public bool IsBackSwap  = true;
-      
+        [LabelText("无消除是否要交换回元素")]
+        public bool IsBackSwap = true;
+
 
         [Button("交换元素")]
         public void Test1()
@@ -460,50 +529,7 @@ namespace ProjectApp
 
         }
 
-        public ElementData GetRandomElementData()
-        {
-            ElementType elementType = ElementType.Fixed_None;
-            // 根据配置表比例生成元素（这里简化为随机）
-            int rand = GameTool.RandomToInt(0, 10);
-            if (rand == 0)
-            {
-                elementType = (ElementType)GameTool.RandomToInt(101, 105);
-            }
-            else
-            { 
-                rand = GameTool.RandomToInt(1, 6);
-                elementType = (ElementType)rand;
-            }
-
-            ElementData data = new ElementData(elementType);
-
-            ///特殊元素
-            if (data.Type == ElementType.Item_Change)
-            {
-                GameTool.YatesElements();
-                var values = GameTool.AllBaseElements;
-
-                data.data1 = (int)values[0];
-                data.data2 = (int)values[1];
-                data.data3 = (int)values[2];
-
-            }
-
-            return data;
-            //if (rand < 0.7f) // 70%为基础元素
-            //{
-            //    type = (ElementType)Random.Range(0, 5);
-            //}
-            //else if (rand < 0.9f) // 20%为特殊元素
-            //{
-            //    type = ElementType.Special;
-            //}
-            //else // 10%随机生成道具（简化处理）
-            //{
-            //    type = (ElementType)Random.Range(0, 4);
-            //}
-
-        }
+ 
 
         public List<Vector2Int> FindAllMatches(List<Vector2Int> allMatches = null)
         {
@@ -533,16 +559,147 @@ namespace ProjectApp
 
             GameTool.GameCore = null;
 
+            baseType_Rate.Clear();
+            baseType_Rate = null;
+            levelData = null;
 
             isInit = false;
         }
+
+        #region 生成逻辑 Tools
+
+        private int allElement_Rate;
+        private int special_Rate;
+        private int prop_Rate;
+        private List<int> baseType_Rate;
+
+        public ElementData GetRandomElementData()
+        {
+            ElementType elementType = ElementType.Fixed_None;
+            // 根据配置表比例生成元素
+
+            int rand = GameTool.RandomToInt(0, allElement_Rate);
+
+            while (true)
+            {
+                if (rand < prop_Rate) //道具
+                {
+                    elementType = (ElementType)GameTool.RandomToInt(101, 105);
+                    break;
+                }
+                rand -= prop_Rate;
+
+                if (rand < special_Rate) ///特殊元素
+                {
+                    elementType = ElementType.Item_Special;
+                    break;
+                }
+                rand -= special_Rate;
+
+                for (int i = 0; i < baseType_Rate.Count; i++)
+                {
+                    int item_Rate = baseType_Rate[i];
+
+                    if (rand < item_Rate)
+                    {
+                        elementType = (ElementType)(i + 1);
+                        break;
+                    }
+                    rand -= item_Rate;
+                }
+
+                if (elementType == ElementType.Fixed_None)
+                {
+                    elementType = (ElementType)GameTool.RandomToInt(1, 5);
+                }
+
+                break;
+            }
+
+            ElementData data = new ElementData(elementType);
+
+            ///特殊元素
+            if (data.Type == ElementType.Item_Special)
+            {
+                GameTool.YatesElements();
+                var values = GameTool.AllBaseElements;
+
+                data.data1 = (int)values[0];
+                data.data2 = (int)values[1];
+                data.data3 = (int)values[2];
+
+            }
+
+            return data;
+
+        }
+
+        public int GetActiveSum(bool isRest = false)
+        {
+            if (isRest)
+            {
+                int sum = 0;
+                foreach (var item in Data.boardData)
+                {
+                    if (ElementTool.CheckType_CanMatches(item.Type))
+                    {
+                        sum++;
+                    }
+                }
+                Data.activeSum = sum;
+
+            }
+
+            return Data.activeSum;
+        }
+
+        private int wildAndBomb_Rate;
+        private int wildAndHorizontal_Rate;
+        private int wildAndVertical_Rate;
+        public int GetWildAndPropSum(ElementType type)
+        {
+            int rate = 0;
+            switch (type)
+            {
+                case ElementType.Prop_Horizontal:
+                    rate = wildAndHorizontal_Rate;
+                    break;
+
+                case ElementType.Prop_Vertical:
+                    rate = wildAndVertical_Rate;
+                    break;
+
+                case ElementType.Prop_Bomb:
+                    rate = wildAndBomb_Rate;
+                    break;
+
+            }
+
+            if (rate == 0)
+            {
+                LogUtil.LogError("该道具没有和Wild 道具组合");
+                return 0;
+            }
+
+            int allSum = GetActiveSum();
+            int val = (int)Math.Round(allSum / (rate / 100.0));
+
+            return val;
+
+        }
+        
+        
+        #endregion
 
 
         #region 外置道具
 
         public ExternalProp SelectExternalProp => externalProp_Module.SelectExternalProp;
 
-        
+        public int GetExternalProp_AddSocre()
+        {
+            return externalProp_Module.GetExternalProp_AddSocre();
+        }
 
 
 
@@ -588,7 +745,9 @@ namespace ProjectApp
 
         }
 
-       
+
+
+
 
 
 

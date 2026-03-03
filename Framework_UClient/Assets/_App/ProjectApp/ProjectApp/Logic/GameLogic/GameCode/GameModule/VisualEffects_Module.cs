@@ -1,4 +1,5 @@
 ﻿using FutureCore;
+using ProjectApp.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -235,6 +236,7 @@ namespace ProjectApp
 
             startVector3 = Core.startVector3;
 
+            InitPinchZoom();
             InitVisuaProcess();
 
             InitSys();
@@ -631,7 +633,7 @@ namespace ProjectApp
             foreach (var item in elementItemList)
             {
                 //设置下落标记
-                item.SetSpecial();
+                item.SetEmpty();
             }
 
             // 2. 播放清除动画
@@ -968,7 +970,7 @@ namespace ProjectApp
             finishCB = null;
 
             //将激活的道具设置为空
-            item.SetSpecial();
+            item.SetEmpty();
 
 
             var process = GetProcessToEnqueue(indexId);
@@ -1052,11 +1054,11 @@ namespace ProjectApp
             ElementData formData = formItem.Data;
             ElementData toData = toItem.Data;
 
-            formItem.SetSpecial();
-            toItem.SetSpecial();
+            formItem.SetEmpty();
+            toItem.SetEmpty();
             foreach (var item in elementItemList)
             {
-                item.SetSpecial();
+                item.SetEmpty();
             }
 
             if (toData.Type == ElementType.Prop_Vertical || toData.Type == ElementType.Prop_Horizontal)
@@ -1300,8 +1302,8 @@ namespace ProjectApp
         private void AddFormMoveTo(ElementItem formItem, ElementItem toItem)
         {
             Debug.Log("道具移动formItem"+formItem.ToString()+" to " +toItem.ToString());
-            formItem.SetSpecial();
-            toItem.SetSpecial();
+            formItem.SetEmpty();
+            toItem.SetEmpty();
 
             var process = GetProcessToEnqueue();
             Vector3 formPot = formItem.Pos;
@@ -1353,28 +1355,33 @@ namespace ProjectApp
 
         #region 棋盘的缩放
 
-        private float orthographicSize = 120;
+        private float defSize;
         private float sizeSpeed = 10;
         private float size = 1;
         private float maxSize = 1.2f;
         private float minSize = 1;
+
+        private void InitPinchZoom()
+        {
+            defSize = GeneralStaticVO.Instance.StandardSize;
+            minSize = GeneralStaticVO.Instance.Size_Clamp[0];
+            maxSize = GeneralStaticVO.Instance.Size_Clamp[1];         
+        }
         private void OnPinchZoom(float delta)
         {
             if(!Core.Enabled_PlayerCtr)return;
-            //CameraMgr.Instance.mainCamera.orthographicSize = GameTool.DefOrthographicSize;
-            //orthographicSize = orthographicSize + delta*orthographicSizeSpeed;
-            //orthographicSize = Mathf.Clamp(orthographicSize,GameTool.MinOrthographicSize,GameTool.MaxOrthographicSize);
 
-            size = size + delta * sizeSpeed *Time.deltaTime;
+            size = size + delta;
 
-            Core.transform.localScale = Vector3.one * size;
+            size = Mathf.Clamp(size,minSize,maxSize);
+
+            
 
         }
 
         private void UpdateOrthographicSize()
         {
-            
-            CameraMgr.Instance.mainCamera.orthographicSize = orthographicSize;
+            Core.transform.localScale = Vector3.MoveTowards(Core.transform.localScale,Vector3.one * size, sizeSpeed *Time.deltaTime);
         }
         #endregion
 

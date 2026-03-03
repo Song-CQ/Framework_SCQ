@@ -449,7 +449,7 @@ namespace ProjectApp
             {
                 for (int x = 0; x < _width; x++)
                 {
-                    _cells[y * _width + x] = new ElementData().SetPot(x, y).SetType( ElementType.Fixed_Special);
+                    _cells[y * _width + x] = new ElementData().SetPot(x, y).SetType( ElementType.Fixed_Empty);
                 }
             }
         }

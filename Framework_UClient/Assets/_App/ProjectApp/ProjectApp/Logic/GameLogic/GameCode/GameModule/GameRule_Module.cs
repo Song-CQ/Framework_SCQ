@@ -1,5 +1,6 @@
 
 using FutureCore;
+using ProjectApp.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -246,7 +247,7 @@ namespace ProjectApp
             ElementData data = (ElementData)datas[0];
             Vector2 dir = (Vector2)datas[1];
 
-            if (data.Type == ElementType.Item_Change)
+            if (data.Type == ElementType.Item_Special)
             {
                 Player_ChangeElementType(data.X, data.Y, dir.x > 0);
             }
@@ -363,7 +364,7 @@ namespace ProjectApp
         public void Player_ChangeElementType(int x, int y, bool isRith)
         {
             ElementData data = BoardData[x, y];
-            if (data.Type == ElementType.Item_Change)
+            if (data.Type == ElementType.Item_Special)
             {
                 if (isRith)
                 {
@@ -598,7 +599,7 @@ namespace ProjectApp
                 return false;
 
             ElementType type = ElementTool.GetTypeToElementData(BoardData[x, y]);
-            if (type == ElementType.Fixed_Special || type == ElementType.Fixed_None)
+            if (type == ElementType.Fixed_Empty || type == ElementType.Fixed_None)
                 return false;
 
             // 使用栈分配数组
@@ -651,7 +652,7 @@ namespace ProjectApp
                 return false;
 
             ElementType type = ElementTool.GetTypeToElementData(BoardData[x, y]);
-            if (type == ElementType.Fixed_Special || type == ElementType.Fixed_None)
+            if (type == ElementType.Fixed_Empty || type == ElementType.Fixed_None)
                 return false;
 
             // 使用栈分配数组
@@ -733,7 +734,7 @@ namespace ProjectApp
                 int creadCont = 0;
                 for (int y = 0; y < boardSize.y; y++)
                 {
-                    if (BoardData[x, y].Type == ElementType.Fixed_Special) // 空位标记
+                    if (BoardData[x, y].Type == ElementType.Fixed_Empty) // 空位标记
                     {
                         //要填充的位置
                         ElementData tar = BoardData[x, y];
@@ -758,7 +759,7 @@ namespace ProjectApp
                             {
                                 sour = BoardData[x, temp_y];
                                 //下落了 将自身设置为空的
-                                BoardData[x, temp_y].SetType(ElementType.Fixed_Special);
+                                BoardData[x, temp_y].SetType(ElementType.Fixed_Empty);
                             }
                             else
                             {
@@ -950,10 +951,10 @@ namespace ProjectApp
             foreach (Vector2Int match in matches)
             {
                 //Debug.Log("消除：" + Data.boardData[match.x, match.y].ToString());
-                if (BoardData[match.x, match.y].Type != ElementType.Fixed_Special) //如果不是不存在
+                if (BoardData[match.x, match.y].Type != ElementType.Fixed_Empty) //如果不是不存在
                 {
                     allMatches.Add(BoardData[match.x, match.y]);
-                    BoardData[match.x, match.y].SetSpecial(); // 标记为空
+                    BoardData[match.x, match.y].SetEmpty(); // 标记为空
                 }
             }
 
@@ -975,11 +976,20 @@ namespace ProjectApp
         {
             switch (matchCount)
             {
-                case 4: return 100;    // 四消基础分
-                case 5: return 300;    // 五消得分
-                case 6: return 600;    // 六消得分
-                case 7: return 1000;   // 七消得分
-                default: return matchCount * 200; // 更多消除
+                case 4: return GeneralStaticVO.Instance.MatchScore_4;  // 四消基础分
+                case 5: return GeneralStaticVO.Instance.MatchScore_5;  // 五消得分
+                case 6: return GeneralStaticVO.Instance.MatchScore_6;  // 六消得分
+                case 7: return GeneralStaticVO.Instance.MatchScore_7;  // 七消得分
+                default:  // 更多消除
+                    {
+                        if(matchCount< 7)
+                        {
+                            return GeneralStaticVO.Instance.MatchScore_1 * matchCount;
+                        }else
+                        {
+                            return GeneralStaticVO.Instance.MatchScore_7 + GeneralStaticVO.Instance.MatchScore_1 * (matchCount-7);
+                        }
+                    }
             }
         }
 
@@ -1076,7 +1086,7 @@ namespace ProjectApp
 
                     var propData = currProps[i];
 
-                    Data.boardData[propData.X, propData.Y].SetSpecial();
+                    Data.boardData[propData.X, propData.Y].SetEmpty();
 
                     ActivateProp(propData, ref matches, ref oneProp);
 
@@ -1123,7 +1133,7 @@ namespace ProjectApp
                     ActivateProp_Bomb(data.X, data.Y, 2, ref matches, ref dataProp);
                     break;
                 case ElementType.Prop_Wild:
-                    ActivateProp_Wild(data.X, data.Y, ElementType.Fixed_Special, ref matches, ref dataProp);
+                    ActivateProp_Wild(data.X, data.Y, ElementType.Fixed_Empty, ref matches, ref dataProp);
                     break;
 
                 default:
@@ -1141,8 +1151,8 @@ namespace ProjectApp
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //横竖
-                    Data.boardData[formData.X, formData.Y].SetSpecial();
-                    Data.boardData[toData.X, toData.Y].SetSpecial();
+                    Data.boardData[formData.X, formData.Y].SetEmpty();
+                    Data.boardData[toData.X, toData.Y].SetEmpty();
 
                     ActivateProp_Horizontal(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X, toData.Y, ref matches, ref dataProp);
@@ -1158,8 +1168,8 @@ namespace ProjectApp
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //双炸弹
-                    Data.boardData[formData.X, formData.Y].SetSpecial();
-                    Data.boardData[toData.X, toData.Y].SetSpecial();
+                    Data.boardData[formData.X, formData.Y].SetEmpty();
+                    Data.boardData[toData.X, toData.Y].SetEmpty();
 
                     ActivateProp_Bomb(toData.X, toData.Y, 3, ref matches, ref dataProp);
                     Debug.LogWarning("双炸弹");
@@ -1170,8 +1180,8 @@ namespace ProjectApp
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //炸弹加竖
-                    Data.boardData[formData.X, formData.Y].SetSpecial();
-                    Data.boardData[toData.X, toData.Y].SetSpecial();
+                    Data.boardData[formData.X, formData.Y].SetEmpty();
+                    Data.boardData[toData.X, toData.Y].SetEmpty();
                     ActivateProp_Vertical(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X + 1, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X - 1, toData.Y, ref matches, ref dataProp);
@@ -1182,8 +1192,8 @@ namespace ProjectApp
                 {
                     Data.TakeMemorySnapshotBoardData();
                     //炸弹加横
-                    Data.boardData[formData.X, formData.Y].SetSpecial();
-                    Data.boardData[toData.X, toData.Y].SetSpecial();
+                    Data.boardData[formData.X, formData.Y].SetEmpty();
+                    Data.boardData[toData.X, toData.Y].SetEmpty();
                     ActivateProp_Horizontal(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Horizontal(toData.X + 1, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Horizontal(toData.X - 1, toData.Y, ref matches, ref dataProp);
@@ -1198,9 +1208,10 @@ namespace ProjectApp
                 {
                     Data.TakeMemorySnapshotBoardData();
                     Debug.LogWarning("wild加炸弹");
-                    Data.boardData[formData.X, formData.Y].SetSpecial();
-                    Data.boardData[toData.X, toData.Y].SetSpecial();
-                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb, 3, ref matches, ref dataProp);
+                    Data.boardData[formData.X, formData.Y].SetEmpty();
+                    Data.boardData[toData.X, toData.Y].SetEmpty();
+                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Bomb);
+                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb, sum, ref matches, ref dataProp);
                 }
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
@@ -1208,8 +1219,9 @@ namespace ProjectApp
                     Data.TakeMemorySnapshotBoardData();
                     //wild加Vertical
                     Debug.LogWarning("wild加Vertical");
-                    Data.boardData[formData.X, formData.Y].SetSpecial();
-                    Data.boardData[toData.X, toData.Y].SetSpecial();
+                    Data.boardData[formData.X, formData.Y].SetEmpty();
+                    Data.boardData[toData.X, toData.Y].SetEmpty();
+                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Vertical);
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Vertical, 3, ref matches, ref dataProp);
                 }
 
@@ -1218,8 +1230,9 @@ namespace ProjectApp
                     Data.TakeMemorySnapshotBoardData();
                     //wild加Horizontal
                     Debug.LogWarning("wild加Horizontal");
-                    Data.boardData[formData.X, formData.Y].SetSpecial();
-                    Data.boardData[toData.X, toData.Y].SetSpecial();
+                    Data.boardData[formData.X, formData.Y].SetEmpty();
+                    Data.boardData[toData.X, toData.Y].SetEmpty();
+                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Horizontal);
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Horizontal, 3, ref matches, ref dataProp);
                 }
             }
@@ -1391,7 +1404,7 @@ namespace ProjectApp
         {
             if (!IsPositionValid(X, Y)) return;
 
-            if (matches_type == ElementType.Fixed_Special)
+            if (matches_type == ElementType.Fixed_Empty)
             {
                 matches_type = GameTool.GetRandomBaseElementType();
             }
@@ -1431,7 +1444,7 @@ namespace ProjectApp
             {
                 int index = GameTool.RandomToInt(0, datas.Count);
                 ElementData data = datas[index];
-                data.SetSpecial();
+                data.SetEmpty();
                 data.Type = elementType;
                 Data.boardData[data.X, data.Y] = data;
 
@@ -1611,7 +1624,7 @@ namespace ProjectApp
                 case ExternalProp.AddScore:
                     {
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
-                        AddScore(3000);
+                        AddScore(Core.GetExternalProp_AddSocre());
                         isSu = true;
                     }
                     break;

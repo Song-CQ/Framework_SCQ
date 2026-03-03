@@ -52,7 +52,7 @@ namespace ProjectApp
             gameCore = GameObject.FindObjectOfType<EliminateGameCore>(true);
            
 
-            gameCore.Init();
+            gameCore.Init(1);
 
         }
     }

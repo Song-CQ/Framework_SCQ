@@ -56,6 +56,8 @@ namespace ProjectApp
             Data.boardSize = new Vector2Int(w, h);
 
             Data.linkBoardPotLength = linkBoardPotSum;
+
+            Core.GetActiveSum(true);
         }
         void IGameModule.GenerateInitialElements()
         {

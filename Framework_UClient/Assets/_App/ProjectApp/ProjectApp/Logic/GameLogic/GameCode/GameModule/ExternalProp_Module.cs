@@ -1,5 +1,6 @@
 using FutureCore;
 using ProjectApp;
+using ProjectApp.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -277,6 +278,9 @@ namespace ProjectApp
 
         }
 
-        
+        public int GetExternalProp_AddSocre()
+        {
+            return GeneralStaticVO.Instance.Increase_The_Score;
+        }
     }
 }
