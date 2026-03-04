@@ -265,7 +265,8 @@ namespace ProjectApp
         private Dictionary<Type, IGameModule> gameModules;
 
         private bool isInit = false;
-
+        
+        [SerializeField]
         private LevelVO levelData;
 
         [SerializeField]

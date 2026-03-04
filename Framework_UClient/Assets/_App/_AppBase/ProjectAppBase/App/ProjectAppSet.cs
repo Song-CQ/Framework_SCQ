@@ -35,6 +35,8 @@ namespace ProjectApp
         /// </summary>
         public bool IsAutoDestroy = true;
 
+
+
         public static void Init()
         {
             ProjectAppSet Set = GameObject.FindObjectOfType<ProjectAppSet>();
@@ -58,6 +60,7 @@ namespace ProjectApp
 
         }
 
+        
 
 
     }

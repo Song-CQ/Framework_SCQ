@@ -17,6 +17,14 @@ namespace ProjectApp
     public sealed partial class ConfigDataMgr
     {
 
+        public override void StartUp()
+        {
+            base.StartUp();
+                    
+            ResetData();
+            ReadData();
+        }
+
 
         public VO GetConfigVO<VO>(ConfigVO type, int key) where VO : BaseVO
         {

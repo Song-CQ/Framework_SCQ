@@ -9,7 +9,7 @@ namespace ProjectApp
     public static class MainLauncher
     {
         public static bool IsAutoLauncher = true;
-        private const string MainScene = "0_MainScene";
+        public const string MainScene = "0_MainScene";
 
         private static bool IsInMain = false;
 
