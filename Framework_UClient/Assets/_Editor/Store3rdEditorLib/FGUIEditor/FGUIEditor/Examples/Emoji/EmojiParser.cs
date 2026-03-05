@@ -1,4 +1,4 @@
-using FairyGUI;
+﻿using FairyGUI;
 using FairyGUI.Utils;
 
 public class EmojiParser : UBBParser

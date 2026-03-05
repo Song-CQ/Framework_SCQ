@@ -5,25 +5,25 @@ using UnityEngine;
 namespace ProjectApp
 {
     /// <summary>
-    /// ï¿½ï¿½Ï·ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+    /// ÓÎÏ·ÏûÏ¢¶¨Òå
     /// </summary>
     public static class GameMsg
     {
         private static uint _counter = 1000;
         /// <summary>
-        /// ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
+        /// µã»÷Ò»¸öÔªËØ
         /// </summary>
         public static readonly uint Player_ClickElement = ++_counter;
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Øµï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
+        /// »¬¶¯Ò»¸öÔªËØµ½ÁíÒ»¸öÔªËØ
         /// </summary>
         public static readonly uint Player_SwipeElementToElement = ++_counter;
         /// <summary>
-        /// ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½
+        /// ÔÚÒ»¸öÔªËØÉÏ»¬¶¯
         /// </summary>
         public static readonly uint Player_SwipeElement = ++_counter;
         /// <summary>
-        /// ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// µã»÷Ò»¸öÅÌÍâµÀ¾ß
         /// </summary>
         public static readonly uint Player_ClickExternalPropItem = ++_counter;
 
@@ -31,74 +31,74 @@ namespace ProjectApp
         
 
         /// <summary>
-        /// Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
+        /// Ñ¡ÖĞÒ»¸öÔªËØ
         /// </summary>
         public static readonly uint SelectElement = ++_counter;
 
         /// <summary>
-        /// È¡ï¿½ï¿½Ñ¡ï¿½ï¿½Ôªï¿½ï¿½
+        /// È¡ÏûÑ¡ÖĞÔªËØ
         /// </summary>
         public static readonly uint DeselectElement = ++_counter; // 1002
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+        /// ½»»»Á½¸öÔªËØ
         /// </summary>
         public static readonly uint SwapElements = ++_counter;
 
         /// <summary>
-        /// Ôªï¿½ï¿½Æ¥ï¿½ï¿½É¹ï¿½
+        /// ÔªËØÆ¥Åä³É¹¦
         /// </summary>
         public static readonly uint MatchElements = ++_counter;
 
         /// <summary>
-        /// Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ÔªËØÏû³ı
         /// </summary>
         public static readonly uint ClearElements = ++_counter;
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+        /// Éú³ÉĞÂÔªËØ
         /// </summary>
         public static readonly uint GenerateElements = ++_counter;
 
         /// <summary>
-        /// Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ÔªËØÏÂÂä
         /// </summary>
         public static readonly uint ElementsFall = ++_counter;
 
         /// <summary>
-        ///  ï¿½Ä±ï¿½Ôªï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+        ///  ¸Ä±äÔªËØµÄÀàĞÍ
         /// </summary>
         public static readonly uint RestElements = ++_counter;
         /// <summary>
-        ///  ï¿½Ä±ï¿½È«ï¿½ï¿½Ôªï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+        ///  ¸Ä±äÈ«²¿ÔªËØµÄÀàĞÍ
         /// </summary>
         public static readonly uint RestAllElements = ++_counter;
 
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½Ğ»ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ÌØÊâÔªËØÇĞ»»ÔªËØÀàĞÍ
         /// </summary>
         public static readonly uint ChangeElementType = ++_counter;
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ¼¤»îµÀ¾ß
         /// </summary>
         public static readonly uint ActivateProp = ++_counter;
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½Ë«ï¿½Øµï¿½ï¿½ï¿½
+        /// ¼¤»îË«ÖØµÀ¾ß
         /// </summary>
         public static readonly uint ActivateTwoProp = ++_counter;
 
         /// <summary>
-        /// Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// Ê¹ÓÃÅÌÍâµÀ¾ß
         /// </summary>
         public static readonly uint UseExternalProp = ++_counter;
         
         /// <summary>
-        /// È¡ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// È¡ÏûÊ¹ÓÃÅÌÍâµÀ¾ß
         /// </summary>
         public static readonly uint CancelExternalProp = ++_counter;
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ÏûºÄÅÌÍâµÀ¾ß
         /// </summary>
         public static readonly uint CostExternalProp = ++_counter;
 
@@ -108,21 +108,21 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ÓÎÏ··ÖÊı¸üĞÂ
         /// </summary>
         public static readonly uint ScoreUpdated = ++_counter;
 
         /// <summary>
-        /// ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
+        /// ÓÎÏ·½áÊø
         /// </summary>
         public static readonly uint GameOver = ++_counter;
         /// <summary>
-        /// ï¿½ï¿½Ï·ï¿½ï¿½Ê¼
+        /// ÓÎÏ·¿ªÊ¼
         /// </summary>
         public static readonly uint GameStart = ++_counter;
 
         /// <summary>
-        /// ï¿½ï¿½Ï·Ê¤ï¿½ï¿½
+        /// ÓÎÏ·Ê¤Àû
         /// </summary>
         public static readonly uint GameWin = ++_counter;
 

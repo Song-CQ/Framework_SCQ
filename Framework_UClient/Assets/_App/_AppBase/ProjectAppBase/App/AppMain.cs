@@ -11,11 +11,11 @@ namespace ProjectApp.Main
         public static void Main()
         {
             LogUtil.Log($"[AppMain]Main Time: {Time.unscaledTime}".AddColor(ColorType.Green));
-            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AppFacadeï¿½ï¿½Ì¬ï¿½Ö¶ï¿½
+            //ÖØÐÂÉèÖÃAppFacade¾²Ì¬×Ö¶Î
             AppFacadeRedirection.RedirectionStaticField();
-            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Appï¿½ï¿½Ì¬ï¿½Ö¶ï¿½
+            //ÖØÐÂÉèÖÃApp¾²Ì¬×Ö¶Î
             AppRedirection.RedirectionStaticField();
-            //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ä¿
+            //³õÊ¼»¯ÏîÄ¿
             App.InitApplication(ProjectApplication.Instance);
 
 

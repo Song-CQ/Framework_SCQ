@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Plugins.XAsset;
 using System;
 using System.Collections;

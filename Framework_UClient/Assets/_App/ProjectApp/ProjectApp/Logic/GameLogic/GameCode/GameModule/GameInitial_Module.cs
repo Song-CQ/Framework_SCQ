@@ -9,23 +9,23 @@ namespace ProjectApp
 {
     public class GameInitial_Module : IGameModule
     {
-        #region Ð±ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½
+        #region Ð±¶Ô½ÇÉú³É
         const int MAX_ATTEMPTS_PER_CONNECTION = 100;
 
         private int linkBoardPotSum = 8;
 
 
-        // ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ð±ï¿½Ô½Ç·ï¿½ï¿½ï¿½
+        // Ëæ»úÑ¡ÔñÐ±¶Ô½Ç·½Ïò
         private static Vector2Int[] diagonalDirections = new Vector2Int[]
         {
-            new Vector2Int(1, 1),   // ï¿½ï¿½ï¿½ï¿½
-            new Vector2Int(-1, 1),  // ï¿½ï¿½ï¿½ï¿½
-            new Vector2Int(1, -1),  // ï¿½ï¿½ï¿½ï¿½
-            new Vector2Int(-1, -1)  // ï¿½ï¿½ï¿½ï¿½
+            new Vector2Int(1, 1),   // ÓÒÏÂ
+            new Vector2Int(-1, 1),  // ×óÏÂ
+            new Vector2Int(1, -1),  // ÓÒÉÏ
+            new Vector2Int(-1, -1)  // ×óÉÏ
         };
         #endregion
 
-        #region ï¿½ï¿½ï¿½ï¿½
+        #region Á÷³Ì
         public Dispatcher<uint> Dispatcher => Core.Dispatcher;
         public ElementGameData Data => Core.Data;
 
@@ -46,7 +46,7 @@ namespace ProjectApp
 
         }
         /// <summary>
-        /// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ³õÊ¼»¯ÆåÅÌ
         /// </summary>
         /// <param name="w"></param>
         /// <param name="h"></param>
@@ -75,7 +75,7 @@ namespace ProjectApp
                 }
             }
 
-            // ï¿½ï¿½é²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Æ¥ï¿½ï¿½
+            // ¼ì²é²¢Ïû³ý³õÊ¼Æ¥Åä
             CheckInitialMatches();
 
 
@@ -88,7 +88,7 @@ namespace ProjectApp
         private void RandomLinkPot(int sum)
         {
 
-            // Ê¹ï¿½ï¿½HashSet<long>ï¿½ï¿½ï¿½HashSet<string>
+            // Ê¹ÓÃHashSet<long>Ìæ´úHashSet<string>
             HashSet<long> _connectionSet = new HashSet<long>();
             int attempts = 0;
 
@@ -101,7 +101,7 @@ namespace ProjectApp
                 {
                     attempts++;
 
-                    // ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
+                    // Ëæ»úÑ¡ÔñÆðµã
                     int startX = GameTool.RandomToInt(0, Data.boardSize.x);
                     int startY = GameTool.RandomToInt(0, Data.boardSize.y);
 
@@ -109,7 +109,7 @@ namespace ProjectApp
                     Vector2Int start = new Vector2Int(startX, startY);
                     Vector2Int end = new Vector2Int(startX + direction.x, startY + direction.y);
 
-                    // ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½Î§ï¿½ï¿½
+                    // ¼ì²éÖÕµãÊÇ·ñÔÚÆåÅÌ·¶Î§ÄÚ
                     if (end.x >= 0 && end.x < Data.boardSize.x &&
                         end.y >= 0 && end.y < Data.boardSize.y)
                     {
@@ -117,10 +117,10 @@ namespace ProjectApp
                     }
                 }
 
-                // ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ó£ï¿½Ê¹ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                // Èç¹ûÕÒ²»µ½ÓÐÐ§Á¬½Ó£¬Ê¹ÓÃÄ¬ÈÏÁ¬½Ó
                 if (!validConnectionFound)
                 {
-                    // Ê¹ï¿½Ãµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ð±ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    // Ê¹ÓÃµÚÒ»¸ö¿ÉÓÃµÄÐ±¶Ô½ÇÁ¬½Ó
                     for (int x = 0; x < Data.boardSize.x && !validConnectionFound; x++)
                     {
                         for (int y = 0; y < Data.boardSize.y && !validConnectionFound; y++)
@@ -155,7 +155,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½Ê¼Æ¥ï¿½ä£¨ï¿½ï¿½ï¿½â¿ªï¿½Ö¾ï¿½ï¿½ï¿½Æ¥ï¿½ä£©
+        /// ¼ì²é³õÊ¼Æ¥Åä£¨±ÜÃâ¿ª¾Ö¾ÍÓÐÆ¥Åä£©
         /// </summary>
         void CheckInitialMatches()
         {
@@ -170,7 +170,7 @@ namespace ProjectApp
                 if (initialMatches.Count > 0)
                 {
                     hasMatches = true;
-                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+                    // ÖØÐÂÉú³ÉÓÐÆ¥ÅäµÄÎ»ÖÃ
                     foreach (Vector2Int pot in initialMatches)
                     {
                         ElementData elementData = Core.GetRandomElementData();

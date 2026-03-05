@@ -18,16 +18,18 @@ namespace FutureEditor
         // [MenuItem("Tools/转换所有C#脚本为UTF-8（无BOM）")]
         public static void ConvertAllToUTF8NoBOM()
         {
-            ConvertScriptsWithProgress(false);
+            int count = ConvertScripts(false);
+            Debug.Log($"转换完成：{count} 个文件转为 UTF-8 无BOM");
         }
 
         // [MenuItem("Tools/转换所有C#脚本为UTF-8（带BOM）")]
         public static void ConvertAllToUTF8WithBOM()
         {
-            ConvertScriptsWithProgress(true);
+            int count = ConvertScripts(true);
+            Debug.Log($"转换完成：{count} 个文件转为 UTF-8 带BOM");
         }
 
-        static void ConvertScriptsWithProgress(bool withBOM)
+        static int ConvertScripts(bool withBOM)
         {
             string projectPath = Path.GetDirectoryName(Application.dataPath);
 
@@ -39,66 +41,18 @@ namespace FutureEditor
                             && !path.Contains("\\PackageCache\\"))
                 .ToArray();
 
-            int totalFiles = csFiles.Length;
             int convertedCount = 0;
-            int skippedCount = 0;
-            bool cancelled = false;
 
-            try
+            foreach (string filePath in csFiles)
             {
-                for (int i = 0; i < totalFiles; i++)
+                if (ConvertFileToUTF8(filePath, withBOM))
                 {
-                    string filePath = csFiles[i];
-                    
-                    // 计算进度
-                    float progress = (float)i / totalFiles;
-                    
-                    // 显示进度对话框
-                    if (EditorUtility.DisplayCancelableProgressBar(
-                        "转换C#脚本编码",
-                        $"正在处理: {Path.GetFileName(filePath)}\n进度: {i + 1}/{totalFiles}",
-                        progress))
-                    {
-                        // 用户点击了取消按钮
-                        cancelled = true;
-                        break;
-                    }
-
-                    // 转换文件
-                    if (ConvertFileToUTF8(filePath, withBOM))
-                    {
-                        convertedCount++;
-                    }
-                    else
-                    {
-                        skippedCount++;
-                    }
+                    convertedCount++;
                 }
-            }
-            finally
-            {
-                // 关闭进度对话框
-                EditorUtility.ClearProgressBar();
-            }
-
-            // 显示结果对话框
-            string bomType = withBOM ? "带BOM" : "无BOM";
-            string message = cancelled ? 
-                $"转换已取消！\n已转换: {convertedCount} 个文件\n跳过: {skippedCount} 个文件" :
-                $"转换完成！\n成功转换: {convertedCount} 个文件\n跳过(已是UTF-8): {skippedCount} 个文件";
-            
-            EditorUtility.DisplayDialog($"UTF-8 {bomType} 转换", message, "确定");
-            
-            if (!cancelled)
-            {
-                Debug.Log($"转换完成：{convertedCount} 个文件转为 UTF-8 {bomType}，跳过：{skippedCount} 个文件");
-            }
-            else
-            {
-                Debug.LogWarning($"转换已取消：已转换 {convertedCount} 个文件，跳过 {skippedCount} 个文件");
             }
 
             AssetDatabase.Refresh();
+            return convertedCount;
         }
 
         static bool ConvertFileToUTF8(string filePath, bool withBOM)
@@ -135,6 +89,7 @@ namespace FutureEditor
                 // 用目标UTF-8格式写入
                 File.WriteAllText(filePath, content, new UTF8Encoding(withBOM));
 
+                Debug.Log($"转换: {GetRelativePath(filePath)}");
                 return true;
             }
             catch (System.Exception e)
@@ -161,6 +116,12 @@ namespace FutureEditor
 
             // 没有BOM，默认系统ANSI
             return Encoding.Default;
+        }
+
+        static string GetRelativePath(string fullPath)
+        {
+            string projectPath = Path.GetDirectoryName(Application.dataPath);
+            return fullPath.Replace(projectPath + "\\", "");
         }
     }
 }

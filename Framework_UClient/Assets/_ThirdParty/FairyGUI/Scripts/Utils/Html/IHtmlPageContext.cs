@@ -1,4 +1,4 @@
-
+﻿
 namespace FairyGUI.Utils
 {
     /// <summary>

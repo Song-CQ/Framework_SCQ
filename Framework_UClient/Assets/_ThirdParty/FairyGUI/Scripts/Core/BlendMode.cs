@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using NativeBlendMode = UnityEngine.Rendering.BlendMode;
 
 namespace FairyGUI

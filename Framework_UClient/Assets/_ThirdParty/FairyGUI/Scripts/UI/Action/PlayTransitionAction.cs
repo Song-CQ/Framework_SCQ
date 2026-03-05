@@ -1,4 +1,4 @@
-using FairyGUI.Utils;
+﻿using FairyGUI.Utils;
 
 namespace FairyGUI
 {

@@ -22,7 +22,7 @@ namespace ProjectApp
 
 
 
-        // Unityï¿½ï¿½ÒªÄ¬ï¿½Ï¹ï¿½ï¿½ìº¯ï¿½ï¿½
+        // UnityÐèÒªÄ¬ÈÏ¹¹Ôìº¯Êý
         public ElementData(ElementType type = ElementType.Fixed_None)
         {
             X = 0;
@@ -53,7 +53,7 @@ namespace ProjectApp
             return this;
         }
 
-        // ï¿½á¹©ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
+        // Ìá¹©ÐÞ¸Ä×ø±êµÄ·½·¨£¨·µ»ØÐÂÊµÀý£©
         public ElementData SetPot(int x, int y)
         {
             X = x;
@@ -62,7 +62,7 @@ namespace ProjectApp
         }
 
 
-        // Êµï¿½ï¿½ IEquatable
+        // ÊµÏÖ IEquatable
         public bool Equals(ElementData other)
         {
             return X == other.X && Y == other.Y && Type == other.Type;
@@ -70,7 +70,7 @@ namespace ProjectApp
 
 
 
-        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        // ÖØÔØÔËËã·û
         public static bool operator ==(ElementData left, ElementData right)
         {
             return left.Equals(right);
@@ -87,7 +87,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½Ã¿Õ±ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½xyï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ÉèÖÃ¿Õ±ê¼Ç ±£Áôxy×ø±ê Çå¿ÕÆäËûÊý¾Ý
         /// </summary>
         public void SetEmpty()
         {
@@ -98,7 +98,7 @@ namespace ProjectApp
         }
     }
 
-    //Ôªï¿½ï¿½ï¿½ï¿½
+    //ÔªËØÀà
     [Serializable]
     public class ElementItem : IRaycast3D
     {
@@ -166,7 +166,7 @@ namespace ProjectApp
             SetData(_data);
             RefreshView();
 
-            // ï¿½ï¿½ï¿½Ã³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+            // ÉèÖÃ³õÊ¼²¼¾Ö
             UpdateIconLayout();
 
         }
@@ -245,7 +245,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½
+        /// µã»÷
         /// </summary>
         /// <param name="hitPoint"></param>
         public void Raycast_OnClick(Vector3 hitPoint)
@@ -255,7 +255,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½
+        /// »¬¶¯
         /// </summary>
         /// <param name="hitPoint"></param>
         public void Raycast_OnSwipe(Vector3 startPoint, Vector3 endPoint, IRaycast3D raycast3D_end)
@@ -288,7 +288,7 @@ namespace ProjectApp
 
         public void Dispose()
         {
-            // ï¿½ï¿½ï¿½ï¿½DOTweenï¿½ï¿½ï¿½ï¿½
+            // ÇåÀíDOTween¶¯»­
             switchSequenceR?.Kill();
             switchSequenceR = null;
             switchSequenceL?.Kill();
@@ -306,9 +306,9 @@ namespace ProjectApp
 
 
 
-        #region ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½
+        #region ÇÐ»»¶¯»­
 
-        //[Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+        //[Header("¶¯»­ÉèÖÃ")]
         public  float switchDuration = 0.3f;
         private float centerScale = 0.7f;
         private float sideScale = 0.4f;
@@ -318,22 +318,22 @@ namespace ProjectApp
 
 
 
-        // ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼ï¿½ï¿½
+        // ÇÐ»»µ½ÏÂÒ»¸öÍ¼±ê
         public void SwitchToNext()
         {
             
             UpdateIconLayout();
-            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            // ¼ÆËãÏÂÒ»¸öË÷Òý
 
             PerformSwitchAnimation(true);
         }
 
-        // ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼ï¿½ï¿½
+        // ÇÐ»»µ½ÉÏÒ»¸öÍ¼±ê
         public void SwitchToPrevious()
         {
 
             UpdateIconLayout();
-            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            // ¼ÆËãÉÏÒ»¸öË÷Òý
 
             PerformSwitchAnimation(false);
         }
@@ -343,43 +343,43 @@ namespace ProjectApp
         private Sequence switchSequenceL;
         private void PerformSwitchAnimation(bool isR)
         {
-            // Í£Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+            // Í£Ö¹ËùÓÐÏÖÓÐ¶¯»­
             switchSequenceR?.Pause();
             switchSequenceL?.Pause();
             if (isR)
             {
                 if (switchSequenceR == null)
                 {
-                    // Ö´ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    // Ö´ÐÐ»¬¶¯¶¯»­
                     Sequence sequence = DOTween.Sequence();
 
-                    // ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½
+                    // ×óÉÏÍ¼±êÒÆ¶¯µ½ÖÐ¼ä
                     sequence.Join(changeIcons[1].transform
                         .DOLocalMove(centerPosition, switchDuration));
                     sequence.Join(changeIcons[1].transform
                         .DOScale(centerScale, switchDuration));
 
-                    // ï¿½Ð¼ï¿½Í¼ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    // ÖÐ¼äÍ¼±êÒÆ¶¯µ½ÓÒÏÂ
                     sequence.Join(changeIcons[0].transform
                         .DOLocalMove(bottomRightPosition, switchDuration));
                     sequence.Join(changeIcons[0].transform
                         .DOScale(sideScale, switchDuration));
 
-                    // ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½
+                    // ÓÒÏÂÍ¼±êÒÆ¶¯µ½×óÉÏ£¨Íê³ÉÑ­»·£©
                     sequence.Join(changeIcons[2].transform
                         .DOLocalMove(topLeftPosition, switchDuration));
                     sequence.Join(changeIcons[2].transform
                         .DOScale(sideScale, switchDuration));
 
-                    //sequence.OnStart(() => Debug.Log("1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼"));
-                    //sequence.OnUpdate(() => Debug.Log("1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½..."));
+                    //sequence.OnStart(() => Debug.Log("1¶¯»­¿ªÊ¼"));
+                    //sequence.OnUpdate(() => Debug.Log("1¶¯»­½øÐÐÖÐ..."));
                     sequence.onComplete = () =>
                     {
-                        Debug.Log("1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                        Debug.Log("1¶¯»­Íê³É");
                         UpdateIconLayout();
                     };
 
-                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ë³ï¿½ï¿½
+                    // ¸üÐÂÏÔÊ¾Ë³Ðò
                     sequence.SetEase(Ease.OutCubic);
                     switchSequenceR = sequence;
 
@@ -393,37 +393,37 @@ namespace ProjectApp
             {
                 if (switchSequenceL == null)
                 {
-                    // Ö´ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    // Ö´ÐÐ»¬¶¯¶¯»­
                     Sequence sequence = DOTween.Sequence().SetAutoKill(false);
 
-                    // ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½
+                    // ÓÒÏÂÍ¼±êÒÆ¶¯µ½ÖÐ¼ä
                     sequence.Join(changeIcons[2].transform
                         .DOLocalMove(centerPosition, switchDuration));
                     sequence.Join(changeIcons[2].transform
                         .DOScale(centerScale, switchDuration));
 
-                    // ï¿½Ð¼ï¿½Í¼ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    // ÖÐ¼äÍ¼±êÒÆ¶¯µ½×óÉÏ
                     sequence.Join(changeIcons[0].transform
                         .DOLocalMove(topLeftPosition , switchDuration));
                     sequence.Join(changeIcons[0].transform
                         .DOScale(sideScale, switchDuration));
 
-                    // ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½
+                    // ×óÉÏÍ¼±êÒÆ¶¯µ½ÓÒÏÂ£¨Íê³ÉÑ­»·£©
                     sequence.Join(changeIcons[1].transform
                         .DOLocalMove(bottomRightPosition,switchDuration));
                     sequence.Join(changeIcons[1].transform
                         .DOScale(sideScale, switchDuration));
 
 
-                    sequence.OnStart(() => Debug.Log("2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼"));
-                    sequence.OnUpdate(() => Debug.Log("2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½..."));
+                    sequence.OnStart(() => Debug.Log("2¶¯»­¿ªÊ¼"));
+                    sequence.OnUpdate(() => Debug.Log("2¶¯»­½øÐÐÖÐ..."));
                     sequence.onComplete = () =>
                     {
-                        Debug.Log("2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                        Debug.Log("2¶¯»­Íê³É");
                         UpdateIconLayout();
                     };
 
-                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ë³ï¿½ï¿½
+                    // ¸üÐÂÏÔÊ¾Ë³Ðò
                     sequence.SetEase(Ease.OutCubic);
                     switchSequenceL = sequence;
                 }
@@ -435,11 +435,11 @@ namespace ProjectApp
 
         }
 
-        // ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ê²¼ï¿½Ö£ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½
+        // ÖØÖÃÍ¼±ê²¼¾Ö£¨ÎÞ¶¯»­£©
         private void UpdateIconLayout()
         {
 
-            // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ÃºÍ´ï¿½Ð¡
+            // ÉèÖÃÎ»ÖÃºÍ´óÐ¡
             changeIcons[1].transform.localPosition = topLeftPosition;
             changeIcons[1].transform.localScale = Vector3.one * sideScale;
 
@@ -479,7 +479,7 @@ public class DebugElementItem : MonoBehaviour
     public System.Collections.Generic.List<string> InfoText = new System.Collections.Generic.List<string>();
     string oldname;
 
-    [Button("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [Button("ÉèÖÃÐÂÀàÐÍ")]
     public void SetData()
     {
         Data.SetType(newType);

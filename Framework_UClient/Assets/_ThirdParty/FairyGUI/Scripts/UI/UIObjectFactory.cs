@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 #if FAIRYGUI_TOLUA
 using LuaInterface;

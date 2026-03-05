@@ -3,7 +3,7 @@ namespace ProjectApp
     public static partial class PrefsKeyConst
     {
         /// <summary>
-        /// 锟角凤拷锟斤拷实锟斤拷锟斤拷目
+        /// 是否新实例项目
         /// </summary>
         public const string App_isNewInstall = "isNewInstall";
 
