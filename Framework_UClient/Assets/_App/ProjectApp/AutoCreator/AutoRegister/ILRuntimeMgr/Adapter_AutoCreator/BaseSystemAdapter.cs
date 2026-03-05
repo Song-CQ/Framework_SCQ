@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ILRuntime.CLR.Method;
 using ILRuntime.Runtime.Enviorment;
 using ILRuntime.Runtime.Intepreter;

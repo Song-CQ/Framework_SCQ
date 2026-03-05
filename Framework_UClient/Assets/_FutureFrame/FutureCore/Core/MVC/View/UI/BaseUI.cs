@@ -1,7 +1,7 @@
 /****************************************************
     文件：BaseUI.cs
 	作者：Clear
-    日期�?022/1/25 10:45:49
+    日期�?022/1/25 10:45:49
     类型: 框架核心脚本(请勿修改)
 	功能：基础UI
 *****************************************************/
@@ -217,11 +217,11 @@ namespace FutureCore
         #region Tool
 
         /// <summary>
-        /// 获取对应路径名字的组�?
+        /// 获取对应路径名字的组�?
         /// </summary>
-        /// <typeparam name="T">组件�?/typeparam>
-        /// <param name="namePath">路径�?/param>
-        /// <param name="isAutoAdd">是否要添�?/param>
+        /// <typeparam name="T">组件�?/typeparam>
+        /// <param name="namePath">路径�?/param>
+        /// <param name="isAutoAdd">是否要添�?/param>
         /// <param name="isCance">是否缓存</param>
         /// <returns></returns>
         protected T GetComponent<T>(string namePath, bool isAutoAdd = false, bool isCance = false) where T : UnityEngine.Component

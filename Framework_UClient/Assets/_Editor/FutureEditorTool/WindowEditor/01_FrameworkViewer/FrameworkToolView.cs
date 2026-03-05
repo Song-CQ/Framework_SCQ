@@ -29,7 +29,8 @@ namespace FutureEditor
 
         private void OnEnable()
         {
-            minSize = new Vector2(900, 500);
+            // 黄金比例 1.618:1 (890x550)
+            minSize = new Vector2(890, 550);
             maxSize = minSize;
             InitData();
             Show();
@@ -84,9 +85,17 @@ namespace FutureEditor
                     RefreshUI_OtherTool();
                     break;
             }
+
+            // 在所有界面底部显示工具集提示
+            DrawBottomTooltip();
         }
 
-
+        private void DrawBottomTooltip()
+        {
+            GUILayout.BeginArea(new Rect(0, position.height - 18, position.width, 20));
+            GUILayout.Label("--- 工具集 v2.0 ---", EditorStyles.centeredGreyMiniLabel);
+            GUILayout.EndArea();
+        }
 
         private void ShowButton(Rect position)
         {
@@ -154,51 +163,109 @@ namespace FutureEditor
 
         private void RefreshUI_UnityTool()
         {
-            // 左侧工具区域 - 增加宽度到250
-            GUILayout.BeginArea(new Rect(10, 35, 250, 800));
+            // ===== 左侧工具区域 - 宽度370，两列布局，高度500，y=25 =====
+            GUILayout.BeginArea(new Rect(10, 25, 370, 500), new GUIStyle("grey_border"));
 
-            // 添加滚动视图，防止按钮太多超出高度
-            unityToolScrollPos = GUILayout.BeginScrollView(unityToolScrollPos, GUILayout.Width(250), GUILayout.Height(450));
-
-            GUILayout.Label("Unity Editor", EditorStyles.boldLabel, GUILayout.Height(20));
+            // 内部区域
+            GUILayout.BeginArea(new Rect(5, 5, 360, 490));
+            GUILayout.Label("⚙️ Unity Editor 工具集", EditorStyles.boldLabel, GUILayout.Height(25));
             GUILayout.Space(10);
+
+            // 添加滚动视图 - 高度设置为470，几乎贴合底部
+            unityToolScrollPos = GUILayout.BeginScrollView(unityToolScrollPos, GUILayout.Width(360), GUILayout.Height(470));
+
+            // 内容区域 - 宽度设为350，小于360，避免横向滚动条
+            GUILayout.BeginVertical(GUILayout.Width(350));
+
+            // ===== 两列布局开始 =====
+            GUILayout.BeginHorizontal();
+
+            // 第一列
+            GUILayout.BeginVertical(GUILayout.Width(165));
 
             // ===== 基础操作 =====
             GUILayout.BeginVertical("box");
-            GUILayout.Label("基础操作", EditorStyles.boldLabel);
+            GUILayout.Label("⚡ 基础操作", EditorStyles.boldLabel);
+            GUILayout.Space(5);
 
-            if (GUILayout.Button("重启Unity", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("重启Unity", GUILayout.Height(30), GUILayout.Width(145)))
             {
                 UnityEditorTool.StartRest();
             }
 
-            if (GUILayout.Button("刷新Asset Database", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("刷新Asset DB", GUILayout.Height(30), GUILayout.Width(145)))
             {
                 AssetDatabase.Refresh();
                 Debug.Log("Asset Database 刷新完成");
             }
 
-            if (GUILayout.Button("强制重新导入所有资源", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("强制重新导入", GUILayout.Height(30), GUILayout.Width(145)))
             {
                 AssetDatabase.ImportAsset(Application.dataPath, ImportAssetOptions.ForceUpdate);
                 Debug.Log("资源强制重新导入中...");
             }
 
-            if (GUILayout.Button("清除控制台", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("清除控制台", GUILayout.Height(30), GUILayout.Width(145)))
             {
                 var logEntries = System.Type.GetType("UnityEditor.LogEntries, UnityEditor.dll");
                 logEntries.GetMethod("Clear").Invoke(null, null);
                 Debug.Log("控制台已清除");
             }
+
+            // 添加空按钮让滚动条出现
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
             GUILayout.EndVertical();
 
-            GUILayout.Space(10);
+            GUILayout.Space(5);
+
+            // ===== 编辑器设置 =====
+            GUILayout.BeginVertical("box");
+            GUILayout.Label("⚙️ 编辑器设置", EditorStyles.boldLabel);
+            GUILayout.Space(5);
+
+            bool debugMode = EditorPrefs.GetBool("DeveloperMode", false);
+            bool newDebugMode = GUILayout.Toggle(debugMode, "Debug模式", GUILayout.Height(20), GUILayout.Width(145));
+            if (newDebugMode != debugMode)
+            {
+                EditorPrefs.SetBool("DeveloperMode", newDebugMode);
+                Debug.Log($"Debug模式: {(newDebugMode ? "开启" : "关闭")}");
+            }
+
+            if (GUILayout.Button("重置布局", GUILayout.Height(30), GUILayout.Width(145)))
+            {
+                EditorUtility.DisplayDialog("提示", "窗口布局已重置", "确定");
+            }
+
+            if (GUILayout.Button("打开Editor日志", GUILayout.Height(30), GUILayout.Width(145)))
+            {
+                string editorLogPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Unity/Editor");
+                if (Directory.Exists(editorLogPath))
+                {
+                    Application.OpenURL(editorLogPath);
+                }
+            }
+
+            // 添加空按钮让滚动条出现
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            GUILayout.EndVertical();
+
+            GUILayout.EndVertical(); // 第一列结束
+
+            GUILayout.Space(5);
+
+            // 第二列
+            GUILayout.BeginVertical(GUILayout.Width(165));
 
             // ===== PlayerPrefs管理 =====
             GUILayout.BeginVertical("box");
-            GUILayout.Label("PlayerPrefs管理", EditorStyles.boldLabel);
+            GUILayout.Label("📦 PlayerPrefs", EditorStyles.boldLabel);
+            GUILayout.Space(5);
 
-            if (GUILayout.Button("清除所有PlayerPrefs", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("清除所有", GUILayout.Height(30), GUILayout.Width(145)))
             {
                 if (EditorUtility.DisplayDialog("确认", "确定要清除所有PlayerPrefs吗？", "确定", "取消"))
                 {
@@ -207,53 +274,35 @@ namespace FutureEditor
                 }
             }
 
-            if (GUILayout.Button("查看PlayerPrefs", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("查看位置", GUILayout.Height(30), GUILayout.Width(145)))
             {
-                // 打开PlayerPrefs查看器窗口
-                OpenPlayerPrefsViewer();
+                string message = "PlayerPrefs 存储位置:\n";
+                message += $"公司: {Application.companyName}\n";
+                message += $"产品: {Application.productName}\n\n";
+                message += "Windows注册表路径:\n";
+                message += @"HKEY_CURRENT_USER\Software\Unity\UnityEditor\" + Application.companyName + @"\" + Application.productName;
+                EditorUtility.DisplayDialog("PlayerPrefs 信息", message, "确定");
             }
+
+            if (GUILayout.Button("打开注册表", GUILayout.Height(30), GUILayout.Width(145)))
+            {
+                System.Diagnostics.Process.Start("regedit");
+            }
+
+            // 添加空按钮让滚动条出现
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
             GUILayout.EndVertical();
 
-            GUILayout.Space(10);
-
-            // ===== 编辑器设置 =====
-            GUILayout.BeginVertical("box");
-            GUILayout.Label("编辑器设置", EditorStyles.boldLabel);
-
-            bool debugMode = EditorPrefs.GetBool("DeveloperMode", false);
-            bool newDebugMode = GUILayout.Toggle(debugMode, "启用Debug模式", GUILayout.Height(25), GUILayout.Width(230));
-            if (newDebugMode != debugMode)
-            {
-                EditorPrefs.SetBool("DeveloperMode", newDebugMode);
-                Debug.Log($"Debug模式: {(newDebugMode ? "开启" : "关闭")}");
-            }
-
-            if (GUILayout.Button("重置窗口布局", GUILayout.Height(35), GUILayout.Width(230)))
-            {
-                EditorUtility.DisplayDialog("提示", "窗口布局已重置", "确定");
-            }
-
-            if (GUILayout.Button("打开Editor日志文件夹", GUILayout.Height(35), GUILayout.Width(230)))
-            {
-                string editorLogPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Unity/Editor");
-                if (Directory.Exists(editorLogPath))
-                {
-                    Application.OpenURL(editorLogPath);
-                }
-                else
-                {
-                    EditorUtility.DisplayDialog("提示", "日志文件夹不存在", "确定");
-                }
-            }
-            GUILayout.EndVertical();
-
-            GUILayout.Space(10);
+            GUILayout.Space(5);
 
             // ===== 项目清理 =====
             GUILayout.BeginVertical("box");
-            GUILayout.Label("项目清理", EditorStyles.boldLabel);
+            GUILayout.Label("🧹 项目清理", EditorStyles.boldLabel);
+            GUILayout.Space(5);
 
-            if (GUILayout.Button("清除Library缓存", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("清除Library", GUILayout.Height(30), GUILayout.Width(145)))
             {
                 string libraryPath = Path.Combine(Application.dataPath, "../Library");
                 if (Directory.Exists(libraryPath) && EditorUtility.DisplayDialog("警告",
@@ -264,7 +313,7 @@ namespace FutureEditor
                 }
             }
 
-            if (GUILayout.Button("清除Temp文件夹", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("清除Temp", GUILayout.Height(30), GUILayout.Width(145)))
             {
                 string tempPath = Path.Combine(Application.dataPath, "../Temp");
                 if (Directory.Exists(tempPath))
@@ -274,7 +323,7 @@ namespace FutureEditor
                 }
             }
 
-            if (GUILayout.Button("删除 .vs 文件夹", GUILayout.Height(35), GUILayout.Width(230)))
+            if (GUILayout.Button("删除 .vs", GUILayout.Height(30), GUILayout.Width(145)))
             {
                 string vsPath = Path.Combine(Application.dataPath, "../.vs");
                 if (Directory.Exists(vsPath))
@@ -283,34 +332,69 @@ namespace FutureEditor
                     Debug.Log(".vs 文件夹已删除");
                 }
             }
+
+            if (GUILayout.Button("删除 .vscode", GUILayout.Height(30), GUILayout.Width(145)))
+            {
+                string vscodePath = Path.Combine(Application.dataPath, "../.vscode");
+                if (Directory.Exists(vscodePath))
+                {
+                    Directory.Delete(vscodePath, true);
+                    Debug.Log(".vscode 文件夹已删除");
+                }
+            }
+
+            if (GUILayout.Button("删除解决方案", GUILayout.Height(30), GUILayout.Width(145)))
+            {
+                string projectPath = Path.GetDirectoryName(Application.dataPath);
+                string[] solutionFiles = Directory.GetFiles(projectPath, "*.sln");
+                string[] csprojFiles = Directory.GetFiles(projectPath, "*.csproj", SearchOption.AllDirectories);
+
+                foreach (string file in solutionFiles) File.Delete(file);
+                foreach (string file in csprojFiles) File.Delete(file);
+
+                Debug.Log("解决方案文件已删除");
+            }
+
+            // 添加大量空按钮让滚动条出现
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
+            if (GUILayout.Button(" ", GUILayout.Height(30), GUILayout.Width(145))) { }
             GUILayout.EndVertical();
+
+            GUILayout.EndVertical(); // 第二列结束
+            GUILayout.EndHorizontal(); // 两列布局结束
+
+            GUILayout.EndVertical(); // 内容区域结束
 
             GUILayout.EndScrollView();
             GUILayout.EndArea();
+            GUILayout.EndArea();
 
-            // AppName 和 AppDesc 区域
-            GUILayout.BeginArea(new Rect(550, 60, 300, 500));
-            GUILayout.BeginVertical();
+            // ===== AppName 和 AppDesc 区域 - 保持原位置不变 =====
+            GUILayout.BeginArea(new Rect(535, 30, 340, 200));
+            GUILayout.BeginVertical("box");
+            GUILayout.Label("📱 应用信息", EditorStyles.boldLabel);
+            GUILayout.Space(5);
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("AppName:", GUILayout.Width(80));
-            GUILayout.Space(30);
-            GUILayout.TextField(ProjectApp.AppFacade.AppName);
+            GUILayout.Label("AppName:", GUILayout.Width(70));
+            GUILayout.TextField(ProjectApp.AppFacade.AppName, GUILayout.Width(250));
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("AppDesc:", GUILayout.Width(80));
-            GUILayout.Space(30);
-            GUILayout.TextField(ProjectApp.AppFacade.AppDesc);
+            GUILayout.Label("AppDesc:", GUILayout.Width(70));
+            GUILayout.TextField(ProjectApp.AppFacade.AppDesc, GUILayout.Width(250));
             GUILayout.EndHorizontal();
-
+            GUILayout.Space(5);
             GUILayout.EndVertical();
             GUILayout.EndArea();
 
-            // 系统信息区域
-            GUILayout.BeginArea(new Rect(550, 150, 300, 350));
+            // ===== 系统信息区域 - 保持原位置不变 =====
+            GUILayout.BeginArea(new Rect(535, 240, 340, 280));
             GUILayout.BeginVertical("box");
-            GUILayout.Label("系统信息", EditorStyles.boldLabel);
+            GUILayout.Label("ℹ️ 系统信息", EditorStyles.boldLabel);
             GUILayout.Space(5);
 
             // Unity 版本
@@ -375,77 +459,92 @@ namespace FutureEditor
             GUILayout.Label(Application.productName);
             GUILayout.EndHorizontal();
 
+            GUILayout.Space(5);
             GUILayout.EndVertical();
             GUILayout.EndArea();
         }
-
-        private void OpenPlayerPrefsViewer()
-        {
-            // 简单的PlayerPrefs查看器
-            string message = "当前PlayerPrefs:\n\n";
-            // 注意：Unity没有直接获取所有Key的方法，这里只是示例
-            message += "Windows Editor 的 PlayerPrefs 存储在注册表中\n";
-            message += @"路径: HKEY_CURRENT_USER\Software\Unity\UnityEditor\" + Application.companyName + @"\" + Application.productName;
-            EditorUtility.DisplayDialog("PlayerPrefs 信息", message, "确定");
-        }
-
         #endregion
-
 
         #region GameTool
         private void RefreshUI_GameTool()
         {
+            // 给GameTool添加grey_border背景，高度500，y=25
+            GUILayout.BeginArea(new Rect(10, 25, 870, 500), new GUIStyle("grey_border"));
+            GUILayout.BeginArea(new Rect(10, 5, 850, 495));
+
+            // 这里调用GameToolView.OnGUI
             GameToolView.OnGUI();
+
+            GUILayout.EndArea();
+            GUILayout.EndArea();
         }
         #endregion
 
         #region CodeGenTool
         private void RefreshUI_CodeGenTool()
         {
-            GUILayout.BeginArea(new Rect(10, 35, 300, 800));
+            // 扩张到全界面宽度，高度500，y=25
+            GUILayout.BeginArea(new Rect(10, 25, 870, 500), new GUIStyle("grey_border"));
+            GUILayout.BeginArea(new Rect(10, 5, 850, 495));
             GUILayout.BeginVertical();
 
-            GUILayout.BeginVertical("box");
-            GUILayout.Label("MVC (根据UI驱动类型)", EditorStyles.boldLabel);
+            // 标题
+            GUILayout.Label("📝 代码生成工具", EditorStyles.boldLabel, GUILayout.Height(30));
+            GUILayout.Space(15);
 
-            if (GUILayout.Button("创建GUI_MVC代码模版", GUILayout.Height(40), GUILayout.Width(160)))
+            // 两列布局
+            GUILayout.BeginHorizontal();
+
+            // 第一列 - MVC工具
+            GUILayout.BeginVertical(GUILayout.Width(400));
+            GUILayout.BeginVertical("box");
+            GUILayout.Label("MVC代码生成器", EditorStyles.boldLabel);
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("UI驱动类型:", GUILayout.Width(100));
+            GUILayout.TextField("GUI", GUILayout.Width(200));
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("创建GUI_MVC代码模版", GUILayout.Height(40), GUILayout.Width(380)))
             {
                 MVC_CreadTool.OpenGUICread();
                 Close();
             }
             GUILayout.EndVertical();
-
-            GUILayout.Space(10);
-
-            GUILayout.BeginVertical("box");
-            GUILayout.Label("Visual Studio Editor", EditorStyles.boldLabel);
-
-            if (GUILayout.Button("删除VS解决方案", GUILayout.Height(40), GUILayout.Width(140)))
-            {
-                UnityEditorTool.DeleteSin();
-            }
             GUILayout.EndVertical();
 
-            GUILayout.Space(10);
+            GUILayout.Space(20);
 
+            // 第二列 - 编码转换工具
+            GUILayout.BeginVertical(GUILayout.Width(400));
             GUILayout.BeginVertical("box");
             GUILayout.Label("C#脚本编码转换", EditorStyles.boldLabel);
+            GUILayout.Space(10);
 
-            if (GUILayout.Button("转换所有脚本为UTF-8（无BOM）", GUILayout.Height(30), GUILayout.Width(240)))
+            if (GUILayout.Button("转换所有脚本为UTF-8（无BOM）", GUILayout.Height(35), GUILayout.Width(380)))
             {
                 ConvertScriptsToUTF8.ConvertAllToUTF8NoBOM();
             }
 
-            if (GUILayout.Button("转换所有脚本为UTF-8（带BOM）", GUILayout.Height(30), GUILayout.Width(240)))
+            GUILayout.Space(5);
+
+            if (GUILayout.Button("转换所有脚本为UTF-8（带BOM）", GUILayout.Height(35), GUILayout.Width(380)))
             {
                 ConvertScriptsToUTF8.ConvertAllToUTF8WithBOM();
             }
 
-            GUILayout.Space(5);
+            GUILayout.Space(10);
             EditorGUILayout.HelpBox("无BOM跨平台兼容性好，推荐使用", MessageType.Info);
+            GUILayout.EndVertical();
+            GUILayout.EndVertical();
+
+            GUILayout.EndHorizontal();
 
             GUILayout.EndVertical();
-            GUILayout.EndVertical();
+            GUILayout.EndArea();
             GUILayout.EndArea();
         }
         #endregion
@@ -453,15 +552,56 @@ namespace FutureEditor
         #region AutoRegisterTool
         private void RefreshUI_AutoRegisterTool()
         {
-            GUILayout.BeginArea(new Rect(10, 35, 200, 200));
-            if (GUILayout.Button("注册编辑器环境", GUILayout.Height(40), GUILayout.Width(180)))
+            // 扩张到全界面宽度，高度500，y=25
+            GUILayout.BeginArea(new Rect(10, 25, 870, 500), new GUIStyle("grey_border"));
+            GUILayout.BeginArea(new Rect(10, 5, 850, 495));
+            GUILayout.BeginVertical();
+
+            // 标题
+            GUILayout.Label("🔄 自动注册工具", EditorStyles.boldLabel, GUILayout.Height(30));
+            GUILayout.Space(20);
+
+            // 两列布局
+            GUILayout.BeginHorizontal();
+
+            // 第一列 - 编辑器环境
+            GUILayout.BeginVertical(GUILayout.Width(400));
+            GUILayout.BeginVertical("box");
+            GUILayout.Label("编辑器环境注册", EditorStyles.boldLabel);
+            GUILayout.Space(15);
+
+            if (GUILayout.Button("注册编辑器环境", GUILayout.Height(50), GUILayout.Width(380)))
             {
                 EditorAutoRegisterTool_Editor.AutoRegisterAll(Close);
             }
-            if (GUILayout.Button("自动注册项目数据", GUILayout.Height(40), GUILayout.Width(180)))
+
+            GUILayout.Space(10);
+            EditorGUILayout.HelpBox("注册编辑器相关的工具和配置", MessageType.Info);
+            GUILayout.EndVertical();
+            GUILayout.EndVertical();
+
+            GUILayout.Space(20);
+
+            // 第二列 - 项目数据
+            GUILayout.BeginVertical(GUILayout.Width(400));
+            GUILayout.BeginVertical("box");
+            GUILayout.Label("项目数据注册", EditorStyles.boldLabel);
+            GUILayout.Space(15);
+
+            if (GUILayout.Button("自动注册项目数据", GUILayout.Height(50), GUILayout.Width(380)))
             {
                 ProjectAutoRegisterTool.AutoRegisterAll(Close);
             }
+
+            GUILayout.Space(10);
+            EditorGUILayout.HelpBox("注册项目相关的数据和配置", MessageType.Info);
+            GUILayout.EndVertical();
+            GUILayout.EndVertical();
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.EndVertical();
+            GUILayout.EndArea();
             GUILayout.EndArea();
         }
         #endregion
@@ -476,9 +616,10 @@ namespace FutureEditor
 
         private void RefreshUI_OtherTool()
         {
-            GUILayout.BeginArea(new Rect(5, 25, 185, 465), new GUIStyle("grey_border"));
+            // 左边按钮列表 - 高度500，y=25
+            GUILayout.BeginArea(new Rect(5, 25, 185, 500), new GUIStyle("grey_border"));
 
-            GUILayout.BeginArea(new Rect(0, 2, 182, 460));
+            GUILayout.BeginArea(new Rect(0, 2, 182, 495));
             otherToolPos = GUILayout.BeginScrollView(otherToolPos, false, true, GUI.skin.horizontalScrollbar, GUI.skin.verticalScrollbar);
 
             foreach (var item in OtherTooDic)
@@ -510,7 +651,8 @@ namespace FutureEditor
             GUILayout.EndArea();
             GUILayout.EndArea();
 
-            GUILayout.BeginArea(new Rect(193, 25, 700, 465), new GUIStyle("FrameBox"));
+            // 右边界面 - 高度500，y=25
+            GUILayout.BeginArea(new Rect(200, 25, 680, 500), new GUIStyle("FrameBox"));
 
             otherToolPos2 = GUILayout.BeginScrollView(otherToolPos2);
 
@@ -600,7 +742,7 @@ namespace FutureEditor
 
         private void OnInfoDisplay()
         {
-            GUILayout.BeginVertical(GUILayout.Width(680));
+            GUILayout.BeginVertical(GUILayout.Width(650));
 
             GUILayout.BeginHorizontal(EditorStyles.toolbar);
             GUILayout.Label("🔍 搜索:", GUILayout.Width(50));
@@ -622,7 +764,7 @@ namespace FutureEditor
             GUILayout.Label("📋 实时日志", EditorStyles.boldLabel);
             GUILayout.Space(5);
 
-            infoScrollPos = GUILayout.BeginScrollView(infoScrollPos, GUILayout.Height(400));
+            infoScrollPos = GUILayout.BeginScrollView(infoScrollPos, GUILayout.Height(350));
 
             foreach (string log in logMessages)
             {

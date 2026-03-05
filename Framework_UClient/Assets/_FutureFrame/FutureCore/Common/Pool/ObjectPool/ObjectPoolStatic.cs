@@ -4,10 +4,10 @@ using System.Collections.Generic;
 namespace FutureCore
 {
     /// <summary>
-    /// ¾²Ì¬Àà³Ø
+    /// ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// ºóÃæ¿ÉÄÜÐèÒªÒ»¸öÀàÈ¥ÊÍ·Å³Ø×ÓµÄ×ÊÔ´£¬±ÜÃâÄÚ´æ¹ý¶à
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÒ»ï¿½ï¿½ï¿½ï¿½È¥ï¿½Í·Å³ï¿½ï¿½Óµï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½
     public static class ObjectPoolStatic<T> where T :new()
     {
         private static ObjectPool<T> _pool = new ObjectPool<T>();

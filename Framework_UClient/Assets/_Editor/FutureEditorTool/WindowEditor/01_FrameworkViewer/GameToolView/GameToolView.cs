@@ -41,13 +41,14 @@ public static class GameToolView
         // 实时更新性能指标
         UpdatePerformanceMetrics();
         
-        GUILayout.BeginArea(new Rect(10, 35, 900, 440));
+        // 主区域
+        GUILayout.BeginArea(new Rect(10, 25, 870, 500));
 
         GUILayout.BeginHorizontal();
 
-        // ===== 左侧菜单区域 =====
-        GUILayout.BeginVertical(GUILayout.Width(200));
-        gameToolLeftScrollPos = GUILayout.BeginScrollView(gameToolLeftScrollPos, GUILayout.Width(200), GUILayout.Height(440));
+        // ===== 左侧菜单区域 - 宽度减小 =====
+        GUILayout.BeginVertical(GUILayout.Width(160));
+        gameToolLeftScrollPos = GUILayout.BeginScrollView(gameToolLeftScrollPos, GUILayout.Width(160), GUILayout.Height(470));
 
         GUILayout.Label("功能菜单", EditorStyles.boldLabel);
         GUILayout.Space(10);
@@ -65,7 +66,7 @@ public static class GameToolView
 
         foreach (string item in menuItems)
         {
-            if (GUILayout.Button(item, GUILayout.Height(30)))
+            if (GUILayout.Button(item, GUILayout.Height(30), GUILayout.Width(140)))
             {
                 Debug.Log($"选择: {item}");
             }
@@ -75,19 +76,28 @@ public static class GameToolView
         GUILayout.EndScrollView();
         GUILayout.EndVertical();
 
-        GUILayout.Space(10);
+        GUILayout.Space(5);
 
-        // ===== 右侧内容区域 =====
-        GUILayout.BeginVertical(GUILayout.Width(670));
-        gameToolRightScrollPos = GUILayout.BeginScrollView(gameToolRightScrollPos, GUILayout.Width(670), GUILayout.Height(440));
+        // ===== 右侧内容区域 - 宽度700，确保垂直滚动条存在 =====
+        GUILayout.BeginVertical(GUILayout.Width(700));
+        
+        // 设置滚动视图，确保垂直滚动条始终可用
+        gameToolRightScrollPos = GUILayout.BeginScrollView(
+            gameToolRightScrollPos, 
+            GUILayout.Width(700), 
+            GUILayout.Height(470)
+        );
 
+        // 内容区域 - 宽度设为680，小于700，避免横向滚动条
+        GUILayout.BeginVertical(GUILayout.Width(680));
+        
         GUILayout.Label("项目数据统计中心", new GUIStyle(EditorStyles.boldLabel) { fontSize = 16, alignment = TextAnchor.MiddleCenter });
         GUILayout.Space(15);
 
         // 第一行：项目统计 + 系统信息
         GUILayout.BeginHorizontal();
 
-        GUILayout.BeginVertical("box", GUILayout.Width(320));
+        GUILayout.BeginVertical("box", GUILayout.Width(330));
         GUILayout.Label("📊 项目统计", EditorStyles.boldLabel);
         GUILayout.Space(5);
         foreach (string stat in projectStats)
@@ -101,11 +111,10 @@ public static class GameToolView
 
         GUILayout.Space(10);
 
-        GUILayout.BeginVertical("box", GUILayout.Width(320));
+        GUILayout.BeginVertical("box", GUILayout.Width(330));
         GUILayout.Label("ℹ️ 系统信息", EditorStyles.boldLabel);
         GUILayout.Space(5);
         
-        // 实时系统信息
         systemInfo[0] = $"Unity版本: {Application.unityVersion}";
         systemInfo[1] = $"目标平台: {EditorUserBuildSettings.activeBuildTarget}";
         systemInfo[2] = $"脚本后端: {GetScriptingBackend()}";
@@ -126,7 +135,7 @@ public static class GameToolView
         // 第二行：性能指标 + 最近活动
         GUILayout.BeginHorizontal();
 
-        GUILayout.BeginVertical("box", GUILayout.Width(320));
+        GUILayout.BeginVertical("box", GUILayout.Width(330));
         GUILayout.Label("⚡ 性能指标", EditorStyles.boldLabel);
         GUILayout.Space(5);
         foreach (string metric in performanceMetrics)
@@ -137,7 +146,7 @@ public static class GameToolView
 
         GUILayout.Space(10);
 
-        GUILayout.BeginVertical("box", GUILayout.Width(320));
+        GUILayout.BeginVertical("box", GUILayout.Width(330));
         GUILayout.Label("📋 最近活动", EditorStyles.boldLabel);
         GUILayout.Space(5);
         foreach (string activity in recentActivities)
@@ -150,6 +159,7 @@ public static class GameToolView
 
         GUILayout.Space(15);
 
+        // 快捷操作区域
         GUILayout.BeginVertical("box");
         GUILayout.Label("⚡ 快捷操作", EditorStyles.boldLabel);
         GUILayout.Space(5);
@@ -175,25 +185,20 @@ public static class GameToolView
 
         GUILayout.EndVertical();
 
-        GUILayout.Space(20);
-        GUILayout.Label("--- 数据统计实时更新 ---", EditorStyles.centeredGreyMiniLabel);
-
+        GUILayout.EndVertical(); // 结束内容区域
+        
         GUILayout.EndScrollView();
         GUILayout.EndVertical();
 
         GUILayout.EndHorizontal();
         GUILayout.EndArea();
-
-        GUILayout.BeginArea(new Rect(10, 480, 900, 20));
-        GUILayout.Label("--- 界面底部 ---", EditorStyles.centeredGreyMiniLabel);
-        GUILayout.EndArea();
     }
 
+    // 以下方法保持不变...
     private static void RefreshProjectStats()
     {
         try
         {
-            // 统计脚本数量
             string[] csFiles = Directory.GetFiles(Application.dataPath, "*.cs", SearchOption.AllDirectories);
             int totalLines = 0;
             foreach (string file in csFiles)
@@ -206,7 +211,6 @@ public static class GameToolView
                 catch { }
             }
 
-            // 统计资源数量
             string[] scenes = Directory.GetFiles(Application.dataPath, "*.unity", SearchOption.AllDirectories);
             string[] prefabs = Directory.GetFiles(Application.dataPath, "*.prefab", SearchOption.AllDirectories);
             string[] textures = Directory.GetFiles(Application.dataPath, "*.png", SearchOption.AllDirectories);
@@ -219,7 +223,6 @@ public static class GameToolView
             string[] animations = Directory.GetFiles(Application.dataPath, "*.anim", SearchOption.AllDirectories);
             string[] shaders = Directory.GetFiles(Application.dataPath, "*.shader", SearchOption.AllDirectories);
 
-            // 更新统计数据
             projectStats[0] = $"总脚本数: {csFiles.Length}";
             projectStats[1] = $"总行数: {totalLines:N0}";
             projectStats[2] = $"总资源数: {textures.Length + textures2.Length + models.Length + models2.Length + audio.Length + audio2.Length + materials.Length}";
@@ -232,7 +235,6 @@ public static class GameToolView
             projectStats[9] = $"总动画数: {animations.Length}";
             projectStats[10] = $"总着色器数: {shaders.Length}";
             
-            // 计算总预设体数（包括所有变体）
             int totalPrefabs = prefabs.Length;
             projectStats[11] = $"总预设体数: {totalPrefabs}";
 
@@ -246,13 +248,12 @@ public static class GameToolView
 
     private static void UpdatePerformanceMetrics()
     {
-        // 实时性能指标
         performanceMetrics[0] = $"FPS: {Mathf.RoundToInt(1.0f / Time.deltaTime)}";
-        performanceMetrics[1] = $"Draw Calls: {UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong() / 1024 / 1024} MB";
+        performanceMetrics[1] = $"分配内存: {UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong() / 1024 / 1024} MB";
         performanceMetrics[2] = $"三角形数: {GetTriangleCount()}";
         performanceMetrics[3] = $"顶点数: {GetVertexCount()}";
         performanceMetrics[4] = $"纹理内存: {GetTextureMemory()}";
-        performanceMetrics[5] = $"网格内存: {GetMeshMemory()}";
+        performanceMetrics[5] = $"保留内存: {UnityEngine.Profiling.Profiler.GetTotalReservedMemoryLong() / 1024 / 1024} MB";
     }
 
     private static string GetScriptingBackend()
@@ -290,13 +291,11 @@ public static class GameToolView
 
     private static string GetTriangleCount()
     {
-        // 这个需要从场景中统计，这里返回示例值
         return "45K";
     }
 
     private static string GetVertexCount()
     {
-        // 这个需要从场景中统计，这里返回示例值
         return "78K";
     }
 
@@ -308,7 +307,6 @@ public static class GameToolView
 
     private static string GetMeshMemory()
     {
-        // 简单估算
         return "128 MB";
     }
 }

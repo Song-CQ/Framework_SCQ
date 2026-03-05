@@ -1,4 +1,4 @@
-﻿using FairyGUI;
+using FairyGUI;
 using UnityEngine;
 
 public class JoystickModule : EventDispatcher

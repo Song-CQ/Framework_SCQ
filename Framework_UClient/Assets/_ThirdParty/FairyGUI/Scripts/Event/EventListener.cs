@@ -1,4 +1,4 @@
-﻿#if FAIRYGUI_TOLUA
+#if FAIRYGUI_TOLUA
 using LuaInterface;
 #endif
 

@@ -1,9 +1,9 @@
 /****************************************************
-    ÎÄ¼þ: ListView.cs
-    ×÷Õß: Clear
-    ÈÕÆÚ: 2026/2/6 1:35:24
-    ÀàÐÍ: UI
-    ¹¦ÄÜ: »ù´¡»¬¶¯ÁÐ±í
+    ï¿½Ä¼ï¿½: ListView.cs
+    ï¿½ï¿½ï¿½ï¿½: Clear
+    ï¿½ï¿½ï¿½ï¿½: 2026/2/6 1:35:24
+    ï¿½ï¿½ï¿½ï¿½: UI
+    ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 *****************************************************/
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +17,7 @@ namespace FutureCore
 {
 
     /// <summary>
-    /// »ù´¡»¬¶¯ÁÐ±í £¨Ö»ÐèÒª´«ÊýÁÐ±í £¬ item±ØÐë¼Ì³ÐUI_ListBaseItem£©
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ ï¿½ï¿½Ö»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ ï¿½ï¿½ itemï¿½ï¿½ï¿½ï¿½Ì³ï¿½UI_ListBaseItemï¿½ï¿½
     /// </summary>
     public class UI_List : MonoBehaviour
     {
@@ -31,7 +31,7 @@ namespace FutureCore
         }
 
 
-        [TitleGroup("×é¼þÒýÓÃ")]
+        [TitleGroup("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
         [Required]
 
         [SerializeField] private ScrollRect scrollRect;
@@ -52,52 +52,52 @@ namespace FutureCore
 
 
 
-        [TitleGroup("ÁÐ±íÉèÖÃ")]
+        [TitleGroup("ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½")]
 
-        [LabelText("ÐéÄâÁÐ±í")]
-        [SerializeField] private bool isVirtual = false; // ÊÇ·ñÐéÄâÁÐ±í
-        [FoldoutGroup("ÐéÄâÁÐ±í"), LabelText("»º³åÇøÊýÁ¿"), ShowIf("@isVirtual")]
-        [SerializeField] private int bufferSize = 2; // »º³åÇøÊýÁ¿
-        [FoldoutGroup("ÐéÄâÁÐ±í"), LabelText("Ô¤¼ÓÔØÊýÁ¿"), ShowIf("@isVirtual")]
-        [SerializeField] private int preloadItemSum = 5; // Ô¤¼ÓÔØÊýÁ¿
+        [LabelText("ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½")]
+        [SerializeField] private bool isVirtual = false; // ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+        [FoldoutGroup("ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½"), LabelText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), ShowIf("@isVirtual")]
+        [SerializeField] private int bufferSize = 2; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        [FoldoutGroup("ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½"), LabelText("Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), ShowIf("@isVirtual")]
+        [SerializeField] private int preloadItemSum = 5; // Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
-        [FoldoutGroup("ÊÓ´°ÉèÖÃ")]
-        [LabelText("×Ô¶¨Òå»¬¶¯ÉèÖÃ"), FoldoutGroup("ÊÓ´°ÉèÖÃ")]
+        [FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½")]
+        [LabelText("ï¿½Ô¶ï¿½ï¿½å»¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½")]
         [SerializeField] private bool useViewMovement = false;
-        [LabelText("ÊÓ´°ÒÆ¶¯ÀàÐÍ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useViewMovement")]
+        [LabelText("ï¿½Ó´ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½"), FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½"), ShowIf("@useViewMovement")]
         [SerializeField] private ScrollRect.MovementType movementType = ScrollRect.MovementType.Elastic;
 
-        [LabelText("µ¯ÐÔÏµÊý"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useViewMovement && movementType == ScrollRect.MovementType.Elastic")]
+        [LabelText("ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½"), FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½"), ShowIf("@useViewMovement && movementType == ScrollRect.MovementType.Elastic")]
         [SerializeField] private float elasticity = 0.1f;
 
-        [LabelText("ÊÓ´°Æ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ")]
+        [LabelText("ï¿½Ó´ï¿½Æ«ï¿½ï¿½"), FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½")]
         [SerializeField] private bool useContentPadding = false;
 
-        // µ± useContentPadding Îª true Ê±²ÅÏÔÊ¾Õâ¸öÕÛµþ×é
-        [LabelText("ÊÓ´° ×óÆ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useContentPadding")]
+        // ï¿½ï¿½ useContentPadding Îª true Ê±ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½
+        [LabelText("ï¿½Ó´ï¿½ ï¿½ï¿½Æ«ï¿½ï¿½"), FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½"), ShowIf("@useContentPadding")]
         [SerializeField] private int padding_Left;
-        [LabelText("ÊÓ´° ÓÒÆ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useContentPadding")]
+        [LabelText("ï¿½Ó´ï¿½ ï¿½ï¿½Æ«ï¿½ï¿½"), FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½"), ShowIf("@useContentPadding")]
         [SerializeField] private int padding_Right;
-        [LabelText("ÊÓ´° ÉÏÆ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useContentPadding")]
+        [LabelText("ï¿½Ó´ï¿½ ï¿½ï¿½Æ«ï¿½ï¿½"), FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½"), ShowIf("@useContentPadding")]
         [SerializeField] private int padding_Top;
-        [LabelText("ÊÓ´° ÏÂÆ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useContentPadding")]
+        [LabelText("ï¿½Ó´ï¿½ ï¿½ï¿½Æ«ï¿½ï¿½"), FoldoutGroup("ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½"), ShowIf("@useContentPadding")]
         [SerializeField] private int padding_Bottom;
 
 
 
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("¼ä¸ô")]
+        [FoldoutGroup("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), LabelText("ï¿½ï¿½ï¿½")]
         [SerializeField] private Vector2 spacing;
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("Ê¹ÓÃ×ÓÎïÌå×ÔÉí Size")]
+        [FoldoutGroup("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), LabelText("Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Size")]
         [SerializeField] private bool useItemSize = true;
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("Item Width"), HideIf("useItemSize")]
+        [FoldoutGroup("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), LabelText("Item Width"), HideIf("useItemSize")]
         [SerializeField] private float itemWidth = 100f;
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("Item Height"), HideIf("useItemSize")]
+        [FoldoutGroup("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), LabelText("Item Height"), HideIf("useItemSize")]
         [SerializeField] private float itemHeight = 100f;
 
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("ÅÅÐò·½Ê½")]
+        [FoldoutGroup("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), LabelText("ï¿½ï¿½ï¿½ï¿½Ê½")]
         [SerializeField] private LayoutGroupType layoutGroupType = LayoutGroupType.Horizontal;
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("×ÓÎïÌå¶ÔÆëÃªµã")]
+        [FoldoutGroup("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), LabelText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãªï¿½ï¿½")]
         [SerializeField] private TextAnchor anchor = TextAnchor.LowerLeft;
 
 
@@ -226,7 +226,7 @@ namespace FutureCore
 
             if (isVirtual)
             {
-                // ×¼±¸¶ÔÏó³Ø
+                // ×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 PreparePool(preloadItemSum);
             }
 
@@ -285,7 +285,7 @@ namespace FutureCore
 
         void RefreshList()
         {
-            // Çå¿Õµ±Ç°ÏÔÊ¾Ïî
+            // ï¿½ï¿½Õµï¿½Ç°ï¿½ï¿½Ê¾ï¿½ï¿½
             foreach (var item in activeItems)
             {
                 ReturnToPool(item);
@@ -303,20 +303,20 @@ namespace FutureCore
 
             if (isVirtual)
             {
-                // ¼ÆËãÄÚÈÝ¸ß¶È
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ß¶ï¿½
                 float contentHeight = totalItems * itemHeight + (totalItems - 1) * spacing.x;
                 content.sizeDelta = new Vector2(content.sizeDelta.x, contentHeight);
 
-                // ¼ÆËã¿É¼ûÏîÊýÁ¿
+                // ï¿½ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
                 visibleItems = Mathf.CeilToInt(viewportHeight / (itemHeight + spacing.x)) + bufferSize * 2;
                 visibleItems = Mathf.Min(visibleItems, totalItems);
             }
 
-            // ÏÔÊ¾³õÊ¼Ïî
+            // ï¿½ï¿½Ê¾ï¿½ï¿½Ê¼ï¿½ï¿½
             currentFirstIndex = 0;
 
-            //Ë¢ÐÂµ±Ç°ÏÔÊ¾µÄItemÊý¾Ý
+            //Ë¢ï¿½Âµï¿½Ç°ï¿½ï¿½Ê¾ï¿½ï¿½Itemï¿½ï¿½ï¿½ï¿½
             RefreshCurrentShowItems();
 
         }
@@ -341,19 +341,19 @@ namespace FutureCore
             }
 
 
-            // ¼ÆËãÓ¦¸ÃÏÔÊ¾µÄµÚÒ»¸öË÷Òý
+            // ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Äµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             float scrollPos = content.anchoredPosition.y;
             int newFirstIndex = Mathf.FloorToInt(scrollPos / (itemHeight + spacing.x));
             newFirstIndex = Mathf.Max(0, newFirstIndex - bufferSize);
 
-            // Èç¹ûË÷ÒýÃ»±ä»¯£¬²»¸üÐÂ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ä»¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (newFirstIndex == currentFirstIndex) return;
 
-            // ¸üÐÂË÷Òý
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             int oldFirstIndex = currentFirstIndex;
             currentFirstIndex = newFirstIndex;
 
-            // »ØÊÕ²»ÔÙÏÔÊ¾µÄÏî
+            // ï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
             for (int i = activeItems.Count - 1; i >= 0; i--)
             {
                 int itemIndex = (int)activeItems[i].GetComponent<BaseUIList_Item>().Index;
@@ -364,7 +364,7 @@ namespace FutureCore
                 }
             }
 
-            // Ìí¼ÓÐÂÏî
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             for (int i = currentFirstIndex; i < currentFirstIndex + visibleItems; i++)
             {
                 if (i >= totalItems) break;
@@ -393,7 +393,7 @@ namespace FutureCore
                     }
                     listItem.Initialize(i, itemData); 
 
-                    // ÉèÖÃÎ»ÖÃ
+                    // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
                     float yPos = -i * (itemHeight + spacing.x);
                     (item.transform as RectTransform).anchoredPosition = new Vector2(0, yPos);
 

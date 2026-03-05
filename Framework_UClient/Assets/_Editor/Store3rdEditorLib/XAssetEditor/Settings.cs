@@ -32,7 +32,7 @@ namespace Plugins.XAsset.Editor
 {
     public class Settings : ScriptableObject
     {
-        // [ÐÞ¸Ä]
+        // [ï¿½Þ¸ï¿½]
         public bool runtimeMode = true;
         public bool localServer = true;
         public string assetRootPath = "Assets/_Res/Resources/";

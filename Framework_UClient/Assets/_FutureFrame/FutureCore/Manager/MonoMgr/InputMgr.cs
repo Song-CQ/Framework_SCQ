@@ -5,130 +5,130 @@ using UnityEngine.EventSystems;
 namespace FutureCore
 {
     /// <summary>
-    /// ÊäÈë¹ÜÀíÆ÷ - Í³Ò»¹ÜÀí´¥Ãþ¡¢µã»÷¡¢»¬¶¯¡¢ÍÏ×§µÈÊäÈëÊÂ¼þ
-    /// µ¥ÀýÄ£Ê½£¬¼Ì³Ð×ÔBaseMonoMgr£¬È·±£È«¾ÖÎ¨Ò»
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - Í³Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+    /// ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½BaseMonoMgrï¿½ï¿½È·ï¿½ï¿½È«ï¿½ï¿½Î¨Ò»
     /// </summary>
     public sealed class InputMgr : BaseMonoMgr<InputMgr>
     {
         /// <summary>
-        /// ÊÇ·ñºöÂÔUI¼ì²â£¨¼´Ê¹µã»÷ÔÚUIÉÏÒ²´¥·¢ÊÂ¼þ£©
-        /// Ä¬ÈÏfalse£ºµã»÷ÔÚUIÉÏ²»´¥·¢ÊÂ¼þ
-        /// true£º¼´Ê¹µã»÷ÔÚUIÉÏÒ²´¥·¢ÊÂ¼þ
+        /// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½â£¨ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
+        /// Ä¬ï¿½ï¿½falseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+        /// trueï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         /// </summary>
         public static bool IgnoreUICheck { get; set; } = false;
 
-        // ==================== ÊÂ¼þ¶¨ÒåÇøÓò ====================
+        // ==================== ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ====================
 
-        /// <summary>È«¾Öµã»÷ÊÂ¼þ£¬ÈÎºÎµã»÷¶¼»á´¥·¢£¨°üÀ¨µã»÷ÔÚUIÉÏ£©</summary>
+        /// <summary>È«ï¿½Öµï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ÎºÎµï¿½ï¿½ï¿½ï¿½ï¿½á´¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½Ï£ï¿½</summary>
         public static event Action<Vector2> OnScreenClick;
 
-        // µã»÷Ïà¹ØÊÂ¼þ
-        /// <summary>ÆÁÄ»µã»÷ÊÂ¼þ£¬²ÎÊýÎªµã»÷µÄÆÁÄ»×ø±ê(Vector2)</summary>
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+        /// <summary>ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½(Vector2)</summary>
         public static event Action<Vector2> OnClick;
-        /// <summary>ÓÎÏ·¶ÔÏóµã»÷ÊÂ¼þ£¬²ÎÊýÎª±»µã»÷µÄGameObject</summary>
+        /// <summary>ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GameObject</summary>
         public static event Action<GameObject> OnGameObjectClick;
 
-        // »¬¶¯Ïà¹ØÊÂ¼þ
-        /// <summary>ÍêÕû»¬¶¯ÊÂ¼þ£¬²ÎÊý£º»¬¶¯·½Ïò¡¢ÆðÊ¼×ø±ê¡¢½áÊø×ø±ê</summary>
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+        /// <summary>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ê¡¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</summary>
         public static event Action<SwipeDirection, Vector2, Vector2> OnSwipe;
-        /// <summary>¼ò»¯»¬¶¯ÊÂ¼þ£¬²ÎÊý£º½ö»¬¶¯·½Ïò</summary>
+        /// <summary>ï¿½ò»¯»ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</summary>
         public static event Action<SwipeDirection> OnSwipeSimple;
 
-        // ³¤°´Ïà¹ØÊÂ¼þ
-        /// <summary>³¤°´ÊÂ¼þ£¬²ÎÊý£º³¤°´Î»ÖÃµÄÆÁÄ»×ø±ê</summary>
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+        /// <summary>ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ãµï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½</summary>
         public static event Action<Vector2> OnLongPress;
 
-        // ÍÏ×§Ïà¹ØÊÂ¼þ
-        /// <summary>ÍÏ×§¿ªÊ¼ÊÂ¼þ£¬²ÎÊý£ºÆðÊ¼×ø±ê¡¢µ±Ç°×ø±ê</summary>
+        // ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+        /// <summary>ï¿½ï¿½×§ï¿½ï¿½Ê¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ê¡¢ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½</summary>
         public static event Action<Vector2, Vector2> OnDragStart;
-        /// <summary>ÍÏ×§¹ý³ÌÖÐÊÂ¼þ£¬²ÎÊý£ºÉÏÒ»Ö¡×ø±ê¡¢µ±Ç°×ø±ê</summary>
+        /// <summary>ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ö¡ï¿½ï¿½ï¿½ê¡¢ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½</summary>
         public static event Action<Vector2, Vector2> OnDrag;
-        /// <summary>ÍÏ×§½áÊøÊÂ¼þ£¬²ÎÊý£ºÉÏÒ»Ö¡×ø±ê¡¢½áÊø×ø±ê</summary>
+        /// <summary>ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ö¡ï¿½ï¿½ï¿½ê¡¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</summary>
         public static event Action<Vector2, Vector2> OnDragEnd;
 
-        // ==================== Ë«Ö¸ÊÂ¼þÇøÓò ====================
+        // ==================== Ë«Ö¸ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ ====================
 
-        /// <summary>Ë«Ö¸Ëõ·ÅÊÂ¼þ£¬²ÎÊý£ºËõ·ÅÔöÁ¿(ÏñËØ)</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)</summary>
         public static event Action<float> OnPinchZoom;
-        /// <summary>Ë«Ö¸Ðý×ªÊÂ¼þ£¬²ÎÊý£ºÐý×ª½Ç¶ÈÔöÁ¿</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½×ªï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½</summary>
         public static event Action<float> OnTwoFingerRotate;
-        /// <summary>Ë«Ö¸»¬¶¯ÊÂ¼þ£¬²ÎÊý£º»¬¶¯ÏòÁ¿</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</summary>
         public static event Action<Vector2> OnTwoFingerDrag;
-        /// <summary>Ë«Ö¸µã»÷ÊÂ¼þ£¬²ÎÊý£ºË«Ö¸ÖÐÐÄµã</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½Äµï¿½</summary>
         public static event Action<Vector2> OnTwoFingerTap;
-        /// <summary>Ë«Ö¸³¤°´ÊÂ¼þ£¬²ÎÊý£ºË«Ö¸ÖÐÐÄµã</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½Äµï¿½</summary>
         public static event Action<Vector2> OnTwoFingerLongPress;
-        /// <summary>Ë«Ö¸¿ªÊ¼´¥ÃþÊÂ¼þ</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½</summary>
         public static event Action OnTwoFingerTouchStart;
-        /// <summary>Ë«Ö¸½áÊø´¥ÃþÊÂ¼þ</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½</summary>
         public static event Action OnTwoFingerTouchEnd;
 
-        // ==================== ÅäÖÃ³£Á¿ÇøÓò ====================
+        // ==================== ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ====================
 
-        /// <summary>×îÐ¡»¬¶¯¾àÀë(ÏñËØ)£¬µÍÓÚ´Ë¾àÀëÊÓÎªµã»÷</summary>
+        /// <summary>ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½Ú´Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½</summary>
         private const float MIN_SWIPE_DISTANCE = 50f;
-        /// <summary>×î´ó»¬¶¯Ê±¼ä(Ãë)£¬³¬¹ý´ËÊ±¼äÊÓÎªÎÞÐ§»¬¶¯</summary>
+        /// <summary>ï¿½ï¿½ó»¬¶ï¿½Ê±ï¿½ï¿½(ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½</summary>
         private const float MAX_SWIPE_TIME = 0.7f;
-        /// <summary>³¤°´ÅÐ¶¨Ê±¼ä(Ãë)£¬°´×¡³¬¹ý´ËÊ±¼ä´¥·¢³¤°´ÊÂ¼þ</summary>
+        /// <summary>ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ê±ï¿½ï¿½(ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä´¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½</summary>
         private const float LONG_PRESS_TIME = 1.0f;
-        /// <summary>ÍÏ×§ÅÐ¶¨¾àÀë(ÏñËØ)£¬ÒÆ¶¯³¬¹ý´Ë¾àÀëÊÓÎªÍÏ×§¿ªÊ¼</summary>
+        /// <summary>ï¿½ï¿½×§ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½×§ï¿½ï¿½Ê¼</summary>
         private const float DRAG_START_DISTANCE = 5f;
-        /// <summary>µã»÷ÅÐ¶¨¾àÀë(ÏñËØ)£¬ÒÆ¶¯¾àÀëÐ¡ÓÚ´ËÖµÊÓÎªµã»÷</summary>
+        /// <summary>ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ú´ï¿½Öµï¿½ï¿½Îªï¿½ï¿½ï¿½</summary>
         private const float CLICK_DISTANCE_THRESHOLD = 10f;
 
-        // ==================== Ë«Ö¸ÅäÖÃ³£Á¿ ====================
+        // ==================== Ë«Ö¸ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ ====================
 
-        /// <summary>Ë«Ö¸µã»÷ÅÐ¶¨Ê±¼ä(Ãë)</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ê±ï¿½ï¿½(ï¿½ï¿½)</summary>
         private const float TWO_FINGER_TAP_TIME = 0.3f;
-        /// <summary>Ë«Ö¸³¤°´ÅÐ¶¨Ê±¼ä(Ãë)</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ê±ï¿½ï¿½(ï¿½ï¿½)</summary>
         private const float TWO_FINGER_LONG_PRESS_TIME = 1.0f;
-        /// <summary>Ë«Ö¸Ëõ·ÅÁéÃô¶ÈÏµÊý</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½</summary>
         private const float PINCH_ZOOM_SENSITIVITY = 0.01f;
-        /// <summary>Ë«Ö¸Ðý×ªÁéÃô¶ÈÏµÊý</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½</summary>
         private const float ROTATE_SENSITIVITY = 0.5f;
-        /// <summary>Ë«Ö¸»¬¶¯ÁéÃô¶ÈÏµÊý</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½</summary>
         private const float TWO_FINGER_DRAG_SENSITIVITY = 0.01f;
 
-        // ==================== ×´Ì¬±äÁ¿ÇøÓò ====================
+        // ==================== ×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ====================
 
-        /// <summary>´¥Ãþ¿ªÊ¼Ê±µÄÆÁÄ»×ø±ê</summary>
+        /// <summary>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Ê±ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½</summary>
         private Vector2 touchStartPos;
-        /// <summary>ÉÏÒ»´Î¼ÇÂ¼µÄ´¥Ãþ×ø±ê£¨ÓÃÓÚÍÏ×§ÔöÁ¿¼ÆËã£©</summary>
+        /// <summary>ï¿½ï¿½Ò»ï¿½Î¼ï¿½Â¼ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£©</summary>
         private Vector2 lastTouchPos;
-        /// <summary>´¥Ãþ¿ªÊ¼µÄÊ±¼ä´Á</summary>
+        /// <summary>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½</summary>
         private float touchStartTime;
-        /// <summary>ÊÇ·ñÕýÔÚ´¥ÃþÖÐ</summary>
+        /// <summary>ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½</summary>
         private bool isTouching = false;
-        /// <summary>ÊÇ·ñÕýÔÚÍÏ×§ÖÐ</summary>
+        /// <summary>ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§ï¿½ï¿½</summary>
         private bool isDragging = false;
-        /// <summary>³¤°´ÊÂ¼þÊÇ·ñÒÑ´¥·¢£¨·ÀÖ¹ÖØ¸´´¥·¢£©</summary>
+        /// <summary>ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ç·ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</summary>
         private bool isLongPressInvoked = false;
 
-        // ==================== Ë«Ö¸×´Ì¬±äÁ¿ ====================
+        // ==================== Ë«Ö¸×´Ì¬ï¿½ï¿½ï¿½ï¿½ ====================
 
         /// <summary>Ë«Ö¸×´Ì¬</summary>
         private TwoFingerState twoFingerState = TwoFingerState.None;
-        /// <summary>Ë«Ö¸¿ªÊ¼´¥ÃþÊ±¼ä</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½</summary>
         private float twoFingerStartTime;
-        /// <summary>Ë«Ö¸ÉÏÒ»Ö¡µÄ¾àÀë</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½Ò»Ö¡ï¿½Ä¾ï¿½ï¿½ï¿½</summary>
         private float previousTwoFingerDistance;
-        /// <summary>Ë«Ö¸ÉÏÒ»Ö¡µÄ½Ç¶È</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½Ò»Ö¡ï¿½Ä½Ç¶ï¿½</summary>
         private float previousTwoFingerAngle;
-        /// <summary>Ë«Ö¸ÉÏÒ»Ö¡µÄÖÐÐÄµã</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½Ò»Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½</summary>
         private Vector2 previousTwoFingerCenter;
-        /// <summary>Ë«Ö¸ÊÇ·ñÓÐÐ§£¨ÒÑ³õÊ¼»¯£©</summary>
+        /// <summary>Ë«Ö¸ï¿½Ç·ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ñ³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½</summary>
         private bool isTwoFingerValid = false;
-        /// <summary>Ë«Ö¸³¤°´ÊÇ·ñÒÑ´¥·¢</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½</summary>
         private bool isTwoFingerLongPressInvoked = false;
-        /// <summary>Ë«Ö¸µã»÷ÆðÊ¼Î»ÖÃ1</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½1</summary>
         private Vector2 twoFingerStartPos1;
-        /// <summary>Ë«Ö¸µã»÷ÆðÊ¼Î»ÖÃ2</summary>
+        /// <summary>Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½2</summary>
         private Vector2 twoFingerStartPos2;
 
-        // ==================== ÉúÃüÖÜÆÚ·½·¨ ====================
+        // ==================== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ ====================
 
         /// <summary>
-        /// ³õÊ¼»¯·½·¨£¬ÓÉ¿ò¼Ü×Ô¶¯µ÷ÓÃ
+        /// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¿ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public override void Init()
         {
@@ -136,64 +136,64 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// UnityÃ¿Ö¡¸üÐÂ£¬´¦ÀíÊäÈëÊÂ¼þ
+        /// UnityÃ¿Ö¡ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         /// </summary>
         private void Update()
         {
-            // ¼ì²é¹ÜÀíÆ÷×´Ì¬£¬Î´Æô¶¯»òÒÑÏú»ÙÔò²»´¦ÀíÊäÈë
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò²»´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (!IsStartUp || IsDispose) return;
 
-            // ´¦ÀíË«Ö¸´¥Ãþ
+            // ï¿½ï¿½ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½ï¿½
             HandleTwoFingerInput();
 
-            // ´¦Àíµ¥Ö¸´¥Ãþ£¨½öÔÚÎÞË«Ö¸Ê±´¦Àí£©
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«Ö¸Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
             if (Input.touchCount <= 1)
             {
                 HandleSingleTouchInput();
             }
         }
 
-        // ==================== µ¥Ö¸ÊäÈë´¦Àí·½·¨ ====================
+        // ==================== ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ë´¦ï¿½ï¿½ï¿½ï¿½ï¿½ ====================
 
         /// <summary>
-        /// ´¦Àíµ¥Ö¸ÊäÈëÊÂ¼þ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         /// </summary>
         private void HandleSingleTouchInput()
         {
-            // Êó±ê/´¥Ãþ¿ªÊ¼
+            // ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼
             if (Input.GetMouseButtonDown(0))
             {
                 StartTouch(Input.mousePosition);
             }
 
-            // Êó±ê/´¥Ãþ³ÖÐø£¨°´×¡×´Ì¬£©
+            // ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡×´Ì¬ï¿½ï¿½
             if (isTouching)
             {
                 Vector2 currentPos = Input.mousePosition;
 
-                // ÍÏ×§¼ì²â£ºÈç¹ûÒÆ¶¯¾àÀë³¬¹ýãÐÖµ£¬Ôò¿ªÊ¼ÍÏ×§
+                // ï¿½ï¿½×§ï¿½ï¿½â£ºï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ë³¬ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½×§
                 if (!isDragging && Vector2.Distance(touchStartPos, currentPos) > DRAG_START_DISTANCE)
                 {
                     StartDrag();
                 }
 
-                // ÍÏ×§¹ý³ÌÖÐ£¬Ã¿Ö¡´¥·¢ÍÏ×§ÊÂ¼þ
+                // ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½Ã¿Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§ï¿½Â¼ï¿½
                 if (isDragging)
                 {
                     UpdateDrag(currentPos);
                 }
 
-                // ³¤°´¼ì²â£ºÈç¹û°´×¡Ê±¼ä³¬¹ýãÐÖµÇÒÎ´´¥·¢¹ý³¤°´ÊÂ¼þ
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£ºï¿½ï¿½ï¿½ï¿½ï¿½×¡Ê±ï¿½ä³¬ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
                 if (!isLongPressInvoked && Time.time - touchStartTime > LONG_PRESS_TIME)
                 {
                     TriggerLongPress();
                 }
 
-                // ¼ÇÂ¼µ±Ç°×ø±ê£¬ÓÃÓÚÏÂÒ»Ö¡¼ÆËãÔöÁ¿
+                // ï¿½ï¿½Â¼ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 lastTouchPos = currentPos;
             }
 
-            // Êó±ê/´¥Ãþ½áÊø
+            // ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (Input.GetMouseButtonUp(0) && isTouching)
             {
                 EndTouch(Input.mousePosition);
@@ -201,17 +201,17 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ¿ªÊ¼´¥Ãþ´¦Àí
+        /// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        /// <param name="position">´¥Ãþ¿ªÊ¼µÄÆÁÄ»×ø±ê</param>
+        /// <param name="position">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½</param>
         private void StartTouch(Vector2 position)
         {
             OnScreenClick?.Invoke(position);
 
-            // ¼ì²éÊÇ·ñµã»÷ÔÚUIÉÏ£¬Èç¹ûÊÇÔòºöÂÔ´Ë´Î´¥Ãþ
+            // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ë´Î´ï¿½ï¿½ï¿½
             if (!IgnoreUICheck && IsPointerOverUI()) return;
 
-            // ¼ÇÂ¼´¥ÃþÐÅÏ¢
+            // ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
             touchStartPos = position;
             lastTouchPos = position;
             touchStartTime = Time.time;
@@ -221,75 +221,75 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ¿ªÊ¼ÍÏ×§
+        /// ï¿½ï¿½Ê¼ï¿½ï¿½×§
         /// </summary>
         private void StartDrag()
         {
             isDragging = true;
-            // ´¥·¢ÍÏ×§¿ªÊ¼ÊÂ¼þ£¬²ÎÊýÎªÆðÊ¼Î»ÖÃºÍµ±Ç°Î»ÖÃ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§ï¿½ï¿½Ê¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ê¼Î»ï¿½ÃºÍµï¿½Ç°Î»ï¿½ï¿½
             OnDragStart?.Invoke(touchStartPos, lastTouchPos);
         }
 
         /// <summary>
-        /// ¸üÐÂÍÏ×§×´Ì¬
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§×´Ì¬
         /// </summary>
-        /// <param name="currentPos">µ±Ç°´¥Ãþ×ø±ê</param>
+        /// <param name="currentPos">ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
         private void UpdateDrag(Vector2 currentPos)
         {
-            // ´¥·¢ÍÏ×§¹ý³ÌÖÐÊÂ¼þ£¬²ÎÊýÎªÉÏÒ»Ö¡Î»ÖÃºÍµ±Ç°Î»ÖÃ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ò»Ö¡Î»ï¿½ÃºÍµï¿½Ç°Î»ï¿½ï¿½
             OnDrag?.Invoke(lastTouchPos, currentPos);
         }
 
         /// <summary>
-        /// ´¥·¢³¤°´ÊÂ¼þ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         /// </summary>
         private void TriggerLongPress()
         {
             isLongPressInvoked = true;
-            // ´¥·¢³¤°´ÊÂ¼þ£¬²ÎÊýÎª³¤°´Î»ÖÃ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
             OnLongPress?.Invoke(touchStartPos);
         }
 
         /// <summary>
-        /// ½áÊø´¥Ãþ´¦Àí
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        /// <param name="endPos">´¥Ãþ½áÊøµÄÆÁÄ»×ø±ê</param>
+        /// <param name="endPos">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½</param>
         private void EndTouch(Vector2 endPos)
         {
-            // ¼ÆËã´¥Ãþ³ÖÐøÊ±¼äºÍÒÆ¶¯¾àÀë
+            // ï¿½ï¿½ï¿½ã´¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
             float duration = Time.time - touchStartTime;
             Vector2 delta = endPos - touchStartPos;
             float distance = delta.magnitude;
 
-            // Èç¹û´¦ÓÚÍÏ×§×´Ì¬£¬´¥·¢ÍÏ×§½áÊøÊÂ¼þ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
             if (isDragging)
             {
                 OnDragEnd?.Invoke(lastTouchPos, endPos);
             }
 
-            // »¬¶¯¼ì²â£ºÂú×ã¾àÀëºÍÊ±¼äÌõ¼þ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (distance >= MIN_SWIPE_DISTANCE && duration <= MAX_SWIPE_TIME)
             {
-                // ¼ÆËã»¬¶¯·½Ïò
+                // ï¿½ï¿½ï¿½ã»¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 SwipeDirection direction = GetSwipeDirection(delta);
 
-                // ´¥·¢ÍêÕû»¬¶¯ÊÂ¼þ£¨°üº¬·½Ïò¡¢ÆðÊ¼µã¡¢½áÊøµã£©
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ã¡¢ï¿½ï¿½ï¿½ï¿½ï¿½ã£©
                 OnSwipe?.Invoke(direction, touchStartPos, endPos);
-                // ´¥·¢¼ò»¯»¬¶¯ÊÂ¼þ£¨½ö·½Ïò£©
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ò»¯»ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 OnSwipeSimple?.Invoke(direction);
 
-                // »¬¶¯Ê±²»´¥·¢µã»÷ÊÂ¼þ£¬Ö±½ÓÖØÖÃ×´Ì¬·µ»Ø
+                // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
                 ResetTouch();
                 return;
             }
 
-            // µã»÷¼ì²â£ºÒÆ¶¯¾àÀëºÜÐ¡ÇÒÎ´´¥·¢¹ý³¤°´ÊÂ¼þ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½â£ºï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
             if (distance < CLICK_DISTANCE_THRESHOLD && !isLongPressInvoked)
             {
-                // ´¥·¢ÆÁÄ»µã»÷ÊÂ¼þ
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
                 OnClick?.Invoke(endPos);
 
-                // Èç¹ûÓÐ¶ÔÏóµã»÷ÊÂ¼þµÄ¼àÌýÕß£¬³¢ÊÔ»ñÈ¡µã»÷µÄÓÎÏ·¶ÔÏó
+                // ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½Ô»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
                 if (OnGameObjectClick != null)
                 {
                     GameObject clickedObj = GetClickedGameObject(endPos);
@@ -300,31 +300,31 @@ namespace FutureCore
                 }
             }
 
-            // ÖØÖÃ´¥Ãþ×´Ì¬
+            // ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½×´Ì¬
             ResetTouch();
         }
 
-        // ==================== Ë«Ö¸ÊäÈë´¦Àí·½·¨ ====================
+        // ==================== Ë«Ö¸ï¿½ï¿½ï¿½ë´¦ï¿½ï¿½ï¿½ï¿½ï¿½ ====================
 
         /// <summary>
-        /// ´¦ÀíË«Ö¸ÊäÈëÊÂ¼þ
+        /// ï¿½ï¿½ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         /// </summary>
         private void HandleTwoFingerInput()
         {
-            // ¼ì²éÊÇ·ñÎªË«Ö¸´¥Ãþ
+            // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ÎªË«Ö¸ï¿½ï¿½ï¿½ï¿½
             if (Input.touchCount == 2)
             {
                 Touch touch1 = Input.GetTouch(0);
                 Touch touch2 = Input.GetTouch(1);
 
-                // ¼ì²éÊÇ·ñÔÚUIÉÏ£¨¸ù¾ÝIgnoreUICheck¾ö¶¨£©
+                // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½UIï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½IgnoreUICheckï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 if (!IgnoreUICheck && (IsPointerOverUI(touch1.position) || IsPointerOverUI(touch2.position)))
                 {
                     ResetTwoFingerState();
                     return;
                 }
 
-                // ´¦ÀíË«Ö¸×´Ì¬»ú
+                // ï¿½ï¿½ï¿½ï¿½Ë«Ö¸×´Ì¬ï¿½ï¿½
                 switch (twoFingerState)
                 {
                     case TwoFingerState.None:
@@ -337,13 +337,13 @@ namespace FutureCore
                         break;
 
                     case TwoFingerState.Touching:
-                        // ¼ì²âË«Ö¸ÒÆ¶¯
+                        // ï¿½ï¿½ï¿½Ë«Ö¸ï¿½Æ¶ï¿½
                         if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
                         {
                             twoFingerState = TwoFingerState.Moving;
                             InitializeTwoFingerGesture(touch1, touch2);
                         }
-                        // ¼ì²âË«Ö¸³¤°´
+                        // ï¿½ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½ï¿½
                         else if (!isTwoFingerLongPressInvoked && 
                                  Time.time - twoFingerStartTime > TWO_FINGER_LONG_PRESS_TIME)
                         {
@@ -359,7 +359,7 @@ namespace FutureCore
                         break;
 
                     case TwoFingerState.LongPress:
-                        // ³¤°´ºóÈç¹ûÓÐÒÆ¶¯£¬ÈÔÈ»¿ÉÒÔ´¦ÀíÊÖÊÆ
+                        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                         if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
                         {
                             if (!isTwoFingerValid)
@@ -373,12 +373,12 @@ namespace FutureCore
             }
             else
             {
-                // Ë«Ö¸´¥Ãþ½áÊø
+                // Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 if (twoFingerState != TwoFingerState.None)
                 {
                     OnTwoFingerTouchEnd?.Invoke();
 
-                    // ¼ì²âË«Ö¸µã»÷£¨´¥ÃþÊ±¼ä¶ÌÇÒÒÆ¶¯¾àÀëÐ¡£©
+                    // ï¿½ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½
                     if (twoFingerState == TwoFingerState.Touching && 
                         Time.time - twoFingerStartTime <= TWO_FINGER_TAP_TIME)
                     {
@@ -392,7 +392,7 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ³õÊ¼»¯Ë«Ö¸ÊÖÊÆÊý¾Ý
+        /// ï¿½ï¿½Ê¼ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         private void InitializeTwoFingerGesture(Touch touch1, Touch touch2)
         {
@@ -403,7 +403,7 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ´¦ÀíË«Ö¸ÊÖÊÆ£¨Ëõ·Å¡¢Ðý×ª¡¢»¬¶¯£©
+        /// ï¿½ï¿½ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Å¡ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         private void ProcessTwoFingerGestures(Touch touch1, Touch touch2)
         {
@@ -413,40 +413,40 @@ namespace FutureCore
                 return;
             }
 
-            // µ±Ç°Ö¡Êý¾Ý
+            // ï¿½ï¿½Ç°Ö¡ï¿½ï¿½ï¿½ï¿½
             float currentDistance = Vector2.Distance(touch1.position, touch2.position);
             float currentAngle = GetAngle(touch1.position, touch2.position);
             Vector2 currentCenter = (touch1.position + touch2.position) * 0.5f;
 
-            // 1. Ëõ·Å¼ì²â
+            // 1. ï¿½ï¿½ï¿½Å¼ï¿½ï¿½
             float deltaDistance = currentDistance - previousTwoFingerDistance;
-            if (Mathf.Abs(deltaDistance) > 0.5f) // ºöÂÔÎ¢Ð¡±ä»¯
+            if (Mathf.Abs(deltaDistance) > 0.5f) // ï¿½ï¿½ï¿½ï¿½Î¢Ð¡ï¿½ä»¯
             {
                 OnPinchZoom?.Invoke(deltaDistance * PINCH_ZOOM_SENSITIVITY);
             }
 
-            // 2. Ðý×ª¼ì²â
+            // 2. ï¿½ï¿½×ªï¿½ï¿½ï¿½
             float deltaAngle = Mathf.DeltaAngle(previousTwoFingerAngle, currentAngle);
-            if (Mathf.Abs(deltaAngle) > 0.5f) // ºöÂÔÎ¢Ð¡½Ç¶È±ä»¯
+            if (Mathf.Abs(deltaAngle) > 0.5f) // ï¿½ï¿½ï¿½ï¿½Î¢Ð¡ï¿½Ç¶È±ä»¯
             {
                 OnTwoFingerRotate?.Invoke(deltaAngle * ROTATE_SENSITIVITY);
             }
 
-            // 3. Ë«Ö¸»¬¶¯¼ì²â
+            // 3. Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Vector2 deltaCenter = currentCenter - previousTwoFingerCenter;
             if (deltaCenter.magnitude > 0.5f)
             {
                 OnTwoFingerDrag?.Invoke(deltaCenter * TWO_FINGER_DRAG_SENSITIVITY);
             }
 
-            // ¸üÐÂÉÏÒ»Ö¡Êý¾Ý
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ö¡ï¿½ï¿½ï¿½ï¿½
             previousTwoFingerDistance = currentDistance;
             previousTwoFingerAngle = currentAngle;
             previousTwoFingerCenter = currentCenter;
         }
 
         /// <summary>
-        /// ÖØÖÃË«Ö¸×´Ì¬
+        /// ï¿½ï¿½ï¿½ï¿½Ë«Ö¸×´Ì¬
         /// </summary>
         private void ResetTwoFingerState()
         {
@@ -455,19 +455,19 @@ namespace FutureCore
             isTwoFingerLongPressInvoked = false;
         }
 
-        // ==================== ¹¤¾ß·½·¨ ====================
+        // ==================== ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ ====================
 
         /// <summary>
-        /// ¸ù¾ÝÒÆ¶¯ÏòÁ¿¼ÆËã»¬¶¯·½Ïò£¨8·½Ïò£©
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã»¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        /// <param name="delta">ÒÆ¶¯ÏòÁ¿£¨½áÊøÎ»ÖÃ - ÆðÊ¼Î»ÖÃ£©</param>
-        /// <returns>»¬¶¯·½ÏòÃ¶¾Ù</returns>
+        /// <param name="delta">ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ - ï¿½ï¿½Ê¼Î»ï¿½Ã£ï¿½</param>
+        /// <returns>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½</returns>
         private SwipeDirection GetSwipeDirection(Vector2 delta)
         {
-            // ¼ÆËãÒÆ¶¯ÏòÁ¿ÓëXÖáÕý·½ÏòµÄ¼Ð½Ç£¨-180¡ã µ½ 180¡ã£©
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼Ð½Ç£ï¿½-180ï¿½ï¿½ ï¿½ï¿½ 180ï¿½ã£©
             float angle = Vector2.SignedAngle(Vector2.right, delta);
 
-            // ¸ù¾Ý½Ç¶È·¶Î§ÅÐ¶Ï·½Ïò£¨8·½Ïò£©
+            // ï¿½ï¿½ï¿½Ý½Ç¶È·ï¿½Î§ï¿½Ð¶Ï·ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½
             if (angle >= -22.5f && angle < 22.5f)
                 return SwipeDirection.Right;
             else if (angle >= 22.5f && angle < 67.5f)
@@ -482,12 +482,12 @@ namespace FutureCore
                 return SwipeDirection.DownLeft;
             else if (angle >= -112.5f && angle < -67.5f)
                 return SwipeDirection.Down;
-            else // -67.5f µ½ -22.5f
+            else // -67.5f ï¿½ï¿½ -22.5f
                 return SwipeDirection.DownRight;
         }
 
         /// <summary>
-        /// ¼ÆËãÁ½µã¼äµÄ½Ç¶È£¨Ïà¶ÔÓÚÆÁÄ»XÖá£©
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Ç¶È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Xï¿½á£©
         /// </summary>
         private float GetAngle(Vector2 p1, Vector2 p2)
         {
@@ -497,13 +497,13 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// Í¨¹ýÆÁÄ»×ø±ê»ñÈ¡±»µã»÷µÄÓÎÏ·¶ÔÏó
+        /// Í¨ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        /// <param name="screenPos">ÆÁÄ»×ø±ê</param>
-        /// <returns>±»µã»÷µÄGameObject£¬ÈçÎÞÔòÎªnull</returns>
+        /// <param name="screenPos">ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½</param>
+        /// <returns>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GameObjectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªnull</returns>
         private GameObject GetClickedGameObject(Vector2 screenPos)
         {
-            // 3DÉäÏß¼ì²â
+            // 3Dï¿½ï¿½ï¿½ß¼ï¿½ï¿½
             Ray ray = Camera.main.ScreenPointToRay(screenPos);
             RaycastHit hit;
 
@@ -512,7 +512,7 @@ namespace FutureCore
                 return hit.collider.gameObject;
             }
 
-            // 2DÉäÏß¼ì²â£¨Èç¹û3D¼ì²âÊ§°Ü£©
+            // 2Dï¿½ï¿½ï¿½ß¼ï¿½â£¨ï¿½ï¿½ï¿½3Dï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½
             RaycastHit2D hit2D = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(screenPos), Vector2.zero);
             if (hit2D.collider != null)
             {
@@ -523,10 +523,10 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ¼ì²éÖ¸¶¨Î»ÖÃµÄ´¥Ãþ/µã»÷ÊÇ·ñÔÚUIÔªËØÉÏ
+        /// ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½ÃµÄ´ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½UIÔªï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        /// <param name="position">ÆÁÄ»×ø±ê</param>
-        /// <returns>true±íÊ¾ÔÚUIÉÏ£¬false±íÊ¾²»ÔÚUIÉÏ</returns>
+        /// <param name="position">ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½</param>
+        /// <returns>trueï¿½ï¿½Ê¾ï¿½ï¿½UIï¿½Ï£ï¿½falseï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½</returns>
         private bool IsPointerOverUI(Vector2 position)
         {
             if (EventSystem.current == null) return false;
@@ -538,16 +538,16 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ¼ì²éµ±Ç°´¥Ãþ/µã»÷ÊÇ·ñÔÚUIÔªËØÉÏ
+        /// ï¿½ï¿½éµ±Ç°ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½UIÔªï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        /// <returns>true±íÊ¾ÔÚUIÉÏ£¬Ó¦ºöÂÔ´Ë´ÎÊäÈë£»false±íÊ¾²»ÔÚUIÉÏ</returns>
+        /// <returns>trueï¿½ï¿½Ê¾ï¿½ï¿½UIï¿½Ï£ï¿½Ó¦ï¿½ï¿½ï¿½Ô´Ë´ï¿½ï¿½ï¿½ï¿½ë£»falseï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½</returns>
         private bool IsPointerOverUI()
         {
             return IsPointerOverUI(Input.mousePosition);
         }
 
         /// <summary>
-        /// ÖØÖÃ´¥ÃþÏà¹Ø×´Ì¬±äÁ¿
+        /// ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         private void ResetTouch()
         {
@@ -556,10 +556,10 @@ namespace FutureCore
             isLongPressInvoked = false;
         }
 
-        // ==================== ¹«¹²¾²Ì¬·½·¨ ====================
+        // ==================== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ ====================
 
         /// <summary>
-        /// Çå³ýËùÓÐÒÑ×¢²áµÄÊÂ¼þÎ¯ÍÐ£¨Í¨³£ÔÚ³¡¾°ÇÐ»»Ê±µ÷ÓÃ£©
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Î¯ï¿½Ð£ï¿½Í¨ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Ê±ï¿½ï¿½ï¿½Ã£ï¿½
         /// </summary>
         public static void ClearAllEvents()
         {
@@ -572,7 +572,7 @@ namespace FutureCore
             OnDrag = null;
             OnDragEnd = null;
             
-            // Çå³ýË«Ö¸ÊÂ¼þ
+            // ï¿½ï¿½ï¿½Ë«Ö¸ï¿½Â¼ï¿½
             OnPinchZoom = null;
             OnTwoFingerRotate = null;
             OnTwoFingerDrag = null;
@@ -583,20 +583,20 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ¼ì²éµ±Ç°´¥ÃþÊÇ·ñÓÐÐ§£¨²»ÔÚUIÉÏ£©
+        /// ï¿½ï¿½éµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½Ï£ï¿½
         /// </summary>
-        /// <returns>true±íÊ¾´¥ÃþÓÐÐ§£¬false±íÊ¾´¥Ãþ±»UI×èµ²</returns>
+        /// <returns>trueï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½falseï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½èµ²</returns>
         public static bool IsTouchValid()
         {
-            // Èç¹ûµ¥ÀýÎ´³õÊ¼»¯£¬Ä¬ÈÏ·µ»Øtrue
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï·ï¿½ï¿½ï¿½true
             if (Instance == null) return true;
             return IgnoreUICheck || !Instance.IsPointerOverUI();
         }
 
-        // ==================== Ë«Ö¸¹«¹²¾²Ì¬·½·¨ ====================
+        // ==================== Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ ====================
 
         /// <summary>
-        /// »ñÈ¡µ±Ç°Ë«Ö¸¾àÀë
+        /// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ë«Ö¸ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public static float GetTwoFingerDistance()
         {
@@ -608,7 +608,7 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// »ñÈ¡µ±Ç°Ë«Ö¸ÖÐÐÄµã
+        /// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ë«Ö¸ï¿½ï¿½ï¿½Äµï¿½
         /// </summary>
         public static Vector2 GetTwoFingerCenter()
         {
@@ -620,7 +620,7 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// µ±Ç°ÊÇ·ñÎªË«Ö¸´¥Ãþ×´Ì¬
+        /// ï¿½ï¿½Ç°ï¿½Ç·ï¿½ÎªË«Ö¸ï¿½ï¿½ï¿½ï¿½×´Ì¬
         /// </summary>
         public static bool IsTwoFingerTouching
         {
@@ -628,7 +628,7 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// µ±Ç°Ë«Ö¸ÊÇ·ñÔÚÒÆ¶¯ÖÐ
+        /// ï¿½ï¿½Ç°Ë«Ö¸ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½
         /// </summary>
         public static bool IsTwoFingerMoving
         {
@@ -636,47 +636,47 @@ namespace FutureCore
         }
 
         /// <summary>
-        /// ÉèÖÃË«Ö¸ÊÖÊÆÁéÃô¶È
+        /// ï¿½ï¿½ï¿½ï¿½Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        /// <param name="zoom">Ëõ·ÅÁéÃô¶È (Ä¬ÈÏ0.01f)</param>
-        /// <param name="rotate">Ðý×ªÁéÃô¶È (Ä¬ÈÏ0.5f)</param>
-        /// <param name="drag">»¬¶¯ÁéÃô¶È (Ä¬ÈÏ0.01f)</param>
+        /// <param name="zoom">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (Ä¬ï¿½ï¿½0.01f)</param>
+        /// <param name="rotate">ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ (Ä¬ï¿½ï¿½0.5f)</param>
+        /// <param name="drag">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (Ä¬ï¿½ï¿½0.01f)</param>
         public static void SetTwoFingerSensitivity(float zoom = 0.01f, float rotate = 0.5f, float drag = 0.01f)
         {
             if (Instance != null)
             {
-                // ÕâÀï¿ÉÒÔÌí¼ÓÉèÖÃÁéÃô¶ÈµÄÂß¼­
-                // ÓÉÓÚÊÇ³£Á¿£¬Èç¹ûÐèÒªÔËÐÐÊ±µ÷Õû£¬¿ÉÒÔ¸ÄÎª±äÁ¿
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èµï¿½ï¿½ß¼ï¿½
+                // ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½Îªï¿½ï¿½ï¿½ï¿½
             }
         }
     }
 
-    // ==================== Íâ²¿Ê¹ÓÃµÄÃ¶¾Ù ====================
+    // ==================== ï¿½â²¿Ê¹ï¿½Ãµï¿½Ã¶ï¿½ï¿½ ====================
 
     /// <summary>
-    /// »¬¶¯·½ÏòÃ¶¾Ù£¨8·½Ïò£©
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½Ù£ï¿½8ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public enum SwipeDirection
     {
-        None,       // ÎÞ·½Ïò
-        Up,         // ÉÏ
-        Down,       // ÏÂ
-        Left,       // ×ó
-        Right,      // ÓÒ
-        UpLeft,     // ×óÉÏ
-        UpRight,    // ÓÒÉÏ
-        DownLeft,   // ×óÏÂ
-        DownRight   // ÓÒÏÂ
+        None,       // ï¿½Þ·ï¿½ï¿½ï¿½
+        Up,         // ï¿½ï¿½
+        Down,       // ï¿½ï¿½
+        Left,       // ï¿½ï¿½
+        Right,      // ï¿½ï¿½
+        UpLeft,     // ï¿½ï¿½ï¿½ï¿½
+        UpRight,    // ï¿½ï¿½ï¿½ï¿½
+        DownLeft,   // ï¿½ï¿½ï¿½ï¿½
+        DownRight   // ï¿½ï¿½ï¿½ï¿½
     }
 
     /// <summary>
-    /// Ë«Ö¸×´Ì¬Ã¶¾Ù
+    /// Ë«Ö¸×´Ì¬Ã¶ï¿½ï¿½
     /// </summary>
     public enum TwoFingerState
     {
-        None,       // ÎÞË«Ö¸
-        Touching,   // Ë«Ö¸´¥Ãþ£¨Î´ÒÆ¶¯£©
-        Moving,     // Ë«Ö¸ÒÆ¶¯ÖÐ
-        LongPress   // Ë«Ö¸³¤°´
+        None,       // ï¿½ï¿½Ë«Ö¸
+        Touching,   // Ë«Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½Æ¶ï¿½ï¿½ï¿½
+        Moving,     // Ë«Ö¸ï¿½Æ¶ï¿½ï¿½ï¿½
+        LongPress   // Ë«Ö¸ï¿½ï¿½ï¿½ï¿½
     }
 }

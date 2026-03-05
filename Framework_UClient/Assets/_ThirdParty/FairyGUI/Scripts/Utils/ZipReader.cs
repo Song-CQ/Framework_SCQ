@@ -1,4 +1,4 @@
-﻿namespace FairyGUI.Utils
+namespace FairyGUI.Utils
 {
     /// <summary>
     /// 一个简单的Zip文件处理类。不处理解压。

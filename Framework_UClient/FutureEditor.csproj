@@ -179,6 +179,7 @@
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QLayerIconComponent.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\Scripts\Examples\04_Inheritance\Inheritance.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetSerializer.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\ConvertScriptsToUTF8\AutoConvertNewScriptsToUTF8.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Basics\Window2.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\Scripts\Examples\08_MonoBehaviour\Editor\MonoBehaviourAdapterEditor.cs" />
     <Compile Include="Assets\_Editor\FutureEditor\UGUIEditor\GuideMaskEditor\GuideMaskEditor.cs" />
