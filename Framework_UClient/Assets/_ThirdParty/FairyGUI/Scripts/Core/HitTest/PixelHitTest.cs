@@ -1,4 +1,4 @@
-﻿using FairyGUI.Utils;
+using FairyGUI.Utils;
 using UnityEngine;
 
 namespace FairyGUI

@@ -1,4 +1,4 @@
-﻿namespace FairyGUI
+namespace FairyGUI
 {
     /// <summary>
     /// 用于文本输入的键盘接口

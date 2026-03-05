@@ -18,13 +18,13 @@ namespace ProjectApp
         void AddListener();
         void RemoveListener();
         /// <summary>
-        /// ³õÊ¼»¯ÆåÅÌ
+        /// åˆå§‹åŒ–æ£‹ç›˜
         /// </summary>
         /// <param name="w"></param>
         /// <param name="h"></param>
         void InitializeBoard(int w,int h);
         /// <summary>
-        /// Éú³É³õÊ¼ÆåÅÌÊı¾İ
+        /// ç”Ÿæˆåˆå§‹æ£‹ç›˜æ•°æ®
         /// </summary>
         void GenerateInitialElements();
         void Dispose();

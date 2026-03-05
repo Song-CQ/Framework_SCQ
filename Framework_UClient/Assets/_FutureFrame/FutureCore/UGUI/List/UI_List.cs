@@ -1,9 +1,9 @@
 /****************************************************
-    ÎÄ¼ş: ListView.cs
-    ×÷Õß: Clear
-    ÈÕÆÚ: 2026/2/6 1:35:24
-    ÀàĞÍ: UI
-    ¹¦ÄÜ: »ù´¡»¬¶¯ÁĞ±í
+    æ–‡ä»¶: ListView.cs
+    ä½œè€…: Clear
+    æ—¥æœŸ: 2026/2/6 1:35:24
+    ç±»å‹: UI
+    åŠŸèƒ½: åŸºç¡€æ»‘åŠ¨åˆ—è¡¨
 *****************************************************/
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +17,7 @@ namespace FutureCore
 {
 
     /// <summary>
-    /// »ù´¡»¬¶¯ÁĞ±í £¨Ö»ĞèÒª´«ÊıÁĞ±í £¬ item±ØĞë¼Ì³ĞUI_ListBaseItem£©
+    /// åŸºç¡€æ»‘åŠ¨åˆ—è¡¨ ï¼ˆåªéœ€è¦ä¼ æ•°åˆ—è¡¨ ï¼Œ itemå¿…é¡»ç»§æ‰¿UI_ListBaseItemï¼‰
     /// </summary>
     public class UI_List : MonoBehaviour
     {
@@ -31,7 +31,7 @@ namespace FutureCore
         }
 
 
-        [TitleGroup("×é¼şÒıÓÃ")]
+        [TitleGroup("ç»„ä»¶å¼•ç”¨")]
         [Required]
 
         [SerializeField] private ScrollRect scrollRect;
@@ -52,52 +52,52 @@ namespace FutureCore
 
 
 
-        [TitleGroup("ÁĞ±íÉèÖÃ")]
+        [TitleGroup("åˆ—è¡¨è®¾ç½®")]
 
-        [LabelText("ĞéÄâÁĞ±í")]
-        [SerializeField] private bool isVirtual = false; // ÊÇ·ñĞéÄâÁĞ±í
-        [FoldoutGroup("ĞéÄâÁĞ±í"), LabelText("»º³åÇøÊıÁ¿"), ShowIf("@isVirtual")]
-        [SerializeField] private int bufferSize = 2; // »º³åÇøÊıÁ¿
-        [FoldoutGroup("ĞéÄâÁĞ±í"), LabelText("Ô¤¼ÓÔØÊıÁ¿"), ShowIf("@isVirtual")]
-        [SerializeField] private int preloadItemSum = 5; // Ô¤¼ÓÔØÊıÁ¿
+        [LabelText("è™šæ‹Ÿåˆ—è¡¨")]
+        [SerializeField] private bool isVirtual = false; // æ˜¯å¦è™šæ‹Ÿåˆ—è¡¨
+        [FoldoutGroup("è™šæ‹Ÿåˆ—è¡¨"), LabelText("ç¼“å†²åŒºæ•°é‡"), ShowIf("@isVirtual")]
+        [SerializeField] private int bufferSize = 2; // ç¼“å†²åŒºæ•°é‡
+        [FoldoutGroup("è™šæ‹Ÿåˆ—è¡¨"), LabelText("é¢„åŠ è½½æ•°é‡"), ShowIf("@isVirtual")]
+        [SerializeField] private int preloadItemSum = 5; // é¢„åŠ è½½æ•°é‡
 
 
-        [FoldoutGroup("ÊÓ´°ÉèÖÃ")]
-        [LabelText("×Ô¶¨Òå»¬¶¯ÉèÖÃ"), FoldoutGroup("ÊÓ´°ÉèÖÃ")]
+        [FoldoutGroup("è§†çª—è®¾ç½®")]
+        [LabelText("è‡ªå®šä¹‰æ»‘åŠ¨è®¾ç½®"), FoldoutGroup("è§†çª—è®¾ç½®")]
         [SerializeField] private bool useViewMovement = false;
-        [LabelText("ÊÓ´°ÒÆ¶¯ÀàĞÍ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useViewMovement")]
+        [LabelText("è§†çª—ç§»åŠ¨ç±»å‹"), FoldoutGroup("è§†çª—è®¾ç½®"), ShowIf("@useViewMovement")]
         [SerializeField] private ScrollRect.MovementType movementType = ScrollRect.MovementType.Elastic;
 
-        [LabelText("µ¯ĞÔÏµÊı"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useViewMovement && movementType == ScrollRect.MovementType.Elastic")]
+        [LabelText("å¼¹æ€§ç³»æ•°"), FoldoutGroup("è§†çª—è®¾ç½®"), ShowIf("@useViewMovement && movementType == ScrollRect.MovementType.Elastic")]
         [SerializeField] private float elasticity = 0.1f;
 
-        [LabelText("ÊÓ´°Æ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ")]
+        [LabelText("è§†çª—åç§»"), FoldoutGroup("è§†çª—è®¾ç½®")]
         [SerializeField] private bool useContentPadding = false;
 
-        // µ± useContentPadding Îª true Ê±²ÅÏÔÊ¾Õâ¸öÕÛµş×é
-        [LabelText("ÊÓ´° ×óÆ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useContentPadding")]
+        // å½“ useContentPadding ä¸º true æ—¶æ‰æ˜¾ç¤ºè¿™ä¸ªæŠ˜å ç»„
+        [LabelText("è§†çª— å·¦åç§»"), FoldoutGroup("è§†çª—è®¾ç½®"), ShowIf("@useContentPadding")]
         [SerializeField] private int padding_Left;
-        [LabelText("ÊÓ´° ÓÒÆ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useContentPadding")]
+        [LabelText("è§†çª— å³åç§»"), FoldoutGroup("è§†çª—è®¾ç½®"), ShowIf("@useContentPadding")]
         [SerializeField] private int padding_Right;
-        [LabelText("ÊÓ´° ÉÏÆ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useContentPadding")]
+        [LabelText("è§†çª— ä¸Šåç§»"), FoldoutGroup("è§†çª—è®¾ç½®"), ShowIf("@useContentPadding")]
         [SerializeField] private int padding_Top;
-        [LabelText("ÊÓ´° ÏÂÆ«ÒÆ"), FoldoutGroup("ÊÓ´°ÉèÖÃ"), ShowIf("@useContentPadding")]
+        [LabelText("è§†çª— ä¸‹åç§»"), FoldoutGroup("è§†çª—è®¾ç½®"), ShowIf("@useContentPadding")]
         [SerializeField] private int padding_Bottom;
 
 
 
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("¼ä¸ô")]
+        [FoldoutGroup("å­ç‰©ä½“è®¾ç½®"), LabelText("é—´éš”")]
         [SerializeField] private Vector2 spacing;
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("Ê¹ÓÃ×ÓÎïÌå×ÔÉí Size")]
+        [FoldoutGroup("å­ç‰©ä½“è®¾ç½®"), LabelText("ä½¿ç”¨å­ç‰©ä½“è‡ªèº« Size")]
         [SerializeField] private bool useItemSize = true;
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("Item Width"), HideIf("useItemSize")]
+        [FoldoutGroup("å­ç‰©ä½“è®¾ç½®"), LabelText("Item Width"), HideIf("useItemSize")]
         [SerializeField] private float itemWidth = 100f;
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("Item Height"), HideIf("useItemSize")]
+        [FoldoutGroup("å­ç‰©ä½“è®¾ç½®"), LabelText("Item Height"), HideIf("useItemSize")]
         [SerializeField] private float itemHeight = 100f;
 
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("ÅÅĞò·½Ê½")]
+        [FoldoutGroup("å­ç‰©ä½“è®¾ç½®"), LabelText("æ’åºæ–¹å¼")]
         [SerializeField] private LayoutGroupType layoutGroupType = LayoutGroupType.Horizontal;
-        [FoldoutGroup("×ÓÎïÌåÉèÖÃ"), LabelText("×ÓÎïÌå¶ÔÆëÃªµã")]
+        [FoldoutGroup("å­ç‰©ä½“è®¾ç½®"), LabelText("å­ç‰©ä½“å¯¹é½é”šç‚¹")]
         [SerializeField] private TextAnchor anchor = TextAnchor.LowerLeft;
 
 
@@ -226,7 +226,7 @@ namespace FutureCore
 
             if (isVirtual)
             {
-                // ×¼±¸¶ÔÏó³Ø
+                // å‡†å¤‡å¯¹è±¡æ± 
                 PreparePool(preloadItemSum);
             }
 
@@ -285,7 +285,7 @@ namespace FutureCore
 
         void RefreshList()
         {
-            // Çå¿Õµ±Ç°ÏÔÊ¾Ïî
+            // æ¸…ç©ºå½“å‰æ˜¾ç¤ºé¡¹
             foreach (var item in activeItems)
             {
                 ReturnToPool(item);
@@ -303,20 +303,20 @@ namespace FutureCore
 
             if (isVirtual)
             {
-                // ¼ÆËãÄÚÈİ¸ß¶È
+                // è®¡ç®—å†…å®¹é«˜åº¦
                 float contentHeight = totalItems * itemHeight + (totalItems - 1) * spacing.x;
                 content.sizeDelta = new Vector2(content.sizeDelta.x, contentHeight);
 
-                // ¼ÆËã¿É¼ûÏîÊıÁ¿
+                // è®¡ç®—å¯è§é¡¹æ•°é‡
 
                 visibleItems = Mathf.CeilToInt(viewportHeight / (itemHeight + spacing.x)) + bufferSize * 2;
                 visibleItems = Mathf.Min(visibleItems, totalItems);
             }
 
-            // ÏÔÊ¾³õÊ¼Ïî
+            // æ˜¾ç¤ºåˆå§‹é¡¹
             currentFirstIndex = 0;
 
-            //Ë¢ĞÂµ±Ç°ÏÔÊ¾µÄItemÊı¾İ
+            //åˆ·æ–°å½“å‰æ˜¾ç¤ºçš„Itemæ•°æ®
             RefreshCurrentShowItems();
 
         }
@@ -341,19 +341,19 @@ namespace FutureCore
             }
 
 
-            // ¼ÆËãÓ¦¸ÃÏÔÊ¾µÄµÚÒ»¸öË÷Òı
+            // è®¡ç®—åº”è¯¥æ˜¾ç¤ºçš„ç¬¬ä¸€ä¸ªç´¢å¼•
             float scrollPos = content.anchoredPosition.y;
             int newFirstIndex = Mathf.FloorToInt(scrollPos / (itemHeight + spacing.x));
             newFirstIndex = Mathf.Max(0, newFirstIndex - bufferSize);
 
-            // Èç¹ûË÷ÒıÃ»±ä»¯£¬²»¸üĞÂ
+            // å¦‚æœç´¢å¼•æ²¡å˜åŒ–ï¼Œä¸æ›´æ–°
             if (newFirstIndex == currentFirstIndex) return;
 
-            // ¸üĞÂË÷Òı
+            // æ›´æ–°ç´¢å¼•
             int oldFirstIndex = currentFirstIndex;
             currentFirstIndex = newFirstIndex;
 
-            // »ØÊÕ²»ÔÙÏÔÊ¾µÄÏî
+            // å›æ”¶ä¸å†æ˜¾ç¤ºçš„é¡¹
             for (int i = activeItems.Count - 1; i >= 0; i--)
             {
                 int itemIndex = (int)activeItems[i].GetComponent<BaseUIList_Item>().Index;
@@ -364,7 +364,7 @@ namespace FutureCore
                 }
             }
 
-            // Ìí¼ÓĞÂÏî
+            // æ·»åŠ æ–°é¡¹
             for (int i = currentFirstIndex; i < currentFirstIndex + visibleItems; i++)
             {
                 if (i >= totalItems) break;
@@ -393,7 +393,7 @@ namespace FutureCore
                     }
                     listItem.Initialize(i, itemData); 
 
-                    // ÉèÖÃÎ»ÖÃ
+                    // è®¾ç½®ä½ç½®
                     float yPos = -i * (itemHeight + spacing.x);
                     (item.transform as RectTransform).anchoredPosition = new Vector2(0, yPos);
 

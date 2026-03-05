@@ -46,10 +46,10 @@ namespace Plugins.XAsset.Editor
 
         public static void Run()
         {
-            // [ÐÞ¸Ä]
+            // [ä¿®æ”¹]
             string pathToAssetServer = Path.GetFullPath("Assets/Plugins/PluginsGithub3rdLibrary/XAsset/XAsset/Editor/AssetBundleServer.exe");
             //string pathToAssetServer = Path.GetFullPath("Assets/Plugins/XAsset/Editor/AssetBundleServer.exe");
-            // [ÐÞ¸Ä]
+            // [ä¿®æ”¹]
             string assetBundlesDirectory = Path.Combine(Environment.CurrentDirectory, Utility.AssetBundles);
 
             KillRunningAssetBundleServer();

@@ -25,7 +25,7 @@ namespace ProjectApp.GameLogic
         float Duration { get; }
 
         /// <summary>
-        /// ¿ªÊ¼²¥·ÅÊ±¼ä
+        /// å¼€å§‹æ’­æ”¾æ—¶é—´
         /// </summary>
         float StartPlayTime { get; }
 
@@ -83,7 +83,7 @@ namespace ProjectApp.GameLogic
                 x =>
                 {
                     Tar.Pos = Vector3.Lerp(formPot, toPot, x);
-                    Debug.Log(TimerUtil.GetGameTime() + Tar.Data.ToString() + "ÒªÒÆ" + formPot + " to " + toPot + " x " + x + "µ±Ç°" + Tar.Pos);
+                    Debug.Log(TimerUtil.GetGameTime() + Tar.Data.ToString() + "è¦ç§»" + formPot + " to " + toPot + " x " + x + "å½“å‰" + Tar.Pos);
                 },
                 1f,
                 Duration));
@@ -94,7 +94,7 @@ namespace ProjectApp.GameLogic
             base.OnComplete();
 
             Tar.Pos = toPot;
-            Debug.Log(Tar.Data.ToString() + "ÒÆ¶¯Íê³É" + formPot + " to " + toPot + "µ±Ç°" + Tar.Pos);
+            Debug.Log(Tar.Data.ToString() + "ç§»åŠ¨å®Œæˆ" + formPot + " to " + toPot + "å½“å‰" + Tar.Pos);
 
         }
 
@@ -133,18 +133,18 @@ namespace ProjectApp.GameLogic
         float IElementAni.StartPlayTime => base.StartPlayTime;
 
 
-        //[Header("ÏÂÂäÉèÖÃ")]
-        private float fallDuration = 0.3f;      // ÏÂÂä³ÖĞøÊ±¼ä
-        private float fallBounceDuration = 0.7f; // µ¯Ìø³ÖĞøÊ±¼ä
-        private float bounceHeight = 0.2f;      // µ¯Ìø¸ß¶È
-        private Ease fallEase = Ease.OutCubic;  // ÏÂÂä»º¶¯
-        private Ease bounceEase = Ease.OutBounce; // µ¯Ìø»º¶¯
+        //[Header("ä¸‹è½è®¾ç½®")]
+        private float fallDuration = 0.3f;      // ä¸‹è½æŒç»­æ—¶é—´
+        private float fallBounceDuration = 0.7f; // å¼¹è·³æŒç»­æ—¶é—´
+        private float bounceHeight = 0.2f;      // å¼¹è·³é«˜åº¦
+        private Ease fallEase = Ease.OutCubic;  // ä¸‹è½ç¼“åŠ¨
+        private Ease bounceEase = Ease.OutBounce; // å¼¹è·³ç¼“åŠ¨
         private Vector3 bouncePoint;
 
         private float fallEnd;
         private float fallBounceEnd;
-        public Vector3 formPot;  // ÆğÊ¼Î»ÖÃ
-        public Vector3 toPot;    // Ä¿±êÎ»ÖÃ
+        public Vector3 formPot;  // èµ·å§‹ä½ç½®
+        public Vector3 toPot;    // ç›®æ ‡ä½ç½®
 
 
         public AnimationCurve moveCurve1;
@@ -161,7 +161,7 @@ namespace ProjectApp.GameLogic
             StartPlayTime = TimerUtil.GetGameTime() + delay;
             Delay = delay;
             Tar.Pos = formPot;
-            // ´´½¨µ¯ÌøÖĞ¼äµã
+            // åˆ›å»ºå¼¹è·³ä¸­é—´ç‚¹
             bouncePoint = new Vector3(
                 toPot.x,
                 toPot.y + bounceHeight,
@@ -184,12 +184,12 @@ namespace ProjectApp.GameLogic
 
         protected void AddTweenToSequence(Sequence seq)
         {
-            // µÚÒ»½×¶Î£ºÏÂÂä¶¯»­
+            // ç¬¬ä¸€é˜¶æ®µï¼šä¸‹è½åŠ¨ç”»
             seq.Append(DOTween.To(
                 () => 0f,
                 x =>
                 {
-                    // ¼ÆËãµ±Ç°Î»ÖÃ£¨´ÓÆğÊ¼µãÏÂÂäµ½µ¯Ìøµã£©
+                    // è®¡ç®—å½“å‰ä½ç½®ï¼ˆä»èµ·å§‹ç‚¹ä¸‹è½åˆ°å¼¹è·³ç‚¹ï¼‰
                     float currentY = Mathf.Lerp(formPot.y, bouncePoint.y, x);
                     Tar.Pos = new Vector3(
                         Mathf.Lerp(formPot.x, bouncePoint.x, x),
@@ -201,7 +201,7 @@ namespace ProjectApp.GameLogic
                 fallDuration
             ).SetEase(fallEase));
 
-            // µÚ¶ş½×¶Î£ºµ¯Ìø¶¯»­
+            // ç¬¬äºŒé˜¶æ®µï¼šå¼¹è·³åŠ¨ç”»
             seq.Append(DOTween.To(
                 () => 0f,
                 x =>
@@ -224,7 +224,7 @@ namespace ProjectApp.GameLogic
                 float x = moveCurve1.Evaluate(curveValue / fallEnd);
                 x = Mathf.Clamp01(x);
 
-                // ¼ÆËãµ±Ç°Î»ÖÃ£¨´ÓÆğÊ¼µãÏÂÂäµ½µ¯Ìøµã£©
+                // è®¡ç®—å½“å‰ä½ç½®ï¼ˆä»èµ·å§‹ç‚¹ä¸‹è½åˆ°å¼¹è·³ç‚¹ï¼‰
                 float currentY = Mathf.Lerp(formPot.y, bouncePoint.y, x);
                 Tar.Pos = new Vector3(
                     Mathf.Lerp(formPot.x, bouncePoint.x, x),
@@ -262,7 +262,7 @@ namespace ProjectApp.GameLogic
             Tar = null;
             fallEnd = 0;
             fallBounceEnd = 0;
-            formPot = Vector3.zero;  // ÆğÊ¼Î»ÖÃ
+            formPot = Vector3.zero;  // èµ·å§‹ä½ç½®
             toPot = Vector3.zero;
         }
 
@@ -317,7 +317,7 @@ namespace ProjectApp.GameLogic
 
             string effectName = "ClickUIEffect";
             string effectPath = "Prefabs/Effect/Common_UIEffect/ClickUIEffect";
-            //Õâ¿é¿ÉÒÔÓÃÒì²½¼ÓÔØ
+            //è¿™å—å¯ä»¥ç”¨å¼‚æ­¥åŠ è½½
             EffectEntity effectEntity = GameObject.Instantiate(ResMgr.Instance.LoadLocalRes<GameObject>(effectPath)).GetComponent<EffectEntity>();
 
             EffectData effectData = new EffectData();
@@ -364,7 +364,7 @@ namespace ProjectApp.GameLogic
 
         private float shakeDuration = 0.6f;
         private float shakeIntensity = 1.2f;
-        private int bounces = 3;//´ÎÊı
+        private int bounces = 3;//æ¬¡æ•°
 
 
         private void SetDuration()
@@ -385,7 +385,7 @@ namespace ProjectApp.GameLogic
         protected override void OnStart()
         {
             base.OnStart();
-            Debug.Log(Tar.Data.ToString() + "¿ªÊ¼¶¶¶¯" + TimerUtil.GetGameTime());
+            Debug.Log(Tar.Data.ToString() + "å¼€å§‹æŠ–åŠ¨" + TimerUtil.GetGameTime());
 
         }
 
@@ -397,7 +397,7 @@ namespace ProjectApp.GameLogic
                 () => 0f,
                 progress =>
                 {
-                    // µ¯ĞÔ¹«Ê½£ºy = e^(-damping * t) * sin(frequency * t)
+                    // å¼¹æ€§å…¬å¼ï¼šy = e^(-damping * t) * sin(frequency * t)
                     float damping = 5f;
                     float frequency = Mathf.PI * 2 * bounces;
                     float time = progress * shakeDuration;
@@ -407,10 +407,10 @@ namespace ProjectApp.GameLogic
                                       shakeIntensity;
 
 
-                    // Ëæ»ú·½Ïò¶¶¶¯
+                    // éšæœºæ–¹å‘æŠ–åŠ¨
                     Vector3 direction = GetRandomDirection();
                     Tar.Pos = originalPos + direction * shakeValue;
-                    Debug.Log(Tar.Data.ToString() + "ÕıÔÚ¶¶¶¯" + TimerUtil.GetGameTime() + Tar.Pos);
+                    Debug.Log(Tar.Data.ToString() + "æ­£åœ¨æŠ–åŠ¨" + TimerUtil.GetGameTime() + Tar.Pos);
                 },
                 1f,
                 shakeDuration
@@ -422,12 +422,12 @@ namespace ProjectApp.GameLogic
         protected override void OnComplete()
         {
             base.OnComplete();
-            Debug.Log(Tar.Data.ToString() + "¶¶¶¯½áÊø" + TimerUtil.GetGameTime() + Tar.Pos + "Ä¿±ê" + originalPos);
+            Debug.Log(Tar.Data.ToString() + "æŠ–åŠ¨ç»“æŸ" + TimerUtil.GetGameTime() + Tar.Pos + "ç›®æ ‡" + originalPos);
             // Tar.Pos = originalPos;
         }
         private Vector3 GetRandomDirection()
         {
-            // »ùÓÚÔªËØIDÉú³É¹Ì¶¨µÄËæ»ú·½Ïò
+            // åŸºäºå…ƒç´ IDç”Ÿæˆå›ºå®šçš„éšæœºæ–¹å‘
             int elementId = Tar.GetHashCode();
             float angle = (elementId % 360) * Mathf.Deg2Rad;
             return new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0).normalized;

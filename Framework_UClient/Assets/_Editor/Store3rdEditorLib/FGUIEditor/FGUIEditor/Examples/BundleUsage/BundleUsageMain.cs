@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using FairyGUI;
 #if UNITY_5_4_OR_NEWER

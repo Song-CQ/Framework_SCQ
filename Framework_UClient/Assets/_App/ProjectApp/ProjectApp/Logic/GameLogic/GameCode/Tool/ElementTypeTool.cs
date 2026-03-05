@@ -8,43 +8,43 @@ namespace ProjectApp
 
     public enum ElementType
     {
-        Item_A = 1,    // ��ɫ����Ԫ��
-        Item_B, // ��ɫ����Ԫ��
-        Item_C,   // ��ɫ����Ԫ��
-        Item_D,  // ��ɫ����Ԫ��
+        Item_A = 1,    // 红色基础元素
+        Item_B, // 黄色基础元素
+        Item_C,   // 蓝色基础元素
+        Item_D,  // 绿色基础元素
 
-        Item_Special,// �ɱ任Ԫ��
-
-
-        //// ���л�������Ԫ��
-        //Prop_Rocket,           // �����ϣ��������л���
-        //RocketBombCombo,       // ���ը�����
-        //DoubleRocket,          // ˫��������л�����
-        //CrossRocket,           // ʮ�ֻ��
-        //MegaBomb,              // ����ը�������л�ģʽ��
+        Item_Special,// 可变换元素
 
 
-
-        Dummy_CanMatche = 100,// վλ ����С����������ƥ������
-
-        //����
-        Prop_Horizontal,      // ������
-        Prop_Vertical,        // ������
-        Prop_Wild,             // ��ɫը��/����Ԫ��   
-        Prop_Bomb,                 // ը��
+        //// 可切换的特殊元素
+        //Prop_Rocket,           // 火箭组合（横竖可切换）
+        //RocketBombCombo,       // 火箭炸弹组合
+        //DoubleRocket,          // 双火箭（可切换方向）
+        //CrossRocket,           // 十字火箭
+        //MegaBomb,              // 超级炸弹（可切换模式）
 
 
 
-        Dummy_CanClickEvent = 200, // ռλ ����С�Ľ��ܵ��
+        Dummy_CanMatche = 100,// 站位 比他小的允许参与匹配消除
+
+        //道具
+        Prop_Horizontal,      // 横向火箭
+        Prop_Vertical,        // 纵向火箭
+        Prop_Wild,             // 彩色炸弹/万能元素   
+        Prop_Bomb,                 // 炸弹
 
 
-        //��������
-        Dummy_CanDown = 900,//ռλ ������Ĳ�������
+
+        Dummy_CanClickEvent = 200, // 占位 比他小的接受点击
 
 
-        //���ɵ��
-        Fixed_Empty = 1000, // ��λ���
-        Fixed_None = 2000,//�÷��񱻽��÷��� һ���ǵ��� ������ܻ��п��ƻ�����
+        //不可下落
+        Dummy_CanDown = 900,//占位 比他大的不可下落
+
+
+        //不可点击
+        Fixed_Empty = 1000, // 空位标记
+        Fixed_None = 2000,//该方格被禁用方格 一般是地形 后面可能会有可破坏地形
 
     }
     public static class ElementTool
@@ -52,7 +52,7 @@ namespace ProjectApp
         
 
         /// <summary>
-        /// ��Ԫ���Ƿ�Ҫ��ʾͼƬ
+        /// 该元素是否要显示图片
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -71,7 +71,7 @@ namespace ProjectApp
             return true;
         }
         /// <summary>
-        /// ��Ԫ���Ƿ������
+        /// 该元素是否可下落
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -88,7 +88,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ��Ԫ�� ����ͨ���Ƿ�ͨ ���� ��Ԫ�ؾ�����
+        /// 该元素 下落通道是否畅通 比如 空元素就允许
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -105,7 +105,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ��Ԫ���Ƿ� �� ƥ��
+        /// 该元素是否 可 匹配
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -121,7 +121,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ��Ԫ���Ƿ���� ����¼�
+        /// 该元素是否接受 点击事件
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>

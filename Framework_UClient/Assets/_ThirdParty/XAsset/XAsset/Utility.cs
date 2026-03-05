@@ -37,9 +37,9 @@ namespace Plugins.XAsset
 
     public static class Utility
     {
-        // [ÐÞ¸Ä]
+        // [ä¿®æ”¹]
         public const string AssetBundles = "_AssetBundles";
-        // [ÐÞ¸Ä]
+        // [ä¿®æ”¹]
         public const string AssetsManifestAsset = "Assets/Editor/XAssetSettings/XAssetManifest.asset";
         //public const string AssetsManifestAsset = "Assets/Manifest.asset";
         public static bool assetBundleMode = true;

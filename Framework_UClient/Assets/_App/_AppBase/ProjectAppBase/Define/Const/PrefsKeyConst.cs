@@ -3,7 +3,7 @@ namespace ProjectApp
     public static partial class PrefsKeyConst
     {
         /// <summary>
-        /// ÊÇ·ñĞÂÊµÀıÏîÄ¿
+        /// æ˜¯å¦æ–°å®ä¾‹é¡¹ç›®
         /// </summary>
         public const string App_isNewInstall = "isNewInstall";
 

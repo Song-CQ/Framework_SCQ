@@ -1,4 +1,4 @@
-﻿using FairyGUI;
+using FairyGUI;
 
 public class Window4 : Window
 {

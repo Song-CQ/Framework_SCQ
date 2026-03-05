@@ -1,4 +1,4 @@
-﻿using FutureCore;
+using FutureCore;
 using ProjectApp.UGUI;
 
 namespace ProjectApp

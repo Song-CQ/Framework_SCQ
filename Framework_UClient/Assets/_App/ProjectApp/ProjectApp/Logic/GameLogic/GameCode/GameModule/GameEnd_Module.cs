@@ -9,7 +9,7 @@ namespace ProjectApp
 {
     public class GameEnd_Module : IGameModule
     {
-        #region Á÷³Ì
+        #region æµç¨‹
         public Dispatcher<uint> Dispatcher => Core.Dispatcher;
         public ElementGameData Data => Core.Data;
 
@@ -38,7 +38,7 @@ namespace ProjectApp
 
         }
         /// <summary>
-        /// ³õÊ¼»¯ÆåÅÌ
+        /// åˆå§‹åŒ–æ£‹ç›˜
         /// </summary>
         /// <param name="w"></param>
         /// <param name="h"></param>

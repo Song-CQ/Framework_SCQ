@@ -40,7 +40,7 @@ namespace Plugins.XAsset
 
     public class AssetsManifest : ScriptableObject
     {
-        // [ÐÞ¸Ä]
+        // [ä¿®æ”¹]
         public string downloadURL = "http://127.0.0.1:7888/";
         public string[] activeVariants = new string[0];
         [HideInInspector] public string[] bundles = new string[0];

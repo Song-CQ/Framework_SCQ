@@ -1,4 +1,4 @@
-﻿//
+//
 // AssetsMenuItem.cs
 //
 // Author:
