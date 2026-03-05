@@ -39,6 +39,20 @@ namespace FutureEditor
         [MenuItem("Tools/强制移除所有BOM")]
         public static void ForceRemoveAllBOM()
         {
+            bool confirm = EditorUtility.DisplayDialog(
+                "⚠️ 警告：强制移除BOM",
+                "强制移除BOM会直接修改所有C#文件的文件头。\n\n" +
+                "风险说明：\n" +
+                "• 此操作不可逆\n" +
+                "• 建议先提交Git或备份文件\n" +
+                "• 如果文件已经是UTF-8无BOM，不会发生变化\n\n" +
+                "确定要继续吗？",
+                "是的，我确定",
+                "取消"
+            );
+
+            if (!confirm) return;
+
             string projectPath = Path.GetDirectoryName(Application.dataPath);
             string[] csFiles = GetCsFiles(projectPath);
 
@@ -70,7 +84,6 @@ namespace FutureEditor
                         string content = Encoding.UTF8.GetString(bytes, 3, bytes.Length - 3);
                         File.WriteAllText(filePath, content, new UTF8Encoding(false));
                         removedCount++;
-                        Debug.Log($"移除 BOM: {filePath}");
                     }
                 }
             }
@@ -80,6 +93,83 @@ namespace FutureEditor
             }
 
             EditorUtility.DisplayDialog("强制移除BOM", $"处理完成！\n移除 BOM 的文件数: {removedCount}", "确定");
+            AssetDatabase.Refresh();
+        }
+
+        [MenuItem("Tools/强制转换所有为UTF-8无BOM")]
+        public static void ForceConvertAllToUTF8NoBOM()
+        {
+            bool confirm = EditorUtility.DisplayDialog(
+                "⚠️ 警告：强制转换编码",
+                "强制转换会修改所有C#文件的编码格式。\n\n" +
+                "风险说明：\n" +
+                "• 此操作不可逆\n" +
+                "• 如果编码检测错误，可能导致文件乱码\n" +
+                "• 强烈建议先提交Git或备份文件\n\n" +
+                "确定要继续吗？",
+                "是的，我确定",
+                "取消"
+            );
+
+            if (!confirm) return;
+
+            bool confirm2 = EditorUtility.DisplayDialog(
+                "最后确认",
+                "你真的确定要强制转换所有文件为UTF-8无BOM吗？\n\n这是一个危险操作！",
+                "确定",
+                "取消"
+            );
+
+            if (!confirm2) return;
+
+            string projectPath = Path.GetDirectoryName(Application.dataPath);
+            string[] csFiles = GetCsFiles(projectPath);
+
+            int convertedCount = 0;
+            int totalFiles = csFiles.Length;
+
+            try
+            {
+                for (int i = 0; i < totalFiles; i++)
+                {
+                    string filePath = csFiles[i];
+
+                    float progress = (float)i / totalFiles;
+
+                    if (EditorUtility.DisplayCancelableProgressBar(
+                        "强制转换UTF-8无BOM",
+                        $"正在处理: {Path.GetFileName(filePath)}\n进度: {i + 1}/{totalFiles}",
+                        progress))
+                    {
+                        break;
+                    }
+
+                    byte[] bytes = File.ReadAllBytes(filePath);
+
+                    // 不管什么编码，强制用 UTF-8 读取并保存为无 BOM
+                    string content;
+                    try
+                    {
+                        // 尝试用 UTF-8 读取
+                        content = Encoding.UTF8.GetString(bytes);
+                    }
+                    catch
+                    {
+                        // 如果 UTF-8 读取失败，用系统默认编码
+                        content = Encoding.Default.GetString(bytes);
+                    }
+
+                    // 用 UTF-8 无 BOM 写入
+                    File.WriteAllText(filePath, content, new UTF8Encoding(false));
+                    convertedCount++;
+                }
+            }
+            finally
+            {
+                EditorUtility.ClearProgressBar();
+            }
+
+            EditorUtility.DisplayDialog("强制转换完成", $"转换完成！\n成功转换: {convertedCount} 个文件", "确定");
             AssetDatabase.Refresh();
         }
 

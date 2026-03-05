@@ -150,8 +150,8 @@
     <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\OtherToolView\03_AssetBundleToolView.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QLockComponent.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QPrefabComponent.cs" />
-    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\GameToolView\GameToolView.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pdata\QResources.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\OtherToolView\00_CommonInfoView.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\Scripts\Examples\05_CLRRedirection\CLRRedirectionDemo.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\LitJson\JsonWriter.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TurnPage\BookPage.cs" />
@@ -173,6 +173,7 @@
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Model\ModelMain.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\BulidAssetBundleTool\ExportABTool.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QLayerIconComponent.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\MainView\2_GameToolView.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\Scripts\Examples\04_Inheritance\Inheritance.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetSerializer.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\ConvertScriptsToUTF8\AutoConvertNewScriptsToUTF8.cs" />
@@ -187,11 +188,14 @@
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\Scripts\Examples\12_Performance\Performance.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TurnCard\Card.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QComponentsComponent.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\MainView\5_OtherToolView.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QVisibilityComponent.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\MainView\1_UnityToolView.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\QRendererComponent.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\EmitNumbers\EmitNumbersMain.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\RegisterStriptTemplate.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\SvnOrGitTool\GitUtils.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\OtherToolView\06_EncodingToolView.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\ProjectTool\AutoRegisterTool\EditorAutoRegisterTool.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\TurnPage\FairyBook.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\CutScene\CutSceneMain.cs" />
@@ -199,6 +203,7 @@
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Guide\GuideMain.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\Scripts\Examples\06_CLRBinding\CLRBindingDemo.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Editor\StageCameraEditor.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\MainView\4_AutoRegisterToolView.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetDataWriter.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phelper\QColorUtils.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\LitJson\JsonMapper.cs" />
@@ -253,6 +258,7 @@
     <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\02_EditorStyleViewer\IconWindow.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Emoji\EmojiParser.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\Emoji\EmojiMain.cs" />
+    <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\01_FrameworkViewer\MainView\3_CodeGenToolView.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\PathConst\UnityEditorPath.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\ConsoleProRemoteServer.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\WindowEditor\03_CreadView\EditorCreadWnd.cs" />
