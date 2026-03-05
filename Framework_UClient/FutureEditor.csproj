@@ -226,8 +226,8 @@
     <Compile Include="Assets\_Editor\Store3rdEditorLib\FGUIEditor\FGUIEditor\Examples\BundleUsage\BundleUsageMain.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\pcomponent\pbase\QBaseComponent.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\QHierarchy\Editor\Scripts\phierarchy\QHierarchy.cs" />
-    <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\Editor\ILRuntimeMenu.cs" />
     <Compile Include="Assets\_Editor\FutureEditorTool\EditorTool\StriptTemplateTool\ConvertScriptsToUTF8\ConvertScriptsToUTF8.cs" />
+    <Compile Include="Assets\_Editor\Store3rdEditorLib\ILruntime_2.0.2\Demo\Editor\ILRuntimeMenu.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\XAssetEditor\XAssetDemo\Script\AssetsUpdate.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetPacketPool.cs" />
     <Compile Include="Assets\_Editor\Store3rdEditorLib\ConsolePro\Remote\LiteNetLib\NetConstants.cs" />

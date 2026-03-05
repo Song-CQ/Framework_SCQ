@@ -299,6 +299,9 @@ namespace ProjectApp
                 ConfigDataMgr.Instance.ResetData();
                 ConfigDataMgr.Instance.ReadData();
 
+                
+                
+
                 ConfigDataMgr.Instance.Init();
                 ConfigDataMgr.Instance.StartUp();
                 CameraMgr.Instance.mainCamera = Camera.main;

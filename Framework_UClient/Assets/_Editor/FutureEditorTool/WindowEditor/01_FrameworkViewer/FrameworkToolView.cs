@@ -503,7 +503,8 @@ namespace FutureEditor
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("UI驱动类型:", GUILayout.Width(100));
-            GUILayout.TextField("GUI", GUILayout.Width(200));
+            GUILayout.TextField(FutureCore.AppConst.UIDriver.ToString(), GUILayout.Width(200));
+            
             GUILayout.EndHorizontal();
 
             GUILayout.Space(10);
@@ -554,22 +555,74 @@ namespace FutureEditor
         {
             // 扩张到全界面宽度，高度500，y=25
             GUILayout.BeginArea(new Rect(10, 25, 870, 500), new GUIStyle("grey_border"));
-            GUILayout.BeginArea(new Rect(10, 5, 850, 495));
+            GUILayout.BeginArea(new Rect(10, 10, 850, 480));
             GUILayout.BeginVertical();
 
             // 标题
             GUILayout.Label("🔄 自动注册工具", EditorStyles.boldLabel, GUILayout.Height(30));
-            GUILayout.Space(20);
-
-            // 两列布局
-            GUILayout.BeginHorizontal();
-
-            // 第一列 - 编辑器环境
-            GUILayout.BeginVertical(GUILayout.Width(400));
-            GUILayout.BeginVertical("box");
-            GUILayout.Label("编辑器环境注册", EditorStyles.boldLabel);
             GUILayout.Space(15);
 
+            // ===== 提示信息区域 =====
+            GUILayout.BeginVertical("box");
+            GUILayout.Label("📌 新项目启动指南", EditorStyles.boldLabel);
+            GUILayout.Space(10);
+
+            // 步骤1
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("1️⃣", GUILayout.Width(30));
+            GUILayout.Label("首次打开项目，请先运行", GUILayout.Width(150));
+            GUI.color = Color.green;
+            GUILayout.Label("【编辑器环境注册】", GUILayout.Width(120));
+            GUI.color = Color.white;
+            GUILayout.Label("→ 注册编辑器工具、菜单、配置", GUILayout.Width(250));
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(5);
+
+            // 步骤2
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("2️⃣", GUILayout.Width(30));
+            GUILayout.Label("然后运行", GUILayout.Width(150));
+            GUI.color = Color.cyan;
+            GUILayout.Label("【项目环境注册】", GUILayout.Width(120));
+            GUI.color = Color.white;
+            GUILayout.Label("→ 注册项目数据、模块、配置", GUILayout.Width(250));
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(5);
+
+            // 额外提示
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("💡", GUILayout.Width(30));
+            GUILayout.Label("以后每次拉取最新代码，建议重新运行这两步", GUILayout.Width(400));
+            GUILayout.EndHorizontal();
+
+            GUILayout.EndVertical();
+
+            GUILayout.Space(20);
+
+            // ===== 两列布局 =====
+            GUILayout.BeginHorizontal();
+
+            // 第一列 - 编辑器环境（绿色提示）
+            GUILayout.BeginVertical(GUILayout.Width(400));
+
+            // 在按钮上方添加颜色提示
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUI.color = Color.green;
+            GUILayout.Label("▲ 第一步 ▲", EditorStyles.boldLabel, GUILayout.Width(100));
+            GUI.color = Color.white;
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(5);
+
+            GUILayout.BeginVertical("box");
+            GUILayout.Label("⚙️ 编辑器环境注册", EditorStyles.boldLabel);
+            GUILayout.Space(15);
+
+            // 按钮保持默认颜色
             if (GUILayout.Button("注册编辑器环境", GUILayout.Height(50), GUILayout.Width(380)))
             {
                 EditorAutoRegisterTool_Editor.AutoRegisterAll(Close);
@@ -582,12 +635,25 @@ namespace FutureEditor
 
             GUILayout.Space(20);
 
-            // 第二列 - 项目数据
+            // 第二列 - 项目数据（青色提示）
             GUILayout.BeginVertical(GUILayout.Width(400));
+
+            // 在按钮上方添加颜色提示
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUI.color = Color.cyan;
+            GUILayout.Label("▲ 第二步 ▲", EditorStyles.boldLabel, GUILayout.Width(100));
+            GUI.color = Color.white;
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(5);
+
             GUILayout.BeginVertical("box");
-            GUILayout.Label("项目数据注册", EditorStyles.boldLabel);
+            GUILayout.Label("📁 项目环境注册", EditorStyles.boldLabel);
             GUILayout.Space(15);
 
+            // 按钮保持默认颜色
             if (GUILayout.Button("自动注册项目数据", GUILayout.Height(50), GUILayout.Width(380)))
             {
                 ProjectAutoRegisterTool.AutoRegisterAll(Close);
