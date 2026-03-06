@@ -1,4 +1,4 @@
-namespace ProjectApp
+﻿namespace ProjectApp
 {
     /// <summary>
     /// 项目配属属性
@@ -14,7 +14,7 @@ namespace ProjectApp
         /// <summary>
         /// 项目描述
         /// </summary>
-        public const string AppDesc = "框架";
+        public const string AppDesc = "蜜蜂三消";
 
         /// <summary>
         /// 包名

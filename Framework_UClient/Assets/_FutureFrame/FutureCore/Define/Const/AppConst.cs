@@ -1,4 +1,4 @@
-
+﻿
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,11 +13,11 @@ namespace FutureCore
         // 是否是调试版本
         public static bool IsDebugVersion = true;
         // 包版本号
-        public static string PackageVersion = "1.0.0";
+        public static string PackageVersion = "1.0.3";
         // 内置配置表哈希值
-        public static string ConfigInternalHash = null;
+        public static string ConfigInternalHash = "";
         // 内置配置表版本号
-        public static string ConfigInternalVersion = null;
+        public static string ConfigInternalVersion = "";
         // 服务器配置表哈希值
         //public static string ConfigServerHash = null;
         // 服务器配置表版本号
@@ -50,7 +50,7 @@ namespace FutureCore
         public static bool IsDevelopMode = true;
 
         // 热更新代码模式（None）无热更代码
-        public static HotUpdateType HotUpdateType =  HotUpdateType.None;
+        public static HotUpdateType HotUpdateType = HotUpdateType.None;
         // 是否开启调试引擎分析器
         public static bool IsEnabledEngineProfiler = false;
         // 是否开启调试应用分析器
@@ -66,17 +66,17 @@ namespace FutureCore
         // 是否显示网络协议通讯日志
         //public const bool IsDisplayNetProtoLog = true;
 
-        public const LogType EnabledFilterLogType = LogType.Log | LogType.Warning | LogType.Error | LogType.Assert | LogType.Exception; //(LogType.Log | LogType.Warning | LogType.Error | LogType.Assert | LogType.Exception) &~ LogType.Log;
+        public const LogType EnabledFilterLogType = LogType.Log; //(LogType.Log | LogType.Warning | LogType.Error | LogType.Assert | LogType.Exception) &~ LogType.Log;
         public const bool IsRunInBG = true;
-        public const int SleepTimeoutMode = SleepTimeout.NeverSleep;
+        public const int SleepTimeoutMode = -1;
         public const int AntiAliasing = 4;
         public const int HighFrameRate = 60;
         public const int LowFrameRate = 30;
         public const float HDHighViewScale = 1f;
         public const float HDLowViewScale = 0.9f;
         public const float PixelsPerUnit = 100f;
-        public static float FrameRateTimestep = 1f / HighFrameRate;
-        public const float LowFrameRateTimestep = 1f / LowFrameRate;
+        public static float FrameRateTimestep = 0.01666667f;
+        public const float LowFrameRateTimestep = 0.03333334f;
         // Streaming Assets下默认是不压缩的
         // 将此后缀名加入到安卓Gradle工程的android_aaptOptions_noCompress中, 即可保证在打包apk的时候不要压缩这部分资源即可
         public const string ABExtName = ".bytes";
@@ -119,7 +119,7 @@ namespace FutureCore
         // Loading进度进度是否延迟
         public static bool IsLoadingDelay = true;
         // Loading进度延迟时间
-        public static float LoadingDelayTime = LowFrameRateTimestep;
+        public static float LoadingDelayTime = 0.03333334f;
         // Loading进度完成延迟时间
         public static float LoadingCompleteDelayTime = 0.2f;
         // 准备游戏开始前延迟时间
@@ -141,7 +141,7 @@ namespace FutureCore
 
         /// 项目控制参数
         // 控制器关闭列表
-        public static List<string> CtrlDisableList = new List<string>();
+        public static List<String> CtrlDisableList;
 
         //------------------------------------------------------------------------------------------------------------------//
 
@@ -155,9 +155,9 @@ namespace FutureCore
         // 默认资源版本
         private static string[] DefaultAssetVersions = new string[] { "0", "0", "0" };
         // 本地资源版本
-        public static string[] LocalAssetVersions = DefaultAssetVersions;
+        public static String[] LocalAssetVersions = new string[] { "0", "0", "0" };
         // 服务器资源版本
-        public static string[] ServerAssetVersions = DefaultAssetVersions;
+        public static String[] ServerAssetVersions = new string[] { "0", "0", "0" };
 
         
 
