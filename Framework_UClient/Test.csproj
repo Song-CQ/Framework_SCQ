@@ -407,15 +407,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DemiEditor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\CoreEditor\DemiEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\Editor\CoreEditor\DemiEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Reflection.Editor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
@@ -431,7 +431,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
@@ -443,19 +443,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DemiLib\Core\DemiLib.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DemiLib\Core\DemiLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenEditor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenEditor\DOTweenEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\Editor\DOTweenEditor\DOTweenEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VoClassLib">
@@ -471,7 +471,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenProEditor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenEditor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\Editor\DOTweenProEditor\DOTweenProEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
@@ -479,15 +479,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTween\DOTween.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="LogUtil">
@@ -499,11 +499,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\DOTweenPro\DOTweenPro\DOTweenPro.dll</HintPath>
+      <HintPath>Assets\Plugins\_Demigiant\DOTween\DOTweenPro\DOTweenPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Pdb">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RainbowFolders">
@@ -511,7 +511,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -519,7 +519,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ILRuntime.Mono.Cecil.Mdb">
-      <HintPath>Assets\Plugins\Plugins3rdLibrary\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
+      <HintPath>Assets\_ThirdParty\ILruntime_2.0.2\Plugins\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">

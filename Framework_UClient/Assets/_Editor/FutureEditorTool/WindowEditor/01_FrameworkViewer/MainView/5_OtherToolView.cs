@@ -19,7 +19,7 @@ namespace FutureEditor
         private static Vector2 otherToolPos2;
         private static string selectOtherToolKey;
         private static Color selectColor = new Color(0.95f, 0.73f, 0.01f); // #F2BB03 金黄色
-        private static Color selectedBg = new Color(0.24f, 0.49f, 0.91f); // 深蓝灰色
+        private static Color selectedBg = new Color(1.0f, 0.9f, 0.4f); // 亮黄色
         private static Dictionary<string, Action> OtherTooDic = new Dictionary<string, Action>();
 
         // 工具颜色 - 浅色系
@@ -47,12 +47,12 @@ namespace FutureEditor
         {
             int hash = input.GetHashCode();
             System.Random rand = new System.Random(hash);
-
+            
             // 浅色系：0.7-1.0 范围
             float r = (float)rand.NextDouble() * 0.3f + 0.7f;
             float g = (float)rand.NextDouble() * 0.3f + 0.7f;
             float b = (float)rand.NextDouble() * 0.3f + 0.7f;
-
+            
             return new Color(r, g, b);
         }
 
@@ -149,7 +149,7 @@ namespace FutureEditor
                 // 设置背景色
                 if (isSelected)
                 {
-                    GUI.backgroundColor = selectedBg; // 选中状态：深灰色
+                    GUI.backgroundColor = selectedBg; // 选中状态：亮黄色
                 }
                 else
                 {
@@ -187,7 +187,7 @@ namespace FutureEditor
                 GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
                 buttonStyle.alignment = TextAnchor.MiddleLeft;
                 buttonStyle.padding = new RectOffset(10, 5, 2, 2);
-
+                
                 // 选中按钮：字体用金黄色并加粗
                 if (isSelected)
                 {

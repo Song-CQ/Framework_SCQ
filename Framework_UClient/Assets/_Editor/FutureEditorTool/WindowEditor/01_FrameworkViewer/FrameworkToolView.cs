@@ -1,3 +1,13 @@
+/****************************************************
+    文件: FrameworkToolView.cs
+    作者: Clear
+    日期: 2026/3/6
+    类型: 编辑器窗口
+    功能: 框架工具主视图 - 集成所有编辑器工具的中央控制台
+    包含: Unity工具、游戏数据统计、代码生成、自动注册、其他工具集成
+    快捷键: Ctrl+Shift+F 打开窗口
+*****************************************************/
+
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -73,6 +83,9 @@ namespace FutureEditor
         {
             try
             {
+                // 在右上角添加齿轮菜单
+                ShowButton(new Rect(position.width - 60, 5, 20, 20));
+
                 int newIndex = GUILayout.Toolbar(toolbatIndex, toolbatVal);
                 if (newIndex != toolbatIndex)
                 {
@@ -91,7 +104,7 @@ namespace FutureEditor
                         UnityToolView.OnGUI(leftWidth, contentHeight, rightStart, rightWidth);
                         break;
                     case (int)ShowType.GameTool:
-                        GameToolView.OnGUI();
+                        GameToolView.OnGUI(contentHeight, position.width);
                         break;
                     case (int)ShowType.CodeGenTool:
                         CodeGenToolView.OnGUI(contentHeight, position.width);
@@ -133,6 +146,15 @@ namespace FutureEditor
                     fontStyle = FontStyle.Normal
                 });
             GUILayout.FlexibleSpace();
+
+            // 添加快捷键提示
+            GUILayout.Label("⌨️ Ctrl+Shift+F",
+                new GUIStyle(EditorStyles.miniLabel)
+                {
+                    normal = { textColor = new Color(0.6f, 0.8f, 0.6f) },
+                    fontStyle = FontStyle.Italic
+                });
+            GUILayout.Space(5);
 
             GUILayout.Label(System.DateTime.Now.ToString("HH:mm"),
                 new GUIStyle(EditorStyles.miniLabel)
@@ -193,6 +215,23 @@ namespace FutureEditor
             {
                 UnityEditorTool.OpenScriptByPath("Assets/_Editor/FutureEditorTool/WindowEditor/01_FrameworkViewer/FrameworkToolView");
             });
+            menu.AddSeparator("");
+            
+            // 添加快捷键显示选项
+            menu.AddItem(new GUIContent("显示快捷键 _%#F"), false, () =>
+            {
+                string shortcutInfo = "📌 框架工具窗口快捷键\n\n";
+                shortcutInfo += "⌘/Ctrl + Shift + F\t: 打开框架工具窗口\n";
+                shortcutInfo += "⌘/Ctrl + S\t\t: 保存当前配置\n";
+                shortcutInfo += "⌘/Ctrl + R\t\t: 刷新当前视图\n";
+                shortcutInfo += "⌘/Ctrl + 1-5\t\t: 快速切换标签页\n";
+                shortcutInfo += "⌘/Ctrl + F\t\t: 搜索（在OtherTool中）\n";
+                shortcutInfo += "ESC\t\t\t: 清除搜索\n\n";
+                shortcutInfo += "当前快捷键：Ctrl+Shift+F";
+                
+                EditorUtility.DisplayDialog("快捷键说明", shortcutInfo, "知道了");
+            });
+            
             menu.AddSeparator("");
             menu.AddItem(new GUIContent("重置布局"), false, () =>
             {
