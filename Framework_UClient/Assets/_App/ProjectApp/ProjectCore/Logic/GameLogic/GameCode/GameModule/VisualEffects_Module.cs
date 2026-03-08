@@ -625,6 +625,14 @@ namespace ProjectApp
             // TODO: 实现元素清除逻辑
             // 1. 获取需要清除的元素列表
             List<ElementData> matches = data as List<ElementData>;
+            uint index = 0;
+
+            if (matches == null)
+            {
+                object[] items = data as object[];
+                matches = items[0] as List<ElementData>;
+                index = (uint)items[1];
+            }
 
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
             elementItemList = FindElementItem(matches, ref elementItemList);
@@ -636,14 +644,16 @@ namespace ProjectApp
                 item.SetEmpty();
             }
 
+
             // 2. 播放清除动画
-            var process = VisuaProcess.Get();
+            var process = GetProcessToEnqueue(index);
+
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
                 float time = AnimationSys.PlayAin_ClearElements(elementItemList);
-
-                p.Duration = time;
+                
+                p.Duration = time > p.Duration ? time:p.Duration;
             });
 
             process.SetLinkFinish((p) =>
@@ -655,8 +665,7 @@ namespace ProjectApp
                 }
                 ListPool<ElementItem>.Release(elementItemList);
             });
-
-            EnqueueVisuaProcess(process);
+;
 
 
         }
@@ -897,7 +906,7 @@ namespace ProjectApp
             ElementItem item = FindElementItem(data.X, data.Y);
 
             GetPropAction(indexId, data.Type, item, elementItemList, potList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB);
-
+            Debug.LogWarning("触发");
         }
 
         /// <summary>

@@ -24,11 +24,11 @@ namespace ProjectApp
         private bool[,] _visited;
         public GameRule_Module() { }
 
-        #region ��ʱ���� 
+        #region 临时数据 
         private List<Vector2Int> temp_AllMatchesList = new List<Vector2Int>();
         #endregion
 
-        #region ����
+        #region 流程
         public Dispatcher<uint> Dispatcher => Core.Dispatcher;
         public ElementGameData Data => Core.Data;
 
@@ -50,7 +50,7 @@ namespace ProjectApp
 
         public void AddListener()
         {
-            //��������
+            //最先运行
             Dispatcher.AddPriorityListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement_test);
             Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElement, OnPlayer_SwipeElement);
             Dispatcher.AddPriorityListener(GameMsg.Player_SwipeElementToElement, OnPlayer_SwipeElementToElement);
@@ -108,16 +108,16 @@ namespace ProjectApp
                     Task task = Task.Run(() =>
                     {
                         Thread currentThread = Thread.CurrentThread;
-                        Debug.Log("��ǰ�߳�" + currentThread.ManagedThreadId + ("  " + SelectedElement.x + "--" + SelectedElement.y));
+                        Debug.Log("当前线程" + currentThread.ManagedThreadId + ("  " + SelectedElement.x + "--" + SelectedElement.y));
                         OnClick_Element(o);
                     }
                      , cts.Token);
-                    task.Wait(cts.Token);  // ͬ���ȴ������׳��쳣
+                    task.Wait(cts.Token);  // 同步等待，会抛出异常
                 }
             }
             catch (OperationCanceledException)
             {
-                Debug.LogError("OnElementClicked ִ�г�ʱ��������ѭ��");
+                Debug.LogError("OnElementClicked 执行超时，可能死循环");
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
 #endif
@@ -126,22 +126,22 @@ namespace ProjectApp
             {
                 foreach (var ex in ae.InnerExceptions)
                 {
-                    Debug.LogError($"OnElementClicked ִ�г���: {ex.Message}");
+                    Debug.LogError($"OnElementClicked 执行出错: {ex.Message}");
                 }
             }
             catch (Exception ex)
             {
-                Debug.LogError($"OnElementClicked ִ�г���: {ex.Message}");
+                Debug.LogError($"OnElementClicked 执行出错: {ex.Message}");
             }
 
         }
 
 
-        #region  ����
+        #region  操作
 
 
         /// <summary>
-        /// ���Ԫ��
+        /// 点击元素
         /// </summary>
         /// <param name="o"></param>
         void OnClick_Element(object o)
@@ -150,20 +150,20 @@ namespace ProjectApp
             int x = data.X;
             int y = data.Y;
 
-            //��ȡ��ǰ�����϶�Ӧλ�õ�Ԫ�� �������δ�����������
+            //获取当前棋盘上对应位置的元素 不能信任传过来的数据
             data = Data.boardData[x, y];
 
 
             if (Core.SelectExternalProp != ExternalProp.None)
             {
-                //��ǰ�����ڼ���ĵ���
+                //当前有正在激活的道具
 
                 return;
             }
 
             if (ElementTool.CheckType_IsProp(data.Type) && !Core.IsClickProp)
             {
-                //��������
+                //触发道具
                 Player_ActivateProp(data);
                 return;
             }
@@ -172,17 +172,17 @@ namespace ProjectApp
 
             if (SelectedElement.x < 0 || SelectedElement.y < 0)
             {
-                // ��һ�ε����ѡ��Ԫ��
+                // 第一次点击，选中元素
                 SelectElement(x, y);
             }
             else
             {
                 int select_X = SelectedElement.x;
                 int select_Y = SelectedElement.y;
-                // ���ѡ��״̬
+                // 清除选中状态
                 DeselectElement(SelectedElement.x, SelectedElement.y);
 
-                // �ڶ��ε�����ж��Ƿ�����
+                // 第二次点击，判断是否相邻
                 if (IsAdjacent(select_X, select_Y, x, y) || Data.HasConnection(select_X, select_Y, x, y))
                 {
                     if (Core.IsClickProp)
@@ -200,7 +200,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// �϶�Ԫ�� ����һ��Ԫ����
+        /// 拖动元素 到另一个元素上
         /// </summary>
         /// <param name="obj"></param>
         /// <exception cref="NotImplementedException"></exception>
@@ -236,7 +236,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ��һ��Ԫ���� �϶� 
+        /// 在一个元素上 拖动 
         /// </summary>
         /// <param name="obj"></param>
         /// <exception cref="NotImplementedException"></exception>
@@ -258,17 +258,17 @@ namespace ProjectApp
         #endregion
 
 
-        #region  ���Ĵ���
+        #region  核心代码
 
         /// <summary>
-        /// ѡ��Ԫ��
+        /// 选中元素
         /// </summary>
         void SelectElement(int x, int y)
         {
             var elementData = BoardData[x, y];
             if (!ElementTool.CheckType_ClickEvent(elementData.Type))
             {
-                //���ɵ��
+                //不可点击
                 return;
             }
 
@@ -277,7 +277,7 @@ namespace ProjectApp
 
         }
         /// <summary>
-        /// ȡ��Ԫ��
+        /// 取消元素
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -288,24 +288,24 @@ namespace ProjectApp
             Dispatcher.Dispatch(GameMsg.DeselectElement, elementData);
         }
 
-        #region һ�β���
+        #region 一次操作
         private void Player_SwapElement(int select_X, int select_Y, int x, int y)
         {
-            //��¼����
+            //记录快照
             Data.TakeMemorySnapshotBoardData();
 
-            // ����Ԫ��
+            // 交换元素
             SwapElements(select_X, select_Y, x, y);
 
-            // ���ƥ��
+            // 检查匹配
             List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
             matches = CheckMatchesAfterSwap(select_X, select_Y, x, y, ref matches);
 
             if (matches.Count > 0)
             {
-                // ��ƥ�䣬��������
+                // 有匹配，进行消除
                 ProcessMatches(matches);
-                // ������Ԫ�� ����λ
+                // 创建新元素 并补位
                 FillEmptySpaces();
             }
             else
@@ -313,14 +313,14 @@ namespace ProjectApp
                 if (Core.IsBackSwap)
                 {
 
-                    // ��ƥ�䣬��������
+                    // 无匹配，交换回来
                     SwapElements(select_X, select_Y, x, y);
-                    //���������� ɾ����һ�ؼ�¼�Ŀ���
+                    //操作不允许 删除上一回记录的快照
                     Data.DelLastMemorySnapshotBoardData();
 
                 }
             }
-            //ʹ�������List
+            //使用完回收List
             FutureCore.ListPool<Vector2Int>.Release(matches);
 
 
@@ -328,7 +328,7 @@ namespace ProjectApp
 
         public void Player_RananAllElement()
         {
-            //��¼����
+            //记录快照
             Data.TakeMemorySnapshotBoardData();
 
 
@@ -394,12 +394,12 @@ namespace ProjectApp
                 FindMatchesAt(data.X, data.Y, visited, ref matches);
                 if (matches.Count > 0)
                 {
-                    //��¼����
+                    //记录快照
                     Data.TakeMemorySnapshotBoardData();
 
-                    // ��ƥ�䣬��������
+                    // 有匹配，进行消除
                     ProcessMatches(matches);
-                    // ������Ԫ�� ����λ
+                    // 创建新元素 并补位
                     FillEmptySpaces();
                 }
 
@@ -411,7 +411,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// �ж�����Ԫ���Ƿ�����
+        /// 判断两个元素是否相邻
         /// </summary>
         bool IsAdjacent(int x1, int y1, int x2, int y2)
         {
@@ -421,21 +421,21 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ��������Ԫ��
+        /// 交换两个元素
         /// </summary>
         void SwapElements(int x1, int y1, int x2, int y2)
         {
 
             ElementData tempData1 = BoardData[x1, y1];
             ElementData tempData2 = BoardData[x2, y2];
-            Debug.Log(string.Format("����Ԫ��{0}  �� {1}", tempData1.ToString(), tempData2.ToString()));
+            Debug.Log(string.Format("交换元素{0}  和 {1}", tempData1.ToString(), tempData2.ToString()));
 
-            // ʵ�ʽ�����������
-            // �����������λ�� ������
+            // 实际交换棋盘数据
+            // 设置这个坐标位置 的数据
             SetBoardData(x1, y1, tempData2);
             SetBoardData(x2, y2, tempData1);
 
-            // ֪ͨ����ģ�� ��������
+            // 通知其他模块 交换数据
             List<ElementData> elementDatas = FutureCore.ListPool<ElementData>.Get();
             elementDatas.Add(tempData1);
             elementDatas.Add(tempData2);
@@ -445,20 +445,20 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ��齻�����ƥ��
+        /// 检查交换后的匹配
         /// </summary>
         private List<Vector2Int> CheckMatchesAfterSwap(int x1, int y1, int x2, int y2, ref List<Vector2Int> matches)
         {
             if (matches == null) matches = new List<Vector2Int>();
             var visited = GetVisited();
-            // ��齻��������λ�ü����������
+            // 检查交换的两个位置及其相关行列
             FindMatchesAt(x1, y1, visited, ref matches);
             FindMatchesAt(x2, y2, visited, ref matches);
 
-            Debug.Log(string.Format("����Ԫ�غ�������Ԫ������{0}", matches.Count));
+            Debug.Log(string.Format("交换元素后消除的元素数量{0}", matches.Count));
             foreach (var item in matches)
             {
-                Debug.Log(string.Format("�ֱ���{0}", item.ToString()));
+                Debug.Log(string.Format("分别是{0}", item.ToString()));
             }
 
 
@@ -467,11 +467,11 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ����ָ��λ�õ�ƥ��
+        /// 查找指定位置的匹配
         /// </summary>
         private List<Vector2Int> FindMatchesAt(int x, int y, bool[,] visited, ref List<Vector2Int> matches)
         {
-            // �߽���
+            // 边界检查
             if (!IsPositionValid(x, y))
                 return matches;
 
@@ -479,13 +479,13 @@ namespace ProjectApp
             if (!ElementTool.CheckType_CanMatches(type))
                 return matches;
 
-            // ʹ��ջ�ڴ����ѷ���
+            // 使用栈内存避免堆分配
             Span<Vector2Int> tempMatches = stackalloc Vector2Int[boardSize.x * boardSize.y];
             int matchCount = 0;
 
-            //����ָ��λ�õĴ�ֱƥ��
+            //查找指定位置的垂直匹配
             FindHorizontalMatchesAt(x, y, 4, ref tempMatches, ref matchCount);
-            //����ָ��λ�õĴ�ֱƥ��
+            //查找指定位置的垂直匹配
             FindVerticalMatchesAt(x, y, 4, ref tempMatches, ref matchCount);
 
             Span<Vector2Int> validMatches = tempMatches.Slice(0, matchCount);
@@ -493,7 +493,7 @@ namespace ProjectApp
             {
                 if (!visited[item.x, item.y])
                 {
-                    //δ�����
+                    //未加入过
                     matches.Add(item);
                     visited[item.x, item.y] = true;
                 }
@@ -503,26 +503,26 @@ namespace ProjectApp
         }
 
 
-        #region �д����ƥ�䷽��
+        #region 有错误的匹配方法
         /// <summary>
-        /// �ݹ��ռ��������ڵ�ƥ�䣨֧��T�Ρ�L�εȸ���ƥ�䣩
+        /// 递归收集所有相邻的匹配（支持T形、L形等复杂匹配）
         /// </summary>
         private void CollectMatchesRecursive(int x, int y, ElementType type, Span<Vector2Int> matches, ref int matchCount)
         {
-            // ����Ƿ��ѷ��ʻ����Ͳ�ƥ��
+            // 检查是否已访问或类型不匹配
             if (!IsPositionValid(x, y) ||
                 BoardData[x, y].Type != type ||
                 ContainsPosition(matches, matchCount, new Vector2Int(x, y)))
                 return;
 
-            // ���ӵ�ƥ���б�
+            // 添加到匹配列表
             matches[matchCount++] = new Vector2Int(x, y);
 
-            // ����ĸ�����
-            CheckAndCollect(x + 1, y, type, matches, ref matchCount); // ��
-            CheckAndCollect(x - 1, y, type, matches, ref matchCount); // ��
-            CheckAndCollect(x, y + 1, type, matches, ref matchCount); // ��
-            CheckAndCollect(x, y - 1, type, matches, ref matchCount); // ��
+            // 检查四个方向
+            CheckAndCollect(x + 1, y, type, matches, ref matchCount); // 右
+            CheckAndCollect(x - 1, y, type, matches, ref matchCount); // 左
+            CheckAndCollect(x, y + 1, type, matches, ref matchCount); // 上
+            CheckAndCollect(x, y - 1, type, matches, ref matchCount); // 下
         }
 
         private void CheckAndCollect(int x, int y, ElementType type, Span<Vector2Int> matches, ref int matchCount)
@@ -534,7 +534,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ���λ���Ƿ�����ƥ���б���
+        /// 检查位置是否已在匹配列表中
         /// </summary>
         private bool ContainsPosition(Span<Vector2Int> matches, int count, Vector2Int position)
         {
@@ -550,14 +550,14 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ����ƥ���飨ʹ��BFS��
+        /// 查找匹配组（使用BFS）
         /// </summary>
         private List<Vector2Int> FindMatchGroup(int startX, int startY, bool[,] visited)
         {
             var matches = new List<Vector2Int>();
             var type = BoardData[startX, startY].Type;
 
-            // ʹ�ö��н���BFS
+            // 使用队列进行BFS
             var queue = new Queue<Vector2Int>();
             queue.Enqueue(new Vector2Int(startX, startY));
 
@@ -571,7 +571,7 @@ namespace ProjectApp
                 visited[pos.x, pos.y] = true;
                 matches.Add(pos);
 
-                // ����ĸ�����
+                // 检查四个方向
                 CheckAndEnqueue(pos.x + 1, pos.y, type, visited, queue);
                 CheckAndEnqueue(pos.x - 1, pos.y, type, visited, queue);
                 CheckAndEnqueue(pos.x, pos.y + 1, type, visited, queue);
@@ -591,7 +591,7 @@ namespace ProjectApp
         #endregion
 
         /// <summary>
-        /// ����ָ��λ�õ�ˮƽƥ��
+        /// 查找指定位置的水平匹配
         /// </summary>
         private bool FindHorizontalMatchesAt(int x, int y, int minMatchCount, ref Span<Vector2Int> finalMatches, ref int finalMatchesCont)
         {
@@ -602,14 +602,14 @@ namespace ProjectApp
             if (type == ElementType.Fixed_Empty || type == ElementType.Fixed_None)
                 return false;
 
-            // ʹ��ջ��������
+            // 使用栈分配数组
             Span<Vector2Int> tempMatches = stackalloc Vector2Int[boardSize.x];
             int matchCount = 0;
 
-            // ��ʼλ��
+            // 起始位置
             tempMatches[matchCount++] = new Vector2Int(x, y);
 
-            // ������
+            // 向左检查
             for (int i = x - 1; i >= 0; i--)
             {
                 ElementType tarType = ElementTool.GetTypeToElementData(BoardData[i, y]);
@@ -620,7 +620,7 @@ namespace ProjectApp
                     break;
             }
 
-            // ���Ҽ��
+            // 向右检查
             for (int i = x + 1; i < boardSize.x; i++)
             {
                 ElementType tarType = ElementTool.GetTypeToElementData(BoardData[i, y]);
@@ -630,7 +630,7 @@ namespace ProjectApp
                     break;
             }
 
-            // ���������3��ƥ�䣬���������б�
+            // 如果至少有3个匹配，创建最终列表
             if (matchCount >= minMatchCount)
             {
                 foreach (var item in tempMatches.Slice(0, matchCount))
@@ -644,7 +644,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ����ָ��λ�õĴ�ֱƥ�䣨��������������������ʹ�ã�
+        /// 查找指定位置的垂直匹配（单独方法，供特殊需求使用）
         /// </summary>
         private bool FindVerticalMatchesAt(int x, int y, int minMatchCount, ref Span<Vector2Int> finalMatches, ref int finalMatchesCont)
         {
@@ -655,14 +655,14 @@ namespace ProjectApp
             if (type == ElementType.Fixed_Empty || type == ElementType.Fixed_None)
                 return false;
 
-            // ʹ��ջ��������
+            // 使用栈分配数组
             Span<Vector2Int> tempMatches = stackalloc Vector2Int[boardSize.y];
             int matchCount = 0;
 
-            // ��ʼλ��
+            // 起始位置
             tempMatches[matchCount++] = new Vector2Int(x, y);
 
-            // ���¼��
+            // 向下检查
             for (int j = y - 1; j >= 0; j--)
             {
                 ElementType tarType = ElementTool.GetTypeToElementData(BoardData[x, j]);
@@ -672,7 +672,7 @@ namespace ProjectApp
                     break;
             }
 
-            // ���ϼ��
+            // 向上检查
             for (int j = y + 1; j < boardSize.y; j++)
             {
                 ElementType tarType = ElementTool.GetTypeToElementData(BoardData[x, j]);
@@ -682,7 +682,7 @@ namespace ProjectApp
                     break;
             }
 
-            // ���������3��ƥ�䣬���������б�
+            // 如果至少有3个匹配，创建最终列表
             if (matchCount >= minMatchCount)
             {
                 foreach (var item in tempMatches.Slice(0, matchCount))
@@ -696,7 +696,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// λ����Ч�Լ��
+        /// 位置有效性检查
         /// </summary>
         private bool IsPositionValid(int x, int y)
         {
@@ -705,7 +705,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// λ����Ч�Լ�飨Vector2Int�汾��
+        /// 位置有效性检查（Vector2Int版本）
         /// </summary>
         private bool IsPositionValid(Vector2Int pos)
         {
@@ -715,17 +715,17 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// ����λ
+        /// 填充空位
         /// </summary>
         void FillEmptySpaces()
         {
             if (!Core.IsFill) return;
 
-            //Ҫ�����Ԫ��
+            //要下落的元素
             List<ElementData> souList = ListPool<ElementData>.Get();
-            //����Ԫ�ص�Ŀ��
+            //下落元素的目标
             List<ElementData> tarList = ListPool<ElementData>.Get();
-            //�´�����Ԫ��λ��
+            //新创建的元素位置
             List<ElementData> creadList = ListPool<ElementData>.Get();
 
 
@@ -734,48 +734,48 @@ namespace ProjectApp
                 int creadCont = 0;
                 for (int y = 0; y < boardSize.y; y++)
                 {
-                    if (BoardData[x, y].Type == ElementType.Fixed_Empty) // ��λ���
+                    if (BoardData[x, y].Type == ElementType.Fixed_Empty) // 空位标记
                     {
-                        //Ҫ����λ��
+                        //要填充的位置
                         ElementData tar = BoardData[x, y];
-                        //Ҫ���� Դλ��
+                        //要填充的 源位置
                         ElementData sour = default;
 
 
-                        //����Ѱ�ҵ�����Ĳ��ǿյ�����
+                        //向上寻找到最近的不是空的物体
                         int temp_y = y + 1;
                         bool isCreate = false;
                         while (temp_y < boardSize.y)
                         {
                             ElementType type = BoardData[x, temp_y].Type;
-                            //�ǿյ� 
+                            //是空的 
                             if (ElementTool.CheckType_UpEmpty(BoardData[x, temp_y].Type))
                             {
                                 temp_y++;
                                 continue;
                             }
-                            //������
+                            //可下落
                             if (ElementTool.CheckType_FillEmpty(type))
                             {
                                 sour = BoardData[x, temp_y];
-                                //������ ����������Ϊ�յ�
+                                //下落了 将自身设置为空的
                                 BoardData[x, temp_y].SetType(ElementType.Fixed_Empty);
                             }
                             else
                             {
-                                //�������������Ԫ�� Ҫ������Ԫ��
+                                //碰到不可下落的元素 要创建新元素
                                 isCreate = true;
                             }
                             break;
                         }
 
 
-                        //����Ŀ�
+                        //最近的空
                         if (temp_y >= boardSize.y || isCreate)
                         {
-                            // ������Ԫ��
+                            // 生成新元素
                             sour = Core.GetRandomElementData();
-                            //��Ϊ ���´����� ���Կ��� �ڸ������̵�λ��  
+                            //因为 是新创建的 所以可能 在高于棋盘的位置  
                             sour.SetPot(x, temp_y + creadCont);
 
                             creadCont++;
@@ -786,13 +786,13 @@ namespace ProjectApp
                         souList.Add(sour);
                         tarList.Add(tar);
 
-                        //���õ�ǰ������
+                        //设置当前的类型
                         SetBoardData(x, y, sour);
                     }
                 }
             }
 
-            Debug.Log("Ҫ������Ԫ������" + creadList.Count);
+            Debug.Log("要创建的元素数量" + creadList.Count);
             //foreach (var item in creadList)
             //{
             //    Debug.Log(item.ToString());
@@ -800,28 +800,28 @@ namespace ProjectApp
 
             if (creadList.Count > 0)
             {
-                //����Ԫ��
+                //创建元素
                 Dispatcher.Dispatch(GameMsg.GenerateElements, creadList);
             }
             ListPool<ElementData>.Release(creadList);
 
-            Debug.Log("Ҫ�����Ԫ������" + souList.Count);
+            Debug.Log("要下落的元素数量" + souList.Count);
             for (int i = 0; i < souList.Count; i++)
             {
                 ElementData item = souList[i];
-                //Debug.Log("����Ԫ��" + item.ToString() + "Ŀ��λ��" + tarList[i].ToString());
+                //Debug.Log("下落元素" + item.ToString() + "目标位置" + tarList[i].ToString());
             }
 
             if (souList.Count > 0 && tarList.Count > 0)
             {
-                // ����Ԫ��
+                // 下落元素
                 Core.Dispatch(GameMsg.ElementsFall, souList, tarList);
             }
             ListPool<ElementData>.Release(souList);
             ListPool<ElementData>.Release(tarList);
 
 
-            // ����µ�ƥ��
+            // 检查新的匹配
 
             CheckAllMatches();
         }
@@ -834,20 +834,20 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// �������ƥ��
+        /// 检查所有匹配
         /// </summary>
         void CheckAllMatches()
         {
             if (!Core.isCheckAllMatches) return;
 
-            // ʹ�ö���ػ�ȡ�б�������GC����
+            // 使用对象池获取列表，避免GC分配
             var allMatches = FindAllMatches();
 
             if (allMatches.Count > 0)
             {
-                //����
+                //消除
                 ProcessMatches(allMatches);
-                //��λ
+                //补位
                 FillEmptySpaces();
             }
 
@@ -856,7 +856,7 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ��������ƥ��
+        /// 查找所有匹配
         /// </summary>
         public List<Vector2Int> FindAllMatches(List<Vector2Int> allMatches = null)
         {
@@ -865,12 +865,12 @@ namespace ProjectApp
             allMatches.Clear();
 
             var visited = GetVisited();
-            // �Ż�2��һ�����ռ�����ƥ��λ��
+            // 优化2：一次性收集所有匹配位置
             for (int x = 0; x < boardSize.x; x++)
             {
                 for (int y = 0; y < boardSize.y; y++)
                 {
-                    // �����Ѽ��λ�úͿ�λ
+                    // 跳过已检查位置和空位
                     if (!ElementTool.CheckType_CanMatches(BoardData[x, y].Type) || visited[x, y])
                     {
                         continue;
@@ -898,17 +898,17 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// ����ƥ������
+        /// 处理匹配消除
         /// </summary>
-        void ProcessMatches(List<Vector2Int> matches)
+        void ProcessMatches(List<Vector2Int> matches,uint index = 0)
         {
 
-            // ����������Ҫ4���������ͬԪ��
+            // 四消规则：需要4个或更多相同元素
             //if (horizontalMatches.Count >= 4)
             //{
             //    matches.AddRange(horizontalMatches);
 
-            //    // ���ɵ��ߣ���������������
+            //    // 生成道具（根据消除数量）
             //    if (horizontalMatches.Count == 5)
             //    {
             //        GeneratePropAt(x, y, PropType.Horizontal);
@@ -927,7 +927,7 @@ namespace ProjectApp
             //{
             //    matches.AddRange(verticalMatches);
 
-            //    // ���ɵ���
+            //    // 生成道具
             //    if (verticalMatches.Count == 5)
             //    {
             //        GeneratePropAt(x, y, PropType.Vertical);
@@ -947,21 +947,21 @@ namespace ProjectApp
 
             List<ElementData> allMatches = ListPool<ElementData>.Get();
 
-            // ����Ԫ��
+            // 消除元素
             foreach (Vector2Int match in matches)
             {
-                //Debug.Log("������" + Data.boardData[match.x, match.y].ToString());
-                if (BoardData[match.x, match.y].Type != ElementType.Fixed_Empty) //������ǲ�����
+                //Debug.Log("消除：" + Data.boardData[match.x, match.y].ToString());
+                if (BoardData[match.x, match.y].Type != ElementType.Fixed_Empty) //如果不是不存在
                 {
                     allMatches.Add(BoardData[match.x, match.y]);
-                    BoardData[match.x, match.y].SetEmpty(); // ���Ϊ��
+                    BoardData[match.x, match.y].SetEmpty(); // 标记为空
                 }
             }
 
-            Dispatcher.Dispatch(GameMsg.ClearElements, allMatches);
+            Core.Dispatch(GameMsg.ClearElements, allMatches,index);
             ListPool<ElementData>.Release(allMatches);
 
-            // �������
+            // 计算分数
             int matchCount = matches.Count;
             int scoreToAdd = CalculateScore(matchCount);
             AddScore(scoreToAdd);
@@ -970,40 +970,41 @@ namespace ProjectApp
         }
 
         /// <summary>
-        /// �������
+        /// 计算分数
         /// </summary>
         int CalculateScore(int matchCount)
         {
             switch (matchCount)
             {
-                case 4: return GeneralStaticVO.Instance.MatchScore_4;  // ����������
-                case 5: return GeneralStaticVO.Instance.MatchScore_5;  // �����÷�
-                case 6: return GeneralStaticVO.Instance.MatchScore_6;  // �����÷�
-                case 7: return GeneralStaticVO.Instance.MatchScore_7;  // �����÷�
-                default:  // ��������
+                case 4: return GeneralStaticVO.Instance.MatchScore_4;  // 四消基础分
+                case 5: return GeneralStaticVO.Instance.MatchScore_5;  // 五消得分
+                case 6: return GeneralStaticVO.Instance.MatchScore_6;  // 六消得分
+                case 7: return GeneralStaticVO.Instance.MatchScore_7;  // 七消得分
+                default:  // 更多消除
                     {
-                        if(matchCount< 7)
+                        if (matchCount < 7)
                         {
                             return GeneralStaticVO.Instance.MatchScore_1 * matchCount;
-                        }else
+                        }
+                        else
                         {
-                            return GeneralStaticVO.Instance.MatchScore_7 + GeneralStaticVO.Instance.MatchScore_1 * (matchCount-7);
+                            return GeneralStaticVO.Instance.MatchScore_7 + GeneralStaticVO.Instance.MatchScore_1 * (matchCount - 7);
                         }
                     }
             }
         }
 
         /// <summary>
-        /// ���ӷ���
+        /// 添加分数
         /// </summary>
         void AddScore(int score)
         {
             int oldSocre = Data.currentScore;
             Data.currentScore += score;
-            Debug.Log($"��ǰ����: {Data.currentScore}");
+            Debug.Log($"当前分数: {Data.currentScore}");
 
             Core.Dispatch(GameMsg.ScoreUpdated, oldSocre, Data.currentScore);
-            // ����Ƿ�ﵽĿ��
+            // 检查是否达到目标
             if (Data.currentScore >= Data.targetScore)
             {
                 Core.GameWin();
@@ -1012,7 +1013,7 @@ namespace ProjectApp
 
         #endregion
 
-        #region ����ϵͳ
+        #region 道具系统
 
 
         private void Player_ActivateTwoProp(int form_x, int form_y, int to_x, int to_y)
@@ -1025,21 +1026,23 @@ namespace ProjectApp
             List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
             List<ElementData> currProps = ListPool<ElementData>.Get();
 
-            //������������
+            //激活两个道具
             ActivatePropTwo(formData, toData, ref tempMatches, ref currProps);
+
+            uint index = GameTool.GetNextIndex();
 
             Core.Dispatch(GameMsg.ActivateTwoProp, formData, toData, tempMatches, currProps);
             if (tempMatches.Count > 0)
             {
-                ProcessMatches(tempMatches);
+                ProcessMatches(tempMatches,index);
             }
 
-            //���ߴ����ĵ��� ����
+            //道具触发的道具 激活
             ActivatePropList(currProps);
 
             ListPool<ElementData>.Release(currProps);
 
-            //��λ
+            //补位
             FillEmptySpaces();
 
 
@@ -1047,7 +1050,7 @@ namespace ProjectApp
 
 
         /// <summary>
-        /// һ��ʹ�����̵��ߵĲ���
+        /// 一次使用棋盘道具的操作
         /// </summary>
         /// <param name="data"></param>
         public void Player_ActivateProp(ElementData data)
@@ -1060,25 +1063,27 @@ namespace ProjectApp
             List<ElementData> currProps = ListPool<ElementData>.Get();
             currProps.Add(data);
 
+
             ActivatePropList(currProps);
 
             ListPool<ElementData>.Release(currProps);
 
-            //��λ
+            //补位
             FillEmptySpaces();
 
         }
 
         private void ActivatePropList(List<ElementData> currProps)
         {
+            
             while (currProps.Count > 0)
             {
                 List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
                 List<ElementData> tempProps = ListPool<ElementData>.Get();
 
-                //�����жϵ�ǰ�Ƿ���ͬһ��
-                uint index = GameTool.GetNextIndex();
-
+                //用来判断当前是否在同一组动画
+                uint currIndex = GameTool.GetNextIndex();
+                //触发所有道具
                 for (int i = 0; i < currProps.Count; i++)
                 {
                     List<Vector2Int> matches = ListPool<Vector2Int>.Get();
@@ -1090,7 +1095,7 @@ namespace ProjectApp
 
                     ActivateProp(propData, ref matches, ref oneProp);
 
-                    Core.Dispatch(GameMsg.ActivateProp, index, propData, matches, oneProp);
+                    Core.Dispatch(GameMsg.ActivateProp, currIndex, propData, matches, oneProp);
 
                     tempMatches.AddRange(matches);
                     tempProps.AddRange(oneProp);
@@ -1100,14 +1105,14 @@ namespace ProjectApp
 
                 if (tempMatches.Count > 0)
                 {
-                    ProcessMatches(tempMatches);
+                    ProcessMatches(tempMatches, currIndex);
                 }
 
-                //����ѭ�����
+                //本次循环完成
                 currProps.Clear();
                 if (tempProps.Count > 0)
                 {
-                    //���δ����˵��� ������������
+                    //本次触发了道具 继续触发道具
                     currProps.AddRange(tempProps);
                 }
 
@@ -1137,7 +1142,7 @@ namespace ProjectApp
                     break;
 
                 default:
-                    Debug.Log(data.ToString() + "�����ǵ���");
+                    Debug.Log(data.ToString() + "并不是道具");
                     break;
             }
         }
@@ -1150,13 +1155,13 @@ namespace ProjectApp
                 if (formData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Horizontal)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //����
+                    //横竖
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
 
                     ActivateProp_Horizontal(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X, toData.Y, ref matches, ref dataProp);
-                    Debug.LogWarning("����");
+                    Debug.LogWarning("横竖");
 
                 }
 
@@ -1167,37 +1172,37 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb && formData.Type == ElementType.Prop_Bomb)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //˫ը��
+                    //双炸弹
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
 
                     ActivateProp_Bomb(toData.X, toData.Y, 3, ref matches, ref dataProp);
-                    Debug.LogWarning("˫ը��");
+                    Debug.LogWarning("双炸弹");
                 }
 
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //ը������
+                    //炸弹加竖
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
                     ActivateProp_Vertical(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X + 1, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Vertical(toData.X - 1, toData.Y, ref matches, ref dataProp);
-                    Debug.LogWarning("ը������");
+                    Debug.LogWarning("炸弹加竖");
                 }
 
                 if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //ը���Ӻ�
+                    //炸弹加横
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
                     ActivateProp_Horizontal(toData.X, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Horizontal(toData.X + 1, toData.Y, ref matches, ref dataProp);
                     ActivateProp_Horizontal(toData.X - 1, toData.Y, ref matches, ref dataProp);
-                    Debug.LogWarning("ը���Ӻ�");
+                    Debug.LogWarning("炸弹加横");
                 }
 
             }
@@ -1207,29 +1212,32 @@ namespace ProjectApp
                 if (toData.Type == ElementType.Prop_Bomb || formData.Type == ElementType.Prop_Bomb)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    Debug.LogWarning("wild��ը��");
+                    Debug.LogWarning("wild加炸弹");
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
-                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb, 3, ref matches, ref dataProp);
+                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Bomb);
+                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Bomb, sum, ref matches, ref dataProp);
                 }
 
                 if (toData.Type == ElementType.Prop_Vertical || formData.Type == ElementType.Prop_Vertical)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //wild��Vertical
-                    Debug.LogWarning("wild��Vertical");
+                    //wild加Vertical
+                    Debug.LogWarning("wild加Vertical");
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
+                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Vertical);
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Vertical, 3, ref matches, ref dataProp);
                 }
 
                 if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
                 {
                     Data.TakeMemorySnapshotBoardData();
-                    //wild��Horizontal
-                    Debug.LogWarning("wild��Horizontal");
+                    //wild加Horizontal
+                    Debug.LogWarning("wild加Horizontal");
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
+                    int sum = Core.GetWildAndPropSum(ElementType.Prop_Horizontal);
                     ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Horizontal, 3, ref matches, ref dataProp);
                 }
             }
@@ -1361,25 +1369,25 @@ namespace ProjectApp
             int height = Data.BoardHeight;
             int width = Data.BoardWidth;
 
-            // �����ը��Ϊ���ĵ�Բ������
+            // 检查以炸弹为中心的圆形区域
             for (int x = -bombRadius; x <= bombRadius; x++)
             {
                 for (int y = -bombRadius; y <= bombRadius; y++)
                 {
-                    // ����ʵ������λ��
+                    // 计算实际网格位置
                     int targetX = bombGridPosition.x + x;
                     int targetY = bombGridPosition.y + y;
 
-                    // ����Ƿ�������Χ��
+                    // 检查是否在网格范围内
                     if (targetX >= 0 && targetX < width &&
                         targetY >= 0 && targetY < height)
                     {
-                        // ʹ��Բ�η�Χ������ƽ���жϣ�
+                        // 使用圆形范围（距离平方判断）
                         int distanceSquared = x * x + y * y;
                         if (distanceSquared <= bombRadius * bombRadius)
                         {
 
-                            // ����λ���Ƿ��п������ķ���
+                            // 检查该位置是否有可消除的方块
                             var tempData = Data.boardData[targetX, targetY];
 
                             if (ElementTool.CheckType_CanMatches(tempData.Type))
@@ -1475,9 +1483,9 @@ namespace ProjectApp
                         Vector2Int pot = list[0];
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
-                        // �ɹ�ʹ�õ��� ֪ͨ����
+                        // 成功使用道具 通知表现
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
-                        // ����Ч��
+                        // 道具效果
                         ProcessMatches(list);
 
                         FillEmptySpaces();
@@ -1494,24 +1502,24 @@ namespace ProjectApp
                         if (IsAdjacent(pot1.x, pot1.y, pot2.x, pot2.y) || Data.HasConnection(pot1.x, pot1.y, pot2.x, pot2.y))
                         {
                             Data.TakeMemorySnapshotBoardData();
-                            // �ɹ�ʹ�õ��� ֪ͨ����
+                            // 成功使用道具 通知表现
                             Core.Dispatch(GameMsg.CostExternalProp, propType, list);
 
-                            // ����Ԫ��
+                            // 交换元素
                             SwapElements(pot1.x, pot1.y, pot2.x, pot2.y);
 
-                            // ���ƥ��
+                            // 检查匹配
                             List<Vector2Int> matches = FutureCore.ListPool<Vector2Int>.Get();
                             matches = CheckMatchesAfterSwap(pot1.x, pot1.y, pot2.x, pot2.y, ref matches);
 
                             if (matches.Count > 0)
                             {
-                                // ��ƥ�䣬��������
+                                // 有匹配，进行消除
                                 ProcessMatches(matches);
-                                // ������Ԫ�� ����λ
+                                // 创建新元素 并补位
                                 FillEmptySpaces();
                             }
-                            //ʹ�������List
+                            //使用完回收List
                             FutureCore.ListPool<Vector2Int>.Release(matches);
 
                             isSu = true;
@@ -1525,9 +1533,9 @@ namespace ProjectApp
                         Vector2Int pot = list[0];
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
-                        // �ɹ�ʹ�õ��� ֪ͨ����
+                        // 成功使用道具 通知表现
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
-                        // ����Ч��
+                        // 道具效果
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Horizontal).SetPot(pot.x, pot.y));
 
@@ -1535,7 +1543,7 @@ namespace ProjectApp
 
                         ListPool<ElementData>.Release(currProps);
 
-                        //��λ
+                        //补位
                         FillEmptySpaces();
 
                         isSu = true;
@@ -1547,9 +1555,9 @@ namespace ProjectApp
                         Vector2Int pot = list[0];
                         if (!IsPositionValid(pot)) return false;
                         Data.TakeMemorySnapshotBoardData();
-                        // �ɹ�ʹ�õ��� ֪ͨ����
+                        // 成功使用道具 通知表现
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
-                        // ����Ч��
+                        // 道具效果
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Vertical).SetPot(pot.x, pot.y));
 
@@ -1557,7 +1565,7 @@ namespace ProjectApp
 
                         ListPool<ElementData>.Release(currProps);
 
-                        //��λ
+                        //补位
                         FillEmptySpaces();
 
                         isSu = true;
@@ -1566,7 +1574,7 @@ namespace ProjectApp
                     break;
                 case ExternalProp.AllRandom:
                     {
-                        // �ɹ�ʹ�õ��� ֪ͨ����
+                        // 成功使用道具 通知表现
                         Core.Dispatch(GameMsg.CostExternalProp, propType, list);
                         Player_RananAllElement();
                         isSu = true;
@@ -1575,7 +1583,7 @@ namespace ProjectApp
                     break;
                 case ExternalProp.Undo:
                     {
-                        // �ɹ�ʹ�õ��� ����
+                        // 成功使用道具 后退
                         bool isCan = Data.CanUndo();
                         if (isCan)
                         {
@@ -1593,7 +1601,7 @@ namespace ProjectApp
                         ElementType type = BoardData[pot.x, pot.y].Type;
 
 
-                        // �ɹ�ʹ�õ��� ħ����
+                        // 成功使用道具 魔法棒
                         bool isCan = Data.CanUndo();
                         if (isCan)
                         {
@@ -1605,9 +1613,9 @@ namespace ProjectApp
 
                             if (matches.Count > 0)
                             {
-                                // ��ƥ�䣬��������
+                                // 有匹配，进行消除
                                 ProcessMatches(matches);
-                                // ������Ԫ�� ����λ
+                                // 创建新元素 并补位
                                 FillEmptySpaces();
                             }
 
@@ -1640,7 +1648,7 @@ namespace ProjectApp
         /*
 
         /// <summary>
-        /// ���ɵ���
+        /// 生成道具
         /// </summary>
         void GeneratePropAt(int x, int y, PropType propType)
         {
@@ -1664,12 +1672,12 @@ namespace ProjectApp
 
             if (propPrefab != null && elementObjects[x, y] != null)
             {
-                // ��Ԫ��λ�����ɵ���
+                // 在元素位置生成道具
                 Destroy(elementObjects[x, y]);
                 GameObject prop = Instantiate(propPrefab, new Vector3(x, y, 0), Quaternion.identity);
                 elementObjects[x, y] = prop;
 
-                // ���ӵ��߽ű�
+                // 添加道具脚本
                 GameProp propScript = prop.AddComponent<GameProp>();
                 propScript.Initialize(propType, x, y);
                 propScript.OnPropClicked += OnPropClicked;

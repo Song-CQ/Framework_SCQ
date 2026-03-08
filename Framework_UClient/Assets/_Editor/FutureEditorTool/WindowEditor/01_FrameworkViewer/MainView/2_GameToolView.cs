@@ -818,6 +818,11 @@ namespace FutureEditor
                     string fieldName = kvp.Key;
                     object value = kvp.Value;
 
+                    if (fieldName == "CtrlDisableList")
+                    {
+                        Debug.LogError("da");
+                    }
+
                     if (!appConstFields.TryGetValue(fieldName, out FieldInfo fieldInfo))
                         continue;
 

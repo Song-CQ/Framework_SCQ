@@ -285,7 +285,7 @@ namespace ProjectApp.GameLogic
 
         private void SetDuration()
         {
-            Duration = 0.05f;
+            Duration = 0.02f;
         }
 
         public void SetElement(ElementItem elementItem, float delay)

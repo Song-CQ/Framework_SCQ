@@ -13,11 +13,11 @@ namespace FutureCore
         // 是否是调试版本
         public static bool IsDebugVersion = true;
         // 包版本号
-        public static string PackageVersion = "1.0.3";
+        public static string PackageVersion = "1.0.5";
         // 内置配置表哈希值
-        public static string ConfigInternalHash = "";
+        public static string ConfigInternalHash = "20260303203637";
         // 内置配置表版本号
-        public static string ConfigInternalVersion = "";
+        public static string ConfigInternalVersion = "20260303203637";
         // 服务器配置表哈希值
         //public static string ConfigServerHash = null;
         // 服务器配置表版本号
@@ -141,7 +141,7 @@ namespace FutureCore
 
         /// 项目控制参数
         // 控制器关闭列表
-        public static List<String> CtrlDisableList;
+        public static List<String> CtrlDisableList = new List<string>();
 
         //------------------------------------------------------------------------------------------------------------------//
 
