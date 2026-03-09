@@ -27,7 +27,7 @@ namespace ProjectApp
         private MainUICtrl uiCtrl;
         private MainModel model;
         private UGUIEntity u_Entity;
-        public static int GameRandomSeed = 132131231;
+        public static int GameRandomSeed = 13213;
         public static int GameTarScore = 50000;
         private TMP_InputField inputField;
         private TMP_InputField inputScoreField;

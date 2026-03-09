@@ -410,7 +410,7 @@ namespace ProjectApp.GameLogic
                     // 随机方向抖动
                     Vector3 direction = GetRandomDirection();
                     Tar.Pos = originalPos + direction * shakeValue;
-                    Debug.Log(Tar.Data.ToString() + "正在抖动" + TimerUtil.GetGameTime() + Tar.Pos);
+                    //Debug.Log(Tar.Data.ToString() + "正在抖动" + TimerUtil.GetGameTime() + Tar.Pos);
                 },
                 1f,
                 shakeDuration

@@ -286,7 +286,7 @@ namespace ProjectApp
 
         }
 
-       
+
 
         public void RemoveListener()
         {
@@ -311,7 +311,7 @@ namespace ProjectApp
 
         }
 
-        
+
 
         public void InitializeBoard(int w, int h)
         {
@@ -603,7 +603,7 @@ namespace ProjectApp
             {
                 Core.Enabled_PlayerCtr = false;
                 p.Duration = AnimationSys.PlayAin_SwapElement(item1, item2, item1Pot, item2Pot);
-                Debug.Log("当前触发" + UnityEngine.Time.time + "次序事件：" + p.Duration);
+                //Debug.Log("当前触发" + UnityEngine.Time.time + "次序事件：" + p.Duration);
             });
 
             process.SetLinkFinish((p) =>
@@ -652,8 +652,9 @@ namespace ProjectApp
             {
                 Core.Enabled_PlayerCtr = false;
                 float time = AnimationSys.PlayAin_ClearElements(elementItemList);
-                
-                p.Duration = time > p.Duration ? time:p.Duration;
+
+                p.Duration = time > p.Duration ? time : p.Duration;
+                Debug.LogWarning("触发消除" + Time.time);
             });
 
             process.SetLinkFinish((p) =>
@@ -665,7 +666,7 @@ namespace ProjectApp
                 }
                 ListPool<ElementItem>.Release(elementItemList);
             });
-;
+            ;
 
 
         }
@@ -872,7 +873,7 @@ namespace ProjectApp
 
             process.Duration = item.switchDuration;
 
-            
+
 
 
 
@@ -889,24 +890,32 @@ namespace ProjectApp
             uint indexId = (uint)datas[0];
             ElementData data = (ElementData)datas[1];
             List<Vector2Int> matches = datas[2] as List<Vector2Int>;
-            List<ElementItem> props = datas[3] as List<ElementItem>;
+            List<ElementItem> pros = datas[3] as List<ElementItem>;
 
 
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
-            List<Vector3> potList = ListPool<Vector3>.Get();
+            List<Vector3> elementItemPotList = ListPool<Vector3>.Get(); 
+            
+            List<ElementItem> prosItemList = ListPool<ElementItem>.Get();
+            List<Vector3> prosPotList = ListPool<Vector3>.Get();
 
             foreach (var matche in matches)
             {
                 ElementItem _item = FindElementItem(matche.x, matche.y);
                 elementItemList.Add(_item);
-                potList.Add(GameTool.GetPosition(matche.x, matche.y));
-
+                elementItemPotList.Add(GameTool.GetPosition(matche.x, matche.y));
+            }
+            foreach (var matche in pros)
+            {
+                ElementItem _item = FindElementItem(matche.Data.X, matche.Data.Y);
+                prosItemList.Add(_item);
+                prosPotList.Add(GameTool.GetPosition(matche.Data.X, matche.Data.Y));
             }
 
             ElementItem item = FindElementItem(data.X, data.Y);
 
-            GetPropAction(indexId, data.Type, item, elementItemList, potList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB);
-            Debug.LogWarning("触发");
+            GetPropAction(indexId, data.Type, item, elementItemList, elementItemPotList, prosItemList, prosPotList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB);
+
         }
 
         /// <summary>
@@ -964,8 +973,8 @@ namespace ProjectApp
                 case ExternalProp.Swipe:
                     {
 
-                       
-                        
+
+
                     }
                     break;
                 case ExternalProp.Horizontal:
@@ -989,7 +998,7 @@ namespace ProjectApp
         #endregion
 
         #region 道具
-        private float GetPropAction(uint indexId, ElementType type, ElementItem item, List<ElementItem> elementItemList, List<Vector3> potList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
+        private float GetPropAction(uint indexId, ElementType type, ElementItem item, List<ElementItem> elementItemList, List<Vector3> potList, List<ElementItem> prosItemList, List<Vector3> prosPotList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
         {
             float time = 0;
             executeCB = null;
@@ -1004,45 +1013,54 @@ namespace ProjectApp
             switch (type)
             {
                 case ElementType.Prop_Horizontal:
-                    {
-                        time = 1.5f;
-                        executeCB = (p) =>
-                        {
-                            AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
-                            //GameTool.PlayTestEffect(item.Transform.position);
-                            AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.5f);
-                        };
-                    }
-                    break;
-                case ElementType.Prop_Vertical:
-                    time = 1.5f;
+                    time = 1f;
                     executeCB = (p) =>
                     {
-                 
-                        AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
-                        
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.5f);
+                        time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        //GameTool.PlayTestEffect(item.Transform.position);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.1f);
+                        AnimationSys.PlayAin_ElasticShakeElements(prosItemList, prosPotList, 0.1f);
+
+                        time += 0.1f;
+                    };
+                    break;
+                case ElementType.Prop_Vertical:
+                    time = 1f;
+                    executeCB = (p) =>
+                    {
+
+                        time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.1f);
+                        AnimationSys.PlayAin_ElasticShakeElements(prosItemList, prosPotList, 0.1f);
+                        time += 0.1f;
                     };
                     break;
                 case ElementType.Prop_Bomb:
-                    time = 1.5f;
+                    time = 1f;
                     executeCB = (p) =>
                     {
-                        AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        AnimationSys.PlayAin_ElasticShakeElements(prosItemList, prosPotList, 0.1f);
+                        Debug.LogWarning("触发道具" + Time.time);
                         //GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.5f);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.1f);
+
+                        time += 0.1f;
                     };
 
                     break;
                 case ElementType.Prop_Wild:
-                    time = 1.5f;
+                    time = 1f;
                     executeCB = (p) =>
                     {
                         Core.Enabled_PlayerCtr = false;
 
-                        AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        AnimationSys.PlayAin_ElasticShakeElements(prosItemList, prosPotList, 0.1f);
                         //GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList,0.5f);
+                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.1f);
+                        time += 0.1f;
                     };
 
                     break;
@@ -1056,11 +1074,13 @@ namespace ProjectApp
                     GameTool.PlayTestEffect(item.Transform.position);
                     elementsPool.Release(item);
 
-                    Debug.Log("道具结束"+TimerUtil.GetGameTime());
+                    Debug.Log("道具结束" + TimerUtil.GetGameTime());
 
                     Core.Enabled_PlayerCtr = true;
                     ListPool<ElementItem>.Release(elementItemList);
                     ListPool<Vector3>.Release(potList);
+                    ListPool<ElementItem>.Release(prosItemList);
+                    ListPool<Vector3>.Release(prosPotList);
 
                 };
             }
@@ -1146,11 +1166,46 @@ namespace ProjectApp
                 {
                     //wild加Horizontal
                     return ActivateProp_Wild_XX(ElementType.Prop_Horizontal, formItem, toItem, elementItemList, propElementList);
+                } 
+                if (toData.Type == formData.Type )
+                {
+                    //wild加wild
+                    return ActivateProp_Wild_2(ElementType.Prop_Wild, formItem, toItem, elementItemList, propElementList);
                 }
             }
 
             return 0;
 
+        }
+
+        private float ActivateProp_Wild_2(ElementType prop_Wild, ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
+        {
+            AddFormMoveTo(formItem, toItem);
+            List<Vector3> potList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(elementItemList, ref potList);
+
+            var process = GetProcessToEnqueue();
+
+            float time = 3;
+
+            process.SetLinkExecute((p) =>
+            {
+                Core.Enabled_PlayerCtr = false;
+
+                AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+            });
+
+            process.SetLinkFinish((p) =>
+            {
+                Core.Enabled_PlayerCtr = true;
+                ListPool<ElementItem>.Release(elementItemList);
+                ListPool<ElementItem>.Release(propElementList);
+                ListPool<Vector3>.Release(potList);
+
+            });
+
+            process.Duration = time;
+            return time;
         }
 
         private float ActivateProp_Wild_XX(ElementType type, ElementItem formItem, ElementItem toItem, List<ElementItem> elementItemList, List<ElementItem> propElementList)
@@ -1202,17 +1257,23 @@ namespace ProjectApp
             AddFormMoveTo(formItem, toItem);
 
 
+            List<Vector3> potList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(elementItemList, ref potList);
+
+            List<Vector3> prosPotList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(propElementList, ref prosPotList);
+
+
+
             var process = GetProcessToEnqueue();
 
             float time = 1;
-
-            List<Vector3> potList = ListPool<Vector3>.Get();
-            GameTool.GetPositionToList(elementItemList, ref potList);
 
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
                 AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+                AnimationSys.PlayAin_ElasticShakeElements(propElementList, prosPotList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1221,6 +1282,7 @@ namespace ProjectApp
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
                 ListPool<Vector3>.Release(potList);
+                ListPool<Vector3>.Release(prosPotList);
 
             });
 
@@ -1235,6 +1297,10 @@ namespace ProjectApp
             List<Vector3> potList = ListPool<Vector3>.Get();
             GameTool.GetPositionToList(elementItemList, ref potList);
 
+            List<Vector3> prosPotList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(propElementList, ref prosPotList);
+
+
 
             var process = GetProcessToEnqueue();
 
@@ -1244,6 +1310,7 @@ namespace ProjectApp
             {
                 Core.Enabled_PlayerCtr = false;
                 AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+                AnimationSys.PlayAin_ElasticShakeElements(propElementList, prosPotList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1252,6 +1319,7 @@ namespace ProjectApp
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
                 ListPool<Vector3>.Release(potList);
+                ListPool<Vector3>.Release(prosPotList);
 
             });
 
@@ -1266,6 +1334,10 @@ namespace ProjectApp
             List<Vector3> potList = ListPool<Vector3>.Get();
             GameTool.GetPositionToList(elementItemList, ref potList);
 
+            List<Vector3> prosPotList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(propElementList, ref prosPotList);
+
+
 
             var process = GetProcessToEnqueue();
 
@@ -1275,6 +1347,7 @@ namespace ProjectApp
             {
                 Core.Enabled_PlayerCtr = false;
                 AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+                AnimationSys.PlayAin_ElasticShakeElements(propElementList, prosPotList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1283,6 +1356,8 @@ namespace ProjectApp
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
                 ListPool<Vector3>.Release(potList);
+                ListPool<Vector3>.Release(prosPotList);
+
             });
 
             process.Duration = time;
@@ -1297,6 +1372,9 @@ namespace ProjectApp
 
             List<Vector3> potList = ListPool<Vector3>.Get();
             GameTool.GetPositionToList(elementItemList, ref potList);
+            
+            List<Vector3> prosPotList = ListPool<Vector3>.Get();
+            GameTool.GetPositionToList(propElementList, ref prosPotList);
 
 
 
@@ -1308,6 +1386,7 @@ namespace ProjectApp
             {
                 Core.Enabled_PlayerCtr = false;
                 AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+                AnimationSys.PlayAin_ElasticShakeElements(propElementList, prosPotList);
             });
 
             process.SetLinkFinish((p) =>
@@ -1316,6 +1395,7 @@ namespace ProjectApp
                 ListPool<ElementItem>.Release(elementItemList);
                 ListPool<ElementItem>.Release(propElementList);
                 ListPool<Vector3>.Release(potList);
+                ListPool<Vector3>.Release(prosPotList);
 
             });
 
@@ -1327,7 +1407,7 @@ namespace ProjectApp
 
         private void AddFormMoveTo(ElementItem formItem, ElementItem toItem)
         {
-            Debug.Log("道具移动formItem"+formItem.ToString()+" to " +toItem.ToString());
+            Debug.Log("道具移动formItem" + formItem.ToString() + " to " + toItem.ToString());
             formItem.SetEmpty();
             toItem.SetEmpty();
 
@@ -1363,16 +1443,16 @@ namespace ProjectApp
 
             var process = GetProcessToEnqueue();
             process.SetLinkFinish((p) =>
-            {   
-                UICtrlDispatcher.Instance.Dispatch(GameMsg.ScoreUpdated,obj);
+            {
+                UICtrlDispatcher.Instance.Dispatch(GameMsg.ScoreUpdated, obj);
             });
         }
 
         private void OnGameWin(object obj)
-        {         
+        {
             var process = GetProcessToEnqueue();
             process.SetLinkFinish((p) =>
-            {   
+            {
                 UICtrlDispatcher.Instance.Dispatch(GameMsg.GameWin);
             });
         }
@@ -1391,23 +1471,23 @@ namespace ProjectApp
         {
             defSize = GeneralStaticVO.Instance.StandardSize;
             minSize = GeneralStaticVO.Instance.Size_Clamp[0];
-            maxSize = GeneralStaticVO.Instance.Size_Clamp[1];         
+            maxSize = GeneralStaticVO.Instance.Size_Clamp[1];
         }
         private void OnPinchZoom(float delta)
         {
-            if(!Core.Enabled_PlayerCtr)return;
+            if (!Core.Enabled_PlayerCtr) return;
 
             size = size + delta * sizeSpeed * Time.deltaTime;
 
-            size = Mathf.Clamp(size,minSize,maxSize);
+            size = Mathf.Clamp(size, minSize, maxSize);
 
-            
+
 
         }
 
         private void UpdateOrthographicSize()
         {
-            Core.transform.localScale = Vector3.MoveTowards(Core.transform.localScale,Vector3.one * size, sizeSpeed *Time.deltaTime);
+            Core.transform.localScale = Vector3.MoveTowards(Core.transform.localScale, Vector3.one * size, sizeSpeed * Time.deltaTime);
         }
         #endregion
 

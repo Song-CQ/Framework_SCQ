@@ -1,4 +1,5 @@
 
+using Codice.Utils;
 using FutureCore;
 using ProjectApp.Data;
 using System;
@@ -900,7 +901,7 @@ namespace ProjectApp
         /// <summary>
         /// 处理匹配消除
         /// </summary>
-        void ProcessMatches(List<Vector2Int> matches,uint index = 0)
+        void ProcessMatches(List<Vector2Int> matches, uint index = 0)
         {
 
             // 四消规则：需要4个或更多相同元素
@@ -946,19 +947,30 @@ namespace ProjectApp
 
 
             List<ElementData> allMatches = ListPool<ElementData>.Get();
+            List<Vector2Int> allMatcheVector2 = ListPool<Vector2Int>.Get();
 
             // 消除元素
             foreach (Vector2Int match in matches)
             {
-                //Debug.Log("消除：" + Data.boardData[match.x, match.y].ToString());
+                Debug.Log("消除：" + Data.boardData[match.x, match.y].ToString());
                 if (BoardData[match.x, match.y].Type != ElementType.Fixed_Empty) //如果不是不存在
                 {
-                    allMatches.Add(BoardData[match.x, match.y]);
+
+                    if (!allMatcheVector2.Contains(match))
+                    {
+                        allMatcheVector2.Add(match);
+                        allMatches.Add(BoardData[match.x, match.y]);
+                    }
+                    else
+                    {
+                        Debug.Log("重复：" + Data.boardData[match.x, match.y].ToString());
+                    }
                     BoardData[match.x, match.y].SetEmpty(); // 标记为空
                 }
             }
+            ListPool<Vector2Int>.Release(allMatcheVector2);
 
-            Core.Dispatch(GameMsg.ClearElements, allMatches,index);
+            Core.Dispatch(GameMsg.ClearElements, allMatches, index);
             ListPool<ElementData>.Release(allMatches);
 
             // 计算分数
@@ -1026,6 +1038,7 @@ namespace ProjectApp
             List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
             List<ElementData> currProps = ListPool<ElementData>.Get();
 
+
             //激活两个道具
             ActivatePropTwo(formData, toData, ref tempMatches, ref currProps);
 
@@ -1034,7 +1047,7 @@ namespace ProjectApp
             Core.Dispatch(GameMsg.ActivateTwoProp, formData, toData, tempMatches, currProps);
             if (tempMatches.Count > 0)
             {
-                ProcessMatches(tempMatches,index);
+                ProcessMatches(tempMatches, index);
             }
 
             //道具触发的道具 激活
@@ -1075,14 +1088,14 @@ namespace ProjectApp
 
         private void ActivatePropList(List<ElementData> currProps)
         {
-            
+
             while (currProps.Count > 0)
             {
                 List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
                 List<ElementData> tempProps = ListPool<ElementData>.Get();
 
-                //用来判断当前是否在同一组动画
-                uint currIndex = GameTool.GetNextIndex();
+                //用来判断当前是否在同一组动画  这一组道具都是同一触发
+                uint propIndex = GameTool.GetNextIndex();
                 //触发所有道具
                 for (int i = 0; i < currProps.Count; i++)
                 {
@@ -1095,7 +1108,7 @@ namespace ProjectApp
 
                     ActivateProp(propData, ref matches, ref oneProp);
 
-                    Core.Dispatch(GameMsg.ActivateProp, currIndex, propData, matches, oneProp);
+                    Core.Dispatch(GameMsg.ActivateProp, propIndex, propData, matches, oneProp);
 
                     tempMatches.AddRange(matches);
                     tempProps.AddRange(oneProp);
@@ -1103,9 +1116,11 @@ namespace ProjectApp
                     ListPool<ElementData>.Release(oneProp);
                 }
 
+                uint matchesIndex = GameTool.GetNextIndex();
+                //这里 本次道具触发 造成的消除不应该和道具触发在同一组 分配到下一组
                 if (tempMatches.Count > 0)
                 {
-                    ProcessMatches(tempMatches, currIndex);
+                    ProcessMatches(tempMatches, matchesIndex);
                 }
 
                 //本次循环完成
@@ -1227,7 +1242,7 @@ namespace ProjectApp
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
                     int sum = Core.GetWildAndPropSum(ElementType.Prop_Vertical);
-                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Vertical, 3, ref matches, ref dataProp);
+                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Vertical, sum, ref matches, ref dataProp);
                 }
 
                 if (toData.Type == ElementType.Prop_Horizontal || formData.Type == ElementType.Prop_Horizontal)
@@ -1238,7 +1253,22 @@ namespace ProjectApp
                     Data.boardData[formData.X, formData.Y].SetEmpty();
                     Data.boardData[toData.X, toData.Y].SetEmpty();
                     int sum = Core.GetWildAndPropSum(ElementType.Prop_Horizontal);
-                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Horizontal, 3, ref matches, ref dataProp);
+                    ActivateProp_WildAndProp(toData.X, toData.Y, ElementType.Prop_Horizontal, sum, ref matches, ref dataProp);
+                }
+
+                if (toData.Type == formData.Type)
+                {
+
+                    Data.TakeMemorySnapshotBoardData();
+                    //双wild
+                    Debug.LogWarning("双wild");
+                    Data.boardData[formData.X, formData.Y].SetEmpty();
+                    Data.boardData[toData.X, toData.Y].SetEmpty();
+
+                    ActivateProp_WildAndWild(toData.X, toData.Y, ref matches, ref dataProp);
+
+
+
                 }
             }
 
@@ -1432,6 +1462,21 @@ namespace ProjectApp
 
 
 
+        private void ActivateProp_WildAndWild(int X, int Y, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
+        {
+            if (!IsPositionValid(X, Y)) return;
+
+            foreach (var data in Data.boardData)
+            {
+                if (ElementTool.CheckType_CanMatches(data.Type))
+                {
+                    data.SetEmpty();
+                    Data.boardData[data.X, data.Y] = data;
+                    matches.Add(new Vector2Int(data.X, data.Y));
+                }
+            }
+
+        }
         private void ActivateProp_WildAndProp(int X, int Y, ElementType elementType, int rananSum, ref List<Vector2Int> matches, ref List<ElementData> dataProp)
         {
             if (!IsPositionValid(X, Y)) return;
