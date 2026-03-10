@@ -40,6 +40,7 @@ namespace ProjectApp
 
         private void OnRelease(ElementItem element)
         {
+            Debug.LogError("回收" + element.Pos);
             RaycastSys.UnregisterEvent_OnClick(element);
             element.Transform.SetParent(elementsPoolTrf);
             element.Release();
@@ -886,16 +887,17 @@ namespace ProjectApp
         private void OnActivateProp(object obj)
         {
             object[] datas = obj as object[];
+            bool isPlayerClick = (bool)datas[0];
             //要激活的道具
-            uint indexId = (uint)datas[0];
-            ElementData data = (ElementData)datas[1];
-            List<Vector2Int> matches = datas[2] as List<Vector2Int>;
-            List<ElementItem> pros = datas[3] as List<ElementItem>;
+            uint indexId = (uint)datas[1];
+            ElementData data = (ElementData)datas[2];
+            List<Vector2Int> matches = datas[3] as List<Vector2Int>;
+            List<ElementData> pros = datas[4] as List<ElementData>;
 
 
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
-            List<Vector3> elementItemPotList = ListPool<Vector3>.Get(); 
-            
+            List<Vector3> elementItemPotList = ListPool<Vector3>.Get();
+
             List<ElementItem> prosItemList = ListPool<ElementItem>.Get();
             List<Vector3> prosPotList = ListPool<Vector3>.Get();
 
@@ -907,14 +909,14 @@ namespace ProjectApp
             }
             foreach (var matche in pros)
             {
-                ElementItem _item = FindElementItem(matche.Data.X, matche.Data.Y);
+                ElementItem _item = FindElementItem(matche.X, matche.Y);
                 prosItemList.Add(_item);
-                prosPotList.Add(GameTool.GetPosition(matche.Data.X, matche.Data.Y));
+                prosPotList.Add(GameTool.GetPosition(matche.X, matche.Y));
             }
 
             ElementItem item = FindElementItem(data.X, data.Y);
 
-            GetPropAction(indexId, data.Type, item, elementItemList, elementItemPotList, prosItemList, prosPotList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB);
+            GetPropAction(indexId, data.Type, item, elementItemList, elementItemPotList, prosItemList, prosPotList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB, isPlayerClick);
 
         }
 
@@ -998,7 +1000,7 @@ namespace ProjectApp
         #endregion
 
         #region 道具
-        private float GetPropAction(uint indexId, ElementType type, ElementItem item, List<ElementItem> elementItemList, List<Vector3> potList, List<ElementItem> prosItemList, List<Vector3> prosPotList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB)
+        private float GetPropAction(uint indexId, ElementType type, ElementItem item, List<ElementItem> elementItemList, List<Vector3> potList, List<ElementItem> prosItemList, List<Vector3> prosPotList, out Action<VisuaProcess> executeCB, out Action<VisuaProcess> finishCB, bool isPlayerClick)
         {
             float time = 0;
             executeCB = null;
@@ -1013,55 +1015,86 @@ namespace ProjectApp
             switch (type)
             {
                 case ElementType.Prop_Horizontal:
-                    time = 1f;
-                    executeCB = (p) =>
+                    if (isPlayerClick)
                     {
-                        time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
-                        //GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.1f);
-                        AnimationSys.PlayAin_ElasticShakeElements(prosItemList, prosPotList, 0.1f);
+                        time = 0.3f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        };
+                    }
+                    else
+                    {
+                        time = 0f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            LogUtil.Log("道具触发道具:" + type.ToString());
+                        };
+                    }
 
-                        time += 0.1f;
-                    };
                     break;
                 case ElementType.Prop_Vertical:
-                    time = 1f;
-                    executeCB = (p) =>
+                    if (isPlayerClick)
                     {
-
-                        time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
-
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.1f);
-                        AnimationSys.PlayAin_ElasticShakeElements(prosItemList, prosPotList, 0.1f);
-                        time += 0.1f;
-                    };
+                        time = 0.3f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        };
+                    }
+                    else
+                    {
+                        time = 0f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            LogUtil.Log("道具触发道具:" + type.ToString());
+                        };
+                    }
                     break;
                 case ElementType.Prop_Bomb:
-                    time = 1f;
-                    executeCB = (p) =>
+                    if (isPlayerClick)
                     {
-                        time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
-                        AnimationSys.PlayAin_ElasticShakeElements(prosItemList, prosPotList, 0.1f);
-                        Debug.LogWarning("触发道具" + Time.time);
-                        //GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.1f);
-
-                        time += 0.1f;
-                    };
+                        time = 0.3f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        };
+                    }
+                    else
+                    {
+                        time = 0.1f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            LogUtil.Log("道具触发道具:" + type.ToString());
+                        };
+                    }
 
                     break;
                 case ElementType.Prop_Wild:
-                    time = 1f;
-                    executeCB = (p) =>
+                    if (isPlayerClick)
                     {
-                        Core.Enabled_PlayerCtr = false;
-
-                        time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
-                        AnimationSys.PlayAin_ElasticShakeElements(prosItemList, prosPotList, 0.1f);
-                        //GameTool.PlayTestEffect(item.Transform.position);
-                        AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList, 0.1f);
-                        time += 0.1f;
-                    };
+                        time = 0.3f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            time = AnimationSys.PlayAin_ElasticShakeElement(item, item.Pos);
+                        };
+                    }
+                    else
+                    {
+                        time = 0f;
+                        executeCB = (p) =>
+                        {
+                            Core.Enabled_PlayerCtr = false;
+                            LogUtil.Log("道具触发道具:" + type.ToString());
+                        };
+                    }
 
                     break;
             }
@@ -1072,6 +1105,7 @@ namespace ProjectApp
                 finishCB = (p) =>
                 {
                     GameTool.PlayTestEffect(item.Transform.position);
+
                     elementsPool.Release(item);
 
                     Debug.Log("道具结束" + TimerUtil.GetGameTime());
@@ -1166,8 +1200,8 @@ namespace ProjectApp
                 {
                     //wild加Horizontal
                     return ActivateProp_Wild_XX(ElementType.Prop_Horizontal, formItem, toItem, elementItemList, propElementList);
-                } 
-                if (toData.Type == formData.Type )
+                }
+                if (toData.Type == formData.Type)
                 {
                     //wild加wild
                     return ActivateProp_Wild_2(ElementType.Prop_Wild, formItem, toItem, elementItemList, propElementList);
@@ -1186,7 +1220,7 @@ namespace ProjectApp
 
             var process = GetProcessToEnqueue();
 
-            float time = 3;
+            float time = 0.1f;
 
             process.SetLinkExecute((p) =>
             {
@@ -1267,7 +1301,7 @@ namespace ProjectApp
 
             var process = GetProcessToEnqueue();
 
-            float time = 1;
+            float time = 0.1f;
 
             process.SetLinkExecute((p) =>
             {
@@ -1303,8 +1337,7 @@ namespace ProjectApp
 
 
             var process = GetProcessToEnqueue();
-
-            float time = 1;
+            float time = 0.1f;
 
             process.SetLinkExecute((p) =>
             {
@@ -1341,7 +1374,7 @@ namespace ProjectApp
 
             var process = GetProcessToEnqueue();
 
-            float time = 1;
+            float time = 0.1f;
 
             process.SetLinkExecute((p) =>
             {
@@ -1372,7 +1405,7 @@ namespace ProjectApp
 
             List<Vector3> potList = ListPool<Vector3>.Get();
             GameTool.GetPositionToList(elementItemList, ref potList);
-            
+
             List<Vector3> prosPotList = ListPool<Vector3>.Get();
             GameTool.GetPositionToList(propElementList, ref prosPotList);
 
@@ -1380,13 +1413,13 @@ namespace ProjectApp
 
             var process = GetProcessToEnqueue();
 
-            float time = 1;
+            float time = 0.1f;
 
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
-                AnimationSys.PlayAin_ElasticShakeElements(propElementList, prosPotList);
+                //AnimationSys.PlayAin_ElasticShakeElements(elementItemList, potList);
+                //AnimationSys.PlayAin_ElasticShakeElements(propElementList, prosPotList);
             });
 
             process.SetLinkFinish((p) =>

@@ -1051,7 +1051,7 @@ namespace ProjectApp
             }
 
             //道具触发的道具 激活
-            ActivatePropList(currProps);
+            ActivatePropList(currProps, index);
 
             ListPool<ElementData>.Release(currProps);
 
@@ -1077,7 +1077,7 @@ namespace ProjectApp
             currProps.Add(data);
 
 
-            ActivatePropList(currProps);
+            ActivatePropList(currProps,GameTool.GetNextIndex(),true);
 
             ListPool<ElementData>.Release(currProps);
 
@@ -1086,16 +1086,16 @@ namespace ProjectApp
 
         }
 
-        private void ActivatePropList(List<ElementData> currProps)
+        private void ActivatePropList(List<ElementData> currProps,uint indexID,bool isPlayerClick = false)
         {
-
+            uint propIndex = indexID;
             while (currProps.Count > 0)
             {
                 List<Vector2Int> tempMatches = ListPool<Vector2Int>.Get();
                 List<ElementData> tempProps = ListPool<ElementData>.Get();
 
                 //用来判断当前是否在同一组动画  这一组道具都是同一触发
-                uint propIndex = GameTool.GetNextIndex();
+                //uint propIndex = GameTool.GetNextIndex();
                 //触发所有道具
                 for (int i = 0; i < currProps.Count; i++)
                 {
@@ -1108,7 +1108,9 @@ namespace ProjectApp
 
                     ActivateProp(propData, ref matches, ref oneProp);
 
-                    Core.Dispatch(GameMsg.ActivateProp, propIndex, propData, matches, oneProp);
+                    Core.Dispatch(GameMsg.ActivateProp,isPlayerClick,propIndex, propData, matches, oneProp);
+                    //只有第一次算是点击
+                    isPlayerClick = false;
 
                     tempMatches.AddRange(matches);
                     tempProps.AddRange(oneProp);
@@ -1116,12 +1118,15 @@ namespace ProjectApp
                     ListPool<ElementData>.Release(oneProp);
                 }
 
-                uint matchesIndex = GameTool.GetNextIndex();
                 //这里 本次道具触发 造成的消除不应该和道具触发在同一组 分配到下一组
+                uint matchesIndex = GameTool.GetNextIndex();
+                
                 if (tempMatches.Count > 0)
                 {
                     ProcessMatches(tempMatches, matchesIndex);
                 }
+
+                propIndex = matchesIndex;
 
                 //本次循环完成
                 currProps.Clear();
@@ -1584,7 +1589,7 @@ namespace ProjectApp
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Horizontal).SetPot(pot.x, pot.y));
 
-                        ActivatePropList(currProps);
+                        ActivatePropList(currProps, GameTool.GetNextIndex(),true);
 
                         ListPool<ElementData>.Release(currProps);
 
@@ -1606,7 +1611,7 @@ namespace ProjectApp
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Vertical).SetPot(pot.x, pot.y));
 
-                        ActivatePropList(currProps);
+                        ActivatePropList(currProps, GameTool.GetNextIndex(),true);
 
                         ListPool<ElementData>.Release(currProps);
 

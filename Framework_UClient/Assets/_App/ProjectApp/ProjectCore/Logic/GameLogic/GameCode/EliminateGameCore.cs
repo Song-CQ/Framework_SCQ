@@ -347,6 +347,8 @@ namespace ProjectApp
                 return;
             }
 
+            
+
 
             //解析关卡表数据
             Parse_CfgData();
@@ -361,6 +363,10 @@ namespace ProjectApp
         private void Parse_CfgData()
         {
             Data.targetScore = levelData.Passing_Score;
+            if (isEditor)
+            {
+                Data.targetScore = 1000000;
+            }
 
             allElement_Rate = 0;
 

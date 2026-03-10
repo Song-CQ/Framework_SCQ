@@ -30,6 +30,7 @@ namespace ProjectApp
         private void OnGameWin(object obj)
         {
             Core.Enabled_PlayerCtr = false;
+            LogUtil.Log("胜利");
 
         }
 
