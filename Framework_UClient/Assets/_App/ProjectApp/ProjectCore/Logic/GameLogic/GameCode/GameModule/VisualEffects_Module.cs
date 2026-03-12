@@ -13,6 +13,7 @@ namespace ProjectApp
         public ElementItem[,] elementItems;
 
         private Vector3 startVector3;
+        private Transform[] L_R_U_D_Trfs;
 
 
         public Raycast3D_System RaycastSys { get; private set; }
@@ -40,7 +41,7 @@ namespace ProjectApp
 
         private void OnRelease(ElementItem element)
         {
-            Debug.LogError("回收" + element.Pos);
+            //Debug.LogError("回收" + element.Pos);
             RaycastSys.UnregisterEvent_OnClick(element);
             element.Transform.SetParent(elementsPoolTrf);
             element.Release();
@@ -236,6 +237,8 @@ namespace ProjectApp
             connectionTrf.localPosition = Vector3.zero;
 
             startVector3 = Core.startVector3;
+
+            L_R_U_D_Trfs = Core.transform.Find("bg").GetComponentsInChildren<Transform>(true);
 
             InitPinchZoom();
             InitVisuaProcess();
@@ -1522,6 +1525,17 @@ namespace ProjectApp
         {
             Core.transform.localScale = Vector3.MoveTowards(Core.transform.localScale, Vector3.one * size, sizeSpeed * Time.deltaTime);
         }
+
+        public (Vector2 L_D, Vector2 L_U, Vector2 R_D, Vector2 R_U) GetMapToViewPot()
+        {
+            Vector2 L_D = CameraMgr.Instance.mainCamera.WorldToScreenPoint(L_R_U_D_Trfs[0].position);
+            Vector2 L_U = CameraMgr.Instance.mainCamera.WorldToScreenPoint(L_R_U_D_Trfs[1].position);
+            Vector2 R_D = CameraMgr.Instance.mainCamera.WorldToScreenPoint(L_R_U_D_Trfs[2].position);
+            Vector2 R_U = CameraMgr.Instance.mainCamera.WorldToScreenPoint(L_R_U_D_Trfs[3].position);
+            return (L_D, L_U, R_D, R_U);
+        }
+
+
         #endregion
 
     }

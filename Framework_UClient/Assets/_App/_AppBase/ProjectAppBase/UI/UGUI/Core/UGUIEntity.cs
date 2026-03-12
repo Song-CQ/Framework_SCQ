@@ -24,6 +24,7 @@ namespace ProjectApp
 
 
         public GameObject UI { get; private set; }
+        public Canvas canvas { get; private set; }
         public RectTransform Transform { get; private set; }
         public SortingGroup SortingGroup { get; private set; }
         public bool Visible { get; private set; }
@@ -165,6 +166,14 @@ namespace ProjectApp
             base.Dispose();
         }
 
+        public Canvas GetCanvas()
+        {
+            if (canvas == null)
+            { 
+                canvas = UI.GetComponentInParent<Canvas>();
+            }
+            return canvas;
+        }
     }
 
 }

@@ -258,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7402616642994716384}
   m_Layer: 5
-  m_Name: HoleImage
+  m_Name: ui_HoleImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,9 +280,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.6900024, y: -73.130005}
-  m_SizeDelta: {x: -212.84998, y: -719.81006}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 139, y: 282.57074}
+  m_SizeDelta: {x: -296.9303, y: -715.606}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &6640141874444424650
 GameObject:
   m_ObjectHideFlags: 0

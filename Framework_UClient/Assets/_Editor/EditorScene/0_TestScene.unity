@@ -944,11 +944,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UseProp_Plane
       objectReference: {fileID: 0}
-    - target: {fileID: 4049987365924456404, guid: 8376e6b64fcf86545b2dbef73c5503c7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2034,26 +2029,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 694037648143051489, guid: 2778b9afe6d448340b20a3478f9ba793,
-        type: 3}
-      propertyPath: levelID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 694037648143051489, guid: 2778b9afe6d448340b20a3478f9ba793,
-        type: 3}
-      propertyPath: isEditor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 694037648143051489, guid: 2778b9afe6d448340b20a3478f9ba793,
-        type: 3}
-      propertyPath: IsBackSwap
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264680964047417650, guid: 2778b9afe6d448340b20a3478f9ba793,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.15686275
-      objectReference: {fileID: 0}
     - target: {fileID: 3840173086398887437, guid: 2778b9afe6d448340b20a3478f9ba793,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2108,11 +2083,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameCore
-      objectReference: {fileID: 0}
-    - target: {fileID: 5455556519854332583, guid: 2778b9afe6d448340b20a3478f9ba793,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

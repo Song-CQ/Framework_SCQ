@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &516407882980581149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2223741397852146096}
+  m_Layer: 0
+  m_Name: R_U_Pot
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2223741397852146096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516407882980581149}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.472, y: 7.91, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5748640143764674971}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1281946813166499335
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +114,68 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2028907966607982619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8503949797082260499}
+  m_Layer: 0
+  m_Name: R_D_Pot
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8503949797082260499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028907966607982619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.472, y: -7.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5748640143764674971}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4027678860817602876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4836271328418717810}
+  m_Layer: 0
+  m_Name: L_D_Pot
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4836271328418717810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027678860817602876}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.5, y: -7.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5748640143764674971}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5455556519854332583
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,11 +228,12 @@ MonoBehaviour:
   _boardHeight: 14
   startVector3: {x: -45.2, y: -74, z: 0}
   currentMode: 0
+  levelID: 1
   temp1: {x: 0, y: 0}
   temp2: {x: 0, y: 1}
   isEditor: 0
   IsFill: 1
-  IsClickProp: 0
+  IsClickProp: 1
   isPool: 1
   isCheckAllMatches: 1
   IsBackSwap: 1
@@ -162,6 +256,7 @@ MonoBehaviour:
     linkBoardPotLength: 8
     currentScore: 0
     targetScore: 100000
+    activeSum: 0
   text: {fileID: 0}
   elementGrid:
     data:
@@ -1867,9 +1962,40 @@ MonoBehaviour:
   gridHeight: 14
   showDebugInfo: 1
   gridInfo: "\u7F51\u683C\u7EDF\u8BA1:\n\u5C3A\u5BF8: 10 \xD7 14\n\u603B\u5355\u5143\u683C\u6570:
-    140\n\nItem_A: 23\nItem_B: 27\nItem_C: 27\nItem_D: 27\nItem_Change: 34\nDummy_CanMatche:
+    140\n\nItem_A: 23\nItem_B: 27\nItem_C: 27\nItem_D: 27\nItem_Special: 34\nDummy_CanMatche:
     0\nProp_Horizontal: 1\nProp_Vertical: 1\nProp_Wild: 0\nProp_Bomb: 0\nDummy_CanClickEvent:
-    0\nDummy_CanDown: 0\nFixed_Special: 0\nFixed_None: 0\n"
+    0\nDummy_CanDown: 0\nFixed_Empty: 0\nFixed_None: 0\n"
+--- !u!1 &6463247685969332341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9023390329404863511}
+  m_Layer: 0
+  m_Name: L_U_Pot
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9023390329404863511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6463247685969332341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.5, y: 7.91, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5748640143764674971}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8486060989050408511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,7 +2025,11 @@ Transform:
   m_LocalPosition: {x: 0, y: -11.5, z: 9}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4836271328418717810}
+  - {fileID: 9023390329404863511}
+  - {fileID: 8503949797082260499}
+  - {fileID: 2223741397852146096}
   m_Father: {fileID: 3840173086398887437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2264680964047417650
