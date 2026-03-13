@@ -744,13 +744,13 @@ namespace ProjectApp
             Dispatch(GameMsg.Player_SwipeElement, startItem.Data, dir);
         }
 
-        public void ClickExternalPropItem(ExternalProp type)
+        public void ClickExternalPropItem(ExternalPropUIList_Item item)
         {
             if (!Enabled_PlayerCtr) return;
 
 
 
-            Dispatch(GameMsg.Player_ClickExternalPropItem, type);
+            Dispatch(GameMsg.Player_ClickExternalPropItem, item);
 
 
         }

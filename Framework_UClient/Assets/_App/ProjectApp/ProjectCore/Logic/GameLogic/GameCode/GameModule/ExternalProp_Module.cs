@@ -125,7 +125,9 @@ namespace ProjectApp
         /// <param name="o"></param>
         void OnPlayer_ClickExternalProp(object obj)
         {
-            ExternalProp type = (ExternalProp)obj;
+            ExternalPropUIList_Item item = obj as ExternalPropUIList_Item;
+            ExternalProp type = item.propData.type;
+
 
             SelectExternalProp = type;
 
@@ -138,7 +140,7 @@ namespace ProjectApp
             else
             {
                 //打开使用道具界面
-                UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.UsePropUI_Open);
+                UICtrlDispatcher.Instance.Dispatch(UICtrlMsg.UsePropUI_Open, item);
             }
 
         }

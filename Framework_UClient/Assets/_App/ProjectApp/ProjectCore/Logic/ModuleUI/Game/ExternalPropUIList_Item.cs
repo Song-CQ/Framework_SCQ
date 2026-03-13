@@ -28,18 +28,20 @@ namespace ProjectApp
         public Transform sumTrf;
         public Transform btn_AddTrf;
 
+        public PropData propData;
+
         public void OnClickAddSum()
         {
-            
+
         }
 
         public override void Initialize(int index, ItemData data)
         {
             base.Initialize(index, data);
-            PropData propData = data as PropData;
+            propData = data as PropData;
 
+            RefreshItemIcon(propData.type);
 
-            icon.sprite = GameTool.GetSprite(propData.type);
             int sum = propData.Sum;
             if (sum == 0)
             {
@@ -47,12 +49,23 @@ namespace ProjectApp
                 sumTrf.gameObject.SetActive(false);
             }
             else
-            { 
+            {
                 sumText.text = sum.ToString();
                 btn_AddTrf.gameObject.SetActive(false);
                 sumTrf.gameObject.SetActive(true);
             }
+        }
 
+        private void RefreshItemIcon(ExternalProp type)
+        {
+            icon.sprite = GameTool.GetSprite(type);
+
+        }
+
+        public void CloseSumAndBtn()
+        {
+            btn_AddTrf.gameObject.SetActive(false);
+            sumTrf.gameObject.SetActive(false);
 
         }
 

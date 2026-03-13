@@ -18,6 +18,7 @@ namespace ProjectApp
         private const string ui_mask_Key = "ui_mask";
         private const string ui_HoleImage_Key = "ui_HoleImage";
         private const string ui_TipsText_Key = "ui_TipsText";
+        private const string ui_PropItem_Key = "ui_PropItem";
 
         #endregion
 
@@ -31,7 +32,7 @@ namespace ProjectApp
 
         private RectTransform canvasRect;
 
-        private 
+        private ExternalPropUIList_Item item;
 
 
 
@@ -69,6 +70,7 @@ namespace ProjectApp
             ui_maskRtf = ui_mask.GetComponent<RectTransform>();
             ui_HoleImage = GetComponent<RectTransform>(ui_HoleImage_Key);
             canvasRect = u_Entity.GetCanvas().GetComponent<RectTransform>();
+            item = GetComponent<ExternalPropUIList_Item>(ui_PropItem_Key);
 
         }
 
@@ -125,11 +127,16 @@ namespace ProjectApp
 
         protected override void OnOpenBefore(object args)
         {
+            ExternalPropUIList_Item item = args as ExternalPropUIList_Item;
+            item.Initialize(0,item.propData);
+            item.CloseSumAndBtn();
+            SetViewMask();
+
         }
 
         protected override void OnOpen(object args)
         {
-            SetViewMask();
+            
         }
 
         protected override void OnHide()

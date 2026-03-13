@@ -141,7 +141,7 @@ namespace ProjectApp
         private void OnClickPropItem(BaseUIList_Item item, ItemData data)
         {
             PropData propData = (data as PropData);
-            core.ClickExternalPropItem(propData.type);
+            core.ClickExternalPropItem(item as ExternalPropUIList_Item);
 
 
 
@@ -149,8 +149,6 @@ namespace ProjectApp
 
         protected override void OnOpenBefore(object args)
         {
-            core.AddListener(GameMsg.Player_ClickExternalPropItem, OnClickExternalPropItem);
-            core.AddListener(GameMsg.UseExternalProp, OnUseExternalProp);
             core.AddListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
             core.AddListener(GameMsg.GameStart, RestUI);
 
@@ -162,8 +160,6 @@ namespace ProjectApp
 
         protected override void OnClose()
         {
-            core.RemoveListener(GameMsg.Player_ClickExternalPropItem, OnClickExternalPropItem);
-            core.RemoveListener(GameMsg.UseExternalProp, OnUseExternalProp);
             core.RemoveListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
             core.RemoveListener(GameMsg.GameStart, RestUI);
 
@@ -432,17 +428,6 @@ namespace ProjectApp
 
 
 
-        private void OnUseExternalProp(object obj)
-        {
-            //ui_TipsText.transform.parent.SetActive(false);
-        }
-
-        private void OnClickExternalPropItem(object obj)
-        {
-            //ui_TipsText.transform.parent.SetActive(true);
-
-
-        }
 
         protected override void OnHide()
         {
