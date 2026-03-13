@@ -772,11 +772,11 @@ namespace ProjectApp
 
 
         #region Model Tool
-        public (Vector2 L_D, Vector2 L_U, Vector2 R_D, Vector2 R_U) GetMapToViewPot()
+        public (Vector2 L_D, Vector2 L_U, Vector2 R_D, Vector2 R_U) GetBoardBoundsToScreenPoint()
         {
             if (visualEffectsModule == null) return (Vector2.zero, Vector2.zero, Vector2.zero, Vector2.zero);
 
-            return visualEffectsModule.GetMapToViewPot();
+            return visualEffectsModule.GetBoardBoundsToScreenPoint();
         }
 
         #endregion

@@ -20,15 +20,18 @@ namespace ProjectApp
         private const string ui_TipsText_Key = "ui_TipsText";
 
         #endregion
-        
-		private UsePropUICtrl uiCtrl;
+
+        private UsePropUICtrl uiCtrl;
         private UsePropModel model;
         private UGUIEntity u_Entity;
 
         private GuideMask ui_mask;
+        private RectTransform ui_maskRtf;
         private RectTransform ui_HoleImage;
 
         private RectTransform canvasRect;
+
+        private 
 
 
 
@@ -63,9 +66,10 @@ namespace ProjectApp
 
             ui_mask = GetComponent<GuideMask>(ui_mask_Key);
             ui_mask.ClickMask = Ui_mask_PointerClick_Event;
+            ui_maskRtf = ui_mask.GetComponent<RectTransform>();
             ui_HoleImage = GetComponent<RectTransform>(ui_HoleImage_Key);
             canvasRect = u_Entity.GetCanvas().GetComponent<RectTransform>();
-            
+
         }
 
         private void Ui_mask_PointerClick_Event(UnityEngine.EventSystems.PointerEventData eventData)
@@ -76,40 +80,45 @@ namespace ProjectApp
 
         public void SetViewMask()
         {
-            (Vector2 L_D, Vector2 L_U, Vector2 R_D, Vector2 R_U) = GameTool.GameCore.GetMapToViewPot();
+            (Vector2 L_D, Vector2 L_U, Vector2 R_D, Vector2 R_U) = GameTool.GameCore.GetBoardBoundsToScreenPoint();
 
+            LogUtil.Log("1 :" + L_D.ToString() + L_U.ToString() + R_D.ToString() + R_U.ToString());
 
-
-            // 2. 屏幕坐标转UI局部坐标
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvasRect,
-                L_D,  // 这里应该是屏幕坐标，不是世界坐标
+            // 直接使用世界坐标转换（绕开局部坐标的锚点问题）
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                ui_maskRtf,
+                L_D,
                 CameraMgr.Instance.uiCamera,
-                out Vector2 uiPos_L_D
+                out Vector3 worldPos_L_D
             );
 
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvasRect,
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                ui_maskRtf,
                 R_U,
                 CameraMgr.Instance.uiCamera,
-                out Vector2 uiPos_R_U
+                out Vector3 worldPos_R_U
             );
 
+            LogUtil.Log("2 :" + worldPos_L_D + worldPos_R_U);
 
-            
+            // 将世界坐标转换为相对于父物体的局部坐标
+            Vector2 localPos_L_D = ui_maskRtf.parent.InverseTransformPoint(worldPos_L_D);
+            Vector2 localPos_R_U = ui_maskRtf.parent.InverseTransformPoint(worldPos_R_U);
 
-            ui_HoleImage.anchorMin = new Vector2(0, 0);
-            ui_HoleImage.anchorMax = new Vector2(0, 0);
+
+
+
+            ui_HoleImage.anchorMin = new Vector2(0.5f, 0.5f);
+            ui_HoleImage.anchorMax = new Vector2(0.5f, 0.5f);
             ui_HoleImage.pivot = new Vector2(0, 0); // 设置轴心点为左下角
 
-            // 计算尺寸
-            float uiWidth = Mathf.Abs(uiPos_R_U.x - uiPos_L_D.x);
-            float uiHeight = Mathf.Abs(uiPos_R_U.y - uiPos_L_D.y);
+            ui_HoleImage.anchoredPosition = localPos_L_D;
 
-            ui_HoleImage.anchoredPosition = uiPos_L_D;
-
-            // 设置大小
+            float uiWidth = Mathf.Abs(localPos_R_U.x - localPos_L_D.x);
+            float uiHeight = Mathf.Abs(localPos_R_U.y - localPos_L_D.y);
             ui_HoleImage.sizeDelta = new Vector2(uiWidth, uiHeight);
+
+            LogUtil.Log($"最终位置: {localPos_L_D}, 大小: {ui_HoleImage.sizeDelta}");
 
 
         }

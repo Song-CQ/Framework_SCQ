@@ -13,7 +13,7 @@ namespace ProjectApp
         public ElementItem[,] elementItems;
 
         private Vector3 startVector3;
-        private Transform[] L_R_U_D_Trfs;
+        private SpriteRenderer bgSprite;
 
 
         public Raycast3D_System RaycastSys { get; private set; }
@@ -238,7 +238,7 @@ namespace ProjectApp
 
             startVector3 = Core.startVector3;
 
-            L_R_U_D_Trfs = Core.transform.Find("bg").GetComponentsInChildren<Transform>(true);
+            bgSprite = Core.transform.Find("bg").GetComponent<SpriteRenderer>();
 
             InitPinchZoom();
             InitVisuaProcess();
@@ -395,6 +395,8 @@ namespace ProjectApp
             elementsPoolTrf = null;
             elementItemsTrf = null;
             connectionTrf = null;
+
+            bgSprite = null;
 
             RaycastSys.Shutdown();
             RaycastSys.Dispose();
@@ -1526,12 +1528,24 @@ namespace ProjectApp
             Core.transform.localScale = Vector3.MoveTowards(Core.transform.localScale, Vector3.one * size, sizeSpeed * Time.deltaTime);
         }
 
-        public (Vector2 L_D, Vector2 L_U, Vector2 R_D, Vector2 R_U) GetMapToViewPot()
+        public (Vector2 L_D, Vector2 L_U, Vector2 R_D, Vector2 R_U) GetBoardBoundsToScreenPoint()
         {
-            Vector2 L_D = CameraMgr.Instance.mainCamera.WorldToScreenPoint(L_R_U_D_Trfs[0].position);
-            Vector2 L_U = CameraMgr.Instance.mainCamera.WorldToScreenPoint(L_R_U_D_Trfs[1].position);
-            Vector2 R_D = CameraMgr.Instance.mainCamera.WorldToScreenPoint(L_R_U_D_Trfs[2].position);
-            Vector2 R_U = CameraMgr.Instance.mainCamera.WorldToScreenPoint(L_R_U_D_Trfs[3].position);
+            // 获取 sprite 的边界（世界坐标）
+            Bounds bounds = bgSprite.bounds;
+
+            // 四个角的世界坐标
+            Vector3 worldPos_L_D = new Vector3(bounds.min.x, bounds.min.y, bounds.center.z); // 左下
+            Vector3 worldPos_L_U = new Vector3(bounds.min.x, bounds.max.y, bounds.center.z); // 左上  
+            Vector3 worldPos_R_D = new Vector3(bounds.max.x, bounds.min.y, bounds.center.z); // 右下
+            Vector3 worldPos_R_U = new Vector3(bounds.max.x, bounds.max.y, bounds.center.z); // 右上
+
+
+            // 转换为屏幕坐标
+            Vector2 L_D = CameraMgr.Instance.mainCamera.WorldToScreenPoint(worldPos_L_D);
+            Vector2 L_U = CameraMgr.Instance.mainCamera.WorldToScreenPoint(worldPos_L_U);
+            Vector2 R_D = CameraMgr.Instance.mainCamera.WorldToScreenPoint(worldPos_R_D);
+            Vector2 R_U = CameraMgr.Instance.mainCamera.WorldToScreenPoint(worldPos_R_U);
+
             return (L_D, L_U, R_D, R_U);
         }
 
