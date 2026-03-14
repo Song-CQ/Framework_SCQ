@@ -30,7 +30,6 @@ namespace ProjectApp
         private RectTransform ui_maskRtf;
         private RectTransform ui_HoleImage;
 
-        private RectTransform canvasRect;
 
         private ExternalPropUIList_Item item;
 
@@ -69,7 +68,6 @@ namespace ProjectApp
             ui_mask.ClickMask = Ui_mask_PointerClick_Event;
             ui_maskRtf = ui_mask.GetComponent<RectTransform>();
             ui_HoleImage = GetComponent<RectTransform>(ui_HoleImage_Key);
-            canvasRect = u_Entity.GetCanvas().GetComponent<RectTransform>();
             item = GetComponent<ExternalPropUIList_Item>(ui_PropItem_Key);
 
         }
@@ -127,9 +125,10 @@ namespace ProjectApp
 
         protected override void OnOpenBefore(object args)
         {
-            ExternalPropUIList_Item item = args as ExternalPropUIList_Item;
-            item.Initialize(0,item.propData);
+            ExternalPropUIList_Item nextItem = args as ExternalPropUIList_Item;
+            item.Initialize(0,nextItem.propData);
             item.CloseSumAndBtn();
+            item.transform.position = nextItem.transform.position;
             SetViewMask();
 
         }
