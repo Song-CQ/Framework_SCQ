@@ -1,9 +1,9 @@
 /****************************************************
-    鏂囦欢锛欱aseUI.cs
-	浣滆咃細Clear
-    鏃ユ湡锛?022/1/25 10:45:49
-    绫诲瀷: 妗嗘灦鏍稿績鑴氭湰(璇峰嬁淇?敼)
-	鍔熻兘锛氬熀纭UI
+    文件：BaseUI.cs
+	作者：Clear
+    日期  2022/1/25 10:45:49
+    类型: 框架核心脚本(请勿修改)
+	功能：基础UI
 *****************************************************/
 using System;
 
@@ -26,7 +26,7 @@ namespace FutureCore
         public UIEntity uiEntity;
 
         /// <summary>
-        /// ui鍙傛暟
+        /// ui参数
         /// </summary>
         public object uiArgs;
 
@@ -217,12 +217,12 @@ namespace FutureCore
         #region Tool
 
         /// <summary>
-        /// 鑾峰彇瀵瑰簲璺?緞鍚嶅瓧鐨勭粍浠?
+        /// 获取对应路径名字的组件
         /// </summary>
-        /// <typeparam name="T">缁勪欢鍚?/typeparam>
-        /// <param name="namePath">璺?緞鍚?/param>
-        /// <param name="isAutoAdd">鏄?惁瑕佹坊鍔?/param>
-        /// <param name="isCance">鏄?惁缂撳瓨</param>
+        /// <typeparam name="T">组件名/typeparam>
+        /// <param name="namePath">路径/param>
+        /// <param name="isAutoAdd">如果不存在是否自动添加?/param>
+        /// <param name="isCance">是否缓存</param>
         /// <returns></returns>
         protected T GetComponent<T>(string namePath, bool isAutoAdd = false, bool isCance = false) where T : UnityEngine.Component
         {
