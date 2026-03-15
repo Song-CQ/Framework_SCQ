@@ -1,7 +1,7 @@
-/****************************************************
+﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2026/3/3 20:36:37
+    日期：2026/3/15 20:50:50
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -53,7 +53,7 @@ namespace ProjectApp
                 configStaticVODic.Add(ConfigVO.General, GetExcalData<GeneralStaticVO>(ConfigVO.General,true) as GeneralStaticVO);
                 configVODic.Add(ConfigVO.Level, GetExcalData<LevelVO>(ConfigVO.Level,false) as List<BaseVO>);
                 configVODic.Add(ConfigVO.prop, GetExcalData<propVO>(ConfigVO.prop,false) as List<BaseVO>);
-                configVODic.Add(ConfigVO.Task, GetExcalData<TaskVO>(ConfigVO.Task,false) as List<BaseVO>);
+                configVODic.Add(ConfigVO.Quest, GetExcalData<QuestVO>(ConfigVO.Quest,false) as List<BaseVO>);
             }
             else
             {
@@ -64,7 +64,7 @@ namespace ProjectApp
                 configStaticVODic.Add(ConfigVO.General, configData.General);
                 configVODic.Add(ConfigVO.Level, configData.Level_List.OfType<LevelVO,BaseVO>());
                 configVODic.Add(ConfigVO.prop, configData.prop_List.OfType<propVO,BaseVO>());
-                configVODic.Add(ConfigVO.Task, configData.Task_List.OfType<TaskVO,BaseVO>());
+                configVODic.Add(ConfigVO.Quest, configData.Quest_List.OfType<QuestVO,BaseVO>());
                 
                 configData = null;
             }
@@ -76,7 +76,7 @@ namespace ProjectApp
             
             AddVOModel(ConfigVO.Level,LevelVOModel.Instance);
             AddVOModel(ConfigVO.prop,propVOModel.Instance);
-            AddVOModel(ConfigVO.Task,TaskVOModel.Instance);
+            AddVOModel(ConfigVO.Quest,QuestVOModel.Instance);
         }
 
 
