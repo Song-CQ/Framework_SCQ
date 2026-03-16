@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 namespace FutureCore
 {
-    public abstract class BaseDispatcher<T,Msg,Param>:IDisposable
-    where T : class,new()
+    public abstract class BaseDispatcher<T, Msg, Param> : IDisposable
+    where T : class, new()
     where Param : class
     {
+        protected bool IsAutoReturnEventData = false;
         private static T m_instance;
         public static T Instance
         {
@@ -24,52 +25,52 @@ namespace FutureCore
         private Dictionary<Msg, List<Action<Param>>> m_msgDict = new Dictionary<Msg, List<Action<Param>>>();
         private Dictionary<Msg, List<Action<Param>>> m_msgFinallyDict = new Dictionary<Msg, List<Action<Param>>>();
         private Dictionary<Msg, List<Action<Param>>> m_msgOnceDict = new Dictionary<Msg, List<Action<Param>>>();
-        
+
         public void AddPriorityListener(Msg msg, Action<Param> paramCB)
         {
-            if (!m_msgPriorityDict.TryGetValue(msg,out List<Action<Param>> actionLst))
+            if (!m_msgPriorityDict.TryGetValue(msg, out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();
-                m_msgPriorityDict.Add(msg,actionLst);
+                m_msgPriorityDict.Add(msg, actionLst);
             }
-            if (paramCB!=null)
+            if (paramCB != null)
             {
                 actionLst.Add(paramCB);
             }
         }
         public void AddListener(Msg msg, Action<Param> paramCB)
         {
-            
-            if (!m_msgDict.TryGetValue(msg,out List<Action<Param>> actionLst))
+
+            if (!m_msgDict.TryGetValue(msg, out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();
-                m_msgDict.Add(msg,actionLst);
+                m_msgDict.Add(msg, actionLst);
             }
-            if (paramCB!=null)
+            if (paramCB != null)
             {
                 actionLst.Add(paramCB);
             }
         }
         public void AddFinallyListener(Msg msg, Action<Param> paramCB)
         {
-            if (!m_msgFinallyDict.TryGetValue(msg,out List<Action<Param>> actionLst))
+            if (!m_msgFinallyDict.TryGetValue(msg, out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();
-                m_msgFinallyDict.Add(msg,actionLst);
+                m_msgFinallyDict.Add(msg, actionLst);
             }
-            if (paramCB!=null)
+            if (paramCB != null)
             {
                 actionLst.Add(paramCB);
             }
         }
         public void AddOnceListener(Msg msg, Action<Param> paramCB)
         {
-            if (!m_msgOnceDict.TryGetValue(msg,out List<Action<Param>> actionLst))
+            if (!m_msgOnceDict.TryGetValue(msg, out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();
-                m_msgOnceDict.Add(msg,actionLst);
+                m_msgOnceDict.Add(msg, actionLst);
             }
-            if (paramCB!=null)
+            if (paramCB != null)
             {
                 actionLst.Add(paramCB);
             }
@@ -77,48 +78,48 @@ namespace FutureCore
 
         public void RemovePriorityListener(Msg msg, Action<Param> paramCB)
         {
-            if (!m_msgPriorityDict.TryGetValue(msg,out List<Action<Param>> actionLst))
+            if (!m_msgPriorityDict.TryGetValue(msg, out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();
-                m_msgPriorityDict.Add(msg,actionLst);
+                m_msgPriorityDict.Add(msg, actionLst);
             }
-            if (paramCB!=null)
+            if (paramCB != null)
             {
                 actionLst.Remove(paramCB);
             }
         }
         public void RemoveListener(Msg msg, Action<Param> paramCB)
         {
-            if (!m_msgDict.TryGetValue(msg,out List<Action<Param>> actionLst))
+            if (!m_msgDict.TryGetValue(msg, out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();
-                m_msgDict.Add(msg,actionLst);
+                m_msgDict.Add(msg, actionLst);
             }
-            if (paramCB!=null)
+            if (paramCB != null)
             {
                 actionLst.Remove(paramCB);
             }
         }
         public void RemoveFinallyListener(Msg msg, Action<Param> paramCB)
         {
-            if (!m_msgFinallyDict.TryGetValue(msg,out List<Action<Param>> actionLst))
+            if (!m_msgFinallyDict.TryGetValue(msg, out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();
-                m_msgFinallyDict.Add(msg,actionLst);
+                m_msgFinallyDict.Add(msg, actionLst);
             }
-            if (paramCB!=null)
+            if (paramCB != null)
             {
                 actionLst.Remove(paramCB);
             }
         }
         public void RemoveOnceListener(Msg msg, Action<Param> paramCB)
         {
-            if (!m_msgOnceDict.TryGetValue(msg,out List<Action<Param>> actionLst))
+            if (!m_msgOnceDict.TryGetValue(msg, out List<Action<Param>> actionLst))
             {
                 actionLst = ListPool<Action<Param>>.Get();
-                m_msgOnceDict.Add(msg,actionLst);
+                m_msgOnceDict.Add(msg, actionLst);
             }
-            if (paramCB!=null)
+            if (paramCB != null)
             {
                 actionLst.Remove(paramCB);
             }
@@ -133,7 +134,7 @@ namespace FutureCore
             }
             return false;
         }
-      
+
         public bool ContainsPriorityListener(Msg msgId, Action<Param> listener)
         {
             return ContainsListener(msgId, listener, m_msgPriorityDict);
@@ -153,26 +154,35 @@ namespace FutureCore
         {
             return ContainsListener(msgId, listener, m_msgOnceDict);
         }
-        
-        public void Dispatch(Msg msg,Param param = null)
+
+        public void Dispatch(Msg msg, Param param = null)
         {
-            InvokeMethods(m_msgPriorityDict,msg,param);
-            InvokeMethods(m_msgDict,msg,param);
-            InvokeMethods(m_msgFinallyDict,msg,param);
-            InvokeMethods(m_msgOnceDict,msg,param);
-            if (m_msgOnceDict.TryGetValue(msg,out List<Action<Param>> val))
+            InvokeMethods(m_msgPriorityDict, msg, param);
+            InvokeMethods(m_msgDict, msg, param);
+            InvokeMethods(m_msgFinallyDict, msg, param);
+            InvokeMethods(m_msgOnceDict, msg, param);
+            if (m_msgOnceDict.TryGetValue(msg, out List<Action<Param>> val))
             {
                 ListPool<Action<Param>>.Release(val);
                 m_msgOnceDict.Remove(msg);
             }
+
+            if (IsAutoReturnEventData)
+            {
+                EventData eventData = param as EventData;
+                if (eventData != null)
+                {
+                    EventData.ReturnEvent(eventData);
+                }
+            }
         }
         private void InvokeMethods(Dictionary<Msg, List<Action<Param>>> msgDict, Msg msgId, Param param)
         {
-            if (msgDict.TryGetValue(msgId,out List<Action<Param>> value))
+            if (msgDict.TryGetValue(msgId, out List<Action<Param>> value))
             {
                 try
                 {
-                    if (value.Count==1)
+                    if (value.Count == 1)
                     {
                         value[0]?.Invoke(param);
                         return;

@@ -293,7 +293,7 @@ namespace ProjectApp
         private void Player_SwapElement(int select_X, int select_Y, int x, int y)
         {
             //记录快照
-            Data.TakeMemorySnapshotBoardData();
+            var lastData = Data.TakeMemorySnapshotBoardData(false);
 
             // 交换元素
             SwapElements(select_X, select_Y, x, y);
@@ -304,10 +304,16 @@ namespace ProjectApp
 
             if (matches.Count > 0)
             {
+                Data.AddLastBoardData(lastData);
+
                 // 有匹配，进行消除
                 ProcessMatches(matches);
                 // 创建新元素 并补位
                 FillEmptySpaces();
+
+                QuestEventData eventData = EventData.GetEvent<QuestEventData>();
+                eventData.dataInt = matches.Count;
+                QuestDispatcher.Instance.Dispatch(QuestMsg.MachElements, eventData);
             }
             else
             {
@@ -367,6 +373,9 @@ namespace ProjectApp
             ElementData data = BoardData[x, y];
             if (data.Type == ElementType.Item_Special)
             {
+                //记录快照
+                var lastData = Data.TakeMemorySnapshotBoardData(false);
+
                 if (isRith)
                 {
                     int temp = data.data1;
@@ -395,13 +404,16 @@ namespace ProjectApp
                 FindMatchesAt(data.X, data.Y, visited, ref matches);
                 if (matches.Count > 0)
                 {
-                    //记录快照
-                    Data.TakeMemorySnapshotBoardData();
+                    Data.AddLastBoardData(lastData);
 
                     // 有匹配，进行消除
                     ProcessMatches(matches);
                     // 创建新元素 并补位
                     FillEmptySpaces();
+
+                    QuestEventData eventData = EventData.GetEvent<QuestEventData>();
+                    eventData.dataInt = matches.Count;
+                    QuestDispatcher.Instance.Dispatch(QuestMsg.MachElements, eventData);
                 }
 
             }
@@ -960,12 +972,20 @@ namespace ProjectApp
                     {
                         allMatcheVector2.Add(match);
                         allMatches.Add(BoardData[match.x, match.y]);
+
+                        //记录任务
+                        ElementType type = ElementTool.GetTypeToElementData(BoardData[match.x, match.y]);
+                        QuestEventData eventData = EventData.GetEvent<QuestEventData>();
+                        eventData.dataInt = (int)type;
+                        QuestDispatcher.Instance.Dispatch(QuestMsg.ClearElement, eventData);
                     }
                     else
                     {
                         Debug.Log("重复：" + Data.boardData[match.x, match.y].ToString());
                     }
                     BoardData[match.x, match.y].SetEmpty(); // 标记为空
+
+
                 }
             }
             ListPool<Vector2Int>.Release(allMatcheVector2);
@@ -1077,7 +1097,7 @@ namespace ProjectApp
             currProps.Add(data);
 
 
-            ActivatePropList(currProps,GameTool.GetNextIndex(),true);
+            ActivatePropList(currProps, GameTool.GetNextIndex(), true);
 
             ListPool<ElementData>.Release(currProps);
 
@@ -1086,7 +1106,7 @@ namespace ProjectApp
 
         }
 
-        private void ActivatePropList(List<ElementData> currProps,uint indexID,bool isPlayerClick = false)
+        private void ActivatePropList(List<ElementData> currProps, uint indexID, bool isPlayerClick = false)
         {
             uint propIndex = indexID;
             while (currProps.Count > 0)
@@ -1108,7 +1128,7 @@ namespace ProjectApp
 
                     ActivateProp(propData, ref matches, ref oneProp);
 
-                    Core.Dispatch(GameMsg.ActivateProp,isPlayerClick,propIndex, propData, matches, oneProp);
+                    Core.Dispatch(GameMsg.ActivateProp, isPlayerClick, propIndex, propData, matches, oneProp);
                     //只有第一次算是点击
                     isPlayerClick = false;
 
@@ -1120,7 +1140,7 @@ namespace ProjectApp
 
                 //这里 本次道具触发 造成的消除不应该和道具触发在同一组 分配到下一组
                 uint matchesIndex = GameTool.GetNextIndex();
-                
+
                 if (tempMatches.Count > 0)
                 {
                     ProcessMatches(tempMatches, matchesIndex);
@@ -1589,7 +1609,7 @@ namespace ProjectApp
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Horizontal).SetPot(pot.x, pot.y));
 
-                        ActivatePropList(currProps, GameTool.GetNextIndex(),true);
+                        ActivatePropList(currProps, GameTool.GetNextIndex(), true);
 
                         ListPool<ElementData>.Release(currProps);
 
@@ -1611,7 +1631,7 @@ namespace ProjectApp
                         List<ElementData> currProps = ListPool<ElementData>.Get();
                         currProps.Add(new ElementData(ElementType.Prop_Vertical).SetPot(pot.x, pot.y));
 
-                        ActivatePropList(currProps, GameTool.GetNextIndex(),true);
+                        ActivatePropList(currProps, GameTool.GetNextIndex(), true);
 
                         ListPool<ElementData>.Release(currProps);
 

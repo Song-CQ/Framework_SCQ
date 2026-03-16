@@ -142,6 +142,8 @@ namespace ProjectApp
 
         private void LoadComplete(object o)
         {
+            
+
             App.SetLoadingSchedule(ProgressState.ShowScene);
             TimerUtil.Simple.AddDelayTask(() => ShowScene(),AppConst.LoadingCompleteDelayTime);
        

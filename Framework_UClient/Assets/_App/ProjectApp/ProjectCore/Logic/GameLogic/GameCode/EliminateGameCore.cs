@@ -144,9 +144,19 @@ namespace ProjectApp
         /// <summary>
         /// 记录快照
         /// </summary>
-        public void TakeMemorySnapshotBoardData()
+        public ElementData[,] TakeMemorySnapshotBoardData(bool IsAutoAdd = true)
         {
             var lastBoardData = (ElementData[,])boardData.Clone();
+            if (IsAutoAdd)
+            {
+                AddLastBoardData(lastBoardData);
+            }
+
+            return lastBoardData;
+        }
+
+        public void AddLastBoardData(ElementData[,] lastBoardData)
+        {
             if (lastBoardDataList.Count >= GameTool.maxUndoSum)
             {
                 lastBoardDataList.RemoveAt(0);
@@ -212,7 +222,7 @@ namespace ProjectApp
         public ElementItem[,] ElementItems => visualEffectsModule.elementItems;
 
         public int CurrentScore => Data.currentScore;
-        
+
         public int TargetScore
         {
             get => Data.targetScore;
@@ -265,7 +275,7 @@ namespace ProjectApp
         private Dictionary<Type, IGameModule> gameModules;
 
         private bool isInit = false;
-        
+
         [SerializeField]
         private LevelVO levelData;
 
@@ -299,8 +309,8 @@ namespace ProjectApp
                 ConfigDataMgr.Instance.ResetData();
                 ConfigDataMgr.Instance.ReadData();
 
-                
-                
+
+
 
                 ConfigDataMgr.Instance.Init();
                 ConfigDataMgr.Instance.StartUp();
@@ -347,7 +357,7 @@ namespace ProjectApp
                 return;
             }
 
-            
+
 
 
             //解析关卡表数据
@@ -539,7 +549,7 @@ namespace ProjectApp
 
         }
 
- 
+
 
         public List<Vector2Int> FindAllMatches(List<Vector2Int> allMatches = null)
         {
@@ -697,8 +707,8 @@ namespace ProjectApp
             return val;
 
         }
-        
-        
+
+
         #endregion
 
 

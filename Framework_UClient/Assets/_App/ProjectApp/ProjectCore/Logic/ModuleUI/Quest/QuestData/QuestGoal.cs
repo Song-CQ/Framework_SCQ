@@ -10,20 +10,28 @@ using UnityEngine;
 
 namespace ProjectApp
 {
-
-    
     // 任务目标基类
     [System.Serializable]
     public abstract class QuestGoal
     {
+        public static QuestModel questModel;
+        public Quest questData;
+
         public string description;
         public int currentAmount;
         public int targetAmount;
         public bool isCompleted;
 
         public abstract void Init();
-        public abstract void UpdateProgress();
-        public abstract string GetProgressText();
+        public virtual void UpdateProgress()
+        {
+            questModel.ProgressUpdated(questData.questID);
+        }
+
+        public virtual string GetProgressText()
+        {
+            return $"{description} {currentAmount}/{targetAmount}";
+        }
     }
 
     // 收集目标
@@ -35,17 +43,20 @@ namespace ProjectApp
 
         public override void Init()
         {
-            QuestDispatcher.Instance.AddListener(QuestMsg.ClearElement, OnItemCollected);
+            QuestDispatcher.Instance.AddListener(QuestMsg.ClearElement, OnClearElement);
+
         }
 
-        private void OnItemCollected(QuestEventData evt)
+        private void OnClearElement(QuestEventData evt)
         {
-            //if (evt.itemID == itemID)
-            //{
-            //    currentAmount = Mathf.Min(currentAmount + evt.amount, targetAmount);
-            //    isCompleted = currentAmount >= targetAmount;
-            //    EventManager.Instance.TriggerEvent(new QuestProgressUpdateEvent());
-            //}
+
+            ElementType tarType = (ElementType)evt.dataInt;
+            if (tarType == itemType)
+            {
+                currentAmount += 1;
+            }
+
+            UpdateProgress();
         }
 
         public override string GetProgressText()
@@ -53,10 +64,6 @@ namespace ProjectApp
             return $" {currentAmount}/{targetAmount}";
         }
 
-        public override void UpdateProgress()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
     // 完成几消
@@ -75,24 +82,19 @@ namespace ProjectApp
 
         private void OnMatchElements(QuestEventData evt)
         {
-            //if (evt.enemyID == enemyID)
-            //{
-            //    currentAmount = Mathf.Min(currentAmount + 1, targetAmount);
-            //    isCompleted = currentAmount >= targetAmount;
-            //    EventManager.Instance.TriggerEvent(new QuestProgressUpdateEvent());
-            //}
+            if(evt.dataInt>Sum)
+            {
+                currentAmount += 1;
+            }
+
+
+            UpdateProgress();
         }
 
-        public override string GetProgressText()
-        {
-            return $"击杀 {currentAmount}/{targetAmount}";
-        }
 
-        public override void UpdateProgress()
-        {
-            throw new System.NotImplementedException();
-        }
+
+
     }
 
-  
+
 }

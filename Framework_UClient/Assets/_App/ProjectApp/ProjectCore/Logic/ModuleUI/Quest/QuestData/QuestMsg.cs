@@ -5,26 +5,22 @@
     类型: 逻辑脚本
     功能: Nothing 
 *****************************************************/
+using System;
+using Codice.Client.BaseCommands.Merge.Restorer;
 using FutureCore;
 using UnityEngine;
 
 namespace ProjectApp
 {
-    public class QuestDispatcher : BaseDispatcher<QuestDispatcher, QuestMsg, QuestEventData> { }
-    public class QuestEventData
-    {
-        public int data;
-
-    }
     public enum QuestMsg
     {
         ClearElement = 101,//清除元素  
         MachElements,//完成一次消除
 
 
-        QuestAccepted, //接受任务
-        QuestCompleted, //任务完成
-        QuestProgressUpdated, //任务进度更新
+        Accepted, //接受任务
+        Completed, //任务完成
+        ProgressUpdated, //任务进度更新
 
 
     }

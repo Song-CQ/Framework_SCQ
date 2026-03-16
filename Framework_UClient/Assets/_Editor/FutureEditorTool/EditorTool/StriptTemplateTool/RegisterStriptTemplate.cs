@@ -107,6 +107,26 @@ namespace FutureEditor
             }
         }
 
+        // 创建文件夹的EndNameEditAction类
+        private class CreateFolderEndNameEdit : EndNameEditAction
+        {
+            public override void Action(int instanceId, string pathName, string resourceFile)
+            {
+                // 创建文件夹
+                Directory.CreateDirectory(pathName);
+                // 刷新AssetDatabase
+                AssetDatabase.Refresh();
+                
+                // 选中创建的文件夹
+                var obj = AssetDatabase.LoadAssetAtPath<Object>(pathName);
+                if (obj != null)
+                {
+                    ProjectWindowUtil.ShowCreatedAsset(obj);
+                    Selection.activeObject = obj;
+                }
+            }
+        }
+
         private enum CreateScriptType
         {
             //101-200 .cs
@@ -131,28 +151,136 @@ namespace FutureEditor
         private static void CreateNewScript()
         {
             CreateScript(CreateScriptType.NewScript);
-        }[MenuItem("Assets/[FC] Create/NewCoreClass", priority = 3)]
+        }
+        [MenuItem("Assets/[FC] Create/NewCoreClass", priority = 3)]
         private static void CreateMMSctr()
         {
             CreateScript(CreateScriptType.NewCoreClass);
         }
 
+        // ==================== 新增：创建文件夹功能 ====================
+        [MenuItem("Assets/[FC] Create/NewFolder", priority = 4)]
+        private static void CreateNewFolder()
+        {
+            const int instanceId = 0;
+            var endAction = ScriptableObject.CreateInstance<CreateFolderEndNameEdit>();
+
+            // 获取当前选中的路径
+            string selectedPath = GetSelectedPath();
+            string folderName = "NewFolder";
+            string pathName = Path.Combine(selectedPath, folderName);
+
+            // 如果路径已存在，添加数字后缀
+            int counter = 1;
+            while (Directory.Exists(pathName) || File.Exists(pathName))
+            {
+                pathName = Path.Combine(selectedPath, folderName + " " + counter);
+                counter++;
+            }
+
+            // 获取文件夹图标
+            Texture2D folderIcon = EditorGUIUtility.FindTexture("Folder Icon");
+
+            // 开始编辑名称
+            ProjectWindowUtil.StartNameEditingIfProjectWindowExists(
+                instanceId, 
+                endAction, 
+                pathName, 
+                folderIcon,
+                null);
+        }
+
+        // ==================== 新增：创建多级文件夹功能 ====================
+        [MenuItem("Assets/[FC] Create/Create Folders From String", priority = 5)]
+        private static void CreateFoldersFromString()
+        {
+            // 显示输入对话框
+            CreateFolderWindow.ShowWindow();
+        }
+
+        // ==================== 新增：快速创建常用文件夹结构 ====================
+        [MenuItem("Assets/[FC] Create/Create Default Folder Structure", priority = 6)]
+        private static void CreateDefaultFolderStructure()
+        {
+            string selectedPath = GetSelectedPath();
+            
+            // 创建默认的文件夹结构
+            string[] defaultFolders = new string[]
+            {
+                "Scripts",
+                "Scenes",
+                "Prefabs",
+                "Textures",
+                "Materials",
+                "Audio",
+                "Animations",
+                "Fonts",
+                "Resources",
+                "Plugins",
+                "Editor"
+            };
+
+            foreach (string folder in defaultFolders)
+            {
+                string folderPath = Path.Combine(selectedPath, folder);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+            }
+
+            AssetDatabase.Refresh();
+            Debug.Log($"[FC] 默认文件夹结构创建完成在: {selectedPath}");
+        }
+
+        // ==================== 辅助方法 ====================
+        private static string GetSelectedPath()
+        {
+            // 获取当前选中的路径
+            string selectedPath = "Assets";
+            
+            Object[] selections = Selection.GetFiltered(typeof(Object), SelectionMode.Assets);
+            if (selections.Length > 0)
+            {
+                string path = AssetDatabase.GetAssetPath(selections[0]);
+                if (Directory.Exists(path))
+                {
+                    selectedPath = path;
+                }
+                else
+                {
+                    selectedPath = Path.GetDirectoryName(path);
+                }
+            }
+            
+            return selectedPath;
+        }
+
+        // 检查路径是否有效
+        private static bool IsValidFolderPath(string path)
+        {
+            try
+            {
+                // 检查是否包含非法字符
+                char[] invalidChars = Path.GetInvalidPathChars();
+                if (path.IndexOfAny(invalidChars) >= 0)
+                    return false;
+
+                // 检查是否以点开头
+                string folderName = Path.GetFileName(path);
+                if (folderName.StartsWith("."))
+                    return false;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private static void CreateScript(CreateScriptType File)
         {
-#if false
-                * 参数1：instanceId       已编辑资源的实例 ID。
-                * 参数2：endAction        监听编辑名称的类的实例化
-                * 参数3：pathName         创建的文件路径（包括文件名）
-                * 参数4：icon             图标  
-                * 参数5：resourceFile     模板路径
-
-                endAction 直接使用 new NameByEnterOrUnfocus() 出现以下警告：
-                    NameByEnterOrUnfocus must be instantiated using the ScriptableObject.CreateInstance method instead of new NameByEnterOrUnfocus.
-                    必须使用ScriptableObject实例化NameByEnterOrUnfocus。CreateInstance方法，而不是新的NameByEnterOrUnfocus。
-#endif
-          
-
-
             if (!createScriptTypeDic.ContainsKey(File))
             {
                 return;
@@ -160,8 +288,6 @@ namespace FutureEditor
             string resourceFilePath = createScriptTypeDic[File];
 
             const int instanceId = 0;
-
-           
 
             var endAction = ScriptableObject.CreateInstance<NameByEnterOrUnfocus>();     
 
@@ -191,11 +317,96 @@ namespace FutureEditor
 
             ProjectWindowUtil.StartNameEditingIfProjectWindowExists(instanceId, endAction, pathName, texture2D,resourceFilePath);
         }
-
     }
 
-   
+    // ==================== 新增：创建文件夹的窗口类 ====================
+    public class CreateFolderWindow : EditorWindow
+    {
+        private string folderPath = "";
+        private string folderStructure = "";
 
-    
+        public static void ShowWindow()
+        {
+            CreateFolderWindow window = GetWindow<CreateFolderWindow>(true, "创建文件夹结构");
+            window.minSize = new Vector2(400, 200);
+            window.Show();
+        }
 
+        private void OnGUI()
+        {
+            GUILayout.Space(10);
+            
+            // 当前选中的路径
+            EditorGUILayout.LabelField("当前路径:", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField(GetCurrentSelectedPath());
+            
+            GUILayout.Space(10);
+            
+            // 输入文件夹路径
+            EditorGUILayout.LabelField("输入文件夹路径 (用/或\\分隔):", EditorStyles.boldLabel);
+            folderStructure = EditorGUILayout.TextField(folderStructure);
+            
+            GUILayout.Space(10);
+            
+            EditorGUILayout.HelpBox("例如: Scripts/UI/Panels\n或者: Textures/Characters/Player", MessageType.Info);
+            
+            GUILayout.Space(20);
+
+            // 按钮区域
+            EditorGUILayout.BeginHorizontal();
+            
+            GUI.enabled = !string.IsNullOrEmpty(folderStructure);
+            if (GUILayout.Button("创建", GUILayout.Height(30)))
+            {
+                CreateFolders();
+                Close();
+            }
+            GUI.enabled = true;
+            
+            if (GUILayout.Button("取消", GUILayout.Height(30)))
+            {
+                Close();
+            }
+            
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private string GetCurrentSelectedPath()
+        {
+            string path = "Assets";
+            foreach (Object obj in Selection.GetFiltered(typeof(Object), SelectionMode.Assets))
+            {
+                path = AssetDatabase.GetAssetPath(obj);
+                if (Directory.Exists(path))
+                {
+                    break;
+                }
+                else
+                {
+                    path = Path.GetDirectoryName(path);
+                    break;
+                }
+            }
+            return path;
+        }
+
+        private void CreateFolders()
+        {
+            string basePath = GetCurrentSelectedPath();
+            string[] folders = folderStructure.Split(new char[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            string currentPath = basePath;
+            foreach (string folder in folders)
+            {
+                currentPath = Path.Combine(currentPath, folder);
+                if (!Directory.Exists(currentPath))
+                {
+                    Directory.CreateDirectory(currentPath);
+                }
+            }
+
+            AssetDatabase.Refresh();
+            Debug.Log($"[FC] 文件夹结构创建完成: {Path.Combine(basePath, folderStructure)}");
+        }
+    }
 }

@@ -11,9 +11,10 @@ namespace ProjectApp
         public static void Register()
         {
             GlobalMgr globalMgr = GlobalMgr.Instance;
+            // 派发器管理器
+            globalMgr.AddMgr(DispatcherMgr.Instance);
             // 模块管理器
             globalMgr.AddMgr(ModuleMgr.Instance);
-
             //// PreMonoMgr
             //globalMgr.AddMgr(AssistDebugMgr.Instance);
 

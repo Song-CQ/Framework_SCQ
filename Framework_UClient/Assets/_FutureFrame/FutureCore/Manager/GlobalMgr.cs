@@ -10,6 +10,8 @@ namespace FutureCore
 
         public void StartUp()
         {
+            
+
             LogUtil.Log("[GlobalMgr]StartUp Start");
             foreach (var mgr in allMgr)
             {

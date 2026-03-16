@@ -1,125 +1,57 @@
-/****************************************************
-    文件: QuestManager.cs
+﻿/****************************************************
+    文件: Model.cs
     作者: Clear
-    日期: 2026/3/15 14:37:39
-    类型: 逻辑脚本
-    功能: Nothing
+    日期: 2026/3/16 19:6:40
+    类型: MVC_AutoCread
+    功能: QuestModel
 *****************************************************/
-using System.Collections.Generic;
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 using FutureCore;
 using ProjectApp.Data;
-using System.Collections;
+using UnityEngine;
 
 namespace ProjectApp
 {
-
-
-    // 任务管理器
-    public class QuestManager : BaseMgr<QuestManager>
+    public class QuestModel : BaseModel
     {
         private Dictionary<int, Quest> allQuests = new Dictionary<int, Quest>();
         private Dictionary<QuestStatus, List<Quest>> questsByStatus = new Dictionary<QuestStatus, List<Quest>>();
 
-        // 事件
-        public event System.Action<Quest> OnQuestAccepted;
-        public event System.Action<Quest> OnQuestCompleted;
-        public event System.Action<Quest> OnQuestProgressUpdated;
-        public override void StartUp()
-        {
-            base.StartUp();
-            AppDispatcher.Instance.AddListener(AppMsg.System_ConfigInitComplete,ConfigInit);
+        #region 生命周期
 
+        protected override void OnInit()
+        {
+            QuestGoal.questModel = this;
 
         }
 
-        private void ConfigInit(object obj)
+        #region api
+
+        /// <summary>
+        /// 更新任务进度
+        /// </summary>
+        /// <param name="questID"></param>
+        public void ProgressUpdated(int questID)
         {
-            Initialize();
-        }
+            if (!allQuests.ContainsKey(questID)) return;
 
-        private void Initialize()
-        {
-            // 初始化任务分类字典
-            foreach (QuestStatus status in System.Enum.GetValues(typeof(QuestStatus)))
-            {
-                questsByStatus[status] = new List<Quest>();
-            }
+            Quest quest = allQuests[questID];
 
-            
+            QuestEventData eventData = EventData.GetEvent<QuestEventData>();
+            eventData.questData = quest;
+            QuestDispatcher.Instance.Dispatch(QuestMsg.ProgressUpdated, eventData);
 
-            // 加载任务数据
-            LoadQuests();
 
-            // 加载存档
-            LoadQuestProgress();
-        }
 
-        private void LoadQuests()
-        {
-            foreach (var item in QuestVOModel.Instance.GetVOList())
-            {
-                Quest q = CreateQuest(item);
-
-                allQuests.Add(q.questID,q);
-
-            }
-
-        }
-
-        private Quest CreateQuest(QuestVO item)
-        {
-            Quest quest = new Quest();
-
-            quest.questID = item.QuestID;
-            quest.description = item.Description;
-            quest.questType = (QuestType)item.QuestType;
-            string[] data = item.QuestGoals;
-            quest.goals.Add(CreadQuestGoal(data));
-            return quest;
-            
-
+            // 检查是否所有目标都完成
+            CompleteQuest(questID);
 
 
 
         }
 
-
-        private QuestGoal CreadQuestGoal(string[] datas)
-        {
-            Enum.TryParse(datas[0],true,out QuestMsg key);
-
-            switch (key)
-            {
-                case ClearElement_Goal.Key://消除元素任务
-                    {
-                        var goal = new ClearElement_Goal();
-                        if (Enum.TryParse(datas[1], true, out ElementType type))  // true=忽略大小写
-                        {
-                            goal.itemType = type;
-                        }
-                        goal.targetAmount = int.Parse(datas[2]);
-
-                        return goal;
-                    }
-                   
-                case MatchElements_Goal.Key:
-                    {
-                        var goal = new MatchElements_Goal();
-                        goal.Sum = int.Parse(datas[1]);
-                        goal.targetAmount = int.Parse(datas[2]);
-                        return goal;
-                    }
-            }
-
-            LogUtil.LogError("转换条件失败！"+key);
-            return null;
-
-
-        }
-
-        // 接取任务
+        // 接取任务 
         public bool AcceptQuest(int questID)
         {
             if (!allQuests.ContainsKey(questID)) return false;
@@ -147,8 +79,10 @@ namespace ProjectApp
             questsByStatus[QuestStatus.Accepted].Add(quest);
             questsByStatus[QuestStatus.Available].Remove(quest);
 
+            QuestEventData eventData = EventData.GetEvent<QuestEventData>();
+            eventData.questData = quest;
             // 触发事件
-            OnQuestAccepted?.Invoke(quest);
+            QuestDispatcher.Instance.Dispatch(QuestMsg.Accepted, eventData);
 
             // 保存进度
             SaveQuestProgress();
@@ -157,7 +91,7 @@ namespace ProjectApp
         }
 
         // 完成任务
-        public bool CompleteQuest(int questID)
+        private bool CompleteQuest(int questID)
         {
             if (!allQuests.ContainsKey(questID)) return false;
 
@@ -177,14 +111,139 @@ namespace ProjectApp
             // 解锁后续任务
             UnlockNextQuests(quest);
 
+            QuestEventData eventData = EventData.GetEvent<QuestEventData>();
+            eventData.questData = quest;
             // 触发事件
-            OnQuestCompleted?.Invoke(quest);
+            QuestDispatcher.Instance.Dispatch(QuestMsg.Completed, eventData);
 
             // 保存进度
             SaveQuestProgress();
 
             return true;
         }
+
+        // 领取奖励
+
+        #endregion
+
+
+
+        protected override void OnReadData()
+        {
+            InitQuset();
+        }
+
+        protected override void OnDispose()
+        {
+            QuestGoal.questModel = null;
+            allQuests = null;
+            foreach (var item in questsByStatus)
+            {
+                item.Value.Clear();
+            }
+            questsByStatus = null;
+        }
+
+
+        protected override void OnReset()
+        {
+        }
+        #endregion
+
+        #region 消息
+        protected override void AddListener()
+        {
+            //modelDispatcher.AddListener(ModelMsg.XXX, OnXXX);
+        }
+        protected override void RemoveListener()
+        {
+            //modelDispatcher.RemoveListener(ModelMsg.XXX, OnXXX);
+        }
+        #endregion
+
+
+        private void InitQuset()
+        {
+            // 初始化任务分类字典
+            foreach (QuestStatus status in System.Enum.GetValues(typeof(QuestStatus)))
+            {
+                questsByStatus[status] = new List<Quest>();
+            }
+
+
+
+            // 加载任务数据
+            LoadQuests();
+
+            // 加载存档
+            LoadQuestProgress();
+        }
+
+        private void LoadQuests()
+        {
+            foreach (var item in QuestVOModel.Instance.GetVOList())
+            {
+                Quest q = CreateQuest(item);
+
+                allQuests.Add(q.questID, q);
+
+            }
+
+
+        }
+
+        private Quest CreateQuest(QuestVO item)
+        {
+            Quest quest = new Quest();
+
+            quest.questID = item.QuestID;
+            quest.description = item.Description;
+            quest.questType = (QuestType)item.QuestType;
+            quest.goals = new List<QuestGoal>();
+
+            string[] data = item.QuestGoals;
+            QuestGoal questGoal = CreadQuestGoal(data);
+            questGoal.questData = quest;
+            quest.goals.Add(questGoal);
+
+            return quest;
+
+        }
+
+
+        private QuestGoal CreadQuestGoal(string[] datas)
+        {
+            Enum.TryParse(datas[0], true, out QuestMsg key);
+
+            switch (key)
+            {
+                case ClearElement_Goal.Key://消除元素任务
+                    {
+                        var goal = new ClearElement_Goal();
+                        if (Enum.TryParse(datas[1], true, out ElementType type))  // true=忽略大小写
+                        {
+                            goal.itemType = type;
+                        }
+                        goal.targetAmount = int.Parse(datas[2]);
+
+                        return goal;
+                    }
+
+                case MatchElements_Goal.Key:
+                    {
+                        var goal = new MatchElements_Goal();
+                        goal.Sum = int.Parse(datas[1]);
+                        goal.targetAmount = int.Parse(datas[2]);
+                        return goal;
+                    }
+            }
+
+            LogUtil.LogError("转换条件失败！" + key);
+            return null;
+
+
+        }
+
 
         // 领取奖励
         public bool ClaimReward(int questID)
@@ -298,7 +357,26 @@ namespace ProjectApp
                 //InitializeNewGameQuests();
             }
         }
+
     }
+
+    public class QuestEventData : EventData
+    {
+        public const string KEY = "QuestEventData";
+        public Quest questData;
+        public override void Reset()
+        {
+            base.Reset();
+            questData = null;
+        }
+    }
+    public class QuestDispatcher : BaseDispatcher<QuestDispatcher, QuestMsg, QuestEventData>
+    {
+        protected new bool IsAutoReturnEventData = true;
+
+    }
+
+
 
     [System.Serializable]
     public class QuestSaveData
@@ -314,14 +392,7 @@ namespace ProjectApp
 
         public void OnInteract()
         {
-            if (QuestManager.Instance.AcceptQuest(questID))
-            {
-                Debug.Log("任务接取成功！");
-            }
-            else
-            {
-                Debug.Log("无法接取任务");
-            }
+
         }
     }
 }

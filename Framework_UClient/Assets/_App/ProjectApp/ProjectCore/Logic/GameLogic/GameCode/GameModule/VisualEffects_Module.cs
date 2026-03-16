@@ -633,6 +633,8 @@ namespace ProjectApp
             List<ElementData> matches = data as List<ElementData>;
             uint index = 0;
 
+
+
             if (matches == null)
             {
                 object[] items = data as object[];
@@ -640,12 +642,16 @@ namespace ProjectApp
                 index = (uint)items[1];
             }
 
+
+
             List<ElementItem> elementItemList = ListPool<ElementItem>.Get();
             elementItemList = FindElementItem(matches, ref elementItemList);
 
             // 设置item 新值
             foreach (var item in elementItemList)
             {
+                
+
                 //设置下落标记
                 item.SetEmpty();
             }
@@ -657,10 +663,13 @@ namespace ProjectApp
             process.SetLinkExecute((p) =>
             {
                 Core.Enabled_PlayerCtr = false;
-                float time = AnimationSys.PlayAin_ClearElements(elementItemList);
 
+
+                float time = AnimationSys.PlayAin_ClearElements(elementItemList);
                 p.Duration = time > p.Duration ? time : p.Duration;
                 Debug.LogWarning("触发消除" + Time.time);
+
+
             });
 
             process.SetLinkFinish((p) =>
@@ -672,7 +681,8 @@ namespace ProjectApp
                 }
                 ListPool<ElementItem>.Release(elementItemList);
             });
-            ;
+
+
 
 
         }

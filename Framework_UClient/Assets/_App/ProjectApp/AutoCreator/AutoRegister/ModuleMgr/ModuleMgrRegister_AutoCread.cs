@@ -1,7 +1,7 @@
-/****************************************************
+﻿/****************************************************
     文件: ModuleMgrRegister.cs
     作者: Clear
-    日期: 2026/3/5 18:7:5
+    日期: 2026/3/16 19:6:40
     类型: 自动创建
     功能: 模块数据注册
 *****************************************************/
@@ -17,6 +17,7 @@ namespace ProjectApp
             moduleMgr.AddModel(ModelConst.GameModel,new GameModel());
             moduleMgr.AddModel(ModelConst.GameWinModel,new GameWinModel());
             moduleMgr.AddModel(ModelConst.MainModel,new MainModel());
+            moduleMgr.AddModel(ModelConst.QuestModel,new QuestModel());
             moduleMgr.AddModel(ModelConst.TipsModel,new TipsModel());
             moduleMgr.AddModel(ModelConst.UsePropModel,new UsePropModel());
 
@@ -28,6 +29,7 @@ namespace ProjectApp
             moduleMgr.AddUIType(UIConst.GameUI,typeof(GameUI));
             moduleMgr.AddUIType(UIConst.GameWinUI,typeof(GameWinUI));
             moduleMgr.AddUIType(UIConst.MainUI,typeof(MainUI));
+            moduleMgr.AddUIType(UIConst.QuestUI,typeof(QuestUI));
             moduleMgr.AddUIType(UIConst.TipsUI,typeof(TipsUI));
             moduleMgr.AddUIType(UIConst.UsePropUI,typeof(UsePropUI));
 
@@ -39,6 +41,7 @@ namespace ProjectApp
             moduleMgr.AddCtrl(CtrlConst.GameCtrl,new GameCtrl());
             moduleMgr.AddCtrl(CtrlConst.GameWinCtrl,new GameWinCtrl());
             moduleMgr.AddCtrl(CtrlConst.MainCtrl,new MainCtrl());
+            moduleMgr.AddCtrl(CtrlConst.QuestCtrl,new QuestCtrl());
             moduleMgr.AddCtrl(CtrlConst.TipsCtrl,new TipsCtrl());
             moduleMgr.AddCtrl(CtrlConst.UsePropCtrl,new UsePropCtrl());
 
@@ -50,6 +53,7 @@ namespace ProjectApp
             moduleMgr.AddUICtrl(UICtrlConst.GameUICtrl,new GameUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.GameWinUICtrl,new GameWinUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.MainUICtrl,new MainUICtrl());
+            moduleMgr.AddUICtrl(UICtrlConst.QuestUICtrl,new QuestUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.TipsUICtrl,new TipsUICtrl());
             moduleMgr.AddUICtrl(UICtrlConst.UsePropUICtrl,new UsePropUICtrl());
 
