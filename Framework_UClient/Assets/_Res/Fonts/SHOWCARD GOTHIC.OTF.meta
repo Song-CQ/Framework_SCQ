@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2635464d098737847994a947d973b3aa
+guid: c2257b78a0d5db840b71f62917521ea1
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - SimSun
+  - Showcard Gothic
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

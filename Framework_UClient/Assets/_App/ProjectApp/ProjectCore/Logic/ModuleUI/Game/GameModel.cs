@@ -14,7 +14,7 @@ namespace ProjectApp
 
         private QuestModel questModel;
 
-        private Quest currQuest;
+        public Quest currQuest;
 
         #region 生命周期
         protected override void OnInit()

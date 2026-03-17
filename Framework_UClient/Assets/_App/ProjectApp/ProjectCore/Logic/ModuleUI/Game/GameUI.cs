@@ -1,4 +1,4 @@
-/****************************************************
+﻿/****************************************************
     文件: GameUI.cs
     作者: Clear
     日期: 2023/11/23 20:49:21
@@ -21,9 +21,12 @@ namespace ProjectApp
         //框架自动创建请勿在此处修改内容
         private const string ui_BeesTrf_Key = "ui_BeesTrf";
         private const string ui_BetterBeesTrf_Key = "ui_BetterBeesTrf";
-        private const string ui_soce_Fg_Key = "ui_soce_Fg";
+        private const string ui_SoceMask_Key = "ui_SoceMask";
         private const string ui_currentScore_Key = "ui_currentScore";
         private const string ui_scoreChangeText_Key = "ui_scoreChangeText";
+        private const string ui_TaskMask_Key = "ui_TaskMask";
+        private const string ui_propIcon_Key = "ui_propIcon";
+        private const string ui_ProgressText_Key = "ui_ProgressText";
         private const string ui_tastText_Key = "ui_tastText";
         private const string ui_PropList_Key = "ui_PropList";
         private const string ui_TipsText_Key = "ui_TipsText";
@@ -32,10 +35,13 @@ namespace ProjectApp
         private GameUICtrl uiCtrl;
         private GameModel model;
         private UGUIEntity u_Entity;
-       
+
         private UI_List ui_PropList;
         private TextMeshProUGUI ui_TipsText;
-        private Image ui_soce_FgImg;
+        
+        private RectTransform ui_SoceMask;
+
+
         private List<Transform> beesTars;
         private Queue<BetterBeeFlight> betterBeesFlightQueue;
         private BetterBeeFlight LastBetterBeesFlight;
@@ -45,6 +51,13 @@ namespace ProjectApp
 
 
         private ExternalProp_PlayerData externalProp_PlayerData;
+
+
+
+        private RectTransform ui_TaskMask;
+        private TextMeshProUGUI ui_TastText;
+        private TextMeshProUGUI ui_ProgressText;
+        private Image ui_propIconImg;
 
         public GameUI(GameUICtrl ctrl) : base(ctrl)
         {
@@ -69,9 +82,9 @@ namespace ProjectApp
             //model = moduleMgr.GetModel(ModelConst.GameModel) as GameModel;
         }
 
-        
 
-       
+
+
 
         protected override void OnBind()
         {
@@ -86,20 +99,26 @@ namespace ProjectApp
             ui_TipsText = GetComponent<TextMeshProUGUI>(ui_TipsText_Key);
             ui_TipsText.transform.parent.SetActive(false);
 
-            ui_soce_FgImg = GetComponent<Image>(ui_soce_Fg_Key);
+            ui_SoceMask = GetComponent<RectTransform>(ui_SoceMask_Key);
+            
+            ui_TaskMask = GetComponent<RectTransform>(ui_TaskMask_Key);
+            ui_TastText = GetComponent<TextMeshProUGUI>(ui_tastText_Key);
+            ui_propIconImg = GetComponent<Image>(ui_propIcon_Key);
+
+
             beesTars = new List<Transform>();
             Transform trf = GetComponent<Transform>(ui_BeesTrf_Key);
             foreach (Transform item in trf.GetComponentsInChildren<Transform>(true))
             {
-                if(trf == item) continue;
+                if (trf == item) continue;
 
                 beesTars.Add(item);
                 item.SetActive(false);
             }
-            
+
             int cocr = 0;
             UIEventListener uIEvent = UIEventListener.GetEventListener(trf);
-            uIEvent.PointerClick_Event += (e)=>
+            uIEvent.PointerClick_Event += (e) =>
             {
                 cocr += 1000;
                 StartBetterBeesAnimation(cocr);
@@ -113,7 +132,7 @@ namespace ProjectApp
                 item.SetActive(false);
             }
 
-            
+
 
 
             core = GameTool.GameCore;
@@ -122,7 +141,7 @@ namespace ProjectApp
 
             foreach (var item in externalProp_PlayerData.allExternalProp)
             {
-                propDataList.Add(new PropData() { type = item.Key,Sum = item.Value});
+                propDataList.Add(new PropData() { type = item.Key, Sum = item.Value });
             }
 
             ui_PropList.SetData(propDataList);
@@ -156,7 +175,7 @@ namespace ProjectApp
             UICtrlDispatcher.Instance.AddListener(GameMsg.GameWin, OnGameWin);
         }
 
-        
+
 
         protected override void OnClose()
         {
@@ -206,11 +225,13 @@ namespace ProjectApp
 
         }
 
-        private void RestUI(object args =null)
+        private void RestUI(object args = null)
         {
             scoreText.text = "0";
             scoreChangeText.text = "";
-            ui_soce_FgImg.fillAmount = 0;
+
+            ui_SoceMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(0));
+            ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(0));
 
         }
 
@@ -229,7 +250,7 @@ namespace ProjectApp
                 UpdateScoreAnimation();
             }
 
-           
+
 
         }
 
@@ -257,7 +278,7 @@ namespace ProjectApp
             {
                 return;
             }
-            sum = sum > beesTars.Count ? beesTars.Count:sum;
+            sum = sum > beesTars.Count ? beesTars.Count : sum;
 
             Transform tartrf = beesTars[sum - 1];
 
@@ -363,9 +384,9 @@ namespace ProjectApp
                     scoreText.transform.localScale = new Vector3(scale, scale, 1f);
                 }
             }
-            if (ui_soce_FgImg)
-            { 
-                ui_soce_FgImg.fillAmount =  currentDisplayScore *1f / core.TargetScore;
+            if (ui_TaskMask)
+            {
+                ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(currentDisplayScore * 1f / core.TargetScore));
             }
 
             // 隐藏分数变化文字
@@ -447,6 +468,22 @@ namespace ProjectApp
         {
             //modelDispatcher.RemoveListener(ModelMsg.XXX, OnXXX);
         }
+        #endregion
+
+        #region 任务
+
+        private void UpdataTask()
+        {
+            ui_TastText.text = model.currQuest.description;
+            ui_ProgressText.text = model.currQuest.goals[0].GetProgressText();
+            ui_propIconImg.sprite = GameTool.GetSprite(ExternalProp.Horizontal);
+        }
+
+        private int GetMaskHeight(float val)
+        {
+            return (int)(140 / val);
+        }
+
         #endregion
 
     }
