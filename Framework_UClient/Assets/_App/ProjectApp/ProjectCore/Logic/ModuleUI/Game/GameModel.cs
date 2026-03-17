@@ -12,9 +12,14 @@ namespace ProjectApp
     public class GameModel:BaseModel
     {
 
+        private QuestModel questModel;
+
+        private Quest currQuest;
+
         #region 生命周期
         protected override void OnInit()
         {
+            questModel = ModuleMgr.Instance.GetModel(ModelConst.QuestModel) as QuestModel;
         }
 
         protected override void OnDispose()
@@ -33,6 +38,12 @@ namespace ProjectApp
         }
 
         #endregion
+
+
+        public void GetCurrQuest()
+        {
+            currQuest = questModel.GetAcceptedQuests()[0];
+        }
       
         #region 消息
         protected override void AddListener()

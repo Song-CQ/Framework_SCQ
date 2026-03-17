@@ -34,19 +34,27 @@ namespace ProjectApp
         private List<ElementData> dataList = new List<ElementData>();
 
         private ExternalProp_PlayerData externalProp_PlayerData;
+        private QuestModel questModel;
+
+        
 
         public void FillCore(EliminateGameCore _core)
         {
             Core = _core;
             externalProp_PlayerData = PlayerDataMgr.Instance.GetData<ExternalProp_PlayerData>();
+            questModel = ModuleMgr.Instance.GetModel(ModelConst.QuestModel) as QuestModel;
 
- 
+            
+           
+
+
         }
 
 
         public void GenerateInitialElements()
         {
 
+            AcceptNextQuest();
         }
 
         public void InitializeBoard(int w, int h)
@@ -265,7 +273,18 @@ namespace ProjectApp
             ListPool<Vector2Int>.Release(vector3List);
         }
 
+        private List<QuestVO> questVOList;
 
+        public void AcceptNextQuest()
+        {
+            QuestVO questVO = questModel.QuestVOList[UnityEngine.Random.Range(0,questModel.QuestVOList.Count)];
+            //注册任务事件
+            questModel.AcceptQuest(questVO.QuestID);
+
+            
+
+
+        }
 
 
 

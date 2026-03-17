@@ -650,8 +650,6 @@ namespace ProjectApp
             // 设置item 新值
             foreach (var item in elementItemList)
             {
-                
-
                 //设置下落标记
                 item.SetEmpty();
             }

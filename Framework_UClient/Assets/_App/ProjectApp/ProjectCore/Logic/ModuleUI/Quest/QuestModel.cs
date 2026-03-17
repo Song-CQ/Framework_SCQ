@@ -18,6 +18,10 @@ namespace ProjectApp
         private Dictionary<int, Quest> allQuests = new Dictionary<int, Quest>();
         private Dictionary<QuestStatus, List<Quest>> questsByStatus = new Dictionary<QuestStatus, List<Quest>>();
 
+        public List<QuestVO> QuestVOList;
+
+        
+
         #region 生命周期
 
         protected override void OnInit()
@@ -124,12 +128,15 @@ namespace ProjectApp
 
         // 领取奖励
 
+
         #endregion
 
 
 
         protected override void OnReadData()
         {
+            QuestVOList = QuestVOModel.Instance.GetVOList();
+
             InitQuset();
         }
 
