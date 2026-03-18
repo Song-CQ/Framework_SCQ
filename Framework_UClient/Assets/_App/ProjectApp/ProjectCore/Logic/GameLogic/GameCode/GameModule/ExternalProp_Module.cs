@@ -54,7 +54,7 @@ namespace ProjectApp
         public void GenerateInitialElements()
         {
 
-            AcceptNextQuest();
+         
         }
 
         public void InitializeBoard(int w, int h)
@@ -70,9 +70,11 @@ namespace ProjectApp
             Dispatcher.AddListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement);
 
 
+
+
         }
 
-        
+
 
         public void RemoveListener()
         {
@@ -82,6 +84,8 @@ namespace ProjectApp
 
             Dispatcher.RemoveListener(GameMsg.Player_ClickExternalPropItem, OnPlayer_ClickExternalProp);
             Dispatcher.RemoveListener(GameMsg.Player_ClickElement, OnPlayer_ClickElement);
+
+            
         }
         
         /// 消耗道具
@@ -107,11 +111,11 @@ namespace ProjectApp
         {
             if (externalProp_PlayerData.allExternalProp.ContainsKey(type))
             {
-                int sum = externalProp_PlayerData.allExternalProp[type];
+                uint sum = externalProp_PlayerData.allExternalProp[type];
                 if (sum > 0)
                 {
                     sum = sum - 1;
-                    externalProp_PlayerData.allExternalProp[type] = sum;
+                    externalProp_PlayerData.SetExternalPropSum(type,sum);
                 }
             }
 
@@ -273,18 +277,9 @@ namespace ProjectApp
             ListPool<Vector2Int>.Release(vector3List);
         }
 
-        private List<QuestVO> questVOList;
-
-        public void AcceptNextQuest()
-        {
-            QuestVO questVO = questModel.QuestVOList[UnityEngine.Random.Range(0,questModel.QuestVOList.Count)];
-            //注册任务事件
-            questModel.AcceptQuest(questVO.QuestID);
-
-            
 
 
-        }
+        
 
 
 

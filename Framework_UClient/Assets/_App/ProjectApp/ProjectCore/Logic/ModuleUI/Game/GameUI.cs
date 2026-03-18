@@ -168,22 +168,47 @@ namespace ProjectApp
 
         protected override void OnOpenBefore(object args)
         {
+            PlayerDataDispatcher.Instance.AddListener(PlayerDataMsg.Updata, OnPlayerUpdata);
+            
             core.AddListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
             core.AddListener(GameMsg.GameStart, RestUI);
 
             UICtrlDispatcher.Instance.AddListener(GameMsg.ScoreUpdated, OnScoreUpdated);
             UICtrlDispatcher.Instance.AddListener(GameMsg.GameWin, OnGameWin);
+
+            QuestDispatcher.Instance.AddListener(QuestMsg.Accepted,UpdataTask);
+            QuestDispatcher.Instance.AddListener(QuestMsg.ProgressUpdated,UpdataTask);
         }
 
 
 
         protected override void OnClose()
         {
+            PlayerDataDispatcher.Instance.RemoveListener(PlayerDataMsg.Updata, OnPlayerUpdata);
+
             core.RemoveListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
             core.RemoveListener(GameMsg.GameStart, RestUI);
 
             UICtrlDispatcher.Instance.RemoveListener(GameMsg.ScoreUpdated, OnScoreUpdated);
             UICtrlDispatcher.Instance.RemoveListener(GameMsg.GameWin, OnGameWin);
+
+            QuestDispatcher.Instance.RemoveListener(QuestMsg.Accepted,UpdataTask);
+            QuestDispatcher.Instance.RemoveListener(QuestMsg.ProgressUpdated,UpdataTask);
+
+
+        }
+
+        private void OnPlayerUpdata(IPlayerData data)
+        {
+            ExternalProp_PlayerData playerData = data as ExternalProp_PlayerData;
+            if(playerData == null) return;
+
+            foreach (PropData item in propDataList)
+            {
+                item.Sum = externalProp_PlayerData.GetExternalPropSum(item.type);
+            }
+
+            RefershPropList();
 
 
         }
@@ -472,11 +497,16 @@ namespace ProjectApp
 
         #region 任务
 
-        private void UpdataTask()
+        private void UpdataTask(QuestEventData eventData)
         {
-            ui_TastText.text = model.currQuest.description;
-            ui_ProgressText.text = model.currQuest.goals[0].GetProgressText();
+            Quest quest = model.GetCurrQuest();
+            ui_TastText.text = quest.description;
             ui_propIconImg.sprite = GameTool.GetSprite(ExternalProp.Horizontal);
+            var goal = quest.goals[0];
+            ui_ProgressText.text = goal.GetProgressText();
+            
+            ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(goal.currentAmount * 1f / goal.targetAmount));
+
         }
 
         private int GetMaskHeight(float val)

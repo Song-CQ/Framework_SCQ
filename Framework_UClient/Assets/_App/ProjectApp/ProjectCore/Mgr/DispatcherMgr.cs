@@ -19,6 +19,7 @@ namespace ProjectApp
         public ModelDispatcher ModelDispatcher {private set;get;}
         public UICtrlDispatcher UICtrlDispatcher {private set;get;}
         public QuestDispatcher QuestDispatcher {private set;get;}
+        public PlayerDataDispatcher PlayerDataDispatcher {private set;get;}
 
         public override void Init()
         {
@@ -32,6 +33,7 @@ namespace ProjectApp
             UICtrlDispatcher = UICtrlDispatcher.Instance;
             CtrlDispatcher = CtrlDispatcher.Instance;
             QuestDispatcher = QuestDispatcher.Instance;
+            PlayerDataDispatcher = PlayerDataDispatcher.Instance;
         }
 
 
@@ -53,6 +55,7 @@ namespace ProjectApp
             UICtrlDispatcher = null;
             CtrlDispatcher = null;
             QuestDispatcher = null;
+            PlayerDataDispatcher = null;
 
 
 

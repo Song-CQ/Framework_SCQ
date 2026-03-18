@@ -13,14 +13,22 @@ using UnityEngine;
 namespace ProjectApp
 {
 
-    public interface IPlayerData
+   
+
+    public class PlayerDataDispatcher :BaseDispatcher<PlayerDataDispatcher,PlayerDataMsg,IPlayerData> {}; 
+
+    public enum PlayerDataMsg
     {
-        
+        IntData = 0,
+        Updata = 0,
+
     }
 
     public class PlayerDataMgr : BaseMgr<PlayerDataMgr>
     {
         private Dictionary<Type, IPlayerData> allPlayerData = new Dictionary<Type, IPlayerData>();
+
+        
 
 
         public override void Init()
@@ -30,6 +38,9 @@ namespace ProjectApp
             // 使用示例
             RegisterData(new ExternalProp_PlayerData());
             //RegisterData(new PlayerInventoryData());
+
+
+            PlayerDataDispatcher.Instance.Dispatch(PlayerDataMsg.IntData);        
 
         }
 
@@ -55,6 +66,7 @@ namespace ProjectApp
             Debug.LogError($"数据 {typeof(T)} 未注册！");
             return default;
         }
+
     }
 
    

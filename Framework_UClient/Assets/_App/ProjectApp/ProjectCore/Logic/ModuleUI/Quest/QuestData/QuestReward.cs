@@ -12,9 +12,13 @@ namespace ProjectApp
 {
     public class QuestReward
     {
-        internal void Grant()
+        public ExternalProp externalProp;
+        public uint sum;
+        public void Grant()
         {
-            throw new NotImplementedException();
+           ExternalProp_PlayerData  externalProp_PlayerData = PlayerDataMgr.Instance.GetData<ExternalProp_PlayerData>();
+           externalProp_PlayerData.SetExternalPropSum(externalProp,sum);
+
         }
     }
 }

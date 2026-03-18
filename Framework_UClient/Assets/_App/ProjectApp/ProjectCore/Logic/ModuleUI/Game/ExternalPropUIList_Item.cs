@@ -16,7 +16,7 @@ namespace ProjectApp
     public class PropData : ItemData
     {
         public ExternalProp type;
-        public int Sum;
+        public uint Sum;
 
     }
     public class ExternalPropUIList_Item : BaseUIList_Item
@@ -42,7 +42,7 @@ namespace ProjectApp
 
             RefreshItemIcon(propData.type);
 
-            int sum = propData.Sum;
+            uint sum = propData.Sum;
             if (sum == 0)
             {
                 btn_AddTrf.gameObject.SetActive(true);
