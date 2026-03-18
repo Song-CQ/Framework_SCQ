@@ -1534,30 +1534,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game_Plane
       objectReference: {fileID: 0}
-    - target: {fileID: 6977953779071149816, guid: 35f0bbb991331f04c80295fda770ca03,
+    - target: {fileID: 4762558752449333838, guid: 35f0bbb991331f04c80295fda770ca03,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814983535213241835, guid: 35f0bbb991331f04c80295fda770ca03,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 140
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014115513863770786, guid: 35f0bbb991331f04c80295fda770ca03,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014115513863770786, guid: 35f0bbb991331f04c80295fda770ca03,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014115513863770786, guid: 35f0bbb991331f04c80295fda770ca03,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014115513863770786, guid: 35f0bbb991331f04c80295fda770ca03,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

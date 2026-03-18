@@ -54,9 +54,10 @@ namespace ProjectApp
             if (tarType == itemType)
             {
                 currentAmount += 1;
+                UpdateProgress();
             }
 
-            UpdateProgress();
+         
         }
 
         public override string GetProgressText()
@@ -85,10 +86,11 @@ namespace ProjectApp
             if(evt.dataInt>Sum)
             {
                 currentAmount += 1;
+                UpdateProgress();
             }
 
 
-            UpdateProgress();
+          
         }
 
 

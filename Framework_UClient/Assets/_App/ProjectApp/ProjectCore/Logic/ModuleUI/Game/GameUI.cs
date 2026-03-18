@@ -79,7 +79,7 @@ namespace ProjectApp
         #region 生命周期
         protected override void OnInit()
         {
-            //model = moduleMgr.GetModel(ModelConst.GameModel) as GameModel;
+            model = moduleMgr.GetModel(ModelConst.GameModel) as GameModel;
         }
 
 
@@ -105,6 +105,7 @@ namespace ProjectApp
             ui_TastText = GetComponent<TextMeshProUGUI>(ui_tastText_Key);
             ui_propIconImg = GetComponent<Image>(ui_propIcon_Key);
 
+            ui_ProgressText = GetComponent<TextMeshProUGUI>(ui_ProgressText_Key);
 
             beesTars = new List<Transform>();
             Transform trf = GetComponent<Transform>(ui_BeesTrf_Key);
@@ -178,6 +179,7 @@ namespace ProjectApp
 
             QuestDispatcher.Instance.AddListener(QuestMsg.Accepted,UpdataTask);
             QuestDispatcher.Instance.AddListener(QuestMsg.ProgressUpdated,UpdataTask);
+
         }
 
 
@@ -257,6 +259,8 @@ namespace ProjectApp
 
             ui_SoceMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(0));
             ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(0));
+
+            UpdataTask();
 
         }
 
@@ -409,9 +413,9 @@ namespace ProjectApp
                     scoreText.transform.localScale = new Vector3(scale, scale, 1f);
                 }
             }
-            if (ui_TaskMask)
+            if (ui_SoceMask)
             {
-                ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(currentDisplayScore * 1f / core.TargetScore));
+                ui_SoceMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(currentDisplayScore * 1f / core.TargetScore));
             }
 
             // 隐藏分数变化文字
@@ -497,21 +501,24 @@ namespace ProjectApp
 
         #region 任务
 
-        private void UpdataTask(QuestEventData eventData)
+        private void UpdataTask(QuestEventData eventData = null)
         {
             Quest quest = model.GetCurrQuest();
             ui_TastText.text = quest.description;
             ui_propIconImg.sprite = GameTool.GetSprite(ExternalProp.Horizontal);
             var goal = quest.goals[0];
             ui_ProgressText.text = goal.GetProgressText();
+
+            int height =  GetMaskHeight(goal.currentAmount * 1f / goal.targetAmount);
+            //Debug.LogError((goal.currentAmount * 1f / goal.targetAmount)+ height);
             
-            ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(goal.currentAmount * 1f / goal.targetAmount));
+            ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
 
         }
 
         private int GetMaskHeight(float val)
         {
-            return (int)(140 / val);
+            return (int)(140 * val);
         }
 
         #endregion

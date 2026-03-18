@@ -208,6 +208,9 @@ namespace ProjectApp
             quest.questType = (QuestType)item.QuestType;
             quest.goals = new List<QuestGoal>();
 
+            //默认解锁
+            quest.status = QuestStatus.Available;
+
             string[] data = item.QuestGoals;
             QuestGoal questGoal = CreadQuestGoal(data);
             questGoal.questData = quest;
@@ -289,6 +292,7 @@ namespace ProjectApp
         // 检查前置任务
         private bool CheckPrerequisites(Quest quest)
         {
+            if(quest.prerequisiteQuests !=null)
             foreach (int prereqID in quest.prerequisiteQuests)
             {
                 if (!allQuests.ContainsKey(prereqID)) continue;

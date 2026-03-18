@@ -8,6 +8,7 @@
 using System.Collections.Generic;
 using FutureCore;
 using ProjectApp.Data;
+using UnityEngine;
 
 namespace ProjectApp
 {
@@ -46,17 +47,19 @@ namespace ProjectApp
 
         public void AcceptNextQuest()
         {
-            List<QuestVO> questVOList = questModel.QuestVOList;
-            if(questVOList.Count > 0)
+            List<Quest> questList = questModel.GetAcceptedQuests();
+            if(questList.Count > 0)
             {
                 return;
             }
 
-
-            QuestVO questVO = questModel.QuestVOList[UnityEngine.Random.Range(0, questModel.QuestVOList.Count)];
+            int index = GameTool.GameCore.TaskIndex % questModel.QuestVOList.Count;
+            QuestVO questVO = questModel.QuestVOList[index];
             //注册任务事件
             questModel.AcceptQuest(questVO.QuestID);
-        
+
+            Debug.LogError("注册任务"+questVO.QuestID);
+
 
         }
 
@@ -66,6 +69,10 @@ namespace ProjectApp
             //领取奖励
             questModel.ClaimReward(id);
 
+            Debug.LogError("领取奖励");
+           
+
+            GameTool.GameCore.TaskIndex++;
             //领取下一个任务
             AcceptNextQuest();
 
@@ -74,6 +81,10 @@ namespace ProjectApp
 
         public Quest GetCurrQuest()
         {
+            if (questModel.GetAcceptedQuests().Count == 0)
+            {
+                AcceptNextQuest();
+            }
             currQuest = questModel.GetAcceptedQuests()[0];
             return currQuest;
         }

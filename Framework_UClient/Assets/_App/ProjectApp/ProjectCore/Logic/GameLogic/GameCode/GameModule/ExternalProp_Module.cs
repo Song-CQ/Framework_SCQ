@@ -34,7 +34,6 @@ namespace ProjectApp
         private List<ElementData> dataList = new List<ElementData>();
 
         private ExternalProp_PlayerData externalProp_PlayerData;
-        private QuestModel questModel;
 
         
 
@@ -42,7 +41,7 @@ namespace ProjectApp
         {
             Core = _core;
             externalProp_PlayerData = PlayerDataMgr.Instance.GetData<ExternalProp_PlayerData>();
-            questModel = ModuleMgr.Instance.GetModel(ModelConst.QuestModel) as QuestModel;
+
 
             
            

@@ -491,6 +491,8 @@ namespace ProjectApp
         public bool isCheckAllMatches = true;
         [LabelText("无消除是否要交换回元素")]
         public bool IsBackSwap = true;
+        [LabelText("无消除是否要交换回元素")]
+        public int TaskIndex = 0;
 
 
         [Button("交换元素")]
@@ -676,6 +678,8 @@ namespace ProjectApp
         private int wildAndBomb_Rate;
         private int wildAndHorizontal_Rate;
         private int wildAndVertical_Rate;
+        
+
         public int GetWildAndPropSum(ElementType type)
         {
             int rate = 0;
