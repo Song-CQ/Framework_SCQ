@@ -38,6 +38,17 @@ namespace FutureCore
         public static string AssetBundlesPath = Application.persistentDataPath + "/AssetBundles/" + AssetBundlesTarget;
 #endif
 
+        /// <summary>
+        /// 配置表数据存放目录
+        /// </summary>
+#if UNITY_EDITOR || UNITY_STANDALONE
+        public static string ConfigDataPath = Application.dataPath + "/../../_Resources/UpData/ConfigData";
+#elif UNITY_IOS
+        public static string ConfigDataPath = Application.temporaryCachePath + "/ConfigData";
+#elif UNITY_ANDROID
+        public static string ConfigDataPath = Application.persistentDataPath + "/ConfigData";
+#endif
+
 
 #if UNITY_EDITOR
         /// <summary>

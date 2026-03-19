@@ -26,6 +26,10 @@ namespace ProjectApp
         public virtual void UpdateProgress()
         {
             questModel.ProgressUpdated(questData.questID);
+            if (currentAmount >= targetAmount)
+            {
+                isCompleted = true;
+            }
         }
 
         public virtual string GetProgressText()

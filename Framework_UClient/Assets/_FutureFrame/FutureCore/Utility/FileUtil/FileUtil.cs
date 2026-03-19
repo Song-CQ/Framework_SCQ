@@ -11,6 +11,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+using UnityEngine.Networking;
 
 namespace FutureCore
 {
@@ -171,6 +173,17 @@ namespace FutureCore
             File.WriteAllText(filePath,allStr, new UTF8Encoding(false));
         }
 
+
+
+        public static string ReadAllText(string filePath)
+        {
+            return File.ReadAllText(filePath);
+        }
+        
+        public static byte[] ReadAllBytes(string filePath)
+        {
+            return File.ReadAllBytes(filePath);
+        }
         /// <summary>
         /// 将文件转换为类
         /// </summary>
@@ -245,6 +258,6 @@ namespace FutureCore
 
         }
 
-
+        
     }
 }

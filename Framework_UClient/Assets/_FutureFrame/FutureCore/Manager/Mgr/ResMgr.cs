@@ -11,10 +11,20 @@ namespace FutureCore
     public class ResMgr : BaseMgr<ResMgr>
     {
 
-        public TextAsset GetConfigData(string tableName)
+        public object GetConfigData(string tableName, bool isEncipherment)
         {
-            string path = @"Data\ExcelConfig" + @"\" + tableName;
-            TextAsset data = Resources.Load<TextAsset>(path);
+            string path = PathConst.ConfigDataPath + @"\" + tableName;
+            object data = null;
+
+            if (isEncipherment)
+            {
+                data = FileUtil.ReadAllBytes(path + ".bytes");
+            }
+            else
+            {
+                data = FileUtil.ReadAllText(path + ".txt");
+            }
+
             return data;
         }
 
@@ -61,7 +71,7 @@ namespace FutureCore
                 {
                     UIName[i] += ".unity3d";
                 }
-               
+
                 rootPath = PathConst.AssetBundlesPath + "/";
 #if UNITY_EDITOR
                 if (!AppConst.IsUseReleaseAB)
@@ -191,6 +201,6 @@ namespace FutureCore
     }
 
 
- 
+
 }
 

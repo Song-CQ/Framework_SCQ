@@ -1,4 +1,4 @@
-/****************************************************
+﻿/****************************************************
     文件:MainUI.cs
     作者:Clear
     日期:2022/1/29 23:8:15
@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using ProjectApp.Data;
 //using UI.G000_Main;
 
 namespace ProjectApp
@@ -19,8 +20,8 @@ namespace ProjectApp
         #region 控件常量
         //框架自动创建请勿在此处修改内容
         private const string ui_OnClick_Key = "ui_OnClick";
-        private const string ui_InputField_Key = "ui_InputField";
         private const string ui_InputFieldScor_Key = "ui_InputFieldScor";
+        private const string ui_InputFieldLv_Key = "ui_InputFieldLv";
 
         #endregion
         
@@ -28,8 +29,8 @@ namespace ProjectApp
         private MainModel model;
         private UGUIEntity u_Entity;
         public static int GameRandomSeed = 13213;
-        public static int GameTarScore = 50000;
-        private TMP_InputField inputField;
+        public static int GameLV = 50000;
+        private TMP_InputField inputFieldLv;
         private TMP_InputField inputScoreField;
 
         public MainUI(MainUICtrl ctrl) : base(ctrl)
@@ -67,16 +68,25 @@ namespace ProjectApp
         protected override void OnOpenBefore(object args)
         {
             u_Entity.GetComponent<Button>(ui_OnClick_Key).onClick.AddListener(OnClick);
-            inputField = u_Entity.GetComponent<TMP_InputField>(ui_InputField_Key);
+            inputFieldLv = u_Entity.GetComponent<TMP_InputField>(ui_InputFieldLv_Key);
             inputScoreField = u_Entity.GetComponent<TMP_InputField>(ui_InputFieldScor_Key);
         }
 
         private void OnClick()
         {
             Close();
-            GameRandomSeed = int.Parse(inputField.text);
-            GameTarScore = int.Parse(inputScoreField.text);
-            GameManager.Instance.EnterGame();
+            GameLV = int.Parse(inputFieldLv.text);
+            GameRandomSeed  = int.Parse(inputScoreField.text);
+
+            var lv = LevelVOModel.Instance.GetVO(GameLV);
+            if (lv != null)
+            {
+                GameManager.Instance.EnterGame();
+            }
+            else
+            {
+                inputFieldLv.text = "关卡:"+GameLV+"不存在";
+            }
         }
 
         protected override void OnOpen(object args)

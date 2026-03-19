@@ -51,7 +51,7 @@ namespace ProjectApp
             LogUtil.LogError("AppConst.IsCheckResVer"+AppConst.IsCheckResVer);
             LogUtil.LogError("AppConst.IsDevelopMode" + AppConst.IsDevelopMode);
             // 初始化资源
-            if (!AppConst.IsDevelopMode&&AppConst.IsCheckResVer)
+            if (!AppConst.IsDevelopMode)
             {
                 //检测版本资源更新
                 App.SetLoadingSchedule(ProgressState.AssetsPrepare);

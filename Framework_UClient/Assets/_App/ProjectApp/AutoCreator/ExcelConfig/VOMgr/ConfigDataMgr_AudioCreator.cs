@@ -1,7 +1,7 @@
 ﻿/****************************************************
     文件：ExcelDataMgr.cs
 	作者：Clear
-    日期：2026/3/18 23:27:23
+    日期：2026/3/20 1:39:39
     类型: 工具自动创建(请勿修改)
 	功能：表格数据管理器
 *****************************************************/
@@ -38,9 +38,9 @@ namespace ProjectApp
         }
 
         public override void Init()
-        { 
+        {
             base.Init();
-          
+
         }
 
 
@@ -48,7 +48,7 @@ namespace ProjectApp
         {
             if (isOutMultipleDatas)
             {
-                
+
                 configStaticVODic.Add(ConfigVO.path, GetExcalData<pathStaticVO>(ConfigVO.path,true) as pathStaticVO);
                 configStaticVODic.Add(ConfigVO.General, GetExcalData<GeneralStaticVO>(ConfigVO.General,true) as GeneralStaticVO);
                 configVODic.Add(ConfigVO.Level, GetExcalData<LevelVO>(ConfigVO.Level,false) as List<BaseVO>);
@@ -59,21 +59,21 @@ namespace ProjectApp
             {
 
                 ConfigData configData = LoadConfigData();
-                
+
                 configStaticVODic.Add(ConfigVO.path, configData.path);
                 configStaticVODic.Add(ConfigVO.General, configData.General);
                 configVODic.Add(ConfigVO.Level, configData.Level_List.OfType<LevelVO,BaseVO>());
                 configVODic.Add(ConfigVO.prop, configData.prop_List.OfType<propVO,BaseVO>());
                 configVODic.Add(ConfigVO.Quest, configData.Quest_List.OfType<QuestVO,BaseVO>());
-                
+
                 configData = null;
             }
 
-            
+
             pathStaticVO.SetData(configStaticVODic[ConfigVO.path] as pathStaticVO);
             GeneralStaticVO.SetData(configStaticVODic[ConfigVO.General] as GeneralStaticVO);
 
-            
+
             AddVOModel(ConfigVO.Level,LevelVOModel.Instance);
             AddVOModel(ConfigVO.prop,propVOModel.Instance);
             AddVOModel(ConfigVO.Quest,QuestVOModel.Instance);
@@ -82,7 +82,7 @@ namespace ProjectApp
 
         public void ResetData()
         {
-            
+
             pathStaticVO.ResetData();
             GeneralStaticVO.ResetData();
             foreach (var voModel in configModelDic)
@@ -101,20 +101,21 @@ namespace ProjectApp
             model.SetData(configVODic[key]);
             configModelDic.Add(key, model);
         }
+
         private ConfigData LoadConfigData()
         {
-            TextAsset textAsset = ResMgr.Instance.GetConfigData("ConfigData");
+            object textAsset = ResMgr.Instance.GetConfigData("ConfigData", isEnciphermentData);
             ConfigData configData = null;
             if (textAsset != null)
             {
                 string val = null;
                 if (isEnciphermentData)
                 {
-                    val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                    val = AESEncryptUtil.Decrypt(textAsset as byte[]);
                 }
                 else
                 {
-                    val = textAsset.text;
+                    val = textAsset as string;
                 }
                 configData = JsonConvert.DeserializeObject<ConfigData>(val);
 
@@ -126,8 +127,6 @@ namespace ProjectApp
             return configData;
 
         }
-
-
 
 
         private object GetExcalData<T>(ConfigVO configVO, bool isStatic)
@@ -146,18 +145,18 @@ namespace ProjectApp
                 type = typeof(List<T>);
             }
 
-            TextAsset textAsset = ResMgr.Instance.GetConfigData(path);
+            object textAsset = ResMgr.Instance.GetConfigData(path, isEnciphermentData);
 
             if (textAsset != null)
             {
                 string val = null;
                 if (isEnciphermentData)
                 {
-                    val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                    val = AESEncryptUtil.Decrypt(textAsset as byte[]);
                 }
                 else
                 {
-                    val = textAsset.text;
+                    val = textAsset as string;
                 }
                 object vos = JsonConvert.DeserializeObject(val, type);
 

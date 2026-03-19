@@ -20,7 +20,7 @@ namespace ProjectApp
 
         public List<QuestVO> QuestVOList;
 
-        
+
 
         #region 生命周期
 
@@ -199,22 +199,34 @@ namespace ProjectApp
 
         }
 
-        private Quest CreateQuest(QuestVO item)
+        private Quest CreateQuest(QuestVO VO)
         {
             Quest quest = new Quest();
 
-            quest.questID = item.QuestID;
-            quest.description = item.Description;
-            quest.questType = (QuestType)item.QuestType;
+            quest.questID = VO.QuestID;
+            quest.description = VO.Description;
+            quest.questType = (QuestType)VO.QuestType;
             quest.goals = new List<QuestGoal>();
+            quest.rewards = new List<QuestReward>();
 
             //默认解锁
             quest.status = QuestStatus.Available;
 
-            string[] data = item.QuestGoals;
+            string[] data = VO.QuestGoals;
             QuestGoal questGoal = CreadQuestGoal(data);
             questGoal.questData = quest;
             quest.goals.Add(questGoal);
+
+            foreach (var item in VO.Reward)
+            {
+                QuestReward questReward = new QuestReward();
+                questReward.externalProp = (ExternalProp)item.Key;
+                questReward.sum = (uint)item.Value;
+                quest.rewards.Add(questReward);
+            }
+
+
+
 
             return quest;
 
@@ -264,9 +276,12 @@ namespace ProjectApp
             if (quest.status != QuestStatus.Completed) return false;
 
             // 发放奖励
-            foreach (var reward in quest.rewards)
+            if (quest.rewards != null)
             {
-                reward.Grant();
+                foreach (var reward in quest.rewards)
+                {
+                    reward.Grant();
+                }
             }
 
             quest.status = QuestStatus.Rewarded;
@@ -292,18 +307,18 @@ namespace ProjectApp
         // 检查前置任务
         private bool CheckPrerequisites(Quest quest)
         {
-            if(quest.prerequisiteQuests !=null)
-            foreach (int prereqID in quest.prerequisiteQuests)
-            {
-                if (!allQuests.ContainsKey(prereqID)) continue;
-
-                Quest prereqQuest = allQuests[prereqID];
-                if (prereqQuest.status != QuestStatus.Completed &&
-                    prereqQuest.status != QuestStatus.Rewarded)
+            if (quest.prerequisiteQuests != null)
+                foreach (int prereqID in quest.prerequisiteQuests)
                 {
-                    return false;
+                    if (!allQuests.ContainsKey(prereqID)) continue;
+
+                    Quest prereqQuest = allQuests[prereqID];
+                    if (prereqQuest.status != QuestStatus.Completed &&
+                        prereqQuest.status != QuestStatus.Rewarded)
+                    {
+                        return false;
+                    }
                 }
-            }
             return true;
         }
 
@@ -320,11 +335,14 @@ namespace ProjectApp
         // 解锁后续任务
         private void UnlockNextQuests(Quest completedQuest)
         {
+
             foreach (var quest in allQuests.Values)
             {
+                if (quest.prerequisiteQuests == null) continue;
+
                 if (quest.prerequisiteQuests.Contains(completedQuest.questID) &&
-                    quest.status == QuestStatus.Locked &&
-                    CheckPrerequisites(quest))
+                quest.status == QuestStatus.Locked &&
+                CheckPrerequisites(quest))
                 {
                     quest.status = QuestStatus.Available;
                     questsByStatus[QuestStatus.Available].Add(quest);

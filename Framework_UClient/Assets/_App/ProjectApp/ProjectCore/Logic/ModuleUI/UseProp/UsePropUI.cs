@@ -6,6 +6,7 @@
     功能: UsePropUI界面
 *****************************************************/
 using FutureCore;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,7 @@ namespace ProjectApp
 
 
         private ExternalPropUIList_Item item;
+        private ExternalPropUIList_Item tarItem;
 
 
 
@@ -58,6 +60,7 @@ namespace ProjectApp
 
         protected override void OnClose()
         {
+            tarItem.gameObject.SetActive(true);
         }
 
         protected override void OnBind()
@@ -125,11 +128,13 @@ namespace ProjectApp
 
         protected override void OnOpenBefore(object args)
         {
-            ExternalPropUIList_Item nextItem = args as ExternalPropUIList_Item;
-            item.Initialize(0,nextItem.propData);
+            tarItem = args as ExternalPropUIList_Item;
+            item.Initialize(0, tarItem.propData);
             item.CloseSumAndBtn();
-            item.transform.position = nextItem.transform.position;
+            item.transform.position = tarItem.transform.position;
             SetViewMask();
+
+            tarItem.gameObject.SetActive(false);
 
         }
 

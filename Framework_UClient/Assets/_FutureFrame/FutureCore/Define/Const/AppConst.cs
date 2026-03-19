@@ -32,6 +32,10 @@ namespace FutureCore
         public const bool ExcelConfig_UseDll = true;
 
         /// <summary>
+        /// 是否要检测配置表版本
+        /// </summary>
+        public static bool IsCheckConfigDataVer = false; 
+        /// <summary>
         /// 是否要检测资源版本
         /// </summary>
         public static bool IsCheckResVer = false;
@@ -46,7 +50,7 @@ namespace FutureCore
 
         // 是否是开发构建
         public const bool IsDevelopmentBuild = false;
-        // 是否开发模式 (不拷贝资源)
+        // 是否开发模式
         public static bool IsDevelopMode = true;
 
         // 热更新代码模式（None）无热更代码
@@ -180,7 +184,6 @@ namespace FutureCore
             {
                 IsDevelopMode = false;
             }
-            IsDevelopMode = false;
 
 
         }

@@ -38,9 +38,9 @@ namespace ProjectApp
         }
 
         public override void Init()
-        { 
+        {
             base.Init();
-          
+
         }
 
 
@@ -48,26 +48,26 @@ namespace ProjectApp
         {
             if (isOutMultipleDatas)
             {
-                #IsOutMultiple_LoadAllData
+#IsOutMultiple_LoadAllData
             }
             else
             {
 
                 ConfigData configData = LoadConfigData();
-                #LoadAllData
-                
+#LoadAllData
+
                 configData = null;
             }
 
-            #SetStaticDataToDic
+#SetStaticDataToDic
 
-            #SetDataModel
+#SetDataModel
         }
 
 
         public void ResetData()
         {
-            #Reset
+#Reset
             foreach (var voModel in configModelDic)
             {
                 voModel.Value.Reset();
@@ -84,20 +84,21 @@ namespace ProjectApp
             model.SetData(configVODic[key]);
             configModelDic.Add(key, model);
         }
+
         private ConfigData LoadConfigData()
         {
-            TextAsset textAsset = ResMgr.Instance.GetConfigData("ConfigData");
+            object textAsset = ResMgr.Instance.GetConfigData("ConfigData", isEnciphermentData);
             ConfigData configData = null;
             if (textAsset != null)
             {
                 string val = null;
                 if (isEnciphermentData)
                 {
-                    val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                    val = AESEncryptUtil.Decrypt(textAsset as byte[]);
                 }
                 else
                 {
-                    val = textAsset.text;
+                    val = textAsset as string;
                 }
                 configData = JsonConvert.DeserializeObject<ConfigData>(val);
 
@@ -109,8 +110,6 @@ namespace ProjectApp
             return configData;
 
         }
-
-
 
 
         private object GetExcalData<T>(ConfigVO configVO, bool isStatic)
@@ -129,18 +128,18 @@ namespace ProjectApp
                 type = typeof(List<T>);
             }
 
-            TextAsset textAsset = ResMgr.Instance.GetConfigData(path);
+            object textAsset = ResMgr.Instance.GetConfigData(path, isEnciphermentData);
 
             if (textAsset != null)
             {
                 string val = null;
                 if (isEnciphermentData)
                 {
-                    val = AESEncryptUtil.Decrypt(textAsset.bytes);
+                    val = AESEncryptUtil.Decrypt(textAsset as byte[]);
                 }
                 else
                 {
-                    val = textAsset.text;
+                    val = textAsset as string;
                 }
                 object vos = JsonConvert.DeserializeObject(val, type);
 

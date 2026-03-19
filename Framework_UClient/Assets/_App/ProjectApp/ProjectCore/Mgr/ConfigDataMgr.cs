@@ -22,7 +22,10 @@ namespace ProjectApp
             base.StartUp();
                     
             ResetData();
-            ReadData();
+            if (AppConst.IsConfigPreInit)
+            { 
+                ReadData();
+            }
         }
 
 

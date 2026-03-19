@@ -23,6 +23,7 @@ namespace FutureCore
             {
                 return;
             }
+
             if (!isPost)
             {
                 GetUrl(webUrl, callBack, timeout);
@@ -45,9 +46,9 @@ namespace FutureCore
             form.AddField(string.Empty, json);
             UnityWebRequest webReq = UnityWebRequest.Post(webUrl, form);
             webReq.timeout = timeout;
-            StartCoroutine(OnHttpRequest(webReq, callBack)); 
+            StartCoroutine(OnHttpRequest(webReq, callBack));
         }
-        
+
 
         private IEnumerator OnHttpRequest(UnityWebRequest webRequest, Action<bool, DownloadHandler> callBack)
         {
@@ -65,7 +66,7 @@ namespace FutureCore
                 string errorMsg = "请求失败";
                 LogUtil.LogError("[HttpMgr]" + errorMsg);
             }
-            callBack(isError,webRequest.downloadHandler);
+            callBack(isError, webRequest.downloadHandler);
             webRequest.Dispose();
         }
         public void DownTexture(string webUrl, Action<Texture2D> callback, bool isCache = true)
@@ -105,9 +106,9 @@ namespace FutureCore
         }
 
 
-        public void DownAssetBundle(string webUrl,Action<AssetBundle> callback)
+        public void DownAssetBundle(string webUrl, Action<AssetBundle> callback)
         {
-            StartCoroutine(OnDownAssetBundle(webUrl,callback)); 
+            StartCoroutine(OnDownAssetBundle(webUrl, callback));
         }
 
         private IEnumerator OnDownAssetBundle(string webUrl, Action<AssetBundle> callback)
@@ -127,6 +128,39 @@ namespace FutureCore
             }
 
 
+        }
+
+        /// <summary>
+        /// 读取 StreamingAssets 目录下的文件
+        /// </summary>
+        public void ReadFromStreamingAssets(string relativePath, Action<bool, DownloadHandler> callback)
+        {
+            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, relativePath);
+            string url = "file://" + filePath;
+
+            Send(url, (isError, downloadHandler) =>
+            {
+                if (!isError)
+                {
+                    callback(false, downloadHandler);
+                }
+                else
+                {
+                    callback(true, null);
+                }
+            });
+        }
+
+        /// <summary>
+        /// 读取本地文件（通用）
+        /// </summary>
+        public void ReadLocalFile(string filePath, Action<bool, DownloadHandler> callback)
+        {
+            string url = "file://" + filePath;
+            Send(url, (isError, downloadHandler) =>
+            {
+                callback(isError, isError ? null : downloadHandler);
+            });
         }
     }
 }

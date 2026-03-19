@@ -26,6 +26,10 @@ namespace ProjectApp
         /// </summary>
         public bool IsCheckResVer = true;
         /// <summary>
+        /// 是否要检测配置表版本
+        /// </summary>
+        public bool IsCheckConfigDataVer = true;
+        /// <summary>
         /// 是否要使用AB包加载资源
         /// </summary>
         public bool IsUseAssetBundlesLoad = false;
@@ -45,6 +49,7 @@ namespace ProjectApp
             AppConst.HotUpdateType = Set.HotUpdateType;
             AppConst.IsEnabledLog = Set.IsEnabledLog;
             AppConst.IsCheckResVer = Set.IsCheckResVer;
+            AppConst.IsCheckConfigDataVer = Set.IsCheckConfigDataVer;
             AppConst.IsUseAssetBundlesLoad = Set.IsUseAssetBundlesLoad;
 
 
