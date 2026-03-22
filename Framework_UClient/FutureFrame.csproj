@@ -99,6 +99,7 @@
     <Compile Include="Assets\_FutureFrame\FutureCore\UGUI\GuideMask\GuideMask.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Manager\GlobalMgr.cs" />
     <Compile Include="Assets\_FutureFrame\FuturePlugin\Define\Const\LauncherConst.cs" />
+    <Compile Include="Assets\_FutureFrame\FutureCore\Data\Veriy\ConfigDataVerify.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\App\App.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Define\Const\VectorConst.cs" />
     <Compile Include="Assets\_FutureFrame\FutureCore\Core\UI\UIEventListener.cs" />

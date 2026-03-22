@@ -14,7 +14,7 @@ namespace #namespace#
     public class #ClassName#UI : BaseUI
     {
         #region 控件常量
-        //框架自动创建请勿在此处修改内容(会被覆盖掉)
+        
         #endregion
         
 		private #ClassName#UICtrl uiCtrl;
@@ -50,6 +50,8 @@ namespace #namespace#
         protected override void OnBind()
         {
             u_Entity = uiEntity as UGUIEntity;
+
+            //InitUIComponents();
 
         }
 

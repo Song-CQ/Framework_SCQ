@@ -11,8 +11,10 @@ using System.Threading;
 using System.Xml.Linq;
 using ExcelTool.Data;
 using ExcelTool.Tool;
+using FutureCore;
 using Newtonsoft.Json;
 using ProjectApp.Data;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ExcelTool
 {
@@ -25,6 +27,7 @@ namespace ExcelTool
 
         public static bool IsEnciphermentData = true;
         public static bool IsOutMultipleDatas = false;
+        public static uint Version;
 
 
         private static Dictionary<string, BaseStaticVO> allConfigData_configStaticVODic = new Dictionary<string, BaseStaticVO>();
@@ -59,6 +62,9 @@ namespace ExcelTool
 
                 CreateConfigData();
             }
+
+            //创建打表Version
+            CreateVersionData();
         }
 
         private static void CreateConfigData()
@@ -102,16 +108,11 @@ namespace ExcelTool
 
                 string jsonData = JsonConvert.SerializeObject(allConfigData);
 
-                if (IsEnciphermentData)
-                {
-                    byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                    File.WriteAllBytes(MainMgr.Instance.OutDataPath + @"\ConfigData.bytes", bytes);
-                }
-                else
-                {
-                    File.WriteAllText(MainMgr.Instance.OutDataPath + @"\ConfigData.txt", jsonData);
-                }
+                CreateAssemblyHelp.WriteAllJson("ConfigData", jsonData, IsEnciphermentData);
 
+                
+
+                
 
             }
             catch (Exception e)
@@ -222,16 +223,11 @@ namespace ExcelTool
                 if (IsOutMultipleDatas)
                 {
                     string jsonData = JsonConvert.SerializeObject(myObject);
-                    DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\StaticExcelData");
-                    if (IsEnciphermentData)
-                    {
-                        byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                        File.WriteAllBytes(directoryInfo.FullName + @"\" + tableName + "_StaticData.bytes", bytes);
-                    }
-                    else
-                    {
-                        File.WriteAllText(directoryInfo.FullName + @"\" + tableName + "_StaticData.txt", jsonData);
-                    }
+
+                    string tempName = @"StaticExcelData\" + tableName + "_StaticData";
+
+                    CreateAssemblyHelp.WriteAllJson(tempName, jsonData, IsEnciphermentData);
+
                 }
                 else
                 {
@@ -366,16 +362,10 @@ namespace ExcelTool
             if (IsOutMultipleDatas)
             {
                 string jsonData = JsonConvert.SerializeObject(myDataLst);
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(MainMgr.Instance.OutDataPath + @"\ExcelData");
-                if (IsEnciphermentData)
-                {
-                    byte[] bytes = AESEncryptUtil.Encrypt(jsonData);
-                    File.WriteAllBytes(directoryInfo.FullName + @"\" + tableName + "_Data.bytes", bytes);
-                }
-                else
-                {
-                    File.WriteAllText(directoryInfo.FullName + @"\" + tableName + "_Data.txt", jsonData);
-                }
+
+                string tempName = @"ExcelData\" + tableName + "_Data";
+                CreateAssemblyHelp.WriteAllJson(tempName, jsonData, IsEnciphermentData);
+
             }
             else
             {
@@ -483,6 +473,8 @@ namespace ExcelTool
             return obj;
         }
         private static List<string> tempStrLst = new List<string>();
+
+
         private static void StringToStringDic(string valStr, out List<string> key, out List<string> val)
         {
             valStr = valStr.Replace("[", "{");
@@ -544,5 +536,35 @@ namespace ExcelTool
             return arr;
         }
 
+
+        /// <summary>
+        /// 创建打表Version
+        /// </summary>
+        private static void CreateVersionData()
+        {
+            ConfigDataVerify configDataVerify = MainMgr.Instance.configDataVerify;
+            string jsonString = JsonConvert.SerializeObject(configDataVerify, Formatting.Indented);
+
+            // 保存到指定目录
+            string fileName = "ConfigDataVerify.json";                  // 文件名
+
+            string Hash = "";
+            foreach (var outputPath in MainMgr.Instance.OutDataPath)
+            {
+                string fullPath = Path.Combine(outputPath, fileName);
+
+                // 写入文件
+                File.WriteAllText(fullPath, jsonString, Encoding.UTF8);
+
+                if (Hash == "")
+                {
+                    // 从文件获取信息
+                    FileInfo fileInfo = new FileInfo(fullPath);
+                    Hash = MD5Util.ComputeFileMD5(fullPath);
+                }
+            }
+
+            CreateAssemblyHelp.CreateVOVersionToClass(configDataVerify.version, Hash);
+        }
     }
 }

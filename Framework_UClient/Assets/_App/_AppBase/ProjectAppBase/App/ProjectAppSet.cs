@@ -16,7 +16,10 @@ namespace ProjectApp
         public HotUpdateType HotUpdateType = HotUpdateType.None;
 
 
-     
+        /// <summary>
+        /// 是否开发者模式
+        /// </summary>
+        public bool IsDevelopMode;
         /// <summary>
         /// 是否开启Log
         /// </summary>
@@ -38,14 +41,14 @@ namespace ProjectApp
         /// 使用后是否自动销毁
         /// </summary>
         public bool IsAutoDestroy = true;
-
-
+       
 
         public static void Init()
         {
             ProjectAppSet Set = GameObject.FindObjectOfType<ProjectAppSet>();
             if (Set == null) return;
 
+            AppConst.IsDevelopMode = Set.IsDevelopMode;
             AppConst.HotUpdateType = Set.HotUpdateType;
             AppConst.IsEnabledLog = Set.IsEnabledLog;
             AppConst.IsCheckResVer = Set.IsCheckResVer;

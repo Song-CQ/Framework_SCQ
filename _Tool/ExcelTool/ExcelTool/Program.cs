@@ -43,26 +43,41 @@ namespace ExcelTool
             LogUtil.LogGirl();
             if (args==null||args.Length==0)
             {
+                ExcelToAssemblyDataHelp.Version = 1;
                 CreateAssemblyHelp.IsCreateDll = true;
-                ExcelToAssemblyDataHelp.IsEnciphermentData = false;
-                ExcelToAssemblyDataHelp.IsOutMultipleDatas = false;
-               
+                ExcelToAssemblyDataHelp.IsOutMultipleDatas = true;
+                //加密
+                ExcelToAssemblyDataHelp.IsEnciphermentData = true;
+                EncryptConst.AES_IVector = "7C9E1B3D5A6F8C2E4F6A8D0B2F4E6C8A";
+                EncryptConst.AES_Key = "4F6B8E1A3CD5F9B2D4BA6C8E0F1A3B5C";
+
             }
             else 
             {
                
-                CreateAssemblyHelp.IsCreateDll = args[0] == "Dll";
-                ExcelToAssemblyDataHelp.IsEnciphermentData = args[1] == "True";
+                ExcelToAssemblyDataHelp.Version = uint.Parse(args[0]);
+                ExcelToAssemblyDataHelp.Version += 1;//版本加一
+
+                CreateAssemblyHelp.IsCreateDll = args[1] == "Dll";
                 ExcelToAssemblyDataHelp.IsOutMultipleDatas = args[2] == "True";
+
+                ExcelToAssemblyDataHelp.IsEnciphermentData = args[3] == "True";
+                EncryptConst.AES_IVector = args[4];
+                EncryptConst.AES_Key = args[5];
             }
 
 
            
+            StringColor.WriteLine("Version :" + ExcelToAssemblyDataHelp.Version, ConsoleColor.Yellow);
             StringColor.WriteLine("输出类型:"+ (CreateAssemblyHelp.IsCreateDll ?"Dll":"CS"), ConsoleColor.Yellow);
-            StringColor.WriteLine("是否加密:"+ ExcelToAssemblyDataHelp.IsEnciphermentData, ConsoleColor.Yellow);
             StringColor.WriteLine("是否单独为表生成数据文件:"+ ExcelToAssemblyDataHelp.IsOutMultipleDatas, ConsoleColor.Yellow);
+            StringColor.WriteLine("是否加密:"+ ExcelToAssemblyDataHelp.IsEnciphermentData, ConsoleColor.Yellow);
+            StringColor.WriteLine("AES_IVector: ****************" + EncryptConst.AES_IVector[EncryptConst.AES_IVector.Length-2] + EncryptConst.AES_IVector[EncryptConst.AES_IVector.Length - 1], ConsoleColor.Yellow);
+            StringColor.WriteLine("AES_Key: ****************" + EncryptConst.AES_Key[EncryptConst.AES_Key.Length - 2] + EncryptConst.AES_Key[EncryptConst.AES_Key.Length - 1], ConsoleColor.Yellow);
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine();
+
+          
 
 
             try

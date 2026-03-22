@@ -48,8 +48,9 @@ namespace ProjectApp
             LogUtil.Log("[MainScene]Start Up App Process");
             AppDispatcher.Instance.Dispatch(AppMsg.App_StartUp);
 
-            LogUtil.LogError("AppConst.IsCheckResVer"+AppConst.IsCheckResVer);
-            LogUtil.LogError("AppConst.IsDevelopMode" + AppConst.IsDevelopMode);
+            LogUtil.LogWarning("AppConst.IsCheckResVer:"+AppConst.IsCheckResVer);
+            LogUtil.LogWarning("AppConst.IsCheckConfigDataVer:" + AppConst.IsCheckConfigDataVer);
+            LogUtil.LogWarning("AppConst.IsDevelopMode:" + AppConst.IsDevelopMode);
             // 初始化资源
             if (!AppConst.IsDevelopMode)
             {

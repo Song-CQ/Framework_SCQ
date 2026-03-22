@@ -1,8 +1,14 @@
 {
+   //  目录开头是  从当前目录的上上上一级目录   Update/ConfigData  ==   ../../../Update/ConfigData
+
   //配置表的路劲
   "ReadExcelPath": "_Resources/配置表",
-  //生成的打表数据路径
-  "OutDataPath": "_Resources/UpData/ConfigData",
-  //生成的表类文件路径
+ 
+ //生成的打表数据路径  ["dsadasdasdasas","12135466"]
+  "OutDataPath": ["_Resources/UpData/ConfigData",
+                                "_RemoteAssets/UpData/ConfigData",
+                                "Framework_UClient/Assets/StreamingAssets/ConfigData"],
+ 
+ //生成的表类文件路径
   "OutClassPath": "Framework_UClient/Assets/_App/ProjectApp/AutoCreator/ExcelConfig"
 }

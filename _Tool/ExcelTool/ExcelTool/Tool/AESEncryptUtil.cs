@@ -4,6 +4,7 @@ using System.Text;
 
 namespace ExcelTool.Tool
 {
+
     public static class AESEncryptUtil
     {
         /// <summary>
@@ -16,13 +17,36 @@ namespace ExcelTool.Tool
         private const string zeroString = "\0";
 
         /// <summary>
+        /// 十六进制字符串转字节数组
+        /// </summary>
+        private static byte[] HexStringToByteArray(string hex)
+        {
+            // 移除空格
+            hex = hex.Trim();
+
+            // 检查长度是否为偶数
+            if (hex.Length % 2 != 0)
+            {
+                throw new ArgumentException($"十六进制字符串长度必须是偶数！当前长度: {hex.Length}");
+            }
+
+            int len = hex.Length;
+            byte[] bytes = new byte[len / 2];
+            for (int i = 0; i < len; i += 2)
+            {
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            }
+            return bytes;
+        }
+
+        /// <summary>
         /// AES加密
         /// </summary>
         /// <param name="val">值</param>
-        /// <param name="key">键</param>
-        /// <param name="iVector">向量</param>
+        /// <param name="keyHex">十六进制格式的密钥</param>
+        /// <param name="ivHex">十六进制格式的向量</param>
         /// <returns></returns>
-        public static byte[] Encrypt(string val,string key,string iVector)
+        public static byte[] Encrypt(string val, string keyHex, string ivHex)
         {
             int totalLen = val.Length;
             int maxLength = (int)Math.Ceiling((double)(totalLen / byteMatrixSize)) * byteMatrixSize;
@@ -30,77 +54,105 @@ namespace ExcelTool.Tool
             {
                 val += zeroString;
             }
-            
-            byte[] toEncryptArray = Encoding.UTF8.GetBytes(val);
-            byte[] keyArray = Encoding.UTF8.GetBytes(key);
-            byte[] ivArray = Encoding.UTF8.GetBytes(iVector);
-            
-            RijndaelManaged aes = new RijndaelManaged();
-            aes.Key = keyArray;
-            aes.IV = ivArray;
-            aes.Mode = CipherMode.CBC;
-            aes.Padding = PaddingMode.Zeros;
 
-            ICryptoTransform cryptoTransform = aes.CreateEncryptor();
-            byte[] resultArray = cryptoTransform.TransformFinalBlock(toEncryptArray,0,toEncryptArray.Length);
-            return resultArray;
+            byte[] toEncryptArray = Encoding.UTF8.GetBytes(val);
+
+            // ✅ 修正：将十六进制字符串转换为字节数组
+            byte[] keyArray = HexStringToByteArray(keyHex);
+            byte[] ivArray = HexStringToByteArray(ivHex);
+
+            // 验证长度
+            if (ivArray.Length != 16)
+            {
+                throw new CryptographicException($"IV长度错误: {ivArray.Length} 字节，需要 16 字节");
+            }
+
+            if (keyArray.Length != 16 && keyArray.Length != 32)
+            {
+                throw new CryptographicException($"Key长度错误: {keyArray.Length} 字节，需要 16 或 32 字节");
+            }
+
+            using (RijndaelManaged aes = new RijndaelManaged())
+            {
+                aes.Key = keyArray;
+                aes.IV = ivArray;
+                aes.Mode = CipherMode.CBC;
+                aes.Padding = PaddingMode.Zeros;
+
+                ICryptoTransform cryptoTransform = aes.CreateEncryptor();
+                return cryptoTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            }
         }
 
         /// <summary>
         /// AES解密
         /// </summary>
-        /// <param name="val">值</param>
-        /// <param name="key">键</param>
-        /// <param name="iVector">向量</param>
+        /// <param name="bytes">加密的字节数组</param>
+        /// <param name="keyHex">十六进制格式的密钥</param>
+        /// <param name="ivHex">十六进制格式的向量</param>
         /// <returns></returns>
-        public static string Decrypt(byte[] bytes,string key,string iVector)
+        public static string Decrypt(byte[] bytes, string keyHex, string ivHex)
         {
-            byte[] toEncryptArray = bytes;
-            byte[] keyArray = Encoding.UTF8.GetBytes(key);
-            byte[] ivArray = Encoding.UTF8.GetBytes(iVector);
-            
-            RijndaelManaged aes = new RijndaelManaged();
-            aes.Key = keyArray;
-            aes.IV = ivArray;
-            aes.Mode = CipherMode.CBC;
-            aes.Padding = PaddingMode.Zeros;
+            // ✅ 修正：将十六进制字符串转换为字节数组
+            byte[] keyArray = HexStringToByteArray(keyHex);
+            byte[] ivArray = HexStringToByteArray(ivHex);
 
-            ICryptoTransform cryptoTransform = aes.CreateDecryptor();
-            byte[] resultArray = cryptoTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
-            string val = Encoding.UTF8.GetString(resultArray);
-
-            int zeroIndex = val.IndexOf(zeroString);
-            if (zeroIndex > 0)
+            // 验证长度
+            if (ivArray.Length != 16)
             {
-                val = val.Substring(0,zeroIndex);
+                throw new CryptographicException($"IV长度错误: {ivArray.Length} 字节，需要 16 字节");
             }
-            return val;
+
+            using (RijndaelManaged aes = new RijndaelManaged())
+            {
+                aes.Key = keyArray;
+                aes.IV = ivArray;
+                aes.Mode = CipherMode.CBC;
+                aes.Padding = PaddingMode.Zeros;
+
+                ICryptoTransform cryptoTransform = aes.CreateDecryptor();
+                byte[] resultArray = cryptoTransform.TransformFinalBlock(bytes, 0, bytes.Length);
+                string val = Encoding.UTF8.GetString(resultArray);
+
+                // 移除填充的零字符
+                int zeroIndex = val.IndexOf(zeroString);
+                if (zeroIndex >= 0)
+                {
+                    val = val.Substring(0, zeroIndex);
+                }
+
+                return val;
+            }
         }
 
         /// <summary>
-        /// AES加密
+        /// AES加密（使用默认配置）
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
         public static byte[] Encrypt(string val)
         {
-            return Encrypt(val,EncryptConst.AES_Key, EncryptConst.AES_IVector);
+            return Encrypt(val, EncryptConst.AES_Key, EncryptConst.AES_IVector);
         }
-        
+
         /// <summary>
-        /// AES解密
+        /// AES解密（使用默认配置）
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
         public static string Decrypt(byte[] bytes)
         {
-            return Decrypt(bytes,EncryptConst.AES_Key, EncryptConst.AES_IVector);
+            return Decrypt(bytes, EncryptConst.AES_Key, EncryptConst.AES_IVector);
         }
     }
+
+
     public static class EncryptConst
     {
-        public static string AES_Key = "1543065415321000";
-        public static string AES_IVector = "1543065415321000";
+        public static string AES_Key = "4F6B8E1A3CD5F9B2D4BA6C8E0F1A3B5C";
+        public static string AES_IVector = "7C9E1B3D5A6F8C2E4F6A8D0B2F4E6C8A";
+
+
     }
 }
 

@@ -25,7 +25,7 @@ namespace ProjectApp
             AppFacade_Frame.PackageName = AppFacade.PackageName;
             AppFacade_Frame.AESKey = AppFacade.AESKey;
             AppFacade_Frame.AESIVector = AppFacade.AESIVector;
-            //AppFacade_Frame.WebSocketUrls = AppFacade.WebSocketUrls;
+            AppFacade_Frame.WebSocketUrls = AppFacade.WebSocketUrls;
             //AppFacade_Frame.WebSocketPort = AppFacade.WebSocketPort;
             //AppFacade_Frame.WebSocketTestPort = AppFacade.WebSocketTestPort;
             //AppFacade_Frame.Domain = AppFacade.Domain;

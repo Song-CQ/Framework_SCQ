@@ -29,6 +29,7 @@ namespace FutureEditor
         private static readonly Color ColorSVN;
         private static readonly Color ColorILRuntime;
         private static readonly Color ColorEncoding;
+        private static readonly Color ColorTextMeshPro;
 
         // 静态构造函数 - 在类第一次使用时执行，生成随机但固定的颜色
         static OtherToolView()
@@ -40,6 +41,7 @@ namespace FutureEditor
             ColorSVN = GenerateLightColorFromString("SVN");
             ColorILRuntime = GenerateLightColorFromString("ILRuntime");
             ColorEncoding = GenerateLightColorFromString("Encoding");
+            ColorTextMeshPro = GenerateLightColorFromString("TextMeshPro");
         }
 
         // 生成浅色
@@ -47,12 +49,12 @@ namespace FutureEditor
         {
             int hash = input.GetHashCode();
             System.Random rand = new System.Random(hash);
-            
+
             // 浅色系：0.7-1.0 范围
             float r = (float)rand.NextDouble() * 0.3f + 0.7f;
             float g = (float)rand.NextDouble() * 0.3f + 0.7f;
             float b = (float)rand.NextDouble() * 0.3f + 0.7f;
-            
+
             return new Color(r, g, b);
         }
 
@@ -67,6 +69,7 @@ namespace FutureEditor
             OtherTooDic.Add("[04] SVN Tool", null);
             OtherTooDic.Add("[05] ILRuntime Tool", null);
             OtherTooDic.Add("[06] Encoding Tool", null);
+            OtherTooDic.Add("[07] TextMeshPro Tool", null);
 
             for (int i = 0; i < 30; i++)
             {
@@ -79,6 +82,7 @@ namespace FutureEditor
             SVNToolView.InitData();
             ILRuntimeToolView.InitData();
             EncodingToolView.InitData();
+            TextMeshProToolView.InitData();
         }
 
         public static void OnGUI(float contentHeight, System.Action closeAction, string filter, System.Action<string> onFilterChanged)
@@ -178,6 +182,10 @@ namespace FutureEditor
                     {
                         GUI.backgroundColor = ColorEncoding;
                     }
+                    else if (item.Key.Contains("TextMeshPro"))
+                    {
+                        GUI.backgroundColor = ColorTextMeshPro;
+                    }
                     else
                     {
                         GUI.backgroundColor = Color.white;
@@ -187,7 +195,7 @@ namespace FutureEditor
                 GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
                 buttonStyle.alignment = TextAnchor.MiddleLeft;
                 buttonStyle.padding = new RectOffset(10, 5, 2, 2);
-                
+
                 // 选中按钮：字体用金黄色并加粗
                 if (isSelected)
                 {
@@ -249,6 +257,9 @@ namespace FutureEditor
                             break;
                         case "[06] Encoding Tool":
                             EncodingToolView.OnGUI(closeAction);
+                            break;
+                        case "[07] TextMeshPro Tool":
+                            TextMeshProToolView.OnGUI(closeAction);
                             break;
                     }
                 }

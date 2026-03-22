@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using ExcelTool.Data;
 using ExcelTool.Tool;
+using FutureCore;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UnityEngine;
+using static FutureCore.ConfigDataVerify;
 
 namespace ExcelTool
 {
@@ -24,10 +29,30 @@ namespace ExcelTool
             }
         }
         private UrlData urlData;
+        public ConfigDataVerify configDataVerify;
         public System.Threading.Tasks.Task CurrTask { get; private set; }
 
         public string ReadExcelPath => FrameworkDirectory + "/" + urlData.ReadExcelPath;
-        public string OutDataPath => FrameworkDirectory + "/" + urlData.OutDataPath;
+
+        private List<string> _outDataPath;
+        public List<string> OutDataPath
+        {
+            get
+            {
+                if (_outDataPath == null)
+                {
+                    _outDataPath = new List<string>();
+
+                    foreach (var path in urlData.OutDataPath)
+                    {
+                        _outDataPath.Add(FrameworkDirectory + "/" + path);
+                    }
+
+                }
+                return _outDataPath;
+            }
+
+        }
         public string OutClassPath => FrameworkDirectory + "/" + urlData.OutClassPath;
 
         private List<ExcelData> excelDataLst = new List<ExcelData>();
@@ -61,6 +86,13 @@ namespace ExcelTool
             Environment.CurrentDirectory = CurrentDirectory;
 
             CurrTask = task;
+
+            configDataVerify = new ConfigDataVerify();
+            configDataVerify.isEnciphermentData = ExcelToAssemblyDataHelp.IsEnciphermentData;
+            configDataVerify.isOutMultipleDatas = ExcelToAssemblyDataHelp.IsOutMultipleDatas;
+            configDataVerify.version = ExcelToAssemblyDataHelp.Version;
+            configDataVerify.files = new List<ConfigData_FileMsg>();
+
             //加载路劲Josn
             LoadUrlData();
             //获取表路劲
@@ -76,7 +108,10 @@ namespace ExcelTool
             }
             StringColor.WriteLine("读取表完成,读取数量:" + excelDataLst.Count, ConsoleColor.Yellow);
             //检测输出目录
-            CheckAndDelect(OutDataPath);
+            foreach (var outPath in OutDataPath)
+            {
+                CheckAndDelect(outPath);
+            }
             CheckAndDelect(OutClassPath);
             if (excelDataLst.Count != 0)
             {
@@ -92,7 +127,7 @@ namespace ExcelTool
         private void CreateAssembly()
         {
             Assembly assembly = CreateAssemblyHelp.ExcelDataToAssembly(excelDataLst);
-    
+
             if (assembly != null)
             {
                 //生成data
@@ -149,6 +184,14 @@ namespace ExcelTool
 
         private void LoadUrlData()
         {
+            //urlData = new UrlData();
+            //urlData.OutDataPath = new string[] { "dsadasdasdasas", "12135466" };
+            //string jsonData = JsonConvert.SerializeObject(urlData);
+            //string uiipath = CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf(@"\"));
+            //uiipath += @"\Setting\Url_new.json";
+            //File.WriteAllText(uiipath, jsonData, Encoding.UTF8);
+
+
             string path = CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf(@"\"));
             path += @"\Setting\Url.json";
             try
@@ -180,23 +223,38 @@ namespace ExcelTool
             {
                 StringColor.WriteLine("ReadExcelPath:" + urlData.ReadExcelPath, ConsoleColor.Green);
             }
-            if (urlData.OutDataPath == String.Empty)
+            if (urlData.OutClassPath == String.Empty)
             {
                 StringColor.WriteLine("OutClassPath:" + "无路径");
                 Console.ReadKey(true);
             }
             else
             {
-                StringColor.WriteLine("OutClassPath:" + urlData.OutDataPath , ConsoleColor.Green);
+                StringColor.WriteLine("OutClassPath:" + urlData.OutClassPath, ConsoleColor.Green);
             }
-            if (urlData.OutDataPath == String.Empty)
+            if (urlData.OutDataPath == null || urlData.OutDataPath.Length == 0)
             {
                 StringColor.WriteLine("OutDataPath:" + "无路径");
                 Console.ReadKey(true);
             }
             else
             {
-                StringColor.WriteLine("OutDataPath:" + urlData.OutDataPath, ConsoleColor.Green);
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("OutDataPath:[" , ConsoleColor.Green);
+                
+
+
+                for (int i = 0; i < urlData.OutDataPath.Length; i++)
+                {
+                    Console.Write("              " + urlData.OutDataPath[i], ConsoleColor.Green);
+                    Console.WriteLine();
+                }
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("            ]", ConsoleColor.Green);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine();
             }
             Console.WriteLine("读取路劲成功\n");
         }
@@ -207,7 +265,7 @@ namespace ExcelTool
             try
             {
                 DirectoryInfo theFolder = Directory.CreateDirectory(ReadExcelPath);
-                foreach (FileInfo nextFile in theFolder.GetFiles("*",SearchOption.AllDirectories))
+                foreach (FileInfo nextFile in theFolder.GetFiles("*", SearchOption.AllDirectories))
                 {
                     if (nextFile.Name.Contains("~$"))
                     {

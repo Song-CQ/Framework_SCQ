@@ -38,6 +38,7 @@ namespace FutureCore
         public int _allSize = 0;
         public DownloadMacState _state = DownloadMacState.None;
         public int _tryCount = 0; //尝试次数
+       
         public string _error = "";
 
         public DownloadFileMac(DownloadUnit downUnit)
@@ -60,11 +61,6 @@ namespace FutureCore
         {
             _tryCount++;
 
-            if (_downUnit.name== "gamerood")
-            {
-                string var = "gamerood";
-            }
-
             _state = DownloadMacState.ResetSize;
             if (!ResetSize()) return;
 
@@ -86,11 +82,6 @@ namespace FutureCore
 
         private bool ResetSize()
         {
-            if (_downUnit.name == "gamerood")
-            {
-                string var = "gamerood";
-            }
-
             if (_downUnit.size <= 0)
             {
                 _downUnit.size = GetWebFileSize(_downUnit.downUrl);
@@ -115,6 +106,7 @@ namespace FutureCore
             if (md5 != _downUnit.md5)
             {
                 File.Delete(_downUnit.savePath);
+                if(DownloadTaskMgr.enableLog)
                 MainThreadLog.LogWarning("文件MD5校验错误：" + _downUnit.name);
                 _state = DownloadMacState.Error;
                 _error = "Check MD5 Error ";
@@ -132,7 +124,8 @@ namespace FutureCore
             if (File.Exists(_downUnit.savePath))
             {
                 //文件已存在，跳过
-                MainThreadLog.Log("File is Exists " + _downUnit.savePath);
+                if (DownloadTaskMgr.enableLog)
+                    MainThreadLog.Log("File is Exists " + _downUnit.savePath);
                 _curSize = _downUnit.size;
                 return true;
             }
@@ -226,8 +219,8 @@ namespace FutureCore
                     File.Delete(tempFile);
                 if (File.Exists(_downUnit.savePath))
                     File.Delete(_downUnit.savePath);
-
-                MainThreadLog.Log($"文件{_downUnit.name}下载出错：{ex.Message}");
+                if (DownloadTaskMgr.enableLog)
+                    MainThreadLog.Log($"文件{_downUnit.name}下载出错：{ex.Message}");
                 _state = DownloadMacState.Error;
                 _error = "Download Error " + ex.Message;
             }
@@ -252,11 +245,15 @@ namespace FutureCore
             {
                 WebRequest webRequest = WebRequest.Create(url);
                 request = webRequest as HttpWebRequest;
+                
+                // 情况1：协议不支持
                 if (request == null)
                 {
-                    MainThreadLog.LogWarning("文件不存在:" + url);
+                    if (DownloadTaskMgr.enableLog)
+                        MainThreadLog.LogWarning($"不支持的协议: {url}");
                     _state = DownloadMacState.Error;
-                    _error = "文件不存在: " + url;                  
+                    _error = $"不支持的协议: {url}（仅支持 HTTP/HTTPS）";
+                 
                 }
                 else
                 {
@@ -264,31 +261,69 @@ namespace FutureCore
                     request.ReadWriteTimeout = ReadWriteTimeOut;
                     //向服务器请求，获得服务器回应数据流
                     respone = request.GetResponse();
-                    if (_downUnit.name == "gamerood")
-                    {
-                        string var = "gamerood";
-                    }                 
+                
                     length = (int)respone.ContentLength;
 
                 }
                
             }
+            catch (UriFormatException e)
+            {
+                // 情况2：URL 格式错误
+                if (DownloadTaskMgr.enableLog)
+                    MainThreadLog.LogWarning($"URL格式错误: {url}, {e.Message}");
+                _state = DownloadMacState.Error;
+                _error = $"URL格式错误: {url}";
+                return 0;
+            }
             catch (WebException e)
             {
-                MainThreadLog.LogWarning($"获取文件{url}长度出错：{e.Message}" );
+                // 情况3：HTTP 请求失败（包括 404）
+                string errorDetail = "";
+                if (e.Response is HttpWebResponse httpResponse)
+                {
+                    switch (httpResponse.StatusCode)
+                    {
+                        case HttpStatusCode.NotFound:
+                            errorDetail = "文件不存在 (404)";
+                            break;
+                        case HttpStatusCode.Forbidden:
+                            errorDetail = "访问被拒绝 (403)，可能需要 Referer 头";
+                            break;
+                        case HttpStatusCode.InternalServerError:
+                            errorDetail = "服务器内部错误 (500)";
+                            break;
+                        default:
+                            errorDetail = $"HTTP {(int)httpResponse.StatusCode} {httpResponse.StatusCode}";
+                            break;
+                    }
+                }
+                if (DownloadTaskMgr.enableLog)
+                    MainThreadLog.LogWarning($"获取文件大小失败: {url}\n{errorDetail}\n{e.Message}");
                 _state = DownloadMacState.Error;
-                _error = "Request File Length Error " + e.Message;
+                _error = $"请求失败: {errorDetail}";
+            }
+            catch (Exception e)
+            {
+                // 情况4：其他异常
+                if (DownloadTaskMgr.enableLog)
+                    MainThreadLog.LogError($"获取文件大小异常: {url}\n{e.Message}");
+                _state = DownloadMacState.Error;
+                _error = e.Message;
             }
             finally
             {
                 if (respone != null) { respone.Close(); respone = null; }
                 if (request != null) { request.Abort(); request = null; }
             }
+           
             if (length==-1)
             {
-                MainThreadLog.LogError($"获取文件{url}长度失败为-1");
+                if (DownloadTaskMgr.enableLog)
+                    MainThreadLog.LogError($"获取文件{url}长度失败为-1");
                 length = 0;
             }
+
             return length;
         }
        

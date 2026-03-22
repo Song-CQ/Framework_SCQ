@@ -74,6 +74,7 @@
     <EmbeddedResource Include="Data\VoStaticKeyTemplate.cs" />
     <EmbeddedResource Include="Data\VoStaticExcelTemplate.cs" />
     <EmbeddedResource Include="Data\VersionTemplate.cs" />
+    <Compile Include="Data\ConfigDataVerify.cs" />
     <Compile Include="Data\UrlData.cs" />
     <EmbeddedResource Include="Data\ConfigData.cs" />
     <Compile Include="Scr\ExcelToAssemblyDataHelp.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tool\AESEncryptUtil.cs" />
+    <Compile Include="Tool\MD5Util.cs" />
     <Compile Include="Tool\StringColor.cs" />
   </ItemGroup>
   <ItemGroup>

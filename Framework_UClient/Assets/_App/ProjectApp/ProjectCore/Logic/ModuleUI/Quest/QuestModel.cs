@@ -365,7 +365,7 @@ namespace ProjectApp
                 }
             }
 
-            string json = JsonUtility.ToJson(saveData);
+            string json = SerializeUtil.UnityToJson(saveData);
             PlayerPrefs.SetString("QuestProgress", json);
             PlayerPrefs.Save();
         }
@@ -375,7 +375,7 @@ namespace ProjectApp
             if (PlayerPrefs.HasKey("QuestProgress"))
             {
                 string json = PlayerPrefs.GetString("QuestProgress");
-                QuestSaveData saveData = JsonUtility.FromJson<QuestSaveData>(json);
+                QuestSaveData saveData = SerializeUtil.UnityToObject<QuestSaveData>(json);
 
                 // 恢复任务状态和进度
                 // ...

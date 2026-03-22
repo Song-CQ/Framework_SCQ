@@ -14,10 +14,10 @@ namespace FutureCore
         public static bool IsDebugVersion = true;
         // 包版本号
         public static string PackageVersion = "1.0.5";
-        // 内置配置表哈希值
-        public static string ConfigInternalHash = "20260303203637";
+        // 内置配置表哈希值 就是MD5
+        public static string ConfigInternalHash = "";
         // 内置配置表版本号
-        public static string ConfigInternalVersion = "20260303203637";
+        public static int ConfigInternalVersion = 1;
         // 服务器配置表哈希值
         //public static string ConfigServerHash = null;
         // 服务器配置表版本号
@@ -176,14 +176,11 @@ namespace FutureCore
             PackageVersion = Application.version;
             FrameRateTimestep = 1f / Application.targetFrameRate;
 
-            if (Application.isEditor)
-            {
-                IsDevelopMode = true;
-            }
-            else
+            if (!Application.isEditor)
             {
                 IsDevelopMode = false;
             }
+
 
 
         }

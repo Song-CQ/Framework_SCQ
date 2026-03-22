@@ -42,7 +42,7 @@ namespace FutureCore
         /// 配置表数据存放目录
         /// </summary>
 #if UNITY_EDITOR || UNITY_STANDALONE
-        public static string ConfigDataPath = Application.dataPath + "/../../_Resources/UpData/ConfigData";
+        public static string ConfigDataPath = Application.persistentDataPath + "/ConfigData";
 #elif UNITY_IOS
         public static string ConfigDataPath = Application.temporaryCachePath + "/ConfigData";
 #elif UNITY_ANDROID
@@ -63,6 +63,11 @@ namespace FutureCore
         /// AB包下载缓存目录
         /// </summary>
         public static string AssetBundleCachePath = DownloadCachePath + "/AssetBundles/" + AssetBundlesTarget;
+
+        /// <summary>
+        /// 配置表下载缓存目录
+        /// </summary>
+        public static string ConfigDataCachePath = DownloadCachePath + "/ConfigData";
         
         
         /// <summary>

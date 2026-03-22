@@ -37,6 +37,8 @@ namespace FutureCore
         /// </summary>
         public static string AESIVector;
 
+        
+
         /// <summary>
         /// 游戏服连接组
         /// </summary>

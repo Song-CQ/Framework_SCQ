@@ -13,16 +13,22 @@ namespace FutureCore
 
         public object GetConfigData(string tableName, bool isEncipherment)
         {
-            string path = PathConst.ConfigDataPath + @"\" + tableName;
+            string ConfigDataPath = PathConst.ConfigDataPath + @"/" + tableName;
+
+            if (AppConst.IsDevelopMode)
+            {
+                ConfigDataPath = Application.dataPath + "/../../_Resources/UpData/ConfigData/" + tableName;
+            }
+            
             object data = null;
 
             if (isEncipherment)
             {
-                data = FileUtil.ReadAllBytes(path + ".bytes");
+                data = FileUtil.ReadAllBytes(ConfigDataPath + ".bytes");
             }
             else
             {
-                data = FileUtil.ReadAllText(path + ".txt");
+                data = FileUtil.ReadAllText(ConfigDataPath + ".txt");
             }
 
             return data;

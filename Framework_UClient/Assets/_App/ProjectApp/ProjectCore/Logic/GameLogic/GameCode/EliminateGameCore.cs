@@ -277,7 +277,7 @@ namespace ProjectApp
         private bool isInit = false;
 
         [SerializeField]
-        private LevelVO levelData;
+        public LevelVO levelData;
 
         [SerializeField]
         private int levelID;

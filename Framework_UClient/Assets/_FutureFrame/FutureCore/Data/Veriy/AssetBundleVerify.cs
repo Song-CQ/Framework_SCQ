@@ -19,7 +19,7 @@ namespace FutureCore.Data
         /// <summary>
         /// 版本号
         /// </summary>
-        public int version;
+        public ulong version;
         /// <summary>
         /// 最新的打包时间
         /// </summary>
@@ -31,7 +31,7 @@ namespace FutureCore.Data
         /// <summary>
         /// 包总表
         /// </summary>
-        public List<BundleMsg> bagmap = new List<BundleMsg>();
+        public List<BundlMsg> bagmap = new List<BundlMsg>();
     }
     [Serializable]
     public class FileMsg
@@ -44,7 +44,7 @@ namespace FutureCore.Data
     }
 
     [Serializable]
-    public class BundleMsg
+    public class BundlMsg
     {
         public string bagName;
         public int num;

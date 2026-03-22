@@ -185,6 +185,11 @@ namespace FutureCore
 
         private void InitMainPackage(object obj)
         {
+            if (!AppConst.IsUseAssetBundlesLoad)
+            {
+                return;
+            }
+
 #if UNITY_EDITOR
             if (!AppConst.IsUseReleaseAB)
             {

@@ -167,7 +167,7 @@ namespace ProjectApp
             hotFixVerify.MD5 = md5Str;
             hotFixVerify.size = VerifyUtil.GetFileSize(dllPath);
 
-            string val = JsonUtility.ToJson(hotFixVerify);
+            string val =SerializeUtil.UnityToJson(hotFixVerify);
 
             FutureCore.FileUtil.WriteAllText(filePath, val);
             LogUtil.Log("[ILRuntimeMgr_AutoCreator] hotFixVerify! 更新成功!");
@@ -436,7 +436,7 @@ pause";
                 {
 
                     //使用外部工程编译
-                    string json = JsonUtility.ToJson(GetCompilerParametersData(cp, HotFix_Class_Path));
+                    string json =SerializeUtil.UnityToJson(GetCompilerParametersData(cp, HotFix_Class_Path));
 
                     //写入参数
                     FutureCore.FileUtil.WriteAllText(Application.dataPath + @"\..\..\_Tool\HotFixTool\CompilerParameters.json", json, true);

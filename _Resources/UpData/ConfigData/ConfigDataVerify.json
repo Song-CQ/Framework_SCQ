@@ -1,0 +1,12 @@
+﻿{
+  "version": 2,
+  "isEnciphermentData": true,
+  "isOutMultipleDatas": false,
+  "files": [
+    {
+      "Path": "ConfigData.bytes",
+      "MD5": "cab7d13d3fd334549eee7f8777c54f83",
+      "Size": 10992
+    }
+  ]
+}

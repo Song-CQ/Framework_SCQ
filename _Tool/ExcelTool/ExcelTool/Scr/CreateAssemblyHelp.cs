@@ -12,29 +12,34 @@ using System.Text;
 using ExcelTool.Tool;
 using System.Threading;
 using static System.Net.Mime.MediaTypeNames;
+using FutureCore;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using static FutureCore.ConfigDataVerify;
+using UnityEngine.TextCore;
 
 namespace ExcelTool
 {
     static class CreateAssemblyHelp
     {
         public static bool IsCreateDll = true;
-        
+
         private static StringBuilder svBuilder;
-        
+
         private static CSharpCodeProvider provider;
 
         private static CompilerParameters cp;
-        
+
         private static List<string> defFieldLst = new List<string>
         {
             "id","key"
         };
-        
+
         static CreateAssemblyHelp()
         {
-            
-            svBuilder=new StringBuilder();
-            
+
+            svBuilder = new StringBuilder();
+
             //创建编译器实例。 
 
             provider = new CSharpCodeProvider();
@@ -43,9 +48,9 @@ namespace ExcelTool
 
             cp = new CompilerParameters();
 
-            
+
             cp.GenerateExecutable = false;
-            
+
             // Generate an executable instead of
 
             // a class library.
@@ -64,8 +69,8 @@ namespace ExcelTool
 
             cp.GenerateInMemory = false;
 
-            cp.OutputAssembly = MainMgr.Instance.CurrentDirectory+ @"\VoClassLib.dll";
-            
+            cp.OutputAssembly = MainMgr.Instance.CurrentDirectory + @"\VoClassLib.dll";
+
             // Set the level at which the compiler
 
             // should start displaying warnings.
@@ -84,7 +89,7 @@ namespace ExcelTool
 
 
             cp.CompilerOptions = "/optimize";
-           
+
 
             cp.ReferencedAssemblies.Add("System.dll");
 
@@ -139,13 +144,13 @@ namespace ExcelTool
                             StringColor.WriteLine("解析" + tableName + "表失败", ConsoleColor.Red);
                             continue;
                         }
-                        
+
                         Console.WriteLine("解析表: " + _var.TableName);
                         DataRow field_Names = item.Rows[0];
                         DataRow field_Types = item.Rows[1];
                         DataRow field_description = item.Rows[2];
 
-                        
+
 
 
                         string classStr = ParsingHeaders(_var, field_Names, field_description, field_Types, data.Name);
@@ -169,21 +174,19 @@ namespace ExcelTool
 
                 }
 
-          
-                
+
+
             }
             //创建数据类
             string configDataStr = GetTemplateClass("ExcelTool.Data.ConfigData.cs");
             //创建表数据管理器类
-            CreateDataModeMgrToClass(allStaticVO,allModel,ref configDataStr);
-            //创建打表Version
-            CreateVOVersionToClass();
+            CreateDataModeMgrToClass(allStaticVO, allModel, ref configDataStr);
             //将所有类写入程序集
-            Assembly assembly = WriteInAssembly(allClassname,allClassval, configDataStr);
-            
-            return assembly; 
+            Assembly assembly = WriteInAssembly(allClassname, allClassval, configDataStr);
+
+            return assembly;
         }
-        
+
 
         private static string ParsingStaticHeaders(DataTableItem data)
         {
@@ -200,31 +203,31 @@ namespace ExcelTool
             DataColumn staticDescColumn = null;
             DataColumn staticTypeColumn = null;
             DataColumn staticValueColumn = null;
-            
+
             foreach (DataColumn row in item.Columns)
             {
-                if (field_Names[row].ToString().Trim().ToLower()==id)
+                if (field_Names[row].ToString().Trim().ToLower() == id)
                 {
                     idColumn = row;
                 }
-                if (field_Names[row].ToString().Trim().ToLower()==staticKey)
+                if (field_Names[row].ToString().Trim().ToLower() == staticKey)
                 {
                     staticKeyColumn = row;
                 }
-                if (field_Names[row].ToString().Trim().ToLower()==staticDesc)
+                if (field_Names[row].ToString().Trim().ToLower() == staticDesc)
                 {
                     staticDescColumn = row;
                 }
-                if (field_Names[row].ToString().Trim().ToLower()==staticType)
+                if (field_Names[row].ToString().Trim().ToLower() == staticType)
                 {
                     staticTypeColumn = row;
                 }
-                if (field_Names[row].ToString().Trim().ToLower()==staticValue)
+                if (field_Names[row].ToString().Trim().ToLower() == staticValue)
                 {
                     staticValueColumn = row;
                 }
             }
-            if (idColumn==null||staticKeyColumn==null||staticDescColumn==null||staticTypeColumn==null||staticValueColumn==null)
+            if (idColumn == null || staticKeyColumn == null || staticDescColumn == null || staticTypeColumn == null || staticValueColumn == null)
             {
                 return null;
             }
@@ -236,7 +239,7 @@ namespace ExcelTool
                 /// </summary>
                 public #Type #Key = #ValData;
             */
-            string val = "\n"+
+            string val = "\n" +
                          "\n        /// <summary>" +
                          "\n        /// id = #id" +
                          "\n        /// #描述" +
@@ -248,34 +251,34 @@ namespace ExcelTool
             {
                 DataRow row = item.Rows[i];
                 string line = val;
-                line = line.Replace("#id",row[idColumn].ToString());
-                line = line.Replace("#描述",row[staticDescColumn].ToString());
-                line = line.Replace("#Val",row[staticValueColumn].ToString());
-                line = line.Replace("#Type",row[staticTypeColumn].ToString());
-                line = line.Replace("#Key",row[staticKeyColumn].ToString());
+                line = line.Replace("#id", row[idColumn].ToString());
+                line = line.Replace("#描述", row[staticDescColumn].ToString());
+                line = line.Replace("#Val", row[staticValueColumn].ToString());
+                line = line.Replace("#Type", row[staticTypeColumn].ToString());
+                line = line.Replace("#Key", row[staticKeyColumn].ToString());
 
                 string temp = GetValStr(row[staticTypeColumn].ToString(), row[staticValueColumn].ToString());
-                if (temp!=string.Empty)
+                if (temp != string.Empty)
                 {
                     temp = " = " + temp;
                 }
-                line = line.Replace("#FieldData",temp);
-                
+                line = line.Replace("#FieldData", temp);
+
                 svBuilder.Append(line);
             }
             string classVal = GetTemplateClass("ExcelTool.Data.VoStaticExcelTemplate.cs");
-            classVal =classVal.Replace("#Name",data.TableName);
-            classVal = classVal.Replace("#Val",svBuilder.ToString());
-            classVal =classVal.Replace("#Class",item.TableName.RemoveTableNameAnnotation()+"StaticVO");
-            classVal =classVal.Replace("#ConfigVO", item.TableName.RemoveTableNameAnnotation());
-            
+            classVal = classVal.Replace("#Name", data.TableName);
+            classVal = classVal.Replace("#Val", svBuilder.ToString());
+            classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation() + "StaticVO");
+            classVal = classVal.Replace("#ConfigVO", item.TableName.RemoveTableNameAnnotation());
+
             return classVal;
         }
 
         private static string GetValStr(string type, string val)
         {
             string valStr = String.Empty;
-            if (val==String.Empty)
+            if (val == String.Empty)
             {
                 return valStr;
             }
@@ -286,29 +289,29 @@ namespace ExcelTool
                     valStr = val;
                     break;
                 case "float":
-                    valStr = val+"f";
+                    valStr = val + "f";
                     break;
                 case "string":
-                    valStr = '"'+ val +'"';
+                    valStr = '"' + val + '"';
                     break;
                 case "string[]":
                 case "int[]":
                 case "float[]":
                 case "bool[]":
-                    val = val.Replace("[",string.Empty);
-                    val = val.Replace("]",string.Empty);
-                    
-                    type = type.Replace("[",string.Empty);
-                    type = type.Replace("]",string.Empty);
+                    val = val.Replace("[", string.Empty);
+                    val = val.Replace("]", string.Empty);
+
+                    type = type.Replace("[", string.Empty);
+                    type = type.Replace("]", string.Empty);
                     string[] vals = val.Split(',');
                     val = string.Empty;
                     for (var index = 0; index < vals.Length; index++)
                     {
                         var item = vals[index];
-                        val += GetValStr(type, item)+',';
+                        val += GetValStr(type, item) + ',';
                     }
-                    val = val.Remove(val.Length-1);
-                    valStr = $"new {type}[]"+'{'+val+'}';
+                    val = val.Remove(val.Length - 1);
+                    valStr = $"new {type}[]" + '{' + val + '}';
                     break;
             }
             return valStr;
@@ -316,23 +319,23 @@ namespace ExcelTool
 
         private static string ParsingstaticKey(DataTableItem excelData)
         {
-            
+
             DataColumn keyColums = null;
             DataTable item = excelData.Sheet;
-            DataRow field_Names =item.Rows[0];
+            DataRow field_Names = item.Rows[0];
             foreach (DataColumn VARIABLE in item.Columns)
             {
                 string key = field_Names[VARIABLE].ToString();
-                if (key.ToLower()=="key")
+                if (key.ToLower() == "key")
                 {
                     keyColums = VARIABLE;
                 }
             }
-            if (keyColums==null)
+            if (keyColums == null)
             {
                 return String.Empty;
             }
-            
+
             string classVal = GetTemplateClass("ExcelTool.Data.VoStaticKeyTemplate.cs");
             svBuilder.Clear();
             for (var index = 4; index < item.Rows.Count; index++)
@@ -343,18 +346,18 @@ namespace ExcelTool
                 {
                     continue;
                 }
-                string fieldName = key.Replace(" ","_");
+                string fieldName = key.Replace(" ", "_");
                 if (char.IsNumber(fieldName[0]))
                 {
                     fieldName = "_" + fieldName;
                 }
 
-                string val = $"\n        public const string {fieldName} = " + '"' + key + '"'+";";
+                string val = $"\n        public const string {fieldName} = " + '"' + key + '"' + ";";
                 svBuilder.Append(val);
             }
-            classVal =classVal.Replace("#Name",excelData.TableName);
-            classVal = classVal.Replace("#Val",svBuilder.ToString());
-            classVal =classVal.Replace("#Class",item.TableName.RemoveTableNameAnnotation()+"StaticKey");
+            classVal = classVal.Replace("#Name", excelData.TableName);
+            classVal = classVal.Replace("#Val", svBuilder.ToString());
+            classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation() + "StaticKey");
             return classVal;
 
         }
@@ -366,11 +369,11 @@ namespace ExcelTool
             string tableName = item.TableName.RemoveTableNameAnnotation();
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoModelTemplate.cs");
-            classVal = classVal.Replace("#Name",excelData.TableName);
-            classVal = classVal.Replace("#Class", tableName+"VOModel");
-            classVal = classVal.Replace("#DataVo", tableName+"VO");
-            
-            classVal = classVal.Replace("#SheetName", '"'+tableName+'"');
+            classVal = classVal.Replace("#Name", excelData.TableName);
+            classVal = classVal.Replace("#Class", tableName + "VOModel");
+            classVal = classVal.Replace("#DataVo", tableName + "VO");
+
+            classVal = classVal.Replace("#SheetName", '"' + tableName + '"');
             bool isHasKey = false;
             bool isHasId = false;
             svBuilder.Clear();
@@ -385,30 +388,30 @@ namespace ExcelTool
                 {
                     isHasKey = true;
                 }
-                
+
                 svBuilder.Append('"');
-                svBuilder.Append(_fieldName.ToString()+'"'+',');
+                svBuilder.Append(_fieldName.ToString() + '"' + ',');
             }
-            svBuilder.Remove(svBuilder.Length-1,1);
-            
+            svBuilder.Remove(svBuilder.Length - 1, 1);
+
             classVal = classVal.Replace("#HasStringKey", isHasKey.ToString().ToLower());
             classVal = classVal.Replace("#HasStringId", isHasId.ToString().ToLower());
             classVal = classVal.Replace("#HasStaticField", "false");
-            
+
             classVal = classVal.Replace("#HeadFields", svBuilder.ToString());
 
             return classVal;
-            
+
         }
 
-        private static string ParsingHeaders(DataTableItem excelData, DataRow field_Names, DataRow field_description, DataRow field_Types,string excel)
+        private static string ParsingHeaders(DataTableItem excelData, DataRow field_Names, DataRow field_description, DataRow field_Types, string excel)
         {
             DataTable item = excelData.Sheet;
             //获取模板
             string classVal = GetTemplateClass("ExcelTool.Data.VoClassTemplate.cs");
             classVal = classVal.Replace("#Excel", excel);
-            classVal = classVal.Replace("#Name",excelData.TableName);
-            classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation()+"VO");
+            classVal = classVal.Replace("#Name", excelData.TableName);
+            classVal = classVal.Replace("#Class", item.TableName.RemoveTableNameAnnotation() + "VO");
             classVal = classVal.Replace("#ConfigVO", item.TableName.RemoveTableNameAnnotation());
             svBuilder.Clear();
 
@@ -422,23 +425,23 @@ namespace ExcelTool
                 }
                 string _fieldDescription = field_description[itemColumn].ToString().Trim();
                 string _fieldType = field_Types[itemColumn].ToString().Trim();
-                
-                svBuilder.Append(WrittenField(_fieldType,_fieldName,_fieldDescription));
+
+                svBuilder.Append(WrittenField(_fieldType, _fieldName, _fieldDescription));
             }
 
             classVal = classVal.Replace("#Val", svBuilder.ToString());
             return classVal;
         }
 
-        private static string WrittenField(string field_Type, string field_Name,string _fieldDescription)
+        private static string WrittenField(string field_Type, string field_Name, string _fieldDescription)
         {
             _fieldDescription = _fieldDescription.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", "\n///");
 
-            string val =  "\n        /// <summary>\n        /// {0} \n        /// </summary>\n        public {1} {2};\n";
-            val = String.Format(val,_fieldDescription,field_Type,field_Name);
+            string val = "\n        /// <summary>\n        /// {0} \n        /// </summary>\n        public {1} {2};\n";
+            val = String.Format(val, _fieldDescription, field_Type, field_Name);
             return val;
         }
-        
+
         /// <summary>
         /// 读取模板文件
         /// </summary>
@@ -464,7 +467,7 @@ namespace ExcelTool
         }
 
 
-        public static Assembly WriteInAssembly (List<string> allClassName,List<string> allClassVal,string configDataStr)
+        public static Assembly WriteInAssembly(List<string> allClassName, List<string> allClassVal, string configDataStr)
         {
 
             if (IsCreateDll)
@@ -480,7 +483,7 @@ namespace ExcelTool
             }
 
             Assembly assembly = null;
-            
+
             Console.WriteLine("开始编译程序集");
             string[] sourStr = new string[allClassVal.Count + 1];
             sourStr[0] = configDataStr;
@@ -488,45 +491,45 @@ namespace ExcelTool
             {
                 sourStr[i + 1] = allClassVal[i];
             }
-       
+
 
             CompilerResults result = provider.CompileAssemblyFromSource(cp, sourStr);
 
             if (result.Errors.Count > 0)
             {
                 for (int i = 0; i < result.Errors.Count; i++)
-                {               
-                    StringColor.WriteLine(result.Errors[i]);                   
+                {
+                    StringColor.WriteLine(result.Errors[i]);
                 }
                 for (int i = 0; i < allClassName.Count; i++)
                 {
                     string dir = GetClassNameDir(allClassName[i]);
-                    WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\VOClass\"+dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
+                    WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOClass\" + dir + "VO_AutoCreate", allClassName[i], allClassVal[i]);
                 }
 
-                WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOClass", "ConfigData_AutoCreate",configDataStr);
+                WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOClass", "ConfigData_AutoCreate", configDataStr);
 
                 CopyDirectory(MainMgr.Instance.CurrentDirectory + @"\..\BaseVoClassLib\BaseVoClass", MainMgr.Instance.OutClassPath + @"\BaseVOClass");
                 StringColor.WriteLine("编译程序集失败");
-                
+
                 Thread.CurrentThread.Abort();
             }
             else
-            { 
+            {
                 assembly = result.CompiledAssembly;
-                StringColor.WriteLine("编译程序集成功",ConsoleColor.Green);
-                
+                StringColor.WriteLine("编译程序集成功", ConsoleColor.Green);
+
                 if (cp.GenerateInMemory)
                 {
-                    StringColor.WriteLine("生成Dll成功",ConsoleColor.Green);
+                    StringColor.WriteLine("生成Dll成功", ConsoleColor.Green);
                     CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\BaseVoClassLib.dll", MainMgr.Instance.OutClassPath + @"\VODll");
-                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory+@"\VoClassLib.dll",MainMgr.Instance.OutClassPath + @"\VODll", true);
-                    FileInfo fieldInfo = new FileInfo(MainMgr.Instance.CurrentDirectory+@"\VoClassLib.pdb");
+                    CopyFileToOutClass(MainMgr.Instance.CurrentDirectory + @"\VoClassLib.dll", MainMgr.Instance.OutClassPath + @"\VODll", true);
+                    FileInfo fieldInfo = new FileInfo(MainMgr.Instance.CurrentDirectory + @"\VoClassLib.pdb");
                     fieldInfo.Delete();
                 }
                 else
                 {
-                 
+
                     CopyDirectory(MainMgr.Instance.CurrentDirectory + @"\..\BaseVoClassLib\BaseVoClass", MainMgr.Instance.OutClassPath + @"\BaseVOClass");
 
 
@@ -535,8 +538,8 @@ namespace ExcelTool
                     for (int i = 0; i < allClassName.Count; i++)
                     {
                         string dir = GetClassNameDir(allClassName[i]);
-                      
-                        WriteIn2Cs(MainMgr.Instance.OutClassPath+ @"\VOClass\" + dir+"VO_AutoCreate",allClassName[i], allClassVal[i]);
+
+                        WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOClass\" + dir + "VO_AutoCreate", allClassName[i], allClassVal[i]);
                     }
                     WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOClass", "ConfigData_AutoCreate", configDataStr);
 
@@ -579,28 +582,102 @@ namespace ExcelTool
             {
                 dir = @"StaticVO\" + dir;
             }
-            else 
+            else
             {
                 dir = @"VO\" + dir;
             }
             return dir;
         }
 
+
+
+        public static void WriteAllJson(string fileName, string jsonData, bool IsEnciphermentData)
+        {
+            ConfigData_FileMsg configData_FileMsg = new ConfigData_FileMsg();
+           
+           
+            byte[] bytes = null;
+            if (IsEnciphermentData)
+            {
+                bytes = AESEncryptUtil.Encrypt(jsonData);
+            }
+            bool isSet = false;
+            foreach (var OutDataPath in MainMgr.Instance.OutDataPath)
+            {
+                if (IsEnciphermentData)
+                {
+                    string filePath = OutDataPath + @"\" + fileName + ".bytes";   
+                    // 获取目录路径
+                    string directory = Path.GetDirectoryName(filePath);
+                    // 如果目录不存在，则创建
+                    if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    File.WriteAllBytes(filePath, bytes);
+
+                    if (!isSet)
+                    {
+                        // 从字节数组获取信息
+                        configData_FileMsg.Path = fileName + ".bytes";
+
+                        configData_FileMsg.Size = bytes.Length;
+                        configData_FileMsg.MD5 = MD5Util.ComputeMD5(bytes);
+                        isSet = true;
+                    }
+                }
+                else
+                {
+                    string filePath = OutDataPath + @"\" + fileName + ".txt";
+                    // 获取目录路径
+                    string directory = Path.GetDirectoryName(filePath);
+                    // 如果目录不存在，则创建
+                    if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    File.WriteAllText(filePath, jsonData, Encoding.UTF8);
+
+                    if (!isSet)
+                    {
+                        // 从文件获取信息
+                        FileInfo fileInfo = new FileInfo(filePath);
+
+                        configData_FileMsg.Path = fileName + ".txt";
+                        configData_FileMsg.Size = (int)fileInfo.Length;
+                        configData_FileMsg.MD5 = MD5Util.ComputeFileMD5(filePath);
+                        isSet = true;
+                    }
+                }
+            }
+
+            MainMgr.Instance.configDataVerify.files.Add(configData_FileMsg);
+        }
+
+
+     
+
+
         /// <summary>
         /// 创建打表Version
         /// </summary>
-        private static void CreateVOVersionToClass()
+        public static void CreateVOVersionToClass(ulong version, string hash)
         {
             string val = GetTemplateClass("ExcelTool.Data.VersionTemplate.cs");
-            val = val.Replace("#Time",DateTime.Now.ToString("yyyyMMddHHmmss"));
-            WriteIn2Cs(MainMgr.Instance.OutClassPath+ @"\VOVersion", "ConfigVOVersion_AutoCreator", val);
+            val = val.Replace("#Version", version.ToString());
+            val = val.Replace("#Hash", hash);
+            val = val.Replace("#Time", DateTime.Now.ToString("yyyyMMddHHmmss"));
+
+            WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOVersion", "ConfigVOVersion_AutoCreator", val);
         }
         /// <summary>
         /// 创建表格管理器
         /// </summary>
         /// <param name="allStaticVo"></param>
         /// <param name="allModel"></param>
-        private static void CreateDataModeMgrToClass(List<string> allStaticVo, List<string> allModel,ref string configDataStr)
+        private static void CreateDataModeMgrToClass(List<string> allStaticVo, List<string> allModel, ref string configDataStr)
         {
             string configData_AllConfigFileInfo = string.Empty;
             string loadAllData_IsOutMultiple = string.Empty;
@@ -613,19 +690,19 @@ namespace ExcelTool
             uint configTypeIndex = 0;
             foreach (var tableName in allStaticVo)
             {
-                
-                string setDataVal = "\n            "+tableName+ "StaticVO.SetData(configStaticVODic[ConfigVO." + tableName +"] as "+ tableName + "StaticVO);";
+
+                string setDataVal = "\n            " + tableName + "StaticVO.SetData(configStaticVODic[ConfigVO." + tableName + "] as " + tableName + "StaticVO);";
                 setStaticDataToDic += setDataVal;
 
 
 
                 configTypeIndex++;
-                configType += string.Format("\n{0} = {1},",tableName,configTypeIndex);
+                configType += string.Format("\n{0} = {1},", tableName, configTypeIndex);
                 reset += "\n            " + tableName + "StaticVO.ResetData();";
 
-                configData_AllConfigFileInfo += "\n            public " + tableName + "StaticVO "+tableName+" = null;";
+                configData_AllConfigFileInfo += "\n            public " + tableName + "StaticVO " + tableName + " = null;";
                 loadAllData += "\n                configStaticVODic.Add(ConfigVO." + tableName + ", configData." + tableName + ");";
-                loadAllData_IsOutMultiple += "\n                configStaticVODic.Add(ConfigVO." + tableName + ", GetExcalData<" + tableName + "StaticVO>(ConfigVO." + tableName+",true) as "+tableName+ "StaticVO);";
+                loadAllData_IsOutMultiple += "\n                configStaticVODic.Add(ConfigVO." + tableName + ", GetExcalData<" + tableName + "StaticVO>(ConfigVO." + tableName + ",true) as " + tableName + "StaticVO);";
 
             }
             configTypeIndex = 100;
@@ -635,43 +712,43 @@ namespace ExcelTool
                 configType += string.Format("\n        {0} = {1},", tableName, configTypeIndex);
 
                 string className = tableName + "VOModel";
-                setDataModel += "\n            AddVOModel(ConfigVO." + tableName + ","+ className + ".Instance);";
+                setDataModel += "\n            AddVOModel(ConfigVO." + tableName + "," + className + ".Instance);";
 
-                configData_AllConfigFileInfo += "\n            public List<" + tableName + "VO> "+tableName+"_List = null;";
-                loadAllData += "\n                configVODic.Add(ConfigVO." + tableName + ", configData." + tableName + "_List.OfType<"+ tableName + "VO,BaseVO>());";
+                configData_AllConfigFileInfo += "\n            public List<" + tableName + "VO> " + tableName + "_List = null;";
+                loadAllData += "\n                configVODic.Add(ConfigVO." + tableName + ", configData." + tableName + "_List.OfType<" + tableName + "VO,BaseVO>());";
                 loadAllData_IsOutMultiple += "\n                configVODic.Add(ConfigVO." + tableName + ", GetExcalData<" + tableName + "VO>(ConfigVO." + tableName + ",false) as List<BaseVO>);";
             }
             configType = configType.Substring(1, configType.LastIndexOf(','));
-            configDataStr = configDataStr.Replace("#ConfigVO", configType);   
+            configDataStr = configDataStr.Replace("#ConfigVO", configType);
             configDataStr = configDataStr.Replace("#AllConfigFileInfo", configData_AllConfigFileInfo);
 
-            string mgrTempLate = GetTemplateClass("ExcelTool.Data.ConfigDataMgr.cs"); 
-            mgrTempLate = mgrTempLate.Replace("#IsEnciphermentData",ExcelToAssemblyDataHelp.IsEnciphermentData.ToString().ToLower());
+            string mgrTempLate = GetTemplateClass("ExcelTool.Data.ConfigDataMgr.cs");
+            mgrTempLate = mgrTempLate.Replace("#IsEnciphermentData", ExcelToAssemblyDataHelp.IsEnciphermentData.ToString().ToLower());
             mgrTempLate = mgrTempLate.Replace("#IsOutMultipleDatas", ExcelToAssemblyDataHelp.IsOutMultipleDatas.ToString().ToLower());
 
             mgrTempLate = mgrTempLate.Replace("#IsOutMultiple_LoadAllData", loadAllData_IsOutMultiple);
             mgrTempLate = mgrTempLate.Replace("#LoadAllData", loadAllData);
             mgrTempLate = mgrTempLate.Replace("#SetStaticDataToDic", setStaticDataToDic);
-            mgrTempLate = mgrTempLate.Replace("#SetDataModel",setDataModel);
+            mgrTempLate = mgrTempLate.Replace("#SetDataModel", setDataModel);
 
             mgrTempLate = mgrTempLate.Replace("#Reset", reset);
-            WriteIn2Cs(MainMgr.Instance.OutClassPath+@"\VOMgr", "ConfigDataMgr_AudioCreator", mgrTempLate);
+            WriteIn2Cs(MainMgr.Instance.OutClassPath + @"\VOMgr", "ConfigDataMgr_AudioCreator", mgrTempLate);
 
 
         }
-        
+
         /// <summary>
         /// 拷贝文件
         /// </summary>
         /// <param name="CopyPath"></param>
         /// <param name="isDel">是否删除原本文件</param>
-        private static void CopyFileToOutClass(string CopyPath,string toPath,bool isDel=false)
+        private static void CopyFileToOutClass(string CopyPath, string toPath, bool isDel = false)
         {
             try
             {
                 FileInfo fieldInfo = new FileInfo(CopyPath);
                 DirectoryInfo infor = Directory.CreateDirectory(toPath);
-                fieldInfo.CopyTo(infor.FullName + @"\"+ fieldInfo.Name);
+                fieldInfo.CopyTo(infor.FullName + @"\" + fieldInfo.Name);
                 if (isDel)
                 {
                     fieldInfo.Delete();
@@ -682,19 +759,21 @@ namespace ExcelTool
                 StringColor.WriteLine(e);
                 Thread.CurrentThread.Abort();
             }
-            
+
         }
-        private static void WriteIn2Cs(string dirInfo,string name,string val)
+
+        public static Encoding utf8WithoutBom = new UTF8Encoding(false);
+
+        private static void WriteIn2Cs(string dirInfo, string name, string val)
         {
             DirectoryInfo infor = Directory.CreateDirectory(dirInfo);
-            using( System.IO.StreamWriter file = new System.IO.StreamWriter(infor.FullName+@"\"+name+".cs"))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(infor.FullName + @"\" + name + ".cs",false, utf8WithoutBom))
             {
                 file.Write(val);
-                Console.WriteLine("生成类文件成功:"+name+".cs");
+                Console.WriteLine("生成类文件成功:" + name + ".cs");
             }
-        }    
-        
-        
+        }
+
 
     }
 }

@@ -29,6 +29,7 @@ namespace FutureCore
         public string md5; //需要校验的md5，非必须
         public bool isDelete; //用于清理正在下载的文件
         public bool isDownload;//是否下载完成
+        public int maxTryCount;//最大尝试下载次数 0就是无数次
 
         public DonwloadErrorCallBack errorFun;
         public DonwloadProgressCallBack progressFun;
@@ -40,14 +41,16 @@ namespace FutureCore
 
         //多线程下载
         //https://blog.csdn.net/wowo1gt/article/details/100087547
-    
+
         private static object _lock = new object();
         private const int MAX_THREAD_COUNT = 20;
+        public const bool enableLog = false;
 
         private Queue<DownloadFileMac> _readyList;
         private Dictionary<Thread, DownloadFileMac> _runningList;
         private List<DownloadUnit> _completeList;
         private List<DownloadFileMac> _errorList;
+
 
         public override void Init()
         {
@@ -90,9 +93,9 @@ namespace FutureCore
 
         public void DownloadAsync(DownloadUnit info)
         {
-            
+
             if (info == null) return;
-            Debug.Log($"文件{info.name}开始加入下载队列");
+            LogUtil.Log($"文件{info.name}开始加入下载队列");
             var fileMac = new DownloadFileMac(info);
 
             lock (_lock)
@@ -140,6 +143,9 @@ namespace FutureCore
             lock (_lock)
             {
                 info.isDelete = true;
+
+                LogUtil.Log($"文件{info.name}取消下载");
+
             }
         }
 
@@ -174,23 +180,43 @@ namespace FutureCore
                 {
                     if (_readyList.Count > 0)
                     {
-                  
                         mac = _readyList.Dequeue();
-                        //Debug.LogError($"文件{mac._downUnit.name}开始加入下载,当前_readyList数量{_readyList.Count}");
-                        _runningList[Thread.CurrentThread] = mac;
 
-                        if (mac != null && mac._downUnit.isDelete)
-                        {//已经销毁，不提取运行，直接删除
-                            _runningList[Thread.CurrentThread] = null;
+                        if (mac == null)
+                        {
                             continue;
                         }
+
+                        if (mac._downUnit.maxTryCount != 0 && mac._tryCount > mac._downUnit.maxTryCount)
+                        {
+                            mac._downUnit.isDelete = true;
+
+                            //超过尝试最大限制
+                        }
+
+                        if (mac._downUnit.isDelete)
+                        {
+                            //已经销毁，不提取运行，直接删除
+
+                            continue;
+                        }
+                        if (enableLog)
+                            MainThreadLog.Log($"文件{mac._downUnit.name}开始加入下载,当前_readyList数量{_readyList.Count}");
+                        _runningList[Thread.CurrentThread] = mac;
                     }
                 }
 
                 //已经没有需要下载的了
                 if (mac == null) break;
 
-                MainThreadLog.Log($"文件{mac._downUnit.name}开始下载");
+                if (mac._downUnit.maxTryCount != 0 && mac._tryCount > mac._downUnit.maxTryCount)
+                {
+                    DeleteDownload(mac._downUnit);
+                    //取消下载
+                    continue;
+                }
+                if (enableLog)
+                    MainThreadLog.Log($"文件{mac._downUnit.name}开始下载");
                 mac.Run();
 
                 if (mac._state == DownloadMacState.Complete)
@@ -199,7 +225,8 @@ namespace FutureCore
                     {
                         _completeList.Add(mac._downUnit);
                         _runningList[Thread.CurrentThread] = null;
-                        MainThreadLog.Log($"文件{mac._downUnit.name}下载完成");
+                        if (enableLog)
+                            MainThreadLog.Log($"文件{mac._downUnit.name}下载完成");
                     }
                 }
                 else if (mac._state == DownloadMacState.Error)
@@ -217,7 +244,8 @@ namespace FutureCore
                 }
                 else
                 {
-                    MainThreadLog.LogError("[ThreadDebugLog]Error DownloadMacState " + mac._state + " " + mac._downUnit.name);
+                    if (enableLog)
+                        MainThreadLog.LogError("[ThreadDebugLog]Error DownloadMacState " + mac._state + " " + mac._downUnit.name);
                     break;
                 }
             }

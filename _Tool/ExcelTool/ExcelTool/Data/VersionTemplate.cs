@@ -10,6 +10,9 @@ namespace ProjectApp.Data
 {
     public static class ConfigVOVersion
     {
-        public const string InternalVersion = "#Time";
+        public const int InternalVersion = #Version;
+        public const string InternalHash = "#Hash";
+        public const string InternalTime = "#Time";
+  
     }
 }

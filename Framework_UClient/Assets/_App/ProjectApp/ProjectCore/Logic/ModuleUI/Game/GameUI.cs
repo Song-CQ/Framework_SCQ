@@ -17,30 +17,61 @@ namespace ProjectApp
 {
     public class GameUI : BaseUI
     {
+        
         #region 控件常量
         //框架自动创建请勿在此处修改内容
+        
+        
         private const string ui_BeesTrf_Key = "ui_BeesTrf";
-        private const string ui_BetterBeesTrf_Key = "ui_BetterBeesTrf";
+        private const string ui_lv_Key = "ui_lv";
+        private const string ui_TarScore_Key = "ui_TarScore";
         private const string ui_SoceMask_Key = "ui_SoceMask";
         private const string ui_currentScore_Key = "ui_currentScore";
         private const string ui_scoreChangeText_Key = "ui_scoreChangeText";
         private const string ui_TaskMask_Key = "ui_TaskMask";
         private const string ui_propIcon_Key = "ui_propIcon";
-        private const string ui_ProgressText_Key = "ui_ProgressText";
         private const string ui_tastText_Key = "ui_tastText";
+        private const string ui_ProgressText_Key = "ui_ProgressText";
         private const string ui_PropList_Key = "ui_PropList";
         private const string ui_TipsText_Key = "ui_TipsText";
 
+        
+        private Transform ui_BeesTrf;
+        private TextMeshProUGUI ui_lv_TMPText;
+        private TextMeshProUGUI ui_TarScore_TMPText;
+        private RectTransform ui_SoceMask_Rtf;
+        private TextMeshProUGUI ui_currentScore_TMPText;
+        private TextMeshProUGUI ui_scoreChangeText_TMPText;
+        private RectTransform ui_TaskMask_Rtf;
+        private Image ui_propIcon_Image;
+        private TextMeshProUGUI ui_tastText_TMPText;
+        private TextMeshProUGUI ui_ProgressText_TMPText;
+        private UI_List ui_PropList;
+        private TextMeshProUGUI ui_TipsText_TMPText;
+
+        /// <summary>
+        /// 初始化所有UI组件引用
+        /// </summary>
+        private void InitUIComponents()
+        {
+            ui_BeesTrf = GetComponent<Transform>(ui_BeesTrf_Key);
+            ui_lv_TMPText = GetComponent<TextMeshProUGUI>(ui_lv_Key);
+            ui_TarScore_TMPText = GetComponent<TextMeshProUGUI>(ui_TarScore_Key);
+            ui_SoceMask_Rtf = GetComponent<RectTransform>(ui_SoceMask_Key);
+            ui_currentScore_TMPText = GetComponent<TextMeshProUGUI>(ui_currentScore_Key);
+            ui_scoreChangeText_TMPText = GetComponent<TextMeshProUGUI>(ui_scoreChangeText_Key);
+            ui_TaskMask_Rtf = GetComponent<RectTransform>(ui_TaskMask_Key);
+            ui_propIcon_Image = GetComponent<Image>(ui_propIcon_Key);
+            ui_tastText_TMPText = GetComponent<TextMeshProUGUI>(ui_tastText_Key);
+            ui_ProgressText_TMPText = GetComponent<TextMeshProUGUI>(ui_ProgressText_Key);
+            ui_PropList = GetComponent<UI_List>(ui_PropList_Key);
+            ui_TipsText_TMPText = GetComponent<TextMeshProUGUI>(ui_TipsText_Key);
+        }
         #endregion
+       
         private GameUICtrl uiCtrl;
         private GameModel model;
         private UGUIEntity u_Entity;
-
-        private UI_List ui_PropList;
-        private TextMeshProUGUI ui_TipsText;
-        
-        private RectTransform ui_SoceMask;
-
 
         private List<Transform> beesTars;
         private Queue<BetterBeeFlight> betterBeesFlightQueue;
@@ -51,13 +82,6 @@ namespace ProjectApp
 
 
         private ExternalProp_PlayerData externalProp_PlayerData;
-
-
-
-        private RectTransform ui_TaskMask;
-        private TextMeshProUGUI ui_TastText;
-        private TextMeshProUGUI ui_ProgressText;
-        private Image ui_propIconImg;
 
         public GameUI(GameUICtrl ctrl) : base(ctrl)
         {
@@ -85,27 +109,22 @@ namespace ProjectApp
 
 
 
-
+        
         protected override void OnBind()
         {
             u_Entity = uiEntity as UGUIEntity;
 
+            InitUIComponents();
+
             scoreText = GetComponent<TextMeshProUGUI>(ui_currentScore_Key);
             scoreChangeText = GetComponent<TextMeshProUGUI>(ui_scoreChangeText_Key);
 
-            ui_PropList = GetComponent<UI_List>(ui_PropList_Key);
+
             ui_PropList.updateItemData = UpdataItemData;
 
-            ui_TipsText = GetComponent<TextMeshProUGUI>(ui_TipsText_Key);
-            ui_TipsText.transform.parent.SetActive(false);
+ 
+            ui_TipsText_TMPText.transform.parent.SetActive(false);
 
-            ui_SoceMask = GetComponent<RectTransform>(ui_SoceMask_Key);
-            
-            ui_TaskMask = GetComponent<RectTransform>(ui_TaskMask_Key);
-            ui_TastText = GetComponent<TextMeshProUGUI>(ui_tastText_Key);
-            ui_propIconImg = GetComponent<Image>(ui_propIcon_Key);
-
-            ui_ProgressText = GetComponent<TextMeshProUGUI>(ui_ProgressText_Key);
 
             beesTars = new List<Transform>();
             Transform trf = GetComponent<Transform>(ui_BeesTrf_Key);
@@ -127,7 +146,7 @@ namespace ProjectApp
 
 
             betterBeesFlightQueue = new Queue<BetterBeeFlight>();
-            foreach (BetterBeeFlight item in GetComponent<Transform>(ui_BetterBeesTrf_Key).GetComponentsInChildren<BetterBeeFlight>(true))
+            foreach (BetterBeeFlight item in ui_BeesTrf.GetComponentsInChildren<BetterBeeFlight>(true))
             {
                 betterBeesFlightQueue.Enqueue(item);
                 item.SetActive(false);
@@ -172,7 +191,7 @@ namespace ProjectApp
             PlayerDataDispatcher.Instance.AddListener(PlayerDataMsg.Updata, OnPlayerUpdata);
             
             core.AddListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
-            core.AddListener(GameMsg.GameStart, RestUI);
+            core.AddListener(GameMsg.GameStart, RefershUI);
 
             UICtrlDispatcher.Instance.AddListener(GameMsg.ScoreUpdated, OnScoreUpdated);
             UICtrlDispatcher.Instance.AddListener(GameMsg.GameWin, OnGameWin);
@@ -189,7 +208,7 @@ namespace ProjectApp
             PlayerDataDispatcher.Instance.RemoveListener(PlayerDataMsg.Updata, OnPlayerUpdata);
 
             core.RemoveListener(GameMsg.CostExternalProp, OnConsumeExternalProp);
-            core.RemoveListener(GameMsg.GameStart, RestUI);
+            core.RemoveListener(GameMsg.GameStart, RefershUI);
 
             UICtrlDispatcher.Instance.RemoveListener(GameMsg.ScoreUpdated, OnScoreUpdated);
             UICtrlDispatcher.Instance.RemoveListener(GameMsg.GameWin, OnGameWin);
@@ -248,17 +267,20 @@ namespace ProjectApp
 
         protected override void OnOpen(object args)
         {
-            RestUI();
+            RefershUI();
 
         }
 
-        private void RestUI(object args = null)
+        private void RefershUI(object args = null)
         {
             scoreText.text = "0";
             scoreChangeText.text = "";
 
-            ui_SoceMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(0));
-            ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(0));
+            ui_SoceMask_Rtf.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(0));
+            ui_TaskMask_Rtf.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(0));
+
+            ui_lv_TMPText.text ="第"+ core.levelData.id.ToString()+"关";
+            ui_TarScore_TMPText.text = core.levelData.Passing_Score.ToString();
 
             UpdataTask();
 
@@ -266,7 +288,7 @@ namespace ProjectApp
 
         private void OnGameWin(object obj)
         {
-            ui_TipsText.text = "胜利";
+            ui_TipsText_TMPText.text = "胜利";
             //ui_TipsText.transform.parent.SetActive(true);
         }
 
@@ -413,9 +435,9 @@ namespace ProjectApp
                     scoreText.transform.localScale = new Vector3(scale, scale, 1f);
                 }
             }
-            if (ui_SoceMask)
+            if (ui_SoceMask_Rtf)
             {
-                ui_SoceMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(currentDisplayScore * 1f / core.TargetScore));
+                ui_SoceMask_Rtf.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, GetMaskHeight(currentDisplayScore * 1f / core.TargetScore));
             }
 
             // 隐藏分数变化文字
@@ -473,6 +495,8 @@ namespace ProjectApp
             }
         }
 
+        
+        
         #endregion
 
 
@@ -486,6 +510,8 @@ namespace ProjectApp
         protected override void OnDisplay(object args)
         {
         }
+        
+        
         #endregion
 
         #region 消息
@@ -497,6 +523,8 @@ namespace ProjectApp
         {
             //modelDispatcher.RemoveListener(ModelMsg.XXX, OnXXX);
         }
+        
+        
         #endregion
 
         #region 任务
@@ -504,15 +532,16 @@ namespace ProjectApp
         private void UpdataTask(QuestEventData eventData = null)
         {
             Quest quest = model.GetCurrQuest();
-            ui_TastText.text = quest.description;
-            ui_propIconImg.sprite = GameTool.GetSprite(ExternalProp.Horizontal);
-            var goal = quest.goals[0];
-            ui_ProgressText.text = goal.GetProgressText();
+            ui_tastText_TMPText.text = quest.description;
 
+            ui_propIcon_Image.sprite = GameTool.GetSprite(ExternalProp.Horizontal);
+            var goal = quest.goals[0];
+            ui_ProgressText_TMPText.text = goal.GetProgressText();
+            
             int height =  GetMaskHeight(goal.currentAmount * 1f / goal.targetAmount);
             //Debug.LogError((goal.currentAmount * 1f / goal.targetAmount)+ height);
             
-            ui_TaskMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+            ui_TaskMask_Rtf.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
 
         }
 
@@ -521,7 +550,11 @@ namespace ProjectApp
             return (int)(140 * val);
         }
 
+        
+        
         #endregion
+
+
 
     }
 }

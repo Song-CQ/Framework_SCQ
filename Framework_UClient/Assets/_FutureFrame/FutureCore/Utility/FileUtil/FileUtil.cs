@@ -164,7 +164,7 @@ namespace FutureCore
                 }
                 else
                 {
-                    LogUtil.LogError("目标文件不存在:"+ filePath);
+                    LogUtil.LogError("写入失败 该目标文件不存在:"+ filePath);
                     return;
                 }
                 

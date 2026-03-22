@@ -6,7 +6,7 @@
     功能: UsePropUI界面
 *****************************************************/
 using FutureCore;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +30,7 @@ namespace ProjectApp
         private GuideMask ui_mask;
         private RectTransform ui_maskRtf;
         private RectTransform ui_HoleImage;
+        private TextMeshProUGUI ui_TipsText;
 
 
         private ExternalPropUIList_Item item;
@@ -72,6 +73,7 @@ namespace ProjectApp
             ui_maskRtf = ui_mask.GetComponent<RectTransform>();
             ui_HoleImage = GetComponent<RectTransform>(ui_HoleImage_Key);
             item = GetComponent<ExternalPropUIList_Item>(ui_PropItem_Key);
+            ui_TipsText = GetComponent<TextMeshProUGUI>(ui_TipsText_Key);
 
         }
 
@@ -135,6 +137,10 @@ namespace ProjectApp
             SetViewMask();
 
             tarItem.gameObject.SetActive(false);
+
+            
+            string key = ((int)tarItem.propData.type).ToString();
+            ui_TipsText.text = Data.propVOModel.Instance.GetVO(key).Note;
 
         }
 

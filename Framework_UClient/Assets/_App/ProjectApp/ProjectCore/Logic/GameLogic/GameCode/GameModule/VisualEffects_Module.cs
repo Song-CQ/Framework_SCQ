@@ -1523,7 +1523,7 @@ namespace ProjectApp
         {
             if (!Core.Enabled_PlayerCtr) return;
 
-            size = size + delta * sizeSpeed * Time.deltaTime;
+            size = size + delta * 0.5f * Time.deltaTime;
 
             size = Mathf.Clamp(size, minSize, maxSize);
 

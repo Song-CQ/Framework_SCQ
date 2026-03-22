@@ -12,14 +12,14 @@ namespace ProjectApp
     public enum ExternalProp
     {
         None = 0,
-        Hammer = 10000,
-        Swipe,
-        Horizontal,
-        Vertical,
-        AllRandom,
-        Undo,
-        Wild,
-        AddScore,
+        Hammer = 10001,
+        Swipe = 10002,
+        Horizontal = 10003,
+        Vertical = 10004,
+        AllRandom = 10005,
+        Undo = 10006,
+        Wild = 10007,
+        AddScore = 10008,
 
     }
     public class ExternalProp_Module : IGameModule

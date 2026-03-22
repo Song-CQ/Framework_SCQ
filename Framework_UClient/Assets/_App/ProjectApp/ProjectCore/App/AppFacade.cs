@@ -23,14 +23,14 @@
 
 
         /// <summary>
-        /// 密钥Key
+        /// 配置表密钥Key  Key: 32字节（256位AES）或16字节（128位AES）
         /// </summary>
-        public const string AESKey = "1543065415321000";
+        public const string AESKey = "4F6B8E1A3CD5F9B2D4BA6C8E0F1A3B5C";
 
         /// <summary>
-        /// 密钥IVector
+        /// 配置表密钥IVector   IVector: 必须是16字节（128位）
         /// </summary>
-        public const string AESIVector = "1543065415321000";
+        public const string AESIVector = "7C9E1B3D5A6F8C2E4F6A8D0B2F4E6C8A";
 
         /// <summary>
         /// 服务器标签
@@ -40,12 +40,12 @@
         /// <summary>
         /// 游戏服连接组
         /// </summary>
-        //public static string[] WebSocketUrls =
-        //{
-        //    "wss://centhadst.pub/sctricard/", // 官服
-        //    "wss://www.centhadst.pub/sctricard/", // AWS CDN
-        //    "wss://cloudflare.centhadst.pub/sctricard/", // Cloudflare CDN
-        //};
+        public static string[] WebSocketUrls =
+        {
+            //"wss://centhadst.pub/sctricard/", // 官服
+            //"wss://www.centhadst.pub/sctricard/", // AWS CDN
+            //"wss://cloudflare.centhadst.pub/sctricard/", // Cloudflare CDN
+        };
 
         /// <summary>
         /// 正服端口
@@ -105,7 +105,7 @@
         /// <summary>
         /// 服务器资源路劲
         /// </summary>
-        public const string ServerAssestUrl = "";
+        public const string ServerAssestUrl = "https://gitee.com/Song_CQ/match3_game/raw/master/UpData";
         #endregion
 
         #region 方法

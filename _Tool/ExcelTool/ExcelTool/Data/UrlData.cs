@@ -9,7 +9,7 @@ namespace ExcelTool.Data
     public class UrlData
     {
         public string ReadExcelPath;
-        public string OutDataPath;
+        public string[] OutDataPath;
         public string OutClassPath;
 
 

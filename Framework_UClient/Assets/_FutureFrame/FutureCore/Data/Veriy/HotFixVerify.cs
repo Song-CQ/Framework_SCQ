@@ -12,7 +12,7 @@ namespace FutureCore.Data
         /// <summary>
         /// 版本号
         /// </summary>
-        public int version;
+        public ulong version;
         /// <summary>
         /// 最新的打包时间
         /// </summary>

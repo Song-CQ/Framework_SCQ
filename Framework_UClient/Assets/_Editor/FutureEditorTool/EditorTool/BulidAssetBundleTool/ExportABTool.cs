@@ -105,7 +105,7 @@ namespace FutureEditor
                 if (File.Exists(ABConfig.allBeDependPath))
                 {
                     string json = File.ReadAllText(ABConfig.allBeDependPath);
-                    allbedependData = JsonUtility.FromJson<BeDependData>(json);
+                    allbedependData = SerializeUtil.UnityToObject<BeDependData>(json);
                 }
                 for (int i = 0; i < allbedependData.bedepsmap.Count; i++)
                 {
@@ -323,7 +323,7 @@ namespace FutureEditor
             }
             for (int i = 0; i < bagdict.Count; i++)
             {
-                BundleMsg bagmsg = new BundleMsg();
+                BundlMsg bagmsg = new BundlMsg();
                 bagmsg.bagName = bagdict.ElementAt(i).Key;
                 bagmsg.num = bagdict.ElementAt(i).Value;
                 bagmsg.MD5 = VerifyUtil.GetFileMD5(outputPath + "/" + bagmsg.bagName);
@@ -333,7 +333,7 @@ namespace FutureEditor
             }
             string mainBagPath = Path.Combine(outputPath, ABConfig.abPlatform.ToString());
             //加入主包
-            BundleMsg mainBagmsg = new BundleMsg()
+            BundlMsg mainBagmsg = new BundlMsg()
             {
                 bagName = ABConfig.abPlatform.ToString(),
                 num = 1,
@@ -348,7 +348,7 @@ namespace FutureEditor
             }
             versiondata.buildDate = DateTime.Now.ToString();
             
-            string json = JsonUtility.ToJson(versiondata, true);
+            string json =SerializeUtil.UnityToJson(versiondata, true);
             FutureCore.FileUtil.WriteAllText(ABConfig.verifyPath, json);
             if (ABConfig.isImputVersion)
             {
@@ -452,14 +452,14 @@ namespace FutureEditor
             {
                 File.Create(ABConfig.allDependPath).Dispose();
             }
-            json = JsonUtility.ToJson(alldependlist, true);
+            json =SerializeUtil.UnityToJson(alldependlist, true);
             File.WriteAllText(ABConfig.allDependPath, json);
 
             if (!File.Exists(ABConfig.allBeDependPath))
             {
                 File.Create(ABConfig.allBeDependPath).Dispose();
             }
-            json = JsonUtility.ToJson(allbedependlist, true);
+            json =SerializeUtil.UnityToJson(allbedependlist, true);
             File.WriteAllText(ABConfig.allBeDependPath, json);
 
             #endregion
